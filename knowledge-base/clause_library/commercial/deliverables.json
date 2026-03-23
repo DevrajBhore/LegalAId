@@ -1,0 +1,25 @@
+{
+  "clause_id": "SERVICE_DELIVERABLES_001",
+  "name": "Deliverables",
+  "category": "SERVICE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider undertakes to deliver the specified services and all associated deliverables in accordance with the terms of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The contract is solely for the sale of goods and not services.",
+    "The service involves continuous effort without distinct, identifiable deliverables."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "act_id": "the_information_technology_act_2000__1999",
+  "section_number": "3",
+  "section_id": "13012",
+  "title": "Section 3",
+  "content": "1[3. Authentication of electronic records.--(1) Subject to the provisions of this section any subscriber may authenticate an electronic record by affixing his digital signature. (2) The authentication of the electronic record shall be effected by the use of asymmetric crypto system and hash function which envelop and transform the initial electronic record into another electronic record. Explanation.--For the purposes of this sub-section, \"hash function\" means an algorithm mapping or translation of one sequence of bits into another, generally smaller, set known as --hash result\" such that an electronic record yields the same hash result every time the algorithm is executed with the same electronic record as its input making it computationally infeasible-- (a) to derive or reconstruct the original electronic record from the hash result produced by the algorithm; (b) that two electronic records can produce the same hash result using the algorithm. (3) Any person by the use of a public key of the subscriber can verify the electronic record. (4) The private key and the public key are unique to the subscriber and constitute a functioning key pair.]",
+  "footnote": "1. Subs. by s. 5, ibid., for the heading \"DIGITAL SIGNATURE\" (w.e.f. 27-10-2009).",
+  "metadata": {
+    "source": "IndiaCode",
+    "act_url": "https://www.indiacode.nic.in/handle/123456789/1999?view_type=browse",
+    "fetched_at": "2026-03-02T11:42:16.384Z"
+  }
+}

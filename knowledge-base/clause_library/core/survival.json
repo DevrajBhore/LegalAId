@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_SURVIVAL_001",
+  "name": "Survival",
+  "category": "TERMINATION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Clauses relating to confidentiality, indemnity, dispute resolution, and any other provisions intended to survive termination shall remain effective after termination of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Critical clauses terminate automatically after contract termination"
+  ],
+  "source": "Contract drafting practice",
+  "version": "1.0"
+}

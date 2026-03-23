@@ -1,0 +1,20 @@
+{
+  "document_type": "COMMON",
+  "variables": {
+    "effective_date": {
+      "label": "Effective Date",
+      "type": "date",
+      "required": true
+    },
+    "arbitration_city": {
+      "label": "Seat of Arbitration",
+      "type": "text",
+      "required": false
+    },
+    "jurisdiction": {
+      "label": "Jurisdiction",
+      "type": "text",
+      "required": false
+    }
+  }
+}

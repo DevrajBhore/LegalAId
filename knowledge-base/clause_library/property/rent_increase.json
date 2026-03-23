@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_RENT_INCREASE_001",
+  "name": "Rent Escalation",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The monthly rent payable under this Agreement shall be subject to annual escalation at the rate of five percent (5%) per annum (or such other rate as agreed between the Parties in writing), calculated on the rent payable in the immediately preceding year. Such escalation shall take effect on each anniversary of the Commencement Date, without the requirement for any further notice or demand. In the event that the Parties renew this Agreement, the rent applicable at the time of renewal shall serve as the base for subsequent escalation calculations. The Parties agree that the above escalation mechanism is a fair and reasonable provision and does not constitute a penalty or fine. Any increase in government-levied taxes, levies, or cesses on the Premises shall be borne by the Tenant in addition to the agreed rent.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105"
+    },
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "9"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "LOW",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Rent escalation mechanism applied without adequate notice to Tenant",
+    "Escalation rate exceeds Model Tenancy Act 2021 prescribed limits in applicable states"
+  ],
+  "source": "Model Tenancy Act, 2021; Transfer of Property Act, 1882",
+  "version": "2.0"
+}

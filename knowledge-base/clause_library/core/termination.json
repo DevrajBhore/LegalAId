@@ -1,0 +1,25 @@
+{
+  "clause_id": "CORE_TERMINATION_001",
+  "name": "Termination",
+  "category": "TERMINATION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Either Party may terminate this Agreement by giving written notice to the other Party if the other Party commits a material breach and fails to remedy such breach within a reasonable period.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Termination rights granted to only one party without justification",
+    "No cure period provided"
+  ],
+  "source": "Contract Act principles",
+  "version": "1.0"
+}

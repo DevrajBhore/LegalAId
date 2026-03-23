@@ -1,0 +1,29 @@
+{
+  "clause_id": "IP_COPYRIGHT_001",
+  "name": "Copyright",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Unless expressly provided otherwise in this Agreement, all pre-existing intellectual property rights, including copyright, of each Party shall remain its exclusive property.",
+  "legal_basis": [
+    {
+      "act": "The Copyright Act, 1957",
+      "section": "17"
+    },
+    {
+      "act": "The Copyright Act, 1957",
+      "section": "18"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "This clause is insufficient if the primary purpose of the agreement involves the creation and assignment of new intellectual property.",
+    "This clause does not provide for the transfer or licensing of intellectual property created under this agreement."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

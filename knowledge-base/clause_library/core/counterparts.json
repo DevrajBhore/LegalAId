@@ -1,0 +1,20 @@
+{
+  "clause_id": "CORE_COUNTERPARTS_001",
+  "name": "Counterparts",
+  "category": "EXECUTION_FORMALITIES",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "This Agreement may be executed in multiple counterparts, each of which shall be deemed an original, and all counterparts together shall constitute one instrument.",
+  "legal_basis": [
+    {
+      "act": "Indian Evidence Act, 1872",
+      "section": "62"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Contract execution practice",
+  "version": "1.0"
+}

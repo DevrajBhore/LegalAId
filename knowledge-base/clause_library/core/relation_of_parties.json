@@ -1,0 +1,20 @@
+{
+  "clause_id": "CORE_INDEPENDENT_PARTIES_001",
+  "name": "Independent Parties",
+  "category": "INTERPRETATION",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "Nothing in this Agreement shall be deemed to create any partnership, joint venture, or employment relationship between the Parties unless expressly stated.",
+  "legal_basis": [
+    {
+      "act": "Indian Partnership Act, 1932",
+      "section": "4"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Agreement creates implied partnership without intent"],
+  "source": "Contract drafting practice",
+  "version": "1.0"
+}

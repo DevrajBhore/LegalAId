@@ -1,0 +1,33 @@
+{
+  "clause_id": "LOAN_PREPAYMENT_001",
+  "name": "Prepayment",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Borrower may prepay the whole or any part of the outstanding Principal Amount at any time upon not less than fifteen (15) Business Days' prior written notice to the Lender. Any prepayment shall be accompanied by all accrued interest on the amount prepaid to the date of prepayment, together with any applicable prepayment premium as specified in Schedule 1. Partial prepayments shall be applied first to costs and expenses, then to accrued interest, and then to principal in inverse order of maturity. Where the Loan bears a fixed rate of interest, a prepayment premium of [PREPAYMENT_PREMIUM]% of the prepaid amount shall be payable to compensate the Lender for re-deployment risk. Where the Loan bears a floating rate, no prepayment premium shall be applicable. The Borrower's right of prepayment shall be subject to compliance with any applicable RBI guidelines on foreclosure charges.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62"
+    },
+    {
+      "act": "Reserve Bank of India Act, 1934",
+      "section": "45"
+    },
+    {
+      "act": "Usurious Loans Act, 1918",
+      "section": "3"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Prepayment premium for floating rate loans contrary to RBI guidelines on foreclosure charges",
+    "No right of prepayment for Borrower in any circumstances restricts legitimate debt management"
+  ],
+  "source": "Indian Contract Act, 1872; RBI Guidelines",
+  "version": "2.0"
+}

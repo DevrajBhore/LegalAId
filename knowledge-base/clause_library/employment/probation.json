@@ -1,0 +1,25 @@
+{
+  "clause_id": "EMP_PROBATION_001",
+  "name": "Probation Period",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee shall be on probation for an initial period as specified in this Agreement, during which the employment may be confirmed, extended, or terminated in accordance with applicable law and the terms herein.",
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "General principles"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Probation period is excessively long without justification",
+    "Probation is used to deny statutory rights"
+  ],
+  "source": "Indian labour law practice",
+  "version": "1.0"
+}

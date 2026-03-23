@@ -1,0 +1,34 @@
+{
+  "clause_id": "IP_FEEDBACK_001",
+  "name": "IP Feedback",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "All feedback, suggestions, or improvements provided by a Party concerning the other Party's Intellectual Property shall be owned exclusively by the latter Party.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "s 10 and 23"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "s 17 and 19"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "s 6 and 20"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The feedback constitutes pre-existing Intellectual Property of the Party providing it.",
+    "The feedback is unrelated to the other Party's Intellectual Property.",
+    "The contract provides alternative ownership terms for such feedback."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

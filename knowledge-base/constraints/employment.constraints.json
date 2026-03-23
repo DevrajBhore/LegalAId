@@ -1,0 +1,72 @@
+{
+  "domain": "employment",
+  "rules": [
+    {
+      "rule_id": "EMP_REQUIRES_ROLE",
+      "severity": "CRITICAL",
+      "description": "Employment contract must define the employee's role and duties.",
+      "statutory_reference": "Industrial Disputes Act 1947 \u2013 S.25F",
+      "fails_if": [
+        "EMPLOYMENT_ROLE_001",
+        "CORE_PURPOSE_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_COMPENSATION",
+      "severity": "CRITICAL",
+      "description": "Employment contract must specify compensation and salary terms.",
+      "statutory_reference": "Payment of Wages Act 1936 \u2013 S.3",
+      "fails_if": [
+        "EMPLOYMENT_COMPENSATION_001",
+        "SERVICE_PAYMENT_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_TERMINATION",
+      "severity": "CRITICAL",
+      "description": "Employment contract must include termination provisions.",
+      "statutory_reference": "Industrial Disputes Act 1947 \u2013 S.25F",
+      "fails_if": [
+        "EMPLOYMENT_TERMINATION_001",
+        "CORE_TERMINATION_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_CONFIDENTIALITY",
+      "severity": "MEDIUM",
+      "description": "Employment contract should include a confidentiality obligation.",
+      "fails_if": [
+        "EMP_CONFIDENTIALITY_001",
+        "CORE_CONFIDENTIALITY_001",
+        "EMP_CONFIDENTIALITY_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_NOTICE_PERIOD",
+      "severity": "HIGH",
+      "description": "Employment contracts must specify notice period for termination as required by applicable labour law.",
+      "statutory_reference": "Industrial Employment (Standing Orders) Act 1946 \u2013 S.13; Industrial Disputes Act 1947 \u2013 S.25F",
+      "fails_if": [
+        "EMP_NOTICE_PERIOD_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_LEAVE_POLICY",
+      "severity": "MEDIUM",
+      "description": "Employment contracts should include leave policy in compliance with applicable Shops & Establishments Act.",
+      "statutory_reference": "Factories Act 1948 \u2013 S.78; Shops and Establishments Acts (State-specific)",
+      "fails_if": [
+        "EMP_LEAVE_POLICY_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_WORKING_HOURS",
+      "severity": "MEDIUM",
+      "description": "Employment contracts should specify working hours in compliance with applicable labour statutes.",
+      "statutory_reference": "Factories Act 1948 \u2013 S.51; Shops and Establishments Acts (State-specific)",
+      "fails_if": [
+        "EMP_WORKING_HOURS_001"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+    "clause_id": "TECH_SOURCE_CODE_001",
+    "name": "Source Code and Escrow",
+    "category": "IP",
+    "document_types": [
+      "SOFTWARE_DEVELOPMENT_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "The Developer shall, upon final acceptance of the Software, deliver to the Client all source code, object code, technical documentation, build scripts, and related materials ('Source Materials'). Where the Developer retains any background IP, the Developer shall deposit the Source Materials with an escrow agent mutually agreed by the Parties ('Escrow Agent'), to be released to the Client upon occurrence of any of the following release events: (a) the Developer ceases to carry on business; (b) the Developer is wound up, becomes insolvent, or has a receiver appointed; (c) the Developer materially breaches its maintenance obligations and fails to remedy the breach within thirty (30) days of written notice. The cost of escrow shall be borne equally by both Parties.",
+    "legal_basis": [
+      {
+        "act": "Information Technology Act, 2000",
+        "section": "General"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "General Principles"
+      },
+      {
+        "act": "Copyright Act, 1957",
+        "section": "14"
+      }
+    ],
+    "mandatory": false,
+    "enforceability": "HIGH",
+    "risk_level": "MEDIUM",
+    "invalid_if": [
+      "Release events for escrow are not defined",
+      "No escrow agent is specified"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

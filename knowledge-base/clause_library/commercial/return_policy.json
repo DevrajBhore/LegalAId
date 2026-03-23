@@ -1,0 +1,31 @@
+{
+  "clause_id": "SUPPLY_RETURN_POLICY_001",
+  "name": "Return Policy",
+  "category": "SUPPLY",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Buyer may return Goods to the Supplier in the following circumstances: (a) the Goods are defective or damaged upon delivery; (b) the Goods do not conform to agreed specifications; (c) the Supplier has delivered incorrect Goods; or (d) the Goods are subject to a recall by the Supplier or a competent regulatory authority. All returns must be initiated within thirty (30) days of delivery by written notice specifying the reason for return. Returned Goods must be in their original packaging wherever practicable. The Supplier shall bear all costs of return logistics for returns arising under (a) through (d) above. Upon receipt of validly returned Goods, the Supplier shall, within fourteen (14) days, at the Buyer's option, either replace the Goods or refund the purchase price, together with any applicable GST.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "59"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Return window less than 7 days for consumer goods",
+    "Costs of return for defective goods placed on Buyer"
+  ],
+  "source": "Sale of Goods Act, 1930",
+  "version": "2.0"
+}

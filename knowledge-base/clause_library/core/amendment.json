@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_AMENDMENT_001",
+  "name": "Amendment",
+  "category": "PROCEDURAL",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "No modification or amendment to this Agreement shall be valid unless made in writing and signed by authorized representatives of both Parties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Amendments allowed without written consent"
+  ],
+  "source": "Contract Act",
+  "version": "1.0"
+}

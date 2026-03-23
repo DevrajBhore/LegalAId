@@ -1,0 +1,52 @@
+{
+  "employer_name": {
+    "type": "string",
+    "label": "Employer Name",
+    "description": "Full legal name of the employer company",
+    "required": true,
+    "placeholder": "Innovative Tech Pvt Ltd"
+  },
+  "employee_name": {
+    "type": "string",
+    "label": "Employee Full Name",
+    "required": true,
+    "placeholder": "Rahul Sharma"
+  },
+  "job_title": {
+    "type": "string",
+    "label": "Job Title / Designation",
+    "required": true,
+    "placeholder": "Senior Software Engineer"
+  },
+  "salary": {
+    "type": "string",
+    "label": "Annual CTC / Salary",
+    "description": "Gross annual cost-to-company (e.g. INR 12,00,000 per annum)",
+    "required": true,
+    "placeholder": "INR 12,00,000 per annum"
+  },
+  "start_date": {
+    "type": "date",
+    "label": "Date of Joining",
+    "required": true,
+    "placeholder": "2024-06-01"
+  },
+  "work_location": {
+    "type": "string",
+    "label": "Work Location",
+    "required": true,
+    "placeholder": "Mumbai, Maharashtra"
+  },
+  "notice_period_days": {
+    "type": "number",
+    "label": "Notice Period (Days)",
+    "required": true,
+    "placeholder": "30"
+  },
+  "probation_months": {
+    "type": "number",
+    "label": "Probation Period (Months)",
+    "required": false,
+    "placeholder": "3"
+  }
+}

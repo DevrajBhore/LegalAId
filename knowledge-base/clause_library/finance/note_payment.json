@@ -1,0 +1,34 @@
+{
+  "clause_id": "PROMISSORY_NOTE_PAYMENT_001",
+  "name": "Promissory Note Payment",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT",
+    "PROMISSORY_NOTE"
+  ],
+  "jurisdiction": "India",
+  "text": "For value received, the Maker unconditionally promises to pay to the order of the Payee the sum of Rupees as specified herein ('Principal Sum'), together with interest thereon at the rate of [INTEREST_RATE]% per annum from the date hereof until payment in full, on the due date specified herein or on demand. This Promissory Note is executed under the Negotiable Instruments Act, 1881, and shall be stamped as required under the Indian Stamp Act, 1899, Schedule I, Article 49. The Maker waives demand, presentment, protest, and notice of dishonour. In the event of default, the Payee shall be entitled to recover the outstanding amount together with interest and costs of recovery. This Promissory Note is a negotiable instrument and may be transferred by endorsement and delivery.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "4"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "17"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Promissory note not properly stamped under Indian Stamp Act 1899 \u2013 inadmissible as evidence",
+    "Promissory note not signed by the Maker rendering it invalid under NI Act 1881"
+  ],
+  "source": "Negotiable Instruments Act, 1881; Indian Stamp Act, 1899",
+  "version": "2.0"
+}

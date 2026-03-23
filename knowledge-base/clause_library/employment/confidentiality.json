@@ -1,0 +1,33 @@
+{
+  "clause_id": "EMP_CONFIDENTIALITY_001",
+  "name": "Employee Confidentiality",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee shall, during the term of employment and indefinitely thereafter, maintain strict confidentiality with respect to all Confidential Information of the Employer. 'Confidential Information' means all non-public information relating to the Employer's business, clients, products, services, technology, financial data, business plans, trade secrets, and know-how that the Employee may acquire in the course of employment, whether in written, oral, electronic, or any other form. The Employee shall: (a) not disclose Confidential Information to any third party without the prior written consent of the Employer; (b) use Confidential Information solely for the purposes of carrying out the Employee's duties; (c) promptly notify the Employer upon becoming aware of any actual or suspected unauthorised disclosure; and (d) upon termination of employment, immediately return all documents and materials containing Confidential Information and permanently delete all electronic copies. Post-employment confidentiality obligations shall survive termination to the extent they relate to trade secrets.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    },
+    {
+      "act": "Indian Penal Code, 1860",
+      "section": "405"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Post-employment confidentiality for non-trade-secret information exceeds reasonable period",
+    "Confidential Information definition is so broad as to cover publicly available information"
+  ],
+  "source": "Indian Contract Act, 1872; Trade Secrets law",
+  "version": "2.0"
+}

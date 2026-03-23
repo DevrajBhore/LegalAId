@@ -1,0 +1,214 @@
+.home-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px 80px;
+}
+
+/* Hero */
+.home-hero {
+  text-align: center;
+  margin-bottom: 64px;
+  animation: heroFadeIn 0.6s ease both;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.home-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  background: var(--accent-muted);
+  border: 1px solid rgba(181,137,58,0.25);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 24px;
+}
+
+.home-hero-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.home-title {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.home-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.home-subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* States */
+.home-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 60px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.home-error {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  color: var(--red);
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  margin-right: 8px;
+}
+
+/* Families */
+.home-families {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.family-section {
+  animation: sectionFadeIn 0.5s ease both;
+}
+
+.family-section:nth-child(1) { animation-delay: 0.1s; }
+.family-section:nth-child(2) { animation-delay: 0.2s; }
+.family-section:nth-child(3) { animation-delay: 0.3s; }
+.family-section:nth-child(4) { animation-delay: 0.4s; }
+.family-section:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.family-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.family-title::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.doc-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  gap: 12px;
+}
+
+.doc-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.18s ease;
+  transform-origin: bottom;
+}
+
+.doc-card:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.doc-card:hover::before {
+  transform: scaleY(1);
+}
+
+.doc-card-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.35;
+  flex: 1;
+}
+
+.doc-card-arrow {
+  font-size: 14px;
+  color: var(--text-faint);
+  transition: color 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.doc-card:hover .doc-card-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}

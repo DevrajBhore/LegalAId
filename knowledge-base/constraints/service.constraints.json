@@ -1,0 +1,48 @@
+{
+  "domain": "service",
+  "rules": [
+    {
+      "rule_id": "SERVICE_REQUIRES_SCOPE",
+      "severity": "HIGH",
+      "description": "Service agreement must define the scope of services.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.29",
+      "fails_if": [
+        "SERVICE_SCOPE_001",
+        "CORE_PURPOSE_001"
+      ]
+    },
+    {
+      "rule_id": "SERVICE_REQUIRES_PAYMENT",
+      "severity": "CRITICAL",
+      "description": "Service agreement must specify payment terms.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.10",
+      "fails_if": [
+        "SERVICE_PAYMENT_001",
+        "CORE_TERM_001",
+        "EMPLOYMENT_COMPENSATION_001"
+      ]
+    },
+    {
+      "rule_id": "SERVICE_REQUIRES_TERM",
+      "severity": "HIGH",
+      "description": "Service agreement must specify contract term.",
+      "fails_if": [
+        "SERVICE_TERM_001",
+        "CORE_TERM_001",
+        "NDA_TERM_SURVIVAL_001",
+        "RENTAL_TERM_001"
+      ]
+    },
+    {
+      "rule_id": "SERVICE_REQUIRES_TERMINATION",
+      "severity": "HIGH",
+      "description": "Service agreement must include termination provisions.",
+      "fails_if": [
+        "SERVICE_TERMINATION_001",
+        "CORE_TERMINATION_001",
+        "EMPLOYMENT_TERMINATION_001",
+        "RENTAL_TERMINATION_001"
+      ]
+    }
+  ]
+}

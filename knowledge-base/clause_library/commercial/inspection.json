@@ -1,0 +1,25 @@
+{
+  "clause_id": "SUPPLY_INSPECTION_001",
+  "name": "Inspection",
+  "category": "INSPECTION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Buyer shall have the right to inspect the Goods upon delivery to ascertain their conformity with the specifications and terms of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "41"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Exclusion of buyer's statutory right to examine goods",
+    "Imposition of an unreasonably short period for inspection"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_DEFINITIONS_001",
+  "name": "Definitions",
+  "category": "DEFINITIONS",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Capitalized terms used in this Agreement shall have the meanings assigned to them herein or as commonly understood in law.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Key terms are undefined or ambiguous"
+  ],
+  "source": "Contract drafting principles",
+  "version": "1.0"
+}

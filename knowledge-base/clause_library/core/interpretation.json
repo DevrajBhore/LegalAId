@@ -1,0 +1,22 @@
+{
+  "clause_id": "CORE_INTERPRETATION_001",
+  "name": "Interpretation",
+  "category": "INTERPRETATION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Headings are for convenience only and shall not affect the interpretation of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "93"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Contract drafting practice",
+  "version": "1.0"
+}

@@ -1,0 +1,345 @@
+{
+  "_comment": "Stamp duty rates by document type and state. basis: fixed=flat amount, percent=% of financial value. Update rates here without touching code.",
+  "mandatory_stamp_doctypes": [
+    "Rental",
+    "NDA",
+    "Employment",
+    "Service",
+    "PARTNERSHIP_DEED",
+    "MOU",
+    "LEAVE_AND_LICENSE",
+    "EMPLOYMENT_AGREEMENT",
+    "SERVICE_PROVIDER_AGREEMENT",
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "LOAN_AGREEMENT",
+    "GUARANTEE_AGREEMENT",
+    "SHAREHOLDERS_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "high_severity_doctypes": [
+    "Rental",
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "PARTNERSHIP_DEED",
+    "SALE_DEED",
+    "MORTGAGE_DEED",
+    "GIFT_DEED",
+    "LOAN_AGREEMENT",
+    "GUARANTEE_AGREEMENT"
+  ],
+  "low_severity_doctypes": [
+    "EMPLOYMENT_AGREEMENT",
+    "Employment",
+    "OFFER_LETTER",
+    "APPOINTMENT_LETTER",
+    "AFFIDAVIT",
+    "WILL",
+    "LEGAL_NOTICE",
+    "VAKALATNAMA",
+    "MOU"
+  ],
+  "rates": {
+    "NDA": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "Employment": {
+      "default": {
+        "basis": "fixed",
+        "amount": 50
+      }
+    },
+    "EMPLOYMENT_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 50
+      }
+    },
+    "Rental": {
+      "default": {
+        "basis": "percent",
+        "rate": 0.5,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Delhi": {
+        "basis": "fixed",
+        "amount": 50
+      },
+      "Karnataka": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Tamil Nadu": {
+        "basis": "percent",
+        "rate": 1.0,
+        "on": "totalRent",
+        "min": 20
+      },
+      "Telangana": {
+        "basis": "percent",
+        "rate": 0.5,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Gujarat": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 100
+      }
+    },
+    "RENTAL_AGREEMENT": {
+      "default": {
+        "basis": "percent",
+        "rate": 0.5,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Delhi": {
+        "basis": "fixed",
+        "amount": 50
+      },
+      "Karnataka": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Tamil Nadu": {
+        "basis": "percent",
+        "rate": 1.0,
+        "on": "totalRent",
+        "min": 20
+      },
+      "Telangana": {
+        "basis": "percent",
+        "rate": 0.5,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Gujarat": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 100
+      }
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT": {
+      "default": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 100
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "totalRent",
+        "min": 500
+      }
+    },
+    "COMMERCIAL_LEASE_AGREEMENT": {
+      "default": {
+        "basis": "percent",
+        "rate": 1.0,
+        "on": "totalRent",
+        "min": 500
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.5,
+        "on": "totalRent",
+        "min": 500
+      }
+    },
+    "Service": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SERVICE_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "MOU": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      }
+    },
+    "PARTNERSHIP_DEED": {
+      "default": {
+        "basis": "fixed",
+        "amount": 500
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 1000
+      },
+      "Delhi": {
+        "basis": "fixed",
+        "amount": 500
+      },
+      "Karnataka": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "LOAN_AGREEMENT": {
+      "default": {
+        "basis": "percent",
+        "rate": 0.1,
+        "on": "loanAmount",
+        "min": 500
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.1,
+        "on": "loanAmount",
+        "min": 500
+      }
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 500
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 1000
+      }
+    },
+    "GUARANTEE_AGREEMENT": {
+      "default": {
+        "basis": "percent",
+        "rate": 0.1,
+        "on": "guaranteedAmount",
+        "min": 500
+      },
+      "Maharashtra": {
+        "basis": "percent",
+        "rate": 0.25,
+        "on": "guaranteedAmount",
+        "min": 500
+      }
+    },
+    "JOINT_VENTURE_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 500
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 1000
+      }
+    },
+    "DISTRIBUTION_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SUPPLY_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "CONSULTANCY_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SALES_OF_GOODS_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 200
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "EMPLOYMENT_CONTRACT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    }
+  }
+}

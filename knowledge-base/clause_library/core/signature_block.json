@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_SIGNATURE_BLOCK_001",
+  "name": "Execution and Signatures",
+  "category": "SIGNATURE_BLOCK",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "IN WITNESS WHEREOF, the Parties have executed this Agreement on the date first written above.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Agreement not signed by authorized representatives"
+  ],
+  "source": "Contract execution practice",
+  "version": "1.0"
+}

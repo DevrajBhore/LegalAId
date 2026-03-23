@@ -1,0 +1,33 @@
+{
+  "clause_id": "LOAN_REPAYMENT_001",
+  "name": "Loan Repayment",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Borrower shall repay the Principal Amount together with all accrued interest in accordance with the repayment schedule set out in Schedule 1 ('Repayment Schedule'). Each repayment instalment shall be paid by electronic transfer to the Lender's bank account specified in Schedule 2 on or before the relevant due date ('Repayment Date'). If any Repayment Date falls on a day that is not a Business Day, payment shall be made on the immediately preceding Business Day. Time of payment is of the essence. The Borrower shall ensure that sufficient funds are available in the designated bank account on each Repayment Date. The Lender shall be entitled to deduct any instalment due from any deposit or credit balance held by the Lender in the name of the Borrower. The Borrower shall not reduce or defer any repayment instalment without the prior written consent of the Lender.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "60"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "18"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "No repayment schedule specified making obligation uncertain",
+    "Unilateral right of Lender to alter repayment schedule"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

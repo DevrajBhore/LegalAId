@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_LOCKIN_PERIOD_001",
+  "name": "Lock-in Period",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Parties agree that this Agreement shall not be terminable by either Party for a period of eleven (11) months from the Commencement Date ('Lock-in Period'), except in cases of material breach. During the Lock-in Period: (a) the Tenant shall not vacate the Premises before the expiry of the Lock-in Period and shall remain liable for rent for the entire Lock-in Period even if the Premises are vacated early; (b) the Landlord shall not seek possession of the Premises except in cases of non-payment of rent or material damage to the Premises; and (c) neither Party shall terminate this Agreement for convenience. In the event the Tenant vacates the Premises prior to the expiry of the Lock-in Period without the Landlord's written consent, the Tenant shall be liable to pay the Landlord rent for the remaining Lock-in Period as liquidated damages, which the Parties agree represents a genuine pre-estimate of the Landlord's loss.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Lock-in period penalty not a genuine pre-estimate of loss under ICA S.74",
+    "Lock-in period exceeds 11 months without registration under Registration Act 1908"
+  ],
+  "source": "Transfer of Property Act, 1882; Indian Contract Act, 1872",
+  "version": "2.0"
+}

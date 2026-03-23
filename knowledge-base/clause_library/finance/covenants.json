@@ -1,0 +1,33 @@
+{
+  "clause_id": "LOAN_COVENANTS_001",
+  "name": "Loan Covenants",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "For so long as any amount remains outstanding under this Agreement, the Borrower undertakes to the Lender that it shall: (a) maintain its corporate existence and all necessary licences and approvals; (b) promptly notify the Lender in writing of the occurrence of any Event of Default or any event that, with the passage of time or giving of notice, would constitute an Event of Default; (c) provide the Lender with audited annual financial statements within ninety (90) days of each financial year end; (d) not create or permit any Encumbrance on its assets except as permitted under this Agreement; (e) not make any material change to the nature of its business without prior written consent of the Lender; (f) not declare or pay any dividend if an Event of Default is continuing; (g) maintain debt-service coverage ratio and such other financial covenants as specified in Schedule 4; and (h) comply with all applicable laws, including all applicable RBI guidelines and directions.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "177"
+    },
+    {
+      "act": "Reserve Bank of India Act, 1934",
+      "section": "45"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Financial covenants set at levels that make technical default likely from inception",
+    "Covenants more restrictive than RBI prudential norms"
+  ],
+  "source": "Indian Contract Act, 1872; Companies Act, 2013",
+  "version": "2.0"
+}

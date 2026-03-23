@@ -1,0 +1,27 @@
+{
+  "clause_id": "EMP_WAGES_OVERVIEW_001",
+  "name": "Wages Overview",
+  "category": "EMPLOYMENT",
+  "document_types": ["EMPLOYMENT"],
+  "jurisdiction": "India",
+  "text": "The Employee shall be paid wages, salary, and other compensation in accordance with this Agreement and applicable law, subject to statutory deductions and timelines.",
+  "legal_basis": [
+    {
+      "act": "Payment of Wages Act, 1936",
+      "section": "5"
+    },
+    {
+      "act": "Minimum Wages Act, 1948",
+      "section": "3"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Wages are below statutory minimum",
+    "Payment timelines violate law"
+  ],
+  "source": "Payment of Wages Act + Minimum Wages Act",
+  "version": "1.0"
+}

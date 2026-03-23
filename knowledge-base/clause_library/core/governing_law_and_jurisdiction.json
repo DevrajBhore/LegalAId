@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_GOV_LAW_001",
+  "name": "Governing Law and Jurisdiction",
+  "category": "JURISDICTION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement shall be governed by the laws of India and subject to the jurisdiction of Indian courts.",
+  "legal_basis": [
+    {
+      "act": "Code of Civil Procedure, 1908",
+      "section": "20"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Conflicts with arbitration clause"
+  ],
+  "source": "CPC",
+  "version": "1.0"
+}

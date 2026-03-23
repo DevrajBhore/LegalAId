@@ -1,0 +1,25 @@
+{
+  "clause_id": "CORE_FORCE_MAJEURE_001",
+  "name": "Force Majeure",
+  "category": "ENFORCEABILITY",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Neither Party shall be liable for failure to perform its obligations under this Agreement if such failure is due to events beyond its reasonable control including natural disasters, war, strikes, or government actions.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "56"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Force majeure events defined too broadly",
+    "Clause used to excuse negligence"
+  ],
+  "source": "Doctrine of frustration",
+  "version": "1.0"
+}

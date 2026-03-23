@@ -1,0 +1,33 @@
+{
+    "clause_id": "CORP_ANTI_DILUTION_001",
+    "name": "Anti-Dilution Protection",
+    "category": "CORPORATE",
+    "document_types": [
+      "SHAREHOLDERS_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "In the event the Company issues any new shares or other equity instruments at a price per share lower than the price per share paid by the existing Shareholders ('Down Round'), the affected Shareholders shall be entitled to anti-dilution protection in the form of a broad-based weighted average adjustment. The conversion price or subscription price applicable to such Shareholders shall be adjusted downward using the following formula: CP2 = CP1 \u00d7 (A + B) \u00f7 (A + C), where CP1 is the existing conversion price, CP2 is the adjusted conversion price, A is the number of shares outstanding immediately prior to the new issuance, B is the number of shares that would have been issued at CP1 for the aggregate consideration received, and C is the number of shares actually issued. Any adjustment under this clause shall be subject to applicable provisions of the Companies Act, 2013, including requirements for shareholder approval for further issuance of shares.",
+    "legal_basis": [
+      {
+        "act": "Companies Act, 2013",
+        "section": "62"
+      },
+      {
+        "act": "Companies Act, 2013",
+        "section": "63"
+      },
+      {
+        "act": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018",
+        "section": "General"
+      }
+    ],
+    "mandatory": false,
+    "enforceability": "HIGH",
+    "risk_level": "HIGH",
+    "invalid_if": [
+      "Adjustment formula is not clearly specified",
+      "Carve-outs for permitted issuances (ESOPs, bonus shares) are absent"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

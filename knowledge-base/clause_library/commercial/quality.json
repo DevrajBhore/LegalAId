@@ -1,0 +1,36 @@
+{
+  "clause_id": "SUPPLY_QUALITY_001",
+  "name": "Quality Standards",
+  "category": "QUALITY",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Supplier warrants that all Goods supplied under this Agreement shall: (a) conform strictly to the specifications, descriptions, and samples set out in Schedule 1; (b) be of merchantable quality and fit for the purpose for which such Goods are ordinarily used; (c) be free from defects in design, materials, and workmanship; (d) comply with all applicable Indian Standards (IS) specifications issued by the Bureau of Indian Standards and all other applicable laws, regulations, and governmental requirements in force in India; and (e) be properly labelled and packaged in accordance with the Legal Metrology Act, 2009 and applicable rules thereunder. The Supplier shall maintain a quality management system and shall permit the Buyer to conduct quality audits upon reasonable notice.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "16"
+    },
+    {
+      "act": "Bureau of Indian Standards Act, 2016",
+      "section": "3"
+    },
+    {
+      "act": "Legal Metrology Act, 2009",
+      "section": "18"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Quality standards below applicable BIS specifications",
+    "Warranty of merchantability excluded without adequate disclosure",
+    "Non-compliance with Legal Metrology Act labelling requirements"
+  ],
+  "source": "Sale of Goods Act, 1930; Bureau of Indian Standards Act, 2016",
+  "version": "2.0"
+}

@@ -1,0 +1,32 @@
+{
+  "clause_id": "CORE_RELATIONSHIP_OF_PARTIES_001",
+  "name": "Relationship of Parties",
+  "category": "RELATIONSHIP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The parties to this Agreement are independent contractors. Nothing herein shall be construed as creating a partnership, joint venture, agency, employment, or fiduciary relationship between them.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "General Principles"
+    },
+    {
+      "act": "Indian Partnership Act, 1932",
+      "section": "4"
+    },
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "2(s)"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The actual conduct of the parties, notwithstanding the contractual terms, establishes a different legal relationship in substance."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

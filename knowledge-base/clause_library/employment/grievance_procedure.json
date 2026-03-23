@@ -1,0 +1,28 @@
+{
+  "clause_id": "EMP_GRIEVANCE_PROCEDURE_001",
+  "name": "Grievance Redressal Procedure",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employer shall maintain a grievance redressal mechanism for the resolution of employee grievances. Any Employee who has a grievance relating to the conditions of service, working environment, conduct of colleagues, or any other employment-related matter shall follow the following procedure: (a) raise the grievance in writing with the immediate supervisor within thirty (30) days of the event giving rise to the grievance; (b) if unresolved within seven (7) days, escalate the grievance in writing to the HR Department; (c) if still unresolved within fifteen (15) days of escalation, the Employee may request a formal grievance hearing before a grievance committee constituted by the Employer. The Employer shall ensure that all grievances are addressed promptly, fairly, and without victimisation of the Employee. For grievances relating to sexual harassment, the Employer shall follow the procedure prescribed under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013.",
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "9C"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "4"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "No grievance mechanism for sexual harassment complaints as mandated by POSH Act 2013"
+  ],
+  "source": "Sexual Harassment of Women at Workplace Act, 2013; Industrial Disputes Act, 1947",
+  "version": "2.0"
+}

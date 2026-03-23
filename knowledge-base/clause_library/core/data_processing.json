@@ -1,0 +1,27 @@
+{
+  "clause_id": "CORE_DATA_PROCESSING_001",
+  "name": "Data Processing",
+  "category": "PRIVACY",
+  "document_types": [
+    "PRIVACYPOLICY",
+    "DPA",
+    "SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "Personal data shall be collected and processed only for lawful purposes and with reasonable security safeguards.",
+  "legal_basis": [
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Purpose of processing not disclosed",
+    "Security safeguards absent"
+  ],
+  "source": "IT Act",
+  "version": "1.0"
+}

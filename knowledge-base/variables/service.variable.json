@@ -1,0 +1,33 @@
+{
+    "service_description": {
+      "type": "string",
+      "label": "Description of Services",
+      "description": "Detailed description of services to be provided",
+      "required": true
+    },
+  
+    "service_fee": {
+      "type": "number",
+      "label": "Service Fee",
+      "unit": "INR",
+      "required": true
+    },
+  
+    "payment_due_days": {
+      "type": "number",
+      "label": "Payment Due After Invoice (Days)",
+      "required": true
+    },
+  
+    "service_start_date": {
+      "type": "date",
+      "label": "Service Start Date",
+      "required": true
+    },
+  
+    "service_end_date": {
+      "type": "date",
+      "label": "Service End Date",
+      "required": false
+    }
+  }

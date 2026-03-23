@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Act",
+  "type": "object",
+  "properties": {
+    "act_id": { "type": "string" },
+    "title": { "type": "string" },
+    "year": { "type": "integer" },
+    "ministry": { "type": "string" },
+    "type": { "type": "string" },
+    "chapters": { "type": "array", "items": { "type": "string" } },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "string" },
+          "title": { "type": "string" },
+          "text": { "type": "string" }
+        },
+        "required": ["number", "text"]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "scraped_at": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    }
+  },
+  "required": ["act_id", "title", "sections", "metadata"]
+}

@@ -1,0 +1,34 @@
+{
+  "clause_id": "EMP_WORKING_HOURS_001",
+  "name": "Working Hours",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee's normal working hours shall be nine (9) hours per day, inclusive of a one-hour lunch break, five (5) days per week (Monday to Friday), subject to the requirements of the applicable State Shops and Establishments Act or the Factories Act, 1948, as applicable. The Employer may require the Employee to work additional hours as necessitated by business requirements, provided that: (a) total working hours shall not exceed forty-eight (48) hours per week; (b) overtime compensation shall be paid at twice the ordinary rate of wages for all hours worked in excess of nine (9) hours per day or forty-eight (48) hours per week, where applicable under the relevant statute; and (c) every Employee shall be entitled to one day of rest in every seven-day period. The Employer shall maintain a register of working hours as required under applicable labour legislation and shall not require female employees to work between 10 PM and 6 AM without appropriate safety measures.",
+  "legal_basis": [
+    {
+      "act": "Factories Act, 1948",
+      "section": "51"
+    },
+    {
+      "act": "Factories Act, 1948",
+      "section": "59"
+    },
+    {
+      "act": "Shops and Establishments Acts (State)",
+      "section": ""
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Working hours exceed 48 hours per week contrary to Factories Act 1948",
+    "No overtime compensation for excess hours contrary to applicable labour law",
+    "Female employees required to work night shifts without adequate safety measures"
+  ],
+  "source": "Factories Act, 1948; State Shops and Establishments Acts",
+  "version": "2.0"
+}

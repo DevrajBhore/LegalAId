@@ -1,0 +1,20 @@
+{
+  "clause_id": "CORE_LIABILITY_CAP_001",
+  "name": "Liability Cap",
+  "category": "RISK",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "The aggregate liability of either Party under or in connection with this Agreement, whether arising in contract, tort (including negligence), breach of statutory duty, or otherwise, shall not exceed the total amounts paid or payable by the Paying Party during the twelve (12) months preceding the event giving rise to the claim.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Liability is excluded for fraud or wilful misconduct"],
+  "source": "Contract Act",
+  "version": "1.0"
+}

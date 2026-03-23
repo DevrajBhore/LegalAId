@@ -1,0 +1,30 @@
+{
+  "clause_id": "RENT_MAINTENANCE_001",
+  "name": "Maintenance and Repairs",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Landlord and Tenant shall be responsible for maintenance and repairs as follows: (a) The Landlord shall be responsible for: (i) major structural repairs, including repairs to the roof, load-bearing walls, external walls, foundations, and common areas; (ii) repair or replacement of major fixtures provided by the Landlord, including electrical fittings, plumbing, and sanitary fittings, attributable to fair wear and tear; and (iii) compliance with building safety requirements under applicable municipal laws. (b) The Tenant shall be responsible for: (i) day-to-day maintenance and minor repairs within the Premises; (ii) maintaining the Premises in a clean and hygienic condition; (iii) not making any structural alterations without prior written consent of the Landlord; and (iv) restoring the Premises to its original condition, reasonable wear and tear excepted, upon vacation. The Tenant shall promptly notify the Landlord of any damage requiring major repair.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "108"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Maintenance obligations imposed on Tenant that are the legal responsibility of the Landlord under TPA 1882 S.108"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.108",
+  "version": "2.0"
+}

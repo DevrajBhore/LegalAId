@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_SEVERABILITY_001",
+  "name": "Severability",
+  "category": "ENFORCEABILITY",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "If any provision of this Agreement is held to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "24"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Entire contract becomes void if a single clause fails"
+  ],
+  "source": "Contract Act",
+  "version": "1.0"
+}

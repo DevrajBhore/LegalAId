@@ -1,0 +1,51 @@
+{
+  "employee_name": {
+    "type": "string",
+    "label": "Employee Name",
+    "required": true
+  },
+
+  "designation": {
+    "type": "string",
+    "label": "Job Title / Designation",
+    "required": true
+  },
+
+  "date_of_joining": {
+    "type": "date",
+    "label": "Date of Joining",
+    "required": true
+  },
+
+  "salary_amount": {
+    "type": "number",
+    "label": "Salary Amount",
+    "unit": "INR",
+    "required": true
+  },
+
+  "salary_frequency": {
+    "type": "string",
+    "label": "Salary Frequency",
+    "enum": ["monthly", "quarterly", "annually"],
+    "required": true
+  },
+
+  "notice_period_days": {
+    "type": "number",
+    "label": "Notice Period (Days)",
+    "required": true
+  },
+
+  "probation_period_months": {
+    "type": "number",
+    "label": "Probation Period (Months)",
+    "required": false
+  },
+
+  "work_location": {
+    "type": "string",
+    "label": "Work Location",
+    "required": true
+  }
+}

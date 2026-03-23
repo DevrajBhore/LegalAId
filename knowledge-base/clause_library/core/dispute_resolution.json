@@ -1,0 +1,30 @@
+{
+  "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+  "name": "Dispute Resolution Mechanism",
+  "category": "DISPUTE_RESOLUTION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "In the event of any dispute, controversy, or claim arising out of or in connection with this Agreement, the Parties shall first attempt to resolve the dispute amicably through good-faith negotiations. If the dispute is not resolved within a reasonable period, either Party may initiate appropriate legal proceedings or invoke arbitration, as may be applicable under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Code of Civil Procedure, 1908",
+      "section": "89"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Dispute resolution mechanism is entirely absent",
+    "Clause contradicts an arbitration clause without hierarchy",
+    "Clause restricts access to courts absolutely"
+  ],
+  "source": "CPC Section 89 + Indian contract drafting practice",
+  "version": "1.0"
+}

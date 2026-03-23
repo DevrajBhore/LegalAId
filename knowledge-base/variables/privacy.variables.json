@@ -1,0 +1,30 @@
+{
+  "document_type": "PRIVACY_POLICY",
+  "variables": {
+    "organisation_name": {
+      "label": "Organisation Name",
+      "type": "text",
+      "required": true
+    },
+    "organisation_address": {
+      "label": "Organisation Address",
+      "type": "textarea",
+      "required": true
+    },
+    "grievance_officer": {
+      "label": "Grievance Officer Name",
+      "type": "text",
+      "required": true
+    },
+    "grievance_email": {
+      "label": "Grievance Officer Email",
+      "type": "text",
+      "required": true
+    },
+    "effective_date": {
+      "label": "Effective Date",
+      "type": "date",
+      "required": true
+    }
+  }
+}

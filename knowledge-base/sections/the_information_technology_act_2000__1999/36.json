@@ -1,0 +1,13 @@
+{
+  "act_id": "the_information_technology_act_2000__1999",
+  "section_number": "36",
+  "section_id": "13049",
+  "title": "Section 36",
+  "content": "A Certifying Authority while issuing a Digital Signature Certificate shall certify that-- (a) it has complied with the provisions of this Act and the rules and regulations made thereunder; (b) it has published the Digital Signature Certificate or otherwise made it available to such person relying on it and the subscriber has accepted it; (c) the subscriber holds the private key corresponding to the public key, listed in the Digital Signature Certificate; 1 [(ca) the subscriber holds a private key which is capable of creating a digital signature; (cb) the public key to be listed in the certificate can be used to verify a digital signature affixed by the private key held by the subscriber;] (d) the subscriber's public key and private key constitute a functioning key pair; (e) the information contained in the Digital Signature Certificate is accurate; and (f) it has no knowledge of any material fact, which if it had been included in the Digital Signature Certificate would adversely affect the reliability of the representations in clauses (a) to (d).",
+  "footnote": "1 Ins. by Act 10 of 2009, s. 18 (w.e.f. 27-10-2009).",
+  "metadata": {
+    "source": "IndiaCode",
+    "act_url": "https://www.indiacode.nic.in/handle/123456789/1999?view_type=browse",
+    "fetched_at": "2026-03-02T11:42:33.667Z"
+  }
+}

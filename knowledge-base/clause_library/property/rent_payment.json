@@ -1,0 +1,35 @@
+{
+  "clause_id": "RENT_RENT_PAYMENT_001",
+  "name": "Rent Payment Terms",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Tenant shall pay the monthly rent of Rupees as specified in Schedule 1 ('Monthly Rent') to the Landlord on or before the fifth (5th) day of each calendar month, in advance, for the duration of this Agreement. Payment shall be made by account payee cheque, bank transfer (NEFT/RTGS/IMPS/UPI), or such other mode as the Landlord may specify in writing. The Landlord shall issue a written rent receipt for each payment received, as required under the Model Tenancy Act, 2021. If rent is not paid within fifteen (15) days of the due date, the Tenant shall be liable to pay simple interest at the rate of fifteen percent (15%) per annum on the overdue amount. The Tenant shall not withhold rent on account of any dispute with the Landlord unless so ordered by a court of competent jurisdiction. All payments shall be in Indian Rupees.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105"
+    },
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "14"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Landlord refusing to issue rent receipts contrary to Model Tenancy Act 2021 S.14",
+    "Rent payment mode restricted to cash only without digital payment option"
+  ],
+  "source": "Transfer of Property Act, 1882; Model Tenancy Act, 2021",
+  "version": "2.0"
+}

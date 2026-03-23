@@ -1,0 +1,29 @@
+{
+  "clause_id": "SUPPLY_SHORTAGE_001",
+  "name": "Shortage and Shortage Claims",
+  "category": "SUPPLY",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In the event of a shortage in quantity delivered, the Buyer shall notify the Supplier in writing within five (5) Business Days of delivery, specifying the quantity received and the shortfall. The Supplier shall verify the shortage claim within seven (7) Business Days of such notification. Upon confirmation of shortage, the Supplier shall, at its cost: (a) deliver the shortfall quantity within fourteen (14) days; or (b) issue a credit note for the undelivered quantity, at the Buyer's election. For the avoidance of doubt, acceptance of a short delivery shall not constitute a waiver of the Buyer's right to receive the full contracted quantity or to claim damages for non-delivery under the Sale of Goods Act, 1930.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "37"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Shortage claim period less than 2 Business Days unreasonably restricts Buyer rights"
+  ],
+  "source": "Sale of Goods Act, 1930",
+  "version": "2.0"
+}

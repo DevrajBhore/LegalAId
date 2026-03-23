@@ -1,0 +1,25 @@
+{
+  "clause_id": "EMP_IP_ASSIGNMENT_001",
+  "name": "Intellectual Property Assignment",
+  "category": "INTELLECTUAL_PROPERTY",
+  "document_types": [
+    "EMPLOYMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "All intellectual property created by the Employee in the course of employment shall vest with the Employer, subject to applicable law.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "IP assignment exceeds scope of employment",
+    "Moral rights are waived unlawfully"
+  ],
+  "source": "Copyright Act",
+  "version": "1.0"
+}

@@ -1,0 +1,33 @@
+{
+    "clause_id": "TECH_WARRANTY_001",
+    "name": "Software Warranty and Defect Liability",
+    "category": "WARRANTY",
+    "document_types": [
+      "SOFTWARE_DEVELOPMENT_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "The Developer warrants that: (a) the Software shall substantially conform to the agreed specifications and requirements for a period of ninety (90) days from the date of acceptance ('Warranty Period'); (b) the Software shall be free from material defects in design, code, and functionality; (c) the Software shall not contain any malicious code, virus, or undisclosed back-door; and (d) the Developer has the full right and authority to develop and deliver the Software and the delivery shall not infringe any third-party intellectual property rights. During the Warranty Period, the Developer shall remedy any defect or non-conformity at no additional cost to the Client. After expiry of the Warranty Period, maintenance and support shall be subject to a separate agreement. Nothing in this clause shall limit the Developer's liability for wilful misconduct or fraud.",
+    "legal_basis": [
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "73"
+      },
+      {
+        "act": "Information Technology Act, 2000",
+        "section": "General"
+      },
+      {
+        "act": "Sale of Goods Act, 1930",
+        "section": "16"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "MEDIUM",
+    "invalid_if": [
+      "Warranty period is unreasonably short",
+      "Remedy mechanism for defects is not specified"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

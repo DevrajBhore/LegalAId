@@ -1,0 +1,25 @@
+{
+  "clause_id": "CORE_TERM_001",
+  "name": "Term of Agreement",
+  "category": "TERM",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement shall commence on the Effective Date and shall continue in force until terminated in accordance with the terms of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Agreement duration is undefined",
+    "Termination mechanism absent"
+  ],
+  "source": "Contract drafting practice",
+  "version": "1.0"
+}

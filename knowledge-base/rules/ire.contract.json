@@ -1,0 +1,50 @@
+{
+    "version": "1.0",
+    "engine": "Indian Rule Engine (IRE)",
+    "description": "Deterministic rule engine for validating legal clauses against Indian law constraints",
+  
+    "input": {
+      "blueprint_id": "string",
+      "variables": "object",
+      "jurisdiction": "string",
+      "context": {
+        "document_type": "string",
+        "evaluation_date": "ISO-8601",
+        "risk_profile": "low | medium | high"
+      }
+    },
+  
+    "output": {
+      "valid": "boolean",
+      "violations": [
+        {
+          "constraint_id": "string",
+          "message": "string",
+          "severity": "low | medium | high",
+          "source": {
+            "act": "string",
+            "section": "string"
+          }
+        }
+      ],
+      "applied_constraints": ["string"],
+      "risk_level": "low | medium | high",
+      "explanation": "string"
+    },
+  
+    "guarantees": [
+      "Deterministic evaluation",
+      "Explainable legal output",
+      "Law-source traceability",
+      "Backward-compatible execution",
+      "No dependency on raw law text"
+    ],
+  
+    "non_goals": [
+      "Natural language generation",
+      "Legal advice",
+      "Interpretation of ambiguous facts",
+      "Parsing raw statutes or PDFs"
+    ]
+  }
+  

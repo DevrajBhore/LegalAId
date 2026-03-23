@@ -1,0 +1,184 @@
+/* ── Clause Block — inside the paper ────────────────────────────── */
+
+.clause-block {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #f0ede6;
+  animation: clauseIn 0.3s ease both;
+}
+.clause-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+@keyframes clauseIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Signature block */
+.clause-block--sig .clause-text {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  white-space: pre !important;
+  line-height: 2 !important;
+  color: #555 !important;
+}
+
+/* ── Clause header ───────────────────────────────────────────────── */
+.clause-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.clause-head-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.clause-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+.clause-cat-pill {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-faint);
+  background: var(--surface-warm);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.clause-head-title {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clause-head-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.clause-stat-ref {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-faint);
+  background: var(--surface-warm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clause-edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-faint);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.clause-edit-btn:hover,
+.clause-edit-btn--active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-muted);
+}
+
+/* ── Clause text (view mode) ─────────────────────────────────────── */
+.clause-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: #2a2a35;
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: text;
+  padding: 6px 8px;
+  margin: 0 -8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+.clause-text:hover {
+  background: rgba(181, 137, 58, 0.03);
+  border-color: rgba(181, 137, 58, 0.15);
+}
+
+.clause-empty {
+  color: var(--text-faint);
+  font-style: italic;
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+/* AI-edited highlight */
+.clause-block--edited .clause-text {
+  background: rgba(181, 137, 58, 0.04);
+  border-color: rgba(181, 137, 58, 0.2);
+}
+
+/* ── Textarea (edit mode) ────────────────────────────────────────── */
+.clause-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: #2a2a35;
+  background: #fffef9;
+  resize: vertical;
+  min-height: 120px;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(181, 137, 58, 0.08);
+  transition: box-shadow 0.15s;
+}
+.clause-textarea:focus {
+  box-shadow: 0 0 0 4px rgba(181, 137, 58, 0.12);
+}

@@ -1,0 +1,30 @@
+{
+  "clause_id": "SERVICE_REPORTING_001",
+  "name": "Service Reporting",
+  "category": "SERVICE",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider shall submit to the Client written progress reports detailing the status of Services, milestones achieved, issues encountered, and projected timelines, on a monthly basis or at such other frequency as the Parties may agree in writing. Each report shall include: (a) a summary of work completed during the reporting period; (b) percentage completion against agreed milestones; (c) identification of any actual or anticipated delays, with proposed remediation measures; and (d) resources deployed. The Service Provider shall also promptly notify the Client of any material development, risk, or circumstance that may adversely affect the quality, timeline, or cost of the Services.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Reporting obligations are entirely discretionary without any minimum frequency"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

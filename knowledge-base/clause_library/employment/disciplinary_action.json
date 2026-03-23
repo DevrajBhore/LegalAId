@@ -1,0 +1,29 @@
+{
+  "clause_id": "EMP_DISCIPLINARY_ACTION_001",
+  "name": "Disciplinary Action",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employer may initiate disciplinary proceedings against the Employee for misconduct, gross negligence, habitual absence, insubordination, fraud, or violation of the Employer's policies. Disciplinary proceedings shall be conducted in accordance with the principles of natural justice, including: (a) issuance of a written show-cause notice specifying the charges; (b) provision of reasonable time to the Employee to respond to the charges; (c) conduct of a fair inquiry where warranted; and (d) communication of the findings and disciplinary decision in writing. Disciplinary actions may include written warning, suspension, demotion, or termination, depending on the severity of misconduct. In cases of gross misconduct, the Employer reserves the right to suspend the Employee with pay pending inquiry and to terminate employment summarily upon completion of a fair inquiry. All disciplinary proceedings shall comply with the applicable Standing Orders or, where no standing orders apply, with the Model Standing Orders under the Industrial Employment (Standing Orders) Act, 1946.",
+  "legal_basis": [
+    {
+      "act": "Industrial Employment (Standing Orders) Act, 1946",
+      "section": "3"
+    },
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Disciplinary action without show-cause notice violates natural justice principles",
+    "Summary dismissal without inquiry for offences other than gross misconduct"
+  ],
+  "source": "Industrial Employment (Standing Orders) Act, 1946",
+  "version": "2.0"
+}

@@ -1,0 +1,22 @@
+{
+  "clause_id": "CORE_GOVERNING_LAW_001",
+  "name": "Governing Law",
+  "category": "GOVERNING_LAW",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement shall be governed by and construed in accordance with the laws of India.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "General Principles of Contract Law"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

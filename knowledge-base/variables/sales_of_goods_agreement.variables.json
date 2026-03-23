@@ -1,0 +1,78 @@
+{
+  "seller_name": {
+    "type": "string",
+    "label": "Seller Name",
+    "required": true,
+    "placeholder": "Premier Goods Ltd"
+  },
+  "seller_address": {
+    "type": "string",
+    "label": "Seller Address",
+    "required": true
+  },
+  "buyer_name": {
+    "type": "string",
+    "label": "Buyer Name",
+    "required": true,
+    "placeholder": "Retail Chain Pvt Ltd"
+  },
+  "buyer_address": {
+    "type": "string",
+    "label": "Buyer Address",
+    "required": true
+  },
+  "goods_description": {
+    "type": "string",
+    "label": "Description of Goods",
+    "required": true,
+    "placeholder": "500 units of industrial machinery as per specifications"
+  },
+  "total_price": {
+    "type": "number",
+    "label": "Total Sale Price (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "2500000"
+  },
+  "price_in_words": {
+    "type": "string",
+    "label": "Price in Words",
+    "required": true,
+    "placeholder": "Rupees Twenty-Five Lakhs only"
+  },
+  "gst_applicable": {
+    "type": "boolean",
+    "label": "GST Applicable?",
+    "required": true,
+    "default": true
+  },
+  "gst_rate": {
+    "type": "number",
+    "label": "GST Rate (%)",
+    "required": false,
+    "placeholder": "18"
+  },
+  "delivery_date": {
+    "type": "date",
+    "label": "Delivery Date",
+    "required": true
+  },
+  "delivery_location": {
+    "type": "string",
+    "label": "Delivery Location",
+    "required": true,
+    "placeholder": "Buyer's warehouse at MIDC, Pune"
+  },
+  "payment_mode": {
+    "type": "string",
+    "label": "Payment Mode",
+    "required": true,
+    "enum": [
+      "NEFT/RTGS",
+      "Cheque",
+      "Letter of Credit",
+      "Cash on delivery"
+    ],
+    "placeholder": "NEFT/RTGS"
+  }
+}

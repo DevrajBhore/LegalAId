@@ -1,0 +1,35 @@
+{
+  "clause_id": "RENT_TERMINATION_001",
+  "name": "Termination of Tenancy",
+  "category": "TERMINATION",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement may be terminated as follows: (a) by either Party upon providing fifteen (15) days' written notice to the other Party after the expiry of the Lock-in Period, if any; (b) by the Landlord immediately upon written notice if the Tenant: (i) fails to pay rent within fifteen (15) days of the due date on two or more consecutive occasions; (ii) materially damages the Premises; (iii) uses the Premises for any unlawful purpose; or (iv) breaches any material term of this Agreement and fails to remedy such breach within seven (7) days of written notice; or (c) by the Tenant immediately if the Landlord substantially interferes with the Tenant's peaceful enjoyment of the Premises. Upon termination or expiry: the Tenant shall vacate the Premises, returning them in the same condition as at the Commencement Date (reasonable wear and tear excepted), and hand over all keys, access cards, and equipment. The Landlord shall be entitled to seek possession through appropriate legal proceedings if the Tenant fails to vacate.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "106"
+    },
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "21"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "6"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Notice period less than 15 days for residential tenancy contrary to TPA 1882 S.106",
+    "No provision for Tenant's right to challenge eviction before Rent Authority"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.106; Model Tenancy Act, 2021",
+  "version": "2.0"
+}

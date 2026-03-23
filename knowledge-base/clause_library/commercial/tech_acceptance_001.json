@@ -1,0 +1,29 @@
+{
+    "clause_id": "TECH_ACCEPTANCE_001",
+    "name": "Acceptance Testing",
+    "category": "SERVICE",
+    "document_types": [
+      "SOFTWARE_DEVELOPMENT_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "Upon delivery of the Software or any milestone deliverable, the Client shall have a period of fifteen (15) business days ('Acceptance Testing Period') to test and evaluate the Software against the agreed acceptance criteria ('Acceptance Criteria') set out in Schedule A. If the Software meets the Acceptance Criteria, the Client shall issue a written acceptance notice ('Acceptance Notice'). If the Software fails to meet the Acceptance Criteria, the Client shall notify the Developer in writing specifying the defects in reasonable detail, and the Developer shall remedy such defects within fifteen (15) business days of such notice, following which the Acceptance Testing Period shall recommence. If the Client fails to issue an Acceptance Notice or a defect notice within the Acceptance Testing Period, the Software shall be deemed accepted. Acceptance of a milestone shall not constitute acceptance of the entire Software.",
+    "legal_basis": [
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "37"
+      },
+      {
+        "act": "Information Technology Act, 2000",
+        "section": "General"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "MEDIUM",
+    "invalid_if": [
+      "Acceptance criteria are not defined",
+      "Deemed acceptance mechanism is absent"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

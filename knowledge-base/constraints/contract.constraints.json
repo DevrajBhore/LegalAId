@@ -1,0 +1,44 @@
+{
+  "domain": "contract",
+  "rules": [
+    {
+      "rule_id": "CONTRACT_REQUIRES_SIGNATURE_BLOCK",
+      "severity": "CRITICAL",
+      "description": "Contracts must include a signature block.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.10",
+      "fails_if": [
+        "CORE_SIGNATURE_BLOCK_001"
+      ]
+    },
+    {
+      "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+      "severity": "CRITICAL",
+      "description": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.2(d), S.10, S.25",
+      "fails_if": [
+        "CORE_CONTRACT_FORMATION_001",
+        "SERVICE_PAYMENT_001",
+        "SUPPLY_PAYMENT_001",
+        "LOAN_AMOUNT_001",
+        "GUARANTEE_OBLIGATION_001",
+        "EMPLOYMENT_COMPENSATION_001",
+        "RENTAL_RENT_PAYMENT_001",
+        "PARTNERSHIP_CAPITAL_001",
+        "JV_CONTRIBUTION_001",
+        "CORP_SHARE_SUBSCRIPTION_001",
+        "EMP_WAGES_001",
+        "CORE_IDENTITY_001",
+        "CORE_CONFIDENTIALITY_001"
+      ]
+    },
+    {
+      "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+      "severity": "CRITICAL",
+      "description": "All contracts must specify governing law as Indian law.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.23",
+      "fails_if": [
+        "CORE_GOVERNING_LAW_001"
+      ]
+    }
+  ]
+}

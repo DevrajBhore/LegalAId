@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_LIMITATION_LIABILITY_001",
+  "name": "Limitation of Liability",
+  "category": "RISK",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Liability of the Parties shall be limited to the extent permitted under applicable law.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Liability is excluded for fraud or wilful misconduct"
+  ],
+  "source": "Contract Act",
+  "version": "1.0"
+}

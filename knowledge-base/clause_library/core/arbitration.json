@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_ARBITRATION_001",
+  "name": "Arbitration",
+  "category": "ARBITRATION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Any dispute arising out of this Agreement shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "7"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Seat of arbitration not specified"
+  ],
+  "source": "Arbitration Act",
+  "version": "1.0"
+}

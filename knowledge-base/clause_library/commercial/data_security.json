@@ -1,0 +1,27 @@
+{
+  "clause_id": "NDA_DATA_SECURITY_001",
+  "name": "Data Security",
+  "category": "CONFIDENTIALITY",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "The Recipient shall implement and maintain appropriate technical and organizational measures to protect the Confidential Information against unauthorized access, disclosure, alteration, or destruction, in accordance with applicable Indian laws.",
+  "legal_basis": [
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "72A"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The agreement does not involve the transfer or access to data that requires security measures.",
+    "Specific data security measures are exhaustively defined in another part of the agreement, rendering this general clause redundant or conflicting."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

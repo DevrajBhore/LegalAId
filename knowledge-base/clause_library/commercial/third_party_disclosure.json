@@ -1,0 +1,31 @@
+{
+  "clause_id": "NDA_THIRD_PARTY_DISCLOSURE_001",
+  "name": "Third Party Disclosure Restrictions",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "NDA",
+    "SERVICE_AGREEMENT",
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Receiving Party shall not disclose any Confidential Information to any third party without the prior written consent of the Disclosing Party, except that the Receiving Party may disclose Confidential Information to its employees, officers, directors, professional advisers, and contractors (collectively, 'Permitted Recipients') on a strict need-to-know basis, provided that: (a) each Permitted Recipient is bound by written confidentiality obligations no less restrictive than those contained in this Agreement prior to disclosure; (b) the Receiving Party remains fully liable for any breach by a Permitted Recipient; and (c) the Receiving Party maintains a written record of all Permitted Recipients to whom Confidential Information has been disclosed. If disclosure is required by law, regulation, or court order, the Receiving Party shall, to the extent legally permissible, provide prompt written notice to the Disclosing Party to enable it to seek a protective order.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Disclosure to third parties without any confidentiality obligation on recipient",
+    "No restriction on further disclosure by Permitted Recipients"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

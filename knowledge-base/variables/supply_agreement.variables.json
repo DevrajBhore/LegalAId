@@ -1,0 +1,82 @@
+{
+  "supplier_name": {
+    "type": "string",
+    "label": "Supplier Name",
+    "required": true,
+    "placeholder": "Reliable Goods Pvt Ltd"
+  },
+  "supplier_address": {
+    "type": "string",
+    "label": "Supplier Address",
+    "required": true
+  },
+  "buyer_name": {
+    "type": "string",
+    "label": "Buyer Name",
+    "required": true,
+    "placeholder": "Modern Retail Ltd"
+  },
+  "buyer_address": {
+    "type": "string",
+    "label": "Buyer Address",
+    "required": true
+  },
+  "goods_description": {
+    "type": "string",
+    "label": "Description of Goods",
+    "description": "Detailed description of the goods to be supplied",
+    "required": true,
+    "placeholder": "Electronic components as per specifications in Schedule 1"
+  },
+  "price_per_unit": {
+    "type": "number",
+    "label": "Price Per Unit (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "500"
+  },
+  "minimum_order_quantity": {
+    "type": "number",
+    "label": "Minimum Order Quantity",
+    "required": false,
+    "placeholder": "100"
+  },
+  "payment_terms": {
+    "type": "string",
+    "label": "Payment Terms",
+    "required": true,
+    "enum": [
+      "Advance payment",
+      "30 days credit",
+      "45 days credit",
+      "60 days credit",
+      "Against delivery"
+    ],
+    "placeholder": "30 days credit"
+  },
+  "delivery_terms": {
+    "type": "string",
+    "label": "Delivery Terms",
+    "required": true,
+    "enum": [
+      "Ex-works",
+      "FOB",
+      "CIF",
+      "Door delivery",
+      "Custom"
+    ],
+    "placeholder": "Door delivery"
+  },
+  "warranty_period_months": {
+    "type": "number",
+    "label": "Warranty Period (Months)",
+    "required": true,
+    "placeholder": "12"
+  },
+  "supply_duration_months": {
+    "type": "number",
+    "label": "Contract Duration (Months)",
+    "required": true,
+    "placeholder": "12"
+  }
+}

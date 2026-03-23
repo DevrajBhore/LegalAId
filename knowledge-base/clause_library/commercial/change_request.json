@@ -1,0 +1,29 @@
+{
+  "clause_id": "SERVICE_CHANGE_REQUEST_001",
+  "name": "Change Request",
+  "category": "CHANGE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Any request for a change to the services or scope of work under this Agreement shall be submitted in writing by the requesting Party. No such change shall be effective unless mutually agreed upon and documented in writing by both Parties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Changes can be made unilaterally by one party without the consent of the other.",
+    "Changes to the agreement are permitted to be made orally or through implied conduct."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

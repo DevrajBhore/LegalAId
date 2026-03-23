@@ -1,0 +1,31 @@
+{
+  "clause_id": "NDA_NON_SOLICITATION_001",
+  "name": "Non-Solicitation",
+  "category": "NDA",
+  "document_types": [
+    "NDA",
+    "EMPLOYMENT_AGREEMENT",
+    "SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "During the term of this Agreement and for a period of twelve (12) months following its termination or expiry, neither Party shall, directly or indirectly, solicit, induce, recruit, or encourage any employee, consultant, contractor, or service provider of the other Party to terminate their engagement with such Party or to enter into any employment or engagement with the soliciting Party or any of its affiliates, without the prior written consent of the other Party.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Non-solicitation period exceeds 24 months without reasonable justification",
+    "Restriction applies globally without geographical limitation"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

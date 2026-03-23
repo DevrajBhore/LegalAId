@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_WAIVER_001",
+  "name": "Waiver",
+  "category": "PROCEDURAL",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Failure by either Party to enforce any provision of this Agreement shall not constitute a waiver of that provision or of the right to enforce it later.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Waiver implied without clear intent"
+  ],
+  "source": "Contract law practice",
+  "version": "1.0"
+}

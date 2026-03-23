@@ -1,0 +1,28 @@
+{
+  "clause_id": "EMP_NON_SOLICITATION_001",
+  "name": "Employee Non-Solicitation",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "During the term of employment and for a period of twelve (12) months following the termination or expiry of this Agreement for any reason, the Employee shall not, directly or indirectly: (a) solicit, approach, or entice away from the Employer any person who is or was an employee, consultant, or contractor of the Employer during the twelve (12) months preceding the termination of the Employee's employment; or (b) induce or attempt to induce any such person to terminate their relationship with the Employer. This clause shall apply regardless of whether the solicitation is initiated by the Employee or by the person being solicited, and regardless of whether the purpose is to employ such person or to engage them in any other capacity. A breach of this clause shall entitle the Employer to seek injunctive relief in addition to any other remedies available at law or in equity.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Non-solicitation period exceeds 24 months without reasonable justification"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

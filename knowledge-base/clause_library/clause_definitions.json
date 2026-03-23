@@ -1,0 +1,447 @@
+{
+  "core": [
+    {
+      "id": "CORE_CONTRACT_FORMATION_001",
+      "name": "Contract Formation",
+      "category": "formation"
+    },
+    {
+      "id": "CORE_DEFINITIONS_001",
+      "name": "Definitions",
+      "category": "definitions"
+    },
+    {
+      "id": "CORE_INTERPRETATION_001",
+      "name": "Interpretation",
+      "category": "interpretation"
+    },
+    {
+      "id": "CORE_PURPOSE_001",
+      "name": "Purpose of Agreement",
+      "category": "purpose"
+    },
+    { "id": "CORE_TERM_001", "name": "Term", "category": "term" },
+    {
+      "id": "CORE_TERMINATION_001",
+      "name": "Termination",
+      "category": "termination"
+    },
+    {
+      "id": "CORE_CONFIDENTIALITY_001",
+      "name": "Confidentiality",
+      "category": "confidentiality"
+    },
+    {
+      "id": "CORE_DATA_PROCESSING_001",
+      "name": "Data Processing",
+      "category": "data_processing"
+    },
+    {
+      "id": "CORE_INDEMNITY_001",
+      "name": "Indemnity",
+      "category": "indemnity"
+    },
+    {
+      "id": "CORE_LIMITATION_LIABILITY_001",
+      "name": "Limitation of Liability",
+      "category": "liability"
+    },
+    {
+      "id": "CORE_DISPUTE_RESOLUTION_001",
+      "name": "Dispute Resolution",
+      "category": "dispute"
+    },
+    {
+      "id": "CORE_ARBITRATION_001",
+      "name": "Arbitration",
+      "category": "arbitration"
+    },
+    {
+      "id": "CORE_GOVERNING_LAW_001",
+      "name": "Governing Law",
+      "category": "governing_law"
+    },
+    {
+      "id": "CORE_FORCE_MAJEURE_001",
+      "name": "Force Majeure",
+      "category": "force_majeure"
+    },
+    { "id": "CORE_NOTICE_001", "name": "Notice", "category": "notice" },
+    {
+      "id": "CORE_ASSIGNMENT_001",
+      "name": "Assignment",
+      "category": "assignment"
+    },
+    {
+      "id": "CORE_AMENDMENT_001",
+      "name": "Amendment",
+      "category": "amendment"
+    },
+    {
+      "id": "CORE_ENTIRE_AGREEMENT_001",
+      "name": "Entire Agreement",
+      "category": "entire_agreement"
+    },
+    {
+      "id": "CORE_SEVERABILITY_001",
+      "name": "Severability",
+      "category": "severability"
+    },
+    { "id": "CORE_WAIVER_001", "name": "Waiver", "category": "waiver" },
+    { "id": "CORE_SURVIVAL_001", "name": "Survival", "category": "survival" },
+    {
+      "id": "CORE_COUNTERPARTS_001",
+      "name": "Counterparts",
+      "category": "counterparts"
+    },
+    {
+      "id": "CORE_COMPLIANCE_WITH_LAW_001",
+      "name": "Compliance with Law",
+      "category": "compliance"
+    },
+    {
+      "id": "CORE_RELATIONSHIP_OF_PARTIES_001",
+      "name": "Relationship of Parties",
+      "category": "relationship"
+    },
+    {
+      "id": "CORE_SIGNATURE_BLOCK_001",
+      "name": "Signature Block",
+      "category": "execution"
+    }
+  ],
+
+  "commercial": [
+    {
+      "id": "SERVICE_SCOPE_001",
+      "name": "Scope of Services",
+      "category": "service"
+    },
+    {
+      "id": "SERVICE_DELIVERABLES_001",
+      "name": "Deliverables",
+      "category": "service"
+    },
+    {
+      "id": "SERVICE_PAYMENT_001",
+      "name": "Service Payment",
+      "category": "payment"
+    },
+    {
+      "id": "SERVICE_EXPENSES_001",
+      "name": "Service Expenses",
+      "category": "expenses"
+    },
+    {
+      "id": "SERVICE_TIMELINES_001",
+      "name": "Service Timelines",
+      "category": "timeline"
+    },
+    {
+      "id": "SERVICE_ACCEPTANCE_001",
+      "name": "Service Acceptance",
+      "category": "acceptance"
+    },
+    {
+      "id": "SERVICE_SLA_001",
+      "name": "Service Level Agreement",
+      "category": "sla"
+    },
+    {
+      "id": "SERVICE_CHANGE_REQUEST_001",
+      "name": "Change Request",
+      "category": "change"
+    },
+    {
+      "id": "SERVICE_REPORTING_001",
+      "name": "Service Reporting",
+      "category": "reporting"
+    },
+    {
+      "id": "SERVICE_TERMINATION_001",
+      "name": "Service Termination",
+      "category": "termination"
+    },
+
+    {
+      "id": "SUPPLY_GOODS_DESCRIPTION_001",
+      "name": "Goods Description",
+      "category": "supply"
+    },
+    { "id": "SUPPLY_DELIVERY_001", "name": "Delivery", "category": "delivery" },
+    {
+      "id": "SUPPLY_QUALITY_001",
+      "name": "Quality Standards",
+      "category": "quality"
+    },
+    {
+      "id": "SUPPLY_PAYMENT_001",
+      "name": "Supply Payment",
+      "category": "payment"
+    },
+    {
+      "id": "SUPPLY_RISK_TRANSFER_001",
+      "name": "Risk Transfer",
+      "category": "risk"
+    },
+    {
+      "id": "SUPPLY_INSPECTION_001",
+      "name": "Inspection",
+      "category": "inspection"
+    },
+    {
+      "id": "SUPPLY_REJECTION_001",
+      "name": "Rejection",
+      "category": "rejection"
+    },
+    { "id": "SUPPLY_WARRANTY_001", "name": "Warranty", "category": "warranty" },
+    {
+      "id": "SUPPLY_SHORTAGE_001",
+      "name": "Shortage Handling",
+      "category": "shortage"
+    },
+    {
+      "id": "SUPPLY_RETURN_POLICY_001",
+      "name": "Return Policy",
+      "category": "returns"
+    },
+
+    { "id": "IP_OWNERSHIP_001", "name": "IP Ownership", "category": "ip" },
+    { "id": "IP_ASSIGNMENT_001", "name": "IP Assignment", "category": "ip" },
+    { "id": "IP_LICENSE_001", "name": "IP License", "category": "ip" },
+    {
+      "id": "IP_LICENSE_RESTRICTIONS_001",
+      "name": "IP License Restrictions",
+      "category": "ip"
+    },
+    {
+      "id": "IP_INFRINGEMENT_001",
+      "name": "IP Infringement",
+      "category": "ip"
+    },
+    { "id": "IP_FEEDBACK_001", "name": "IP Feedback", "category": "ip" },
+    { "id": "IP_OPEN_SOURCE_001", "name": "Open Source Use", "category": "ip" },
+    { "id": "IP_PATENT_RIGHTS_001", "name": "Patent Rights", "category": "ip" },
+    {
+      "id": "IP_TRADEMARK_USAGE_001",
+      "name": "Trademark Usage",
+      "category": "ip"
+    },
+    { "id": "IP_COPYRIGHT_001", "name": "Copyright", "category": "ip" },
+
+    {
+      "id": "NDA_EXCLUSIONS_001",
+      "name": "Confidentiality Exclusions",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_RETURN_OF_INFORMATION_001",
+      "name": "Return of Information",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_NON_SOLICITATION_001",
+      "name": "Non Solicitation",
+      "category": "nda"
+    },
+    { "id": "NDA_NON_COMPETE_001", "name": "Non Compete", "category": "nda" },
+    {
+      "id": "NDA_DISCLOSURE_PERMITTED_001",
+      "name": "Permitted Disclosure",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_DATA_SECURITY_001",
+      "name": "Data Security",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_DURATION_001",
+      "name": "Confidentiality Duration",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_BREACH_REMEDIES_001",
+      "name": "Breach Remedies",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+      "name": "Confidential Information Scope",
+      "category": "nda"
+    },
+    {
+      "id": "NDA_THIRD_PARTY_DISCLOSURE_001",
+      "name": "Third Party Disclosure",
+      "category": "nda"
+    }
+  ],
+
+  "employment": [
+    {
+      "id": "EMP_DUTIES_001",
+      "name": "Employee Duties",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_WAGES_001",
+      "name": "Employee Wages",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_BENEFITS_001",
+      "name": "Employee Benefits",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_WORKING_HOURS_001",
+      "name": "Working Hours",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_LEAVE_POLICY_001",
+      "name": "Leave Policy",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_PROBATION_001",
+      "name": "Probation",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_TERMINATION_001",
+      "name": "Employment Termination",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_NOTICE_PERIOD_001",
+      "name": "Notice Period",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_CONFIDENTIALITY_001",
+      "name": "Employee Confidentiality",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_NON_COMPETE_001",
+      "name": "Employee Non Compete",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_NON_SOLICITATION_001",
+      "name": "Employee Non Solicitation",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_IP_ASSIGNMENT_001",
+      "name": "Employee IP Assignment",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_DISCIPLINARY_ACTION_001",
+      "name": "Disciplinary Action",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_GRIEVANCE_PROCEDURE_001",
+      "name": "Grievance Procedure",
+      "category": "employment"
+    },
+    {
+      "id": "EMP_RETIREMENT_001",
+      "name": "Retirement",
+      "category": "employment"
+    }
+  ],
+
+  "property": [
+    {
+      "id": "RENT_POSSESSION_001",
+      "name": "Possession",
+      "category": "property"
+    },
+    {
+      "id": "RENT_RENT_PAYMENT_001",
+      "name": "Rent Payment",
+      "category": "property"
+    },
+    {
+      "id": "RENT_SECURITY_DEPOSIT_001",
+      "name": "Security Deposit",
+      "category": "property"
+    },
+    {
+      "id": "RENT_MAINTENANCE_001",
+      "name": "Maintenance",
+      "category": "property"
+    },
+    { "id": "RENT_UTILITIES_001", "name": "Utilities", "category": "property" },
+    { "id": "RENT_SUBLEASE_001", "name": "Sublease", "category": "property" },
+    {
+      "id": "RENT_LOCKIN_PERIOD_001",
+      "name": "Lock-in Period",
+      "category": "property"
+    },
+    {
+      "id": "RENT_RENT_INCREASE_001",
+      "name": "Rent Increase",
+      "category": "property"
+    },
+    {
+      "id": "RENT_TERMINATION_001",
+      "name": "Rental Termination",
+      "category": "property"
+    },
+    {
+      "id": "RENT_PROPERTY_USE_001",
+      "name": "Permitted Use",
+      "category": "property"
+    }
+  ],
+
+  "finance": [
+    { "id": "LOAN_AMOUNT_001", "name": "Loan Amount", "category": "finance" },
+    {
+      "id": "LOAN_INTEREST_001",
+      "name": "Loan Interest",
+      "category": "finance"
+    },
+    {
+      "id": "LOAN_REPAYMENT_001",
+      "name": "Loan Repayment",
+      "category": "finance"
+    },
+    { "id": "LOAN_DEFAULT_001", "name": "Loan Default", "category": "finance" },
+    {
+      "id": "LOAN_PREPAYMENT_001",
+      "name": "Loan Prepayment",
+      "category": "finance"
+    },
+    {
+      "id": "LOAN_SECURITY_001",
+      "name": "Loan Security",
+      "category": "finance"
+    },
+    {
+      "id": "LOAN_COVENANTS_001",
+      "name": "Loan Covenants",
+      "category": "finance"
+    },
+    {
+      "id": "LOAN_ACCELERATION_001",
+      "name": "Loan Acceleration",
+      "category": "finance"
+    },
+    {
+      "id": "GUARANTEE_OBLIGATION_001",
+      "name": "Guarantee Obligation",
+      "category": "finance"
+    },
+    {
+      "id": "PROMISSORY_NOTE_PAYMENT_001",
+      "name": "Promissory Note Payment",
+      "category": "finance"
+    }
+  ]
+}

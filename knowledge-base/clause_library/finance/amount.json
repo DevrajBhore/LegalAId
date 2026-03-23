@@ -1,0 +1,34 @@
+{
+  "clause_id": "LOAN_AMOUNT_001",
+  "name": "Loan Amount and Disbursement",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a sum of Rupees as specified in Schedule 1 ('Principal Amount'). The Principal Amount shall be disbursed by the Lender to the Borrower by electronic transfer to the bank account specified in Schedule 2 within seven (7) Business Days of the satisfaction of all Conditions Precedent set out in Schedule 3. The Borrower acknowledges receipt of the Principal Amount upon disbursement. Any undisbursed amount shall not bear interest. The Lender shall not be obligated to disburse the Principal Amount if any Condition Precedent remains unsatisfied or waived as at the disbursement date. The Borrower shall utilize the Principal Amount solely for the purpose specified in Schedule 1 and shall not divert funds for any other purpose.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "Foreign Exchange Management Act, 1999",
+      "section": "6"
+    },
+    {
+      "act": "Prevention of Money Laundering Act, 2002",
+      "section": "12"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Loan amount and purpose not specified with sufficient certainty",
+    "Disbursement conditions not clearly defined",
+    "No KYC/AML compliance provisions for regulated lenders"
+  ],
+  "source": "Indian Contract Act, 1872; FEMA, 1999",
+  "version": "2.0"
+}

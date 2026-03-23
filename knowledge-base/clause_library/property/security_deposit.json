@@ -1,0 +1,35 @@
+{
+  "clause_id": "RENT_SECURITY_DEPOSIT_001",
+  "name": "Security Deposit",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Tenant shall pay to the Landlord a refundable security deposit of an amount equivalent to two (2) months' rent ('Security Deposit'), prior to or at the time of execution of this Agreement. The Security Deposit shall be held by the Landlord as security for the due performance of the Tenant's obligations under this Agreement, including payment of rent and maintenance of the Premises. The Security Deposit shall not carry interest unless otherwise agreed in writing. The Landlord shall refund the Security Deposit to the Tenant, without deduction, within thirty (30) days of the Tenant vacating the Premises and returning possession to the Landlord, subject to deduction of: (a) any unpaid rent; (b) the cost of repairing any damage to the Premises caused by the Tenant beyond reasonable wear and tear; and (c) any other amounts due and payable by the Tenant under this Agreement. The Landlord shall provide a written account of deductions made from the Security Deposit.",
+  "legal_basis": [
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "11"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Security deposit exceeding two months' rent for residential premises contrary to Model Tenancy Act 2021",
+    "Landlord refusing to refund security deposit without valid reason"
+  ],
+  "source": "Model Tenancy Act, 2021 \u2013 S.11",
+  "version": "2.0"
+}

@@ -1,0 +1,34 @@
+{
+  "clause_id": "LOAN_SECURITY_001",
+  "name": "Security and Collateral",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "As security for the due repayment of the Loan and discharge of all obligations under this Agreement, the Borrower shall create, on or before the date of disbursement, the following security in favour of the Lender: (a) a first and exclusive mortgage of the immovable property described in Schedule 3, duly registered under the Registration Act, 1908; (b) a pledge of shares as described in Schedule 4, perfected in accordance with the Companies Act, 2013; (c) a charge on all book debts and receivables of the Borrower, registered with the Registrar of Companies within thirty (30) days of creation; and (d) such other security as may be specified in Schedule 3. All security documents shall be executed simultaneously with this Agreement. The Borrower shall maintain adequate insurance over all secured assets and shall promptly provide evidence of such insurance to the Lender upon request.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "58"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "77"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Mortgage not registered with Sub-Registrar as required under Registration Act 1908",
+    "Charge not registered with ROC within 30 days as required under Companies Act 2013 Section 77",
+    "Security inadequate to cover loan amount"
+  ],
+  "source": "Registration Act, 1908; Companies Act, 2013",
+  "version": "2.0"
+}

@@ -1,0 +1,31 @@
+{
+  "clause_id": "IP_OPEN_SOURCE_001",
+  "name": "Open Source Compliance",
+  "category": "IP",
+  "document_types": [
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "TECHNOLOGY_AGREEMENT",
+    "SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider shall ensure that no open-source software components are incorporated into the Deliverables in a manner that would: (a) require disclosure of the Client's proprietary source code; (b) impose restrictions on the commercial use or distribution of the Deliverables; or (c) create obligations inconsistent with the terms of this Agreement. The Service Provider shall maintain a written inventory of all open-source components used and shall promptly notify the Client of any open-source components incorporated into the Deliverables, including the applicable open-source licence terms.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "14"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Open-source components used under GPL or AGPL licences without Client consent",
+    "Failure to disclose open-source components incorporated into proprietary deliverables"
+  ],
+  "source": "Copyright Act, 1957",
+  "version": "2.0"
+}

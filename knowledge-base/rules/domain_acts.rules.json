@@ -1,0 +1,82 @@
+{
+  "_comment": "Maps legal domains to relevant acts in your KB. Values are act_id prefixes matched against your acts/ folder. Add new domains or acts here \u2014 no code changes needed.",
+  "domain_act_map": {
+    "CONTRACT": [
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996",
+      "the_specific_relief_act_1963"
+    ],
+    "SERVICE": [
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996",
+      "the_specific_relief_act_1963"
+    ],
+    "COMMERCIAL": [
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996",
+      "the_specific_relief_act_1963"
+    ],
+    "PROPERTY": [
+      "the_transfer_of_property_act_1882",
+      "the_registration_act_1908",
+      "the_indian_stamp_act_1899",
+      "the_arbitration_and_conciliation_act_1996"
+    ],
+    "EMPLOYMENT": [
+      "the_industrial_disputes_act_1947",
+      "the_payment_of_wages_act_1936",
+      "the_payment_of_gratuity_act_1972",
+      "the_employees_provident_funds_and_miscellaneous_provisions_act_1952",
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996"
+    ],
+    "LABOUR": [
+      "the_industrial_disputes_act_1947",
+      "the_payment_of_gratuity_act_1972",
+      "the_employees_provident_funds_and_miscellaneous_provisions_act_1952",
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996"
+    ],
+    "CORPORATE": [
+      "the_companies_act_2013",
+      "the_indian_partnership_act_1932",
+      "the_limited_liability_partnership_act_2008",
+      "the_indian_contract_act_1872",
+      "the_arbitration_and_conciliation_act_1996"
+    ],
+    "FINANCE": [
+      "the_indian_contract_act_1872",
+      "the_negotiable_instruments_act_1881",
+      "the_usurious_loans_act_1918",
+      "the_transfer_of_property_act_1882",
+      "the_arbitration_and_conciliation_act_1996"
+    ],
+    "IP": [
+      "the_indian_contract_act_1872",
+      "the_copyright_act_1957",
+      "the_patents_act_1970",
+      "the_trade_marks_act_1999",
+      "the_information_technology_act_2000"
+    ],
+    "DATA": [
+      "the_information_technology_act_2000",
+      "the_indian_contract_act_1872"
+    ],
+    "FAMILY": [
+      "the_hindu_adoptions_and_maintenance_act_1956",
+      "the_hindu_succession_act_1956",
+      "the_indian_succession_act_1925",
+      "the_registration_act_1908"
+    ],
+    "LITIGATION": [
+      "the_indian_evidence_act_1872",
+      "the_limitation_act_1963",
+      "the_indian_stamp_act_1899"
+    ],
+    "REGULATORY": [
+      "the_powers_of_attorney_act_1882",
+      "the_registration_act_1908",
+      "the_indian_stamp_act_1899"
+    ]
+  }
+}

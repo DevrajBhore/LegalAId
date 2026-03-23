@@ -1,0 +1,25 @@
+{
+  "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+  "name": "Confidential Information Scope",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "\"Confidential Information\" means all non-public, proprietary, or sensitive information, whether disclosed orally, in writing, or electronically, concerning a Party's business, operations, technology, financial affairs, or strategies, designated as confidential or which by its nature ought to be treated as confidential.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Information already lawfully in the public domain",
+    "Information legally required to be disclosed by a court or regulatory body"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

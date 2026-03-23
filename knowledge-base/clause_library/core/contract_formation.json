@@ -1,0 +1,25 @@
+{
+  "clause_id": "CORE_CONTRACT_FORMATION_001",
+  "name": "Formation of Contract",
+  "category": "CONTRACT",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement constitutes a valid and binding contract formed by free consent of the parties for a lawful consideration and lawful object.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "s 10 & 13"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Consent is obtained by coercion, fraud, or misrepresentation",
+    "Object of the agreement is unlawful"
+  ],
+  "source": "Indian Contract Act",
+  "version": "1.0"
+}

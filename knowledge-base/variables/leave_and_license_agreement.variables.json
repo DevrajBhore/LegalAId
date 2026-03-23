@@ -1,0 +1,65 @@
+{
+  "licensor_name": {
+    "type": "string",
+    "label": "Licensor Name (Owner)",
+    "required": true,
+    "placeholder": "Suresh Mehta"
+  },
+  "licensor_address": {
+    "type": "string",
+    "label": "Licensor Address",
+    "required": true,
+    "placeholder": "10 Hill Road, Bandra, Mumbai 400050"
+  },
+  "licensee_name": {
+    "type": "string",
+    "label": "Licensee Name (Occupant)",
+    "required": true,
+    "placeholder": "Priya Singh"
+  },
+  "licensee_address": {
+    "type": "string",
+    "label": "Licensee Address",
+    "required": true,
+    "placeholder": "22 Carter Road, Bandra, Mumbai 400050"
+  },
+  "property_address": {
+    "type": "string",
+    "label": "Property Address",
+    "description": "Full address of the licensed premises",
+    "required": true,
+    "placeholder": "Flat 3B, Sunshine Apartments, Bandra West, Mumbai 400050"
+  },
+  "license_fee": {
+    "type": "number",
+    "label": "Monthly License Fee (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "35000"
+  },
+  "security_deposit": {
+    "type": "number",
+    "label": "Security Deposit (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "70000"
+  },
+  "license_term": {
+    "type": "string",
+    "label": "License Term",
+    "required": true,
+    "enum": [
+      "11 months",
+      "12 months",
+      "24 months",
+      "36 months",
+      "Custom"
+    ],
+    "placeholder": "11 months"
+  },
+  "commencement_date": {
+    "type": "date",
+    "label": "Commencement Date",
+    "required": true
+  }
+}

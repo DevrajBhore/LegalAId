@@ -1,0 +1,9 @@
+{
+  "clause_id": "RENTAL_TERM_001",
+  "category": "TERM",
+  "title": "Term",
+  "text": "This Agreement shall commence on {{effective_date}} and shall continue for a period of {{license_term}}{{lease_term}} unless earlier terminated in accordance with the provisions hereof. On expiry of the term, this Agreement shall not be automatically renewed and the Licensee/Tenant shall be required to vacate the Premises and hand over peaceful possession to the Licensor/Landlord. Any holding over by the Licensee/Tenant after expiry of the term without the written consent of the Licensor/Landlord shall be on a month-to-month basis at the same terms and conditions and terminable by either Party on fifteen (15) days' written notice.",
+  "statutory_reference": "Transfer of Property Act, 1882 \u2013 S.106",
+  "mandatory": true,
+  "jurisdiction": "India"
+}

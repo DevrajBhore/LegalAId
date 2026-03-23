@@ -1,0 +1,288 @@
+{
+  "_comment": "Illegal clause detection rules. blocks_generation: true = this rule blocks certification even on freshly generated docs (truly illegal content). blocks_generation: false = advisory only for generated docs, becomes blocking after user edits. context: PRESENCE = fires when bad pattern found. ABSENCE = fires when required pattern missing.",
+  "rules": [
+    {
+      "rule_id": "ICA_S27_PERPETUAL_NON_COMPETE",
+      "severity": "CRITICAL",
+      "message": "Perpetual or absolute non-compete clause is void under ICA S.27.",
+      "reference": "Indian Contract Act 1872 \u2013 S.27",
+      "suggestion": "Limit non-compete to a reasonable duration tied to protection of Confidential Information or goodwill.",
+      "patterns": [
+        "shall never.*compet",
+        "lifetime.*non.?compete",
+        "perpetual.*restraint.*trade",
+        "forever.*refrain.*business",
+        "not.*engage.*any.*business.*ever",
+        "non.?compete.*indefinite",
+        "permanent.*non.?compete"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "ICA_S28_OUSTER_OF_COURTS",
+      "severity": "CRITICAL",
+      "message": "Absolute ouster of court jurisdiction is void under ICA S.28.",
+      "reference": "Indian Contract Act 1872 \u2013 S.28",
+      "suggestion": "Replace with an arbitration clause specifying the seat and rules.",
+      "patterns": [
+        "no court shall have jurisdiction",
+        "parties.*waive.*all.*right.*court",
+        "absolutely.*barred.*legal.*proceedings",
+        "cannot.*approach.*any.*court",
+        "no.*legal.*recourse",
+        "waive.*right.*to.*sue",
+        "disputes.*resolved.*only.*internally"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "ICA_S23_UNLAWFUL_OBJECT",
+      "severity": "CRITICAL",
+      "message": "Agreement contains a clause with an unlawful object \u2014 void under ICA S.23.",
+      "reference": "Indian Contract Act 1872 \u2013 S.23",
+      "suggestion": "Remove any clause with an object that is forbidden by law, fraudulent, or opposed to public policy.",
+      "patterns": [
+        "purpose.*defeat.*law",
+        "intent.*defraud",
+        "facilitate.*crime",
+        "evade.*tax.*obligation",
+        "evade.*tax",
+        "money.*laundering",
+        "illegal.*purpose",
+        "unlawful.*purpose"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "BONDED_LABOUR_PROHIBITION",
+      "severity": "CRITICAL",
+      "message": "Bonded labour clause detected \u2014 absolutely prohibited under the Bonded Labour System (Abolition) Act 1976.",
+      "reference": "Bonded Labour System (Abolition) Act 1976 \u2013 S.4",
+      "suggestion": "Remove any clause requiring work without pay or restricting freedom to leave employment.",
+      "patterns": [
+        "bonded.?labour",
+        "bonded.?labor",
+        "work without.*pay",
+        "forfeit.*freedom.*leave",
+        "compelled to.*work.*debt",
+        "forced.?labour",
+        "forced.?labor",
+        "debt.*bondage",
+        "labour.*bondage"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "CHILD_LABOUR_PROHIBITION",
+      "severity": "CRITICAL",
+      "message": "Clause references employment of minors in violation of Child Labour (Prohibition and Regulation) Act 1986.",
+      "reference": "Child Labour (Prohibition and Regulation) Act 1986 \u2013 S.3",
+      "suggestion": "Remove any reference to employing persons below 14 years of age.",
+      "patterns": [
+        "child.?labour.*allow",
+        "child.?labor.*allow",
+        "child.?labour.*permit",
+        "child.?labor.*permit",
+        "employ.*child",
+        "employ.*minor",
+        "children.*may.*work",
+        "minors.*may.*work",
+        "children.*shall.*work",
+        "person.*below.*14.*year",
+        "child.*worker",
+        "minor.*shall.*work",
+        "employ.*age.*14",
+        "employment.*of.*children",
+        "employment.*of.*minors",
+        "child.*labour.*acceptable",
+        "child.*labour.*permitted",
+        "allow.*child.?lab",
+        "allow.*child.?lab",
+        "permit.*child.?lab",
+        "child.?lab.*is.*allow",
+        "child.?lab.*is.*ok",
+        "child.?lab.*acceptable"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "DISCRIMINATION_PROHIBITED",
+      "severity": "CRITICAL",
+      "message": "Discriminatory clause detected \u2014 violates Constitution Art.15 and Equal Remuneration Act 1976.",
+      "reference": "Constitution of India \u2013 Art.15; Equal Remuneration Act 1976 \u2013 S.4",
+      "suggestion": "Remove any clause that discriminates on the basis of caste, religion, sex, or gender.",
+      "patterns": [
+        "caste.*restriction",
+        "religion.*based.*prohibition",
+        "women shall not.*employ",
+        "no female.*employee",
+        "lower.*caste.*shall",
+        "discriminat.*based.*on.*religion",
+        "discriminat.*based.*on.*caste",
+        "discriminat.*based.*on.*sex",
+        "discriminat.*based.*on.*gender",
+        "not.*employ.*women",
+        "only.*men.*shall.*be.*hired"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "WAIVER_OF_FUNDAMENTAL_RIGHTS",
+      "severity": "CRITICAL",
+      "message": "Clause purports to waive Fundamental Rights \u2014 unenforceable under Constitution Art.13.",
+      "reference": "Constitution of India \u2013 Art.13",
+      "suggestion": "Remove any clause requiring parties to waive their constitutional or fundamental rights.",
+      "patterns": [
+        "waive.*fundamental right",
+        "relinquish.*constitutional right",
+        "give up.*right.*article",
+        "waive.*right.*to.*legal.*remedy",
+        "surrender.*fundamental.*right",
+        "forfeit.*constitutional.*right"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "ICA_S74_EXCESSIVE_PENALTY",
+      "severity": "HIGH",
+      "message": "Penalty clause may be disproportionate \u2014 courts will award only reasonable compensation under ICA S.74.",
+      "reference": "Indian Contract Act 1872 \u2013 S.74",
+      "suggestion": "Cap penalties at a reasonable estimate of actual loss. Indian courts will not enforce punitive liquidated damages.",
+      "patterns": [
+        "penalty.*entire.*contract.*value",
+        "forfeit.*all.*amount.*paid",
+        "damages.*triple.*amount",
+        "punitive.*damages.*payable"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "UNILATERAL_CONTRACT_MODIFICATION",
+      "severity": "MEDIUM",
+      "message": "Clause allows unilateral modification without consent \u2014 creates free consent risk under ICA S.10.",
+      "reference": "Indian Contract Act 1872 \u2013 S.10, S.62",
+      "suggestion": "Amendments should require written consent of all parties.",
+      "patterns": [
+        "may.*amend.*without.*notice",
+        "change.*terms.*without.*consent",
+        "modify.*unilaterally.*at.*will",
+        "update.*agreement.*without.*approval"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "USURIOUS_INTEREST_RATE",
+      "severity": "HIGH",
+      "message": "Interest rate appears usurious. Courts may reduce it under the Usurious Loans Act 1918.",
+      "reference": "Usurious Loans Act 1918 \u2013 S.3",
+      "suggestion": "Keep interest rates commercially reasonable (typically below 24% per annum for commercial loans).",
+      "patterns": [
+        "interest.*(?:4[0-9]|[5-9]\\d|\\d{3,})%",
+        "interest.*per.*month.*(?:[4-9]|[1-9]\\d)%"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "ICA_S29_VAGUE_AGREEMENT",
+      "severity": "MEDIUM",
+      "message": "Agreement may contain deferred or unresolved terms \u2014 ensure all key obligations are certain and not left for future agreement.",
+      "reference": "Indian Contract Act 1872 \u2013 S.29",
+      "suggestion": "Replace vague terms like 'reasonable', 'fair', or 'as agreed' with specific measurable obligations.",
+      "patterns": [
+        "as.*may.*be.*agreed.*later",
+        "terms.*to.*be.*decided.*later",
+        "such.*amount.*as.*deemed.*fit.*sole",
+        "tbd|to be determined|to be specified"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "FEMA_FOREIGN_PAYMENT_RESTRICTION",
+      "severity": "HIGH",
+      "message": "Clause references foreign currency payment \u2014 FEMA compliance required for cross-border transactions.",
+      "reference": "Foreign Exchange Management Act 1999 \u2013 S.3, S.6",
+      "suggestion": "Specify RBI approval requirements and FEMA compliance obligations for any foreign currency payment.",
+      "patterns": [
+        "payment.*in.*usd.*without.*rbi",
+        "foreign.*currency.*payment.*no.*approval",
+        "dollar.*payment.*unrestricted"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "TDS_NON_COMPLIANCE",
+      "severity": "MEDIUM",
+      "message": "Payment clause does not address TDS deduction \u2014 non-compliance with Income Tax Act 1961 S.194C/194J.",
+      "reference": "Income Tax Act 1961 \u2013 S.194C, S.194J",
+      "suggestion": "Add a TDS clause stating that applicable taxes will be deducted at source as per the Income Tax Act 1961.",
+      "patterns": [
+        "payment.*without.*deduction.*tax",
+        "gross.*payment.*no.*tds",
+        "pay.*full.*amount.*without.*withholding"
+      ],
+      "blocks_generation": false,
+      "context": "ABSENCE"
+    },
+    {
+      "rule_id": "SEBI_INSIDER_TRADING",
+      "severity": "CRITICAL",
+      "message": "Clause may facilitate sharing of unpublished price-sensitive information \u2014 prohibited under SEBI (Prohibition of Insider Trading) Regulations 2015.",
+      "reference": "SEBI (Prohibition of Insider Trading) Regulations 2015 \u2013 Regulation 3",
+      "suggestion": "Ensure confidentiality clause covers unpublished price-sensitive information and add SEBI compliance provisions.",
+      "patterns": [
+        "share.*unpublished.*price.*sensitive",
+        "disclose.*insider.*information",
+        "trade.*on.*non.*public.*information",
+        "insider.*trading.*permitted",
+        "share.*price.*sensitive.*information",
+        "disclose.*upsi"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "COMPETITION_ACT_VIOLATION",
+      "severity": "CRITICAL",
+      "message": "Clause may constitute an anti-competitive agreement void under the Competition Act 2002 S.3.",
+      "reference": "Competition Act 2002 \u2013 S.3",
+      "suggestion": "Remove any price-fixing, market-sharing, bid-rigging or output limitation provisions which are per se void under S.3(3).",
+      "patterns": [
+        "fix.*price.*competitor",
+        "agree.*not.*to.*compete.*price",
+        "divide.*market.*between.*parties",
+        "coordinate.*bid.*with",
+        "restrict.*output.*in.*agreement.*with",
+        "price.*fix",
+        "cartel.*agreement",
+        "collud.*on.*price"
+      ],
+      "blocks_generation": true,
+      "context": "PRESENCE"
+    },
+    {
+      "rule_id": "MSME_PAYMENT_DELAY",
+      "severity": "MEDIUM",
+      "message": "Payment terms exceed 45 days \u2014 may violate MSMED Act 2006 if payee is a Micro or Small Enterprise.",
+      "reference": "Micro, Small and Medium Enterprises Development Act 2006 \u2013 S.15",
+      "suggestion": "If counterparty is an MSME, payment must be made within 45 days of acceptance. Add MSME compliance provision.",
+      "patterns": [
+        "payment.*within.*(?:6[0-9]|[7-9]\\d|\\d{3,}).*days",
+        "net.*(?:60|90|120|180).*days"
+      ],
+      "blocks_generation": false,
+      "context": "PRESENCE"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "clause_id": "IP_LICENSE_001",
+  "name": "IP License",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Licensor grants to the Licensee a non-exclusive, worldwide, royalty-free, perpetual license to use, reproduce, modify, and distribute the Licensed IP for the purposes contemplated by this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Copyright Act, 1957",
+      "section": "30"
+    },
+    {
+      "act": "Trademarks Act, 1999",
+      "section": "48"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "70"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "If the Licensor lacks the right or authority to grant such license.",
+    "If the Licensed IP is found to be invalid, unenforceable, or non-existent."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

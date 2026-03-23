@@ -1,0 +1,20 @@
+{
+  "clause_id": "CORE_ENTIRE_AGREEMENT_001",
+  "name": "Entire Agreement",
+  "category": "PROCEDURAL",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "This Agreement, together with all schedules and annexures attached hereto, constitutes the entire agreement between the Parties with respect to its subject matter and supersedes all prior negotiations, representations, warranties, and understandings of whatsoever nature between the Parties, whether oral or in writing.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Amendments allowed without written consent"],
+  "source": "Contract Act",
+  "version": "1.0"
+}

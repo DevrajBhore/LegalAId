@@ -1,0 +1,36 @@
+{
+  "clause_id": "IP_PATENT_RIGHTS_001",
+  "name": "Patent Rights",
+  "category": "IP",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT",
+    "TECHNOLOGY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Assignor hereby assigns, transfers, and conveys to the Assignee all right, title, and interest in and to all patents and patent applications, including all divisionals, continuations, continuations-in-part, reissues, reexaminations, and extensions thereof, relating to the Subject Technology in all countries and jurisdictions worldwide. The Assignor represents and warrants that: (a) the Assignor is the sole and lawful owner of the assigned patents; (b) the assigned patents are free and clear of all liens, charges, and encumbrances; and (c) the Assignor has full power and authority to make this assignment. The Assignor shall provide all reasonable assistance to the Assignee in obtaining, maintaining, and enforcing the assigned patents.",
+  "legal_basis": [
+    {
+      "act": "Patents Act, 1970",
+      "section": "68"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "70"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Patent assignment not registered with Indian Patent Office as required",
+    "Assignment covers foreign patents without separate assignment deeds for each jurisdiction",
+    "Assignor retains any reversionary interest"
+  ],
+  "source": "Patents Act, 1970",
+  "version": "2.0"
+}

@@ -1,0 +1,28 @@
+{
+  "clause_id": "CORE_CONFIDENTIALITY_001",
+  "name": "Confidentiality Obligation",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "NDA",
+    "EMPLOYMENT",
+    "SERVICE",
+    "MOU"
+  ],
+  "jurisdiction": "India",
+  "text": "The Receiving Party shall maintain the confidentiality of all Confidential Information and shall not disclose or use such information except as permitted under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Confidential Information is not defined",
+    "No exclusions exist"
+  ],
+  "source": "Contract Act principles",
+  "version": "1.0"
+}

@@ -1,0 +1,79 @@
+{
+  "lender_name": {
+    "type": "string",
+    "label": "Lender Name",
+    "description": "Full legal name of the lender (bank/NBFC/individual)",
+    "required": true,
+    "placeholder": "Capital Finance Ltd"
+  },
+  "borrower_name": {
+    "type": "string",
+    "label": "Borrower Name",
+    "description": "Full legal name of the borrower",
+    "required": true,
+    "placeholder": "Rajesh Enterprises Pvt Ltd"
+  },
+  "loan_amount": {
+    "type": "number",
+    "label": "Loan Amount (INR)",
+    "description": "Principal amount of the loan in INR",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "5000000"
+  },
+  "loan_amount_words": {
+    "type": "string",
+    "label": "Loan Amount in Words",
+    "description": "Loan amount written in words",
+    "required": true,
+    "placeholder": "Rupees Fifty Lakhs only"
+  },
+  "interest_rate": {
+    "type": "number",
+    "label": "Interest Rate (% per annum)",
+    "description": "Annual interest rate as a percentage",
+    "required": true,
+    "placeholder": "14"
+  },
+  "repayment_schedule": {
+    "type": "string",
+    "label": "Repayment Schedule",
+    "description": "Description of how the loan will be repaid",
+    "required": true,
+    "enum": [
+      "Monthly EMI",
+      "Quarterly",
+      "Bullet repayment",
+      "Custom schedule"
+    ],
+    "placeholder": "Monthly EMI"
+  },
+  "repayment_months": {
+    "type": "number",
+    "label": "Loan Tenure (Months)",
+    "description": "Total repayment period in months",
+    "required": true,
+    "placeholder": "24"
+  },
+  "loan_purpose": {
+    "type": "string",
+    "label": "Purpose of Loan",
+    "description": "Specific purpose for which the loan is being taken",
+    "required": true,
+    "placeholder": "Working capital requirements"
+  },
+  "security_description": {
+    "type": "string",
+    "label": "Security / Collateral",
+    "description": "Description of security or collateral provided (if any)",
+    "required": false,
+    "placeholder": "First charge on receivables"
+  },
+  "default_interest_rate": {
+    "type": "number",
+    "label": "Default Interest Rate (% per annum)",
+    "description": "Interest rate applicable on default",
+    "required": false,
+    "placeholder": "18"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "clause_id": "NDA_EXCLUSIONS_001",
+  "name": "Confidentiality Exclusions",
+  "category": "EXCLUSIONS",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Confidential Information shall not include any information that: (a) is or becomes publicly available without breach of this Agreement; (b) was known to the Receiving Party prior to its disclosure by the Disclosing Party; or (c) is independently developed by the Receiving Party without reference to such information.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "s 2(h), 10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The exclusion definition inadvertently covers information intended to be highly confidential or a trade secret.",
+    "The exclusions are so broad as to negate the primary purpose of the Non-Disclosure Agreement.",
+    "Contradicts specific statutory or regulatory requirements regarding information secrecy."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

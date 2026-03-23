@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_COMPLIANCE_WITH_LAW_001",
+  "name": "Compliance with Law",
+  "category": "REGULATORY",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party shall comply with all applicable laws, regulations, and statutory requirements in performing its obligations under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "23"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Agreement requires violation of law"
+  ],
+  "source": "Contract Act",
+  "version": "1.0"
+}

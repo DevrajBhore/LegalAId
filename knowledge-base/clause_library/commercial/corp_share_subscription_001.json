@@ -1,0 +1,34 @@
+{
+    "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+    "name": "Share Subscription and Capital Contribution",
+    "category": "CONSIDERATION",
+    "document_types": [
+      "SHAREHOLDERS_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "Each Shareholder shall subscribe to and hold the shares in the Company in the proportions set out in Schedule A to this Agreement. The subscription price per share and the total capital contribution of each Shareholder shall be as agreed and recorded herein. Each Shareholder acknowledges that the subscription for shares constitutes lawful consideration for this Agreement within the meaning of Section 2(d) of the Indian Contract Act, 1872. Any further issue of shares shall be subject to the pre-emptive rights set out in this Agreement and the provisions of the Companies Act, 2013.",
+    "legal_basis": [
+      {
+        "act": "Companies Act, 2013",
+        "section": "62"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "2(d)"
+      },
+      {
+        "act": "Securities Contract (Regulation) Act, 1956",
+        "section": "2(h)"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "LOW",
+    "invalid_if": [
+      "Share proportions are not clearly defined",
+      "Subscription price is not specified",
+      "Pre-emptive rights are not addressed"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

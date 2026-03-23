@@ -1,0 +1,24 @@
+{
+  "clause_id": "SERVICE_SCOPE_001",
+  "name": "Scope of Services",
+  "category": "SERVICE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider shall provide the services described in this Agreement with reasonable skill, care, and diligence in accordance with the agreed specifications and timelines.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Services are not clearly defined"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,45 @@
+{
+  "document_type": "RENTAL_AGREEMENT",
+  "variables": {
+    "landlord_name": {
+      "label": "Landlord / Licensor Name",
+      "type": "text",
+      "required": true
+    },
+    "tenant_name": {
+      "label": "Tenant / Licensee Name",
+      "type": "text",
+      "required": true
+    },
+    "property_address": {
+      "label": "Property Address",
+      "type": "textarea",
+      "required": true
+    },
+    "rent_amount": {
+      "label": "Monthly Rent (INR)",
+      "type": "number",
+      "required": true
+    },
+    "security_deposit": {
+      "label": "Security Deposit (INR)",
+      "type": "number",
+      "required": true
+    },
+    "commencement_date": {
+      "label": "Commencement Date",
+      "type": "date",
+      "required": true
+    },
+    "lease_term": {
+      "label": "Lease Term (months)",
+      "type": "number",
+      "required": true
+    },
+    "arbitration_city": {
+      "label": "Seat of Arbitration",
+      "type": "text",
+      "required": false
+    }
+  }
+}

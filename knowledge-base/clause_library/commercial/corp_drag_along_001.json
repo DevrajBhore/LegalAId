@@ -1,0 +1,34 @@
+{
+    "clause_id": "CORP_DRAG_ALONG_001",
+    "name": "Drag-Along Rights",
+    "category": "CORPORATE",
+    "document_types": [
+      "SHAREHOLDERS_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "If the Majority Shareholders (holding more than seventy-five percent (75%) of the issued and paid-up share capital) ('Dragging Shareholders') receive a bona fide offer from a third party to acquire one hundred percent (100%) of the shares of the Company, the Dragging Shareholders shall have the right to require all other Shareholders ('Drag-Along Shareholders') to sell their shares to such third party on the same price, terms and conditions as accepted by the Dragging Shareholders ('Drag-Along Right'). The Dragging Shareholders shall give not less than thirty (30) days' prior written notice to the Drag-Along Shareholders before exercising the Drag-Along Right. The Drag-Along Shareholders shall be obligated to execute all documents and take all steps necessary to give effect to the sale within the period specified in the notice. The drag-along price per share shall not be less than the price per share offered to the Dragging Shareholders.",
+    "legal_basis": [
+      {
+        "act": "Companies Act, 2013",
+        "section": "58"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "10"
+      },
+      {
+        "act": "Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011",
+        "section": "General"
+      }
+    ],
+    "mandatory": false,
+    "enforceability": "HIGH",
+    "risk_level": "HIGH",
+    "invalid_if": [
+      "Drag-along threshold is not defined",
+      "Notice period is not specified",
+      "Price protection for minority shareholders is absent"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

@@ -1,0 +1,29 @@
+{
+    "clause_id": "PARTNERSHIP_CAPITAL_001",
+    "name": "Capital Contributions",
+    "category": "FINANCE",
+    "document_types": [
+      "PARTNERSHIP_DEED"
+    ],
+    "jurisdiction": "India",
+    "text": "Each Partner shall contribute capital to the partnership in such amounts and at such times as agreed between the Partners and set out in Schedule A to this Deed. The capital contributions shall be held in the name of the partnership and shall not be withdrawn except in accordance with this Deed. Profits and losses of the partnership shall be shared among the Partners in the ratio as agreed and recorded herein, and each Partner acknowledges that the capital contribution constitutes lawful consideration for this Agreement within the meaning of Section 2(d) of the Indian Contract Act, 1872.",
+    "legal_basis": [
+      {
+        "act": "Indian Partnership Act, 1932",
+        "section": "13"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "2(d)"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "LOW",
+    "invalid_if": [
+      "Capital contributions are not agreed upon in writing",
+      "No profit/loss sharing ratio is specified"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

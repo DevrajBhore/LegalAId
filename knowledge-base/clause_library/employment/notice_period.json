@@ -1,0 +1,24 @@
+{
+  "clause_id": "EMP_NOTICE_PERIOD_001",
+  "name": "Notice Period",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee or Employer may terminate this Agreement by providing written notice for the period specified herein or salary in lieu of such notice, subject to applicable law.",
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Notice period is waived contrary to statutory requirements"
+  ],
+  "source": "Indian labour law principles",
+  "version": "1.0"
+}

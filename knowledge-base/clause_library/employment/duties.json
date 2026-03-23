@@ -1,0 +1,28 @@
+{
+  "clause_id": "EMP_DUTIES_001",
+  "name": "Employee Duties and Responsibilities",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee shall, during the term of employment: (a) diligently and faithfully perform such duties and responsibilities as are assigned by the Employer from time to time, consistent with the Employee's designation and the nature of employment; (b) devote the Employee's full working time, attention, and abilities exclusively to the business of the Employer and shall not, without prior written consent, engage in any other business, occupation, or employment; (c) comply with all policies, procedures, codes of conduct, and guidelines of the Employer as may be issued and amended from time to time; (d) promptly disclose to the Employer all business opportunities, inventions, and improvements relating to the Employer's business that the Employee may develop or discover during the course of employment; (e) act at all times in the best interests of the Employer and avoid any conflict of interest; and (f) comply with all applicable laws and regulations in the discharge of the Employee's duties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "211"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "166"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Duties so broadly defined as to constitute unreasonable restriction on Employee's personal time"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

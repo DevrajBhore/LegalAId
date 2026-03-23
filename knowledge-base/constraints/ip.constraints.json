@@ -1,0 +1,48 @@
+{
+  "domain": "ip",
+  "rules": [
+    {
+      "rule_id": "IP_REQUIRES_OWNERSHIP",
+      "severity": "CRITICAL",
+      "description": "IP agreements must clearly specify ownership or assignment of intellectual property rights.",
+      "statutory_reference": "Copyright Act 1957 \u2013 S.17; Patents Act 1970 \u2013 S.68",
+      "fails_if": [
+        "IP_OWNERSHIP_001",
+        "IP_ASSIGNMENT_001",
+        "EMP_IP_ASSIGNMENT_001",
+        "IP_LICENSE_001"
+      ]
+    },
+    {
+      "rule_id": "IP_REQUIRES_SCOPE",
+      "severity": "HIGH",
+      "description": "IP agreements must define the scope of IP rights granted or assigned.",
+      "statutory_reference": "Copyright Act 1957 \u2013 S.30",
+      "fails_if": [
+        "IP_LICENSE_001",
+        "IP_OWNERSHIP_001",
+        "IP_ASSIGNMENT_001",
+        "CORE_PURPOSE_001"
+      ]
+    },
+    {
+      "rule_id": "IP_SOFTWARE_REQUIRES_WARRANTY",
+      "severity": "HIGH",
+      "description": "Software development agreements should include warranty provisions for defect liability.",
+      "statutory_reference": "Information Technology Act 2000; Indian Contract Act 1872 \u2013 S.73",
+      "fails_if": [
+        "TECH_WARRANTY_001"
+      ]
+    },
+    {
+      "rule_id": "IP_REQUIRES_LICENSE_RESTRICTIONS",
+      "severity": "HIGH",
+      "description": "IP licensing agreements must specify restrictions on use to prevent misuse of licensed rights.",
+      "statutory_reference": "Copyright Act 1957 \u2013 S.30; Patents Act 1970 \u2013 S.84",
+      "fails_if": [
+        "IP_LICENSE_RESTRICTIONS_001",
+        "IP_LICENSE_001"
+      ]
+    }
+  ]
+}

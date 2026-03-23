@@ -1,0 +1,33 @@
+{
+  "clause_id": "LOAN_DEFAULT_001",
+  "name": "Events of Default",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Each of the following shall constitute an Event of Default under this Agreement: (a) failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due date; (b) material breach by the Borrower of any representation, warranty, or covenant under this Agreement, which, if capable of remedy, remains unremedied for thirty (30) days after written notice; (c) insolvency of the Borrower, filing of any petition under the Insolvency and Bankruptcy Code, 2016, appointment of a liquidator, receiver, or administrator; (d) any judgement or attachment levied against the Borrower's assets in excess of such amount as specified in Schedule 1; (e) any material adverse change in the financial condition or business of the Borrower; (f) cross-default under any other material financing agreement of the Borrower; or (g) if any security created under this Agreement ceases to be valid, enforceable, or perfected. Upon the occurrence of an Event of Default, the Lender may exercise all rights under this Agreement and applicable law.",
+  "legal_basis": [
+    {
+      "act": "Insolvency and Bankruptcy Code, 2016",
+      "section": "7"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "58"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Material adverse change clause too broadly drafted giving Lender excessive discretion",
+    "No cure period for payment default before acceleration"
+  ],
+  "source": "Insolvency and Bankruptcy Code, 2016; Indian Contract Act, 1872",
+  "version": "2.0"
+}

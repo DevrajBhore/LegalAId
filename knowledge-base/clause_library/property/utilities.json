@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_UTILITIES_001",
+  "name": "Utilities and Outgoings",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Tenant shall be solely responsible for payment of all utility charges in respect of the Premises during the tenancy, including electricity, water, gas, internet, telephone, and cable charges, based on actual consumption as recorded by the relevant metered supply. The Tenant shall pay such utility bills directly to the respective utility providers before the due date and shall ensure no default occurs. The Landlord shall be responsible for property tax, building maintenance charges, and society maintenance charges unless otherwise specified in Schedule 1. The Tenant shall not tamper with meters or utility connections. Upon vacation, the Tenant shall provide the Landlord with no-dues certificates from relevant utility providers or final meter readings. Any arrears of utility charges attributable to the Tenant's period of occupation shall be deducted from the Security Deposit.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "108"
+    },
+    {
+      "act": "Electricity Act, 2003",
+      "section": "43"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Tenant made responsible for utility charges without access to individual meters",
+    "Property tax liability imposed on Tenant contrary to normal legal position"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.108",
+  "version": "2.0"
+}

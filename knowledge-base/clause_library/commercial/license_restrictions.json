@@ -1,0 +1,24 @@
+{
+  "clause_id": "IP_LICENSE_RESTRICTIONS_001",
+  "name": "IP License Restrictions",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Licensee shall not sublicense, assign, or otherwise transfer the licensed intellectual property or any rights granted herein without the prior written consent of the Licensor.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The agreement explicitly permits sub-licensing, assignment, or transfer without requiring Licensor's consent."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

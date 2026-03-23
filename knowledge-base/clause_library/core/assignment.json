@@ -1,0 +1,24 @@
+{
+  "clause_id": "CORE_ASSIGNMENT_001",
+  "name": "Assignment",
+  "category": "ASSIGNMENT",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Neither Party may assign or transfer its rights or obligations under this Agreement without the prior written consent of the other Party, except where such assignment is required by law.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Assignment allowed in contracts where personal obligations exist"
+  ],
+  "source": "Contract drafting practice",
+  "version": "1.0"
+}

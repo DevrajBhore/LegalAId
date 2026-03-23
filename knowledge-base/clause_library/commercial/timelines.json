@@ -1,0 +1,35 @@
+{
+  "clause_id": "SERVICE_TIMELINES_001",
+  "name": "Project Timelines and Milestones",
+  "category": "SERVICE",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "CONSULTANCY_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider shall perform the Services in accordance with the project timeline and milestones set out in Schedule 3 ('Project Plan'). Time is of the essence in respect of all milestone dates specified in the Project Plan. In the event that the Service Provider anticipates a delay in meeting any milestone, it shall notify the Client in writing at least seven (7) days in advance, specifying the cause of the delay and a revised completion date. The Client shall not unreasonably withhold approval of a revised timeline where delay has been caused by the Client's failure to provide timely inputs, approvals, or resources. Where delay is attributable to the Service Provider, the Client shall be entitled to liquidated damages as specified in Schedule 3. Liquidated damages shall represent a genuine pre-estimate of loss and shall not be construed as a penalty.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Liquidated damages clause does not represent genuine pre-estimate of loss",
+    "Time not made of the essence for critical milestones"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

@@ -1,0 +1,30 @@
+{
+  "document_type": "NDA",
+  "variables": {
+    "party_1_name": {
+      "label": "Disclosing Party",
+      "type": "text",
+      "required": true
+    },
+    "party_2_name": {
+      "label": "Receiving Party",
+      "type": "text",
+      "required": true
+    },
+    "purpose": {
+      "label": "Purpose of Disclosure",
+      "type": "textarea",
+      "required": true
+    },
+    "effective_date": {
+      "label": "Effective Date",
+      "type": "date",
+      "required": true
+    },
+    "arbitration_city": {
+      "label": "Seat of Arbitration",
+      "type": "text",
+      "required": true
+    }
+  }
+}

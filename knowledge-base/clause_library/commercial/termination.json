@@ -1,0 +1,35 @@
+{
+  "clause_id": "SERVICE_TERMINATION_001",
+  "name": "Service Termination",
+  "category": "TERMINATION",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Either Party may terminate this Agreement: (a) for convenience upon thirty (30) days' prior written notice to the other Party; or (b) immediately upon written notice if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to remedy it within fifteen (15) days of receiving written notice specifying the breach and requiring its remedy; or (c) immediately if the other Party becomes insolvent, is wound up, makes a composition or arrangement with its creditors, has a receiver or administrator appointed over all or any part of its assets, or ceases to carry on business. Upon termination: (i) the Client shall pay all undisputed Fees accrued up to the date of termination; (ii) the Service Provider shall deliver all work product and data to the Client; and (iii) both Parties shall return all Confidential Information of the other Party.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55"
+    },
+    {
+      "act": "Insolvency and Bankruptcy Code, 2016",
+      "section": "14"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Termination for convenience with less than 15 days notice without compensation",
+    "No payment obligation for work completed before termination"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

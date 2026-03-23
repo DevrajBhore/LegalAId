@@ -1,0 +1,33 @@
+{
+  "clause_id": "EMP_LEAVE_POLICY_001",
+  "name": "Leave Policy",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee shall be entitled to leave as follows, subject to the applicable State Shops and Establishments Act and other applicable labour laws: (a) Earned Leave ('EL'): Eighteen (18) days per calendar year, accruing at the rate of 1.5 days per month of service; earned leave may be accumulated up to a maximum of forty-five (45) days and any excess shall lapse; (b) Sick Leave ('SL'): Twelve (12) days per calendar year for certified medical illness; sick leave shall not be accumulated and shall lapse if unused at year end; (c) Casual Leave ('CL'): Six (6) days per calendar year for personal matters; casual leave shall not be accumulated and shall lapse if unused; (d) Maternity Leave: As prescribed under the Maternity Benefit Act, 1961, including twenty-six (26) weeks of paid maternity leave for the first two children; (e) Public Holidays: National and state public holidays as declared by the Central and applicable State Government. Leave entitlements shall be pro-rated for periods of employment less than twelve (12) months.",
+  "legal_basis": [
+    {
+      "act": "Maternity Benefit Act, 1961",
+      "section": "5"
+    },
+    {
+      "act": "Factories Act, 1948",
+      "section": "78"
+    },
+    {
+      "act": "Shops and Establishments Acts (State)",
+      "section": ""
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Earned leave entitlement below minimum prescribed under applicable State Shops Act",
+    "Maternity leave below 26 weeks for first two children contrary to Maternity Benefit Act 1961"
+  ],
+  "source": "Maternity Benefit Act, 1961; Factories Act, 1948",
+  "version": "2.0"
+}

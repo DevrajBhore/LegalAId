@@ -1,0 +1,64 @@
+{
+  "manufacturer_name": {
+    "type": "string",
+    "label": "Manufacturer / Principal Name",
+    "required": true,
+    "placeholder": "Indian Manufacturing Co Pvt Ltd"
+  },
+  "manufacturer_address": {
+    "type": "string",
+    "label": "Manufacturer Address",
+    "required": true
+  },
+  "distributor_name": {
+    "type": "string",
+    "label": "Distributor Name",
+    "required": true,
+    "placeholder": "National Distribution Pvt Ltd"
+  },
+  "distributor_address": {
+    "type": "string",
+    "label": "Distributor Address",
+    "required": true
+  },
+  "product_description": {
+    "type": "string",
+    "label": "Products",
+    "description": "Products to be distributed under this agreement",
+    "required": true,
+    "placeholder": "Electronic home appliances as listed in Schedule 1"
+  },
+  "territory": {
+    "type": "string",
+    "label": "Distribution Territory",
+    "description": "Geographic territory within which the distributor may sell",
+    "required": true,
+    "placeholder": "States of Maharashtra, Gujarat, and Rajasthan"
+  },
+  "exclusivity": {
+    "type": "boolean",
+    "label": "Exclusive Distribution Rights?",
+    "description": "Whether the distributor has exclusive rights in the territory",
+    "required": true,
+    "default": false
+  },
+  "minimum_purchase_commitment": {
+    "type": "number",
+    "label": "Minimum Annual Purchase Commitment (INR)",
+    "required": false,
+    "unit": "INR",
+    "placeholder": "5000000"
+  },
+  "distributor_margin": {
+    "type": "string",
+    "label": "Distributor Margin / Discount",
+    "required": true,
+    "placeholder": "20% discount on MRP"
+  },
+  "agreement_duration_years": {
+    "type": "number",
+    "label": "Agreement Duration (Years)",
+    "required": true,
+    "placeholder": "2"
+  }
+}

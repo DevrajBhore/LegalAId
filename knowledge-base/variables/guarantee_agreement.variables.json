@@ -1,0 +1,35 @@
+{
+    "document_type": "GUARANTEE_AGREEMENT",
+    "variables": {
+      "guarantor_name": {
+        "label": "Guarantor Name",
+        "type": "text",
+        "required": true
+      },
+      "creditor_name": {
+        "label": "Creditor / Lender Name",
+        "type": "text",
+        "required": true
+      },
+      "principal_debtor_name": {
+        "label": "Principal Debtor Name",
+        "type": "text",
+        "required": true
+      },
+      "guaranteed_amount": {
+        "label": "Guaranteed Amount (INR)",
+        "type": "number",
+        "required": true
+      },
+      "effective_date": {
+        "label": "Effective Date",
+        "type": "date",
+        "required": true
+      },
+      "arbitration_city": {
+        "label": "Seat of Arbitration",
+        "type": "text",
+        "required": true
+      }
+    }
+  }

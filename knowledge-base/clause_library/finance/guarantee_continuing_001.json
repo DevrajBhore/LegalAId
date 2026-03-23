@@ -1,0 +1,33 @@
+{
+    "clause_id": "GUARANTEE_CONTINUING_001",
+    "name": "Continuing Guarantee and Liability",
+    "category": "FINANCE",
+    "document_types": [
+      "GUARANTEE_AGREEMENT"
+    ],
+    "jurisdiction": "India",
+    "text": "This Guarantee is a continuing guarantee and shall remain in full force and effect until all amounts owing by the Principal Debtor under the Principal Agreement have been unconditionally and irrevocably paid and discharged in full. The Guarantor's liability hereunder shall not be affected, impaired, or discharged by: (a) any amendment, modification, or variation of the Principal Agreement; (b) any granting of time, indulgence, waiver, or concession to the Principal Debtor; (c) the insolvency, winding-up, or dissolution of the Principal Debtor; (d) any illegality, invalidity, or unenforceability of the Principal Agreement; or (e) any other act, omission, or circumstance which, but for this provision, might operate to reduce, release, or prejudice the Guarantor's obligations. This Guarantee is governed by Section 126 to 147 of the Indian Contract Act, 1872.",
+    "legal_basis": [
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "126"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "128"
+      },
+      {
+        "act": "Indian Contract Act, 1872",
+        "section": "130"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "HIGH",
+    "invalid_if": [
+      "Guarantee is limited to specific transactions without a continuing obligation",
+      "Carve-outs for guarantor's liability are not specified"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

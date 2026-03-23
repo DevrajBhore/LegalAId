@@ -1,0 +1,71 @@
+{
+  "client_name": {
+    "type": "string",
+    "label": "Client Name",
+    "required": true,
+    "placeholder": "ABC Corp Pvt Ltd"
+  },
+  "client_address": {
+    "type": "string",
+    "label": "Client Address",
+    "required": true
+  },
+  "consultant_name": {
+    "type": "string",
+    "label": "Consultant Name",
+    "required": true,
+    "placeholder": "Dr. Priya Sharma"
+  },
+  "consultant_address": {
+    "type": "string",
+    "label": "Consultant Address",
+    "required": true
+  },
+  "consulting_services": {
+    "type": "string",
+    "label": "Consulting Services",
+    "description": "Describe the consulting services to be provided",
+    "required": true,
+    "placeholder": "Strategic business advisory and market entry consulting"
+  },
+  "consulting_fee": {
+    "type": "number",
+    "label": "Consulting Fee (INR)",
+    "description": "Fee payable for the consulting services",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "200000"
+  },
+  "fee_frequency": {
+    "type": "string",
+    "label": "Fee Payment Frequency",
+    "required": true,
+    "enum": [
+      "Monthly",
+      "Quarterly",
+      "Per milestone",
+      "Lump sum on completion"
+    ],
+    "placeholder": "Monthly"
+  },
+  "engagement_duration_months": {
+    "type": "number",
+    "label": "Engagement Duration (Months)",
+    "required": true,
+    "placeholder": "6"
+  },
+  "deliverables": {
+    "type": "string",
+    "label": "Key Deliverables",
+    "description": "Key deliverables expected from the consultant",
+    "required": true,
+    "placeholder": "Monthly strategy reports, market analysis, stakeholder presentations"
+  },
+  "non_compete_months": {
+    "type": "number",
+    "label": "Non-Solicitation Period (Months post-engagement)",
+    "description": "Period after engagement during which consultant cannot solicit client's customers",
+    "required": false,
+    "placeholder": "12"
+  }
+}

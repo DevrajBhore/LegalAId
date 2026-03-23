@@ -1,0 +1,95 @@
+{
+  "landlord_name": {
+    "type": "string",
+    "label": "Landlord / Lessor Name",
+    "required": true,
+    "placeholder": "Property Holdings Pvt Ltd"
+  },
+  "landlord_address": {
+    "type": "string",
+    "label": "Landlord Address",
+    "required": true
+  },
+  "tenant_name": {
+    "type": "string",
+    "label": "Tenant / Lessee Name",
+    "required": true,
+    "placeholder": "Tech Office Solutions Ltd"
+  },
+  "tenant_address": {
+    "type": "string",
+    "label": "Tenant Address",
+    "required": true
+  },
+  "property_address": {
+    "type": "string",
+    "label": "Property Address",
+    "description": "Full address of the commercial premises",
+    "required": true,
+    "placeholder": "Office No. 501, 5th Floor, Business Park, BKC, Mumbai 400051"
+  },
+  "carpet_area_sqft": {
+    "type": "number",
+    "label": "Carpet Area (sq. ft.)",
+    "required": true,
+    "placeholder": "2500"
+  },
+  "rent_amount": {
+    "type": "number",
+    "label": "Monthly Rent (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "250000"
+  },
+  "security_deposit_months": {
+    "type": "number",
+    "label": "Security Deposit (Months of Rent)",
+    "required": true,
+    "placeholder": "6"
+  },
+  "lease_term_months": {
+    "type": "number",
+    "label": "Lease Term (Months)",
+    "required": true,
+    "placeholder": "36"
+  },
+  "lock_in_months": {
+    "type": "number",
+    "label": "Lock-in Period (Months)",
+    "required": true,
+    "placeholder": "12"
+  },
+  "rent_escalation_percent": {
+    "type": "number",
+    "label": "Annual Rent Escalation (%)",
+    "required": false,
+    "placeholder": "5"
+  },
+  "permitted_use": {
+    "type": "string",
+    "label": "Permitted Use of Premises",
+    "required": true,
+    "enum": [
+      "Office use",
+      "Retail use",
+      "Warehouse / storage",
+      "Manufacturing",
+      "IT/ITES",
+      "Other"
+    ],
+    "placeholder": "Office use"
+  },
+  "car_parking_spaces": {
+    "type": "number",
+    "label": "Number of Car Parking Spaces",
+    "required": false,
+    "placeholder": "4"
+  },
+  "lease_term": {
+    "type": "string",
+    "label": "Lease Term",
+    "description": "Duration of the lease (e.g. 36 months / 3 years)",
+    "required": true,
+    "placeholder": "36 months"
+  }
+}

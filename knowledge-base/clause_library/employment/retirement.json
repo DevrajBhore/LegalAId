@@ -1,0 +1,28 @@
+{
+  "clause_id": "EMP_RETIREMENT_001",
+  "name": "Retirement",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employee shall retire from the service of the Employer upon attaining the age of sixty (60) years, unless the Employer, in its sole discretion, extends the Employee's service beyond the retirement age by mutual written agreement. Upon retirement: (a) the Employee shall be entitled to receive gratuity as per the Payment of Gratuity Act, 1972; (b) any accumulated provident fund balance shall be paid in accordance with the Employees' Provident Funds and Miscellaneous Provisions Act, 1952; (c) the Employee shall be entitled to encashment of accumulated earned leave as per the applicable policy; and (d) the Employee shall return all property, equipment, access credentials, and Confidential Information of the Employer. The Employee shall provide at least three (3) months' advance notice of anticipated retirement to facilitate transition planning.",
+  "legal_basis": [
+    {
+      "act": "Payment of Gratuity Act, 1972",
+      "section": "4"
+    },
+    {
+      "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+      "section": "6"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Retirement age below 58 years contrary to applicable service rules"
+  ],
+  "source": "Payment of Gratuity Act, 1972",
+  "version": "2.0"
+}

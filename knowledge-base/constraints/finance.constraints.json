@@ -1,0 +1,71 @@
+{
+  "domain": "finance",
+  "rules": [
+    {
+      "rule_id": "FIN_REQUIRES_LOAN_AMOUNT",
+      "severity": "CRITICAL",
+      "description": "Loan agreements must specify the principal amount and disbursement conditions.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.29",
+      "fails_if": [
+        "LOAN_AMOUNT_001"
+      ],
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ]
+    },
+    {
+      "rule_id": "FIN_REQUIRES_REPAYMENT",
+      "severity": "HIGH",
+      "description": "Loan agreements must include a repayment schedule.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.55",
+      "fails_if": [
+        "LOAN_REPAYMENT_001"
+      ],
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ]
+    },
+    {
+      "rule_id": "FIN_REQUIRES_INTEREST",
+      "severity": "HIGH",
+      "description": "Loan agreements must specify the interest rate.",
+      "statutory_reference": "Usurious Loans Act 1918 \u2013 S.3",
+      "fails_if": [
+        "LOAN_INTEREST_001"
+      ],
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ]
+    },
+    {
+      "rule_id": "FIN_REQUIRES_DEFAULT",
+      "severity": "HIGH",
+      "description": "Loan agreements must define Events of Default.",
+      "statutory_reference": "Insolvency and Bankruptcy Code 2016 \u2013 S.7",
+      "fails_if": [
+        "LOAN_DEFAULT_001"
+      ],
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ]
+    },
+    {
+      "rule_id": "FIN_GUARANTEE_REQUIRES_OBLIGATION",
+      "severity": "CRITICAL",
+      "description": "Guarantee agreements must specify the guarantor's obligation in clear terms as required by ICA 1872 S.126.",
+      "statutory_reference": "Indian Contract Act 1872 \u2013 S.126, S.128",
+      "fails_if": [
+        "GUARANTEE_OBLIGATION_001"
+      ]
+    },
+    {
+      "rule_id": "FIN_LOAN_REQUIRES_SECURITY",
+      "severity": "HIGH",
+      "description": "Loan agreements above INR 1 lakh should specify security or collateral to protect lender's interests.",
+      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.58; SARFAESI Act 2002",
+      "fails_if": [
+        "LOAN_SECURITY_001"
+      ]
+    }
+  ]
+}

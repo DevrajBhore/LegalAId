@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rule",
+  "type": "object",
+  "properties": {
+    "rule_id": { "type": "string" },
+    "title": { "type": "string" },
+    "associated_act": { "type": "string" },
+    "body": { "type": "string" }
+  },
+  "required": ["rule_id", "body"]
+}

@@ -1,0 +1,31 @@
+{
+  "domain": "confidentiality",
+  "rules": [
+    {
+      "rule_id": "NDA_REQUIRES_DEFINITION",
+      "severity": "CRITICAL",
+      "description": "NDA must define 'Confidential Information' – a definition clause is mandatory.",
+      "statutory_reference": "Indian Contract Act 1872 – S.29 (certainty of terms)",
+      "fails_if": ["CORE_DEFINITIONS_001"]
+    },
+    {
+      "rule_id": "NDA_REQUIRES_EXCLUSIONS",
+      "severity": "CRITICAL",
+      "description": "NDA must include standard exclusions (public domain, prior knowledge, independent development, legal disclosure) to be enforceable.",
+      "statutory_reference": "Indian Contract Act 1872 – S.27",
+      "fails_if": ["NDA_EXCLUSIONS_001"]
+    },
+    {
+      "rule_id": "NDA_REQUIRES_TERM",
+      "severity": "HIGH",
+      "description": "NDA must specify a confidentiality term or survival period.",
+      "fails_if": ["NDA_TERM_SURVIVAL_001"]
+    },
+    {
+      "rule_id": "NDA_REQUIRES_IDENTITY",
+      "severity": "CRITICAL",
+      "description": "NDA must identify the Disclosing Party and Receiving Party.",
+      "fails_if": ["CORE_IDENTITY_001"]
+    }
+  ]
+}

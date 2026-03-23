@@ -1,0 +1,28 @@
+{
+  "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
+  "name": "Permitted Disclosure",
+  "category": "EXCLUSIONS",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "A Party may disclose Confidential Information if required by law, court order, or any regulatory authority, or to its professional advisors who are bound by a duty of confidentiality.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "(General principles)"
+    },
+    {
+      "act": "Indian Evidence Act, 1872",
+      "section": "126"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "72"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Absolute Prohibition on Disclosure"],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

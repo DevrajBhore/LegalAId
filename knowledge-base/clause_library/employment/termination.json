@@ -1,0 +1,25 @@
+{
+  "clause_id": "EMP_TERMINATION_001",
+  "name": "Termination of Employment",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Either Party may terminate this Agreement by providing notice or payment in lieu thereof, subject to compliance with applicable labour laws and the terms of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Termination without statutory notice or compensation",
+    "Termination in violation of labour protections"
+  ],
+  "source": "Industrial Disputes Act",
+  "version": "1.0"
+}

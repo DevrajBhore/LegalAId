@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_POSSESSION_001",
+  "name": "Possession and Handover",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Landlord shall hand over vacant and peaceful possession of the Premises to the Tenant on the Commencement Date in a clean, habitable, and functional condition. The Tenant shall inspect the Premises on or before the Commencement Date and shall notify the Landlord in writing of any pre-existing damage or defects within forty-eight (48) hours of taking possession; failure to do so shall be deemed acceptance of the Premises in good condition. The Landlord warrants that the Landlord has full authority to let the Premises and that the Premises are free from all encumbrances, disputes, and claims that would affect the Tenant's peaceful enjoyment. The Landlord shall deliver a possession receipt to the Tenant upon handover. Upon expiry or termination of this Agreement, the Tenant shall peaceably hand over vacant possession of the Premises to the Landlord on the last day of the tenancy, together with all keys and access devices.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "108"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "8"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Landlord not providing vacant possession on agreed commencement date",
+    "No warranty of Landlord's title and authority to let"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.108",
+  "version": "2.0"
+}

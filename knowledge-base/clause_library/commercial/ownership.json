@@ -1,0 +1,37 @@
+{
+  "clause_id": "IP_OWNERSHIP_001",
+  "name": "Intellectual Property Ownership",
+  "category": "IP",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "EMPLOYMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "All Intellectual Property Rights in and to the Deliverables, including but not limited to inventions, discoveries, developments, improvements, works of authorship, data, databases, processes, methods, know-how, trade secrets, and any other proprietary information created, developed, conceived, or reduced to practice by the Service Provider (whether solely or jointly with others) in the course of or arising out of this Agreement, shall vest absolutely and exclusively in the Client upon creation. The Service Provider hereby assigns to the Client, by way of future assignment, all such Intellectual Property Rights with full title guarantee. The Service Provider agrees to execute all such documents and do all such acts as the Client may reasonably require to perfect the assignment contemplated herein.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "6"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Assignment is conditional or revocable",
+    "Rights limited to licence rather than full assignment where assignment is intended",
+    "Future works not covered by present assignment"
+  ],
+  "source": "Copyright Act, 1957; Patents Act, 1970",
+  "version": "2.0"
+}

@@ -1,0 +1,34 @@
+{
+  "clause_id": "GUARANTEE_OBLIGATION_001",
+  "name": "Guarantee Obligation",
+  "category": "FINANCE",
+  "document_types": [
+    "GUARANTEE_AGREEMENT",
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In consideration of the Lender agreeing to extend financial accommodation to the Principal Debtor, the Guarantor hereby unconditionally and irrevocably guarantees to the Lender the due and punctual payment of all amounts payable by the Principal Debtor under the Loan Agreement and all other financing documents, including principal, interest, default interest, fees, costs, charges, and expenses (collectively, 'Guaranteed Obligations'). This Guarantee is a continuing guarantee and shall remain in full force and effect until all Guaranteed Obligations have been unconditionally and irrevocably discharged in full. The Guarantor's liability under this Guarantee shall not be affected or discharged by: (a) any time, indulgence, or concession granted to the Principal Debtor; (b) any variation of the Loan Agreement; (c) any failure to enforce security; or (d) the insolvency or incapacity of the Principal Debtor. This Guarantee is a primary obligation and not merely a secondary obligation contingent upon enforcement against the Principal Debtor.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "126"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "128"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "133"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Guarantee does not specify the maximum guaranteed amount rendering it potentially unenforceable",
+    "Continuing guarantee without limitation on amount may expose Guarantor to unlimited liability"
+  ],
+  "source": "Indian Contract Act, 1872 \u2013 S.126-147",
+  "version": "2.0"
+}

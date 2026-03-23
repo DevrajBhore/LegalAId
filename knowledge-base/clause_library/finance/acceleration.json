@@ -1,0 +1,33 @@
+{
+  "clause_id": "LOAN_ACCELERATION_001",
+  "name": "Loan Acceleration",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Upon the occurrence of any Event of Default and the expiry of any applicable cure period, the Lender shall be entitled, by written notice to the Borrower, to declare the entire outstanding principal amount of the Loan, together with all accrued and unpaid interest, default interest, fees, costs, and all other amounts payable under this Agreement, to be immediately due and payable ('Acceleration'). Following Acceleration, the Lender may enforce any security created under this Agreement or any other security document, and may exercise all rights and remedies available under applicable law, including those under the Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002, the Recovery of Debts and Bankruptcy Act, 1993, or through initiation of proceedings before the appropriate court or tribunal. The Borrower hereby irrevocably waives any right to object to the exercise of the Lender's acceleration rights upon the occurrence of an Event of Default.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39"
+    },
+    {
+      "act": "Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002",
+      "section": "13"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "69"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Acceleration clause activated without any cure period for remediable defaults",
+    "Waiver of Borrower's right to notice before acceleration"
+  ],
+  "source": "SARFAESI Act, 2002; Transfer of Property Act, 1882",
+  "version": "2.0"
+}

@@ -1,0 +1,83 @@
+{
+  "partnership_name": {
+    "type": "string",
+    "label": "Partnership Firm Name",
+    "description": "Name of the partnership firm",
+    "required": true,
+    "placeholder": "AV Trading"
+  },
+  "partner_1_name": {
+    "type": "string",
+    "label": "Partner 1 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Amit Kumar"
+  },
+  "partner_1_address": {
+    "type": "string",
+    "label": "Partner 1 \u2014 Address",
+    "required": true,
+    "placeholder": "12 MG Road, Mumbai"
+  },
+  "partner_1_father_name": {
+    "type": "string",
+    "label": "Partner 1 \u2014 Father's Name",
+    "required": false,
+    "placeholder": "Suresh Kumar"
+  },
+  "partner_2_name": {
+    "type": "string",
+    "label": "Partner 2 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Vijay Sharma"
+  },
+  "partner_2_address": {
+    "type": "string",
+    "label": "Partner 2 \u2014 Address",
+    "required": true,
+    "placeholder": "45 Park Street, Delhi"
+  },
+  "capital_contribution_1": {
+    "type": "number",
+    "label": "Partner 1 \u2014 Capital Contribution (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "500000"
+  },
+  "capital_contribution_2": {
+    "type": "number",
+    "label": "Partner 2 \u2014 Capital Contribution (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "500000"
+  },
+  "profit_sharing_ratio": {
+    "type": "string",
+    "label": "Profit/Loss Sharing Ratio",
+    "description": "Ratio in which profits and losses are shared (e.g. 50:50)",
+    "required": true,
+    "placeholder": "50:50"
+  },
+  "business_purpose": {
+    "type": "string",
+    "label": "Nature of Business",
+    "description": "Describe the business the partnership will conduct",
+    "required": true,
+    "placeholder": "Wholesale trading of electronic goods"
+  },
+  "principal_place_of_business": {
+    "type": "string",
+    "label": "Principal Place of Business",
+    "required": true,
+    "placeholder": "12 MG Road, Mumbai 400001"
+  },
+  "partnership_duration": {
+    "type": "string",
+    "label": "Duration of Partnership",
+    "required": false,
+    "enum": [
+      "At will (no fixed term)",
+      "Fixed term \u2014 specify below"
+    ],
+    "placeholder": "At will (no fixed term)"
+  }
+}

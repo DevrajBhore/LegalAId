@@ -1,0 +1,24 @@
+{
+  "clause_id": "NDA_NON_COMPETE_001",
+  "name": "Non Compete",
+  "category": "RESTRAINT",
+  "document_types": ["ALL"],
+  "jurisdiction": "India",
+  "text": "The Recipient shall not, during the term of this Agreement and for a period of twelve (12) months thereafter, directly or indirectly engage in any business competitive with the Discloser where such engagement involves the use or disclosure of the Confidential Information.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act",
+      "section": "27"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The restriction is not directly linked to the use or disclosure of Confidential Information.",
+    "The duration or geographical scope of the restriction is unreasonable.",
+    "It operates as a blanket prohibition on engaging in competitive business post-termination without a specific nexus to Confidential Information."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

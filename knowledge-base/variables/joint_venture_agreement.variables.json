@@ -1,0 +1,82 @@
+{
+  "party_1_name": {
+    "type": "string",
+    "label": "Party 1 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Alpha Enterprises Pvt Ltd"
+  },
+  "party_1_address": {
+    "type": "string",
+    "label": "Party 1 \u2014 Registered Address",
+    "required": true
+  },
+  "party_2_name": {
+    "type": "string",
+    "label": "Party 2 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Beta Solutions Ltd"
+  },
+  "party_2_address": {
+    "type": "string",
+    "label": "Party 2 \u2014 Registered Address",
+    "required": true
+  },
+  "jv_name": {
+    "type": "string",
+    "label": "Joint Venture Name",
+    "required": false,
+    "placeholder": "AlphaBeta JV"
+  },
+  "project_description": {
+    "type": "string",
+    "label": "Project / Business Description",
+    "description": "Describe the joint venture project or business purpose",
+    "required": true,
+    "placeholder": "Development and operation of a solar energy plant in Rajasthan"
+  },
+  "capital_contribution_1": {
+    "type": "number",
+    "label": "Party 1 \u2014 Capital Contribution (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "10000000"
+  },
+  "capital_contribution_2": {
+    "type": "number",
+    "label": "Party 2 \u2014 Capital Contribution (INR)",
+    "required": true,
+    "unit": "INR",
+    "placeholder": "10000000"
+  },
+  "profit_sharing_ratio": {
+    "type": "string",
+    "label": "Profit/Loss Sharing Ratio",
+    "required": true,
+    "placeholder": "50:50"
+  },
+  "jv_duration_years": {
+    "type": "number",
+    "label": "JV Duration (Years)",
+    "required": true,
+    "placeholder": "5"
+  },
+  "governing_state": {
+    "type": "string",
+    "label": "State of Operations",
+    "required": true,
+    "placeholder": "Rajasthan"
+  },
+  "capital_contribution": {
+    "type": "string",
+    "label": "Capital Contribution Structure",
+    "description": "How capital will be contributed by the parties",
+    "required": true,
+    "placeholder": "Party 1: INR 1,00,00,000 (50%) | Party 2: INR 1,00,00,000 (50%)"
+  },
+  "profit_sharing": {
+    "type": "string",
+    "label": "Profit/Loss Sharing",
+    "required": true,
+    "placeholder": "50:50"
+  }
+}

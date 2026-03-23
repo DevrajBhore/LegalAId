@@ -1,0 +1,39 @@
+{
+  "clause_id": "IP_INFRINGEMENT_001",
+  "name": "IP Infringement",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party warrants that it shall not infringe the intellectual property rights of the other Party or any third party. Any such infringement shall constitute a material breach of this Agreement, entitling the non-breaching Party to all available legal and equitable remedies.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "General principles related to infringement"
+    },
+    {
+      "act": "Trademarks Act, 1999",
+      "section": "General principles related to infringement"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "General principles related to infringement"
+    },
+    {
+      "act": "Designs Act, 2000",
+      "section": "General principles related to infringement"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The intellectual property rights claimed are not validly owned or licensed by the claiming party.",
+    "The intellectual property is in the public domain or its statutory protection period has expired.",
+    "The alleged infringing act falls within statutory exceptions or fair use provisions under applicable IP laws.",
+    "The alleged infringing party has a valid license or authorization for the use of the intellectual property."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

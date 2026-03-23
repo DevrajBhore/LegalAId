@@ -1,0 +1,34 @@
+{
+  "clause_id": "SERVICE_ACCEPTANCE_001",
+  "name": "Service Acceptance",
+  "category": "ACCEPTANCE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Services shall be deemed accepted upon their satisfactory completion and performance in accordance with this Agreement, unless the Client provides written notice of non-conformity within a reasonable period following completion.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "46"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "50"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Material breach of service specifications by the Service Provider",
+    "Fraud or misrepresentation by the Service Provider",
+    "Client was prevented from reasonably inspecting the services"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,30 @@
+{
+  "clause_id": "SERVICE_EXPENSES_001",
+  "name": "Service Expenses",
+  "category": "EXPENSES",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Unless otherwise explicitly agreed in writing, all expenses incurred by the Service Provider in the performance of the services under this Agreement shall be borne solely by the Service Provider.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "2(h)"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The clause is vague or ambiguous, making it unenforceable.",
+    "It contravenes specific statutory provisions applicable to the nature of services rendered.",
+    "It is established that the clause was entered into under coercion, undue influence, or fraud."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

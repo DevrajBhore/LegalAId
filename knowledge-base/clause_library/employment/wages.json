@@ -1,0 +1,34 @@
+{
+  "clause_id": "EMP_WAGES_001",
+  "name": "Wages and Compensation",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Employer shall pay the Employee a gross annual cost-to-company of such amount as specified in Annexure A ('CTC'), inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month, in accordance with the Payment of Wages Act, 1936. The compensation structure shall comprise: (a) Basic Salary (not less than fifty percent of the gross salary); (b) House Rent Allowance; (c) Special Allowance; and (d) such other components as specified in Annexure A. The Employer shall deduct Tax Deducted at Source ('TDS') in accordance with the Income Tax Act, 1961, and shall issue Form 16 annually. Any revision to the Employee's compensation shall be communicated in writing. The Employer shall ensure that the total compensation is not less than the applicable minimum wage prescribed under the Minimum Wages Act, 1948 for the relevant category of employment.",
+  "legal_basis": [
+    {
+      "act": "Payment of Wages Act, 1936",
+      "section": "3"
+    },
+    {
+      "act": "Minimum Wages Act, 1948",
+      "section": "3"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "192"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Salary below applicable minimum wage under Minimum Wages Act 1948",
+    "Salary disbursed after 7th of following month contrary to Payment of Wages Act 1936",
+    "Basic salary below 50% of gross salary attracting higher PF liability risk"
+  ],
+  "source": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
+  "version": "2.0"
+}

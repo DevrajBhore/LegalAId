@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Gazette Notification",
+  "type": "object",
+  "properties": {
+    "gazette_id": { "type": "string" },
+    "title": { "type": "string" },
+    "category": { "type": "string" },
+    "date": { "type": "string" },
+    "pdf_text": { "type": "string" }
+  },
+  "required": ["gazette_id", "title", "pdf_text"]
+}

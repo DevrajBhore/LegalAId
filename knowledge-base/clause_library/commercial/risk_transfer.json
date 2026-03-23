@@ -1,0 +1,34 @@
+{
+  "clause_id": "SUPPLY_RISK_TRANSFER_001",
+  "name": "Risk Transfer",
+  "category": "SUPPLY",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Risk of loss, damage, or destruction of the Goods shall pass from the Supplier to the Buyer upon delivery of the Goods at the delivery point specified in Schedule 1, provided that the Goods conform to the contract description and are accompanied by all required documentation. Where delivery is by carrier, risk shall pass to the Buyer upon delivery to the first carrier, unless the Supplier has specifically arranged for insurance of the Goods in transit, in which case risk passes upon delivery at the destination. Title to the Goods shall pass to the Buyer simultaneously with the passing of risk, subject to the Supplier's receipt of full payment of the applicable invoice. Until title passes, the Buyer shall hold the Goods as bailee for the Supplier and shall not pledge, charge, or otherwise encumber the Goods.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "18"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "20"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "26"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Risk passes before delivery without adequate insurance arrangements",
+    "Title retention clause not adequately documented for enforcement"
+  ],
+  "source": "Sale of Goods Act, 1930",
+  "version": "2.0"
+}

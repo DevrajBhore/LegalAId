@@ -1,0 +1,84 @@
+{
+  "company_name": {
+    "type": "string",
+    "label": "Company Name",
+    "description": "Full registered name of the company",
+    "required": true,
+    "placeholder": "TechStartup Pvt Ltd"
+  },
+  "company_cin": {
+    "type": "string",
+    "label": "Company CIN",
+    "description": "Corporate Identity Number",
+    "required": false,
+    "placeholder": "U12345MH2024PTC123456"
+  },
+  "shareholder_1_name": {
+    "type": "string",
+    "label": "Shareholder 1 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Founder A"
+  },
+  "shareholder_1_percentage": {
+    "type": "number",
+    "label": "Shareholder 1 \u2014 Shareholding (%)",
+    "required": true,
+    "placeholder": "40"
+  },
+  "shareholder_2_name": {
+    "type": "string",
+    "label": "Shareholder 2 \u2014 Full Name",
+    "required": true,
+    "placeholder": "Founder B"
+  },
+  "shareholder_2_percentage": {
+    "type": "number",
+    "label": "Shareholder 2 \u2014 Shareholding (%)",
+    "required": true,
+    "placeholder": "40"
+  },
+  "investor_name": {
+    "type": "string",
+    "label": "Investor Name",
+    "required": false,
+    "placeholder": "Investor X"
+  },
+  "investor_percentage": {
+    "type": "number",
+    "label": "Investor Shareholding (%)",
+    "required": false,
+    "placeholder": "20"
+  },
+  "investment_amount": {
+    "type": "number",
+    "label": "Investment Amount (INR)",
+    "required": false,
+    "unit": "INR",
+    "placeholder": "20000000"
+  },
+  "board_structure": {
+    "type": "string",
+    "label": "Board of Directors Structure",
+    "description": "Describe the board composition and nomination rights",
+    "required": true,
+    "placeholder": "3 directors \u2014 1 each nominated by Founder A, Founder B, and Investor"
+  },
+  "drag_along": {
+    "type": "boolean",
+    "label": "Include Drag-Along Rights?",
+    "required": false,
+    "default": true
+  },
+  "tag_along": {
+    "type": "boolean",
+    "label": "Include Tag-Along Rights?",
+    "required": false,
+    "default": true
+  },
+  "right_of_first_refusal": {
+    "type": "boolean",
+    "label": "Include Right of First Refusal?",
+    "required": false,
+    "default": true
+  }
+}

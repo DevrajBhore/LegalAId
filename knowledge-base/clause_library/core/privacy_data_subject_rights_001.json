@@ -1,0 +1,28 @@
+{
+    "clause_id": "PRIVACY_DATA_SUBJECT_RIGHTS_001",
+    "name": "Data Subject Rights",
+    "category": "PRIVACY",
+    "document_types": [
+      "PRIVACY_POLICY"
+    ],
+    "jurisdiction": "India",
+    "text": "In accordance with the Digital Personal Data Protection Act, 2023 ('DPDP Act'), data principals (individuals whose personal data is processed) have the following rights: (a) the right to obtain information about the personal data being processed; (b) the right to correction and erasure of personal data; (c) the right to grievance redressal; and (d) the right to nominate another individual to exercise rights in the event of the data principal's death or incapacity. Requests to exercise these rights may be submitted to the Grievance Officer designated herein.",
+    "legal_basis": [
+      {
+        "act": "Digital Personal Data Protection Act, 2023",
+        "section": "11-13"
+      },
+      {
+        "act": "Information Technology Act, 2000",
+        "section": "43A"
+      }
+    ],
+    "mandatory": true,
+    "enforceability": "HIGH",
+    "risk_level": "LOW",
+    "invalid_if": [
+      "Data subject rights are excluded or restricted beyond what the law permits"
+    ],
+    "source": "LegalAId Clause Library",
+    "version": "1.0"
+  }

@@ -1,0 +1,36 @@
+{
+  "clause_id": "SERVICE_PAYMENT_001",
+  "name": "Service Payment Terms",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In consideration of the Services rendered under this Agreement, the Client shall pay the Service Provider the fees as set out in Schedule 1 (the 'Fees'). Payment shall be made within thirty (30) days of receipt of a valid tax invoice from the Service Provider. All invoices shall be raised in Indian Rupees and shall comply with the Goods and Services Tax Act, 2017, including the requirement to specify the applicable GST registration number, HSN/SAC code, and GST amount. In the event of delayed payment beyond the due date, the Service Provider shall be entitled to charge simple interest at the rate of eighteen percent (18%) per annum on the outstanding amount from the due date until the date of actual payment. All payments shall be made by electronic transfer to the bank account designated by the Service Provider in writing.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "Goods and Services Tax Act, 2017",
+      "section": "31"
+    },
+    {
+      "act": "Interest Act, 1978",
+      "section": "3"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Payment terms exceed 45 days for MSME vendors contrary to MSMED Act 2006",
+    "Interest rate exceeds 24% per annum raising usury concerns",
+    "Invoice requirements do not comply with GST Act 2017"
+  ],
+  "source": "Indian Contract Act, 1872; MSMED Act, 2006",
+  "version": "2.0"
+}

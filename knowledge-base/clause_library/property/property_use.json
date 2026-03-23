@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_PROPERTY_USE_001",
+  "name": "Permitted Use",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Tenant shall use the Premises solely for the purpose of [PERMITTED_USE] as specified in Schedule 1, and for no other purpose whatsoever without the prior written consent of the Landlord. The Tenant shall: (a) not carry out any illegal or immoral activity on the Premises; (b) not store any hazardous, inflammable, or dangerous goods on the Premises without prior written consent; (c) not use the Premises in any manner that would constitute a nuisance to neighbours or violate applicable municipal regulations; (d) not display any sign, notice, or advertisement on the exterior of the Premises without the Landlord's prior written consent; (e) comply with all applicable laws, municipal regulations, and building bye-laws in respect of the use of the Premises; and (f) not sublet or licence the Premises or any part thereof without the prior written consent of the Landlord. Any breach of the permitted use clause shall entitle the Landlord to terminate this Agreement with immediate effect after written notice.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "108"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Permitted use restricted to single purpose without flexibility causing hardship",
+    "Use restriction so broad as to prevent all reasonable commercial activity"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.108",
+  "version": "2.0"
+}

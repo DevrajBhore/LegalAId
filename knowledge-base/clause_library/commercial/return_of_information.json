@@ -1,0 +1,31 @@
+{
+  "clause_id": "NDA_RETURN_OF_INFORMATION_001",
+  "name": "Return of Confidential Information",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "NDA",
+    "EMPLOYMENT_AGREEMENT",
+    "SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Upon the termination or expiry of this Agreement, or upon written demand by the Disclosing Party at any time, the Receiving Party shall, within seven (7) days: (a) return to the Disclosing Party all Confidential Information in tangible form, including all copies, reproductions, summaries, and extracts thereof; (b) permanently and irretrievably delete or destroy all Confidential Information stored in electronic format from all systems, devices, and storage media under the Receiving Party's control; and (c) provide the Disclosing Party with a written certificate, signed by a duly authorised representative, confirming the completion of such return and deletion. Notwithstanding the foregoing, the Receiving Party may retain one archival copy of the Confidential Information solely for compliance and legal purposes, subject to the ongoing confidentiality obligations under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Return obligation does not cover electronically stored information",
+    "No obligation to certify destruction of Confidential Information"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "2.0"
+}

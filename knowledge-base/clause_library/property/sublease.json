@@ -1,0 +1,31 @@
+{
+  "clause_id": "RENT_SUBLEASE_001",
+  "name": "Subletting and Assignment",
+  "category": "PROPERTY",
+  "document_types": [
+    "RENTAL_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Tenant shall not, without the prior written consent of the Landlord: (a) sublet, underlet, or part with possession of the whole or any part of the Premises to any person; (b) assign this Agreement or any interest therein to any other person; or (c) grant a licence to occupy the whole or any part of the Premises. Any purported subletting, assignment, or parting with possession without the Landlord's prior written consent shall be void and shall entitle the Landlord to terminate this Agreement forthwith. If the Landlord grants consent to subletting, such consent shall not imply consent to any further subletting. The Landlord's consent to subletting shall not be unreasonably withheld where the proposed sub-tenant is a reputable entity and the proposed use is consistent with the permitted use under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "108"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Absolute prohibition on subletting or assignment for commercial leases may be void as in restraint of trade",
+    "No provision for Landlord's consent not to be unreasonably withheld"
+  ],
+  "source": "Transfer of Property Act, 1882 \u2013 S.108",
+  "version": "2.0"
+}

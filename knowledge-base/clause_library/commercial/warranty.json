@@ -1,0 +1,36 @@
+{
+  "clause_id": "SUPPLY_WARRANTY_001",
+  "name": "Product Warranty",
+  "category": "WARRANTY",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Supplier warrants that all Goods supplied under this Agreement shall: (a) be free from defects in materials, workmanship, and design for a period of twelve (12) months from the date of delivery ('Warranty Period'); (b) conform to all applicable Bureau of Indian Standards specifications; and (c) be fit for their intended purpose as communicated to the Supplier prior to or at the time of order. In the event of a breach of warranty, the Buyer shall notify the Supplier in writing within the Warranty Period, and the Supplier shall, at its own cost and at the Buyer's option, repair or replace the defective Goods or refund the purchase price. This warranty is in addition to, and does not limit, any rights available to the Buyer under the Sale of Goods Act, 1930 or the Consumer Protection Act, 2019. The Supplier shall not be liable under this warranty for defects arising from fair wear and tear, misuse, or alterations made by the Buyer.",
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "16"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2"
+    },
+    {
+      "act": "Bureau of Indian Standards Act, 2016",
+      "section": "17"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Warranty period less than statutory minimum for consumer goods",
+    "Warranty excludes implied conditions of merchantability under Sale of Goods Act 1930",
+    "Warranty restricted to repair only without refund or replacement option"
+  ],
+  "source": "Sale of Goods Act, 1930; Consumer Protection Act, 2019",
+  "version": "2.0"
+}

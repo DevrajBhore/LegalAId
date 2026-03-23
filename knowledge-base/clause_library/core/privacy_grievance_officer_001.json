@@ -1,0 +1,27 @@
+{
+  "clause_id": "PRIVACY_GRIEVANCE_OFFICER_001",
+  "name": "Grievance Officer",
+  "category": "PRIVACY",
+  "document_types": ["PRIVACY_POLICY"],
+  "jurisdiction": "India",
+  "text": "In accordance with the Digital Personal Data Protection Act, 2023 ('DPDP Act') and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, the Data Fiduciary has designated a Grievance Officer to address complaints and queries regarding the processing of personal data. The name and contact details of the Grievance Officer are as follows: Name: [GRIEVANCE_OFFICER_NAME]; Designation: [GRIEVANCE_OFFICER_DESIGNATION]; Email: [GRIEVANCE_OFFICER_EMAIL]; Address: [GRIEVANCE_OFFICER_ADDRESS]. Any data principal may submit a grievance or complaint to the Grievance Officer within a reasonable time. The Grievance Officer shall acknowledge receipt of the grievance within 48 (forty-eight) hours and resolve the same within 30 (thirty) days of receipt, in accordance with Rule 4 of the IT Rules, 2021 and applicable provisions of the DPDP Act, 2023.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "13"
+    },
+    {
+      "act": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
+      "section": "Rule 4"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "No Grievance Officer is designated",
+    "Contact details for the Grievance Officer are missing or incomplete"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,26 @@
+{
+  "clause_id": "SUPPLY_DELIVERY_001",
+  "name": "Delivery",
+  "category": "DELIVERY",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Supplier shall deliver the Goods to the Buyer at the delivery address specified in the Purchase Order or as mutually agreed. Delivery shall be deemed complete upon the Buyer's acknowledgement of physical receipt of the Goods.",
+  "legal_basis": [
+    {
+      "act": "The Sale of Goods Act, 1930",
+      "section": "33"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Incoterms clause",
+    "Risk of Loss clause",
+    "Acceptance of Goods clause"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

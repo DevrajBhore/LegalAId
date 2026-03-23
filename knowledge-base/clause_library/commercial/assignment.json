@@ -1,0 +1,38 @@
+{
+  "clause_id": "IP_ASSIGNMENT_001",
+  "name": "IP Assignment",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "The Assignor hereby assigns absolutely and irrevocably to the Assignee all right, title, and interest in and to all Intellectual Property, effective immediately upon the date of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "The Copyright Act, 1957",
+      "section": "19"
+    },
+    {
+      "act": "The Patents Act, 1970",
+      "section": "68"
+    },
+    {
+      "act": "The Trademarks Act, 1999",
+      "section": "37"
+    },
+    {
+      "act": "The Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The Intellectual Property sought to be assigned is not assignable under applicable law.",
+    "The Assignor does not possess the full right, title, and interest in the Intellectual Property to be assigned.",
+    "The term 'Intellectual Property' is not adequately defined within the contract."
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

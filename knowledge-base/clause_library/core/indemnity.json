@@ -1,0 +1,20 @@
+{
+    "clause_id": "CORE_INDEMNITY_001",
+    "name": "Indemnity",
+    "category": "risk",
+    "document_types": ["ALL"],
+    "jurisdiction": "India",
+    "text": "Each Party agrees to indemnify and hold harmless the other Party from losses arising from breach of this Agreement.",
+    "legal_basis": [
+      { "act": "Indian Contract Act, 1872", "section": "Section 124" }
+    ],
+    "mandatory": false,
+    "enforceability": "MEDIUM",
+    "risk_level": "MEDIUM",
+    "invalid_if": [
+      "Indemnity is unlimited or vague"
+    ],
+    "source": "Contract Act",
+    "version": "1.0"
+  }
+  

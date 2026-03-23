@@ -1,0 +1,34 @@
+{
+  "clause_id": "LOAN_INTEREST_001",
+  "name": "Interest",
+  "category": "FINANCE",
+  "document_types": [
+    "LOAN_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Borrower shall pay interest on the outstanding Principal Amount at the rate of [INTEREST_RATE]% per annum ('Interest Rate'), calculated on the basis of a 365-day year and the actual number of days elapsed. Interest shall accrue daily from the date of disbursement and shall be payable monthly in arrears on the Interest Payment Date specified in Schedule 1. In the event of a payment default, default interest shall accrue on the overdue amount at a rate equal to the Interest Rate plus two percent (2%) per annum from the due date until the date of actual payment, compounded monthly. The Parties confirm that the Interest Rate agreed herein represents a fair and commercially reasonable rate and is not usurious. All interest payments shall be subject to TDS deduction as required under the Income Tax Act, 1961. The Borrower shall not be entitled to set off any amount against interest payments due under this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74"
+    },
+    {
+      "act": "Usurious Loans Act, 1918",
+      "section": "3"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "194A"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Interest rate exceeds applicable usury threshold under Usurious Loans Act 1918",
+    "No TDS deduction provision contrary to Income Tax Act 1961 Section 194A",
+    "Compound interest without clear disclosure in conflict with RBI fair practices"
+  ],
+  "source": "Usurious Loans Act, 1918; Income Tax Act, 1961",
+  "version": "2.0"
+}
