@@ -1,4 +1,62 @@
+# ── Dependencies ─────────────────────────────────────────────
 node_modules/
+jspm_packages/
+
+# ── Environment ─────────────────────────────────────────────
 .env
+.env.*
+!.env.example
+
+# ── Logs ────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ── Build Outputs ───────────────────────────────────────────
 dist/
 build/
+.next
+out
+.nuxt
+.cache
+.parcel-cache
+.svelte-kit/
+coverage/
+
+# ── Runtime / Temp ──────────────────────────────────────────
+pids
+*.pid
+*.seed
+*.pid.lock
+.tmp
+.temp
+
+# ── Tooling ─────────────────────────────────────────────────
+.npm
+.eslintcache
+.stylelintcache
+.nyc_output
+.grunt
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editor / IDE ────────────────────────────────────────────
+.vscode/
+.vscode-test/
+.idea/
+
+# ── Misc ───────────────────────────────────────────────────
+*.tgz
+.yarn-integrity
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
