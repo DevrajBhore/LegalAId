@@ -606,6 +606,7 @@ export const DOCUMENT_CONFIG = {
       "party_2_name",
       "party_2_address",
       "project_description",
+      "services_description",
       "total_fee",
       "effective_date",
       "arbitration_city",
@@ -635,6 +636,39 @@ export const DOCUMENT_CONFIG = {
           "warranty_period",
           "escrow_required",
           "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
+
+  MOU: {
+    requiredFields: [
+      "party_1_name",
+      "party_1_address",
+      "party_2_name",
+      "party_2_address",
+      "mou_purpose",
+      "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "First Party",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Second Party",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
+      {
+        title: "MOU Details",
+        fields: [
+          "mou_purpose",
+          "mou_scope",
+          "mou_duration",
+          "effective_date",
+          "governing_law_state",
           "arbitration_city",
         ],
       },

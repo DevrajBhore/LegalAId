@@ -4,15 +4,15 @@ import { getDocumentConfig, generateDocument } from "../services/api";
 import "./Form.css";
 
 export default function Form() {
-  const location     = useLocation();
-  const navigate     = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
   const documentType = location.state?.document_type;
 
-  const [fields,    setFields]    = useState([]);
-  const [form,      setForm]      = useState({});
-  const [loading,   setLoading]   = useState(true);
+  const [fields, setFields] = useState([]);
+  const [form, setForm] = useState({});
+  const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
-  const [error,     setError]     = useState(null);
+  const [error, setError] = useState(null);
 
   // Load form fields from backend
   useEffect(() => {
@@ -22,11 +22,11 @@ export default function Form() {
     }
     setLoading(true);
     getDocumentConfig(documentType)
-      .then(res => {
+      .then((res) => {
         setFields(res.data.fields || []);
         // Pre-fill arbitration_city with Mumbai as sensible default
         const defaults = {};
-        (res.data.fields || []).forEach(f => {
+        (res.data.fields || []).forEach((f) => {
           if (f.name === "arbitration_city") defaults[f.name] = "Mumbai";
         });
         setForm(defaults);
@@ -42,8 +42,8 @@ export default function Form() {
   const handleGenerate = async () => {
     // Validate required fields
     const missing = fields
-      .filter(f => f.required && !form[f.name]?.trim())
-      .map(f => f.label);
+      .filter((f) => f.required && !form[f.name]?.trim())
+      .map((f) => f.label);
 
     if (missing.length > 0) {
       setError(`Please fill in: ${missing.join(", ")}`);
@@ -56,15 +56,15 @@ export default function Form() {
     try {
       const res = await generateDocument({
         document_type: documentType,
-        jurisdiction : "India",
-        variables    : form,
+        jurisdiction: "India",
+        variables: form,
       });
       navigate("/editor", { state: res.data });
     } catch (err) {
       setError(
         err.response?.data?.details ||
-        err.response?.data?.error ||
-        "Generation failed. Check that the backend is running."
+          err.response?.data?.error ||
+          "Generation failed. Check that the backend is running."
       );
     } finally {
       setGenerating(false);
@@ -73,19 +73,20 @@ export default function Form() {
 
   const displayName = documentType
     ?.replace(/_/g, " ")
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 
   return (
     <div className="form-page">
       <div className="form-container">
-
         <div className="form-header">
           <button className="back-btn" onClick={() => navigate("/")}>
             ← Back
           </button>
           <div>
             <h2 className="form-title">{displayName}</h2>
-            <p className="form-subtitle">Fill in the details to generate your document</p>
+            <p className="form-subtitle">
+              Fill in the details to generate your document
+            </p>
           </div>
         </div>
 
@@ -105,11 +106,13 @@ export default function Form() {
         {!loading && (
           <>
             <div className="fields-grid">
-              {fields.map(field => (
+              {fields.map((field) => (
                 <div key={field.name} className="field-group">
                   <label className="field-label">
                     {field.label}
-                    {field.required && <span className="required-star"> *</span>}
+                    {field.required && (
+                      <span className="required-star"> *</span>
+                    )}
                   </label>
 
                   {field.type === "textarea" ? (
@@ -128,6 +131,30 @@ export default function Form() {
                       name={field.name}
                       value={form[field.name] || ""}
                       onChange={handleChange}
+                    />
+                  ) : field.type === "select" ? (
+                    <select
+                      className="field-input field-select"
+                      name={field.name}
+                      value={form[field.name] || ""}
+                      onChange={handleChange}
+                    >
+                      <option value="">— Select —</option>
+                      {(field.options || []).map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  ) : field.type === "number" ? (
+                    <input
+                      className="field-input"
+                      type="number"
+                      name={field.name}
+                      placeholder={`Enter ${field.label.toLowerCase()}…`}
+                      value={form[field.name] || ""}
+                      onChange={handleChange}
+                      min={0}
                     />
                   ) : (
                     <input
@@ -148,9 +175,7 @@ export default function Form() {
               onClick={handleGenerate}
               disabled={generating}
             >
-              {generating
-                ? "Generating document…"
-                : "Generate Document →"}
+              {generating ? "Generating document…" : "Generate Document →"}
             </button>
           </>
         )}

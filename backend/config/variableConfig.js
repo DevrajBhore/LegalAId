@@ -975,6 +975,87 @@ export const VARIABLE_CONFIG = {
       options: ["Yes", "No"],
     },
   },
+
+  MOU: {
+    party_1_name: {
+      label: "First Party Full Name / Company",
+      type: "text",
+      required: true,
+    },
+    party_1_address: {
+      label: "First Party Address",
+      type: "textarea",
+      required: true,
+    },
+    party_1_type: {
+      label: "First Party Type",
+      type: "select",
+      required: false,
+      options: [
+        "Individual",
+        "Private Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Government Body",
+        "Trust",
+      ],
+    },
+    party_2_name: {
+      label: "Second Party Full Name / Company",
+      type: "text",
+      required: true,
+    },
+    party_2_address: {
+      label: "Second Party Address",
+      type: "textarea",
+      required: true,
+    },
+    party_2_type: {
+      label: "Second Party Type",
+      type: "select",
+      required: false,
+      options: [
+        "Individual",
+        "Private Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Government Body",
+        "Trust",
+      ],
+    },
+    mou_purpose: {
+      label: "Purpose / Objective of MOU",
+      type: "textarea",
+      required: true,
+    },
+    mou_scope: {
+      label: "Scope of Collaboration",
+      type: "textarea",
+      required: false,
+    },
+    mou_duration: {
+      label: "Duration of MOU (e.g. 12 months)",
+      type: "text",
+      required: false,
+    },
+    governing_law_state: {
+      label: "Governing Law State",
+      type: "select",
+      required: false,
+      options: [
+        "Maharashtra",
+        "Delhi",
+        "Karnataka",
+        "Tamil Nadu",
+        "Telangana",
+        "Gujarat",
+        "West Bengal",
+        "Rajasthan",
+        "Uttar Pradesh",
+        "Punjab",
+      ],
+    },
+  },
 };
 
 /**

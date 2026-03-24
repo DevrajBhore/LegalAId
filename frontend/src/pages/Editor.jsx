@@ -29,6 +29,8 @@ const DOC_DISPLAY_NAMES = {
   LOAN_AGREEMENT: "Loan Agreement",
   GUARANTEE_AGREEMENT: "Guarantee Agreement",
   SOFTWARE_DEVELOPMENT_AGREEMENT: "Software Development Agreement",
+  MOU: "Memorandum of Understanding",
+  PRIVACY_POLICY: "Privacy Policy",
 };
 
 export default function Editor() {

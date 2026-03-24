@@ -7,17 +7,19 @@ import "./Auth.css";
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
 export default function Login() {
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
 
-  const [form,    setForm]    = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const [error,   setError]   = useState(null);
+  const [error, setError] = useState(null);
 
   const from = location.state?.from || "/";
+  const docType = location.state?.document_type || null;
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,9 +48,10 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-
         <div className="auth-logo">
-          <span className="auth-logo-text">Legal<em>AI</em>d</span>
+          <span className="auth-logo-text">
+            Legal<em>AI</em>d
+          </span>
           <span className="auth-logo-tag">Indian Legal Document Engine</span>
         </div>
 
@@ -110,10 +113,8 @@ export default function Login() {
         </form>
 
         <p className="auth-switch">
-          Don't have an account?{" "}
-          <Link to="/register">Create one</Link>
+          Don't have an account? <Link to="/register">Create one</Link>
         </p>
-
       </div>
     </div>
   );

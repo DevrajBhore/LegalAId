@@ -151,7 +151,7 @@ export async function callGeminiChat(draft, message) {
       (c, i) =>
         `${i + 1}. [${c.clause_id}] "${c.title || c.category}"\n${(
           c.text || ""
-        ).slice(0, 400)}`
+        ).slice(0, 1200)}`
     )
     .join("\n\n");
 
@@ -200,7 +200,7 @@ export async function callGeminiFix(draft, issue) {
       (c, i) =>
         `${i + 1}. [${c.clause_id}] ${c.title || c.category}: ${(
           c.text || ""
-        ).slice(0, 400)}`
+        ).slice(0, 1200)}`
     )
     .join("\n\n");
 

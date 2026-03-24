@@ -21,6 +21,7 @@ const FAMILY_MAP = {
   SALES_OF_GOODS_AGREEMENT: "Contracts & Commercial",
   INDEPENDENT_CONTRACTOR_AGREEMENT: "Contracts & Commercial",
   SOFTWARE_DEVELOPMENT_AGREEMENT: "Contracts & Commercial",
+  MOU: "Contracts & Commercial",
   EMPLOYMENT_CONTRACT: "Employment",
   COMMERCIAL_LEASE_AGREEMENT: "Property",
   LEAVE_AND_LICENSE_AGREEMENT: "Property",
