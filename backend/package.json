@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "ajv": "^8.17.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "docx": "^8.5.0",
