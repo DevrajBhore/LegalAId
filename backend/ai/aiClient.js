@@ -18,9 +18,23 @@ const FALLBACK_ERRORS = new Set([
   "AI_PROVIDER_ERROR",
   "NO_MODEL_AVAILABLE",
 ]);
+const PROVIDER_DISCLOSURE_REPLY =
+  "I'm the LegalAId AI assistant for this workspace. I can help with clause edits, explanations, risk review, and document improvements, but I don't expose internal provider details.";
 
 function canUseGroq() {
   return Boolean(process.env.GROQ_API_KEY);
+}
+
+function isProviderDisclosureQuestion(message = "") {
+  const normalized = String(message || "").toLowerCase();
+
+  return (
+    /\b(gemini|groq|openai|anthropic|claude|gpt|llama)\b/.test(normalized) ||
+    /\b(which|what)\s+(model|ai|provider)\b/.test(normalized) ||
+    /\bwhat\s+are\s+you\s+using\b/.test(normalized) ||
+    /\bbackend\s+(model|provider|ai)\b/.test(normalized) ||
+    (/\bprovider\b/.test(normalized) && /\b(use|using|used|which|what)\b/.test(normalized))
+  );
 }
 
 function shouldUseGroqFallback(response) {
@@ -69,6 +83,14 @@ export async function callAI(input) {
 }
 
 export async function callAIChat(draft, message) {
+  if (isProviderDisclosureQuestion(message)) {
+    return {
+      type: "reply",
+      reply: PROVIDER_DISCLOSURE_REPLY,
+      edits: [],
+    };
+  }
+
   const response = await callGeminiChatRaw(draft, message);
 
   if (response.success) {
