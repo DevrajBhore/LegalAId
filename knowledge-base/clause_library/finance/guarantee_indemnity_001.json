@@ -1,28 +1,29 @@
 {
-    "clause_id": "GUARANTEE_INDEMNITY_001",
-    "name": "Guarantor Indemnity and Subrogation",
-    "category": "RISK",
-    "document_types": [
-      "GUARANTEE_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "The Guarantor shall indemnify and hold harmless the Lender/Creditor against all losses, damages, costs, and expenses (including legal fees) suffered or incurred by the Lender/Creditor as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the Principal Agreement. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to all rights and remedies of the Lender/Creditor against the Principal Debtor to the extent of such payment, subject to the Lender/Creditor having been paid in full. The Guarantor's right of subrogation shall not be exercised until all amounts due to the Lender/Creditor have been fully discharged.",
-    "legal_basis": [
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "140"
-      },
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "141"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "Subrogation rights are excluded or restricted"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "GUARANTEE_INDEMNITY_001",
+  "name": "Guarantor Indemnity and Subrogation",
+  "category": "RISK",
+  "document_types": [
+    "GUARANTEE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Guarantor shall indemnify and hold harmless the Lender/Creditor against all losses, damages, costs, and expenses (including legal fees) suffered or incurred by the Lender/Creditor as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the Principal Agreement. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to all rights and remedies of the Lender/Creditor against the Principal Debtor to the extent of such payment, subject to the Lender/Creditor having been paid in full. The Guarantor's right of subrogation shall not be exercised until all amounts due to the Lender/Creditor have been fully discharged.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "140"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "141"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Subrogation rights are excluded or restricted"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Guarantor Indemnity and Subrogation"
+}

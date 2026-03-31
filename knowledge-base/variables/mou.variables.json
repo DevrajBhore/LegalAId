@@ -1,0 +1,85 @@
+{
+  "document_type": "MOU",
+  "variables": {
+    "party_1_name": {
+      "label": "Party 1 Full Name / Organisation",
+      "type": "text",
+      "required": true
+    },
+    "party_1_address": {
+      "label": "Party 1 Address",
+      "type": "textarea",
+      "required": true
+    },
+    "party_2_name": {
+      "label": "Party 2 Full Name / Organisation",
+      "type": "text",
+      "required": true
+    },
+    "party_2_address": {
+      "label": "Party 2 Address",
+      "type": "textarea",
+      "required": true
+    },
+    "purpose_of_mou": {
+      "label": "Purpose of MOU",
+      "type": "textarea",
+      "required": true
+    },
+    "collaboration_scope": {
+      "label": "Scope of Collaboration",
+      "type": "textarea",
+      "required": true
+    },
+    "mou_duration": {
+      "label": "MOU Duration",
+      "type": "select",
+      "options": [
+        "6 months",
+        "1 year",
+        "2 years",
+        "3 years",
+        "Until a formal agreement is signed"
+      ],
+      "required": true
+    },
+    "binding_nature": {
+      "label": "Binding Nature",
+      "type": "select",
+      "options": [
+        "Non-binding (expression of intent only)",
+        "Partially binding (specific clauses binding)",
+        "Binding in full"
+      ],
+      "required": true
+    },
+    "confidentiality": {
+      "label": "Confidentiality Obligation",
+      "type": "select",
+      "options": [
+        "Yes \u2013 mutual confidentiality",
+        "Yes \u2013 one-sided",
+        "No confidentiality obligation"
+      ],
+      "required": true
+    },
+    "effective_date": {
+      "label": "Effective Date",
+      "type": "date",
+      "required": true
+    },
+    "state": {
+      "label": "State of Execution",
+      "type": "select",
+      "options": [
+        "Maharashtra",
+        "Delhi",
+        "Karnataka",
+        "Tamil Nadu",
+        "Telangana",
+        "Gujarat"
+      ],
+      "required": true
+    }
+  }
+}

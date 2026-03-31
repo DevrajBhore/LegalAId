@@ -2,7 +2,9 @@
   "clause_id": "EMP_RESTRAINT_OF_TRADE_001",
   "name": "Restraint of Trade",
   "category": "EMPLOYMENT",
-  "document_types": ["EMPLOYMENT"],
+  "document_types": [
+    "EMPLOYMENT"
+  ],
   "jurisdiction": "India",
   "text": "The Employee acknowledges that during the term of employment, they shall not directly or indirectly engage in any activity that constitutes a restraint of trade against the Employer. Any post-termination restrictions shall be reasonable in scope, geographic extent, and duration so as to be enforceable under applicable Indian law.",
   "legal_basis": [
@@ -19,5 +21,6 @@
     "Clause restricts lawful profession beyond employment term"
   ],
   "source": "Contract Act Section 27 jurisprudence",
-  "version": "1.0"
+  "version": "1.0",
+  "title": "Restraint of Trade"
 }

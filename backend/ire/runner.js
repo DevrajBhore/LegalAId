@@ -1,18 +1,14 @@
 import { validateDocument } from "../../IRE/engine.js";
 import { toIREDocType } from "../services/documentTypeNormalizer.js";
 
-let engineReady = false;
-
-export async function validate(draft, { isUserEdit = false } = {}) {
+export async function validate(
+  draft,
+  { mode = "final", isUserEdit = false } = {}
+) {
   if (!draft || !draft.document_type || !draft.clauses) {
     throw new Error(
       "Invalid draft passed to IRE — missing document_type or clauses"
     );
-  }
-
-  if (!engineReady) {
-    console.log("[IRE Runner] Initializing Indian Rule Engine...");
-    engineReady = true;
   }
 
   // Normalise document type to IRE naming convention
@@ -22,11 +18,14 @@ export async function validate(draft, { isUserEdit = false } = {}) {
     ireDocType,
     draft.clauses,
     {
+      ...(draft.metadata || {}),
       state: draft.metadata?.state || draft.jurisdiction_state,
       stampDutyPaid: draft.metadata?.stampDutyPaid,
       financials: draft.metadata?.financials,
+      ai_touched: draft.metadata?.ai_touched,
+      user_edited: draft.metadata?.user_edited,
     },
-    { isUserEdit }
+    { mode, isUserEdit }
   );
 
   return result;

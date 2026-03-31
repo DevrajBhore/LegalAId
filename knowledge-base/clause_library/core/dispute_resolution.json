@@ -6,11 +6,11 @@
     "ALL"
   ],
   "jurisdiction": "India",
-  "text": "In the event of any dispute, controversy, or claim arising out of or in connection with this Agreement, the Parties shall first attempt to resolve the dispute amicably through good-faith negotiations. If the dispute is not resolved within a reasonable period, either Party may initiate appropriate legal proceedings or invoke arbitration, as may be applicable under this Agreement.",
+  "text": "In the event of any dispute, controversy, or claim arising out of or in connection with this Agreement, the Parties shall first attempt to resolve the dispute amicably through good-faith negotiations for a period of fifteen (15) days. If the dispute is not resolved within that period, the dispute shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted by a sole arbitrator mutually appointed by the Parties, and if the Parties fail to agree on the appointment within fifteen (15) days, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996. The seat and venue of arbitration shall be {{arbitration_city}}, India. The arbitration proceedings shall be conducted in the English language. Subject to the arbitration clause, the courts in {{arbitration_city}} shall have supervisory jurisdiction.",
   "legal_basis": [
     {
-      "act": "Code of Civil Procedure, 1908",
-      "section": "89"
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "11"
     },
     {
       "act": "Indian Contract Act, 1872",
@@ -22,9 +22,11 @@
   "risk_level": "LOW",
   "invalid_if": [
     "Dispute resolution mechanism is entirely absent",
-    "Clause contradicts an arbitration clause without hierarchy",
+    "Clause omits the seat of arbitration",
+    "Clause omits any arbitrator appointment mechanism",
     "Clause restricts access to courts absolutely"
   ],
-  "source": "CPC Section 89 + Indian contract drafting practice",
-  "version": "1.0"
+  "source": "Arbitration and Conciliation Act, 1996 + Indian contract drafting practice",
+  "version": "1.0",
+  "title": "Dispute Resolution Mechanism"
 }

@@ -2,8 +2,20 @@
   "clause_id": "RENTAL_RENT_PAYMENT_001",
   "category": "CONSIDERATION",
   "title": "License Fee / Rent",
-  "text": "The Licensee/Tenant shall pay to the Licensor/Landlord a monthly license fee/rent of INR {{license_fee}}{{rent_amount}} payable on or before the fifth (5th) day of each calendar month. Payment shall be made by bank transfer (NEFT/RTGS/UPI) or such other mode as agreed in writing. The Licensor/Landlord shall issue a written receipt for each payment. In the event of non-payment within fifteen (15) days of the due date, simple interest at fifteen percent (15%) per annum shall accrue on the overdue amount. The Parties agree that timely payment of the license fee/rent is of the essence of this Agreement.",
-  "statutory_reference": "Transfer of Property Act, 1882 \u2013 S.105; Model Tenancy Act, 2021",
+  "text": "The Licensee/Tenant shall pay to the Licensor/Landlord a monthly license fee/rent of INR {{occupancy_fee}} payable on or before the fifth (5th) day of each calendar month. Payment shall be made by bank transfer (NEFT/RTGS/UPI) or such other mode as agreed in writing. The Licensor/Landlord shall issue a written receipt for each payment. In the event of non-payment within fifteen (15) days of the due date, simple interest at fifteen percent (15%) per annum shall accrue on the overdue amount. The Parties agree that timely payment of the license fee/rent is of the essence of this Agreement.",
+  "statutory_reference": "Transfer of Property Act, 1882 – S.105; Model Tenancy Act, 2021",
   "mandatory": true,
-  "jurisdiction": "India"
+  "jurisdiction": "India",
+  "name": "License Fee / Rent",
+  "document_types": [
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "RENTAL"
+  ],
+  "legal_basis": [],
+  "invalid_if": [],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0.0"
 }

@@ -10,17 +10,19 @@
 export const DOCUMENT_CONFIG = {
   NDA: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
       "party_1_type",
       "party_2_name",
       "party_2_address",
       "party_2_type",
-      "purpose",
-      "effective_date",
-      "confidentiality_period",
-      "arbitration_city",
-    ],
+        "purpose",
+        "effective_date",
+        "confidentiality_period",
+        "agreement_term",
+        "arbitration_city",
+      ],
     signatureType: "BILATERAL",
     sections: [
       {
@@ -33,12 +35,13 @@ export const DOCUMENT_CONFIG = {
       },
       {
         title: "Agreement Terms",
-        fields: [
-          "purpose",
-          "confidentiality_period",
-          "non_compete_period",
-          "effective_date",
-          "arbitration_city",
+          fields: [
+            "purpose",
+            "confidentiality_period",
+            "agreement_term",
+            "non_compete_period",
+            "effective_date",
+            "arbitration_city",
         ],
       },
     ],
@@ -46,6 +49,7 @@ export const DOCUMENT_CONFIG = {
 
   EMPLOYMENT_CONTRACT: {
     requiredFields: [
+      "operating_state",
       "employer_name",
       "employer_address",
       "employer_cin",
@@ -54,6 +58,7 @@ export const DOCUMENT_CONFIG = {
       "job_title",
       "work_location",
       "salary",
+      "effective_date",
       "start_date",
       "notice_period_days",
       "arbitration_city",
@@ -81,6 +86,7 @@ export const DOCUMENT_CONFIG = {
       {
         title: "Terms of Employment",
         fields: [
+          "effective_date",
           "start_date",
           "probation_period",
           "working_hours",
@@ -93,11 +99,15 @@ export const DOCUMENT_CONFIG = {
 
   SERVICE_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "services_description",
+      "deliverables",
       "contract_value",
       "payment_terms",
       "contract_duration",
@@ -106,10 +116,13 @@ export const DOCUMENT_CONFIG = {
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Client", fields: ["party_1_name", "party_1_address"] },
+      {
+        title: "Client",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
       {
         title: "Service Provider",
-        fields: ["party_2_name", "party_2_address"],
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
       },
       {
         title: "Scope & Payment",
@@ -130,20 +143,31 @@ export const DOCUMENT_CONFIG = {
 
   CONSULTANCY_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "consulting_services",
+      "deliverables",
       "consulting_fee",
+      "payment_terms",
       "contract_duration",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Client", fields: ["party_1_name", "party_1_address"] },
-      { title: "Consultant", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Client",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Consultant",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Engagement Terms",
         fields: [
@@ -163,6 +187,7 @@ export const DOCUMENT_CONFIG = {
 
   PARTNERSHIP_DEED: {
     requiredFields: [
+      "operating_state",
       "partnership_name",
       "business_address",
       "partner_1_name",
@@ -213,19 +238,24 @@ export const DOCUMENT_CONFIG = {
 
   SHAREHOLDERS_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "company_name",
       "company_cin",
       "company_address",
       "shareholder_1_name",
       "shareholder_1_address",
+      "shareholder_1_type",
       "shareholding_percentage_1",
       "shareholder_2_name",
       "shareholder_2_address",
+      "shareholder_2_type",
       "shareholding_percentage_2",
+      "board_structure",
+      "reserved_matters",
       "effective_date",
       "arbitration_city",
     ],
-    signatureType: "BILATERAL",
+    signatureType: "SHAREHOLDERS",
     sections: [
       {
         title: "Company Details",
@@ -236,6 +266,7 @@ export const DOCUMENT_CONFIG = {
         fields: [
           "shareholder_1_name",
           "shareholder_1_address",
+          "shareholder_1_type",
           "shareholding_percentage_1",
         ],
       },
@@ -244,6 +275,7 @@ export const DOCUMENT_CONFIG = {
         fields: [
           "shareholder_2_name",
           "shareholder_2_address",
+          "shareholder_2_type",
           "shareholding_percentage_2",
         ],
       },
@@ -263,15 +295,21 @@ export const DOCUMENT_CONFIG = {
 
   JOINT_VENTURE_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "jv_name",
       "jv_purpose",
       "capital_contribution_1",
       "capital_contribution_2",
       "profit_sharing_ratio",
+      "jv_duration",
+      "jv_structure",
+      "ip_ownership",
       "effective_date",
       "arbitration_city",
     ],
@@ -279,11 +317,21 @@ export const DOCUMENT_CONFIG = {
     sections: [
       {
         title: "Party 1",
-        fields: ["party_1_name", "party_1_address", "capital_contribution_1"],
+        fields: [
+          "party_1_name",
+          "party_1_address",
+          "party_1_type",
+          "capital_contribution_1",
+        ],
       },
       {
         title: "Party 2",
-        fields: ["party_2_name", "party_2_address", "capital_contribution_2"],
+        fields: [
+          "party_2_name",
+          "party_2_address",
+          "party_2_type",
+          "capital_contribution_2",
+        ],
       },
       {
         title: "Joint Venture Terms",
@@ -303,16 +351,22 @@ export const DOCUMENT_CONFIG = {
 
   SUPPLY_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_1_gstin",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "party_2_gstin",
       "goods_description",
       "price",
       "payment_terms",
       "delivery_terms",
+      "delivery_location",
+      "contract_duration",
+      "warranty_period",
       "effective_date",
       "arbitration_city",
     ],
@@ -320,11 +374,21 @@ export const DOCUMENT_CONFIG = {
     sections: [
       {
         title: "Supplier",
-        fields: ["party_1_name", "party_1_address", "party_1_gstin"],
+        fields: [
+          "party_1_name",
+          "party_1_address",
+          "party_1_type",
+          "party_1_gstin",
+        ],
       },
       {
         title: "Buyer",
-        fields: ["party_2_name", "party_2_address", "party_2_gstin"],
+        fields: [
+          "party_2_name",
+          "party_2_address",
+          "party_2_type",
+          "party_2_gstin",
+        ],
       },
       {
         title: "Goods & Commercial Terms",
@@ -345,12 +409,20 @@ export const DOCUMENT_CONFIG = {
 
   DISTRIBUTION_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "product_description",
       "territory",
+      "exclusivity",
+      "min_purchase",
+      "price_terms",
+      "payment_terms",
+      "contract_duration",
       "effective_date",
       "arbitration_city",
     ],
@@ -358,9 +430,12 @@ export const DOCUMENT_CONFIG = {
     sections: [
       {
         title: "Manufacturer / Principal",
-        fields: ["party_1_name", "party_1_address"],
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
       },
-      { title: "Distributor", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Distributor",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Distribution Terms",
         fields: [
@@ -380,15 +455,22 @@ export const DOCUMENT_CONFIG = {
 
   SALES_OF_GOODS_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_1_gstin",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "party_2_gstin",
       "goods_description",
+      "quantity",
       "price",
+      "gst_rate",
+      "payment_terms",
       "delivery_date",
+      "delivery_location",
       "effective_date",
       "arbitration_city",
     ],
@@ -396,11 +478,21 @@ export const DOCUMENT_CONFIG = {
     sections: [
       {
         title: "Seller",
-        fields: ["party_1_name", "party_1_address", "party_1_gstin"],
+        fields: [
+          "party_1_name",
+          "party_1_address",
+          "party_1_type",
+          "party_1_gstin",
+        ],
       },
       {
         title: "Buyer",
-        fields: ["party_2_name", "party_2_address", "party_2_gstin"],
+        fields: [
+          "party_2_name",
+          "party_2_address",
+          "party_2_type",
+          "party_2_gstin",
+        ],
       },
       {
         title: "Transaction Details",
@@ -421,21 +513,32 @@ export const DOCUMENT_CONFIG = {
 
   INDEPENDENT_CONTRACTOR_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "services_description",
+      "deliverables",
       "contract_value",
       "payment_terms",
+      "ip_ownership",
       "contract_duration",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Client", fields: ["party_1_name", "party_1_address"] },
-      { title: "Contractor", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Client",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Contractor",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Engagement Terms",
         fields: [
@@ -455,22 +558,33 @@ export const DOCUMENT_CONFIG = {
 
   COMMERCIAL_LEASE_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "property_address",
       "property_description",
+      "permitted_use",
       "rent_amount",
       "security_deposit",
       "lease_term",
+      "maintenance_party",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Landlord", fields: ["party_1_name", "party_1_address"] },
-      { title: "Tenant", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Landlord",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Tenant",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Property Details",
         fields: ["property_address", "property_description", "permitted_use"],
@@ -493,21 +607,33 @@ export const DOCUMENT_CONFIG = {
 
   LEAVE_AND_LICENSE_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "property_address",
+      "property_description",
+      "permitted_use",
       "license_fee",
       "security_deposit",
       "license_term",
+      "maintenance_party",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Licensor", fields: ["party_1_name", "party_1_address"] },
-      { title: "Licensee", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Licensor",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Licensee",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Property Details",
         fields: ["property_address", "property_description", "permitted_use"],
@@ -530,20 +656,34 @@ export const DOCUMENT_CONFIG = {
 
   LOAN_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "loan_amount",
+      "purpose",
       "interest_rate",
       "repayment_schedule",
+      "repayment_start_date",
+      "security_collateral",
+      "prepayment_terms",
+      "default_interest_rate",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Lender", fields: ["party_1_name", "party_1_address"] },
-      { title: "Borrower", fields: ["party_2_name", "party_2_address"] },
+      {
+        title: "Lender",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Borrower",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
       {
         title: "Loan Terms",
         fields: [
@@ -564,27 +704,37 @@ export const DOCUMENT_CONFIG = {
 
   GUARANTEE_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "guarantor_name",
       "guarantor_address",
+      "guarantor_type",
       "guaranteed_amount",
+      "purpose",
+      "guarantee_type",
+      "guarantee_period",
       "effective_date",
       "arbitration_city",
     ],
-    signatureType: "BILATERAL",
+    signatureType: "GUARANTEE",
     sections: [
       {
         title: "Creditor / Lender",
-        fields: ["party_1_name", "party_1_address"],
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
       },
       {
         title: "Principal Debtor",
-        fields: ["party_2_name", "party_2_address"],
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
       },
-      { title: "Guarantor", fields: ["guarantor_name", "guarantor_address"] },
+      {
+        title: "Guarantor",
+        fields: ["guarantor_name", "guarantor_address", "guarantor_type"],
+      },
       {
         title: "Guarantee Terms",
         fields: [
@@ -601,22 +751,31 @@ export const DOCUMENT_CONFIG = {
 
   SOFTWARE_DEVELOPMENT_AGREEMENT: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "project_description",
       "services_description",
       "total_fee",
+      "delivery_date",
+      "payment_terms",
+      "ip_ownership",
       "effective_date",
       "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Client", fields: ["party_1_name", "party_1_address"] },
+      {
+        title: "Client",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
       {
         title: "Developer / Agency",
-        fields: ["party_2_name", "party_2_address"],
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
       },
       {
         title: "Project Details",
@@ -644,12 +803,19 @@ export const DOCUMENT_CONFIG = {
 
   MOU: {
     requiredFields: [
+      "operating_state",
       "party_1_name",
       "party_1_address",
+      "party_1_type",
       "party_2_name",
       "party_2_address",
+      "party_2_type",
       "mou_purpose",
+      "mou_scope",
+      "mou_duration",
       "effective_date",
+      "governing_law_state",
+      "arbitration_city",
     ],
     signatureType: "BILATERAL",
     sections: [

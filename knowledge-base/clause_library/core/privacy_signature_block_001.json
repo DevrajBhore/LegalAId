@@ -1,18 +1,27 @@
 {
-    "clause_id": "PRIVACY_SIGNATURE_BLOCK_001",
-    "name": "Acknowledgement",
-    "category": "SIGNATURE_BLOCK",
-    "document_types": ["PRIVACY_POLICY"],
-    "jurisdiction": "India",
-    "text": "This Privacy Policy is published by the organisation in accordance with applicable Indian law. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. This Policy was last updated on the date indicated above and supersedes all prior versions.",
-    "legal_basis": [
-      {"act": "Digital Personal Data Protection Act, 2023", "section": "6"},
-      {"act": "Information Technology Act, 2000", "section": "43A"}
-    ],
-    "mandatory": true,
-    "enforceability": "MEDIUM",
-    "risk_level": "LOW",
-    "invalid_if": [],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "PRIVACY_SIGNATURE_BLOCK_001",
+  "name": "Acknowledgement",
+  "category": "SIGNATURE_BLOCK",
+  "document_types": [
+    "PRIVACY_POLICY"
+  ],
+  "jurisdiction": "India",
+  "text": "This Privacy Policy is published by the organisation in accordance with applicable Indian law. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. This Policy was last updated on the date indicated above and supersedes all prior versions.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "6"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Acknowledgement"
+}

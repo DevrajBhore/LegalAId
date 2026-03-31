@@ -1,0 +1,43 @@
+.help-page { background:var(--ink); min-height:100vh; }
+
+.help-hero { text-align:center; padding:80px 32px 56px; border-bottom:1px solid rgba(255,255,255,0.05); background:linear-gradient(180deg,rgba(184,147,58,0.04) 0%,transparent 80%); }
+.help-eyebrow { font-size:10.5px; font-family:var(--font-mono); color:var(--gold); letter-spacing:.8px; display:block; margin-bottom:18px; }
+.help-title { font-family:var(--font-display); font-size:clamp(36px,5vw,54px); color:var(--white); font-weight:400; letter-spacing:-.8px; margin-bottom:14px; }
+.help-sub { font-size:16px; color:rgba(255,255,255,0.38); max-width:460px; margin:0 auto 32px; line-height:1.6; }
+.help-search-wrap { position:relative; max-width:440px; margin:0 auto; }
+.help-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.28); display:flex; pointer-events:none; }
+.help-search { width:100%; padding:11px 14px 11px 42px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.10); border-radius:var(--r-md); color:var(--text-primary); font-size:14px; transition:border-color .15s; }
+.help-search:focus { outline:none; border-color:rgba(184,147,58,0.45); }
+.help-search::placeholder { color:rgba(255,255,255,0.22); }
+
+.help-body { padding:56px 0 100px; }
+.help-inner { max-width:760px; margin:0 auto; padding:0 32px; }
+
+.faq-group { margin-bottom:48px; }
+.faq-cat { font-size:11px; font-family:var(--font-mono); color:var(--gold); letter-spacing:.8px; text-transform:uppercase; margin-bottom:16px; }
+.faq-item { border:1px solid rgba(255,255,255,0.07); border-radius:var(--r-lg); margin-bottom:8px; overflow:hidden; transition:border-color .15s; }
+.faq-item--open { border-color:rgba(184,147,58,0.25); }
+.faq-q {
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 20px; background:transparent; border:none;
+  color:rgba(255,255,255,0.82); font-size:14.5px; font-weight:500; text-align:left;
+  cursor:pointer; transition:background .15s;
+}
+.faq-q:hover { background:rgba(255,255,255,0.03); }
+.faq-item--open .faq-q { color:var(--white); }
+.faq-chevron { flex-shrink:0; color:rgba(255,255,255,0.28); display:flex; align-items:center; transition:transform .2s; }
+.faq-item--open .faq-chevron { color:var(--gold); transform:rotate(90deg); }
+.faq-a { padding:0 20px 18px; font-size:14px; color:rgba(255,255,255,0.50); line-height:1.7; animation:fadeIn .2s ease; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px; }
+
+.help-empty { display:flex; flex-direction:column; align-items:center; gap:14px; padding:60px 20px; text-align:center; color:rgba(255,255,255,0.30); }
+.help-empty-icon { opacity:.3; }
+
+.help-still-stuck {
+  margin-top:48px; padding:32px; border-radius:var(--r-xl);
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);
+  text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.help-stuck-icon { color:var(--gold); }
+.help-still-stuck h3 { font-family:var(--font-display); font-size:22px; color:var(--white); font-weight:400; }
+.help-still-stuck p { font-size:14px; color:rgba(255,255,255,0.40); line-height:1.6; }
+.help-still-stuck a { color:var(--gold); text-decoration:underline; }

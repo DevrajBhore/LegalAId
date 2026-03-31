@@ -21,9 +21,10 @@
   "enforceability": "MEDIUM",
   "risk_level": "HIGH",
   "invalid_if": [
-    "Post-employment non-compete extends beyond protection of Confidential Information \u2013 likely void under ICA S.27",
+    "Post-employment non-compete extends beyond protection of Confidential Information – likely void under ICA S.27",
     "Geographic restriction unreasonably broad without nexus to employer's actual market"
   ],
-  "source": "Indian Contract Act, 1872 \u2013 S.27",
-  "version": "2.0"
+  "source": "Indian Contract Act, 1872 – S.27",
+  "version": "2.0",
+  "title": "Post-Employment Non-Compete"
 }

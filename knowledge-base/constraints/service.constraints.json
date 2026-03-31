@@ -9,6 +9,12 @@
       "fails_if": [
         "SERVICE_SCOPE_001",
         "CORE_PURPOSE_001"
+      ],
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
       ]
     },
     {
@@ -20,6 +26,12 @@
         "SERVICE_PAYMENT_001",
         "CORE_TERM_001",
         "EMPLOYMENT_COMPENSATION_001"
+      ],
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
       ]
     },
     {
@@ -31,6 +43,12 @@
         "CORE_TERM_001",
         "NDA_TERM_SURVIVAL_001",
         "RENTAL_TERM_001"
+      ],
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
       ]
     },
     {
@@ -42,6 +60,12 @@
         "CORE_TERMINATION_001",
         "EMPLOYMENT_TERMINATION_001",
         "RENTAL_TERMINATION_001"
+      ],
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
       ]
     }
   ]

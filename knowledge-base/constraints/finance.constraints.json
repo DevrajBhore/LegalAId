@@ -56,6 +56,9 @@
       "statutory_reference": "Indian Contract Act 1872 \u2013 S.126, S.128",
       "fails_if": [
         "GUARANTEE_OBLIGATION_001"
+      ],
+      "applies_to_doc_types": [
+        "GUARANTEE_AGREEMENT"
       ]
     },
     {
@@ -65,6 +68,9 @@
       "statutory_reference": "Transfer of Property Act 1882 \u2013 S.58; SARFAESI Act 2002",
       "fails_if": [
         "LOAN_SECURITY_001"
+      ],
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
       ]
     }
   ]

@@ -1,132 +1,198 @@
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
 import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
 import {
-  validateDocument,
-  downloadDocx,
   chatWithDocument,
+  downloadDocx,
   fixIssue,
+  saveDocumentHistory,
+  validateDocument,
 } from "../services/api";
+import { Icons } from "../utils/icons";
 import "./Editor.css";
 
 const SESSION_KEY = "legalaid_editor_draft";
 
-const DOC_DISPLAY_NAMES = {
-  NDA: "Non-Disclosure Agreement",
-  EMPLOYMENT_CONTRACT: "Employment Contract",
-  SERVICE_AGREEMENT: "Service Agreement",
-  CONSULTANCY_AGREEMENT: "Consultancy Agreement",
-  PARTNERSHIP_DEED: "Partnership Deed",
-  SHAREHOLDERS_AGREEMENT: "Shareholders Agreement",
-  JOINT_VENTURE_AGREEMENT: "Joint Venture Agreement",
-  SUPPLY_AGREEMENT: "Supply Agreement",
-  DISTRIBUTION_AGREEMENT: "Distribution Agreement",
-  SALES_OF_GOODS_AGREEMENT: "Sale of Goods Agreement",
-  INDEPENDENT_CONTRACTOR_AGREEMENT: "Independent Contractor Agreement",
-  COMMERCIAL_LEASE_AGREEMENT: "Commercial Lease Agreement",
-  LEAVE_AND_LICENSE_AGREEMENT: "Leave and License Agreement",
-  LOAN_AGREEMENT: "Loan Agreement",
-  GUARANTEE_AGREEMENT: "Guarantee Agreement",
-  SOFTWARE_DEVELOPMENT_AGREEMENT: "Software Development Agreement",
-  MOU: "Memorandum of Understanding",
-  PRIVACY_POLICY: "Privacy Policy",
-};
+function markDraftEdited(nextDraft, { aiTouched = false } = {}) {
+  if (!nextDraft) return nextDraft;
+
+  return {
+    ...nextDraft,
+    metadata: {
+      ...(nextDraft.metadata || {}),
+      user_edited: true,
+      review_state: "edited",
+      ai_touched:
+        aiTouched === true || nextDraft?.metadata?.ai_touched === true,
+    },
+  };
+}
+
+function resolveHistoryChangeType(
+  history,
+  draft,
+  { hasEdited = false, changeType } = {}
+) {
+  if (changeType) return changeType;
+  if (!history?.draftId) return "generated";
+  if (draft?.metadata?.ai_touched) return "ai_edit";
+  if (hasEdited || draft?.metadata?.user_edited) return "manual_edit";
+  return "autosave";
+}
 
 export default function Editor() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getInitialDraft = () => {
+  const getInitialState = () => {
     if (location.state?.draft) {
       sessionStorage.setItem(SESSION_KEY, JSON.stringify(location.state));
-      return location.state.draft;
+      return {
+        draft: location.state.draft,
+        validation: location.state.validation || null,
+        documentMeta: location.state.documentMeta || null,
+        history: location.state.history || null,
+      };
     }
+
     const saved = sessionStorage.getItem(SESSION_KEY);
     if (saved) {
       try {
-        return JSON.parse(saved).draft || null;
+        const parsed = JSON.parse(saved);
+        return {
+          draft: parsed.draft || null,
+          validation: parsed.validation || null,
+          documentMeta: parsed.documentMeta || null,
+          history: parsed.history || null,
+        };
       } catch {
-        return null;
+        return {
+          draft: null,
+          validation: null,
+          documentMeta: null,
+          history: null,
+        };
       }
     }
-    return null;
+
+    return {
+      draft: null,
+      validation: null,
+      documentMeta: null,
+      history: null,
+    };
   };
 
-  const getInitialValidation = () => {
-    if (location.state?.validation) return location.state.validation;
-    const saved = sessionStorage.getItem(SESSION_KEY);
-    if (saved) {
-      try {
-        return JSON.parse(saved).validation || null;
-      } catch {
-        return null;
-      }
-    }
-    return null;
-  };
-
-  const [draft, setDraft] = useState(getInitialDraft);
-  const [validation, setValidation] = useState(getInitialValidation);
+  const [initialState] = useState(getInitialState);
+  const [draft, setDraft] = useState(initialState.draft);
+  const [validation, setValidation] = useState(initialState.validation);
+  const [documentMeta] = useState(initialState.documentMeta);
+  const [history, setHistory] = useState(initialState.history);
   const [downloading, setDownloading] = useState(false);
-  const [hasEdited, setHasEdited] = useState(false); // any manual edit made
-  const [needsValidation, setNeedsValidation] = useState(false); // waiting for re-validate
-  const [validating, setValidating] = useState(false); // validation in progress
-  const [activeTab, setActiveTab] = useState("validation"); // "validation" | "chat"
+  const [hasEdited, setHasEdited] = useState(false);
+  const [needsValidation, setNeedsValidation] = useState(false);
+  const [validating, setValidating] = useState(false);
+  const [saveState, setSaveState] = useState(
+    initialState.history?.draftId ? "saved" : "pending"
+  );
+  const [activeTab, setActiveTab] = useState("validation");
   const [editedClauses, setEditedClauses] = useState(new Set());
   const [fixingIssueId, setFixingIssueId] = useState(null);
-
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      text: "I can help you edit this document. Try asking me to strengthen a clause, adjust terms, or explain any section.",
+      text: "I can help you refine clauses, explain risks, or rewrite specific sections in this draft.",
     },
   ]);
   const [chatInput, setChatInput] = useState("");
   const [chatLoading, setChatLoading] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Fast background validation after edits (regex only — catches obvious illegal content)
-  // Bug fix: never let a shallow fast-validation overwrite a deeper result that found
-  // more issues — only update if the fast result is equally or more severe.
+  useEffect(() => {
+    if (!draft) {
+      sessionStorage.removeItem(SESSION_KEY);
+      return;
+    }
+
+    sessionStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify({
+        draft,
+        validation,
+        documentMeta,
+        history,
+      })
+    );
+  }, [documentMeta, draft, history, validation]);
+
+  useEffect(() => {
+    if (!draft?.document_type || !draft?.clauses?.length) return;
+
+    const timer = setTimeout(async () => {
+      setSaveState("saving");
+      try {
+        const res = await saveDocumentHistory({
+          draftId: history?.draftId || null,
+          draft,
+          validation,
+          documentMeta,
+          changeType: resolveHistoryChangeType(history, draft, { hasEdited }),
+        });
+        if (res.data?.history) {
+          setHistory(res.data.history);
+        }
+        setSaveState("saved");
+      } catch (error) {
+        console.error("History save failed:", error);
+        setSaveState("error");
+      }
+    }, history?.draftId ? 1500 : 450);
+
+    return () => clearTimeout(timer);
+  }, [documentMeta, draft, hasEdited, history?.draftId, validation]);
+
   useEffect(() => {
     if (!draft?.document_type || !draft?.clauses?.length || !hasEdited) return;
-    const t = setTimeout(async () => {
+
+    const timer = setTimeout(async () => {
       try {
-        const res = await validateDocument(draft, false); // fast, no AI
-        const v = res.data?.validation || res.data;
-        if (!v || (!v.risk_level && !v.overall_risk)) return;
+        const res = await validateDocument(draft, "background");
+        const nextValidation = res.data?.validation;
+        if (!nextValidation?.risk) return;
 
         setValidation((prev) => {
-          const RISK_RANK = { LOW: 0, MEDIUM: 1, HIGH: 2, BLOCKED: 3 };
-          const prevRisk = prev?.overall_risk || prev?.risk_level || "LOW";
-          const newRisk = v.overall_risk || v.risk_level || "LOW";
-          // Only overwrite if the new result is worse or equal severity
-          // This prevents a fast regex pass from clearing AI-detected BLOCKED issues
-          if ((RISK_RANK[newRisk] ?? 0) >= (RISK_RANK[prevRisk] ?? 0)) {
-            return v;
-          }
-          return prev;
+          const riskRank = { LOW: 0, MEDIUM: 1, HIGH: 2, BLOCKED: 3 };
+          const previousRisk = prev?.risk || prev?.overall_risk || "LOW";
+          const nextRisk =
+            nextValidation.risk || nextValidation.overall_risk || "LOW";
+
+          return (riskRank[nextRisk] ?? 0) >= (riskRank[previousRisk] ?? 0)
+            ? nextValidation
+            : prev;
         });
-      } catch (e) {
-        /* silent — user can still manually validate */
+      } catch {
+        // Manual validate remains available from the action button.
       }
     }, 1200);
-    return () => clearTimeout(t);
-  }, [draft]);
+
+    return () => clearTimeout(timer);
+  }, [draft, hasEdited]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleClauseChange = (updated) => {
-    setDraft((prev) => ({
-      ...prev,
-      clauses: prev.clauses.map((c) =>
-        c.clause_id === updated.clause_id ? updated : c
-      ),
-    }));
-    setEditedClauses((prev) => new Set([...prev, updated.clause_id]));
+  const handleClauseChange = (updatedClause) => {
+    setDraft((prev) =>
+      markDraftEdited({
+        ...prev,
+        clauses: prev.clauses.map((clause) =>
+          clause.clause_id === updatedClause.clause_id ? updatedClause : clause
+        ),
+      })
+    );
+    setEditedClauses((prev) => new Set([...prev, updatedClause.clause_id]));
     setHasEdited(true);
     setNeedsValidation(true);
   };
@@ -135,39 +201,64 @@ export default function Editor() {
     setDownloading(true);
     try {
       await downloadDocx(draft, validation);
+      setSaveState("saving");
+
+      try {
+        const res = await saveDocumentHistory({
+          draftId: history?.draftId || null,
+          draft,
+          validation,
+          documentMeta,
+          changeType: "exported",
+        });
+        if (res.data?.history) {
+          setHistory(res.data.history);
+        }
+        setSaveState("saved");
+      } catch (error) {
+        console.error("History export save failed:", error);
+        setSaveState("error");
+      }
     } catch {
-      alert("Download failed. Check the backend is running.");
+      alert("Download failed. Please check that the backend is running.");
     } finally {
       setDownloading(false);
     }
   };
 
-  const handleValidateAndDownload = async () => {
+  const handleValidate = async () => {
     setValidating(true);
+
     try {
-      const res = await validateDocument(draft, true); // deep=true → full AI check
-      const v = res.data?.validation || res.data;
-      if (v && (v.risk_level || v.overall_risk)) {
-        setValidation(v);
+      const res = await validateDocument(draft, "final");
+      const nextValidation = res.data?.validation;
+
+      if (nextValidation?.risk) {
+        setValidation(nextValidation);
       }
+
+      setSaveState("saving");
+      try {
+        const historyResponse = await saveDocumentHistory({
+          draftId: history?.draftId || null,
+          draft,
+          validation: nextValidation || validation,
+          documentMeta,
+          changeType: "validated",
+        });
+        if (historyResponse.data?.history) {
+          setHistory(historyResponse.data.history);
+        }
+        setSaveState("saved");
+      } catch (error) {
+        console.error("History validation save failed:", error);
+        setSaveState("error");
+      }
+
       setNeedsValidation(false);
       setActiveTab("validation");
-
-      // Only download immediately if certified — otherwise the panel shows the issues
-      const certified =
-        v?.certified && (v?.overall_risk || v?.risk_level) !== "BLOCKED";
-      if (certified) {
-        setDownloading(true);
-        try {
-          await downloadDocx(draft, v);
-        } catch {
-          alert("Download failed. Check the backend is running.");
-        } finally {
-          setDownloading(false);
-        }
-      }
-    } catch (e) {
-      console.error("Validation failed:", e);
+    } catch (error) {
+      console.error("Validation failed:", error);
       alert("Validation failed. Please try again.");
     } finally {
       setValidating(false);
@@ -177,47 +268,43 @@ export default function Editor() {
   const handleSendMessage = async () => {
     const text = chatInput.trim();
     if (!text || chatLoading) return;
+
     setChatInput("");
     setMessages((prev) => [...prev, { role: "user", text }]);
     setChatLoading(true);
+
     try {
       const res = await chatWithDocument(draft, text);
       const result = res.data;
 
       if (result.type === "edit" && result.edits?.length > 0) {
-        const editedIds = new Set(result.edits.map((e) => e.clause_id));
+        const editedIds = new Set(result.edits.map((edit) => edit.clause_id));
 
-        setDraft((prev) => {
-          const updated = {
-            ...prev,
-            clauses: prev.clauses.map((clause) => {
-              const edit = result.edits.find(
-                (e) => e.clause_id === clause.clause_id
-              );
-              return edit ? { ...clause, text: edit.new_text } : clause;
-            }),
-          };
-          const saved = sessionStorage.getItem(SESSION_KEY);
-          if (saved) {
-            const parsed = JSON.parse(saved);
-            sessionStorage.setItem(
-              SESSION_KEY,
-              JSON.stringify({ ...parsed, draft: updated })
-            );
-          }
-          return updated;
-        });
+        setDraft((prev) =>
+          markDraftEdited(
+            {
+              ...prev,
+              clauses: prev.clauses.map((clause) => {
+                const edit = result.edits.find(
+                  (item) => item.clause_id === clause.clause_id
+                );
+                return edit ? { ...clause, text: edit.new_text } : clause;
+              }),
+            },
+            { aiTouched: true }
+          )
+        );
 
         setEditedClauses((prev) => new Set([...prev, ...editedIds]));
         setHasEdited(true);
         setNeedsValidation(true);
 
         const clauseNames = result.edits
-          .map((e) => {
+          .map((edit) => {
             const clause = draft.clauses.find(
-              (c) => c.clause_id === e.clause_id
+              (item) => item.clause_id === edit.clause_id
             );
-            return clause?.title || e.clause_id;
+            return clause?.title || edit.clause_id;
           })
           .join(", ");
 
@@ -226,11 +313,10 @@ export default function Editor() {
           {
             role: "assistant",
             text: result.reply,
-            editSummary: `✓ Updated: ${clauseNames}`,
+            editSummary: `Updated: ${clauseNames}`,
           },
         ]);
 
-        // Clear edit highlights after 4s
         setTimeout(() => setEditedClauses(new Set()), 4000);
       } else {
         setMessages((prev) => [
@@ -243,7 +329,7 @@ export default function Editor() {
         ...prev,
         {
           role: "assistant",
-          text: "Sorry, I couldn't connect. Please try again.",
+          text: "Sorry, I couldn't complete that request. Please try again.",
         },
       ]);
     } finally {
@@ -253,62 +339,73 @@ export default function Editor() {
 
   const handleFixIssue = async (issue) => {
     setFixingIssueId(issue.rule_id);
+
     try {
       const res = await fixIssue(draft, issue);
       const result = res.data;
 
-      if (result.edits?.length > 0) {
-        const editedIds = new Set(result.edits.map((e) => e.clause_id));
-        setDraft((prev) => {
-          const updated = {
-            ...prev,
-            clauses: prev.clauses.map((clause) => {
-              const edit = result.edits.find(
-                (e) => e.clause_id === clause.clause_id
-              );
-              return edit ? { ...clause, text: edit.new_text } : clause;
-            }),
-          };
-          const saved = sessionStorage.getItem(SESSION_KEY);
-          if (saved) {
-            const parsed = JSON.parse(saved);
-            sessionStorage.setItem(
-              SESSION_KEY,
-              JSON.stringify({ ...parsed, draft: updated })
-            );
-          }
-          return updated;
+      if (result.draft?.clauses?.length) {
+        const nextDraft = markDraftEdited(result.draft, {
+          aiTouched: result.source === "ai",
         });
+        const editedIds = new Set(
+          (result.edits || []).map((edit) => edit.clause_id)
+        );
+
+        setDraft(nextDraft);
         setEditedClauses((prev) => new Set([...prev, ...editedIds]));
-        setNeedsValidation(true);
+        setHasEdited(true);
+        setNeedsValidation(false);
         setTimeout(() => setEditedClauses(new Set()), 4000);
       }
 
-      // Show confirmation in chat tab
+      if (result.validation) {
+        setValidation(result.validation);
+      }
+
       if (result.explanation) {
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            text: `Fixed "${issue.rule_id}": ${result.explanation}`,
+            text: `Applied fix for "${issue.rule_id}". ${result.explanation}`,
             editSummary:
               result.edits?.length > 0
-                ? `✓ Applied fix to ${result.edits.length} clause(s)`
+                ? `Updated ${result.edits.length} clause(s)`
                 : null,
           },
         ]);
-        setActiveTab("chat");
+        setActiveTab("validation");
       }
-    } catch {
+    } catch (error) {
+      const result = error?.response?.data;
+
+      if (result?.validation) {
+        setValidation(result.validation);
+        setNeedsValidation(false);
+      }
+
+      if (result?.explanation) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            text: result.explanation,
+          },
+        ]);
+        setActiveTab("validation");
+        return;
+      }
+
       alert("Fix failed. Please try again.");
     } finally {
       setFixingIssueId(null);
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
       handleSendMessage();
     }
   };
@@ -316,244 +413,317 @@ export default function Editor() {
   if (!draft) {
     return (
       <div className="editor-empty">
+        <div style={{ fontSize: 48, opacity: 0.2 }}>{Icons.scale}</div>
         <p>No document loaded.</p>
-        <button onClick={() => navigate("/")}>← Go Home</button>
+        <button onClick={() => navigate("/library")}>Go to Library</button>
       </div>
     );
   }
 
   const displayName =
-    DOC_DISPLAY_NAMES[draft.document_type] ||
+    documentMeta?.displayName ||
     draft.document_type
       ?.replace(/_/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
-  const issueCount = validation?.issues?.length || 0;
-  const riskLevel = validation?.overall_risk || validation?.risk_level;
-  // A document is only downloadable when certified, not blocked, and not needing re-validation
+  const blockingIssues = validation?.blockingIssues || validation?.issues || [];
+  const advisoryIssues =
+    validation?.advisoryIssues || validation?.advisory_issues || [];
+  const issueCount =
+    validation?.summary?.total ??
+    validation?.issueCount ??
+    validation?.issue_count ??
+    blockingIssues.length + advisoryIssues.length;
+  const riskLevel =
+    validation?.risk || validation?.overall_risk || validation?.risk_level;
+  const workspaceStatus = needsValidation
+    ? "Edited - re-validate"
+    : validation?.certified && issueCount === 0
+      ? "Certified"
+      : validation
+        ? "In review"
+        : "Draft loaded";
+  const validationMode = validation?.mode
+    ? validation.mode.charAt(0).toUpperCase() + validation.mode.slice(1)
+    : "Pending";
+  const saveLabel =
+    saveState === "saving"
+      ? "Saving..."
+      : saveState === "error"
+        ? "Save failed"
+        : history?.draftId
+          ? "Saved"
+          : "Saving soon";
   const isCertified =
     validation?.certified === true &&
     riskLevel !== "BLOCKED" &&
+    issueCount === 0 &&
     !needsValidation;
+  const workspaceLinks = [
+    { label: "Library", path: "/library" },
+    { label: "Documents", path: "/documents" },
+    { label: "Profile", path: "/profile" },
+  ];
+
+  const statusItems = [
+    { icon: Icons.fileText, label: "Status", value: workspaceStatus },
+    { icon: Icons.shieldCheck, label: "Validation", value: validationMode },
+    {
+      icon: Icons.warning,
+      label: "Open items",
+      value: `${issueCount} item${issueCount === 1 ? "" : "s"}`,
+    },
+    { icon: Icons.scroll, label: "History", value: saveLabel },
+  ];
 
   return (
     <div className="editor-page">
-      {/* Top bar */}
       <div className="editor-topbar">
-        <div className="editor-topbar-left">
-          <button
-            className="back-btn"
-            onClick={() => {
-              sessionStorage.removeItem(SESSION_KEY);
-              navigate("/");
-            }}
-          >
-            ← Back
-          </button>
-          <div className="editor-doc-info">
-            <h2 className="editor-title">{displayName}</h2>
-            <p className="editor-subtitle">
-              <span>{draft.clauses?.length} clauses</span>
-              <span>· India</span>
-              {needsValidation && !validating && (
-                <span
-                  style={{
-                    color: "var(--accent)",
-                    fontSize: 10,
-                    fontFamily: "var(--font-mono)",
-                  }}
-                >
-                  • edited
-                </span>
-              )}
-              {validating && <span className="validating-dot">Validating</span>}
-            </p>
+        <div className="editor-topbar-inner">
+          <div className="editor-topbar-left">
+            <button
+              className="back-btn"
+              onClick={() => navigate("/library")}
+            >
+              {Icons.arrowLeft} Library
+            </button>
+
+            <div className="topbar-divider" />
+
+            <div className="editor-doc-info">
+              <h2 className="editor-title">{displayName}</h2>
+              <p className="editor-subtitle">
+                <span>{draft.clauses?.length || 0} clauses</span>
+                <span>Indian law</span>
+                <span>{saveLabel}</span>
+                {needsValidation && !validating && (
+                  <span className="edited-dot">Edited since last review</span>
+                )}
+                {validating && (
+                  <span className="validating-dot">Validating</span>
+                )}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="editor-topbar-right">
-          {riskLevel && (
-            <span
-              style={{
-                fontSize: 11,
-                fontFamily: "var(--font-mono)",
-                fontWeight: 600,
-                padding: "4px 10px",
-                borderRadius: 6,
-                background:
-                  riskLevel === "LOW"
-                    ? "rgba(42,107,60,0.2)"
-                    : riskLevel === "BLOCKED"
-                    ? "rgba(139,28,28,0.2)"
-                    : "rgba(122,82,8,0.2)",
-                color:
-                  riskLevel === "LOW"
-                    ? "#6dd88a"
-                    : riskLevel === "BLOCKED"
-                    ? "#f0807a"
-                    : "#f5c96a",
-                letterSpacing: "0.5px",
-              }}
-            >
-              {riskLevel}
-            </span>
-          )}
-          {isCertified && !needsValidation ? (
-            // Certified + no pending edits → show Download
-            <button
-              className={`download-btn-top${downloading ? " downloading" : ""}`}
-              onClick={handleDownload}
-              disabled={downloading}
-            >
-              {downloading ? "Preparing…" : "⬇ Download DOCX"}
-            </button>
-          ) : (
-            // Not certified, blocked, or has pending edits → must validate first
-            <button
-              className={`validate-download-btn${validating ? " loading" : ""}`}
-              onClick={handleValidateAndDownload}
-              disabled={validating}
-            >
-              {validating ? (
-                <>
-                  <span className="btn-spinner" /> Validating…
-                </>
-              ) : (
-                <>
-                  <span className="btn-icon">⚖</span> Validate & Download
-                </>
-              )}
-            </button>
-          )}
+
+          <div className="editor-topbar-right">
+            <div className="editor-workspace-links">
+              {workspaceLinks.map((link) => (
+                <button
+                  key={link.path}
+                  className="editor-workspace-link"
+                  onClick={() => navigate(link.path)}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+
+            {riskLevel && (
+              <span
+                className={`risk-pill risk-pill--${riskLevel.toLowerCase()}`}
+              >
+                {riskLevel}
+              </span>
+            )}
+
+            {isCertified ? (
+              <button
+                className={`download-btn-top${
+                  downloading ? " downloading" : ""
+                }`}
+                onClick={handleDownload}
+                disabled={downloading}
+              >
+                <span className="btn-icon">{Icons.download}</span>
+                {downloading ? "Preparing..." : "Download DOCX"}
+              </button>
+            ) : (
+              <button
+                className={`validate-download-btn${
+                  validating ? " loading" : ""
+                }`}
+                onClick={handleValidate}
+                disabled={validating}
+              >
+                {validating ? (
+                  <>
+                    <span className="btn-spinner" /> Validating...
+                  </>
+                ) : (
+                  <>
+                    <span className="btn-icon">{Icons.shieldCheck}</span>
+                    Validate
+                  </>
+                )}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Body */}
-      <div className="editor-body">
-        {/* LEFT — paper document */}
-        <div className="editor-left">
-          <div className="doc-paper">
-            {needsValidation && (
-              <div className="doc-edited-notice">
-                <span className="doc-edited-icon">✎</span>
-                <span>
-                  Document has been edited — click{" "}
-                  <strong>Validate & Download</strong> to re-check before
-                  downloading.
-                </span>
-              </div>
-            )}
-            <div className="doc-header">
-              <div className="doc-type-label">Legal Document · India</div>
-              <div className="doc-title-main">{displayName}</div>
-              <div className="doc-jurisdiction">
-                Governed by Indian Law · {draft.jurisdiction || "India"}
+      <div className="editor-shell">
+        <div className="editor-status-strip">
+          {statusItems.map((item) => (
+            <div key={item.label} className="editor-status-item">
+              <div className="editor-status-icon">{item.icon}</div>
+              <div>
+                <div className="editor-status-lbl">{item.label}</div>
+                <div className="editor-status-val">{item.value}</div>
               </div>
             </div>
-
-            {draft.clauses?.map((clause, index) => (
-              <ClauseEditor
-                key={clause.clause_id || index}
-                clause={clause}
-                onChange={handleClauseChange}
-                index={index}
-                recentlyEdited={editedClauses.has(clause.clause_id)}
-              />
-            ))}
-          </div>
+          ))}
         </div>
 
-        {/* RIGHT — tabbed sidebar */}
-        <div className="editor-right">
-          <div className="sidebar-tabs">
-            <button
-              className={`sidebar-tab${
-                activeTab === "validation" ? " sidebar-tab--active" : ""
-              }`}
-              onClick={() => setActiveTab("validation")}
-            >
-              Validation {issueCount > 0 && `(${issueCount})`}
-            </button>
-            <button
-              className={`sidebar-tab${
-                activeTab === "chat" ? " sidebar-tab--active" : ""
-              }`}
-              onClick={() => setActiveTab("chat")}
-            >
-              AI Assistant
-            </button>
-          </div>
-
-          {activeTab === "validation" && (
-            <div className="sidebar-panel">
-              <RiskPanel
-                validation={validation}
-                onDownload={handleDownload}
-                downloading={downloading}
-                hideDownload
-                onFixIssue={
-                  hasEdited && !needsValidation ? handleFixIssue : null
-                }
-                fixingIssueId={fixingIssueId}
-              />
-            </div>
-          )}
-
-          {activeTab === "chat" && (
-            <div className="sidebar-panel ai-chat">
-              <div className="ai-chat-header">
-                <span className="ai-chat-dot" />
-                <span className="ai-chat-title">AI Legal Assistant</span>
+        <div className="editor-body">
+          <div className="editor-left">
+            <div className="editor-doc-shell">
+              <div className="editor-doc-shell-bar">
+                <div className="editor-doc-shell-label">
+                  Live drafting surface
+                </div>
+                <div className="editor-doc-shell-chips">
+                  <span className="editor-doc-chip">
+                    {draft.clauses?.length || 0} clauses
+                  </span>
+                  {riskLevel && (
+                    <span className="editor-doc-chip">{riskLevel} risk</span>
+                  )}
+                </div>
               </div>
 
-              <div className="ai-chat-messages">
-                {messages.map((msg, i) => (
-                  <div key={i} className={`chat-msg chat-msg--${msg.role}`}>
-                    {msg.role === "assistant" && (
-                      <span className="chat-avatar">AI</span>
-                    )}
-                    <div className="chat-bubble">
-                      <p className="chat-text">{msg.text}</p>
-                      {msg.editSummary && (
-                        <span className="chat-edit-badge">
-                          {msg.editSummary}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-                {chatLoading && (
-                  <div className="chat-msg chat-msg--assistant">
-                    <span className="chat-avatar">AI</span>
-                    <div className="chat-typing">
-                      <span />
-                      <span />
-                      <span />
-                    </div>
+              <div className="doc-paper">
+                {needsValidation && (
+                  <div className="doc-edited-notice">
+                    <span className="doc-edited-icon">{Icons.warning}</span>
+                    <span>
+                      This draft was edited after the last review. Validate
+                      again before downloading.
+                    </span>
                   </div>
                 )}
-                <div ref={chatEndRef} />
-              </div>
 
-              <div className="ai-chat-input-row">
-                <textarea
-                  className="ai-chat-input"
-                  placeholder="Ask me to edit a clause… (Enter to send)"
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  rows={2}
-                  disabled={chatLoading}
-                />
-                <button
-                  className="ai-chat-send"
-                  onClick={handleSendMessage}
-                  disabled={chatLoading || !chatInput.trim()}
-                >
-                  ↑
-                </button>
+                <div className="doc-header">
+                  <div className="doc-type-label">Legal document workspace</div>
+                  <div className="doc-title-main">{displayName}</div>
+                  <div className="doc-jurisdiction">
+                    Governed by Indian law and ready for clause-by-clause
+                    review.
+                  </div>
+                </div>
+
+                {draft.clauses?.map((clause, index) => (
+                  <ClauseEditor
+                    key={clause.clause_id || index}
+                    clause={clause}
+                    onChange={handleClauseChange}
+                    index={index}
+                    recentlyEdited={editedClauses.has(clause.clause_id)}
+                  />
+                ))}
               </div>
             </div>
-          )}
+          </div>
+
+          <div className="editor-right">
+            <div className="sidebar-tabs">
+              <button
+                className={`sidebar-tab${
+                  activeTab === "validation" ? " sidebar-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("validation")}
+              >
+                Validation {issueCount > 0 ? `(${issueCount})` : ""}
+              </button>
+              <button
+                className={`sidebar-tab${
+                  activeTab === "chat" ? " sidebar-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("chat")}
+              >
+                AI Assistant
+              </button>
+            </div>
+
+            {activeTab === "validation" && (
+              <div className="sidebar-panel">
+                <RiskPanel
+                  validation={validation}
+                  onDownload={handleDownload}
+                  downloading={downloading}
+                  hideDownload
+                  onFixIssue={handleFixIssue}
+                  fixingIssueId={fixingIssueId}
+                />
+              </div>
+            )}
+
+            {activeTab === "chat" && (
+              <div className="sidebar-panel ai-chat">
+                <div className="ai-chat-header">
+                  <span className="ai-chat-dot" />
+                  <span className="ai-chat-title">AI assistant</span>
+                </div>
+
+                <div className="ai-chat-messages">
+                  {messages.map((message, index) => (
+                    <div
+                      key={`${message.role}-${index}`}
+                      className={`chat-msg chat-msg--${message.role}`}
+                    >
+                      {message.role === "assistant" && (
+                        <span className="chat-avatar">AI</span>
+                      )}
+                      {message.role === "user" && (
+                        <span className="chat-avatar">You</span>
+                      )}
+                      <div className="chat-bubble">
+                        <p className="chat-text">{message.text}</p>
+                        {message.editSummary && (
+                          <span className="chat-edit-badge">
+                            {message.editSummary}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+
+                  {chatLoading && (
+                    <div className="chat-msg chat-msg--assistant">
+                      <span className="chat-avatar">AI</span>
+                      <div className="chat-typing">
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                    </div>
+                  )}
+
+                  <div ref={chatEndRef} />
+                </div>
+
+                <div className="ai-chat-input-row">
+                  <textarea
+                    className="ai-chat-input"
+                    placeholder="Ask for a clause edit or explanation..."
+                    value={chatInput}
+                    onChange={(event) => setChatInput(event.target.value)}
+                    onKeyDown={handleKeyDown}
+                    rows={2}
+                    disabled={chatLoading}
+                  />
+                  <button
+                    className="ai-chat-send"
+                    onClick={handleSendMessage}
+                    disabled={chatLoading || !chatInput.trim()}
+                    title="Send"
+                  >
+                    {Icons.arrowRight}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

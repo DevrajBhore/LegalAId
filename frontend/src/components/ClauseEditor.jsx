@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./ClauseEditor.css";
 
 const CATEGORY_LABELS = {
@@ -22,6 +22,9 @@ const CATEGORY_LABELS = {
   REGULATORY: "Regulatory",
   FINANCE: "Financial Terms",
   CORPORATE: "Corporate Governance",
+  COMMERCIAL: "Commercial Terms",
+  OBLIGATIONS: "Obligations",
+  REPRESENTATIONS: "Representations",
 };
 
 export default function ClauseEditor({
@@ -31,11 +34,27 @@ export default function ClauseEditor({
   recentlyEdited,
 }) {
   const [editing, setEditing] = useState(false);
+  const textareaRef = useRef(null);
+
   const label =
     CATEGORY_LABELS[clause.category] ||
     clause.category?.replace(/_/g, " ") ||
     "Clause";
   const isSignature = clause.category === "SIGNATURE_BLOCK";
+
+  useEffect(() => {
+    if (editing && textareaRef.current) {
+      const textarea = textareaRef.current;
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }, [editing, clause.text]);
+
+  const handleDone = () => setEditing(false);
+  const wordCount =
+    editing && clause.text
+      ? clause.text.trim().split(/\s+/).filter(Boolean).length
+      : 0;
 
   return (
     <div
@@ -59,7 +78,7 @@ export default function ClauseEditor({
         </div>
 
         <div className="clause-head-right">
-          {clause.statutory_reference && (
+          {clause.statutory_reference && !editing && (
             <span
               className="clause-stat-ref"
               title={clause.statutory_reference}
@@ -67,25 +86,42 @@ export default function ClauseEditor({
               {clause.statutory_reference}
             </span>
           )}
+          {editing && (
+            <span className="clause-word-count">{wordCount} words</span>
+          )}
           <button
             className={`clause-edit-btn${
               editing ? " clause-edit-btn--active" : ""
             }`}
-            onClick={() => setEditing((e) => !e)}
+            onClick={() => (editing ? handleDone() : setEditing(true))}
           >
-            {editing ? "✓ Done" : "Edit"}
+            {editing ? "Done" : "Edit"}
           </button>
         </div>
       </div>
 
       {editing ? (
-        <textarea
-          className="clause-textarea"
-          value={clause.text || ""}
-          onChange={(e) => onChange({ ...clause, text: e.target.value })}
-          autoFocus
-          rows={Math.max(6, Math.ceil((clause.text || "").length / 90))}
-        />
+        <div className="clause-edit-wrap">
+          <textarea
+            ref={textareaRef}
+            className="clause-textarea"
+            value={clause.text || ""}
+            onChange={(event) => {
+              onChange({ ...clause, text: event.target.value });
+              event.target.style.height = "auto";
+              event.target.style.height = `${event.target.scrollHeight}px`;
+            }}
+            autoFocus
+          />
+          <div className="clause-edit-footer">
+            <span className="clause-edit-hint">
+              Plain text | Changes auto-saved to draft
+            </span>
+            <button className="clause-done-btn" onClick={handleDone}>
+              Done editing
+            </button>
+          </div>
+        </div>
       ) : (
         <div
           className={`clause-text${isSignature ? " clause-text--sig" : ""}`}
@@ -93,7 +129,7 @@ export default function ClauseEditor({
           title="Click to edit"
         >
           {clause.text || (
-            <span className="clause-empty">No content — click to add</span>
+            <span className="clause-empty">No content - click to add</span>
           )}
         </div>
       )}

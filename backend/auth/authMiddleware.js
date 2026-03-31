@@ -12,7 +12,9 @@ export async function protect(req, res, next) {
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await User.findById(decoded.id);
+    const user = await User.findById(decoded.id)
+      .select("_id name email phone isVerified createdAt")
+      .lean();
     if (!user) {
       return res.status(401).json({ error: "User no longer exists." });
     }

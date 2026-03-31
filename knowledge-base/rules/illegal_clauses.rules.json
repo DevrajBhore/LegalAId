@@ -87,10 +87,7 @@
         "child.?labor.*allow",
         "child.?labour.*permit",
         "child.?labor.*permit",
-        "employ.*child",
-        "employ.*minor",
         "children.*may.*work",
-        "minors.*may.*work",
         "children.*shall.*work",
         "person.*below.*14.*year",
         "child.*worker",
@@ -98,6 +95,8 @@
         "employ.*age.*14",
         "employment.*of.*children",
         "employment.*of.*minors",
+        "employ.*child.*under.*14",
+        "employ.*person.*below.*14",
         "child.*labour.*acceptable",
         "child.*labour.*permitted",
         "allow.*child.?lab",
@@ -278,8 +277,8 @@
       "reference": "Micro, Small and Medium Enterprises Development Act 2006 \u2013 S.15",
       "suggestion": "If counterparty is an MSME, payment must be made within 45 days of acceptance. Add MSME compliance provision.",
       "patterns": [
-        "payment.*within.*(?:6[0-9]|[7-9]\\d|\\d{3,}).*days",
-        "net.*(?:60|90|120|180).*days"
+        "\\bpayment\\b.*\\bwithin\\b.*(?:6[0-9]|[7-9]\\d|\\d{3,}).*\\bdays\\b",
+        "\\bnet\\s*(?:60|90|120|180)\\b"
       ],
       "blocks_generation": false,
       "context": "PRESENCE"

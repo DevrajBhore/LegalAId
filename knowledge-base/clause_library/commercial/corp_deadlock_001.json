@@ -1,35 +1,36 @@
 {
-    "clause_id": "CORP_DEADLOCK_001",
-    "name": "Deadlock Resolution",
-    "category": "CORPORATE",
-    "document_types": [
-      "SHAREHOLDERS_AGREEMENT",
-      "JOINT_VENTURE_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "A 'Deadlock' shall be deemed to occur if the Board of Directors or the Shareholders fail to reach a decision on a Reserved Matter within thirty (30) days of the matter being first tabled ('Deadlock Period'). Upon the occurrence of a Deadlock, the following escalation procedure shall apply: (a) within seven (7) days of the expiry of the Deadlock Period, senior representatives of each Party shall meet and attempt in good faith to resolve the Deadlock; (b) if the Deadlock remains unresolved after a further thirty (30) days, either Party may serve a written notice ('Deadlock Notice') on the other Party; (c) upon receipt of a Deadlock Notice, either Party may elect to purchase the other Party's entire shareholding at fair market value, to be determined by an independent valuer appointed by mutual agreement or, failing agreement within fifteen (15) days, by the President of the Institute of Chartered Accountants of India; and (d) if neither Party elects to buy out the other within thirty (30) days of the Deadlock Notice, the Parties shall jointly procure a sale of the Company to a third party.",
-    "legal_basis": [
-      {
-        "act": "Companies Act, 2013",
-        "section": "241"
-      },
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "General Principles"
-      },
-      {
-        "act": "Arbitration and Conciliation Act, 1996",
-        "section": "General"
-      }
-    ],
-    "mandatory": false,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "No escalation timeline is specified",
-      "Valuation mechanism for buyout is absent",
-      "Deadlock trigger events are not defined"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "CORP_DEADLOCK_001",
+  "name": "Deadlock Resolution",
+  "category": "CORPORATE",
+  "document_types": [
+    "SHAREHOLDERS_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "A 'Deadlock' shall be deemed to occur if the Board of Directors or the Shareholders fail to reach a decision on a Reserved Matter within thirty (30) days of the matter being first tabled ('Deadlock Period'). Upon the occurrence of a Deadlock, the following escalation procedure shall apply: (a) within seven (7) days of the expiry of the Deadlock Period, senior representatives of each Party shall meet and attempt in good faith to resolve the Deadlock; (b) if the Deadlock remains unresolved after a further thirty (30) days, either Party may serve a written notice ('Deadlock Notice') on the other Party; (c) upon receipt of a Deadlock Notice, either Party may elect to purchase the other Party's entire shareholding at fair market value, as determined by an independent valuer mutually appointed by the Parties or, failing such appointment within fifteen (15) days, by the President of the Institute of Chartered Accountants of India; and (d) if neither Party elects to buy out the other within thirty (30) days of the Deadlock Notice, the Parties shall jointly procure a sale of the Company to a third party.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "241"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "General Principles"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "General"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "No escalation timeline is specified",
+    "Valuation mechanism for buyout is absent",
+    "Deadlock trigger events are not defined"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Deadlock Resolution"
+}

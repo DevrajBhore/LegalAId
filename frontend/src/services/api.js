@@ -1,37 +1,83 @@
 import axios from "axios";
 
+const API_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000").replace(
+    /\/$/,
+    ""
+  );
+
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: API_BASE_URL,
 });
 
-// Attach JWT token from localStorage to every request
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("legalaid_token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
-// Auto-redirect to login on 401
 API.interceptors.response.use(
-  (res) => res,
-  (err) => {
-    if (err.response?.status === 401) {
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401 && !error.config?.skipAuthRedirect) {
       localStorage.removeItem("legalaid_token");
-      window.location.href = "/login";
+      window.location.assign("/login");
     }
-    return Promise.reject(err);
+    return Promise.reject(error);
   }
 );
+
+export { API, API_BASE_URL };
 
 export const getDocumentTypes = () => API.get("/document-types");
 export const getDocumentConfig = (type) => API.get(`/document-config/${type}`);
 export const generateDocument = (data) => API.post("/generate", data);
-export const validateDocument = (data, deep = false) =>
-  API.post("/validate", { ...data, deep });
+export const getDocumentHistoryList = () => API.get("/history/documents");
+export const getDocumentHistoryDetail = (draftId) =>
+  API.get(`/history/documents/${draftId}`);
+export const deleteDocumentHistory = (draftId) =>
+  API.delete(`/history/documents/${draftId}`);
+export const saveDocumentHistory = (payload) =>
+  API.post("/history/documents/save", payload);
+export const restoreDocumentHistoryVersion = (draftId, versionId) =>
+  API.post(`/history/documents/${draftId}/restore/${versionId}`);
+export const validateDocument = (data, mode = "final") => {
+  const resolvedMode =
+    typeof mode === "boolean" ? (mode ? "final" : "background") : mode;
+  return API.post("/validate", { ...data, mode: resolvedMode });
+};
 export const chatWithDocument = (draft, message) =>
   API.post("/chat", { draft, message });
 export const fixIssue = (draft, issue) =>
   API.post("/fix-issue", { draft, issue });
+
+export const loginUser = (data) =>
+  API.post("/auth/login", data, { skipAuthRedirect: true });
+export const registerUser = (data) =>
+  API.post("/auth/register", data, { skipAuthRedirect: true });
+export const resendVerificationEmail = (email) =>
+  API.post(
+    "/auth/resend-verification",
+    { email },
+    { skipAuthRedirect: true }
+  );
+export const verifyEmailToken = (token) =>
+  API.get("/auth/verify-email", {
+    params: { token },
+    skipAuthRedirect: true,
+  });
+export const forgotPassword = (email) =>
+  API.post("/auth/forgot-password", { email }, { skipAuthRedirect: true });
+export const resetPassword = (token, password) =>
+  API.post(
+    "/auth/reset-password",
+    { token, password },
+    { skipAuthRedirect: true }
+  );
+export const getCurrentUser = () =>
+  API.get("/auth/me", { skipAuthRedirect: true });
 
 export async function downloadDocx(draft, validation) {
   const response = await API.post(

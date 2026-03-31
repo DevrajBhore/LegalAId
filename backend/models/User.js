@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema(
     phone: {
       type: String,
       trim: true,
-      match: [/^[6-9]\d{9}$/, "Please enter a valid 10-digit Indian mobile number"],
+      match: [
+        /^[6-9]\d{9}$/,
+        "Please enter a valid 10-digit Indian mobile number",
+      ],
     },
     password: {
       type: String,
@@ -28,18 +31,11 @@ const userSchema = new mongoose.Schema(
       minlength: [8, "Password must be at least 8 characters"],
       select: false,
     },
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
-    verificationToken: {
-      type: String,
-      select: false,
-    },
-    verificationTokenExpiry: {
-      type: Date,
-      select: false,
-    },
+    isVerified: { type: Boolean, default: false },
+    verificationToken: { type: String, select: false },
+    verificationTokenExpiry: { type: Date, select: false },
+    resetPasswordToken: { type: String, select: false },
+    resetPasswordExpiry: { type: Date, select: false },
   },
   { timestamps: true }
 );

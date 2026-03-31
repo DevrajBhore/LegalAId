@@ -1,127 +1,311 @@
-import fs   from "fs";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import Ajv from "ajv";
+
+import { toBlueprintName } from "./documentTypeNormalizer.js";
+import { normalizeClauseCategory } from "../config/clauseOrder.js";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-const KB_ROOT    = path.resolve(__dirname, "../../knowledge-base");
+const KB_ROOT = path.resolve(__dirname, "../../knowledge-base");
 const CLAUSE_LIB = path.join(KB_ROOT, "clause_library");
 const BLUEPRINTS = path.join(CLAUSE_LIB, "blueprints");
+const CLAUSE_SCHEMA_FILE = path.join(CLAUSE_LIB, "base_clause.schema.json");
 
-// ── Blueprint loader ──────────────────────────────────────────────────────────
+let knowledgeBaseCache = null;
+let clauseSchemaValidator = null;
 
-function loadBlueprint(documentType) {
+function pushUnique(list, value) {
+  if (value && !list.includes(value)) {
+    list.push(value);
+  }
+}
+
+function buildBlueprintCandidates(documentType) {
   const base = documentType.toLowerCase();
+  const candidates = [];
 
-  // Build candidates — exact name first, then short aliases
-  const candidates = [`${base}.blueprint.json`];
+  pushUnique(candidates, `${toBlueprintName(documentType)}.blueprint.json`);
+  pushUnique(candidates, `${base}.blueprint.json`);
 
-  // Strip _agreement only if result is short enough (avoids sales_of_goods truncation)
-  const sa = base.replace(/_agreement$/, "");
-  if (sa !== base && sa.split("_").length <= 3) {
-    candidates.push(`${sa}.blueprint.json`);
+  const agreementAlias = base.replace(/_agreement$/, "");
+  if (agreementAlias !== base && agreementAlias.split("_").length <= 3) {
+    pushUnique(candidates, `${agreementAlias}.blueprint.json`);
   }
 
-  const sc = base.replace(/_contract$/, "");
-  if (sc !== base) candidates.push(`${sc}.blueprint.json`);
+  const contractAlias = base.replace(/_contract$/, "");
+  if (contractAlias !== base) {
+    pushUnique(candidates, `${contractAlias}.blueprint.json`);
+  }
 
-  const sd = base.replace(/_deed$/, "");
-  if (sd !== base) candidates.push(`${sd}.blueprint.json`);
+  const deedAlias = base.replace(/_deed$/, "");
+  if (deedAlias !== base) {
+    pushUnique(candidates, `${deedAlias}.blueprint.json`);
+  }
 
-  for (const candidate of candidates) {
-    const file = path.join(BLUEPRINTS, candidate);
-    if (fs.existsSync(file)) {
-      return JSON.parse(fs.readFileSync(file, "utf8"));
+  return candidates;
+}
+
+function readJsonFile(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch (error) {
+    throw new Error(`Failed to parse JSON at "${filePath}": ${error.message}`);
+  }
+}
+
+function extractClauseIds(blueprint, label) {
+  const clauseIds = blueprint.required_clauses || blueprint.clauses || [];
+
+  if (!Array.isArray(clauseIds)) {
+    throw new Error(
+      `Invalid blueprint format for "${label}": clauses must be an array.`
+    );
+  }
+
+  for (const clauseId of clauseIds) {
+    if (typeof clauseId !== "string" || !clauseId.trim()) {
+      throw new Error(
+        `Invalid clause reference in "${label}": ${JSON.stringify(clauseId)}`
+      );
     }
   }
 
-  throw new Error(
-    `Blueprint not found for document type: "${documentType}". ` +
-    `Tried: ${candidates.join(", ")}`
-  );
+  return clauseIds;
 }
 
-// ── Clause library loader ─────────────────────────────────────────────────────
+function getClauseSchemaValidator() {
+  if (!clauseSchemaValidator) {
+    if (!fs.existsSync(CLAUSE_SCHEMA_FILE)) {
+      throw new Error(`Clause schema not found at: ${CLAUSE_SCHEMA_FILE}`);
+    }
 
-let _clauseCache = null;
+    const schema = readJsonFile(CLAUSE_SCHEMA_FILE);
+    const ajv = new Ajv({ allErrors: true, strict: false });
+    clauseSchemaValidator = ajv.compile(schema);
+  }
 
-function loadAllClauses() {
-  if (_clauseCache) return _clauseCache;
+  return clauseSchemaValidator;
+}
 
-  const clauses = {};
-
+function loadClauseCache() {
   if (!fs.existsSync(CLAUSE_LIB)) {
     throw new Error(`Clause library not found at: ${CLAUSE_LIB}`);
   }
 
-  for (const folder of fs.readdirSync(CLAUSE_LIB)) {
-    const dir = path.join(CLAUSE_LIB, folder);
-    if (!fs.statSync(dir).isDirectory() || folder === "blueprints") continue;
+  const clausesById = new Map();
+  const folders = fs.readdirSync(CLAUSE_LIB, { withFileTypes: true });
+  const validateClause = getClauseSchemaValidator();
 
-    for (const file of fs.readdirSync(dir)) {
-      if (!file.endsWith(".json")) continue;
-      try {
-        const data = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
-        if (data.clause_id && data.text?.trim()) {
-          clauses[data.clause_id] = data;
-        }
-      } catch { /* skip corrupt files */ }
+  for (const folder of folders) {
+    if (!folder.isDirectory() || folder.name === "blueprints") continue;
+
+    const dir = path.join(CLAUSE_LIB, folder.name);
+    const files = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const file of files) {
+      if (!file.isFile() || !file.name.endsWith(".json")) continue;
+
+      const filePath = path.join(dir, file.name);
+      const clause = readJsonFile(filePath);
+
+      if (!validateClause(clause)) {
+        const details = (validateClause.errors || [])
+          .map((error) => `${error.instancePath || "/"} ${error.message}`)
+          .join("; ");
+        throw new Error(
+          `Clause file "${filePath}" failed schema validation: ${details}`
+        );
+      }
+
+      if (typeof clause?.clause_id !== "string" || !clause.clause_id.trim()) {
+        throw new Error(`Clause file "${filePath}" is missing a valid clause_id.`);
+      }
+
+      if (typeof clause?.text !== "string" || !clause.text.trim()) {
+        throw new Error(`Clause file "${filePath}" is missing clause text.`);
+      }
+
+      if (clausesById.has(clause.clause_id)) {
+        throw new Error(
+          `Duplicate clause_id "${clause.clause_id}" found in "${filePath}".`
+        );
+      }
+
+      clausesById.set(clause.clause_id, clause);
     }
   }
 
-  console.log(`[ClauseAssembler] Loaded ${Object.keys(clauses).length} clauses`);
-  _clauseCache = clauses;
-  return clauses;
-}
-
-// ── Fallback clause ───────────────────────────────────────────────────────────
-
-function createFallbackClause(id) {
-  return {
-    clause_id : id,
-    category  : "UNCATEGORIZED",
-    title     : id.replace(/_/g, " ").replace(/\d+$/, "").trim(),
-    text      : `[CLAUSE ${id} — TO BE DRAFTED]`,
-    statutory_reference: ""
-  };
-}
-
-// ── Main assembler ────────────────────────────────────────────────────────────
-
-export function assembleDocument(documentType, variables = {}) {
-  const blueprint    = loadBlueprint(documentType);
-  const clauseLibrary = loadAllClauses();
-
-  const clauseIds = blueprint.required_clauses || blueprint.clauses || [];
-
-  if (!Array.isArray(clauseIds)) {
-    throw new Error(`Invalid blueprint format for ${documentType}`);
+  if (clausesById.size === 0) {
+    throw new Error(`No clause JSON files were loaded from: ${CLAUSE_LIB}`);
   }
 
-  const clauses = clauseIds.map(id => {
-    const clause = clauseLibrary[id];
+  return clausesById;
+}
+
+function loadBlueprintCache() {
+  if (!fs.existsSync(BLUEPRINTS)) {
+    throw new Error(`Blueprint directory not found at: ${BLUEPRINTS}`);
+  }
+
+  const blueprintsByFile = new Map();
+  const files = fs.readdirSync(BLUEPRINTS, { withFileTypes: true });
+
+  for (const file of files) {
+    if (!file.isFile() || !file.name.endsWith(".json")) continue;
+
+    const filePath = path.join(BLUEPRINTS, file.name);
+    const blueprint = readJsonFile(filePath);
+
+    extractClauseIds(blueprint, file.name);
+    blueprintsByFile.set(file.name, blueprint);
+  }
+
+  if (blueprintsByFile.size === 0) {
+    throw new Error(`No blueprint JSON files were loaded from: ${BLUEPRINTS}`);
+  }
+
+  return blueprintsByFile;
+}
+
+function validateBlueprintReferences(blueprintsByFile, clausesById) {
+  const missingReferences = [];
+
+  for (const [fileName, blueprint] of blueprintsByFile.entries()) {
+    for (const clauseId of extractClauseIds(blueprint, fileName)) {
+      if (!clausesById.has(clauseId)) {
+        missingReferences.push(`${fileName} -> ${clauseId}`);
+      }
+    }
+  }
+
+  if (missingReferences.length > 0) {
+    throw new Error(
+      "Blueprints reference missing clauses:\n" +
+        missingReferences.map((entry) => `- ${entry}`).join("\n")
+    );
+  }
+}
+
+function resolveBlueprint(documentType, blueprintsByFile) {
+  const candidates = buildBlueprintCandidates(documentType);
+
+  for (const candidate of candidates) {
+    const blueprint = blueprintsByFile.get(candidate);
+    if (blueprint) {
+      return { blueprint, candidates };
+    }
+  }
+
+  return { blueprint: null, candidates };
+}
+
+function validateDocumentTypeCoverage(blueprintsByFile, documentTypes = []) {
+  const missing = [];
+
+  for (const documentType of documentTypes) {
+    const { blueprint, candidates } = resolveBlueprint(
+      documentType,
+      blueprintsByFile
+    );
+
+    if (!blueprint) {
+      missing.push(`"${documentType}" (tried: ${candidates.join(", ")})`);
+    }
+  }
+
+  if (missing.length > 0) {
+    throw new Error(
+      "No blueprint found for configured document types:\n" +
+        missing.map((entry) => `- ${entry}`).join("\n")
+    );
+  }
+}
+
+function getKnowledgeBaseCache() {
+  if (!knowledgeBaseCache) {
+    preloadKnowledgeBase();
+  }
+
+  return knowledgeBaseCache;
+}
+
+export function preloadKnowledgeBase({ documentTypes = [] } = {}) {
+  if (!knowledgeBaseCache) {
+    const clausesById = loadClauseCache();
+    const blueprintsByFile = loadBlueprintCache();
+
+    validateBlueprintReferences(blueprintsByFile, clausesById);
+    validateDocumentTypeCoverage(blueprintsByFile, documentTypes);
+
+    knowledgeBaseCache = {
+      clausesById,
+      blueprintsByFile,
+      stats: {
+        clauseCount: clausesById.size,
+        blueprintCount: blueprintsByFile.size,
+        documentTypeCount: documentTypes.length,
+      },
+    };
+  } else if (documentTypes.length > 0) {
+    validateDocumentTypeCoverage(knowledgeBaseCache.blueprintsByFile, documentTypes);
+  }
+
+  return knowledgeBaseCache.stats;
+}
+
+export function assembleDocument(documentType, _variables = {}) {
+  const { clausesById, blueprintsByFile } = getKnowledgeBaseCache();
+  const { blueprint, candidates } = resolveBlueprint(
+    documentType,
+    blueprintsByFile
+  );
+
+  if (!blueprint) {
+    throw new Error(
+      `Blueprint not found for document type: "${documentType}". ` +
+        `Tried: ${candidates.join(", ")}`
+    );
+  }
+
+  const clauseIds = extractClauseIds(blueprint, documentType);
+  const clauses = clauseIds.map((id) => {
+    const clause = clausesById.get(id);
     if (!clause) {
-      console.warn(`[ClauseAssembler] Missing clause: ${id} — using fallback`);
-      return createFallbackClause(id);
+      throw new Error(
+        `Clause "${id}" referenced by "${documentType}" was not found in the preloaded cache.`
+      );
     }
-    return { ...clause };
+    return {
+      ...clause,
+      category: normalizeClauseCategory(clause.category),
+      title: clause.title || clause.name || null,
+    };
   });
 
   return {
-    document_type : documentType,
-    jurisdiction  : "India",
+    document_type: documentType,
+    jurisdiction: "India",
     clauses,
     metadata: {
-      blueprint_clause_count : clauseIds.length,
-      loaded_clause_count    : clauses.length,
-      missing_clauses        : clauses
-        .filter(c => c.category === "UNCATEGORIZED")
-        .map(c => c.clause_id),
-    }
+      blueprint_clause_count: clauseIds.length,
+      loaded_clause_count: clauses.length,
+      missing_clauses: [],
+    },
   };
 }
 
+export function getKnowledgeBaseStats() {
+  return getKnowledgeBaseCache().stats;
+}
+
+export function getClauseById(clauseId) {
+  if (!clauseId) return null;
+  return getKnowledgeBaseCache().clausesById.get(clauseId) || null;
+}
+
 export function clearClauseCache() {
-  _clauseCache = null;
+  knowledgeBaseCache = null;
 }

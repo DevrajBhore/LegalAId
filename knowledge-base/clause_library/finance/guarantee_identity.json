@@ -1,0 +1,31 @@
+{
+  "clause_id": "GUARANTEE_IDENTITY_001",
+  "name": "Parties to Guarantee",
+  "category": "IDENTITY",
+  "title": "Parties and Recitals",
+  "document_types": [
+    "GUARANTEE_AGREEMENT"
+  ],
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "126"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "128"
+    }
+  ],
+  "text": "This Guarantee Agreement (\"Agreement\") is entered into as of {{effective_date}} by and among {{party_1_descriptor}} (the \"Creditor\"), {{party_2_descriptor}} (the \"Principal Debtor\"), and {{guarantor_descriptor}} (the \"Guarantor\") (collectively, the \"Parties\"). WHEREAS, the Creditor has agreed to extend or continue financial accommodation to the Principal Debtor on the faith of this Guarantee; AND WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation. NOW, THEREFORE, in consideration of the mutual covenants and promises contained herein, the Parties agree as follows:",
+  "statutory_reference": "Indian Contract Act, 1872 - S.126",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The identity of the creditor, principal debtor, or guarantor is omitted",
+    "The recital does not connect the guarantee to an underlying financial accommodation"
+  ],
+  "source": "Indian Contract Act, 1872 - S.126",
+  "version": "1.0",
+  "jurisdiction": "India"
+}

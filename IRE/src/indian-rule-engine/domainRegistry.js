@@ -563,9 +563,8 @@ export const DOCUMENT_TYPE_REGISTRY = {
     categories: [
       "IDENTITY",
       "PURPOSE",
-      "CONSIDERATION",
+      "FINANCE",
       "TERM",
-      "TERMINATION",
       "GOVERNING_LAW",
       "SIGNATURE_BLOCK",
     ],
@@ -580,7 +579,7 @@ export const DOCUMENT_TYPE_REGISTRY = {
     categories: [
       "IDENTITY",
       "PURPOSE",
-      "CONSIDERATION",
+      "FINANCE",
       "TERM",
       "GOVERNING_LAW",
       "SIGNATURE_BLOCK",

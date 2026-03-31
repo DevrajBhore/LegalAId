@@ -1,34 +1,35 @@
 {
-    "clause_id": "CORP_TAG_ALONG_001",
-    "name": "Tag-Along Rights",
-    "category": "CORPORATE",
-    "document_types": [
-      "SHAREHOLDERS_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "If any Shareholder ('Selling Shareholder') proposes to sell, transfer, or otherwise dispose of any shares to a third party purchaser, each other Shareholder ('Tag-Along Shareholder') shall have the right, but not the obligation, to participate in such sale by selling a pro-rata portion of their shares to such third party on the same price, terms and conditions as agreed with the Selling Shareholder ('Tag-Along Right'). The Selling Shareholder shall give not less than thirty (30) days' prior written notice to all other Shareholders before completing any such sale, specifying the identity of the proposed purchaser, the number of shares proposed to be sold, the price per share, and all other material terms. If a Tag-Along Shareholder elects to exercise its Tag-Along Right, it shall notify the Selling Shareholder within twenty (20) days of receipt of such notice. Any transfer made without complying with this clause shall be void and of no legal effect.",
-    "legal_basis": [
-      {
-        "act": "Companies Act, 2013",
-        "section": "58"
-      },
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "10"
-      },
-      {
-        "act": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018",
-        "section": "General"
-      }
-    ],
-    "mandatory": false,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "Notice period for tag-along exercise is not specified",
-      "Pro-rata calculation mechanism is absent",
-      "Price parity with majority sale is not guaranteed"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "CORP_TAG_ALONG_001",
+  "name": "Tag-Along Rights",
+  "category": "CORPORATE",
+  "document_types": [
+    "SHAREHOLDERS_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "If any Shareholder ('Selling Shareholder') proposes to sell, transfer, or otherwise dispose of any shares to a third party purchaser, each other Shareholder ('Tag-Along Shareholder') shall have the right, but not the obligation, to participate in such sale by selling a pro-rata portion of their shares to such third party on the same price, terms and conditions as agreed with the Selling Shareholder ('Tag-Along Right'). The Selling Shareholder shall give not less than thirty (30) days' prior written notice to all other Shareholders before completing any such sale, specifying the identity of the proposed purchaser, the number of shares proposed to be sold, the price per share, and all other material terms. If a Tag-Along Shareholder elects to exercise its Tag-Along Right, it shall notify the Selling Shareholder within twenty (20) days of receipt of such notice. Any transfer made without complying with this clause shall be void and of no legal effect.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "58"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    },
+    {
+      "act": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018",
+      "section": "General"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Notice period for tag-along exercise is not specified",
+    "Pro-rata calculation mechanism is absent",
+    "Price parity with majority sale is not guaranteed"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Tag-Along Rights"
+}

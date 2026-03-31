@@ -2,7 +2,9 @@
   "clause_id": "NDA_BREACH_REMEDIES_001",
   "name": "Breach Remedies",
   "category": "REMEDIES",
-  "document_types": ["ALL"],
+  "document_types": [
+    "ALL"
+  ],
   "jurisdiction": "India",
   "text": "In the event of a breach of this Agreement, the non-breaching Party shall be entitled to seek all available legal and equitable remedies, including specific performance, injunctive relief, and damages.",
   "legal_basis": [
@@ -28,5 +30,6 @@
     "If the contract provides for liquidated damages as the sole remedy for breach."
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0"
+  "version": "1.0",
+  "title": "Breach Remedies"
 }

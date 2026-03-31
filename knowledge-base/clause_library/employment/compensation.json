@@ -5,5 +5,16 @@
   "text": "The Employer shall pay the Employee a gross annual cost-to-company of {{salary}} inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month in accordance with the Payment of Wages Act, 1936. The Employee shall be entitled to statutory benefits including Provident Fund under the Employees' Provident Funds Act, 1952, and Gratuity upon completion of five years of continuous service under the Payment of Gratuity Act, 1972. The Employer shall deduct Tax Deducted at Source in accordance with the Income Tax Act, 1961.",
   "statutory_reference": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
   "mandatory": true,
-  "jurisdiction": "India"
+  "jurisdiction": "India",
+  "name": "Compensation and Benefits",
+  "document_types": [
+    "EMPLOYMENT",
+    "EMPLOYMENT_CONTRACT"
+  ],
+  "legal_basis": [],
+  "invalid_if": [],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0.0"
 }

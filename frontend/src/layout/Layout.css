@@ -1,9 +1,4 @@
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-content {
-  flex: 1;
-}
+.layout { display: flex; flex-direction: column; min-height: 100vh; }
+.layout-content { flex: 1; }
+.layout--workspace { background: var(--ink); }
+.layout-content--workspace { min-height: 100vh; }

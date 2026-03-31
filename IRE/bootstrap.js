@@ -56,7 +56,11 @@ export function bootstrapIRE() {
   console.log("[IRE Bootstrap] Starting with KB:", KB_ROOT);
 
   // ── 1. Load clause library ──────────────────────────────────────────────
-  const clauseFolders = ["core", "commercial", "employment", "finance", "property"];
+  const clauseFolders = CLAUSE_LIBRARY_PATH
+    ? fs.readdirSync(CLAUSE_LIBRARY_PATH, { withFileTypes: true })
+        .filter(d => d.isDirectory() && d.name !== "blueprints")
+        .map(d => d.name)
+    : [];
   let totalClauses = 0;
 
   for (const folder of clauseFolders) {
@@ -95,21 +99,22 @@ export function bootstrapIRE() {
   // ── 3. Load blueprints (blueprint clause sequences) ─────────────────────
   if (BLUEPRINTS_PATH && fs.existsSync(BLUEPRINTS_PATH)) {
     const blueprints = loadJSONFiles(BLUEPRINTS_PATH);
-    let added = 0;
+    let overridden = 0;
     let total = 0;
 
     for (const b of blueprints) {
       if (!b.document_type || !b.clauses) continue;
       total++;
-      // Add as mandatory clause set if not already mapped
-      if (!registry.mappings.has(b.document_type)) {
-        registry.addMapping(b.document_type, b.clauses);
-        added++;
+      if (registry.mappings.has(b.document_type)) {
+        overridden++;
       }
+      registry.addMapping(b.document_type, b.clauses);
     }
 
     // Show total blueprints on disk, and how many doc types are registered overall
-    console.log(`[IRE Bootstrap] Loaded ${total} blueprints (${registry.mappings.size} doc types registered total)`);
+    console.log(
+      `[IRE Bootstrap] Loaded ${total} blueprints (${overridden} overrides, ${registry.mappings.size} doc types registered total)`
+    );
   }
 
   // ── 4. Load constraints (domain → rules) ────────────────────────────────

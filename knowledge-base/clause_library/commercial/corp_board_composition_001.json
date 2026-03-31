@@ -1,29 +1,30 @@
 {
-    "clause_id": "CORP_BOARD_COMPOSITION_001",
-    "name": "Board Composition and Reserved Matters",
-    "category": "CORPORATE",
-    "document_types": [
-      "SHAREHOLDERS_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "The Board of Directors of the Company shall comprise such number of Directors as agreed between the Shareholders. Each major Shareholder (holding more than twenty percent (20%) of the issued share capital) shall be entitled to nominate one (1) Director to the Board. The following matters shall require the unanimous consent of all Shareholders ('Reserved Matters'): (a) any amendment to the Articles of Association; (b) any merger, amalgamation, or acquisition; (c) any issuance of new shares or other equity instruments; (d) any disposal of material assets; (e) any change in the nature of the Company's business; and (f) any declaration of dividend. All Reserved Matters shall be subject to the provisions of the Companies Act, 2013.",
-    "legal_basis": [
-      {
-        "act": "Companies Act, 2013",
-        "section": "152"
-      },
-      {
-        "act": "Companies Act, 2013",
-        "section": "166"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "Reserved matters are not defined",
-      "Board nomination rights are not specified"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "CORP_BOARD_COMPOSITION_001",
+  "name": "Board Composition and Reserved Matters",
+  "category": "CORPORATE",
+  "document_types": [
+    "SHAREHOLDERS_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Board of Directors of the Company shall comprise such number of Directors as agreed between the Shareholders. Each major Shareholder (holding more than twenty percent (20%) of the issued share capital) shall be entitled to nominate one (1) Director to the Board. The following matters shall require the unanimous consent of all Shareholders ('Reserved Matters'): (a) any amendment to the Articles of Association; (b) any merger, amalgamation, or acquisition; (c) any issuance of new shares or other equity instruments; (d) any disposal of material assets; (e) any change in the nature of the Company's business; and (f) any declaration of dividend. All Reserved Matters shall be subject to the provisions of the Companies Act, 2013.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "152"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "166"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Reserved matters are not defined",
+    "Board nomination rights are not specified"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Board Composition and Reserved Matters"
+}

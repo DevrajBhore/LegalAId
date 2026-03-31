@@ -2,7 +2,9 @@
   "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
   "name": "Permitted Disclosure",
   "category": "EXCLUSIONS",
-  "document_types": ["ALL"],
+  "document_types": [
+    "ALL"
+  ],
   "jurisdiction": "India",
   "text": "A Party may disclose Confidential Information if required by law, court order, or any regulatory authority, or to its professional advisors who are bound by a duty of confidentiality.",
   "legal_basis": [
@@ -22,7 +24,10 @@
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "LOW",
-  "invalid_if": ["Absolute Prohibition on Disclosure"],
+  "invalid_if": [
+    "Absolute Prohibition on Disclosure"
+  ],
   "source": "LegalAId Clause Library",
-  "version": "1.0"
+  "version": "1.0",
+  "title": "Permitted Disclosure"
 }

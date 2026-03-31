@@ -27,25 +27,13 @@ export function evaluateCapacity(facts, documentText = "") {
     }
   
     // 🔹 Company authority missing
-    if (
-      text.includes("pvt ltd") ||
-      text.includes("limited") ||
-      text.includes("llp")
-    ) {
-      if (!text.includes("authorized signatory") &&
-          !text.includes("board resolution") &&
-          !text.includes("duly authorized") &&
-          !text.includes("duly authorised") &&
-          !text.includes("authorized representative") &&
-          !text.includes("authorised representative") &&
-          !text.includes("represented by")) {
-        issues.push({
-          rule_id: "AUTHORITY_UNCLEAR",
-          severity: "LOW",
-          message:
-            "Corporate party detected but authority of signatory not clearly established."
-        });
-      }
+    if (facts.corporatePartyDetected && !facts.authorityEstablished) {
+      issues.push({
+        rule_id: "AUTHORITY_UNCLEAR",
+        severity: "LOW",
+        message:
+          "Corporate party detected but authority of signatory not clearly established."
+      });
     }
   
     return issues;

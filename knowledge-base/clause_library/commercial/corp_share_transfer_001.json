@@ -1,29 +1,30 @@
 {
-    "clause_id": "CORP_SHARE_TRANSFER_001",
-    "name": "Share Transfer Restrictions and Right of First Refusal",
-    "category": "CORPORATE",
-    "document_types": [
-      "SHAREHOLDERS_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "No Shareholder shall transfer, assign, pledge, or otherwise dispose of any shares held by it without the prior written consent of the other Shareholders, except as permitted under this Agreement. Before transferring any shares to a third party, the transferring Shareholder ('Transferor') shall first offer those shares to the remaining Shareholders on a pro-rata basis ('Right of First Refusal') at the same price and on the same terms as proposed for the third-party transfer. The remaining Shareholders shall have thirty (30) days from receipt of the transfer notice to exercise their Right of First Refusal. Any transfer made in breach of this clause shall be void and of no legal effect.",
-    "legal_basis": [
-      {
-        "act": "Companies Act, 2013",
-        "section": "58"
-      },
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "10"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "Transfer restrictions are not clearly defined",
-      "Right of first refusal period is not specified"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "CORP_SHARE_TRANSFER_001",
+  "name": "Share Transfer Restrictions and Right of First Refusal",
+  "category": "CORPORATE",
+  "document_types": [
+    "SHAREHOLDERS_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "No Shareholder shall transfer, assign, pledge, or otherwise dispose of any shares held by it without the prior written consent of the other Shareholders, except as permitted under this Agreement. Before transferring any shares to a third party, the transferring Shareholder ('Transferor') shall first offer those shares to the remaining Shareholders on a pro-rata basis ('Right of First Refusal') at the same price and on the same terms as proposed for the third-party transfer. The remaining Shareholders shall have thirty (30) days from receipt of the transfer notice to exercise their Right of First Refusal. Any transfer made in breach of this clause shall be void and of no legal effect.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "58"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Transfer restrictions are not clearly defined",
+    "Right of first refusal period is not specified"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Share Transfer Restrictions and Right of First Refusal"
+}

@@ -3,7 +3,19 @@
   "category": "CONSIDERATION",
   "title": "Security Deposit",
   "text": "The Licensee/Tenant shall pay a refundable security deposit of INR {{security_deposit}} prior to or at the time of execution of this Agreement. The security deposit shall be held as security for the due performance of the Licensee/Tenant's obligations and shall not carry interest. The Licensor/Landlord shall refund the security deposit within thirty (30) days of the Licensee/Tenant vacating the Premises and delivering peaceful possession, after deducting any outstanding dues, unpaid license fee/rent, or costs of repairing damage caused by the Licensee/Tenant beyond fair wear and tear. The Licensor/Landlord shall furnish a written account of all deductions made.",
-  "statutory_reference": "Model Tenancy Act, 2021 \u2013 S.11",
+  "statutory_reference": "Model Tenancy Act, 2021 – S.11",
   "mandatory": true,
-  "jurisdiction": "India"
+  "jurisdiction": "India",
+  "name": "Security Deposit",
+  "document_types": [
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "RENTAL"
+  ],
+  "legal_basis": [],
+  "invalid_if": [],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0.0"
 }

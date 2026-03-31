@@ -1,29 +1,30 @@
 {
-    "clause_id": "JV_EXIT_001",
-    "name": "Exit Mechanism",
-    "category": "TERMINATION",
-    "document_types": [
-      "JOINT_VENTURE_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "Upon termination of this Agreement or upon a Party's wish to exit the Joint Venture ('Exiting Party'), the following exit mechanism shall apply: (a) the Exiting Party shall give not less than ninety (90) days' written notice of its intention to exit; (b) the remaining Party shall have the right to purchase the Exiting Party's interest at fair market value, to be determined by an independent valuer mutually appointed by the Parties; (c) if the Parties fail to agree on a valuer within thirty (30) days, a valuer shall be appointed by the President of the Institute of Chartered Accountants of India; and (d) upon completion of the buyout, the Exiting Party shall have no further interest in or liability to the Joint Venture. All assets, liabilities, and IP of the Joint Venture shall be allocated as agreed or, failing agreement, in proportion to the Parties' respective contributions.",
-    "legal_basis": [
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "62"
-      },
-      {
-        "act": "Indian Partnership Act, 1932",
-        "section": "43"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "HIGH",
-    "invalid_if": [
-      "No exit valuation mechanism is specified",
-      "Notice period for exit is not defined"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "JV_EXIT_001",
+  "name": "Exit Mechanism",
+  "category": "TERMINATION",
+  "document_types": [
+    "JOINT_VENTURE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Upon termination of this Agreement or upon a Party's wish to exit the Joint Venture ('Exiting Party'), the following exit mechanism shall apply: (a) the Exiting Party shall give not less than ninety (90) days' written notice of its intention to exit; (b) the remaining Party shall have the right to purchase the Exiting Party's interest at fair market value, as determined by an independent valuer mutually appointed by the Parties; (c) if the Parties fail to appoint a valuer within thirty (30) days, the valuer shall be appointed by the President of the Institute of Chartered Accountants of India; and (d) upon completion of the buyout, the Exiting Party shall have no further interest in or liability to the Joint Venture. Unless the Parties execute a written transfer instrument at closing that specifies a different allocation, all assets, liabilities, and intellectual property of the Joint Venture shall be allocated in proportion to the Parties' respective contributions.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62"
+    },
+    {
+      "act": "Indian Partnership Act, 1932",
+      "section": "43"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "No exit valuation mechanism is specified",
+    "Notice period for exit is not defined"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Exit Mechanism"
+}

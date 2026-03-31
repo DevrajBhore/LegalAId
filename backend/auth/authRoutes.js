@@ -2,69 +2,80 @@ import express from "express";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
-import { sendVerificationEmail } from "./emailService.js";
+import { protect } from "./authMiddleware.js";
+import {
+  sendVerificationEmail,
+  sendPasswordResetEmail,
+} from "./emailService.js";
 
 const router = express.Router();
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-function generateToken(userId) {
+function generateJWT(userId) {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
   });
 }
 
-function generateVerificationToken() {
+function generateToken() {
   return crypto.randomBytes(32).toString("hex");
+}
+
+function serializeUser(user) {
+  return {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    createdAt: user.createdAt,
+  };
 }
 
 // ── POST /auth/register ───────────────────────────────────────────────────────
 router.post("/register", async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
+    if (!name || !email || !password)
+      return res
+        .status(400)
+        .json({ error: "Name, email and password are required." });
+    if (password.length < 8)
+      return res
+        .status(400)
+        .json({ error: "Password must be at least 8 characters." });
+    if (phone && !/^[6-9]\d{9}$/.test(phone))
+      return res
+        .status(400)
+        .json({ error: "Please enter a valid 10-digit Indian mobile number." });
 
-    // Basic validation
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: "Name, email and password are required." });
-    }
-    if (password.length < 8) {
-      return res.status(400).json({ error: "Password must be at least 8 characters." });
-    }
-    if (phone && !/^[6-9]\d{9}$/.test(phone)) {
-      return res.status(400).json({ error: "Please enter a valid 10-digit Indian mobile number." });
-    }
-
-    // Check existing user
     const existing = await User.findOne({ email: email.toLowerCase() });
     if (existing) {
-      if (!existing.isVerified) {
-        return res.status(400).json({
-          error: "An account with this email exists but is not verified. Please check your inbox or resend the verification email.",
-          unverified: true,
-        });
-      }
-      return res.status(400).json({ error: "An account with this email already exists." });
+      if (!existing.isVerified)
+        return res
+          .status(400)
+          .json({
+            error: "Account exists but not verified. Check your inbox.",
+            unverified: true,
+          });
+      return res
+        .status(400)
+        .json({ error: "An account with this email already exists." });
     }
 
-    // Generate verification token
-    const verificationToken = generateVerificationToken();
-    const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h
-
-    // Create user
-    const user = await User.create({
+    const verificationToken = generateToken();
+    await User.create({
       name,
       email,
       phone: phone || undefined,
       password,
       verificationToken,
-      verificationTokenExpiry,
+      verificationTokenExpiry: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
-
-    // Send verification email
     await sendVerificationEmail(name, email, verificationToken);
-
-    res.status(201).json({
-      message: `Verification email sent to ${email}. Please check your inbox.`,
-    });
+    res
+      .status(201)
+      .json({
+        message: `Verification email sent to ${email}. Please check your inbox.`,
+      });
   } catch (err) {
     console.error("[Auth] Register error:", err);
     res.status(500).json({ error: "Registration failed. Please try again." });
@@ -75,34 +86,32 @@ router.post("/register", async (req, res) => {
 router.get("/verify-email", async (req, res) => {
   try {
     const { token } = req.query;
-    if (!token) return res.status(400).json({ error: "Verification token is missing." });
+    if (!token)
+      return res.status(400).json({ error: "Verification token is missing." });
 
-    // Find user with matching token
     const user = await User.findOne({
       verificationToken: token,
       verificationTokenExpiry: { $gt: new Date() },
     }).select("+verificationToken +verificationTokenExpiry");
 
-    if (!user) {
-      return res.status(400).json({
-        error: "Invalid or expired verification link. Please request a new one.",
-        expired: true,
-      });
-    }
+    if (!user)
+      return res
+        .status(400)
+        .json({
+          error: "Invalid or expired link. Please request a new one.",
+          expired: true,
+        });
 
-    // Mark as verified and clear token
     user.isVerified = true;
     user.verificationToken = undefined;
     user.verificationTokenExpiry = undefined;
     await user.save();
 
-    // Issue JWT so user is logged in immediately after verification
-    const jwtToken = generateToken(user._id);
-
+    const jwtToken = generateJWT(user._id);
     res.json({
-      message: "Email verified successfully! You're now logged in.",
+      message: "Email verified! You're now logged in.",
       token: jwtToken,
-      user: { id: user._id, name: user.name, email: user.email },
+      user: serializeUser(user),
     });
   } catch (err) {
     console.error("[Auth] Verify error:", err);
@@ -114,36 +123,29 @@ router.get("/verify-email", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required." });
-    }
+    if (!email || !password)
+      return res
+        .status(400)
+        .json({ error: "Email and password are required." });
 
-    // Find user with password
-    const user = await User.findOne({ email: email.toLowerCase() }).select("+password");
-    if (!user) {
+    const user = await User.findOne({ email: email.toLowerCase() }).select(
+      "+password"
+    );
+    if (!user || !(await user.comparePassword(password)))
       return res.status(401).json({ error: "Invalid email or password." });
-    }
 
-    // Check password
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password." });
-    }
-
-    // Check verified
-    if (!user.isVerified) {
-      return res.status(403).json({
-        error: "Please verify your email before logging in.",
-        unverified: true,
-        email: user.email,
-      });
-    }
-
-    const token = generateToken(user._id);
+    if (!user.isVerified)
+      return res
+        .status(403)
+        .json({
+          error: "Please verify your email before logging in.",
+          unverified: true,
+          email: user.email,
+        });
 
     res.json({
-      token,
-      user: { id: user._id, name: user.name, email: user.email },
+      token: generateJWT(user._id),
+      user: serializeUser(user),
     });
   } catch (err) {
     console.error("[Auth] Login error:", err);
@@ -157,41 +159,140 @@ router.post("/resend-verification", async (req, res) => {
     const { email } = req.body;
     if (!email) return res.status(400).json({ error: "Email is required." });
 
-    const user = await User.findOne({ email: email.toLowerCase() })
-      .select("+verificationToken +verificationTokenExpiry");
+    const user = await User.findOne({ email: email.toLowerCase() }).select(
+      "+verificationToken +verificationTokenExpiry"
+    );
+    if (!user)
+      return res
+        .status(404)
+        .json({ error: "No account found with this email." });
+    if (user.isVerified)
+      return res
+        .status(400)
+        .json({ error: "This account is already verified." });
 
-    if (!user) return res.status(404).json({ error: "No account found with this email." });
-    if (user.isVerified) return res.status(400).json({ error: "This account is already verified." });
-
-    // Refresh token
-    const verificationToken = generateVerificationToken();
+    const verificationToken = generateToken();
     user.verificationToken = verificationToken;
     user.verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
     await user.save();
-
     await sendVerificationEmail(user.name, email, verificationToken);
-
     res.json({ message: `Verification email resent to ${email}.` });
   } catch (err) {
     console.error("[Auth] Resend error:", err);
-    res.status(500).json({ error: "Failed to resend email. Please try again." });
+    res
+      .status(500)
+      .json({ error: "Failed to resend email. Please try again." });
+  }
+});
+
+// ── POST /auth/forgot-password ────────────────────────────────────────────────
+router.post("/forgot-password", async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ error: "Email is required." });
+
+    const user = await User.findOne({ email: email.toLowerCase() });
+    // Always return success to prevent email enumeration
+    if (!user || !user.isVerified) {
+      return res.json({
+        message:
+          "If an account exists with this email, you will receive a password reset link shortly.",
+      });
+    }
+
+    const resetToken = generateToken();
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    await user.save();
+
+    await sendPasswordResetEmail(user.name, email, resetToken);
+    res.json({
+      message:
+        "If an account exists with this email, you will receive a password reset link shortly.",
+    });
+  } catch (err) {
+    console.error("[Auth] Forgot password error:", err);
+    res
+      .status(500)
+      .json({ error: "Failed to send reset email. Please try again." });
+  }
+});
+
+// ── POST /auth/reset-password ─────────────────────────────────────────────────
+router.post("/reset-password", async (req, res) => {
+  try {
+    const { token, password } = req.body;
+    if (!token || !password)
+      return res
+        .status(400)
+        .json({ error: "Token and new password are required." });
+    if (password.length < 8)
+      return res
+        .status(400)
+        .json({ error: "Password must be at least 8 characters." });
+
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpiry: { $gt: new Date() },
+    }).select("+resetPasswordToken +resetPasswordExpiry +password");
+
+    if (!user)
+      return res
+        .status(400)
+        .json({
+          error: "Invalid or expired reset link. Please request a new one.",
+          expired: true,
+        });
+
+    user.password = password; // pre-save hook hashes it
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpiry = undefined;
+    await user.save();
+
+    res.json({
+      message:
+        "Password reset successfully. You can now sign in with your new password.",
+    });
+  } catch (err) {
+    console.error("[Auth] Reset password error:", err);
+    res.status(500).json({ error: "Password reset failed. Please try again." });
   }
 });
 
 // ── GET /auth/me ──────────────────────────────────────────────────────────────
-router.get("/me", async (req, res) => {
+router.get("/me", protect, async (req, res) => {
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader?.startsWith("Bearer ")) {
-      return res.status(401).json({ error: "No token provided." });
-    }
-    const token = authHeader.split(" ")[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
-    if (!user) return res.status(401).json({ error: "User not found." });
-    res.json({ user: { id: user._id, name: user.name, email: user.email } });
-  } catch (err) {
+    res.json({ user: serializeUser(req.user) });
+  } catch {
     res.status(401).json({ error: "Invalid or expired token." });
+  }
+});
+
+// ── POST /auth/change-password (authenticated) ────────────────────────────────
+router.post("/change-password", protect, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword)
+      return res
+        .status(400)
+        .json({ error: "Current and new password are required." });
+    if (newPassword.length < 8)
+      return res
+        .status(400)
+        .json({ error: "New password must be at least 8 characters." });
+
+    const user = await User.findById(req.user._id).select("+password");
+    if (!user) return res.status(401).json({ error: "User not found." });
+    if (!(await user.comparePassword(currentPassword)))
+      return res.status(400).json({ error: "Current password is incorrect." });
+
+    user.password = newPassword;
+    await user.save();
+    res.json({ message: "Password changed successfully." });
+  } catch {
+    res
+      .status(500)
+      .json({ error: "Failed to change password. Please try again." });
   }
 });
 

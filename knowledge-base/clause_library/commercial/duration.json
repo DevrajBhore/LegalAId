@@ -2,7 +2,9 @@
   "clause_id": "NDA_DURATION_001",
   "name": "Confidentiality Duration",
   "category": "TERM",
-  "document_types": ["ALL"],
+  "document_types": [
+    "ALL"
+  ],
   "jurisdiction": "India",
   "text": "The confidentiality obligations set forth in this Agreement shall survive its termination or expiration and continue for a period of five (5) years thereafter.",
   "legal_basis": [
@@ -18,5 +20,6 @@
     "The stipulated duration is deemed an unreasonable restraint of trade under Section 27 of the Indian Contract Act, 1872."
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0"
+  "version": "1.0",
+  "title": "Confidentiality Duration"
 }

@@ -1,18 +1,29 @@
 {
-    "clause_id": "PRIVACY_DATA_RETENTION_001",
-    "name": "Data Retention",
-    "category": "PRIVACY",
-    "document_types": ["PRIVACY_POLICY"],
-    "jurisdiction": "India",
-    "text": "Personal data shall be retained only for as long as necessary to fulfil the purpose for which it was collected, or as required by applicable law. Upon expiry of the retention period, personal data shall be deleted or anonymised in accordance with the Digital Personal Data Protection Act, 2023. Data fiduciaries shall not retain personal data beyond the period necessary for the specified purpose and shall implement appropriate technical and organisational measures to ensure timely deletion.",
-    "legal_basis": [
-      {"act": "Digital Personal Data Protection Act, 2023", "section": "8(7)"},
-      {"act": "Information Technology Act, 2000", "section": "43A"}
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "MEDIUM",
-    "invalid_if": ["Retention periods are indefinite without legal justification"],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "PRIVACY_DATA_RETENTION_001",
+  "name": "Data Retention",
+  "category": "PRIVACY",
+  "document_types": [
+    "PRIVACY_POLICY"
+  ],
+  "jurisdiction": "India",
+  "text": "Personal data shall be retained only for as long as necessary to fulfil the purpose for which it was collected, or as required by applicable law. Upon expiry of the retention period, personal data shall be deleted or anonymised in accordance with the Digital Personal Data Protection Act, 2023. Data fiduciaries shall not retain personal data beyond the period necessary for the specified purpose and shall implement appropriate technical and organisational measures to ensure timely deletion.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(7)"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Retention periods are indefinite without legal justification"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Data Retention"
+}

@@ -34,10 +34,15 @@ export function evaluateEnforceability(facts, documentText = "") {
   // AND no payment structure defined. Exclude NDA/confidentiality-only docs.
   const hasMonetaryConsideration =
     facts.hasConsideration &&
-    facts.considerationValue !== null;  // actual INR amount extracted
+    facts.considerationValue !== null;
+  const hasPaymentObligationContext =
+    /\binvoice|payment|fees?\b|salary|wages|rent|license fee|purchase price|repay|repayment|instal(?:ment)?|remuneration\b/i.test(
+      text
+    );
 
   if (
     hasMonetaryConsideration &&
+    hasPaymentObligationContext &&
     !text.includes("monthly") &&
     !text.includes("installment") &&
     !text.includes("lump sum") &&

@@ -71,27 +71,46 @@ export function illegalClauseValidate(draft) {
   if (!draft?.clauses) return [];
 
   const issues = [];
-  const fullText = draft.clauses.map((c) => c.text || "").join("\n");
 
   for (const rule of ILLEGAL_RULES) {
-    const matched = rule.patterns.find((p) => p.test(fullText));
-    if (!matched) continue;
+    const offendingClause = draft.clauses.find((clause) => {
+      const text = clause.text || "";
+      const matched = rule.patterns.some((pattern) => pattern.test(text));
+      if (!matched) return false;
+      if (isProtectedReference(rule.rule_id, text)) return false;
+      return true;
+    });
 
-    const offendingClause = draft.clauses.find((c) =>
-      rule.patterns.some((p) => p.test(c.text || ""))
-    );
+    if (!offendingClause) continue;
 
     issues.push({
       rule_id: rule.rule_id,
       severity: rule.severity,
-      message: rule.message,
-      statutory_reference: rule.reference,
-      suggestion: rule.suggestion,
-      blocks_generation: rule.blocks_generation ?? true, // default safe: block if not specified
+      issue: rule.message,
+      explanation: `${rule.reference}: ${rule.message}`,
+      fix_suggestion: rule.suggestion,
+      auto_fixable: rule.severity !== "CRITICAL",
+      blocks_generation: rule.blocks_generation ?? true, 
       offending_clause_id: offendingClause?.clause_id || null,
       offending_category: offendingClause?.category || null,
     });
   }
 
   return issues;
+}
+
+function isProtectedReference(ruleId, text = "") {
+  const lower = text.toLowerCase();
+
+  if (ruleId === "ICA_S23_UNLAWFUL_OBJECT") {
+    return (
+      /\bshall not\b/.test(lower) ||
+      /\bmay not\b/.test(lower) ||
+      /\bnot\b[^.]{0,80}\bunlawful purpose\b/.test(lower) ||
+      /\billegal or immoral activity\b/.test(lower) ||
+      /\bterminate\b[^.]{0,120}\bunlawful purpose\b/.test(lower)
+    );
+  }
+
+  return false;
 }

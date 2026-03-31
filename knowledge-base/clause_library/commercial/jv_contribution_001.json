@@ -1,29 +1,30 @@
 {
-    "clause_id": "JV_CONTRIBUTION_001",
-    "name": "JV Contributions and Profit Sharing",
-    "category": "CONSIDERATION",
-    "document_types": [
-      "JOINT_VENTURE_AGREEMENT"
-    ],
-    "jurisdiction": "India",
-    "text": "Each Party shall contribute to the Joint Venture the resources, capital, expertise, and assets as specified in Schedule A to this Agreement ('Contributions'). The Parties acknowledge that such Contributions constitute lawful consideration within the meaning of Section 2(d) of the Indian Contract Act, 1872. Profits and losses arising from the Joint Venture shall be shared between the Parties in the ratio set out in Schedule B, unless otherwise agreed in writing. Each Party's Contribution shall be made within the timeframes specified in Schedule A, and failure to contribute shall constitute a material breach of this Agreement.",
-    "legal_basis": [
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "2(d)"
-      },
-      {
-        "act": "Indian Partnership Act, 1932",
-        "section": "13"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "LOW",
-    "invalid_if": [
-      "Contributions are not clearly specified",
-      "Profit sharing ratio is not defined"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "JV_CONTRIBUTION_001",
+  "name": "JV Contributions and Profit Sharing",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "JOINT_VENTURE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party shall contribute to the Joint Venture the resources, capital, expertise, and assets as specified in Schedule A to this Agreement ('Contributions'). The Parties acknowledge that such Contributions constitute lawful consideration within the meaning of Section 2(d) of the Indian Contract Act, 1872. Profits and losses arising from the Joint Venture shall be shared between the Parties in the ratio set out in Schedule B, unless otherwise agreed in writing. Each Party's Contribution shall be made within the timeframes specified in Schedule A, and failure to contribute shall constitute a material breach of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "2(d)"
+    },
+    {
+      "act": "Indian Partnership Act, 1932",
+      "section": "13"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Contributions are not clearly specified",
+    "Profit sharing ratio is not defined"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "JV Contributions and Profit Sharing"
+}

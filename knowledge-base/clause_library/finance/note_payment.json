@@ -26,9 +26,10 @@
   "enforceability": "HIGH",
   "risk_level": "HIGH",
   "invalid_if": [
-    "Promissory note not properly stamped under Indian Stamp Act 1899 \u2013 inadmissible as evidence",
+    "Promissory note not properly stamped under Indian Stamp Act 1899 – inadmissible as evidence",
     "Promissory note not signed by the Maker rendering it invalid under NI Act 1881"
   ],
   "source": "Negotiable Instruments Act, 1881; Indian Stamp Act, 1899",
-  "version": "2.0"
+  "version": "2.0",
+  "title": "Promissory Note Payment"
 }

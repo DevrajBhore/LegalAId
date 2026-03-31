@@ -3,7 +3,18 @@
   "category": "CONSIDERATION",
   "title": "Payment Terms",
   "text": "The Buyer shall pay the Supplier the purchase price as specified in Schedule 1 within thirty (30) days of receipt of a valid invoice accompanied by the relevant delivery documentation. All payments shall be made by electronic transfer to the Supplier's designated bank account. In the event of delayed payment, the Supplier shall be entitled to charge simple interest at the rate of eighteen percent (18%) per annum on the overdue amount from the due date until actual payment. All amounts are exclusive of GST and other applicable taxes which shall be borne by the Buyer. The Buyer shall not withhold payment on account of any disputed claim without the Supplier's written consent.",
-  "statutory_reference": "Indian Contract Act, 1872 \u2013 S.55; MSMED Act, 2006",
+  "statutory_reference": "Indian Contract Act, 1872 – S.55; MSMED Act, 2006",
   "mandatory": true,
-  "jurisdiction": "India"
+  "jurisdiction": "India",
+  "name": "Payment Terms",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "VENDOR"
+  ],
+  "legal_basis": [],
+  "invalid_if": [],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0.0"
 }

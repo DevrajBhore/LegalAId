@@ -1,29 +1,30 @@
 {
-    "clause_id": "MOU_NON_BINDING_001",
-    "name": "Non-Binding Nature",
-    "category": "INTERPRETATION",
-    "document_types": [
-      "MOU"
-    ],
-    "jurisdiction": "India",
-    "text": "This Memorandum of Understanding is intended to record the mutual understanding of the Parties and is not intended to create legally binding obligations unless expressly stated herein. The Parties acknowledge that this MOU does not constitute a binding contract and either Party may withdraw from the arrangement contemplated herein upon written notice to the other Party, without liability. Notwithstanding the foregoing, the provisions relating to Confidentiality, Governing Law, and Dispute Resolution shall be binding on the Parties.",
-    "legal_basis": [
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "2(h)"
-      },
-      {
-        "act": "Indian Contract Act, 1872",
-        "section": "10"
-      }
-    ],
-    "mandatory": true,
-    "enforceability": "HIGH",
-    "risk_level": "LOW",
-    "invalid_if": [
-      "The MOU contains specific obligations and timelines that courts may interpret as binding",
-      "Parties have acted in reliance on the MOU to their detriment"
-    ],
-    "source": "LegalAId Clause Library",
-    "version": "1.0"
-  }
+  "clause_id": "MOU_NON_BINDING_001",
+  "name": "Non-Binding Nature",
+  "category": "INTERPRETATION",
+  "document_types": [
+    "MOU"
+  ],
+  "jurisdiction": "India",
+  "text": "This Memorandum of Understanding is intended to record the mutual understanding of the Parties and is not intended to create legally binding obligations unless expressly stated herein. The Parties acknowledge that this MOU does not constitute a binding contract and either Party may withdraw from the arrangement contemplated herein upon written notice to the other Party, without liability. Notwithstanding the foregoing, the provisions relating to Confidentiality, Governing Law, and Dispute Resolution shall be binding on the Parties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "2(h)"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The MOU contains specific obligations and timelines that courts may interpret as binding",
+    "Parties have acted in reliance on the MOU to their detriment"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Non-Binding Nature"
+}

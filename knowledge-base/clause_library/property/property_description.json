@@ -2,8 +2,20 @@
   "clause_id": "RENTAL_PROPERTY_DESCRIPTION_001",
   "category": "PURPOSE",
   "title": "Description of Premises",
-  "text": "The Licensor/Landlord hereby licenses/leases to the Licensee/Tenant the premises situated at {{property_address}} (\"Premises\"), together with all fixtures, fittings, and facilities forming part thereof. The Premises shall be used solely for the purpose as agreed between the Parties and for no other purpose without the prior written consent of the Licensor/Landlord. The Licensee/Tenant has inspected the Premises and is satisfied with its condition. The Licensor/Landlord warrants that it has full right and authority to license/lease the Premises and that the Premises are free from all encumbrances that would affect the Licensee/Tenant's peaceful enjoyment.",
-  "statutory_reference": "Transfer of Property Act, 1882 \u2013 S.108",
+  "text": "The Licensor/Landlord hereby licenses or leases to the Licensee/Tenant the premises situated at {{property_address}} (\"Premises\"), together with all fixtures, fittings, and facilities forming part thereof. The Premises shall be used solely for {{permitted_use}} and for no other purpose without the prior written consent of the Licensor/Landlord. The Licensee/Tenant has inspected the Premises and is satisfied with its condition. The Licensor/Landlord warrants that it has full right and authority to license or lease the Premises and that the Premises are free from encumbrances that would materially affect the Licensee/Tenant's peaceful enjoyment.",
+  "statutory_reference": "Transfer of Property Act, 1882 – S.108",
   "mandatory": true,
-  "jurisdiction": "India"
+  "jurisdiction": "India",
+  "name": "Description of Premises",
+  "document_types": [
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT",
+    "RENTAL"
+  ],
+  "legal_basis": [],
+  "invalid_if": [],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0.0"
 }
