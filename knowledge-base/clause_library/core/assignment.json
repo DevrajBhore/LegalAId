@@ -9,8 +9,14 @@
   "text": "Neither Party may assign or transfer its rights or obligations under this Agreement without the prior written consent of the other Party, except where such assignment is required by law.",
   "legal_basis": [
     {
+      "act": "Transfer of Property Act, 1882",
+      "section": "37",
+      "note": "Actionable claims — assignment"
+    },
+    {
       "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "section": "37",
+      "note": "Privity of contract — obligations personal"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,24 @@
   "invalid_if": [
     "Assignment allowed in contracts where personal obligations exist"
   ],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Assignment"
+  "source": "Transfer of Property Act, 1882; Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Assignment",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Assignment of receivables — SARFAESI / factoring — anti-assignment clause may conflict",
+    "Group company assignments — 'affiliate' definition must be precise",
+    "Assignment after insolvency — IBC provisions override contractual restriction"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

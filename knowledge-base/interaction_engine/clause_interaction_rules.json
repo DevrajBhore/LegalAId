@@ -1,0 +1,189 @@
+{
+  "_version": "3.0",
+  "_description": "Clause Interaction Engine — defines hard dependencies, soft suggestions, and conflicts between clauses. Used by the IRE to validate document completeness and logical consistency.",
+  "hard_dependencies": [
+    {
+      "rule_id": "TERM_REQUIRES_TERMINATION",
+      "if_present": "CORE_TERM_001",
+      "must_include": "CORE_TERMINATION_001",
+      "severity": "CRITICAL",
+      "rationale": "A contract with a fixed term must specify how it can be terminated before expiry — without termination provisions the parties have no exit mechanism.",
+      "law": "Indian Contract Act, 1872 S.39"
+    },
+    {
+      "rule_id": "TERMINATION_REQUIRES_NOTICE",
+      "if_present": "CORE_TERMINATION_001",
+      "must_include": "CORE_NOTICE_001",
+      "severity": "HIGH",
+      "rationale": "Termination clauses are ineffective without a valid notice mechanism. Notice of termination must be served in a manner that provides legal evidence of receipt.",
+      "law": "Indian Contract Act, 1872 S.4"
+    },
+    {
+      "rule_id": "INDEMNITY_REQUIRES_LIABILITY_CAP",
+      "if_present": "CORE_INDEMNITY_001",
+      "must_include": "CORE_LIMITATION_LIABILITY_001",
+      "severity": "HIGH",
+      "rationale": "Unlimited indemnity creates open-ended liability. Indian courts award only reasonable compensation (ICA S.73/74). A liability cap defines the upper limit.",
+      "law": "Indian Contract Act, 1872 S.73, S.74"
+    },
+    {
+      "rule_id": "LOAN_DEFAULT_REQUIRES_ACCELERATION",
+      "if_present": "LOAN_DEFAULT_001",
+      "must_include": "LOAN_ACCELERATION_001",
+      "severity": "HIGH",
+      "rationale": "Default clause without acceleration right is commercially toothless — the lender cannot call the loan early.",
+      "law": "Indian Contract Act, 1872 S.39; IBC, 2016 S.7"
+    },
+    {
+      "rule_id": "LOAN_ACCELERATION_REQUIRES_DEFAULT",
+      "if_present": "LOAN_ACCELERATION_001",
+      "must_include": "LOAN_DEFAULT_001",
+      "severity": "CRITICAL",
+      "rationale": "Acceleration without defined Events of Default is void for uncertainty — courts will not enforce acceleration without specified triggering events.",
+      "law": "Indian Contract Act, 1872 S.29"
+    },
+    {
+      "rule_id": "CONFIDENTIALITY_REQUIRES_DEFINITION",
+      "if_present": "CORE_CONFIDENTIALITY_001",
+      "must_include": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+      "severity": "CRITICAL",
+      "rationale": "Confidentiality obligation is unenforceable without a defined scope of what constitutes Confidential Information.",
+      "law": "Indian Contract Act, 1872 S.29"
+    },
+    {
+      "rule_id": "NON_COMPETE_REQUIRES_CONFIDENTIALITY",
+      "if_present": "EMP_NON_COMPETE_001",
+      "must_include": "EMP_CONFIDENTIALITY_001",
+      "severity": "CRITICAL",
+      "rationale": "Post-employment non-compete is void under ICA S.27 unless narrowly tied to protection of specific Confidential Information (Niranjan Shankar Golikari SC).",
+      "law": "Indian Contract Act, 1872 S.27"
+    },
+    {
+      "rule_id": "EMPLOYMENT_TERMINATION_REQUIRES_NOTICE_PERIOD",
+      "if_present": "EMPLOYMENT_TERMINATION_001",
+      "must_include": "EMP_NOTICE_PERIOD_001",
+      "severity": "CRITICAL",
+      "rationale": "Employment termination without a defined notice period violates IDA 1947 and applicable Shops Acts. Summary dismissal without notice valid only for gross misconduct.",
+      "law": "Industrial Disputes Act, 1947 S.25F"
+    },
+    {
+      "rule_id": "EMP_WAGES_REQUIRES_EPF_PROVISION",
+      "if_present": "EMP_WAGES_001",
+      "must_include": "EMP_BENEFITS_001",
+      "severity": "HIGH",
+      "rationale": "EPF and ESI are mandatory statutory deductions. A wage clause without addressing statutory deductions creates compliance risk and potential criminal liability.",
+      "law": "Employees' Provident Funds Act, 1952 S.6"
+    },
+    {
+      "rule_id": "DISPUTE_REQUIRES_GOVERNING_LAW",
+      "if_present": "CORE_DISPUTE_RESOLUTION_001",
+      "must_include": "CORE_GOVERNING_LAW_001",
+      "severity": "CRITICAL",
+      "rationale": "Dispute resolution clause specifying seat of arbitration implies Indian law governs. Both must be consistent.",
+      "law": "Arbitration and Conciliation Act, 1996 S.28"
+    },
+    {
+      "rule_id": "SIGNATURE_REQUIRES_IDENTITY",
+      "if_present": "CORE_SIGNATURE_BLOCK_001",
+      "must_include": "CORE_IDENTITY_001",
+      "severity": "CRITICAL",
+      "rationale": "Cannot have a signature block without identifying who is signing and their authority.",
+      "law": "Indian Contract Act, 1872 S.10"
+    },
+    {
+      "rule_id": "IP_ASSIGNMENT_REQUIRES_PAYMENT",
+      "if_present": "IP_OWNERSHIP_001",
+      "must_include": "SERVICE_PAYMENT_001",
+      "severity": "HIGH",
+      "rationale": "IP assignment without consideration may be challenged. A deed of assignment without consideration is not a contract — it requires deed formalities.",
+      "law": "Copyright Act, 1957 S.19(5)"
+    },
+    {
+      "rule_id": "FORCE_MAJEURE_REQUIRES_NOTICE",
+      "if_present": "CORE_FORCE_MAJEURE_001",
+      "must_include": "CORE_NOTICE_001",
+      "severity": "HIGH",
+      "rationale": "Force majeure protection is triggered by notice. Without a notice mechanism, the affected party has no clear way to invoke FM protection.",
+      "law": "Indian Contract Act, 1872 S.32"
+    },
+    {
+      "rule_id": "RENTAL_REQUIRES_REGISTRATION_FOR_LONG_LEASE",
+      "if_present": "RENTAL_TERM_001",
+      "must_include": "PROP_REGISTRATION_001",
+      "severity": "HIGH",
+      "rationale": "Leases exceeding 12 months must be registered under Registration Act 1908 S.17. Unregistered leases are inadmissible as evidence.",
+      "law": "Registration Act, 1908 S.17"
+    }
+  ],
+  "soft_suggestions": [
+    {
+      "rule_id": "SUGGEST_DATA_SECURITY_WITH_CONFIDENTIALITY",
+      "if_present": "CORE_CONFIDENTIALITY_001",
+      "suggest": "NDA_DATA_SECURITY_001",
+      "reason": "Modern confidentiality obligations should specify technical and organisational security measures — important for DPDPA 2023 compliance."
+    },
+    {
+      "rule_id": "SUGGEST_INSURANCE_WITH_INDEMNITY",
+      "if_present": "CORE_INDEMNITY_001",
+      "suggest": "CORE_INSURANCE_001",
+      "reason": "Indemnity obligations should be backed by insurance coverage to ensure the indemnifying party can actually pay claims."
+    },
+    {
+      "rule_id": "SUGGEST_SLA_WITH_SERVICE_SCOPE",
+      "if_present": "SERVICE_SCOPE_001",
+      "suggest": "SERVICE_SLA_001",
+      "reason": "Service scope without SLA creates uncertainty about performance standards — disputes about what 'reasonable skill and care' means."
+    },
+    {
+      "rule_id": "SUGGEST_CHANGE_REQUEST_WITH_SCOPE",
+      "if_present": "SERVICE_SCOPE_001",
+      "suggest": "SERVICE_CHANGE_REQUEST_001",
+      "reason": "Scope creep is the most common dispute in service contracts. A change order mechanism prevents disputes about out-of-scope work."
+    },
+    {
+      "rule_id": "SUGGEST_OPEN_SOURCE_WITH_IP",
+      "if_present": "IP_OWNERSHIP_001",
+      "suggest": "IP_OPEN_SOURCE_001",
+      "reason": "Software IP agreements should address open source licence compliance to prevent GPL contamination."
+    },
+    {
+      "rule_id": "SUGGEST_GRIEVANCE_WITH_DISCIPLINARY",
+      "if_present": "EMP_DISCIPLINARY_ACTION_001",
+      "suggest": "EMP_GRIEVANCE_PROCEDURE_001",
+      "reason": "Natural justice requires an employee to be heard. A grievance mechanism balances the disciplinary process."
+    }
+  ],
+  "conflict_rules": [
+    {
+      "rule_id": "CONFLICT_INDEPENDENT_CONTRACTOR_VS_EMPLOYMENT",
+      "clause_a": "CORE_RELATIONSHIP_OF_PARTIES_001",
+      "clause_b": "EMP_WAGES_001",
+      "reason": "Contradictory — independent contractor relationship clause is inconsistent with employment wages and statutory benefits clauses.",
+      "severity": "CRITICAL",
+      "resolution": "Determine whether the relationship is employment or independent contractor. Use employment clauses for employees; use service/scope/payment clauses for contractors."
+    },
+    {
+      "rule_id": "CONFLICT_PERPETUAL_NON_COMPETE",
+      "clause_a": "EMP_NON_COMPETE_001",
+      "issue": "Post-employment non-compete without nexus to Confidential Information",
+      "reason": "Absolute post-employment non-compete is void under ICA S.27.",
+      "severity": "CRITICAL",
+      "resolution": "Limit post-employment restriction to: (1) protection of specific Confidential Information; (2) reasonable duration (max 12 months); (3) named clients with whom employee had personal dealings."
+    },
+    {
+      "rule_id": "CONFLICT_OUSTER_VS_ARBITRATION",
+      "clause_a": "CORE_GOVERNING_LAW_001",
+      "issue": "Exclusive jurisdiction clause without arbitration exception",
+      "reason": "Absolute exclusive jurisdiction clause ousts all other courts — void under ICA S.28.",
+      "severity": "CRITICAL",
+      "resolution": "Frame exclusive jurisdiction clause as subsidiary to arbitration clause, or as applicable only where no arbitration agreement exists."
+    },
+    {
+      "rule_id": "CONFLICT_FOREIGN_LAW_INDIAN_PARTIES",
+      "issue": "Foreign governing law chosen between two Indian residents",
+      "reason": "May be void under ICA S.23 as against public policy; Indian courts will apply Indian law regardless.",
+      "severity": "HIGH",
+      "resolution": "Use Indian governing law for agreements between Indian parties. Foreign law may be chosen for international commercial agreements."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_GOVERNING_LAW_001",
-  "name": "Governing Law",
+  "name": "Governing Law and Jurisdiction",
   "category": "GOVERNING_LAW",
   "document_types": [
     "ALL"
@@ -10,14 +10,48 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "General Principles of Contract Law"
+      "section": "23",
+      "note": "Lawful object — governing law must be India for Indian parties"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "20",
+      "note": "Territorial jurisdiction"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "42",
+      "note": "Court supervision of arbitration"
     }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "LOW",
   "invalid_if": [],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Governing Law"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Governing Law",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "suggested_with": [
+    "CORE_ARBITRATION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Seat of arbitration determines supervisory court jurisdiction under A&C Act S.42"
+  },
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Conflict between exclusive jurisdiction clause and arbitration clause",
+    "Foreign law chosen — Indian courts may refuse to apply"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

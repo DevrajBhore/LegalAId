@@ -11,15 +11,18 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "18"
+      "section": "18",
+      "note": "Property and risk in specific goods"
     },
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "20"
+      "section": "20",
+      "note": "Risk prima facie passes with property"
     },
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "26"
+      "section": "26",
+      "note": "Risk where delivery delayed by fault of party"
     }
   ],
   "mandatory": true,
@@ -30,6 +33,27 @@
     "Title retention clause not adequately documented for enforcement"
   ],
   "source": "Sale of Goods Act, 1930",
-  "version": "2.0",
-  "title": "Risk Transfer"
+  "version": "3.0",
+  "title": "Risk Transfer",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_DELIVERY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_INSURANCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Transit loss — goods damaged in transit; who bears risk depends on delivery terms",
+    "Title retention vs risk transfer — risk can pass without title (SGA 1930 S.26)",
+    "Incoterms — absence of Incoterms creates risk allocation ambiguity",
+    "Insurance — seller may bear risk without insurance, creating uninsured loss"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -9,8 +9,14 @@
   "text": "This Agreement, together with all schedules and annexures attached hereto, constitutes the entire agreement between the Parties with respect to its subject matter and supersedes all prior negotiations, representations, warranties, and understandings of whatsoever nature between the Parties, whether oral or in writing.",
   "legal_basis": [
     {
+      "act": "Indian Evidence Act, 1872",
+      "section": "92",
+      "note": "Parol evidence rule — oral agreement cannot vary written contract"
+    },
+    {
       "act": "Indian Contract Act, 1872",
-      "section": "62"
+      "section": "17",
+      "note": "Fraud — cannot use entire agreement to exclude fraud claims"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,25 @@
   "invalid_if": [
     "Amendments allowed without written consent"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Entire Agreement"
+  "source": "Indian Evidence Act, 1872 S.92",
+  "version": "3.0",
+  "title": "Entire Agreement",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_AMENDMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Pre-contractual representations — one party relies on verbal promises",
+    "Letters of intent — entire agreement clause must address LOI supersession explicitly"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

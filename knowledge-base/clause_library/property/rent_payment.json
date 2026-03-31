@@ -15,12 +15,12 @@
       "section": "105"
     },
     {
-      "act": "Model Tenancy Act, 2021",
-      "section": "14"
+      "act": "Income Tax Act, 1961",
+      "section": "194I"
     },
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "55"
+      "act": "Model Tenancy Act, 2021",
+      "section": "14"
     }
   ],
   "mandatory": true,
@@ -31,6 +31,31 @@
     "Rent payment mode restricted to cash only without digital payment option"
   ],
   "source": "Transfer of Property Act, 1882; Model Tenancy Act, 2021",
-  "version": "2.0",
-  "title": "Rent Payment Terms"
+  "version": "3.0",
+  "title": "Rent Payment Terms",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_TERM_001"
+  ],
+  "suggested_with": [
+    "RENT_SECURITY_DEPOSIT_001",
+    "RENT_RENT_INCREASE_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "IT Act S.269ST bars cash payment of Rs.2 lakhs or more in a single transaction — all rent payments > Rs.2L must be by bank transfer"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Cash rent payment — S.269ST violation, deduction disallowed",
+    "Rent receipt — landlord refuses to issue receipt",
+    "Post-dated cheque dishonour — NI Act S.138 cheque bouncing action"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

@@ -12,11 +12,13 @@
   "legal_basis": [
     {
       "act": "Copyright Act, 1957",
-      "section": "14"
+      "section": "30",
+      "note": "Licence compliance — OSS licence terms are legally binding"
     },
     {
       "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "section": "65",
+      "note": "Source code obligations"
     }
   ],
   "mandatory": false,
@@ -27,6 +29,24 @@
     "Failure to disclose open-source components incorporated into proprietary deliverables"
   ],
   "source": "Copyright Act, 1957",
-  "version": "2.0",
-  "title": "Open Source Compliance"
+  "version": "3.0",
+  "title": "Open Source Compliance",
+  "depends_on": [
+    "IP_OWNERSHIP_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "IP_COPYRIGHT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "GPL contamination — entire client codebase must be open-sourced",
+    "Attribution failures — OSS licence notices not included in product"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

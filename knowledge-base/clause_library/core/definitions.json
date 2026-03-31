@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_DEFINITIONS_001",
-  "name": "Definitions",
+  "name": "Definitions and Interpretation",
   "category": "DEFINITIONS",
   "document_types": [
     "ALL"
@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "29",
+      "note": "Certainty of terms — definitions prevent vagueness"
+    },
+    {
+      "act": "General Clauses Act, 1897",
+      "section": "13",
+      "note": "Interpretation rules for Indian statutes"
+    },
+    {
+      "act": "Goods and Services Tax Act, 2017",
+      "section": "2",
+      "note": "GST definitions"
     }
   ],
   "mandatory": true,
@@ -19,7 +30,26 @@
   "invalid_if": [
     "Key terms are undefined or ambiguous"
   ],
-  "source": "Contract drafting principles",
-  "version": "1.0",
-  "title": "Definitions"
+  "source": "Indian Contract Act, 1872; General Clauses Act, 1897",
+  "version": "3.0",
+  "title": "Definitions",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_INTERPRETATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Undefined 'Material Breach' — most litigated term in Indian contract disputes",
+    "Undefined 'Working Day' — impacts payment and notice period calculations",
+    "'Includes' vs 'means' confusion"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_THIRD_PARTY_DISCLOSURE_001",
-  "name": "Third Party Disclosure Restrictions",
+  "name": "Third-Party Disclosure Restrictions",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "NDA",
@@ -12,11 +12,7 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
-    },
-    {
-      "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "section": "27"
     }
   ],
   "mandatory": true,
@@ -27,6 +23,22 @@
     "No restriction on further disclosure by Permitted Recipients"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Third Party Disclosure Restrictions"
+  "version": "3.0",
+  "title": "Third Party Disclosure Restrictions",
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001",
+    "NDA_DISCLOSURE_PERMITTED_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unauthorised onward disclosure — chain of liability from original recipient"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -10,5 +10,39 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "SERVICE_PAYMENT_001",
+    "CORE_TERM_001",
+    "SERVICE_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: added IP ownership, SLA, change request, TDS/GST, MSME clause. Removed dependency on blueprint which was missing all commercial protections.",
+  "conditional_clauses": [
+    {
+      "clause": "SERVICE_SLA_001",
+      "include_if": "include_sla == true",
+      "note": "Required for technology and managed services"
+    },
+    {
+      "clause": "SERVICE_REPORTING_001",
+      "include_if": "include_reporting == true",
+      "note": "Monthly/quarterly reporting obligation"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "processes_personal_data == true",
+      "note": "DPDPA 2023 compliance — required if services involve personal data"
+    },
+    {
+      "clause": "EMP_NON_SOLICITATION_001",
+      "include_if": "include_non_solicit == true",
+      "note": "Non-solicitation of client's employees"
+    }
   ]
 }

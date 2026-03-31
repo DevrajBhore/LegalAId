@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_DURATION_001",
-  "name": "Confidentiality Duration",
+  "name": "NDA Duration",
   "category": "TERM",
   "document_types": [
     "ALL"
@@ -10,7 +10,7 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "27"
     }
   ],
   "mandatory": false,
@@ -19,7 +19,25 @@
   "invalid_if": [
     "The stipulated duration is deemed an unreasonable restraint of trade under Section 27 of the Indian Contract Act, 1872."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Confidentiality Duration"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Confidentiality Duration",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "NDA_TERM_SURVIVAL_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Perpetual NDA enforceability challenge",
+    "Party terminates NDA and immediately uses CI — survival clause is critical"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

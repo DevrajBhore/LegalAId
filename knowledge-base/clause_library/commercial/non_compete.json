@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_NON_COMPETE_001",
-  "name": "Non Compete",
+  "name": "NDA Non-Compete",
   "category": "RESTRAINT",
   "document_types": [
     "ALL"
@@ -9,8 +9,9 @@
   "text": "The Recipient shall not, during the term of this Agreement and for a period of twelve (12) months thereafter, directly or indirectly engage in any business competitive with the Discloser where such engagement involves the use or disclosure of the Confidential Information.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act",
-      "section": "27"
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Narrowly tailored CI-linked non-compete is valid"
     }
   ],
   "mandatory": false,
@@ -21,7 +22,28 @@
     "The duration or geographical scope of the restriction is unreasonable.",
     "It operates as a blanket prohibition on engaging in competitive business post-termination without a specific nexus to Confidential Information."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Non Compete"
+  "source": "Indian Contract Act, 1872 S.27",
+  "version": "3.0",
+  "title": "Non Compete",
+  "depends_on": [
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "NDA_NON_SOLICITATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Employee starts competing business using CI — injunction + damages available",
+    "Proving CI was actually used — evidentiary burden on Disclosing Party"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

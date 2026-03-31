@@ -20,5 +20,49 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "CORE_CONFIDENTIALITY_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_BREACH_REMEDIES_001",
+    "NDA_NON_COMPETE_001",
+    "NDA_NON_SOLICITATION_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_SURVIVAL_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001 for SEBI/DPDPA, improved dispute resolution.",
+  "conditional_clauses": [
+    {
+      "clause": "NDA_NON_COMPETE_001",
+      "include_if": "include_non_compete == true",
+      "note": "Narrow non-compete tied to CI — ICA S.27"
+    },
+    {
+      "clause": "NDA_NON_SOLICITATION_001",
+      "include_if": "include_non_solicit == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true",
+      "note": "DPDPA 2023 — required if NDA covers personal data"
+    }
+  ],
+  "removed_from_v2": [],
+  "mandatory_legal_checks": [
+    "Confidentiality duration must be limited — perpetual NDA risks enforceability challenge",
+    "SEBI UPSI provision required where parties include or advise listed companies",
+    "DPDPA 2023 applies if confidential information includes personal data of Indian residents"
   ]
 }

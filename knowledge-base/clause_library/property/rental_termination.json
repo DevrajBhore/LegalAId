@@ -12,10 +12,54 @@
     "LEAVE_AND_LICENSE_AGREEMENT",
     "RENTAL"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "106",
+      "note": "Notice for termination — 15 days for month-to-month"
+    },
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "21",
+      "note": "Eviction grounds under MTA"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "6",
+      "note": "Suit for recovery of possession"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
   "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "version": "3.0",
+  "depends_on": [
+    "RENTAL_TERM_001",
+    "CORE_NOTICE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_NOTICE_001"
+  ],
+  "suggested_with": [
+    "RENT_LOCKIN_PERIOD_001",
+    "RENTAL_SECURITY_DEPOSIT_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "TPA S.106 — 15 days notice for month-to-month; Rent Control Acts override in controlled premises",
+    "Maharashtra": "Maharashtra Rent Control Act 1999 applies to older premises — eviction restricted to specific grounds"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Eviction without following TPA S.106 notice period — unlawful eviction claim",
+    "Rent Control Act protection — tenant in controlled premises cannot be evicted without court order",
+    "Wrongful termination during lock-in period — penalty clause validity under ICA S.74",
+    "ICA S.23 — termination clause was previously triggering false positive on 'unlawful purpose' — fixed in v3.0"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

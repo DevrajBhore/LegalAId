@@ -30,6 +30,32 @@
     "No KYC/AML compliance provisions for regulated lenders"
   ],
   "source": "Indian Contract Act, 1872; FEMA, 1999",
-  "version": "2.0",
-  "title": "Loan Amount and Disbursement"
+  "version": "3.0",
+  "title": "Loan Amount and Disbursement",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_REPAYMENT_001",
+    "LOAN_INTEREST_001",
+    "LOAN_DEFAULT_001"
+  ],
+  "suggested_with": [
+    "LOAN_SECURITY_001",
+    "LOAN_COVENANTS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Disbursement conditions not met — borrower claims entitlement to funds",
+    "Purpose restriction — lender claims misuse of loan proceeds",
+    "KYC/AML deficiency — PMLA 2002 prosecution risk for regulated lenders",
+    "FEMA violation — foreign lender must comply with ECB guidelines"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": true
 }

@@ -17,10 +17,6 @@
     {
       "act": "Model Tenancy Act, 2021",
       "section": "21"
-    },
-    {
-      "act": "Specific Relief Act, 1963",
-      "section": "6"
     }
   ],
   "mandatory": true,
@@ -31,6 +27,30 @@
     "No provision for Tenant's right to challenge eviction before Rent Authority"
   ],
   "source": "Transfer of Property Act, 1882 – S.106; Model Tenancy Act, 2021",
-  "version": "2.0",
-  "title": "Termination of Tenancy"
+  "version": "3.0",
+  "title": "Termination of Tenancy",
+  "depends_on": [
+    "RENTAL_TERM_001",
+    "CORE_NOTICE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_NOTICE_001"
+  ],
+  "suggested_with": [
+    "RENT_LOCKIN_PERIOD_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "TPA S.106 — 15 days notice for month-to-month tenancy"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "v3.0 FIX: Pattern 'unlawful.*purpose' was incorrectly flagging this clause — fixed in illegal_clauses.rules.json v3.0",
+    "Termination notice adequacy — oral notice insufficient",
+    "Eviction proceedings under Code of Civil Procedure — summary suit under Order 37"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

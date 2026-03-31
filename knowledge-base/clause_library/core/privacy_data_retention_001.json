@@ -1,6 +1,6 @@
 {
   "clause_id": "PRIVACY_DATA_RETENTION_001",
-  "name": "Data Retention",
+  "name": "Data Retention and Deletion",
   "category": "PRIVACY",
   "document_types": [
     "PRIVACY_POLICY"
@@ -10,11 +10,13 @@
   "legal_basis": [
     {
       "act": "Digital Personal Data Protection Act, 2023",
-      "section": "8(7)"
+      "section": "8(7)",
+      "note": "Data Fiduciary must delete personal data when purpose served"
     },
     {
-      "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "act": "Information Technology (SPDI) Rules, 2011",
+      "section": "5(4)",
+      "note": "Retention only as necessary for purpose"
     }
   ],
   "mandatory": true,
@@ -23,7 +25,24 @@
   "invalid_if": [
     "Retention periods are indefinite without legal justification"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Data Retention"
+  "source": "DPDPA, 2023",
+  "version": "3.0",
+  "title": "Data Retention",
+  "depends_on": [
+    "CORE_DATA_PROCESSING_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "PRIVACY_DATA_SUBJECT_RIGHTS_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Retention beyond purpose — DPDPA penalty up to Rs.150 crore"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

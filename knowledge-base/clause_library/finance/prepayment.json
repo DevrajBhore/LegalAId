@@ -29,6 +29,27 @@
     "No right of prepayment for Borrower in any circumstances restricts legitimate debt management"
   ],
   "source": "Indian Contract Act, 1872; RBI Guidelines",
-  "version": "2.0",
-  "title": "Prepayment"
+  "version": "3.0",
+  "title": "Prepayment",
+  "depends_on": [
+    "LOAN_AMOUNT_001",
+    "LOAN_REPAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "LOAN_DEFAULT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Prepayment penalty — RBI bars foreclosure charges on floating rate loans",
+    "Partial prepayment — must specify whether to reduce instalment or tenure",
+    "Prepayment during lock-in — dispute over notice period and fee"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

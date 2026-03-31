@@ -24,6 +24,26 @@
     "Subrogation rights are excluded or restricted"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Guarantor Indemnity and Subrogation"
+  "version": "3.0",
+  "title": "Guarantor Indemnity and Subrogation",
+  "depends_on": [
+    "GUARANTEE_OBLIGATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_INDEMNITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Guarantee vs indemnity distinction — guarantor's secondary liability vs indemnifier's primary liability",
+    "Subrogation rights — guarantor must be subrogated to lender's rights on payment (ICA S.140/141)",
+    "Contribution between co-guarantors — right of contribution under ICA S.146"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

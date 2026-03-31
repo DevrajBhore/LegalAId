@@ -12,10 +12,53 @@
     "LEAVE_AND_LICENSE_AGREEMENT",
     "RENTAL"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "11",
+      "note": "Security deposit cap"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105",
+      "note": "Lease consideration"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74",
+      "note": "Forfeiture of deposit as penalty — must be genuine pre-estimate"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
   "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_RENT_PAYMENT_001"
+  ],
+  "suggested_with": [
+    "RENTAL_TERMINATION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Model Tenancy Act 2021 S.11: security deposit capped at 2 months for residential, 6 months for commercial",
+    "Maharashtra": "Cap of 5% of property value for pagdi properties — consult local rent court rules",
+    "Karnataka": "Karnataka Rent Control Act — security deposit limits apply to regulated premises"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Security deposit refund delay — most common landlord-tenant dispute",
+    "Deductions from security deposit — landlord must prove damage; cannot deduct for normal wear and tear",
+    "Security deposit exceeding statutory limits under Model Tenancy Act 2021",
+    "Interest on security deposit — some states require landlord to pay interest"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

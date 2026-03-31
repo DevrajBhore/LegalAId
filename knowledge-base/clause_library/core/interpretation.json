@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_INTERPRETATION_001",
-  "name": "Interpretation",
+  "name": "Rules of Interpretation",
   "category": "INTERPRETATION",
   "document_types": [
     "ALL"
@@ -9,15 +9,39 @@
   "text": "Headings are for convenience only and shall not affect the interpretation of this Agreement.",
   "legal_basis": [
     {
+      "act": "General Clauses Act, 1897",
+      "section": "13",
+      "note": "Gender and number rules of interpretation"
+    },
+    {
       "act": "Indian Contract Act, 1872",
-      "section": "93"
+      "section": "29",
+      "note": "Certainty requirement — interpretation prevents vagueness"
     }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "LOW",
   "invalid_if": [],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Interpretation"
+  "source": "General Clauses Act, 1897",
+  "version": "3.0",
+  "title": "Interpretation",
+  "depends_on": [
+    "CORE_DEFINITIONS_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DEFINITIONS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "'May' vs 'shall' — ambiguous obligation level creates disputes about whether acts are mandatory",
+    "Schedule vs Agreement conflict — which prevails in case of inconsistency (usually Schedule for specifics)"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

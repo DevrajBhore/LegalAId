@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_INFRINGEMENT_001",
-  "name": "IP Infringement",
+  "name": "IP Non-Infringement Warranty",
   "category": "IP",
   "document_types": [
     "ALL"
@@ -10,19 +10,13 @@
   "legal_basis": [
     {
       "act": "Copyright Act, 1957",
-      "section": "General principles related to infringement"
-    },
-    {
-      "act": "Trademarks Act, 1999",
-      "section": "General principles related to infringement"
+      "section": "55",
+      "note": "Remedies for copyright infringement"
     },
     {
       "act": "Patents Act, 1970",
-      "section": "General principles related to infringement"
-    },
-    {
-      "act": "Designs Act, 2000",
-      "section": "General principles related to infringement"
+      "section": "104",
+      "note": "Patent infringement suit"
     }
   ],
   "mandatory": false,
@@ -34,7 +28,27 @@
     "The alleged infringing act falls within statutory exceptions or fair use provisions under applicable IP laws.",
     "The alleged infringing party has a valid license or authorization for the use of the intellectual property."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "IP Infringement"
+  "source": "Copyright Act, 1957; Patents Act, 1970",
+  "version": "3.0",
+  "title": "IP Infringement",
+  "depends_on": [
+    "IP_OWNERSHIP_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_INDEMNITY_001"
+  ],
+  "suggested_with": [
+    "IP_OPEN_SOURCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Patent infringement — third party asserts patent against client's software",
+    "OSS copyleft violation — GPL licence claim against proprietary software"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

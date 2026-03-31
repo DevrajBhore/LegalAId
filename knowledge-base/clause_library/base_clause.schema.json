@@ -30,11 +30,17 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["act", "section"],
         "properties": {
           "act": { "type": "string" },
-          "section": { "type": "string" }
-        }
+          "section": { "type": "string" },
+          "article": { "type": "string" },
+          "note": { "type": "string" }
+        },
+        "required": ["act"],
+        "anyOf": [
+          { "required": ["section"] },
+          { "required": ["article"] }
+        ]
       }
     },
     "mandatory": { "type": "boolean" },

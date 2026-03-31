@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_EXPENSES_001",
-  "name": "Service Expenses",
+  "name": "Expenses Reimbursement",
   "category": "EXPENSES",
   "document_types": [
     "ALL"
@@ -11,10 +11,6 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "10"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "2(h)"
     }
   ],
   "mandatory": false,
@@ -25,7 +21,23 @@
     "It contravenes specific statutory provisions applicable to the nature of services rendered.",
     "It is established that the clause was entered into under coercion, undue influence, or fraud."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Service Expenses"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Service Expenses",
+  "depends_on": [
+    "SERVICE_PAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Business class travel claimed without approval",
+    "Alcohol/entertainment expenses claimed"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

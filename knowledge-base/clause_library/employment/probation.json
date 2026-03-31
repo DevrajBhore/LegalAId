@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_PROBATION_001",
-  "name": "Probation Period",
+  "name": "Probationary Period",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Industrial Disputes Act, 1947",
-      "section": "General principles"
+      "section": "2(oo)",
+      "note": "Retrenchment excludes termination during probation"
+    },
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F",
+      "note": "Retrenchment compensation — probationer exemption"
     }
   ],
   "mandatory": false,
@@ -20,7 +26,26 @@
     "Probation period is excessively long without justification",
     "Probation is used to deny statutory rights"
   ],
-  "source": "Indian labour law practice",
-  "version": "1.0",
-  "title": "Probation Period"
+  "source": "Industrial Disputes Act, 1947",
+  "version": "3.0",
+  "title": "Probation Period",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_NOTICE_PERIOD_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Extension of probation without notice — employee claims confirmation by lapse of time",
+    "Termination during probation for misconduct — natural justice still required for cause-based discharge"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

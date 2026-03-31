@@ -27,6 +27,24 @@
     "Property tax liability imposed on Tenant contrary to normal legal position"
   ],
   "source": "Transfer of Property Act, 1882 – S.108",
-  "version": "2.0",
-  "title": "Utilities and Outgoings"
+  "version": "3.0",
+  "title": "Utilities and Outgoings",
+  "depends_on": [
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENT_MAINTENANCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Meter in landlord's name — electricity bills accumulate unpaid",
+    "No separate meter — tenant disputes utility apportionment"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -6,7 +6,7 @@
   "statutory_reference": "Indian Contract Act, 1872 – S.10",
   "mandatory": true,
   "jurisdiction": "India",
-  "name": "Parties and Recitals",
+  "name": "Parties, Recitals and Execution Date",
   "document_types": [
     "COMMERCIAL_LEASE_AGREEMENT",
     "CONSULTANCY_AGREEMENT",
@@ -29,10 +29,52 @@
     "SUPPLY_AGREEMENT",
     "TECHNOLOGY"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Competency and free consent"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "3",
+      "note": "Stamp duty obligation"
+    },
+    {
+      "act": "Indian Evidence Act, 1872",
+      "section": "91",
+      "note": "Written instrument is primary evidence"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Indian Contract Act, 1872; Indian Evidence Act, 1872",
+  "version": "3.0",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_SIGNATURE_BLOCK_001",
+    "CORE_GOVERNING_LAW_001"
+  ],
+  "suggested_with": [
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001"
+  ],
+  "jurisdiction_constraints": {
+    "Maharashtra": "Stamp paper value must comply with Maharashtra Stamp Act 1958 Schedule I",
+    "Karnataka": "Karnataka Stamp Act 1957 governs applicable stamp duty",
+    "Delhi": "Delhi Stamp Act 2001 applies"
+  },
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Vague party descriptions leading to questions of contract privity",
+    "Unsigned or partially signed agreements — ICA S.10 enforceability challenge",
+    "Wrong effective date — impacts limitation period calculation"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

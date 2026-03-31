@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_CONFIDENTIALITY_001",
-  "name": "Confidentiality Obligation",
+  "name": "Confidentiality",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "NDA",
@@ -13,7 +13,23 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "27",
+      "note": "Confidentiality agreements narrowly targeting specific info are valid"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A",
+      "note": "Data breach liability"
+    },
+    {
+      "act": "SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "section": "3",
+      "note": "UPSI obligations"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "4",
+      "note": "Personal data processing obligations"
     }
   ],
   "mandatory": true,
@@ -23,7 +39,29 @@
     "Confidential Information is not defined",
     "No exclusions exist"
   ],
-  "source": "Contract Act principles",
-  "version": "1.0",
-  "title": "Confidentiality Obligation"
+  "source": "Indian Contract Act, 1872; IT Act, 2000; SEBI Regulations, 2015",
+  "version": "3.0",
+  "title": "Confidentiality Obligation",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DATA_PROCESSING_001",
+    "CORE_SURVIVAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "What constitutes 'Confidential Information' — definition disputes",
+    "Disclosure to employees — missing 'need to know' restriction",
+    "Compelled legal disclosure — no notice obligation to disclosing party",
+    "UPSI leakage — SEBI enforcement action risk"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

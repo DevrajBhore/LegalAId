@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_TRADEMARK_USAGE_001",
-  "name": "Trademark Usage",
+  "name": "Trademark Usage Guidelines",
   "category": "IP",
   "document_types": [
     "DISTRIBUTION_AGREEMENT",
@@ -13,15 +13,13 @@
   "legal_basis": [
     {
       "act": "Trade Marks Act, 1999",
-      "section": "29"
+      "section": "2(1)(zg)",
+      "note": "Well-known trademark protection"
     },
     {
       "act": "Trade Marks Act, 1999",
-      "section": "48"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "29",
+      "note": "Infringement of registered trademark"
     }
   ],
   "mandatory": false,
@@ -33,6 +31,25 @@
     "No quality control provisions over use of Licensed Marks"
   ],
   "source": "Trade Marks Act, 1999",
-  "version": "2.0",
-  "title": "Trademark Usage"
+  "version": "3.0",
+  "title": "Trademark Usage",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "IP_LICENSE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Distributor registers similar domain name with client's trademark",
+    "Post-termination use of marks — registered trademark infringement claim",
+    "Goodwill dispute — distributor claims goodwill built up through own efforts"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

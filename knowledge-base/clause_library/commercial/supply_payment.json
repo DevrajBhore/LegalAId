@@ -6,15 +6,60 @@
   "statutory_reference": "Indian Contract Act, 1872 – S.55; MSMED Act, 2006",
   "mandatory": true,
   "jurisdiction": "India",
-  "name": "Payment Terms",
+  "name": "Supply Agreement Payment Terms",
   "document_types": [
     "SUPPLY_AGREEMENT",
     "VENDOR"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "55",
+      "note": "Seller's remedy for price"
+    },
+    {
+      "act": "MSMED Act, 2006",
+      "section": "15-16",
+      "note": "Payment obligation to MSMEs"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "194Q",
+      "note": "TDS on purchase of goods"
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "31",
+      "note": "Tax invoice requirement"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Sale of Goods Act, 1930; MSMED Act, 2006; IT Act, 1961",
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "SUPPLY_GOODS_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_DELIVERY_001"
+  ],
+  "suggested_with": [
+    "SUPPLY_INSPECTION_001",
+    "SUPPLY_REJECTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Section 194Q TDS non-deduction — both buyer and seller face IT scrutiny",
+    "MSME Samadhan portal — supplier files complaint for delayed payment",
+    "GST ITC disputes — mismatch between supplier's GSTR-1 and buyer's GSTR-2B"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": true
 }

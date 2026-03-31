@@ -27,6 +27,26 @@
     "No warranty of Landlord's title and authority to let"
   ],
   "source": "Transfer of Property Act, 1882 – S.108",
-  "version": "2.0",
-  "title": "Possession and Handover"
+  "version": "3.0",
+  "title": "Possession and Handover",
+  "depends_on": [
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "RENTAL_TERM_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENT_MAINTENANCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Delayed possession — landlord fails to hand over on commencement date",
+    "Condition of premises on handing over — no inventory taken",
+    "Landlord's title defect discovered after possession — tenant seeks rescission"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

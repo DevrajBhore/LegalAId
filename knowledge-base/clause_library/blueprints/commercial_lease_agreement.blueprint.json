@@ -19,5 +19,38 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "RENTAL_TERM_001",
+    "RENTAL_RENT_PAYMENT_001",
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "RENT_PROPERTY_USE_001",
+    "RENT_MAINTENANCE_001",
+    "RENT_UTILITIES_001",
+    "RENT_SUBLEASE_001",
+    "RENT_LOCKIN_PERIOD_001",
+    "RENT_RENT_INCREASE_001",
+    "RENT_POSSESSION_001",
+    "PROP_REGISTRATION_001",
+    "RENTAL_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "CORE_FORCE_MAJEURE_001",
+      "include_if": "long_term_lease == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "TDS S.194I — commercial tenant deducts TDS at 10% if rent > Rs.2.4 lakhs p.a.",
+    "GST at 18% on commercial rent — landlord with GST registration must charge GST",
+    "Registration Act 1908 S.17 — mandatory registration for lease > 12 months",
+    "Model Tenancy Act 2021 — security deposit capped at 6 months for commercial",
+    "Rent Control Acts — most commercial premises now decontrolled; verify applicability"
   ]
 }

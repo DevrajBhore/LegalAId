@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_INDEMNITY_001",
-  "name": "Indemnity",
+  "name": "Indemnification",
   "category": "RISK",
   "document_types": [
     "ALL"
@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "124"
+      "section": "124",
+      "note": "Contract of indemnity — definition"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "125",
+      "note": "Rights of indemnity holder"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss from breach"
     }
   ],
   "mandatory": false,
@@ -19,7 +30,29 @@
   "invalid_if": [
     "Indemnity is unlimited or vague"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Indemnity"
+  "source": "Indian Contract Act, 1872 S.124-125",
+  "version": "3.0",
+  "title": "Indemnity",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_LIMITATION_LIABILITY_001"
+  ],
+  "suggested_with": [
+    "CORE_INSURANCE_001",
+    "CORE_SURVIVAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Whether indemnity covers indirect loss — not implied under Indian law, must be express",
+    "Contributory negligence by indemnified party — proportionate reduction",
+    "Obligation to defend vs. obligation to pay — distinction matters for interim relief"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

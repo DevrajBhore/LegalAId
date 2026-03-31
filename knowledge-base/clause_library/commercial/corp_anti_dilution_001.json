@@ -10,15 +10,13 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "62"
+      "section": "62",
+      "note": "Rights issue and new share issuance"
     },
     {
       "act": "Companies Act, 2013",
-      "section": "63"
-    },
-    {
-      "act": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018",
-      "section": "General"
+      "section": "54",
+      "note": "Issue of shares at a discount — conditions"
     }
   ],
   "mandatory": false,
@@ -28,7 +26,25 @@
     "Adjustment formula is not clearly specified",
     "Carve-outs for permitted issuances (ESOPs, bonus shares) are absent"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Anti-Dilution Protection"
+  "source": "Companies Act, 2013",
+  "version": "3.0",
+  "title": "Anti-Dilution Protection",
+  "depends_on": [
+    "CORP_SHARE_SUBSCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORP_BOARD_COMPOSITION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Down round triggering anti-dilution — calculation dispute",
+    "ESOP pool carve-out — whether ESOP issuance triggers anti-dilution"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

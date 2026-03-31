@@ -5,7 +5,7 @@
       "rule_id": "ICA_S27_PERPETUAL_NON_COMPETE",
       "severity": "CRITICAL",
       "message": "Perpetual or absolute non-compete clause is void under ICA S.27.",
-      "reference": "Indian Contract Act 1872 \u2013 S.27",
+      "reference": "Indian Contract Act 1872 – S.27",
       "suggestion": "Limit non-compete to a reasonable duration tied to protection of Confidential Information or goodwill.",
       "patterns": [
         "shall never.*compet",
@@ -23,7 +23,7 @@
       "rule_id": "ICA_S28_OUSTER_OF_COURTS",
       "severity": "CRITICAL",
       "message": "Absolute ouster of court jurisdiction is void under ICA S.28.",
-      "reference": "Indian Contract Act 1872 \u2013 S.28",
+      "reference": "Indian Contract Act 1872 – S.28",
       "suggestion": "Replace with an arbitration clause specifying the seat and rules.",
       "patterns": [
         "no court shall have jurisdiction",
@@ -40,8 +40,8 @@
     {
       "rule_id": "ICA_S23_UNLAWFUL_OBJECT",
       "severity": "CRITICAL",
-      "message": "Agreement contains a clause with an unlawful object \u2014 void under ICA S.23.",
-      "reference": "Indian Contract Act 1872 \u2013 S.23",
+      "message": "Agreement contains a clause with an unlawful object — void under ICA S.23.",
+      "reference": "Indian Contract Act 1872 – S.23",
       "suggestion": "Remove any clause with an object that is forbidden by law, fraudulent, or opposed to public policy.",
       "patterns": [
         "purpose.*defeat.*law",
@@ -59,8 +59,8 @@
     {
       "rule_id": "BONDED_LABOUR_PROHIBITION",
       "severity": "CRITICAL",
-      "message": "Bonded labour clause detected \u2014 absolutely prohibited under the Bonded Labour System (Abolition) Act 1976.",
-      "reference": "Bonded Labour System (Abolition) Act 1976 \u2013 S.4",
+      "message": "Bonded labour clause detected — absolutely prohibited under the Bonded Labour System (Abolition) Act 1976.",
+      "reference": "Bonded Labour System (Abolition) Act 1976 – S.4",
       "suggestion": "Remove any clause requiring work without pay or restricting freedom to leave employment.",
       "patterns": [
         "bonded.?labour",
@@ -80,7 +80,7 @@
       "rule_id": "CHILD_LABOUR_PROHIBITION",
       "severity": "CRITICAL",
       "message": "Clause references employment of minors in violation of Child Labour (Prohibition and Regulation) Act 1986.",
-      "reference": "Child Labour (Prohibition and Regulation) Act 1986 \u2013 S.3",
+      "reference": "Child Labour (Prohibition and Regulation) Act 1986 – S.3",
       "suggestion": "Remove any reference to employing persons below 14 years of age.",
       "patterns": [
         "child.?labour.*allow",
@@ -112,8 +112,8 @@
     {
       "rule_id": "DISCRIMINATION_PROHIBITED",
       "severity": "CRITICAL",
-      "message": "Discriminatory clause detected \u2014 violates Constitution Art.15 and Equal Remuneration Act 1976.",
-      "reference": "Constitution of India \u2013 Art.15; Equal Remuneration Act 1976 \u2013 S.4",
+      "message": "Discriminatory clause detected — violates Constitution Art.15 and Equal Remuneration Act 1976.",
+      "reference": "Constitution of India – Art.15; Equal Remuneration Act 1976 – S.4",
       "suggestion": "Remove any clause that discriminates on the basis of caste, religion, sex, or gender.",
       "patterns": [
         "caste.*restriction",
@@ -134,8 +134,8 @@
     {
       "rule_id": "WAIVER_OF_FUNDAMENTAL_RIGHTS",
       "severity": "CRITICAL",
-      "message": "Clause purports to waive Fundamental Rights \u2014 unenforceable under Constitution Art.13.",
-      "reference": "Constitution of India \u2013 Art.13",
+      "message": "Clause purports to waive Fundamental Rights — unenforceable under Constitution Art.13.",
+      "reference": "Constitution of India – Art.13",
       "suggestion": "Remove any clause requiring parties to waive their constitutional or fundamental rights.",
       "patterns": [
         "waive.*fundamental right",
@@ -151,8 +151,8 @@
     {
       "rule_id": "ICA_S74_EXCESSIVE_PENALTY",
       "severity": "HIGH",
-      "message": "Penalty clause may be disproportionate \u2014 courts will award only reasonable compensation under ICA S.74.",
-      "reference": "Indian Contract Act 1872 \u2013 S.74",
+      "message": "Penalty clause may be disproportionate — courts will award only reasonable compensation under ICA S.74.",
+      "reference": "Indian Contract Act 1872 – S.74",
       "suggestion": "Cap penalties at a reasonable estimate of actual loss. Indian courts will not enforce punitive liquidated damages.",
       "patterns": [
         "penalty.*entire.*contract.*value",
@@ -166,8 +166,8 @@
     {
       "rule_id": "UNILATERAL_CONTRACT_MODIFICATION",
       "severity": "MEDIUM",
-      "message": "Clause allows unilateral modification without consent \u2014 creates free consent risk under ICA S.10.",
-      "reference": "Indian Contract Act 1872 \u2013 S.10, S.62",
+      "message": "Clause allows unilateral modification without consent — creates free consent risk under ICA S.10.",
+      "reference": "Indian Contract Act 1872 – S.10, S.62",
       "suggestion": "Amendments should require written consent of all parties.",
       "patterns": [
         "may.*amend.*without.*notice",
@@ -182,7 +182,7 @@
       "rule_id": "USURIOUS_INTEREST_RATE",
       "severity": "HIGH",
       "message": "Interest rate appears usurious. Courts may reduce it under the Usurious Loans Act 1918.",
-      "reference": "Usurious Loans Act 1918 \u2013 S.3",
+      "reference": "Usurious Loans Act 1918 – S.3",
       "suggestion": "Keep interest rates commercially reasonable (typically below 24% per annum for commercial loans).",
       "patterns": [
         "interest.*(?:4[0-9]|[5-9]\\d|\\d{3,})%",
@@ -194,8 +194,8 @@
     {
       "rule_id": "ICA_S29_VAGUE_AGREEMENT",
       "severity": "MEDIUM",
-      "message": "Agreement may contain deferred or unresolved terms \u2014 ensure all key obligations are certain and not left for future agreement.",
-      "reference": "Indian Contract Act 1872 \u2013 S.29",
+      "message": "Agreement may contain deferred or unresolved terms — ensure all key obligations are certain and not left for future agreement.",
+      "reference": "Indian Contract Act 1872 – S.29",
       "suggestion": "Replace vague terms like 'reasonable', 'fair', or 'as agreed' with specific measurable obligations.",
       "patterns": [
         "as.*may.*be.*agreed.*later",
@@ -209,8 +209,8 @@
     {
       "rule_id": "FEMA_FOREIGN_PAYMENT_RESTRICTION",
       "severity": "HIGH",
-      "message": "Clause references foreign currency payment \u2014 FEMA compliance required for cross-border transactions.",
-      "reference": "Foreign Exchange Management Act 1999 \u2013 S.3, S.6",
+      "message": "Clause references foreign currency payment — FEMA compliance required for cross-border transactions.",
+      "reference": "Foreign Exchange Management Act 1999 – S.3, S.6",
       "suggestion": "Specify RBI approval requirements and FEMA compliance obligations for any foreign currency payment.",
       "patterns": [
         "payment.*in.*usd.*without.*rbi",
@@ -223,8 +223,8 @@
     {
       "rule_id": "TDS_NON_COMPLIANCE",
       "severity": "MEDIUM",
-      "message": "Payment clause does not address TDS deduction \u2014 non-compliance with Income Tax Act 1961 S.194C/194J.",
-      "reference": "Income Tax Act 1961 \u2013 S.194C, S.194J",
+      "message": "Payment clause does not address TDS deduction — non-compliance with Income Tax Act 1961 S.194C/194J.",
+      "reference": "Income Tax Act 1961 – S.194C, S.194J",
       "suggestion": "Add a TDS clause stating that applicable taxes will be deducted at source as per the Income Tax Act 1961.",
       "patterns": [
         "payment.*without.*deduction.*tax",
@@ -237,8 +237,8 @@
     {
       "rule_id": "SEBI_INSIDER_TRADING",
       "severity": "CRITICAL",
-      "message": "Clause may facilitate sharing of unpublished price-sensitive information \u2014 prohibited under SEBI (Prohibition of Insider Trading) Regulations 2015.",
-      "reference": "SEBI (Prohibition of Insider Trading) Regulations 2015 \u2013 Regulation 3",
+      "message": "Clause may facilitate sharing of unpublished price-sensitive information — prohibited under SEBI (Prohibition of Insider Trading) Regulations 2015.",
+      "reference": "SEBI (Prohibition of Insider Trading) Regulations 2015 – Regulation 3",
       "suggestion": "Ensure confidentiality clause covers unpublished price-sensitive information and add SEBI compliance provisions.",
       "patterns": [
         "share.*unpublished.*price.*sensitive",
@@ -255,7 +255,7 @@
       "rule_id": "COMPETITION_ACT_VIOLATION",
       "severity": "CRITICAL",
       "message": "Clause may constitute an anti-competitive agreement void under the Competition Act 2002 S.3.",
-      "reference": "Competition Act 2002 \u2013 S.3",
+      "reference": "Competition Act 2002 – S.3",
       "suggestion": "Remove any price-fixing, market-sharing, bid-rigging or output limitation provisions which are per se void under S.3(3).",
       "patterns": [
         "fix.*price.*competitor",
@@ -273,8 +273,8 @@
     {
       "rule_id": "MSME_PAYMENT_DELAY",
       "severity": "MEDIUM",
-      "message": "Payment terms exceed 45 days \u2014 may violate MSMED Act 2006 if payee is a Micro or Small Enterprise.",
-      "reference": "Micro, Small and Medium Enterprises Development Act 2006 \u2013 S.15",
+      "message": "Payment terms exceed 45 days — may violate MSMED Act 2006 if payee is a Micro or Small Enterprise.",
+      "reference": "Micro, Small and Medium Enterprises Development Act 2006 – S.15",
       "suggestion": "If counterparty is an MSME, payment must be made within 45 days of acceptance. Add MSME compliance provision.",
       "patterns": [
         "\\bpayment\\b.*\\bwithin\\b.*(?:6[0-9]|[7-9]\\d|\\d{3,}).*\\bdays\\b",

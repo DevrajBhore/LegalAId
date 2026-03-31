@@ -29,6 +29,26 @@
     "Carve-outs for guarantor's liability are not specified"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Continuing Guarantee and Liability"
+  "version": "3.0",
+  "title": "Continuing Guarantee and Liability",
+  "depends_on": [
+    "GUARANTEE_OBLIGATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "GUARANTEE_OBLIGATION_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Revocation of continuing guarantee — ICA S.130: guarantor can revoke for future transactions",
+    "Guarantor death — ICA S.131: continuing guarantee revoked by guarantor's death",
+    "Principal debtor insolvency — guarantor remains liable under ICA S.128 even if debtor is discharged"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

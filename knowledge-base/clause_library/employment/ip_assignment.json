@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_IP_ASSIGNMENT_001",
-  "name": "Intellectual Property Assignment",
+  "name": "Employee IP Assignment",
   "category": "INTELLECTUAL_PROPERTY",
   "document_types": [
     "EMPLOYMENT"
@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Copyright Act, 1957",
-      "section": "17"
+      "section": "17",
+      "note": "Employer owns copyright in employment works"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "68",
+      "note": "Patent assignment — must be in writing"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "6",
+      "note": "Employee invention — employer's right to apply"
     }
   ],
   "mandatory": false,
@@ -20,7 +31,27 @@
     "IP assignment exceeds scope of employment",
     "Moral rights are waived unlawfully"
   ],
-  "source": "Copyright Act",
-  "version": "1.0",
-  "title": "Intellectual Property Assignment"
+  "source": "Copyright Act, 1957 S.17; Patents Act, 1970",
+  "version": "3.0",
+  "title": "Intellectual Property Assignment",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "EMP_NON_COMPETE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Employee claims invention made outside work hours — boundary between personal and employment IP",
+    "Pre-existing IP — employee brought IP into employment, employer claims it"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

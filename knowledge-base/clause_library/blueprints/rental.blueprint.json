@@ -11,5 +11,52 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "RENTAL_RENT_PAYMENT_001",
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "RENTAL_TERM_001",
+    "RENTAL_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: added Model Tenancy Act 2021 compliance, explicit registration clause, stamp duty notice.",
+  "conditional_clauses": [
+    {
+      "clause": "RENT_LOCKIN_PERIOD_001",
+      "include_if": "lock_in_period_months > 0"
+    },
+    {
+      "clause": "RENT_PROPERTY_USE_001",
+      "include_if": "is_commercial_lease == true",
+      "note": "Permitted use clause mandatory for commercial leases"
+    },
+    {
+      "clause": "RENT_MAINTENANCE_001",
+      "include_if": "is_commercial_lease == true"
+    },
+    {
+      "clause": "RENT_UTILITIES_001",
+      "include_if": "utilities_included == false"
+    },
+    {
+      "clause": "RENT_SUBLEASE_001",
+      "include_if": "subletting_addressed == true"
+    },
+    {
+      "clause": "RENT_RENT_INCREASE_001",
+      "include_if": "rent_escalation > 0"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Registration Act 1908 S.17 — leases exceeding 12 months must be registered; unregistered lease inadmissible as evidence",
+    "Transfer of Property Act 1882 S.105-106 — lease definition and month-to-month termination notice",
+    "Model Tenancy Act 2021 — security deposit limited to 2 months for residential, 6 months for commercial",
+    "Stamp duty — varies by state and term; Maharashtra: 0.25% of total rent; Delhi: Rs.50 flat",
+    "TDS on rent — S.194I applies when annual rent exceeds Rs.2.4 lakhs (TDS @ 10% on commercial property)"
   ]
 }

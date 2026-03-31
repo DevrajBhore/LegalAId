@@ -24,5 +24,46 @@
     "CORE_WAIVER_001",
     "CORE_COUNTERPARTS_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "CORE_CONTRACT_FORMATION_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "JV_CONTRIBUTION_001",
+    "JV_GOVERNANCE_001",
+    "CORE_TERM_001",
+    "JV_EXIT_001",
+    "CORE_TERMINATION_001",
+    "CORE_CONFIDENTIALITY_001",
+    "IP_OWNERSHIP_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_INDEMNITY_001",
+    "CORE_NOTICE_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "jv_processes_personal_data == true"
+    },
+    {
+      "clause": "CORP_ANTI_DILUTION_001",
+      "include_if": "jv_involves_equity == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Competition Act 2002 S.6 — CCI notification if JV parties' combined turnover/assets exceed threshold",
+    "FDI Policy — if foreign partner involved, comply with sector-specific FDI caps",
+    "FEMA — equity dilution and fund flows between Indian and foreign JV partners",
+    "Companies Act 2013 — if JV is incorporated as company, SHA provisions cannot override Companies Act"
   ]
 }

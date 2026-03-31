@@ -12,15 +12,33 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "10",
+      "note": "Consideration — essential element"
     },
     {
-      "act": "Goods and Services Tax Act, 2017",
-      "section": "31"
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "31",
+      "note": "Tax invoice requirements"
     },
     {
-      "act": "Interest Act, 1978",
-      "section": "3"
+      "act": "Income Tax Act, 1961",
+      "section": "194C",
+      "note": "TDS on contracts (2% for companies, 1% individuals)"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "194J",
+      "note": "TDS on professional services (10%)"
+    },
+    {
+      "act": "MSMED Act, 2006",
+      "section": "15",
+      "note": "Payment within 45 days to MSMEs"
+    },
+    {
+      "act": "MSMED Act, 2006",
+      "section": "16",
+      "note": "Interest on delayed payment — 3x bank rate, compounded"
     }
   ],
   "mandatory": true,
@@ -31,7 +49,35 @@
     "Interest rate exceeds 24% per annum raising usury concerns",
     "Invoice requirements do not comply with GST Act 2017"
   ],
-  "source": "Indian Contract Act, 1872; MSMED Act, 2006",
-  "version": "2.0",
-  "title": "Service Payment Terms"
+  "source": "CGST Act, 2017; IT Act, 1961; MSMED Act, 2006",
+  "version": "3.0",
+  "title": "Service Payment Terms",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001"
+  ],
+  "conflicts_with": [
+    "EMP_WAGES_001"
+  ],
+  "required_with": [
+    "SERVICE_SCOPE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_ACCEPTANCE_001",
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Place of supply determines IGST vs CGST+SGST — verify GST registration states"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "MSME delayed payment — MSME Samadhan portal complaints; compounded interest creates significant liability",
+    "TDS rate dispute — 194C vs 194J classification",
+    "GST input credit — invoice non-compliance blocks client's ITC",
+    "Invoice disputes — vague dispute mechanism leads to non-payment standoffs"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": true
 }

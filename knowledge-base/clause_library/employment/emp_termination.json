@@ -11,10 +11,69 @@
     "EMPLOYMENT",
     "EMPLOYMENT_CONTRACT"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F",
+      "note": "Retrenchment compensation for workmen"
+    },
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25G",
+      "note": "Procedure for retrenchment — last in first out"
+    },
+    {
+      "act": "Payment of Gratuity Act, 1972",
+      "section": "4",
+      "note": "Gratuity on termination after 5 years"
+    },
+    {
+      "act": "Industrial Employment (Standing Orders) Act, 1946",
+      "section": "12",
+      "note": "Procedure for dismissal"
+    },
+    {
+      "act": "Constitution of India",
+      "article": "21",
+      "note": "Right to livelihood — natural justice in termination"
+    },
+    {
+      "act": "Payment of Wages Act, 1936",
+      "section": "5",
+      "note": "Time for payment of wages on termination"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Industrial Disputes Act, 1947; Payment of Gratuity Act, 1972",
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMP_WAGES_001",
+    "EMP_NOTICE_PERIOD_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_NOTICE_PERIOD_001",
+    "EMP_DISCIPLINARY_ACTION_001"
+  ],
+  "suggested_with": [
+    "EMP_GRIEVANCE_PROCEDURE_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "IDA 1947 Chapter VB applies to establishments with 100+ workers — prior government permission for retrenchment",
+    "Maharashtra": "Industrial Employment Standing Orders certified orders govern termination procedure"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Wrongful termination — labour court reinstates with back wages",
+    "Absence of natural justice — charge sheet + domestic enquiry mandatory before dismissal of workman",
+    "Retrenchment compensation — S.25F compensation mandatory even for 'poor performers'",
+    "Gratuity forfeiture — only permissible for specific misconduct under PGA S.4(6)"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -29,6 +29,30 @@
     "Unilateral right of Lender to alter repayment schedule"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Loan Repayment"
+  "version": "3.0",
+  "title": "Loan Repayment",
+  "depends_on": [
+    "LOAN_AMOUNT_001",
+    "LOAN_INTEREST_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_DEFAULT_001"
+  ],
+  "suggested_with": [
+    "LOAN_PREPAYMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Unclear instalment schedule — when exactly is each instalment due",
+    "Repayment through PDC/ECS — dishonour triggers NI Act S.138 and IBC proceedings simultaneously",
+    "Prepayment vs scheduled repayment — lender insists on prepayment penalty",
+    "Limitation Act 1963 — 3 years from date of default, not date of agreement"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

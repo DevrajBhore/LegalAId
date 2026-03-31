@@ -12,11 +12,13 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "59"
+      "section": "59",
+      "note": "Remedy for breach of warranty"
     },
     {
       "act": "Consumer Protection Act, 2019",
-      "section": "2"
+      "section": "2",
+      "note": "Consumer rights — applicable to consumer transactions"
     }
   ],
   "mandatory": false,
@@ -27,6 +29,25 @@
     "Costs of return for defective goods placed on Buyer"
   ],
   "source": "Sale of Goods Act, 1930",
-  "version": "2.0",
-  "title": "Return Policy"
+  "version": "3.0",
+  "title": "Return Policy",
+  "depends_on": [
+    "SUPPLY_REJECTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_WARRANTY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Consumer Protection Act — mandatory return window for consumer goods cannot be contractually excluded",
+    "Return shipping cost — seller liability for defective goods, buyer for change of mind",
+    "Credit note vs refund — B2B returns typically credit note; B2C may require cash refund"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

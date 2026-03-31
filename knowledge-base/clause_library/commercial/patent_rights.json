@@ -12,15 +12,13 @@
   "legal_basis": [
     {
       "act": "Patents Act, 1970",
-      "section": "68"
+      "section": "6",
+      "note": "Persons entitled to apply for patent"
     },
     {
       "act": "Patents Act, 1970",
-      "section": "70"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "68",
+      "note": "Assignment of patent application"
     }
   ],
   "mandatory": false,
@@ -32,6 +30,22 @@
     "Assignor retains any reversionary interest"
   ],
   "source": "Patents Act, 1970",
-  "version": "2.0",
-  "title": "Patent Rights"
+  "version": "3.0",
+  "title": "Patent Rights",
+  "depends_on": [
+    "IP_OWNERSHIP_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Inventorship dispute — who is the true inventor",
+    "Joint inventorship — both client and contractor contributed"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

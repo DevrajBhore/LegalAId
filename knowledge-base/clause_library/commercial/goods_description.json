@@ -9,8 +9,19 @@
   "text": "The Seller shall supply to the Purchaser the goods specifically described and specified in this Agreement, which shall conform to the agreed standards and specifications.",
   "legal_basis": [
     {
-      "act": "The Sale of Goods Act, 1930",
-      "section": "15"
+      "act": "Sale of Goods Act, 1930",
+      "section": "15",
+      "note": "Sale by description — goods must correspond"
+    },
+    {
+      "act": "Bureau of Indian Standards Act, 2016",
+      "section": "17",
+      "note": "BIS mandatory certification for notified goods"
+    },
+    {
+      "act": "Legal Metrology Act, 2009",
+      "section": "18",
+      "note": "Mandatory declarations on packages"
     }
   ],
   "mandatory": false,
@@ -20,6 +31,31 @@
     "The description of goods is vague, uncertain, or incomplete."
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Goods Description"
+  "version": "3.0",
+  "title": "Goods Description",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SUPPLY_PAYMENT_001",
+    "SUPPLY_DELIVERY_001"
+  ],
+  "suggested_with": [
+    "SUPPLY_QUALITY_001",
+    "SUPPLY_WARRANTY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "WEAK",
+  "dispute_hotspots": [
+    "Goods described by sample — SGA 1930 S.15: goods must correspond to sample",
+    "Goods described by description — SGA 1930 S.15: implied condition of correspondence",
+    "BIS mandatory certification — goods without BIS mark constitute unlawful sale",
+    "Legal Metrology Act — mandatory labelling for packed goods"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

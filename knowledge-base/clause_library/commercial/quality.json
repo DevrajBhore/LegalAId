@@ -12,11 +12,12 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "16"
+      "section": "16",
+      "note": "Implied conditions as to quality or fitness"
     },
     {
       "act": "Bureau of Indian Standards Act, 2016",
-      "section": "3"
+      "section": "17"
     },
     {
       "act": "Legal Metrology Act, 2009",
@@ -32,6 +33,29 @@
     "Non-compliance with Legal Metrology Act labelling requirements"
   ],
   "source": "Sale of Goods Act, 1930; Bureau of Indian Standards Act, 2016",
-  "version": "2.0",
-  "title": "Quality Standards"
+  "version": "3.0",
+  "title": "Quality Standards",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SUPPLY_WARRANTY_001"
+  ],
+  "suggested_with": [
+    "SUPPLY_INSPECTION_001",
+    "SUPPLY_REJECTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Merchantable quality — implied condition under SGA 1930 S.16 cannot be excluded for consumer goods",
+    "BIS non-compliant goods — criminal liability under BIS Act 2016 S.17",
+    "Fitness for purpose — buyer's purpose must be communicated to invoke implied condition",
+    "Batch testing disputes — statistical sampling vs 100% inspection"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

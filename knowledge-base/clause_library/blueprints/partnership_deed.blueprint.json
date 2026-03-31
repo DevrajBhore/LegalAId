@@ -15,5 +15,33 @@
     "CORE_GOVERNING_LAW_001",
     "CORE_AMENDMENT_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "PARTNERSHIP_CAPITAL_001",
+    "CORE_CONTRACT_FORMATION_001",
+    "CORE_TERM_001",
+    "CORE_TERMINATION_001",
+    "CORE_INDEMNITY_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_AMENDMENT_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "firm_processes_personal_data == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Indian Partnership Act 1932 S.58 — firm must be registered to have right to sue third parties",
+    "Partners' unlimited liability — each partner personally liable for all firm debts",
+    "Income tax — firm taxed separately; partners taxed on profit share",
+    "Stamp duty — partnership deed must be duly stamped under applicable State Stamp Act"
   ]
 }

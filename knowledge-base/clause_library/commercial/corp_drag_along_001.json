@@ -10,15 +10,13 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "58"
+      "section": "230",
+      "note": "Scheme of arrangement — alternative to drag"
     },
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
-    },
-    {
-      "act": "Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011",
-      "section": "General"
+      "act": "SEBI Takeover Code",
+      "section": "4",
+      "note": "Trigger thresholds for listed companies"
     }
   ],
   "mandatory": false,
@@ -29,7 +27,25 @@
     "Notice period is not specified",
     "Price protection for minority shareholders is absent"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Drag-Along Rights"
+  "source": "Companies Act, 2013; SEBI Takeover Code",
+  "version": "3.0",
+  "title": "Drag-Along Rights",
+  "depends_on": [
+    "CORP_SHARE_SUBSCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORP_TAG_ALONG_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Minority disputes drag valuation — court examines fair value",
+    "SEBI Takeover Code trigger — acquisition above threshold requires open offer"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

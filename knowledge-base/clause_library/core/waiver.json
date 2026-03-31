@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "63"
+      "section": "63",
+      "note": "Promissory estoppel — waiver by conduct"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "18",
+      "note": "Acknowledgment of right — waiver may reset limitation"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,23 @@
   "invalid_if": [
     "Waiver implied without clear intent"
   ],
-  "source": "Contract law practice",
-  "version": "1.0",
-  "title": "Waiver"
+  "source": "Indian Contract Act, 1872 S.63",
+  "version": "3.0",
+  "title": "Waiver",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Promissory estoppel — repeated acceptance of late payment may waive strict timelines",
+    "Acknowledgment by conduct — Indian courts have found waiver from ongoing performance despite breach"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

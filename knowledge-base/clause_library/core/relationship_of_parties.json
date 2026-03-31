@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_RELATIONSHIP_OF_PARTIES_001",
-  "name": "Relationship of Parties",
+  "name": "Relationship of Parties — Independent Contractors",
   "category": "RELATIONSHIP",
   "document_types": [
     "ALL"
@@ -10,15 +10,23 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "General Principles"
-    },
-    {
-      "act": "Indian Partnership Act, 1932",
-      "section": "4"
+      "section": "182",
+      "note": "Agency — principal-agent relationship"
     },
     {
       "act": "Industrial Disputes Act, 1947",
-      "section": "2(s)"
+      "section": "2(s)",
+      "note": "Definition of workman — avoids employment characterisation"
+    },
+    {
+      "act": "Employees Provident Funds Act, 1952",
+      "section": "2(f)",
+      "note": "Definition of employee — contractor exclusion"
+    },
+    {
+      "act": "Goods and Services Tax Act, 2017",
+      "section": "2(17)",
+      "note": "Business definition — independent contractor GST obligation"
     }
   ],
   "mandatory": false,
@@ -27,7 +35,31 @@
   "invalid_if": [
     "The actual conduct of the parties, notwithstanding the contractual terms, establishes a different legal relationship in substance."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Relationship of Parties"
+  "source": "Industrial Disputes Act, 1947; EPF Act, 1952",
+  "version": "3.0",
+  "title": "Relationship of Parties",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [
+    "EMP_WAGES_001",
+    "EMP_BENEFITS_001",
+    "EMP_LEAVE_POLICY_001"
+  ],
+  "required_with": [],
+  "suggested_with": [
+    "SERVICE_PAYMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Reclassification as employee — EPF/ESI liability for principal employer",
+    "Contract labour regulation — Contractors above 20 workers require licence under CLRA 1970",
+    "PF contribution disputes — EPFO audit finding employment relationship",
+    "Labour court jurisdiction — dispute treated as industrial dispute if contractor reclassified as workman"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": true
 }

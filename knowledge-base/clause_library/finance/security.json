@@ -30,6 +30,34 @@
     "Security inadequate to cover loan amount"
   ],
   "source": "Registration Act, 1908; Companies Act, 2013",
-  "version": "2.0",
-  "title": "Security and Collateral"
+  "version": "3.0",
+  "title": "Security and Collateral",
+  "depends_on": [
+    "LOAN_AMOUNT_001",
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_DEFAULT_001",
+    "LOAN_ACCELERATION_001"
+  ],
+  "suggested_with": [
+    "GUARANTEE_OBLIGATION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Register mortgage with sub-registrar within 4 months of creation",
+    "Companies Act": "ROC charge registration mandatory within 30 days — no extension available"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "ROC charge not filed within 30 days — Companies Act 2013 S.77 — security void against liquidator",
+    "Mortgage not registered — Registration Act 1908 S.17 — inadmissible as evidence",
+    "Floating charge crystallisation — unclear trigger events",
+    "SARFAESI enforcement — available only to secured creditors who are banks/NBFCs"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

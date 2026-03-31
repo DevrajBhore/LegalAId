@@ -1,0 +1,198 @@
+{
+  "_version": "3.0",
+  "_description": "Indian Law Enforcement Rules — maps document types to mandatory Indian statutory requirements. The IRE engine checks these rules during generation and validation.",
+  "enforcement_rules": [
+    {
+      "rule_id": "ENFC_EMPLOYMENT_EPF",
+      "trigger_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "require_clause": "EMP_BENEFITS_001",
+      "law": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952 – S.6",
+      "severity": "CRITICAL",
+      "message": "Employment contracts must address EPF contributions. Criminal liability for employer under EPF Act S.14 if EPF is not deducted.",
+      "blocks_generation": true
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_MINIMUM_WAGES",
+      "trigger_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "require_clause": "EMP_WAGES_001",
+      "law": "Minimum Wages Act, 1948 – S.3",
+      "severity": "CRITICAL",
+      "message": "Salary must not be below applicable minimum wages. Employer faces criminal prosecution for below-minimum wages.",
+      "blocks_generation": true
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_NATURAL_JUSTICE",
+      "trigger_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "require_clause": "EMP_DISCIPLINARY_ACTION_001",
+      "law": "Industrial Employment (Standing Orders) Act, 1946; Constitution Art.21",
+      "severity": "HIGH",
+      "message": "Employment contracts must include a disciplinary procedure providing opportunity to be heard before adverse action. Violation is grounds for reinstatement.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_MATERNITY",
+      "trigger_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "require_clause": "EMP_LEAVE_POLICY_001",
+      "law": "Maternity Benefit Act, 1961 – S.5",
+      "severity": "HIGH",
+      "message": "Employment contracts must address maternity benefits. Denial of maternity leave is a criminal offence under MBA S.21.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_SERVICE_TDS",
+      "trigger_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT"
+      ],
+      "require_clause": "SERVICE_PAYMENT_001",
+      "law": "Income Tax Act, 1961 – S.194C, S.194J",
+      "severity": "HIGH",
+      "message": "Service agreements must address TDS deduction. Payment clause must specify whether S.194C (contracts, 2%) or S.194J (professional, 10%) applies.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_SERVICE_GST_INVOICE",
+      "trigger_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "SUPPLY_AGREEMENT"
+      ],
+      "require_clause": "SERVICE_PAYMENT_001",
+      "law": "Central Goods and Services Tax Act, 2017 – S.31",
+      "severity": "HIGH",
+      "message": "Payment clause must require GST-compliant tax invoices with GSTIN, SAC/HSN code, and GST amount. Non-compliant invoices block input tax credit.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_LOAN_TDS_194A",
+      "trigger_doc_types": [
+        "LOAN_AGREEMENT"
+      ],
+      "require_clause": "LOAN_INTEREST_001",
+      "law": "Income Tax Act, 1961 – S.194A",
+      "severity": "HIGH",
+      "message": "Loan agreements must address TDS on interest under S.194A (10% TDS when interest > Rs.40,000 p.a. for resident individuals).",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_LOAN_USURY",
+      "trigger_doc_types": [
+        "LOAN_AGREEMENT"
+      ],
+      "require_clause": "LOAN_INTEREST_001",
+      "law": "Usurious Loans Act, 1918 – S.3",
+      "severity": "HIGH",
+      "message": "Interest rate in loan agreement must not be usurious. Courts may reduce interest rates above commercially reasonable levels.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_RENTAL_REGISTRATION",
+      "trigger_doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ],
+      "require_clause": "PROP_REGISTRATION_001",
+      "law": "Registration Act, 1908 – S.17",
+      "severity": "HIGH",
+      "message": "Leases for a term exceeding 12 months must be compulsorily registered. Unregistered leases are inadmissible as evidence under Registration Act S.49.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_RENTAL_STAMP_DUTY",
+      "trigger_doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ],
+      "require_clause": "CORE_IDENTITY_001",
+      "law": "Indian Stamp Act, 1899 – S.3; State Stamp Acts",
+      "severity": "HIGH",
+      "message": "Rental and lease agreements must be executed on adequately stamped paper. Unstamped instruments are inadmissible under Indian Stamp Act S.35.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_RENTAL_TDS_194I",
+      "trigger_doc_types": [
+        "COMMERCIAL_LEASE_AGREEMENT",
+        "RENTAL_AGREEMENT"
+      ],
+      "require_clause": "RENTAL_RENT_PAYMENT_001",
+      "law": "Income Tax Act, 1961 – S.194I",
+      "severity": "MEDIUM",
+      "message": "Where annual rent exceeds Rs.2,40,000, the tenant must deduct TDS at 10% on commercial rent (S.194I). Rent payment clause should address TDS obligations.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_SHA_COMPANIES_ACT",
+      "trigger_doc_types": [
+        "SHAREHOLDERS_AGREEMENT"
+      ],
+      "require_clause": "CORE_COMPLIANCE_WITH_LAW_001",
+      "law": "Companies Act, 2013 – S.6",
+      "severity": "CRITICAL",
+      "message": "Shareholders Agreement cannot override Companies Act provisions, MoA or AoA. Any SHA provision inconsistent with Companies Act is void.",
+      "blocks_generation": true
+    },
+    {
+      "rule_id": "ENFC_IP_COPYRIGHT_WRITING",
+      "trigger_doc_types": [
+        "SERVICE_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "CONSULTANCY_AGREEMENT"
+      ],
+      "require_clause": "IP_OWNERSHIP_001",
+      "law": "Copyright Act, 1957 – S.19",
+      "severity": "CRITICAL",
+      "message": "Copyright assignment must be in writing and signed by the assignor (Copyright Act S.19). Service agreements must include written IP assignment — unlike employment, contractor IP does NOT auto-vest in client.",
+      "blocks_generation": true
+    },
+    {
+      "rule_id": "ENFC_ARBITRATION_SEAT",
+      "trigger_doc_types": [
+        "ALL"
+      ],
+      "require_clause": "CORE_DISPUTE_RESOLUTION_001",
+      "law": "Arbitration and Conciliation Act, 1996 – S.20; BALCO v Kaiser Aluminium (SC)",
+      "severity": "HIGH",
+      "message": "Arbitration clause must specify the seat of arbitration. Without seat, Part I vs Part II applicability is ambiguous and Indian courts may lack supervisory jurisdiction.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_NDA_SEBI_UPSI",
+      "trigger_doc_types": [
+        "NDA"
+      ],
+      "require_clause": "CORE_COMPLIANCE_WITH_LAW_001",
+      "law": "SEBI (Prohibition of Insider Trading) Regulations, 2015 – Regulation 3",
+      "severity": "HIGH",
+      "message": "NDAs involving listed companies or their advisors must explicitly address UPSI obligations under SEBI PIT Regulations 2015.",
+      "blocks_generation": false
+    },
+    {
+      "rule_id": "ENFC_CONTRACT_STAMP_DUTY",
+      "trigger_doc_types": [
+        "ALL"
+      ],
+      "require_clause": "CORE_SIGNATURE_BLOCK_001",
+      "law": "Indian Stamp Act, 1899 – S.3; State Stamp Acts",
+      "severity": "HIGH",
+      "message": "All contracts must be executed on adequately stamped paper. Stamp duty varies by document type, value and state. Unstamped instruments are inadmissible (S.35).",
+      "blocks_generation": false
+    }
+  ]
+}

@@ -10,15 +10,33 @@
   "legal_basis": [
     {
       "act": "Payment of Wages Act, 1936",
-      "section": "3"
+      "section": "3",
+      "note": "Obligation to pay wages"
     },
     {
-      "act": "Minimum Wages Act, 1948",
-      "section": "3"
+      "act": "Employees' Provident Funds Act, 1952",
+      "section": "6",
+      "note": "EPF contribution rate"
+    },
+    {
+      "act": "Employees State Insurance Act, 1948",
+      "section": "40",
+      "note": "ESI contribution"
     },
     {
       "act": "Income Tax Act, 1961",
-      "section": "192"
+      "section": "192",
+      "note": "TDS on salary"
+    },
+    {
+      "act": "Payment of Gratuity Act, 1972",
+      "section": "4",
+      "note": "Gratuity on completion of 5 years"
+    },
+    {
+      "act": "Minimum Wages Act, 1948",
+      "section": "3",
+      "note": "Wages cannot be below minimum wages"
     }
   ],
   "mandatory": true,
@@ -29,7 +47,38 @@
     "Salary disbursed after 7th of following month contrary to Payment of Wages Act 1936",
     "Basic salary below 50% of gross salary attracting higher PF liability risk"
   ],
-  "source": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
-  "version": "2.0",
-  "title": "Wages and Compensation"
+  "source": "Payment of Wages Act, 1936; EPF Act, 1952",
+  "version": "3.0",
+  "title": "Wages and Compensation",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [
+    "CORE_RELATIONSHIP_OF_PARTIES_001"
+  ],
+  "required_with": [
+    "EMP_BENEFITS_001"
+  ],
+  "suggested_with": [
+    "EMP_LEAVE_POLICY_001",
+    "EMP_RETIREMENT_001"
+  ],
+  "jurisdiction_constraints": {
+    "Maharashtra": "Professional Tax — Maharashtra State Tax on Professions Act 1975",
+    "Karnataka": "Karnataka Professional Tax applicable",
+    "general": "Minimum wages notified state-wise — verify applicable rate"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Full and final settlement delay — Payment of Wages Act allows complaint for delayed wages",
+    "Variable pay disputes — KPIs not defined lead to litigation",
+    "EPF inclusion of allowances — EPFO audits regularly challenge allowance exclusions",
+    "Minimum wages violation — criminal liability under MWA 1948 S.22"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

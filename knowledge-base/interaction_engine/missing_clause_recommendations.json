@@ -1,0 +1,166 @@
+{
+  "_version": "3.0",
+  "_description": "New clauses recommended for the knowledge base. These are genuine gaps identified during v3.0 audit that commonly arise in Indian legal practice.",
+  "recommended_new_clauses": [
+    {
+      "proposed_clause_id": "CORE_INSURANCE_001",
+      "name": "Insurance Obligations",
+      "category": "RISK",
+      "rationale": "Indemnity is only as valuable as the indemnifying party's ability to pay. Insurance clause ensures obligations can be met.",
+      "legal_basis": "Indian Contract Act 1872 S.124; Insurance Act 1938",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "Service Provider shall maintain during the term: (a) Professional Indemnity Insurance of not less than INR [X] per occurrence; (b) Commercial General Liability Insurance; (c) Cyber Liability Insurance if processing personal data. Evidence of insurance shall be provided on demand.",
+      "required_in_blueprints": [
+        "SERVICE_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "CONSULTANCY_AGREEMENT"
+      ]
+    },
+    {
+      "proposed_clause_id": "CORE_ANTI_BRIBERY_001",
+      "name": "Anti-Bribery and Anti-Corruption",
+      "category": "REGULATORY",
+      "rationale": "Prevention of Corruption Act 1988 — corporate liability for facilitation payments. International counterparties often require express anti-bribery clause.",
+      "legal_basis": "Prevention of Corruption Act 1988 S.7; Prevention of Money Laundering Act 2002 S.3",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "Neither Party shall offer, pay, promise, or authorise any bribe, kickback, or facilitation payment to any government official or other person in connection with this Agreement. Each Party shall maintain adequate anti-bribery procedures consistent with the Prevention of Corruption Act 1988 and applicable OECD guidelines.",
+      "required_in_blueprints": [
+        "ALL_COMMERCIAL"
+      ]
+    },
+    {
+      "proposed_clause_id": "CORE_RENEWAL_001",
+      "name": "Renewal and Extension",
+      "category": "TERM",
+      "rationale": "Auto-renewal is a very common commercial arrangement. A separate renewal clause avoids disputes about whether a contract was renewed and on what terms.",
+      "legal_basis": "Indian Contract Act 1872 S.55",
+      "litigation_risk": "MEDIUM",
+      "suggested_text_outline": "This Agreement shall automatically renew for successive periods of [X] months unless either Party provides not less than [30] days' written notice of non-renewal before the end of the then-current term. Renewal shall be on the same terms unless varied by written amendment.",
+      "required_in_blueprints": [
+        "SERVICE_AGREEMENT",
+        "SUPPLY_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ]
+    },
+    {
+      "proposed_clause_id": "CORE_DPDPA_COMPLIANCE_001",
+      "name": "Digital Personal Data Protection Compliance",
+      "category": "DATA",
+      "rationale": "DPDPA 2023 came into force in 2024. Any agreement involving processing of personal data of Indian residents must address DPDPA obligations. This is now a mandatory clause for data-handling agreements.",
+      "legal_basis": "Digital Personal Data Protection Act 2023 S.4-S.8; IT (Reasonable Security Practices) Rules 2011",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "Where either Party processes Personal Data (as defined under the DPDPA 2023) in connection with this Agreement: (a) the Data Fiduciary shall obtain valid consent under S.6; (b) both Parties shall implement reasonable security safeguards under S.8(4); (c) in the event of a personal data breach, the Data Fiduciary shall notify the Data Protection Board within 72 hours; (d) data principals' rights under S.11-13 shall be respected; (e) Personal Data shall not be retained beyond the purpose for which it was collected.",
+      "required_in_blueprints": [
+        "SERVICE_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "EMPLOYMENT_CONTRACT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ]
+    },
+    {
+      "proposed_clause_id": "SUPPLY_TITLE_RETENTION_001",
+      "name": "Retention of Title",
+      "category": "COMMERCIAL",
+      "rationale": "In supply agreements, seller retains title to goods until full payment. This protects seller on buyer's insolvency. Distinct from risk transfer (risk can pass while title is retained — SGA S.26).",
+      "legal_basis": "Sale of Goods Act 1930 S.18-20 (property passes on intent); Indian Contract Act 1872 S.73",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "Notwithstanding delivery, title to and ownership of the Goods shall remain vested in the Supplier until the Buyer has paid in full all amounts due under this Agreement and all other outstanding invoices. Until title passes: (a) the Buyer holds Goods as bailee; (b) Buyer shall store Goods separately and identifiably; (c) upon insolvency, Supplier may repossess Goods.",
+      "required_in_blueprints": [
+        "SUPPLY_AGREEMENT",
+        "SALES_OF_GOODS_AGREEMENT",
+        "DISTRIBUTION_AGREEMENT"
+      ]
+    },
+    {
+      "proposed_clause_id": "EMP_SEXUAL_HARASSMENT_001",
+      "name": "Prevention of Sexual Harassment at Workplace",
+      "category": "EMPLOYMENT",
+      "rationale": "POSH Act 2013 mandates Internal Complaints Committee for organisations with 10+ employees. Employment contracts must reference POSH compliance obligations.",
+      "legal_basis": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 S.4",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "The Employer is committed to providing a safe working environment free from sexual harassment. The Employer maintains an Internal Complaints Committee (ICC) as required under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013. The Employee shall comply with the Employer's POSH policy and cooperate with any ICC inquiry.",
+      "required_in_blueprints": [
+        "EMPLOYMENT_CONTRACT"
+      ],
+      "missing_risk": "CRITICAL — criminal liability and Rs.50,000 penalty for organisations without ICC"
+    },
+    {
+      "proposed_clause_id": "EMP_CODE_OF_CONDUCT_001",
+      "name": "Code of Conduct and Ethics",
+      "category": "EMPLOYMENT",
+      "rationale": "Without a code of conduct reference, employers find it difficult to take disciplinary action for ethical violations. Industrial courts require the conduct policy to be in writing and communicated.",
+      "legal_basis": "Industrial Employment (Standing Orders) Act 1946 S.4; Industrial Disputes Act 1947 S.11A",
+      "litigation_risk": "MEDIUM",
+      "suggested_text_outline": "The Employee shall comply with the Employer's Code of Conduct, Employee Handbook and all HR policies as amended from time to time. Material breach of the Code of Conduct shall constitute grounds for disciplinary action including termination for cause under clause [X].",
+      "required_in_blueprints": [
+        "EMPLOYMENT_CONTRACT"
+      ]
+    },
+    {
+      "proposed_clause_id": "LOAN_AML_KYC_001",
+      "name": "AML/KYC Compliance",
+      "category": "FINANCE",
+      "rationale": "Regulated lenders (NBFCs, banks) must conduct KYC. Even private lenders should document borrower identity to avoid PMLA liability.",
+      "legal_basis": "Prevention of Money Laundering Act 2002 S.12; RBI KYC Master Direction 2016",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "The Borrower hereby represents that all funds used to repay this Loan are from legitimate sources. The Borrower shall provide KYC documents (PAN, Aadhaar, address proof) on request. The Lender shall comply with applicable AML/CFT regulations including the Prevention of Money Laundering Act 2002.",
+      "required_in_blueprints": [
+        "LOAN_AGREEMENT",
+        "GUARANTEE_AGREEMENT"
+      ]
+    },
+    {
+      "proposed_clause_id": "CORE_LIQUIDATED_DAMAGES_001",
+      "name": "Liquidated Damages",
+      "category": "REMEDIES",
+      "rationale": "ICA S.74 — Indian courts award only reasonable compensation regardless of what liquidated damages clause says. Clause must be a genuine pre-estimate to be effective.",
+      "legal_basis": "Indian Contract Act 1872 S.74; Kailash Nath Associates v DDA (SC 2015)",
+      "litigation_risk": "HIGH",
+      "suggested_text_outline": "The Parties agree that the amount specified in Schedule [X] as liquidated damages represents a genuine and reasonable pre-estimate of the loss that would be caused by breach of the relevant obligation. The Parties acknowledge that exact loss would be difficult to quantify. Notwithstanding this, the innocent Party retains the right to prove and claim actual loss where it exceeds the liquidated damages amount.",
+      "required_in_blueprints": [
+        "SERVICE_AGREEMENT",
+        "SUPPLY_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
+      ]
+    }
+  ],
+  "clause_gaps_by_document_type": {
+    "EMPLOYMENT_CONTRACT": {
+      "critical_missing": [
+        "EMP_SEXUAL_HARASSMENT_001",
+        "EMP_CODE_OF_CONDUCT_001",
+        "CORE_DPDPA_COMPLIANCE_001"
+      ],
+      "reason": "POSH Act 2013 compliance is mandatory and creates criminal liability. DPDPA 2023 applies as employers process employee personal data."
+    },
+    "SERVICE_AGREEMENT": {
+      "critical_missing": [
+        "CORE_INSURANCE_001",
+        "CORE_LIQUIDATED_DAMAGES_001",
+        "CORE_DPDPA_COMPLIANCE_001",
+        "CORE_ANTI_BRIBERY_001"
+      ],
+      "reason": "Service agreements handling data need DPDPA; carrying indemnity without insurance is commercially weak; LD clause helps enforce SLA penalties."
+    },
+    "LOAN_AGREEMENT": {
+      "critical_missing": [
+        "LOAN_AML_KYC_001"
+      ],
+      "reason": "PMLA compliance is critical. Even private lenders face PMLA exposure without KYC documentation."
+    },
+    "SUPPLY_AGREEMENT": {
+      "critical_missing": [
+        "SUPPLY_TITLE_RETENTION_001",
+        "CORE_LIQUIDATED_DAMAGES_001"
+      ],
+      "reason": "Title retention protects supplier on buyer insolvency. LD clause enforces delivery timelines."
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "critical_missing": [
+        "CORE_ANTI_BRIBERY_001",
+        "CORE_DPDPA_COMPLIANCE_001"
+      ],
+      "reason": "Anti-bribery required for foreign investor compliance; DPDPA where company processes personal data."
+    }
+  }
+}

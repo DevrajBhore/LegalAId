@@ -12,10 +12,58 @@
     "LEAVE_AND_LICENSE_AGREEMENT",
     "RENTAL"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105",
+      "note": "Lease — consideration (rent) is essential element"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "194I",
+      "note": "TDS on rent exceeding Rs.2.4 lakhs p.a."
+    },
+    {
+      "act": "Model Tenancy Act, 2021",
+      "section": "14",
+      "note": "Rent payment receipt mandatory"
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "7",
+      "note": "GST on commercial rent"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
   "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_TERM_001"
+  ],
+  "suggested_with": [
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "RENT_RENT_INCREASE_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "TDS under IT Act S.194I applies when annual rent exceeds Rs.2.4 lakhs — tenant must deduct at 10%"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "TDS obligation under S.194I — commercial tenant must deduct TDS; failure creates IT liability",
+    "GST on commercial rent exceeding Rs.20 lakhs — landlord must charge 18% GST",
+    "Advance rent vs security deposit — different tax treatment",
+    "Cash payment restriction — Rs.2 lakhs cash payment limit under IT Act S.269ST"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_GOV_LAW_001",
-  "name": "Governing Law and Jurisdiction",
+  "name": "Governing Law (Short Form)",
   "category": "JURISDICTION",
   "document_types": [
     "ALL"
@@ -9,8 +9,9 @@
   "text": "This Agreement shall be governed by the laws of India and subject to the jurisdiction of Indian courts.",
   "legal_basis": [
     {
-      "act": "Code of Civil Procedure, 1908",
-      "section": "20"
+      "act": "Indian Contract Act, 1872",
+      "section": "23",
+      "note": "Governing law must be lawful"
     }
   ],
   "mandatory": true,
@@ -19,7 +20,24 @@
   "invalid_if": [
     "Conflicts with arbitration clause"
   ],
-  "source": "CPC",
-  "version": "1.0",
-  "title": "Governing Law and Jurisdiction"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Governing Law and Jurisdiction",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Use CORE_GOVERNING_LAW_001 (full form) for important commercial contracts"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

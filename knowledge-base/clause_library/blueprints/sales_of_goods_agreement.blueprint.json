@@ -15,5 +15,27 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SERVICE_PAYMENT_001",
+    "SUPPLY_DELIVERY_001",
+    "SUPPLY_WARRANTY_001",
+    "SUPPLY_RISK_TRANSFER_001",
+    "SUPPLY_RETURN_POLICY_001",
+    "SUPPLY_SHORTAGE_001",
+    "CORE_TERM_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "mandatory_legal_checks": [
+    "Sale of Goods Act 1930 — implied conditions of title, description, quality, and fitness",
+    "Consumer Protection Act 2019 — applies where buyer is consumer; cannot be contracted out",
+    "BIS certification for notified goods",
+    "TDS S.194Q on purchase of goods exceeding Rs.50 lakhs"
   ]
 }

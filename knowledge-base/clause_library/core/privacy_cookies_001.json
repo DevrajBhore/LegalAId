@@ -1,6 +1,6 @@
 {
   "clause_id": "PRIVACY_COOKIES_001",
-  "name": "Cookies and Tracking",
+  "name": "Cookies and Tracking Technologies",
   "category": "PRIVACY",
   "document_types": [
     "PRIVACY_POLICY"
@@ -9,12 +9,14 @@
   "text": "The platform may use cookies and similar tracking technologies to enhance the user experience and collect usage data. Cookies are small data files stored on the user's device. Users may control cookie settings through their browser preferences. The platform uses: (a) essential cookies necessary for the operation of the service; (b) analytics cookies to understand usage patterns; and (c) preference cookies to remember user settings. Users may opt out of non-essential cookies at any time. Processing of data collected through cookies is governed by this Privacy Policy and applicable Indian law.",
   "legal_basis": [
     {
-      "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "6",
+      "note": "Consent requirements for data processing"
     },
     {
-      "act": "Digital Personal Data Protection Act, 2023",
-      "section": "6"
+      "act": "Information Technology Act, 2000",
+      "section": "43A",
+      "note": "Reasonable security practices"
     }
   ],
   "mandatory": false,
@@ -23,7 +25,24 @@
   "invalid_if": [
     "No opt-out mechanism is provided for non-essential cookies"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Cookies and Tracking"
+  "source": "DPDPA, 2023; IT Act, 2000",
+  "version": "3.0",
+  "title": "Cookies and Tracking",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [
+    "PRIVACY_DATA_SUBJECT_RIGHTS_001"
+  ],
+  "suggested_with": [
+    "PRIVACY_DATA_RETENTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Implied consent from banner — DPDPA requires specific, informed consent"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

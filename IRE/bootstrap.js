@@ -103,12 +103,13 @@ export function bootstrapIRE() {
     let total = 0;
 
     for (const b of blueprints) {
-      if (!b.document_type || !b.clauses) continue;
+      const clauseIds = b.required_clauses || b.clauses;
+      if (!b.document_type || !Array.isArray(clauseIds)) continue;
       total++;
       if (registry.mappings.has(b.document_type)) {
         overridden++;
       }
-      registry.addMapping(b.document_type, b.clauses);
+      registry.addMapping(b.document_type, clauseIds);
     }
 
     // Show total blueprints on disk, and how many doc types are registered overall

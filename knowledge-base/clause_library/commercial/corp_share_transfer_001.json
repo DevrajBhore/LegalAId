@@ -1,6 +1,6 @@
 {
   "clause_id": "CORP_SHARE_TRANSFER_001",
-  "name": "Share Transfer Restrictions and Right of First Refusal",
+  "name": "Share Transfer Restrictions — RoFR and RoFO",
   "category": "CORPORATE",
   "document_types": [
     "SHAREHOLDERS_AGREEMENT"
@@ -10,11 +10,18 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "58"
+      "section": "58",
+      "note": "Right to transfer shares — subject to Articles"
     },
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "act": "Companies Act, 2013",
+      "section": "56",
+      "note": "Transfer of shares — instrument of transfer required"
+    },
+    {
+      "act": "Income Tax Act, 1961",
+      "section": "50CA",
+      "note": "Fair market value for unlisted share transfers"
     }
   ],
   "mandatory": true,
@@ -24,7 +31,29 @@
     "Transfer restrictions are not clearly defined",
     "Right of first refusal period is not specified"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Share Transfer Restrictions and Right of First Refusal"
+  "source": "Companies Act, 2013 S.56-58",
+  "version": "3.0",
+  "title": "Share Transfer Restrictions and Right of First Refusal",
+  "depends_on": [
+    "CORP_SHARE_SUBSCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORP_DRAG_ALONG_001",
+    "CORP_TAG_ALONG_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Section 50CA: transfers below FMV trigger deemed FMV valuation for tax purposes"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "RoFR not in Articles — third party buyer not bound by SHA restriction",
+    "S.50CA: below-FMV transfer taxed as if at FMV",
+    "Stamp duty on share transfer — stamp duty on transfer form"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

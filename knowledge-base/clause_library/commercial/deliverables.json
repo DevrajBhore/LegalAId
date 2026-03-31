@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_DELIVERABLES_001",
-  "name": "Deliverables",
+  "name": "Deliverables and Acceptance",
   "category": "SERVICE",
   "document_types": [
     "ALL"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "section": "37",
+      "note": "Performance of contract"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39",
+      "note": "Refusal to perform — material breach"
     }
   ],
   "mandatory": false,
@@ -20,7 +26,29 @@
     "The contract is solely for the sale of goods and not services.",
     "The service involves continuous effort without distinct, identifiable deliverables."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Deliverables"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Deliverables",
+  "depends_on": [
+    "SERVICE_SCOPE_001",
+    "SERVICE_PAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_SCOPE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_ACCEPTANCE_001",
+    "SERVICE_TIMELINES_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Deemed acceptance — client claims it never reviewed but time expired",
+    "Moving goalposts — client rejects deliverable repeatedly without objective criteria"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

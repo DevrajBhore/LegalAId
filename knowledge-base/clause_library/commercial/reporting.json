@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_REPORTING_001",
-  "name": "Service Reporting",
+  "name": "Progress Reporting",
   "category": "SERVICE",
   "document_types": [
     "SERVICE_AGREEMENT",
@@ -12,11 +12,7 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "55"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "73"
+      "section": "37"
     }
   ],
   "mandatory": false,
@@ -26,6 +22,23 @@
     "Reporting obligations are entirely discretionary without any minimum frequency"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Service Reporting"
+  "version": "3.0",
+  "title": "Service Reporting",
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SERVICE_SLA_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Non-reporting does not give client right to terminate unless material breach clause covers it"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

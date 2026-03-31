@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_RESTRAINT_OF_TRADE_001",
-  "name": "Restraint of Trade",
+  "name": "Restraint of Trade During Employment",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "27"
+      "section": "27",
+      "note": "During-employment restraint valid — Niranjan Shankar Golikari v Century Spinning (SC 1967)"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Damages for breach of during-employment restraint"
     }
   ],
   "mandatory": false,
@@ -20,7 +26,26 @@
     "Post-termination restraint is absolute",
     "Clause restricts lawful profession beyond employment term"
   ],
-  "source": "Contract Act Section 27 jurisprudence",
-  "version": "1.0",
-  "title": "Restraint of Trade"
+  "source": "Indian Contract Act, 1872 S.27; Niranjan Shankar Golikari (SC 1967)",
+  "version": "3.0",
+  "title": "Restraint of Trade",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_NON_COMPETE_001",
+    "EMP_CONFIDENTIALITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "During-employment restraint enforceable by injunction — garden leave makes this commercially viable",
+    "Post-employment element smuggled in — courts blue-pencil to limit to employment term"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

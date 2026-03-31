@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
-  "name": "Permitted Disclosure",
+  "name": "Permitted Disclosures",
   "category": "EXCLUSIONS",
   "document_types": [
     "ALL"
@@ -10,15 +10,7 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "(General principles)"
-    },
-    {
-      "act": "Indian Evidence Act, 1872",
-      "section": "126"
-    },
-    {
-      "act": "Information Technology Act, 2000",
-      "section": "72"
+      "section": "27"
     }
   ],
   "mandatory": false,
@@ -27,7 +19,27 @@
   "invalid_if": [
     "Absolute Prohibition on Disclosure"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Permitted Disclosure"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Permitted Disclosure",
+  "depends_on": [
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "NDA_EXCLUSIONS_001"
+  ],
+  "suggested_with": [
+    "NDA_DATA_SECURITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Breach by employee of receiving party — is receiving party liable? Yes, per this clause."
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

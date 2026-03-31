@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_TERMINATION_001",
-  "name": "Termination of Employment",
+  "name": "Termination Consequences — Employee Actions",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT"
@@ -9,8 +9,8 @@
   "text": "Either Party may terminate this Agreement by providing notice or payment in lieu thereof, subject to compliance with applicable labour laws and the terms of this Agreement.",
   "legal_basis": [
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "25F"
+      "act": "Indian Contract Act, 1872",
+      "section": "39"
     }
   ],
   "mandatory": true,
@@ -20,7 +20,27 @@
     "Termination without statutory notice or compensation",
     "Termination in violation of labour protections"
   ],
-  "source": "Industrial Disputes Act",
-  "version": "1.0",
-  "title": "Termination of Employment"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Termination of Employment",
+  "depends_on": [
+    "EMPLOYMENT_TERMINATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMPLOYMENT_TERMINATION_001"
+  ],
+  "suggested_with": [
+    "EMP_CONFIDENTIALITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "System access revocation — employee claims locked out before final settlement",
+    "Property return dispute — company laptop contents"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

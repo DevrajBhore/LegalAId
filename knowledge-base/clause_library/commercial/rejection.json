@@ -30,6 +30,26 @@
     "Rejection rights purportedly waived at time of order"
   ],
   "source": "Sale of Goods Act, 1930",
-  "version": "2.0",
-  "title": "Rejection of Goods"
+  "version": "3.0",
+  "title": "Rejection of Goods",
+  "depends_on": [
+    "SUPPLY_INSPECTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_RETURN_POLICY_001",
+    "SUPPLY_WARRANTY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Waiver of right to reject — acceptance without rejection notice within prescribed period",
+    "Partial acceptance — can buyer reject part of a consignment",
+    "Wrongful rejection — seller claims rejection was not bona fide"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": false
 }

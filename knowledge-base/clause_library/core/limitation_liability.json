@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_LIABILITY_CAP_001",
-  "name": "Liability Cap",
+  "name": "Aggregate Liability Cap",
   "category": "RISK",
   "document_types": [
     "ALL"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
+      "section": "73",
+      "note": "Courts award only reasonably foreseeable loss"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74",
+      "note": "Liquidated damages — courts award reasonable compensation only"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,26 @@
   "invalid_if": [
     "Liability is excluded for fraud or wilful misconduct"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Liability Cap"
+  "source": "Indian Contract Act, 1872 S.73-74",
+  "version": "3.0",
+  "title": "Liability Cap",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_INDEMNITY_001"
+  ],
+  "suggested_with": [
+    "CORE_LIMITATION_LIABILITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Whether cap applies to IP infringement third-party claims — typically excluded"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

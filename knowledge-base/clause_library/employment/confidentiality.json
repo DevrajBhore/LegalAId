@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_CONFIDENTIALITY_001",
-  "name": "Employee Confidentiality",
+  "name": "Employee Confidentiality Obligation",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,15 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "27"
+      "section": "27",
+      "note": "Confidentiality during employment is enforceable"
     },
     {
       "act": "Information Technology Act, 2000",
-      "section": "43A"
-    },
-    {
-      "act": "Indian Penal Code, 1860",
-      "section": "405"
+      "section": "43A",
+      "note": "SPDI security obligations"
     }
   ],
   "mandatory": true,
@@ -28,7 +26,27 @@
     "Post-employment confidentiality for non-trade-secret information exceeds reasonable period",
     "Confidential Information definition is so broad as to cover publicly available information"
   ],
-  "source": "Indian Contract Act, 1872; Trade Secrets law",
-  "version": "2.0",
-  "title": "Employee Confidentiality"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Employee Confidentiality",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_NON_COMPETE_001"
+  ],
+  "suggested_with": [
+    "EMP_IP_ASSIGNMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Employee takes client list — trade secret theft; injunction available",
+    "SEBI UPSI — employee trades on insider information; regulatory prosecution"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

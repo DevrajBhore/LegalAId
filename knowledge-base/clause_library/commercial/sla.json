@@ -12,11 +12,8 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "74"
+      "section": "74",
+      "note": "Service credits as pre-estimate of loss from SLA failure"
     }
   ],
   "mandatory": false,
@@ -27,6 +24,24 @@
     "Service levels not defined in a Schedule making the SLA unenforceable for uncertainty"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Service Level Agreement"
+  "version": "3.0",
+  "title": "Service Level Agreement",
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SERVICE_REPORTING_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Uptime measurement — client and vendor have different uptime data",
+    "Credits as sole remedy — client claims credits insufficient for catastrophic outage"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

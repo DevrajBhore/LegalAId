@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_OWNERSHIP_001",
-  "name": "Intellectual Property Ownership",
+  "name": "Intellectual Property Ownership — Work For Hire",
   "category": "IP",
   "document_types": [
     "SERVICE_AGREEMENT",
@@ -13,15 +13,23 @@
   "legal_basis": [
     {
       "act": "Copyright Act, 1957",
-      "section": "17"
+      "section": "17",
+      "note": "Work made in course of employment — employer owns copyright"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19",
+      "note": "Assignment of copyright — must be in writing, signed"
     },
     {
       "act": "Patents Act, 1970",
-      "section": "6"
+      "section": "68",
+      "note": "Assignment of patent — must be in writing"
     },
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "act": "Information Technology Act, 2000",
+      "section": "43A",
+      "note": "Data protection relevant to software IP"
     }
   ],
   "mandatory": true,
@@ -33,6 +41,28 @@
     "Future works not covered by present assignment"
   ],
   "source": "Copyright Act, 1957; Patents Act, 1970",
-  "version": "2.0",
-  "title": "Intellectual Property Ownership"
+  "version": "3.0",
+  "title": "Intellectual Property Ownership",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "SERVICE_PAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "IP_LICENSE_001",
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Background vs foreground IP boundary disputes — undocumented pre-existing code",
+    "Copyright Act S.17 — independent contractor NOT treated as employee; unlike employment, IP does NOT auto-vest in client without express assignment",
+    "Open source contamination — GPL code embedded in proprietary deliverable",
+    "Moral rights in India — cannot be fully waived, artist can object to distortion"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

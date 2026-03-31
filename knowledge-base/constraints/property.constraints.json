@@ -5,7 +5,7 @@
       "rule_id": "PROP_REQUIRES_PROPERTY_DESCRIPTION",
       "severity": "CRITICAL",
       "description": "Property documents must clearly describe the subject property.",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.105",
+      "statutory_reference": "Transfer of Property Act 1882 – S.105",
       "fails_if": [
         "RENTAL_PROPERTY_DESCRIPTION_001",
         "PROP_PROPERTY_DESCRIPTION_001",
@@ -16,7 +16,7 @@
       "rule_id": "PROP_REQUIRES_CONSIDERATION",
       "severity": "CRITICAL",
       "description": "Property transactions must state the consideration.",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.105",
+      "statutory_reference": "Transfer of Property Act 1882 – S.105",
       "fails_if": [
         "RENTAL_RENT_PAYMENT_001",
         "RENT_RENT_PAYMENT_001",

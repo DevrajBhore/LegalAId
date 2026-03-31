@@ -9,8 +9,14 @@
   "text": "The Supplier shall deliver the Goods to the Buyer at the delivery address specified in the Purchase Order or as mutually agreed. Delivery shall be deemed complete upon the Buyer's acknowledgement of physical receipt of the Goods.",
   "legal_basis": [
     {
-      "act": "The Sale of Goods Act, 1930",
-      "section": "33"
+      "act": "Sale of Goods Act, 1930",
+      "section": "33",
+      "note": "Duty of seller to deliver"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "36",
+      "note": "Rules as to delivery"
     }
   ],
   "mandatory": false,
@@ -22,6 +28,30 @@
     "Acceptance of Goods clause"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Delivery"
+  "version": "3.0",
+  "title": "Delivery",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SUPPLY_RISK_TRANSFER_001",
+    "SUPPLY_PAYMENT_001"
+  ],
+  "suggested_with": [
+    "SUPPLY_INSPECTION_001",
+    "SUPPLY_SHORTAGE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Delivery address dispute — goods delivered to wrong location",
+    "Incoterms not specified — FOB vs CIF risk transfer ambiguity",
+    "Transit insurance — who bears risk during transport",
+    "Delay in delivery — liquidated damages enforceability under ICA S.74"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": true
 }

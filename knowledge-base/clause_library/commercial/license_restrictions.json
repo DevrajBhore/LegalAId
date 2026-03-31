@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_LICENSE_RESTRICTIONS_001",
-  "name": "IP License Restrictions",
+  "name": "IP Licence Restrictions",
   "category": "IP",
   "document_types": [
     "ALL"
@@ -9,8 +9,14 @@
   "text": "The Licensee shall not sublicense, assign, or otherwise transfer the licensed intellectual property or any rights granted herein without the prior written consent of the Licensor.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "act": "Copyright Act, 1957",
+      "section": "52",
+      "note": "Permitted acts — reverse engineering for interoperability is a fair dealing exception"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "65",
+      "note": "Tampering with computer source code — criminal offence"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,24 @@
   "invalid_if": [
     "The agreement explicitly permits sub-licensing, assignment, or transfer without requiring Licensor's consent."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "IP License Restrictions"
+  "source": "Copyright Act, 1957",
+  "version": "3.0",
+  "title": "IP License Restrictions",
+  "depends_on": [
+    "IP_LICENSE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "IP_LICENSE_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Reverse engineering for interoperability — allowed under Copyright Act S.52(1)(ab)"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

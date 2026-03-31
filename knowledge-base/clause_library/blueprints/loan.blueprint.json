@@ -19,5 +19,44 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_INTERPRETATION_001",
+    "CORE_PURPOSE_001",
+    "LOAN_AMOUNT_001",
+    "LOAN_INTEREST_001",
+    "LOAN_REPAYMENT_001",
+    "CORE_TERM_001",
+    "LOAN_PREPAYMENT_001",
+    "LOAN_SECURITY_001",
+    "LOAN_COVENANTS_001",
+    "LOAN_DEFAULT_001",
+    "LOAN_ACCELERATION_001",
+    "CORE_NOTICE_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: explicit TDS/IBC provisions, representation and warranty clause, FEMA compliance for cross-border.",
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "lender_is_nbfc == true",
+      "note": "RBI KYC/AML compliance for NBFCs"
+    },
+    {
+      "clause": "GUARANTEE_OBLIGATION_001",
+      "include_if": "personal_guarantee_required == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Interest rate must not exceed usurious threshold — Usurious Loans Act 1918",
+    "TDS on interest payment — IT Act S.194A — must be addressed",
+    "FEMA compliance required if lender is foreign entity or funds are from abroad",
+    "SARFAESI applicability — only for scheduled banks and NBFCs, not private lenders",
+    "Stamp duty on loan agreement — varies by state and loan amount"
   ]
 }

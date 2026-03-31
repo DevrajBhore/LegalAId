@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_TIMELINES_001",
-  "name": "Project Timelines and Milestones",
+  "name": "Timelines and Milestones",
   "category": "SERVICE",
   "document_types": [
     "SERVICE_AGREEMENT",
@@ -12,15 +12,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "55"
+      "section": "55",
+      "note": "Time of performance — where time is of essence"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "74"
-    },
-    {
-      "act": "Specific Relief Act, 1963",
-      "section": "10"
+      "section": "74",
+      "note": "Liquidated damages — courts award genuine pre-estimate only"
     }
   ],
   "mandatory": true,
@@ -30,7 +28,27 @@
     "Liquidated damages clause does not represent genuine pre-estimate of loss",
     "Time not made of the essence for critical milestones"
   ],
-  "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Project Timelines and Milestones"
+  "source": "Indian Contract Act, 1872 S.55, S.74",
+  "version": "3.0",
+  "title": "Project Timelines and Milestones",
+  "depends_on": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "suggested_with": [
+    "SERVICE_CHANGE_REQUEST_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "'Time is of the essence' for all milestones — makes any delay a breach",
+    "Delay caused by client's own failure to provide inputs — force majeure and prevention principle"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

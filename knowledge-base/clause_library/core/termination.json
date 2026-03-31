@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "39"
+      "section": "39",
+      "note": "Refusal to perform — right to rescind"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55",
+      "note": "Failure to perform at fixed time"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "14",
+      "note": "Contracts not specifically enforceable — damages remedy"
     }
   ],
   "mandatory": true,
@@ -20,7 +31,31 @@
     "Termination rights granted to only one party without justification",
     "No cure period provided"
   ],
-  "source": "Contract Act principles",
-  "version": "1.0",
-  "title": "Termination"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Termination",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "CORE_TERM_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_NOTICE_001"
+  ],
+  "suggested_with": [
+    "CORE_SURVIVAL_001",
+    "CORE_INDEMNITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "What constitutes 'Material Breach' — most litigated question in Indian contract terminations",
+    "Adequacy of notice — oral notice is insufficient",
+    "Termination for convenience in long-term contracts — courts examine good faith",
+    "Effect of termination on pending payments — ensure clause addresses this"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

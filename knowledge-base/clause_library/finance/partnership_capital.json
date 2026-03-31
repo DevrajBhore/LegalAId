@@ -25,6 +25,31 @@
     "No profit/loss sharing ratio is specified"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Capital Contributions"
+  "version": "3.0",
+  "title": "Capital Contributions",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Partnership firms must be registered under Indian Partnership Act 1932 S.58 for right to sue third parties"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Profit/loss sharing ratio disputes — most litigated partnership issue",
+    "Goodwill on dissolution — valuation method not specified",
+    "Capital account vs current account — interest on capital under IPA 1932 S.13",
+    "Partnership Act 1932 S.13 — interest on capital at 6% p.a. only if agreed"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

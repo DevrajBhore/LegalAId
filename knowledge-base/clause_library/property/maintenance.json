@@ -13,10 +13,6 @@
     {
       "act": "Transfer of Property Act, 1882",
       "section": "108"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
     }
   ],
   "mandatory": true,
@@ -26,6 +22,26 @@
     "Maintenance obligations imposed on Tenant that are the legal responsibility of the Landlord under TPA 1882 S.108"
   ],
   "source": "Transfer of Property Act, 1882 – S.108",
-  "version": "2.0",
-  "title": "Maintenance and Repairs"
+  "version": "3.0",
+  "title": "Maintenance and Repairs",
+  "depends_on": [
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENT_UTILITIES_001",
+    "RENT_POSSESSION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Major structural repair vs minor maintenance — most litigated classification",
+    "TPA S.108(m) — landlord's implied covenant to repair",
+    "Habitation standard — landlord liable if premises become uninhabitable"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -11,15 +11,16 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "241"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "General Principles"
+      "section": "271",
+      "note": "Winding up — just and equitable ground"
     },
     {
       "act": "Arbitration and Conciliation Act, 1996",
-      "section": "General"
+      "section": "7"
+    },
+    {
+      "act": "Mediation Act, 2023",
+      "section": "1"
     }
   ],
   "mandatory": false,
@@ -30,7 +31,26 @@
     "Valuation mechanism for buyout is absent",
     "Deadlock trigger events are not defined"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Deadlock Resolution"
+  "source": "Companies Act, 2013; A&C Act, 1996",
+  "version": "3.0",
+  "title": "Deadlock Resolution",
+  "depends_on": [
+    "CORP_BOARD_COMPOSITION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Deadlock mechanism not in Articles — SHA-only deadlock provision may not bind third party shareholders",
+    "Texas shoot-out — party with deeper pockets can force out weaker partner at low valuation",
+    "S.271 just and equitable winding up — court may wind up deadlocked JV company"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

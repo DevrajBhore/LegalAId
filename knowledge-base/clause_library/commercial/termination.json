@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_TERMINATION_001",
-  "name": "Service Termination",
+  "name": "Service Agreement Termination",
   "category": "TERMINATION",
   "document_types": [
     "SERVICE_AGREEMENT",
@@ -17,10 +17,6 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "55"
-    },
-    {
-      "act": "Insolvency and Bankruptcy Code, 2016",
-      "section": "14"
     }
   ],
   "mandatory": true,
@@ -31,6 +27,28 @@
     "No payment obligation for work completed before termination"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Service Termination"
+  "version": "3.0",
+  "title": "Service Termination",
+  "depends_on": [
+    "CORE_TERM_001",
+    "CORE_NOTICE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_NOTICE_001"
+  ],
+  "suggested_with": [
+    "CORE_SURVIVAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Termination for convenience in long-term contracts — good faith obligation",
+    "Payment on termination — vendor claims full remaining term fees",
+    "Handover refusal — vendor holds data hostage"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

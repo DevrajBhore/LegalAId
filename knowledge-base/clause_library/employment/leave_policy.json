@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_LEAVE_POLICY_001",
-  "name": "Leave Policy",
+  "name": "Leave Entitlements",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,15 +10,18 @@
   "legal_basis": [
     {
       "act": "Maternity Benefit Act, 1961",
-      "section": "5"
+      "section": "5",
+      "note": "26 weeks for first two children — mandatory"
     },
     {
       "act": "Factories Act, 1948",
-      "section": "78"
+      "section": "78",
+      "note": "Annual leave with wages — factory workers"
     },
     {
-      "act": "Shops and Establishments Acts (State)",
-      "section": ""
+      "act": "Shops and Establishments Acts",
+      "section": "State-specific",
+      "note": "Leave entitlements for shop employees"
     }
   ],
   "mandatory": true,
@@ -29,6 +32,29 @@
     "Maternity leave below 26 weeks for first two children contrary to Maternity Benefit Act 1961"
   ],
   "source": "Maternity Benefit Act, 1961; Factories Act, 1948",
-  "version": "2.0",
-  "title": "Leave Policy"
+  "version": "3.0",
+  "title": "Leave Policy",
+  "depends_on": [
+    "EMP_WAGES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_BENEFITS_001"
+  ],
+  "suggested_with": [
+    "EMP_WORKING_HOURS_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Factories Act applies to factories with 10+ workers using power; Shops Acts apply to other establishments"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Maternity leave denial — employer faces criminal prosecution under MBA S.21",
+    "Leave encashment on resignation — employer refuses to encash accumulated leave",
+    "Carry-forward limits — employee challenges forfeiture of excess leave"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

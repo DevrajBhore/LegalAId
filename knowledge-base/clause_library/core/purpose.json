@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_PURPOSE_001",
-  "name": "Purpose of Agreement",
+  "name": "Purpose and Background",
   "category": "PURPOSE",
   "document_types": [
     "ALL"
@@ -10,7 +10,8 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "23",
+      "note": "Lawful object requirement"
     }
   ],
   "mandatory": true,
@@ -19,7 +20,24 @@
   "invalid_if": [
     "Purpose of agreement not specified"
   ],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Purpose of Agreement"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Purpose of Agreement",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DEFINITIONS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Vague purpose — courts struggle to determine parties' intent"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

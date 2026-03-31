@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_SIGNATURE_BLOCK_001",
-  "name": "Execution and Signatures",
+  "name": "Signature Block",
   "category": "SIGNATURE_BLOCK",
   "document_types": [
     "ALL"
@@ -10,7 +10,23 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "10",
+      "note": "Competency to contract — authority to sign"
+    },
+    {
+      "act": "Indian Evidence Act, 1872",
+      "section": "67",
+      "note": "Proof of signature"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "3",
+      "note": "Stamping obligation"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17",
+      "note": "Compulsory registration for property instruments"
     }
   ],
   "mandatory": true,
@@ -19,7 +35,32 @@
   "invalid_if": [
     "Agreement not signed by authorized representatives"
   ],
-  "source": "Contract execution practice",
-  "version": "1.0",
-  "title": "Execution and Signatures"
+  "source": "Indian Contract Act, 1872; Indian Evidence Act, 1872",
+  "version": "3.0",
+  "title": "Execution and Signatures",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_IDENTITY_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {
+    "general": "Company signatory must have board resolution or POA authorising signing",
+    "Maharashtra": "Adjudication of stamp required if Maharashtra Stamp Act triggers",
+    "Property": "Registration Act 1908 S.17 requires witnesses for immovable property documents"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Authority of signatory — company employee signs without board resolution",
+    "Unstamped document — inadmissible in court (Indian Stamp Act S.35) until stamp duty paid",
+    "Missing witness — evidence challenges",
+    "Electronic signature on stamp paper — conflicting state requirements"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

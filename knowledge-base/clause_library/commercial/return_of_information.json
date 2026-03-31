@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_RETURN_OF_INFORMATION_001",
-  "name": "Return of Confidential Information",
+  "name": "Return and Destruction of Confidential Information",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "NDA",
@@ -12,11 +12,7 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
-    },
-    {
-      "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "section": "39"
     }
   ],
   "mandatory": false,
@@ -27,6 +23,24 @@
     "No obligation to certify destruction of Confidential Information"
   ],
   "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Return of Confidential Information"
+  "version": "3.0",
+  "title": "Return of Confidential Information",
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "NDA_TERM_SURVIVAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Backup copies — not destroyed; receiving party claims destruction but backups retain CI",
+    "Certification of destruction — operationally challenging for digital CI"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

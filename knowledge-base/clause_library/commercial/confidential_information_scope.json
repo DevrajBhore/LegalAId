@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
-  "name": "Confidential Information Scope",
+  "name": "Definition of Confidential Information",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "ALL"
@@ -10,7 +10,23 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "27",
+      "note": "Agreement in restraint of trade — must be specific to be enforceable"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "29",
+      "note": "Certainty — definition must be clear"
+    },
+    {
+      "act": "SEBI (PIT) Regulations, 2015",
+      "section": "2(1)(n)",
+      "note": "Definition of UPSI"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A",
+      "note": "Sensitive personal data protection"
     }
   ],
   "mandatory": false,
@@ -20,7 +36,30 @@
     "Information already lawfully in the public domain",
     "Information legally required to be disclosed by a court or regulatory body"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Confidential Information Scope"
+  "source": "Indian Contract Act, 1872; SEBI PIT Regulations, 2015",
+  "version": "3.0",
+  "title": "Confidential Information Scope",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_CONFIDENTIALITY_001",
+    "NDA_EXCLUSIONS_001"
+  ],
+  "suggested_with": [
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Was the information actually confidential? — no 'Confidential' stamp applied",
+    "Exclusion defence — receiving party claims prior knowledge",
+    "Oral disclosure — no written designation, enforceability challenged"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "TECH_ACCEPTANCE_001",
-  "name": "Acceptance Testing",
+  "name": "Software Acceptance Testing",
   "category": "SERVICE",
   "document_types": [
     "SOFTWARE_DEVELOPMENT_AGREEMENT"
@@ -11,10 +11,6 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "37"
-    },
-    {
-      "act": "Information Technology Act, 2000",
-      "section": "General"
     }
   ],
   "mandatory": true,
@@ -24,7 +20,27 @@
     "Acceptance criteria are not defined",
     "Deemed acceptance mechanism is absent"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Acceptance Testing"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Acceptance Testing",
+  "depends_on": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "suggested_with": [
+    "TECH_WARRANTY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Client refuses to sign off citing minor bugs to delay payment",
+    "UAT extended indefinitely — no deemed acceptance clause"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

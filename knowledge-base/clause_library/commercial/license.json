@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_LICENSE_001",
-  "name": "IP License",
+  "name": "IP Licence",
   "category": "IP",
   "document_types": [
     "ALL"
@@ -9,16 +9,14 @@
   "text": "The Licensor grants to the Licensee a non-exclusive, worldwide, royalty-free, perpetual license to use, reproduce, modify, and distribute the Licensed IP for the purposes contemplated by this Agreement.",
   "legal_basis": [
     {
-      "act": "Indian Copyright Act, 1957",
-      "section": "30"
-    },
-    {
-      "act": "Trademarks Act, 1999",
-      "section": "48"
+      "act": "Copyright Act, 1957",
+      "section": "30",
+      "note": "Licence must be in writing, signed by licensor"
     },
     {
       "act": "Patents Act, 1970",
-      "section": "70"
+      "section": "84",
+      "note": "Compulsory licensing conditions"
     }
   ],
   "mandatory": false,
@@ -28,7 +26,25 @@
     "If the Licensor lacks the right or authority to grant such license.",
     "If the Licensed IP is found to be invalid, unenforceable, or non-existent."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "IP License"
+  "source": "Copyright Act, 1957 S.30",
+  "version": "3.0",
+  "title": "IP License",
+  "depends_on": [
+    "IP_OWNERSHIP_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "IP_LICENSE_RESTRICTIONS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Scope of licensed use — 'permitted purpose' interpreted differently",
+    "Sublicensing without consent — chain of liability"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

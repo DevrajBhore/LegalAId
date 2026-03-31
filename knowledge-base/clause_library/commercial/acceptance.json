@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_ACCEPTANCE_001",
-  "name": "Service Acceptance",
+  "name": "Acceptance Testing Procedure",
   "category": "ACCEPTANCE",
   "document_types": [
     "ALL"
@@ -11,14 +11,6 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "37"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "46"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "50"
     }
   ],
   "mandatory": false,
@@ -29,7 +21,27 @@
     "Fraud or misrepresentation by the Service Provider",
     "Client was prevented from reasonably inspecting the services"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Service Acceptance"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Service Acceptance",
+  "depends_on": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_DELIVERABLES_001"
+  ],
+  "suggested_with": [
+    "SERVICE_SLA_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Objective vs subjective acceptance criteria",
+    "Client changes requirements after delivery and uses acceptance failure as pretext"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

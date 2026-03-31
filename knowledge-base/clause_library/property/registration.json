@@ -30,6 +30,34 @@
     "Stamp duty has not been paid"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Registration and Stamp Duty"
+  "version": "3.0",
+  "title": "Registration and Stamp Duty",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "RENTAL_TERM_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [
+    "RENTAL_RENT_PAYMENT_001"
+  ],
+  "jurisdiction_constraints": {
+    "Maharashtra": "Maharashtra Stamp Act 1958 — stamp duty + registration fee; book at Sub-Registrar",
+    "Delhi": "Delhi Stamp Act 2001; DORIS portal for online registration",
+    "Karnataka": "Karnataka Stamp Act 1957; Kaveri portal for registration"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unregistered lease for >12 months — inadmissible as evidence per Registration Act S.49",
+    "Stamp duty deficiency — document impounded and party must pay deficit + penalty",
+    "Authority to register — power of attorney must be registered separately",
+    "Online vs physical registration — availability varies by state"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

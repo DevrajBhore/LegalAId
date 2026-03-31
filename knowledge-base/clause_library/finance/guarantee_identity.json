@@ -26,6 +26,27 @@
     "The recital does not connect the guarantee to an underlying financial accommodation"
   ],
   "source": "Indian Contract Act, 1872 - S.126",
-  "version": "1.0",
-  "jurisdiction": "India"
+  "version": "3.0",
+  "jurisdiction": "India",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [
+    "GUARANTEE_OBLIGATION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [
+    "GUARANTEE_CONTINUING_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Guarantor identity — guarantor claims he signed in personal capacity vs corporate capacity",
+    "Authority — guarantor company director lacks board authority to issue guarantee",
+    "Stamp duty on guarantee agreement — must be adequately stamped"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -27,5 +27,51 @@
     "CORE_WAIVER_001",
     "CORE_COUNTERPARTS_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "CORE_CONTRACT_FORMATION_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "CORP_SHARE_SUBSCRIPTION_001",
+    "CORP_ANTI_DILUTION_001",
+    "CORP_SHARE_TRANSFER_001",
+    "CORP_DRAG_ALONG_001",
+    "CORP_TAG_ALONG_001",
+    "CORP_BOARD_COMPOSITION_001",
+    "CORE_TERM_001",
+    "CORE_TERMINATION_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_NOTICE_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_INDEMNITY_001",
+    "CORP_DEADLOCK_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: added CORP_DEADLOCK_001 as required (not conditional), added SEBI compliance for listed companies.",
+  "conditional_clauses": [
+    {
+      "clause": "IP_OWNERSHIP_001",
+      "include_if": "company_has_ip_assets == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "company_processes_personal_data == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Companies Act 2013 S.6 — SHA cannot override Companies Act provisions or MoA/AoA",
+    "SEBI Takeover Code (SEBI SAST Regulations) — drag-along triggers must comply for listed companies",
+    "Stamp duty — SHA must be properly stamped under applicable State Stamp Act",
+    "RBI FDI circular — SHA with foreign shareholders must comply with FDI policy and sectoral caps",
+    "Competition Act 2002 S.6 — transactions above threshold require CCI approval"
   ]
 }

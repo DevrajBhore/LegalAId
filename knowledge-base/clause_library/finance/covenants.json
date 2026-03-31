@@ -29,6 +29,28 @@
     "Covenants more restrictive than RBI prudential norms"
   ],
   "source": "Indian Contract Act, 1872; Companies Act, 2013",
-  "version": "2.0",
-  "title": "Loan Covenants"
+  "version": "3.0",
+  "title": "Loan Covenants",
+  "depends_on": [
+    "LOAN_AMOUNT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_DEFAULT_001"
+  ],
+  "suggested_with": [
+    "LOAN_SECURITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Financial covenant breach triggering technical default — leverage ratio covenant most disputed",
+    "Covenant waiver by conduct — lender repeatedly overlooks breach then seeks to enforce",
+    "Financial information covenant — timely delivery of audited accounts"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

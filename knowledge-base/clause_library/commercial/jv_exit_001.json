@@ -1,6 +1,6 @@
 {
   "clause_id": "JV_EXIT_001",
-  "name": "Exit Mechanism",
+  "name": "JV Exit Mechanism",
   "category": "TERMINATION",
   "document_types": [
     "JOINT_VENTURE_AGREEMENT"
@@ -10,11 +10,12 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "62"
+      "section": "37"
     },
     {
-      "act": "Indian Partnership Act, 1932",
-      "section": "43"
+      "act": "SEBI Regulations",
+      "section": "Various",
+      "note": "Put/call options in listed company shares require SEBI compliance"
     }
   ],
   "mandatory": true,
@@ -24,7 +25,25 @@
     "No exit valuation mechanism is specified",
     "Notice period for exit is not defined"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Exit Mechanism"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Exit Mechanism",
+  "depends_on": [
+    "JV_GOVERNANCE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORP_DEADLOCK_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Fair market value determination — parties cannot agree on valuation methodology",
+    "Put/call options in RBI-regulated investments — FEMA compliance required"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

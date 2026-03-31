@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
+      "section": "73",
+      "note": "Compensation must reflect actual loss — supports caps"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74",
+      "note": "Penalty clause — courts award reasonable compensation only"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2",
+      "note": "B2B exceptions to consumer protection — liability caps valid"
     }
   ],
   "mandatory": false,
@@ -19,7 +30,28 @@
   "invalid_if": [
     "Liability is excluded for fraud or wilful misconduct"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Limitation of Liability"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Limitation of Liability",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_INDEMNITY_001"
+  ],
+  "suggested_with": [
+    "CORE_INSURANCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Whether consequential loss exclusion covers loss of profit — must be explicitly stated",
+    "Asymmetric caps in favour of one party — courts examine unconscionability",
+    "Consumer Protection Act overrides B2B caps when services are consumer-facing"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

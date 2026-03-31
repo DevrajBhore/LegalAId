@@ -1,6 +1,6 @@
 {
   "clause_id": "SERVICE_CHANGE_REQUEST_001",
-  "name": "Change Request",
+  "name": "Change Request Procedure",
   "category": "CHANGE",
   "document_types": [
     "ALL"
@@ -10,11 +10,8 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "62"
+      "section": "62",
+      "note": "Novation and alteration of contract terms"
     }
   ],
   "mandatory": false,
@@ -24,7 +21,28 @@
     "Changes can be made unilaterally by one party without the consent of the other.",
     "Changes to the agreement are permitted to be made orally or through implied conduct."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Change Request"
+  "source": "Indian Contract Act, 1872 S.62",
+  "version": "3.0",
+  "title": "Change Request",
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_SCOPE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_TIMELINES_001",
+    "SERVICE_PAYMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Verbal scope creep — client says 'you agreed to do X', vendor denies",
+    "Unapproved work delivered — client refuses to pay for work not in Change Order"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

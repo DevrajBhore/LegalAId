@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_TERM_001",
-  "name": "Term of Agreement",
+  "name": "Term and Commencement",
   "category": "TERM",
   "document_types": [
     "ALL"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "section": "55",
+      "note": "Time of performance — fixed time contracts"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "3",
+      "note": "Limitation period starts from date cause of action arises"
     }
   ],
   "mandatory": true,
@@ -20,7 +26,28 @@
     "Agreement duration is undefined",
     "Termination mechanism absent"
   ],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Term of Agreement"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Term of Agreement",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_TERMINATION_001"
+  ],
+  "suggested_with": [
+    "CORE_RENEWAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Auto-renewal caught party by surprise — inadequate notice period",
+    "Holdover provisions — what happens when party stays past term without formal renewal",
+    "Limitation Act — claims must be filed within 3 years of breach (S.3)"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

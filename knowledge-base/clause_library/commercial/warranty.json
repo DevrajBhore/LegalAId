@@ -12,11 +12,13 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "16"
+      "section": "16",
+      "note": "Implied conditions of quality and fitness"
     },
     {
       "act": "Consumer Protection Act, 2019",
-      "section": "2"
+      "section": "2",
+      "note": "Product liability — manufacturer, seller"
     },
     {
       "act": "Bureau of Indian Standards Act, 2016",
@@ -32,6 +34,28 @@
     "Warranty restricted to repair only without refund or replacement option"
   ],
   "source": "Sale of Goods Act, 1930; Consumer Protection Act, 2019",
-  "version": "2.0",
-  "title": "Product Warranty"
+  "version": "3.0",
+  "title": "Product Warranty",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_QUALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_RETURN_POLICY_001",
+    "SUPPLY_REJECTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Implied warranty of merchantability — cannot be excluded for consumer goods under CPA 2019",
+    "Warranty period — 12 months standard; consumer electronics may have statutory minimum",
+    "Remedy under warranty — repair, replace or refund — hierarchy must be defined",
+    "BIS certification lapse during warranty period — manufacturer's liability"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

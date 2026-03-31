@@ -16,7 +16,8 @@
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "74"
+      "section": "74",
+      "note": "Penalty — genuine pre-estimate of loss"
     }
   ],
   "mandatory": false,
@@ -27,6 +28,27 @@
     "Lock-in period exceeds 11 months without registration under Registration Act 1908"
   ],
   "source": "Transfer of Property Act, 1882; Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Lock-in Period"
+  "version": "3.0",
+  "title": "Lock-in Period",
+  "depends_on": [
+    "RENTAL_TERM_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_TERMINATION_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {
+    "general": "11-month agreements avoid registration; lock-in within that term is common"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Early termination penalty — ICA S.74 applies; must be genuine pre-estimate of loss",
+    "Force majeure during lock-in — COVID 19 created mass disputes about lock-in enforceability",
+    "Landlord breach during lock-in — tenant seeks to escape lock-in due to landlord's default"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

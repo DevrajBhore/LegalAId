@@ -6,15 +6,49 @@
   "statutory_reference": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
   "mandatory": true,
   "jurisdiction": "India",
-  "name": "Compensation and Benefits",
+  "name": "Compensation Overview",
   "document_types": [
     "EMPLOYMENT",
     "EMPLOYMENT_CONTRACT"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Payment of Wages Act, 1936",
+      "section": "3"
+    },
+    {
+      "act": "Minimum Wages Act, 1948",
+      "section": "3"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [
+    "CORE_RELATIONSHIP_OF_PARTIES_001"
+  ],
+  "required_with": [
+    "EMP_WAGES_001"
+  ],
+  "suggested_with": [
+    "EMP_BENEFITS_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Minimum wages vary by state, industry and skill level — verify applicable schedule"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Below minimum wages — criminal prosecution under MWA S.22",
+    "Missing allowance breakdown — EPF disputes on inclusion of allowances in basic"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

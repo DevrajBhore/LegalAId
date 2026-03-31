@@ -1,6 +1,6 @@
 {
   "clause_id": "PRIVACY_SIGNATURE_BLOCK_001",
-  "name": "Acknowledgement",
+  "name": "Privacy Policy Acceptance Block",
   "category": "SIGNATURE_BLOCK",
   "document_types": [
     "PRIVACY_POLICY"
@@ -10,18 +10,35 @@
   "legal_basis": [
     {
       "act": "Digital Personal Data Protection Act, 2023",
-      "section": "6"
+      "section": "6",
+      "note": "Consent must be specific and informed"
     },
     {
       "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "section": "43A",
+      "note": "Privacy policy publication obligation"
     }
   ],
   "mandatory": true,
   "enforceability": "MEDIUM",
   "risk_level": "LOW",
   "invalid_if": [],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Acknowledgement"
+  "source": "DPDPA, 2023; IT Act, 2000",
+  "version": "3.0",
+  "title": "Acknowledgement",
+  "depends_on": [
+    "PRIVACY_GRIEVANCE_OFFICER_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Version control — user consented to old version, company claims compliance with new version"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

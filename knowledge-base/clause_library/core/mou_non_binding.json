@@ -1,6 +1,6 @@
 {
   "clause_id": "MOU_NON_BINDING_001",
-  "name": "Non-Binding Nature",
+  "name": "Non-Binding Nature of MOU",
   "category": "INTERPRETATION",
   "document_types": [
     "MOU"
@@ -10,11 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "2(h)"
+      "section": "2(h)",
+      "note": "Agreement enforceable by law — MOU is not intended to be a contract"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "10",
+      "note": "Absence of binding intention precludes contract formation"
     }
   ],
   "mandatory": true,
@@ -24,7 +26,27 @@
     "The MOU contains specific obligations and timelines that courts may interpret as binding",
     "Parties have acted in reliance on the MOU to their detriment"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Non-Binding Nature"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Non-Binding Nature",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [
+    "CORE_CONTRACT_FORMATION_001"
+  ],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Courts finding MOUs binding — if MOU has all elements of a contract (offer, acceptance, consideration, certainty), court may treat it as binding",
+    "Estoppel — party acts in reliance on MOU; other party cannot claim non-binding nature"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

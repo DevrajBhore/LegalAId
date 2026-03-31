@@ -1,0 +1,161 @@
+{
+  "_version": "3.0",
+  "_description": "Litigation risk index — identifies which clauses are most frequently subject to Indian court disputes, the case law, and drafting fixes.",
+  "high_risk_clauses": [
+    {
+      "clause_id": "CORE_TERMINATION_001",
+      "litigation_frequency": "VERY HIGH",
+      "common_disputes": [
+        "What constitutes 'Material Breach' — most litigated contractual concept in India",
+        "Adequacy of notice before termination",
+        "Wrongful termination — damages vs specific performance (SA 1963 S.14)"
+      ],
+      "landmark_cases": [
+        "ONGC v Saw Pipes Ltd (2003) — penalty clause enforced as reasonable estimate",
+        "General Assurance Society Ltd v Chandmull Jain — termination without breach"
+      ],
+      "drafting_fix": "Define 'Material Breach' precisely. List specific events that constitute material breach. Set clear cure periods."
+    },
+    {
+      "clause_id": "EMP_NON_COMPETE_001",
+      "litigation_frequency": "VERY HIGH",
+      "common_disputes": [
+        "Post-employment non-compete void under ICA S.27",
+        "Interim injunction applications in High Courts",
+        "Training bond recovery"
+      ],
+      "landmark_cases": [
+        "Niranjan Shankar Golikari v Century Spinning (SC 1967) — during-employment restraint valid",
+        "Percept D'Mark v Zaheer Khan (SC 2006) — post-employment restraint void",
+        "Homag India v Ulfat Rai (Delhi HC 2015) — narrowly drafted NCA upheld"
+      ],
+      "drafting_fix": "Limit to protection of Confidential Information. Define specific clients. Max 12-month duration post-employment. Link to CI, not general competition."
+    },
+    {
+      "clause_id": "SERVICE_PAYMENT_001",
+      "litigation_frequency": "VERY HIGH",
+      "common_disputes": [
+        "MSME payment delay — Samadhan portal complaints increasing",
+        "TDS deduction disputes — 194C vs 194J classification",
+        "GST non-compliance blocking input tax credit"
+      ],
+      "landmark_cases": [
+        "MSME Samadhan — over 1 lakh cases filed; compound interest (3x bank rate) is significant",
+        "Karnataka Electricity Board v IT Commissioner — TDS on professional fees"
+      ],
+      "drafting_fix": "Specify MSME status check. Expressly state applicable TDS section. Include GST-compliant invoice requirements. Add late payment interest."
+    },
+    {
+      "clause_id": "IP_OWNERSHIP_001",
+      "litigation_frequency": "HIGH",
+      "common_disputes": [
+        "Copyright Act S.17 vs S.19 — employee vs contractor ownership",
+        "Background IP vs foreground IP boundary",
+        "Open source contamination"
+      ],
+      "landmark_cases": [
+        "RG Anand v Delux Films (SC) — copyright in original literary work",
+        "Emergent Genetics v Shailendra Shivam — assignment must be written"
+      ],
+      "drafting_fix": "Express written assignment. Define Background/Foreground IP boundary. Address open source. Require contractor to obtain assignments from sub-contractors."
+    },
+    {
+      "clause_id": "LOAN_DEFAULT_001",
+      "litigation_frequency": "HIGH",
+      "common_disputes": [
+        "IBC vs SARFAESI race — parallel proceedings",
+        "Acceleration without notice",
+        "MAC clause triggering disputes"
+      ],
+      "landmark_cases": [
+        "Innoventive Industries v ICICI Bank (SC 2018) — IBC overrides RDB Act",
+        "Swiss Ribbons v UOI (SC 2019) — IBC constitutionality upheld"
+      ],
+      "drafting_fix": "Specify grace periods clearly. Define MAC trigger objectively. Add notice before acceleration. Ensure cross-default threshold is quantified."
+    },
+    {
+      "clause_id": "CORE_FORCE_MAJEURE_001",
+      "litigation_frequency": "HIGH",
+      "common_disputes": [
+        "COVID-19 as force majeure — Energy Watchdog v CERC (SC 2017) — economic hardship not FM",
+        "FM used to avoid payment — generally not permitted",
+        "Notice delay — failure to notify within prescribed period"
+      ],
+      "landmark_cases": [
+        "Energy Watchdog v Central Electricity Regulatory Commission (SC 2017) — non-availability of gas not FM",
+        "Standard Retail v G.S. Global Corp (Bombay HC 2020) — COVID lockdown may constitute FM"
+      ],
+      "drafting_fix": "Exhaustive list. Include pandemic expressly. Exclude payment obligations. Include notification window and mitigation obligation."
+    },
+    {
+      "clause_id": "RENTAL_TERMINATION_001",
+      "litigation_frequency": "HIGH",
+      "common_disputes": [
+        "Eviction — tenant refuses to vacate",
+        "Wrongful eviction — self-help eviction by landlord",
+        "Notice adequacy — TPA S.106 minimum notice"
+      ],
+      "landmark_cases": [
+        "Ashoka Kumar Tandon v Virendra Kumar (SC) — oral eviction notice insufficient",
+        "Rent Control Act protections for controlled premises"
+      ],
+      "drafting_fix": "Comply with TPA S.106 notice periods. Do not use self-help eviction. Reference Rent Control Act if applicable. v3.0 fixed false-positive IRE trigger."
+    },
+    {
+      "clause_id": "EMPLOYMENT_TERMINATION_001",
+      "litigation_frequency": "VERY HIGH",
+      "common_disputes": [
+        "Wrongful termination without enquiry",
+        "Retrenchment without S.25F compensation",
+        "Gratuity forfeiture disputes"
+      ],
+      "landmark_cases": [
+        "Central Inland Water Transport Corporation v Brojo Nath Ganguly (SC 1986) — unconscionable employment termination",
+        "State Bank of India v Sundara Money (SC 1976) — workman definition"
+      ],
+      "drafting_fix": "Mandatory domestic enquiry for misconduct dismissal. Provide written charge sheet. Ensure S.25F compliance for retrenchment. Never forfeit gratuity except for IDA misconduct grounds."
+    }
+  ],
+  "systematic_risk_fixes": [
+    {
+      "issue": "TDS non-compliance across all payment clauses",
+      "impact": "Payer faces interest under IT Act S.201(1A) + penalty under S.271C",
+      "fix": "Every payment clause must specify: (a) applicable TDS section; (b) rate; (c) obligation to file return; (d) obligation to issue TDS certificate"
+    },
+    {
+      "issue": "GST non-compliant invoices",
+      "impact": "Recipient loses input tax credit; can be denied under CGST Act S.16(2)(b)",
+      "fix": "Payment clauses must require tax invoices with: GSTIN, HSN/SAC code, GST amount, place of supply, date"
+    },
+    {
+      "issue": "MSME payment term violations",
+      "impact": "Compound interest at 3x RBI bank rate; Samadhan portal complaint; MSME facilitation council arbitration",
+      "fix": "All payment clauses must include MSME carve-out with 45-day payment timeline and compound interest provision"
+    },
+    {
+      "issue": "Arbitration seat missing",
+      "impact": "Jurisdictional challenge; ambiguity on Part I vs Part II of A&C Act; supervisory court uncertainty",
+      "fix": "Every arbitration clause must say: 'The seat of arbitration shall be [City], India'"
+    },
+    {
+      "issue": "IP not assigned in writing in service contracts",
+      "impact": "Client has no copyright in deliverables; contractor retains ownership under Copyright Act S.17 (unlike employment)",
+      "fix": "Service and consulting agreements must include written IP assignment signed by both parties"
+    },
+    {
+      "issue": "POSH Act ICC not referenced in employment contracts",
+      "impact": "Criminal liability for employer; Rs.50,000 fine per employee; licence cancellation",
+      "fix": "All employment agreements must reference POSH policy and ICC existence"
+    },
+    {
+      "issue": "DPDPA 2023 not addressed in data-processing agreements",
+      "impact": "Data Protection Board of India penalties up to Rs.250 crore for data fiduciaries",
+      "fix": "Any agreement involving personal data processing must add CORE_DPDPA_COMPLIANCE_001"
+    },
+    {
+      "issue": "Stamp duty not acknowledged in contracts",
+      "impact": "Unstamped instrument inadmissible in court under Indian Stamp Act S.35",
+      "fix": "CORE_IDENTITY_001 includes stamp duty acknowledgment; ensure agreement is executed on proper stamp paper"
+    }
+  ]
+}

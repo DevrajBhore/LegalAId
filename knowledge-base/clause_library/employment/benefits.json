@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_BENEFITS_001",
-  "name": "Employee Benefits",
+  "name": "Statutory and Other Benefits",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -9,16 +9,29 @@
   "text": "The Employee shall be entitled to the following benefits during the term of employment: (a) Provident Fund contributions as required under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952, with both the Employer and Employee contributing at the applicable statutory rates; (b) Employee State Insurance contributions as required under the Employees' State Insurance Act, 1948, where applicable; (c) Gratuity upon completion of five (5) years of continuous service as required under the Payment of Gratuity Act, 1972; (d) Earned Leave of eighteen (18) days per calendar year; (e) Sick Leave of twelve (12) days per calendar year; (f) Public holidays as notified by the Central Government and the applicable State Government; and (g) such other benefits as the Employer may specify in its HR Policy, as amended from time to time. The Employer shall maintain all statutory registers and make all prescribed returns as required under applicable labour laws.",
   "legal_basis": [
     {
-      "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
-      "section": "6"
-    },
-    {
-      "act": "Employees' State Insurance Act, 1948",
-      "section": "40"
+      "act": "Employees' Provident Funds Act, 1952",
+      "section": "6",
+      "note": "EPF contribution rate"
     },
     {
       "act": "Payment of Gratuity Act, 1972",
-      "section": "4"
+      "section": "4",
+      "note": "Gratuity formula"
+    },
+    {
+      "act": "Employees State Insurance Act, 1948",
+      "section": "40",
+      "note": "ESI contribution"
+    },
+    {
+      "act": "Payment of Bonus Act, 1965",
+      "section": "10",
+      "note": "Minimum bonus obligation"
+    },
+    {
+      "act": "Maternity Benefit Act, 1961",
+      "section": "5",
+      "note": "Maternity leave entitlement"
     }
   ],
   "mandatory": true,
@@ -28,7 +41,34 @@
     "PF contributions below statutory minimum of 12% of basic wages",
     "Earned leave entitlement below minimum prescribed under applicable state Shops and Establishments Act"
   ],
-  "source": "Employees' Provident Funds Act, 1952; Payment of Gratuity Act, 1972",
-  "version": "2.0",
-  "title": "Employee Benefits"
+  "source": "EPF Act, 1952; PG Act, 1972; Bonus Act, 1965; Maternity Benefit Act, 1961",
+  "version": "3.0",
+  "title": "Employee Benefits",
+  "depends_on": [
+    "EMP_WAGES_001"
+  ],
+  "conflicts_with": [
+    "CORE_RELATIONSHIP_OF_PARTIES_001"
+  ],
+  "required_with": [
+    "EMP_WAGES_001"
+  ],
+  "suggested_with": [
+    "EMP_LEAVE_POLICY_001",
+    "EMP_RETIREMENT_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "ESI applies where gross salary <= Rs.21,000/month; EPF applies where basic <= Rs.15,000 compulsorily"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Gratuity forfeiture disputes — employer incorrectly withholds gratuity pending notice period",
+    "EPF exempted trusts — employee claims trust benefits in excess of EPF schedule",
+    "Bonus disputes — allegation of improper allocation of bonus",
+    "Maternity benefit denial — criminal offence under MBA S.21"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

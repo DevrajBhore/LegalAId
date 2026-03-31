@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "24"
+      "section": "24",
+      "note": "Void agreements — severability of valid parts"
+    },
+    {
+      "act": "General Clauses Act, 1897",
+      "section": "16",
+      "note": "Saving clause in statutes — by analogy"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,26 @@
   "invalid_if": [
     "Entire contract becomes void if a single clause fails"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Severability"
+  "source": "Indian Contract Act, 1872 S.24",
+  "version": "3.0",
+  "title": "Severability",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_AMENDMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Non-compete struck down — severability prevents entire agreement from failing",
+    "ICA S.24: if main consideration is illegal, severability cannot save the agreement"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

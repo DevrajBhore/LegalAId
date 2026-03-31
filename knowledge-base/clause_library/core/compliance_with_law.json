@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_COMPLIANCE_WITH_LAW_001",
-  "name": "Compliance with Law",
+  "name": "Compliance with Laws",
   "category": "REGULATORY",
   "document_types": [
     "ALL"
@@ -9,8 +9,29 @@
   "text": "Each Party shall comply with all applicable laws, regulations, and statutory requirements in performing its obligations under this Agreement.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "23"
+      "act": "Prevention of Corruption Act, 1988",
+      "section": "7",
+      "note": "Public servant bribery"
+    },
+    {
+      "act": "Prevention of Money Laundering Act, 2002",
+      "section": "3",
+      "note": "Money laundering offence"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "4",
+      "note": "Personal data processing obligation"
+    },
+    {
+      "act": "Competition Act, 2002",
+      "section": "3",
+      "note": "Anti-competitive agreements"
+    },
+    {
+      "act": "Foreign Exchange Management Act, 1999",
+      "section": "3",
+      "note": "Foreign exchange transactions"
     }
   ],
   "mandatory": true,
@@ -19,7 +40,27 @@
   "invalid_if": [
     "Agreement requires violation of law"
   ],
-  "source": "Contract Act",
-  "version": "1.0",
-  "title": "Compliance with Law"
+  "source": "Prevention of Corruption Act, 1988; PMLA, 2002",
+  "version": "3.0",
+  "title": "Compliance with Law",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_DATA_PROCESSING_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "FEMA violation — payments in foreign currency without RBI approval",
+    "PCA liability — facilitation payments to government officials",
+    "DPDPA obligations — personal data sharing without consent"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

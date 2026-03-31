@@ -17,5 +17,43 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "CORE_DEFINITIONS_001",
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_QUALITY_001",
+    "SUPPLY_DELIVERY_001",
+    "SUPPLY_INSPECTION_001",
+    "SUPPLY_REJECTION_001",
+    "SUPPLY_PAYMENT_001",
+    "SUPPLY_WARRANTY_001",
+    "CORE_TERM_001",
+    "CORE_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "SUPPLY_SHORTAGE_001",
+      "include_if": "shortage_risk == true"
+    },
+    {
+      "clause": "SUPPLY_RETURN_POLICY_001",
+      "include_if": "return_policy_required == true"
+    },
+    {
+      "clause": "CORE_ASSIGNMENT_001",
+      "include_if": "assignment_addressed == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "MSMED Act 2006 — payment within 45 days if supplier is MSME",
+    "S.194Q TDS — buyer must deduct 0.1% TDS on goods purchase > Rs.50 lakhs p.a. from one supplier",
+    "BIS certification — for notified goods, supply without BIS mark is criminal offence",
+    "GST — HSN code and GST rate must be specified in goods description"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_EXCLUSIONS_001",
-  "name": "Confidentiality Exclusions",
+  "name": "Exclusions from Confidential Information",
   "category": "EXCLUSIONS",
   "document_types": [
     "ALL"
@@ -10,7 +10,8 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "s 2(h), 10"
+      "section": "27",
+      "note": "Exclusions make the restriction specific, not absolute — enforceable"
     }
   ],
   "mandatory": false,
@@ -21,7 +22,27 @@
     "The exclusions are so broad as to negate the primary purpose of the Non-Disclosure Agreement.",
     "Contradicts specific statutory or regulatory requirements regarding information secrecy."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Confidentiality Exclusions"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Confidentiality Exclusions",
+  "depends_on": [
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "NDA_RETURN_OF_INFORMATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Compelled disclosure — insufficient notice to Disclosing Party",
+    "Prior knowledge claim — no contemporaneous record maintained"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

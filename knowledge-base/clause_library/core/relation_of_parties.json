@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_INDEPENDENT_PARTIES_001",
-  "name": "Independent Parties",
+  "name": "Independent Parties — No Partnership or Agency",
   "category": "INTERPRETATION",
   "document_types": [
     "ALL"
@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Partnership Act, 1932",
-      "section": "4"
+      "section": "4",
+      "note": "Partnership definition — mutual agency essential"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "182",
+      "note": "Agency — authority to act for principal"
     }
   ],
   "mandatory": false,
@@ -19,7 +25,28 @@
   "invalid_if": [
     "Agreement creates implied partnership without intent"
   ],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Independent Parties"
+  "source": "Indian Partnership Act, 1932; Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Independent Parties",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [
+    "EMP_WAGES_001",
+    "EMP_BENEFITS_001"
+  ],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_RELATIONSHIP_OF_PARTIES_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Tax authority treats arrangement as partnership — tax liability implications",
+    "Third party relies on apparent authority — principal bound by agent's act"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

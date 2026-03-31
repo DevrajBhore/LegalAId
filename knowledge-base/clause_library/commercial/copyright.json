@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_COPYRIGHT_001",
-  "name": "Copyright",
+  "name": "Copyright Ownership and Attribution",
   "category": "IP",
   "document_types": [
     "ALL"
@@ -9,12 +9,14 @@
   "text": "Unless expressly provided otherwise in this Agreement, all pre-existing intellectual property rights, including copyright, of each Party shall remain its exclusive property.",
   "legal_basis": [
     {
-      "act": "The Copyright Act, 1957",
-      "section": "17"
+      "act": "Copyright Act, 1957",
+      "section": "17",
+      "note": "First ownership of copyright"
     },
     {
-      "act": "The Copyright Act, 1957",
-      "section": "18"
+      "act": "Copyright Act, 1957",
+      "section": "57",
+      "note": "Moral rights — author's right to attribution and integrity"
     }
   ],
   "mandatory": false,
@@ -24,7 +26,23 @@
     "This clause is insufficient if the primary purpose of the agreement involves the creation and assignment of new intellectual property.",
     "This clause does not provide for the transfer or licensing of intellectual property created under this agreement."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Copyright"
+  "source": "Copyright Act, 1957",
+  "version": "3.0",
+  "title": "Copyright",
+  "depends_on": [
+    "IP_OWNERSHIP_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Moral rights under S.57 — author can object to distortion even after assignment",
+    "Attribution disputes — developer wants credit in published software"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

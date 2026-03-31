@@ -10,15 +10,28 @@
   "legal_basis": [
     {
       "act": "Insolvency and Bankruptcy Code, 2016",
-      "section": "7"
+      "section": "7",
+      "note": "Financial creditor's application for insolvency"
     },
     {
-      "act": "Transfer of Property Act, 1882",
-      "section": "58"
+      "act": "SARFAESI Act, 2002",
+      "section": "13",
+      "note": "Enforcement of security interest"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "39"
+      "section": "39",
+      "note": "Repudiation of contract"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "58",
+      "note": "Mortgage — security interest"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "3",
+      "note": "3 years from default to file suit"
     }
   ],
   "mandatory": true,
@@ -28,7 +41,35 @@
     "Material adverse change clause too broadly drafted giving Lender excessive discretion",
     "No cure period for payment default before acceleration"
   ],
-  "source": "Insolvency and Bankruptcy Code, 2016; Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Events of Default"
+  "source": "IBC, 2016; SARFAESI Act, 2002; Transfer of Property Act, 1882",
+  "version": "3.0",
+  "title": "Events of Default",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "LOAN_AMOUNT_001",
+    "LOAN_INTEREST_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_ACCELERATION_001",
+    "LOAN_SECURITY_001"
+  ],
+  "suggested_with": [
+    "LOAN_COVENANTS_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "SARFAESI applies only to NPA accounts of scheduled banks and NBFCs — not private lenders",
+    "IBC": "Financial creditor with debt > Rs.1 crore can file CIRP under IBC S.7"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "MAC trigger — borrower challenges what constitutes 'material adverse change'",
+    "Cross-default — one small default triggering entire loan acceleration",
+    "IBC vs SARFAESI race — parallel proceedings",
+    "Limitation period — 3 years from default, acknowledgment resets clock"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": true
 }

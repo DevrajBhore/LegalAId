@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Industrial Disputes Act, 1947",
-      "section": "25F"
+      "section": "25F",
+      "note": "One month notice or payment in lieu for workmen"
+    },
+    {
+      "act": "Industrial Employment (Standing Orders) Act, 1946",
+      "section": "13",
+      "note": "Notice of dismissal"
+    },
+    {
+      "act": "Delhi Shops and Establishments Act, 1954",
+      "section": "30",
+      "note": "Notice period for shop employees (state-specific)"
     }
   ],
   "mandatory": true,
@@ -19,7 +30,33 @@
   "invalid_if": [
     "Notice period is waived contrary to statutory requirements"
   ],
-  "source": "Indian labour law principles",
-  "version": "1.0",
-  "title": "Notice Period"
+  "source": "Industrial Disputes Act, 1947 S.25F",
+  "version": "3.0",
+  "title": "Notice Period",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMP_WAGES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMPLOYMENT_TERMINATION_001"
+  ],
+  "suggested_with": [
+    "EMP_DISCIPLINARY_ACTION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "IDA 1947 minimum notice = 1 month for workmen; Shops Acts vary state-by-state",
+    "Karnataka": "Karnataka Shops Act notice periods apply to shop employees",
+    "Maharashtra": "Maharashtra Shops Act 1948 S.66 notice obligations apply"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Notice buyout — company refuses PILON and forces employee to serve — labour court jurisdiction",
+    "Garden leave validity — employee challenges productivity obligation during garden leave",
+    "Abscondment — employee leaves without notice — recovery of PILON/training bond"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -1,39 +1,66 @@
 {
-  "_comment": "Maps legal domains to relevant acts in your KB. Values are act_id prefixes matched against your acts/ folder. Add new domains or acts here \u2014 no code changes needed.",
+  "_comment": "Maps legal domains to relevant Acts. v3.0 adds DPDPA 2023, Mediation Act 2023, Competition Act 2002, MSMED Act 2006, Consumer Protection Act 2019.",
   "domain_act_map": {
     "CONTRACT": [
       "the_indian_contract_act_1872",
       "the_arbitration_and_conciliation_act_1996",
-      "the_specific_relief_act_1963"
+      "the_mediation_act_2023",
+      "the_specific_relief_act_1963",
+      "the_limitation_act_1963"
     ],
     "SERVICE": [
       "the_indian_contract_act_1872",
       "the_arbitration_and_conciliation_act_1996",
-      "the_specific_relief_act_1963"
+      "the_mediation_act_2023",
+      "the_specific_relief_act_1963",
+      "the_central_goods_and_services_tax_act_2017",
+      "the_income_tax_act_1961",
+      "the_micro_small_medium_enterprises_development_act_2006"
     ],
     "COMMERCIAL": [
       "the_indian_contract_act_1872",
+      "the_sale_of_goods_act_1930",
       "the_arbitration_and_conciliation_act_1996",
-      "the_specific_relief_act_1963"
+      "the_specific_relief_act_1963",
+      "the_central_goods_and_services_tax_act_2017",
+      "the_competition_act_2002",
+      "the_micro_small_medium_enterprises_development_act_2006",
+      "the_consumer_protection_act_2019",
+      "the_legal_metrology_act_2009",
+      "the_bureau_of_indian_standards_act_2016"
     ],
     "PROPERTY": [
       "the_transfer_of_property_act_1882",
       "the_registration_act_1908",
       "the_indian_stamp_act_1899",
-      "the_arbitration_and_conciliation_act_1996"
+      "the_arbitration_and_conciliation_act_1996",
+      "the_model_tenancy_act_2021",
+      "the_income_tax_act_1961",
+      "the_central_goods_and_services_tax_act_2017"
     ],
     "EMPLOYMENT": [
       "the_industrial_disputes_act_1947",
       "the_payment_of_wages_act_1936",
+      "the_minimum_wages_act_1948",
       "the_payment_of_gratuity_act_1972",
       "the_employees_provident_funds_and_miscellaneous_provisions_act_1952",
+      "the_employees_state_insurance_act_1948",
+      "the_payment_of_bonus_act_1965",
+      "the_maternity_benefit_act_1961",
+      "the_industrial_employment_standing_orders_act_1946",
+      "the_contract_labour_regulation_and_abolition_act_1970",
       "the_indian_contract_act_1872",
-      "the_arbitration_and_conciliation_act_1996"
+      "the_arbitration_and_conciliation_act_1996",
+      "the_income_tax_act_1961"
     ],
     "LABOUR": [
       "the_industrial_disputes_act_1947",
       "the_payment_of_gratuity_act_1972",
       "the_employees_provident_funds_and_miscellaneous_provisions_act_1952",
+      "the_employees_state_insurance_act_1948",
+      "the_bonded_labour_system_abolition_act_1976",
+      "the_child_labour_prohibition_and_regulation_act_1986",
+      "the_equal_remuneration_act_1976",
       "the_indian_contract_act_1872",
       "the_arbitration_and_conciliation_act_1996"
     ],
@@ -42,24 +69,34 @@
       "the_indian_partnership_act_1932",
       "the_limited_liability_partnership_act_2008",
       "the_indian_contract_act_1872",
-      "the_arbitration_and_conciliation_act_1996"
+      "the_arbitration_and_conciliation_act_1996",
+      "the_competition_act_2002",
+      "the_foreign_exchange_management_act_1999",
+      "the_income_tax_act_1961"
     ],
     "FINANCE": [
       "the_indian_contract_act_1872",
       "the_negotiable_instruments_act_1881",
       "the_usurious_loans_act_1918",
       "the_transfer_of_property_act_1882",
-      "the_arbitration_and_conciliation_act_1996"
+      "the_arbitration_and_conciliation_act_1996",
+      "the_insolvency_and_bankruptcy_code_2016",
+      "the_securitisation_and_reconstruction_of_financial_assets_act_2002",
+      "the_income_tax_act_1961",
+      "the_prevention_of_money_laundering_act_2002"
     ],
     "IP": [
       "the_indian_contract_act_1872",
       "the_copyright_act_1957",
       "the_patents_act_1970",
       "the_trade_marks_act_1999",
-      "the_information_technology_act_2000"
+      "the_information_technology_act_2000",
+      "the_designs_act_2000"
     ],
     "DATA": [
+      "the_digital_personal_data_protection_act_2023",
       "the_information_technology_act_2000",
+      "the_information_technology_reasonable_security_practices_rules_2011",
       "the_indian_contract_act_1872"
     ],
     "FAMILY": [
@@ -71,12 +108,26 @@
     "LITIGATION": [
       "the_indian_evidence_act_1872",
       "the_limitation_act_1963",
-      "the_indian_stamp_act_1899"
+      "the_indian_stamp_act_1899",
+      "the_code_of_civil_procedure_1908"
     ],
     "REGULATORY": [
       "the_powers_of_attorney_act_1882",
       "the_registration_act_1908",
-      "the_indian_stamp_act_1899"
+      "the_indian_stamp_act_1899",
+      "the_prevention_of_corruption_act_1988",
+      "the_prevention_of_money_laundering_act_2002"
+    ],
+    "COMPETITION": [
+      "the_competition_act_2002",
+      "the_indian_contract_act_1872"
+    ],
+    "TAX": [
+      "the_income_tax_act_1961",
+      "the_central_goods_and_services_tax_act_2017",
+      "the_integrated_goods_and_services_tax_act_2017",
+      "the_tax_deducted_at_source_provisions_194c_194j_194a_194i_194q"
     ]
-  }
+  },
+  "_version": "3.0"
 }

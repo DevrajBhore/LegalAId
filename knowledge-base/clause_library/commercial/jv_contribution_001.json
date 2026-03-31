@@ -1,6 +1,6 @@
 {
   "clause_id": "JV_CONTRIBUTION_001",
-  "name": "JV Contributions and Profit Sharing",
+  "name": "JV Contributions",
   "category": "CONSIDERATION",
   "document_types": [
     "JOINT_VENTURE_AGREEMENT"
@@ -10,11 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "2(d)"
+      "section": "37",
+      "note": "Obligation to perform"
     },
     {
       "act": "Indian Partnership Act, 1932",
-      "section": "13"
+      "section": "13",
+      "note": "Partner's duty to contribute capital"
     }
   ],
   "mandatory": true,
@@ -24,7 +26,27 @@
     "Contributions are not clearly specified",
     "Profit sharing ratio is not defined"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "JV Contributions and Profit Sharing"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "JV Contributions and Profit Sharing",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "JV_GOVERNANCE_001"
+  ],
+  "suggested_with": [
+    "JV_EXIT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Non-cash valuation dispute",
+    "Proportionate dilution mechanism — calculation method contested"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

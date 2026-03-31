@@ -14,5 +14,25 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "MOU_NON_BINDING_001",
+    "CORE_PURPOSE_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_AMENDMENT_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "mandatory_legal_checks": [
+    "ICA S.10 — MOU may or may not be a binding contract depending on language; ensure non-binding intent is clear",
+    "Specific enforceable provisions within MOU (e.g. confidentiality) are binding even if overall MOU is not",
+    "SEBI — MOU disclosures between listed companies may trigger continuous disclosure obligations"
   ]
 }

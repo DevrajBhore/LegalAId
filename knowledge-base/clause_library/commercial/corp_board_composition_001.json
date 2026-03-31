@@ -1,6 +1,6 @@
 {
   "clause_id": "CORP_BOARD_COMPOSITION_001",
-  "name": "Board Composition and Reserved Matters",
+  "name": "Board Composition and Voting Rights",
   "category": "CORPORATE",
   "document_types": [
     "SHAREHOLDERS_AGREEMENT"
@@ -10,11 +10,18 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "152"
+      "section": "149",
+      "note": "Composition of Board — independent directors requirement"
     },
     {
       "act": "Companies Act, 2013",
-      "section": "166"
+      "section": "184",
+      "note": "Related party transactions — disclosure"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "188",
+      "note": "Related party transactions — board/shareholder approval"
     }
   ],
   "mandatory": true,
@@ -24,7 +31,26 @@
     "Reserved matters are not defined",
     "Board nomination rights are not specified"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Board Composition and Reserved Matters"
+  "source": "Companies Act, 2013 S.149",
+  "version": "3.0",
+  "title": "Board Composition and Reserved Matters",
+  "depends_on": [
+    "CORP_SHARE_SUBSCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORP_DEADLOCK_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Removal of investor nominee director — Companies Act vs SHA provisions",
+    "Related party transaction without board approval — MCA scrutiny",
+    "Reserved matter deadlock — investor blocks ordinary business"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

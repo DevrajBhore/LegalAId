@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_DISPUTE_RESOLUTION_001",
-  "name": "Dispute Resolution Mechanism",
+  "name": "Dispute Resolution — Negotiation, Mediation and Arbitration",
   "category": "DISPUTE_RESOLUTION",
   "document_types": [
     "ALL"
@@ -10,11 +10,23 @@
   "legal_basis": [
     {
       "act": "Arbitration and Conciliation Act, 1996",
-      "section": "11"
+      "section": "7",
+      "note": "Valid arbitration agreement"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "11",
+      "note": "Appointment of arbitrator"
+    },
+    {
+      "act": "Mediation Act, 2023",
+      "section": "1",
+      "note": "Pre-arbitration mediation"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "10"
+      "section": "28",
+      "note": "Arbitration does not oust courts — valid exception"
     }
   ],
   "mandatory": false,
@@ -26,7 +38,33 @@
     "Clause omits any arbitrator appointment mechanism",
     "Clause restricts access to courts absolutely"
   ],
-  "source": "Arbitration and Conciliation Act, 1996 + Indian contract drafting practice",
-  "version": "1.0",
-  "title": "Dispute Resolution Mechanism"
+  "source": "Arbitration and Conciliation Act, 1996; Mediation Act, 2023",
+  "version": "3.0",
+  "title": "Dispute Resolution Mechanism",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_GOVERNING_LAW_001"
+  ],
+  "suggested_with": [
+    "CORE_NOTICE_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Seat determines supervisory court — pick high court city (Mumbai, Delhi, Bangalore, Chennai, Hyderabad)",
+    "Maharashtra": "Consider MCIA rules — Mumbai seat; MHCA High Court supervises",
+    "Delhi": "DIAC rules available; Delhi High Court supervises"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Missing seat — Bhatia International conflict now resolved by BALCO but drafting ambiguity remains",
+    "Time limits in arbitration clause — courts have struck down very short limitation periods",
+    "Named institutional arbitrator dissolved or renamed"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

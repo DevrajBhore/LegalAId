@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_RETIREMENT_001",
-  "name": "Retirement",
+  "name": "Retirement and Superannuation",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,11 +10,18 @@
   "legal_basis": [
     {
       "act": "Payment of Gratuity Act, 1972",
-      "section": "4"
+      "section": "4",
+      "note": "Gratuity payable on retirement"
     },
     {
-      "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
-      "section": "6"
+      "act": "Employees' Provident Funds Act, 1952",
+      "section": "6",
+      "note": "EPF disbursement on retirement"
+    },
+    {
+      "act": "Employees' Pension Scheme, 1995",
+      "section": "11",
+      "note": "Pension on superannuation at 58 years"
     }
   ],
   "mandatory": false,
@@ -23,7 +30,26 @@
   "invalid_if": [
     "Retirement age below 58 years contrary to applicable service rules"
   ],
-  "source": "Payment of Gratuity Act, 1972",
-  "version": "2.0",
-  "title": "Retirement"
+  "source": "Payment of Gratuity Act, 1972; EPF Act, 1952",
+  "version": "3.0",
+  "title": "Retirement",
+  "depends_on": [
+    "EMP_WAGES_001",
+    "EMP_BENEFITS_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_BENEFITS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Age discrimination — different retirement ages for men and women — challenged under Constitution",
+    "Gratuity calculation on retirement — inclusion of allowances in 'wages'"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

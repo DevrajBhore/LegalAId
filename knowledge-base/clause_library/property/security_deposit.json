@@ -15,10 +15,6 @@
       "section": "11"
     },
     {
-      "act": "Transfer of Property Act, 1882",
-      "section": "105"
-    },
-    {
       "act": "Indian Contract Act, 1872",
       "section": "74"
     }
@@ -31,6 +27,27 @@
     "Landlord refusing to refund security deposit without valid reason"
   ],
   "source": "Model Tenancy Act, 2021 – S.11",
-  "version": "2.0",
-  "title": "Security Deposit"
+  "version": "3.0",
+  "title": "Security Deposit",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENTAL_TERMINATION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Model Tenancy Act 2021 S.11 — 2 months for residential, 6 months for commercial"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Wrongful forfeiture of security deposit — landlord's most common dishonest act",
+    "Deduction for pre-existing damage — no inventory taken on entry",
+    "Interest on deposit — some states mandate landlord to pay interest"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

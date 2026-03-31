@@ -9,8 +9,19 @@
   "text": "All notices under this Agreement shall be in writing and shall be deemed duly given when delivered by registered post, courier, or electronic mail to the addresses specified by the Parties.",
   "legal_basis": [
     {
+      "act": "Indian Contract Act, 1872",
+      "section": "4",
+      "note": "Communication of offer/acceptance — when complete"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "13",
+      "note": "Electronic records — deemed receipt"
+    },
+    {
       "act": "Indian Evidence Act, 1872",
-      "section": "114"
+      "section": "65B",
+      "note": "Admissibility of electronic records"
     }
   ],
   "mandatory": false,
@@ -19,7 +30,27 @@
   "invalid_if": [
     "Method of communication unclear"
   ],
-  "source": "Contract practice",
-  "version": "1.0",
-  "title": "Notices"
+  "source": "Indian Contract Act, 1872; IT Act, 2000",
+  "version": "3.0",
+  "title": "Notices",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Service of termination notice — RPAD vs email — courts require reliable evidence of receipt",
+    "Stale addresses — Party moved without updating — notice deemed served at old address",
+    "Public holiday — notice arriving on holiday — deemed date of service"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

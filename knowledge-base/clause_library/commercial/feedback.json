@@ -1,6 +1,6 @@
 {
   "clause_id": "IP_FEEDBACK_001",
-  "name": "IP Feedback",
+  "name": "Feedback Licence",
   "category": "IP",
   "document_types": [
     "ALL"
@@ -9,16 +9,8 @@
   "text": "All feedback, suggestions, or improvements provided by a Party concerning the other Party's Intellectual Property shall be owned exclusively by the latter Party.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "s 10 and 23"
-    },
-    {
       "act": "Copyright Act, 1957",
-      "section": "s 17 and 19"
-    },
-    {
-      "act": "Patents Act, 1970",
-      "section": "s 6 and 20"
+      "section": "19"
     }
   ],
   "mandatory": false,
@@ -29,7 +21,20 @@
     "The feedback is unrelated to the other Party's Intellectual Property.",
     "The contract provides alternative ownership terms for such feedback."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "IP Feedback"
+  "source": "Copyright Act, 1957",
+  "version": "3.0",
+  "title": "IP Feedback",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Client claims product feature was their patented invention — feedback vs independent development"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

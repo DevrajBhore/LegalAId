@@ -29,6 +29,30 @@
     "Waiver of Borrower's right to notice before acceleration"
   ],
   "source": "SARFAESI Act, 2002; Transfer of Property Act, 1882",
-  "version": "2.0",
-  "title": "Loan Acceleration"
+  "version": "3.0",
+  "title": "Loan Acceleration",
+  "depends_on": [
+    "LOAN_DEFAULT_001",
+    "CORE_NOTICE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "LOAN_DEFAULT_001"
+  ],
+  "suggested_with": [
+    "LOAN_SECURITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Acceleration without notice — courts may grant interim injunction if no prior notice given",
+    "IBC race — acceleration followed by IBC CIRP filing under S.7",
+    "SARFAESI 60-day notice — before enforcement of security under S.13",
+    "Cross-default acceleration — one default accelerating all facilities"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_WORKING_HOURS_001",
-  "name": "Working Hours",
+  "name": "Working Hours and Overtime",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,15 +10,18 @@
   "legal_basis": [
     {
       "act": "Factories Act, 1948",
-      "section": "51"
+      "section": "51",
+      "note": "Weekly hours limit — 48 hours"
     },
     {
       "act": "Factories Act, 1948",
-      "section": "59"
+      "section": "59",
+      "note": "Overtime rate — twice ordinary wages"
     },
     {
-      "act": "Shops and Establishments Acts (State)",
-      "section": ""
+      "act": "Shops and Establishments Acts",
+      "section": "State-specific",
+      "note": "State-specific limits for shop employees"
     }
   ],
   "mandatory": true,
@@ -29,7 +32,28 @@
     "No overtime compensation for excess hours contrary to applicable labour law",
     "Female employees required to work night shifts without adequate safety measures"
   ],
-  "source": "Factories Act, 1948; State Shops and Establishments Acts",
-  "version": "2.0",
-  "title": "Working Hours"
+  "source": "Factories Act, 1948; State Shops Acts",
+  "version": "3.0",
+  "title": "Working Hours",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_LEAVE_POLICY_001"
+  ],
+  "jurisdiction_constraints": {
+    "Maharashtra": "Maharashtra Shops and Establishments Act 1948 — max 9 hours/day, 48 hours/week",
+    "Karnataka": "Karnataka Shops Act 1961 — working hours restrictions apply"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unpaid overtime — employee claims overtime wages under Factories Act S.59",
+    "Rest interval — mandatory 30-minute break after 5 continuous hours under Factories Act S.55"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

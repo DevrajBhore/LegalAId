@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "section": "29",
+      "note": "Certainty of terms — services must be defined"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Damages for deficient service"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(11)",
+      "note": "Deficiency of service — applicable to consumer transactions"
     }
   ],
   "mandatory": false,
@@ -19,7 +30,32 @@
   "invalid_if": [
     "Services are not clearly defined"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Scope of Services"
+  "source": "Indian Contract Act, 1872 S.29",
+  "version": "3.0",
+  "title": "Scope of Services",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SERVICE_PAYMENT_001"
+  ],
+  "suggested_with": [
+    "SERVICE_DELIVERABLES_001",
+    "SERVICE_TIMELINES_001",
+    "SERVICE_ACCEPTANCE_001",
+    "SERVICE_CHANGE_REQUEST_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Scope creep — client demands work beyond Schedule 1 without additional payment",
+    "Key personnel replacement — client loses trust in delivery",
+    "Subcontracting — data security and liability chain issues",
+    "SLA disputes — what is 'uptime' and how is it measured"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

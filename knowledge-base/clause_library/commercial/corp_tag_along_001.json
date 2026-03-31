@@ -10,15 +10,8 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "58"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
-    },
-    {
-      "act": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018",
-      "section": "General"
+      "section": "58",
+      "note": "Share transfer — right to exit"
     }
   ],
   "mandatory": false,
@@ -29,7 +22,25 @@
     "Pro-rata calculation mechanism is absent",
     "Price parity with majority sale is not guaranteed"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Tag-Along Rights"
+  "source": "Companies Act, 2013",
+  "version": "3.0",
+  "title": "Tag-Along Rights",
+  "depends_on": [
+    "CORP_SHARE_SUBSCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORP_DRAG_ALONG_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Tag-along triggers on structuring transactions — acquirer avoids tag by buying <threshold%",
+    "Acquirer refuses to buy tag-along shares — minority investor stranded"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -5,7 +5,7 @@
       "rule_id": "RENTAL_REQUIRES_PROPERTY_DESCRIPTION",
       "severity": "CRITICAL",
       "description": "Rental agreement must include a description of the leased premises.",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.105",
+      "statutory_reference": "Transfer of Property Act 1882 – S.105",
       "fails_if": [
         "RENTAL_PROPERTY_DESCRIPTION_001"
       ]
@@ -14,7 +14,7 @@
       "rule_id": "RENTAL_REQUIRES_RENT_PAYMENT",
       "severity": "CRITICAL",
       "description": "Rental agreement must specify rent amount, due date, and payment method.",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.105",
+      "statutory_reference": "Transfer of Property Act 1882 – S.105",
       "fails_if": [
         "RENTAL_RENT_PAYMENT_001"
       ]
@@ -23,7 +23,7 @@
       "rule_id": "RENTAL_REQUIRES_SECURITY_DEPOSIT",
       "severity": "HIGH",
       "description": "Rental agreement should specify security deposit amount and refund conditions.",
-      "statutory_reference": "Model Tenancy Act 2021 \u2013 S.11",
+      "statutory_reference": "Model Tenancy Act 2021 – S.11",
       "fails_if": [
         "RENTAL_SECURITY_DEPOSIT_001"
       ]
@@ -32,7 +32,7 @@
       "rule_id": "RENTAL_REQUIRES_TERM",
       "severity": "CRITICAL",
       "description": "Rental agreement must specify the lease term (start date and duration/end date).",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.105",
+      "statutory_reference": "Transfer of Property Act 1882 – S.105",
       "fails_if": [
         "RENTAL_TERM_001"
       ]
@@ -41,7 +41,7 @@
       "rule_id": "RENTAL_REQUIRES_TERMINATION",
       "severity": "CRITICAL",
       "description": "Rental agreement must specify termination conditions and notice period.",
-      "statutory_reference": "Transfer of Property Act 1882 \u2013 S.106",
+      "statutory_reference": "Transfer of Property Act 1882 – S.106",
       "fails_if": [
         "RENTAL_TERMINATION_001"
       ]
@@ -50,7 +50,7 @@
       "rule_id": "RENTAL_REQUIRES_REGISTRATION_CLAUSE",
       "severity": "HIGH",
       "description": "Lease/rental agreements for periods exceeding 12 months must be registered. Agreement should reference this requirement.",
-      "statutory_reference": "Registration Act 1908 \u2013 S.17; Transfer of Property Act 1882 \u2013 S.107",
+      "statutory_reference": "Registration Act 1908 – S.17; Transfer of Property Act 1882 – S.107",
       "fails_if": [
         "PROP_REGISTRATION_001"
       ]

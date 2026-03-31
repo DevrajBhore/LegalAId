@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_NON_COMPETE_001",
-  "name": "Post-Employment Non-Compete",
+  "name": "Post-Employment Non-Compete and Restraint of Trade",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,11 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "27"
+      "section": "27",
+      "note": "Restraint of trade — void as general rule, subject to exceptions"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
+      "section": "73",
+      "note": "Damages for breach of employment duties"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17",
+      "note": "Employer owns copyright in works made in course of employment"
     }
   ],
   "mandatory": false,
@@ -24,7 +31,30 @@
     "Post-employment non-compete extends beyond protection of Confidential Information – likely void under ICA S.27",
     "Geographic restriction unreasonably broad without nexus to employer's actual market"
   ],
-  "source": "Indian Contract Act, 1872 – S.27",
-  "version": "2.0",
-  "title": "Post-Employment Non-Compete"
+  "source": "Indian Contract Act, 1872 S.27; Niranjan Shankar Golikari v Century Spinning (SC)",
+  "version": "3.0",
+  "title": "Post-Employment Non-Compete",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "EMP_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "EMP_NON_SOLICITATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Entire non-compete void — Niranjan Shankar Golikari SC ruling on post-employment restraints",
+    "During-employment restraint can be enforced — even partial injunction pending trial is obtainable",
+    "Training bond recovery — courts allow if reasonably proportionate to actual training cost",
+    "Garden leave + post-employment restraint stacking — total restriction may be challengeable"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

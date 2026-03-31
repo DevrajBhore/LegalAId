@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_NON_SOLICITATION_001",
-  "name": "Non-Solicitation",
+  "name": "NDA Non-Solicitation",
   "category": "NDA",
   "document_types": [
     "NDA",
@@ -13,10 +13,6 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "27"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "73"
     }
   ],
   "mandatory": false,
@@ -26,7 +22,22 @@
     "Non-solicitation period exceeds 24 months without reasonable justification",
     "Restriction applies globally without geographical limitation"
   ],
-  "source": "Indian Contract Act, 1872",
-  "version": "2.0",
-  "title": "Non-Solicitation"
+  "source": "Indian Contract Act, 1872 S.27",
+  "version": "3.0",
+  "title": "Non-Solicitation",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "NDA_NON_COMPETE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "General job posting vs targeted solicitation — difficult line to draw"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

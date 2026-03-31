@@ -27,6 +27,25 @@
     "Escalation rate exceeds Model Tenancy Act 2021 prescribed limits in applicable states"
   ],
   "source": "Model Tenancy Act, 2021; Transfer of Property Act, 1882",
-  "version": "2.0",
-  "title": "Rent Escalation"
+  "version": "3.0",
+  "title": "Rent Escalation",
+  "depends_on": [
+    "RENTAL_RENT_PAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {
+    "general": "Model Tenancy Act 2021 S.9 — rent revision procedure; state Rent Control Acts may cap escalation"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Rent Control Act freezing rent — commercial premises now largely decontrolled but residential may be controlled",
+    "CPI-linked escalation — disputes on which CPI index to use",
+    "Escalation notice — failure to give proper notice may invalidate revision"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -10,11 +10,13 @@
   "legal_basis": [
     {
       "act": "Industrial Disputes Act, 1947",
-      "section": "9C"
+      "section": "9C",
+      "note": "Grievance redressal committees in establishments with 20+ workers"
     },
     {
       "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
-      "section": "4"
+      "section": "4",
+      "note": "Internal Complaints Committee — mandatory for 10+ employees"
     }
   ],
   "mandatory": true,
@@ -23,7 +25,25 @@
   "invalid_if": [
     "No grievance mechanism for sexual harassment complaints as mandated by POSH Act 2013"
   ],
-  "source": "Sexual Harassment of Women at Workplace Act, 2013; Industrial Disputes Act, 1947",
-  "version": "2.0",
-  "title": "Grievance Redressal Procedure"
+  "source": "Industrial Disputes Act, 1947 S.9C; POSH Act, 2013",
+  "version": "3.0",
+  "title": "Grievance Redressal Procedure",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_DISCIPLINARY_ACTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "POSH Act non-compliance — no ICC — employer faces Rs.50,000 fine and licence cancellation under S.26",
+    "ICC composition — requires external member; without external member, entire proceedings may be void"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

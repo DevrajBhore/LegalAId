@@ -6,14 +6,44 @@
   "statutory_reference": "Indian Contract Act, 1872 – S.73",
   "mandatory": true,
   "jurisdiction": "India",
-  "name": "Term and Survival",
+  "name": "NDA Duration and Survival",
   "document_types": [
     "NDA"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Duration must be reasonable to be enforceable"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39",
+      "note": "Accrued rights survive termination"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "depends_on": [
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "CORE_SURVIVAL_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Survival period expired — party claims CI protection still applies to trade secrets"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

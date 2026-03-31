@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_DATA_PROCESSING_001",
-  "name": "Data Processing",
+  "name": "Data Processing and DPDPA Compliance",
   "category": "PRIVACY",
   "document_types": [
     "PRIVACYPOLICY",
@@ -11,8 +11,29 @@
   "text": "Personal data shall be collected and processed only for lawful purposes and with reasonable security safeguards.",
   "legal_basis": [
     {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "4",
+      "note": "Grounds for processing personal data"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8",
+      "note": "Obligations of Data Fiduciary"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "16",
+      "note": "Transfer of data outside India"
+    },
+    {
       "act": "Information Technology Act, 2000",
-      "section": "43A"
+      "section": "43A",
+      "note": "Reasonable security practices for SPDI"
+    },
+    {
+      "act": "Information Technology (SPDI) Rules, 2011",
+      "section": "4",
+      "note": "Sensitive personal data definition and protection"
     }
   ],
   "mandatory": true,
@@ -22,7 +43,27 @@
     "Purpose of processing not disclosed",
     "Security safeguards absent"
   ],
-  "source": "IT Act",
-  "version": "1.0",
-  "title": "Data Processing"
+  "source": "Digital Personal Data Protection Act, 2023; IT Act, 2000",
+  "version": "3.0",
+  "title": "Data Processing",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_COMPLIANCE_WITH_LAW_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "DPDPA 2023 — new legislation with evolving rules; non-compliance penalty up to Rs.250 crore",
+    "Cross-border transfer — whitelist countries not yet finalised under DPDPA",
+    "Data breach notification — 72-hour window requires operational readiness"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

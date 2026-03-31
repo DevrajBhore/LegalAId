@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_CONTRACT_FORMATION_001",
-  "name": "Formation of Contract",
+  "name": "Contract Formation — Representations and Warranties",
   "category": "CONTRACT",
   "document_types": [
     "ALL"
@@ -10,7 +10,23 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "s 10 & 13"
+      "section": "10",
+      "note": "Competency to contract"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "17",
+      "note": "Fraud — misrepresentation of capacity"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "23",
+      "note": "Lawful consideration and object"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "179",
+      "note": "Board authority for company contracts"
     }
   ],
   "mandatory": true,
@@ -20,7 +36,25 @@
     "Consent is obtained by coercion, fraud, or misrepresentation",
     "Object of the agreement is unlawful"
   ],
-  "source": "Indian Contract Act",
-  "version": "1.0",
-  "title": "Formation of Contract"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Formation of Contract",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_COMPLIANCE_WITH_LAW_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Signatory without board resolution — company can disown contract under Companies Act",
+    "Insolvency at time of signing — IBC moratorium makes new contracts voidable"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

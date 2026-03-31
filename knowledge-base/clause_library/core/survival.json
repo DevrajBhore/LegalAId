@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_SURVIVAL_001",
-  "name": "Survival",
+  "name": "Survival of Obligations",
   "category": "TERMINATION",
   "document_types": [
     "ALL"
@@ -10,7 +10,8 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "37"
+      "section": "39",
+      "note": "Rights accrued before termination are preserved"
     }
   ],
   "mandatory": false,
@@ -19,7 +20,27 @@
   "invalid_if": [
     "Critical clauses terminate automatically after contract termination"
   ],
-  "source": "Contract drafting practice",
-  "version": "1.0",
-  "title": "Survival"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Survival",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "CORE_TERMINATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_INDEMNITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Which obligations survive — if not listed, parties dispute post-termination obligations",
+    "Duration of survival — perpetual confidentiality may be unenforceable"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

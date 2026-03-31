@@ -12,10 +12,45 @@
     "LEAVE_AND_LICENSE_AGREEMENT",
     "RENTAL"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105",
+      "note": "Definition of lease — premises must be identifiable"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "21",
+      "note": "Property description required for registration"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
   "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_TERM_001",
+    "RENTAL_RENT_PAYMENT_001"
+  ],
+  "suggested_with": [
+    "RENT_POSSESSION_001",
+    "RENT_MAINTENANCE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Vague property description — disputes about what is included (parking, storage, terrace)",
+    "Incorrect survey number or extent — affects registration and enforceability",
+    "Fixtures and fittings — what was included in the letting"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

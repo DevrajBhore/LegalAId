@@ -13,5 +13,26 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "PRIVACY_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_DEFINITIONS_001",
+    "CORE_DATA_PROCESSING_001",
+    "PRIVACY_DATA_SUBJECT_RIGHTS_001",
+    "PRIVACY_DATA_RETENTION_001",
+    "PRIVACY_COOKIES_001",
+    "PRIVACY_GRIEVANCE_OFFICER_001",
+    "CORE_COMPLIANCE_WITH_LAW_001",
+    "CORE_LIMITATION_LIABILITY_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "PRIVACY_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "mandatory_legal_checks": [
+    "Digital Personal Data Protection Act 2023 — notice and consent requirements (S.5-7)",
+    "DPDPA 2023 — data fiduciary obligations (S.8); Data Protection Board of India",
+    "IT (Reasonable Security Practices) Rules 2011 — SPDI protection for sensitive personal data",
+    "Grievance officer mandatory under IT Act — name, designation and contact must be published",
+    "Data localisation — certain categories of sensitive data must be stored in India"
   ]
 }

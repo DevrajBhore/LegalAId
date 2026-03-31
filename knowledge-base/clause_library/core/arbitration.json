@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_ARBITRATION_001",
-  "name": "Arbitration",
+  "name": "Arbitration Agreement",
   "category": "ARBITRATION",
   "document_types": [
     "ALL"
@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Arbitration and Conciliation Act, 1996",
-      "section": "7"
+      "section": "7",
+      "note": "Valid arbitration agreement in writing"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "20",
+      "note": "Seat of arbitration — determines supervisory court"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "36",
+      "note": "Enforcement of award as decree"
     }
   ],
   "mandatory": false,
@@ -19,7 +30,30 @@
   "invalid_if": [
     "Seat of arbitration not specified"
   ],
-  "source": "Arbitration Act",
-  "version": "1.0",
-  "title": "Arbitration"
+  "source": "Arbitration and Conciliation Act, 1996",
+  "version": "3.0",
+  "title": "Arbitration",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_GOVERNING_LAW_001"
+  ],
+  "suggested_with": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Seat city determines supervisory High Court: Mumbai → Bombay HC; Delhi → Delhi HC; Bangalore → Karnataka HC"
+  },
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Missing seat — most common drafting error in Indian arbitration clauses",
+    "Inoperative arbitration clause — named institution no longer exists",
+    "Challenge to arbitrator appointment — S.12 conflict of interest"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

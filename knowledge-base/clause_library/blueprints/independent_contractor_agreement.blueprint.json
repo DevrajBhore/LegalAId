@@ -18,5 +18,44 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "CORE_DEFINITIONS_001",
+    "SERVICE_SCOPE_001",
+    "SERVICE_PAYMENT_001",
+    "CORE_RELATIONSHIP_OF_PARTIES_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_TERM_001",
+    "SERVICE_TERMINATION_001",
+    "IP_ASSIGNMENT_001",
+    "CORE_INDEMNITY_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "EMP_NON_COMPETE_001",
+      "include_if": "include_non_compete == true",
+      "note": "ICA S.27 — must be narrowly tied to CI"
+    },
+    {
+      "clause": "EMP_NON_SOLICITATION_001",
+      "include_if": "include_non_solicit == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "processes_personal_data == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Contract Labour (Regulation and Abolition) Act 1970 — if contractor engages >20 workers, registration required",
+    "EPF liability for principal employer — Supreme Court rulings on deemed employment",
+    "TDS under S.194C for contracts or S.194J for professionals"
   ]
 }

@@ -11,11 +11,13 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "37"
+      "section": "37",
+      "note": "Delivery of right quantity"
     },
     {
       "act": "Indian Contract Act, 1872",
-      "section": "55"
+      "section": "55",
+      "note": "Time of performance"
     }
   ],
   "mandatory": false,
@@ -25,6 +27,25 @@
     "Shortage claim period less than 2 Business Days unreasonably restricts Buyer rights"
   ],
   "source": "Sale of Goods Act, 1930",
-  "version": "2.0",
-  "title": "Shortage and Shortage Claims"
+  "version": "3.0",
+  "title": "Shortage and Shortage Claims",
+  "depends_on": [
+    "SUPPLY_DELIVERY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_INSPECTION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Shortage discovered during production — delayed discovery affects notice deadline",
+    "Short delivery vs non-delivery — different remedies",
+    "Tolerance limits — industry-standard shortage tolerance (±5%) must be specified"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

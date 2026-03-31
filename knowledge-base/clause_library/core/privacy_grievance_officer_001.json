@@ -1,6 +1,6 @@
 {
   "clause_id": "PRIVACY_GRIEVANCE_OFFICER_001",
-  "name": "Grievance Officer",
+  "name": "Data Protection Grievance Officer",
   "category": "PRIVACY",
   "document_types": [
     "PRIVACY_POLICY"
@@ -10,11 +10,13 @@
   "legal_basis": [
     {
       "act": "Digital Personal Data Protection Act, 2023",
-      "section": "13"
+      "section": "13",
+      "note": "Grievance redressal mechanism"
     },
     {
-      "act": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
-      "section": "Rule 4"
+      "act": "Information Technology Act, 2000",
+      "section": "46",
+      "note": "Adjudicating Officer — IT Act complaints"
     }
   ],
   "mandatory": true,
@@ -24,7 +26,22 @@
     "No Grievance Officer is designated",
     "Contact details for the Grievance Officer are missing or incomplete"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Grievance Officer"
+  "source": "Digital Personal Data Protection Act, 2023",
+  "version": "3.0",
+  "title": "Grievance Officer",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [
+    "PRIVACY_DATA_SUBJECT_RIGHTS_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Stale contact information — grievance officer no longer reachable"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

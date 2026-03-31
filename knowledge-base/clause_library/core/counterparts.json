@@ -1,6 +1,6 @@
 {
   "clause_id": "CORE_COUNTERPARTS_001",
-  "name": "Counterparts",
+  "name": "Counterparts and Electronic Execution",
   "category": "EXECUTION_FORMALITIES",
   "document_types": [
     "ALL"
@@ -9,15 +9,46 @@
   "text": "This Agreement may be executed in multiple counterparts, each of which shall be deemed an original, and all counterparts together shall constitute one instrument.",
   "legal_basis": [
     {
+      "act": "Information Technology Act, 2000",
+      "section": "5",
+      "note": "Legal recognition of electronic signatures"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "10A",
+      "note": "Contracts formed through electronic means"
+    },
+    {
       "act": "Indian Evidence Act, 1872",
-      "section": "62"
+      "section": "65B",
+      "note": "Admissibility of electronic records"
     }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "LOW",
   "invalid_if": [],
-  "source": "Contract execution practice",
-  "version": "1.0",
-  "title": "Counterparts"
+  "source": "IT Act, 2000",
+  "version": "3.0",
+  "title": "Counterparts",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {
+    "general": "Aadhaar-based e-KYC signatures have highest evidentiary value under IT Act"
+  },
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Whether PDF email counts as electronic signature — depends on IT Act compliance",
+    "Stamped documents — electronic execution may not satisfy stamp duty in some states"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

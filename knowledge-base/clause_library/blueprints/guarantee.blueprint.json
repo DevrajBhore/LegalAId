@@ -13,5 +13,26 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "GUARANTEE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "GUARANTEE_OBLIGATION_001",
+    "GUARANTEE_CONTINUING_001",
+    "GUARANTEE_INDEMNITY_001",
+    "CORE_TERM_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "mandatory_legal_checks": [
+    "ICA S.133 — guarantee discharged if terms of principal contract varied without guarantor's consent",
+    "ICA S.134 — guarantee discharged if principal debtor released",
+    "ICA S.130 — revocation of continuing guarantee — possible for future transactions",
+    "Stamp duty on guarantee — must be adequately stamped under applicable State Stamp Act",
+    "Board resolution required if guarantor is a company"
   ]
 }

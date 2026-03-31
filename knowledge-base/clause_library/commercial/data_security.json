@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_DATA_SECURITY_001",
-  "name": "Data Security",
+  "name": "Data Security for Confidential Information",
   "category": "CONFIDENTIALITY",
   "document_types": [
     "ALL"
@@ -13,8 +13,8 @@
       "section": "43A"
     },
     {
-      "act": "Information Technology Act, 2000",
-      "section": "72A"
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8"
     }
   ],
   "mandatory": false,
@@ -24,7 +24,25 @@
     "The agreement does not involve the transfer or access to data that requires security measures.",
     "Specific data security measures are exhaustively defined in another part of the agreement, rendering this general clause redundant or conflicting."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Data Security"
+  "source": "IT Act, 2000; DPDPA, 2023",
+  "version": "3.0",
+  "title": "Data Security",
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DATA_PROCESSING_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Ransomware attack — receiving party's systems compromised — is it liable for CI breach?",
+    "72-hour breach notification — operationally difficult for many organisations"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

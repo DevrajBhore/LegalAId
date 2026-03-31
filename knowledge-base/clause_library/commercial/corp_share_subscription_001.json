@@ -1,6 +1,6 @@
 {
   "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
-  "name": "Share Subscription and Capital Contribution",
+  "name": "Share Subscription",
   "category": "CONSIDERATION",
   "document_types": [
     "SHAREHOLDERS_AGREEMENT"
@@ -10,15 +10,18 @@
   "legal_basis": [
     {
       "act": "Companies Act, 2013",
-      "section": "62"
+      "section": "42",
+      "note": "Private placement — 15 days allotment requirement"
     },
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "2(d)"
+      "act": "Companies Act, 2013",
+      "section": "62",
+      "note": "Further issue of share capital"
     },
     {
-      "act": "Securities Contract (Regulation) Act, 1956",
-      "section": "2(h)"
+      "act": "SEBI (ICDR) Regulations, 2018",
+      "section": "1",
+      "note": "Applicable to listed companies"
     }
   ],
   "mandatory": true,
@@ -29,7 +32,31 @@
     "Subscription price is not specified",
     "Pre-emptive rights are not addressed"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Share Subscription and Capital Contribution"
+  "source": "Companies Act, 2013 S.42",
+  "version": "3.0",
+  "title": "Share Subscription and Capital Contribution",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORP_SHARE_TRANSFER_001"
+  ],
+  "suggested_with": [
+    "CORP_ANTI_DILUTION_001",
+    "CORP_BOARD_COMPOSITION_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Foreign investors: RBI FDI policy, FEMA compliance, sectoral caps"
+  },
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Breach of private placement — SEBI/MCA enforcement",
+    "FDI in prohibited sectors — FEMA violation",
+    "Valuation dispute — subscription price challenged"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

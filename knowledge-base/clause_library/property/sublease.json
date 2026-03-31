@@ -27,6 +27,25 @@
     "No provision for Landlord's consent not to be unreasonably withheld"
   ],
   "source": "Transfer of Property Act, 1882 – S.108",
-  "version": "2.0",
-  "title": "Subletting and Assignment"
+  "version": "3.0",
+  "title": "Subletting and Assignment",
+  "depends_on": [
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENT_PROPERTY_USE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Subletting without consent — grounds for eviction",
+    "Assignment to buyer's entity on business sale — often not anticipated",
+    "Sub-tenant occupying even after main lease terminates — mesne profits liability"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

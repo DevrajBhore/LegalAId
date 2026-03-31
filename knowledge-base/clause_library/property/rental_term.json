@@ -12,10 +12,52 @@
     "LEAVE_AND_LICENSE_AGREEMENT",
     "RENTAL"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "105",
+      "note": "Lease — fixed term required"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17",
+      "note": "Registration of leases > 12 months mandatory"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "106",
+      "note": "Duration of certain leases — month-to-month for no fixed term"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
   "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "RENTAL_TERMINATION_001",
+    "PROP_REGISTRATION_001"
+  ],
+  "suggested_with": [
+    "RENT_LOCKIN_PERIOD_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Leases for >12 months require compulsory registration (Registration Act 1908 S.17); standard practice is 11-month leave & licence to avoid registration"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "11-month renewal cycle — parties assume renewal but no formal renewal signed",
+    "Holdover tenancy — what happens when tenant stays beyond lease term",
+    "Month-to-month tenancy under TPA S.106 — 15 days notice required to end"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

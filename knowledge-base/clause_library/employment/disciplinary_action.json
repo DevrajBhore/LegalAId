@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_DISCIPLINARY_ACTION_001",
-  "name": "Disciplinary Action",
+  "name": "Disciplinary Procedure",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT_AGREEMENT"
@@ -10,11 +10,18 @@
   "legal_basis": [
     {
       "act": "Industrial Employment (Standing Orders) Act, 1946",
-      "section": "3"
+      "section": "12",
+      "note": "Procedure for dismissal under certified standing orders"
     },
     {
       "act": "Industrial Disputes Act, 1947",
-      "section": "25F"
+      "section": "11A",
+      "note": "Labour court may examine proportionality of punishment"
+    },
+    {
+      "act": "Constitution of India",
+      "article": "21",
+      "note": "Natural justice — opportunity to be heard before adverse action"
     }
   ],
   "mandatory": true,
@@ -24,7 +31,28 @@
     "Disciplinary action without show-cause notice violates natural justice principles",
     "Summary dismissal without inquiry for offences other than gross misconduct"
   ],
-  "source": "Industrial Employment (Standing Orders) Act, 1946",
-  "version": "2.0",
-  "title": "Disciplinary Action"
+  "source": "Industrial Employment (Standing Orders) Act, 1946; Industrial Disputes Act, 1947",
+  "version": "3.0",
+  "title": "Disciplinary Action",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMPLOYMENT_TERMINATION_001"
+  ],
+  "suggested_with": [
+    "EMP_GRIEVANCE_PROCEDURE_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Procedurally deficient enquiry — Labour Court sets aside dismissal and orders reinstatement with back wages",
+    "Enquiry officer bias — disciplinary authority and enquiry officer cannot be the same person",
+    "Excessiveness of punishment — IDA S.11A: Labour Court can substitute lesser punishment"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

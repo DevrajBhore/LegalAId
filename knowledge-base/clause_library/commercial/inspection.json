@@ -10,7 +10,13 @@
   "legal_basis": [
     {
       "act": "Sale of Goods Act, 1930",
-      "section": "41"
+      "section": "41",
+      "note": "Buyer's right to examine goods before acceptance"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "42",
+      "note": "Acceptance by conduct — waiver of rejection"
     }
   ],
   "mandatory": false,
@@ -21,6 +27,28 @@
     "Imposition of an unreasonably short period for inspection"
   ],
   "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Inspection"
+  "version": "3.0",
+  "title": "Inspection",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_DELIVERY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "SUPPLY_REJECTION_001"
+  ],
+  "suggested_with": [
+    "SUPPLY_QUALITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Waiver of right to reject — SGA 1930 S.42: accepting goods after reasonable time bars rejection",
+    "Hidden defects — inspection period for latent defects must be adequate",
+    "Third party inspection costs — who bears if goods pass inspection"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

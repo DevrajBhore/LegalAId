@@ -13,10 +13,6 @@
     {
       "act": "Transfer of Property Act, 1882",
       "section": "108"
-    },
-    {
-      "act": "Indian Contract Act, 1872",
-      "section": "10"
     }
   ],
   "mandatory": true,
@@ -27,6 +23,27 @@
     "Use restriction so broad as to prevent all reasonable commercial activity"
   ],
   "source": "Transfer of Property Act, 1882 – S.108",
-  "version": "2.0",
-  "title": "Permitted Use"
+  "version": "3.0",
+  "title": "Permitted Use",
+  "depends_on": [
+    "RENTAL_PROPERTY_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "RENT_SUBLEASE_001"
+  ],
+  "jurisdiction_constraints": {
+    "general": "Commercial use in residentially-zoned area — municipal law restrictions apply"
+  },
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Change of use — tenant converts residential to commercial without consent",
+    "Nuisance — tenant's business activity disturbs neighbours",
+    "Hazardous activity — lease void if use is unlawful under municipal laws"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

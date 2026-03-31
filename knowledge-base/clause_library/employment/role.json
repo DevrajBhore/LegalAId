@@ -6,15 +6,53 @@
   "statutory_reference": "Industrial Employment (Standing Orders) Act, 1946",
   "mandatory": true,
   "jurisdiction": "India",
-  "name": "Role and Responsibilities",
+  "name": "Designation, Role and Reporting",
   "document_types": [
     "EMPLOYMENT",
     "EMPLOYMENT_CONTRACT"
   ],
-  "legal_basis": [],
+  "legal_basis": [
+    {
+      "act": "Industrial Disputes Act, 1947",
+      "section": "25F",
+      "note": "Retrenchment — role definition affects workman status"
+    },
+    {
+      "act": "Industrial Employment (Standing Orders) Act, 1946",
+      "section": "4",
+      "note": "Certified standing orders define duties"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Damages for breach of employment obligation"
+    }
+  ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "LegalAId Knowledge Base",
-  "version": "1.0.0"
+  "source": "Industrial Disputes Act, 1947; Standing Orders Act, 1946",
+  "version": "3.0",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_WAGES_001"
+  ],
+  "suggested_with": [
+    "EMP_DUTIES_001",
+    "EMP_WORKING_HOURS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unilateral transfer — employee refuses transfer claiming it is constructive dismissal",
+    "Role modification — demotion disguised as role change",
+    "Conflict of interest — employee directs business to own company"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

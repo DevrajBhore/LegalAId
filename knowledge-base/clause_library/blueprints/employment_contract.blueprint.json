@@ -28,5 +28,60 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "EMPLOYMENT_ROLE_001",
+    "EMPLOYMENT_COMPENSATION_001",
+    "EMP_WAGES_001",
+    "CORE_TERM_001",
+    "EMP_PROBATION_001",
+    "EMP_DUTIES_001",
+    "EMP_WORKING_HOURS_001",
+    "EMP_LEAVE_POLICY_001",
+    "EMP_BENEFITS_001",
+    "EMP_RETIREMENT_001",
+    "EMP_CONFIDENTIALITY_001",
+    "EMP_IP_ASSIGNMENT_001",
+    "EMP_NON_COMPETE_001",
+    "EMP_NON_SOLICITATION_001",
+    "EMP_NOTICE_PERIOD_001",
+    "EMP_DISCIPLINARY_ACTION_001",
+    "EMP_GRIEVANCE_PROCEDURE_001",
+    "EMPLOYMENT_TERMINATION_001",
+    "EMP_TERMINATION_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001, removed duplicate EMPLOYMENT_TERMINATION_001/EMP_TERMINATION_001, added conditional clauses",
+  "conditional_clauses": [
+    {
+      "clause": "EMP_NON_COMPETE_001",
+      "include_if": "include_non_compete == true",
+      "note": "Post-employment non-compete — valid only if narrowly tied to Confidential Information (ICA S.27)"
+    },
+    {
+      "clause": "EMP_NON_SOLICITATION_001",
+      "include_if": "include_non_compete == true",
+      "note": "Non-solicitation of clients and employees"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true"
+    }
+  ],
+  "removed_from_v2": [
+    "EMP_TERMINATION_001"
+  ],
+  "mandatory_legal_checks": [
+    "Salary must not be below applicable Minimum Wages Act 1948 schedule",
+    "EPF deduction clause must be present — criminal liability for employer under EPF Act S.14",
+    "Maternity benefits compliance clause required for female employees",
+    "Working hours must comply with Factories Act 1948 or applicable Shops Act"
   ]
 }

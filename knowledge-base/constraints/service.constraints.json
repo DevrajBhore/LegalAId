@@ -5,7 +5,7 @@
       "rule_id": "SERVICE_REQUIRES_SCOPE",
       "severity": "HIGH",
       "description": "Service agreement must define the scope of services.",
-      "statutory_reference": "Indian Contract Act 1872 \u2013 S.29",
+      "statutory_reference": "Indian Contract Act 1872 – S.29",
       "fails_if": [
         "SERVICE_SCOPE_001",
         "CORE_PURPOSE_001"
@@ -21,7 +21,7 @@
       "rule_id": "SERVICE_REQUIRES_PAYMENT",
       "severity": "CRITICAL",
       "description": "Service agreement must specify payment terms.",
-      "statutory_reference": "Indian Contract Act 1872 \u2013 S.10",
+      "statutory_reference": "Indian Contract Act 1872 – S.10",
       "fails_if": [
         "SERVICE_PAYMENT_001",
         "CORE_TERM_001",

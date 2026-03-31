@@ -10,7 +10,18 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "56"
+      "section": "32",
+      "note": "Contingent contracts"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "56",
+      "note": "Agreement to do impossible act — frustration doctrine"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "8",
+      "note": "Perishing of goods — specific goods contracts"
     }
   ],
   "mandatory": false,
@@ -20,7 +31,29 @@
     "Force majeure events defined too broadly",
     "Clause used to excuse negligence"
   ],
-  "source": "Doctrine of frustration",
-  "version": "1.0",
-  "title": "Force Majeure"
+  "source": "Indian Contract Act, 1872 S.32 and S.56",
+  "version": "3.0",
+  "title": "Force Majeure",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_NOTICE_001"
+  ],
+  "suggested_with": [
+    "CORE_TERMINATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "COVID-19 as FM — Energy Watchdog v CERC: price increase alone is not FM",
+    "Government action — fine line between FM and commercial risk allocation",
+    "Payment still due for work completed before FM — often disputed",
+    "Foreseeability — if event was foreseeable, FM defence fails"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

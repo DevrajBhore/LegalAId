@@ -30,6 +30,28 @@
     "Promissory note not signed by the Maker rendering it invalid under NI Act 1881"
   ],
   "source": "Negotiable Instruments Act, 1881; Indian Stamp Act, 1899",
-  "version": "2.0",
-  "title": "Promissory Note Payment"
+  "version": "3.0",
+  "title": "Promissory Note Payment",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [
+    "LOAN_AMOUNT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Dishonour of promissory note — criminal liability under NI Act S.138 (now extended to PN dishonour)",
+    "Stamp duty — promissory note must be stamped under Indian Stamp Act 1899 S.17; unstamped PN is inadmissible",
+    "Limitation — 3 years from date of dishonour or last acknowledgment"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

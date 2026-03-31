@@ -1,6 +1,6 @@
 {
   "clause_id": "EMP_WAGES_OVERVIEW_001",
-  "name": "Wages Overview",
+  "name": "Wages Overview — CTC Breakdown",
   "category": "EMPLOYMENT",
   "document_types": [
     "EMPLOYMENT"
@@ -9,12 +9,12 @@
   "text": "The Employee shall be paid wages, salary, and other compensation in accordance with this Agreement and applicable law, subject to statutory deductions and timelines.",
   "legal_basis": [
     {
-      "act": "Payment of Wages Act, 1936",
-      "section": "5"
+      "act": "Employees' Provident Funds Act, 1952",
+      "section": "6"
     },
     {
-      "act": "Minimum Wages Act, 1948",
-      "section": "3"
+      "act": "Payment of Gratuity Act, 1972",
+      "section": "4"
     }
   ],
   "mandatory": true,
@@ -24,7 +24,25 @@
     "Wages are below statutory minimum",
     "Payment timelines violate law"
   ],
-  "source": "Payment of Wages Act + Minimum Wages Act",
-  "version": "1.0",
-  "title": "Wages Overview"
+  "source": "EPF Act, 1952; PGA, 1972",
+  "version": "3.0",
+  "title": "Wages Overview",
+  "depends_on": [
+    "EMP_WAGES_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "EMP_WAGES_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "CTC vs take-home dispute — employee misled about actual salary",
+    "Employer's PF included in CTC — employee claims full CTC as salary"
+  ],
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -5,7 +5,7 @@
       "rule_id": "CORP_REQUIRES_PARTIES",
       "severity": "CRITICAL",
       "description": "Corporate agreements must identify all parties with registered names, CIN/LLPIN, and registered addresses.",
-      "statutory_reference": "Companies Act 2013 \u2013 S.2(20); LLP Act 2008 \u2013 S.2",
+      "statutory_reference": "Companies Act 2013 – S.2(20); LLP Act 2008 – S.2",
       "fails_if": [
         "CORE_IDENTITY_001"
       ]
@@ -14,7 +14,7 @@
       "rule_id": "CORP_REQUIRES_GOVERNING_LAW",
       "severity": "CRITICAL",
       "description": "Corporate agreements must specify Indian governing law and jurisdiction.",
-      "statutory_reference": "Companies Act 2013 \u2013 S.6; Indian Contract Act 1872 \u2013 S.23",
+      "statutory_reference": "Companies Act 2013 – S.6; Indian Contract Act 1872 – S.23",
       "fails_if": [
         "CORE_GOVERNING_LAW_001"
       ]
@@ -23,7 +23,7 @@
       "rule_id": "CORP_REQUIRES_DISPUTE_RESOLUTION",
       "severity": "HIGH",
       "description": "Corporate agreements should specify dispute resolution mechanism.",
-      "statutory_reference": "Arbitration and Conciliation Act 1996 \u2013 S.7",
+      "statutory_reference": "Arbitration and Conciliation Act 1996 – S.7",
       "fails_if": [
         "CORE_DISPUTE_RESOLUTION_001",
         "CORE_ARBITRATION_001"

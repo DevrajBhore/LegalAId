@@ -1,6 +1,6 @@
 {
   "clause_id": "NDA_BREACH_REMEDIES_001",
-  "name": "Breach Remedies",
+  "name": "Breach and Remedies",
   "category": "REMEDIES",
   "document_types": [
     "ALL"
@@ -9,16 +9,14 @@
   "text": "In the event of a breach of this Agreement, the non-breaching Party shall be entitled to seek all available legal and equitable remedies, including specific performance, injunctive relief, and damages.",
   "legal_basis": [
     {
+      "act": "Specific Relief Act, 1963",
+      "section": "38",
+      "note": "Perpetual injunction — irreparable injury test"
+    },
+    {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
-    },
-    {
-      "act": "Specific Relief Act, 1963",
-      "section": "10"
-    },
-    {
-      "act": "Specific Relief Act, 1963",
-      "section": "38"
+      "section": "74",
+      "note": "Liquidated damages — genuine pre-estimate only"
     }
   ],
   "mandatory": false,
@@ -29,7 +27,25 @@
     "If specific performance or injunctive relief is explicitly waived for certain breaches.",
     "If the contract provides for liquidated damages as the sole remedy for breach."
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Breach Remedies"
+  "source": "Specific Relief Act, 1963; ICA, 1872",
+  "version": "3.0",
+  "title": "Breach Remedies",
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_INDEMNITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Injunction application — balance of convenience test; status quo preservation"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

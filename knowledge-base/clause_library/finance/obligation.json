@@ -30,6 +30,31 @@
     "Continuing guarantee without limitation on amount may expose Guarantor to unlimited liability"
   ],
   "source": "Indian Contract Act, 1872 – S.126-147",
-  "version": "2.0",
-  "title": "Guarantee Obligation"
+  "version": "3.0",
+  "title": "Guarantee Obligation",
+  "depends_on": [
+    "GUARANTEE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "GUARANTEE_IDENTITY_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "suggested_with": [
+    "GUARANTEE_CONTINUING_001",
+    "GUARANTEE_INDEMNITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Unlimited guarantee — guarantor challenges open-ended liability",
+    "Co-extensiveness — ICA S.128: guarantor liable to same extent as principal debtor",
+    "Discharge of guarantor — ICA S.133/134/135: guarantee discharged by variation of terms without consent",
+    "Guarantor subrogation rights — ICA S.140: guarantor steps into lender's shoes on payment"
+  ],
+  "blocks_generation_if_absent": true,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

@@ -1,6 +1,6 @@
 {
   "clause_id": "TECH_WARRANTY_001",
-  "name": "Software Warranty and Defect Liability",
+  "name": "Software Warranty",
   "category": "WARRANTY",
   "document_types": [
     "SOFTWARE_DEVELOPMENT_AGREEMENT"
@@ -10,15 +10,13 @@
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
-      "section": "73"
+      "section": "73",
+      "note": "Breach of warranty — damages for non-performance"
     },
     {
-      "act": "Information Technology Act, 2000",
-      "section": "General"
-    },
-    {
-      "act": "Sale of Goods Act, 1930",
-      "section": "16"
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(46)",
+      "note": "Warranty — applicable where purchaser is a consumer"
     }
   ],
   "mandatory": true,
@@ -28,7 +26,27 @@
     "Warranty period is unreasonably short",
     "Remedy mechanism for defects is not specified"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "Software Warranty and Defect Liability"
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Software Warranty and Defect Liability",
+  "depends_on": [
+    "TECH_ACCEPTANCE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "TECH_ACCEPTANCE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_SLA_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Post-warranty defect — client claims defect existed in warranty period",
+    "Modification voiding warranty — vendor claims every update voided warranty"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

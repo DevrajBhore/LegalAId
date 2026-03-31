@@ -1,6 +1,6 @@
 {
   "clause_id": "JV_GOVERNANCE_001",
-  "name": "JV Management and Governance",
+  "name": "JV Governance and Management",
   "category": "CORPORATE",
   "document_types": [
     "JOINT_VENTURE_AGREEMENT"
@@ -9,12 +9,14 @@
   "text": "The Joint Venture shall be managed by a Management Committee comprising equal representatives from each Party. Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational decisions. Major decisions shall include: (a) approval of the annual budget; (b) any single expenditure exceeding the threshold specified in Schedule C; (c) entry into any third-party contract above the specified threshold; (d) any change in the scope of the Joint Venture; and (e) any admission of a new party to the Joint Venture. Each Party shall designate its representatives to the Management Committee in writing and may replace them at any time on written notice.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "General Principles"
+      "act": "Indian Partnership Act, 1932",
+      "section": "12",
+      "note": "Management of partnership"
     },
     {
-      "act": "Indian Partnership Act, 1932",
-      "section": "12"
+      "act": "Companies Act, 2013",
+      "section": "149",
+      "note": "Board governance if JV is a company"
     }
   ],
   "mandatory": true,
@@ -24,7 +26,25 @@
     "Decision-making mechanism is not defined",
     "Deadlock resolution procedure is absent"
   ],
-  "source": "LegalAId Clause Library",
-  "version": "1.0",
-  "title": "JV Management and Governance"
+  "source": "Indian Partnership Act, 1932; Companies Act, 2013",
+  "version": "3.0",
+  "title": "JV Management and Governance",
+  "depends_on": [
+    "JV_CONTRIBUTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "CORP_DEADLOCK_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "JV Manager acts without authority",
+    "Reserved matters deadlock — cannot approve annual budget"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
 }

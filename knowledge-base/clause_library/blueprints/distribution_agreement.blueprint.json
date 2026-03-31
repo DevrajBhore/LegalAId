@@ -20,5 +20,43 @@
     "CORE_WAIVER_001",
     "CORE_COUNTERPARTS_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "required_clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SERVICE_PAYMENT_001",
+    "IP_TRADEMARK_USAGE_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_TERM_001",
+    "SERVICE_TERMINATION_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_INDEMNITY_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_WAIVER_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "version": "3.0",
+  "conditional_clauses": [
+    {
+      "clause": "NDA_NON_COMPETE_001",
+      "include_if": "exclusive_territory == true",
+      "note": "ICA S.27 — non-compete tied to distribution territory is valid during term"
+    },
+    {
+      "clause": "SERVICE_REPORTING_001",
+      "include_if": "reporting_required == true"
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Competition Act 2002 S.3(4) — exclusive distribution may be anti-competitive if appreciable adverse effect on competition (AAEC test)",
+    "FEMA — distributor agreement with foreign principal requires compliance with FEMA and RBI guidelines on royalties",
+    "TDS on commission payments — S.194H (5% TDS on commission)",
+    "GST on distributor margin — must be properly documented"
   ]
 }
