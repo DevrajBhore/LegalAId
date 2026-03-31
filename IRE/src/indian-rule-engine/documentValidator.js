@@ -17,7 +17,30 @@ function normalizeCategory(category = "") {
     .toUpperCase();
 }
 
-export function validateDocument(registry, draft) {
+const CATEGORY_EQUIVALENTS = {
+  FINANCE: ["FINANCE", "CONSIDERATION"],
+  DISPUTE_RESOLUTION: ["DISPUTE_RESOLUTION", "ARBITRATION"],
+  SIGNATURE_BLOCK: ["SIGNATURE_BLOCK", "SIGNATURES", "EXECUTION"],
+};
+
+function hasRequiredCategory(presentCategories, category) {
+  const normalizedCategory = normalizeCategory(category);
+  const acceptableCategories =
+    CATEGORY_EQUIVALENTS[normalizedCategory] || [normalizedCategory];
+
+  return acceptableCategories.some((candidate) =>
+    presentCategories.has(candidate)
+  );
+}
+
+export function validateDocument(
+  registry,
+  draft,
+  {
+    enforceClauseOrdering = true,
+    enforceExactConstraintRules = true,
+  } = {}
+) {
   if (!draft?.clauses || !Array.isArray(draft.clauses)) {
     return {
       pass: false,
@@ -44,7 +67,7 @@ export function validateDocument(registry, draft) {
     typeInfo.categories || ["IDENTITY", "GOVERNING_LAW", "SIGNATURE_BLOCK"];
 
   for (const category of requiredCategories) {
-    if (!presentCategories.has(category)) {
+    if (!hasRequiredCategory(presentCategories, category)) {
       issues.push({
         rule_id: `MISSING_CATEGORY_${category}`,
         severity:
@@ -57,11 +80,16 @@ export function validateDocument(registry, draft) {
     }
   }
 
-  const signatureIndex = normalizedCategories.indexOf("SIGNATURE_BLOCK");
-  if (signatureIndex !== -1) {
+  const signatureIndex = normalizedCategories.findIndex((category) =>
+    hasRequiredCategory(new Set([category]), "SIGNATURE_BLOCK")
+  );
+  if (enforceClauseOrdering && signatureIndex !== -1) {
     const trailingOperativeCategory = normalizedCategories
       .slice(signatureIndex + 1)
-      .find((category) => category !== "SIGNATURE_BLOCK");
+      .find(
+        (category) =>
+          !hasRequiredCategory(new Set([category]), "SIGNATURE_BLOCK")
+      );
 
     if (trailingOperativeCategory) {
       issues.push({
@@ -124,7 +152,8 @@ export function validateDocument(registry, draft) {
   }
 
   const domains = typeInfo.domains || ["contract"];
-  const constraintRules = registry.getConstraintsForDomains
+  const constraintRules =
+    enforceExactConstraintRules && registry.getConstraintsForDomains
     ? registry.getConstraintsForDomains(domains)
     : [];
   const violations = evaluateConstraints(clauseIds, constraintRules, docType);

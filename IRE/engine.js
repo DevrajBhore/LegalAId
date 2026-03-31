@@ -17,6 +17,15 @@ import { validateBlueprint } from "./src/indian-rule-engine/blueprintValidator.j
 const registry = bootstrapIRE();
 const VALIDATION_MODES = new Set(["background", "generation", "final"]);
 
+function isStructuredDraft(meta = {}) {
+  return Boolean(
+    meta?.blueprint_clause_count ||
+      meta?.loaded_clause_count ||
+      meta?.baseline_clause_map ||
+      meta?.source_variables
+  );
+}
+
 /**
  * Main validation entry point.
  *
@@ -34,6 +43,7 @@ export async function validateDocument(
 ) {
   const validationMode = normalizeValidationMode(mode, isUserEdit);
   const normalizedType = toIREDocType(documentType);
+  const structuredDraft = isStructuredDraft(meta);
 
   const draft = {
     document_type: documentType,
@@ -44,10 +54,15 @@ export async function validateDocument(
 
   // ── Layer 1a: Blueprint (required clause IDs for this doc type)
   const requiredClauses = planDocument(registry, normalizedType);
-  const blueprintIssues = validateBlueprint(requiredClauses, draftedClauses);
+  const blueprintIssues = structuredDraft
+    ? validateBlueprint(requiredClauses, draftedClauses)
+    : [];
 
   // ── Layer 1b: Structural (per-doctype required categories + constraints)
-  const structuralResult = structuralValidate(registry, draft);
+  const structuralResult = structuralValidate(registry, draft, {
+    enforceClauseOrdering: structuredDraft,
+    enforceExactConstraintRules: structuredDraft,
+  });
   const structuralIssues = structuralResult.violations || [];
 
   // ── Layer 1c: Completeness, execution, semantic 

@@ -60,3 +60,7 @@ Thumbs.db
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Deployment artifacts
+knowledge-base/*.zip
+knowledge-base/ZIP/

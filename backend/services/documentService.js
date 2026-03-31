@@ -24,6 +24,7 @@ import {
   formatValidationResult,
   runDocumentValidation,
 } from "./validationService.js";
+import { callAI } from "../ai/aiClient.js";
 
 let CategoryMapper = null;
 
@@ -76,9 +77,12 @@ function buildBlockedGenerationResult(issues, { statusCode = 422, error } = {}) 
   };
 }
 
-function createBaseDraft(input) {
-  const assembledDraft = assembleDocument(input.document_type, input.variables);
-  return injectDraftVariables(assembledDraft, input.variables);
+function createBlueprintDraft(input) {
+  return assembleDocument(input.document_type, input.variables);
+}
+
+function createDeterministicBaseDraft(input) {
+  return injectDraftVariables(createBlueprintDraft(input), input.variables);
 }
 
 function sanitizeSourceVariables(variables = {}) {
@@ -186,6 +190,100 @@ function applyGenerationStages(draft, input) {
   return draft;
 }
 
+function shouldUseSemanticGeneration(input = {}) {
+  return (
+    input?.semantic_generation === true ||
+    String(input?.generation_style || "").toLowerCase() === "semantic"
+  );
+}
+
+function hasSemanticProviderConfigured() {
+  return Boolean(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY);
+}
+
+function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
+  if (!seedDraft?.clauses?.length || !aiDraft?.clauses?.length) {
+    return null;
+  }
+
+  if (
+    aiDraft.document_type &&
+    String(aiDraft.document_type).toUpperCase() !==
+      String(input.document_type).toUpperCase()
+  ) {
+    return null;
+  }
+
+  const aiClauses = aiDraft.clauses.filter((clause) => clause?.clause_id);
+  const aiById = new Map(aiClauses.map((clause) => [clause.clause_id, clause]));
+
+  if (
+    aiById.size !== seedDraft.clauses.length ||
+    aiClauses.length !== seedDraft.clauses.length
+  ) {
+    return null;
+  }
+
+  const mergedClauses = [];
+
+  for (const seedClause of seedDraft.clauses) {
+    const aiClause = aiById.get(seedClause.clause_id);
+
+    if (!aiClause || typeof aiClause.text !== "string" || !aiClause.text.trim()) {
+      return null;
+    }
+
+    mergedClauses.push({
+      ...seedClause,
+      ...aiClause,
+      clause_id: seedClause.clause_id,
+      category: aiClause.category || seedClause.category,
+      title:
+        typeof aiClause.title === "string" && aiClause.title.trim()
+          ? aiClause.title
+          : seedClause.title || null,
+      statutory_reference:
+        aiClause.statutory_reference ?? seedClause.statutory_reference ?? null,
+      text: aiClause.text.trim(),
+    });
+  }
+
+  return normalizeClauseText({
+    ...seedDraft,
+    document_type: input.document_type,
+    jurisdiction: aiDraft.jurisdiction || seedDraft.jurisdiction || "India",
+    clauses: mergedClauses,
+    metadata: {
+      ...(seedDraft.metadata || {}),
+      ai_touched: true,
+      ai_generation_provider: provider || null,
+    },
+  });
+}
+
+async function attemptSemanticDraft(seedDraft, input) {
+  if (!hasSemanticProviderConfigured()) {
+    return null;
+  }
+
+  const aiResult = await callAI({
+    document_type: input.document_type,
+    variables: input.variables || {},
+    baseDraft: seedDraft,
+  });
+
+  if (!aiResult?.success || !aiResult?.draft) {
+    return null;
+  }
+
+  return mergeAIDraftWithSeed(
+    seedDraft,
+    aiResult.draft,
+    input,
+    aiResult.provider
+  );
+}
+
 async function runGenerationStageValidation(draft, input) {
   return runDocumentValidation(
     {
@@ -226,23 +324,44 @@ export async function generateDocument(input) {
     );
   }
 
-  // 1. Deterministic Assembly (the Base Draft)
-  const baseDraft = createBaseDraft(input);
+  if (shouldUseSemanticGeneration(input)) {
+    const semanticSeed = applyGenerationStages(createBlueprintDraft(input), input);
+    const semanticDraft = await attemptSemanticDraft(semanticSeed, input);
 
-  // 2. Deterministic Enrichment
+    if (semanticDraft) {
+      let draft = attachDraftContext(semanticDraft, input, {
+        resetBaseline: true,
+      });
+      let validation = await runGenerationStageValidation(draft, input);
+
+      if (isGenerationReady(validation)) {
+        return { draft, validation };
+      }
+
+      const repairedDraft = applyDeterministicRepairRound(draft, validation);
+      if (repairedDraft !== draft) {
+        draft = attachDraftContext(repairedDraft, input, { resetBaseline: true });
+        validation = await runGenerationStageValidation(draft, input);
+
+        if (isGenerationReady(validation)) {
+          return { draft, validation };
+        }
+      }
+    }
+  }
+
+  // Deterministic fallback remains the safety net when semantic drafting is
+  // disabled, unavailable, or fails validation.
+  const baseDraft = createDeterministicBaseDraft(input);
   let draft = attachDraftContext(applyGenerationStages(baseDraft, input), input, {
     resetBaseline: true,
   });
-  
-  // 3. Validation
   let validation = await runGenerationStageValidation(draft, input);
 
   if (isGenerationReady(validation)) {
     return { draft, validation };
   }
 
-  // 4. Deterministic repair only. First-draft generation should not depend on
-  // provider-specific AI behavior or fallback variance.
   const repairedDraft = applyDeterministicRepairRound(draft, validation);
 
   if (repairedDraft !== draft) {
@@ -254,6 +373,5 @@ export async function generateDocument(input) {
     }
   }
 
-  // If deterministic generation still cannot satisfy the validator, fail fast.
   return buildGenerationFailureResult(validation);
 }

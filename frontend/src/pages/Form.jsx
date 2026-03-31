@@ -7,7 +7,7 @@ import "./Form.css";
 const STEP_LABELS = ["Fill details", "Review inputs", "Generate draft"];
 const GEN_MESSAGES = [
   "Assembling legal knowledge...",
-  "Drafting with AI...",
+  "Interpreting your inputs into legal language...",
   "Running legal validation...",
   "Preparing your workspace...",
 ];
@@ -159,6 +159,7 @@ export default function Form() {
         document_type: documentType,
         jurisdiction: "India",
         variables: form,
+        semantic_generation: true,
       });
       navigate("/editor", { state: res.data });
     } catch (err) {

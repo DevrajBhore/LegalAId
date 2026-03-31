@@ -41,6 +41,7 @@ export function executionValidate(draft) {
   const hasEffectiveDate =
     /effective\s+date/i.test(allText) ||
     /dated?\s+(this\s+)?\d{1,2}(st|nd|rd|th)?\s+(day\s+of\s+)?(january|february|march|april|may|june|july|august|september|october|november|december)/i.test(allText) ||
+    /\b(?:on\s+this\s+)?\d{1,2}(st|nd|rd|th)?\s+day\s+of\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{4}\b/i.test(allText) ||
     /\d{1,2}(st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{4}/i.test(allText) ||
     /(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{4}/i.test(allText) ||
     /\b\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}\b/.test(allText) ||

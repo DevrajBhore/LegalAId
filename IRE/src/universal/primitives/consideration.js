@@ -10,6 +10,10 @@ export function evaluateConsideration(facts, documentText = "") {
     text.includes("affidavit") ||
     text.includes("legal notice") ||
     text.includes("vakalatnama") ||
+    /\bmou\b/.test(text) ||
+    text.includes("memorandum of understanding") ||
+    /\bloi\b/.test(text) ||
+    text.includes("letter of intent") ||
     text.includes("i hereby") ||
     text.includes("i solemnly") ||
     text.includes("deponent") ||
