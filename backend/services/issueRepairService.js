@@ -10,6 +10,7 @@ const DETERMINISTIC_REPAIR_RULES = new Set([
   "AI_INTEGRITY_VIOLATION",
   "CLAUSE_TEXT_LOWERCASE_START",
   "CLAUSE_TEXT_REPEATED_PUNCTUATION",
+  "PARTY_NAMING_INCONSISTENCY",
 ]);
 
 function cloneDraft(draft) {
@@ -97,7 +98,7 @@ function applyClauseNormalization(draft, issue) {
   if (!clauseId) return null;
 
   const normalized = updateClause(draft, clauseId, (clause) =>
-    normalizeSingleClause(clause)
+    normalizeSingleClause(clause, { documentType: draft?.document_type })
   );
 
   return normalized === draft ? null : normalized;

@@ -5,6 +5,7 @@ import Ajv from "ajv";
 
 import { toBlueprintName } from "./documentTypeNormalizer.js";
 import { normalizeClauseCategory } from "../config/clauseOrder.js";
+import { deriveGenerationControls, isAffirmative } from "./generationControls.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -74,6 +75,74 @@ function extractClauseIds(blueprint, label) {
   }
 
   return clauseIds;
+}
+
+function extractConditionalClauseIds(blueprint, label) {
+  const conditionals = blueprint.conditional_clauses || [];
+
+  if (!Array.isArray(conditionals)) {
+    throw new Error(
+      `Invalid blueprint format for "${label}": conditional_clauses must be an array.`
+    );
+  }
+
+  const clauseIds = [];
+  for (const conditional of conditionals) {
+    if (!conditional || typeof conditional !== "object") {
+      throw new Error(
+        `Invalid conditional clause entry in "${label}": ${JSON.stringify(conditional)}`
+      );
+    }
+
+    if (typeof conditional.clause !== "string" || !conditional.clause.trim()) {
+      throw new Error(
+        `Invalid conditional clause reference in "${label}": ${JSON.stringify(conditional)}`
+      );
+    }
+
+    clauseIds.push(conditional.clause);
+  }
+
+  return clauseIds;
+}
+
+function extractAllBlueprintClauseIds(blueprint, label) {
+  return [...extractClauseIds(blueprint, label), ...extractConditionalClauseIds(blueprint, label)];
+}
+
+function evaluateConditionalExpression(expression, variables = {}) {
+  const raw = String(expression || "").trim();
+  if (!raw) return false;
+
+  const equalityMatch = raw.match(/^([A-Za-z0-9_]+)\s*(==|!=)\s*(.+)$/);
+  if (equalityMatch) {
+    const [, variableName, operator, rawExpected] = equalityMatch;
+    const actual = variables?.[variableName];
+    const expected = rawExpected.trim().replace(/^['"]|['"]$/g, "");
+
+    let result;
+    if (/^(true|false)$/i.test(expected)) {
+      result = isAffirmative(actual) === /^true$/i.test(expected);
+    } else {
+      result = String(actual ?? "").trim().toLowerCase() === expected.toLowerCase();
+    }
+
+    return operator === "!=" ? !result : result;
+  }
+
+  return isAffirmative(variables?.[raw]);
+}
+
+function resolveClauseIdsForBlueprint(blueprint, documentType, variables = {}) {
+  const requiredClauseIds = extractClauseIds(blueprint, documentType);
+  const conditionals = blueprint.conditional_clauses || [];
+  const resolvedVariables = deriveGenerationControls(documentType, variables);
+
+  const conditionalClauseIds = conditionals
+    .filter((entry) => evaluateConditionalExpression(entry.include_if, resolvedVariables))
+    .map((entry) => entry.clause);
+
+  return [...new Set([...requiredClauseIds, ...conditionalClauseIds])];
 }
 
 function getClauseSchemaValidator() {
@@ -159,7 +228,7 @@ function loadBlueprintCache() {
     const filePath = path.join(BLUEPRINTS, file.name);
     const blueprint = readJsonFile(filePath);
 
-    extractClauseIds(blueprint, file.name);
+    extractAllBlueprintClauseIds(blueprint, file.name);
     blueprintsByFile.set(file.name, blueprint);
   }
 
@@ -174,7 +243,7 @@ function validateBlueprintReferences(blueprintsByFile, clausesById) {
   const missingReferences = [];
 
   for (const [fileName, blueprint] of blueprintsByFile.entries()) {
-    for (const clauseId of extractClauseIds(blueprint, fileName)) {
+    for (const clauseId of extractAllBlueprintClauseIds(blueprint, fileName)) {
       if (!clausesById.has(clauseId)) {
         missingReferences.push(`${fileName} -> ${clauseId}`);
       }
@@ -256,7 +325,7 @@ export function preloadKnowledgeBase({ documentTypes = [] } = {}) {
   return knowledgeBaseCache.stats;
 }
 
-export function assembleDocument(documentType, _variables = {}) {
+export function assembleDocument(documentType, variables = {}) {
   const { clausesById, blueprintsByFile } = getKnowledgeBaseCache();
   const { blueprint, candidates } = resolveBlueprint(
     documentType,
@@ -270,7 +339,7 @@ export function assembleDocument(documentType, _variables = {}) {
     );
   }
 
-  const clauseIds = extractClauseIds(blueprint, documentType);
+  const clauseIds = resolveClauseIdsForBlueprint(blueprint, documentType, variables);
   const clauses = clauseIds.map((id) => {
     const clause = clausesById.get(id);
     if (!clause) {
@@ -293,6 +362,7 @@ export function assembleDocument(documentType, _variables = {}) {
       blueprint_clause_count: clauseIds.length,
       loaded_clause_count: clauses.length,
       missing_clauses: [],
+      resolved_generation_controls: deriveGenerationControls(documentType, variables),
     },
   };
 }

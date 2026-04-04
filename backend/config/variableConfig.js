@@ -20,6 +20,7 @@ export const VARIABLE_CONFIG = {
       label: "Operating State",
       type: "select",
       required: true,
+      group: "Jurisdiction & Dispute",
       options: [
         "Andhra Pradesh",
         "Arunachal Pradesh",
@@ -46,11 +47,196 @@ export const VARIABLE_CONFIG = {
         "West Bengal",
       ],
     },
-    effective_date: { label: "Effective Date", type: "date", required: true },
+    effective_date: {
+      label: "Effective Date",
+      type: "date",
+      required: true,
+      group: "Agreement Basics",
+    },
     arbitration_city: {
       label: "Seat of Arbitration",
       type: "text",
       required: false,
+      group: "Jurisdiction & Dispute",
+    },
+    governing_law_state: {
+      label: "Governing Law State",
+      type: "select",
+      required: false,
+      group: "Jurisdiction & Dispute",
+      options: [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Delhi",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Tamil Nadu",
+        "Telangana",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal"
+      ],
+    },
+    dispute_resolution_method: {
+      label: "Dispute Resolution Method",
+      type: "select",
+      required: false,
+      group: "Jurisdiction & Dispute",
+      options: [
+        "Arbitration",
+        "Courts",
+        "Negotiation, then Arbitration",
+        "Mediation, then Arbitration"
+      ],
+    },
+    renewal_option: {
+      label: "Renewal Option",
+      type: "select",
+      required: false,
+      group: "Agreement Basics",
+      options: ["No", "Automatic", "By mutual written agreement"],
+    },
+    renewal_terms: {
+      label: "Renewal Terms",
+      type: "textarea",
+      required: false,
+      group: "Agreement Basics",
+    },
+    termination_notice_period: {
+      label: "Termination Notice Period (days)",
+      type: "number",
+      required: false,
+      group: "Termination & Remedies",
+    },
+    termination_for_convenience: {
+      label: "Allow Termination for Convenience?",
+      type: "select",
+      required: false,
+      group: "Termination & Remedies",
+      excludeDocuments: ["NDA"],
+      options: ["Yes", "No"],
+    },
+    termination_for_cause: {
+      label: "Allow Termination for Cause?",
+      type: "select",
+      required: false,
+      group: "Termination & Remedies",
+      excludeDocuments: ["NDA"],
+      options: ["Yes", "No"],
+    },
+    cure_period_days: {
+      label: "Cure Period for Remediable Breach (days)",
+      type: "number",
+      required: false,
+      group: "Termination & Remedies",
+      excludeDocuments: ["NDA"],
+    },
+    liability_cap_basis: {
+      label: "Liability Cap Basis",
+      type: "select",
+      required: false,
+      group: "Risk Allocation",
+      applicableDocuments: [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "PARTNERSHIP_DEED",
+        "SHAREHOLDERS_AGREEMENT",
+        "JOINT_VENTURE_AGREEMENT",
+        "SUPPLY_AGREEMENT",
+        "DISTRIBUTION_AGREEMENT",
+        "SALES_OF_GOODS_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      ],
+      options: [
+        "Fees paid or payable in the 12 months before the claim",
+        "Specific amount",
+        "Direct damages only subject to a negotiated cap",
+        "Unlimited / uncapped",
+      ],
+    },
+    liability_cap_amount: {
+      label: "Specific Liability Cap Amount (INR)",
+      type: "number",
+      required: false,
+      group: "Risk Allocation",
+      applicableDocuments: [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "PARTNERSHIP_DEED",
+        "SHAREHOLDERS_AGREEMENT",
+        "JOINT_VENTURE_AGREEMENT",
+        "SUPPLY_AGREEMENT",
+        "DISTRIBUTION_AGREEMENT",
+        "SALES_OF_GOODS_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      ],
+    },
+    indemnity_scope: {
+      label: "Indemnity Scope",
+      type: "select",
+      required: false,
+      group: "Risk Allocation",
+      applicableDocuments: [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "PARTNERSHIP_DEED",
+        "SHAREHOLDERS_AGREEMENT",
+        "JOINT_VENTURE_AGREEMENT",
+        "SUPPLY_AGREEMENT",
+        "DISTRIBUTION_AGREEMENT",
+        "SALES_OF_GOODS_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      ],
+      options: [
+        "Breach of agreement only",
+        "Third-party claims only",
+        "Breach, negligence, and third-party claims",
+        "Breach, confidentiality breach, IP infringement, and third-party claims",
+      ],
+    },
+    include_non_compete: {
+      label: "Include Non-Compete Clause?",
+      type: "select",
+      required: false,
+      group: "Optional Protections",
+      options: ["Yes", "No"],
+    },
+    include_non_solicit: {
+      label: "Include Non-Solicitation Clause?",
+      type: "select",
+      required: false,
+      group: "Optional Protections",
+      options: ["Yes", "No"],
+    },
+    include_sla: {
+      label: "Include SLA / Service Levels Clause?",
+      type: "select",
+      required: false,
+      group: "Optional Protections",
+      options: ["Yes", "No"],
+    },
+    include_reporting: {
+      label: "Include Reporting Obligation?",
+      type: "select",
+      required: false,
+      group: "Optional Protections",
+      options: ["Yes", "No"],
     },
     party_1_type: {
       label: "First Party Type",
@@ -135,6 +321,58 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    nda_type: {
+      label: "NDA Type",
+      type: "select",
+      required: false,
+      group: "Confidentiality & Use",
+      options: ["Mutual", "One-Way"],
+    },
+    confidential_information_definition: {
+      label: "Custom Definition of Confidential Information",
+      type: "textarea",
+      required: false,
+      group: "Confidentiality & Use",
+    },
+    confidentiality_exclusions: {
+      label: "Confidentiality Exclusions",
+      type: "textarea",
+      required: false,
+      group: "Confidentiality & Use",
+    },
+    permitted_use: {
+      label: "Permitted Use of Confidential Information",
+      type: "textarea",
+      required: false,
+      group: "Confidentiality & Use",
+    },
+    confidentiality_access_scope: {
+      label: "Who May Access the Confidential Information?",
+      type: "textarea",
+      required: false,
+      group: "Confidentiality & Use",
+    },
+    return_destruction_option: {
+      label: "Return / Destruction of Information",
+      type: "select",
+      required: false,
+      group: "Confidentiality & Use",
+      options: [
+        "Return on request",
+        "Destroy on request",
+        "Return or destroy with certification"
+      ],
+    },
+    residual_knowledge_treatment: {
+      label: "Residual Knowledge Clause",
+      type: "select",
+      required: false,
+      group: "Confidentiality & Use",
+      options: [
+        "No residual knowledge carve-out",
+        "Residual knowledge carve-out permitted",
+      ],
+    },
       confidentiality_period: {
         label: "Confidentiality Period (e.g. 2 years)",
         type: "text",
@@ -181,6 +419,12 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
     },
+    role_responsibilities: {
+      label: "Role & Responsibilities",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+    },
     department: { label: "Department", type: "text", required: false },
     work_location: { label: "Work Location", type: "text", required: true },
     salary: { label: "Gross Annual CTC (INR)", type: "number", required: true },
@@ -205,6 +449,58 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: true,
     },
+    bonus_terms: {
+      label: "Bonus / Incentive Terms",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+    },
+    leave_policy: {
+      label: "Leave Policy",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+    },
+    statutory_benefits: {
+      label: "Statutory Benefits",
+      type: "select",
+      required: false,
+      group: "Employment Terms",
+      options: [
+        "PF and ESI applicable",
+        "PF applicable",
+        "ESI applicable",
+        "Not applicable / as per law"
+      ],
+    },
+    employee_confidentiality_scope: {
+      label: "Employee Confidentiality Obligations",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+    },
+    ip_ownership: {
+      label: "IP Ownership",
+      type: "select",
+      required: false,
+      group: "Employment Terms",
+      options: [
+        "Employer owns work product IP",
+        "Employee retains pre-existing IP only",
+        "Custom / shared arrangement",
+      ],
+    },
+    employment_termination_type: {
+      label: "Employment Termination Structure",
+      type: "select",
+      required: false,
+      group: "Employment Terms",
+      options: [
+        "Notice-based termination",
+        "Termination for cause and notice",
+        "Fixed-term with early termination rights",
+      ],
+    },
   },
 
   // ─── Service Agreement ────────────────────────────────────────────────────
@@ -219,6 +515,11 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    party_1_gstin: {
+      label: "Client GSTIN (optional)",
+      type: "text",
+      required: false,
+    },
     party_2_name: {
       label: "Service Provider Full Name / Company",
       type: "text",
@@ -228,6 +529,11 @@ export const VARIABLE_CONFIG = {
       label: "Service Provider Address",
       type: "textarea",
       required: true,
+    },
+    party_2_gstin: {
+      label: "Service Provider GSTIN (optional)",
+      type: "text",
+      required: false,
     },
     services_description: {
       label: "Description of Services",
@@ -250,6 +556,36 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: false,
     },
+    expenses_policy: {
+      label: "Expense Reimbursement Policy (or NA)",
+      type: "text",
+      required: false,
+    },
+    gst_applicable: {
+      label: "GST Applicable?",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: ["Yes", "No"],
+    },
+    delay_remedies: {
+      label: "Delay Penalties / Service Credits",
+      type: "textarea",
+      required: false,
+      group: "Commercial & Tax",
+    },
+    support_maintenance: {
+      label: "Support / Maintenance Obligations",
+      type: "textarea",
+      required: false,
+      group: "Commercial & Tax",
+    },
+    acceptance_criteria: {
+      label: "Acceptance Criteria / Completion Standard",
+      type: "textarea",
+      required: false,
+      group: "Delivery & Acceptance",
+    },
     contract_duration: {
       label: "Contract Duration (e.g. 12 months)",
       type: "text",
@@ -269,6 +605,11 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    party_1_gstin: {
+      label: "Client GSTIN (optional)",
+      type: "text",
+      required: false,
+    },
     party_2_name: {
       label: "Consultant Full Name / Company",
       type: "text",
@@ -278,6 +619,11 @@ export const VARIABLE_CONFIG = {
       label: "Consultant Address",
       type: "textarea",
       required: true,
+    },
+    party_2_gstin: {
+      label: "Consultant GSTIN (optional)",
+      type: "text",
+      required: false,
     },
     consulting_services: {
       label: "Scope of Consulting Services",
@@ -303,6 +649,38 @@ export const VARIABLE_CONFIG = {
       label: "Expense Reimbursement Policy (or NA)",
       type: "text",
       required: false,
+    },
+    gst_applicable: {
+      label: "GST Applicable?",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: ["Yes", "No"],
+    },
+    engagement_model: {
+      label: "Nature of Engagement",
+      type: "select",
+      required: false,
+      group: "Consulting Controls",
+      options: ["Retainer", "Project-based", "Advisory / On-call"],
+    },
+    consultant_availability: {
+      label: "Working Hours / Availability",
+      type: "text",
+      required: false,
+      group: "Consulting Controls",
+    },
+    conflict_of_interest_terms: {
+      label: "Conflict of Interest Terms",
+      type: "textarea",
+      required: false,
+      group: "Consulting Controls",
+    },
+    acceptance_criteria: {
+      label: "Acceptance Criteria / Completion Standard",
+      type: "textarea",
+      required: false,
+      group: "Delivery & Acceptance",
     },
     non_compete_period: {
       label: "Non-Compete / Non-Solicitation Period (e.g. 1 year)",
@@ -377,6 +755,42 @@ export const VARIABLE_CONFIG = {
       label: "Bank Name for Firm Account",
       type: "text",
       required: false,
+    },
+    partner_roles: {
+      label: "Roles & Duties of Partners",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    decision_making_rules: {
+      label: "Decision-Making Rules",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    partner_dispute_resolution: {
+      label: "Internal Partner Dispute Handling",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    admission_removal_terms: {
+      label: "Admission / Removal of Partners",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    partner_exit_mechanism: {
+      label: "Partner Exit Mechanism",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    dissolution_terms: {
+      label: "Dissolution Terms",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
     },
   },
 
@@ -469,6 +883,30 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: false,
     },
+    voting_rights: {
+      label: "Voting Rights",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    dividend_policy: {
+      label: "Dividend Policy",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    tag_along_rights: {
+      label: "Tag-Along Rights",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    exit_rights: {
+      label: "Exit / Liquidity Rights",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
   },
 
   // ─── Joint Venture Agreement ──────────────────────────────────────────────
@@ -533,6 +971,24 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
     },
+    management_control: {
+      label: "Management Control",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    exit_terms: {
+      label: "Exit / Termination Terms",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
+    deadlock_resolution: {
+      label: "Deadlock Resolution",
+      type: "textarea",
+      required: false,
+      group: "Governance & Control",
+    },
   },
 
   // ─── Supply Agreement ─────────────────────────────────────────────────────
@@ -589,6 +1045,36 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
     },
+    inspection_acceptance_terms: {
+      label: "Inspection & Acceptance Terms",
+      type: "textarea",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
+    inspection_timeline_days: {
+      label: "Inspection Timeline (days)",
+      type: "number",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
+    risk_transfer_stage: {
+      label: "Structured Risk Transfer Stage",
+      type: "select",
+      required: false,
+      group: "Supply & Delivery Controls",
+      options: [
+        "On delivery to the first carrier",
+        "On delivery at destination",
+        "On inspection and acceptance",
+        "On title transfer",
+      ],
+    },
+    risk_transfer_terms: {
+      label: "Risk Transfer Terms",
+      type: "textarea",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
     contract_duration: {
       label: "Contract Duration",
       type: "text",
@@ -644,7 +1130,50 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: false,
     },
+    pricing_model: {
+      label: "Pricing Model",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: [
+        "Fixed transfer price",
+        "Margin-based pricing",
+        "Discount from list price",
+        "Custom written pricing formula",
+      ],
+    },
     payment_terms: { label: "Payment Terms", type: "text", required: false },
+    minimum_purchase_quantity: {
+      label: "Minimum Purchase Quantity",
+      type: "number",
+      required: false,
+      group: "Commercial & Tax",
+    },
+    minimum_purchase_unit: {
+      label: "Minimum Purchase Measurement",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: [
+        "Units per month",
+        "Units per quarter",
+        "Units per year",
+        "Value per quarter",
+        "Value per year",
+      ],
+    },
+    branding_rights: {
+      label: "Branding / Trademark Rights",
+      type: "textarea",
+      required: false,
+      group: "Commercial & Tax",
+    },
+    underperformance_termination: {
+      label: "Termination for Underperformance",
+      type: "textarea",
+      required: false,
+      group: "Commercial & Tax",
+    },
     contract_duration: {
       label: "Contract Duration",
       type: "text",
@@ -695,6 +1224,36 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
     },
+    inspection_acceptance_terms: {
+      label: "Inspection & Acceptance Terms",
+      type: "textarea",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
+    inspection_timeline_days: {
+      label: "Inspection Timeline (days)",
+      type: "number",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
+    risk_transfer_stage: {
+      label: "Structured Risk Transfer Stage",
+      type: "select",
+      required: false,
+      group: "Supply & Delivery Controls",
+      options: [
+        "On delivery to the first carrier",
+        "On delivery at destination",
+        "On inspection and acceptance",
+        "On title transfer",
+      ],
+    },
+    title_transfer_terms: {
+      label: "Title Transfer Terms",
+      type: "text",
+      required: false,
+      group: "Supply & Delivery Controls",
+    },
   },
 
   // ─── Independent Contractor Agreement ────────────────────────────────────
@@ -709,6 +1268,11 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    party_1_gstin: {
+      label: "Client GSTIN (optional)",
+      type: "text",
+      required: false,
+    },
     party_2_name: {
       label: "Contractor Full Name",
       type: "text",
@@ -718,6 +1282,11 @@ export const VARIABLE_CONFIG = {
       label: "Contractor Address",
       type: "textarea",
       required: true,
+    },
+    party_2_gstin: {
+      label: "Contractor GSTIN (optional)",
+      type: "text",
+      required: false,
     },
     services_description: {
       label: "Scope of Services",
@@ -735,6 +1304,18 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
     },
+    expenses_policy: {
+      label: "Expense Reimbursement Policy (or NA)",
+      type: "text",
+      required: false,
+    },
+    gst_applicable: {
+      label: "GST Applicable?",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: ["Yes", "No"],
+    },
     ip_ownership: {
       label: "IP Ownership",
       type: "select",
@@ -745,6 +1326,25 @@ export const VARIABLE_CONFIG = {
       label: "Non-Compete Period after Engagement (or NA)",
       type: "text",
       required: false,
+    },
+    tax_responsibility: {
+      label: "Tax Responsibility",
+      type: "textarea",
+      required: false,
+      group: "Commercial & Tax",
+    },
+    no_employment_ack: {
+      label: "Explicit No-Employment Clause?",
+      type: "select",
+      required: false,
+      group: "Optional Protections",
+      options: ["Yes", "No"],
+    },
+    acceptance_criteria: {
+      label: "Acceptance Criteria / Completion Standard",
+      type: "textarea",
+      required: false,
+      group: "Delivery & Acceptance",
     },
     contract_duration: {
       label: "Contract Duration",
@@ -883,6 +1483,19 @@ export const VARIABLE_CONFIG = {
       required: false,
       options: ["Licensor", "Licensee", "Split equally"],
     },
+    police_verification_required: {
+      label: "Police Verification Required?",
+      type: "select",
+      required: false,
+      group: "Property Compliance",
+      options: ["Yes", "No"],
+    },
+    society_rules: {
+      label: "Society / Building Rules",
+      type: "textarea",
+      required: false,
+      group: "Property Compliance",
+    },
   },
 
   // ─── Loan Agreement ───────────────────────────────────────────────────────
@@ -919,6 +1532,25 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    repayment_frequency: {
+      label: "Repayment Frequency",
+      type: "select",
+      required: false,
+      group: "Finance & Security",
+      options: ["Monthly", "Quarterly", "Bullet repayment", "Custom schedule"],
+    },
+    repayment_tenure_months: {
+      label: "Repayment Tenure (months)",
+      type: "number",
+      required: false,
+      group: "Finance & Security",
+    },
+    instalment_amount: {
+      label: "Instalment Amount (INR)",
+      type: "number",
+      required: false,
+      group: "Finance & Security",
+    },
     repayment_start_date: {
       label: "Repayment Start Date",
       type: "date",
@@ -938,6 +1570,12 @@ export const VARIABLE_CONFIG = {
       label: "Default Interest Rate (% per annum)",
       type: "number",
       required: false,
+    },
+    events_of_default: {
+      label: "Events of Default / Invocation Triggers",
+      type: "textarea",
+      required: false,
+      group: "Finance & Security",
     },
   },
 
@@ -1011,6 +1649,18 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
     },
+    invocation_conditions: {
+      label: "Invocation Conditions",
+      type: "textarea",
+      required: false,
+      group: "Finance & Security",
+    },
+    invocation_procedure: {
+      label: "Invocation Procedure",
+      type: "textarea",
+      required: false,
+      group: "Finance & Security",
+    },
   },
 
   // ─── Software Development Agreement ──────────────────────────────────────
@@ -1025,6 +1675,11 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    party_1_gstin: {
+      label: "Client GSTIN (optional)",
+      type: "text",
+      required: false,
+    },
     party_2_name: {
       label: "Developer / Agency Full Name",
       type: "text",
@@ -1034,6 +1689,18 @@ export const VARIABLE_CONFIG = {
       label: "Developer Address",
       type: "textarea",
       required: true,
+    },
+    party_2_gstin: {
+      label: "Developer GSTIN (optional)",
+      type: "text",
+      required: false,
+    },
+    gst_applicable: {
+      label: "GST Applicable?",
+      type: "select",
+      required: false,
+      group: "Commercial & Tax",
+      options: ["Yes", "No"],
     },
     project_description: {
       label: "Project Name / Description",
@@ -1061,6 +1728,18 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: false,
     },
+    milestone_plan: {
+      label: "Milestones / Delivery Plan",
+      type: "textarea",
+      required: false,
+      group: "Technology Delivery",
+    },
+    acceptance_criteria: {
+      label: "Acceptance Criteria / UAT Standards",
+      type: "textarea",
+      required: false,
+      group: "Technology Delivery",
+    },
     ip_ownership: {
       label: "IP Ownership",
       type: "select",
@@ -1077,6 +1756,30 @@ export const VARIABLE_CONFIG = {
       type: "select",
       required: false,
       options: ["Yes", "No"],
+    },
+    source_code_delivery: {
+      label: "Source Code Delivery Terms",
+      type: "select",
+      required: false,
+      group: "Technology Delivery",
+      options: [
+        "On final payment",
+        "At each milestone",
+        "Escrow only",
+        "No source code delivery"
+      ],
+    },
+    change_request_process: {
+      label: "Change Request Process",
+      type: "textarea",
+      required: false,
+      group: "Technology Delivery",
+    },
+    support_maintenance: {
+      label: "Support / Maintenance Obligations",
+      type: "textarea",
+      required: false,
+      group: "Technology Delivery",
     },
   },
 
@@ -1142,10 +1845,18 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
     },
+    binding_nature: {
+      label: "Binding Nature of MOU",
+      type: "select",
+      required: false,
+      group: "MOU Positioning",
+      options: ["Non-binding", "Binding", "Partly binding"],
+    },
     governing_law_state: {
       label: "Governing Law State",
       type: "select",
       required: false,
+      group: "Jurisdiction & Dispute",
       options: [
         "Maharashtra",
         "Delhi",
@@ -1166,8 +1877,46 @@ export const VARIABLE_CONFIG = {
  * Get merged variable definitions for a document type.
  * Returns COMMON vars + doc-type-specific vars, with effective_date and arbitration_city always included.
  */
+function isFieldApplicable(documentType, definition = {}) {
+  const normalizedDocumentType = String(documentType || "").trim().toUpperCase();
+  const applicableDocuments = (definition.applicableDocuments || []).map((value) =>
+    String(value || "").trim().toUpperCase()
+  );
+  const excludedDocuments = (definition.excludeDocuments || []).map((value) =>
+    String(value || "").trim().toUpperCase()
+  );
+
+  if (applicableDocuments.length > 0 && !applicableDocuments.includes(normalizedDocumentType)) {
+    return false;
+  }
+
+  if (excludedDocuments.includes(normalizedDocumentType)) {
+    return false;
+  }
+
+  return true;
+}
+
+function filterVariablesForDocument(documentType, variables = {}) {
+  return Object.fromEntries(
+    Object.entries(variables || {}).filter(([, definition]) =>
+      isFieldApplicable(documentType, definition)
+    )
+  );
+}
+
 export function getVariables(documentType) {
-  const common = VARIABLE_CONFIG.COMMON || {};
-  const specific = VARIABLE_CONFIG[documentType] || {};
+  const common = filterVariablesForDocument(documentType, VARIABLE_CONFIG.COMMON || {});
+  const specific = filterVariablesForDocument(
+    documentType,
+    VARIABLE_CONFIG[documentType] || {}
+  );
   return { ...common, ...specific };
+}
+
+export function sanitizeVariablesForDocument(documentType, variables = {}) {
+  const allowedFields = new Set(Object.keys(getVariables(documentType)));
+  return Object.fromEntries(
+    Object.entries(variables || {}).filter(([fieldName]) => allowedFields.has(fieldName))
+  );
 }

@@ -1,29 +1,7 @@
-const ROLE_TERMS = [
-  "Client",
-  "Service Provider",
-  "Consultant",
-  "Contractor",
-  "Developer",
-  "Supplier",
-  "Buyer",
-  "Distributor",
-  "Principal",
-  "Lender",
-  "Borrower",
-  "Landlord",
-  "Tenant",
-  "Licensor",
-  "Licensee",
-  "Employer",
-  "Employee",
-  "Guarantor",
-  "Creditor",
-  "Principal Debtor",
-  "Shareholder",
-  "Partner",
-  "Party 1",
-  "Party 2",
-];
+import {
+  getForbiddenPartyTerms,
+  getPartyNamingRule,
+} from "./partyNaming.js";
 
 const SUPERSEDED_CLAUSE_RULES = [
   {
@@ -44,24 +22,80 @@ const SUPERSEDED_CLAUSE_RULES = [
   },
 ];
 
-function normalizeRoleCapitalization(text = "") {
+function normalizeRoleCapitalization(text = "", roleRule = null) {
+  if (!roleRule) return text;
+
+  const roleTerms = (roleRule.participants || [])
+    .flatMap((participant) => [participant.canonical, ...(participant.aliases || [])])
+    .filter(Boolean)
+    .sort((left, right) => right.length - left.length);
+
   let result = text;
-  for (const role of ROLE_TERMS) {
+  for (const role of roleTerms) {
     const escaped = role.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     result = result.replace(
       new RegExp(`\\b(the|a|an)\\s+${escaped}\\b`, "gi"),
       (match, article) => `${article.toLowerCase()} ${role}`
     );
-    result = result.replace(
-      new RegExp(`\\b${escaped}\\b`, "gi"),
-      role
-    );
   }
   return result;
 }
 
-export function normalizeClauseBody(text = "") {
+function replaceRoleAliases(text = "", roleRule = null) {
+  if (!roleRule) return text;
+
+  let result = text;
+  const aliasEntries = (roleRule.participants || [])
+    .flatMap((participant) =>
+      (participant.aliases || []).map((alias) => ({
+        alias,
+        canonical: participant.canonical,
+      }))
+    )
+    .sort((left, right) => right.alias.length - left.alias.length);
+
+  for (const { alias, canonical } of aliasEntries) {
+
+    if (!canonical) continue;
+
+    const escaped = alias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    result = result.replace(new RegExp(`\\b${escaped}\\b`, "g"), canonical);
+  }
+
+  return result;
+}
+
+function normalizeGrammar(text = "") {
+  return String(text || "")
+    .replace(/\s+([)\]])/g, "$1")
+    .replace(/([(\[])\s+/g, "$1")
+    .replace(/\b(the|a|an)\s+\1\b/gi, "$1")
+    .replace(/\b(shall|must|will|is|are|was|were|has|have)\s+\1\b/gi, "$1")
+    .replace(/\b([A-Za-z]+)\s+\1\b/gi, "$1");
+}
+
+function findForbiddenRoleTerm(text = "", documentType = "") {
+  const terms = getForbiddenPartyTerms(documentType);
+  for (const term of terms) {
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const patterns = [
+      `\\bthe\\s+${escaped}\\b`,
+      `\\b${escaped}\\s+(?:shall|may|must|agrees?|is|are|was|were|has|have|will)\\b`,
+      `(?:^|[\\n.;:])\\s*${escaped}\\b`,
+      `\\b${escaped}\\s*,\\s*(?:a|an|having|residing|of)\\b`,
+      `\\bfor\\s+and\\s+on\\s+behalf\\s+of\\s+${escaped}\\b`,
+    ];
+
+    if (patterns.some((pattern) => new RegExp(pattern).test(text))) {
+      return term;
+    }
+  }
+  return null;
+}
+
+export function normalizeClauseBody(text = "", { documentType } = {}) {
   let value = String(text || "");
+  const roleRule = getPartyNamingRule(documentType);
 
   value = value
     .replace(/[“”]/g, '"')
@@ -76,15 +110,17 @@ export function normalizeClauseBody(text = "") {
   value = value.replace(/[ \t]{2,}/g, " ");
   value = value.replace(/\n{3,}/g, "\n\n");
 
-  value = normalizeRoleCapitalization(value);
+  value = replaceRoleAliases(value, roleRule);
+  value = normalizeGrammar(value);
+  value = normalizeRoleCapitalization(value, roleRule);
   value = value.replace(/(^|[.!?]\s+|\n)([a-z])/g, (match, prefix, letter) => {
     return `${prefix}${letter.toUpperCase()}`;
   });
   return value.trim();
 }
 
-export function normalizeClauseTitle(title = "") {
-  const normalized = normalizeClauseBody(title);
+export function normalizeClauseTitle(title = "", { documentType } = {}) {
+  const normalized = normalizeClauseBody(title, { documentType });
   if (!normalized) return normalized;
   return normalized.charAt(0).toUpperCase() + normalized.slice(1);
 }
@@ -121,10 +157,14 @@ export function normalizeClauseText(draft) {
     return draft;
   }
 
+  const documentType = draft.document_type || draft.metadata?.document_type;
+
   const normalizedClauses = draft.clauses.map((clause) => ({
     ...clause,
-    title: clause.title ? normalizeClauseTitle(clause.title) : clause.title,
-    text: normalizeClauseBody(clause.text || ""),
+    title: clause.title
+      ? normalizeClauseTitle(clause.title, { documentType })
+      : clause.title,
+    text: normalizeClauseBody(clause.text || "", { documentType }),
   }));
 
   return {
@@ -133,11 +173,13 @@ export function normalizeClauseText(draft) {
   };
 }
 
-export function normalizeSingleClause(clause = {}) {
+export function normalizeSingleClause(clause = {}, { documentType } = {}) {
   return {
     ...clause,
-    title: clause.title ? normalizeClauseTitle(clause.title) : clause.title,
-    text: normalizeClauseBody(clause.text || ""),
+    title: clause.title
+      ? normalizeClauseTitle(clause.title, { documentType })
+      : clause.title,
+    text: normalizeClauseBody(clause.text || "", { documentType }),
   };
 }
 
@@ -147,9 +189,18 @@ export function validateClauseQuality(draft) {
   }
 
   const issues = [];
+  const documentType = draft.document_type || draft.metadata?.document_type;
+  const namingRule = getPartyNamingRule(documentType);
   const presentIds = new Set(
     draft.clauses.map((clause) => String(clause?.clause_id || ""))
   );
+  const canonicalLabels = (namingRule?.participants || []).map(
+    (participant) => participant.canonical
+  );
+  const canonicalText =
+    canonicalLabels.length > 0
+      ? canonicalLabels.map((label) => `"${label}"`).join(", ")
+      : '"Party 1", "Party 2"';
 
   for (const clause of draft.clauses) {
     const clauseId = clause?.clause_id || null;
@@ -174,6 +225,21 @@ export function validateClauseQuality(draft) {
           "HIGH",
           `Clause "${clauseId}" contains repeated punctuation or malformed sentence endings.`,
           "Remove repeated punctuation and normalize punctuation spacing before the draft is returned.",
+          clauseId
+        )
+      );
+    }
+
+    const forbiddenTerm = namingRule
+      ? findForbiddenRoleTerm(`${clause?.title || ""} ${text}`, documentType)
+      : null;
+    if (forbiddenTerm) {
+      issues.push(
+        buildIssue(
+          "PARTY_NAMING_INCONSISTENCY",
+          "CRITICAL",
+          `Clause "${clauseId}" uses the conflicting role label "${forbiddenTerm}" even though this document should consistently use ${canonicalText}.`,
+          `Rewrite the clause so it consistently uses ${canonicalText} throughout the document.`,
           clauseId
         )
       );

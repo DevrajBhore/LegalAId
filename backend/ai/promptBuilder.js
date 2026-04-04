@@ -1,3 +1,5 @@
+import { getPartyNamingPrompt } from "../services/partyNaming.js";
+
 function formatVariableEntries(variables = {}) {
   return Object.entries(variables)
     .filter(([, value]) => value !== undefined && value !== null && value !== "")
@@ -31,18 +33,108 @@ function formatRegenerationContext(regenerationContext) {
   return `\nREPAIR TARGETS:\n${issues}\n`;
 }
 
+function formatSemanticParticipants(semanticContext = {}) {
+  const participants = Array.isArray(semanticContext?.participants)
+    ? semanticContext.participants
+    : [];
+
+  if (!participants.length) {
+    return "";
+  }
+
+  return participants
+    .map((participant) => {
+      const descriptor =
+        participant.descriptor ||
+        participant.name ||
+        participant.label ||
+        "Unnamed participant";
+      return `- ${participant.label || participant.id || "Party"}: ${descriptor}`;
+    })
+    .join("\n");
+}
+
+function formatSemanticSections(semanticContext = {}) {
+  const sections = [
+    ["Objective Summary", semanticContext?.objective_summary],
+    ["Participant Understanding", formatSemanticParticipants(semanticContext)],
+    ["Term And Lifecycle", semanticContext?.term?.summary],
+    ["Commercial Understanding", semanticContext?.commercial?.summary],
+    ["Risk Allocation Understanding", semanticContext?.risk?.summary],
+    ["Operational Understanding", semanticContext?.operational?.summary],
+    ["Governance Understanding", semanticContext?.governance?.summary],
+  ].filter(([, value]) => value && String(value).trim());
+
+  if (!sections.length) {
+    return "";
+  }
+
+  return sections
+    .map(([label, value]) => `${label}:\n${value}`)
+    .join("\n\n");
+}
+
+function formatClauseGuidance(semanticContext = {}) {
+  const guidance = Array.isArray(semanticContext?.clause_guidance)
+    ? semanticContext.clause_guidance
+    : [];
+
+  if (!guidance.length) {
+    return "";
+  }
+
+  return guidance
+    .map((entry) => `- ${entry.section}: ${entry.guidance}`)
+    .join("\n");
+}
+
+function formatDraftingDirectives(semanticContext = {}) {
+  const directives = Array.isArray(semanticContext?.drafting_directives)
+    ? semanticContext.drafting_directives
+    : [];
+
+  if (!directives.length) {
+    return "";
+  }
+
+  return directives.map((directive) => `- ${directive}`).join("\n");
+}
+
+function formatFieldInsights(semanticContext = {}) {
+  const insights = Array.isArray(semanticContext?.field_insights)
+    ? semanticContext.field_insights
+    : [];
+
+  if (!insights.length) {
+    return "";
+  }
+
+  return insights
+    .map(
+      (insight) =>
+        `- ${insight.label}: ${insight.value} -> use in ${insight.draftingTarget}`
+    )
+    .join("\n");
+}
+
 export function buildPrompt(input) {
   const {
     document_type,
     variables = {},
     baseDraft,
     regenerationContext,
+    semanticContext,
   } = input;
 
   const variableBlock = formatVariableEntries(variables);
   const clauseBlueprint = formatClauseBlueprint(baseDraft);
   const regenerationBlock = formatRegenerationContext(regenerationContext);
   const arbitrationCity = variables.arbitration_city || "Mumbai";
+  const partyNamingBlock = getPartyNamingPrompt(document_type);
+  const semanticBlock = formatSemanticSections(semanticContext);
+  const clauseGuidanceBlock = formatClauseGuidance(semanticContext);
+  const directivesBlock = formatDraftingDirectives(semanticContext);
+  const fieldInsightsBlock = formatFieldInsights(semanticContext);
 
   return `You are a senior Indian transactional lawyer drafting a complete ${document_type}.
 
@@ -63,19 +155,36 @@ NON-NEGOTIABLE RULES:
 10. Governing law must be the laws of India.
 11. If the document contains dispute resolution, use ${arbitrationCity} as the arbitration seat/city unless the intake clearly requires otherwise.
 12. Draft in professional Indian legal style, with complete clause text, not notes or summaries.
+13. Maintain formal grammar, consistent legal terminology, subject-verb agreement, and clean punctuation throughout the draft.
+14. If the intake includes renewal mechanics, termination notice, termination grounds, cure periods, dispute method, GST/tax handling, liability caps, indemnity scope, confidentiality access limits, residual knowledge treatment, support obligations, milestones, acceptance criteria, inspection timelines, risk-transfer stages, source-code delivery, change-request process, repayment mechanics, invocation procedure, deadlock or exit rights, or binding nature, reflect them in the legally correct clauses instead of ignoring them.
+15. Use the interpreted legal facts below as the primary explanation of what the user means. The raw intake remains the source material, but the interpreted facts tell you how those inputs should legally operate.
 
 PARTY-DRAFTING GUIDANCE:
 - For an individual, describe the party in natural legal style such as an individual residing at the stated address.
 - For a private limited company, refer to the company in corporate style and use CIN if supplied.
 - For an LLP or firm, use the correct entity description if the intake indicates that status.
 - If the user's field value is only a fragment, normalize it into complete legal wording.
+- ${partyNamingBlock || "Once the parties are introduced, keep the party labels consistent throughout the document."}
 
 HOW TO USE THE USER INPUTS:
 - Treat each intake value as a factual instruction, not as a literal string that must be pasted everywhere.
 - Merge the inputs where they legally belong. Example: dates belong in commencement/effective clauses, commercial figures belong in consideration/payment clauses, addresses belong in party descriptions or notice clauses, and purpose/scope inputs belong in recitals or scope clauses.
+- Renewal and termination inputs belong in term and termination clauses. Dispute method and governing-law inputs belong in dispute resolution and governing-law clauses. Tax/GST inputs belong in invoice and payment clauses. Liability and indemnity inputs belong in risk-allocation clauses. Confidentiality access and residual knowledge inputs belong in confidentiality clauses. Support, milestone, acceptance, inspection, risk-transfer, change-request, and source-code inputs belong in delivery and technology clauses. Repayment and invocation inputs belong in finance clauses. Deadlock, transfer, and exit inputs belong in governance and exit clauses.
 - When the intake implies business context, restate it in precise contract language.
 - Keep the output user-focused: the final draft should read like a lawyer drafted it for the user's situation.
 ${regenerationBlock}
+INTERPRETED LEGAL FACTS:
+${semanticBlock || "- No interpreted facts supplied."}
+
+INPUT-TO-CLAUSE GUIDANCE:
+${clauseGuidanceBlock || "- Use each input in the legally appropriate clause family."}
+
+DRAFTING DIRECTIVES:
+${directivesBlock || "- Understand the user's intent before drafting."}
+
+FIELD-BY-FIELD LEGAL MEANING:
+${fieldInsightsBlock || "- No field insights supplied."}
+
 USER INTAKE:
 ${variableBlock || "- No user variables supplied."}
 

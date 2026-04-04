@@ -1,0 +1,423 @@
+{
+  "defaults": {
+    "hardening": {
+      "requiredClauseIds": [],
+      "disallowedProtections": []
+    },
+    "roles": {
+      "payer": "first",
+      "payee": "second",
+      "performer": "second",
+      "reviewer": "first"
+    },
+    "rendering": {
+      "purposeMode": "none",
+      "paymentMode": "generic",
+      "restrictionMode": "confidentiality_limited"
+    }
+  },
+  "documents": {
+    "NDA": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Discloser"]
+          },
+          "second": {
+            "aliases": ["Recipient"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "confidential_disclosure"
+      }
+    },
+    "EMPLOYMENT_CONTRACT": {
+      "hardening": {
+        "requiredClauseIds": [
+          "EMP_CONFIDENTIALITY_001",
+          "EMP_IP_ASSIGNMENT_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "employment_engagement"
+      }
+    },
+    "SERVICE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "second": {
+            "aliases": ["Consultant", "Contractor", "Developer"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "SERVICE_TIMELINES_001",
+          "SERVICE_EXPENSES_001",
+          "IP_OWNERSHIP_001",
+          "CORE_CONFIDENTIALITY_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_COUNTERPARTS_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "service_engagement"
+      }
+    },
+    "CONSULTANCY_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "second": {
+            "aliases": ["Service Provider", "Contractor", "Developer"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "SERVICE_EXPENSES_001",
+          "IP_OWNERSHIP_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "consultancy_engagement"
+      }
+    },
+    "PARTNERSHIP_DEED": {
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "PARTNERSHIP_CAPITAL_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "partnership_business"
+      }
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_NOTICE_001",
+          "CORE_COUNTERPARTS_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "shareholder_governance"
+      }
+    },
+    "JOINT_VENTURE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Client"]
+          },
+          "second": {
+            "aliases": ["Service Provider"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "JV_CONTRIBUTION_001",
+          "JV_GOVERNANCE_001",
+          "JV_EXIT_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "NDA_NON_COMPETE_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "joint_venture_purpose"
+      }
+    },
+    "SUPPLY_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Seller", "Principal", "Manufacturer"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_WARRANTY_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "SUPPLY_SHORTAGE_001",
+          "SUPPLY_RETURN_POLICY_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_NOTICE_001"
+        ]
+      }
+    },
+    "DISTRIBUTION_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Supplier", "Seller", "Manufacturer", "Licensor"]
+          },
+          "second": {
+            "aliases": ["Buyer", "Licensee"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SUPPLY_DELIVERY_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_WAIVER_001"
+        ]
+      },
+      "roles": {
+        "payer": "second",
+        "payee": "first",
+        "performer": "second",
+        "reviewer": "first"
+      },
+      "rendering": {
+        "purposeMode": "distribution_appointment",
+        "paymentMode": "distribution",
+        "restrictionMode": "territorial_distribution"
+      }
+    },
+    "SALES_OF_GOODS_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Supplier"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_REJECTION_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "CORE_INDEMNITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_NOTICE_001"
+        ]
+      }
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "second": {
+            "aliases": ["Service Provider", "Consultant", "Developer"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "SERVICE_EXPENSES_001",
+          "IP_ASSIGNMENT_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "independent_contractor_engagement"
+      }
+    },
+    "COMMERCIAL_LEASE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Licensor"]
+          },
+          "second": {
+            "aliases": ["Licensee"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "RENT_PROPERTY_USE_001",
+          "RENT_UTILITIES_001",
+          "CORE_NOTICE_001"
+        ]
+      }
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Landlord"]
+          },
+          "second": {
+            "aliases": ["Tenant"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "RENT_PROPERTY_USE_001",
+          "RENT_UTILITIES_001",
+          "CORE_NOTICE_001"
+        ]
+      }
+    },
+    "LOAN_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Creditor"]
+          },
+          "second": {
+            "aliases": ["Principal"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_AMENDMENT_001"
+        ],
+        "disallowedProtections": [
+          "LIABILITY_CAP",
+          "INDEMNITY",
+          "FORCE_MAJEURE"
+        ]
+      }
+    },
+    "GUARANTEE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Lender"]
+          },
+          "second": {
+            "aliases": ["Borrower", "Principal"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "LOAN_DEFAULT_001",
+          "GUARANTEE_INDEMNITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_COUNTERPARTS_001"
+        ],
+        "disallowedProtections": [
+          "LIABILITY_CAP",
+          "INDEMNITY",
+          "FORCE_MAJEURE"
+        ]
+      }
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": ["Licensee"]
+          },
+          "second": {
+            "aliases": ["Service Provider", "Consultant", "Contractor", "Agency", "Licensor"]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_TIMELINES_001",
+          "TECH_ACCEPTANCE_001",
+          "SERVICE_CHANGE_REQUEST_001",
+          "IP_OWNERSHIP_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "software_delivery"
+      }
+    },
+    "MOU": {
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "memorandum_cooperation"
+      }
+    }
+  }
+}

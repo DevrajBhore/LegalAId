@@ -18,6 +18,7 @@ const TEXT_RULES = {
   price_terms: { minChars: 6, minWords: 2 },
   repayment_schedule: { minChars: 6, minWords: 2 },
   prepayment_terms: { minChars: 6, minWords: 2 },
+  renewal_terms: { minChars: 6, minWords: 2 },
   security_collateral: { minChars: 3, minWords: 1 },
   project_description: { minChars: 12, minWords: 3 },
   goods_description: { minChars: 12, minWords: 2 },
@@ -26,10 +27,48 @@ const TEXT_RULES = {
   permitted_use: { minChars: 4, minWords: 2 },
   board_structure: { minChars: 6, minWords: 2 },
   reserved_matters: { minChars: 6, minWords: 2 },
+  confidential_information_definition: { minChars: 12, minWords: 3 },
+  confidentiality_access_scope: { minChars: 6, minWords: 2 },
+  confidentiality_exclusions: { minChars: 8, minWords: 2 },
+  permitted_use: { minChars: 4, minWords: 2 },
+  employee_confidentiality_scope: { minChars: 6, minWords: 2 },
+  role_responsibilities: { minChars: 12, minWords: 3 },
+  bonus_terms: { minChars: 6, minWords: 2 },
+  leave_policy: { minChars: 6, minWords: 2 },
+  delay_remedies: { minChars: 6, minWords: 2 },
+  support_maintenance: { minChars: 6, minWords: 2 },
+  consultant_availability: { minChars: 3, minWords: 1 },
+  conflict_of_interest_terms: { minChars: 6, minWords: 2 },
+  partner_roles: { minChars: 6, minWords: 2 },
+  decision_making_rules: { minChars: 6, minWords: 2 },
+  partner_dispute_resolution: { minChars: 6, minWords: 2 },
+  admission_removal_terms: { minChars: 6, minWords: 2 },
+  partner_exit_mechanism: { minChars: 6, minWords: 2 },
+  dissolution_terms: { minChars: 6, minWords: 2 },
+  voting_rights: { minChars: 6, minWords: 2 },
+  dividend_policy: { minChars: 6, minWords: 2 },
+  tag_along_rights: { minChars: 6, minWords: 2 },
+  exit_rights: { minChars: 6, minWords: 2 },
+  management_control: { minChars: 6, minWords: 2 },
+  exit_terms: { minChars: 6, minWords: 2 },
+  deadlock_resolution: { minChars: 6, minWords: 2 },
   min_purchase: { minChars: 4, minWords: 2 },
   territory: { minChars: 2, minWords: 1 },
   work_location: { minChars: 2, minWords: 1 },
   delivery_location: { minChars: 2, minWords: 1 },
+  inspection_acceptance_terms: { minChars: 6, minWords: 2 },
+  risk_transfer_terms: { minChars: 6, minWords: 2 },
+  branding_rights: { minChars: 6, minWords: 2 },
+  underperformance_termination: { minChars: 6, minWords: 2 },
+  title_transfer_terms: { minChars: 6, minWords: 2 },
+  tax_responsibility: { minChars: 6, minWords: 2 },
+  society_rules: { minChars: 6, minWords: 2 },
+  events_of_default: { minChars: 6, minWords: 2 },
+  invocation_conditions: { minChars: 6, minWords: 2 },
+  invocation_procedure: { minChars: 6, minWords: 2 },
+  milestone_plan: { minChars: 6, minWords: 2 },
+  acceptance_criteria: { minChars: 6, minWords: 2 },
+  change_request_process: { minChars: 6, minWords: 2 },
 };
 
 const DURATION_FIELDS = new Set([
@@ -57,6 +96,9 @@ const POSITIVE_NUMBER_FIELDS = new Set([
   "capital_contribution_1",
   "capital_contribution_2",
   "security_deposit",
+  "liability_cap_amount",
+  "instalment_amount",
+  "minimum_purchase_quantity",
 ]);
 
 const PERCENT_FIELDS = new Set([
@@ -76,6 +118,10 @@ const INTEGER_FIELDS = new Set([
   "license_term",
   "lock_in_period",
   "rofr_period",
+  "termination_notice_period",
+  "cure_period_days",
+  "inspection_timeline_days",
+  "repayment_tenure_months",
 ]);
 
 function addError(errors, message) {
@@ -113,6 +159,16 @@ function parseNumberish(value) {
   const match = normalized.match(/-?\d+(?:\.\d+)?/);
   if (!match) return null;
   const parsed = Number(match[0]);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function parseStrictNumberish(value) {
+  if (isBlank(value)) return null;
+  const normalized = String(value).trim();
+  if (!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(normalized)) {
+    return null;
+  }
+  const parsed = Number(normalized.replace(/,/g, ""));
   return Number.isFinite(parsed) ? parsed : null;
 }
 
@@ -303,7 +359,7 @@ function addFieldLevelChecks(errors, schema, input) {
       addError(errors, `${key} must be a valid date.`);
     }
 
-    if (definition.type === "number" && parseNumberish(value) === null) {
+    if (definition.type === "number" && parseStrictNumberish(value) === null) {
       addError(errors, `${key} must be a valid number.`);
     }
 
@@ -324,21 +380,21 @@ function addFieldLevelChecks(errors, schema, input) {
     }
 
     if (POSITIVE_NUMBER_FIELDS.has(key)) {
-      const numeric = parseNumberish(value);
+      const numeric = parseStrictNumberish(value);
       if (numeric === null || numeric <= 0) {
         addError(errors, `${key} must be greater than zero.`);
       }
     }
 
     if (PERCENT_FIELDS.has(key)) {
-      const numeric = parseNumberish(value);
+      const numeric = parseStrictNumberish(value);
       if (numeric === null || numeric < 0 || numeric > 100) {
         addError(errors, `${key} must be between 0 and 100.`);
       }
     }
 
     if (INTEGER_FIELDS.has(key)) {
-      const numeric = parseNumberish(value);
+      const numeric = parseStrictNumberish(value);
       if (numeric === null || !Number.isInteger(numeric) || numeric <= 0) {
         addError(errors, `${key} must be a positive whole number.`);
       }
@@ -425,6 +481,58 @@ function addCrossFieldChecks(errors, input) {
   if (noticeDays !== null && (noticeDays < 1 || noticeDays > 365)) {
     addError(errors, "notice_period_days must be between 1 and 365.");
   }
+
+  const terminationNotice = parseNumberish(input.termination_notice_period);
+  if (terminationNotice !== null && (terminationNotice < 1 || terminationNotice > 3650)) {
+    addError(errors, "termination_notice_period must be between 1 and 3650.");
+  }
+
+  const renewalOption = normalizeOption(input.renewal_option || "");
+  if (
+    renewalOption &&
+    renewalOption !== "no" &&
+    isBlank(input.renewal_terms)
+  ) {
+    addError(
+      errors,
+      "renewal_terms must be provided when a renewal option other than 'No' is selected."
+    );
+  }
+
+  const liabilityCapBasis = normalizeOption(input.liability_cap_basis || "");
+  if (liabilityCapBasis === "specific amount") {
+    const liabilityCapAmount = parseNumberish(input.liability_cap_amount);
+    if (liabilityCapAmount === null || liabilityCapAmount <= 0) {
+      addError(
+        errors,
+        "liability_cap_amount must be provided when the liability cap basis is 'Specific amount'."
+      );
+    }
+  }
+
+  const minimumPurchaseQuantity = parseNumberish(input.minimum_purchase_quantity);
+  if (
+    (minimumPurchaseQuantity !== null && isBlank(input.minimum_purchase_unit)) ||
+    (minimumPurchaseQuantity === null && !isBlank(input.minimum_purchase_unit))
+  ) {
+    addError(
+      errors,
+      "minimum_purchase_quantity and minimum_purchase_unit must be used together."
+    );
+  }
+
+  const repaymentFrequency = normalizeOption(input.repayment_frequency || "");
+  const repaymentTenure = parseNumberish(input.repayment_tenure_months);
+  const instalmentAmount = parseNumberish(input.instalment_amount);
+  if (
+    repaymentFrequency &&
+    (repaymentTenure === null || instalmentAmount === null)
+  ) {
+    addError(
+      errors,
+      "repayment_tenure_months and instalment_amount must be provided when repayment_frequency is selected."
+    );
+  }
 }
 
 function addDocumentSpecificChecks(errors, input, documentType) {
@@ -450,12 +558,7 @@ function addDocumentSpecificChecks(errors, input, documentType) {
 export function validateVariables(schema, input, options = {}) {
   const errors = [];
   const documentType = options.documentType;
-  const requiredFields = new Set([
-    ...(DOCUMENT_CONFIG[documentType]?.requiredFields || []),
-    ...Object.entries(schema)
-      .filter(([, field]) => field?.required)
-      .map(([key]) => key),
-  ]);
+  const requiredFields = new Set(DOCUMENT_CONFIG[documentType]?.requiredFields || []);
 
   for (const key of requiredFields) {
     if (isBlank(input[key])) {

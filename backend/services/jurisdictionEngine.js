@@ -1,59 +1,100 @@
-/**
- * jurisdictionEngine.js
- * 
- * Adapts clauses based on the jurisdiction/operating state.
- * Specifically updates Governing Law and Dispute Resolution seats
- * based on local requirements in India.
- */
+function normalizeWhitespace(value = "") {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function normalizeChoice(value = "") {
+  return normalizeWhitespace(value).toLowerCase();
+}
+
+function buildGoverningLawClause(governingLawState = "") {
+  const state = normalizeWhitespace(governingLawState);
+  if (!state) {
+    return "This Agreement shall be governed by and construed in accordance with the laws of India.";
+  }
+
+  return `This Agreement shall be governed by and construed in accordance with the laws of India and, to the extent relevant to local procedural, registration, or stamp matters, as applied in the State of ${state}.`;
+}
+
+function buildDisputeResolutionClause(method = "", disputeVenue = "", governingLawState = "") {
+  const venue = normalizeWhitespace(disputeVenue || governingLawState || "Mumbai");
+  const normalizedMethod = normalizeChoice(method);
+  const arbitrationAppointmentSentence =
+    "The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) days of a written request, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996.";
+
+  if (normalizedMethod === "courts") {
+    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, the courts at ${venue} shall have exclusive jurisdiction, subject to applicable law.`;
+  }
+
+  if (normalizedMethod === "negotiation, then arbitration") {
+    return `The Parties shall first seek to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through good-faith negotiations for a period of fifteen (15) days after written notice of the dispute. If the dispute is not resolved within that period, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+  }
+
+  if (normalizedMethod === "mediation, then arbitration") {
+    return `The Parties shall first attempt to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through mediation in ${venue}. If the dispute is not settled within thirty (30) days after the mediator is appointed, the dispute shall be finally resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+  }
+
+  return `Any dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+}
+
+function injectStampExecutionText(text = "", operatingState = "") {
+  const normalizedText = String(text || "");
+  if (/stamp paper|non-judicial stamp/i.test(normalizedText)) {
+    return normalizedText;
+  }
+
+  const state = normalizeWhitespace(operatingState);
+  const stampPrefix = state
+    ? `IN WITNESS WHEREOF, the Parties have executed this Agreement on non-judicial stamp paper of appropriate value as applicable in ${state}.\n\n`
+    : "IN WITNESS WHEREOF, the Parties have executed this Agreement on non-judicial stamp paper of appropriate value, if required by applicable law.\n\n";
+
+  return `${stampPrefix}${normalizedText}`;
+}
 
 export function injectJurisdictionRules(draft, input) {
   if (!draft || !Array.isArray(draft.clauses) || !input) {
     return draft;
   }
 
-  // Extract the state provided by the user in the form variables
-  const operatingState = input.variables?.operating_state;
-  const arbitrationCity =
-    input.variables?.arbitration_city || input.variables?.operating_state;
+  const operatingState = normalizeWhitespace(input.variables?.operating_state);
+  const governingLawState = normalizeWhitespace(
+    input.variables?.governing_law_state || operatingState
+  );
+  const disputeResolutionMethod = normalizeWhitespace(
+    input.variables?.dispute_resolution_method || "Arbitration"
+  );
+  const disputeVenue = normalizeWhitespace(
+    input.variables?.arbitration_city || governingLawState || operatingState
+  );
 
-  if (!operatingState) {
-    return draft; // Default rules generated by Base Draft remain
-  }
+  const modifiedClauses = draft.clauses.map((clause) => {
+    const category = String(clause.category || "").toUpperCase();
+    let nextText = clause.text || "";
 
-  const modifiedClauses = draft.clauses.map(clause => {
-    let newText = clause.text || "";
-
-    // 1. Force the Arbitration Seat to match the Operating State
-    if (clause.category === "DISPUTE_RESOLUTION" || clause.category === "ARBITRATION") {
-      newText = newText.replace(/courts in [a-zA-Z\s]+|seat of arbitration shall be [a-zA-Z\s]+/gi, match => {
-        if (match.toLowerCase().includes("seat")) {
-          return `seat of arbitration shall be ${arbitrationCity}`;
-        }
-        return `courts in ${arbitrationCity}`;
-      });
+    if (category === "DISPUTE_RESOLUTION" || category === "ARBITRATION") {
+      nextText = buildDisputeResolutionClause(
+        disputeResolutionMethod,
+        disputeVenue,
+        governingLawState
+      );
     }
 
-    // 2. Adjust Governing Law text
-    if (clause.category === "GOVERNING_LAW") {
-      if (!newText.includes("laws of India")) {
-        newText = `This Agreement shall be governed by and construed in accordance with the laws of India, as applied in the State of ${operatingState}.`;
-      }
+    if (category === "GOVERNING_LAW") {
+      nextText = buildGoverningLawClause(governingLawState);
     }
 
-    // 3. Stamp Duty Injection (Usually handled in Execution/Signatures block)
-    if (clause.category === "SIGNATURES" && !newText.toLowerCase().includes("stamp paper")) {
-      newText = `IN WITNESS WHEREOF, the Parties have executed this Agreement on non-judicial stamp paper of appropriate value as per the local stamp act of ${operatingState}.\n\n` + newText;
+    if (category.includes("SIGNATURE")) {
+      nextText = injectStampExecutionText(nextText, governingLawState || operatingState);
     }
 
     return {
       ...clause,
-      text: newText
+      text: nextText,
     };
   });
 
   return {
     ...draft,
-    jurisdiction: operatingState,
-    clauses: modifiedClauses
+    jurisdiction: governingLawState || operatingState || draft.jurisdiction,
+    clauses: modifiedClauses,
   };
 }

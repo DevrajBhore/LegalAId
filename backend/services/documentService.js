@@ -11,6 +11,7 @@ import { enforceScopeGuard } from "./scopeGuard.js";
 import { resolveSignatures } from "./signatureResolver.js";
 import { assembleDocument } from "./clauseAssembler.js";
 import { injectDraftVariables } from "./draftVariableInjector.js";
+import { sanitizeVariablesForDocument } from "../config/variableConfig.js";
 import { loadVariables } from "./variableLoader.js";
 import { validateVariables } from "./variableValidator.js";
 import { applyDeterministicFixes } from "./deterministicFixer.js";
@@ -25,6 +26,8 @@ import {
   runDocumentValidation,
 } from "./validationService.js";
 import { callAI } from "../ai/aiClient.js";
+import { deriveGenerationControls } from "./generationControls.js";
+import { buildSemanticContext } from "./inputSemantics.js";
 
 let CategoryMapper = null;
 
@@ -48,10 +51,28 @@ async function loadIREModules() {
 
 function validateInputByDocumentType(input) {
   const schema = loadVariables(input.document_type);
-  const errors = validateVariables(schema, input.variables || {}, {
+  const sanitizedVariables = sanitizeVariablesForDocument(
+    input.document_type,
+    input.variables || {}
+  );
+  const errors = validateVariables(schema, sanitizedVariables, {
     documentType: input.document_type,
   });
   return errors.length > 0 ? { valid: false, errors } : { valid: true };
+}
+
+function prepareGenerationInput(input = {}) {
+  const sanitizedVariables = sanitizeVariablesForDocument(
+    input.document_type,
+    input.variables || {}
+  );
+  const variables = deriveGenerationControls(input.document_type, sanitizedVariables);
+
+  return {
+    ...input,
+    variables,
+    semanticContext: buildSemanticContext(input.document_type, variables),
+  };
 }
 
 function buildBlockedGenerationResult(issues, { statusCode = 422, error } = {}) {
@@ -121,6 +142,10 @@ function attachDraftContext(draft, input, { resetBaseline = false } = {}) {
       document_type: input.document_type,
       jurisdiction: input.jurisdiction || draft?.jurisdiction || "India",
       source_variables: sanitizeSourceVariables(input.variables),
+      interpreted_facts:
+        input.semanticContext ||
+        draft?.metadata?.interpreted_facts ||
+        null,
       ai_touched: Boolean(draft?.metadata?.ai_touched),
       user_edited: Boolean(draft?.metadata?.user_edited),
       baseline_clause_map:
@@ -168,7 +193,7 @@ function applyDeterministicRepairRound(draft, validation) {
 function applyGenerationStages(draft, input) {
   if (!draft.metadata) draft.metadata = {};
 
-  draft = resolveDependencies(draft);
+  draft = resolveDependencies(draft, input);
   draft = injectJurisdictionRules(draft, input);
   draft = injectDoctrine(draft);
   draft = enforceScopeGuard(draft, input);
@@ -270,6 +295,7 @@ async function attemptSemanticDraft(seedDraft, input) {
     document_type: input.document_type,
     variables: input.variables || {},
     baseDraft: seedDraft,
+    semanticContext: input.semanticContext,
   });
 
   if (!aiResult?.success || !aiResult?.draft) {
@@ -324,15 +350,20 @@ export async function generateDocument(input) {
     );
   }
 
+  const generationInput = prepareGenerationInput(input);
+
   if (shouldUseSemanticGeneration(input)) {
-    const semanticSeed = applyGenerationStages(createBlueprintDraft(input), input);
-    const semanticDraft = await attemptSemanticDraft(semanticSeed, input);
+    const semanticSeed = applyGenerationStages(
+      createBlueprintDraft(generationInput),
+      generationInput
+    );
+    const semanticDraft = await attemptSemanticDraft(semanticSeed, generationInput);
 
     if (semanticDraft) {
-      let draft = attachDraftContext(semanticDraft, input, {
+      let draft = attachDraftContext(semanticDraft, generationInput, {
         resetBaseline: true,
       });
-      let validation = await runGenerationStageValidation(draft, input);
+      let validation = await runGenerationStageValidation(draft, generationInput);
 
       if (isGenerationReady(validation)) {
         return { draft, validation };
@@ -340,8 +371,10 @@ export async function generateDocument(input) {
 
       const repairedDraft = applyDeterministicRepairRound(draft, validation);
       if (repairedDraft !== draft) {
-        draft = attachDraftContext(repairedDraft, input, { resetBaseline: true });
-        validation = await runGenerationStageValidation(draft, input);
+        draft = attachDraftContext(repairedDraft, generationInput, {
+          resetBaseline: true,
+        });
+        validation = await runGenerationStageValidation(draft, generationInput);
 
         if (isGenerationReady(validation)) {
           return { draft, validation };
@@ -352,11 +385,15 @@ export async function generateDocument(input) {
 
   // Deterministic fallback remains the safety net when semantic drafting is
   // disabled, unavailable, or fails validation.
-  const baseDraft = createDeterministicBaseDraft(input);
-  let draft = attachDraftContext(applyGenerationStages(baseDraft, input), input, {
-    resetBaseline: true,
-  });
-  let validation = await runGenerationStageValidation(draft, input);
+  const baseDraft = createDeterministicBaseDraft(generationInput);
+  let draft = attachDraftContext(
+    applyGenerationStages(baseDraft, generationInput),
+    generationInput,
+    {
+      resetBaseline: true,
+    }
+  );
+  let validation = await runGenerationStageValidation(draft, generationInput);
 
   if (isGenerationReady(validation)) {
     return { draft, validation };
@@ -365,8 +402,10 @@ export async function generateDocument(input) {
   const repairedDraft = applyDeterministicRepairRound(draft, validation);
 
   if (repairedDraft !== draft) {
-    draft = attachDraftContext(repairedDraft, input, { resetBaseline: true });
-    validation = await runGenerationStageValidation(draft, input);
+    draft = attachDraftContext(repairedDraft, generationInput, {
+      resetBaseline: true,
+    });
+    validation = await runGenerationStageValidation(draft, generationInput);
 
     if (isGenerationReady(validation)) {
       return { draft, validation };

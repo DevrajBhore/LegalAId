@@ -20,6 +20,20 @@ function sampleValue(documentType, field, definition = {}) {
     arbitration_city: "Mumbai",
     governing_law_state: "Maharashtra",
     operating_state: "Maharashtra",
+    dispute_resolution_method: "Arbitration",
+    renewal_option: "No",
+    renewal_terms: "",
+    termination_notice_period: "30",
+    termination_for_convenience: "Yes",
+    termination_for_cause: "Yes",
+    cure_period_days: "15",
+    liability_cap_basis: "Fees paid or payable in the 12 months before the claim",
+    liability_cap_amount: "",
+    indemnity_scope: "Breach, confidentiality breach, IP infringement, and third-party claims",
+    include_non_compete: "No",
+    include_non_solicit: "No",
+    include_sla: "No",
+    include_reporting: "No",
     party_1_name: "AlphaTech Solutions Private Limited",
     party_2_name: "Beta Innovations Private Limited",
     party_1_address:
@@ -129,16 +143,87 @@ function sampleValue(documentType, field, definition = {}) {
     ip_ownership: "Client owns all IP",
     purpose:
       "to evaluate and pursue a confidential strategic technology partnership",
+    confidentiality_access_scope:
+      "directors, officers, employees, and professional advisers with a strict need to know",
+    residual_knowledge_treatment: "No residual knowledge carve-out",
     confidentiality_period: "5 years",
     agreement_term: "24 months",
     non_compete_period: "12 months",
+    employee_confidentiality_scope:
+      "the employee may access confidential information only on a need-to-know basis for assigned duties",
+    employment_termination_type: "Termination for cause and notice",
+    acceptance_criteria:
+      "written confirmation that the deliverables materially conform to the agreed scope and quality standards",
+    decision_making_rules:
+      "ordinary business decisions by mutual consent and major matters by unanimous approval",
+    partner_dispute_resolution:
+      "good-faith partner meeting within 7 days followed by mediation before arbitration",
+    partner_exit_mechanism:
+      "an exiting partner must offer its interest first to the continuing partner at fair market value",
+    exit_rights:
+      "minority shareholders may participate in any liquidity event on a pro-rata basis and may require a fair-value exit on agreed trigger events",
+    deadlock_resolution:
+      "senior management escalation for 15 days followed by valuation-led buyout or arbitration",
+    inspection_timeline_days: "7",
+    risk_transfer_stage: "On inspection and acceptance",
+    pricing_model: "Margin-based pricing",
+    minimum_purchase_quantity: "100",
+    minimum_purchase_unit: "Units per quarter",
+    repayment_frequency: "Monthly",
+    repayment_tenure_months: "24",
+    instalment_amount: "250000",
+    invocation_procedure:
+      "written demand notice to the guarantor specifying the default and amount due, with payment due within 7 days",
+    change_request_process:
+      "all scope changes must be submitted in writing, impact-assessed, and approved by both parties before implementation",
     mou_purpose:
       "to collaborate on an AI-powered telemedicine platform for rural healthcare delivery",
     mou_scope:
       "Party 1 will provide domain expertise and validation while Party 2 will provide technology, implementation, and go-to-market support",
     mou_duration: "18 months",
+    binding_nature: "Non-binding",
     organisation_address: "88 Residency Road, Bengaluru, Karnataka 560025",
   };
+
+  if (field === "ip_ownership") {
+    if (documentType === "EMPLOYMENT_CONTRACT") {
+      return "Employer owns work product IP";
+    }
+
+    if (documentType === "JOINT_VENTURE_AGREEMENT") {
+      return "Custom / shared arrangement";
+    }
+  }
+
+  if (field === "liability_cap_basis") {
+    return [
+      "SERVICE_AGREEMENT",
+      "CONSULTANCY_AGREEMENT",
+      "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "DISTRIBUTION_AGREEMENT",
+      "JOINT_VENTURE_AGREEMENT",
+    ].includes(documentType)
+      ? "Fees paid or payable in the 12 months before the claim"
+      : "";
+  }
+
+  if (field === "indemnity_scope") {
+    return [
+      "SERVICE_AGREEMENT",
+      "CONSULTANCY_AGREEMENT",
+      "PARTNERSHIP_DEED",
+      "SHAREHOLDERS_AGREEMENT",
+      "JOINT_VENTURE_AGREEMENT",
+      "SUPPLY_AGREEMENT",
+      "DISTRIBUTION_AGREEMENT",
+      "SALES_OF_GOODS_AGREEMENT",
+      "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    ].includes(documentType)
+      ? "Breach, confidentiality breach, IP infringement, and third-party claims"
+      : "";
+  }
 
   if (Object.prototype.hasOwnProperty.call(exact, field)) {
     return exact[field];
@@ -223,6 +308,7 @@ async function runTests() {
         );
       })
       .map((clause) => clause.clause_id);
+    const interpretedFacts = result?.draft?.metadata?.interpreted_facts || {};
 
     results.push({
       documentType,
@@ -240,6 +326,10 @@ async function runTests() {
       notices: (result?.validation?.notices || []).map(
         (issue) => issue.rule_id
       ),
+      semanticObjective: interpretedFacts?.objective_summary || null,
+      semanticFieldInsights: Array.isArray(interpretedFacts?.field_insights)
+        ? interpretedFacts.field_insights.length
+        : 0,
       scheduleRefs,
       disallowedGenericClauses,
       error: result?.error || null,
@@ -252,6 +342,8 @@ async function runTests() {
     (result) =>
       !result.hasDraft ||
       result.totalIssues !== 0 ||
+      !result.semanticObjective ||
+      result.semanticFieldInsights === 0 ||
       result.scheduleRefs.length > 0 ||
       result.disallowedGenericClauses.length > 0
   );
