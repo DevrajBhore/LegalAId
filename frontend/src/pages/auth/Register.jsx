@@ -91,7 +91,7 @@ export default function Register() {
             <form className="auth-form" onSubmit={handleSubmit}>
               <div className="auth-field">
                 <label className="auth-label">Full Name <span>*</span></label>
-                <input className="auth-input" type="text" name="name" placeholder="Arjun Sharma" value={form.name} onChange={handleChange} required autoFocus/>
+                <input className="auth-input" type="text" name="name" placeholder="Varun Bhore" value={form.name} onChange={handleChange} required autoFocus/>
               </div>
               <div className="auth-field">
                 <label className="auth-label">Email Address <span>*</span></label>

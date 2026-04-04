@@ -63,16 +63,16 @@ export default function Contact() {
               <div className="contact-form-row">
                 <div className="contact-form-group">
                   <label>First name</label>
-                  <input name="firstName" type="text" required placeholder="Arjun" value={form.firstName} onChange={handleChange}/>
+                  <input name="firstName" type="text" required placeholder="Varun" value={form.firstName} onChange={handleChange}/>
                 </div>
                 <div className="contact-form-group">
                   <label>Last name</label>
-                  <input name="lastName" type="text" required placeholder="Sharma" value={form.lastName} onChange={handleChange}/>
+                  <input name="lastName" type="text" required placeholder="Bhore" value={form.lastName} onChange={handleChange}/>
                 </div>
               </div>
               <div className="contact-form-group">
                 <label>Email address</label>
-                <input name="email" type="email" required placeholder="arjun@firm.com" value={form.email} onChange={handleChange}/>
+                <input name="email" type="email" required placeholder="varun@firm.com" value={form.email} onChange={handleChange}/>
               </div>
               <div className="contact-form-group">
                 <label>Subject</label>
