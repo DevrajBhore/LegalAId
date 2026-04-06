@@ -15,7 +15,12 @@ import {
   validateDocumentIntakeConfiguration,
 } from "./services/documentIntakeConfig.js";
 import { DOCUMENT_CONFIG } from "./config/documentConfig.js";
-import { draftToDocx, draftToText } from "./services/exportService.js";
+import {
+  draftToDocx,
+  draftToPdf,
+  draftToText,
+  normalizeExportFormat,
+} from "./services/exportService.js";
 import { runDocumentValidation } from "./services/validationService.js";
 import { callAIChat } from "./ai/aiClient.js";
 import { listAvailableModels } from "./ai/geminiClient.js";
@@ -26,8 +31,11 @@ import { protect } from "./auth/authMiddleware.js";
 import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
 
 const app = express();
+const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
+
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
+app.use(express.urlencoded({ extended: true, limit: REQUEST_BODY_LIMIT }));
 
 const VALIDATION_MODES = new Set(["background", "generation", "final"]);
 
@@ -189,6 +197,12 @@ app.post("/export", protect, async (req, res) => {
     const { draft, format = "docx" } = req.body;
     if (!draft)
       return res.status(400).json({ error: "Missing draft in request body" });
+    const resolvedFormat = normalizeExportFormat(format);
+    if (!resolvedFormat) {
+      return res.status(400).json({
+        error: 'Unsupported export format. Expected "docx", "pdf", or "txt".',
+      });
+    }
 
     const validation = await runDocumentValidation(draft, {
       mode: "final",
@@ -215,7 +229,7 @@ app.post("/export", protect, async (req, res) => {
       .toLowerCase()
       .replace(/\s+/g, "_");
 
-    if (format === "txt") {
+    if (resolvedFormat === "txt") {
       const text = draftToText(draft);
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       res.setHeader(
@@ -223,6 +237,16 @@ app.post("/export", protect, async (req, res) => {
         `attachment; filename="${docTitle}.txt"`
       );
       return res.send(text);
+    }
+
+    if (resolvedFormat === "pdf") {
+      const buffer = await draftToPdf(draft);
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename="${docTitle}.pdf"`
+      );
+      return res.send(buffer);
     }
 
     const buffer = await draftToDocx(draft);
@@ -278,6 +302,18 @@ app.post("/fix-issue", protect, async (req, res) => {
 app.get("/admin/models", protect, async (req, res) => {
   const models = await listAvailableModels();
   res.json(models);
+});
+
+app.use((error, _req, res, next) => {
+  if (error?.type === "entity.too.large") {
+    return res.status(413).json({
+      error: "Request payload too large.",
+      details: `The submitted document data exceeds the current request size limit of ${REQUEST_BODY_LIMIT}.`,
+      code: "PAYLOAD_TOO_LARGE",
+    });
+  }
+
+  return next(error);
 });
 
 const PORT = process.env.PORT || 5000;

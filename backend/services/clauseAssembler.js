@@ -340,7 +340,7 @@ export function assembleDocument(documentType, variables = {}) {
   }
 
   const clauseIds = resolveClauseIdsForBlueprint(blueprint, documentType, variables);
-  const clauses = clauseIds.map((id) => {
+  const clauses = clauseIds.map((id, index) => {
     const clause = clausesById.get(id);
     if (!clause) {
       throw new Error(
@@ -351,6 +351,7 @@ export function assembleDocument(documentType, variables = {}) {
       ...clause,
       category: normalizeClauseCategory(clause.category),
       title: clause.title || clause.name || null,
+      blueprint_position: index + 1,
     };
   });
 

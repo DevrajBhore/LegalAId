@@ -1,5 +1,6 @@
 const CANONICAL_ORDER = [
   "IDENTITY",
+  "RECITALS",
   "DEFINITIONS",
   "INTERPRETATION",
   "PURPOSE",
@@ -57,6 +58,9 @@ const CANONICAL_ORDER = [
   "DISPUTE_RESOLUTION",
   "JURISDICTION",
   "GOVERNING_LAW",
+  "SCHEDULE",
+  "ANNEXURE",
+  "SPECIFICATIONS",
   "EXECUTION_FORMALITIES",
   "EXECUTION",
   "SIGNATURE_BLOCK",
@@ -69,6 +73,11 @@ const CATEGORY_ALIASES = {
   INDEMNIFICATION: "INDEMNITY",
   LIABILITY_CAP: "RISK",
   LIABILITY_LIMITATION: "RISK",
+  ANNEX: "ANNEXURE",
+  APPENDIX: "ANNEXURE",
+  SPECIFICATION: "SPECIFICATIONS",
+  MATERIALS: "SPECIFICATIONS",
+  SCHEDULES: "SCHEDULE",
 };
 
 export const CLAUSE_ORDER = [...CANONICAL_ORDER];
@@ -98,6 +107,23 @@ export function sortClausesByOrder(clauses = []) {
 
     if (leftIndex !== rightIndex) {
       return leftIndex - rightIndex;
+    }
+
+    const leftBlueprintPosition = Number(left?.blueprint_position);
+    const rightBlueprintPosition = Number(right?.blueprint_position);
+    const leftHasBlueprintPosition = Number.isFinite(leftBlueprintPosition);
+    const rightHasBlueprintPosition = Number.isFinite(rightBlueprintPosition);
+
+    if (
+      leftHasBlueprintPosition &&
+      rightHasBlueprintPosition &&
+      leftBlueprintPosition !== rightBlueprintPosition
+    ) {
+      return leftBlueprintPosition - rightBlueprintPosition;
+    }
+
+    if (leftHasBlueprintPosition !== rightHasBlueprintPosition) {
+      return leftHasBlueprintPosition ? -1 : 1;
     }
 
     const leftTitle = String(left?.title || left?.clause_id || "");

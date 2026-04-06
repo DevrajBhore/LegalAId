@@ -79,16 +79,25 @@ export const resetPassword = (token, password) =>
 export const getCurrentUser = () =>
   API.get("/auth/me", { skipAuthRedirect: true });
 
-export async function downloadDocx(draft, validation) {
+function resolveDownloadExtension(format = "docx") {
+  const normalized = String(format || "docx").toLowerCase();
+  if (["docx", "pdf", "txt"].includes(normalized)) {
+    return normalized;
+  }
+  return "docx";
+}
+
+export async function downloadDocument(draft, validation, format = "docx") {
+  const extension = resolveDownloadExtension(format);
   const response = await API.post(
     "/export",
-    { draft, validation, format: "docx" },
+    { draft, validation, format: extension },
     { responseType: "blob" }
   );
   const url = window.URL.createObjectURL(new Blob([response.data]));
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${(draft.document_type || "document").toLowerCase()}.docx`;
+  a.download = `${(draft.document_type || "document").toLowerCase()}.${extension}`;
   document.body.appendChild(a);
   a.click();
   a.remove();

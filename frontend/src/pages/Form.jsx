@@ -11,6 +11,30 @@ const GEN_MESSAGES = [
   "Running legal validation...",
   "Preparing your workspace...",
 ];
+const LEGAL_DISCLAIMER =
+  "LegalAId generates contracts based on established Indian legal principles and standard drafting practices. The documents are designed to be enforceable and commercially usable. Like any legal document, final enforceability depends on execution and specific circumstances, so review is recommended for complex or high-value cases.";
+
+function formatReviewValue(field, rawValue) {
+  const value = rawValue ?? "";
+  if (!String(value).trim()) return null;
+
+  if (field?.type === "date") {
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+    }
+  }
+
+  if (field?.type === "textarea") {
+    return String(value).trim();
+  }
+
+  return String(value).trim();
+}
 
 function FormField({ field, value, onChange }) {
   const id = `field-${field.name}`;
@@ -203,6 +227,29 @@ export default function Form() {
     ].filter((group) => group.items.length > 0);
   }, [generationValidation]);
 
+  const reviewSections = useMemo(
+    () =>
+      visibleSections
+        .map((section) => {
+          const entries = (section.fields || [])
+            .map((item) => resolveField(item))
+            .filter(Boolean)
+            .map((field) => ({
+              name: field.name,
+              label: field.label,
+              value: formatReviewValue(field, form[field.name]),
+            }))
+            .filter((entry) => entry.value);
+
+          return {
+            title: section.title,
+            entries,
+          };
+        })
+        .filter((section) => section.entries.length > 0),
+    [form, resolveField, visibleSections]
+  );
+
   return (
     <div className="form-page">
       <div className="form-topbar">
@@ -265,6 +312,11 @@ export default function Form() {
           <div className="form-sidebar-tip">
             <strong>Before you generate</strong>
             Have party names, addresses, dates, and commercial amounts ready. You can refine the draft inside the editor.
+          </div>
+
+          <div className="form-sidebar-disclaimer">
+            <strong>Legal disclaimer</strong>
+            <span>{LEGAL_DISCLAIMER}</span>
           </div>
         </aside>
 
@@ -357,6 +409,45 @@ export default function Form() {
                   </div>
                 </section>
               ))}
+
+              <section className="form-review-panel animate-in">
+                <div className="form-section-header">
+                  <span className="form-section-num">RV</span>
+                  <div>
+                    <div className="form-section-title">Review your inputs</div>
+                    <div className="form-section-sub">
+                      Confirm the selected values before generating the draft.
+                    </div>
+                  </div>
+                </div>
+
+                {reviewSections.length > 0 ? (
+                  <div className="form-review-groups">
+                    {reviewSections.map((section) => (
+                      <div key={section.title} className="form-review-group">
+                        <div className="form-review-group__title">{section.title}</div>
+                        <div className="form-review-items">
+                          {section.entries.map((entry) => (
+                            <div key={entry.name} className="form-review-item">
+                              <div className="form-review-item__label">{entry.label}</div>
+                              <div className="form-review-item__value">{entry.value}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="form-review-empty">
+                    Your filled values will appear here as you complete the form.
+                  </div>
+                )}
+              </section>
+
+              <div className="form-disclaimer-panel">
+                <div className="form-disclaimer-panel__label">Legal disclaimer</div>
+                <p>{LEGAL_DISCLAIMER}</p>
+              </div>
 
               <div className="form-footer">
                 <button

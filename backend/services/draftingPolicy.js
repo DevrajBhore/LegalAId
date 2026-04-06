@@ -326,6 +326,10 @@ export function getDocumentDraftingPolicy(documentType = "") {
     .reduce((merged, entry) => mergePolicy(merged, entry), {});
 }
 
+export function getDocumentStyleProfile(documentType = "") {
+  return getDocumentDraftingPolicy(documentType)?.style || {};
+}
+
 export function getParticipantExpectations(documentType = "", variables = {}) {
   return getParticipantDefinitions(documentType)
     .map((participant) => ({

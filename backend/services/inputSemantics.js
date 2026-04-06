@@ -1,5 +1,6 @@
 import { getVariables } from "../config/variableConfig.js";
 import {
+  getDocumentDraftingPolicy,
   getDocumentRoleContext,
   getParticipantExpectations,
 } from "./draftingPolicy.js";
@@ -599,6 +600,43 @@ function buildDraftingDirectives(context = {}) {
   const directives = [
     "Treat the intake as instructions about legal meaning and clause placement, not as placeholder text to paste mechanically.",
   ];
+  const style = context.style || {};
+
+  if (style.openingStyle === "formal_execution_block") {
+    directives.push(
+      "Use a formal document opening with a clear title, an execution line stating place and date where supported by the intake, and a properly introduced party block before the operative clauses."
+    );
+  }
+
+  if (style.recitalStyle === "whereas_recitals") {
+    directives.push(
+      "Use concise but meaningful recitals where appropriate so the factual background and commercial purpose are clear before the operative clauses begin."
+    );
+  }
+
+  if (style.bodyStyle === "substantive_numbered_clauses") {
+    directives.push(
+      "Draft substantive numbered clauses with enough legal detail to feel complete and transaction-ready, instead of producing skeletal one-line clauses."
+    );
+  }
+
+  if (style.preferDefinitions) {
+    directives.push(
+      "Where the document type or clause structure supports it, define key business and legal terms before relying on those terms later in the document."
+    );
+  }
+
+  if (style.preferSchedules) {
+    directives.push(
+      "Where the intake contains specifications, deliverable lists, payment breakups, technical requirements, or compliance details, present them in structured schedule-style language or clearly itemized subparts."
+    );
+  }
+
+  if (style.preferDetailedExecution) {
+    directives.push(
+      "Use a complete execution block with proper signatory language, capacity references, and signature placeholders suited to the parties' legal form."
+    );
+  }
 
   if ((context.participants || []).length >= 2) {
     directives.push(
@@ -641,37 +679,45 @@ function buildDraftingDirectives(context = {}) {
 
 export function buildSemanticContext(documentType, variables = {}) {
   const roleContext = getDocumentRoleContext(documentType);
+  const policy = getDocumentDraftingPolicy(documentType);
   const fieldInsights = buildFieldInsights(documentType, variables);
   const participants = buildParticipantFacts(documentType, variables);
+  const termSummary = buildTermSummary(variables);
+  const commercialSummary = buildCommercialSummary(documentType, variables, roleContext);
+  const riskSummary = buildRiskSummary(variables);
+  const operationalSummary = buildOperationalSummary(variables);
+  const governanceSummary = buildGovernanceSummary(variables);
 
   return {
     document_type: documentType,
     objective_summary: buildObjectiveSummary(documentType, variables, roleContext),
     participants,
+    style_preferences: policy?.style || {},
     term: {
-      summary: buildTermSummary(variables),
+      summary: termSummary,
     },
     commercial: {
-      summary: buildCommercialSummary(documentType, variables, roleContext),
+      summary: commercialSummary,
     },
     risk: {
-      summary: buildRiskSummary(variables),
+      summary: riskSummary,
     },
     operational: {
-      summary: buildOperationalSummary(variables),
+      summary: operationalSummary,
     },
     governance: {
-      summary: buildGovernanceSummary(variables),
+      summary: governanceSummary,
     },
     clause_guidance: buildClauseGuidance(fieldInsights),
     field_insights: fieldInsights,
     drafting_directives: buildDraftingDirectives({
+      style: policy?.style || {},
       participants,
-      term: { summary: buildTermSummary(variables) },
-      commercial: { summary: buildCommercialSummary(documentType, variables, roleContext) },
-      risk: { summary: buildRiskSummary(variables) },
-      operational: { summary: buildOperationalSummary(variables) },
-      governance: { summary: buildGovernanceSummary(variables) },
+      term: { summary: termSummary },
+      commercial: { summary: commercialSummary },
+      risk: { summary: riskSummary },
+      operational: { summary: operationalSummary },
+      governance: { summary: governanceSummary },
     }),
   };
 }

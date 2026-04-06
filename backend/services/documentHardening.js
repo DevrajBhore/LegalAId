@@ -44,6 +44,40 @@ function formatDate(value) {
   return parsed.toLocaleDateString("en-GB");
 }
 
+function formatFormalExecutionDate(value) {
+  const raw = String(value || "").trim();
+  if (!raw) {
+    return "this day and year first written above";
+  }
+
+  const parsed = new Date(raw);
+  if (Number.isNaN(parsed.getTime())) {
+    return raw;
+  }
+
+  const day = parsed.getDate();
+  const modTen = day % 10;
+  const modHundred = day % 100;
+  let suffix = "th";
+
+  if (modTen === 1 && modHundred !== 11) suffix = "st";
+  else if (modTen === 2 && modHundred !== 12) suffix = "nd";
+  else if (modTen === 3 && modHundred !== 13) suffix = "rd";
+
+  const month = parsed.toLocaleString("en-US", { month: "long" });
+  return `this ${day}${suffix} day of ${month}, ${parsed.getFullYear()}`;
+}
+
+function resolveExecutionVenue(variables = {}) {
+  return stripExternalReferencePhrases(
+    variables.execution_city ||
+      variables.arbitration_city ||
+      variables.delivery_location ||
+      variables.operating_state,
+    ""
+  );
+}
+
 function withIndefiniteArticle(value = "") {
   const normalized = normalizeWhitespace(value);
   if (!normalized) return "";
@@ -356,6 +390,60 @@ function stripExternalReferencePhrases(value = "", fallback = "") {
   return rewritten || fallback;
 }
 
+function splitStructuredItems(value = "", { allowComma = false } = {}) {
+  const normalized = String(value || "")
+    .replace(/\r/g, "")
+    .replace(/\u2022/g, "\n")
+    .trim();
+
+  if (!normalized) return [];
+
+  let items = normalized
+    .split(/\n+|;\s*/)
+    .map((item) =>
+      item
+        .replace(/^\(?[a-z0-9ivxlcdm]+\)?[.)-]?\s+/i, "")
+        .replace(/^[-*]\s+/, "")
+        .trim()
+    )
+    .filter(Boolean);
+
+  if (items.length <= 1 && allowComma) {
+    const commaItems = normalized
+      .split(/\s*,\s*/)
+      .map((item) => item.trim())
+      .filter((item) => item && item.split(/\s+/).length <= 12);
+
+    if (commaItems.length >= 2) {
+      items = commaItems;
+    }
+  }
+
+  return items.filter((item, index, list) => list.indexOf(item) === index);
+}
+
+function formatStructuredSubparts(items = []) {
+  return items
+    .map((item, index) => {
+      const marker = String.fromCharCode(97 + (index % 26));
+      return `(${marker}) ${item}`;
+    })
+    .join("\n");
+}
+
+function renderStructuredDetailText(prefix, value, options = {}) {
+  const items = splitStructuredItems(value, options);
+  if (!items.length) {
+    return prefix;
+  }
+
+  if (items.length === 1) {
+    return `${prefix} ${items[0]}`;
+  }
+
+  return `${prefix}\n${formatStructuredSubparts(items)}`;
+}
+
 function resolveNamedPartyLabels(documentType) {
   return (
     getPartyNamingLabels(documentType) || {
@@ -522,6 +610,175 @@ function buildParticipantDescriptor(participant, variables = {}) {
   return descriptor;
 }
 
+function resolveSuccessorPhrase(participant = {}) {
+  const entityType = normalizeWhitespace(participant?.type).toLowerCase();
+
+  if (
+    entityType.includes("company") ||
+    entityType.includes("llp") ||
+    entityType.includes("corporation") ||
+    entityType.includes("firm")
+  ) {
+    return "which expression shall, unless repugnant to the context or meaning thereof, include its successors and permitted assigns";
+  }
+
+  return "which expression shall, unless repugnant to the context or meaning thereof, include his, her, or their legal heirs, representatives, executors, administrators, and permitted assigns";
+}
+
+function buildFormalPartyIntroduction(
+  descriptor,
+  label,
+  positionLabel,
+  participant = {},
+  lineEnding = ";"
+) {
+  return `${descriptor} (hereinafter referred to as the "${label}", ${resolveSuccessorPhrase(
+    participant
+  )}) of the ${positionLabel} Part${lineEnding}`;
+}
+
+function buildDefinitionsClauseText(documentType, namedParties, variables = {}) {
+  const entries = [
+    [
+      "Agreement",
+      "this Agreement together with its schedules, annexures, written amendments, and other documents expressly incorporated by reference",
+    ],
+    [
+      "Effective Date",
+      formatDate(variables.effective_date),
+    ],
+  ];
+
+  const purpose = stripExternalReferencePhrases(
+    variables.purpose || variables.mou_purpose,
+    ""
+  );
+  if (purpose) {
+    entries.push(["Permitted Purpose", purpose]);
+  }
+
+  const services = stripExternalReferencePhrases(
+    variables.services_description || variables.consulting_services,
+    ""
+  );
+  if (services) {
+    entries.push(["Services", services]);
+  }
+
+  const deliverables = stripExternalReferencePhrases(variables.deliverables, "");
+  if (deliverables) {
+    entries.push(["Deliverables", deliverables]);
+  }
+
+  const goods = stripExternalReferencePhrases(
+    variables.goods_description || variables.product_description,
+    ""
+  );
+  if (goods) {
+    entries.push(["Goods", goods]);
+  }
+
+  const property = stripExternalReferencePhrases(variables.property_description, "");
+  if (property) {
+    entries.push(["Premises", property]);
+  }
+
+  const project = stripExternalReferencePhrases(variables.project_description, "");
+  if (project) {
+    entries.push(["Project", project]);
+  }
+
+  const territory = stripExternalReferencePhrases(variables.territory, "");
+  if (territory) {
+    entries.push(["Territory", territory]);
+  }
+
+  if (documentType === "NDA") {
+    entries.push([
+      "Confidential Information",
+      stripExternalReferencePhrases(
+        variables.confidential_information_definition,
+        "all non-public, proprietary, commercial, financial, technical, operational, and business information disclosed in connection with the permitted purpose"
+      ),
+    ]);
+  }
+
+  if (documentType === "SOFTWARE_DEVELOPMENT_AGREEMENT") {
+    entries.push([
+      "Software",
+      stripExternalReferencePhrases(
+        variables.project_description || variables.deliverables,
+        "the software, deliverables, and related materials to be designed, developed, tested, and delivered under this Agreement"
+      ),
+    ]);
+  }
+
+  return [
+    "In this Agreement, unless the context otherwise requires, the following expressions shall have the meanings set out below:",
+    formatStructuredSubparts(
+      entries.map(([term, definition]) => `"${term}" means ${definition}.`)
+    ),
+  ].join("\n");
+}
+
+function buildInterpretationClauseText() {
+  return [
+    "In this Agreement, unless the context otherwise requires:",
+    formatStructuredSubparts([
+      "headings and titles are inserted for convenience only and shall not affect interpretation",
+      "words importing the singular include the plural and vice versa, and words importing a gender include every gender",
+      'the words "including", "includes", and similar expressions shall be construed as illustrative and not exhaustive',
+      "references to any law, statute, rule, regulation, or governmental direction include all amendments, consolidations, re-enactments, and subordinate legislation made thereunder from time to time",
+      "any schedule, annexure, appendix, or statement expressly incorporated into this Agreement shall form part of this Agreement, and in the event of inconsistency, the more specific commercial or technical provision shall prevail over the more general provision to the extent of that inconsistency",
+    ]),
+  ].join("\n");
+}
+
+function buildSignatureBlockText(documentType, participants = []) {
+  const lines = [
+    "IN WITNESS WHEREOF, the Parties hereto have executed this Agreement on the day and year first above written.",
+    "",
+  ];
+
+  for (const participant of participants) {
+    const name = normalizeWhitespace(participant?.name) || "____________________";
+    const entityType = normalizeWhitespace(
+      participant?.type || participant?.name
+    ).toLowerCase();
+    const usesRepresentative =
+      entityType.includes("company") ||
+      entityType.includes("llp") ||
+      entityType.includes("corporation") ||
+      entityType.includes("private limited") ||
+      entityType.includes("limited");
+
+    if (usesRepresentative) {
+      lines.push(`For and on behalf of ${name}`);
+      lines.push("______________________________");
+      lines.push("Authorized Signatory");
+      lines.push("Name: ________________________");
+      lines.push("Designation: __________________");
+    } else {
+      lines.push(`${name}`);
+      lines.push("______________________________");
+      lines.push(`Name: ${name}`);
+    }
+
+    lines.push("");
+  }
+
+  if (
+    documentType === "COMMERCIAL_LEASE_AGREEMENT" ||
+    documentType === "LEAVE_AND_LICENSE_AGREEMENT"
+  ) {
+    lines.push("Witnesses:");
+    lines.push("1. ______________________________");
+    lines.push("2. ______________________________");
+  }
+
+  return lines.join("\n").trim();
+}
+
 function renderMutualNonSolicitationClause(namedParties, variables = {}) {
   return `During the term of this Agreement and for a period of ${resolveRestrictionPeriod(
     variables
@@ -598,15 +855,73 @@ function renderHardClause(
         ? semanticDescriptors[1]
         : buildParticipantDescriptor(participants[1], variables) || namedParties.second;
 
-      return `This Agreement ("Agreement") is entered into as of ${formatDate(
-        variables.effective_date
-      )} by and between ${firstDescriptor} ("${namedParties.first}") and ${secondDescriptor} ("${namedParties.second}") (collectively, the "Parties"). WHEREAS, the Parties desire to enter into this Agreement for a lawful purpose and lawful consideration under the Indian Contract Act, 1872; NOW, THEREFORE, in consideration of the mutual covenants and promises set forth herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:`;
+      const executionVenue = resolveExecutionVenue(variables);
+      const recitalPurpose = stripExternalReferencePhrases(
+        variables.purpose ||
+          variables.mou_purpose ||
+          variables.business_purpose ||
+          variables.jv_purpose ||
+          variables.services_description ||
+          variables.consulting_services ||
+          variables.project_description ||
+          variables.goods_description ||
+          variables.product_description ||
+          variables.property_description ||
+          variables.permitted_use,
+        "the lawful commercial relationship and obligations contemplated by the Parties"
+      );
+
+      return [
+        `THIS AGREEMENT ("Agreement") is made and executed${
+          executionVenue ? ` at ${executionVenue}` : ""
+        } on ${formatFormalExecutionDate(variables.effective_date)}.`,
+        "",
+        "BY AND BETWEEN",
+        "",
+        buildFormalPartyIntroduction(
+          firstDescriptor,
+          namedParties.first,
+          "First",
+          participants[0],
+          ";"
+        ),
+        "",
+        "AND",
+        "",
+        buildFormalPartyIntroduction(
+          secondDescriptor,
+          namedParties.second,
+          "Second",
+          participants[1],
+          "."
+        ),
+        "",
+        `The ${namedParties.first} and the ${namedParties.second} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
+        "",
+        `WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to ${recitalPurpose};`,
+        "",
+        "WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and",
+        "",
+        "WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;",
+        "",
+        "NOW, THEREFORE, in consideration of the mutual covenants and undertakings contained herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:",
+      ].join("\n");
     },
 
     CORE_PURPOSE_001: () => {
       const rendered = resolveServicePurposeClause(documentType, namedParties, variables);
       return rendered || normalizeWhitespace(semanticContext?.objective_summary) || clause.text;
     },
+
+    CORE_DEFINITIONS_001: () => ({
+      title: "Definitions",
+      text: buildDefinitionsClauseText(documentType, namedParties, variables),
+    }),
+
+    CORE_INTERPRETATION_001: () => ({
+      title: "Interpretation",
+      text: buildInterpretationClauseText(),
+    }),
 
     CORE_TERM_001: () => resolveServiceTermClause(documentType, namedParties, variables),
 
@@ -693,27 +1008,45 @@ function renderHardClause(
     },
 
     SERVICE_SCOPE_001: () => {
-      return `The ${actor} shall provide the following services under this Agreement: ${normalizeWhitespace(
-        variables.services_description ||
-          variables.consulting_services ||
-          variables.project_description ||
+      const serviceScopeText = renderStructuredDetailText(
+        `The ${actor} shall provide the following services under this Agreement:`,
+        stripExternalReferencePhrases(
+          variables.services_description ||
+            variables.consulting_services ||
+            variables.project_description ||
+            "the services expressly described in this Agreement",
           "the services expressly described in this Agreement"
-      )}.${hasMeaningfulValue(variables.tech_stack) ? ` The technical stack, tools, frameworks, or implementation environment currently contemplated by the Parties shall include ${stripExternalReferencePhrases(
-        variables.tech_stack,
-        ""
-      )}.` : ""} The ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the specifications, milestones, and service standards set out in this Agreement.${resolveAvailabilitySentence(
+        ),
+        { allowComma: true }
+      );
+
+      const techStackText = hasMeaningfulValue(variables.tech_stack)
+        ? `The technical stack, tools, frameworks, or implementation environment currently contemplated by the Parties shall include ${stripExternalReferencePhrases(
+            variables.tech_stack,
+            ""
+          )}.`
+        : "";
+
+      return `${serviceScopeText}${techStackText ? `\n${techStackText}` : ""}\nThe ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the specifications, milestones, and service standards set out in this Agreement.${resolveAvailabilitySentence(
         actor,
         variables
       )}${resolveSupportMaintenanceSentence(variables)}`;
     },
 
     SERVICE_DELIVERABLES_001: () => {
-      return `The ${actor} shall deliver the following deliverables under this Agreement: ${normalizeWhitespace(
-        variables.deliverables ||
-          variables.project_description ||
-          variables.services_description ||
+      const deliverablesText = renderStructuredDetailText(
+        `The ${actor} shall deliver the following deliverables under this Agreement:`,
+        stripExternalReferencePhrases(
+          variables.deliverables ||
+            variables.project_description ||
+            variables.services_description ||
+            "the deliverables expressly described in this Agreement",
           "the deliverables expressly described in this Agreement"
-      )}. Each deliverable shall be provided in a form reasonably necessary for ${timelineLabels.reviewer} to review, use, and implement it, together with supporting documentation where commercially appropriate.${resolveMilestoneSentence(
+        ),
+        { allowComma: true }
+      );
+
+      return `${deliverablesText}\nEach deliverable shall be provided in a form reasonably necessary for ${timelineLabels.reviewer} to review, use, and implement it, together with supporting documentation where commercially appropriate.${resolveMilestoneSentence(
         variables
       )}${resolveSourceCodeDeliverySentence(variables)}`;
     },
@@ -1274,6 +1607,14 @@ function renderHardClause(
         variables.tax_responsibility,
         ""
       )}.` : ""}`,
+
+    CORE_SIGNATURE_BLOCK_001: () => ({
+      title: clause.title || "Execution and Signatures",
+      text: buildSignatureBlockText(
+        documentType,
+        getParticipantExpectations(documentType, variables)
+      ),
+    }),
 
     TECH_SOURCE_CODE_001: () =>
       `The Developer shall, upon final acceptance of the Software, deliver to the Client all source code, object code, technical documentation, build scripts, repositories, credentials, and related materials in accordance with the following arrangement: ${stripExternalReferencePhrases(

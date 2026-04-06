@@ -1,4 +1,5 @@
 import { getPartyNamingPrompt } from "../services/partyNaming.js";
+import { getDocumentStyleProfile } from "../services/draftingPolicy.js";
 
 function formatVariableEntries(variables = {}) {
   return Object.entries(variables)
@@ -117,6 +118,55 @@ function formatFieldInsights(semanticContext = {}) {
     .join("\n");
 }
 
+function formatStylePreferences(semanticContext = {}) {
+  const style = semanticContext?.style_preferences || {};
+  const preferences = [];
+
+  if (style.density === "lawyer_formal_dense") {
+    preferences.push(
+      "Make the document read like a full lawyer-prepared agreement, with substantive clause bodies rather than thin summaries."
+    );
+  }
+
+  if (style.openingStyle === "formal_execution_block") {
+    preferences.push(
+      "Use a formal opening structure: title, execution line, party introduction, and recitals where appropriate."
+    );
+  }
+
+  if (style.recitalStyle === "whereas_recitals") {
+    preferences.push(
+      "Use short but meaningful recitals to frame the transaction and business background."
+    );
+  }
+
+  if (style.bodyStyle === "substantive_numbered_clauses") {
+    preferences.push(
+      "Draft numbered clauses that contain complete legal mechanics, and use itemized subparts where the facts call for breakdowns."
+    );
+  }
+
+  if (style.preferDefinitions) {
+    preferences.push(
+      "Where suitable, define key commercial or legal terms before using them repeatedly later in the document."
+    );
+  }
+
+  if (style.preferSchedules) {
+    preferences.push(
+      "Where the intake includes technical, commercial, or specification-heavy detail, present that detail in schedule-style or clearly itemized language."
+    );
+  }
+
+  if (style.preferDetailedExecution) {
+    preferences.push(
+      "Use a complete execution block with formal signatory wording and capacity references."
+    );
+  }
+
+  return preferences.map((entry) => `- ${entry}`).join("\n");
+}
+
 export function buildPrompt(input) {
   const {
     document_type,
@@ -135,6 +185,9 @@ export function buildPrompt(input) {
   const clauseGuidanceBlock = formatClauseGuidance(semanticContext);
   const directivesBlock = formatDraftingDirectives(semanticContext);
   const fieldInsightsBlock = formatFieldInsights(semanticContext);
+  const stylePreferencesBlock =
+    formatStylePreferences(semanticContext) ||
+    formatStylePreferences({ style_preferences: getDocumentStyleProfile(document_type) });
 
   return `You are a senior Indian transactional lawyer drafting a complete ${document_type}.
 
@@ -158,6 +211,8 @@ NON-NEGOTIABLE RULES:
 13. Maintain formal grammar, consistent legal terminology, subject-verb agreement, and clean punctuation throughout the draft.
 14. If the intake includes renewal mechanics, termination notice, termination grounds, cure periods, dispute method, GST/tax handling, liability caps, indemnity scope, confidentiality access limits, residual knowledge treatment, support obligations, milestones, acceptance criteria, inspection timelines, risk-transfer stages, source-code delivery, change-request process, repayment mechanics, invocation procedure, deadlock or exit rights, or binding nature, reflect them in the legally correct clauses instead of ignoring them.
 15. Use the interpreted legal facts below as the primary explanation of what the user means. The raw intake remains the source material, but the interpreted facts tell you how those inputs should legally operate.
+16. Make the draft feel complete and professionally prepared. Prefer fuller clause text, well-formed recitals, definitions where useful, and properly structured operative language over sparse or skeletal drafting.
+17. Do not pad the document with generic filler. Add depth only where it is legally justified by the blueprint, the intake, or the interpreted facts.
 
 PARTY-DRAFTING GUIDANCE:
 - For an individual, describe the party in natural legal style such as an individual residing at the stated address.
@@ -181,6 +236,9 @@ ${clauseGuidanceBlock || "- Use each input in the legally appropriate clause fam
 
 DRAFTING DIRECTIVES:
 ${directivesBlock || "- Understand the user's intent before drafting."}
+
+DOCUMENT PRESENTATION STYLE:
+${stylePreferencesBlock || "- Use a formal, complete, lawyer-style presentation."}
 
 FIELD-BY-FIELD LEGAL MEANING:
 ${fieldInsightsBlock || "- No field insights supplied."}

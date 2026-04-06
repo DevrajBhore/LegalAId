@@ -4,7 +4,7 @@ import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
 import {
   chatWithDocument,
-  downloadDocx,
+  downloadDocument,
   fixIssue,
   saveDocumentHistory,
   validateDocument,
@@ -13,6 +13,17 @@ import { Icons } from "../utils/icons";
 import "./Editor.css";
 
 const SESSION_KEY = "legalaid_editor_draft";
+const EXPORT_FORMATS = [
+  { value: "docx", label: "DOCX" },
+  { value: "pdf", label: "PDF" },
+  { value: "txt", label: "TXT" },
+];
+const LEGAL_DISCLAIMER =
+  "LegalAId generates contracts based on established Indian legal principles and standard drafting practices. The documents are designed to be enforceable and commercially usable. Like any legal document, final enforceability depends on execution and specific circumstances, so review is recommended for complex or high-value cases.";
+
+function formatExportLabel(format = "docx") {
+  return String(format || "docx").toUpperCase();
+}
 
 function markDraftEdited(nextDraft, { aiTouched = false } = {}) {
   if (!nextDraft) return nextDraft;
@@ -89,7 +100,8 @@ export default function Editor() {
   const [validation, setValidation] = useState(initialState.validation);
   const [documentMeta] = useState(initialState.documentMeta);
   const [history, setHistory] = useState(initialState.history);
-  const [downloading, setDownloading] = useState(false);
+  const [exportFormat, setExportFormat] = useState("docx");
+  const [downloadingFormat, setDownloadingFormat] = useState(null);
   const [hasEdited, setHasEdited] = useState(false);
   const [needsValidation, setNeedsValidation] = useState(false);
   const [validating, setValidating] = useState(false);
@@ -197,10 +209,11 @@ export default function Editor() {
     setNeedsValidation(true);
   };
 
-  const handleDownload = async () => {
-    setDownloading(true);
+  const handleDownload = async (format = exportFormat) => {
+    const resolvedFormat = String(format || exportFormat).toLowerCase();
+    setDownloadingFormat(resolvedFormat);
     try {
-      await downloadDocx(draft, validation);
+      await downloadDocument(draft, validation, resolvedFormat);
       setSaveState("saving");
 
       try {
@@ -220,9 +233,9 @@ export default function Editor() {
         setSaveState("error");
       }
     } catch {
-      alert("Download failed. Please check that the backend is running.");
+      alert(`Export failed for ${formatExportLabel(resolvedFormat)}. Please check that the backend is running.`);
     } finally {
-      setDownloading(false);
+      setDownloadingFormat(null);
     }
   };
 
@@ -459,6 +472,7 @@ export default function Editor() {
     riskLevel !== "BLOCKED" &&
     issueCount === 0 &&
     !needsValidation;
+  const isExporting = Boolean(downloadingFormat);
   const workspaceLinks = [
     { label: "Library", path: "/library" },
     { label: "Documents", path: "/documents" },
@@ -528,16 +542,36 @@ export default function Editor() {
             )}
 
             {isCertified ? (
-              <button
-                className={`download-btn-top${
-                  downloading ? " downloading" : ""
-                }`}
-                onClick={handleDownload}
-                disabled={downloading}
-              >
-                <span className="btn-icon">{Icons.download}</span>
-                {downloading ? "Preparing..." : "Download DOCX"}
-              </button>
+              <div className="export-controls">
+                <label className="export-format-label" htmlFor="editor-export-format">
+                  Export as
+                </label>
+                <select
+                  id="editor-export-format"
+                  className="export-format-select"
+                  value={exportFormat}
+                  onChange={(event) => setExportFormat(event.target.value)}
+                  disabled={isExporting}
+                >
+                  {EXPORT_FORMATS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  className={`download-btn-top${
+                    isExporting ? " downloading" : ""
+                  }`}
+                  onClick={() => handleDownload(exportFormat)}
+                  disabled={isExporting}
+                >
+                  <span className="btn-icon">{Icons.download}</span>
+                  {isExporting
+                    ? `Preparing ${formatExportLabel(downloadingFormat)}...`
+                    : `Export ${formatExportLabel(exportFormat)}`}
+                </button>
+              </div>
             ) : (
               <button
                 className={`validate-download-btn${
@@ -573,6 +607,11 @@ export default function Editor() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="editor-disclaimer">
+          <div className="editor-disclaimer__label">Legal disclaimer</div>
+          <p>{LEGAL_DISCLAIMER}</p>
         </div>
 
         <div className="editor-body">
@@ -650,7 +689,7 @@ export default function Editor() {
                 <RiskPanel
                   validation={validation}
                   onDownload={handleDownload}
-                  downloading={downloading}
+                  downloading={isExporting}
                   hideDownload
                   onFixIssue={handleFixIssue}
                   fixingIssueId={fixingIssueId}
