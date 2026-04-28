@@ -1,0 +1,60 @@
+{
+  "sub_id": "rules_27-06-2018_kusum_seed_grading_marking_rules_2018_c3f544eb770a_",
+  "parent_act_id": "the_agricultural_produce_grading_and_marking_act_1937__2403",
+  "title": "Kusum seed Grading & Marking rules 2018",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00011_193701_1535099362507/rulesindividualfile/&file=kusum_seed_g_%26_final_rules.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-06-2018",
+  "description": "Kusum seed Grading & Marking rules 2018",
+  "hindi_description": null,
+  "file_title": "kusum_seed_g_&_final_rules.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00011_193701_1535099362507/rulesindividualfile/&file=kusum_seed_g_%26_final_rules.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00011_193701_1535099362507/rulesindividualfile/&file=kusum_seed_g_%26_final_rules.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rule&filename=kusum_seed_g_&_final_rules.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00011_193701_1535099362507&type=rules&filename=kusum_seed_g_%26_final_rules.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Kusum seed Grading & Marking rules 2018",
+  "fetched_at": "2026-04-13T19:12:09.829Z"
+}

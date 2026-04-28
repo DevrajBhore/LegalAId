@@ -1,0 +1,37 @@
+{
+  "sub_id": "notifications_29-08-1996_so_602_e_tdb_act_43f0d1804adb_",
+  "parent_act_id": "the_technology_development_board_act_1995__1901",
+  "title": "S.O. 602 (E) TDB Act.",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_31_49_00001_199544_1517807320530/notificationindividualfile/&file=Notification+TDB+24+08+1996.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-08-1996",
+  "description": "S.O. 602 (E) TDB Act.",
+  "hindi_description": null,
+  "file_title": "Notification TDB 24 08 1996.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_31_49_00001_199544_1517807320530/notificationindividualfile/&file=s.o_602_%28e%29-_tdb_act..pdf"
+  ],
+  "alternate_file_titles": [
+    "s.o_602_(e)-_tdb_act..pdf"
+  ],
+  "alternate_descriptions": [
+    "S.O 602 (E)- TDB Act."
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_31_49_00001_199544_1517807320530&type=notification&filename=Notification%20TDB%2024%2008%201996.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null
+  },
+  "text": "-- 1 of 1 --",
+  "fetched_at": "2026-04-11T19:26:44.947Z"
+}

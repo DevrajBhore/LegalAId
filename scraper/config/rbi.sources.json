@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx",
+      "type": "notifications",
+      "label": "RBI Notifications"
+    },
+    {
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx",
+      "type": "master-directions",
+      "label": "RBI Master Directions"
+    },
+    {
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewMasterDirections.aspx?id=10192X",
+      "type": "master-directions-index",
+      "label": "RBI Master Directions Index"
+    },
+    {
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewMasterCirculardetails.aspx?did=343",
+      "type": "master-circulars",
+      "label": "RBI Master Circulars"
+    },
+    {
+      "url": "https://www.rbi.org.in/scripts/bs_circularindexdisplay.aspx/Scripts/BS_ViewMasterCirculardetails.aspx",
+      "type": "circulars-index",
+      "label": "RBI Circulars Index"
+    },
+    {
+      "url": "https://www.rbi.org.in/scripts/bs_circularindexdisplay.aspx/Scripts/BS_ViewListofstandalonecirculars.aspx",
+      "type": "standalone-circulars",
+      "label": "RBI Standalone Circulars"
+    }
+  ]
+}

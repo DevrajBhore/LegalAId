@@ -1,0 +1,89 @@
+{
+  "act_id": "the_public_liability_insurance_act_1991__1960",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 24,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 24,
+    "modal_duplicate_count": 4,
+    "successful_candidate_count": 24,
+    "failed_candidate_count": 1,
+    "keyword_hits": {
+      "rules": 7,
+      "regulations": 1,
+      "order": 5,
+      "orders": 1,
+      "scheme": 7,
+      "notification": 12,
+      "notifications": 1,
+      "directions": 2,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Schedule 1. THE SCHEDULE Order"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1960?view_type=browse",
+    "scanned_at": "2026-04-13T20:16:02.749Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "S.O. 1878 (E) [13-07-2015] : Notification under Public Liability Insurance Act, 1991- extension of term of Fund Manager",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/rulesindividualfile/&file=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/rulesindividualfile/&file=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/rulesindividualfile/&file=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rule&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act,_1991.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_%28e%29_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=rules&filename=s.o._1878_(e)_%5B13_07_2015%5D_notification_under_public_liability_insurance_act%2C_1991.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

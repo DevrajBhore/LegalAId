@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_31-03-2017_notification_no242017-cusnt_dated_3132017_c51eee1f7da2_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.24/2017-Cus(NT), Dated 31.3.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt24-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2017",
+  "description": "Notification No.24/2017-Cus(NT), Dated 31.3.2017",
+  "hindi_description": null,
+  "file_title": "csnt24-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt24-2017.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt24-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt24-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt24-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt24-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt24-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No. 24/2017-Customs (N.T.) New Delhi, the 31st March, 2017 G.S.R (E). -In exercise of the powers conferred by sub-section (2) of section/4n 141 read with section 157 of the Customs Act, 1962(52 of 1962), the Central Board of Excise and Customs hereby makes the following regulations further to amend the Handling of Cargo in Customs Areas Regulations,2009, namely:- 1. (1) These regulations may be called the Handling of Cargo in Customs Areas (Amendment) Regulations, 2017. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In the Handling of Cargo in Customs Areas Regulations, 2009, in regulation 6, in sub-regulation (1), after clause (a), following clause shall be inserted, namely:- “(aa) Provide information regarding arrival of the imported goods to the Deputy Commissioner or Assistant Commissioner of Customs immediately on arrival of said goods in the customs area and also information about their departure after the clearance thereof ”. [F.No.450/ 114/ 2015 -Cus IV] (Shaifali G Singh) Under Secretary to the Government of India Note:- The principal regulations notified vide notification No. 26/2009- Customs (N.T.) dated 17th March, 2009 were published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i) vide notification number G.S.R.174(E), dated the 17th March, 2009 and was last amended vide notification number 115/2016- Customs (N.T.) dated 26th August, 2016 published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i) vide notification number G.S.R.822(E), dated the 26th August,2016. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:43:37.017Z"
+}

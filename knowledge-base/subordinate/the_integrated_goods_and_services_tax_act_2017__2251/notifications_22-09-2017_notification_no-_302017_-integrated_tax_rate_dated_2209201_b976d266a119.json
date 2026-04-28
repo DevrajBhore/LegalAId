@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-09-2017_notification_no-_302017_-integrated_tax_rate_dated_22092017_345864e41c0c_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No- 30/2017 -Integrated Tax (Rate) dated 22.09.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification30-IGST-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-09-2017",
+  "description": "Notification No- 30/2017 -Integrated Tax (Rate) dated 22.09.2017",
+  "hindi_description": null,
+  "file_title": "Notification30-IGST-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification30-IGST-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification30-IGST-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification30-IGST-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification30-IGST-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification30-IGST-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification30-IGST-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Notification No. 30/2017-Integrated Tax (Rate) New Delhi, the 22nd September, 2017 G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 6 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017), the Central Government, being satisfied that it is necessary in the public interest so to do, on the recommendations of the Goods and Services Tax Council, hereby exempts inter-State supplies of goods, the description of which is specified in column (3) of the Table below, falling under the tariff item, sub-heading, heading or Chapter, as the case may be, as specified in the corresponding entry in column (2), from the whole of the integrated tax leviable thereon under section 5 of the Integrated Good and Services Tax Act, 2017 (13 of 2017), subject to the condition specified in column (4) of the Table below, namely:- Table Sl. No. Tariff item, sub- heading, heading or Chapter Description of Goods Condition (1) (2) (3) (4) 1. 0402 Skimmed milk powder, or concentrated milk. When supplied to a distinct person as per sub - section (4) of section 25 of the Central Goods and Services Tax Act, 2017 (12 of 2017), for use in production of milk [for distribution through dairy cooperatives] and not for further supply of skimmed milk powder, or concentrated milk as such. Explanation. – (1) In this notification, “tariff item”, “sub-heading” “heading” and “Chapter” shall mean respectively a tariff item, heading, sub-heading and Chapter as specified in the First Schedule to the Customs Tariff Act, 1975 (51 of 1975). (2) The rules for the interpretation of the First Schedule to the said Customs Tariff Act, 1975, including the Section and Chapter Notes and the General Explanatory Notes of the First Schedule shall, so far as may be, apply to the interpretation of this notification. [F.No.354/247/2017- TRU] (Mohit Tewari ) Under Secretary to the Government of India. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:52:26.942Z"
+}

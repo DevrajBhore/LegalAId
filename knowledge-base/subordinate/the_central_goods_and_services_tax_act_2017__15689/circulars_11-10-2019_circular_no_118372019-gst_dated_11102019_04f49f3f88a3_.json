@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_11-10-2019_circular_no_118372019-gst_dated_11102019_04f49f3f88a3_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Circular No. 118/37/2019-GST dated 11.10.2019",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-118.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-10-2019",
+  "description": "Circular No. 118/37/2019-GST dated 11.10.2019",
+  "hindi_description": null,
+  "file_title": "circular-cgst-118.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-118.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-118.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-118.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-118.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-118.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-118.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 118/37/2019-GST 1 F. No. 354/136/2019-TRU Government of India Ministry of Finance Department of Revenue Tax research Unit **** Room No. 156, North Block, New Delhi, the 11th October 2019 To, The Principal Chief Commissioners/ Chief Commissioners/ Principal Commissioners/ Commissioner of Central Tax (All) / The Principal Director Generals/ Director Generals (All) Madam/Sir, Subject: Clarification regarding determination of place of supply in case of software/design services related to Electronics Semi-conductor and Design Manufacturing (ESDM) industry – reg. Various representations have been received from trade and industry seeking clarification on determination of place of supply in case of supply of software/design services by a supplier located in taxable territory to a service recipient located in non- taxable territory by using the sample hardware kits provided by the service recipient. 2. It is stated that a number of companies that are part of the growing Electronics Semi- conductor and Design Manufacturing (ESDM) industry in India are engaged in the process of developing software and designing integrated circuits electronically for customers located overseas. The client/customer electronically provides Indian development and design companies with design requirements and Intellectual Property blocks (“IP blocks”, reusable units of software logic and design layouts that can be combined to form newer designs). Based on these, the Indian company digitally integrates the various IP blocks to develop the software and the silicon or hardware design. These designs are communicated abroad (in industry standard electronic formats) either to the customer or (on behest of the customer) a manufacturing facility for the manufacture of hardware based on such designs. 2.1 In addition, the software developed is also integrated upon or customized to this hardware. On some occasions, samples of such prototype hardware are then provided back to the Indian development and design companies to test and validate the software and design that has been developed to ensure that it is error free. 2.2 The trade has requested clarification on whether provision of hardware prototypes and samples and testing thereon lends these services the character of performance-based services in respect of “goods required to be made physically available by the recipient to the provider”. -- 1 of 2 -- Circular No. 118/37/2019-GST 2 3. The provisions relating to determination of place of supply as contained in the Integrated Goods & Services Tax Act, 2017 (hereinafter referred to as “the IGST Act”) have been examined. In order to ensure uniformity in the implementation of the provisions of the law, the Board, in exercise of its powers conferred by sub-section (1) of section 168 of the Central Goods & Services Tax Act, 2017 (hereinafter referred to as “the CGST Act”) clarifies the same as below. 4. In contracts where service provider is involved in a composite supply of software development and design for integrated circuits electronically, testing of software on sample prototype hardware is often an ancillary supply, whereas, chip design/software development is the principal supply of the service provider. The service provider is not involved in software testing alone as a separate service. The testing of software/design is aimed at improving the quality of software/design and is an ancillary activity. The entire activity needs to be viewed as one supply and accordingly treated for the purposes of taxation. Artificial vivisection of the contract of a composite supply is not provided in law. These cases are fact based and each case should be examined for the nature of supply contracted. 4.1 Therefore, it is clarified that the place of supply of software/design by supplier located in taxable territory to service recipient located in non-taxable territory by using sample prototype hardware / test kits in a composite supply, where such testing is an ancillary supply, is the location of the service recipient as per Section 13(2) of the IGST Act. Provisions of Section 13(3)(a) of IGST Act do not apply separately for determining the place of supply for ancillary supply in such cases. 5. Difficulty if any, in the implementation of this circular may be brought to the notice of the Board. Yours Faithfully, (Harish Y N) OSD, TRU-II Email: harish.yn@gov.in Tel: 011 2309 5547 -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:12:15.386Z"
+}

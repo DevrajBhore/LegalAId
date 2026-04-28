@@ -1,0 +1,38 @@
+{
+  "act_id": "the_army_act_1950__1930",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 1,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 1,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 1,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 1,
+      "rules": 7,
+      "regulation": 1,
+      "regulations": 4,
+      "order": 11,
+      "orders": 4,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules",
+      "Power to make rules. Show Related Subordinates Section 192. Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1930?view_type=browse",
+    "scanned_at": "2026-04-11T09:18:57.035Z"
+  },
+  "failed_candidates": []
+}

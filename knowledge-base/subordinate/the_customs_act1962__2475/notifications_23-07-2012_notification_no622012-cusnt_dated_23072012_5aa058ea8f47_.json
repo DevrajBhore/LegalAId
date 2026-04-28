@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_23-07-2012_notification_no622012-cusnt_dated_23072012_5aa058ea8f47_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.62/2012-Cus(NT), dated 23.07.2012",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=62-12.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "23-07-2012",
+  "description": "Notification No.62/2012-Cus(NT), dated 23.07.2012",
+  "hindi_description": null,
+  "file_title": "62-12.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=62-12.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=62-12.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=62-12.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=62-12.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=62-12.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=62-12.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No.62/2012-Customs (N.T.) New Delhi, dated the 23rd July, 2012. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby imposes the Joint Commissioner or Additional Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi, to exercise the powers and discharge the duties as adjudicating authority over the powers and duties exercisable by - (i) the Joint /Additional Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi; (ii) the Assistant / Deputy Commissioner of Customs, ICD, Patparganj, New Delhi; and (iii) the Assistant / Deputy Commissioner of Customs, ICD, Sabarmati, Gujarat, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s Pro Photo, A-8, DDA Shed, Okhla Industrial Area, Phase-II, New Delhi issued vide, DRI F.No. 50D/121D/2007-CI dated 10.05.2012, by the Additional Director General, Directorate of Revenue Intelligence, New Delhi. [F.No. 437/21/2012-Cus.IV] (Vikas) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:36:04.688Z"
+}

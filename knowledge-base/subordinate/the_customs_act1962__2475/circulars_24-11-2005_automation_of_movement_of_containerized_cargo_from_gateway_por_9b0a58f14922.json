@@ -1,0 +1,48 @@
+{
+  "sub_id": "circulars_24-11-2005_automation_of_movement_of_containerized_cargo_from_gateway_ports_to_hinterland_ports_-_smtp-_circular_no462005-cus_dated_24112005_7a970263135e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Automation of movement of containerized cargo from Gateway Ports to hinterland ports - SMTP.- Circular No.46/2005-Cus., dated 24.11.2005",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=CIRCULAR+46-2005+%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "24-11-2005",
+  "description": "Automation of movement of containerized cargo from Gateway Ports to hinterland ports - SMTP.- Circular No.46/2005-Cus., dated 24.11.2005",
+  "hindi_description": null,
+  "file_title": "CIRCULAR 46-2005 (1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR%2046-2005%20(1).pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=CIRCULAR+46-2005+%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR+46-2005+%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR%2B46-2005%2B(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR+46-2005+%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR%2B46-2005%2B(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=CIRCULAR+46-2005+%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=CIRCULAR%2046-2005%20(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "CIRCULAR NO. 46/2005-Cus F.No.450/66/2004-CUS-IV Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs November 24th, 2005 Subject: Automation of movement of containerized cargo from Gateway Ports to hinterland ports - SMTP - regarding- The undersigned is directed to state that during the deliberations of Inter Ministerial Group consisting of representatives of Ministry of Shipping, Ministry of Commerce and Planning Commission under the Chairmanship of Secretary (Revenue), one of the issues that came up was the requirement of filing Sub-Manifest Transhipment Permit (SMTP) application and consequent delay in clearance of goods meant for transshipment to hinterland ports/ ICDs/ CFSs. 2. The Board has now decided to automate the transshipment of containerized cargo from one Port to an Inland Port or ICD/CFS where the Indian Customs EDI System (ICES) is operational. This would involve exchange of messages for Transshipment of Cargo electronically among Customs, Port authorities, ICDs and Shipping Agents.. The implementation of this module is a significant step in the ongoing Business Process Re- engineering initiatives of the department. This will also reduce the congestion and dwell-time of cargo at the ports and will contribute to reduction in transaction costs of imports. 3. In the automated Transshipment Module, the requirement of an application by the carrier will be done away with and the SMTP (Sub manifest Transshipment Permit) portion of the IGM itself will be treated as a request for transshipment. Carriers will not be required to separately file an application for this purpose. They will however be required to indicate the code of the transporter undertaking the transshipment (e.g. CONCOR) in the IGM. For this purpose, a field is being added in the IGM format to capture this information. The ICES system will allow transshipment of those containers against whom the port of destination is indicated as ports other than the port of discharge. 4. The transshipment permit information will be sent to the carrier, the transporter undertaking the transshipment, custodian of the gateway port, and the ICES system at the destination ICD. Transshipment permit can also be printed by the carrier in his office or in the custom house. 5. The transshipment permit transmitted to the recipient port/ ICD/ CFS will automatically be converted into an IGM and the Shipping Lines will not be required to file any fresh IGM in respect of such containers. 6. The transporter performing the transshipment activity will be required to electronically submit a container arrival report to the ICES system at the destination ICD/ CFS in a specified format. The container arrival report will be matched with transshipment message received from the Gateway Port and a 'landing certificate ' message will be generated by the inland port/ICD/CFS which will be transmitted to the Gateway port for closure of IGM Lines. 7. Instructions on debit of Bonds for transshipment are also being modified to enable the carrier to carry out debit and credit in the Bonds. Circular in this regard is being issued separately. 8. Presently the automated transshipment module is implemented between JNPT and ICD Tughlakabad. Detailed transshipment procedure is being worked out by the Directorate of Systems and will be circulated to all automated custom locations for informing the trade before implementation. 9. Receipt of this Circular may be acknowledged. -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:40:10.795Z"
+}

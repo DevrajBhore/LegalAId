@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_20-11-2001_notification_no572001-cusnt_dated_20112001_6cba07660498_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.57/2001-Cus(NT), dated 20.11.2001",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-2001.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-11-2001",
+  "description": "Notification No.57/2001-Cus(NT), dated 20.11.2001",
+  "hindi_description": null,
+  "file_title": "57-2001.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-2001.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-2001.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-2001.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-2001.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-2001.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-2001.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "20th November, 2001 Notification No. 57/2001-Customs ( N.T ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby appoints the Commissioner of Customs, Bangalore as the Commissioner of Customs, Tiruchirapalli, Commissioner of Customs, Air Cargo Complex, Chennai and Commissioner of Customs, Custom House, Chennai for the purpose of adjudication of show cause notices - (i) No.VIII/10/23/2000 Cus.Adj, dated the 11th August, 2000, issued by the Commissioner of Customs, Tiruchirapalli, (ii) No.SIIB/35/2000/ACC/S16/11/2000-ACC, dated the 16th September, 2000, issued by the Joint Commissioner of Customs, Chennai, and (iii) No.SIIB/8/2000/S16C(A)SEA Appg.5/2001-SIIB, dated the 16th June, 2000, issued by the Commissioner of Customs, Custom House, Chennai, to M/s. Leela Scottish Lace Ltd., Mumbai. Rajendra Singh Under Secretary to the Government of India F.NO.437/19 /2000-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:48.430Z"
+}

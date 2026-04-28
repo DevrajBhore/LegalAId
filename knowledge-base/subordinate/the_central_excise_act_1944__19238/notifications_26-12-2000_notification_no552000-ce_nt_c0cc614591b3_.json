@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_26-12-2000_notification_no552000-ce_nt_c0cc614591b3_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.55/2000-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent55-2k.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-12-2000",
+  "description": "Notification No.55/2000-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent55-2k.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent55-2k.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent55-2k.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent55-2k.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent55-2k.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent55-2k.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent55-2k.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification makes amendments in Central Excise Rules 1944, in rule 173 S 26 th December, 2000 Notification No. 55/2000 - C. E. (N.T.) In exercise of the powers conferred by section 37 of the Central Excise Act, 1944 (1 of 1944), the Central government hereby makes the following rules further to amend the Central Excise Rules, 1944 namely :- 1. These rules may be called the Central Excise (14 th Amendment) Rules, 2000. 2. They shall come into force from the date of their publication in the Official Gazette. 1. In the Central Excise Rules 1944, in rule 173 S, in sub-rule (1) after the words \"having jurisdiction over the factory of manufacture, the words and the figures \" or the warehouses appointed and registered under rule 140, to which goods are moved and from where such goods are cleared for home consumption on payment of duty, as the case may be\" shall be inserted. ( S.K. SINHA ) UNDER SECRETARY TO THE GOVERNMENT OF INDIA F.No. 261/27/10/2000-CX.8 Footnote :- The Principal rules were published vide Notification No. IVD-C.E. dated 28.2.1944 and was last amended vide Notification No. 51/2000-CE(NT) dated 29.8.2000 -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:32:35.704Z"
+}

@@ -28,6 +28,26 @@
   "version": "3.0",
   "conditional_clauses": [
     {
+      "clause": "SERVICE_DELIVERABLES_001",
+      "include_if": "include_deliverables == true"
+    },
+    {
+      "clause": "CORE_DEFINITIONS_001",
+      "include_if": "include_nomenclature_clause == true"
+    },
+    {
+      "clause": "SERVICE_WARRANTY_001",
+      "include_if": "include_warranty_clause == true"
+    },
+    {
+      "clause": "CORE_INDEMNITY_001",
+      "include_if": "include_indemnity_clause == true"
+    },
+    {
+      "clause": "CORE_LIMITATION_LIABILITY_001",
+      "include_if": "include_indemnity_clause == true"
+    },
+    {
       "clause": "SERVICE_SLA_001",
       "include_if": "include_sla == true"
     },

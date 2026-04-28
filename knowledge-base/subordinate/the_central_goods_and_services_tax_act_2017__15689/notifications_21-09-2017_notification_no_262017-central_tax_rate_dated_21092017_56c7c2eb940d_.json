@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-09-2017_notification_no_262017-central_tax_rate_dated_21092017_56c7c2eb940d_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 26/2017-Central Tax (Rate) dated 21.09.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification26-CGST.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-09-2017",
+  "description": "Notification No. 26/2017-Central Tax (Rate) dated 21.09.2017",
+  "hindi_description": null,
+  "file_title": "Notification26-CGST.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification26-CGST.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification26-CGST.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification26-CGST.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification26-CGST.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification26-CGST.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification26-CGST.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "1 [TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 26/2017-Central Tax (Rate) New Delhi, the 21st September, 2017 G.S.R.….(E).-In exercise of the powers conferred by sub-section (1) of section 11 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on being satisfied that it is necessary in the public interest so to do, on the recommendations of the Council, hereby exempts intra state supply of heavy water and nuclear fuels falling in Chapter 28 of the First Schedule to the Customs Tariff Act, 1975 (51 of 1975) by the Department of Atomic Energy to the Nuclear Power Corporation of India Ltd from the whole of the central tax leviable thereon under section 9 of the Central Good and Services Tax Act, 2017 (12 of 2017). [F. No. 354/173/2017 TRU] (Ruchi Bisht) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:17:18.850Z"
+}

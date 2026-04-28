@@ -1,0 +1,35 @@
+{
+  "act_id": "the_unlawful_activities_prevention_act_1967__1470",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 60,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 60,
+    "modal_duplicate_count": 2,
+    "successful_candidate_count": 60,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 11,
+      "regulations": 1,
+      "order": 18,
+      "orders": 2,
+      "notification": 5,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 53. Orders and rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1470?view_type=browse",
+    "scanned_at": "2026-04-12T07:08:58.788Z"
+  },
+  "failed_candidates": []
+}

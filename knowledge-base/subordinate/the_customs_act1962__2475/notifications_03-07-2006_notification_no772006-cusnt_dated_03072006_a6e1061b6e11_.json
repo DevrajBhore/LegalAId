@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_03-07-2006_notification_no772006-cusnt_dated_03072006_a6e1061b6e11_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.77/2006-Cus(NT), dated 03.07.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-06_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-07-2006",
+  "description": "Notification No.77/2006-Cus(NT), dated 03.07.2006",
+  "hindi_description": null,
+  "file_title": "77-06_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-06_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-06_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-06_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "3rd July, 2006 Notification No. 77 / 2006 - Customs (N.T.) S.O. (E). - In exercise of the powers conferred by sub-section (1) of Section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Central Excise (Adjudication), New Customs House, New Delhi, and authorises him to exercise the powers and discharge the duties conferred or imposed on - (i) The Commissioner of Customs Inland Container Depot, Tughlakabad, New Delhi, (ii) The Commissioner of Customs (Imports), Nhava Sheva; (iii) The Commissioner of Customs (Imports), New Custom House, Mumbai, and (iv) The Commissioner of Customs (Import and General), New Custom House, New Delhi; for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Elegant Industries, 205, Aradhna Bhawan, 2nd floor, Azadpur Commercial Complex, Delhi and M/s Elegant International at 301, Nikita Tower-II, Azadpur Commercial Complex, Delhi and Others, issued vide F.No.DRI /23/18/2005/DZU, dated the 6th August, 2005, by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit: B-4, 6th Floor, Paryavaran Bhawan, CGO Complex, New Delhi. F.NO.437/23/2006-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:10:13.913Z"
+}

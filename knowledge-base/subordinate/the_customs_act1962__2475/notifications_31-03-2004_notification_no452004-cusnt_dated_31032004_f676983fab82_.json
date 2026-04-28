@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_31-03-2004_notification_no452004-cusnt_dated_31032004_f676983fab82_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.45/2004-Cus(NT), dated 31.03.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=45-04_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2004",
+  "description": "Notification No.45/2004-Cus(NT), dated 31.03.2004",
+  "hindi_description": null,
+  "file_title": "45-04_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=45-04_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=45-04_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=45-04_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "31st March 2004 Notification No. 45/2004 - Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Export Promotion), Mumbai, to act as Commissioner of Customs (Import), Nhava Sheva , Mumbai and Commissioner of Customs (General),New Custom House , Mumbai, for the purpose of adjudicating the matters relating to Show Cause Cum Demand Notice pertaining to M/s. Scotish Chemical Industries, 407-412, Span Centre, South Avenue, Santacruz (West), Mumbai- 400054 issued vide F. No. DRI/BZU/B/Inv-11/2002/1731, dated the 30th September,2003, by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, 3rd/4th floor, Hotel Waldorf Building, 16, Arthur Bunder Road, Colaba , Mumbai - 400006. D.S. Garbyal Under Secretary to the Government of India F.NO.437/2/2004-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:02:55.650Z"
+}

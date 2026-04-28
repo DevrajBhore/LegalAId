@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_03-03-2017_notification_no182017-cusnt_dated_3317_445c578a7c3a_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.18/2017-Cus(NT), Dated 3.3.17",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt18-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-03-2017",
+  "description": "Notification No.18/2017-Cus(NT), Dated 3.3.17",
+  "hindi_description": null,
+  "file_title": "csnt18-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt18-2017.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt18-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt18-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt18-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt18-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt18-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To Be Published In The Gazette Of India, Extraordinary, Part II, Section 3, Sub-Section (I)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No. 18 /2017-Customs (N.T.) New Delhi, the 3rd March , 2017 G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following amendments in the notification of the Government of India, Ministry of Finance (Department of Revenue) No.31/97-Customs, dated the 7th July, 1997, published vide number G.S.R.367(E), dated the 7th July, 1997 namely:- In the said notification, for serial number 6 and the entry relating thereto, the following shall be substituted, namely:- “6. All Assistant Directors of the Central Economic Intelligence Bureau.”. [F. No. 437/05/2017-Cus IV] (Zubair Riaz) Director Customs Note: The principal notification was published vide number G.S.R.367(E), dated the 7th July,1997. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:43:29.660Z"
+}

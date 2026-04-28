@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_15-06-2009_notification_no652009-cusntdated_1562009_a77a8bf93b71_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.65/2009-Cus(NT),dated 15.6.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-2009_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "15-06-2009",
+  "description": "Notification No.65/2009-Cus(NT),dated 15.6.2009",
+  "hindi_description": null,
+  "file_title": "65-2009_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-2009_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-2009_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-2009_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) ......... New Delhi, the 15th June, 2009. 25 Jyaistha, 1931 (SAKA ) Notification No.65 / 2009-Customs (N.T.) G.S.R. No. (E) - In exercise of the powers conferred by sub-rule (1) of Rule 3 of the Customs Tariff (Transitional Product Specific Safeguard Duty) Rules, 2002, and in supersession of notification of the Government of India in the Ministry of Finance (Department of Revenue) No.106/2008-Customs (N.T) issued vide G.S.R.No.632 (E) dated the 2nd September, 2008, the Central Government hereby appoints Ms. Praveen Mahajan as the Director General (Specific Safeguard) for the purposes of the said Rules. F. No. 528/23/2008-Cus.(TU) Sd/- (M. M. Parthiban) Director (Customs) to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:24:24.534Z"
+}

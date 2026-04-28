@@ -121,8 +121,12 @@ ${clauseList}
 
 REQUEST: "${message}"
 
-If user wants to MODIFY a clause, return edits.
-If user is asking a QUESTION, return reply only.`;
+If user wants to MODIFY a clause - return edits.
+If user is asking a QUESTION - return reply only.
+
+JSON only:
+{"type":"edit"|"reply","reply":"max 100 words","edits":[{"clause_id":"exact id","new_text":"complete text"}]}
+edits only when type=edit.`;
 }
 
 function buildFixPrompt(draft, issue) {
@@ -157,7 +161,14 @@ ${issue.statutory_reference ? `STATUTE: ${issue.statutory_reference}` : ""}
 
 DOC TYPE: ${draft?.document_type}
 ${baselineClause?.text ? `ORIGINAL CLEAN CLAUSE:\n[${baselineClause.clause_id}] ${baselineClause.title || baselineClause.category}:\n${baselineClause.text.slice(0, 1800)}\n\n` : ""}CLAUSE TO FIX:
-${clauseList}`;
+${clauseList}
+
+Return the minimum necessary edits only.
+Do not modify unrelated clauses.
+If the original clean clause already resolves the issue, restore that wording instead of inventing new text.
+
+JSON only:
+{"explanation":"what was wrong + what you fixed (max 60 words)","edits":[{"clause_id":"exact id","new_text":"complete corrected text"}]}`;
 }
 
 function normalizeError(status, details = "") {

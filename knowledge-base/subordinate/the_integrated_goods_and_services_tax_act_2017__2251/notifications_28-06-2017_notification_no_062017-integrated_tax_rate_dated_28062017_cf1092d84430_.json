@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_28-06-2017_notification_no_062017-integrated_tax_rate_dated_28062017_cf1092d84430_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No. 06/2017-Integrated Tax (Rate) dated 28.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification+for+refund+to+CSD+section+55-6.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-06-2017",
+  "description": "Notification No. 06/2017-Integrated Tax (Rate) dated 28.06.2017",
+  "hindi_description": null,
+  "file_title": "Notification for refund to CSD section 55-6.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification%20for%20refund%20to%20CSD%20section%2055-6.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification+for+refund+to+CSD+section+55-6.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification+for+refund+to+CSD+section+55-6.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification%2Bfor%2Brefund%2Bto%2BCSD%2Bsection%2B55-6.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification+for+refund+to+CSD+section+55-6.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification%2Bfor%2Brefund%2Bto%2BCSD%2Bsection%2B55-6.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification+for+refund+to+CSD+section+55-6.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification%20for%20refund%20to%20CSD%20section%2055-6.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "1 [TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Notification No.6/2017-Integrated Tax (Rate) New Delhi, the 28th June, 2017 G.S.R. (E).- In exercise of the powers conferred by section 20 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017) read with section 55 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on the recommendations of the Council, hereby specifies the Canteen Stores Department (hereinafter referred to as the CSD), under the Ministry of Defence, as a person who shall be entitled to claim a refund of fifty per cent. of the applicable integrated tax paid by it on all inward supplies of goods received by it for the purposes of subsequent supply of such goods to the Unit Run Canteens of the CSD or to the authorized customers of the CSD. 2. This notification shall come into force with effect from the 1st day of July, 2017. [F.No.354/117/2017-TRU] (Mohit Tewari) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:50:32.154Z"
+}

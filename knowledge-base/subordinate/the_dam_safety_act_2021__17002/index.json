@@ -1,0 +1,88 @@
+{
+  "act_id": "the_dam_safety_act_2021__17002",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 7,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 7,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 7,
+    "failed_candidate_count": 1,
+    "keyword_hits": {
+      "rules": 7,
+      "regulations": 4,
+      "order": 9,
+      "orders": 1,
+      "notification": 1,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make regulations by Authority. Section 55. Rules and regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/17002?view_type=browse",
+    "scanned_at": "2026-04-13T19:16:42.966Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "National Committee on Dam Safety (Procedures, Allowance and other Expenditure) Rules, 2022 & National Dam Safety Authority (Functions and Powers) Rules, 2022",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_199_1516_00001_202141_1641277357892/rulesindividualfile/&file=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_199_1516_00001_202141_1641277357892/rulesindividualfile/&file=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_199_1516_00001_202141_1641277357892/rulesindividualfile/&file=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rule&filename=ncds_&_ndsa_(_2_nos_rules).pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_%28_2_nos_rules%29.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_199_1516_00001_202141_1641277357892&type=rules&filename=ncds_%26_ndsa_(_2_nos_rules).pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

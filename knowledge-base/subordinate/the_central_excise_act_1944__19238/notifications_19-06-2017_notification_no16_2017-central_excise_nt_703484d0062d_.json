@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_19-06-2017_notification_no16_2017-central_excise_nt_703484d0062d_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.16 /2017-Central Excise (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent16-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "19-06-2017",
+  "description": "Notification No.16 /2017-Central Excise (N.T)",
+  "hindi_description": null,
+  "file_title": "cent16-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent16-2017.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent16-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent16-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent16-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent16-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent16-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA EXTRAORDINARY, PART IL SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) (CENTRAL BOARD OF EXCISE AND CUSTOMS) New Delhi, the 19th June, 2017 29 Jyaistha ,1939 Saka Notification No.16 /2017-Central Excise (N.T) G.S.R. (E) In pursuance of clause (b) of section 2 of the Central Excise Act, 1944 (1 of 1944), read with clause (55) of section 65B of the Finance Act, 1994 (32 of 1994) and in exercise of the powers conferred by rule 3 of the Central Excise Rules, 2002 and rule 3 of the Service Tax Rules, 1994, the Central Government hereby appoints the 22nd June, 2017, as the date on which the provisions of the notification of the Government of India, in the Ministry of Finance, Department of Revenue, Central Board of Excise and Customs vide number 12/2017- Central Excise (N.T), dated the 9th June 2017, published in the Gazette of India Extraordinary vide number G.S.R.565 (E) dated the 9th June 2017, shall come into force. [F.No. 137/17/2017-Service Tax] @ ys a) nS (Dr. Sreeparvathy S.L.) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:03:21.763Z"
+}

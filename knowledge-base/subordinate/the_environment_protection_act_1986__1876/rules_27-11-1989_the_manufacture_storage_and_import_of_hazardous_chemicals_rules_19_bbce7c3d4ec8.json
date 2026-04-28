@@ -1,0 +1,66 @@
+{
+  "sub_id": "rules_27-11-1989_the_manufacture_storage_and_import_of_hazardous_chemicals_rules_1989_18e35e6e492f_",
+  "parent_act_id": "the_environment_protection_act_1986__1876",
+  "title": "The Manufacture, Storage and Import of Hazardous Chemicals Rules 1989.",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=msihc_rules_ameded_upto_date.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-11-1989",
+  "description": "The Manufacture, Storage and Import of Hazardous Chemicals Rules 1989.",
+  "hindi_description": null,
+  "file_title": "msihc_rules_ameded_upto_date.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=msihc_rules_1989.pdf"
+  ],
+  "alternate_file_titles": [
+    "msihc_rules_1989.pdf"
+  ],
+  "alternate_descriptions": [
+    "The Manufacture, Storage and Import of Hazardous Chemicals Rules 1989"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=msihc_rules_ameded_upto_date.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=msihc_rules_ameded_upto_date.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rule&filename=msihc_rules_ameded_upto_date.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=msihc_rules_ameded_upto_date.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "The Manufacture, Storage and Import of Hazardous Chemicals Rules 1989.",
+  "fetched_at": "2026-04-13T19:33:22.847Z"
+}

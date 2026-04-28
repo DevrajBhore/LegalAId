@@ -1,0 +1,60 @@
+{
+  "sub_id": "notifications_16-12-2024_amendment_tadoba_tiger_national_park_and_andhari_wildlife_sanctuary_2_pas_maharashtra_so_no_5441e_e96130b9489d_",
+  "parent_act_id": "the_environment_protection_act_1986__1876",
+  "title": "Amendment: Tadoba Tiger National Park and Andhari Wildlife Sanctuary (2 PAs) (Maharashtra) S.O. No. 5441(E)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/hindinotificationsindividualfile/&file=tadoba_andheri_amendment.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-12-2024",
+  "description": "Amendment: Tadoba Tiger National Park and Andhari Wildlife Sanctuary (2 PAs) (Maharashtra) S.O. No. 5441(E)",
+  "hindi_description": null,
+  "file_title": "tadoba_andheri_amendment.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/hindinotificationsindividualfile/&file=tadoba_andheri_amendment.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/hindinotificationsindividualfile/&file=tadoba_andheri_amendment.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/hindinotificationsindividualfile/&file=tadoba_andheri_amendment.pdf",
+        "status": 502,
+        "outcome": "source_error",
+        "error": "Source file could not be retrieved as a valid PDF."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=hindinotifications&filename=tadoba_andheri_amendment.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Amendment: Tadoba Tiger National Park and Andhari Wildlife Sanctuary (2 PAs) (Maharashtra) S.O. No. 5441(E)",
+  "fetched_at": "2026-04-13T20:53:11.763Z"
+}

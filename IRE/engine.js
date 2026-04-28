@@ -85,12 +85,15 @@ export async function validateDocument(
 
   // ── Layer 3: Statutory KB validation (IndiaCode sections)
   let statutoryIssues = [];
+  let statutoryContext = null;
   if (shouldRunStatutory(validationMode)) {
     const statutory = await runStatutoryValidation(draft);
-    // runStatutoryValidation returns array directly
-    statutoryIssues = Array.isArray(statutory)
-      ? statutory
-      : statutory.issues || [];
+    if (Array.isArray(statutory)) {
+      statutoryIssues = statutory;
+    } else {
+      statutoryIssues = statutory.issues || [];
+      statutoryContext = statutory.context || null;
+    }
   }
 
   // ── Layer 4: Illegal clause detection 
@@ -138,6 +141,16 @@ export async function validateDocument(
       semantic_issues: semanticIssues.length,
       universal_issues: universalIssues.length,
       statutory_issues: statutoryIssues.length,
+      subordinate_notice_issues: statutoryIssues.filter(
+        (issue) => issue?.rule_id === "SUBORDINATE_LEGISLATION_REVIEW"
+      ).length,
+      subordinate_profile_notice_issues:
+        statutoryContext?.subordinate?.profile_notice_count || 0,
+      subordinate_scanned_acts: statutoryContext?.subordinate?.scanned_acts || 0,
+      subordinate_acts_with_law:
+        statutoryContext?.subordinate?.acts_with_subordinate || 0,
+      subordinate_total_entries:
+        statutoryContext?.subordinate?.total_subordinate_entries || 0,
       illegal_issues: illegalIssues.length,
       stamp_issues: stampIssues.length,
       ai_integrity_issues: aiIntegrityIssues.length,

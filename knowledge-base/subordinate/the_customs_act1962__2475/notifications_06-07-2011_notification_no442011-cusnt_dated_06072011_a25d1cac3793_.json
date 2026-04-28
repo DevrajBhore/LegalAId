@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-07-2011_notification_no442011-cusnt_dated_06072011_a25d1cac3793_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.44/2011-Cus(NT), dated 06.07.2011",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-11.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-07-2011",
+  "description": "Notification No.44/2011-Cus(NT), dated 06.07.2011",
+  "hindi_description": null,
+  "file_title": "44-11.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-11.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-11.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-11.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-11.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No.44/2011-Customs (N.T.) New Delhi, dated the 6th July, 2011. S.O. (E). - In exercise of the powers conferred by sub-section (34) of section 2 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby assigns the functions of the proper officer to the following officers mentioned in column (2) of the Table below, for the purposes of section 17 and section 28 of the said Act, namely:- Table Sl.No. Designation of the officers (1) (2) 1. Additional Director Generals, Additional Directors or Joint Directors, Deputy Directors or Assistant Directors in the Directorate General of Revenue Intelligence. 2. Commissioners of Customs (Preventive), Additional Commissioners or Joint Commissioners of Customs (Preventive), Deputy Commissioners or Assistant Commissioners of Customs (Preventive). 3. Additional Director Generals, Additional Directors or Joint Directors, Deputy Directors or Assistant Directors in the Directorate General of Central Excise Intelligence. 4. Commissioners of Central Excise, Additional Commissioners or Joint Commissioners of Central Excise, Deputy Commissioners or Assistant Commissioners of Central Excise. [F.No. 437/143/2009-Cus.IV] (Vikas) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:35:11.428Z"
+}

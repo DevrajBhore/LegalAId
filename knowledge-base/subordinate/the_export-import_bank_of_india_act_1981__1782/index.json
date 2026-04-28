@@ -1,0 +1,36 @@
+{
+  "act_id": "the_export-import_bank_of_india_act_1981__1782",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 8,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 8,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 8,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 3,
+      "regulation": 1,
+      "regulations": 7,
+      "order": 7,
+      "orders": 1,
+      "notification": 3,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1782?view_type=browse",
+    "scanned_at": "2026-04-13T12:40:53.317Z"
+  },
+  "failed_candidates": []
+}

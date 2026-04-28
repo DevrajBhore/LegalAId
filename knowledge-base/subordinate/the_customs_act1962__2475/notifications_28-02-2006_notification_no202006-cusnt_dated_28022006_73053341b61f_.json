@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-02-2006_notification_no202006-cusnt_dated_28022006_73053341b61f_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.20/2006-Cus(NT), dated 28.02.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-02-2006",
+  "description": "Notification No.20/2006-Cus(NT), dated 28.02.2006",
+  "hindi_description": null,
+  "file_title": "20-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-06.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 20 /2006-Customs (N.T.) 28th February, 2006. In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Imports), Mumbai, to act in respect of the matters specified in the corresponding entries in columns (2) and (3) of the Table below as officers specified in corresponding entry in column (4) of the said Table for the purpose of adjudication and investigation of such matters , namely :- Table Sl. No. Show Cause Notice and date Name of the party Show Cause Notice Show Name of the party Designation of Officer (1) (2) (3) (4) 1 VIII/10-87/COMMR/2001 Pt.II, dated the 23rd November, 2001 M/s Millenium Ship Trading LLC, Dubai, P.O. Box 20333 (U.A.E.) and others. Commissioner, Customs (Gujarat),Ahmedabad. -- 1 of 2 -- 2 SD/INT/MISC/05 /2001 S/14-4- 47/2001, dated the 5th December,.200 1 M/s Moon Star International Ship Trading Co. P.O. Box 62541, Dubai (U.A.E.) and others. Commissioner, Customs (Preventive), Mumbai. [F.NO.437/24/2005-CUS.IV] -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:08:09.891Z"
+}

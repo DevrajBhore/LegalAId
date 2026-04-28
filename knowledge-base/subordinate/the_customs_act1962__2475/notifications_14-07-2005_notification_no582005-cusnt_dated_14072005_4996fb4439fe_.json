@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_14-07-2005_notification_no582005-cusnt_dated_14072005_4996fb4439fe_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.58/2005-Cus(NT), dated 14.07.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-07-2005",
+  "description": "Notification No.58/2005-Cus(NT), dated 14.07.2005",
+  "hindi_description": null,
+  "file_title": "58-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 58 /2005-Customs (N.T.) 14th July, 2005 In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints Commissioner of Customs (Import and General), New Delhi, to act as Commissioner of Customs and Central Excise, Hyderabad-II for the purposes of adjudicating the matters relating to Show Cause Notices pertaining to M/s. Cardiac Research and Education Foundation, Road No.1, Banjara Hills, Hyderabad and M/s Escorts Heart Institute and Research Centre Limited, Okhla Road, New Delhi and Others, issued, vide, O.R.. No. 05/2004-Adjn.Cus, dated the 17th March, 2004 by Commissioner of Customs and Central Excise, Hyderabad-II and C. No. SIIB/CUS/54/03/14319 to 14323, dated the 27th September, 2004, by the Assistant Commissioner of Customs (SIIB - Import and General), New Custom House, New Delhi, respectively. F.NO.437/11/2005-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:06:34.361Z"
+}

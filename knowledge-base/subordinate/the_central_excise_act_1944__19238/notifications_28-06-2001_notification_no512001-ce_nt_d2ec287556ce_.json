@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-06-2001_notification_no512001-ce_nt_d2ec287556ce_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.51/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent51-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-06-2001",
+  "description": "Notification No.51/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent51-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent51-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent51-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent51-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent51-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent51-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent51-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "28 th June, 2001 Notification No. 51/2001-C.E. (N.T.) In exercise of the powers conferred by section 37 of the Central Excise Act, 1944 (1 of 1944), the Central Government hereby makes the following further rules to amend the Central Excise (No. 2) Rules, 2001 (hereinafter referred to as the said rules), namely :- 1. (1) These rules may be called the Central Excise (No. 2) (First Amendment) Rules, 2001. (2) They shall come into force on the 1st day of July, 2001. 2. In rule 15 of the said rules, for sub-rule (1), the following shall be substituted, namely :- The Central Government may, by notification, specify the \"(1) goods in respect of which an assessee shall have the option to pay the duty of excise on the basis of such factors as may be relevant to production of such goods and at such rate as may be notified for this purpose, subject to such limitations and conditions, including those relating to interest or penalty, as may be specified in such notification.\" 3. In rule 16 of the said rules, for sub-rule (2), the following shall be substituted, namely : - If the process to which the goods are subjected before \"(2) returning does not amount to manufacture, the manufacturer shall pay an amount equal to the CENVAT credit taken under sub-rule (1) and in any other case the manufacturer shall pay duty on goods returned under sub-rule (1) at the rate applicable on the date of removal and on the value determined under sub-section (2) of section 3 or section 4 or section 4A of the Act, as the case may be.\" -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:36:43.262Z"
+}

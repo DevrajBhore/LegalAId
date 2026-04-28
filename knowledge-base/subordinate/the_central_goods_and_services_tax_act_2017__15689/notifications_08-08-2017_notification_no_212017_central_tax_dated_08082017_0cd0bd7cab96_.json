@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-08-2017_notification_no_212017_central_tax_dated_08082017_0cd0bd7cab96_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 21/2017 – Central Tax dated 08.08.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-21-central-tax-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-08-2017",
+  "description": "Notification No. 21/2017 – Central Tax dated 08.08.2017",
+  "hindi_description": null,
+  "file_title": "notfctn-21-central-tax-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-21-central-tax-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-21-central-tax-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-21-central-tax-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-21-central-tax-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-21-central-tax-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-21-central-tax-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) (Central Board of Excise and Customs) Notification No. 21/2017 – Central Tax New Delhi, 08th August, 2017 G.S.R. …..(E).— In exercise of the powers conferred by sub-rule (5) of rule 61 of the Central Goods and Services Tax Rules, 2017, read with section 168 of the Central Goods and Services Act, 2017 (12 of 2017), the Commissioner, on the recommendations of the Council, specifies that the return for the month as specified in column (2) of the Table below shall be furnished in FORM GSTR-3B electronically through the common portal before the dates as specified in the corresponding entry in column (3) of the said Table, namely:- Table Serial Number Month Date for filing of GSTR-3B (1) (2) (3) 1. July, 2017 20th August, 2017 2. August, 2017 20th September, 2017. 2. This notification shall come into force with effect from the 8th day of August, 2017. [F. No.349 /74 /2017-GST(Pt.)] (Dr. Sreeparvathy S.L.) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:16:13.748Z"
+}

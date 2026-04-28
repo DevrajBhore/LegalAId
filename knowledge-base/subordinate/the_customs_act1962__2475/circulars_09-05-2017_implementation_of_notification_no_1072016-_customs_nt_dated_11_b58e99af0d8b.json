@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_09-05-2017_implementation_of_notification_no_1072016-_customs_nt_dated_11082016-_uploading_the_departure_manifests_by_airlinescarriers-_circular_no172017-cus_cd59fbfe8990",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Implementation of Notification No. 107/2016- customs (N.T.) dated 11.08.2016- Uploading the Departure Manifests by Airlines(carriers)- Circular No.17/2017-Cus. dated 9.5.17",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ17-2017cs.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-05-2017",
+  "description": "Implementation of Notification No. 107/2016- customs (N.T.) dated 11.08.2016- Uploading the Departure Manifests by Airlines(carriers)- Circular No.17/2017-Cus. dated 9.5.17",
+  "hindi_description": null,
+  "file_title": "circ17-2017cs.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ17-2017cs.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ17-2017cs.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ17-2017cs.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ17-2017cs.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ17-2017cs.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ17-2017cs.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 17 / 2017-Customs F.No.520/12/2009-Cus-VI (pt) Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs ******* New Delhi, dated the 9lh May, 2017 To All Principal Chief Commissioner/ Chief Commissioners of Customs/Customs (Preventive) All Principal Chief Commissioners/ Chief Commissioner of Customs & Central Excise All Principal Directors General/Directors General of CBEC All Principal Commissioners/ Commissioners of Customs/Customs (Prev.) All Principal Commissioners/ Commissioners of Customs (Appeals) All Principal Commissioners/ Commissioners of Customs & Central Excise All Principal Commissioners/ Commissioners of Customs & Central Excise. (Appeals) Webmaster, CBEC Subject: Implementation of Notification No. 107/2016-Customs (N.T.) dated 11.08.2016 - Uploading the Departure Manifests by the Airlines (carriers) - reg. Madam/Sir, The undersigned is directed to refer to the Notification No. 107/2016-Customs (N.T.) dated 1 llh August 2016 wherein carriers are required to transmit electronically the pre-check-in passenger manifest twelve hours before the departure of the flight and the final passenger manifest delivered fifteen minutes before leaving or taking off the flight from the port of embarkation in India, to the Indian Customs in fiat file format or in United Nations/Electronic Data Interchange for Administration. Commerce and Transport Passenger List Advance Passenger Information (UN/EDIFACT PAXLST API), in the structure annexed to the above Notification. 2. After holding consultations and carrying out tests in respect of electronic transmissions with some of the carriers and their service providers, it has been decided that with effect from 15/05/2017, all carriers shall start transmitting electronically, the manifests for the outbound passengers fifteen minutes before leaving or taking off from the port of embarkation in India, to the Indian Customs in a flat file format. This format is identical to the one being presently transmitted by the carriers in respect of the inbound/arriving international passengers. 3. It has also been decided that the carriers would carry out the necessary modifications in their systems in order to generate and submit the additional outbound passenger manifests to be transmitted 12 hours before the scheduled flight departure, within a period of six months i.e. by November, 2017. -- 1 of 2 -- 4. The concerned Principal Commissioners/Commissioners of Customs having jurisdiction over international airports are requested to issue Public Notices to bring the above to the notice of the carriers. 5. Difficulties, if any, in implementation of the aforesaid guidelines may be brought to the notice of the Board. Yours faithfully, (B. Kor\\thoujam) Under Secretary (Cus VI) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:51:49.249Z"
+}

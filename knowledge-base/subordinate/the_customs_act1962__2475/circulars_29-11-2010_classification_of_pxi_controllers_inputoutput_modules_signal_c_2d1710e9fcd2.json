@@ -1,0 +1,48 @@
+{
+  "sub_id": "circulars_29-11-2010_classification_of_pxi_controllers_inputoutput_modules_signal_converters_and_chassis_and_its_parts-_circular_no422010-customs_dated_29112010_5e967a1fffe3_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Classification of PXI Controllers, Input/Output Modules, Signal Converters and Chassis and its parts- Circular No.42/2010-Customs, dated 29.11.2010",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No42-10+%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-11-2010",
+  "description": "Classification of PXI Controllers, Input/Output Modules, Signal Converters and Chassis and its parts- Circular No.42/2010-Customs, dated 29.11.2010",
+  "hindi_description": null,
+  "file_title": "Circular No42-10 (1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No42-10%20(1).pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No42-10+%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No42-10+%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo42-10%2B(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No42-10+%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo42-10%2B(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No42-10+%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No42-10%20(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 42/ 2010-Customs F.No.528/49/2010-STO (TU) Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs 229A, North Block, New Delhi-110001 29th November, 2010. To All Chief Commissioners of Customs / Customs (Prev.). All Chief Commissioners of Customs & Central Excise. All Commissioners of Customs / Customs (Prev.). All Commissioners of Customs & Central Excise. All Director Generals under CBEC. Subject: Classification of PXI Controllers, Input/Output Modules, Signal Converters and Chassis and its parts-regarding. Sir / Madam, It has been brought to the notice of the Board that there are divergent practices regarding classification of PXI Controllers, Input/Output Modules, Signal Converters and Chassis and its parts. Essentially, PXI Controllers are designed for measurement and automation applications, which require high performance and a rugged industrial form. Further, Input/Output Modules are tailored to a specific function as a part of a regulating and controlling apparatus like a sensor, thermostat etc. Therefore, one has to look at the PXI machine holistically for the purpose of classification but some field formations are classifying these under CTH 8471 as Automatic Data Processing machines while others are doing so under CTH 9032 as automatic or controlling instruments and apparatus. 2. In this regard, your attention is invited to Hon'ble Supreme Court order in CA No.5394/2010 (D No.4818/2010), reported in ELT vide 2010 (256) ELT 173 (SC). As per the said Hon'ble Supreme Court order, PXI Controller constitutes a complete system performing work of measurement-programmable Automation Controllers (PACs) by themselves are not measuring, regulating or controlling instrument but perform specific function as parts of sensors and are classifiable under CTH 9032 89 10. Chassis of PXI provides connectivity and housing for embedded controllers and data acquisition modules allowing them to communicate with each other. Input/Output Module is tailored to a specific function and each of them is a part of regulating and controlling apparatus like sensor, thermostat etc. and -- 1 of 2 -- their primary function is part of measuring and control system and are classifiable under CTH 9032 90 00. Accordingly, the Hon'ble Supreme Court set aside the impugned order of CESTAT and allowed the Appeal filed by the department. 3. Based on the above referred Hon'ble Supreme Court order, Industrial Process Controllers (PXI) is a measuring and control system classifiable under Tariff Item 9032 89 10 of Customs Tariff Act, 1975 while Input/Output Modules, Signal Converters and Chassis are parts of such system and are classifiable under Tariff Item 9032 90 00 of the said Act. Accordingly, Board desires that all Chief Commissioners may ensure uniform practice of assessment of PXI Controllers, Input/Output Modules, Signal Converters and Chassis. 4. All pending assessments, if any, may be finalized accordingly. 5. Difficulty faced, if any, may be brought to notice of the Board. Yours faithfully, (G. S. Sinha) OSD (Tariff Unit) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:45:28.069Z"
+}

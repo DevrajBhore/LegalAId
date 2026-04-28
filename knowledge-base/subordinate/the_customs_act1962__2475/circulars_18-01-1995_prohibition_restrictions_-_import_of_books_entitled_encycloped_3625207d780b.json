@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_18-01-1995_prohibition_restrictions_-_import_of_books_entitled_encyclopedia_britannica_1994_-_published_by_encyclopedia_britannica_inc_uk_imported_by_ms_jaic_95e3bc6539cd",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Prohibition & Restrictions - Import of books entitled ENCYCLOPEDIA BRITANNICA 1994 - published by Encyclopedia Britannica Inc., U.K., imported by M/s. Jaico Publishing House, Bombay - containing incorrect map of India - Circular No.5/1995-Customs, dated 18.1.95",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir5-95.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-01-1995",
+  "description": "Prohibition & Restrictions - Import of books entitled ENCYCLOPEDIA BRITANNICA 1994 - published by Encyclopedia Britannica Inc., U.K., imported by M/s. Jaico Publishing House, Bombay - containing incorrect map of India - Circular No.5/1995-Customs, dated 18.1.95",
+  "hindi_description": null,
+  "file_title": "Cir5-95.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir5-95.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir5-95.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir5-95.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir5-95.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir5-95.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir5-95.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 5/95-Cus. dated 18/1/95 F.No. 402/24/94-CUS.III Government of India Ministry of Finance Department of Revenue, New Delhi Subject : Prohibition & Restrictions - Import of books entitled \"ENCYCLOPEDIA BRITANNICA 1994\" - published by Encyclopedia Britannica Inc., U.K., imported by M/s. Jaico Publishing House, Bombay - containing incorrect map of India - Ins. reg. I am directed to say that it has been decided in consultation with Ministry of Home Affairs that the above mentioned book, containing some of the incorrect maps, wherein Jammu & Kashmir and Arunachal Pradesh are shown \"Occupied by India\", should not be allowed entry into India under the provisions or the Notification No. 19-Cus. dated 6th March, 1976. This is for your kind information and suitable action. Please acknowledge the receipt. Sd/- (S.M. Bhatnagar) Under Secretary to the Govt. of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:16:17.541Z"
+}

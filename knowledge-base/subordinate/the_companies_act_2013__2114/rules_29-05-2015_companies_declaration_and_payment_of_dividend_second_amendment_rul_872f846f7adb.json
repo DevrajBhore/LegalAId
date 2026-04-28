@@ -1,0 +1,76 @@
+{
+  "sub_id": "rules_29-05-2015_companies_declaration_and_payment_of_dividend_second_amendment_rules_2015_0c05aaf826d7_",
+  "parent_act_id": "the_companies_act_2013__2114",
+  "title": "Companies (Declaration and Payment of Dividend) Second Amendment Rules, 2015",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/rulesindividualfile/&file=Declaration+%26+payment+of+dividend+Second.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-05-2015",
+  "description": "Companies (Declaration and Payment of Dividend) Second Amendment Rules, 2015",
+  "hindi_description": null,
+  "file_title": "Declaration & payment of dividend Second.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/rulesindividualfile/&file=Declaration+%26+payment+of+dividend+Second.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/rulesindividualfile/&file=Declaration+%26+payment+of+dividend+Second.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rule&filename=Declaration%20&%20payment%20of%20dividend%20Second.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration+%26+payment+of+dividend+Second.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=rules&filename=Declaration%2B%26%2Bpayment%2Bof%2Bdividend%2BSecond.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Companies (Declaration and Payment of Dividend) Second Amendment Rules, 2015",
+  "fetched_at": "2026-04-13T19:13:55.909Z"
+}

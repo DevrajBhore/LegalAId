@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-04-2009_notification_no402009-cusntdated_842009_a61da4b5735b_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.40/2009-Cus(NT),dated 8.4..2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-2009.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-04-2009",
+  "description": "Notification No.40/2009-Cus(NT),dated 8.4..2009",
+  "hindi_description": null,
+  "file_title": "40-2009.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-2009.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-2009.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-2009.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-2009.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY PART II, SECTION 3, SUB-SECTION (ii)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) NOTIFICATION No. 40 / 2009 - Customs (N.T.) NEW DELHI, THE 8th APRIL, 2009. 18 CHAITRA, 1931 (SAKA). S.O._(E). - In exercise of powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Commissioner of Customs (Import), New Custom House, Ballard Estate, Mumbai, to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the Additional Commissioner of Customs (Port), New Custom House, 15/1, Strand Road, Kolkata, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s M.R.International, 24/4, 1st Floor, Chhoti Subzi Mandi, Janakpuri, New Delhi - 110 058 issued vide, F.No. DRI/AZU/INT-41/2008, dated the 19th January, 2009, by the Additional Director, Directorate of Revenue Intelligence, Zonal Unit, Rupen Bungalow, Jain Merchant Society, Near Mahalaxmi Cross Road, Paldi, Ahmedabad - 380 007. [F.No. 437/22/2009-Cus.IV] (M.M. Parthiban) Director (Customs) to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:23:26.174Z"
+}

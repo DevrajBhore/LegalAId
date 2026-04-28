@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-06-2017_notification_no_142017_-integrated_tax_rate_dated_28062017_c916bcc1d97f_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No. 14/2017 -Integrated Tax (Rate) dated 28.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification14-IGST.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-06-2017",
+  "description": "Notification No. 14/2017 -Integrated Tax (Rate) dated 28.06.2017",
+  "hindi_description": null,
+  "file_title": "Notification14-IGST.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification14-IGST.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification14-IGST.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification14-IGST.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification14-IGST.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification14-IGST.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification14-IGST.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZZETE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 14/2017-Integrated Tax (Rate) New Delhi, the 28th June, 2017 G.S.R......(E).- In exercise of the powers conferred by sub-section (5) of section 5 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017), the Central Government, on the recommendations of the Council, hereby notifies that in case of the following categories of services, the tax on inter-State supplies shall be paid by the electronic commerce operator – (i) services by way of transportation of passengers by a radio-taxi, motorcab, maxicab and motor cycle; (ii) services by way of providing accommodation in hotels, inns, guest houses, clubs, campsites or other commercial places meant for residential or lodging purposes, except where the person supplying such service through electronic commerce operator is liable for registration under clause (v) of section 20 of the Integrated Goods and Services Tax Act, 2017 read with sub-section (1) of section 22 of the said Central Goods and Services Tax Act. Explanation.- For the purposes of this notification,- (a) “radio taxi” means a taxi including a radio cab, by whatever name called, which is in two- way radio communication with a central control office and is enabled for tracking using Global Positioning System (GPS) or General Packet Radio Service (GPRS); (b) “maxicab”, “motorcab” and “motor cycle” shall have the same meanings as assigned to them respectively in clauses (22), (25) and (26) of section 2 of the Motor Vehicles Act, 1988 (59 of 1988). 2. This notification shall come into force with effect from the 1st day of July, 2017. [F.No. 334/1/2017-TRU] (Ruchi Bisht) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:50:26.456Z"
+}

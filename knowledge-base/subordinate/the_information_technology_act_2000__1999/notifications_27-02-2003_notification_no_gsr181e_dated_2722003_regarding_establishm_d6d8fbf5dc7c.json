@@ -1,0 +1,31 @@
+{
+  "sub_id": "notifications_27-02-2003_notification_no_gsr181e_dated_2722003_regarding_establishment_of_computer_emergency_response-in_india_cert-in_and_the_procedure_for_blocking_o_41a9baf3b25b",
+  "parent_act_id": "the_information_technology_act_2000__1999",
+  "title": "Notification no. G.S.R.181(E) dated 27.2.2003 regarding establishment of Computer Emergency Response-in India (CERT-In) and the procedure for blocking of websites",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_45_76_00001_200021_1517807324077/notificationindividualfile/&file=Notification+no.+G.S.R.181_E_+dated+27.2.2003.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-02-2003",
+  "description": "Notification no. G.S.R.181(E) dated 27.2.2003 regarding establishment of Computer Emergency Response-in India (CERT-In) and the procedure for blocking of websites",
+  "hindi_description": null,
+  "file_title": "Notification no. G.S.R.181_E_ dated 27.2.2003.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_45_76_00001_200021_1517807324077&type=notification&filename=Notification%20no.%20G.S.R.181_E_%20dated%2027.2.2003.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null
+  },
+  "text": "IT Act Notification No 181 THE GAZETTE OF INDIA EXTRAORDINARY Part II- Section 3, Sub-Section (i) MINISTRY OF COMMUNICATIONS AND INFORMATION TECHNOLOGY (Department of Information Technology) ORDER New Delhi, the 27th February, 2003 G.S.R.181(E) In exercise of the provisions of Section 67 and Section 88 of the Information Technology Act, 2000 (21 of 2000), the Central Government, after consultation with the Cyber Regulations Advisory Committee, hereby prescribes the following procedure for blocking of websites:- 1. Computer Emergency Response Team - India (CERT-IND) shall be the single authority for issue of instructions in the context of blocking of websites. CERT-IND, after verifying the authenticity of the complaint and after satisfying that action of blocking of website is absolutely essential, shall instruct Department of Telecommunications (DOT) - (LR Cell) to block the website. DOT, under whose control the Internet Service Providers (ISPs) are functioning will ensure the blocking of websites and inform CERT-IND accordingly. 2. CERT could be approached by the - 1. Secretary, National Security Council Secretariat (NSCS). 2. Secretary, Ministry of Home Affairs, Government of India. 3. Foreign Secretary in the Department of External Affairs or a representative not below the rank of Joint Secretary. 4. Secretaries, Departments of Home Affairs of each of the States and of the Union Territories. 5. Central Bureau of Investigation (CBI), Intelligence Bureau (IB), Director General of Police of all the States and such other enforcement agencies. 6. Secretaries of Heads of all the Information Technology Departments of all the States and Union Territories not below the rank of Joint Secretary of Central Government. 7. Chairman of the National Human Rights Commission or Minorities Commission or Scheduled Castes or Scheduled Tribes Commission or National Women Commission. 8. The directives of the Courts. 9. Any others as may be specified by the Government. 3. The CERT-IND is located at Electronics Niketan, 6, CGO Complex, Lodhi Road, New Delhi 110003 [F.No. 7(1)/2003-EC] (S. Lakshminarayanan), Additional Secretary -- 1 of 1 --",
+  "fetched_at": "2026-04-11T15:07:37.841Z"
+}

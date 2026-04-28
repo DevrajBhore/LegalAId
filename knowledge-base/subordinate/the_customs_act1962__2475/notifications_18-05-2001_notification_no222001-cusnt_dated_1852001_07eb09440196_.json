@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-05-2001_notification_no222001-cusnt_dated_1852001_07eb09440196_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.22/2001-Cus(NT), dated 18.5.2001",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-2001.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-05-2001",
+  "description": "Notification No.22/2001-Cus(NT), dated 18.5.2001",
+  "hindi_description": null,
+  "file_title": "22-2001.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-2001.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-2001.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-2001.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-2001.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-2001.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-2001.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "18th May,2001. Notification No. 22/2001-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following amendment in the notification of the Government of India in the Ministry of Finance, Department of Revenue No. 27/97-CUS.(N.T.), dated 7th July 1997, namely :- In the Table to the said notification - (i) against serial number 5, for the entries in column (2), the following shall be substituted, namely :- \"Port of Chennai, the Meenambakkam Airport and the area under the jurisdiction of the Chennai Corporation and Ambattur, Gurmmidipoondi, Poonamallee and Ponneri Taluks of Thiruvallur Distrtict, Tambaram Taluk of Kanchirpuram District and the designated areas in the Continantal Shelf and Exclusive Economic Zone of India as declared by Government of India from time to time.\" (ii) against serial number 20, for the entries in column (2), the following shall be substituted, namely:- \" (a) Whole of the State of Tamilnadu, excluding the area falling under the jurisdiction of Commissioner of Customs, Chennai, (b) the Union territory of Pondicherry excluding Mahe Commune and Yanam territory \" Rajendra Singh Under Secretary to the Government of India F.No. 437/15/2000-CUS.IV Note:- The Principal notification No. 27/97-Cus(N.T.) dated 7th July 1997 was published in Gazette of India Extraordinary Part II, Section 3, sub-section (i), dated 7th July 1997 under GSR No. 363 (E) and was last amended vide notification No. 21/2000-CUS (N.T.) dated 16th March 2000 published in Gazette of India. Extraordinary Part II, Section 3 sub-section (i), dated 16th March 2000 under GSR No. 248 (E). -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:17.778Z"
+}

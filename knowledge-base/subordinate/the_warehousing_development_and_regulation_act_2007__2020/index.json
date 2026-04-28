@@ -1,0 +1,35 @@
+{
+  "act_id": "the_warehousing_development_and_regulation_act_2007__2020",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 29,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 1,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 29,
+    "modal_duplicate_count": 1,
+    "successful_candidate_count": 29,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 22,
+      "regulation": 22,
+      "regulations": 12,
+      "order": 3,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2020?view_type=browse",
+    "scanned_at": "2026-04-12T07:10:00.492Z"
+  },
+  "failed_candidates": []
+}

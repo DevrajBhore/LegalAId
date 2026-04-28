@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-09-2020_notification_no-_722020-central_tax_dated_30092020_a8bae5bf4aee_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No- 72/2020-Central Tax dated 30.09.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-72-central-tax-english-2020.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-09-2020",
+  "description": "Notification No- 72/2020-Central Tax dated 30.09.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-72-central-tax-english-2020.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-72-central-tax-english-2020.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-72-central-tax-english-2020.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-72-central-tax-english-2020.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-72-central-tax-english-2020.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-72-central-tax-english-2020.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-72-central-tax-english-2020.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Notification No. 72/2020 – Central Tax New Delhi, the 30th September, 2020 G.S.R……(E). - In exercise of the powers conferred by section 164 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on the recommendations of the Council, hereby makes the following rules further to amend the Central Goods and Services Tax Rules, 2017, namely:- 1. (1) These rules may be called the Central Goods and Services Tax (Eleventh Amendment) Rules, 2020. (2) Save as otherwise provided in these rules, they shall come into force on the date of their publication in the Official Gazette. 2. In the Central Goods and Services Tax Rules, 2017 (hereinafter referred to as the said rules), in rule 46, after clause (q), the following clause shall be inserted, namely:- “(r) Quick Reference code, having embedded Invoice Reference Number (IRN) in it, in case invoice has been issued in the manner prescribed under sub-rule (4) of rule 48.”. 3. In the said rules, in rule 48, in sub-rule (4), the following proviso shall be inserted, namely:- “Provided that the Commissioner may, on the recommendations of the Council, by notification, exempt a person or a class of registered persons from issuance of invoice under this sub-rule for a specified period, subject to such conditions and restrictions as may be specified in the said notification.”. 4. In the said rules, in rule 138A, for sub-rule (2), the following sub-rule shall be substituted, namely:- “(2) In case, invoice is issued in the manner prescribed under sub-rule (4) of rule 48, the Quick Reference (QR) code having an embedded Invoice Reference Number (IRN) in it, may be produced electronically, for verification by the proper officer in lieu of the physical copy of such tax invoice.”. [F. No.CBEC-20/06/09/2019-GST] (Pramod Kumar) Director, Government of India -- 1 of 2 -- Note: The principal rules were published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i) vide notification No. 3/2017-Central Tax, dated the 19th June, 2017, vide number G.S.R. 610 (E), dated the 19th June, 2017 and last amended vide notification No. 62/2020 - Central Tax, dated the 20th August, 2020, published vide number G.S.R. 517 (E), dated the 20th August, 2020. -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:46:55.384Z"
+}

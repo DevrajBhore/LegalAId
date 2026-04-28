@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_11-12-2013_notification_no1182013-cusnt_dated_11122013_cb43b9e79657_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.118/2013-Cus(NT), dated 11.12.2013",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=118-13.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-12-2013",
+  "description": "Notification No.118/2013-Cus(NT), dated 11.12.2013",
+  "hindi_description": null,
+  "file_title": "118-13.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=118-13.pdf"
+  ],
+  "alternate_file_titles": [
+    "118-13.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.118/2013-Cus(NT),dt. 11.12.2013"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=118-13.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=118-13.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=118-13.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=118-13.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=118-13.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=118-13.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No.118/2013-Customs (N.T.) New Delhi, dated the 11th December, 2013 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional/Joint Commissioner of Customs ICD JRY, Kanpur to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) The Additional/Joint Commissioner of Customs, Inland Container Depot, Juhi Railway Yard, Kanpur ; (ii) The Additional/Joint Commissioner of Customs, Jawaharlal Nehru Custom House, Nhava Sheva , Maharashtra, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Pan East Exim (P) Ltd., 24/40, Jain Vihar, Birhana Road, Kanpur and others issued vide, DRI F.No.VIII/26/19/LZU/2011/4461 to 4465 dated the 26th March, 2013, by the Additional Director, Directorate of Revenue Intelligence, Lucknow Zonal Unit, Lucknow-226010. [F.No. 437/36/2013-Cus.IV] (M.V. Vasudevan) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:37:59.556Z"
+}

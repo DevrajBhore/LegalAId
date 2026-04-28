@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-06-2009_notification_no582009-cusntdated_862009_299630c4c5ae_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.58/2009-Cus(NT),dated 8.6.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-2009.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-06-2009",
+  "description": "Notification No.58/2009-Cus(NT),dated 8.6.2009",
+  "hindi_description": null,
+  "file_title": "58-2009.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-2009.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-2009.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=58-2009.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=58-2009.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 58 / 2009-Customs (N.T.) New Delhi, dated the 8th June, 2009. 18 Jyaistha, 1931 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Exports), Jawaharlal Nehru Custom House, Nhava Sheva, Raigad, Maharashtra to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the Maritime Commissioner of Central Excise, Customs and Service Tax, Raigad Commissionerate, Kendriya Utpad Shulk Bhawan, Plot No.1, Sector-17, Khandeshwar, New Panvel, Navi Mumbai - 410206 for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s T.M. Synthetics Private Limited, Plot No.16, Riddhi Siddhi Industrial Co-op Society, Near Mahadev Complex, GHB Road, Pandesara, Surat issued vide, F.No. DRI/SRU/INV-6/2008, dated the 20th January, 2009, by the Additional Director, Directorate of Revenue Intelligence, Zonal Unit, Rupen Bungalow, Jain Merchant Society, Near Mahalaxmi Cross Road, Paldi, Ahmedabad - 380 007. [F.No. 437/29/2009-Cus.IV] (M.M.Parthiban) Director (Customs) to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:23:57.884Z"
+}

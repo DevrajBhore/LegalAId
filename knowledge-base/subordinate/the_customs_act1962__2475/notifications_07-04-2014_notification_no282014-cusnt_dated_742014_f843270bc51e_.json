@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_07-04-2014_notification_no282014-cusnt_dated_742014_f843270bc51e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.28/2014-Cus(NT), dated 7.4.2014",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt28-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-04-2014",
+  "description": "Notification No.28/2014-Cus(NT), dated 7.4.2014",
+  "hindi_description": null,
+  "file_title": "csnt28-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt28-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt28-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt28-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt28-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt28-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt28-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 28/ 2014-Customs (N.T.) New Delhi, dated 7th April, 2014 S.O…….. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Additional Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi; and (ii) the Assistant/Deputy Commissioner of Customs, Inland Container Depot, Kanakapura, Jaipur, Rajasthan, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s Suncity Electronics, 5/51, WEA, Ajmal Khan Road, Karol Bagh, New Delhi issued vide, DRI F.No.23/93/2012-DZU(Sun)/650 to 653, dated the 6th February, 2014 by the Additional Director, Directorate of Revenue Intelligence, Delhi Zonal Unit, New Delhi. [F.No. 437/19/2014-Cus.IV] (R.P.Singh) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:38:33.278Z"
+}

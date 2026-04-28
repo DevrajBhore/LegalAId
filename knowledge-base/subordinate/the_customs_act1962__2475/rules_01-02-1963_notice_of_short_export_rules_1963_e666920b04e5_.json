@@ -1,0 +1,46 @@
+{
+  "sub_id": "rules_01-02-1963_notice_of_short_export_rules_1963_e666920b04e5_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notice of short Export Rules, 1963",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=notice_of_short-export_rules%2C_1963.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-02-1963",
+  "description": "Notice of short Export Rules, 1963",
+  "hindi_description": null,
+  "file_title": "notice_of_short-export_rules,_1963.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=notice_of_short-export_rules,_1963.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=notice_of_short-export_rules%2C_1963.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=notice_of_short-export_rules%2C_1963.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=notice_of_short-export_rules%2C_1963.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=notice_of_short-export_rules%2C_1963.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=notice_of_short-export_rules,_1963.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "NOTICE OF SHORT-EXPORT RULES, 1963 Notification no. 56-Cus.,dated 1st Feburary, 1963 In exercise of the powers conferred by section 156 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following rules:- 1. Short title.- These rules may be called the Notice of Short-Export Rules, 1963. 2. Exporter to furnish information regarding Short-Export.- If any goods mentioned in a shipping bill or bill of export and cleared for exportation are not exported, the exporter shall, within seven days, from the date of departure of the conveyance by which such goods were intended to be exported, - (1) Furnish the following information in writing to the proper officer in respect of the goods not so exported, namely:- (i) No. of Packages, (ii) Description of goods, (iii) Quantity, (iv) Value, (v) Country of destination; or (2) Present the shipping bill or, as the case may be, the bill of export for cancellation or amendment. 3. Penalty.- Any exporter who fails to comply with the provisions of rule 2 shall be liable to a penalty not exceeding one hundred rupees. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:13:24.505Z"
+}

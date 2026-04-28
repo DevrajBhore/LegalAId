@@ -1,0 +1,71 @@
+{
+  "act_id": "the_coinage_act_2011__2112",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 101,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 101,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 101,
+    "failed_candidate_count": 1,
+    "keyword_hits": {
+      "rules": 102,
+      "regulations": 1,
+      "order": 3,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 25. Rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2112?view_type=browse",
+    "scanned_at": "2026-04-13T19:16:10.250Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "Coinage (Issue of commemorative coin on the occasion of “150TH BIRTH ANNIVERSARY OF SHRI RAM CHANDRA JI”) Rules, 2022.",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_11_00052_201111_1517807327275/rulesindividualfile/&file=239858.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_11_00052_201111_1517807327275/rulesindividualfile/&file=239858.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_11_00052_201111_1517807327275/rulesindividualfile/&file=239858.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rule&filename=239858.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_11_00052_201111_1517807327275&type=rules&filename=239858.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

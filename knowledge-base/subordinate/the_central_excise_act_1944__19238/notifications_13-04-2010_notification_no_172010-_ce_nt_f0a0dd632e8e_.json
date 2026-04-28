@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-04-2010_notification_no_172010-_ce_nt_f0a0dd632e8e_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No. 17/2010- CE (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2k10.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-04-2010",
+  "description": "Notification No. 17/2010- CE (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent17-2k10.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2k10.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2k10.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2k10.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2k10.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2k10.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2k10.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) New Delhi, the 13 th April, 2010 Notification No. 17/2010 - Central Excise (N.T.) G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 3A of the Central Excise Act, 1944 (1 of 1944), the Central Government hereby specifies,- (i) Jarda scented Tobacco falling under Tariff item 2403 99 30 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986), manufactured with the aid of packing machine and packed in pouches as notified goods, on which there shall be levied and collected duty of excise in accordance with the provisions of the said section 3A. 2. This notification shall come into force on the 13 th April, 2010. Explanation. - For the purposes of this notification, - (a) \"packing machine\" includes all types of Form, Fill and Seal (FFS) machines and Profile Pouch Making Machine, by whatever names called, whether vertical or horizontal, with or without collar, single-track or multi-track and any other type of packing machine used for packing of pouches of notified goods; and (b) 'brand name' means a brand name, whether registered or not, that is to say, a name or a mark, such as a symbol, monogram, label, signature or invented words or any writing which is used in relation to a product, for the purpose of indicating or so as to indicate, a connection in the course of trade between the product and a person using such name or mark with or without any indication of the identity of that person. [F. No. 334/1/2010-TRU] (Prashant Kumar) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:44:18.223Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_06-06-2018_refund_of_igst_on_export_of_goods-extension_of_date_in_sb005_alternate_mechanism_cases_and_clarification_in_other_cases_-_circular_no15-customs_da_94a80f42138c",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Refund of IGST on export of Goods-Extension of date in SB005 alternate mechanism cases and Clarification in other cases - Circular No.15-Customs, dated 6.6.2018",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ15-2018cs.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-06-2018",
+  "description": "Refund of IGST on export of Goods-Extension of date in SB005 alternate mechanism cases and Clarification in other cases - Circular No.15-Customs, dated 6.6.2018",
+  "hindi_description": null,
+  "file_title": "circ15-2018cs.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ15-2018cs.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ15-2018cs.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ15-2018cs.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ15-2018cs.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ15-2018cs.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ15-2018cs.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No.15/2018-Customs F. No: 450/119/2017-CusIV Government of India Ministry of Finance Department of Revenue (Central Board of Indirect Taxes and Customs) ***** Room No.227-B, North Block, New Delhi dated 6th June, 2018 To, All Principal Chief Commissioner/Chief Commissioner of Customs/ Customs & Central Tax / Customs (Preventive) All Principal Commissioner/Commissioner of Customs/ Customs & Central Tax / Customs (Preventive) All Director Generals under CBIC. Subject: Refund of IGST on export of Goods-Extension of date in SB005 alternate mechanism cases and Clarification in other cases -reg. Sir/ Madam, CBIC has issued Circular No’s 05/2018-Customs dated 23.02.2018 and 08/2018- Customs dated 23.03.2018 wherein an alternative mechanism with officer interface to resolve invoice mismatches was provided for the shipping bills filed till 28.02.2018. Although the cases having SB005 error have now ebbed due to continuous outreach done by the Board and increased awareness amongst the trade, however, some exporters nevertheless, continue to make errors in filing invoice details in the shipping bill and the GST returns. Therefore, keeping in view the difficulties faced by the exporters in respect of SB005 errors, Board has decided to extend the facility of officer interface to Shipping bills filed up to 30.04.2018. However, the exporters are advised to align their export invoices submitted to Customs and GST authorities for smooth processing of refund claims. 2. Apart fromSB005 errors, IGST refunds are also stuck on account of SB003 error on the customs side. This error occurs when there is a mismatch between GSTIN entity mentioned in the Shipping bill and the one filing GSTR-1/GSTR-3B. Board has examined the issue and it has been decided to provide a correction facility in cases where although GSTIN of both the entities are different but PAN is same. This happens mostly in cases where an entity filing Shipping bill is a registered office and the entity which has paid the IGST is manufacturing unit/other office or vice versa. However, in all such cases, entity claiming refund (one which has filed the Shipping bill) will give an undertaking to the effect that its other office (one which has paid IGST) shall not claim any refund or any benefit of the amount of IGST so paid. The undertaking shall be signed by authorized persons of both -- 1 of 2 -- the entities. This undertaking has to be submitted to the Customs officer at the port of export. CBIC had some time back requested Directorate of Systems to develop a correction tool, on lines of one developed for SB005, for sanction of refund in cases where PAN provided in Shipping Bill is same as PAN of GSTR 1. DG Systems have developed this utility now which would facilitate processing of IGST refund claims stuck due to SB003 error in the manner similar to SB005 error. 3. Field formations may, therefore, take necessary steps to bring these changes to the knowledge of exporters. 4. Difficulties, if any, may be brought to the notice of the Board. Hindi version follows. Yours faithfully (Zubair Riaz) Director(Customs) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:53:56.703Z"
+}

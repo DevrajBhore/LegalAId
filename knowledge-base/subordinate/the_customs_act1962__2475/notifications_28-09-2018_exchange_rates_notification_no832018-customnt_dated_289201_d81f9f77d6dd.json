@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-09-2018_exchange_rates_notification_no832018-customnt_dated_2892018_2c50ce18141d_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Exchange Rates Notification No.83/2018-Custom(NT) dated 28.9.2018.",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt83-2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-09-2018",
+  "description": "Exchange Rates Notification No.83/2018-Custom(NT) dated 28.9.2018.",
+  "hindi_description": null,
+  "file_title": "csnt83-2018.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt83-2018.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt83-2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt83-2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt83-2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt83-2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt83-2018.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) (CENTRAL BOARD OF INDIRECT TAXES AND CUSTOMS) ***** Notification No.83/2018 - Customs (N.T.) Dated the 28th September, 2018 6 Asvina, 1940 (SAKA) In exercise of the powers conferred by section 14 of the Customs Act, 1962 (52 of 1962), the Central Board of Indirect Taxes and Customs hereby makes the following amendments in the Notification of the Central Board of Indirect Taxes and Customs No.81/2018-CUSTOMS (N.T.), dated 20th September 2018 with effect from 29th September, 2018, namely: - In the SCHEDULE-I of the said Notification, for serial No.15 and the entries relating thereto, the following shall be substituted, namely: - SCHEDULE-I Sl.No. Foreign Currency Rate of exchange of one unit of foreign currency equivalent to Indian rupees (1) (2) (3) (a) (b) (For Imported Goods) (For Exported Goods) 15. South African Rand 5.30 5.00 [F.No.468/01/2018-Cus.V] (B. Konthoujam) Under Secretary to the Govt. of India TELE: 011-2309 5541 -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:45:42.832Z"
+}

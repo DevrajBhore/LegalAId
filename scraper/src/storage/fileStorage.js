@@ -1,68 +1,104 @@
-// scraper/src/storage/fileStorage.js
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { backupFile } from "./backupStorage.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Path to project root (LegalAId)
 const projectRoot = path.resolve(__dirname, "../../..");
-
-// Path to knowledge-base folder
 const kbRoot = path.join(projectRoot, "knowledge-base");
 
-// Utility: ensure directory exists
+const storageStats = {
+  written: 0,
+  skippedUnchanged: 0,
+  backedUp: 0,
+  failed: 0,
+};
+
 function ensureDir(dirPath) {
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-    }
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
 }
 
-/**
- * Save JSON to KB
- */
+function shouldBackupOnOverwrite() {
+  return String(process.env.SCRAPER_BACKUP_MODE || "changed").toLowerCase() !== "none";
+}
+
+function resolveFullPath(relativePath) {
+  return path.join(kbRoot, relativePath);
+}
+
+function readExistingContent(fullPath) {
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  return fs.readFileSync(fullPath, "utf-8");
+}
+
+function prepareWrite(relativePath, nextContent) {
+  const fullPath = resolveFullPath(relativePath);
+  const previousContent = readExistingContent(fullPath);
+
+  if (previousContent === nextContent) {
+    storageStats.skippedUnchanged += 1;
+    console.log(`[Scraper] Unchanged -> ${relativePath}`);
+    return { fullPath, shouldWrite: false };
+  }
+
+  if (previousContent !== null && shouldBackupOnOverwrite()) {
+    const backupPath = backupFile(fullPath, relativePath);
+    if (backupPath) {
+      storageStats.backedUp += 1;
+    }
+  }
+
+  ensureDir(path.dirname(fullPath));
+  return { fullPath, shouldWrite: true };
+}
+
+function writeContent(relativePath, content, label) {
+  try {
+    const prepared = prepareWrite(relativePath, content);
+    if (!prepared.shouldWrite) {
+      return true;
+    }
+
+    fs.writeFileSync(prepared.fullPath, content, "utf-8");
+    storageStats.written += 1;
+    console.log(`[Scraper] Saved ${label} -> ${relativePath}`);
+    return true;
+  } catch (error) {
+    storageStats.failed += 1;
+    console.error(`[Scraper] ${label} save error:`, error);
+    return false;
+  }
+}
+
 export async function saveJSON(relativePath, data) {
-    try {
-        const fullPath = path.join(kbRoot, relativePath);
-
-        ensureDir(path.dirname(fullPath));
-
-        fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), "utf-8");
-
-        console.log(`📁 Saved JSON → ${relativePath}`);
-        return true;
-    } catch (err) {
-        console.error("❌ JSON Save Error:", err);
-        return false;
-    }
+  return writeContent(relativePath, `${JSON.stringify(data, null, 2)}\n`, "JSON");
 }
 
-/**
- * Save raw text files (for PDFs, HTML, raw templates)
- */
 export function saveText(relativePath, text) {
-    try {
-        const fullPath = path.join(kbRoot, relativePath);
-
-        ensureDir(path.dirname(fullPath));
-
-        fs.writeFileSync(fullPath, text, "utf-8");
-
-        console.log(`📄 Saved text → ${relativePath}`);
-        return true;
-    } catch (err) {
-        console.error("❌ Text Save Error:", err);
-        return false;
-    }
+  return writeContent(relativePath, String(text), "text");
 }
 
-/**
- * Check if file already exists (avoid re-scraping)
- */
 export function exists(relativePath) {
-    return fs.existsSync(path.join(kbRoot, relativePath));
+  return fs.existsSync(resolveFullPath(relativePath));
 }
 
-// ✅ EXPORT ensureDir so subordinateScraper can use it
-export { ensureDir };
+export function resetStorageStats() {
+  storageStats.written = 0;
+  storageStats.skippedUnchanged = 0;
+  storageStats.backedUp = 0;
+  storageStats.failed = 0;
+}
+
+export function getStorageStats() {
+  return { ...storageStats };
+}
+
+export { ensureDir, kbRoot, projectRoot };

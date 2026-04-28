@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_08-03-2019_circular_no_93122019-gst_dated_08032019_27149d72da7d_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Circular No. 93/12/2019-GST dated 08.03.2019",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-93.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-03-2019",
+  "description": "Circular No. 93/12/2019-GST dated 08.03.2019",
+  "hindi_description": null,
+  "file_title": "circular-cgst-93.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-93.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-93.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-93.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-93.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/circularindividualfile/&file=circular-cgst-93.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=circular&filename=circular-cgst-93.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 93/12/2019-GST F. No. 354/124/2018-TRU Government of India Ministry of Finance Department of Revenue Tax research Unit **** Room No. 156, North Block, New Delhi, 8th March, 2019 To, The Principal Chief Commissioners/ Chief Commissioners/ Principal Commissioners/ Commissioner of Central Tax (All) / The Principal Director Generals/ Director Generals (All) Madam/Sir, Subject: Nature of Supply of Priority Sector Lending Certificates (PSLC) – regarding Representations have been received requesting to clarify whether IGST or CGST/ SGST is payable for trading of PSLC by the banks on e-Kuber portal of RBI. 2. In this regard, it is stated that Circular No. 62/36/2018-GST dated 12.09.2018 was issued clarifying that GST on PSLCs for the period 1.7.2017 to 27.05.2018 will be paid by the seller bank on forward charge basis and GST rate of 12% will be applicable on the supply. Further, Notification No. 11/2018-Central Tax (Rate) dated 28.05.2018 was issued levying GST on PSLC trading on reverse charge basis from 28.05.2018 onwards to be paid by the buyer bank. 3. It is further clarified that nature of supply of PSLC between banks may be treated as a supply of goods in the course of inter-State trade or commerce. Accordingly, IGST shall be payable on the supply of PSLC traded over e-Kuber portal of RBI for both periods i.e 01.07.2017 to 27.05.2018 and from 28.05.2018 onwards. However, where the bank liable to pay GST has already paid CGST/SGST or CGST/UTGST as the case may be, such banks for payment already made, shall not be required to pay IGST towards such supply. 4. Difficulty, if any, in the implementation of this circular may be brought to the notice of the Board immediately. Yours Sincerely, (Harish Y N) Technical Officer, TRU E-mail: harish.yn@gov.in -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:10:18.537Z"
+}

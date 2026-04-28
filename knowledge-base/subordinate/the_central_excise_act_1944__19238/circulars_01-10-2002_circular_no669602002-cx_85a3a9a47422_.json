@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_01-10-2002_circular_no669602002-cx_85a3a9a47422_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Circular no.669/60/2002-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=669-02-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-10-2002",
+  "description": "Circular no.669/60/2002-CX",
+  "hindi_description": null,
+  "file_title": "669-02-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=669-02-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=669-02-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=669-02-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=669-02-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=669-02-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=669-02-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No.669/60/2002-CX 1 st October 2002. F.No.201/23/2001-CX.6 Government of India Ministry of Finance and Company Affairs Department of Revenue CORRIGENDUM In Circular No.657/48/2002-CX dated 5 th September 2002 issued from file of even number: In the last sentence of para 2 the words \"though there is\" may be substituted by \"the\". M.G.Thamizh Valavan Under Secretary to the Government of India. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:13:10.128Z"
+}

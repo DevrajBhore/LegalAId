@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_10-06-2008_notification_no722008-cusnt_dated_10062008_bf0be2a9d570_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.72/2008-Cus(NT), dated 10.06.2008",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-08_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-06-2008",
+  "description": "Notification No.72/2008-Cus(NT), dated 10.06.2008",
+  "hindi_description": null,
+  "file_title": "72-08_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-08_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-08_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-08_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[ TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (ii) ] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 72 / 2008-Customs (N.T.) New Delhi, the 10 June, 2008 20 Jyaistha, 1930 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, The Mall, Amritsar to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on (i) the Commissioner of Customs, Export Promotion Commissionerate, Ballard Estate, New Custom House, Mumbai; (ii) the Commissioner of Customs, (Export), 60, Rajaji Salai, Chennai; and (iii) the Commissioner of Customs, (Port), 15/1, Strand Raod, Custom House, Kolkata for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Gold Star Industries, B-70, Phase VIII, Focal Point, Ludhiana and Others issued vide, DRI F.No. 856(41)LDH/2005, dated the 26th July, 2007, by the Additional Director General, Directorate General of Revenue Intelligence, Ludhiana Regional Unit, Ludhiana. [F.No. 437/70/2007-Cus.IV (Aseem Kumar) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:18:33.022Z"
+}

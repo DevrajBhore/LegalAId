@@ -1,0 +1,39 @@
+{
+  "act_id": "the_indian_forest_act_1927__2388",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 4,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 4,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 4,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 10,
+      "regulations": 1,
+      "order": 7,
+      "orders": 2,
+      "notification": 6,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 2
+    },
+    "context_signals": [
+      "rules made under",
+      "under section 30 or of rules",
+      "under section 52. Section 59. Appeal from orders",
+      "Power to issue notification",
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2388?view_type=browse",
+    "scanned_at": "2026-04-11T14:41:36.633Z"
+  },
+  "failed_candidates": []
+}

@@ -4,6 +4,7 @@
   "clauses": [
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
+    "SERVICE_SCOPE_001",
     "SERVICE_PAYMENT_001",
     "CORE_TERM_001",
     "SERVICE_TERMINATION_001",
@@ -14,6 +15,7 @@
   "required_clauses": [
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
+    "SERVICE_SCOPE_001",
     "SERVICE_PAYMENT_001",
     "CORE_TERM_001",
     "SERVICE_TERMINATION_001",
@@ -24,6 +26,31 @@
   "version": "3.0",
   "_notes": "Hardened: added IP ownership, SLA, change request, TDS/GST, MSME clause. Removed dependency on blueprint which was missing all commercial protections.",
   "conditional_clauses": [
+    {
+      "clause": "SERVICE_DELIVERABLES_001",
+      "include_if": "include_deliverables == true",
+      "note": "Detailed outputs, reports, work product, and acceptance-linked handover"
+    },
+    {
+      "clause": "CORE_DEFINITIONS_001",
+      "include_if": "include_nomenclature_clause == true",
+      "note": "Adds nomenclature, interpretation, and defined business terms"
+    },
+    {
+      "clause": "SERVICE_WARRANTY_001",
+      "include_if": "include_warranty_clause == true",
+      "note": "Optional express warranty and re-performance obligation"
+    },
+    {
+      "clause": "CORE_INDEMNITY_001",
+      "include_if": "include_indemnity_clause == true",
+      "note": "Optional indemnity protection"
+    },
+    {
+      "clause": "CORE_LIMITATION_LIABILITY_001",
+      "include_if": "include_indemnity_clause == true",
+      "note": "Paired limitation-of-liability clause where indemnity is included"
+    },
     {
       "clause": "SERVICE_SLA_001",
       "include_if": "include_sla == true",

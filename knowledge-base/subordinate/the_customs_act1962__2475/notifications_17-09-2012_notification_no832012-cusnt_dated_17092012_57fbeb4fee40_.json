@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_17-09-2012_notification_no832012-cusnt_dated_17092012_57fbeb4fee40_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.83/2012-Cus(NT), dated 17.09.2012",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-12.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "17-09-2012",
+  "description": "Notification No.83/2012-Cus(NT), dated 17.09.2012",
+  "hindi_description": null,
+  "file_title": "83-12.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-12.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-12.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-12.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-12.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-12.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-12.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 83/2012-Customs (N.T.) New Delhi, dated the 17th September, 2012. S.O. (E). - In exercise of the powers conferred by the first proviso to sub-section (2) of section 47 of the Customs Act, 1962 (52 of 1962), the Central Government hereby specify following classes of importers who shall pay customs duty electronically, namely:- (i) Importers registered under Accredited Clients Programme. (ii) Importers paying customs duty of one lakh rupees or more per bill of entry. [F.No. 450/180/2009-Cus.IV (Pt)] (S.C. Ganger) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:36:34.431Z"
+}

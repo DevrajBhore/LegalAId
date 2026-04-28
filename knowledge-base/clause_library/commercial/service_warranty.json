@@ -1,0 +1,53 @@
+{
+  "clause_id": "SERVICE_WARRANTY_001",
+  "name": "Service Warranty",
+  "category": "WARRANTY",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Service Provider warrants that the Services and all Deliverables shall be performed with reasonable skill, care, and diligence, and shall materially conform to the requirements, specifications, and acceptance standards recorded in this Agreement. During the agreed warranty period, the Service Provider shall promptly correct, re-perform, or replace any non-conforming Services or Deliverables at no additional cost to the Client.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Performance of promises"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Warranty obligation is too vague to identify the corrective obligation",
+    "Warranty period is inconsistent with the agreed commercial acceptance structure"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "3.0",
+  "title": "Service Warranty",
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SERVICE_DELIVERABLES_001",
+    "CORE_LIMITATION_LIABILITY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Whether the service output actually failed the agreed standard",
+    "Whether re-performance is the exclusive remedy or one of multiple remedies"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

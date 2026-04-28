@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_03-08-2018_notification_no702018-cusnt_dated_3082018_e462d4da1fdf_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.70/2018-Cus(NT), dated 3.08.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt70-2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-08-2018",
+  "description": "Notification No.70/2018-Cus(NT), dated 3.08.2018",
+  "hindi_description": null,
+  "file_title": "csnt70-2018.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt70-2018.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt70-2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt70-2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt70-2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt70-2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt70-2018.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION(i)] Government of India Ministry of Finance Department of Revenue Central Board of Indirect Taxes and Customs Notification No. 70 /2018-Customs (NT) New Delhi, dated 3 August, 2018 G.S.R ___(E). — In exercise of powers conferred under sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (Act 52 of 1962), the Central Board of Indirect Taxes and Customs hereby appoints the officers mentioned in column (1) of the Table below as officer of Customs and assigns the said officers of Customs to function as Commissioner of Customs (Appeals), as specified in column (2) subject to such condition mentioned in column (3) of the said Table. Table Officer Jurisdiction Condition (1) (2) (3) (i) Commissioner of Central Excise and Central Tax, Aizawl; (ii) Commissioner of Central Excise and Central Tax, Dimapur; (iii) Commissioner of Central Excise and Central Tax, Imphal. Commissioner of Customs (Appeals), Kolkata as specified in notification of the Government of India, in the Ministry of Finance (Department of Revenue), No. 92/2017-Customs (N.T.), dated the 28th September, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i), vide number G.S.R. 1210(E), dated the 29th September, 2017. The cases relating to appeals, as may be assigned by an order of the Principal Chief Commissioner or the Chief Commissioner of Customs, Kolkata, filed on or before 31st July, 2018 with the Commissioners of Customs (Appeals) Kolkata. [F. No. 437/48/2014–CusIV] (Zubair Riaz) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:45:35.643Z"
+}

@@ -1,0 +1,60 @@
+{
+  "sub_id": "notifications_27-03-2001_notification_no132001-ce_nt_b0674b303d12_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.13/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent13-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-03-2001",
+  "description": "Notification No.13/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent13-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent13-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent13-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent13-2k1.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Notification No.13/2001-CE (N.T)",
+  "fetched_at": "2026-04-13T19:33:22.000Z"
+}

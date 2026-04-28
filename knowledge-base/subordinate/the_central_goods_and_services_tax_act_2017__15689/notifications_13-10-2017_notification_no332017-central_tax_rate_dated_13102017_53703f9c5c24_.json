@@ -1,0 +1,53 @@
+{
+  "sub_id": "notifications_13-10-2017_notification_no332017-central_tax_rate_dated_13102017_53703f9c5c24_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No.33/2017-Central Tax (Rate) dated 13.10.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-33-CGST-rate-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-10-2017",
+  "description": "Notification No.33/2017-Central Tax (Rate) dated 13.10.2017",
+  "hindi_description": null,
+  "file_title": "notfctn-33-CGST-rate-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-33-CGST-rate-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": true,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-33-CGST-rate-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-33-CGST-rate-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-33-CGST-rate-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-33-CGST-rate-english.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-33-CGST-rate-english.pdf",
+        "status": 502,
+        "outcome": "source_error",
+        "error": "Source file could not be retrieved as a valid PDF."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-33-CGST-rate-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-33-CGST-rate-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 33/2017- Central Tax (Rate) New Delhi, the 13th October, 2017 GSR......(E).- In exercise of the powers conferred by sub-section (3) of section 9 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government on the recommendations of the Council hereby makes the following further amendments in the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No.13/2017- Central Tax (Rate), dated the 28thJune, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 692(E), dated the 28thJune, 2017, namely:- In the said notification,- (i) in the Table,after serial number9and the entries relating thereto, the following serial number and the entries shall be inserted,namely: - “10 Supply of services by the members of Overseeing Committee to Reserve Bank of India Members of Overseeing Committee constituted by the Reserve Bank of India Reserve Bank of India.”. [F. No. 354/173/2017- TRU] (Ruchi Bisht) Under Secretary to the Government of India Note: -The principal notification was published in the Gazette of India, Extraordinary, vide notification No. 13/2017 - Central Tax (Rate), dated the 28th June, 2017, vide number G.S.R. 692 (E), dated the 28thJune, 2017 and was last amended by notification No. 22/2017 - Central Tax (Rate) dated the 22ndAugust, 2017 vide number G.S.R. 1047(E), dated the 22ndAugust, 2017. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:19:38.769Z"
+}

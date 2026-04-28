@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_04-06-2015_notification_no562015-cusnt_dated_4615_8513301c0480_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.56/2015-Cus(NT), dated 4.6.15",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "04-06-2015",
+  "description": "Notification No.56/2015-Cus(NT), dated 4.6.15",
+  "hindi_description": null,
+  "file_title": "56-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-15.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 56 / 2015-Customs (N.T.) New Delhi, dated the 4th June, 2015 S.O.(E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Principal Commissioner of Customs or Commissioner of Customs Chennai- IV to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Principal Commissioner or Commissioner of Customs, Chennai IV; (ii) the Principal Commissioner or Commissioner of Customs, Nhava Sheva-IV; (iii) the Principal Commissioner or Commissioner of Customs, ICD, Tughlakabad (Export), Tughlakabad; (iv) the Principal Commissioner or Commissioner of Customs, Air Cargo Complex (Export), New Customs House, New Delhi; (v) the Principal Commissioner or Commissioner of Customs, Chennai-VII Air Cargo; (vi) the Principal Commissioner or Commissioner of Customs, Hyderabad Commissionerate; and (vii) the Principal Commissioner or Commissioner of Customs, Kolkata (Port), for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s ITC Limited, Virginia House, 37, J.L. Nehru Road, Kolkata issued vide F.No. DRI/AZU/INV-41/2013/3342, dated the 18th December, 2014 by the Additional Director General, Directorate of Revenue Intelligence, Ahmedabad ZonalUnit, Ahmedabad. [F.No. 437/04/2015-CusIV] ( Pramod Kumar) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:39:38.445Z"
+}

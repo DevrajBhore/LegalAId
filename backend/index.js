@@ -25,6 +25,7 @@ import { runDocumentValidation } from "./services/validationService.js";
 import { callAIChat } from "./ai/aiClient.js";
 import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
+import { getIntakeAssistantResponse } from "./services/intakeAssistantService.js";
 
 import authRoutes from "./auth/authRoutes.js";
 import { protect } from "./auth/authMiddleware.js";
@@ -156,6 +157,32 @@ app.post("/generate", protect, async (req, res) => {
     res
       .status(500)
       .json({ error: "Generation failed", details: error.message });
+  }
+});
+
+// Intake assistant
+app.post("/intake-assistant", protect, async (req, res) => {
+  try {
+    const { document_type: documentType, variables, message } = req.body || {};
+    if (!documentType || !String(message || "").trim()) {
+      return res.status(400).json({
+        error: "Missing document_type or message in request body",
+      });
+    }
+
+    const result = await getIntakeAssistantResponse({
+      documentType,
+      variables,
+      message,
+    });
+
+    res.json(result);
+  } catch (error) {
+    console.error("Intake assistant error:", error);
+    res.status(500).json({
+      error: "Intake assistant failed",
+      details: error.message,
+    });
   }
 });
 

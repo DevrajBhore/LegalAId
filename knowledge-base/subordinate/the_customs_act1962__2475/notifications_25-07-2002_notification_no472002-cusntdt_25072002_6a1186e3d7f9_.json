@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-07-2002_notification_no472002-cusntdt_25072002_6a1186e3d7f9_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.47/2002-Cus(NT),dt. 25.07.2002",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=47-02.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-07-2002",
+  "description": "Notification No.47/2002-Cus(NT),dt. 25.07.2002",
+  "hindi_description": null,
+  "file_title": "47-02.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=47-02.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=47-02.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=47-02.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=47-02.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=47-02.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=47-02.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "25th July,2002 Notification No. 47/2002 - Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Air Cargo Complex, Sahar, Mumbai to act as Commissioner of Customs, New Custom House, Ballard Estate, Mumbai, Commissioner of Customs, Kolkata and Commissioner of Customs, Air Cargo Complex, Chennai for the purpose of adjudicating the Show Cause Notice pertaining to M/s. Sanghvi Reconditioners Pvt. Ltd., 4th Floor, Mahavir Darshan, M.N.Koli Marg, Masjid, Mumbai - 400 003 issued vide F.No.DRI/BZU/E/4/99, dated the 28th February, 2002 by the Additional Director General (Hqrs.), Directorate of Revenue Intelligence, New Delhi. F.NO.437/6/2002-CUS.IV D.S.Garbyal Under Secretary To The Government Of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:58:55.851Z"
+}

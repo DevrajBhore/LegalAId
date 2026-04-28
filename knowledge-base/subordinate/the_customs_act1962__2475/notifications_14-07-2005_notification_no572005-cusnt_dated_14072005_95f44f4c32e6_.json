@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_14-07-2005_notification_no572005-cusnt_dated_14072005_95f44f4c32e6_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.57/2005-Cus(NT), dated 14.07.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-07-2005",
+  "description": "Notification No.57/2005-Cus(NT), dated 14.07.2005",
+  "hindi_description": null,
+  "file_title": "57-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=57-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=57-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 57 /2005-Customs (N.T.) 14th July, 2005 In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Adjudication), Mumbai, to act as Commissioner of Customs (Export), New Custom House, Mumbai; and Commissioner of Customs(Import), Jawahar Custom House, Nhava Sheva, for the purposes of adjudicating the matters relating to Show Cause Notice pertaining to M/s Shri Anthony D'souza, B-202, Rasool Manzil Behraum Baug, Jogeshwari West, Mumbai and his proprietary firms M/s Tony Enterprises, Plot No.27, Yaseen Nagr, UNN, Taluka Chaurasia, District Surat, Gujarat and M/s Venture Alloys and Electrical (India), Plot No.29, Yaseen Nagr, UNN, Taluka Chaurasia, District Surat, Gujarat and also at Shop No.3, Khazana Commercial Unit, Shantwadi, J.P. Road, Behind Bombay Bazaar, Andheri - West, Mumbai and Others, issued, vide, F.No. DRI /BZU/F/1/2004, dated the 17th February, 2005, by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, 1st Floor, Construction House, Walchand Hirachand Marg, Ballard Estate, Mumbai. F.NO.437/ 9 /2005-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:06:39.339Z"
+}

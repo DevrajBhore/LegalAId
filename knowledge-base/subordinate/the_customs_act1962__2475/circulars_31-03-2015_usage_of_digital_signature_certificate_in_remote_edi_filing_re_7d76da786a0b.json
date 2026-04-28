@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_31-03-2015_usage_of_digital_signature_certificate_in_remote_edi_filing_res_of_customs_documents_-_circular_no102015-customs_dated_3132015_dde7f1c27650_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Usage of Digital Signature Certificate in Remote EDI filing (RES) of Customs Documents - Circular No.10/2015-Customs, dated 31.3.2015",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir10-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2015",
+  "description": "Usage of Digital Signature Certificate in Remote EDI filing (RES) of Customs Documents - Circular No.10/2015-Customs, dated 31.3.2015",
+  "hindi_description": null,
+  "file_title": "cir10-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir10-15.pdf",
+    "num_pages": 3,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir10-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir10-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir10-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir10-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir10-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 10/2015-Customs F. No. 450/25/2013-Cus IV Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) **** New Delhi, dated the 31st March, 2015 To, All Chief Commissioners of Customs / Customs (Preventive) All Chief Commissioners of Customs and Central Excise All Commissioners of Customs / Customs (Preventive) All Commissioners of Customs and Central Excise Sir / Madam, Subject: Usage of Digital Signature Certificate in Remote EDI filing (RES) of Customs Documents - reg. The Government has prioritized trade facilitation and creating an environment for ease of doing business. In this direction several initiatives have been taken in the recent past to simplify Customs procedures and enhance the use of automation in business processes with resultant reduction in transaction costs and dwell time associated with the Customs clearance of imported and export goods. In continuation of this approach it has now been decided to allow the electronic submission of digitally signed Customs process documents viz. Bills of Entry, Shipping Bills, Import General Manifest (IGM), Export General Manifest (EGM) and Consol General Manifest (CGM).  2. In this regard Board notes that the electronic submission of the aforementioned Customs process documents is already being allowed. However, it is imperative to ensure the integrity of the said documents. Implementation of digital signature provides a solution. The facility of digitally signing the documents that are filed electronically would provide the necessary assurance regarding the integrity and non-repudiation of these documents. This shall also enhance the acceptability of such documents by other agencies.  3. Accordingly, the Board has decided that with effect from 01.04.2015 importers, exporters, customs brokers, shipping lines, airlines or their agents shall be given the facility to use Digital Signature Certificate for filing Customs process documents viz. Bills of Entry, Shipping Bills, IGM (General Declaration and Cargo Declaration), EGM (General Declaration), CGM through Remote EDI System (RES).For the present, the facility of using digital signatures is optional for all users. -- 1 of 3 --  4. In this context it may be noted that CBEC's Circular No.42/2005-Cus., dated 24.11.2005 mandates that the importers, who are recognized under the Accredited Client Programme (ACP), shall file Bills of Entries using digital signatures. However, this requirement has not been enforced so far. With the introduction of the general facility of electronic filing of digitally signed Customs process documents, the ACP importers shall be required to mandatorily file Bills of Entry with digital signature w.e.f. 01.05.2015. They would obtain the Digital Signature Certificate, as indicated in the following paragraph.  5. To operationalize the facility to use Digital Signature Certificate for filing the aforementioned Customs process documents, the following process would be followed: (i) A web-based Common Signer utility is provided free of cost through the ICEGATE website (https://www.icegate.gov.in) for digitally signing the said Customs process documents. (ii) Importers, exporters, customs brokers, shipping lines, airlines and their agents are expected to use a Class III Digital Signature Certificate obtained from any of the Certifying Authorities, as notified by Controller of Certifying Authorities (http://www.cca.gov.in), following the due process. (iii) Importers, exporters, customs brokers, shipping lines, airlines and their agents shall use the Digital Signature Certificate and the web based Common Signer utility to digitally sign the electronic documents generated by remote EDI package and then subsequently send the digitally signed documents for processing via email/web upload, as is being done currently. (iv) On receiving the digitally signed documents the ICEGATE server side verifier shall verify the user's credentials, validity of certificate, Certifying Authorities credentials, Public Key, Certificate Revocation List (CRL) status and the result of authentication and integrate the data into ICES database. The data so integrated will also have a flag to indicate that the submitted document was digitally signed. (v) The Customs officers will be able to identify on the system whether a particular electronic document has been filed after signing with Digital Signature Certificate or not.  6. The Board has also decided that whenever the said Customs process documents are digitally signed, the Customs will not insist on the user physical signing the said documents as well. The reliance on digitally signed Customs process documents shall also result in the reduction of hard copies of these documents.  7. In case of any technical difficulty in digitally signing the said documents, the users may contact (i) icegate.helpdesk@icegate.gov.in (phone no. 1800 301 1000) and (ii) dscsupport@ncode.in from 10 a.m.to 6 p.m. on working days (phone no. 1800 233 1010). -- 2 of 3 --  8. The Board desires that Chief Commissioners of Customs/Customs and Central Excise shall suitably sensitize the field formations under their jurisdiction about the introduction of the facility of using Digital Signature Certificate for filing Customs process documents viz. Bills of Entry, Shipping Bills, IGM (General Declaration and Cargo Declaration), EGM (General Declaration) and CGM.  9. The new facility may be given wide publicity by issue of suitable Trade Notice/Public Notice. Yours faithfully (Pawan Khetan) OSD (Cus -IV) -- 3 of 3 --",
+  "fetched_at": "2026-04-13T19:50:08.520Z"
+}

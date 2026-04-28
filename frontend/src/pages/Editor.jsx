@@ -14,8 +14,8 @@ import "./Editor.css";
 
 const SESSION_KEY = "legalaid_editor_draft";
 const EXPORT_FORMATS = [
-  { value: "docx", label: "DOCX" },
   { value: "pdf", label: "PDF" },
+  { value: "docx", label: "DOCX" },
   { value: "txt", label: "TXT" },
 ];
 const LEGAL_DISCLAIMER =
@@ -100,7 +100,7 @@ export default function Editor() {
   const [validation, setValidation] = useState(initialState.validation);
   const [documentMeta] = useState(initialState.documentMeta);
   const [history, setHistory] = useState(initialState.history);
-  const [exportFormat, setExportFormat] = useState("docx");
+  const [exportFormat, setExportFormat] = useState("pdf");
   const [downloadingFormat, setDownloadingFormat] = useState(null);
   const [hasEdited, setHasEdited] = useState(false);
   const [needsValidation, setNeedsValidation] = useState(false);

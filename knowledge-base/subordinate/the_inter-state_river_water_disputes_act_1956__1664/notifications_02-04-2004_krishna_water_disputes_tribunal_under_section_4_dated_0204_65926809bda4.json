@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_02-04-2004_krishna_water_disputes_tribunal_under_section_4_dated_02042004_9ee0d2d94c9f_",
+  "parent_act_id": "the_inter-state_river_water_disputes_act_1956__1664",
+  "title": "Krishna Water Disputes Tribunal under section 4 dated 02/04/2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=KWDT.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-04-2004",
+  "description": "Krishna Water Disputes Tribunal under section 4 dated 02/04/2004",
+  "hindi_description": null,
+  "file_title": "KWDT.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=KWDT.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=KWDT.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=KWDT.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=KWDT.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=KWDT.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=KWDT.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T13:29:48.569Z"
+}

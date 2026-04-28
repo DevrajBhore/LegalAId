@@ -1,0 +1,38 @@
+{
+  "act_id": "the_indo-tibetan_border_police_force_act_1992__1935",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 7,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 1,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 7,
+    "modal_duplicate_count": 1,
+    "successful_candidate_count": 7,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 2,
+      "rules": 2,
+      "regulation": 1,
+      "regulations": 1,
+      "order": 9,
+      "orders": 4,
+      "notification": 2,
+      "notifications": 1,
+      "direction": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1935?view_type=browse",
+    "scanned_at": "2026-04-11T14:55:47.854Z"
+  },
+  "failed_candidates": []
+}

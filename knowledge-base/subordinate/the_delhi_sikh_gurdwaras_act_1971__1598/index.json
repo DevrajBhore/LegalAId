@@ -1,0 +1,35 @@
+{
+  "act_id": "the_delhi_sikh_gurdwaras_act_1971__1598",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 6,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 6,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 6,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 6,
+      "regulations": 2,
+      "order": 5,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 40. Power of Committee to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1598?view_type=browse",
+    "scanned_at": "2026-04-11T12:46:44.801Z"
+  },
+  "failed_candidates": []
+}

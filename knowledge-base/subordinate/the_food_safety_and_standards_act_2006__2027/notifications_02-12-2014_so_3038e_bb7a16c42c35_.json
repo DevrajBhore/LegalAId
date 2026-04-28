@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_02-12-2014_so_3038e_bb7a16c42c35_",
+  "parent_act_id": "the_food_safety_and_standards_act_2006__2027",
+  "title": "S.O. 3038(E)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_39_65_00002_200634_1517807326101/notificationindividualfile/&file=15.Gazette_RFL.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-12-2014",
+  "description": "S.O. 3038(E)",
+  "hindi_description": null,
+  "file_title": "15.Gazette_RFL.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_39_65_00002_200634_1517807326101&type=notification&filename=15.Gazette_RFL.pdf",
+    "num_pages": 4,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_39_65_00002_200634_1517807326101/notificationindividualfile/&file=15.Gazette_RFL.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_39_65_00002_200634_1517807326101&type=notification&filename=15.Gazette_RFL.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_39_65_00002_200634_1517807326101&type=notification&filename=15.Gazette_RFL.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_39_65_00002_200634_1517807326101/notificationindividualfile/&file=15.Gazette_RFL.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_39_65_00002_200634_1517807326101&type=notification&filename=15.Gazette_RFL.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 4 -- -- 2 of 4 -- -- 3 of 4 -- -- 4 of 4 --",
+  "fetched_at": "2026-04-13T12:55:57.338Z"
+}

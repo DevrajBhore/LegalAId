@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_27-12-2013_notification_no1322013-cusntdt_27122013_6e7083f0f1ae_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.132/2013-Cus(NT),dt. 27.12.2013",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-13_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-12-2013",
+  "description": "Notification No.132/2013-Cus(NT),dt. 27.12.2013",
+  "hindi_description": null,
+  "file_title": "132-13_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-13_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-13_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-13_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) ......... New Delhi, the 27th December, 2013. Notification No. 132 / 2013-Customs (N.T.) G.S.R. (E) - In pursuance of sub-rule (1) of rule 11 of the Customs Tariff (Identification and Assessment of Safeguard Duty) Rules, 1997, the Central Government hereby extends the period upto 21st March, 2014 for submission of final findings on safeguard investigation concerning import of \"Seamless Pipes, Tubes and Hollow profiles of iron or non-alloy steel\". [F.No. 528/89/2012-Cus (TU)] (M.V.Vasudevan) Under Secretary to the Government of India NOTE: The principal rules were published in the Gazette of India, Extraordinary, Part II, Section 3, sub-section (i) vide number G.S.R. 428 (E), dated the 29th July,1997. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:38:16.695Z"
+}

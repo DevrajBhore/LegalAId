@@ -33,7 +33,7 @@ function parseNumberish(value) {
 function formatCurrency(value) {
   const numeric = parseNumberish(value);
   if (numeric === null) return "the agreed amount";
-  return `INR ${numeric.toLocaleString("en-IN")}`;
+  return `₹${numeric.toLocaleString("en-IN")}`;
 }
 
 function formatDate(value) {
@@ -376,11 +376,11 @@ function stripExternalReferencePhrases(value = "", fallback = "") {
 
   const rewritten = normalized
     .replace(
-      /\b(?:as\s+per|set\s+out\s+in|specified\s+in|described\s+in)\s+(?:the\s+)?(?:annexed\s+|attached\s+)?(?:schedule|annexure|appendix|exhibit)\s*[a-z0-9-]*\b/gi,
+      /\b(?:as\s+per|set\s+out\s+in|specified\s+in|described\s+in)\s+(?:the\s+)?(?:annexed\s+|attached\s+)?(?:schedule\b|annexure\b|appendix\b|exhibit\b)\s*[a-z0-9-]*\b/gi,
       "as expressly stated in this Agreement"
     )
     .replace(
-      /\b(?:annexed\s+|attached\s+)?(?:schedule|annexure|appendix|exhibit)\s*[a-z0-9-]*\b/gi,
+      /\b(?:annexed\s+|attached\s+)?(?:schedule\b|annexure\b|appendix\b|exhibit\b)\s*[a-z0-9-]*\b/gi,
       "this Agreement"
     )
     .replace(/\s+,/g, ",")
@@ -429,6 +429,40 @@ function formatStructuredSubparts(items = []) {
       return `(${marker}) ${item}`;
     })
     .join("\n");
+}
+
+function buildCustomDefinitionEntries(value = "") {
+  return String(value || "")
+    .replace(/\r/g, "")
+    .split(/\n+|;\s*/)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .map((entry) => {
+      const cleaned = normalizeWhitespace(entry).replace(/\.$/, "");
+      if (!cleaned) return null;
+
+      const explicitSplit = cleaned.match(/^([^:=]{2,80})\s*[:=]\s*(.+)$/);
+      if (explicitSplit) {
+        return {
+          term: normalizeWhitespace(explicitSplit[1]).replace(/^"|"$/g, ""),
+          meaning: normalizeWhitespace(explicitSplit[2]),
+        };
+      }
+
+      const meansSplit = cleaned.match(/^(.+?)\s+means\s+(.+)$/i);
+      if (meansSplit) {
+        return {
+          term: normalizeWhitespace(meansSplit[1]).replace(/^"|"$/g, ""),
+          meaning: normalizeWhitespace(meansSplit[2]),
+        };
+      }
+
+      return {
+        term: "",
+        meaning: cleaned,
+      };
+    })
+    .filter(Boolean);
 }
 
 function renderStructuredDetailText(prefix, value, options = {}) {
@@ -638,6 +672,22 @@ function buildFormalPartyIntroduction(
 }
 
 function buildDefinitionsClauseText(documentType, namedParties, variables = {}) {
+  const customDefinitions = buildCustomDefinitionEntries(variables.nomenclature_terms);
+  if (customDefinitions.length) {
+    const customText = customDefinitions
+      .map(({ term, meaning }, index) => {
+        const marker = String.fromCharCode(97 + (index % 26));
+        if (term) {
+          return `(${marker}) "${term}" means ${meaning};`;
+        }
+
+        return `(${marker}) ${meaning};`;
+      })
+      .join("\n");
+
+    return `In this Agreement, unless the context otherwise requires, the following nomenclature and defined terms shall apply:\n${customText}\nThe headings used in this Agreement are for convenience only and shall not affect interpretation. References to the singular include the plural and vice versa, references to a person include any individual, firm, company, LLP, body corporate, or governmental authority, and references to writing include email and other legally admissible electronic communication unless this Agreement expressly requires a signed physical instrument.`;
+  }
+
   const entries = [
     [
       "Agreement",
@@ -914,7 +964,9 @@ function renderHardClause(
     },
 
     CORE_DEFINITIONS_001: () => ({
-      title: "Definitions",
+      title: hasMeaningfulValue(variables.nomenclature_terms)
+        ? "Nomenclature and Definitions"
+        : "Definitions",
       text: buildDefinitionsClauseText(documentType, namedParties, variables),
     }),
 
@@ -1027,10 +1079,28 @@ function renderHardClause(
           )}.`
         : "";
 
+      const deliverablesSentence = hasMeaningfulValue(variables.deliverables)
+        ? "The Parties acknowledge that the service scope is expected to culminate in the delivery of the outputs, work product, and reporting items expressly identified in this Agreement."
+        : "";
+      const acceptanceSentence = hasMeaningfulValue(variables.acceptance_criteria)
+        ? `The services shall be measured against the following acceptance, review, or completion standard: ${stripExternalReferencePhrases(
+            variables.acceptance_criteria,
+            ""
+          )}.`
+        : "";
+      const changeControlSentence =
+        documentType === "SOFTWARE_DEVELOPMENT_AGREEMENT" &&
+        hasMeaningfulValue(variables.change_request_process)
+          ? `Any material change to the service scope, specifications, or delivery expectations shall be handled in accordance with the following change-control process: ${stripExternalReferencePhrases(
+              variables.change_request_process,
+              ""
+            )}.`
+          : "Any material expansion or variation of the service scope, timeline, or output expectations shall require prior written agreement between the Parties, including any corresponding commercial adjustment where applicable.";
+
       return `${serviceScopeText}${techStackText ? `\n${techStackText}` : ""}\nThe ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the specifications, milestones, and service standards set out in this Agreement.${resolveAvailabilitySentence(
         actor,
         variables
-      )}${resolveSupportMaintenanceSentence(variables)}`;
+      )}${resolveSupportMaintenanceSentence(variables)}${deliverablesSentence ? ` ${deliverablesSentence}` : ""}${acceptanceSentence ? ` ${acceptanceSentence}` : ""} ${changeControlSentence}`;
     },
 
     SERVICE_DELIVERABLES_001: () => {
@@ -1150,6 +1220,11 @@ function renderHardClause(
       )}. The indemnified Party shall promptly notify the Indemnifying Party of any claim for which indemnity is sought, shall provide reasonable cooperation at the cost of the Indemnifying Party, and shall not settle any third-party claim affecting the Indemnifying Party without prior consultation, except where urgent action is reasonably required to mitigate loss.`,
 
     CORE_LIABILITY_CAP_001: () =>
+      `Except for liability arising from fraud, wilful misconduct, breach of confidentiality, deliberate infringement or misappropriation of intellectual property rights, and any liability that cannot be excluded or limited under applicable law, the aggregate liability of either Party under or in connection with this Agreement, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, ${resolveLiabilityCapText(
+        variables
+      )}. Neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, including loss of profits, loss of opportunity, or loss of business, except to the extent expressly recoverable under an agreed indemnity or as mandated by law.`,
+
+    CORE_LIMITATION_LIABILITY_001: () =>
       `Except for liability arising from fraud, wilful misconduct, breach of confidentiality, deliberate infringement or misappropriation of intellectual property rights, and any liability that cannot be excluded or limited under applicable law, the aggregate liability of either Party under or in connection with this Agreement, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, ${resolveLiabilityCapText(
         variables
       )}. Neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, including loss of profits, loss of opportunity, or loss of business, except to the extent expressly recoverable under an agreed indemnity or as mandated by law.`,
@@ -1632,6 +1707,21 @@ function renderHardClause(
         ""
       )}.` : " Any post-warranty maintenance or support shall be governed by the support obligations expressly stated in this Agreement or in a separate maintenance arrangement."}`,
 
+    SERVICE_WARRANTY_001: () =>
+      `The ${actor} warrants that the Services and all Deliverables shall be performed with reasonable skill, care, diligence, and professional competence and shall materially conform to the agreed specifications, service standards, and acceptance criteria stated in this Agreement.${hasMeaningfulValue(
+        variables.acceptance_criteria
+      ) ? ` For clarity, conformity shall be tested against the following completion or acceptance standard: ${stripExternalReferencePhrases(
+          variables.acceptance_criteria,
+          ""
+        )}.` : ""} If any Service or Deliverable is found during the warranty period to be materially defective, incomplete, non-conforming, or not in accordance with this Agreement, the ${actor} shall, at its own cost and within a commercially reasonable time, correct, re-perform, update, or replace the affected Service or Deliverable. The warranty period for this clause shall be ${normalizeWhitespace(
+        variables.warranty_period || "ninety (90) days from delivery or acceptance"
+      )}.${hasMeaningfulValue(
+        variables.support_maintenance
+      ) ? ` Post-warranty support, maintenance, or additional support obligations shall operate in accordance with the following arrangement: ${stripExternalReferencePhrases(
+          variables.support_maintenance,
+          ""
+        )}.` : ""}`,
+
     LOAN_AMOUNT_001: () =>
       `Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a principal sum of ${formatCurrency(
         variables.loan_amount
@@ -1772,6 +1862,7 @@ export function applyDocumentHardening(draft, input = {}) {
   if (disallowedProtections.has("LIABILITY_CAP")) {
     genericClausesToRemove.add("AUTO-LIAB-001");
     genericClausesToRemove.add("CORE_LIABILITY_CAP_001");
+    genericClausesToRemove.add("CORE_LIMITATION_LIABILITY_001");
   }
 
   if (disallowedProtections.has("INDEMNITY")) {
@@ -1864,7 +1955,11 @@ function findDisallowedProtectionIssues(draft, documentType) {
     const clauseId = String(clause.clause_id || "");
     if (
       disallowed.has("LIABILITY_CAP") &&
-      (clauseId === "AUTO-LIAB-001" || clauseId === "CORE_LIABILITY_CAP_001")
+      (
+        clauseId === "AUTO-LIAB-001" ||
+        clauseId === "CORE_LIABILITY_CAP_001" ||
+        clauseId === "CORE_LIMITATION_LIABILITY_001"
+      )
     ) {
       issues.push(
         buildIssue(

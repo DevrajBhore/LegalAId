@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_27-01-2011_notification_no052011-cusnt_dated_2712011_8d23a8ae8175_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.05/2011-Cus(NT), dated 27.1.2011",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-11.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-01-2011",
+  "description": "Notification No.05/2011-Cus(NT), dated 27.1.2011",
+  "hindi_description": null,
+  "file_title": "05-11.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-11.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-11.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-11.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-11.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 5/ 2011-Customs (N.T.) New Delhi, dated the 27th January, 2011. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Imports), Mumbai to exercise the powers and discharge the duties conferred or imposed on the officers specified in column (5) of the Table below in respect of the Show Cause Notices specified in the corresponding column (3) pertaining to parties specified in column (2) issued by the authorities mentioned in column (4) of the said Table, for the purposes of adjudication. TABLE Serial Number Party Number of Show Cause Notice and date Issuing Authority Designation of officer (1) (2) (3) (4) (5) 1. Rico Gems, Mumbai and others F.No. VIII/CG- 25/S&D/4/06/RGC/1162 to 1171, dated the 31st March, 2010 Commissioner of Customs (Prev.), Mumbai 1. Additional or Joint Commissioner of Customs (Import), Sahar ACC, Mumbai 2. Additional or Joint Commissioner of Customs (Import), Nava Sheva 2. GNG. & Co., Mumbai and others F.No. VIII/CG- 25/S&D/4/06/GNG/1172 to 1184, dated the 31st March, 2010 Additional Commissioner of Customs (Prev.), Mumbai 1. Additional or Joint Commissioner of Customs (Import), Nava Sheva 2. Additional or Joint Commissioner of Customs (Import), Sahar ACC, Mumbai 3. Shreenath F.No. VIII/CG- Additional Additional or Joint -- 1 of 2 -- Enterprises, Mumbai and others 25/S&D/4/06/SE/1185 to 1195, dated the 31st March, 2010 Commissioner of Customs (Prev.), Mumbai Commissioner of Customs (Import), Nava Sheva 4. Estelle Impex, Mumbai and others F.No. VIII/CG- 25/S&D/4/06/EI/1196 to 1200, dated the 31st March, 2010 Additional Commissioner of Customs (Prev.), Mumbai Additional or Joint Commissioner of Customs (Import), Nava Sheva 5. Nikki Enterprises, Mumbai and others F.No. VIII/CG- 25/S&D/4/06/NE/1201 to 1207, dated the 31st March, 2010 Additional Commissioner of Customs (Prev.), Mumbai Additional or Joint Commissioner of Customs (Import), Nava Sheva [F.No. 437/23/2010-Cus.IV] (Vikas) Under Secretary to the Government of India -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:34:52.733Z"
+}

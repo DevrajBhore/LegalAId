@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_23-12-2009_notification_no1832009-cusntdt_23122009_a21c4996aa20_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.183/2009-Cus(NT),dt. 23.12.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=183-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "23-12-2009",
+  "description": "Notification No.183/2009-Cus(NT),dt. 23.12.2009",
+  "hindi_description": null,
+  "file_title": "183-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=183-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=183-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=183-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=183-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=183-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=183-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 183 / 2009-Customs (N.T.) New Delhi, dated the 23rd December, 2009. 2 Pausa, 1931 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Inland Container depot, Tughlakabad, New Delhi to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on,- (i) the Commissioner of Customs, JNPT, Nhava Sheva; (ii) the Commissioner of Customs, Chennai; and (iii) the Commissioner of Customs, Kandla, for the purpose of adjudicating the matters relating to Show Cause Notices pertaining to M/s. Shivalik Impex and others issued vide, F.No. 23/11/2008-DZU/6586 to 6600, dated the 26th December, 2008, by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit, New Delhi. [F.No. 437/ 16 /2009-Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:31:25.040Z"
+}

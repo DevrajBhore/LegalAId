@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_20-09-2017_implementing_electronic_sealing_for_containers_by_exporters_under_self-sealing_procedure_prescribed_by_circular_262017-cus_dated_1st_july_2017_and_de6c1afc66e1",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Implementing Electronic Sealing for containers by exporters under self-sealing procedure prescribed by Circular 26/2017-Cus dated 1st July, 2017 and Circular 36/2017 dated 28th August, 2017. -Circular No.37/2017-Cus., dated 20.9.2017",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ37-2017cs.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-09-2017",
+  "description": "Implementing Electronic Sealing for containers by exporters under self-sealing procedure prescribed by Circular 26/2017-Cus dated 1st July, 2017 and Circular 36/2017 dated 28th August, 2017. -Circular No.37/2017-Cus., dated 20.9.2017",
+  "hindi_description": null,
+  "file_title": "circ37-2017cs.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ37-2017cs.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ37-2017cs.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ37-2017cs.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ37-2017cs.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circ37-2017cs.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circ37-2017cs.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "To Circular No. 37/2017-Customs F.No.450/08/2015-Cus.IV Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs T* T* T *T* Room No. 227B North Block, New Delhi. Dated the 20th September, 2017. All Principal Chief Commissioners/Chief Commissioners of Customs/Customs (Preventive) All Principal Chief Commissioners/Chief Commissioners of Customs & Central Excise All Principal Commissioners/Commissioners of Customs/Customs (Preventive) All Principal Commissioners/Commissioners of Customs & Central Excise Subject: Implementing Electronic Sealing for containers by exporters under self-sealing procedure prescribed by Circular 26/2017-Cus dated 1st July, 2017 and Circular 36/2017 dated 28th August, 2017. - reg. Sir/ Madam, Representations have been received from several associations seeking information on the availability of RFID Tamper Proof One-time-bolt container seals. Field formations have also sought guidance of the Board regarding the identity of vendors, availability of the electronic seals, web-based application and provisioning of readers at various ports / ICDs. 2. Several potential vendors have communicated with the Board & field formations regarding availability of seals and their intention to provide reader devices (for reading the seals) at select or all ports/ICDs. 3. In order to ensure that electronic seals deployed are of a reliable quality, the Board has adopted international standards laid down under ISO 17712:2013 for high security seals and prescribed that vendors intending to offer RFID seals should furnish certifications required under the ISO standard (para 3 of circular No.36/2017 dated 28.8.2017 refers). 3.1 To ensure uniformity in acceptance of the certificates submitted by vendors, required under ISO 17712:2013, it has been decided that all vendors proposing to offer RFID Tamper Proof One-Time-Bolt Container Seals to exporters for self-sealing, must submit self-attested certificates from seal manufacturers to the Director (Customs), CBEC, North Block, New Delhi before commencing sales. Where the certification is found to comply with the requirements of the ISO standard, the names of such vendors shall be put up on the Board's website (www.cbec.gov.in) for ease of reference of the trade and field formations, as soon as they are received. 3.2 The vendors shall also produce a contract or communication between the vendor and manufacturer, to serve as a link document and undertake that the seals for which ISO certifications are submitted are the same seals pressed into service. -- 1 of 2 -- 3.3 Any time a vendor changes his manufacturer-supplier, he shall provide the documentation referred in para 3 of circular 36/2017-Customs to the CBEC, before offering the seals for sale. 3.4 Clarifications have also been sought regarding the type/specification of the web-hosted application. While each vendor may develop and design their own web-enabled application, the data elements prescribed under para 4 (a) of circular 36/2017-Customs have to be incorporated. For the purposes of consistency in process of communication with the customs stations and the RMD, each vendor shail provide information as specified in para 4 (b) of circular 36/2017-Customs to the department by email in excel format or any other format that may be specified by any field formation or RMD. This would permit ease of consolidation of multiple feeds at the customs station and data integration. All field formations are advised to communicate the designation based email addresses to the vendors, once the list is placed on the website as mentioned at para 3.1 above. 3.5 As a measure of data integrity and security of sealing, vendors are also required to ensure that the Tag Identification (T1D) number is captured in their data base and the IEC code of the exporter is Hnked to the same at the time of sale of the seals. Upon reading at the Port / ICD, the software application shall ensure that the seal's identity is checked with its T1D. Beyond this prescribed minimum feature, vendors will remain free to build upon any other features of RFID system for enhancing security / functionalities. 4. For the ease of reference of the exporters, vendors are advised to publicise on meir website, name of each port / ICD where they have provided readers. Custodians and Customs brokers are also advised to proactively engage with vendors regarding availability of reading facilities at container terminals and ICDs so that there is no dislocation to logistics operations. 5. Considering the difficulties expressed by trade associations in locating vendors of RFID seals, the Board has decided that the date for mandatory self-sealing and use of RFID container seals is deferred to lsl November, 2017. The existing practice may continue till such time. It is also provided that exporters are free to voluntarily adopt the new self-sealing procedure based upon RFID sealing, if readers are in place at the customs station of export from 1.10.2017. 6. Apprehensions have been expressed by some associations and trade bodies regarding the availability of reading facilities in hinterland ICDs. In view thereof, custodians of ICDs are requested to facilitate the process of receiving handheld readers or installation of fixed readers at the ICDs and to approach the Board in case readers are not made available by vendors at any ICD by 10th October, 2017, 7. Difficulties, if any, may be brought to the notice of the Board. 8. Hindi version follows. Yours faithfully, (Zubair Riaz) Director (Customs) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:52:15.038Z"
+}

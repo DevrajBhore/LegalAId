@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_07-03-2003_notification_no222003-cusnt_dated_07032003_537d5cf82f32_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.22/2003-Cus(NT), dated 07.03.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-03_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-03-2003",
+  "description": "Notification No.22/2003-Cus(NT), dated 07.03.2003",
+  "hindi_description": null,
+  "file_title": "22-03_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-03_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=22-03_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=22-03_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "7th March, 2003 Notification No. 22/2003 - Customs ( N.T ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Exports), New Custom House, New Delhi to act as Commissioner of Customs, Amritsar, Commissioner of Customs, Jawahar Custom House, Nhava Sheva, Mumbai or, as the case may be, Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Safetag International, Noida (UP), issued vide DRI. F.No. 50D/42/96-CI, dated, the 15th November, 2002 by the Additional Director General, Directorate of Revenue Intelligence, 'D' Block, I.P.Estate, I.P.Bhavan, New Delhi. D.S.Garbyal Under Secretary to the Government of India F.NO.437/2/2003-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:18.048Z"
+}

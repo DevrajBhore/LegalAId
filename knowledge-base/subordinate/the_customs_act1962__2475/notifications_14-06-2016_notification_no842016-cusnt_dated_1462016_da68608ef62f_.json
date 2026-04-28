@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_14-06-2016_notification_no842016-cusnt_dated_1462016_da68608ef62f_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.84/2016-Cus(NT), dated 14.6.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt84-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-06-2016",
+  "description": "Notification No.84/2016-Cus(NT), dated 14.6.2016",
+  "hindi_description": null,
+  "file_title": "csnt84-2016.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt84-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt84-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt84-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt84-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt84-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt84-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in Gazette of India, Extraordinary, Part-II, Section 3, sub-section (ii)] Government of India Ministry of Finance Department of Revenue Notification No. 84/2016-Customs (N.T.) New Delhi, dated the 14th June, 2016 In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Director General(Adjudication), Directorate of Revenue Intelligence, Delhi to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on the officers mentioned in column (4) of the Table below in respect of the noticees mentioned in column (2) of the Table for the purpose of adjudication of the show cause notices mentioned in column(3) of the Table namely: Table Sl. No. Name of the Noticee Show Cause Notice Number and Date Answerable to (1) (2) (3) (4) 1 M/s Vintron Industries Ltd., New Delhi and others DRI F. No. 34/XI/21/93-INV dated 29.07.1994/ 03.08.1994 Collector of Customs, Calcutta DRI F. No. 34/XI/22/93-INV dated 03.08.1994 Collector of Customs, Custom House, New Delhi DRI F. No. 34/XI/24/93-INV dated 03.08.1994 Collector of Customs, Delhi [F No.437/22/2016-Cus-IV] (Zubair Riaz) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:42:39.858Z"
+}

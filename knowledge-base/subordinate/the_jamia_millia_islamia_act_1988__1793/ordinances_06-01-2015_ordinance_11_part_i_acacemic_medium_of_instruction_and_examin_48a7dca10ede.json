@@ -1,0 +1,48 @@
+{
+  "sub_id": "ordinances_06-01-2015_ordinance_11_part_i_acacemic_medium_of_instruction_and_examination_bff7411cae70_",
+  "parent_act_id": "the_jamia_millia_islamia_act_1988__1793",
+  "title": "Ordinance 11 Part I (Acacemic) Medium of Instruction and Examination",
+  "type": "ordinance",
+  "category_label": "Ordinances",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+11+Part+I+JMI+%28Academic%29+Medium+of+Instruction+and+Examination.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-01-2015",
+  "description": "Ordinance 11 Part I (Acacemic) Medium of Instruction and Examination",
+  "hindi_description": null,
+  "file_title": "Ordinance 11 Part I JMI (Academic) Medium of Instruction and Examination.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2011%20Part%20I%20JMI%20(Academic)%20Medium%20of%20Instruction%20and%20Examination.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+11+Part+I+JMI+%28Academic%29+Medium+of+Instruction+and+Examination.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance+11+Part+I+JMI+%28Academic%29+Medium+of+Instruction+and+Examination.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2B11%2BPart%2BI%2BJMI%2B(Academic)%2BMedium%2Bof%2BInstruction%2Band%2BExamination.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance+11+Part+I+JMI+%28Academic%29+Medium+of+Instruction+and+Examination.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2B11%2BPart%2BI%2BJMI%2B(Academic)%2BMedium%2Bof%2BInstruction%2Band%2BExamination.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+11+Part+I+JMI+%28Academic%29+Medium+of+Instruction+and+Examination.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2011%20Part%20I%20JMI%20(Academic)%20Medium%20of%20Instruction%20and%20Examination.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "115 Ordinance 11(XI) MEDIUM OF INSTRUCTION AND EXAMINATION 1. The medium of Instruction and Examination at all stages of education in the University shall be Urdu. However, instruction may be imparted through the medium of English and Hindi subject to the approval of the Majlis-i-Talimi (Academic Council) as medium of Instruction and Examination. 2. It is clarified that in sciences, technical and professional courses, English shall be the medium of instruction and examination. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T13:47:55.333Z"
+}

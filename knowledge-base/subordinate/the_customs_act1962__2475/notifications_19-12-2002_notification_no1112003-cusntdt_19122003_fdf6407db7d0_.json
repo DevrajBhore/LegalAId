@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_19-12-2002_notification_no1112003-cusntdt_19122003_fdf6407db7d0_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.111/2003-Cus(NT),dt. 19.12.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=111-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "19-12-2002",
+  "description": "Notification No.111/2003-Cus(NT),dt. 19.12.2003",
+  "hindi_description": null,
+  "file_title": "111-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=111-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=111-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=111-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=111-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=111-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=111-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "19th December, 2003 Notification No. 111/2003 - Customs (N.T) In exercise of the powers conferred by sub-section (1) of section 30 of the Customs Act, 1962 (52 of 1962), the Central Government hereby specifies that any person other than carrier, who is authorized to issue delivery orders in favour of an importer on the basis of which goods are permitted to be delivered to such importer by the custodian of the goods, as any other person for the purposes of the said section. 2. This notification shall come into force on the 18th February, 2004. D.S. Garbyal Under Secretary to the Government of India F.No.450/53/2000-Cus.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:02.471Z"
+}

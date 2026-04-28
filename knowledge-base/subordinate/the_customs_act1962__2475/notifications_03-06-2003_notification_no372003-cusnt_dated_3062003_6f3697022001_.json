@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_03-06-2003_notification_no372003-cusnt_dated_3062003_6f3697022001_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.37/2003-Cus(NT), dated 3.06.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-06-2003",
+  "description": "Notification No.37/2003-Cus(NT), dated 3.06.2003",
+  "hindi_description": null,
+  "file_title": "37-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-03.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "3rd June, 2003 Notification No. 37/2003 - Customs (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Board hereby appoints:- 1. Commissioner of Customs (Adjudication), Mumbai; 2. Commissioner of Customs (Adjudication), Chennai; 3. Commissioner of Customs (Adjudication), Delhi; and 4. Commissioner of Customs (Adjudication), Kolkata, as Commissioners of Customs, each having jurisdiction over the whole of India, for the purposes of adjudicating the cases as assigned to them by the Board. D.S. Garbyal Under Secretary to the Government of India F.No.437/ 1 /97-CUS.IV -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:00:37.614Z"
+}

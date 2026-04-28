@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_11-12-2013_notification_no1222013-cusntdt_11122013_271f70ba6779_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.122/2013-Cus(NT),dt. 11.12.2013",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=122-13.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-12-2013",
+  "description": "Notification No.122/2013-Cus(NT),dt. 11.12.2013",
+  "hindi_description": null,
+  "file_title": "122-13.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=122-13.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=122-13.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=122-13.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=122-13.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=122-13.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=122-13.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 122/2013-Customs (N.T.) New Delhi, dated the 11th December, 2013 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional/Joint Commissioner of Customs (Port), Kolkata, Custom House, 15/1, Strand Road, Kolkata-700001 to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) The Additional/Joint Commissioner of Customs (Port), Kolkata, Custom House, 15/1, Strand Road, Kolkata-700001; (ii) The Deputy/Assistant Commissioner of Customs (Air Port), Kolkata, Custom , House 15/1, Strand Road, Kolkata-700001, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s SFT Engineering, 4, Jatin Das Road, Kolkata-700029 issued vide, DRI F.No.718(ii)08/Seiz/PRU/13-14/396-398 dated the 23rd May, 2013 by the Additional Director, Directorate of Revenue Intelligence, Lucknow Zonal Unit, Lucknow. [F.No. 437/61/2013-Cus.IV] (M.V. Vasudevan) Under Secretary to the Government of India -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:37:59.984Z"
+}

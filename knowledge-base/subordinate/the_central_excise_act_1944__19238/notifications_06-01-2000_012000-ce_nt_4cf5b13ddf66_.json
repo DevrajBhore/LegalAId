@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-01-2000_012000-ce_nt_4cf5b13ddf66_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "01/2000-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-01-2000",
+  "description": "01/2000-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent1-2k.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs New Delhi, the 6 th .January.2000 NOTIFICATION No. 1/2000-Central Excise (N.T.) dated 6-1-2000. Inter-warehousing movement of petroleum products-Village-Rampur-golap,District-Ratnagiri (Maharastra) notified- Notification No.266/67-CE amended In pursuance of sub-rule (2) of Rule 49 and Rule 139 of the Central Excise Rules,1944, the Central Government hereby makes the following amendment in the notification of the Government of India in the Ministry of Finance (Department of Revenue and Insurance) No. 266/67-67-Central Excise, dated 28 th November, 1967, namely:- In paragraph 2 of the said notification in clause (I), after sub-clause (zzzI) the following sub-clause shall be inserted. (zzzm), Village-Rampur-Golap, District-Ratnagiri (Maharashtra) Notification No. 1/2000-C.E. (N.T.), dated 6-1-2000. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:28:43.356Z"
+}

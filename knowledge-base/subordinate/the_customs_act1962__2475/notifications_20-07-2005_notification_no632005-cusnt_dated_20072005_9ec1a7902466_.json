@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_20-07-2005_notification_no632005-cusnt_dated_20072005_9ec1a7902466_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.63/2005-Cus(NT), dated 20.07.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=63-05_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-07-2005",
+  "description": "Notification No.63/2005-Cus(NT), dated 20.07.2005",
+  "hindi_description": null,
+  "file_title": "63-05_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=63-05_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=63-05_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=63-05_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "20th July, 2005 Notification No. 63 /2005-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Custom House, Kandla to act as Commissioner of Customs and Central Excise, Vishakhapatnam-II, Commissioner of Customs, Custom House, Ahmedabad, Commissioner of Customs, Customs House, Jamnagar and Commissioner of Customs, Custom House, Mangalore, for the purposes of adjudicating the matters relating to Show Cause Notices pertaining to M/s Trisuns Chemical Industry Limited, plot No. 25 and 38, Sector-II, Kandla Special Economic Zone, Gandhidham and M/s Trisuns Chemical Industry Limited, Survey No.61, Bhuj-Dudhai Road, Bhachau and Others, issued, vide, F.No DRI./GRU/INQ-1/2003, dated the 27thJuly, 2004 by the Additional Director General, Directorate of Revenue Intelligence Zonal Unit, Ahmedabad.. F.NO.437/ 13 /2005-CUS.IV (ANUPAM PRAKASH) UNDER SECRETARY TO THE GOVERNMENT OF INDIA -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:06:58.020Z"
+}

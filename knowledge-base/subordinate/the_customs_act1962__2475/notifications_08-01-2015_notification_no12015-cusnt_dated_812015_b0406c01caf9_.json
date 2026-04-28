@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-01-2015_notification_no12015-cusnt_dated_812015_b0406c01caf9_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.1/2015-Cus(NT) dated 8.1.2015",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=1-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-01-2015",
+  "description": "Notification No.1/2015-Cus(NT) dated 8.1.2015",
+  "hindi_description": null,
+  "file_title": "1-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=1-15.pdf",
+    "num_pages": 3,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=1-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=1-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=1-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=1-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=1-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, PART-II, SECTION 3, SUB-SECTION (ii), EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE CENTRAL BOARD OF EXCISE AND CUSTOMS NOTIFICATION NO.01/2015-CUSTOMS (N.T.) DATED THE 1st January, 2015 11 Pausa, 1936(SAKA) S.O. (E). - In exercise of the powers conferred by section 14 of the Customs Act, 1962 (52 of 1962), and in super session of the notification of the Government of India in the Ministry of Finance (Department of Revenue) No.116/2014-CUSTOMS (N.T.), dated the 18th December, 2014 vide number S.O.3240 (E), dated the 18th December, 2014, except as respects things done or omitted to be done before such super session, the Central Board of Excise and Customs hereby determines that the rate of exchange of conversion of each of the foreign currency specified in column (2) of each of Schedule I and Schedule II annexed hereto into Indian currency or vice versa shall, with effect from 2ndJanuary, 2015 be the rate mentioned against it in the corresponding entry in column (3) thereof, for the purpose of the said section, relating to imported and export goods. SCHEDULE-I S.No. Foreign Currency Rate of exchange of one unit of foreign currency equivalent to Indian rupees (1) (2) (3) (a) (b) (For Imported Goods) (For Export Goods) 1. Australian Dollar 52.30 51.00 2. Bahrain Dinar 172.65 163.20 3. Canadian Dollar 55.10 53.75 4. Danish Kroner 10.45 10.15 5. EURO 77.50 75.65 6. Hong Kong Dollar 8.25 8.10 7. Kuwait Dinar 222.45 210.00 8. New Zealand Dollar 50.05 48.65 9. Norwegian Kroner 8.60 8.35 10. Pound Sterling 99.65 97.45 -- 1 of 3 -- 11. Singapore Dollar 48.30 47.20 12. South African Rand 5.65 5.30 13. Saudi Arabian Riyal 17.35 16.40 14. Swedish Kroner 8.20 8.00 15. Swiss Franc 64.40 62.90 16. UAE Dirham 17.70 16.75 17. US Dollar 63.80 62.75 SCHEDULE-II S.No. Foreign Currency Rate of exchange of one unit of foreign currency equivalent to Indian rupees (1) (2) (3) (a) (b) (For Imported Goods) (For Export Goods) 1. Japanese Yen 53.50 52.25 2. Kenya Shilling 72.05 67.80 [F.No.468/01/2015-Cus.V] (Akshay Joshi) Under Secretary to the Government of India To The Manager, Government of India Press, -- 2 of 3 -- Mayapuri, Ring Road, New Delhi. -- 3 of 3 --",
+  "fetched_at": "2026-04-13T20:39:25.508Z"
+}

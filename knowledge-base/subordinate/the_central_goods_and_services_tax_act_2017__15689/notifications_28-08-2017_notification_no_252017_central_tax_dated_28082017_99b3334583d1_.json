@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_28-08-2017_notification_no_252017_central_tax_dated_28082017_99b3334583d1_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 25/2017 – Central Tax dated 28.08.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Noftn+25-2017+English.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-08-2017",
+  "description": "Notification No. 25/2017 – Central Tax dated 28.08.2017",
+  "hindi_description": null,
+  "file_title": "Noftn 25-2017 English.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn%2025-2017%20English.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Noftn+25-2017+English.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn+25-2017+English.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn%2B25-2017%2BEnglish.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn+25-2017+English.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn%2B25-2017%2BEnglish.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Noftn+25-2017+English.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Noftn%2025-2017%20English.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance Department of Revenue Central Board of Excise and Customs Notification No. 25/2017 – Central Tax New Delhi, 28th August, 2017 G.S.R. …..(E).—In exercise of the powers conferred by sub-section (6) of section 39 read with section 168 of the Central Goods and Services Tax Act, 2017 (12 of 2017) and section 20 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017), the Commissioner, hereby extends the time limit for furnishing the return for the month of July, 2017, by a person supplying online information and database access or retrieval services from a place outside India to a non-taxable online recipient referred to in section 14 of the Integrated Goods and Services Tax Act, 2017 and rule 64 of the Central Goods and Services Tax Rules, 2017, till 15th day of September, 2017. 2. This notification shall come into force on the date of its publication in the Official Gazette. [F. No.349/74/2017-GST(Pt.)] (Dr. Sreeparvathy S.L.) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:16:45.354Z"
+}

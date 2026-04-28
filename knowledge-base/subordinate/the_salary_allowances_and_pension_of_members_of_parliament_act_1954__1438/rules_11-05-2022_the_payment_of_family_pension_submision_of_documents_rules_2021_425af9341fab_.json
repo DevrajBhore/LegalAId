@@ -1,0 +1,60 @@
+{
+  "sub_id": "rules_11-05-2022_the_payment_of_family_pension_submision_of_documents_rules_2021_425af9341fab_",
+  "parent_act_id": "the_salary_allowances_and_pension_of_members_of_parliament_act_1954__1438",
+  "title": "The Payment of Family Pension (Submision of Documents) Rules, 2021",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-05-2022",
+  "description": "The Payment of Family Pension (Submision of Documents) Rules, 2021",
+  "hindi_description": "कुटुंब पेंशन (दस्तावेज प्रस्तुत करना ) संदाय नियम, 2021",
+  "file_title": "updated_msa_act_&_rules_made_thereunder_-2022-68-89.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rule&filename=updated_msa_act_&_rules_made_thereunder_-2022-68-89.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "The Payment of Family Pension (Submision of Documents) Rules, 2021",
+  "fetched_at": "2026-04-13T20:24:09.227Z"
+}

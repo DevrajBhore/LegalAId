@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-03-2004_notification_no402004-cusnt_dated_25032004_87d5fcd751fb_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.40/2004-Cus(NT), dated 25.03.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-03-2004",
+  "description": "Notification No.40/2004-Cus(NT), dated 25.03.2004",
+  "hindi_description": null,
+  "file_title": "40-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=40-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=40-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "25th March, 2004 Notification No. 40/2004 - Custom (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Airport and Air Cargo Complex, Chennai to act as Commissioner of Customs (Imports) , Air Cargo Complex , Sahar, Mumbai for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Kehlan Stud , Livestock and Agricultural Farm, Village: Gasti Kemppanahalli, Yelahanka Hobli, Bangalore North issued vide file No.DRI/BZU/E/14/2003, dated the 29th January,2004 by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, Mumbai . D.S.Garbyal Under Secretary to the Government of India F.NO.437/5/2004-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:02:43.200Z"
+}

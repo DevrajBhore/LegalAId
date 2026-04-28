@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_05-04-2010_ncte_being_made_as_an_academic_authority_to_lay_down_the_minimum_qualifications_for_a_person_eligible_to_be_a_teacher_5ce0ee95c0fd_",
+  "parent_act_id": "the_national_council_for_teacher_education_act_1993__1938",
+  "title": "NCTE being made as an academic authority to lay down the minimum qualifications for a person eligible to be a teacher",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_67_00001_199373_1517807322617/notificationindividualfile/&file=25+compiled+list.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-04-2010",
+  "description": "NCTE being made as an academic authority to lay down the minimum qualifications for a person eligible to be a teacher",
+  "hindi_description": null,
+  "file_title": "25 compiled list.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25%20compiled%20list.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_67_00001_199373_1517807322617/notificationindividualfile/&file=25+compiled+list.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25+compiled+list.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25%2Bcompiled%2Blist.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25+compiled+list.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25%2Bcompiled%2Blist.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_67_00001_199373_1517807322617/notificationindividualfile/&file=25+compiled+list.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_67_00001_199373_1517807322617&type=notification&filename=25%20compiled%20list.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:13:40.729Z"
+}

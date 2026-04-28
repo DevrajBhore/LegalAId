@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-01-2000_notification_no062000-cusnt_dated_13012000_93c3f22ab590_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.06/2000-Cus(NT), dated 13.01.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=6-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-01-2000",
+  "description": "Notification No.06/2000-Cus(NT), dated 13.01.2000",
+  "hindi_description": null,
+  "file_title": "6-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=6-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=6-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=6-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=6-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=6-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=6-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification appoints the Commissioner of Customs, Jaipur to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs (Export Promotion). New Custom House, Mumbai for specified purposes 13th January, 2000 Notification No. 6/2000- Customs (N.T.) In exercise of the powers conferred by Sub-section (1) of Section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby appoints the Commissioner of Customs, Jaipur to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs (Export Promotion). New Custom House, Mumbai under the said Act and rules made therunder for the purpose of adjudicating the seizure made by Jaipur Commissionerate for the import of capital goods from Mumbai Port against Bill of Entry No. 2697/96, dated 1-11- 95 under EPCG licence No. P/CG/2133083 dated 6-5-94 of M/s. Suzuki Processors. Village Gudda, P.O. Mandla, Distt. Bhilwara (Rajasthan) and other matters relating to such seziure. RAJENDRA SINGH Under Secretary [F. No. 437/18/99-Cus. IV] -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:17.204Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_02-02-2018_notification_no_112018_central_tax_dated_02022018_3d34ce9f310a_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 11/2018 – Central Tax dated 02.02.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-11-2018-central_tax-English.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-02-2018",
+  "description": "Notification No. 11/2018 – Central Tax dated 02.02.2018",
+  "hindi_description": null,
+  "file_title": "Notification-11-2018-central_tax-English.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-11-2018-central_tax-English.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-11-2018-central_tax-English.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-11-2018-central_tax-English.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-11-2018-central_tax-English.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-11-2018-central_tax-English.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-11-2018-central_tax-English.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "`[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance Department of Revenue Central Board of Excise and Customs Notification No. 11/2018 – Central Tax New Delhi, the 2nd February, 2018 G.S.R……(E):- In exercise of the powers conferred by section 164 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government hereby rescinds, except as respects things done or omitted to be done before such rescission, the notification of the Government of India in the Ministry of Finance (Department of Revenue) No. 74/2017 – Central Tax dated the 29th December, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R 1601 (E), dated the 29th December, 2017. [F. No.349/58/2017-GST(Pt.)] (Dr. Sreeparvathy S.L.) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:26:14.734Z"
+}

@@ -1,0 +1,89 @@
+{
+  "act_id": "the_narcotic_drugs_and_psychotropic_substances_act_1985__1791",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 54,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 54,
+    "modal_duplicate_count": 14,
+    "successful_candidate_count": 54,
+    "failed_candidate_count": 1,
+    "keyword_hits": {
+      "rules": 14,
+      "regulation": 4,
+      "regulations": 1,
+      "order": 8,
+      "orders": 3,
+      "notification": 2,
+      "notifications": 2,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "orders made under"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1791?view_type=browse",
+    "scanned_at": "2026-04-13T20:03:36.086Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "The Narcotic Drugs and Psychotropic Substances Illegally acquired property (Receipt, Management and disposal) Rules, 1989",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00029_198561_1517807326222/rulesindividualfile/&file=NDPS+Rules.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00029_198561_1517807326222/rulesindividualfile/&file=NDPS+Rules.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00029_198561_1517807326222/rulesindividualfile/&file=NDPS+Rules.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rule&filename=NDPS%20Rules.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS+Rules.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00029_198561_1517807326222&type=rules&filename=NDPS%2BRules.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

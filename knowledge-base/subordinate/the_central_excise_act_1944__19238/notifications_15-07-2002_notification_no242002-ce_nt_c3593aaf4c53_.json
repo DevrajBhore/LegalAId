@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_15-07-2002_notification_no242002-ce_nt_c3593aaf4c53_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.24/2002-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent24-2k2.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "15-07-2002",
+  "description": "Notification No.24/2002-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent24-2k2.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent24-2k2.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent24-2k2.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent24-2k2.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent24-2k2.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent24-2k2.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent24-2k2.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "15th July, 2002 Notification No. 24/2002- Central Excise (N.T.) Whereas the Central Government is satisfied that according to a practice that was generally prevalent regarding levy of duty of excise (including non-levy thereof) on Aviation Turbine Fuel, falling under Chapter 27 of First Schedule to the Central Excise Tariff Act, 1985 (8 of 1986) under the Central Excise Act, 1944 (1 of 1944) (hereinafter referred to as the said Act) and according to the said practice, the duty of excise of the amount specified against S.No. 2 of the table in the Notification No. 46/94-Central Excise (N.T.) dated 22nd September 1994 (hereinafter referred to as the said duty) leviable on said Aviation Turbine Fuel supplied to Druk Air, Bhutan by Indian Oil Corporation, was not being levied under Section 3 of the said Central Excise Act, during the period commencing on the 1st day of April, 1998 and ending with the 17th day of September, 1998. Now, therefore, in exercise of the powers conferred by Section 11C of the said Act, the Central Government hereby directs that the whole of the duty of excise payable under section 3 of the said Act on such Aviation Turbine, Fuel but for the said practice, shall not be required to be paid in respect of such Aviation Turbine Fuel on which the said duty of excise was not levied during the said period in accordance with the said practice. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:40:10.481Z"
+}

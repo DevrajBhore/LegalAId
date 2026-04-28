@@ -1,0 +1,37 @@
+{
+  "act_id": "the_arbitration_and_conciliation_act_1996__1978",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 4,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 4,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 4,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 1,
+      "rules": 9,
+      "regulations": 2,
+      "order": 19,
+      "orders": 4,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make regulations",
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1978?view_type=browse",
+    "scanned_at": "2026-04-11T09:13:50.079Z"
+  },
+  "failed_candidates": []
+}

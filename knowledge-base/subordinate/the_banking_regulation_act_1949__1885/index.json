@@ -1,0 +1,39 @@
+{
+  "act_id": "the_banking_regulation_act_1949__1885",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 5,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 1,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 5,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 5,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 7,
+      "regulation": 14,
+      "regulations": 1,
+      "order": 13,
+      "orders": 2,
+      "scheme": 3,
+      "schemes": 2,
+      "notification": 2,
+      "notifications": 1,
+      "directions": 3,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under schemes"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1885?view_type=browse",
+    "scanned_at": "2026-04-11T09:26:59.794Z"
+  },
+  "failed_candidates": []
+}

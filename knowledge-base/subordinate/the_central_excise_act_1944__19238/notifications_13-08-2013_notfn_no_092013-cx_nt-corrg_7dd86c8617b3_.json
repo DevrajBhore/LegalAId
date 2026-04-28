@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-08-2013_notfn_no_092013-cx_nt-corrg_7dd86c8617b3_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 09/2013-CX (NT)-corrg",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent9corr-2013.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-08-2013",
+  "description": "Notfn No 09/2013-CX (NT)-corrg",
+  "hindi_description": null,
+  "file_title": "cent9corr-2013.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent9corr-2013.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent9corr-2013.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent9corr-2013.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent9corr-2013.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent9corr-2013.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent9corr-2013.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) New Delhi, the 13th August, 2013 Corrigendum G.S.R. (E).-In the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No. 09/2013- Central Excise (N.T.), dated 23rd May, 2013, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 337(E), dated the 23rd May, 2013, in English version, in line 3, in Para 1, for, “[(GSR 465 E dated 26th June, 2001)]”, read “[GSR 465 (E), dated 26th June, 2001]”. . [F.No.209/08/2011-CX.6] (Pankaj Jain) Under Secretary to the Government of India (CX.1) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:48:48.024Z"
+}

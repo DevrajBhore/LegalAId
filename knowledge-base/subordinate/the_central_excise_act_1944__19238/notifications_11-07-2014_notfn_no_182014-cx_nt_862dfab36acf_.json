@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_11-07-2014_notfn_no_182014-cx_nt_862dfab36acf_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 18/2014-CX (NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-07-2014",
+  "description": "Notfn No 18/2014-CX (NT)",
+  "hindi_description": null,
+  "file_title": "cent18-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 18/2014-Central Excise (N.T.) New Delhi, the 11th July, 2014 G.S.R. (E).- In exercise of the powers conferred by sub-clause (iii) of clause (c) of section 23A of the Central Excise Act, 1944 (1 of 1944), the Central Government hereby specifies “the resident private limited company” as class of persons for the purposes of the said clause. Explanation.- For the purposes of this notification,- (a) “private limited company” shall have the same meaning as is assigned to “private company” in clause (68) of section 2 of the Companies Act, 2013 (18 of 2013); (b) “resident” shall have the same meaning as is assigned to it in clause (42) of section 2 read with sub-section (3) of section 6 of the Income-tax Act, 1961 (43 of 1961). [F.No. 334/15/2014-TRU] (Akshay Joshi) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:11.383Z"
+}

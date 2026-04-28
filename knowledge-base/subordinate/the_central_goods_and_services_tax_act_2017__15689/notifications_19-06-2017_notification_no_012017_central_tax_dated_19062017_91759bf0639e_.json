@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_19-06-2017_notification_no_012017_central_tax_dated_19062017_91759bf0639e_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 01/2017 – Central Tax dated 19.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn_1_central-tax-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "19-06-2017",
+  "description": "Notification No. 01/2017 – Central Tax dated 19.06.2017",
+  "hindi_description": null,
+  "file_title": "notfctn_1_central-tax-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn_1_central-tax-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn_1_central-tax-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn_1_central-tax-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn_1_central-tax-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn_1_central-tax-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn_1_central-tax-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE CENTRAL BOARD OF EXCISE AND CUSTOMS Notification No. 1/2017 – Central Tax New Delhi, the 19th June, 2017 29 Jyaistha, 1939 Saka G.S.R. …..(E).— In exercise of the powers conferred by sub-section (3) of section 1 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government hereby appoints the 22nd day of June, 2017, as the date on which the provisions of sections 1, 2, 3, 4, 5, 10, 22, 23, 24, 25, 26, 27, 28, 29, 30, 139, 146 and 164 of the said Act shall come into force. [F. No. 349/72/2017-GST] (Dr. Sreeparvathy.S.L.) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:13:44.379Z"
+}

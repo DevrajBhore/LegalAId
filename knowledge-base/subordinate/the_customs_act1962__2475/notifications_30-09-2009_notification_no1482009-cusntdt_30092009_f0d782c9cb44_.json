@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-09-2009_notification_no1482009-cusntdt_30092009_f0d782c9cb44_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.148/2009-Cus(NT),dt. 30.09.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=148-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-09-2009",
+  "description": "Notification No.148/2009-Cus(NT),dt. 30.09.2009",
+  "hindi_description": null,
+  "file_title": "148-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=148-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=148-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=148-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=148-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=148-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=148-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 148 / 2009-Customs (N.T.) New Delhi, dated the 30th September, 2009. 8 Asvina, 1931 Saka. S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Mangalore to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the following adjudicating authorities mentioned in column (3) of the Table below in respect of Show Cause Notices in column 2 of the said Table. S. No. 1 Show Cause Notice Number And date 2 Adjudicating Authorities 3 1 DRI/MRU/MRPL/OSU/MANGALORE/41/2006 dated 28.5.2008 Commissioner of Customs, New Custom House, Panambur, Mangalore 2 DRI/MRU/MRPL/OSU/MUMBAI/41/2006 dated 28.5.2008 Commissioner of Customs (Import), New Custom House, Ballard Estate, Mumbai 3 DRI/MRU/MRPL/OSU/NHAVA SHEVA/41/2006 dated 28.5.2008 Commissioner of Customs (Import), JNCH, Nhava Sheva, Raigad, Maharashtra 4 DRI/MRU/MRPL/OSU/ACC/41/2006 dated 28.5.2008 Commissioner of Customs (Aair Cargo- Import), Air Cargo Complex, Sahar, Andheri (E), Mumbai for the purpose of adjudicating the matters relating to Show Cause Notices pertaining to M/s. Mangalore Refinery and Petrochemicals Limited, Kuthethoor P.O., Via Katipalla, Mangalore-575 030, issued by the Mangalore Regional Unit, Mangalore. [F.No. 437/93/2009-Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:29:39.479Z"
+}

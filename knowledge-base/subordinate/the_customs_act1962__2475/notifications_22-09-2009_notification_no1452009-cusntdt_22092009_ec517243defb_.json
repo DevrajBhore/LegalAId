@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-09-2009_notification_no1452009-cusntdt_22092009_ec517243defb_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.145/2009-Cus(NT),dt. 22.09.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=145-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-09-2009",
+  "description": "Notification No.145/2009-Cus(NT),dt. 22.09.2009",
+  "hindi_description": null,
+  "file_title": "145-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=145-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=145-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=145-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=145-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=145-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=145-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) ……… New Delhi, the 22nd September, 2009. 31 Bhadrapada, 1931 (SAKA ) NOTIFICATION No. 145 / 2009-Customs (N.T.) G.S.R. (E) - In pursuance of sub-rule (1) of rule 11 of the Customs Tariff (Transitional Product Specific Safeguard Duty) Rules, 2002, the Central Government hereby extends the period upto, and inclusive of, 15th day of October, 2009 for submission of final findings on safeguard investigation concerning import of Soda Ash into India. [F. No.528/44/2009-Cus.(TU)] M. M. Parthiban Director (Customs) NOTE: The principal rules were published in the Gazette of India, Extraordinary, Part II, Section 3, sub-section (i) vide number G.S.R.420(E), dated the 11th June, 2002. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:29:31.169Z"
+}

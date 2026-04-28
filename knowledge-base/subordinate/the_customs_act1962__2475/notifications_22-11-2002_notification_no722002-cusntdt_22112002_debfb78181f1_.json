@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_22-11-2002_notification_no722002-cusntdt_22112002_debfb78181f1_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.72/2002-Cus(NT),dt. 22.11.2002",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-02_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-11-2002",
+  "description": "Notification No.72/2002-Cus(NT),dt. 22.11.2002",
+  "hindi_description": null,
+  "file_title": "72-02_(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-02_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-02_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-02_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "22nd November, 2002 Notification No. 72/2002- Customs (N.T.) In exercise of the powers conferred by sub-rule (1) of rule 3 of the Customs Tariff (Identification and Assessment of Safeguard Duty) Rules, 1997, the Central Government hereby appoints Shri B. K. Mishra, Chief Commissioner of Central Excise, Delhi, as the Director General (Safeguards) for the purposes of the said rules. D. S. Garbyal Under Secretary to the Government of India F. NO. - 526/14/2002 - CUS(T.U.) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:59:42.245Z"
+}

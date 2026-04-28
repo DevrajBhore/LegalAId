@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_25-11-2016_notification_no1402016-cusnt_dated_25112016_f647db8dee3a_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.140/2016-Cus(NT), dated 25.11.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt140-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-11-2016",
+  "description": "Notification No.140/2016-Cus(NT), dated 25.11.2016",
+  "hindi_description": null,
+  "file_title": "csnt140-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt40-2016_%281%29.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt40-2016_(1).pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.140/2016-CUS(NT) dated 25.11.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt140-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt140-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt140-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt140-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt140-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt140-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE (CENTRAL BOARD OF EXCISE AND CUSTOMS) **** New Delhi, the 25th of November, 2016 Notification No. 140 /2016-Customs (N.T.) G.S.R (E).- In exercise of the powers conferred by section 156 of the Customs Act, 1962 (52 of 1962), the Central Government, being satisfied that it is necessary in the public interest so to do, hereby rescinds the notification of the Government of India in the Ministry of Finance (Department of Revenue), Notification No. 128/2004- Customs (N.T.) dated 19th November 2004, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i), vide number G.S.R.758 (E), dated the 19th of November, 2004, except as respects things done or omitted to be done before such rescission. [F. No. 401/234/2010- Cus III] (B. Konthoujam) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:43:13.021Z"
+}

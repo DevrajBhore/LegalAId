@@ -1,0 +1,60 @@
+{
+  "sub_id": "rules_01-06-1954_the_members_of_parliament_travelling_and_daily_allowances_rules_1957_6207756c7941_",
+  "parent_act_id": "the_salary_allowances_and_pension_of_members_of_parliament_act_1954__1438",
+  "title": "THE MEMBERS OF PARLIAMENT (TRAVELLING AND DAILY ALLOWANCES) RULES, 1957",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-06-1954",
+  "description": "THE MEMBERS OF PARLIAMENT (TRAVELLING AND DAILY ALLOWANCES) RULES, 1957",
+  "hindi_description": "संसद सदस्य ( यात्रा और दैनिक भत्ते ) नियम, 1957",
+  "file_title": "updated_msa_act_&_rules_made_thereunder_-2022-21-44.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rule&filename=updated_msa_act_&_rules_made_thereunder_-2022-21-44.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "THE MEMBERS OF PARLIAMENT (TRAVELLING AND DAILY ALLOWANCES) RULES, 1957",
+  "fetched_at": "2026-04-13T20:23:31.284Z"
+}

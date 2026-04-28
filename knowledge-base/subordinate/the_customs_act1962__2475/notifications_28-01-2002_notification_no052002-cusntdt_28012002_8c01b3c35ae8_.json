@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-01-2002_notification_no052002-cusntdt_28012002_8c01b3c35ae8_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.05/2002-Cus(NT),dt. 28.01.2002",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-02.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-01-2002",
+  "description": "Notification No.05/2002-Cus(NT),dt. 28.01.2002",
+  "hindi_description": null,
+  "file_title": "05-02.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-02.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-02.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-02.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-02.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=05-02.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=05-02.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "28th January, 2002 Notification No. 5/2002-Customs (N.T. ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby appoints the Commissioner of Customs, Jaipur to be the Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi for the purpose of adjudicating the show cause notices pertaining to M/s. Livia Exports and others, New Delhi issued vide DRI.F.No.23/157/98-DZU, dated the 29th September, 2000 by the Additional Director, Directorate of Revenue Intelligence, Delhi Zonal Unit, New Delhi. Rajendra Singh Under Secretary to the Government of India F.NO.437/9/2001-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:59.275Z"
+}

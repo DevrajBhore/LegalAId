@@ -1,0 +1,82 @@
+{
+  "sub_id": "notifications_26-11-2018_jerc_notification_dated_26112018_5b9899b1c805_",
+  "parent_act_id": "the_electricity_act_2003__2058",
+  "title": "JERC Notification dated 26.11.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-11-2018",
+  "description": "JERC Notification dated 26.11.2018",
+  "hindi_description": null,
+  "file_title": "jerc_(electricity_supply_code)_regulations_2018.pdf",
+  "duplicate_count": 2,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf"
+  ],
+  "alternate_file_titles": [
+    "jerc_(electricity_supply_code)_regulations_2018.pdf"
+  ],
+  "alternate_descriptions": [
+    "JERC Notification dated 26.11.2018"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "JERC Notification dated 26.11.2018",
+  "fetched_at": "2026-04-13T19:33:07.556Z"
+}

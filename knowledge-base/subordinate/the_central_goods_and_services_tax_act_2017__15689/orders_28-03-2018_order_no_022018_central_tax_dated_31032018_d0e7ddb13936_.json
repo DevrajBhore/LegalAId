@@ -1,0 +1,46 @@
+{
+  "sub_id": "orders_28-03-2018_order_no_022018_central_tax_dated_31032018_d0e7ddb13936_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Order No. 02/2018 – Central Tax dated 31.03.2018",
+  "type": "order",
+  "category_label": "Orders",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order2-2018-cgst-new.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-03-2018",
+  "description": "Order No. 02/2018 – Central Tax dated 31.03.2018",
+  "hindi_description": null,
+  "file_title": "order2-2018-cgst-new.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order2-2018-cgst-new.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order2-2018-cgst-new.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order2-2018-cgst-new.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order2-2018-cgst-new.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order2-2018-cgst-new.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order2-2018-cgst-new.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "F.No. 354/03/2018-TRU Ministry of Finance Department of Revenue (Central Board of Excise and Customs) (Tax Research Unit) ……. New Delhi Dated: the 31st day of March, 2018 Order No. 2/2018 – Central Tax To Sh. Sanjiv Garg, Additional Member (Tourism & Catering), Railway Board, Ministry of Railways, Rail Bhawan, New Delhi – 110001. Sir, Subject: Incidence of GST on providing catering services in train – regarding. Kind reference is invited to your letter No. 2012/TG.III/631/2 dated 01.02.2018 requesting therein to clarify the rate of GST applicable to supply of food and drink in trains. 2. Different GST rates are being applied for mobile and static catering in Indian Railways which is presently leading to a situation whereby the same licensee (selected by Indian Railways/IRCTC) supplying the same food would be subjected to different GST rates depending on whether it is mobile or static catering, as also which variant of mobile catering it is [pre-paid (without option), pre-paid (with option) or post-paid]. The rate difference is resulting in the same food being supplied at two different rates to the railway passengers, which is anomalous. 3. The passenger is not aware as to the GST rate applicable to the food ordered by him/her. This may also lead to unnecessary litigation and thus further strengthens the need for uniform application of tax rate in respect of food and drinks in/by Railways. 4. With a view to remove any doubt or uncertainty in the matter and bring uniformity in the rate of GST applicable for all kinds of supply of food and drinks made available in trains, platforms or stations, it is clarified with the approval of GST Implementation Committee, that the GST rate on supply of food and/or drinks by the Indian Railways or Indian Railways Catering and Tourism Corporation Ltd. or their licensees, whether in trains or at platforms (static units), will be 5% without ITC. Yours Sincerely, (Parmod Kumar) OSD (TRU II) Telephone: 011-23092374 E-mail: parmodkumar.71@gov.in -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:48:31.458Z"
+}

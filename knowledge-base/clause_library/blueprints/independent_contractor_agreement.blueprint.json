@@ -4,7 +4,6 @@
   "clauses": [
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
-    "CORE_DEFINITIONS_001",
     "SERVICE_SCOPE_001",
     "SERVICE_PAYMENT_001",
     "CORE_RELATIONSHIP_OF_PARTIES_001",
@@ -12,7 +11,6 @@
     "CORE_TERM_001",
     "SERVICE_TERMINATION_001",
     "IP_ASSIGNMENT_001",
-    "CORE_INDEMNITY_001",
     "CORE_SEVERABILITY_001",
     "CORE_NOTICE_001",
     "CORE_DISPUTE_RESOLUTION_001",
@@ -22,7 +20,6 @@
   "required_clauses": [
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
-    "CORE_DEFINITIONS_001",
     "SERVICE_SCOPE_001",
     "SERVICE_PAYMENT_001",
     "CORE_RELATIONSHIP_OF_PARTIES_001",
@@ -30,7 +27,6 @@
     "CORE_TERM_001",
     "SERVICE_TERMINATION_001",
     "IP_ASSIGNMENT_001",
-    "CORE_INDEMNITY_001",
     "CORE_SEVERABILITY_001",
     "CORE_NOTICE_001",
     "CORE_DISPUTE_RESOLUTION_001",
@@ -39,6 +35,26 @@
   ],
   "version": "3.0",
   "conditional_clauses": [
+    {
+      "clause": "CORE_DEFINITIONS_001",
+      "include_if": "include_nomenclature_clause == true"
+    },
+    {
+      "clause": "SERVICE_DELIVERABLES_001",
+      "include_if": "include_deliverables == true"
+    },
+    {
+      "clause": "SERVICE_WARRANTY_001",
+      "include_if": "include_warranty_clause == true"
+    },
+    {
+      "clause": "CORE_INDEMNITY_001",
+      "include_if": "include_indemnity_clause == true"
+    },
+    {
+      "clause": "CORE_LIMITATION_LIABILITY_001",
+      "include_if": "include_indemnity_clause == true"
+    },
     {
       "clause": "EMP_NON_COMPETE_001",
       "include_if": "include_non_compete == true",

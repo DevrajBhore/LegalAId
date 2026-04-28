@@ -1,0 +1,36 @@
+{
+  "act_id": "the_kalakshetra_foundation_act_1993__1969",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 4,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 4,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 4,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 5,
+      "regulation": 1,
+      "regulations": 3,
+      "order": 7,
+      "orders": 1,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 32. Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1969?view_type=browse",
+    "scanned_at": "2026-04-11T15:48:52.242Z"
+  },
+  "failed_candidates": []
+}

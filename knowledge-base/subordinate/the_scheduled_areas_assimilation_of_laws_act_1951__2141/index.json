@@ -1,0 +1,33 @@
+{
+  "act_id": "the_scheduled_areas_assimilation_of_laws_act_1951__2141",
+  "has_subordinate_legislation": false,
+  "possible_subordinate_legislation": false,
+  "count": 0,
+  "detection_status": "no_linked_subordinate_detected",
+  "legal_conclusion": "not_determined",
+  "confidence": "low",
+  "detection_version": 10,
+  "note": "No linked subordinate source was detected on the scanned India Code page. This is not a definitive legal conclusion that no subordinate legislation exists.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 0,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 0,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 1,
+      "regulations": 1,
+      "order": 5,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2141?view_type=browse",
+    "scanned_at": "2026-04-11T19:05:46.262Z"
+  },
+  "failed_candidates": []
+}

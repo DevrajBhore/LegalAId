@@ -1,0 +1,60 @@
+{
+  "sub_id": "notifications_07-03-2019_notification_no_122019_central_tax_dated_07032019_cc0cd42d4d73_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 12/2019 – Central Tax dated 07.03.2019",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-12-central-tax-english-2019.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-03-2019",
+  "description": "Notification No. 12/2019 – Central Tax dated 07.03.2019",
+  "hindi_description": null,
+  "file_title": "notfctn-12-central-tax-english-2019.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-12-central-tax-english-2019.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-12-central-tax-english-2019.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-12-central-tax-english-2019.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Notification No. 12/2019 – Central Tax dated 07.03.2019",
+  "fetched_at": "2026-04-13T19:33:34.231Z"
+}

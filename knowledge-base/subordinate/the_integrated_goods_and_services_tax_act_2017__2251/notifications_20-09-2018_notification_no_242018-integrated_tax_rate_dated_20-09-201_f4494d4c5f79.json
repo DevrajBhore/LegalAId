@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_20-09-2018_notification_no_242018-integrated_tax_rate_dated_20-09-2018_e6c46ad9a2c9_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No. 24/2018-Integrated Tax (Rate) ,dated 20-09-2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2018-igst-rate-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-09-2018",
+  "description": "Notification No. 24/2018-Integrated Tax (Rate) ,dated 20-09-2018",
+  "hindi_description": null,
+  "file_title": "notfctn-24-2018-igst-rate-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2018-igst-rate-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2018-igst-rate-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2018-igst-rate-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2018-igst-rate-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2018-igst-rate-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2018-igst-rate-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZZETE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 24/2018-Integrated Tax (Rate) New Delhi, the 20th September, 2018 G.S.R......(E).- In exercise of the powers conferred by sub-section (3) of section 6 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017), the Central Government, on the recommendations of the Council, and on being satisfied that it is necessary so to do for the purpose of clarifying the scope and applicability of the notification of the Government of India, in the Ministry of Finance (Department of Revenue) No. 9/2017- Integrated Tax (Rate), dated the 28thJune, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- Section (i), vide number G.S.R. 684(E), dated the 28thJune, 2017, hereby inserts the following Explanation in the said notification, in the Table, against serial number 43, in column (3), namely:- “Explanation.- For the purpose of this exemption, the Central Government, State Government or Union territory shall have 50 per cent. or more ownership in the entity directly or through an entity which is wholly owned by the Central Government, State Government or Union territory.”. [F. No.354/300/2018-TRU] (Mohit Tewari) Under Secretary to the Government of India Note: - The principal notification No. 9/2017 - Integrated Tax(Rate), dated the 28th June, 2017 was published in the Gazette of India, Extraordinary, vide number G.S.R. 684 (E), dated the 28th June, 2017 and was last amended by notification No. 15/2018-Integrated Tax (Rate), dated the 26th July, 2018 vide number G.S.R. 683(E), dated the 26th July, 2018. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:50.349Z"
+}

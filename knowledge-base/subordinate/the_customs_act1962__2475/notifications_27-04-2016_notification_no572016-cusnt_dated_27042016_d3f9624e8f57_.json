@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_27-04-2016_notification_no572016-cusnt_dated_27042016_d3f9624e8f57_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.57/2016-Cus(NT), dated 27.04.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt57-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-04-2016",
+  "description": "Notification No.57/2016-Cus(NT), dated 27.04.2016",
+  "hindi_description": null,
+  "file_title": "csnt57-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt57-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt57-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.57/2016-Cus(NT), dated 27.04.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt57-2016.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt57-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt57-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt57-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt57-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt57-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 57/2016 - Customs (N. T.) New Delhi, the 27th April, 2016 G.S.R. (E).- In exercise of the powers conferred by sub-section (3) of section 98 of the Customs Act, 1962 (52 of 1962), the Central Government hereby directs that the provisions of sections 30 and 41 of the said Act shall apply to vessels carrying exclusively coastal goods operating from berths used by vessels carrying imported goods or export goods, as the case may be and the person-in-charge of such vessel or his agent shall deliver to the proper officer, a coastal manifest, prior to the arrival of the vessel or departure as the case may be, in the Form as given below. FORM 1. Details related to vessels/port IMO (International Maritime Organization) code of vessel Rotation No. Port of loading Type of vessel (whether exclusive coastal vessel/ foreign converted coastal vessel/ Indian flag foreign going vessel) Ports at which coastal cargo to be discharged 2. Details of PACKAGES (Details of goods to be given for each entry; Serial No. wise for each Vehicle / Container/ Package) SI. No . Docum ent referen ce number Shipp er with addre ss Consig nee with address Natur e of cargo Descript ion of goods Invoic e No./C hallan No. Contain er No./ Vehicle No. Seal No. of the contain er Port of dischar ge Gros s wt./ Net wt. rema ks -- 1 of 2 -- Note: - In case of parcel service, the details of service provider may be furnished in both shipper and consignee column. 3. Declaration.- (1) We .declare that details mentioned above are stated to the best of our knowledge and belief and we certify that they are in accordance with the terms of contract entered into with the buyer/consignee in pursuance of which the goods are being loaded and transported. (2) We have collected the particulars of the consignments (mentioned at SI. Nos.- to above) from the respective shippers along with the declaration from them certifying their correctness. Place: Date: Signature of Master of vessel or his agent (with name and seal) [F.No.450/183/2014/-CusIV] (Zubair Riaz) Director (Customs) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:42:27.170Z"
+}

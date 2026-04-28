@@ -7,15 +7,70 @@ import Bottleneck from "bottleneck";
  * Exports: fetchHtml(url, opts) -> returns { status, data, headers }
  */
 
-// Rate limiter: 4 requests per second, max 2 concurrent (tune as required)
-const limiter = new Bottleneck({
-    maxConcurrent: 1,
-    minTime: 800     // 1 request per 0.8 seconds
-  });   
+function parseIntWithDefault(value, fallback) {
+  const parsed = Number.parseInt(String(value ?? ""), 10);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function getPositiveInt(value, fallback, minimum = 1) {
+  return Math.max(minimum, parseIntWithDefault(value, fallback));
+}
+
+function getNonNegativeInt(value, fallback) {
+  return Math.max(0, parseIntWithDefault(value, fallback));
+}
+
+const htmlRequestConcurrency = getPositiveInt(
+  process.env.SCRAPER_HTML_REQUEST_CONCURRENCY ??
+    process.env.SCRAPER_REQUEST_CONCURRENCY,
+  1
+);
+const htmlRequestMinTime = getNonNegativeInt(
+  process.env.SCRAPER_HTML_REQUEST_MIN_TIME_MS ??
+    process.env.SCRAPER_REQUEST_MIN_TIME_MS,
+  800
+);
+const binaryRequestConcurrency = getPositiveInt(
+  process.env.SCRAPER_BINARY_REQUEST_CONCURRENCY,
+  Math.max(2, htmlRequestConcurrency)
+);
+const binaryRequestMinTime = getNonNegativeInt(
+  process.env.SCRAPER_BINARY_REQUEST_MIN_TIME_MS,
+  Math.max(150, Math.floor(htmlRequestMinTime / 3))
+);
+const defaultHtmlRetries = getNonNegativeInt(
+  process.env.SCRAPER_HTML_REQUEST_RETRIES ??
+    process.env.SCRAPER_REQUEST_RETRIES,
+  3
+);
+const defaultBinaryRetries = getNonNegativeInt(
+  process.env.SCRAPER_BINARY_REQUEST_RETRIES,
+  2
+);
+const defaultHtmlTimeout = getPositiveInt(
+  process.env.SCRAPER_HTML_TIMEOUT_MS ??
+    process.env.SCRAPER_REQUEST_TIMEOUT_MS,
+  30000
+);
+const defaultBinaryTimeout = getPositiveInt(
+  process.env.SCRAPER_BINARY_TIMEOUT_MS ??
+    process.env.SCRAPER_REQUEST_TIMEOUT_MS,
+  45000
+);
+
+const htmlLimiter = new Bottleneck({
+  maxConcurrent: htmlRequestConcurrency,
+  minTime: htmlRequestMinTime,
+});
+
+const binaryLimiter = new Bottleneck({
+  maxConcurrent: binaryRequestConcurrency,
+  minTime: binaryRequestMinTime,
+});
 
 // axios instance with some defaults
 const client = axios.create({
-    timeout: 30000,
+    timeout: defaultHtmlTimeout,
     maxRedirects: 0,
     validateStatus: () => true,
     headers: {
@@ -61,16 +116,56 @@ async function tryRequest(config, retries = 3) {
  * returns { status, data, headers }
  */
 export async function fetchHtml(url, opts = {}) {
-  const { retries = 3 } = opts;
-  return limiter.schedule(() => tryRequest({ url, method: "GET" }, retries));
+  const {
+    retries = defaultHtmlRetries,
+    maxRedirects = 0,
+    responseType,
+    timeout = defaultHtmlTimeout,
+  } = opts;
+  return htmlLimiter.schedule(() =>
+    tryRequest(
+      { url, method: "GET", maxRedirects, responseType, timeout },
+      retries
+    )
+  );
 }
 
 /**
  * fetchBinary(url) - for PDFs
  */
 export async function fetchBinary(url, opts = {}) {
-  const { retries = 3 } = opts;
-  return limiter.schedule(() =>
-    tryRequest({ url, method: "GET", responseType: "arraybuffer" }, retries)
+  const {
+    retries = defaultBinaryRetries,
+    maxRedirects = 0,
+    timeout = defaultBinaryTimeout,
+  } = opts;
+  return binaryLimiter.schedule(() =>
+    tryRequest(
+      {
+        url,
+        method: "GET",
+        responseType: "arraybuffer",
+        maxRedirects,
+        timeout,
+      },
+      retries
+    )
   );
+}
+
+export function getRequestTuning() {
+  return {
+    html: {
+      concurrency: htmlRequestConcurrency,
+      minTimeMs: htmlRequestMinTime,
+      retries: defaultHtmlRetries,
+      timeoutMs: defaultHtmlTimeout,
+    },
+    binary: {
+      concurrency: binaryRequestConcurrency,
+      minTimeMs: binaryRequestMinTime,
+      retries: defaultBinaryRetries,
+      timeoutMs: defaultBinaryTimeout,
+    },
+  };
 }

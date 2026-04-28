@@ -3,15 +3,17 @@ import * as cheerio from "cheerio";
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://www.indiacode.nic.in";
-const KB_DIR = path.resolve("knowledge-base/sections");
+import { exists, kbRoot, saveJSON } from "../../storage/fileStorage.js";
 
-if (!fs.existsSync(KB_DIR)) {
-  fs.mkdirSync(KB_DIR, { recursive: true });
+const BASE_URL = "https://www.indiacode.nic.in";
+const SECTIONS_ROOT = path.join(kbRoot, "sections");
+
+if (!fs.existsSync(SECTIONS_ROOT)) {
+  fs.mkdirSync(SECTIONS_ROOT, { recursive: true });
 }
 
 function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function cleanHtml(html) {
@@ -22,9 +24,8 @@ function cleanHtml(html) {
 }
 
 export async function fetchAllSections(actBrowseUrl, actSlug) {
-
   if (!actSlug) {
-    console.log("❌ actSlug missing");
+    console.log("[Scraper] actSlug missing");
     return [];
   }
 
@@ -32,7 +33,7 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
   try {
     response = await axios.get(actBrowseUrl, { timeout: 20000 });
   } catch {
-    console.log("❌ Failed loading act page:", actBrowseUrl);
+    console.log("[Scraper] Failed loading act page:", actBrowseUrl);
     return [];
   }
 
@@ -45,17 +46,16 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
   const orgactid = html.match(/orgactid=([^&"]+)/)?.[1];
 
   if (!actid || !statehandle) {
-    console.log("⏭ Not valid act page:", actBrowseUrl);
+    console.log("[Scraper] Not a valid act page:", actBrowseUrl);
     return [];
   }
 
   const sectionsMeta = [];
 
-  $("a[href*='show-data']").each((_, el) => {
-    const href = $(el).attr("href");
-
-    const sectionMatch = href.match(/sectionno=([^&]+)/);
-    const orderMatch = href.match(/orderno=([^&]+)/);
+  $("a[href*='show-data']").each((_, element) => {
+    const href = $(element).attr("href");
+    const sectionMatch = href?.match(/sectionno=([^&]+)/);
+    const orderMatch = href?.match(/orderno=([^&]+)/);
 
     if (sectionMatch && orderMatch) {
       sectionsMeta.push({
@@ -66,35 +66,30 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
   });
 
   if (!sectionsMeta.length) {
-    console.log("⚠ No sections found.");
+    console.log("[Scraper] No sections found.");
     return [];
   }
 
-  console.log(`Sections detected: ${sectionsMeta.length}`);
-
-  const actDir = path.join(KB_DIR, actSlug);
-  if (!fs.existsSync(actDir)) {
-    fs.mkdirSync(actDir, { recursive: true });
-  }
+  console.log(`[Scraper] Sections detected: ${sectionsMeta.length}`);
 
   const results = [];
 
   for (const meta of sectionsMeta) {
-
     const { sectionno, orderno } = meta;
-    const filePath = path.join(actDir, `${sectionno}.json`);
+    const relativePath = `sections/${actSlug}/${sectionno}.json`;
+    const fullPath = path.join(SECTIONS_ROOT, actSlug, `${sectionno}.json`);
 
-    // 🔁 RE-FETCH IF FILE EXISTS BUT EMPTY
-    if (fs.existsSync(filePath)) {
+    if (exists(relativePath)) {
       try {
-        const existing = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+        const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
         if (existing.content && existing.content.length > 50) {
-          console.log(`⏭ Skipping valid section ${sectionno}`);
+          console.log(`[Scraper] Skipping valid section ${sectionno}`);
           continue;
-        } else {
-          console.log(`♻ Refetching incomplete section ${sectionno}`);
         }
-      } catch {}
+        console.log(`[Scraper] Refetching incomplete section ${sectionno}`);
+      } catch {
+        console.log(`[Scraper] Refetching unreadable section ${sectionno}`);
+      }
     }
 
     const showDataUrl =
@@ -107,7 +102,6 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
       `orgactid=${orgactid}`;
 
     try {
-
       const showRes = await axios.get(showDataUrl);
       const showHtml = showRes.data;
 
@@ -115,30 +109,26 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
       const secIdMatch = showHtml.match(/secId\s*='([^']+)'/);
 
       if (!actIdMatch || !secIdMatch) {
-        console.log(`⚠ Could not extract IDs for section ${sectionno}`);
+        console.log(`[Scraper] Could not extract IDs for section ${sectionno}`);
         continue;
       }
 
       const realActId = actIdMatch[1];
       const sectionID = secIdMatch[1];
 
-      const contentRes = await axios.get(
-        `${BASE_URL}/SectionPageContent`,
-        {
-          params: {
-            actid: realActId,
-            sectionID: sectionID,
-          },
-        }
-      );
+      const contentRes = await axios.get(`${BASE_URL}/SectionPageContent`, {
+        params: {
+          actid: realActId,
+          sectionID,
+        },
+      });
 
       const data = contentRes.data;
-
       const cleanedContent = cleanHtml(data.content);
       const cleanedFootnote = cleanHtml(data.footnote);
 
       if (!cleanedContent || cleanedContent.length < 20) {
-        console.log(`⚠ Empty content for section ${sectionno}`);
+        console.log(`[Scraper] Empty content for section ${sectionno}`);
         continue;
       }
 
@@ -156,15 +146,14 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
         },
       };
 
-      fs.writeFileSync(filePath, JSON.stringify(payload, null, 2));
+      await saveJSON(relativePath, payload);
 
-      console.log(`✅ Section ${sectionno} saved`);
+      console.log(`[Scraper] Section ${sectionno} saved`);
       results.push(payload);
 
       await sleep(200);
-
-    } catch (err) {
-      console.log(`❌ Failed section ${sectionno}`);
+    } catch {
+      console.log(`[Scraper] Failed section ${sectionno}`);
     }
   }
 

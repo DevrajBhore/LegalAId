@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-06-2017_notification_no092017-central_tax_rate_dated_28062017_7da0e6eb7b61_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No.09/2017-Central Tax (Rate) dated 28.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Exemption-from-TDS-CGST.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-06-2017",
+  "description": "Notification No.09/2017-Central Tax (Rate) dated 28.06.2017",
+  "hindi_description": null,
+  "file_title": "Exemption-from-TDS-CGST.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Exemption-from-TDS-CGST.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Exemption-from-TDS-CGST.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Exemption-from-TDS-CGST.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Exemption-from-TDS-CGST.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Exemption-from-TDS-CGST.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Exemption-from-TDS-CGST.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "1 [TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Notification No.9/2017-Central Tax (Rate) New Delhi, the 28th June, 2017 G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 11 of the Central Goods and Services Tax Act, 2017 (12 of 2017) (hereinafter referred to as the said Act), the Central Government, on being satisfied that it is necessary in the public interest so to do, on the recommendations of the Council, hereby exempts intra-State supplies of goods or services or both received by a deductor under section 51 of the said Act, from any supplier, who is not registered, from the whole of the central tax leviable thereon under sub-section (4) of section 9 of the said Act, subject to the condition that the deductor is not liable to be registered otherwise than under sub-clause (vi) of section 24 of the said Act. 2. This notification shall come into force with effect from the 1st day of July, 2017. [F.No.354/117/2017-TRU] (Mohit Tewari) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:14:59.422Z"
+}

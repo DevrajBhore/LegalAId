@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_07-09-2005_notification_no782005-cusnt_dated_07092005_d35884d84849_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.78/2005-Cus(NT), dated 07.09.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=78-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-09-2005",
+  "description": "Notification No.78/2005-Cus(NT), dated 07.09.2005",
+  "hindi_description": null,
+  "file_title": "78-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=78-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=78-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=78-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=78-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=78-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=78-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "7th September, 2005 Notification No. 78 /2005-Customs (N.T.) In exercise of the powers conferred by sub-section(1) of section 11 of the Customs Act, 1962 (52 of 1962), the Central Government, being satisfied that it is necessary so to do, for the maintenance of security of India, hereby absolutely prohibits import of the book entitled \"The True Furqan\", sub-titled \"The 21st Century Quran\" published in the United States of America by Omega,2000 and Wine Press, including any extract there from, any reprint or translation thereof or any document reproducing any matter contained therein. [F.No.401/128/2005-Cus.III] Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:07:19.304Z"
+}

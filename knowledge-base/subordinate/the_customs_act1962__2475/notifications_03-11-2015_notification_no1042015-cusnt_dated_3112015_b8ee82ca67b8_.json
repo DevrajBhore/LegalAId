@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_03-11-2015_notification_no1042015-cusnt_dated_3112015_b8ee82ca67b8_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.104/2015-CUS(NT), dated 3.11.2015",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-11-2015",
+  "description": "Notification No.104/2015-CUS(NT), dated 3.11.2015",
+  "hindi_description": null,
+  "file_title": "104-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-15.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No.104/ 2015-Customs (N.T.) New Delhi, the 3rd November, 2015 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Commissioner of Customs (Export), Inland Container Depot, Tughalakabad, New Delhi to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Additional Commissioner of Customs (Export), Inland Container Depot, Tughalakabad, New Delhi; (ii) the Additional Commissioner of Customs (Import), Inland Container Depot, Tughalakabad, New Delhi , for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s K.K. Traders, 138, Master Tara Singh Nagar Market, Jalandhar and others issued vide, F.No.DRI/DZU/23/Enq-07/2015/4167 to 4171, dated the 27th July, 2015 by the Additional Director, Directorate of Revenue Intelligence, Delhi Zonal Unit, New Delhi. [F.No. 437/29/2015-Cus IV] (Anurag Sehgal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:40:27.431Z"
+}

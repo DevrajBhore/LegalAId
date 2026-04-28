@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-01-2014_notfn_no_012014-cx_nt_19d4c85430c7_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 01/2014-CX (NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-01-2014",
+  "description": "Notfn No 01/2014-CX (NT)",
+  "hindi_description": null,
+  "file_title": "cent01-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 01/2014-Central Excise (N.T.) New Delhi, the 8 th January, 2014 18, Pausha, 1935 Saka G.S.R. (E).- In exercise of the powers conferred by section 37 of the Central Excise Act, 1944 (1 of 1944) and section 94 of the Finance Act, 1994 (32 of 1994), the Central Government hereby makes the following rules further to amend the CENVAT Credit Rules, 2004, namely:- 1.Â Â Â (1) These rules may be called the CENVAT Credit (First Amendment) Rules, 2014. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In rule 3 of the CENVAT Credit Rules, 2004, - (i) the Explanation occurring after the proviso to sub-rule (5B) shall be omitted; (ii) in sub-rule (5C), after the words \"production of said goods\", the words \"and the CENVAT credit taken on input services used in or in relation to the manufacture or production of said goods\" shall be inserted; (iii) after sub-rule (5C), the following explanations shall be inserted, namely: - \"Explanation 1.- The amount payable under sub-rules (5), (5A), (5B) and (5C), unless specified otherwise, shall be paid by the manufacturer of goods or the provider of output service by debiting the CENVAT credit or otherwise on or before the 5th day of the following month except for the month of March, where such payment shall be made on or before the 31st day of the month of March. Explanation 2.- If the manufacturer of goods or the provider of output service fails to pay the amount payable under sub-rules (5), (5A), (5B) and (5C), it shall be recovered, in the manner as provided in rule 14, for recovery of CENVAT credit wrongly taken and utilised.\" F. No. 267/126/2011-CX.8 (Pankaj Jain) Under Secretary to the Government of India Note.- The principal rules were published in the Gazette of India, Extraordinary, Part II, Section 3,Â Â Sub-section (i), dated the 10 th September, 2004, vide NotificationÂ Â No. 23/2004 - Central Excise (N.T.) dated the 10 th September, 2004, vide number G.S.R. 600(E), dated the 10 th September, 2004 and last amended vide Notification No.Â Â 18/2013-Central Excise (N.T.) dated the 31 st December, 2013 published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i), vide number G.S.R. 808 (E), dated the 31 st December, 2013. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:49:40.470Z"
+}

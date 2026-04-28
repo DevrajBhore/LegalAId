@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-06-2020_corrigendum_to_notification_no-_532020-central_tax_dated_25062020_45ebedf0f1d8_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Corrigendum to Notification No- 53/2020-Central Tax dated 25.06.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-53-central-tax-english-2020-corr.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-06-2020",
+  "description": "Corrigendum to Notification No- 53/2020-Central Tax dated 25.06.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-53-central-tax-english-2020-corr.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-53-central-tax-english-2020-corr.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-53-central-tax-english-2020-corr.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-53-central-tax-english-2020-corr.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-53-central-tax-english-2020-corr.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-53-central-tax-english-2020-corr.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-53-central-tax-english-2020-corr.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Corrigendum New Delhi, the 25th June, 2020 G.S.R...(E).:- In the notification of the Government of India, in the Ministry of Finance, Department of Revenue, No. 53/2020-Central Tax, dated the 24th June, 2020, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 406(E), dated the 24th June, 2020, at page 12, in line 17, for the words “third proviso”, read “fourth proviso”. [F. No. CBEC-20/06/09/2019-GST] (Pramod Kumar) Director, Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:45:53.278Z"
+}

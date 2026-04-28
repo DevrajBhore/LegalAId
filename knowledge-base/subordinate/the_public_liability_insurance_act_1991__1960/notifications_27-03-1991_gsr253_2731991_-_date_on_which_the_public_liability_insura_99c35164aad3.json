@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_27-03-1991_gsr253_2731991_-_date_on_which_the_public_liability_insurance_act_1991_came_into_force_9eafc528be28_",
+  "parent_act_id": "the_public_liability_insurance_act_1991__1960",
+  "title": "G.S.R.253, [27/3/1991] - Date on which the Public Liability Insurance Act, 1991 came into force",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=253.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-03-1991",
+  "description": "G.S.R.253, [27/3/1991] - Date on which the Public Liability Insurance Act, 1991 came into force",
+  "hindi_description": null,
+  "file_title": "253.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=253.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=253.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=253.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=253.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=253.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=253.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "NOTIFICATION (New Delhi, the 27 th March, 1991) G.S.R.253 - In exercise of the powers conferred by sub-section (2) of section I of the Public Liability Insurance Act, 1991 ( 6 of 1991 ), the Central Government hereby appoints the 1st day of April, 1991 as the date on which the said Act shall come into force. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:15:02.601Z"
+}

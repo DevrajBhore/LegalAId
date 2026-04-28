@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-12-2017_notification_no_692017_central_tax_dated_21122017_03f02d618703_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 69/2017 – Central Tax dated 21.12.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-69-central-tax-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-12-2017",
+  "description": "Notification No. 69/2017 – Central Tax dated 21.12.2017",
+  "hindi_description": null,
+  "file_title": "notfctn-69-central-tax-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-69-central-tax-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-69-central-tax-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-69-central-tax-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-69-central-tax-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-69-central-tax-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-69-central-tax-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) [Central Board of Excise and Customs] Notification No. 69/2017 – Central Tax New Delhi, the 21st December, 2017 G.S.R. (E).— In exercise of the powers conferred by sub-section (6) of section 39 read with section 168 of the Central Goods and Services Tax Act, 2017 (12 of 2017) and section 20 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017) and in supersession of notification No. 61/2017-Central Tax, dated the 15th November, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 1417 (E), dated the 15th November, 2017, except as respects things done or omitted to be done before such supersession, the Commissioner, hereby extends the time limit for furnishing the return in FORM GSTR-5A for the months of July, 2017, August, 2017, September, 2017, October, 2017, November, 2017 and December, 2017 by a person supplying online information and database access or retrieval services from a place outside India to a non- taxable online recipient referred to in section 14 of the Integrated Goods and Services Tax Act, 2017 and rule 64 of the Central Goods and Services Tax Rules, 2017, till the 31st day of January, 2018. [F. No. 349/58/2017-GST(Pt.)] (Gunjan Kumar Verma) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:24:46.591Z"
+}

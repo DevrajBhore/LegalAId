@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-10-2002_notification_no652002-cusntdt_25102002_179c163df662_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.65/2002-Cus(NT),dt. 25.10.2002",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-02.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-10-2002",
+  "description": "Notification No.65/2002-Cus(NT),dt. 25.10.2002",
+  "hindi_description": null,
+  "file_title": "65-02.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-02.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-02.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-02.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-02.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=65-02.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=65-02.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "25th October, 2002 Notification No. 65/2002-Customs ( N.T ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Pune to act as Commissioner of Customs (Export Promotion), New Custom House, Ballard Estate, Mumbai- 400 038, Commissioner of Customs, Jawahar Custom House, Nhava Sheva, Post Uran, District- Raigarh, Maharashtra- 400 707, Commissioner of Customs (Imports), New Custom House, Ballard Estate, Mumbai- 400 038 or, as the case may be, Commissioner of Customs, Air Cargo Complex Sahar, Andheri (E), Mumbai- 400 099, for the purpose of adjudicating the matter relating to Show Cause Notices issued to M/s. Hoganas India Limited, Pune and Others as specified in column (2) of the Table below by the authority referred to in the corresponding entry in column (3) of the said Table respectively, namely :- Table S.No. Show Cause Notice and Date Authority by whom Show Cause Notice was issued. (1) (2) (3) 1 F.No.S/16-Misc- 661/2002/Gr.VII, Dated 28th August, 2002 Commissioner of Customs (Export Promotion), New Custom House, Ballard Estate, Mumbai- 400 038 2 F.No.S/16-Misc- 662/2002/Gr.VII, Dated 28th August, 2002 Commissioner of Customs (Export Promotion), New Custom House, Ballard Estate, Mumbai- 400 038 3 F.No.S/10-9/02/SIIB/JCH SG/MISC/336/01.SIIB.JCH, Dated 29th August, 2002 Commissioner of Customs, Jawahar Custom House, Nhava Sheva, Post Uran, District- Raigarh, Maharashtra- 400 707 4 F.No.S/26- Misc/158/2002/Gr.IV, Dated 11th September, 2002 Commissioner of Customs (Imports), New Custom House, Ballard Estate, Mumbai- 400 038 5 F.No.S/10-10/2002/Adj/ACC, Dated 7th September, 2002 Commissioner of Customs, Air Cargo Complex Sahar, Andheri (E), Mumbai- 400 099 D.S.Garbyal Under Secretary to the Government of India F.NO.437/13/2002-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:59:34.784Z"
+}

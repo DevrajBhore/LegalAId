@@ -1,0 +1,198 @@
+{
+  "act_id": "the_prevention_of_money-laundering_act_2002__2036",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 73,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 73,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 73,
+    "failed_candidate_count": 3,
+    "keyword_hits": {
+      "rules": 41,
+      "regulation": 1,
+      "regulations": 2,
+      "order": 9,
+      "orders": 1,
+      "notification": 27,
+      "notifications": 2,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 2
+    },
+    "context_signals": [
+      "under section 66(ii) of PMLA 01-06-2009 Notification",
+      "under section 66(ii) of PMLA 15-09-2010 Notification",
+      "under section 66(ii) of PMLA 07-12-2010 Notification",
+      "under section 66(ii) of PMLA 10-10-2012 Notification",
+      "under section 66(ii) of PMLA 06-08-2014 Notification",
+      "under section 66(ii) of PMLA 05-02-2016 Notification",
+      "under PMLA 17-02-2017 Notification",
+      "under section 66(ii) of PMLA 27-03-2017 Notification"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2036?view_type=browse",
+    "scanned_at": "2026-04-13T20:14:33.841Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "The Prevention of Money-laundering(Forms, Search and Seizure or Freezing & the manner of forwarding the reasons & Material to the Adjudicating Authority, Impounding and Custody of Records and the Period of Retention) Rules, 2005",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rule&filename=PML(Forms,%20Search%20and%20Seizure%20or%20Freezing%20&%20the%20manner%20of%20forwarding%20the%20reasons%20&%20Material%20to%20the%20Adjudicating%20Authority,%20...)%20Rules,%202005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML%28Forms%2C+Search+and+Seizure+or+Freezing+%26+the+manner+of+forwarding+the+reasons+%26+Material+to+the+Adjudicating+Authority%2C+...%29+Rules%2C+2005.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=PML(Forms%2C%2BSearch%2Band%2BSeizure%2Bor%2BFreezing%2B%26%2Bthe%2Bmanner%2Bof%2Bforwarding%2Bthe%2Breasons%2B%26%2BMaterial%2Bto%2Bthe%2BAdjudicating%2BAuthority%2C%2B...)%2BRules%2C%2B2005.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "PML(The Manner of Forwarding a copy of the Order of Provisional Attachment of Property along with the Material, and copy of the Reasons along with the Material in respect of Survey, to the Adjudicating Authority and its period of Retention) Rules, 2005",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rule&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_&_copy_of_the_reasons-compressed.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml%28manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=pml(manner_of_forwarding_a_copy_of_order_of_p._attachment_of_property_alongwith_material_%26_copy_of_the_reasons-compressed.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Prevention of Money-laundering (Appointment and Conditions of Service of Chairperson and Members of Adjudicating Authorities) Rules, 2007 dated 1-8-2007",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/rulesindividualfile/&file=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rule&filename=Prevention%20of%20Money-laundering%20(Appointment%20&%20Conditions%20of%20Service%20of%20Chairperson%20and%20Members%20of%20Adjudicating%20Authorities)%20Rules,%202007%20dated%201-8-2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention+of+Money-laundering+%28Appointment+%26+Conditions+of+Service+of+Chairperson+and+Members+of+Adjudicating+Authorities%29+Rules%2C+2007+dated+1-8-2007.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=rules&filename=Prevention%2Bof%2BMoney-laundering%2B(Appointment%2B%26%2BConditions%2Bof%2BService%2Bof%2BChairperson%2Band%2BMembers%2Bof%2BAdjudicating%2BAuthorities)%2BRules%2C%2B2007%2Bdated%2B1-8-2007.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

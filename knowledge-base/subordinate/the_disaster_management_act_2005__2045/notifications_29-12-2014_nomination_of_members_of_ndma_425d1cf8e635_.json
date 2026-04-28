@@ -1,0 +1,76 @@
+{
+  "sub_id": "notifications_29-12-2014_nomination_of_members_of_ndma_425d1cf8e635_",
+  "parent_act_id": "the_disaster_management_act_2005__2045",
+  "title": "Nomination of Members of NDMA",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-12-2014",
+  "description": "Nomination of Members of NDMA",
+  "hindi_description": null,
+  "file_title": "Nomination of Members of NDMA.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%20of%20Members%20of%20NDMA.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Nomination of Members of NDMA",
+  "fetched_at": "2026-04-13T19:23:53.470Z"
+}

@@ -1,0 +1,35 @@
+{
+  "act_id": "the_export_quality_control_and_inspection_act_1963__1591",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 55,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 55,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 55,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 3,
+      "regulations": 1,
+      "order": 4,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1591?view_type=browse",
+    "scanned_at": "2026-04-13T12:53:03.042Z"
+  },
+  "failed_candidates": []
+}

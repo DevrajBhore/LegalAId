@@ -1,0 +1,48 @@
+{
+  "sub_id": "circulars_11-11-2011_customs_tariff_classification_of_tv_tuners_used_with_adp_machines_of_harmonised_customs_tariff_8471-_circular_no5211-customs_dated_111111_d91c2aeebfc7_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Customs Tariff classification of TV Tuners used with ADP machines of Harmonised Customs Tariff 8471.- Circular No.52/11-Customs, dated 11.11.11",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No.52-11.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-11-2011",
+  "description": "Customs Tariff classification of TV Tuners used with ADP machines of Harmonised Customs Tariff 8471.- Circular No.52/11-Customs, dated 11.11.11",
+  "hindi_description": null,
+  "file_title": "Circular No.52-11.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No.52-11.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No.52-11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No.52-11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo.52-11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No.52-11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo.52-11.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No.52-11.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No.52-11.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 52/2011-Customs F. No. 528/122/2011-STO (TU) Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs 229A, North Block, New Delhi, 11th November, 2011. To All Chief Commissioners / Commissioner of Customs / Customs (Prev.), All Chief Commissioners / Commissioners of Customs & Central Excise, All Director Generals under CBEC. Subject: Customs Tariff classification of TV Tuners used with ADP machines of Harmonised Customs Tariff 8471 - Regarding **** Sir / Madam, References have been received on divergent practices being followed by field formations regarding classification of TV tuners. It was reported that external TV tuners are being classified in heading 8528 or 8529, and internal PCI TV tuners / cards are being classified in subheading 8528 or 8529 or subheading 8473. 2. These issues were discussed during Conference of Chief Commissioners of Customs held on 9th- 10th May, 2011 in Bangalore. There was agreement on principal function of TV tuners and it was held that said device provide the television function through the reception of broadcast signal from television station and conversion in to audio and video information of the broadcast signal enabling television broadcasts to be viewed on the screen. Broadly, there are two types of TV tuners, viz., (i) internal PCI TV Tuner / card, and (ii) external TV Tuner. 3. Reportedly, an internal PCI TV tuner is a device that is connected to the expansion port of the motherboard of Automatic Data Processing (ADP) machine of heading 8471. An external TV Tuner is generally not connected to the PC expansion bus. Reportedly, in such cases the TV signals are controlled and processed by the tuner and the television is operated independently from the regular computer functions without the use of any software and the computer does not have to be turned on for one to receive television broadcast signals. Some external TV tuners are connected as USB device as well. TV Tuner is a device for reception of television broadcast signal as well as a conversion device. However, even if this device does function as a dual device with each function operating independently, the principal function of the device is critical in determining its classification in terms of Note 3 to Section XVI of first Schedule to the Customs Tariff Act, 1975, which states that unless the context requires otherwise, machines adapted for the purpose of performing two or more complimentary or alternative functions are to be classified as if consisting only of that component or being that machine which performs the principal function. 4. The principal function of TV tuner is reception of television broadcast signal and hence the applicable subheading under consideration is in 8528 which includes: \"Reception apparatus for television, whether or not incorporating radio-broadcast receivers or sound or video recording or reproducing apparatus: 85287100: Not designed to incorporate a video display or screen\" -2- -- 1 of 2 -- Harmonised System Commodity Explanatory Notes to heading 8528 states that, \"Monitors and projectors may be capable of receiving a variety of signals from different sources. However, if they incorporate a television tuner they are considered to be reception apparatus for television.\" Further, for subheading Reception Apparatus for Television Harmonised System Commodity Explanatory Notes mentions that,\"receivers are intended to be used with video recording or reproducing apparatus, monitors, projectors or televisions. However, devices which simply isolate high-frequency television signals (sometimes called video tuners) are to be classified as parts in heading 85.29.\" 5. The issues raised have been examined by the Board. External TV Tuners merit classification under CTH 8528 on application of GIR 1, 6 and read with Note 3 to section XVI and Chapter Notes. As regard to Internal TV Tuners cards it is observed that generally these cards are connected to the ADP via a peripheral component interconnect PCI slot. The internal TV tuner works with the software installed on the computer and can not function without the ADP machine. It even fulfils the conditions stipulated under paragraph 5(C) of Chapter Note 84. However, it can qualify as a part of ADP systems only if it is outside the ambit of items listed in paragraph 5 (D) and those which meet the criteria stipulated in paragraph 5 (E) to chapter Note 84. In this regard, it is seen that paragraphs D (ii) covers apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network). Whether external or internal, the principal function of TV tuner cards remains the same, that is, to provide the television function through the reception of broadcast signal from television station. The conversion into audio and video information of the broadcast signal enabling television broadcasts to be viewed on the screen remains the secondary reception. Taking into consideration the principal function of TV tuners, and provisions of paragraph 5(D) and 5(E) to chapter 84, internal TV tuner cards are found to be outside the ambit of heading 8473. 6. Also TV tuners are other than those devices which simply isolate high-frequency television signals (sometimes called video tuners) and hence can not be classified as parts in the heading 85.29. Therefore, on application of General Interpretative Rules (GIR) 1 and 6, read with Note 3 to Section XVI and Chapter Notes 5(C) to Chapter 84, it is clarified that TV tuners, both internal and external are more appropriately classifiable in Harmonised Customs Tariff in tariff item 85287100. 7. Suitable instructions may be given to the field formation and all pending assessments, if any, may be finalized accordingly. Difficulty faced, if any, may be brought to notice of the Board. Yours faithfully, (Subodh Singh), OSD (Customs), Tariff Unit, Fax-011-23092173 -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:47:11.372Z"
+}

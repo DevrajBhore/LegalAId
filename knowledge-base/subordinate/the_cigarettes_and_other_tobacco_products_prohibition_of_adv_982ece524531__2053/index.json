@@ -1,0 +1,37 @@
+{
+  "act_id": "the_cigarettes_and_other_tobacco_products_prohibition_of_advertisement_and_regulation_of_trade_and_commerce_production_supply_and_distribution_act_2003__2053",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 55,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 1,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 55,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 55,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 5,
+      "rules": 32,
+      "regulation": 21,
+      "regulations": 1,
+      "order": 5,
+      "orders": 1,
+      "notification": 7,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under Prohibition of Advertisement and Regulation"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2053?view_type=browse",
+    "scanned_at": "2026-04-11T11:36:13.423Z"
+  },
+  "failed_candidates": []
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-05-2005_notification_no372005-cusnt_dated_05052005_d4f9e8b69fe7_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.37/2005-Cus(NT), dated 05.05.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-05-2005",
+  "description": "Notification No.37/2005-Cus(NT), dated 05.05.2005",
+  "hindi_description": null,
+  "file_title": "37-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=37-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=37-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "5th May, 2005 Notification No.37/2005-NT-Customs In exercise of the powers conferred by sub-section (2) of section 9AA of the Customs Tariff Act, 1975 (51 of 1975), the Central Government hereby appoints the Assistant Commissioner/Deputy Commissioner of Customs, Group 2B-I, in the Commissionerate of Customs (Import), Mumbai, to exercise the powers and discharge the duties of Assistant Commissioner / Deputy Commissioner of Customs (Refund), as the case may be, for the purpose of disposing of applications filed under sub-section (2) of section 9AA of the said Act, within the jurisdiction of the Commissionerate of Customs (Import), Mumbai. F.No. 525/2/94-Cus (TU) V. Kezo Under Secretary to the Govt. of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:06:08.667Z"
+}

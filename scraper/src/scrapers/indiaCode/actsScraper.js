@@ -1,10 +1,11 @@
 // scraper/src/scrapers/indiaCode/actsScraper.js
 import * as cheerio from "cheerio";
+import fs from "fs/promises";
 import path from "path";
 import { fetchHtml } from "../../common/request.js";
 import { fetchAllSections } from "./sectionDetailScraper.js";
 import { fetchPageText, makeActId, buildSections } from "./baseScraper.js";
-import { saveJSON, saveText, exists } from "../../storage/fileStorage.js";
+import { kbRoot, saveJSON, saveText, exists } from "../../storage/fileStorage.js";
 import { extractActMetadata } from "./actMetadata.js";
 
 /**
@@ -201,11 +202,10 @@ export async function runActsScraper({
             } else {
               // 🔹 Update sections_count safely
               try {
-                const existingAct =
-                  require("fs").readFileSync(
-                    path.resolve("knowledge-base", actJsonPath),
-                    "utf-8"
-                  );
+                const existingAct = await fs.readFile(
+                  path.join(kbRoot, actJsonPath),
+                  "utf-8"
+                );
 
                 const actData = JSON.parse(existingAct);
                 actData.sections_count = sectionsArr.length;

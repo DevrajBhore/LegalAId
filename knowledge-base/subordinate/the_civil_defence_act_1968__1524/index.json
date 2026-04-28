@@ -1,0 +1,36 @@
+{
+  "act_id": "the_civil_defence_act_1968__1524",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 2,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 2,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 2,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 6,
+      "regulations": 4,
+      "order": 4,
+      "orders": 2,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules",
+      "Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1524?view_type=browse",
+    "scanned_at": "2026-04-13T09:56:12.707Z"
+  },
+  "failed_candidates": []
+}

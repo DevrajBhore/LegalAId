@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-10-2017_notification_no_492017-central_tax_dated_18102017_512c8bd0df98_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 49/2017-Central Tax dated 18.10.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-49-central-tax-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-10-2017",
+  "description": "Notification No. 49/2017-Central Tax dated 18.10.2017",
+  "hindi_description": null,
+  "file_title": "notfctn-49-central-tax-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-49-central-tax-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-49-central-tax-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-49-central-tax-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-49-central-tax-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-49-central-tax-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-49-central-tax-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE Department of Revenue Central Board of Excise and Customs Notification No. 49/2017-Central Tax New Delhi, the 18 th October, 2017 G.S.R. (E).- In exercise of the powers conferred by clause (g) of sub-rule (2) of rule 89 of the Central Goods and Services Tax Rules, 2017 read with notification No. 48/2017-Central Tax, dated the 18th October, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i) vide number G.S.R. 1305 (E), dated the 18 th October, 2017, the Central Government hereby notifies the following, as detailed in column (2) of the Table below, as evidences which are required to be produced by the supplier of deemed export supplies for claiming refund, namely:- Table S.No. Evidence (1) (2) 1. Acknowledgment by the jurisdictional Tax officer of the Advance Authorisation holder or Export Promotion Capital Goods Authorisation holder, as the case may be, that the said deemed export supplies have been received by the said Advance Authorisation or Export Promotion Capital Goods Authorisation holder, or a copy of the tax invoice under which such supplies have been made by the supplier, duly signed by the recipient Export Oriented Unit that said deemed export supplies have been received by it. 2. An undertaking by the recipient of deemed export supplies that no input tax credit on such supplies has been availed of by him. 3. An undertaking by the recipient of deemed export supplies that he shall not claim the refund in respect of such supplies and the supplier may claim the refund. [F.No. 349/58/2017-GST(Pt)] (Gunjan Kumar Verma) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:22:07.266Z"
+}

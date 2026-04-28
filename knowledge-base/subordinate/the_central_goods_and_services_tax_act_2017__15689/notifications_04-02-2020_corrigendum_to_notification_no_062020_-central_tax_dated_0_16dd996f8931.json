@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_04-02-2020_corrigendum_to_notification_no_062020_-central_tax_dated_04022020_24c484816a0d_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Corrigendum to Notification No. 06/2020 -Central Tax dated 04.02.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "04-02-2020",
+  "description": "Corrigendum to Notification No. 06/2020 -Central Tax dated 04.02.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-05-central-tax-english-2020-corrigendum.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-05-central-tax-english-2020-corrigendum.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-05-central-tax-english-2020-corrigendum.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Corrigendum New Delhi, the 04th February, 2020 G.S.R...(E).:- In the notification of the Government of India, in the Ministry of Finance, Department of Revenue, No. 06/2020-Central Tax, dated the 03rd February,2020, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 82(E), dated the 03rd February, 2020,- i. at page 2, in line 30, for the words “Tamil Nadu, Uttar Pradesh, Uttarakhand”, read “Tamil Nadu, Uttarakhand”; ii. at page 2, in line 35, for the words “Tripura, West Bengal”, read “Tripura, Uttar Pradesh, West Bengal”. [F.No.20/06/07/2019-GST] (Gaurav Singh) Deputy Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:43:06.661Z"
+}

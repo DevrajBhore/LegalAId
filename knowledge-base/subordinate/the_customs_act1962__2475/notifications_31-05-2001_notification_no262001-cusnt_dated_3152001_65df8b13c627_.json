@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_31-05-2001_notification_no262001-cusnt_dated_3152001_65df8b13c627_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.26/2001-Cus(NT), dated 31.5.2001",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=26-2001.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-05-2001",
+  "description": "Notification No.26/2001-Cus(NT), dated 31.5.2001",
+  "hindi_description": null,
+  "file_title": "26-2001.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=26-2001.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=26-2001.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=26-2001.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=26-2001.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=26-2001.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=26-2001.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Dated 31st May, 2001 Notification No.. 26/2001-Customs (N.T) In exercise of the powers conferred by section 157, read with section 46 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following regulations to amend the Bill of Entry (Forms) Regulations, 1976, namely :- 1. (1) These regulations may be called the Bill of Entry (Forms) Amendment Regulations, 2001. (2) They shall come into force on the 15th June, 2001. 2. In each of Form I, Form II and Form III appended to the Bill of Entry (Forms) Regulation, 1976,- (a) for the heading \"Importer Code\", the heading \"Importer Code and BIN\" shall be substituted; (b) for the heading \"Importer\"s Name & Address\" , the heading \"Importer\"s Name & Address, whether Government or Private\" shall be substituted; (c) for the heading of column 6, the following shall be substituted, namely:- \" GOODS DESCRIPTION (Gives details of each class separately & EXIM Scheme Code, where applicable) \"; (d) after column 12, the following columns shall be inserted, namely:- \" MRP per unit, if any Amount of abatement, if any -- 1 of 2 -- 12 A 12 B \"; (e) for column 13, the following shall be substituted, namely,- \"Value for the purpose of Section 3 of Customs Tariff Act, 1975 Col. 9 +Col. 11 where the provisions of sub-section (2) of Section 4A of the Central Excise Act, 1944 apply. Where the provisions of Sub-section (2) of Section 4 A of the Central Excise Act, 1944, does not apply 13 13A \". Rajendra Singh Under Secretary to the Government of India F.No.434/4/2001-CUS.IV Note: The principal notification No.396-Cus., dated the 1st August, 1976 was issued vide GSR 519 (E), dated the 1st August, 1976. -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:57:19.768Z"
+}

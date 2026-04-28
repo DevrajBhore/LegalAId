@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_26-09-2012_notification_no892012-cusnt_dated_26092012_524d14d0ba4a_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.89/2012-Cus(NT), dated 26.09.2012",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-12.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-09-2012",
+  "description": "Notification No.89/2012-Cus(NT), dated 26.09.2012",
+  "hindi_description": null,
+  "file_title": "89-12.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-12.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-12.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-12.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-12.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-12.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-12.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii) of dated the 26th September, 2012] Government of India Ministry of Finance (Department of Revenue) Notification No. 89/2012-Customs (N.T.) New Delhi, the 26th September, 2012. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby imposes on the Joint Commissioner or Additional Commissioner of Customs (Import), Jawaharlal Nehru Custom House, Nhava Sheva, Raigad, Maharashtra, to act as common adjudicating authority to exercise the powers and discharge the duties in respect of adjudication of the show cause notices specified in column (3) of the Table below issued by the Additional Director specified in column (4) in case of parties specified in column (2) of the said Table, respectively, namely: Table Serial Number Name of Parties Show Cause Notice Number and date Issuing Authority (1) (2) (3) (4) 1. M/s PR Agro Nutri (Pvt.) Ltd., Hyderabad F.No. DRI/MZU/CI-08/2012/10512 to 10516 dated the 14th June, 2012 Additional Director, Directorate of Revenue Intelligence, Mumbai Zonal Unit 2. M/s HPM Chemicals & Fertilizers Ltd.' Delhi F.No. DRI/MZU/CI-27/2012 dated the 10th July, 2012 Additional Director, Directorate of Revenue Intelligence, Mumbai Zonal Unit [F.No. 437/43/2012-Cus.IV] (M.V. Vasudevan) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:36:40.699Z"
+}

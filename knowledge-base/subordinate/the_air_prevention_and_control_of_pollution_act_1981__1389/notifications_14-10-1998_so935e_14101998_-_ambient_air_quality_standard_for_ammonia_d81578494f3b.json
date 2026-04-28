@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_14-10-1998_so935e_14101998_-_ambient_air_quality_standard_for_ammonia_nh3_c7306ad2f2a5_",
+  "parent_act_id": "the_air_prevention_and_control_of_pollution_act_1981__1389",
+  "title": "S.O.935(E), [14/10/1998] - Ambient Air Quality Standard for Ammonia (NH3)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00004_198114_1517807322114/notificationindividualfile/&file=SO+935E.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-10-1998",
+  "description": "S.O.935(E), [14/10/1998] - Ambient Air Quality Standard for Ammonia (NH3)",
+  "hindi_description": null,
+  "file_title": "SO 935E.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO%20935E.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00004_198114_1517807322114/notificationindividualfile/&file=SO+935E.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO+935E.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO%2B935E.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO+935E.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO%2B935E.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00004_198114_1517807322114/notificationindividualfile/&file=SO+935E.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00004_198114_1517807322114&type=notification&filename=SO%20935E.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "CENTRAL POLLUTION CONTROL BOARD (Ministry of Environment & Forests ) NOTIFICATION New Delhi, the 14 1h October, 1998 S.0.935(E)-The Central Pollution Control Board in exercise of its powers conferred under Section 16(2)(h) of the Air (Prevention and Control of Pollution)Act, 1981 (14 of 1981) hereby notify the Ambient Air Quality Standard for Ammonia (NH3) with immediate effect, as under: AMBIENT AIR QUALITY STANDARD FOR AMMONIA Daily Average (Sample duration 24 hrs.) 0.4 g/m (400 g/m) Annual average of 104 samples ( 2 samples drawn every week 0. 1 g/m (100 g/m) 1. Published in the Gazette of India. S.0.93i (1'). Part 11 3(ii), dt.29. 10. 1998. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T09:15:29.818Z"
+}

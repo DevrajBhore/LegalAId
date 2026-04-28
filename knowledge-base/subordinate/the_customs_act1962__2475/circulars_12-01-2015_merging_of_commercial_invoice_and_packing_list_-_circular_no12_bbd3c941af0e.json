@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_12-01-2015_merging_of_commercial_invoice_and_packing_list_-_circular_no12015-customs_dated_1212015_60d158d99f03_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Merging of Commercial invoice and packing list - Circular No.1/2015-Customs, dated 12.1.2015",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir1-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-01-2015",
+  "description": "Merging of Commercial invoice and packing list - Circular No.1/2015-Customs, dated 12.1.2015",
+  "hindi_description": null,
+  "file_title": "cir1-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir1-15.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir1-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir1-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir1-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir1-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir1-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 01/15-Customs F. No. 450/25/2013-Cus IV (Pt.) Government of India Ministry of Finance Department of Revenue Central Board of Excise and Customs *** New Delhi, dated 12.01.2015 To All Chief Commissioners of Customs / Customs (Preventive) All Chief Commissioners of Customs and Central Excise All Commissioners of Customs / Customs (Preventive) All Commissioners of Customs and Central Excise Sir/ Madam, Subject: Merging of Commercial invoice and packing list - reg Simplification of Customs procedures for enhanced ease of doing business and trade facilitation is the top priority of the Government. One of the identified areas for such simplification is reduction in the number of mandatory documents required by Customs for import and export of goods. 2. As per the extant Customs procedures for both import and export, an importer / exporter is required to submit a commercial invoice and packing list along with the Customs declaration form viz. Bill of Entry/Shipping Bill. Both commercial invoice and packing list are critical for Customs purposes as the former evidences the value of the import/ export goods while the latter facilitates examination of goods for ascertaining correctness of duty and quantity. However, there are many identical data fields in a commercial invoice and packing list. Therefore, an exercise was undertaken to explore the feasibility whether these documents can be merged into one document, which would have the advantage of reducing the total number of documents to be submitted to Customs with resultant benefit to trade. In this regard, it is seen that the following data fields / information are invariably contained in a packing list (other than the common data fields / details of commercial invoice): Description of Goods; Marks and Numbers; Quantity; Gross Weight; Net Weight; Number of Packages; Types of Packages (such as pallet, box, crates, drums etc.). 3. The Board has decided that as a measure of simplification, in case an importer/exporter submits a commercial invoice cum packing list that contain above mentioned data fields / information in addition to the details in a commercial invoice, a separate packing list should not be insisted upon by Customs. However, the option should be given to the importer/exporter to do so. In other words, for Customs purposes a commercial invoice cum packing list (with details of marks and numbers as mentioned in para 2 above) would suffice but if importer/exporter desires to give a separate packing list for some reason, the same would also be accepted, as at present. -- 1 of 2 -- 4. Board desires that all Chief Commissioner of Customs should ensure that above guidelines are complied with scrupulously by the field formations. Wide publicity may also be given to trade and industry stakeholders to sensitize them about the guidelines. Chief Commissioners of Customs should also monitor compliance thereof at their level. 5. Difficulty, faced, if any may be brought to the notice of the Board. Yours sincerely, (Pawan Khetan) OSD (Customs IV) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:49:52.917Z"
+}

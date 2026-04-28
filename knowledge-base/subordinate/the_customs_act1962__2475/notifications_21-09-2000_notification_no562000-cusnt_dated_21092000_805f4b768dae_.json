@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-09-2000_notification_no562000-cusnt_dated_21092000_805f4b768dae_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.56/2000-Cus(NT), dated 21.09.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-09-2000",
+  "description": "Notification No.56/2000-Cus(NT), dated 21.09.2000",
+  "hindi_description": null,
+  "file_title": "56-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=56-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=56-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification No. amends the Notification No. 61/94-Cus (N.T.) dated 21-11-1994 Notification No. 56/2000-Cus(N.T.) dated 21.9.2000 Import - Gold from Sri Lanka, Sharjah & Kuwait allowed at TiruchirapaIIi - Notification No 61/94-Cus(NT) amended In exercise of the powers conferred by clause (a) of section 7 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following further amendment in the notification of the Government of India in the Ministry of Finance, Department of Revenue, No. 61 /94-Customs(NT), dated the 21 st November. 1994, namely:- In the said notification, in the Table, against serial number 15 relating to the State of Tamil Nadu, against item (c) occurring in column (3) relating to TiruchirapaIIi, in column (4), for item number (a) and the entries relating thereto, the following item number and entries shall be substituted, namely:- \"(a) Unloading of: (i) imported goods from Sri Lanka, Sharjah and Kuwait and baggage; (ii) gold imported under notification No. 80/97-Customs, dated the 21st October, 1997\". Notification No. 56/2000-Cus(N.T.) dated 21.9.2000 -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:50.485Z"
+}

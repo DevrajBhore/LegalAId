@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_07-03-2014_notification_no202014-cusnt_dated_732014_c37935f9eb74_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.20/2014-Cus(NT), dated 7.3.2014",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-14.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-03-2014",
+  "description": "Notification No.20/2014-Cus(NT), dated 7.3.2014",
+  "hindi_description": null,
+  "file_title": "20-14.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-14.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-14.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-14.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-14.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=20-14.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=20-14.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 20/2014-Customs (N.T.) New Delhi, dated the 07th March, 2014 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional/Joint Commissioner of Customs, Custom House, Navrangpur, Ahmadabad to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) The Additional /Joint Commissioner of Customs , Custom House, Navrangpur, Ahmedabad; (ii) The Additional /Joint Commissioner of Customs (Imports), Jawaharlal Nehru Custom House, Nhava Sheva, Tal: Uran, District-Raigad, Maharashtra- 400707, for the purpose of adjudicating the matters relating to show cause notice pertaining to (i) M/s High Tech Garment Private Limited, Block No. 209-11, Village-Siyalaj, Taluka-Mangrol, Disrict-Surat; (ii) M/s High Tech Fablon Private Limited, Block No. 463, 464 Village- Panjaeoli,Taluka-Hansot, Disrict-Bharuch; (iii) M/s High Tech Filatex Private Limited, Block No.464 Village-Panjaeoli,Taluka-Hansot, Disrict-Bharuch; and (iv) M/s High Tech Filatex Private Limited, Block No.465 Village-Panjaeoli,Taluka-Hansot, Disrict-Bharuch and others issued vide, F.No.DRI/AZU/INV-28/2012 dated the 27th February, 2013 by the Joint Director, Directorate of Revenue Intelligence, Zonal Unit Ahmedabad. [F.No. 437/56/2013-Cus.IV] (R.P.Singh) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:38:29.198Z"
+}

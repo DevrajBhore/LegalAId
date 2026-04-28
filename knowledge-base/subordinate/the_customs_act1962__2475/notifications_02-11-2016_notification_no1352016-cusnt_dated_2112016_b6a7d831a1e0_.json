@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_02-11-2016_notification_no1352016-cusnt_dated_2112016_b6a7d831a1e0_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.135/2016-Cus(NT), dated 2.11.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt135-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-11-2016",
+  "description": "Notification No.135/2016-Cus(NT), dated 2.11.2016",
+  "hindi_description": null,
+  "file_title": "csnt135-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt135-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt135-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.135/2016-Cus(NT), dated 2.11.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt135-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt135-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt135-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt135-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt135-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt135-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION-3, SUB-SECTION (1)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) (CENTRAL BOARD OF EXCISE AND CUSTOMS) Notification No. 135/2016-Customs (N.T.) New Delhi, dated the 2nd November, 2016 G.S.R. (E)----In exercise of the powers conferred by proviso to sub-section (1) of section 47 of the Customs Act, 1962 (52 of 1962), the Central Government permits the following class of importers to make deferred payment of import duty: (i) Importers certified under Authorized Economic Operator programme as AEO (Tier-Two) and AEO (Tier-Three) Explanation.- For the purpose of this notification, AEO means Authorized Economic Operator certified by the Directorate General of Performance Management under the Central Board of Excise and Customs. [F.No. 450/81/2016-Cus.IV] (Shaifali G. Singh) Under Secretary to the Govt. of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:43:09.068Z"
+}

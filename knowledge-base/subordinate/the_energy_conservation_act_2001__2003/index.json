@@ -1,0 +1,470 @@
+{
+  "act_id": "the_energy_conservation_act_2001__2003",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 100,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 100,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 100,
+    "failed_candidate_count": 10,
+    "keyword_hits": {
+      "rules": 34,
+      "regulation": 2,
+      "regulations": 34,
+      "order": 7,
+      "orders": 2,
+      "scheme": 8,
+      "notification": 31,
+      "notifications": 1,
+      "directions": 3,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under the Central Motor Vehicle Rules",
+      "under PAT III for Cement and TPPs 02-05-2017 Notification"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2003?view_type=browse",
+    "scanned_at": "2026-04-13T19:45:03.407Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "Bureau of Energy Efficiency ( Form of Annual Statement of Accounts & Records) Rules, 2007",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=6.%20173(E).pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation(the form and manner for submission of report on the status of energy consumption by designated consumers) Rules, 2007",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=designated_consumers.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Bureau of Energy Efficiency ( Appointment of members, manner of filling vacancies, fees and allowances and procedure for discharging their functions ) Rules, 2007",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=showfile_sw.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=showfile_sw.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=showfile_sw.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=showfile_sw.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=showfile_sw.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation (Form and Manner and Time for furnishing information with regard to energy consumed and action taken on recommendations of accredited energy auditor) Rules, 2008",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=9._gsr486_eng_0.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation ( Manner of holding inquiry ) Rules, 2009",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=10._gsr25_eng_sw.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=10._gsr25_eng_sw.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=10._gsr25_eng_sw.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=10._gsr25_eng_sw.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=10._gsr25_eng_sw.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation ( Inspection ) Rules, 2009",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=11.+645%28E%29.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=11.+645%28E%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=11.+645%28E%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=11.%20645(E).pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.+645%28E%29.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=11.%2B645(E).pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation ( Norms and standards for Designated Consumers Form, Time within which, manner of preparation and implementation of scheme, procedure for issue of energy saving certificates and value of per metric ton of oil equivalent of energy consumed ) Rules, 2018",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=12.GSR269E.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=12.GSR269E.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=12.GSR269E.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=12.GSR269E.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=12.GSR269E.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Appellate Tribunal for Energy Conservation (Procedure , Form, Fee and Record of Proceeding ) Rules, 2012",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=13.+GSR+510E.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=13.+GSR+510E.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=13.+GSR+510E.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=13.%20GSR%20510E.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.+GSR+510E.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=13.%2BGSR%2B510E.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Bureau of Energy Efficiency (Terms and Conditions of Service of Employees) Rules, 2017",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=18.%201041(E)Terms%20&%20Service%20Conditions%20Rules,%202017.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.+1041%28E%29Terms+%26+Service+Conditions+Rules%2C+2017.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=18.%2B1041(E)Terms%2B%26%2BService%2BConditions%2BRules%2C%2B2017.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Energy Conservation (Inspection) Amendment Rules, 2019.",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=energy_conservation_(inspection)_amendment_rules,_2019.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_%28inspection%29_amendment_rules%2C_2019.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=energy_conservation_(inspection)_amendment_rules%2C_2019.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

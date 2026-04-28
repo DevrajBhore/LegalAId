@@ -1,0 +1,54 @@
+{
+  "sub_id": "notifications_16-11-2012_notification_no1032012-cusnt_dated_16112012_978d32064dfb_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.103/2012-Cus(NT), dated 16.11.2012",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=103-12_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-11-2012",
+  "description": "Notification No.103/2012-Cus(NT), dated 16.11.2012",
+  "hindi_description": null,
+  "file_title": "103-12_(1).pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=103-12.pdf"
+  ],
+  "alternate_file_titles": [
+    "103-12.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.103/2012-Cus(NT), dated 16.11.2012"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=103-12_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=103-12_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=103-12_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 103/2012-Customs (N.T.) New Delhi, the 16th November, 2012. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby imposes the Additional Commissioner or Joint Commissioner of Customs (Import), Custom House, Kandla, to exercise the powers and discharge the duties as adjudicating authority over the powers and duties exercisable by - (i) the Additional Commissioner or Joint Commissioner of Customs (Import), Custom House, Kandla, Gujarat (ii) the Additional Commissioner or Joint Commissioner of Customs (Import), Adani Port & Special Economic Zone (SEZ) Limited, Mundra, Gujarat. for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s KLJ Resources Ltd., KLJ House, 63 Rama Marg, Najafgarh Road, New Delhi issued vide F.No. DRI/AZU/CI-04/KLJ Resources /2012 dated 06th August, 2012, by the Joint Director, Directorate of Revenue Intelligence, Zonal Unit, Ahmedabad. [F. No. 437/54/2012-Cus.IV] (M.V. Vasudevan) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:36:56.550Z"
+}

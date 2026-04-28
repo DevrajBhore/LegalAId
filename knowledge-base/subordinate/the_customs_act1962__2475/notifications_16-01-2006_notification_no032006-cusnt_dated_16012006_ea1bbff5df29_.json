@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_16-01-2006_notification_no032006-cusnt_dated_16012006_ea1bbff5df29_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.03/2006-Cus(NT), dated 16.01.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=03-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-01-2006",
+  "description": "Notification No.03/2006-Cus(NT), dated 16.01.2006",
+  "hindi_description": null,
+  "file_title": "03-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=03-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=03-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=03-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=03-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=03-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=03-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "16th January, 2006 Notification No. 03/2006-Customs (N.T.) In exercise of the powers conferred by clause (aa) of sub-section (1) read with sub-section (2) of section 7 of the Customs Act, 1962 (52of 1962), the Central Board of Excise and Customs hereby makes the following further amendments in the notification of the Government of India in the Ministry of Finance (Department of Revenue), No. 12/1997 -CUSTOMS (N.T.), G.S.R. 193 (E), dated the 2nd April, 1997, namely :- 1. In the table to the said notification, against the serial number 9, in column (3), after the entry at item (ix) and corresponding entry in column (4), the following shall be inserted, namely:- (3) (4) \" (x) Village Palaspe, Panvel, Dist. Raigad, Maharashtra. Unloading of imported goods and loading of export goods\" 2. In the table to the said notification, against the serial number 13, after the entry in column (3) and corresponding entry in column (4), the following shall be inserted, namely:- (3) (4) \"(ii) Inland Container Depot in Export Promotion Industrial Park, Durgapur. Unloading of imported goods and loading of export goods\" [F.NO.434/09/2005-CUS.IV] Note :- The principal notification was published vide number G.S.R. 193(E), dated the 2nd April, 1997 and was last amended vide number G.S.R. 677(E), dated the 21st November, 2005. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:07:42.805Z"
+}

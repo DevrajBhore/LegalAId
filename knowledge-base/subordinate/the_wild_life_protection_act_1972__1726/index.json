@@ -1,0 +1,193 @@
+{
+  "act_id": "the_wild_life_protection_act_1972__1726",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 74,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 74,
+    "modal_duplicate_count": 4,
+    "successful_candidate_count": 74,
+    "failed_candidate_count": 3,
+    "keyword_hits": {
+      "rule": 1,
+      "rules": 29,
+      "regulation": 3,
+      "regulations": 1,
+      "order": 12,
+      "orders": 2,
+      "notification": 13,
+      "notifications": 1,
+      "directions": 2,
+      "guidelines": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to issue directions. Section 63. Power of Central Government to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1726?view_type=browse",
+    "scanned_at": "2026-04-13T20:37:06.708Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "The Wild Life (Protection) Amendment Act, 2006 (No. 39 of 2006, [03/09/2006])",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act,_2006_(no._39_of_2006,_%5B03_09_2006%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_%28protection%29_amendment_act%2C_2006_%28no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=the_wild_life_(protection)_amendment_act%2C_2006_(no._39_of_2006%2C_%5B03_09_2006%5D.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "S.O.802(E), [16/05/2007] - The National Board for Wild Life Rules, 2007",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e),_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules,_2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802%28e%29%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.802(e)%2C_%5B16_05_2007%5D_-_the_national_board_for_wild_life_rules%2C_2007.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "S.O.2180(E), [4/9/2010] - Amendments to Constitution of the National Board for Wild Life",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e),_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180%28e%29%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=s.o.2180(e)%2C_%5B4_9_2010%5D_-_amendments_to_constitution_of_the_national_board_for_wild_life.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-02-2007_notification_no172007-cusnt_dated_22022007_a318979839ea_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.17/2007-Cus(NT), dated 22.02.2007",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-07.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-02-2007",
+  "description": "Notification No.17/2007-Cus(NT), dated 22.02.2007",
+  "hindi_description": null,
+  "file_title": "17-07.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-07.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-07.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-07.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-07.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-07.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-07.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION 3, SUB-SECTION (ii)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) ......... NEW DELHI, THE 22nd February, 2007. 3, Phalguna, 1928 (SAKA ) NOTIFICATION No.17/2007-Customs (N.T.) G.S.R. No. (E) - In exercise of the powers conferred by sub-rule (1) of Rule 3 of the Customs Tariff (Identification and Assessment of Safeguard Duty) Rules, 1997, and in supersession of notification of the Government of India in the Ministry of Finance (Department of Revenue) No. 80/2005-Customs (N.T) issued vide G.S.R. No. 598(E) dated the 20th September, 2005, the Central Government hereby appoints Shri J.K. Batra, Chief Commissioner of Customs, as the Director General (Safeguard) for the purposes of the said Rules. F. No. 528/57/2004-Cus.(TU) Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:12:53.317Z"
+}

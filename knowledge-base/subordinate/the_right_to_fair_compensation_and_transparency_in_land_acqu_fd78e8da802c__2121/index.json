@@ -1,0 +1,34 @@
+{
+  "act_id": "the_right_to_fair_compensation_and_transparency_in_land_acquisition_rehabilitation_and_resettlement_act_2013__2121",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 11,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 11,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 11,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 7,
+      "regulations": 1,
+      "order": 12,
+      "orders": 2,
+      "scheme": 3,
+      "notification": 7,
+      "notifications": 3,
+      "circulars": 1,
+      "ordinance": 4
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2121?view_type=browse",
+    "scanned_at": "2026-04-13T18:07:47.771Z"
+  },
+  "failed_candidates": []
+}

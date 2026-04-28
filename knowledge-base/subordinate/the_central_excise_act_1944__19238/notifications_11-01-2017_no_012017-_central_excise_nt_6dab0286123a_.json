@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_11-01-2017_no_012017-_central_excise_nt_6dab0286123a_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "No. 01/2017- Central Excise (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-01-2017",
+  "description": "No. 01/2017- Central Excise (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent01-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2017.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent01-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent01-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 01/2017- Central Excise (N.T.) New Delhi, the 11\" January, 2017 G.S.R. (E).- Whereas the Central Government is satisfied that according to a practice that was generally prevalent regarding levy of duty of excise (including non-levy thereof): under section 3 of the Central Excise Act, 1944 (1 of 1944), (hereinafter referred to as the said Act), on Plain (Un-modified) Tamarind Kernel Powder falling under heading 1302 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986) (hereinafter referred to as the said goods), was not being levied according to the said practice, during the period commencing on the 19\" day of July, 2011 and ending with the 18\" day of July, 2016; 2. Now, therefore, in exercise of the powers conferred by section 11C of the said Act, the Central Government hereby directs that the whole of the duty of excise payable under section 3 of the said Act on the said goods but for the said practice, shall not be required to be paid in respect of the said goods on which the said duty of excise was not levied during the period aforesaid in accordance with the said practice. [F. No. 116/17/2016-CX.3] (Rohan) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:01:42.956Z"
+}

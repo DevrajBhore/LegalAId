@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-10-2002_notification_no1142004-cusnt_dated_21102004_274aa36ee1d5_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.114/2004-Cus(NT), dated 21.10.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=114-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-10-2002",
+  "description": "Notification No.114/2004-Cus(NT), dated 21.10.2004",
+  "hindi_description": null,
+  "file_title": "114-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=114-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=114-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=114-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=114-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=114-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=114-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "21st October, 2004 Notification No.114/2004-Customs(N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Jaipur to act as Commissioner of Customs(Export Promotion), New Custom House, Mumbai and Commissioner of Customs, Air Cargo Complex, New Custom House, New Delhi for the purpose of adjudicating the matters relating to Show Cause Notices pertaining to M/s. Kansara Bearings Ltd, C-83, Marudhar Industrial Area, Phase II, Basni , Jodhpur issued, vide F. No S/10-EPCG-Commr-3/ 2000, dated the 29th September, 2000, C.No . VIII( H)10/Adj/9/2000/1244, dated the 6th October, 2000 by Commissioner of Customs, Jaipur and vide C.No . VIII ( Hqrs .)10/ACV/20/2000/14073, dated the 6th October, 2000 by the Commissioner of Customs(Air Cargo Complex), New Custom House, New Delhi. F.NO.437/16/2004-CUS.IV D.S.Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:59:25.304Z"
+}

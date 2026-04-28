@@ -1,0 +1,46 @@
+{
+  "sub_id": "orders_01-02-2019_rod_no_012019-central_tax_dated_01022019_469edd442fc9_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "ROD No. 01/2019-Central Tax dated 01.02.2019",
+  "type": "order",
+  "category_label": "Orders",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=rod1_2019_ct.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-02-2019",
+  "description": "ROD No. 01/2019-Central Tax dated 01.02.2019",
+  "hindi_description": null,
+  "file_title": "rod1_2019_ct.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=rod1_2019_ct.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=rod1_2019_ct.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=rod1_2019_ct.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=rod1_2019_ct.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=rod1_2019_ct.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=rod1_2019_ct.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (ii)] Government of India Ministry of Finance (Department of Revenue) [Central Board of Indirect Taxes and Customs] ORDER No. 01/2019-Central Tax New Delhi, the 1st February, 2019 S.O. (E). --- WHEREAS, sub-section (1) of section 10 of the Central Goods and Services Tax Act, 2017 (12 of 2017) (hereafter in this Order referred to as the said Act) provides that- (i) a registered person engaged in the supply of services, other than supply of service referred to in clause (b) of paragraph 6 of Schedule II to the said Act, may opt for the scheme under the said sub-section; (ii) a person who opts for the said scheme may supply services (other than those referred to in clause (b) of paragraph 6 of Schedule II to the said Act), of value not exceeding ten per cent. of turnover in a State or Union territory in the preceding financial year or five lakh rupees, whichever is higher; AND WHEREAS, clause (a) of sub-section (2) of section 10 of the said Act provides that the registered person shall be eligible to opt under sub-section (1), if, save as otherwise provided in sub-section (1), he is not engaged in the supply of services; AND WHEREAS, rendering of services as part of the savings and investment practice of business, by way of extending deposits, loans or advances, in so far as the consideration is represented by way of interest or discount, is resulting in their ineligibility for the aforesaid scheme, causing hardships to a lot of small businesses and because of that, certain difficulties have arisen in giving effect to the provisions of section 10; NOW, THEREFORE, in exercise of the powers conferred by section 172 of the Central Goods and Services Tax Act, 2017 and in supersession of the Central Goods and Services Tax (Removal of Difficulties) Order, 2017, No. 01/2017-Central Tax, dated the 13th October, 2017, published in the Gazette of India, Extraordinary, vide number S.O. 3330 (E), dated the -- 1 of 2 -- 13th October, 2017, except as respects things done or omitted to be done before such supersession, the Central Government, on recommendations of the Council, hereby makes the following Order, namely: –– 1. Short title. ––This Order may be called the Central Goods and Services Tax (Removal of Difficulties) Order, 2019. 2. For the removal of difficulties, it is hereby clarified that the value of supply of exempt services by way of extending deposits, loans or advances in so far as the consideration is represented by way of interest or discount, shall not be taken into account - (i) for determining the eligibility for composition scheme under second proviso to sub-section (1) of section 10; (ii) in computing aggregate turnover in order to determine eligibility for composition scheme. [F.No.20/06/16/2018 – GST (Pt. II)] (Dr. Sreeparvathy S.L.) Under secretary to the Government of India -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:49:05.272Z"
+}

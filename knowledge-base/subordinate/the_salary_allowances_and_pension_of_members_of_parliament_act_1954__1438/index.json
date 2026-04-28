@@ -1,0 +1,105 @@
+{
+  "act_id": "the_salary_allowances_and_pension_of_members_of_parliament_act_1954__1438",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 9,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 9,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 9,
+    "failed_candidate_count": 2,
+    "keyword_hits": {
+      "rules": 10,
+      "regulations": 1,
+      "order": 3,
+      "orders": 1,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 2
+    },
+    "context_signals": [
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1438?view_type=browse",
+    "scanned_at": "2026-04-13T20:24:11.923Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "THE MEMBERS OF PARLIAMENT (TRAVELLING AND DAILY ALLOWANCES) RULES, 1957",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rule&filename=updated_msa_act_&_rules_made_thereunder_-2022-21-44.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-21-44.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "The Payment of Family Pension (Submision of Documents) Rules, 2021",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_33_52_00003_195430_1517807322476/rulesindividualfile/&file=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rule&filename=updated_msa_act_&_rules_made_thereunder_-2022-68-89.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_33_52_00003_195430_1517807322476&type=rules&filename=updated_msa_act_%26_rules_made_thereunder_-2022-68-89.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

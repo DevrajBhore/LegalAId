@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-08-2003_notification_no662003-cusnt_dated_25082003_6ebaa2637c13_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.66/2003-Cus(NT), dated 25.08.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-08-2003",
+  "description": "Notification No.66/2003-Cus(NT), dated 25.08.2003",
+  "hindi_description": null,
+  "file_title": "66-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "25th August, 2003 Notification No. 66/2003 - Customs (NT) In exercise of the powers conferred by section 28A of the Customs Act, 1962 (52 of 1962), the Central Government, being satisfied that it is necessary in the public interest so to do, hereby makes the following amendment in the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No. 12/99-Customs (NT) dated the 5th February, 1999, issued vide G.S.R. No. 67(E), namely : - In the Annexure to the said notification, after S. No. 12, and the entries relating thereto, the following S.Nos., and the entries shall be inserted, namely : - S.No. Name of the Mill No. of Autoconers imported Differential duty payable (Rs.) \"13 M/s. Century Textiles 1 1474205 14 M/s Forbes Gokak 2 2751404\" D. S. GARBYAL Under Secretary to the Government of India F. NO. - 528/125/96 -- CUS (TU) Note : The principal notification No. 12/99-Cus (NT) dated the 5th Feb., 1999, was published vide number G.S.R. 161(E), dated the 28thFebruary, 1999 and was last amended vide notification No. 14/2003-Cus. (NT), dated the 24th February, 2003, G.S.R 126 (E), dated the 24th February, 2003. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:44.475Z"
+}

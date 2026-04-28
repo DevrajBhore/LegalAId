@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_20-07-2009_notification_no1002009-cusntdated_2072009_12004ec09634_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.100/2009-Cus(NT),dated 20.7.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=100-2009.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-07-2009",
+  "description": "Notification No.100/2009-Cus(NT),dated 20.7.2009",
+  "hindi_description": null,
+  "file_title": "100-2009.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=100-2009.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=100-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=100-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=100-2009.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=100-2009.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=100-2009.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 100 / 2009-Customs (N.T.) New Delhi, dated the 20th July, 2009. 29 Ashadha, 1931 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following amendment in the notification number 113/2005- Customs(N.T.), dated 28th December, 2005 published in the Gazette of India Part II section 3 sub-Section (ii), vide number S.O. 1828 (E) dated the 28th December, 2005, of the Government of India, Ministry of Finance (Department of Revenue) namely:- In the said notification, after item number (xiii), for the long lines, to the paragraph, \"for the purposes of adjudicating the matters relating to show cause notice pertaining to M/s Clarrity Intermediates and Pesticides, Surat and others, issued vide Directorate of Revenue Intelligence F.No. DRI/SRU/INV-2/2004, dated the 18th July, 2005 by the Additional director General, Ahmedabad Zonal Unit, Rupen Bungalow, Near Jain Merchant Society, Paldi, Ahmedabad.\" the following long lines shall be substituted, namely,- \"for the purposes of adjudicating the matters relating to show cause notice pertaining to M/s Clarrity Intermediates and Pesticides, Surat and others, issued vide Directorate of Revenue Intelligence (i) F.No. DRI/SRU/INV-2/2004, dated the 18th July, 2005 (ii) F.No. DRI/SRU/INV-2/2004, dated the 23rd August, 2004, by the Additional director General, Ahmedabad Zonal Unit, Rupen Bungalow, Near Jain Merchant Society, Paldi, Ahmedabad.\" [F.No. 437/26/2005-Cus.IV] (M M Parthiban) Director (Customs) to the government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:26:27.775Z"
+}

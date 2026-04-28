@@ -1,0 +1,60 @@
+{
+  "sub_id": "notifications_26-06-2013_the_central_government_appoints_the_26th_day_of_june_2013_as_the_date_on_which_the_provisions_of_sub-section_2_of_section_5_of_the_acsir_act_s_f1b7effcfa41",
+  "parent_act_id": "the_academy_of_scientific_and_innovative_research_act_2011__2110",
+  "title": "The Central Government appoints the 26th day of June, 2013 as the date on which the provisions of sub-section (2) of section 5 of the AcSIR Act shall come into force.",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_31_82_00001_201213_1517807327700/notificationindividualfile/&file=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-06-2013",
+  "description": "The Central Government appoints the 26th day of June, 2013 as the date on which the provisions of sub-section (2) of section 5 of the AcSIR Act shall come into force.",
+  "hindi_description": null,
+  "file_title": "the_acsir_act,_2011_[26th_june,_2013].pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_31_82_00001_201213_1517807327700/notificationindividualfile/&file=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_31_82_00001_201213_1517807327700/notificationindividualfile/&file=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act,_2011_%5B26th_june,_2013%5D.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_31_82_00001_201213_1517807327700&type=notification&filename=the_acsir_act%2C_2011_%5B26th_june%2C_2013%5D.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "The Central Government appoints the 26th day of June, 2013 as the date on which the provisions of sub-section (2) of section 5 of the AcSIR Act shall come into force.",
+  "fetched_at": "2026-04-13T19:01:53.037Z"
+}

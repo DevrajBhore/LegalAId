@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_26-09-2014_notification_no892014-cusntdt_2692014_e2af9f25eba2_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.89/2014-Cus(NT),dt. 26.9.2014",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-14.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-09-2014",
+  "description": "Notification No.89/2014-Cus(NT),dt. 26.9.2014",
+  "hindi_description": null,
+  "file_title": "89-14.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-14.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-14.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-14.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-14.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=89-14.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=89-14.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 89/ 2014-Customs (N.T.) New Delhi, dated 26th September, 2014 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Commissioner or Joint Commissioner of Customs, (Adjudication), C.R. Building, Queen's Road, Bengaluru-560001 to act as an adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Additional Commissioner or Joint Commissioner of Customs (Adjudication), C.R. Building, Queen's Road, Bengaluru-560001 (ii) the Deputy Commissioner or Assistant Commissioner of Customs (Adjudication), C.R. Building, Queen's Road, Bengaluru-560001 for the purpose of adjudicating the matters relating to show cause notices pertaining to M/s Beninca Automations Pvt. Ltd., 112/1, 3rd floor, Lalbagh Fort Road, Minerva Circle, Bengaluru-560004 issued vide, DRI F.No.718(ii)12/Seiz/PRU/13-14 dated 7th June 2013 by the Assistant Director, Directorate of Revenue Intelligence, Regional Unit, Patna. [F.No. 437/72/2013-Cus IV] (R.P.Singh) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:39:07.039Z"
+}

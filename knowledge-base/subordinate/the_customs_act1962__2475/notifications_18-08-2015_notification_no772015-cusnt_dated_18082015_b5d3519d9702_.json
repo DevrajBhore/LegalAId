@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-08-2015_notification_no772015-cusnt_dated_18082015_b5d3519d9702_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.77/2015-CUS(NT), dated 18.08.2015",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt77-2015.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-08-2015",
+  "description": "Notification No.77/2015-CUS(NT), dated 18.08.2015",
+  "hindi_description": null,
+  "file_title": "csnt77-2015.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt77-2015.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt77-2015.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt77-2015.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt77-2015.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt77-2015.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt77-2015.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 77/ 2015-Customs (N.T.) New Delhi, the 18th August, 2015 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Nhava Sheva-IV), Jawaharlal Nehru Custom House, Nhava Sheva, Tal, Uran District Raigad, Maharashtra to act as a common adjudicating authority to exercise the powers and discharge the duties in respect of adjudication of the show cause notices specified in column (3) of the Table below issued by the Joint Commissioner Customs specified in column (4) in case of parties specified in column (2) of the said Table, respectively, namely:- Table . [F.No. 437/19/2015-Cus IV] (Anurag Sehgal) Under Secretary to the Government of India Sl. No. Names of Parties Show Cause Notice No. and date Issuing Authority (1) (2) (3) (4) 1. M/s Hotel Tunga Regency Pvt. Ltd. Plot No.37, Sector- 30A, Vashi Navi Mumbai, Maharashtra File No. SG/Misc- 270/2013/SIIB(X)/JNCH SCN.No. 111/2014, dated 13th August, 2014 Joint Commissioner of Customs(Export) Jawaharlal Nehru Customs House Nhava Sheva 2. M/s Hotel Tunga Regency Pvt. Ltd. Plot No.37, Sector- 30A, Vashi Navi Mumbai, Maharashtra File No. SG/Misc- 270/2013/SIIB(X)/JNCH SCN F.No.S/26-Misc- 21/2014, dated 2nd February, 2015 Joint Commissioner of Customs (Export), New Custom House, Ballard Estate, Mumbai 3. M/s Hedge Hotels (India) Pvt. Ltd. P- 16, MIDC Central Road, Andheri (E), Mumbai, Maharashtra File No.S/45/2000/2008, dated 10th November, .2014 Joint Commissioner of Customs (Export Promotion Capital Goods), Chennai, Custom House (Sea Cargo) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:40:04.048Z"
+}

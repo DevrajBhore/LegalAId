@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_11-05-2018_notification_no372018-cusnt_dated_1152018_4307b68b0cb5_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.37/2018-Cus(NT), dated 11.5.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt37-2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-05-2018",
+  "description": "Notification No.37/2018-Cus(NT), dated 11.5.2018",
+  "hindi_description": null,
+  "file_title": "csnt37-2018.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt37-2018.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt37-2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt37-2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt37-2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt37-2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt37-2018.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 37 /2018-Customs (N.T) New Delhi, the 11th May, 2018 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following amendments in the notification of the Government of India in the Ministry of Finance (Department of Revenue) No. 17/2017- Customs (N.T.) dated 3rd March , 2017 published in Part II, Section 3, Sub-section (ii) of the Gazette of India, Extraordinary vide number S.O.723(E), dated the 3rd March, 2017, namely:- In the said notification, the table and the entries mentioned therein shall be replaced and read as under:- “Table [F.No. 437/02/2017-Cus IV] (Z.R.Kamili) Director (Customs) Sl. No Notice Name & address Show Cause Notice No. and date Answerable to Appointed officer (1) (2) (3) (4) (5) 1. M/s Fulchand Exports, 3 Shastri Nagar, Angeripalayam Road, Triuppur F.No.INV/DGCEI/CB ERU/4/2005 dated 20.06.2006 (i) Commissioner of Customs, Customs House, Tuticorin (ii) Commissioner of Customs, Air Cargo Complex, Mumbai (iii) Commissioner of Customs, Air Cargo Complex, Chennai Commissioner of Customs, Custom House, Tuticorin.” -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:45:17.898Z"
+}

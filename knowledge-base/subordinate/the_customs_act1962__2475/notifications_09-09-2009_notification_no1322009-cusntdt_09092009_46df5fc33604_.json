@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_09-09-2009_notification_no1322009-cusntdt_09092009_46df5fc33604_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.132/2009-Cus(NT),dt. 09.09.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-09-2009",
+  "description": "Notification No.132/2009-Cus(NT),dt. 09.09.2009",
+  "hindi_description": null,
+  "file_title": "132-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=132-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=132-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Dated the 09th September, 2009. 18 Bhadrapada, 1931 (SAKA). Notification No. 132 / 2009 – Customs (N.T.) G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs, hereby appoints,- (i) the Commissioner of Central Excise, Siliguri to be the Commissioner of Customs within the jurisdiction of the: (a) districts of Darjeeling, Jalpaiguri, Coochbehar and North Dinajpur in the State of West Bengal; and (b) the State of Sikkim. the Additional Commissioners of Central Excise and Joint Commissioners of Central Excise to be Additional Commissioners of Customs and Joint Commissioners of Customs, respectively, within the jurisdiction of the Commissioner of Central Excise, Siliguri. the Deputy Commissioners of Central Excise and Assistant Commissioners of Central Excise to be Deputy Commissioners of Customs and Assistant Commissioners of Customs, respectively, within the jurisdiction of the Commissioner of Central Excise, Siliguri. 2. This notification shall come into effect on and from the date to be notified by the Chief Commissioner of Customs, Kolkata. F. No. 450/65/2009 – Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:29:17.245Z"
+}

@@ -1,0 +1,37 @@
+{
+  "act_id": "the_central_vigilance_commission_act_2003__2067",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 10,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 10,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 10,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 1,
+      "rules": 8,
+      "regulations": 5,
+      "order": 6,
+      "orders": 1,
+      "notification": 1,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 2
+    },
+    "context_signals": [
+      "Power to make rules",
+      "Power to make rules. Show Related Subordinates Section 21. Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2067?view_type=browse",
+    "scanned_at": "2026-04-11T11:32:56.097Z"
+  },
+  "failed_candidates": []
+}

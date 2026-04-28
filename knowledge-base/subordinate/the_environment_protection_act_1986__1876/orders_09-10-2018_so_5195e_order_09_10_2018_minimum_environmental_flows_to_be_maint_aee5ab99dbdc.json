@@ -1,0 +1,60 @@
+{
+  "sub_id": "orders_09-10-2018_so_5195e_order_09_10_2018_minimum_environmental_flows_to_be_maintained_at_locations_downstream_of_structures_or_projects_meant_for_diversion_of_river_1b0cdca40a3d",
+  "parent_act_id": "the_environment_protection_act_1986__1876",
+  "title": "S.O. 5195(E) Order_09_10_2018 Minimum environmental flows to be maintained at locations downstream of structures or projects meant for diversion of river flows for purposes like irrigation, hydropower, domestic and industrial and other requirements",
+  "type": "order",
+  "category_label": "Orders",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/orderindividualfile/&file=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-10-2018",
+  "description": "S.O. 5195(E) Order_09_10_2018 Minimum environmental flows to be maintained at locations downstream of structures or projects meant for diversion of river flows for purposes like irrigation, hydropower, domestic and industrial and other requirements",
+  "hindi_description": null,
+  "file_title": "order_09_10_2018_under+environment%28protection%29+act,_1986.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/orderindividualfile/&file=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/orderindividualfile/&file=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under+environment%28protection%29+act,_1986.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=order&filename=order_09_10_2018_under%2Benvironment%2528protection%2529%2Bact%2C_1986.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "S.O. 5195(E) Order_09_10_2018 Minimum environmental flows to be maintained at locations downstream of structures or projects meant for diversion of river flows for purposes like irrigation, hydropower, domestic and industrial and other requirements",
+  "fetched_at": "2026-04-13T20:56:23.719Z"
+}

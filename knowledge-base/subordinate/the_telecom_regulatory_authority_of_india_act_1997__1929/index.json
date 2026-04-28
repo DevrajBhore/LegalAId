@@ -1,0 +1,139 @@
+{
+  "act_id": "the_telecom_regulatory_authority_of_india_act_1997__1929",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 58,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 58,
+    "modal_duplicate_count": 2,
+    "successful_candidate_count": 58,
+    "failed_candidate_count": 2,
+    "keyword_hits": {
+      "rules": 13,
+      "regulation": 16,
+      "regulations": 38,
+      "order": 4,
+      "orders": 3,
+      "notifications": 1,
+      "directions": 3,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 36. Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1929?view_type=browse",
+    "scanned_at": "2026-04-13T20:33:15.090Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "Telecom Regulatory Authority of India, Service Providers (Maintenance of Books of Accounts and other Documents) Rules, 2002.",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rule&filename=Category%20of%20Books%20&amp;%20Accounts.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Telecommunication Mobile Number Portability Regulations, 2009.",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/regulationindividualfile/&file=MNP+Regulation23sep09%5B1%5D.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/regulationindividualfile/&file=MNP+Regulation23sep09%5B1%5D.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/regulationindividualfile/&file=MNP+Regulation23sep09%5B1%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%20Regulation23sep09%5B1%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP+Regulation23sep09%5B1%5D.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=regulation&filename=MNP%2BRegulation23sep09%5B1%5D.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-08-2001_notification_no592001-ce_nt_7ef3b1d647ba_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.59/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent59-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-08-2001",
+  "description": "Notification No.59/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent59-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent59-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent59-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent59-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent59-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent59-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent59-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "6 th August, 2001 Notification No. 59/2001-Central Excise (N.T.) In pursuance of clause (g) of rule 2 of the Central Excise (No. 2) Rules, 2001, the Board hereby notifies the following form as the proper form for the purpose of sub-rule (2) of rule 17, namely, - AC-1 [Rule 17(2)] Commissionerate.................. Division............................... Range ................................. Name and Address of the Unit............. Date Description of goods Opening balance Quantity manufactured TotalQuantity cleared Invoice number and date Closing balance Duty Paid Remarks To domestic Tariff Area For Export (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:37:46.807Z"
+}

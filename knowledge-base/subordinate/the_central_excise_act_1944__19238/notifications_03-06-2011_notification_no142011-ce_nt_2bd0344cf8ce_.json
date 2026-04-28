@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_03-06-2011_notification_no142011-ce_nt_2bd0344cf8ce_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.14/2011-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2k11.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-06-2011",
+  "description": "Notification No.14/2011-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent14-2k11.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2k11.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2k11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2k11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2k11.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2k11.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2k11.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No.14/ 2011 - Central Excise (N.T.) New Delhi, the 3 rd June, 2011 G.S.R.(E) In exercise of the powers conferred by sub-rule (2) of rule 9 of the Central Excise Rules, 2002, the Central Board of Excise and Customs hereby exempts from the operation of said rule, every manufacturing unit engaged in the manufacture of recorded smart cards falling under sub-heading 8523 where manufacturer of such goods has a centralized billing or accounting system in respect of such goods manufactured by different manufacturing units and opts for registering only the premises or office from where such centralized billing or accounting is done. [F.No. 332/3/2011 -TRU] (Samar Nanda) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:45:25.463Z"
+}

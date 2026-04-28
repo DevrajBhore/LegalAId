@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-09-2001_notification_no422001-cusnt_dated_1892001_89bf7a429576_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.42/2001-Cus(NT), dated 18.9.2001",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=42-2001.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-09-2001",
+  "description": "Notification No.42/2001-Cus(NT), dated 18.9.2001",
+  "hindi_description": null,
+  "file_title": "42-2001.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=42-2001.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=42-2001.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=42-2001.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=42-2001.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=42-2001.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=42-2001.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "18th September,2001 Notification NO. 42 /2001-Customs ( N.T. ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962 ), the Central Government hereby appoints the Commissioner of Customs, Kandla to be- (i) the Commissioner of Customs, Kolkata, (ii) the Commissioner of Customs, Mumbai, and (iii) the Commissioner of Customs, Nhava Sheva, Port Uran, Raigarh for the purpose of adjudication of the show cause notice F.No.SIIB/CUS/41/99 dated the 17th November, 2001 issued to M/s. Honda Siel Cars India Ltd. by the Commissioner of Customs (General), New Delhi. Rajendra Singh Under Secretary to the Government of India F.NO.437/10 /2000-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:36.385Z"
+}

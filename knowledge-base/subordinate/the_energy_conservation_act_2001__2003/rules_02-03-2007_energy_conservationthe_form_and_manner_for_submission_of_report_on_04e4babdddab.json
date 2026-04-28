@@ -1,0 +1,60 @@
+{
+  "sub_id": "rules_02-03-2007_energy_conservationthe_form_and_manner_for_submission_of_report_on_the_status_of_energy_consumption_by_designated_consumers_rules_2007_8f8b9eb51c3b_",
+  "parent_act_id": "the_energy_conservation_act_2001__2003",
+  "title": "Energy Conservation(the form and manner for submission of report on the status of energy consumption by designated consumers) Rules, 2007",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-03-2007",
+  "description": "Energy Conservation(the form and manner for submission of report on the status of energy consumption by designated consumers) Rules, 2007",
+  "hindi_description": null,
+  "file_title": "designated_consumers.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=designated_consumers.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=designated_consumers.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=designated_consumers.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Energy Conservation(the form and manner for submission of report on the status of energy consumption by designated consumers) Rules, 2007",
+  "fetched_at": "2026-04-13T19:33:53.148Z"
+}

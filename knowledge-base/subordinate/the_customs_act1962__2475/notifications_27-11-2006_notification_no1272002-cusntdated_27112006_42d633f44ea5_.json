@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_27-11-2006_notification_no1272002-cusntdated_27112006_42d633f44ea5_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.127/2002-Cus(NT),dated 27.11.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=127-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-11-2006",
+  "description": "Notification No.127/2002-Cus(NT),dated 27.11.2006",
+  "hindi_description": null,
+  "file_title": "127-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=127-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=127-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=127-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=127-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=127-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=127-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "27th November, 2006 Notification No. 127/ 2006-Customs (N.T.) S.O (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi and authorises him to exercise the powers and discharge the duties conferred or imposed, to act as the Commissioner of Customs (Import), Mumbai and Commissioner of Customs (Import), Nhava Sheva for the purposes of adjudicating the matters relating to Show Cause Notice pertaining to M/s Paradise International, 22, Gopal Market, 2nd Floor, Bhagirath Palace, Delhi-6 and others, issued, vide, DRI F.No. 338/XIV/24/2006/36, dated the 9th October, 2006 by the Additional Director General, Directorate of Revenue Intelligence, 7th Floor, I.P. Bhavan, I.P. Estate, New Delhi - 110002. [F.NO.437/ 54 /2006-Cus.IV] -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:11:42.652Z"
+}

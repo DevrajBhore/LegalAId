@@ -54,6 +54,9 @@ export function deriveGenerationControls(documentType, variables = {}) {
   );
   const explicitPersonalData = normalizeBooleanLike(variables.processes_personal_data);
   const explicitExclusiveTerritory = normalizeBooleanLike(variables.exclusive_territory);
+  const explicitIndemnity = normalizeBooleanLike(variables.include_indemnity_clause);
+  const explicitWarranty = normalizeBooleanLike(variables.include_warranty_clause);
+  const explicitNomenclature = normalizeBooleanLike(variables.include_nomenclature_clause);
 
   if (explicitNonSolicit !== null) {
     derived.include_non_solicit = explicitNonSolicit;
@@ -94,6 +97,34 @@ export function deriveGenerationControls(documentType, variables = {}) {
   if (explicitExclusiveTerritory !== null) {
     derived.exclusive_territory = explicitExclusiveTerritory;
   }
+
+  if (explicitIndemnity !== null) {
+    derived.include_indemnity_clause = explicitIndemnity;
+  } else {
+    derived.include_indemnity_clause =
+      hasMeaningfulValue(variables.indemnity_scope) ||
+      hasMeaningfulValue(variables.ip_ownership) ||
+      hasMeaningfulValue(variables.tax_responsibility);
+  }
+
+  if (explicitWarranty !== null) {
+    derived.include_warranty_clause = explicitWarranty;
+  } else {
+    derived.include_warranty_clause =
+      hasMeaningfulValue(variables.warranty_period) ||
+      hasMeaningfulValue(variables.support_maintenance) ||
+      hasMeaningfulValue(variables.acceptance_criteria);
+  }
+
+  if (explicitNomenclature !== null) {
+    derived.include_nomenclature_clause = explicitNomenclature;
+  } else {
+    derived.include_nomenclature_clause =
+      hasMeaningfulValue(variables.nomenclature_terms) ||
+      hasMeaningfulValue(variables.acceptance_criteria);
+  }
+
+  derived.include_deliverables = hasMeaningfulValue(variables.deliverables);
 
   return derived;
 }

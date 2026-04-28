@@ -1,0 +1,60 @@
+{
+  "sub_id": "rules_26-06-2008_energy_conservation_form_and_manner_and_time_for_furnishing_information_with_regard_to_energy_consumed_and_action_taken_on_recommendations_of_accredit_104cd77c3a23",
+  "parent_act_id": "the_energy_conservation_act_2001__2003",
+  "title": "Energy Conservation (Form and Manner and Time for furnishing information with regard to energy consumed and action taken on recommendations of accredited energy auditor) Rules, 2008",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-06-2008",
+  "description": "Energy Conservation (Form and Manner and Time for furnishing information with regard to energy consumed and action taken on recommendations of accredited energy auditor) Rules, 2008",
+  "hindi_description": null,
+  "file_title": "9._gsr486_eng_0.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=9._gsr486_eng_0.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=9._gsr486_eng_0.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=9._gsr486_eng_0.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Energy Conservation (Form and Manner and Time for furnishing information with regard to energy consumed and action taken on recommendations of accredited energy auditor) Rules, 2008",
+  "fetched_at": "2026-04-13T19:33:59.981Z"
+}

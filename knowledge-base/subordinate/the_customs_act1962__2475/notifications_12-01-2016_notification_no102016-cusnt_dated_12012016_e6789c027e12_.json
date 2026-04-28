@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_12-01-2016_notification_no102016-cusnt_dated_12012016_e6789c027e12_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.10/2016-Cus(NT), dated 12.01.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt10-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-01-2016",
+  "description": "Notification No.10/2016-Cus(NT), dated 12.01.2016",
+  "hindi_description": null,
+  "file_title": "csnt10-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt10-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt10-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.10/2016-Cus(NT), dated 12.1.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt10-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt10-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt10-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt10-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt10-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt10-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part-II, Section 3, Sub-section (ii)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No. 10/2016-Customs (N.T.) New Delhi, the 12th January, 2016 S.O. (E). -In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Principal Commissioner/Commissioner of Customs (Import), Jawaharlal Nehru Customs House, Nhava Sheva-III, Nhava Sheva, Taluka Uran, District Raigad, Maharashtra to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on - (i) the Commissioner of Customs (Port-Import), Jawaharlal Nehru Custom House, Nhava Sheva, Taluka Uran, District Raigad, Maharashtra; (ii) the Commissioner of Customs (Import), Air Cargo Complex, Sahar, Andheri (East), Mumbai-400099, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s. Pooja Hardware Pvt. Ltd, C-5, Hind Saurashtra Industrial Estate, Near Mittal Industrial Estate, Andheri- Kurla Road, Marol Naka, Andheri (East), Mumbai-400059 and others issued vide Show Cause Notice number VIII/26/17/2010-DRI VIC, dated the 30th September, 2014 by the Additional Director, Directorate of Revenue Intelligence, Zonal Unit, Chennai [F No.437/72/2015-Cus.IV] (Z. R. Kamili) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:41:38.839Z"
+}

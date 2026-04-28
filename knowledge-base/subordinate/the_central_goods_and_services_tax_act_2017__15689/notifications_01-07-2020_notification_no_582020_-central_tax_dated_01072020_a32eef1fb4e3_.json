@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_01-07-2020_notification_no_582020_-central_tax_dated_01072020_a32eef1fb4e3_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 58/2020 -Central Tax dated 01.07.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-58-central-tax-english-2020.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-07-2020",
+  "description": "Notification No. 58/2020 -Central Tax dated 01.07.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-58-central-tax-english-2020.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-58-central-tax-english-2020.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-58-central-tax-english-2020.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-58-central-tax-english-2020.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-58-central-tax-english-2020.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-58-central-tax-english-2020.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-58-central-tax-english-2020.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Notification No. 58/2020 – Central Tax New Delhi, the 1st July, 2020 G.S.R…(E). - In exercise of the powers conferred by section 164 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on the recommendations of the Council, hereby makes the following rules further to amend the Central Goods and Services Tax Rules, 2017, namely: - 1. (1) These rules may be called the Central Goods and Services Tax (Eighth Amendment) Rules, 2020. (2) They shall come into force from 1st July,2020. 2. In the Central Goods and Services Tax Rules, 2017 (hereinafter referred to as the said rules), for the rule 67A, the following rule shall be substituted, namely:- “67A. Manner of furnishing of return or details of outward supplies by short messaging service facility.- Notwithstanding anything contained in this Chapter, for a registered person who is required to furnish a Nil return under section 39 in FORM GSTR-3B or a Nil details of outward supplies under section 37 in FORM GSTR-1 for a tax period, any reference to electronic furnishing shall include furnishing of the said return or the details of outward supplies through a short messaging service using the registered mobile number and the said return or the details of outward supplies shall be verified by a registered mobile number based One Time Password facility. Explanation. - For the purpose of this rule, a Nil return or Nil details of outward supplies shall mean a return under section 39 or details of outward supplies under section 37, for a tax period -- 1 of 2 -- that has nil or no entry in all the Tables in FORM GSTR-3B or FORM GSTR-1, as the case may be.”. [F. No. CBEC-20/06/08/2020-GST] (Pramod Kumar) Director, Government of India Note: The principal rules were published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i) vide notification No. 3/2017-Central Tax, dated the 19th June, 2017, published vide number G.S.R. 610(E), dated the 19th June, 2017 and last amended vide notification No. 50/2020 - Central Tax, dated the 24.06.2020, published vide number G.S.R. 403 (E), dated the 24th June 2020. -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:46:04.099Z"
+}

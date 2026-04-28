@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-06-2004_notification_no772004-cusnt_dated_21062004_6f1a3c3bbdeb_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.77/2004-Cus(NT), dated 21.06.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-06-2004",
+  "description": "Notification No.77/2004-Cus(NT), dated 21.06.2004",
+  "hindi_description": null,
+  "file_title": "77-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=77-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=77-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "21st June, 2004 Notification No. 77 /2004-Customs (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Imports), Air Cargo Complex, Mumbai to act as Commissioner of Customs, Air Cargo Complex, Kolkata for the purpose of adjudicating the matters relating to Show Cause Notice, pertaining to M/s. M. B. Electronics, M/s Kaiser Electronics and M/s Navkar Electro System, all located at 2/B, Amba Bhavan, Ist Floor, Tara Temple lane, Lamington Road, Mumbai- 400007 issued vide F.No . DRI/BZU/C/28/2001, dated the 4th June ,2003 by the Additional Director General, Mumbai Zonal Unit, 3rd/4th Floor, Hotel Waldorf Building, 16 Arthur Bunder Road, Colaba , Mumbai- 400005. F.NO.437/22/2004-CUS.IV D.S.Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:03:55.203Z"
+}

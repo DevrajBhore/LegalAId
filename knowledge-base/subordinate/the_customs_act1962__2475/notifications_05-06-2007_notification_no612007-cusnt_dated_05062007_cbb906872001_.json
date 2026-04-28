@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-06-2007_notification_no612007-cusnt_dated_05062007_cbb906872001_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.61/2007-Cus(NT), dated 05.06.2007",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=61-07.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-06-2007",
+  "description": "Notification No.61/2007-Cus(NT), dated 05.06.2007",
+  "hindi_description": null,
+  "file_title": "61-07.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=61-07.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=61-07.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=61-07.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=61-07.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=61-07.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=61-07.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (ii) ] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) New Delhi, the 5th June, 2007. 15 Jyaistha, 1929 Saka. Notification No.61/2007-Customs (N.T.) S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Export), Jawahar Custom House, Nhava Sheva, to act a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on, (i) the Commissioner of Customs (Export), New Custom House, New Delhi; and (ii) the Commissioner of Customs, Customs House, Chennai, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s. V.K. Tours and Transports, K-13A, Green Park Extension, New Delhi and others issued, vide, F.No.23/79/2005-DZU/VKTT/4594-4634 dated the 24th August, 2006 by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit, B-4, 6th Floor, Paryavaran Bhawan, CGO Complex, Lodhi Road, New Delhi. [F.NO.437/ 64/2007-Cus.IV] (Anupam Prakash) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:14:17.090Z"
+}

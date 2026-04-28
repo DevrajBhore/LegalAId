@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-04-2017_notification_no342017-cusnt_dated_1042017_5f9f8691e370_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.34/2017-Cus(NT), Dated 10.4.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt34-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-04-2017",
+  "description": "Notification No.34/2017-Cus(NT), Dated 10.4.2017",
+  "hindi_description": null,
+  "file_title": "csnt34-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt34-2017.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt34-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt34-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt34-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt34-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt34-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 34 / 2017-Customs (N.T.) New Delhi, the 10th April, 2017 S.O. (E). -In exercise of powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of Customs Act, 1962 (52 of 1962) and in supersession of order/notification as stated in column (5) of the Table below, the Central Board of Excise and Customs hereby appoints officers mentioned in column (6) to act as a Common Adjudicating Authority to exercise powers and discharge duties conferred or imposed on officers mentioned in column (4) of the Table in respect of noticees mentioned in column (2) of the Table for purpose of adjudication of show cause notices mentioned column (3) of the Table, namely:- Table F.No.437/103/2014-Cus IV] (Z.R.Kamili) Director (Customs) Sl. No. Names of Noticee and address Show Cause Notice No. and date Name of Adjudicating Authority Order Number and date Common Adjudicating Authority (1) (2) (3) (4) (5) (6) 1. M/s Royal Palms (India) Pvt. Ltd., Survey No.169, Aarey Milk Colony, Near Unit No.26, Goregaon (E), Mumbai- 400065 and others File No:CIU/GEN/INV- 03/2013 S/26-Misc-60/2014-15 VII/G/JNCH dated 23th May, 2014 Commissioner of Customs (Export), Mumbai Customs, Zone- II,JNCH Order dated 4.9.2014 (F. No. 437/103/2014- Cus-IV) Commissioner of Customs, Nhava Sheva IV, Jawaharlal Nehru Custom House, Nhava Sheva Tal. Uran Dist., Raigad, Maharashtra 2. M/s Royal Palms (India) Pvt. Ltd., Survey No.169, Aarey Milk Colony, Near Unit No.26, Goregaon (E), Mumbai- 400065 and others File No:S45/422/2010 EPCG CIU/NCH/INV-03/2013 dated 20th May, 2014 Commissioner of Customs (Export), Chennai -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:43:45.543Z"
+}

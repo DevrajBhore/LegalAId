@@ -1,0 +1,76 @@
+{
+  "sub_id": "rules_28-02-2007_bureau_of_energy_efficiency_form_of_annual_statement_of_accounts_records_rules_2007_1e8638491365_",
+  "parent_act_id": "the_energy_conservation_act_2001__2003",
+  "title": "Bureau of Energy Efficiency ( Form of Annual Statement of Accounts & Records) Rules, 2007",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-02-2007",
+  "description": "Bureau of Energy Efficiency ( Form of Annual Statement of Accounts & Records) Rules, 2007",
+  "hindi_description": null,
+  "file_title": "6. 173(E).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00003_200152_1517807324452/rulesindividualfile/&file=6.+173%28E%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rule&filename=6.%20173(E).pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.+173%28E%29.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00003_200152_1517807324452&type=rules&filename=6.%2B173(E).pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Bureau of Energy Efficiency ( Form of Annual Statement of Accounts & Records) Rules, 2007",
+  "fetched_at": "2026-04-13T19:33:49.791Z"
+}

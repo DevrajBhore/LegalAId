@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_31-03-2014_notification_for_amendment_to_schedule_ii_16efc47c178c_",
+  "parent_act_id": "the_companies_act_2013__2114",
+  "title": "Notification for Amendment to Schedule II",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Notification+for+Amendment+to+Schedule+II.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2014",
+  "description": "Notification for Amendment to Schedule II",
+  "hindi_description": null,
+  "file_title": "Notification for Amendment to Schedule II.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification%20for%20Amendment%20to%20Schedule%20II.pdf",
+    "num_pages": 5,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Notification+for+Amendment+to+Schedule+II.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification+for+Amendment+to+Schedule+II.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification%2Bfor%2BAmendment%2Bto%2BSchedule%2BII.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification+for+Amendment+to+Schedule+II.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification%2Bfor%2BAmendment%2Bto%2BSchedule%2BII.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Notification+for+Amendment+to+Schedule+II.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Notification%20for%20Amendment%20to%20Schedule%20II.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 5 -- -- 2 of 5 -- -- 3 of 5 -- -- 4 of 5 -- -- 5 of 5 --",
+  "fetched_at": "2026-04-13T19:47:18.848Z"
+}

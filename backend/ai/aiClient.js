@@ -146,7 +146,9 @@ export async function callAISafetyRaw(
   prompt,
   { schemaName = "safety_response", schema } = {}
 ) {
-  const response = await callGeminiSafetyRaw(prompt);
+  const response = await callGeminiSafetyRaw(prompt, {
+    responseSchema: schema,
+  });
 
   if (response.success) {
     return {

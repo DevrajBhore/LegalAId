@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-05-2000_notification_no392000-cusnt_dated_3052000_304d67dc7454_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.39/2000-Cus(NT), dated 30.5.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=39-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-05-2000",
+  "description": "Notification No.39/2000-Cus(NT), dated 30.5.2000",
+  "hindi_description": null,
+  "file_title": "39-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=39-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=39-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=39-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=39-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=39-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=39-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY PART-II, SECTION 3, SUB-SECTION (i) OF, DATED THE 30TH MAY, 2000 9 JYAISTHA 1922 SAKA GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE *** New Delhi, dated the 30th May, 2000 9 Jyaistha 1922 Saka NOTIFICATION No. 39/2000-CUSTOMS (N.T.) G.S.R. (E)- In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962) and in supersession of notification No. 37/99-CUSTOMS (N.T.) dated the 8th June, 1999 published in the Gazette of India, Extraordinary Part-II, section 3, sub-section (i) vide G.S.R. 416 (E) dated the 8th June, 1999, the Central Government hereby appoints the Commissioner of Customs, Kandla to be the Commissioner of Customs and Central Excise, Rajkot for the purpose of adjudicating the case pertaining to seizure made by Directorate of Revenue Intelligence, of machinery and parts valued about Rs.600 Crores C.I.F. of M/s. Essar Oil Limited and other matters relating to such case, F.NO.437/6/99-CUS.IV (RAJENDRASINGH) UNDER SECRETARY OF THE GOVERNMENT OF INDIA Back -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:41.690Z"
+}

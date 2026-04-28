@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_15-11-1991_so780e_15111991_-_delegation_of_powers_to_the_state_governments_40781c107f58_",
+  "parent_act_id": "the_public_liability_insurance_act_1991__1960",
+  "title": "S.O.780(E), [15/11/1991] - Delegation of powers to the State Governments",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=780.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "15-11-1991",
+  "description": "S.O.780(E), [15/11/1991] - Delegation of powers to the State Governments",
+  "hindi_description": null,
+  "file_title": "780.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=780.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=780.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=780.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=780.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00006_199106_1517807323502/notificationindividualfile/&file=780.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00006_199106_1517807323502&type=notification&filename=780.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "NOTIFICATION New Delhi, the 15 th November, 1991 S.O. 780(E) - In exercise of the powers conferred by section 19 of the Public Liability Insurance Act, 1991 ( 6 of 1991 ), the Central Government hereby delegates the powers and directions vested in it under sections 9, 10 and 11 to the State Governments, to exercise the same within their respective jurisdiction and to the Central Pollution Control Board for the whole of India, subject to the condition that the Central Government may revoke such delegation of powers in respect of all or any one or more of the State Governments or the Central Pollution Control Board, or may itself invoke the provisions of the above section of Act, if in the opinion of the Central Government such a course of action is necessary in public interest. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:15:20.705Z"
+}

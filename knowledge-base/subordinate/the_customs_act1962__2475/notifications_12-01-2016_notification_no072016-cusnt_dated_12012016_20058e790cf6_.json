@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_12-01-2016_notification_no072016-cusnt_dated_12012016_20058e790cf6_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.07/2016-Cus(NT), dated 12.01.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt07-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-01-2016",
+  "description": "Notification No.07/2016-Cus(NT), dated 12.01.2016",
+  "hindi_description": null,
+  "file_title": "csnt07-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt07-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt07-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.07/2016-Cus(NT), dated 12.1.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt07-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt07-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt07-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt07-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt07-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt07-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part-II, Section 3, Sub-section (ii)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No. 07/2016-Customs (N.T.) New Delhi, the 12th January, 2016 S.O. (E). -In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Director General (Adjudication), Directorate of Revenue Intelligence, New Delhi to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on - (i) the Commissioner of Customs (I&G), New Custom House, Near I.G.I. Airport, New Delhi; (ii) the Additional Commissioner of Customs, (Airport and Administration), 15/1, Strand Road, Custom House, IInd floor, Kolkata, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Samsung India Electronics Pvt. Ltd., 2nd, 3rd, 4th Floor, Tower C, Vipul Tech Square Golf Course Road, Sector- 43, Gurgaon, issued vide Show Cause Notice number 23/85/2013-DZU/4377 to 4382, dated the 03rd September, 2014 by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit, Delhi. [F No.437/43/2015-Cus.IV] (Z. R. Kamili) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:41:27.211Z"
+}

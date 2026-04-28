@@ -1,18 +1,9 @@
-// scraper/src/scrapers/indiaCode/baseScraper.js
-import { fetchHtml, fetchBinary } from "../../common/request.js";
-import { extractText, extractHeadings } from "../../parsers/htmlParser.js";
+import { fetchBinary, fetchHtml } from "../../common/request.js";
+import { extractHeadings, extractText } from "../../parsers/htmlParser.js";
 import { cleanText, splitSections } from "../../parsers/textProcessor.js";
 
-/**
- * Helper utilities for IndiaCode scrapers:
- * - slugify / act_id generation
- * - fetch page and extract text
- * - parse sections heuristically
- */
-
-// Simple slug generator (no extra dep)
-export function slugify(s) {
-  return s
+export function slugify(value) {
+  return value
     .toString()
     .normalize("NFKD")
     .replace(/[^\w\s-]/g, "")
@@ -23,8 +14,164 @@ export function slugify(s) {
 }
 
 export function makeActId(title, year) {
-  const base = slugify(`${title}_${year ?? "nodate"}`);
-  return base;
+  return slugify(`${title}_${year ?? "nodate"}`);
+}
+
+function normalizeUrl(url) {
+  const trimmed = String(url || "").trim();
+  const preserved = [];
+  const protectedValue = trimmed.replace(/%[0-9A-Fa-f]{2}/g, (match) => {
+    preserved.push(match);
+    return `__PRESERVED_PERCENT_${preserved.length - 1}__`;
+  });
+
+  return encodeURI(protectedValue).replace(
+    /__PRESERVED_PERCENT_(\d+)__/g,
+    (_, index) => preserved[Number(index)]
+  );
+}
+
+function resolveRedirectUrl(currentUrl, location) {
+  if (!location) {
+    return normalizeUrl(currentUrl);
+  }
+
+  return normalizeUrl(new URL(location, currentUrl).toString());
+}
+
+function extractRawQueryValue(url, key) {
+  const match = String(url || "").match(
+    new RegExp(`[?&]${key}=([^&]+)`, "i")
+  );
+  return match ? match[1] : "";
+}
+
+function parseIndiaCodeFileReference(url = "") {
+  try {
+    const rawPath = extractRawQueryValue(url, "path");
+    const rawFile = extractRawQueryValue(url, "file");
+    const decodedPath = decodeURIComponent(rawPath || "");
+    const pathSegments = decodedPath.split("/").filter(Boolean);
+    const actid = pathSegments[0] || "";
+    const typeSegment = pathSegments.find((segment) =>
+      /individualfile$/i.test(segment)
+    );
+    const type = String(typeSegment || "")
+      .replace(/individualfile$/i, "")
+      .replace(/[_-]+$/g, "")
+      .trim();
+    const decodedFile = rawFile ? decodeURIComponent(rawFile) : "";
+
+    if (!actid || !type || !rawFile) {
+      return null;
+    }
+
+    return {
+      actid,
+      type,
+      rawFile,
+      decodedFile,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function buildIndiaCodeRecoveryUrls(url = "") {
+  const normalizedPrimary = normalizeUrl(url);
+  const candidates = [normalizedPrimary];
+  const parsed = parseIndiaCodeFileReference(url);
+
+  if (!parsed) {
+    return [...new Set(candidates.filter(Boolean))];
+  }
+
+  const { actid, type, rawFile, decodedFile } = parsed;
+  const encodedFile = encodeURIComponent(decodedFile);
+
+  candidates.push(
+    normalizeUrl(
+      `https://upload.indiacode.nic.in/showfile?actid=${actid}&type=${type}&filename=${rawFile}`
+    )
+  );
+  candidates.push(
+    normalizeUrl(
+      `https://upload.indiacode.nic.in/showfile?actid=${actid}&type=${type}&filename=${encodedFile}`
+    )
+  );
+  candidates.push(
+    normalizeUrl(
+      `https://www.indiacode.nic.in/showfile?actid=${actid}&type=${type}&filename=${rawFile}`
+    )
+  );
+  candidates.push(
+    normalizeUrl(
+      `https://www.indiacode.nic.in/showfile?actid=${actid}&type=${type}&filename=${encodedFile}`
+    )
+  );
+
+  return [...new Set(candidates.filter(Boolean))];
+}
+
+function isRedirectStatus(status) {
+  return status >= 300 && status < 400;
+}
+
+function looksLikePdfBuffer(buffer) {
+  if (!buffer?.length) {
+    return false;
+  }
+
+  return buffer.slice(0, 5).toString("utf8") === "%PDF-";
+}
+
+function stripHtml(value = "") {
+  return String(value)
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractSourceError(buffer, response) {
+  const text = Buffer.from(buffer).toString("utf8");
+  const cleaned = stripHtml(text);
+  const message =
+    cleaned.match(/(?:Message|Error)\s+(.+?)(?:Description|Exception|$)/i)?.[1]?.trim() ||
+    cleaned.match(/There is some problem\.[^.]*/i)?.[0]?.trim() ||
+    cleaned.slice(0, 240) ||
+    "Source file could not be retrieved as a valid PDF.";
+
+  return {
+    code: "source_unavailable",
+    status: response?.status ?? null,
+    message,
+  };
+}
+
+async function fetchBinaryWithNormalizedRedirects(url, maxRedirects = 5) {
+  let currentUrl = normalizeUrl(url);
+  let response;
+
+  for (let hop = 0; hop <= maxRedirects; hop += 1) {
+    response = await fetchBinary(currentUrl, { maxRedirects: 0 });
+
+    if (!isRedirectStatus(response.status) || !response.headers?.location) {
+      break;
+    }
+
+    currentUrl = resolveRedirectUrl(currentUrl, response.headers.location);
+  }
+
+  return {
+    response,
+    finalUrl: currentUrl,
+  };
 }
 
 export async function fetchPageText(url) {
@@ -32,35 +179,133 @@ export async function fetchPageText(url) {
   const html = res.data ?? "";
   const text = extractText(html);
   const headings = extractHeadings(html);
-  return { html, text: cleanText(text), headings, url, status: res.status };
+
+  return {
+    html,
+    text: cleanText(text),
+    headings,
+    url,
+    status: res.status,
+  };
 }
 
 export async function fetchPDFText(url) {
-  const res = await fetchBinary(url);
-  const buffer = Buffer.from(res.data);
-  // parsePDF lives in parsers/pdfParser.js — import dynamically to avoid circular issues
-  const { parsePDF } = await import("../../parsers/pdfParser.js");
-  const parsed = await parsePDF(buffer);
-  return parsed;
+  const candidateUrls = buildIndiaCodeRecoveryUrls(url);
+  const attempts = [];
+  let lastSourceError = null;
+  let lastContentType = null;
+  let lastFinalUrl = null;
+
+  for (const candidateUrl of candidateUrls) {
+    try {
+      const {
+        response: res,
+        finalUrl,
+      } = await fetchBinaryWithNormalizedRedirects(candidateUrl, 5);
+      const buffer = Buffer.from(res.data ?? []);
+      const contentType = res.headers?.["content-type"] ?? null;
+      lastContentType = contentType;
+      lastFinalUrl = finalUrl;
+
+      if (!looksLikePdfBuffer(buffer) && !String(contentType || "").includes("pdf")) {
+        const sourceError = extractSourceError(buffer, res);
+        lastSourceError = sourceError;
+        attempts.push({
+          url: candidateUrl,
+          finalUrl,
+          status: res.status ?? null,
+          outcome: "source_error",
+          error: sourceError.message,
+        });
+        continue;
+      }
+
+      const { parsePDF } = await import("../../parsers/pdfParser.js");
+      const parsed = await parsePDF(buffer);
+
+      if (parsed.error) {
+        lastSourceError = {
+          code: "pdf_parse_failed",
+          status: res.status ?? null,
+          message: parsed.error?.message || String(parsed.error),
+        };
+        attempts.push({
+          url: candidateUrl,
+          finalUrl,
+          status: res.status ?? null,
+          outcome: "parse_error",
+          error: lastSourceError.message,
+        });
+        continue;
+      }
+
+      attempts.push({
+        url: candidateUrl,
+        finalUrl,
+        status: res.status ?? null,
+        outcome: "parsed",
+        error: null,
+      });
+
+      return {
+        ...parsed,
+        contentType,
+        finalUrl,
+        attemptedUrls: candidateUrls,
+        attempts,
+        recoveredFromAlternate:
+          normalizeUrl(candidateUrl) !== normalizeUrl(url),
+      };
+    } catch (error) {
+      lastSourceError = {
+        code: "source_fetch_failed",
+        status: error?.response?.status ?? null,
+        message: error?.message || String(error),
+      };
+      attempts.push({
+        url: candidateUrl,
+        finalUrl: null,
+        status: error?.response?.status ?? null,
+        outcome: "request_error",
+        error: lastSourceError.message,
+      });
+    }
+  }
+
+  return {
+    text: "",
+    numPages: null,
+    info: {},
+    sourceError:
+      lastSourceError || {
+        code: "source_unavailable",
+        status: null,
+        message: "Source file could not be retrieved as a valid PDF.",
+      },
+    contentType: lastContentType,
+    finalUrl: lastFinalUrl,
+    attemptedUrls: candidateUrls,
+    attempts,
+    recoveredFromAlternate: false,
+  };
 }
 
-/**
- * buildSections(text) => [{ section_number, title, text }]
- * Heuristic: splitSections returns paragraph-like chunks; we attempt to detect headings that look like "Section X" or "1." etc.
- */
 export function buildSections(text) {
   const parts = splitSections(text);
-  // Attempt to find numbers as section numbers for each part
-  const sections = parts.map((p, i) => {
-    // Try to capture leading "Section X" or "X." using regex on the beginning of p
-    const m = p.match(/^\s*(?:Section|Sec\.?)\s*(\d+[\w\.\-]*)\b[:\.\-\s]*/i);
-    const num = m ? m[1] : `${i + 1}`;
-    // optional short title detection
-    const titleMatch = p.match(
-      /^\s*(?:Section|Sec\.?)\s*\d+[\w\.\-]*[:\.\-]?\s*([A-Z][^\.\n]{0,80})/
+  return parts.map((part, index) => {
+    const numberMatch = part.match(
+      /^\s*(?:Section|Sec\.?)\s*(\d+[\w.\-]*)\b[:.\-\s]*/i
+    );
+    const number = numberMatch ? numberMatch[1] : `${index + 1}`;
+    const titleMatch = part.match(
+      /^\s*(?:Section|Sec\.?)\s*\d+[\w.\-]*[:.\-]?\s*([A-Z][^\.\n]{0,80})/
     );
     const title = titleMatch ? titleMatch[1].trim() : "";
-    return { section_number: num.toString(), title, text: p };
+
+    return {
+      section_number: number.toString(),
+      title,
+      text: part,
+    };
   });
-  return sections;
 }

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_14-05-2016_notification_no_12016_-_clean_environment_cess_d4b5d2e25786_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No. 1/2016 - Clean Environment Cess",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cleanenvcess-01-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-05-2016",
+  "description": "Notification No. 1/2016 - Clean Environment Cess",
+  "hindi_description": null,
+  "file_title": "cleanenvcess-01-2016.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cleanenvcess-01-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cleanenvcess-01-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cleanenvcess-01-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cleanenvcess-01-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cleanenvcess-01-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cleanenvcess-01-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 1/2016 - Clean Environment Cess New Delhi, the 14th May, 2016 G.S. R. (E).-In exercise of the powers conferred by sections 83 and 84 of the Finance Act, 2010 (14 of 2010), the Central Government hereby directs that any reference to ‘Clean Energy Cess’, in the rules, notifications, instructions, decisions, or orders, made or issued under the said sections, shall, be construed as references to ‘Clean Environment Cess’. [F.No.334/8/2016 -TRU] (Anurag Sehgal) Under Secretary -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:01.684Z"
+}

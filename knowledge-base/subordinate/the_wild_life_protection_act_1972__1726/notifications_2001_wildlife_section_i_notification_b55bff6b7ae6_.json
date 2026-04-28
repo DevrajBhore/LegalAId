@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_2001_wildlife_section_i_notification_b55bff6b7ae6_",
+  "parent_act_id": "the_wild_life_protection_act_1972__1726",
+  "title": "(Wildlife Section I) NOTIFICATION",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=MINISTRY+OF+ENVIRONMENT+AND+FORESTS+SO474E.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "2001",
+  "description": "(Wildlife Section I) NOTIFICATION",
+  "hindi_description": null,
+  "file_title": "MINISTRY OF ENVIRONMENT AND FORESTS SO474E.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY%20OF%20ENVIRONMENT%20AND%20FORESTS%20SO474E.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=MINISTRY+OF+ENVIRONMENT+AND+FORESTS+SO474E.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY+OF+ENVIRONMENT+AND+FORESTS+SO474E.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY%2BOF%2BENVIRONMENT%2BAND%2BFORESTS%2BSO474E.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY+OF+ENVIRONMENT+AND+FORESTS+SO474E.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY%2BOF%2BENVIRONMENT%2BAND%2BFORESTS%2BSO474E.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=MINISTRY+OF+ENVIRONMENT+AND+FORESTS+SO474E.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=MINISTRY%20OF%20ENVIRONMENT%20AND%20FORESTS%20SO474E.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "MINISTRY OF ENVIRONMENT AND FORESTS (Wildlife Section I) NOTIFICATION New Delhi, the 28th May, 2001 S.O. 474(E). In exercise of the powers conferred by sub-section (1) of section 61 of the Wildlife (Protection) Act, 1972 (53 of 1972), the Central Government, being of the opinion that it is expedient so to do, hereby makes the following addition to the Schedule I of the said Act with immediate effect. In Schedule I to the said Act After Part II, the following shall be added, namely: Part II A Fishes 1Whale shark (Rhincodon typus) [No. 1-2/2001 WL-I] R.H. KHWAJA, Jt. Secy. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:29:46.669Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-07-2004_notification_no842004-cusnt_dated_06072004_9cc1843e1a56_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.84/2004-Cus(NT), dated 06.07.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=84-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-07-2004",
+  "description": "Notification No.84/2004-Cus(NT), dated 06.07.2004",
+  "hindi_description": null,
+  "file_title": "84-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=84-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=84-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=84-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=84-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=84-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=84-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "6th July, 2004 Notification No.84/2004-Customs (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Export Promotion), New Customs House , Mumbai to act as Commissioner of Customs (Import), Jawahar Customs House, Nhava Sheva and Commissioner of Customs ( General), Mumbai for the purpose of adjudicating the matters relating to Show Cause Notice , pertaining to M/s. Gitanjali Chemicals Pvt. Ltd., Ground Floor, Madhukunj , Shankar Ghanekar Marg , Prabhadevi , Mumbai-400025 issued vide F.No.DRI/BZU/B/Inv-26/2002/390 to 396, dated the 27th February , 2004, by the Additional Director General, Mumbai Zonal Unit, 3rd/4th Floor, Hotel Waldorf Building, 16, Arthur Bunde Road, Colaba , Mumbai-400006. F.NO.437/26/2004-CUS.IV D.S.Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:04:05.291Z"
+}

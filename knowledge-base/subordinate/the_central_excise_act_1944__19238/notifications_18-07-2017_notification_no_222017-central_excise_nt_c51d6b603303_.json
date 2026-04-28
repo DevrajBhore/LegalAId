@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-07-2017_notification_no_222017-central_excise_nt_c51d6b603303_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No. 22/2017-Central Excise (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent22-2017.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-07-2017",
+  "description": "Notification No. 22/2017-Central Excise (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent22-2017.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent22-2017.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent22-2017.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent22-2017.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent22-2017.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent22-2017.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent22-2017.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Notification No. 22/2017-Central Excise (N.T.) New Delhi, the 18th July, 2017 G.S.R. (E).- In exercise of the powers conferred by sub-sections (1), (2) and (3) of section 3A of the Central Excise Act, 1944 (1 of 1944), the Central Government, on being satisfied that it is necessary in the public interest so to do, hereby rescinds the notifications of the Government of India in the Ministry of Finance (Department of Revenue) as specified in column (2) of the table below, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide corresponding number G.S.R. as specified in column (3) of the Table below, except as respects things done or omitted to be done before such rescission. TABLE S.NO. Notification No. GSR No. (1) (2) (3) 1. 29/2008- Central Excise (NT), dated 1-7- 2008 490(E) dated 1-7-2008 2. 30/2008- Central Excise (NT), dated 1-7- 2008 491(E) dated 1-7-2008 3. 10/2010- Central Excise (NT), dated 27-2- 2010 126(E) dated 27-2-2010 4. 11/2010- Central Excise (NT), dated 27-2- 2010 127(E) dated 27-2-2010 5. 17/2010- Central Excise (NT), dated 13-4- 2010 319(E) dated 13-4-2010 [F.No.354/119/2017-TRU] (Mohit Tewari) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:03:52.674Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_17-12-2002_notification_no1352004-cusnt_dated_17122004_c6562360a069_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.135/2004-Cus(NT), dated 17.12.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=135-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "17-12-2002",
+  "description": "Notification No.135/2004-Cus(NT), dated 17.12.2004",
+  "hindi_description": null,
+  "file_title": "135-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=135-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=135-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=135-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=135-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=135-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=135-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "17th December, 2004 Notification No. 135 /2004-CUSTOMS (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Central Excise(Adjudication), New Customs House, Air Cargo Complex, New Delhi, to act as, - (i) Commissioner of Customs, Air Cargo Exports, New Delhi; (ii) Commissioner of Customs, Ahmedabad; (iii) Commissioner of Customs(Import), Air Cargo Complex, Sahar, Mumbai; and (iv) Commissioner of Customs, Jaipur, for the purposes of adjudicating the matters relating to Show Cause Notice pertaining to M/s. S.S. Watch Industries, B-1, Lower Shopping Maharaja Complex, Banipark, Jaipur; M/s Rama Watch Industries, Plot No: 5, Servey No.211, Veraval, (Shapr), Rajkot; M/s Shri Girvar Singh, proprietor M/s G.S. Enterprise, Jalasukalan, Distt. Nagaur, Rajasthan and others issued, vide, C.No.VIII(10) HQRS/ACE/SIIB/80/2003/5718-23, dated the 20th July, 2004, by the Joint Commissioner of Customs, Office of the Commissioner of Customs, Air Cargo Export(SIIB), New Custom House, Near Indira Gandhi International Airport, New Delhi. [F.NO.437/41/2004-CUS.IV] Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:00.623Z"
+}

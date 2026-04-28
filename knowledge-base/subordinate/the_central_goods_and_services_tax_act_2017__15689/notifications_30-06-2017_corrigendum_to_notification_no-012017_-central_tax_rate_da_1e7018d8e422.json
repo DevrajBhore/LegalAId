@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-06-2017_corrigendum_to_notification_no-012017_-central_tax_rate_dated_30062017_f6a06473e7d1_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Corrigendum to Notification no-01/2017 -Central Tax (Rate) dated 30.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=corrigndm-ntfctn-1-cgst-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-06-2017",
+  "description": "Corrigendum to Notification no-01/2017 -Central Tax (Rate) dated 30.06.2017",
+  "hindi_description": null,
+  "file_title": "corrigndm-ntfctn-1-cgst-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=corrigndm-ntfctn-1-cgst-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=corrigndm-ntfctn-1-cgst-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=corrigndm-ntfctn-1-cgst-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=corrigndm-ntfctn-1-cgst-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=corrigndm-ntfctn-1-cgst-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=corrigndm-ntfctn-1-cgst-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "1 [TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Corrigendum New Delhi, the 30th June, 2017 G.S.R. (E).- In the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No.1/2017-Central Tax (Rate), dated the 28th June, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 673(E), dated the 28th June, 2017,- (i) at page 247, in line 7, for “30” read “30 or any Chapter”; (ii) at page 272, in line 10, omit the words “other than those”; (iii) at page 290, in line 11, omit the words “goggles and the like, corrective, protective or other”. [F.No.354/117/2017-TRU] (Mohit Tewari) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:15:24.687Z"
+}

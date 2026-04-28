@@ -1,0 +1,41 @@
+{
+  "act_id": "the_air_prevention_and_control_of_pollution_act_1981__1389",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 63,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 63,
+    "modal_duplicate_count": 1,
+    "successful_candidate_count": 63,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 9,
+      "rules": 24,
+      "regulation": 3,
+      "regulations": 1,
+      "order": 8,
+      "orders": 1,
+      "notification": 24,
+      "notifications": 1,
+      "directions": 3,
+      "guidelines": 3,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "directions issued under",
+      "under sub-rule (3) of rule",
+      "Power to issue guidelines"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1389?view_type=browse",
+    "scanned_at": "2026-04-13T09:22:09.037Z"
+  },
+  "failed_candidates": []
+}

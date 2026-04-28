@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-01-2009_notification_no52009-cusnt_dated_612009_7983ba46ca3d_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.5/2009-Cus(NT), dated 6.1.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2009.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-01-2009",
+  "description": "Notification No.5/2009-Cus(NT), dated 6.1.2009",
+  "hindi_description": null,
+  "file_title": "5-2009.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2009.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2009.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2009.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2009.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (ii) ] Government of India Ministry of Finance (Department of Revenue) Notification No. 5 / 2009-Customs (N.T.) New Delhi, dated the 6th January, 2009. 16 Pausa, 1930 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs for the purpose of adjudicating the Show Cause Notices pertaining to M/s Haldex India Limited, B-71,MIDC, Ambad, Nashik, Maharashtra hereby appoints the Commissioner of Customs (Export), Nhava Sheva, to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the following adjudicating authorities in column 3 in respect of Show Cause Notices against their names in column 2 of the Table below, namely:- Table Sr. No. Show Cause Notices No. and Date Adjudicating Authority (1) (2) (3) 1 DGCEI/MZU/20/3/12(4) 22/03, dated 01.04.2004 Commissioner of Customs (Export), Nhava Sheva 2 DGCEI/MZU/20/3/12(4) 22/03, dated 01.04.2004 Commissioner of Customs (Export), New Custom House, Mumbai 3 DGCEI/MZU/20/3/12(4) 22/03, dated 01.04.2004 Addl. Commissioner of Customs, Air Cargo Complex, Sahar Airport, Mumbai 4 DGCEI/MZU/20/3/12(4) 22/03, dated 01.04.2004 Addl. Commissioner of Customs, Air Cargo Export, NCH, New Delhi (M.M.Parthiban) Director (Customs) to the Government of India [F.No. 437/77/2007-Cus.IV] -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:22:08.848Z"
+}

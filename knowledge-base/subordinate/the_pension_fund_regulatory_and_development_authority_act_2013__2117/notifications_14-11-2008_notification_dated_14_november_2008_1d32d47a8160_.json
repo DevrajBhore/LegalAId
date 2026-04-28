@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_14-11-2008_notification_dated_14_november_2008_1d32d47a8160_",
+  "parent_act_id": "the_pension_fund_regulatory_and_development_authority_act_2013__2117",
+  "title": "Notification dated 14 November 2008",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_45_00007_201323_1517807327819/notificationindividualfile/&file=notification_dated_14.11.2008.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-11-2008",
+  "description": "Notification dated 14 November 2008",
+  "hindi_description": null,
+  "file_title": "notification_dated_14.11.2008.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_45_00007_201323_1517807327819&type=notification&filename=notification_dated_14.11.2008.pdf",
+    "num_pages": 10,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_45_00007_201323_1517807327819/notificationindividualfile/&file=notification_dated_14.11.2008.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_45_00007_201323_1517807327819&type=notification&filename=notification_dated_14.11.2008.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_45_00007_201323_1517807327819&type=notification&filename=notification_dated_14.11.2008.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_45_00007_201323_1517807327819/notificationindividualfile/&file=notification_dated_14.11.2008.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_45_00007_201323_1517807327819&type=notification&filename=notification_dated_14.11.2008.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 10 -- -- 2 of 10 -- -- 3 of 10 -- -- 4 of 10 -- -- 5 of 10 -- -- 6 of 10 -- -- 7 of 10 -- -- 8 of 10 -- -- 9 of 10 -- -- 10 of 10 --",
+  "fetched_at": "2026-04-13T16:03:47.723Z"
+}

@@ -1,0 +1,34 @@
+{
+  "act_id": "the_dock_workers_regulation_of_employment_inapplicability_to_major_ports_act_1997__1939",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 1,
+  "detection_status": "linked_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "medium",
+  "detection_version": 10,
+  "note": "Subordinate-linked sources were detected and captured from the India Code page.",
+  "evidence": {
+    "candidate_link_count": 1,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 0,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 1,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 1,
+      "regulation": 13,
+      "regulations": 1,
+      "order": 3,
+      "orders": 1,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1939?view_type=browse",
+    "scanned_at": "2026-04-11T12:56:00.583Z"
+  },
+  "failed_candidates": []
+}

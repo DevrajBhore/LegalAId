@@ -1,0 +1,53 @@
+{
+  "sub_id": "notifications_07-11-2014_appointment_of_officers_under_section_4_of_the_customs_act_1962_09bc205a4885_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Appointment of officers under section 4 of the Customs Act , 1962",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt107-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-11-2014",
+  "description": "Appointment of officers under section 4 of the Customs Act , 1962",
+  "hindi_description": null,
+  "file_title": "csnt107-2014.pdf",
+  "duplicate_count": 2,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt107-2014.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt107-2014.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.107/2014-Cus(NT),dt. 07-11-2014",
+    "Notification No.107/2014-CUS(NT), dated 7.11.14"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt107-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt107-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt107-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt107-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt107-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt107-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance Department of Revenue Notification No. 107/2014-Customs (N.T.) New Delhi, the 07th November, 2014 G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Principal Chief Commissioner of Central Excise or Chief Commissioner of Central Excise to be the Principal Chief Commissioner of Customs or Chief Commissioner of Customs for the areas falling under the jurisdiction of Principal Commissioner of Central Excise or Commissioner of Central Excise as specified under rule 3 of the Central Excise Rules, 2002. [F. No. 437/48/2014-Cus IV] (R.P.Singh) Director to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:39:12.919Z"
+}

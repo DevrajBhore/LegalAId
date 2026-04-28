@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_21-02-2000_notification_no112000-cusnt_dated_2122000_c05d03c0cb95_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.11/2000-Cus(NT), dated 21.2.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=11-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-02-2000",
+  "description": "Notification No.11/2000-Cus(NT), dated 21.2.2000",
+  "hindi_description": null,
+  "file_title": "11-2000.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=11-2000.pdf"
+  ],
+  "alternate_file_titles": [
+    "11-2000.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.11/2000-Cus(NT), dated 21.2.2000"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=11-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=11-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=11-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=11-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=11-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=11-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification appoints the Commissioner of Customs (ICD), New Delhi to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs, Chennai for specified purposes 21st February, 2000 Notification No. 11/2000-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby appoints the Commissioner of Customs (ICD), New Delhi to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs, Chennai, or as the case may be, Commissioner of Customs (Air Cargo), Mumbai, under the said Act and the rules made thereunder for the purpose of adjudicating the show cause notice pertaining to M/s. Harkishan Overseas, Delhi, M/s. Arvind International, Delhi and others issued vide DRI.F>No. 27/XI/2/99-C.I. dated the 31st December, 1999 by Additional Director General, Directorate of Revenue Intelligence, New Delhi. (Dr. VINAYAK PRASAD) UNDER SECRETARY TO THE GOVERNMENT OF INDIA F.NO.437/1/2000-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:19.224Z"
+}

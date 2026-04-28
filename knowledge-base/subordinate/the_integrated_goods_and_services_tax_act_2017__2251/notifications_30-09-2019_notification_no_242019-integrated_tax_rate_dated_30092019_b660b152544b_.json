@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-09-2019_notification_no_242019-integrated_tax_rate_dated_30092019_b660b152544b_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No. 24/2019-Integrated Tax (Rate) dated 30.09.2019",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2019-igst-rate-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-09-2019",
+  "description": "Notification No. 24/2019-Integrated Tax (Rate) dated 30.09.2019",
+  "hindi_description": null,
+  "file_title": "notfctn-24-2019-igst-rate-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2019-igst-rate-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2019-igst-rate-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2019-igst-rate-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2019-igst-rate-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-24-2019-igst-rate-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-24-2019-igst-rate-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZZETE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 24/2019-Integrated Tax (Rate) New Delhi, the 30th September, 2019 G.S.R......(E).- In exercise of the powers conferred by clause (i) of section 20 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017) read with sub-section (2) of section 7 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on the recommendations of the Council hereby notifies that the following activities or transactions undertaken by the State Governments in which they are engaged as public authorities, shall be treated neither as a supply of goods nor a supply of service, namely:- “Service by way of grant of alcoholic liquor licence, against consideration in the form of licence fee or application fee or by whatever name it is called.” [F. No. 354/136/2019- TRU] (Ruchi Bisht) Under Secretary to the Government of India Explanation: This notification is being issued to implement the recommendation of the 26th Goods and Services Tax council meeting held on the 10th March, 2018 that no GST shall be leviable on licence fee and application fee, by whatever name it is called, payable for alcoholic liquor for human consumption. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:58:26.900Z"
+}

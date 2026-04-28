@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_20-01-1982_submission_of_cost_audit_report_e9759a5ab11e_",
+  "parent_act_id": "the_cost_accountants_act_1959__1385",
+  "title": "Submission of cost audit report",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00003_195923_1517807321587/circularindividualfile/&file=5.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-01-1982",
+  "description": "Submission of cost audit report",
+  "hindi_description": null,
+  "file_title": "5.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00003_195923_1517807321587&type=circular&filename=5.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00003_195923_1517807321587/circularindividualfile/&file=5.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00003_195923_1517807321587&type=circular&filename=5.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00003_195923_1517807321587&type=circular&filename=5.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00003_195923_1517807321587/circularindividualfile/&file=5.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00003_195923_1517807321587&type=circular&filename=5.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "No. 52/320/80-CAB Government of India Ministry of Law, Justice and Company Affairs Cost Audit Branch, 801, Kanchenjunga, 18, Barakhamba Road, New Delhi-110 001 January 20, 1982 To The Secretary, The Institute of Cost and Works Accountants of India Subject: Following of the format for submission of Cost Audit Report. Sir, In the opening sentence of para 16 of the cost audit report format as laid down in the Cost Audit (Report) Rules 1968, the word ‘may’ has been used instead of “shall”. A doubt was expressed by one Cost Auditor whether in view of this the format as laid down should be followed strictly in its entirety or whether the relevant items may/ or may not be commented upon, as per the discretion of the Cost Auditor. The matter has been examined in detail and it is clarified that it is obligatory for the cost auditor to follow the format in entirety. That the word “may” has been used and not “shall” in the opening sentence of the para 16 does not give any relaxation from the format being followed. If there is nothing to comment against a particular item the Cost Auditor should say so. It is requested that the above clarifications may be published in your journal “Management Accountant” for information of all concerned. Yours faithfully, (V. Gopalakrishnan) Senior Cost Accounts Officer -- 1 of 1 --",
+  "fetched_at": "2026-04-13T11:01:29.209Z"
+}

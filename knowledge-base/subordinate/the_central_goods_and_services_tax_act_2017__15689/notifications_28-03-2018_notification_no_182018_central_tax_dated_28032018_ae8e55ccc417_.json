@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-03-2018_notification_no_182018_central_tax_dated_28032018_ae8e55ccc417_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 18/2018 – Central Tax dated 28.03.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-18-2018-central_tax-English.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-03-2018",
+  "description": "Notification No. 18/2018 – Central Tax dated 28.03.2018",
+  "hindi_description": null,
+  "file_title": "Notification-18-2018-central_tax-English.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-18-2018-central_tax-English.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-18-2018-central_tax-English.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-18-2018-central_tax-English.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-18-2018-central_tax-English.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-18-2018-central_tax-English.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-18-2018-central_tax-English.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Excise and Customs Notification No.18 /2018 – Central Tax New Delhi, the 28th March, 2018 G.S.R……(E). - In exercise of the powers conferred by the second proviso to subsection (1) of section 37 read with section 168 of the Central Goods and Services Tax Act, 2017 (12 of 2017) (hereafter in this notification referred to as the Act), the Commissioner, on the recommendations of the Council, hereby extends the time limit for furnishing the details of outward supplies in FORM GSTR-1 under sub-section (1) of section 37 of the Act for the months as specified in column (2) of the Table, by such class of registered persons having aggregate turnover of more than 1.5 crore rupees in the preceding financial year or the current financial year, till the time period as specified in the corresponding entry in column (3) of the said Table, namely: Table Sl. No Month Last date for filing of return in FORM GSTR-1 (1) (2) (3) 1. April, 2018 31st May, 2018 2. May, 2018 10th June, 2018 3. June, 2018 10th July, 2018 2. The extension of the time limit for furnishing the details or return, as the case may be, under sub-section (2) of section 38 and sub-section (1) of section 39 of the Act, for the months of April to June, 2018 shall be, subsequently, notified in the Official Gazette. [F. No. 349/58/2017-GST (Pt.)] (Ruchi Bisht) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:26:39.655Z"
+}

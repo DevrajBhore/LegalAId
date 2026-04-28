@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_20-08-2009_notification_no_212009-ce_nt_840a252ab4a9_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No. 21/2009-CE (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k9.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-08-2009",
+  "description": "Notification No. 21/2009-CE (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent21-2k9.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k9.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k9.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k9.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k9.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k9.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k9.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[ To be published in the Gazette of India, Part-II Section 3, sub-section (i) Extraordinary] Government of India Ministry of Finance (Department of Revenue) Notification No. 21 /2009- CE (N.T.) New-Delhi,the 20th August, 2009 29 Sravana, 1931Saka GSR…. In exercise of the powers conferred by sub-clause ( iii ) of clause (c) of section 23A of the Central Excise Act , 1944( 1 of 1944), the Central Government hereby specifies any public sector company as class of persons for the purposes of the said clause. Explanation.- For the purpose of this notification , a “public sector company” shall have the same meaning as is assigned to it in clause (36A) of section 2 of the Income-tax Act, 1961 ( 43 of 1961) (Simmi Jain) Director , Government of India F.No. 275/47/2009-CX8A -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:43:08.955Z"
+}

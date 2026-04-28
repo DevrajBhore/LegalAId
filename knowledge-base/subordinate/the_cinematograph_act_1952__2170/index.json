@@ -1,0 +1,142 @@
+{
+  "act_id": "the_cinematograph_act_1952__2170",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 23,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 23,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 23,
+    "failed_candidate_count": 2,
+    "keyword_hits": {
+      "rule": 3,
+      "rules": 23,
+      "regulation": 1,
+      "regulations": 1,
+      "order": 3,
+      "orders": 2,
+      "notification": 3,
+      "notifications": 1,
+      "guidelines": 2,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Rules 1995 published under",
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2170?view_type=browse",
+    "scanned_at": "2026-04-13T19:10:21.127Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "Cinematograph Act, 1952 (37 of 1952), Part I& II come into force in J&K",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rule&filename=Cinematograph%20Act,%201952%20(37%20of%201952),%20Part%20I&%20II%20come%20into%20force%20in%20J&K.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+Act%2C+1952+%2837+of+1952%29%2C+Part+I%26+II+come+into+force+in+J%26K.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2BAct%2C%2B1952%2B(37%2Bof%2B1952)%2C%2BPart%2BI%26%2BII%2Bcome%2Binto%2Bforce%2Bin%2BJ%26K.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Cinematograph (Certification) (Third Amendment) Rules, 1994 & Cinematograph (Certification) (Second Amendment) Rules, 1994",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_29_41_00011_195237_1517807328551/rulesindividualfile/&file=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rule&filename=Cinematograph%20(Certification)%20(Third%20Amendment)%20Rules,%201994%20&%20Cinematograph%20(Certification)%20(Second%20Amendment)%20Rules,%201994.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph+%28Certification%29+%28Third+Amendment%29+Rules%2C+1994+%26+Cinematograph+%28Certification%29+%28Second+Amendment%29+Rules%2C+1994.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_29_41_00011_195237_1517807328551&type=rules&filename=Cinematograph%2B(Certification)%2B(Third%2BAmendment)%2BRules%2C%2B1994%2B%26%2BCinematograph%2B(Certification)%2B(Second%2BAmendment)%2BRules%2C%2B1994.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

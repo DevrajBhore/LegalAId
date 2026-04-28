@@ -1,0 +1,40 @@
+{
+  "act_id": "the_indian_veterinary_council_act_1984__1812",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 15,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 15,
+    "modal_duplicate_count": 1,
+    "successful_candidate_count": 15,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 2,
+      "rules": 6,
+      "regulation": 2,
+      "regulations": 10,
+      "order": 7,
+      "orders": 1,
+      "scheme": 2,
+      "notification": 3,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "notification for election to the Council is issued under",
+      "under the provisions of rules",
+      "Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1812?view_type=browse",
+    "scanned_at": "2026-04-13T13:13:16.444Z"
+  },
+  "failed_candidates": []
+}

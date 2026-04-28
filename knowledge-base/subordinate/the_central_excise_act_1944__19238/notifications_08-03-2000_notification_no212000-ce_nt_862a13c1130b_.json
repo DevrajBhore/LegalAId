@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-03-2000_notification_no212000-ce_nt_862a13c1130b_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.21/2000-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-03-2000",
+  "description": "Notification No.21/2000-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent21-2k.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent21-2k.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent21-2k.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) New Delhi, Dated the 8th March 2000 NOTIFICATION NO. 21/2000- CENTRAL EXCISE (N.T.), dated 8-3-2000. In exercise of the powers conferred by section37 of the Central Excise Act, 1944 (1 of 1944) the Central Government hereby makes the following rules further to amend the Central Excise Rules, 1944, namely :- 1. (1) These rules may be called the Central Excise (Third Amendment) Rules, 2000. 1. They shall come in to force on the date of their publication in the Official Gazette. 2. In rule 220B of the Central Excise Rules, 1944, in sub-rule (2) after the words \"the Commissioner may authorize any officer sub-ordinate to him \" the words \" and not below the rank of an Assistant Commissioner of Central Excise\", shall be inserted. (Rajesh Chandra) Under Secretary to the Government of India F.NO.275/154/99-Cx.8A Note : The Principal rules were published in the Gazette of India vide notification No. IV.D-Central Excise, dated 28th February, 1944, and last amended by notification No. 6/2000 C.Ex. (N.T.), dated 24-2-2000 [G.S.R. No. 156(E) dated 24-2-2000]. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:30:13.191Z"
+}

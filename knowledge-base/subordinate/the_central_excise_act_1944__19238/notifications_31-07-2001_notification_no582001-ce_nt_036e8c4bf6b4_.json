@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_31-07-2001_notification_no582001-ce_nt_036e8c4bf6b4_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.58/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent58-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-07-2001",
+  "description": "Notification No.58/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent58-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent58-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent58-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent58-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent58-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent58-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent58-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "31 st July, 2001 Notification No. 58 /2001-Central Excise ( N. T.) In exercise of the powers conferred by section 37 of the Central Excise Act,1944 (1 of 1944), the Central Government hereby makes the following rules to amend the CENVAT Credit Rules, 2001, namely:- 1. (1) These rules may be called the CENVAT Credit Amendment Rules, 2001. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In the CENVAT Credit Rules, 2001, for rule 10, the following rule shall be substituted, namely:- \"10. Special dispensation in respect of inputs manufactured in factories located in specified areas of North East region and Kutch district of Gujarat.- Notwithstanding anything contained in these rules, where a manufacturer has cleared any inputs or capital goods, in terms of notifications of the Government of India in the Ministry of Finance (Department of Revenue) No. 32/99- Central Excise, dated the 8 th July, 1999, No. 33/99- Central Excise, dated the 8 th July, 1999, or No. 39/2001-Central Excise, dated the 31 st July, 2001, the CENVAT credit on such inputs or capital goods shall be admissible as if no portion of the duty paid on such inputs or capital goods was exempted under any of the said notifications.\". T. R. Rustagi Joint Secretary to Government of India F. No.356/2/2001-TRU Note: The principal rules were published in the Gazette of India vide notification No. 31/2001, dated the 21st June, 2001 vide number GSR 445 (E), dated the 21st June, 2001. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:37:41.786Z"
+}

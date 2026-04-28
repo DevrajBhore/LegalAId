@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_19-04-1995_supermizer_-_smx_clasification_-_circular_no451995-customs_dated_1941995_59a36c06f62d_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Supermizer - SMX clasification. - Circular No.45/1995-Customs, dated 19.4.1995",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir45-95.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "19-04-1995",
+  "description": "Supermizer - SMX clasification. - Circular No.45/1995-Customs, dated 19.4.1995",
+  "hindi_description": null,
+  "file_title": "Cir45-95.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir45-95.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir45-95.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir45-95.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir45-95.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir45-95.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir45-95.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 45/95-Cus. dated 19/4/95 Subject : Supermizer - SMX clasification of - Please refer to correspondence regarding the classification of the above mentioned apparatus under Schedule - I, CTA '75 (Customs House File No. S/26-Misc - 3336/ 94 VB). On the basis of technical write-up/ literature submitted, it is observed that the article is an induction motor control apparatus comprising of a convertor, and inverter, a current detection device, a voltage detection device, an overheating device, a Central Processing Unit, a Pulse Width Modulation circuit and an operating panel. It controls the power factor of a three-phase induction motor when converting electrical energy in order to drive the said motor. The converting function is performed by rectification of the input alternating current to direct current which is subsequently inverted to alternating current of variable frequency and voltage. The controlling function is performed by controlling the power factor of the controlling function is performed by controlling the power factor of the induction motor by comparing the actual against a preset power factor. The Board has examined the classification of the above mentioned product. Heading 85.04 : This heading provides, in part, for \"electrical static converters\". The \"Supermizer- SMX\" however, besides having the function of a static convertor also contains measuring devices, control devices and operating devices and therefore, it is more than a static convertor. Hence its classification under Heading 85.04 is not appropriate. Heading No. 90.32 : In accordance with Note 6(B) to Chapter 90, Heading 90.32 covers, inter alia, the \"Automatic regulators of electrical quantities\". Furthermore, as per Explanatory Note to Heading 90. (Page 1535- 1536) \"The automatic regulators of this heading are intended for use in complete automatic control system which are designed to bring a quality, electrical or non- electrical, to and maintain it at, a desired value stabilised against any disturbances, by constantly measuring its actual value.\" The apparatus in question meets the term of heading 90.32 and note 6 (B) to Chapter 90 since it contains measuring devices, control devices and switching devices and controls the power factor of the induction motor. Accordingly, the Board is of the view that this item would be classifiable u/h 90.32 (sub-heading 9032.89). Since the apparatus is classifiable under heading 9032.89, its classification under heading 85-43 is ruled out by application of rules 1 and 6 of the General Interpretative Rules. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:16:45.069Z"
+}

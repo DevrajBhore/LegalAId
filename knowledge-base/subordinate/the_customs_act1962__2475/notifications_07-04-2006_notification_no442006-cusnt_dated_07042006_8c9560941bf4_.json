@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_07-04-2006_notification_no442006-cusnt_dated_07042006_8c9560941bf4_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.44/2006-Cus(NT), dated 07.04.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-04-2006",
+  "description": "Notification No.44/2006-Cus(NT), dated 07.04.2006",
+  "hindi_description": null,
+  "file_title": "44-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "7th April 2006 Notification No. 44 /2006- Customs (N.T.) In exercise of the powers conferred by sub-section (1B) of section 129A of the Customs Act, 1962 (52 of 1962), the Board hereby makes the following further amendments in the Notification No. 39/2005-Customs (NT) dated the 13th May, 2005, of the Government of India in the Ministry of Finance, Department of Revenue, namely:- In the said Notification in the Table, for the entries under column (2) and (3) against S. No. 32, the following entries shall be substituted, namely:- \"(2) (3) (1) Chief Commssioner of Central Excise, Ranchi (2) Chief Commissioner of Central Excise, Lucknow Customs (Preventive), Patna and Customs (Preventive) Lucknow\" Note:- The principal notification No. 39/2005-Customs(NT) dated the 13th May, 2005 was published vide number G.S.R 307(E), dated the 13th May, 2005 and subsequently amended by notification no. 46/2005- Customs(NT), dated the 8th June,2005 vide number G.S.R. 382(E), dated the 8th June, 2005. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:09:19.986Z"
+}

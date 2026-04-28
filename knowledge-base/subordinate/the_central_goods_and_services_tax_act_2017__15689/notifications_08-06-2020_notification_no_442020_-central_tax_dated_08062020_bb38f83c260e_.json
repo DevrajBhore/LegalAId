@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-06-2020_notification_no_442020_-central_tax_dated_08062020_bb38f83c260e_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 44/2020 -Central Tax dated 08.06.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-44-central-tax-english-2020.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-06-2020",
+  "description": "Notification No. 44/2020 -Central Tax dated 08.06.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-44-central-tax-english-2020.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-44-central-tax-english-2020.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-44-central-tax-english-2020.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-44-central-tax-english-2020.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-44-central-tax-english-2020.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-44-central-tax-english-2020.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-44-central-tax-english-2020.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Notification No. 44/2020 – Central Tax New Delhi, the 8th June, 2020 G.S.R. ....(E).— In exercise of the powers conferred by section 164 of the Central Goods and Services Tax Act, 2017 (12 of 2017) read with rule 3 of the Central Goods and Services Tax (Fifth Amendment) Rules, 2020 (hereinafter referred to as the rules), made vide notification No. 38/2020 – Central Tax, dated the 5th May, 2020, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R 272(E), dated the 5th May, 2020, the Government, hereby appoints the 8th day of June, 2020, as the date from which the said provisions of the rules, shall come into force. [F. No. CBEC-20/06/16/2018-GST] (Pramod Kumar) Director, Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:45:24.065Z"
+}

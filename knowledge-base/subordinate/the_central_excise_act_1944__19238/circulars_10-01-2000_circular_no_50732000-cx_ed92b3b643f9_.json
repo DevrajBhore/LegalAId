@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_10-01-2000_circular_no_50732000-cx_ed92b3b643f9_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "circular no. 507/3/2000-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=507-00-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-01-2000",
+  "description": "circular no. 507/3/2000-CX",
+  "hindi_description": null,
+  "file_title": "507-00-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=507-00-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=507-00-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=507-00-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=507-00-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=507-00-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=507-00-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 507/03/2000-CX F.NO 220/02/99-CX.6 Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs New Delhi, the 10th January, 2000 Subject: Computerisation of CE returns-target data extended to April 2000 It is directed to draw your attention to the Board's Circular No. 468/34/99-CX dated 5 th July, 1999 on the above subject and to say that the progress in Central Excise Computerisation has been further reviewed by the Board. While the quality level of RT- 12 has increased from 20.61% in July 1999 to 50.09% in November, 1999, it is still short of the targeted level of 90%, which is required for replacing the manual returns by electronic data. Under the circumstances, it is felt that it would be more convenient to switch over to the new method fo reporting only from April 2000. Accordingly, the Board has decided to revise the target date of new reporting from January, 2000 to April 2000. 2. All the Central Excise Commissionerates are advised to take all the necessary steps needed for adhering to the revised time schedule by giving adequate priority in the matter of capturing RT-12 data of all assessees in the computer with the required degree of timeliness and completeness. 3. The field formations may suitable by informed. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:03:02.779Z"
+}

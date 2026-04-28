@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-08-2017_notification_no-_232017_-integrated_tax_rate_dated_22082017_5ae2675234ca_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No- 23/2017 -Integrated Tax (Rate) dated 22.08.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification23-IGST-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-08-2017",
+  "description": "Notification No- 23/2017 -Integrated Tax (Rate) dated 22.08.2017",
+  "hindi_description": null,
+  "file_title": "Notification23-IGST-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification23-IGST-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification23-IGST-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification23-IGST-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification23-IGST-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification23-IGST-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification23-IGST-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZZETE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance (Department of Revenue) Notification No. 23/2017-Integrated Tax (Rate) New Delhi, the 22nd August, 2017 G.S.R......(E).- In exercise of the powers conferred by sub-section (5) of section 5 of the Integrated Goods and Services Tax Act, 2017 (13 of 2017), the Central Government, on the recommendations of the Council, hereby makes the following amendments in the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No.14/2017- Integrated Tax (Rate), dated the 28th June, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 689(E) dated the 28th June, 2017, namely:- In the said notification, in the first paragraph, after clause (ii) the following clause shall be inserted, namely:- “(iii) services by way of house-keeping, such as plumbing, carpentering etc, except where the person supplying such service through electronic commerce operator is liable for registration under clause (v) of section 20 of the Integrated Goods and Services Tax Act, 2017 read with sub-section (1) of section 22 of the said Central Goods and Services Tax Act.”. [F.No.354/173/2017-TRU] (Ruchi Bisht) Under Secretary to the Government of India Note:-The principal notification was published in the Gazette of India, Extraordinary, vide notification No. 14/2017 - Integrated Tax (Rate), dated the 28th June, 2017, vide number G.S.R. 689 (E), dated the 28th June, 2017. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:59.590Z"
+}

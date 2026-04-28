@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-09-2003_notification_no722003-cusntdt_10092003_26c4242889fc_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.72/2003-Cus(NT),dt. 10.09.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-09-2003",
+  "description": "Notification No.72/2003-Cus(NT),dt. 10.09.2003",
+  "hindi_description": null,
+  "file_title": "72-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=72-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=72-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "10th September, 2003 Notification No. 72/2003 - Customs ( N.T ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise & Customs hereby appoints the Commissioner of Customs (Import), New Custom House, Ballard Estate, Mumbai - 400 001 to act as Commissioner of Customs (Export Promotion), New Custom House, Ballard Estate, Mumbai- 400 001 for the purpose of adjudicating the matters relating to Show Cause Notices pertaining to M/s. Shree Dhoot Trading & Agencies Limited, 81/88, 8th Floor, Atlanta, Nariman Point, Mumbai- 400 021 and M/s. Videocon International Limited, Auto Care Compound, Adalat Road, Aurangabad, Maharashtra - 431 005, issued vide F.No.CCO-4450/88(Part-II), dated 17th February, 2003, by the Commissioner of Custom (Export Promotion), New Customs House, Ballard Estate, Mumbai- 400 001. D.S.Garbyal Under Secretary to the Government of India F.NO.437/7/2003-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:56.913Z"
+}

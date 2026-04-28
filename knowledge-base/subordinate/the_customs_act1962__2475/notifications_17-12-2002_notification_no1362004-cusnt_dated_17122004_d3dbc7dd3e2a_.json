@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_17-12-2002_notification_no1362004-cusnt_dated_17122004_d3dbc7dd3e2a_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.136/2004-Cus(NT), dated 17.12.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=136-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "17-12-2002",
+  "description": "Notification No.136/2004-Cus(NT), dated 17.12.2004",
+  "hindi_description": null,
+  "file_title": "136-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=136-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=136-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=136-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=136-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=136-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=136-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "17th December, 2004 Notification No. 136 /2004-Customs (N.T) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Central Excise(Adjudication), New Customs House, Air Cargo Complex, New Delhi, to act as, - (i) Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi; (ii) Commissioner of Customs, Air Cargo Complex, New Customs House, New Delhi; (iii) Commissioner of Customs,(Imports and General), Indira Gandhi International Airport, New Delhi; (iv) Commissioner of Customs(Imports), New Customs House, Ballard Estate, Mumbai; and (v) Commissioner of Customs(Imports), Customs House, Chennai, for the purpose of adjudicating the matters relating to show cause notices pertaining to M/s Lokesh Garments Pvt. Ltd. , 315, Patparganj Industrial Area and A-1, Sector - 59, NOIDA(U.P.) and Others, issued, vide, DRI F.No. 50D/85/2003-CI, dated the 27th August, 2004 , by the Additional Director General, Directorate of Revenue Intelligence, I.P. Estate, New Delhi. F.NO.437/46/2004-CUS.IV Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:59:48.238Z"
+}

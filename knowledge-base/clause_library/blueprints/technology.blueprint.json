@@ -4,7 +4,6 @@
   "clauses": [
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
-    "CORE_DEFINITIONS_001",
     "SERVICE_SCOPE_001",
     "SERVICE_DELIVERABLES_001",
     "SERVICE_TIMELINES_001",
@@ -16,12 +15,10 @@
     "IP_INFRINGEMENT_001",
     "IP_FEEDBACK_001",
     "TECH_ACCEPTANCE_001",
-    "TECH_WARRANTY_001",
     "TECH_SOURCE_CODE_001",
     "CORE_CONFIDENTIALITY_001",
     "CORE_TERM_001",
     "CORE_TERMINATION_001",
-    "CORE_INDEMNITY_001",
     "CORE_LIMITATION_LIABILITY_001",
     "CORE_FORCE_MAJEURE_001",
     "CORE_SEVERABILITY_001",
@@ -29,5 +26,19 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DEFINITIONS_001",
+      "include_if": "include_nomenclature_clause == true"
+    },
+    {
+      "clause": "TECH_WARRANTY_001",
+      "include_if": "include_warranty_clause == true"
+    },
+    {
+      "clause": "CORE_INDEMNITY_001",
+      "include_if": "include_indemnity_clause == true"
+    }
   ]
 }

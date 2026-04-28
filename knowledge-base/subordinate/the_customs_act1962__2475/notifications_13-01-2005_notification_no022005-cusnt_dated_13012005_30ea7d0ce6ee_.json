@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-01-2005_notification_no022005-cusnt_dated_13012005_30ea7d0ce6ee_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.02/2005-Cus(NT), dated 13.01.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=02-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-01-2005",
+  "description": "Notification No.02/2005-Cus(NT), dated 13.01.2005",
+  "hindi_description": null,
+  "file_title": "02-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=02-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=02-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=02-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=02-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=02-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=02-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "13th January, 2005 Notification No. 2 /2005-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Export), New Custom House, Mumbai to act as,- (i) Commissioner of Customs(Exports), Jawaharlal Nehru Custom House, Nhava Sheva, Taluk Uran, District Raigad; (ii) Commissioner of Central Excise and Customs, Kendriya Rajaswa Bhawan, Godkari Chowk, Nasik; and (iii) Joint Commissioner of Customs(Exports), Air Cargo Complex, Sahar, Mumbai, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Graphic India Limited, Nasik and Others, issued, vide, F. No.DRI. MZU/G/Misc- 31/2002,6620-6626, dated the 3rd September, 2004, by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, 3rd/4th Floor, Hotel Waldorf Building, 16, Arthur Bunder Road, Colaba, , Mumbai. F.NO.437/49/2004-CUS.IV Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:05:26.042Z"
+}

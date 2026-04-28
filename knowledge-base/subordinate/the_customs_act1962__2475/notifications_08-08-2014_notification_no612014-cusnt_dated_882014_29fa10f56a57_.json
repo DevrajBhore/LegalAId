@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-08-2014_notification_no612014-cusnt_dated_882014_29fa10f56a57_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.61/2014-Cus(NT), dated 8.8.2014",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt61-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-08-2014",
+  "description": "Notification No.61/2014-Cus(NT), dated 8.8.2014",
+  "hindi_description": null,
+  "file_title": "csnt61-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt61-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt61-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt61-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt61-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt61-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt61-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 61/2014-Customs (N.T.) New Delhi, 8th August, 2014 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Commissioner of Customs, Hyderabad-II Commissionerate, 7th Floor, Kendriya Shulk Bhavan, Basheerbagh, Hyderabad to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Additional Commissioner of Customs, Hyderabad-II Commissionerate, 7th Floor, Kendriya Shulk Bhavan, Basheerbagh, Hyderabad; and (ii) the Additional Commissioner of Customs (Import), Custom House, 60, Rajaji Salai, Chennai-600001, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Lemon GOC, 135A, Ground Floor, Mitra Hills, Near Oldage Home, Nizampet, Hyderabad and others issued vide F.No.VIII/26/29/2013-DRI-HRU(A) dated the 7th April, 2014 by the Additional Director, Directorate of Revenue Intelligence, Regional Unit, Hyderabad. [F. No. 437/56/2014-Cus IV] (R.P.Singh) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:38:52.006Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_16-01-2003_notification_no042003-cusnt_dated_16012003_d9be449b6071_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.04/2003-Cus(NT), dated 16.01.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=04-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-01-2003",
+  "description": "Notification No.04/2003-Cus(NT), dated 16.01.2003",
+  "hindi_description": null,
+  "file_title": "04-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=04-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=04-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=04-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=04-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=04-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=04-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "16th January, 2003 Notification No. 4/2003- Customs (N.T.) In exercise of the powers conferred by sub-rule (1) of rule 3 of the Customs Tariff (Transitional Product Specific Safeguard Duty) Rules, 2002, and in supersession of notifications of the Government of India in the erstwhile Ministry of Finance (Department of Revenue) No. 45/97-Customs(NT), issued vide G.S.R. No. 542(E), dated the 16th September, 1997 and No. 42/2002-Customs(NT), issued vide G.S.R. No. 464(E) dated 28th June, 2002, except as respect things done or omitted to be done before such supersessions, the Central Government hereby appoints Shri B. K. Mishra, Director General (Safeguard), as Director General (Specific Safeguard) for the purposes of the said rules. D. S. Garbyal Under Secretary to the Government of India F. NO. - 526/6/2002 - CUS(T.U.) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:12.201Z"
+}

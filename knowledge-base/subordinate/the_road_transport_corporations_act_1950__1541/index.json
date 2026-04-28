@@ -1,0 +1,37 @@
+{
+  "act_id": "the_road_transport_corporations_act_1950__1541",
+  "has_subordinate_legislation": false,
+  "possible_subordinate_legislation": true,
+  "count": 0,
+  "detection_status": "possible_mentions_without_linked_sources",
+  "legal_conclusion": "not_determined",
+  "confidence": "low",
+  "detection_version": 10,
+  "note": "The source page contains contextual references to subordinate-law instruments made or issued under the Act, but no linked subordinate source was detected. This is an inconclusive scan result.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 0,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 0,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 1,
+      "rules": 3,
+      "regulation": 2,
+      "regulations": 2,
+      "order": 4,
+      "orders": 2,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Section 45. Power to make regulations. Section 45A. Every rule and regulation"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1541?view_type=browse",
+    "scanned_at": "2026-04-11T19:02:30.795Z"
+  },
+  "failed_candidates": []
+}

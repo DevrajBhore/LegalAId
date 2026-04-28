@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-07-2017_corrigendum_to_notification_no-082017_-integrated_tax_rate_dated_05072017_855e7635ba19_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Corrigendum to Notification No-08/2017 -Integrated Tax (Rate) dated 05.07.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn--igst-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-07-2017",
+  "description": "Corrigendum to Notification No-08/2017 -Integrated Tax (Rate) dated 05.07.2017",
+  "hindi_description": null,
+  "file_title": "corrigndm-ntfctn--igst-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn--igst-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn--igst-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn--igst-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn--igst-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn--igst-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn--igst-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) CORRIGENDUM New Delhi, the 5th July, 2017 G.S.R. (E). – In the English version of the notification of the Government of India in the Ministry of Finance (Department of Revenue), No. 8/2017-Integrated Tax (Rate), dated the 28th June, 2017 published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i), vide number G.S.R. 683 (E), dated the 28th June, 2017, in the Table, in Sl No. 10, in column (3) and column (4), for (3) (4) “(ii) Rental services of transport vehicles with or without operators, other than (i) above. 9” read (3) (4) “(ii) Rental services of transport vehicles with or without operators, other than (i) above. 18” [F. No. 334/1/2017 –TRU] (Ruchi Bisht) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:14.847Z"
+}

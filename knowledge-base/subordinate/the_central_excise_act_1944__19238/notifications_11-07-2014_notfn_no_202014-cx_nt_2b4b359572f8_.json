@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_11-07-2014_notfn_no_202014-cx_nt_2b4b359572f8_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 20/2014-CX (NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent20-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "11-07-2014",
+  "description": "Notfn No 20/2014-CX (NT)",
+  "hindi_description": null,
+  "file_title": "cent20-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent20-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent20-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent20-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent20-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent20-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent20-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE NOTIFICATION No 20/2014 – Central Excise (N.T.) New Delhi, the 11th July, 2014 G.S.R. (E). - In exercise of the powers conferred by section 37 of the Central Excise Act, 1944 (1 of 1944) , the Central Government hereby makes the following rules further to amend the Central Excise Valuation (Determination of Price of Excisable Goods) Rules , 2000, namely :- 1. (1) These rules may be called the Central Excise Valuation (Determination of Price of Excisable Goods) Amendment Rules, 2014. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In the Central Excise Valuation (Determination of Price of Excisable Goods) Rules, 2000 (hereinafter referred to as the said rules), in rule 6, before Explanation I , the following proviso shall be inserted , namely :- “ Provided that where price is not the sole consideration for sale of such excisable goods and they are sold by the assessee at a price less than manufacturing cost and profit, and no additional consideration is flowing directly or indirectly from the buyer to such assessee, the value of such goods shall be deemed to be the transaction value.” . (F. No. 334/15/2014-TRU) (Akshay Joshi) Under Secretary to the Government of India Note – The principal rules were published in the Gazette of India , Extraordinary,Part II, Section 3, Sub- section (i) vide notification No. 45/2000-Central Excise (N.T.), vide number G.S.R. 575(E), dated the 30th June, 2000 and last amended by notification No. 14/2013 – Central Excise (N.T.), vide number G.S.R 748 ( E ), dated the 22nd November, 2013 . -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:24.354Z"
+}

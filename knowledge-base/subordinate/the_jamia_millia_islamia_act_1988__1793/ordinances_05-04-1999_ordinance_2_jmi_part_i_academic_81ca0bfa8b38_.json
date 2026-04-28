@@ -1,0 +1,48 @@
+{
+  "sub_id": "ordinances_05-04-1999_ordinance_2_jmi_part_i_academic_81ca0bfa8b38_",
+  "parent_act_id": "the_jamia_millia_islamia_act_1988__1793",
+  "title": "Ordinance 2 JMI Part I (Academic)",
+  "type": "ordinance",
+  "category_label": "Ordinances",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+2+JMI+Part+I.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-04-1999",
+  "description": "Ordinance 2 JMI Part I (Academic)",
+  "hindi_description": null,
+  "file_title": "Ordinance 2 JMI Part I.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%202%20JMI%20Part%20I.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+2+JMI+Part+I.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance+2+JMI+Part+I.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2B2%2BJMI%2BPart%2BI.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance+2+JMI+Part+I.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%2B2%2BJMI%2BPart%2BI.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_9_30_00022_198858_1517807325657/ordinanceindividualfile/&file=Ordinance+2+JMI+Part+I.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_9_30_00022_198858_1517807325657&type=ordinance&filename=Ordinance%202%20JMI%20Part%20I.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "6 Ordinance 2 (II) POWERS AND PRIVILEGES OF THE DEANS OF FACULTIES 1. The Dean of the Faculty shall: (1) 'be entitled to such allowances and amenities as the Majlis-i- Muntazimah (Executive Council) may approve from time to time; (2) operate the Budget of the Faculty; (3) be responsible for the records, furniture and equipment under him; (4) be empowered to remove the name from the rolls and readmit a student in the Faculty concerned; (5) be empowered to withhold the Hall Ticket of student of the Faculty for valid reasons; and (6) exercise such other powers and perfom such other functions, as may be delegated or assigned to him by the Shaikhul Jamia (Vice- Chancellor) or the Majlis-i- Muntazimah (Executive Council). -- 1 of 1 --",
+  "fetched_at": "2026-04-13T13:43:50.813Z"
+}

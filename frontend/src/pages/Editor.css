@@ -415,6 +415,9 @@
   padding: 42px 54px 72px;
   background: #fcfbf8;
   border-radius: 0 0 24px 24px;
+  font-family: "Times New Roman", Georgia, serif;
+  color: #231c14;
+  line-height: 1.85;
 }
 
 .doc-edited-notice {
@@ -453,8 +456,10 @@
 
 .doc-title-main {
   margin-bottom: 10px;
-  font-family: var(--font-display);
+  font-family: "Times New Roman", Georgia, serif;
   font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0;
   color: #231c14;
 }
 

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_01-07-2005_notification_appointing_director_of_enforcement_4f741bf3c246_",
+  "parent_act_id": "the_prevention_of_money-laundering_act_2002__2036",
+  "title": "Notification appointing Director of Enforcement",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=notification_appointing_director_of_enforcement.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-07-2005",
+  "description": "Notification appointing Director of Enforcement",
+  "hindi_description": null,
+  "file_title": "notification_appointing_director_of_enforcement.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=notification_appointing_director_of_enforcement.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=notification_appointing_director_of_enforcement.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=notification_appointing_director_of_enforcement.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=notification_appointing_director_of_enforcement.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=notification_appointing_director_of_enforcement.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=notification_appointing_director_of_enforcement.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "NOTIFICATION APPOINTING DIRECTOR OF ENFORCEMENT3 In exercise of the powers conferred by sub-section (1) of section 49 of the Prevention of Money-laundering Act, 2002 (15 of 2003), the Central Government hereby appoints, with effect from. the 1st day of July, 2005, the Director of Enforcement holding office immediately before the said date under the Foreign Exchange Management Act, 1999 (42 of 1999), as the Director [-0 exercise the exclusive powers conferred under section 5, section 8, section 16, section 17, section 18, section 19, section 20, section 21, sub-section (1) of section 26, section 45, section 50, section 57, 4[section 58A, section 58Bl section 60, section 62 and section 63 of the said Act and the said Director shall also concurrently exercise powers conferred by sub-section (3), sub-section (4) and sub-section (5) of section 26, section 39, section 40, section 41, section 42, section 48, section 49, section 66 and section 69 of the aforesaid Act. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:12:13.879Z"
+}

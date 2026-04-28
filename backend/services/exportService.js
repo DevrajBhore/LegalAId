@@ -15,16 +15,25 @@ import {
 
 const BODY_FONT = "Times New Roman";
 const BODY_SIZE = 24;
-const TITLE_SIZE = 24;
-const BODY_LINE_SPACING = 276;
-const BODY_AFTER_SPACING = 120;
-const TITLE_INDENT_LEFT = 720;
-const CLAUSE_HEADING_LEFT = 720;
+const TITLE_SIZE = 26;
+const BODY_LINE_SPACING = 240;
+const BODY_AFTER_SPACING = 60;
+const RECITAL_LEFT = 720;
+const OPERATIVE_LEFT = 360;
+const CLAUSE_HEADING_LEFT = 360;
 const CLAUSE_HEADING_HANGING = 360;
-const CLAUSE_ITEM_LEFT = 720;
-const CLAUSE_ITEM_HANGING = 360;
+const CLAUSE_ITEM_LEFT = 792;
+const CLAUSE_ITEM_HANGING = 432;
 const PDF_MARGIN = 72;
 const SCHEDULE_CATEGORIES = new Set(["SCHEDULE", "ANNEXURE", "SPECIFICATIONS"]);
+const STYLE_ID = {
+  title: "LegalTitle",
+  body: "LegalBody",
+  recital: "LegalRecital",
+  heading: "LegalClauseHeading",
+  item: "LegalClauseItem",
+  signature: "LegalSignature",
+};
 
 export const SUPPORTED_EXPORT_FORMATS = new Set(["docx", "pdf", "txt"]);
 
@@ -52,6 +61,7 @@ function buildBlankParagraph(options = {}) {
   return new Paragraph({
     spacing: { after: options.after ?? BODY_AFTER_SPACING },
     children: [],
+    style: options.style || STYLE_ID.body,
     ...options,
   });
 }
@@ -149,9 +159,14 @@ function buildPartyParagraphRuns(line) {
 
 function buildBodyParagraph(text, options = {}) {
   return new Paragraph({
+    style: options.style || STYLE_ID.body,
     alignment: AlignmentType.JUSTIFIED,
-    spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+    spacing: {
+      after: options.after ?? BODY_AFTER_SPACING,
+      line: BODY_LINE_SPACING,
+    },
     children: buildRunsWithSuperscriptOrdinals(text),
+    indent: options.indent || undefined,
     ...options,
   });
 }
@@ -262,8 +277,10 @@ function renderIdentityClause(children, text) {
     if (/^THIS\s+AGREEMENT/i.test(line)) {
       children.push(
         new Paragraph({
-          alignment: AlignmentType.CENTER,
+          style: STYLE_ID.body,
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          indent: { left: OPERATIVE_LEFT },
           children: buildOpeningLineRuns(line),
         })
       );
@@ -273,6 +290,7 @@ function renderIdentityClause(children, text) {
     if (/^BY AND BETWEEN$/i.test(line)) {
       children.push(
         new Paragraph({
+          style: STYLE_ID.body,
           alignment: AlignmentType.CENTER,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
           children: [buildBodyRun("BY AND BETWEEN", { bold: true })],
@@ -284,6 +302,7 @@ function renderIdentityClause(children, text) {
     if (/^AND$/i.test(line)) {
       children.push(
         new Paragraph({
+          style: STYLE_ID.body,
           alignment: AlignmentType.CENTER,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
           children: [buildBodyRun("AND", { bold: true })],
@@ -300,8 +319,10 @@ function renderIdentityClause(children, text) {
       const recitalText = line.replace(/^\([A-Z]\)\s*/i, "");
       children.push(
         new Paragraph({
+          style: STYLE_ID.recital,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          indent: { left: RECITAL_LEFT },
           children: buildLeadInRuns(
             /^WHEREAS[,:\s]/i.test(recitalText) ? recitalText : `WHEREAS, ${recitalText}`,
             /^(WHEREAS,?\s*)/i
@@ -314,8 +335,10 @@ function renderIdentityClause(children, text) {
     if (/^NOW[,\s]+(THEREFORE|WITNESSETH)/i.test(line)) {
       children.push(
         new Paragraph({
+          style: STYLE_ID.body,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          indent: { left: OPERATIVE_LEFT },
           children: buildLeadInRuns(line, /^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i),
         })
       );
@@ -325,15 +348,22 @@ function renderIdentityClause(children, text) {
     if (/of the\s+(?:First|Second|Third|Other)\s+Part[;.]?$/i.test(line)) {
       children.push(
         new Paragraph({
+          style: STYLE_ID.recital,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          indent: { left: RECITAL_LEFT },
           children: buildPartyParagraphRuns(line),
         })
       );
       continue;
     }
 
-    children.push(buildBodyParagraph(line));
+    children.push(
+      buildBodyParagraph(line, {
+        style: STYLE_ID.recital,
+        indent: { left: RECITAL_LEFT },
+      })
+    );
   }
 }
 
@@ -343,6 +373,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
 
   children.push(
     new Paragraph({
+      style: STYLE_ID.heading,
       spacing: { before: 240, after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
       indent: { left: CLAUSE_HEADING_LEFT, hanging: CLAUSE_HEADING_HANGING },
       children: [
@@ -358,6 +389,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
     if (block.type === "item") {
       children.push(
         new Paragraph({
+          style: STYLE_ID.item,
           alignment: AlignmentType.LEFT,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
           indent: { left: CLAUSE_ITEM_LEFT, hanging: CLAUSE_ITEM_HANGING },
@@ -367,12 +399,18 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
       continue;
     }
 
-    children.push(buildBodyParagraph(block.text));
+    children.push(
+      buildBodyParagraph(block.text, {
+        style: STYLE_ID.body,
+        indent: { left: OPERATIVE_LEFT },
+      })
+    );
   }
 
   if (clause.statutory_reference) {
     children.push(
       new Paragraph({
+        style: STYLE_ID.body,
         spacing: { after: 180 },
         children: [
           new TextRun({
@@ -399,12 +437,19 @@ function renderSignatureBlock(children, text) {
 
   for (const line of lines) {
     if (!line) {
-      children.push(new Paragraph({ spacing: { after: 80 }, children: [] }));
+      children.push(
+        new Paragraph({
+          style: STYLE_ID.signature,
+          spacing: { after: 80 },
+          children: [],
+        })
+      );
       continue;
     }
 
     children.push(
       new Paragraph({
+        style: STYLE_ID.signature,
         spacing: {
           after: /^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? 180 : BODY_AFTER_SPACING,
           line: BODY_LINE_SPACING,
@@ -453,6 +498,7 @@ function renderPdfLeadInParagraph(doc, lead, remainder, options = {}) {
   doc.font("Times-Bold").fontSize(12).text(lead, {
     align: options.align || "justify",
     lineGap: 2,
+    indent: options.indent || 0,
     continued: Boolean(remainder),
   });
 
@@ -460,6 +506,7 @@ function renderPdfLeadInParagraph(doc, lead, remainder, options = {}) {
     doc.font("Times-Roman").fontSize(12).text(remainder, {
       align: options.align || "justify",
       lineGap: 2,
+      indent: options.indent || 0,
     });
   }
 
@@ -480,9 +527,17 @@ function renderPdfIdentityClause(doc, text) {
     if (/^THIS\s+AGREEMENT/i.test(line)) {
       const match = line.match(/^(THIS\s+[A-Z\s]+?)(\s*\(.*)$/);
       if (match) {
-        renderPdfLeadInParagraph(doc, match[1], match[2], { align: "center", after: 0.35 });
+        renderPdfLeadInParagraph(doc, match[1], match[2], {
+          align: "justify",
+          after: 0.35,
+          indent: 24,
+        });
       } else {
-        doc.font("Times-Bold").fontSize(12).text(line, { align: "center", lineGap: 2 });
+        doc.font("Times-Bold").fontSize(12).text(line, {
+          align: "justify",
+          lineGap: 2,
+          indent: 24,
+        });
         doc.moveDown(0.35);
       }
       continue;
@@ -513,6 +568,7 @@ function renderPdfIdentityClause(doc, text) {
       renderPdfLeadInParagraph(doc, leadMatch?.[1] || "WHEREAS, ", leadMatch?.[2] || "", {
         align: "justify",
         after: 0.35,
+        indent: 54,
       });
       continue;
     }
@@ -523,7 +579,7 @@ function renderPdfIdentityClause(doc, text) {
         doc,
         leadMatch?.[1] || "NOW, THEREFORE, ",
         leadMatch?.[2] || "",
-        { align: "justify", after: 0.35 }
+        { align: "justify", after: 0.35, indent: 24 }
       );
       continue;
     }
@@ -531,6 +587,7 @@ function renderPdfIdentityClause(doc, text) {
     doc.font("Times-Roman").fontSize(12).text(line, {
       align: "justify",
       lineGap: 2,
+      indent: 54,
     });
     doc.moveDown(0.35);
   }
@@ -544,8 +601,8 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
   doc
     .font("Times-Roman")
     .fontSize(12)
-    .text(prefix, { align: "left", continued: true, indent: 36 });
-  doc.font("Times-Bold").fontSize(12).text(heading, { align: "left", indent: 36 });
+    .text(prefix, { align: "left", continued: true, indent: 24 });
+  doc.font("Times-Bold").fontSize(12).text(heading, { align: "left", indent: 24 });
   doc.moveDown(0.25);
 
   const blocks = tokenizeClauseText(clause.text || "");
@@ -555,7 +612,7 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
       doc.font("Times-Roman").fontSize(12).text(block.text, {
         align: "left",
         lineGap: 2,
-        indent: 36,
+        indent: 54,
       });
       doc.moveDown(0.2);
       continue;
@@ -564,6 +621,7 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
     doc.font("Times-Roman").fontSize(12).text(block.text, {
       align: "justify",
       lineGap: 2,
+      indent: 24,
     });
     doc.moveDown(0.35);
   }
@@ -609,14 +667,13 @@ export async function draftToDocx(draft) {
 
   const children = [
     new Paragraph({
+      style: STYLE_ID.title,
       alignment: AlignmentType.CENTER,
       spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-      indent: { left: TITLE_INDENT_LEFT },
       children: [
         new TextRun({
           text: title.toUpperCase(),
           bold: true,
-          underline: { type: "single" },
           size: TITLE_SIZE,
           font: BODY_FONT,
         }),
@@ -636,6 +693,7 @@ export async function draftToDocx(draft) {
   if (scheduleClauses.length) {
     children.push(
       new Paragraph({
+        style: STYLE_ID.heading,
         alignment: AlignmentType.CENTER,
         spacing: { before: 420, after: 220 },
         children: [buildBodyRun("SCHEDULES AND SPECIFICATIONS", { bold: true })],
@@ -663,6 +721,80 @@ export async function draftToDocx(draft) {
           },
         },
       },
+      paragraphStyles: [
+        {
+          id: STYLE_ID.title,
+          name: "Legal Title",
+          basedOn: "Normal",
+          next: STYLE_ID.body,
+          quickFormat: true,
+          run: { font: BODY_FONT, size: TITLE_SIZE, bold: true },
+          paragraph: {
+            alignment: AlignmentType.CENTER,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          },
+        },
+        {
+          id: STYLE_ID.body,
+          name: "Legal Body",
+          basedOn: "Normal",
+          next: STYLE_ID.body,
+          quickFormat: true,
+          run: { font: BODY_FONT, size: BODY_SIZE },
+          paragraph: {
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          },
+        },
+        {
+          id: STYLE_ID.recital,
+          name: "Legal Recital",
+          basedOn: STYLE_ID.body,
+          next: STYLE_ID.recital,
+          run: { font: BODY_FONT, size: BODY_SIZE },
+          paragraph: {
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: RECITAL_LEFT },
+          },
+        },
+        {
+          id: STYLE_ID.heading,
+          name: "Legal Clause Heading",
+          basedOn: STYLE_ID.body,
+          next: STYLE_ID.body,
+          run: { font: BODY_FONT, size: BODY_SIZE, bold: true },
+          paragraph: {
+            spacing: {
+              before: 240,
+              after: BODY_AFTER_SPACING,
+              line: BODY_LINE_SPACING,
+            },
+            indent: { left: CLAUSE_HEADING_LEFT, hanging: CLAUSE_HEADING_HANGING },
+          },
+        },
+        {
+          id: STYLE_ID.item,
+          name: "Legal Clause Item",
+          basedOn: STYLE_ID.body,
+          next: STYLE_ID.item,
+          run: { font: BODY_FONT, size: BODY_SIZE },
+          paragraph: {
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: CLAUSE_ITEM_LEFT, hanging: CLAUSE_ITEM_HANGING },
+          },
+        },
+        {
+          id: STYLE_ID.signature,
+          name: "Legal Signature",
+          basedOn: STYLE_ID.body,
+          next: STYLE_ID.signature,
+          run: { font: BODY_FONT, size: BODY_SIZE },
+          paragraph: {
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+          },
+        },
+      ],
     },
     sections: [
       {

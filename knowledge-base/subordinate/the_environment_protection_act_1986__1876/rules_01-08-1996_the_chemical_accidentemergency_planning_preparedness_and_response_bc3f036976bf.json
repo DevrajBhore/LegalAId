@@ -1,0 +1,76 @@
+{
+  "sub_id": "rules_01-08-1996_the_chemical_accidentemergency_planning_preparedness_and_response_rules_1996_75023be4fa11_",
+  "parent_act_id": "the_environment_protection_act_1986__1876",
+  "title": "The Chemical Accident(Emergency Planning, Preparedness and Response) Rules, 1996",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=ca%28eppr%29rules%2C_1996.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-08-1996",
+  "description": "The Chemical Accident(Emergency Planning, Preparedness and Response) Rules, 1996",
+  "hindi_description": null,
+  "file_title": "ca(eppr)rules,_1996.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=ca%28eppr%29rules%2C_1996.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/rulesindividualfile/&file=ca%28eppr%29rules%2C_1996.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rule&filename=ca(eppr)rules,_1996.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+        "status": 503,
+        "outcome": "source_error",
+        "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca%28eppr%29rules%2C_1996.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=rules&filename=ca(eppr)rules%2C_1996.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "The Chemical Accident(Emergency Planning, Preparedness and Response) Rules, 1996",
+  "fetched_at": "2026-04-13T19:33:43.960Z"
+}

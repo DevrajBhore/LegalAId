@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_26-05-2006_notification_no552006-cusnt_dated_26052006_bd3e2bb125ef_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.55/2006-Cus(NT), dated 26.05.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=55-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-05-2006",
+  "description": "Notification No.55/2006-Cus(NT), dated 26.05.2006",
+  "hindi_description": null,
+  "file_title": "55-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=55-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=55-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=55-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=55-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=55-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=55-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "May 26, 2006 Notification No. 55/2006 (N.T.) - CUSTOMS S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Imports), New Customs House, Mumbai to act as officers specified in column (4) of the Table below in the matters specified in the corresponding entries in columns (2) and (3) of the said Table, for the purpose of adjudication namely :- Table Sl. No. Show Cause Notice Number and date Name of the party Designation of Officer (1) (2) (3) (4) 1 F.No.DGCEI/ MZU/I&IS'C'/ 30-57/04 dated 28.10.04 M/s Mahindra and Mahindra Limited and Others Commissioner of Customs (Imports), Jawahar Customs House, Nhava Sheva 2 F.No.DGCEI/ MZU/I&IS'C'/ 30-57/04 dated 25.11.04 M/s Mahindra and Mahindra Limited and Others Commissioner of Customs (Imports), Jawahar Customs House, Nhava Sheva 3 F.No.DGCEI/ MZU/I&IS'C'/ 30-57/04 dated 08.04.05 M/s Mahindra and Mahindra Limited and Others Commissioner of Customs (Imports), Air Cargo Complex, CSI Airport, Sahar 4 F.No.DGCEI/ PRU/INT/ 44/04 dated 12.01.06 M/s Mahindra and Mahindra Limited and Others Joint/Additional Commissioner of Customs (Imports), Jawahar Customs House, Nhava Sheva [F.No.437/9/2006-Cus.IV] -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:09:23.475Z"
+}

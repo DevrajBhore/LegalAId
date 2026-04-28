@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_06-03-1981_notification_under_the_reserve_and_auxilary_airforce_act_1952_f4dd46024cbb_",
+  "parent_act_id": "the_reserve_and_auxiliary_air_forces_act_1952__2161",
+  "title": "Notification Under The Reserve And Auxilary AirForce Act 1952",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_28_38_00021_195262_1517807328498/notificationindividualfile/&file=Notification+Under+The+Reserve+And+Auxilary++AirForce+Act+1952.PDF",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-03-1981",
+  "description": "Notification Under The Reserve And Auxilary AirForce Act 1952",
+  "hindi_description": null,
+  "file_title": "Notification Under The Reserve And Auxilary AirForce Act 1952.PDF",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification%20Under%20The%20Reserve%20And%20Auxilary%20%20AirForce%20Act%201952.PDF",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_28_38_00021_195262_1517807328498/notificationindividualfile/&file=Notification+Under+The+Reserve+And+Auxilary++AirForce+Act+1952.PDF",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification+Under+The+Reserve+And+Auxilary++AirForce+Act+1952.PDF",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification%2BUnder%2BThe%2BReserve%2BAnd%2BAuxilary%2B%2BAirForce%2BAct%2B1952.PDF",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification+Under+The+Reserve+And+Auxilary++AirForce+Act+1952.PDF",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification%2BUnder%2BThe%2BReserve%2BAnd%2BAuxilary%2B%2BAirForce%2BAct%2B1952.PDF"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_28_38_00021_195262_1517807328498/notificationindividualfile/&file=Notification+Under+The+Reserve+And+Auxilary++AirForce+Act+1952.PDF",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_28_38_00021_195262_1517807328498&type=notification&filename=Notification%20Under%20The%20Reserve%20And%20Auxilary%20%20AirForce%20Act%201952.PDF",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:22:43.156Z"
+}

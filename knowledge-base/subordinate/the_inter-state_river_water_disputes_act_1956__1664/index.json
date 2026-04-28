@@ -1,0 +1,44 @@
+{
+  "act_id": "the_inter-state_river_water_disputes_act_1956__1664",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 115,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 115,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 115,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 5,
+      "regulations": 1,
+      "order": 3,
+      "orders": 1,
+      "scheme": 5,
+      "schemes": 1,
+      "notification": 12,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under section 6A dated 12/06/2000 06-08-2002 Notification",
+      "under section 5 dated 04/08/2005 23-11-2005 Notification",
+      "under section 4 dated 24/02/2010 30-04-2010 Notification",
+      "under ISRWDA dated 30/04/2010 15-07-2010 Notification",
+      "under section 5 dated 21/10/2010 28-10-2010 Notification",
+      "under section 5 dated 03/02/2012 01-03-2012 Notification",
+      "under section 5 dated 06/08/2014 23-09-2014 Notification",
+      "under section 5 dated 10/08/2015 08-09-2015 Notification"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1664?view_type=browse",
+    "scanned_at": "2026-04-13T13:48:22.019Z"
+  },
+  "failed_candidates": []
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_16-09-2014_notfn_no_292014-cx_nt_648b17e7c4d2_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 29/2014-CX (NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent29-2014.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-09-2014",
+  "description": "Notfn No 29/2014-CX (NT)",
+  "hindi_description": null,
+  "file_title": "cent29-2014.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent29-2014.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent29-2014.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent29-2014.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent29-2014.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent29-2014.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent29-2014.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE CENTRAL BOARD OF EXCISE AND CUSTOMS NOTIFICATION No. 29 /2014-CENTRAL EXCISE (N.T.) New Delhi, the 16th September, 2014 25 Bhadrapad 1936 Saka G.S.R (E).- In exercise of the powers conferred by section 37A of the Central Excise Act, 1944 (1 of 1944), the Central Government hereby delegates the powers of the Central Board of Excise and Customs under rule 3 of the Central Excise Rules, 2002, to the Principal Chief Commissioner of Central Excise or the Chief Commissioner of Central Excise, to specify within his jurisdiction, the jurisdiction of a Commissioner of Central Excise (Appeals) or a Commissioner of Central Excise (Audit) and the jurisdiction of such Commissioner of Central Excise (Appeals) or Commissioner of Central Excise (Audit) shall be limited to the jurisdiction so specified. 2. This notification shall come into force on 15th October, 2014. [F.No.96 /42 /2014-CX.1] (Pankaj Jain) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:52:14.136Z"
+}

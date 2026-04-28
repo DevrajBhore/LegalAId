@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-07-2002_notification_no442002-cusntdt_22072002_977ff9ffea98_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.44/2002-Cus(NT),dt. 22.07.2002",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-02.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-07-2002",
+  "description": "Notification No.44/2002-Cus(NT),dt. 22.07.2002",
+  "hindi_description": null,
+  "file_title": "44-02.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-02.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-02.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-02.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-02.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=44-02.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=44-02.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "22nd July, 2002 Notification No.44/2002-Customs (N.T.) Whereas the Central Government is of opinion that the incidence of duty and interest, if any, paid on such duty on export of Iron Ore concentrate and pellets during the period on and from March, 1992 to February, 1993, has not been passed on by M/s Kudremukh Iron Ore Company Limited, II Block, Koramangala, Bangalore to any other person; Now, therefore, in exercise of the powers conferred by clause (f) of the first proviso to sub- section (2) of section 27 of the Customs Act, 1962 (52 of 1962), the Central Government, hereby specifies the said M/s Kudremukh Iron Ore Company Limited, II Block, Koramangala, Bangalore - 560034, for the purposes of the said clause. F.No. 438/24/2000-Cus.IV D.S.Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:58:54.025Z"
+}

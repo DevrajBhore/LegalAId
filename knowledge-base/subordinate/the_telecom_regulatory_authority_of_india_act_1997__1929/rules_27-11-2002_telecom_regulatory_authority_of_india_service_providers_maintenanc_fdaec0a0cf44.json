@@ -1,0 +1,76 @@
+{
+  "sub_id": "rules_27-11-2002_telecom_regulatory_authority_of_india_service_providers_maintenance_of_books_of_accounts_and_other_documents_rules_2002_c56d22d3eaf2_",
+  "parent_act_id": "the_telecom_regulatory_authority_of_india_act_1997__1929",
+  "title": "Telecom Regulatory Authority of India, Service Providers (Maintenance of Books of Accounts and other Documents) Rules, 2002.",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-11-2002",
+  "description": "Telecom Regulatory Authority of India, Service Providers (Maintenance of Books of Accounts and other Documents) Rules, 2002.",
+  "hindi_description": null,
+  "file_title": "Category of Books & Accounts.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_37_58_00002_199724_1517807323214/rulesindividualfile/&file=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rule&filename=Category%20of%20Books%20&amp;%20Accounts.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category+of+Books+%26amp%3B+Accounts.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_37_58_00002_199724_1517807323214&type=rules&filename=Category%2Bof%2BBooks%2B%26amp%3B%2BAccounts.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Telecom Regulatory Authority of India, Service Providers (Maintenance of Books of Accounts and other Documents) Rules, 2002.",
+  "fetched_at": "2026-04-13T20:26:37.396Z"
+}

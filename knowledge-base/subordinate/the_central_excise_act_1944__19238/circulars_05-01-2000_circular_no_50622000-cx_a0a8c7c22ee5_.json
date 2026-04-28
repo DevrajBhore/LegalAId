@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_05-01-2000_circular_no_50622000-cx_a0a8c7c22ee5_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "circular no. 506/2/2000-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=506-00-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-01-2000",
+  "description": "circular no. 506/2/2000-CX",
+  "hindi_description": null,
+  "file_title": "506-00-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=506-00-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=506-00-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=506-00-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=506-00-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=506-00-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=506-00-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 506/02/2000-CX F.NO. 212/14/99-CX.6 Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs New Delhi, the 5, Jan. 2000 Subject: ECC based on PAN - date of introduction changed to 1.2.2000 It is directed to refer to the Board's Circular number 493/59/99-CX dated 12 th November, 1999 regarding introduction of new Excise Control (new ECC) number based on Permanent Account Number (PAN) allotted by the Income Tax Department. The Government has decided to extend the date of introduction of new ECC number from 1 st January, 2000 to 1 st February, 2000. The aforesaid Circular stands modified to this extent. 2. The Trade and field formations may suitable be informed. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:03:00.171Z"
+}

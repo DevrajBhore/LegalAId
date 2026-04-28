@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_30-08-2018_pilot_implementation_of_paperless_processing_under_swift-uploading_of_supporting_documents_esanchi_in_exports-reg-_circular_no292018_dt_30818_b374493d8032_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Pilot Implementation of Paperless processing under SWIFT-uploading of supporting documents (eSANCHI) in Exports-Reg- circular no.29/2018 dt. 30.8.18",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circular-29-2018-customs.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-08-2018",
+  "description": "Pilot Implementation of Paperless processing under SWIFT-uploading of supporting documents (eSANCHI) in Exports-Reg- circular no.29/2018 dt. 30.8.18",
+  "hindi_description": null,
+  "file_title": "circular-29-2018-customs.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circular-29-2018-customs.pdf",
+    "num_pages": 3,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circular-29-2018-customs.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circular-29-2018-customs.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circular-29-2018-customs.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=circular-29-2018-customs.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=circular-29-2018-customs.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No ^/2018-Customs F.No. 450/148/2015-Cus-IV Government of India Ministry of Finance Department of Revenue (Central Board of Indirect Taxes and Customs) Room No. 229 A, North Block, New Delhi Dated: 3o*A.ugust, 2018 To Chief Commissioners of Customs. New Delhi Chief Commissioners of Customs, Chennai Sir, Subject: Pilot Implementation of Paperless Processing under SWIFT-Uploading of Supporting Documents (eSANCHIT) in Exports - reg. Successful implementation of Paperless Processing/eSANCHIT under Single Window Interface for Facilitation of Trade in case of Imports has been acclaimed by all stakeholders. Now with the objective of reducing physical interface between Customs/regulatory agencies & the trade and to increase the speed of clearance in Exports, it is proposed to introduce a facility to upload digitally signed supporting documents on a pilot basis at Air Cargo complex, New Delhi and Chennai Customs House. The pilot will cover all types of exports under ICES. After the completion of the pilot, the facility will be extended to all ICES locations. On a voluntary basis, members of the trade may use this facility to upload the supporting documents concerning Shipping Bills that may be filed on or after 01.09.2018. After 15 days of the launch of the facility, a review will be carried out, and thereafter, it will be introduced as a mandatory requirement. For this pilot, the following procedure will apply: Uploading supporting documents 2. The procedure for eSANCHIT on the export side is similar to the one prescribed for eSANCHIT in imports vide Circular No. 40/2017 dated 13.10.2017. Briefly, salient features are described as below: - 2.1 For uploading supporting documents on ICEGATE, the authorized persons must Open ICEGATE URL httgs://www.icegate.gov.in/, click on Login/Signup button for login into ICEGATE by using his/her access credentials and then click on eSANCHIT link provided in left vertical menu to redirect on eSANCHIT. The step-by-step procedure for upload of supporting documents is also provided on the ICEGATE website. While preparing a job for submission on ICEGATE in their respective Remote EDI Systems (RES), the authorized persons must ensure that -- 1 of 3 -- they have uploaded all the necessary supporting documents. A facility has also been provided on ICEGATE to the authorized persons to access and view the documents uploaded by them. 2.2. In case the authorized person seeks to provide a document after the generation of the Shipping Bill number, he/she may first upload the document on ICEGATE, obtain a unique ID Image Reference number (IRN) for the document and link that document with the corresponding Shipping Bill by submitting an amendment at the Service Centre. This procedure will also apply when the authorized person submits a document in response to a query raised by Customs for a Shipping Bill. Assessment & Document Verification 2.3. Once a Shipping Bill has been filed, Customs officers will be able to access the uploaded electronic versions of supporting documents while viewing or assessing the Shipping Bill on ICES. During assessment, ICES provides for a query to be raised in order to call for additional documents or information. In response to a query, supporting documents can be uploaded online by following the procedure described in para 2.2 above. All documents required for the purposes of assessment would be viewed online. In due course, the facility to view supporting documents will also be extended to officers of the Participating Government Agencies (PGAs). Goods Registration, Examination & Let Export Order (LEO) 2.4. After filing of the Shipping Bill, the authorized person (e.g. Exporter/Customs Broker) may with his self—assessed copy of the Shipping Bill, approach the designated place for goods registration, document verification and LEO. In case goods are to be examined, the officer examining goods may record the results of inspection/examination online on ICES. Other features to be Pilot-tested 4. In consultation with the stakeholders, in the course of the pilot, the following features will be taken-up for pilot-testing: (a) Upload of supporting documents for Shipping Bills which are filed through the Service Centers. (b) Presently, electronic copies of Let Export Orders and assessed copies of Shipping Bills are delivered online to the Custodians and authorized persons. In the course of the pilot, digital signatures will be applied on these messages and not copies of Shipping Bills. 5. The Shipping Bill (Electronic Integrated Declaration) Regulation, 2011, provide for the authorized person to submit digitally signed electronic integrated declarations (Shipping Bills) and supporting documents and dispenses with the need for trade to submit the corresponding hardcopies. The Regulations also provide that the authorized person shall retain, for a period of 5 years from the date of acceptance of the Shipping Bill, all supporting documents in original, which were used or relied upon by him in submitting the electronic integrated declaration, and shall -- 2 of 3 -- produce them before Customs or other Government agencies in connection with any action or proceedings under the Customs Act 1962 or any other law for the time being in force. 6. Chief Commissioners of Customs Delhi and Chennai are requested to issue public notices. To facilitate smooth roll out of pilot, feedback and queries may be addressed by email to babulaImeena.irs@gov.in and nsm.ices@icegate.gov.in. References in hardcopy may be sent to Commissioner (Single Window), HUDCO Vishala Building, B — Wing, Bhikaji Cama Place, R.K. Puram, New Delhi — 110066. Yours sincerely, (Maninder Kumar) OSD (Cus IV) -- 3 of 3 --",
+  "fetched_at": "2026-04-13T19:55:28.970Z"
+}

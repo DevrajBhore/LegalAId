@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_27-11-2006_notification_no1202002-cusntdated_27112006_8e12b8a669e9_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.120/2002-Cus(NT),dated 27.11.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=120-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-11-2006",
+  "description": "Notification No.120/2002-Cus(NT),dated 27.11.2006",
+  "hindi_description": null,
+  "file_title": "120-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=120-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=120-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=120-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=120-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=120-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=120-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "27th November, 2006 Notification No. 120 / 2006-Customs (N.T.) S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Central Excise and Customs, Daman and authorises him to exercise the powers and discharge the duties conferred or imposed, on the Commissioner of Customs, Custom House, Navrangpura, Ahmedabad, for the purposes of adjudicating the matters relating to Show Cause Notice pertaining to M/s Sunshine Overseas (100% EOU), Plot No.439, GIDC, Kabilpore, Navsari, Gujarat and others, issued vide F.No. DRI/SRU/INV- 9/2003/Pt-Sunshine, dated the 31st March, 2005 by the Additional Director General, Directorate of Revenue Intelligence, Regional Unit, Sangna Society, Gurukrupa Building, Rander Road, Surat. F.NO.437/ 40 /2006-Cus.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:12:09.221Z"
+}

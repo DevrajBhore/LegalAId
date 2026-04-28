@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_09-08-2000_notification_no502000-cusnt_dated_982000_cb630b1253ee_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.50/2000-Cus(NT), dated 9.8.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=50-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-08-2000",
+  "description": "Notification No.50/2000-Cus(NT), dated 9.8.2000",
+  "hindi_description": null,
+  "file_title": "50-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=50-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=50-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=50-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=50-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=50-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=50-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Government of India Ministry of Finance Department of Revenue New Delhi, the 9th Aug., 2000 NOTIFICATION No. 50/2000-Customs(NT) In exercise of the powers conferred by sub-section (2) of section 79 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following amendment in the Baggage Rules, 1998, namely:- 1 Short title and commencement: (1) These rules may be called the Baggage (Amendment) Rules, 2000. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In the Baggage Rules, 1998 (hereinafter referred to as the said rules), to rule 3, the following proviso shall be added, namely:- \"Provided that such Indian resident or such foreigners returning from Pakistan, by land route, shall be allowed clearance free duty articles in his bonafide baggage to the extent mentioned in column (2) of Appendix \"B\". 3. In the said rules, for Appendix E, the following shall be substituted, namely :- Appendix E (See rule 7) (1) Articles allowed free of duty (2) (a) Tourists of Indian origin other than those coming from Pakistan by land route. (i) used personal effects and travel souvenirs, if- (a) these goods are for personal use of the tourist, and (b) these goods, other than those consumed during the India, are re-exported when the tourist leaves India for a foreign destination. (ii) articles as allowed to be cleared under rule 3 or rule (b) Tourists of foreign origin other than those of Nepalese origin coming from Nepal or of Bhutanese origin coming Bhutan or of Pakistani origin coming from Pakistan. (i) used personal effects and travel souvenirs, if- (a) these goods are for personal use of the tourist, and (b) these goods, other than those consumed during the India, are re-exported when the tourist leaves India for a foreign destination. (ii) articles upto a value of Rs.4000 for making gifts. (c) Tourists of Nepalese origin coming from Nepal or of Bhutanese origin coming from Bhutan. No free allowance. (d) Tourists of Pakistani origin or foreign tourists coming from Pakistan or tourists of Indian origin coming from Pakistan by land route. (i) used personal effects and travel souvenirs, if (a) these goods are for personal use of the tourist, and (b) these goods, other than those consumed during the India, are re-exported when the tourist leaves India for a foreign destination. (ii) articles upto a value of Rs.3000 for making gifts. (DR. VINAYAK PRASAD) Under Secretary to the Government of India F.No. 495/6/2000-Cus-VI -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:48.311Z"
+}

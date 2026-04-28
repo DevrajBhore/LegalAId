@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-06-2015_17_2015_-_central_excise_nt_ddfdb2690e29_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "17/ 2015 - Central Excise (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2015.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-06-2015",
+  "description": "17/ 2015 - Central Excise (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent17-2015.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2015.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2015.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2015.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2015.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent17-2015.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent17-2015.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 17/ 2015 - Central Excise (N.T.) [TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No.Â Â 17/ 2015 - Central Excise (N.T.) New Delhi, the 8 th June, 2015 G.S.R.Â (E).____Â Â In exercise of the powers conferred by sub-rule (2) of rule 9 of the Central Excise Rules, 2002, the Central Board of Excise and Customs hereby exempts from the operation of said rule, every manufacturing unit engaged in the manufacture of aluminium roofing panels falling under tariff item 7610 90 10 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986), subject to the conditions that such roofing panels are consumed at the site of manufacture for execution of the project and the manufacturer of such goods has a centralised billing or accounting system in respect of such goods manufactured by different manufacturing units and opts for registering only the premises or office from where such centralised billing or accounting is done. [F. No. 209/05/2013-CX.6] (ROHAN) Under Secretary to the Govt. of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:05.289Z"
+}

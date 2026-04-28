@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_25-08-2020_notification_no_632020_-central_tax_dated_25082020_bc380c95f17c_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 63/2020 -Central Tax dated 25.08.2020",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-63-central-tax-english-2020.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-08-2020",
+  "description": "Notification No. 63/2020 -Central Tax dated 25.08.2020",
+  "hindi_description": null,
+  "file_title": "notfctn-63-central-tax-english-2020.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-63-central-tax-english-2020.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-63-central-tax-english-2020.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-63-central-tax-english-2020.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-63-central-tax-english-2020.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=notfctn-63-central-tax-english-2020.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=notfctn-63-central-tax-english-2020.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance (Department of Revenue) Central Board of Indirect Taxes and Customs Notification No. 63/2020 – Central Tax New Delhi, the 25th August, 2020 G.S.R. ….(E).— In exercise of the powers conferred by sub-section (2) of section 1 of the Finance (No. 2) Act, 2019 (23 of 2019), the Central Government hereby appoints the 1st day of September, 2020, as the date on which the provisions of section 100 of the Finance (No. 2) Act, 2019 (23 of 2019), shall come into force. [F. No. 20/06/09/2019-GST] (Pramod Kumar) Director to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:46:24.819Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_02-08-2013_notfn_no_112012-cx_nt_6cb3dda0b3f6_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notfn No 11/2012-CX (NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent11-2013.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "02-08-2013",
+  "description": "Notfn No 11/2012-CX (NT)",
+  "hindi_description": null,
+  "file_title": "cent11-2013.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent11-2013.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent11-2013.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent11-2013.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent11-2013.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent11-2013.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent11-2013.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 11 /2013 - Central Excise (N.T.) New Delhi, the 2 nd August, 2013 G.S.R. (E) In exercise of the powers conferred by sub-rule (2) of rule 9 of the Central Excise Rules, 2002, the Central Board of Excise and Customs hereby exempts from registration under sub-rule (1) of rule 9 of said rules, unregistered premises used solely for affixing a sticker or re-printing or re-labeling or re-packing of pharmaceutical products falling under Chapter 30 of the First Schedule to the Central Excise Tariff Act, 1985 with lower ceiling price to comply with the notifications issued by the National Pharmaceutical Pricing Authority under Drugs (Prices Control) Order, 2013 published in the Gazette of India vide S.O. 1221 (E), dated the 15 th May, 2013 subject to the conditions specified in the notification no. 22/2013 - Central Excise dated the 29 th July, 2013 exempting the pharmaceutical products from payment of Central Excise duty. [F. No. 96/29/2013-CX.I] (Pankaj Jain) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:48:35.705Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "rules_23-01-1963_accessories_condition_rules_1963_75e05434892a_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Accessories (condition) Rules 1963",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=accessories-cond-1963-dec11.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "23-01-1963",
+  "description": "Accessories (condition) Rules 1963",
+  "hindi_description": null,
+  "file_title": "accessories-cond-1963-dec11.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=accessories-cond-1963-dec11.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=accessories-cond-1963-dec11.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=accessories-cond-1963-dec11.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=accessories-cond-1963-dec11.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=accessories-cond-1963-dec11.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=accessories-cond-1963-dec11.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "THE ACCESSORIES (CONDITION) RULES, 1963 Notification No. 18-Customs, dated 23rd January,1963. In exercise of the powers conferred by section 156 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following rules, namely:— RULE 1. These rules maybe called the Accessories (Condition) Rules, 1963. RULE 2. Accessories of and spare parts and maintenance or repairing implements for, any article, when imported along with that article shall be chargeable at the same rate of duty as that article, if the proper officer is satisfied that in the ordinary course of trade :— (i) such accessories, parts and implements are compulsorily supplied along with that article; and (ii) no separate charge is made for such supply, their price being included in the price of the article. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:13:21.851Z"
+}

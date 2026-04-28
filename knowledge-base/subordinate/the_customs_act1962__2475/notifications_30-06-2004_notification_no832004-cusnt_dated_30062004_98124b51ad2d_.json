@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-06-2004_notification_no832004-cusnt_dated_30062004_98124b51ad2d_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.83/2004-Cus(NT), dated 30.06.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-06-2004",
+  "description": "Notification No.83/2004-Cus(NT), dated 30.06.2004",
+  "hindi_description": null,
+  "file_title": "83-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "30th June, 2004 Notification No.83 / 2004-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962) and in supersession of the notification of the Government of India in the Ministry of Finance (Department of Revenue) No.30/97-Customs (N.T), dated the 7th July 1997, the Central Board of Excise and Customs hereby appoints,- (1) the officers specified below to be Chief Commissioner of Customs, who shall have jurisdiction over the whole of India, namely:- (i) Director General of Revenue Intelligence, New Delhi , and (ii) Director General of Inspection , Customs and Central Excise, New Delhi; (2) the Commissioners of Central Excise to be Commissioners of Customs within their respective jurisdiction as specified under rule 3 of the Central Excise Rules 2002, subject to modification that such jurisdiction of Commissioner of Customs in respect of the areas comprising the Airport, Inland Container Depot, Container Freight Station and Air Cargo Complex at Hyderabad notified under section 7 or, as the case may be, under section 8 of the Customs Act, 1962 (52 of 1962), exercisable by the Commissioner of Central Excise Hyderabad-I or Hyderabad-II or Hyderabad -III or Hyderabad-IV shall be exercised by the Commissioner of Central Excise Hyderabad -II; (3) the Commissioners of Central Excise (Appeals) to be Commissioners of Customs (Appeals) within their respective jurisdiction as specified under rule 3 of the Central Excise Rules, 2002; (4) the Additional Commissioners of Central Excise and Joint Commissioners of Central Excise to be Additional Commissioners of Customs and Joint Commissioners of Customs , respectively, within their respective jurisdictions; (5) the Deputy Commissioners of Central Excise and Assistant Commissioners of Central Excise to be the Deputy Commissioner of Customs and Assistant Commissioners of Customs, respectively, within their respective jurisdictions. F. No. 437/30/2004-Cus.IV D.S. Garbya Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:03:58.324Z"
+}

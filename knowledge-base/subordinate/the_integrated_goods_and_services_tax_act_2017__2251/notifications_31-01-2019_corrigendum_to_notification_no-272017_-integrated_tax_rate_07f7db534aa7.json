@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_31-01-2019_corrigendum_to_notification_no-272017_-integrated_tax_rate_dated_31012019_df03ae8c5918_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Corrigendum to Notification No-27/2017 -Integrated Tax (Rate) dated 31.01.2019",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-27-2018-igst-rate-english-corr.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-01-2019",
+  "description": "Corrigendum to Notification No-27/2017 -Integrated Tax (Rate) dated 31.01.2019",
+  "hindi_description": null,
+  "file_title": "notfctn-27-2018-igst-rate-english-corr.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-27-2018-igst-rate-english-corr.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-27-2018-igst-rate-english-corr.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-27-2018-igst-rate-english-corr.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-27-2018-igst-rate-english-corr.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=notfctn-27-2018-igst-rate-english-corr.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=notfctn-27-2018-igst-rate-english-corr.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Corrigendum New Delhi, the 31st January, 2019 G.S.R. (E). - In the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No.27/2018-Integrated Tax (Rate), dated the 31st December, 2018, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 1266(E), dated the 31st December, 2018, at page 20, in line 1, for “32” read “34”. [F.No.354/432/2018-TRU(pt)] (Gunjan Kumar Verma) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:23.956Z"
+}

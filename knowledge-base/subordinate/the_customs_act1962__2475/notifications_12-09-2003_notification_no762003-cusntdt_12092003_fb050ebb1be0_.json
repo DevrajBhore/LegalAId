@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_12-09-2003_notification_no762003-cusntdt_12092003_fb050ebb1be0_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.76/2003-Cus(NT),dt. 12.09.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=76-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-09-2003",
+  "description": "Notification No.76/2003-Cus(NT),dt. 12.09.2003",
+  "hindi_description": null,
+  "file_title": "76-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=76-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=76-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=76-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=76-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=76-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=76-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "12th September, 2003 Notification No. 76/2003 - Customs (N.T.) In exercise of the powers conferred by section 28AB of the Customs Act, 1962 (52 of 1962) and in supersession of the notification of the Government of India in the Ministry of Finance (Department of Revenue) No.27/2002 -Customs (N. T.), dated 13th May, 2002 [ GSR 358 (E), dated 13th May, 2002 ], except as respects things done or omitted to be done before such supersession , the Central Government hereby fixes the rate of interest at thirteen per cent per annum for the purposes of the said section. D.S. Garbyal Under Secretary to the Government o India F.No . 438/17/2003-Cus. IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:01:02.908Z"
+}

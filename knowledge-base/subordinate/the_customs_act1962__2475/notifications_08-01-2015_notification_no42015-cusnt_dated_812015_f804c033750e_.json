@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-01-2015_notification_no42015-cusnt_dated_812015_f804c033750e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.4/2015-Cus(NT) dated 8.1.2015",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=4-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-01-2015",
+  "description": "Notification No.4/2015-Cus(NT) dated 8.1.2015",
+  "hindi_description": null,
+  "file_title": "4-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=4-15.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=4-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=4-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=4-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=4-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=4-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) NOTIFICATION NO.04/ 2015-Customs (N.T.) New Delhi, dated the 8th January, 2015 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Principal Commissioner of Customs (III), (Air Cargo Complex-Import), Sahar, Mumbai, to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Principal Commissioner of Customs (III), (Air Cargo Complex-Import), Sahar, Mumbai; (ii) the Joint/Additional Commissioner, Office of Principal Commissioner of Customs (Nhava Sheva-1), Mumbai Zine-II, Jawaharlal Nehru Custom House, Nhava Sheva, Raigad, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Rahi Imports, A/0201, Paras Co-operative Society, Rokadia Lane, Borivali (West), Mumbai issued vide F.No. DRI/MZU/F/INT-73/2014, dated the 30th October, 2014, by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, Mumbai. [F.No. 437/141/2014-Cus.IV] ( R.P.Singh) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:39:20.473Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-03-2006_notification_no282006-cusnt_dated_832006_4082dfc079f3_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.28/2006-Cus(NT), dated 8.3.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=28-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-03-2006",
+  "description": "Notification No.28/2006-Cus(NT), dated 8.3.2006",
+  "hindi_description": null,
+  "file_title": "28-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=28-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=28-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=28-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=28-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=28-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=28-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 28 /2006- Customs (N.T.) 8th March, 2006 S.O. (E). - In exercise of the powers conferred by sub-section (i) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Import), New Custom House, Ballard Estate, Mumbai to act as Commissioner of Customs JNPT, Nhava Sheva, Uran, Raigad, Maharashtra and Commissioner of Customs (Preventive), New Custom House, New Delhi for the purposes of adjudicating the matters relating to show cause notices pertaining to M/s Sagar Electronics and Others issued, vide, DRI F.No.50D/126/2004-CI/CPG-1 dated 05.12.2005 and DRI.F.No.50D/126/2004-CI(CPG-II) dated 16.12.2005 by the Additional Director General, Directorate of Revenue Intelligence, Hqtrs., 7th Floor, Drum Shape Building, I.P.Estate, I.P.Bhavan, New Delhi- 110002. F.NO.437/07/2006-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:08:24.700Z"
+}

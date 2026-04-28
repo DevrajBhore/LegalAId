@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-09-2001_notification_no632001-ce_nt_b4354518e67b_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.63/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent63-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-09-2001",
+  "description": "Notification No.63/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent63-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent63-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent63-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent63-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent63-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent63-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent63-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "13 th September, 2001. Notification No. 63 /2001-Central Excise (N.T.) In exercise of the powers conferred by clause (iii) of Explanation 2 to the proviso to sub-section (1) of section 3 of the Central Excise Act, 1944(1 of 1944), and in supersession of the notification of the Government of India in the Ministry of Finance (Department of Revenue), No. 13/2001-Central Excise, dated the 27 th March 2001 [G.S.R. 216(E), dated the 27 th March, 2001], except as respects things done or omitted to be done before such supersession, the Central Government hereby specifies the SEEPZ Special Economic Zone, Mumbai in the State of Maharashtra as a \" special economic zone\". Explanation .- For the purpose of this notification, \"SEEPZ Special Economic Zone\" means SEEPZ Special Economic Zone at Mumbai comprising the places bearing plot number F.1 in the erstwhile Marel Industrial Area of Maharashtra Industrial Development Corporation within the village limits of Parjapur and Vyaravli, taluka Andheri, and now in the Registration sub- district and district of Mumbai and Mumbai suburban containing by admeasurement 3,75,013 square meters or thereabout and bounded - on or towards the North, by road and Aarey Milk Colony Land; on or towards the South, by road; on or towards the East, by pipeline and Aarey Milk Colony Land; and on or towards the West, by road Rajendra Singh Under Secretary to the Government of India F.NO.305/1/2001-FTT -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:38:03.995Z"
+}

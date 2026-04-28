@@ -383,6 +383,18 @@ export function validateDraftConsistency(
     clauses.find((clause) => clause.clause_id === "TECH_SOURCE_CODE_001")?.text || "",
     clauses.find((clause) => clause.clause_id === "TECH_WARRANTY_001")?.text || "",
   ].join("\n");
+  const serviceControlText = clauses
+    .filter((clause) =>
+      [
+        "SERVICE_SCOPE_001",
+        "SERVICE_DELIVERABLES_001",
+        "SERVICE_WARRANTY_001",
+        "SERVICE_SLA_001",
+        "SERVICE_REPORTING_001",
+      ].includes(clause.clause_id)
+    )
+    .map((clause) => clause.text || "")
+    .join("\n");
   const loanRepaymentText =
     clauses.find((clause) => clause.clause_id === "LOAN_REPAYMENT_001")?.text || "";
   const guaranteeText = clauses
@@ -828,15 +840,15 @@ export function validateDraftConsistency(
       !matchesStructuredField(
         fieldName,
         variables[fieldName],
-        `${supplyControlText}\n${paymentText}\n${techText}`
+        `${supplyControlText}\n${paymentText}\n${techText}\n${serviceControlText}`
       )
     ) {
       issues.push(
         buildIssue(
           ruleId,
           "HIGH",
-          `The generated supply-control clauses do not clearly reflect the supplied ${label}.`,
-          `Ensure the inspection or risk-transfer clauses incorporate the provided ${label}.`
+          `The generated delivery, warranty, or supply-control clauses do not clearly reflect the supplied ${label}.`,
+          `Ensure the relevant delivery, service-warranty, inspection, or risk-transfer clauses incorporate the provided ${label}.`
         )
       );
     }

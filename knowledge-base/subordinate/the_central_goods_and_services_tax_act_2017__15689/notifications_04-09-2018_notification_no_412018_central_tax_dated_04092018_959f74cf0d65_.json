@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_04-09-2018_notification_no_412018_central_tax_dated_04092018_959f74cf0d65_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Notification No. 41/2018 Central Tax dated 04.09.2018",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-41-2018-central_tax-English.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "04-09-2018",
+  "description": "Notification No. 41/2018 Central Tax dated 04.09.2018",
+  "hindi_description": null,
+  "file_title": "Notification-41-2018-central_tax-English.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-41-2018-central_tax-English.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-41-2018-central_tax-English.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-41-2018-central_tax-English.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-41-2018-central_tax-English.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/notificationindividualfile/&file=Notification-41-2018-central_tax-English.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=notification&filename=Notification-41-2018-central_tax-English.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i)] Government of India Ministry of Finance Department of Revenue Central Board of Indirect Taxes and Customs Notification No. 41/2018 – Central Tax New Delhi, the 4th September, 2018 G.S.R. (E).- In exercise of the powers conferred by section 128 of the Central Goods and Services Tax Act, 2017 (12 of 2017), the Central Government, on the recommendations of the Council, hereby waives the late fee paid under section 47 of the said Act, by the following classes of taxpayers:- (i) the registered persons whose return in FORM GSTR-3B of the Central Goods and Services Tax Rules, 2017 for the month of October, 2017, was submitted but not filed on the common portal, after generation of the application reference number; (ii) the registered persons who have filed the return in FORM GSTR-4 of the Central Goods and Services Tax Rules, 2017 for the period October to December, 2017 by the due date but late fee was erroneously levied on the common portal; (iii) the Input Service Distributors who have paid the late fee for filing or submission of the return in FORM GSTR-6 of the Central Goods and Services Tax Rules, 2017 for any tax period between the 1st day of January, 2018 and the 23rd day of January, 2018. [F. No. 349/58/2017-GST (Pt.)] (Dr. Sreeparvathy S.L) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:29:05.798Z"
+}

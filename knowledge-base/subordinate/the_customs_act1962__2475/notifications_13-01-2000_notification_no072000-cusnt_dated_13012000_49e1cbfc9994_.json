@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_13-01-2000_notification_no072000-cusnt_dated_13012000_49e1cbfc9994_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.07/2000-Cus(NT), dated 13.01.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=7-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "13-01-2000",
+  "description": "Notification No.07/2000-Cus(NT), dated 13.01.2000",
+  "hindi_description": null,
+  "file_title": "7-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=7-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=7-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=7-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=7-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=7-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=7-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification appoints the Commissioner of Customs, Jaipur to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs (Export Promotion), New Custom House, Mumbai for specified purposes 13th January, 2000 Notification No. 7/2000-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 9162), the Central Government hereby appoints the Commissioner of Customs, Jaipur to be the Commissioner of Customs, to exercise the powers of the Commissioner of Customs (Export Promotion), New Custom House, Mumbai as the case may be, Commissioner of Customs (Air Cargo), New Delhi, under the said Act and the rules made thereunder for the purpose of adjudication of the seizure cases pertaining to M/s. Rasramparia Synthetics Limited, Bhiwadi, District Alwar (Rajasthan) for the import of capital goods made under EPCG Licence No. and date given in column No. (2) of the table below and the Bill of Entry No. and date specified in the corresponding entry in Column (3) of afore said table, from the Port of import specified in corresponding Entry in Column (4) of the said table. Table SI. NO. EPCG licence and date Bill of Entry No. and date Port of Import (1) (2) (3) (4) 1. P / CG /2130385 dated 2.4.93 242224 dated 4.8.93 IGI Airport, New Delhi 2. -do- 242226 dated 4.8.93 IGI Airport, New Delhi 3. -do- 242227 dated 4.8.93 IGI Airport, New Delhi 4. -do- 242228 dated 4.8.93 IGI Airport, New Delhi 5. -do- 3760 dated 16.5.94 Mumbai Port. 6. -do- 610 dated 2.9.93 610 dated 2.9.93 610 dated 2.9.93 610 dated 2.9.93 Mumbai Port. Mumbai Port. Mumbai Port. Mumbai Port. [F.No. 436/20/99-CUS. IV] RAJENDRA SINGH Under Secretary -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:14.722Z"
+}

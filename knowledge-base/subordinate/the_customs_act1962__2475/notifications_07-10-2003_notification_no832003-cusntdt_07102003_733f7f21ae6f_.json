@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_07-10-2003_notification_no832003-cusntdt_07102003_733f7f21ae6f_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.83/2003-Cus(NT),dt. 07.10.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "07-10-2003",
+  "description": "Notification No.83/2003-Cus(NT),dt. 07.10.2003",
+  "hindi_description": null,
+  "file_title": "83-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=83-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=83-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "7th October, 2003 Notification No. 83/2003 - Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Appeals), Mumbai-II, as Commissioner of Customs (Appeals), Mumbai-I, for the purpose of deciding the appeals filed before the Commissioner of Customs (Appeals), Mumbai-I on and from the 1st January, 1999 to 31stDecember, 2001. D.S. Garbyal Under Secretary to the Government of India F.No.437/19/2003-Cus.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:01:13.646Z"
+}

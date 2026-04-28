@@ -1,0 +1,54 @@
+{
+  "sub_id": "notifications_21-12-2012_notification_no1122012-cusnt_dated_21122012_14f30da3a1b5_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.112/2012-Cus(NT), dated 21.12.2012",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=112-12_%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-12-2012",
+  "description": "Notification No.112/2012-Cus(NT), dated 21.12.2012",
+  "hindi_description": null,
+  "file_title": "112-12_(1).pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=112-12.pdf"
+  ],
+  "alternate_file_titles": [
+    "112-12.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.112/2012-Cus(NT), dated 21.12.2012"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_(1).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=112-12_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=112-12_%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=112-12_(1).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART-II, SECTION-3, SUB-SECTION (i)] Government of India Ministry of Finance Department of Revenue ----------- New Delhi, the 21st December, 2012, Notification No.112/2012-Customs (N.T.) G.S.R. No. (E) - In exercise of the powers conferred by sub-rule (1) of Rule 3 of the Customs Tariff (Transitional Product Specific Safeguard Duty) Rules, 2002 and in supersession of notification of the Government of India in the Ministry of Finance (Department of Revenue) No. 03/2010-Customs (N.T.) issued vide G.S.R. No.22(E) dated the 11th January, 2010, the Central Government hereby appoints Sh. Bimal Behari Prasad as the Director General (Specific Safeguard) for the purposes of the said Rules. [F.No. 528/89/2012-STO(TU)] (M.V.Vasudevan) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:37:12.095Z"
+}

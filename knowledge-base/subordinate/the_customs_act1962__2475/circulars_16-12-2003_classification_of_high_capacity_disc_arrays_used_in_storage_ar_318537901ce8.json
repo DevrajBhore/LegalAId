@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_16-12-2003_classification_of_high_capacity_disc_arrays_used_in_storage_area_networks_sans_-_circular_no1052003-customs_dated_16122003_90166a1279a4_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Classification of high capacity disc arrays used in Storage Area Networks (SANS). - Circular No.105/2003-Customs, dated 16.12.2003",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir105-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-12-2003",
+  "description": "Classification of high capacity disc arrays used in Storage Area Networks (SANS). - Circular No.105/2003-Customs, dated 16.12.2003",
+  "hindi_description": null,
+  "file_title": "Cir105-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir105-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir105-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir105-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir105-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir105-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir105-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 105/2003-Cus Dec 16, 2003 F.No. 528/112/2003-Cus (TU) Government of India Ministry of Finance Department of Revenue Central Board of Excise and Customs Subject : Classification of high capacity disc arrays used in Storage Area Networks (SAN\"S). I am directed to say that divergence of practice regarding the classification of high capacity disc arrays has been brought to the notice of the Board. This item is being assessed under CTH 8471.70 as \"Storage Unit\" or under CTH 84715000 as a \"Digital Processing unit\" by different Commissionerates. 2. Storage devices called \"Storage Disc Arrays\" are high availability, capacity storage systems. These systems allow storage upto 219 GB and are used in Servers and work stations supported on Unix, Windows NT & Solaris platforms. These disk arrays provide high speed response, continuous access to data and run at 3.2. Gega bytes per second. They utilize the most current technology of a Cross-bar back plane which is called Hierarchical Star Net to significantly increase the band width capacities. The operating systems supported by the device includes all industry leading operating systems like HP-Unix, IBM-AIX, Novell- Netware, MS-Windows NT, Windows 2000, Linux etc. As these systems are used for providing superior storage for mission critical applications, offering benefits of high availability and redundancy, ultra high performance and scalability, big industries and institutions are procuring these storage systems for their use. These storage units consist of link controller cards, power supplies, processors and cache memory etc. 3. This matter was discussed in the Tariff Conference of Chief Commissioners of Customs held at Visakhapatnam on 25th and 26th September, 2003 [Agenda Point A-4.]. 4. The Conference came to the conclusion that the equipment is essentially a storage unit for the reason that the principal function is that of storage. Hence, the view that emerged was that the item \"Storage Disk Arrays\" was appropriately classifiable under CTH 84717090 as a \"Storage Unit.\" 5. The Board has accepted the recommendation of the Conference. It is accordingly clarified that the item \"Storage Disk Arrays\" is appropriately classifiable under CTH 84717090. 6. Field formations may finalise the pending assessments, if any, accordingly. H.K. Sharma STO (TU) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:34:47.836Z"
+}

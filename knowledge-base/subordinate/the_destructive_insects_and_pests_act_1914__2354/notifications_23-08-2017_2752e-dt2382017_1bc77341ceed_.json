@@ -1,0 +1,76 @@
+{
+  "sub_id": "notifications_23-08-2017_2752e-dt2382017_1bc77341ceed_",
+  "parent_act_id": "the_destructive_insects_and_pests_act_1914__2354",
+  "title": "2752(E)-dt.23.8.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00008_191402_1523342057238/notificationindividualfile/&file=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "23-08-2017",
+  "description": "2752(E)-dt.23.8.2017",
+  "hindi_description": null,
+  "file_title": "54-2752(e)-dt.23.8.2017(1).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00008_191402_1523342057238/notificationindividualfile/&file=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_23_31_00008_191402_1523342057238/notificationindividualfile/&file=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752%28e%29-dt.23.8.2017%281%29.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_23_31_00008_191402_1523342057238&type=notification&filename=54-2752(e)-dt.23.8.2017(1).pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "2752(E)-dt.23.8.2017",
+  "fetched_at": "2026-04-13T19:26:03.393Z"
+}

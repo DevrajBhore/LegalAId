@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "url": "https://www.mca.gov.in/content/mca/global/en/notifications-tender/notices-circulars.html",
+      "type": "notices-circulars",
+      "label": "MCA Notices & Circulars"
+    },
+    {
+      "url": "https://www.mca.gov.in/content/mca/global/en/notifications-tender/circulars.html",
+      "type": "circulars",
+      "label": "MCA Circulars"
+    },
+    {
+      "url": "https://www.mca.gov.in/content/mca/global/en/notifications-tender/news-updates/updates.html",
+      "type": "updates",
+      "label": "MCA Updates"
+    },
+    {
+      "url": "https://www.mca.gov.in/content/mca/global/en/notifications-tender/whats-new.html",
+      "type": "whats-new",
+      "label": "MCA What's New"
+    },
+    {
+      "url": "https://www.mca.gov.in/content/mca/global/en/notifications-tender/news-updates/press-release.html",
+      "type": "press-release",
+      "label": "MCA Press Releases"
+    }
+  ]
+}

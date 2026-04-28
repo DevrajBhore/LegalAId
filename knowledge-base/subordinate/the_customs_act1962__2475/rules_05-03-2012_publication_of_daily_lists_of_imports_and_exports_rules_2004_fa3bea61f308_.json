@@ -1,0 +1,46 @@
+{
+  "sub_id": "rules_05-03-2012_publication_of_daily_lists_of_imports_and_exports_rules_2004_fa3bea61f308_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Publication of Daily Lists of Imports and Exports Rules, 2004",
+  "type": "rules",
+  "category_label": "Rules",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-03-2012",
+  "description": "Publication of Daily Lists of Imports and Exports Rules, 2004",
+  "hindi_description": null,
+  "file_title": "publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rules&filename=publication_of_daily_lists_of_imports_and_exports_rules.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/rulesindividualfile/&file=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=rule&filename=publication_of_daily_lists_of_imports_and_exports_rules.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Publication of Daily Lists of Imports and Exports Rules, 2004 [Notification No. 128/2004-Cus (N.T) dated 19-11-2004 amended by 18/2012 - Cus (N.T.) dated 05-03-2012] In exercise of the powers conferred by section 156 of the Customs Act, 1962 (52 of 1962), and in supersession of notifications No. 82 dated the 26th November, 1951, No. 289-Cus. dated the 7th December, 1957, and No. 34-Cus. dated the 28th February, 1959, except as respects things done or omitted to be done before such supersession, the Central Government hereby makes the following rules, namely :- 1. Short title and commencement. - (1) These Rules may be called the Publication of Daily Lists of Imports and Exports Rules, 2004. (2) They shall come into force on the date of their publication in the Official Gazette. 2. Publication of daily lists of imports and exports. - (1) The Commissioner of Customs shall publish or cause to be published in such manner as he deems fit, a list of all goods imported into or exported from a functioning port, airport, inland container depot or land customs stations on the Electronic Data Interchange (EDI) system. Explanation: For the purposes of these rules, \"the Electronic Data Interchange (EDI) system\" means the customs computer system, through which an electronic declaration or manifest, of the particulars relating to imported or exported goods, is lodged by the authorized person through the data-entry facility provided at the service center or the data communication networking facility provided by the National Informatics Centre, from the authorized person's computer. (2) The publication referred to in sub-rule (1) shall be sufficient if the list mentioned therein are exhibited on the notice board or web-site of the custom house. 3. Particulars of publication.- (1) The particulars referred to in sub-rule (1) of rule 2 shall be the following:- Daily list of imports- 1. Port or country of origin 2. Description of goods 3. Customs tariff heading 4. Quantity 5. Unit quantity code 6. Value of goods (in rupees) Daily list of exports- 1. Port of destination 2. Description of goods 3. Customs tariff heading 4. Quantity 5. Unit quantity code 6. Value of goods (in rupees). -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:14:40.490Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-09-2003_notification_no732003-cusntdt_10092003_feb6e2799d4e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.73/2003-Cus(NT),dt. 10.09.2003",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=73-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-09-2003",
+  "description": "Notification No.73/2003-Cus(NT),dt. 10.09.2003",
+  "hindi_description": null,
+  "file_title": "73-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=73-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=73-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=73-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=73-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=73-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=73-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "10th September, 2003 Notification No. 73/2003 - Customs ( N.T ) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Kandla, to act as Commissioner of Customs (Imports), Jawahar Custom House, Nhava Sheva, Post: Uran, District-Raigarh, Maharashtra- 400 707 and Commissioner of Customs, Ahmedabad for the purpose of adjudicating the matters relating to Show-Cause-Notice pertaining to M/s. Anita Tex Print Limited, SP-35, Rajasthan Industrial Investment Cooperation, Industrial Area, Kaladera, Jaipur and Others, issued vide F.No.23/20/2002-DZU/1734- 1746(Ex.Pt.1738), dated the 31st March, 2003 / 8th April, 2003, by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit, B-3 and 4, 6th Floor, Paryavaran Bhawan, C.G.O. Complex, Lodhi Road, New Delhi. D.S.Garbyal Under Secretary to the Government of India Ph.No.2309 4182 F.NO.437/21/2003-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:00:50.085Z"
+}

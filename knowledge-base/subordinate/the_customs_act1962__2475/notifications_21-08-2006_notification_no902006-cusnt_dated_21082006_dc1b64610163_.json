@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-08-2006_notification_no902006-cusnt_dated_21082006_dc1b64610163_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.90/2006-Cus(NT), dated 21.08.2006",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=90-06.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-08-2006",
+  "description": "Notification No.90/2006-Cus(NT), dated 21.08.2006",
+  "hindi_description": null,
+  "file_title": "90-06.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=90-06.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=90-06.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=90-06.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=90-06.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=90-06.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=90-06.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 90/2006-Customs (N.T.) 21st August, 2006 S.O. (E). - In exercise of powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs, hereby appoints the Commissioner of Customs Bangalore, and authorises him to exercise the powers and discharge the duties conferred or imposed on the officers specified in the entry in column (4) of the Table below in the matters specified in the corresponding entries in columns (2) and (3) of the said Table. Table Sl. No. Name of the party Show Cause Notice Number Designation of Officer (1) (2) (3) (4) 1 (i)M/s Bharti Tele-Venture Limited, New Delhi (ii) M/s Ericsson India Pvt Ltd, New Delhi. DRI F.No. S/IV/25/04, (Delhi- BTVL) dated 29.05.2006 Commissioner of Customs, (Imports),Air Cargo Complex, New Delhi 2 (i)M/s Bharti Hexacom Limited, New Delhi, and (ii) M/s Ericsson India Pvt Ltd, New Delhi. DRI F.No. S/IV/25/04 (Delhi- BHL), dated 29.05.2006 Commissioner of Customs, (Imports),Air Cargo Complex, New Delhi 3 (i)M/s Bharti Hexacom Limited, New Delhi, and (ii) M/s Ericsson India Pvt Ltd, New Delhi. DRI F.No. S/IV/25/04 (Kolkata-BHL), dated 31.5.2006 Commissioner of Customs, (Airport and Air Cargo), Kolkata. 4 (i)M/s Bharti Tele-Venture Limited, New Delhi, and (ii) M/s Ericsson India Pvt Ltd, New Delhi. DRI F.No. S/IV/25/04 (Kolkata-BTVL), dated 31.05.2006 Commissioner of Customs, (Airport and Air Cargo), Kolkata F.NO.437/ 35/ 2006-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:10:45.882Z"
+}

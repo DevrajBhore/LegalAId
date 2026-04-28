@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-11-2021_022021-cxnt-hindi_e256ade314be_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "02/2021-CX(NT)-Hindi",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02h-2021.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-11-2021",
+  "description": "02/2021-CX(NT)-Hindi",
+  "hindi_description": null,
+  "file_title": "cx-nt02h-2021.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02h-2021.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02h-2021.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02h-2021.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02h-2021.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02h-2021.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02h-2021.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[SRA H WS, SHSM, set Il, WS 3, SUS (i) A wena] aNd CAR fad Aarts (tated fasist) SERIA AeA 02/2021- Adres scuE wow (st2)fe) as feecit, 10 aAdax, 2021 FT FT AT. n(n — HART SETI Wow fersaTac, 2017 & frat 9 s0-aA (2) @ant Yer eiecrat ar vate aX EU, HetT ucear wT ste MAT een aS vaaganr seq Aaa & Taree a, Utes Rs ot Ht da sce Yow Hfferaa, 1944 (1944 aT 1) AY aleft sept & chm eff 2709 00 10 & sicelar ant & (sah ae Piaf ma & wr a Hefta) , & frator or scorer A oat weds fata sans, at we tar t agi ta Ara & frat & ore fate sarsat ar uftert carr fafa a senita fatece arr & aes f wa deta fies at car wore & set B tet serepa fafeler ar saree Pear star # 3ik hae Se SHS aT ORL aT aHratea wt dolar ak ar aoe a sed fer WY Tote, wie axel arg fret eft sated oer aA aftisaan scorer oe otal S ee Yd Hae at arash [ere 116/40/20-<rea-3] (oor HAT FA) aX Uda, HRA ALAN -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:05:40.655Z"
+}

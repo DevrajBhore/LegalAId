@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_12-08-2010_notification_no712010-cusntdt_12082010_bd0d3406298e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.71/2010-Cus(NT),dt. 12.08.2010",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=71-10.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-08-2010",
+  "description": "Notification No.71/2010-Cus(NT),dt. 12.08.2010",
+  "hindi_description": null,
+  "file_title": "71-10.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=71-10.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=71-10.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=71-10.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=71-10.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=71-10.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=71-10.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No.71/2010-Customs (N.T.) New Delhi,dated the 12th August,2010. S.O . (E). - In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Ports), Customs House, Kolkata to exercise the powers and discharge the duties conferred or imposed on- ( i) the Commissioner of Customs,(Imports),NCH,Mumbai and (ii) the Additional Commissioner of Customs (Import), JNCH, Mumbai, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s Fine Enterprises,886/2, East Park Road, Karol Bagh,NewDelhi and others, issued vide,F.No DRI/AZU/INV-05/2008 dated the 9th April, 2010 by the Additional Director General, Directorate of Revenue Ahmedabad Zonal Unit, Ahmedabad. [F.No. 437/37/2010-Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:34:19.805Z"
+}

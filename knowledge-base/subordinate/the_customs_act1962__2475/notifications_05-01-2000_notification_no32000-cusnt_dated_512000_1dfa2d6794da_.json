@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-01-2000_notification_no32000-cusnt_dated_512000_1dfa2d6794da_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.3/2000-Cus(NT), dated 5.1.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=3-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-01-2000",
+  "description": "Notification No.3/2000-Cus(NT), dated 5.1.2000",
+  "hindi_description": null,
+  "file_title": "3-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=3-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=3-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=3-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=3-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=3-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=3-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification amends Notification No. 29/97-Customs (N.T.), dated the 7th July, 1997 5th January, 2000 Notification No. 03/2000-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Government hereby makes the following further amendment in the notification of the Government of India in the Ministry of Finance (Department of Revenue), No. 29/97-Customs (N.T.), dated the 7th July, 1997, namely :- In the Table to the said notification against serial No.3 in column (3), for the ward \"Belgaum\", the words \"Belgaum, Manglore\" shall be substituted. (RAJENDRA SINGH) UNDER SECRETARY TO THE GOVERNMENT OF INDIA F.No. 437/5/97-CUS.IV Note : The principal notification No. 29/97-Cus.(NT) dated 7th July, 1997 was published in the Gazette of India Extraordinary Part-II Section 3, sub-section (i), dated the 7th July, 1997 under G.S.R.No. 365(E) and amended vide notification No. 41/97-Cus. (NT) dated 10th September, 1997 published in the Gazette of India Extraordinary Part-II, Section 3, sub-section (i) dated the 10th September, 1997 under G.S.R. 19(E) 530(E), amended vide notification No. 44/98-Cus.(NT) dated 30th June, 1998 published in the Gazette of India Extraordinary part-II, Section 3, sub-section (i) dated the 30th June, 1998 under GSR No. 241(E) and amended vide notification No. 18/99-Cus.(NT) dated 3rd March, 1999 published in the gazette of India Extraordinary Part-II, Section 3, sub- section (i) dated the 3rd march, 1999 vide GSR 191(E). -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:10.123Z"
+}

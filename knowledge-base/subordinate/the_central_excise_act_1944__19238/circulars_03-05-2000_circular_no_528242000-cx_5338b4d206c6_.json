@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_03-05-2000_circular_no_528242000-cx_5338b4d206c6_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Circular no. 528/24/2000-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=528-00-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-05-2000",
+  "description": "Circular no. 528/24/2000-CX",
+  "hindi_description": null,
+  "file_title": "528-00-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=528-00-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=528-00-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=528-00-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=528-00-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=528-00-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=528-00-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 528/24/2000-CX. F.NO. 201/10/99 Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs New Delhi, the 3rd May, 2000 Subject: Monthly payment of excise duty by SSI It is directed say that Rule 173 GG of the Central Excise Rules, 1944, which provided for the special procedure for monthly payment of duty by manufacurers availing of the exemption under a notification based on value of clearances in a financial year ( Small Scale Industries ), has been omited with effect from 1 st April, 2000. The modifed provision relating to monthly payment of duty by the Small Scale Industries has now been incorporated in rule 173G. it has therefore, been decided to withdraw the Circular No. 458/24/99-CX dated 24 th May, 1999, ( which was based on the orstwhile rule 173 GG) with effect from 1 st April, 2000. 2. The trade interests and field formation may suitably be informed. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:05:04.258Z"
+}

@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_12-01-2016_notification_no062016-cusnt_dated_12012016_bc2ff1bd520c_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.06/2016-Cus(NT), dated 12.01.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt06-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "12-01-2016",
+  "description": "Notification No.06/2016-Cus(NT), dated 12.01.2016",
+  "hindi_description": null,
+  "file_title": "csnt06-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt06-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt06-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.06/2016-Cus(NT), dated 12.1.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt06-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt06-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt06-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt06-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt06-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt06-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part-II, Section 3, Sub-section (ii)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No. 06/2016-Customs (N.T.) New Delhi, the 12th January, 2016 S.O. (E). -In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional Director General (Adjudication), Directorate of Revenue Intelligence, Mumbai to act as a Common Adjudicating Authority to exercise the powers and discharge the duties conferred or imposed on - (i) the Commissioner of Customs, Nhava Sheva-V, Mumbai Zone II, Jawaharlal Nehru Custom House, Nhava Sheva; (ii) the Principal Commissioner of Customs (III) - (Air Cargo Complex-Import), Mumbai Zone – III, Air Cargo Complex, Mumbai; (iii) the Commissioner of Customs (II), Port-Import, Custom House, 60, Rajaji Salai, Chennai-600001; (iv) the Principal Commissioner of Customs (Import), ICD Tughlakabad, New Delhi-110020; (v) the Principal Commissioner of Customs, Air Cargo Complex (Import), New Custom House, Near IGI Airport, New Delhi-110037, for the purpose of adjudicating the matters relating to show cause notice pertaining to the import by M/s Toshiba India Pvt. Ltd. 3rd floor, Building No. 10, Tower-B, Phase II, DLF Cyber City, Gurgaon-122002, and others issued vide Show Cause Notice number DRI/MZU/NS/Enq-101/2014-15/339, dated the 21st July, 2015 by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, Mumbai. [F No.437/37/2015-Cus.IV] (Z. R. Kamili) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:41:31.216Z"
+}

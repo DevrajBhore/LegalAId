@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_15-04-2015_gsr_287e_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers_fea3f7991d1a_",
+  "parent_act_id": "the_prevention_of_money-laundering_act_2002__2036",
+  "title": "GSR 287(E) dated 15-4-2015 related to DNFBP - Insurance brokers",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=gsr_287%28e%29_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "15-04-2015",
+  "description": "GSR 287(E) dated 15-4-2015 related to DNFBP - Insurance brokers",
+  "hindi_description": null,
+  "file_title": "gsr_287(e)_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287(e)_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=gsr_287%28e%29_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287%28e%29_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287(e)_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287%28e%29_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287(e)_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00035_200315_1517807326550/notificationindividualfile/&file=gsr_287%28e%29_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00035_200315_1517807326550&type=notification&filename=gsr_287(e)_dated_15-4-2015_related_to_dnfbp_-_insurance_brokers.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "r:======================================~~~~~~~------------------------~-------------- - 2 THE GAZETTE OF INDIA: EXTRAORDINARY [PARt II-SEC. 3(i)] MINISTRY OF FINANCE (Department of Revenue) NOTIFICATION New Delhi the 15th April, 20 J 5 No. 2/2015 G.S.R. 287(E).-ln exercise of powers conferred by sub-clause (vi) of clause (sa) of sub-section (I) of section 2 of the Prevention of Money-laundering Act, 2002 (15 of 2003), the Central Government hereby notifies that any person, licensed by the Insurance Regulatory and Development Authority to perform the functions as specified in regulation 3 or regulation 4 or regulation 5 of the Insurance Regulatory and Development Authority (Insurance Brokers) Regulations, 2002, shall be deemed to be a \"person carrying on designated business or profession\". [F. No. M.IIOI 1/9/2013-S.0.(E.S. Cell)(Pt.I)] BlrLAB KUMARt ASKAR, Under SC;:l:Y. Printed by the Manager, Government of India Press, Ring Road, Mayapuri. New Delhi-l l0064 and Published by the Controller or Publications, Delhi-I l 0054. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:13:01.560Z"
+}

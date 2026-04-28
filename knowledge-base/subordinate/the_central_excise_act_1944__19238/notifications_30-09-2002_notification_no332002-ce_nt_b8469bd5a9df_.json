@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-09-2002_notification_no332002-ce_nt_b8469bd5a9df_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.33/2002-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent33-2k2.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-09-2002",
+  "description": "Notification No.33/2002-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent33-2k2.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent33-2k2.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent33-2k2.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent33-2k2.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent33-2k2.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent33-2k2.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent33-2k2.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "30 th September, 2002 Notification No.33/2002-Central Excise (N.T.) Whereas the Central Government is satisfied that a practice was generally prevalent regarding levy of duty of excise (including non-levy thereof) under Section 3 of the Central Excise Act, 1944 (1 of 1944) (hereinafter referred to as the Excise Act), on jute intermediates like yarn, thread, rope, twine, etc. falling under Sub-Heading Nos.5302.20, 53.06, 5607.19, 5702.20, and Heading No.63.01 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986), consumed captively in the further manufacture of jute products within the same factory, and that such jute intermediates were liable to duty of excise which was not levied according to the said practice during the period commencing on and from 20 th May, 1994 and ending with 10 th August, 1994; Now, therefore, in exercise of the powers conferred by section 11C of the Excise Act, the Central Government hereby directs that the duty of excise payable on the said jute intermediates, consumed captively in the same factory for the further manufacture of jute products, but for the said practice, shall not be required to be paid in respect of such jute intermediates on which the said duty of excise was not levied during the aforesaid period, in accordance with the said practice. Suraksha Katiyar Under Secretary to the Government of India F.No.53/1/2002CX.I -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:41:01.141Z"
+}

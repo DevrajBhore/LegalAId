@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_03-01-2000_circular_no_50512000-cx_0d2b2b1a60bc_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "circular no. 505/1/2000-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=505-00-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-01-2000",
+  "description": "circular no. 505/1/2000-CX",
+  "hindi_description": null,
+  "file_title": "505-00-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=505-00-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=505-00-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=505-00-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=505-00-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=505-00-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=505-00-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 505/01/2000-CX F.NO. 209/55/99-CX.6 Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs New Delhi, the 3, Jan. 2000 Subject: Warehousing --- all automobile manufacturers covered It is directed to enclose CBEC Order number 1/2000-Central Excise dated 3 rd January, 2000 whereby \"All automobiles manufacturers who have signed Memorandum of Understanding with DGFT\" has been specified as class of exporters for the purpose of notification number 26/98-CE(N.T.) dated 15 th July, 1998. The procedure specified in Board's Circular No. 422/55/98-CX dated 21 st September, 1998 shall be followed in this regard. 2. The trade and the field formations may suitably be informed. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:02:37.572Z"
+}

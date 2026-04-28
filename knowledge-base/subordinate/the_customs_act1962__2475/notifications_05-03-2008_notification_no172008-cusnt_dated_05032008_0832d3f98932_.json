@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-03-2008_notification_no172008-cusnt_dated_05032008_0832d3f98932_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.17/2008-Cus(NT), dated 05.03.2008",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-08.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-03-2008",
+  "description": "Notification No.17/2008-Cus(NT), dated 05.03.2008",
+  "hindi_description": null,
+  "file_title": "17-08.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-08.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-08.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-08.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-08.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=17-08.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=17-08.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUBSECTION (ii) ] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 17 / 2008-Customs (N.T.) New Delhi, the 5th March, 2008 15 Phalguna, 1929 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional or Joint Commissioner of Customs, (Import), Jawaharlal Nehru Custom House, Nhava Sheva, to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the Deputy Commissioner of Customs, Inter Container Depot, Sachin, Surat, for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Aum Impex, 22, Nand Nivas, Opposite-Nitin Apartment, Adrash Society, Athwalines, Surat vide, F.No. DRI/ AZU/INT-31/Aum/2006, dated the 31st July, 2007, by the Additional Director General, Directorate General of Revenue Intelligence, Ahmedabad Zonal Unit, Ahmedabad. [F.No. 437/63/2007-Cus.IV] (Aseem Kumar) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:16:22.024Z"
+}

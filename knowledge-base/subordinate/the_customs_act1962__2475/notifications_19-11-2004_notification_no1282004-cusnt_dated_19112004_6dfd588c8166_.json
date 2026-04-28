@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_19-11-2004_notification_no1282004-cusnt_dated_19112004_6dfd588c8166_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.128/2004-Cus(NT), dated 19.11.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=128-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "19-11-2004",
+  "description": "Notification No.128/2004-Cus(NT), dated 19.11.2004",
+  "hindi_description": null,
+  "file_title": "128-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=128-04.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=128-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=128-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=128-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=128-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=128-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "19th November November, 2004 Notification No. 128/2004-Customs (N.T) In exercise of the powers conferred by section 156 of the Customs Act, 1962 (52 of 1962), and in supersession of notifications No. 82 dated the 26th November, 1951, No. 289- Cus. dated the 7th December, 1957, and No. 34-Cus. dated the 28th February, 1959, except as respects things done or omitted to be done before such supersession, the Central Government hereby makes the following rules, namely :- 1. Short title and commencement. - (1) These rules may be called the Publication of Daily Lists of Imports and Exports Rules. (2) They shall come into force on the date of their publication in the Official Gazette. 2. Publication of daily lists of imports and exports. - (1) The Commissioner of Customs shall publish or cause to be published in such manner as he deems fit, a list of all goods imported into or exported from a port functioning on the Electronic Data Interchange (EDI) system. Explanation: For the purposes of these rules, \"the Electronic Data Interchange (EDI) system\" means the customs computer system, through which an electronic declaration or manifest, of the particulars relating to imported or exported goods, is lodged by the authorized person through the data-entry facility provided at the service center or the data communication networking facility provided by the National Informatics Centre, from the authorized person's computer. (2) The publication referred to in sub-rule (1) shall be sufficient if the list mentioned therein are exhibited on the notice board or web-site of the custom house. 3. Particulars of publication. - (1) The particulars referred to in rule 2 shall contain the following particulars, namely :- Daily list of imports - Port or country of origin of consignment. Description of goods. Quantity of goods. Value of goods.. Names of the steamers Daily list of exports - (i) Destination (ii) Description of goods. (iii) Quantity of goods. (iv) Value of goods. (v) Names of the steamers. F. No. 401/49/2003-Cus.III V. Kezo Under Secretary to the Government of India. -- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T20:05:18.866Z"
+}

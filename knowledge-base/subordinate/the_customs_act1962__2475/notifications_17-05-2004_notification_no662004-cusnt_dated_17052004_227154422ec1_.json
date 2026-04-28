@@ -1,0 +1,53 @@
+{
+  "sub_id": "notifications_17-05-2004_notification_no662004-cusnt_dated_17052004_227154422ec1_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.66/2004-Cus(NT), dated 17.05.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "17-05-2004",
+  "description": "Notification No.66/2004-Cus(NT), dated 17.05.2004",
+  "hindi_description": null,
+  "file_title": "66-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": true,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-04.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=66-04.pdf",
+        "status": 502,
+        "outcome": "source_error",
+        "error": "Source file could not be retrieved as a valid PDF."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=66-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "17th May, 2004 Notification No. 66/2004 - Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Imports), Jawahar Custom House, Nhava Sheva, Mumbai to act as Commissioner of Customs (Exports), New Custom House, Mumbai for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Shree Rajshri Plastics, B-30/32, Sarvonnati Society, Kirol Road, Ghatkopar (West), Mumbai - 400086 issued vide File No. DRI/BZU/F/03/2003/Pt.I/1108, dated the 12th February, 2004 by the Additional Director General, Directorate of Revenue Intelligence, Ist Floor, Construction House, Walchand Hirachand Marg, Ballard Estate, Mumbai- 400038. D.S. Garbyal Under Secretary to the Government of India F.NO.437/8/2004-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:03:42.734Z"
+}

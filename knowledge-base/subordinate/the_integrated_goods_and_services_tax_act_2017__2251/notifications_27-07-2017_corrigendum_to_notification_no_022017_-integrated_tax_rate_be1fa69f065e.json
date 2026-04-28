@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_27-07-2017_corrigendum_to_notification_no_022017_-integrated_tax_rate_dated_27072017_779307543764_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Corrigendum to Notification No. 02/2017 -Integrated Tax (Rate) dated 27.07.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigendum-2-IGST-2017-english.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-07-2017",
+  "description": "Corrigendum to Notification No. 02/2017 -Integrated Tax (Rate) dated 27.07.2017",
+  "hindi_description": null,
+  "file_title": "corrigendum-2-IGST-2017-english.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigendum-2-IGST-2017-english.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigendum-2-IGST-2017-english.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigendum-2-IGST-2017-english.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigendum-2-IGST-2017-english.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigendum-2-IGST-2017-english.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigendum-2-IGST-2017-english.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN PART II, SECTION 3, SUB-SECTION (i) OF THE GAZETTE OF INDIA, EXTRAORDINARY] GOVERNMENT OF INDIA MINISTRY OF FINANCE (Department of Revenue) Corrigendum New Delhi, the 27th July, 2017 G.S.R. (E).- In the notification of the Government of India, in the Ministry of Finance (Department of Revenue), No.2/2017-Integrated Tax (Rate), dated the 28th June, 2017, published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R. 667(E), dated the 28th June, 2017,- In the Schedule,- (i) in S.No.59, in column (2), for “9”, read “7, 9 or 10”; (ii) in S.No.102, in column(2), for “2302”, read “2301, 2302”. [F.No.354/117/2017-TRU] (Mohit Tewari) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:42.014Z"
+}

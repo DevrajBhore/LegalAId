@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_27-09-2017_circular_no_212017-igst_dated_27092017_440f1230c271_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Circular No. 2/1/2017-IGST dated 27.09.2017",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/circularindividualfile/&file=igst-circu-2.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-09-2017",
+  "description": "Circular No. 2/1/2017-IGST dated 27.09.2017",
+  "hindi_description": null,
+  "file_title": "igst-circu-2.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=circular&filename=igst-circu-2.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/circularindividualfile/&file=igst-circu-2.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=circular&filename=igst-circu-2.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=circular&filename=igst-circu-2.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/circularindividualfile/&file=igst-circu-2.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=circular&filename=igst-circu-2.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 2/1/2017-IGST F. No. 354/173/2017-TRU Government of India Ministry of Finance Department of Revenue Tax research Unit **** North Block, New Delhi 27th September 2017 To, The Principal Chief Commissioners/Chief Commissioners/ Principal Commissioners/ Commissioner of Central Tax (All) / The Principal Director Generals/ Director Generals (All) Madam/Sir, Subject: Clarification on supply of satellite launch services by ANTRIX Corporation Ltd - regarding. Request has been received regarding taxability of satellite launch services provided to both international and domestic customers by ANTRIX Corporation Limited which is a wholly owned Government of India Company under the administrative control of Department of Space (DOS). 2. In the above context, the legal provisions in GST laws are as under: a) Export of services is defined in IGST Act in Section 2(6) where the following 5 conditions have been prescribed as necessary for a supply to qualify as export of service: (i) the supplier of service is located in India; (ii) the recipient of service is located outside India; (iii) the place of supply of service is outside India; (iv) the payment for such service has been received by the supplier of service in convertible foreign exchange; and (v) the supplier of service and the recipient of service are not merely establishments of a distinct person in accordance with Explanation 1 in section 8; One of the five conditions for a supply of service to be considered as “export of service” is that the place of supply of service is outside India. b) Section 13(9) of the IGST Act provides that where location of supplier of services or location of recipient of services is outside India, the place of supply of services of transportation of goods, other than by way of mail or courier, shall be the place of destination of such goods. However, where location of supplier and recipient of services is in India, then the place of supply is governed by section 12 (8) of the IGST Act, which stipulates that place of supply will be the location of the recipient of services provided -- 1 of 2 -- Circular No. 2/1/2017-IGST he is registered; if not registered, then the place of supply will be the place where goods are handed over for their transportation. 3. In view of the above, place of supply of satellite launch services supplied by ANTRIX Corporation Limited to international customers would be outside India in terms of section 13(9) of IGST Act, 2017 and such supply which meets the requirements of section 2(6) of IGST Act, thus constitutes export of service and shall be zero rated in accordance with section 16 of the IGST Act. Where satellite launch service is provided by ANTRIX Corporation Limited to a person located in India, the place of supply of satellite launch service would be governed by section 12 (8) of the IGST Act and would be taxable under CGST Act, UTGST Act or IGST Act, as the case may be. 4. Difficulty if any, in the implementation of the circular should be brought to the notice of the Board. Hindi version would follow. Yours Faithfully, Rachna Technical Officer (TRU) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:49:53.250Z"
+}

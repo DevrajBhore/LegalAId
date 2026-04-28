@@ -9,6 +9,10 @@ function buildFieldDefinition(name, variable, requiredFields = []) {
     type: definition.type || "text",
     options: definition.options || null,
     required: requiredFields.includes(name),
+    placeholder: definition.placeholder || "",
+    description: definition.description || "",
+    example: definition.example || "",
+    aiGuidance: definition.aiGuidance || "",
   };
 }
 

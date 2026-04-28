@@ -1,0 +1,343 @@
+{
+  "act_id": "the_railway_claims_tribunal_act_1987__1771",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 48,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 48,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 48,
+    "failed_candidate_count": 6,
+    "keyword_hits": {
+      "rule": 2,
+      "rules": 48,
+      "regulations": 1,
+      "order": 3,
+      "orders": 2,
+      "notification": 2,
+      "notifications": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to make rules. Show Related Subordinates Section 30A. Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1771?view_type=browse",
+    "scanned_at": "2026-04-13T20:20:42.006Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "GSR_134_E_Railway Claims Tribunal (Group ‘A’ and ‘B’posts) Recruitment Rules, 1997",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts%29_recruitment_rules%2C_1997.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_134_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99posts)_recruitment_rules%2C_1997.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "GSR_563_E_Railway Claims Tribunal (Salaries and Allowances and Conditions of Service of Chairman, Vice—Chairman and Members) Amendment Rules, 1998",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members%29_amendment_rules%2C_1998.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_536_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and_members)_amendment_rules%2C_1998.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "GSR_733_E_Railway Claims Tribunal (Salaries and Allowances and Conditions of Service of Chairman, Vice—Chairman and, Members) Amendment Rules, 2000",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2000.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_733_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2000.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "GSR_692_E_Railway Claims Tribunal (Group ‘A’ and ‘B’ Posts) Recruitment (Amendment) Rules, 2003",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_%28group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2003.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_692_e_railway_claims_tribunal_(group_%E2%80%98a%E2%80%99_and_%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2003.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "GSR_463_E_Railway Claim Tribunal (Group ‘A’ and‘B’ Posts) Recruitment (Amendment) Rules, 2008",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_%28group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts%29_recruitment_%28amendment%29_rules%2C_2008.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_463_e_railway_claim_tribunal_(group_%E2%80%98a%E2%80%99_and%E2%80%98b%E2%80%99_posts)_recruitment_(amendment)_rules%2C_2008.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "GSR_796_E_Railway Claims Tribunal (Salaries and Allowances and Conditions of Service of Chairman, Vice—Chairman and, Members) Amendment Rules, 2014",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_1_1_00006_198754_1517807325410/rulesindividualfile/&file=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "status": 302,
+          "outcome": "source_error",
+          "error": "Source file could not be retrieved as a valid PDF."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_%28salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members%29_amendment_rules%2C_2014.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_1_1_00006_198754_1517807325410&type=rules&filename=gsr_796_e_railway_claims_tribunal_(salaries_and_allowances_and_conditions_of_service_of_chairman%2C_vice%E2%80%94chairman_and%2C_members)_amendment_rules%2C_2014.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

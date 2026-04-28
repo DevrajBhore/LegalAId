@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-02-2005_notification_no142005-cusnt_dated_1822005_93ad7e623a9b_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.14/2005-Cus(NT), dated 18.2.2005",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=14-05.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-02-2005",
+  "description": "Notification No.14/2005-Cus(NT), dated 18.2.2005",
+  "hindi_description": null,
+  "file_title": "14-05.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=14-05.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=14-05.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=14-05.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=14-05.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=14-05.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=14-05.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "18th February, 2005 Notification No 14 /2005-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Export Promotion), New Customs House, Ballard Estate, Mumbai to act as the Commissioner of Customs, Customs House, Amritsar for the purposes of adjudicating the matters relating to Show Cause Notices pertaining to M/s Swastika Enterprises, 13/1, Rani-ka-Bagh, Amritsar and Others, issued, vide, F.No.856(8)ASR/01/205, dated the 29th March, 2004, by the Deputy Director , Directorate of Revenue Intelligence, Amritsar. F.NO.437/60/2004-CUS.IV Anupam Prakash Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:05:45.231Z"
+}

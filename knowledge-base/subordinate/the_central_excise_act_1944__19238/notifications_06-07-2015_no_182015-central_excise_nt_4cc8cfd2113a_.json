@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_06-07-2015_no_182015-central_excise_nt_4cc8cfd2113a_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "No. 18/2015-Central Excise (N.T.)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2015.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "06-07-2015",
+  "description": "No. 18/2015-Central Excise (N.T.)",
+  "hindi_description": null,
+  "file_title": "cent18-2015.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2015.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2015.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2015.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2015.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent18-2015.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent18-2015.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance Department of Revenue Central Board of Excise and Customs Notification No. 18/2015-Central Excise (N.T.) New Delhi, the 6 th July, 2015 G.S.R. (E).____In pursuance of sub-rule (5) of rule 10 and sub-rule (9) of rule 11 of the Central Excise Rules, 2002 made under section 37 of the Central Excise Act, 1944 (1 of 1944) and sub-rule (5) of rule 5 and sub-rule (2) of rule 4C of the Service Tax Rules, 1994 made under sub-section (1) read with sub-section (2) of section 94 of the Finance Act, 1994 (32 of 1994), the Central Board of Excise and Customs hereby specifies the following conditions, safeguards and procedures for issue of invoices, preserving records in electronic form and authentication of records and invoices by digital signatures, namely:- 1. Every assessee proposing to use digital signature shall use Class 2 or Class 3 Digital Signature Certificate duly issued by the Certifying Authority in India. 1. (i) Every assessee proposing to use digital signatures shall intimate the following details to the jurisdictional Deputy Commissioner or Assistant Commissioner of Central Excise, at least fifteen days in advance:- 1. name, e-mail id, office address and designation of the person authorised to use the digital signature certificate; 2. name of the Certifying Authority; 3. date of issue of digital certificate and validity of the digital signature with a copy of the certificate issued by the Certifying Authority along with the complete address of the said Authority: Provided that in case of any change in the details submitted to the jurisdictional Deputy Commissioner or Assistant Commissioner, complete details shall be submitted afresh within fifteen days of such change. (ii) Every assessee already using digital signature shall intimate to the jurisdictional Deputy Commissioner or Assistant Commissioner of Central Excise the above details within fifteen days of issue of this notification. 1. Every assessee who opts to maintain records in electronic form and who has more than one factory or service tax registration shall maintain separate electronic records for each factory or each service tax registration. 1. Every assessee who opts to maintain records in electronic form, shall on request by a Central Excise Officer, produce the specified records in electronic form and invoices through e-mail or on a specified storage device in an electronically readable format for verification of the authenticity of the document and the request for such records and invoices shall be specified in the letter or e-mail by the Central Excise Officer. 1. A Central Excise Officer, during an enquiry, investigation or audit, in accordance with the provisions of section 14 of the Central Excise Act, 1944 and as made applicable to Service Tax as per the provisions contained in section 83 of the Finance Act, 1994, may direct an assessee to furnish printouts of the records in electronic form and invoices and may resume printouts of such records and invoices after verifying the correctness of the same in electronic format; and after the print outs of such records in electronic form have been signed by the assessee or any other person authorised by the assessee in this regard, if so requested by such Central Excise Officer. 1. Every assessee who opts to maintain records in electronic form shall ensure that appropriate backup of records in electronic form is maintained and preserved for a period of 5 years immediately after the financial year to which such records pertain. 1. This notification shall come into force on the date of its publication in the Official Gazette. [F. No. 224/44/2014-CX.6] (ROHAN) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:09.991Z"
+}

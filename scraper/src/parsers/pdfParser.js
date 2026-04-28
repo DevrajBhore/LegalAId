@@ -1,21 +1,31 @@
-// scraper/src/parsers/pdfParser.js
-import pdfParse from "pdf-parse";
+import { PDFParse } from "pdf-parse";
 
-/**
- * parsePDF(buffer)
- * Accepts a Buffer (pdf bytes) and returns { text, numPages, info }
- */
 export async function parsePDF(buffer) {
+  let parser;
   try {
-    const data = await pdfParse(buffer);
-    const text = (data.text || "").replace(/\s+/g, " ").trim();
+    parser = new PDFParse({ data: buffer });
+    const textResult = await parser.getText({ parseHyperlinks: false });
+    const infoResult = await parser.getInfo();
+    const text = (textResult?.text || "").replace(/\s+/g, " ").trim();
+
     return {
       text,
-      numPages: data.numpages ?? null,
-      info: data.info ?? {}
+      numPages: textResult?.total ?? infoResult?.total ?? null,
+      info: infoResult?.info ?? {},
     };
-  } catch (err) {
-    console.error("parsePDF error:", err);
-    return { text: "", error: err };
+  } catch (error) {
+    console.error("parsePDF error:", error);
+    return {
+      text: "",
+      error,
+    };
+  } finally {
+    if (parser) {
+      try {
+        await parser.destroy();
+      } catch {
+        // Ignore destroy failures from partially-loaded documents.
+      }
+    }
   }
 }

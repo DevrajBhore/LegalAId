@@ -1,0 +1,76 @@
+{
+  "sub_id": "notifications_31-03-2014_corrigenda_to_notification_no_gsr_130e_dated_27022014_regarding_schedule_vii_wrt_csr_activities_2f681504d626_",
+  "parent_act_id": "the_companies_act_2013__2114",
+  "title": "Corrigenda to Notification no. GSR 130E dated 27.02.2014 regarding Schedule VII w.r.t CSR Activities",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2014",
+  "description": "Corrigenda to Notification no. GSR 130E dated 27.02.2014 regarding Schedule VII w.r.t CSR Activities",
+  "hindi_description": null,
+  "file_title": "Corrigenda to Notification no. GSR 130E dated 27.02.2014 regarding Schedule VII [w.r.t CSR Activities].pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00008_201318_1517807327856/notificationindividualfile/&file=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%20to%20Notification%20no.%20GSR%20130E%20dated%2027.02.2014%20regarding%20Schedule%20VII%20%5Bw.r.t%20CSR%20Activities%5D.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda+to+Notification+no.+GSR+130E+dated+27.02.2014+regarding+Schedule+VII+%5Bw.r.t+CSR+Activities%5D.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00008_201318_1517807327856&type=notification&filename=Corrigenda%2Bto%2BNotification%2Bno.%2BGSR%2B130E%2Bdated%2B27.02.2014%2Bregarding%2BSchedule%2BVII%2B%5Bw.r.t%2BCSR%2BActivities%5D.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "Corrigenda to Notification no. GSR 130E dated 27.02.2014 regarding Schedule VII w.r.t CSR Activities",
+  "fetched_at": "2026-04-13T19:47:17.353Z"
+}

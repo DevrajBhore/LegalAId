@@ -1,0 +1,46 @@
+{
+  "sub_id": "orders_17-09-2018_order_no_042018-gst_dated_17092018_c8be586b0bbb_",
+  "parent_act_id": "the_central_goods_and_services_tax_act_2017__15689",
+  "title": "Order No. 04/2018-GST dated 17.09.2018",
+  "type": "order",
+  "category_label": "Orders",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order4-2018-cgst.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "17-09-2018",
+  "description": "Order No. 04/2018-GST dated 17.09.2018",
+  "hindi_description": null,
+  "file_title": "order4-2018-cgst.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order4-2018-cgst.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order4-2018-cgst.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order4-2018-cgst.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order4-2018-cgst.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_201712_1517807328102/orderindividualfile/&file=order4-2018-cgst.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_201712_1517807328102&type=order&filename=order4-2018-cgst.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "F. No. 349/58/2017-GST Government of India Ministry of Finance Department of Revenue Central Board of Indirect Taxes and Customs *** New Delhi, the 17th September, 2018 Order No. 4/2018-GST Subject: Extension of time limit for submitting the declaration in FORM GST TRAN-1 under rule 117(1A) of the Central Goods and Service Tax Rules, 2017 in certain cases In exercise of the powers conferred by sub-rule (1A) of rule 117 of the Central Goods and Services Tax Rules, 2017 read with section 168 of the Central Goods and Services Tax Act, 2017, on the recommendations of the Council, the Commissioner hereby extends the period for submitting the declaration in FORM GST TRAN-1 till 31st January, 2019, for the class of registered persons who could not submit the said declaration by the due date on account of technical difficulties on the common portal and whose cases have been recommended by the Council. (Upender Gupta) Commissioner (GST) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:48:38.836Z"
+}

@@ -1,0 +1,52 @@
+{
+  "sub_id": "notifications_29-11-2016_notification_no1412016-cusnt_dated_29112016_820dab5455d2_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.141/2016-Cus(NT), dated 29.11.2016",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt141-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-11-2016",
+  "description": "Notification No.141/2016-Cus(NT), dated 29.11.2016",
+  "hindi_description": null,
+  "file_title": "csnt141-2016.pdf",
+  "duplicate_count": 1,
+  "alternate_source_urls": [
+    "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt141-2016.pdf"
+  ],
+  "alternate_file_titles": [
+    "csnt141-2016.pdf"
+  ],
+  "alternate_descriptions": [
+    "Notification No.141/2016-Cus(NT), dated 29.11.2016"
+  ],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt141-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt141-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt141-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt141-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt141-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt141-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, sub-section (ii)] Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) Notification No.141 / 2016-Customs (N.T.) New Delhi, the 29th November, 2016 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints officer mentioned in column 5 of the table below to act as a Common Adjudicating Authority to exercise powers and discharge duties conferred or imposed on officers mentioned in column (4) of the table in respect of Show Cause Notices mentioned in column (3) of the table, for purpose of adjudication of show cause notices mentioned herein, namely:- Table [F.No. 437/11/2015-Cus IV] (Z.R.Kamili) Director (Customs) Sl. No Name of the Party/Noticee(s)(M/s) Show Cause Notice number and date Adjudicating Authorities Common Adjudicating Authority (1) (2) (3) (4) (5) 1. M/s Collective Trade Links, 19, 2nd floor, 133 Narayan Dhuru Street , Mumbai and others F.No.SD/INT/INV/11/99 (S/14-4-31/99) dated 14.03.2001, Commissioner of Customs (Prev.), Mumbai Commissioner of Customs, Pune 2. M/s Sai Impex, Sadashiv Peth, Pune and others F.No.VIII/CUS/CIU- 3/99 dated 29.3.2000 Commissioner of Customs, 41-A,, Sasoon Road, Pune-1 -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:43:17.840Z"
+}

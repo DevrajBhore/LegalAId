@@ -1,0 +1,48 @@
+{
+  "sub_id": "circulars_09-06-2009_addition_of_data_field_regarding_customs_notification_number_for_transmission_of_data_to_dgcis_-_circular_no192009-customs_dated_962009_d17905277cc8_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Addition of data field regarding 'customs notification number' for transmission of data to DGCI&S - Circular No.19/2009-Customs, dated 9.6.2009",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No+19-2009.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-06-2009",
+  "description": "Addition of data field regarding 'customs notification number' for transmission of data to DGCI&S - Circular No.19/2009-Customs, dated 9.6.2009",
+  "hindi_description": null,
+  "file_title": "Circular No 19-2009.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No%2019-2009.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No+19-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No+19-2009.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo%2B19-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular+No+19-2009.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%2BNo%2B19-2009.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Circular+No+19-2009.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Circular%20No%2019-2009.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No.19/2009 F.No.401/49/2003-Cus.III (Pt) Government of India Ministry of Finance Department of Revenue Central Board of Excise & Customs *** 159A, North Block, New Delhi. 9th June, 2009. Subject: Addition of data field regarding 'customs notification number' for transmission of data to DGCI&S - regarding - reg. *** Sir / Madam, Kindly refer to the Board's Circular No.32/2001-Customs dated the 31st May, 2001 in which the revised formats of 'Daily Trade Return' (DTR) were circulated. 2. In order to collect, compile and process the data on imports into the country under Regional Trade Agreements (RTA) and Preferential Trade Agreements (PTA), the format of the DTA is being revised to include the data, 'customs notification number'. A copy of the revised format of DTR is enclosed as Annexure-I. It may be seen that the revised format of the DTR for imports, contain a new field in serial No.14 which need to be incorporated in the existing import DTR format. 3. The aforesaid changes may be brought to the notice of all concerned for implementation. The Directorate General of Systems would be taking necessary action for implementing the revised format of import DTR which is being generated and transmitted electronically to Directorate General of Commercial Intelligence & Statistics and other concerned agencies. The revised format of DTR is to be implemented w.e.f. from 1st July, 2009. 4. These instructions may be brought to the notice of the trade by issuing suitable Trade / Public Notices. Suitable Standing orders/ instructions may be issued for the guidance of the assessing officers. 5. Difficulties faced, if any, in implementation of the Circular may please be brought to the notice of the Board at an early date. Yours faithfully, (M.M. Parthiban) Director (Customs) Encl: 1 page. Annexure-I Daily Trade Return (Import) Sl. G/ Bill Port Gross Country of IEC Name BIN Item Exim -- 1 of 2 -- No. P of Entry No. & Date Code weight origin No. of the party Sl. No. Scheme Code N U/M Qty. Code Name (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) (12) (13) -- 2 of 2 --",
+  "fetched_at": "2026-04-13T19:43:53.988Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_09-02-2001_notification_no032001-ce_nt_43ede2e436c4_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.03/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent3-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "09-02-2001",
+  "description": "Notification No.03/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent3-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent3-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent3-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent3-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent3-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent3-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent3-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "9 th February, 2001. Notification No. 3/2001- Central Excise (N.T.) In pursuance of sub-rule (2) of rule 49 and rule 139 of the Central Excise Rules, 1944, the Central Government hereby makes the following further amendment in the notification of the Government of India in the Ministry of Finance (Department of Revenue and Insurance), No. 266/67 - Central Excise, dated the 28 th November, 1967 ( G.S.R. 1771, dated the 28 th November, 1967), namely :- In paragraph 2 of the said notification, in clause (i), after sub-clause (zzzr), the following sub-clause shall be inserted, namely :- \" (zzzs) Metagalli, Siddalingpura Village Panchayat, Mysore.\" ( S.K. SINHA ) UNDER SECRETARY TO THE GOVERNMENT OF INDIA F.NO. 261/27/1/2001-CX.8 Note : 1. This notification seeks to extend inter-warehousing movement of Petroleum Products and Lubricant to and from Metagalli, Siddalingpura Village Panchayat, Mysore.. 2. The Principal notification was published in the Gazette of India vide notification No. 266/67 - Central Excise, dated 28.11.1967 ( G.S.R. 1771, dated 28.11.1967) and was last amended by notification No. 47/2000 - Central Excise (N.T.), dated 11 th August , 2000 (G.S.R. 660(E), dated 11 th August, 2000. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:32:43.868Z"
+}

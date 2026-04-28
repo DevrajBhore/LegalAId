@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-01-2000_notification_no52000-cusnt_dated_512000_9929b3475cbc_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.5/2000-Cus(NT), dated 5.1.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-01-2000",
+  "description": "Notification No.5/2000-Cus(NT), dated 5.1.2000",
+  "hindi_description": null,
+  "file_title": "5-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=5-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=5-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "This notification appoints the Commissioner of Customs, Ahmedabad to be the Commissioner of Customs, Kandla for specified purposes 5th January, 2000 Notification No. 05/2000-Customs (N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962) the Central Government hereby appoints the Commissioner of Customs, Ahmedabad to be the Commissioner of Customs, Kandla for the purpose of adjudicating the following show cause notices issued to M/s Adani Exports and others by the Commissioner of Customs, Kandla, namely ;- Show Cause Notice No. and Date. 1. DRI / BZU / G / 8 / 97 / 2206 dated 31.03.1998 2. DRI / BZU / G / 6 / 97 11485 S / 10/ 174 / 98 / SIB dated 30.12.1998 3. DRI / BZU / G / 13 / 97 / 11436 S / 10-175 / 98 / SIB dated 09.12.1998. (RAJENDRA SINGH) UNDER SECRETARY TO THE GOVERNMENT OF INDIA. F.NO. 437 /1 / 99-CUS.IV -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:07.537Z"
+}

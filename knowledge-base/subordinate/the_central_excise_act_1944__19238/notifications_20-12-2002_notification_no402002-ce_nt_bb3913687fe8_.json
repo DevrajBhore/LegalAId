@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_20-12-2002_notification_no402002-ce_nt_bb3913687fe8_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.40/2002-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent40-2k2.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "20-12-2002",
+  "description": "Notification No.40/2002-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent40-2k2.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent40-2k2.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent40-2k2.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent40-2k2.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent40-2k2.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent40-2k2.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent40-2k2.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "21 st November, 2002 Notification No. 40/2002-Central Excise (N.T.) Whereas the Central Government is satisfied that a practice was generally prevalent regarding levy of duty of excise (including non-levy thereof) under section 3 of the Central Excise Act, 1944 (1of 1944) (hereinafter referred to as the Central Excise Act), on recorded video cassettes in U-matic and Betacam formats, falling under heading No.85.24 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986), intended for television broadcasting, and that such video cassettes were liable to duty of excise which was not being levied according to the said practice during the periods commencing on and from 1 st March, 1993 and ending with 1 st June, 1998 in respect of cassettes in U-matic format and from 1 st March, 1997 and ending with 1 st June, 1998 in respect of cassettes in Betacam format; Now, therefore, in exercise of the powers conferred by section 11C of the Central Excise Act, the Central Government hereby directs that the whole of the duty of excise payable on recorded video cassettes in U-matic and Betacam formats intended for television broadcasting, but for the said practice, shall not be required to be paid in respect of such recorded video cassettes on which the said duty of excise was not being levied during the aforesaid periods in accordance with the said practice. Ajay Kumar Prasad Director to the Government of India F.No.151/10/98-CX.4 -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:41:34.511Z"
+}

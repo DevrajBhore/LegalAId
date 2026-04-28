@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_22-11-2000_notification_no542000-ce_nt_3e1683dabae0_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.54/2000-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent54-2k.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "22-11-2000",
+  "description": "Notification No.54/2000-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent54-2k.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent54-2k.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent54-2k.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent54-2k.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent54-2k.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent54-2k.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent54-2k.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "22 nd November, 2000 Notification No.54/2000 - Central Excise (N.T). In exercise of the powers conferred by clause (b) of section 2 of the Central Excise Act, 1944 (1 of 1944), read with rule 4 of the Central Excise Rules, 1944, the Central Board of Excise and Customs hereby makes the following further amendments in the notification of the Central Board of Excise and Customs No.215/86-Central Excise, dated the 27 th March, 1986, namely: - In the said notification, for the words and brackets \"Directorate General of Anti-Evasion(Central Excise)\", at the two places where they occur, the words \"Directorate General of Central Excise Intelligence\" shall be substituted. (P.K. Sinha) (Under Secretary to the Government of India) F.No.207/51/2000-CX.6 -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:32:32.807Z"
+}

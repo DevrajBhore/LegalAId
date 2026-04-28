@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_18-08-2015_notification_no782015-cusnt_dated_18082015_4d947f6294b7_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.78/2015-CUS(NT), dated 18.08.2015",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt78-2015.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "18-08-2015",
+  "description": "Notification No.78/2015-CUS(NT), dated 18.08.2015",
+  "hindi_description": null,
+  "file_title": "csnt78-2015.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt78-2015.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt78-2015.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt78-2015.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt78-2015.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt78-2015.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt78-2015.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 78 / 2015-Customs (N.T.) New Delhi, the 18th August, 2015 S.O. (E). – In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Additional or Joint Commissioner of Customs, Custom House, Ahmedabad to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on- (i) the Additional or Joint Commissioner of Customs, Nhava Sheva-I, JNCH, Nhava Sheva; and (ii) the Additional or Joint Commissioner of Customs, Custom House, Ahmedabad, for the purpose of adjudicating the matters relating to show cause notice pertaining to (i) M/s Gocool Grinders, 30, Ghanshyam Industrial Estate, Near Margha Farm, Bapunagar, Ahmedabad, Gujarat; (ii) M/s Gayatri Traders, 31/A,Ghanshyam Industrial Estate, Near Margha Farm, Bapunagar, Ahmedabad, Gujarat; (iii) M/s Garvi Traders, 383, Mehta Tiles Compound, Opp: G. H. Board, Singarwa-Kathwada Road, Kathwada, Ahmedabad; (iv) M/s. Girnar Product, 30 Ghanshyam Industrial Estate, Near Margha Farm, Bapunagar, Ahmedabad, Gujarat; (v) M/s Gangotri Industries, 30, Ghanshyam Industrial Estate, Near Margha Farm, Bapunagar, Ahmedabad, Gujarat; (vi) M/s Ganga Products, 31-A, Ghanshyam Industrial Estate, Near Margha Farm, Bapunagar, Ahmedabad, Gujarat; and others issued vide F.No. DRI/AZU/GI- 1/ENQ-71(INT-31/14)/2014/1744-1756, dated the 7th May, 2015 by the Additional Director, Directorate of Revenue Intelligence, Zonal Unit, Ahmedabad. [F.No. 437/22/2015-Cus IV] (Anurag Sehgal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:39:53.462Z"
+}

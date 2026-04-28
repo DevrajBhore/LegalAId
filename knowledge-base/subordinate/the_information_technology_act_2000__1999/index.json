@@ -1,0 +1,43 @@
+{
+  "act_id": "the_information_technology_act_2000__1999",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 97,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 97,
+    "modal_duplicate_count": 2,
+    "successful_candidate_count": 97,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rule": 3,
+      "rules": 54,
+      "regulation": 4,
+      "regulations": 6,
+      "order": 12,
+      "orders": 2,
+      "notification": 8,
+      "notifications": 2,
+      "directions": 4,
+      "guidelines": 8,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under Regulatory Authority ) Regulation",
+      "under section 69A and Rule",
+      "under Information Technology (Intermediary Guidelines",
+      "Power to make rules",
+      "Power to issue directions"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1999?view_type=browse",
+    "scanned_at": "2026-04-11T15:17:32.221Z"
+  },
+  "failed_candidates": []
+}

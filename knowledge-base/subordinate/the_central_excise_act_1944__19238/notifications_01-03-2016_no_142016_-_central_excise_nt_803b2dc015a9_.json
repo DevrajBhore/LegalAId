@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_01-03-2016_no_142016_-_central_excise_nt_803b2dc015a9_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "No. 14/2016 - Central Excise (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2016.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "01-03-2016",
+  "description": "No. 14/2016 - Central Excise (N.T)",
+  "hindi_description": null,
+  "file_title": "cent14-2016.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2016.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2016.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2016.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2016.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent14-2016.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent14-2016.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 14/2016 - Central Excise (N.T) New Delhi, the 1st March, 2016 G.S.R. (E).- In exercise of the powers conferred by rule 5 of the CENVAT Credit Rules, 2004, the Central Board of Excise and Customs hereby makes the following amendment in the notification of the Government of India in the Ministry of Finance (Department of Revenue) No. 27/2012 – C.E. (N.T.) dated 18th June, 2012, published in the Gazette of India, Extraordinary , Part II, Section 3, Sub-section (i) vide number G.S.R. 461(E), dated the 18th June, 2012, namely:- In the said notification, in Paragraph 3, for clause (b), the following shall be substituted, namely:- “(b) The application in the Form A along with the documents specified therein and enclosures relating to the quarter for which refund is being claimed shall be filed as under: (i) in case of manufacturer, before the expiry of the period specified in section 11B of the Central Excise Act, 1944 (1 of 1944); (ii) in case of service provider, before the expiry of one year from the date of – (a) receipt of payment in convertible foreign exchange, where provision of service had been completed prior to receipt of such payment; or (b) issue of invoice, where payment for the service had been received in advance prior to the date of issue of the invoice.”. [F. No. 334/8/2016/TRU] (Mohit Tewari) Under Secretary to the Government of India Note - The principal notification No. 27/2012 Central Excise (N.T) dated the 18th June, 2012 was published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i), vide number G.S.R 461(E) dated the 18th June, 2012. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:57:54.410Z"
+}

@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_16-01-2002_notification_no012002-ce_nt_2fc7b4e2309f_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.01/2002-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k2.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-01-2002",
+  "description": "Notification No.01/2002-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent1-2k2.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k2.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k2.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k2.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k2.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent1-2k2.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent1-2k2.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Dated 16-1-2002 Notification No. 1/2002-Central Excise (N.T.) In exercise of the powers conferred by sub-rule (3) of rule 19 of the Central Excise (No.2) Rules, 2001, the Central Board of Excise and Customs hereby makes the following amendment in the Notification of the Government of India, in the Ministry of Finance, Department of Revenue, No. 42/2001-Central Excise (NT), dated the 26 th June, 2001, namely :- In the said Notification, in place of condition (iv), the following shall be substituted, namely :- \"(iv) that exports of mineral oil products falling under Chapter 27 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986) as stores for consumption on board an aircraft on foreign run shall be subject to payment of an amount equal to the amount specified, as applicable in the TABLE in clause (c) of the first paragraph of the Notification no. 40/2001-Central Excise (NT), dated the 26 th June, 2001 issued under rule 18 of the Central Excise (No.2) Rules, 2001.\" M.G. Thamizh Valavan Under Secretary to the Government of India F.No. 209/25/2001-CX.6. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:38:16.074Z"
+}

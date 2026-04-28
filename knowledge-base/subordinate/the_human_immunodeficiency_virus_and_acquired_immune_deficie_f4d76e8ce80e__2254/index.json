@@ -1,0 +1,34 @@
+{
+  "act_id": "the_human_immunodeficiency_virus_and_acquired_immune_deficiency_syndrome_prevention_and_control_act_2017__2254",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 2,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 2,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 2,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 5,
+      "regulations": 1,
+      "order": 3,
+      "orders": 3,
+      "notification": 1,
+      "notifications": 1,
+      "guidelines": 2,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2254?view_type=browse",
+    "scanned_at": "2026-04-11T14:40:05.917Z"
+  },
+  "failed_candidates": []
+}

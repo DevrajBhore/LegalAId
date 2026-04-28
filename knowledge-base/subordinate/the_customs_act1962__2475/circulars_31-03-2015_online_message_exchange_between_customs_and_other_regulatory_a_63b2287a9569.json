@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_31-03-2015_online_message_exchange_between_customs_and_other_regulatory_agencies_-circular_no92015-customs_dated_3132015_2328d88fcf73_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Online message exchange between Customs and other regulatory agencies -Circular No.9/2015-Customs, dated 31.3.2015",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir9-15.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "31-03-2015",
+  "description": "Online message exchange between Customs and other regulatory agencies -Circular No.9/2015-Customs, dated 31.3.2015",
+  "hindi_description": null,
+  "file_title": "cir9-15.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir9-15.pdf",
+    "num_pages": 4,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir9-15.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir9-15.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir9-15.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=cir9-15.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=cir9-15.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 09/2015-Cus F.No.450/01/2011-Dir. (Cus)(Pt.I) Government of India Ministry of Finance Department of Revenue (Central Board of Excise and Customs) ****** New Delhi, dated the 31st March, 2015 To, All Chief Commissioners of Customs / Customs (Preventive), All Chief Commissioners of Customs and Central Excise, All Commissioners of Customs / Customs (Preventive), All Commissioners of Customs and Central Excise. Sir /Madam, Subject: Online message exchange between Customs and other regulatory agencies - reg. Hon'ble Finance Minister in the Budget, 2014 made an announcement to implement 'Indian Customs Single Window Project' to facilitate trade. This project envisages that the importers and exporters would electronically lodge their Customs clearance documents at a single point only with the Customs. The required permission, if any, from other regulatory agencies (such as Animal Quarantine, Plant Quarantine, Drug Controller, Textile Committee etc.) would be obtained online without the importer/exporter having to separately approach these agencies. This would be possible through a common, seamlessly integrated IT systems utilized by all regulatory agencies and the importers/exporters. The Single Window would thus provide the importers/exporters a single point interface for Customs clearance of import and export goods thereby reducing interface with Governmental agencies, dwell time and cost of doing business.  2. In the direction of establishing the Single Window with all regulatory agencies, the Board has decided to make a beginning by implementing an electronic online message exchange between the Food Safety and Standards Authority of India (FSSAI) and the Department of Plant Protection, Quarantine and Storage (PQIS) with the Customs with effect from 01.04.2015 at JNPT (NhavaSheva), ICD,Tughlakabad and ICD,Patparganj. Under the new online message exchange system for import goods between these two -- 1 of 4 -- agencies viz. FSSAI and PQIS and the Customs, there will be seamless online exchange in real time of the Customs Bill of Entry (Import declaration) with these agencies and Release Order (RO) from both the agencies will be received by the Customs in electronic message format.  3. The salient feature of the new online message exchange system would be as under: (i) Indian Customs EDI (ICES) would transmit \"BE message\" to the FSSAI and PQIS on completion of assessment of the relevant Bills of Entry (Bs/E) by the Customs ICES application after entry-inward of the consignment. The BE message would be provided to FSSAI/PQIS for all Bs/E falling under the identified Custom Tariff Heads (CTHs), as per list made available by therespective agencies. (ii) The Customs officers would be able to access the details of the Bs/E referred by the ICES to FSSAI/PQIS. (iii) The importers would be able to track the status of the Bs/E on ICEGATE (https://www.icegate.gov.in). (iv) The receipt of the Bs/E message shall be acknowledged by the FSSAI/PQIS through a receipt message to the ICES. (v) On processing of the Bs/E message by the FSSAI/PQIS, these agencies would electronically transmit an RO, concerning each item of the Bs/E. From the Customs side, Out of Charge (OOC) will not be allowed in the system till the RO is received from the agency concerned for all the items. There are 6 types of ROs which may be provided by the FSSAI/PQIS to the ICES, as follows: (a) Release - goods can be released by the Customs. (b) Destruction - goods to be destructed by the Customs. (c) Deportation - goods to be exported back to the Country of Origin. (d) No Objection Certificate (NOC)- goods can be released by the Customs. (e) NCC (Non-compliance Certificate) - non-rectifiable defects observed in the goods. (f) Product Out of scope - goods are out of scope for FSSAI/PQIS. In case, the Release Order falls under types(b), (c) and (e) above, the OOC would not be allowed in the ICES. Details of such consignments will be entered by the Customs Assessing Officer in the closure of B/E menu after all processes are complete. (vi) On receipt of RO online, the Customs ICES shall integrate the data in the ICES database, which shall be available to the Customs officers concerned. -- 2 of 4 -- (vii) The other formalities under the Customs Act, 1962 such as duty payment, goods registration, examination would continue during the time interval between transmission of Bs/E message from ICES to the receipt of RO message from FSSAI/PQIS. During this period the samples of the goods under consideration may also be taken for testing purposes.  4. As aforementioned, all Bs/E falling under the identified Custom Tariff Heads (CTHs), as per list made available by the FSSAI, would automatically be sent by the ICES to this agency. However, in terms of Board's Circular No.3/2011-Cus dated 06.01.2011 import consignments that have been tested on previous five consecutive occasions and found in order may not be referred to FSSAI. Therefore, this Circular will be implemented by the Customs officers by not waiting for the RO from FSSAI in such cases. The ICES provides a functionality for this purpose. This measure would be in place till a system based solution is developed. A procedure for informing FSSAI that the RO is not required in such cases is also being examined.  5. Since, the electronically received RO in regard to Bs/E referred to FSSAI/PQIS shall be accepted by the Customs for clearance of the imported foods items/plant materials, the Customs shall not insist that a physical copy of the RO shall be issued by these agencies. Board also desires that the Customs should maintain a close liaison with these two agencies to ensure that responses from these agencies are received in time and there is no delay in clearance of goods except in cases where sampling is required.  6. It is clarified that as some of details required for other regulatory agencies may not be currently captured in the B/E format, in such cases, the importers would continue to furnish these additional details to the respective agency. Further, the mode and manner of payment of fee and other charges of other agencies will continue to be the same as per the existing practice.  7. Chief Commissioners of Customs/Central Excise are requested to sensitize staff working under their jurisdiction to ensure the smooth implementation of the online message exchange system between the Customs and FSSAI/PQIS. It may also be ensured that proactive action is taken to identify Bs/E for which the RO has not been received from FSSAI/PQIS within a reasonable time so that the same could be got expedited. The Board has separately initiated a dialogue with these agencies to prescribe timelines for issue of ROs. -- 3 of 4 --  8. Difficulty faced, if any, may be brought to the notice of the Board at the earliest. Further, a suitable Public Notice may be issued for the information of the Trade with a copy to the local offices of FSSAI and PQIS. Yours faithfully, (P.K. Khetan) OSD (Cus.IV) -- 4 of 4 --",
+  "fetched_at": "2026-04-13T19:50:06.605Z"
+}

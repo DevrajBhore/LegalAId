@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-11-2009_notification_no1692009-cusntdt_10112009_c777cdfaae38_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.169/2009-Cus(NT),dt. 10.11.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=169-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-11-2009",
+  "description": "Notification No.169/2009-Cus(NT),dt. 10.11.2009",
+  "hindi_description": null,
+  "file_title": "169-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=169-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=169-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=169-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=169-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=169-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=169-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 169 / 2009-Customs (N.T.) New Delhi, dated the 10 November, 2009. 19 Kartika, 1931 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub- section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs, Sea-Port Import, Nhava Sheva to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on,- (i) the Commissioner of Customs, Sea-Port Import, Chennai; (ii) the Commissioner of Customs, Sea-Port Import, Custom House, Mumbai, and (iii) the Assistant Commissioner of Cusotms, Group 5-A, Air Cargo Complex, Mumbai, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. AGS Infotech Private Limited, 601/602, Trade World, B-Wing, Kamala Mills Compound, S.G.Marg, Lower Parel, Mumbai - 400013 and others issued vide, F.No. VIII/48/20/2008- DRI/CZU, dated the 25th June, 2009, by the Additional Director General, Directorate of Revenue Intelligence, Zonal Unit, Chennai. [F.No. 437/92/2009-Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:30:29.158Z"
+}

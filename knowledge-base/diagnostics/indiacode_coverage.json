@@ -1,8 +1,19 @@
 {
-  "total_acts": 901,
-  "acts_with_subordinate": 0,
-  "acts_without_subordinate": 901,
+  "total_acts": 804,
+  "acts_with_subordinate": 414,
+  "acts_without_subordinate": 237,
+  "acts_with_possible_or_inconclusive_subordinate": 153,
   "missing_index_files": 0,
-  "audited_at": "2026-01-20T00:15:29.809Z",
+  "count_mismatch_acts": 0,
+  "acts_with_duplicate_source_entries": 0,
+  "duplicate_source_rows": 0,
+  "acts_with_failed_candidates": 50,
+  "total_failed_candidates": 359,
+  "subordinate_files_with_recovery_attempts": 9242,
+  "subordinate_files_recovered_from_alternate_source": 140,
+  "detection_versions": {
+    "10": 804
+  },
+  "audited_at": "2026-04-28T12:51:17.102Z",
   "scope": "IndiaCode only"
 }

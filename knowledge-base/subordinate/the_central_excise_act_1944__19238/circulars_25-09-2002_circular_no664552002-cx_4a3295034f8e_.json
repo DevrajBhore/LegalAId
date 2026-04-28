@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_25-09-2002_circular_no664552002-cx_4a3295034f8e_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Circular no.664/55/2002-CX",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=664-02-cx.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "25-09-2002",
+  "description": "Circular no.664/55/2002-CX",
+  "hindi_description": null,
+  "file_title": "664-02-cx.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=664-02-cx.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=664-02-cx.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=664-02-cx.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=664-02-cx.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/circularindividualfile/&file=664-02-cx.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=circular&filename=664-02-cx.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No.664/55/2002-CX 25 th September, 2002 F.No.201/6/2002-CX.6(Pt.) Government of India Ministry of Finance and Company Affairs Department of Revenue Central Board of Excise and Customs CORRIGENDUM In Circular No.662/53/2002-CX, dated 17 th September, 2002: (1) the words, figures and brackets \"F.No.201/6/2001-CX.6(Pt.)\" appearing at the top of the opening page may be read as \"F.No.201/6/2002-CX.6(Pt.)\". (2) the words, figures and brackets \"(3) EOUs including EPZ units: EU\" appearing in sub paragraph (ii) of paragraph 5.3 may be treated as omitted. M.G.Thamizh Valavan Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:13:00.599Z"
+}

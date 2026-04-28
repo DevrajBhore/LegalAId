@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-10-2009_notification_no1622009-cusntdt_30102009_b832591f611c_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.162/2009-Cus(NT),dt. 30.10.2009",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=162-09.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-10-2009",
+  "description": "Notification No.162/2009-Cus(NT),dt. 30.10.2009",
+  "hindi_description": null,
+  "file_title": "162-09.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=162-09.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=162-09.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=162-09.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=162-09.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=162-09.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=162-09.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[To be published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii)] Government of India Ministry of Finance (Department of Revenue) Notification No. 162 / 2009-Customs (N.T.) New Delhi, dated the 30th October, 2009. 8 Kartika, 1931 Saka. S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs (Adjudication), Mumbai to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on;- (i) the Commissioner of Customs (Export Promotion), Ballard Estate, New Custom House, Mumbai; (ii) the Commissioner of Customs (Export), 60, Rajaji Salai, Custom House, Chennai; and (iii) the Commissioner of Customs, Central Revenue Building, The Mall, Amritsar, for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Jindal Fine Industries, Dhandari Kalan, Campa Cola Lane, Ludhiana, D-51, Focal Point, Phase-V, Ludhiana, issued vide, DRI F.No. 856(41) LDH/2005, dated 29th September, 2007, by the Additional Director General, Directorate of Revenue Intelligence, Delhi Zonal Unit, New Delhi. [F.No. 437/77/2009-Cus.IV] (Navraj Goyal) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:30:08.233Z"
+}

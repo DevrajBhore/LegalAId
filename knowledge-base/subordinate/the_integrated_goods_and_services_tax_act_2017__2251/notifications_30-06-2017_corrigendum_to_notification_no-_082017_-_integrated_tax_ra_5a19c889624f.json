@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-06-2017_corrigendum_to_notification_no-_082017_-_integrated_tax_rate_dated_30062017_341848a4118f_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Corrigendum to Notification No- 08/2017 - Integrated Tax (Rate) dated 30.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn-8-igst-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-06-2017",
+  "description": "Corrigendum to Notification No- 08/2017 - Integrated Tax (Rate) dated 30.06.2017",
+  "hindi_description": null,
+  "file_title": "corrigndm-ntfctn-8-igst-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn-8-igst-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn-8-igst-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn-8-igst-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn-8-igst-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=corrigndm-ntfctn-8-igst-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=corrigndm-ntfctn-8-igst-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) CORRIGENDUM New Delhi, the 30th June, 2017 G.S.R. (E). – In the English version of the notification of the Government of India in the Ministry of Finance (Department of Revenue), No. 8/2017-Integrated Tax (Rate), dated the 28th June, 2017 published in the Gazette of India, Extraordinary, Part II, Section 3, Sub- section (i) vide number G.S.R. 683 (E), dated the 28th June, 2017, at page 22,- (i) after line 6, insert “4. Where the value of taxable service provided by a person located in non-taxable territory to a person located in non-taxable territory by way of transportation of goods by a vessel from a place outside India up to the customs station of clearance in India is not available with the person liable for paying integrated tax, the same shall be deemed to be 10 % of the CIF value (sum of cost, insurance and freight) of imported goods.”; (ii) in line 7, for “4” read “5”; (iii) in line 10, for “scheme of classification of services”, read “scheme of classification of services annexed to notification No. 11/2017-Central Tax (Rate), published in the Gazette of India, Extraordinary, Part II, Section 3, Sub-section (i) dated 28th June, 2017 vide GSR number 690(E) dated 28th June, 2017.”; (iv) in line 34, for “5” read “6”. [F. No. 334/1/2017 –TRU] (Ruchi Bisht) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:12.697Z"
+}

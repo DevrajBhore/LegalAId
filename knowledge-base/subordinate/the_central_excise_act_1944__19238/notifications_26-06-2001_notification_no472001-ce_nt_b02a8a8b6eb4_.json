@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_26-06-2001_notification_no472001-ce_nt_b02a8a8b6eb4_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "Notification No.47/2001-CE (N.T)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent47-2k1.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "26-06-2001",
+  "description": "Notification No.47/2001-CE (N.T)",
+  "hindi_description": null,
+  "file_title": "cent47-2k1.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent47-2k1.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent47-2k1.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent47-2k1.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent47-2k1.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cent47-2k1.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cent47-2k1.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "26 th June, 2001. Notification No. 47/2001-Central Excise (N.T.) In exercise of the powers conferred by sub-rule (1) of rule 20 of the Central Excise (No.2) Rules, 2001, the Central Government hereby extends the facility of removal of all excisable goods specified in column (2) of the Table below from the factory of production to a warehouse, or from one warehouse to another warehouse without payment of duty. TABLE Sl. No. Excisable goods 1. Goods falling under Heading Nos. 27.07, 27.10, 27.11, 27.12, 27.13 ( except Sub-heading No.2713.12), 27.14 and 27.15, of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986); 2. Goods of the following description, namely :- (a ) benzene; (b) toluene; (c) xylene; (d) propylene; and (e) tertiory amyl methylene ether, falling under Chapter 29 of the First Schedule to the Central Excise Tariff Act, 1985 (5 of 1986); 3. All the following goods where such goods are cleared from the factory of production to a warehouse appointed under section 57 or licensed under section 58 of the Customs Act, 1962 ( 52 of 1962) and are intended for direct supply - 1. as stores to a foreign-going vessel or aircraft; or 2. to a meal uplift station outside India: (i) Cigarettes, (ii) Aerated waters, (iii) Prepared and Preserved Foods, (iv) Aluminium foil covers, (v) Stainless steel cutlery, (vi) Butter, (vii) cheese. Explanation : - \"Foreign-going vessel or aircraft\" and \"stores\" shall have the meanings respectively assigned to them in Section 2 of the Customs Act, 1962 (52 of 1962). 2. This notification will come into force on 1 st July, 2001. [F.No.261/27/9/2001-CX.8] (P.K. Sinha) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:36:19.275Z"
+}

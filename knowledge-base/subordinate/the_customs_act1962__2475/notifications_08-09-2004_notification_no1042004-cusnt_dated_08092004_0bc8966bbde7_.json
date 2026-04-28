@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-09-2004_notification_no1042004-cusnt_dated_08092004_0bc8966bbde7_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.104/2004-Cus(NT), dated 08.09.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-09-2004",
+  "description": "Notification No.104/2004-Cus(NT), dated 08.09.2004",
+  "hindi_description": null,
+  "file_title": "104-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=104-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=104-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "8th September, 2004 Notification No. 104/2004- CUSTOMS (N.T.) In exercise of the powers conferred by sub-rule (1) of rule 3 of the Customs Tariff (Transitional Product Specific Safeguard Duty) Rules, 2002, and in supersession of notification of the Government of India in the erstwhile Ministry of Finance and Company Affairs (Department of Revenue) No. 4/2003-Customs (NT) [G.S.R. 35 (E), dated the 16th January, 2003], except as respects things done or omitted to be done before such supersession, the Central Government hereby appoints Shri Lakhinder Singh, Director General (Safeguard), as Director General (Specific Safeguard) for the purposes of the said rules. D. S. Garbyal Under Secretary to the Government of India F. NO. - 528/76/2003 - CUS (T.U.) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:04:52.756Z"
+}

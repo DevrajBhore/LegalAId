@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_28-05-2001_so474e_2852001_-_additions_to_schedule_i_of_the_wild_life_protection_act_1972_53_of_1972_c425f49b10fa_",
+  "parent_act_id": "the_wild_life_protection_act_1972__1726",
+  "title": "S.O.474(E), [28/5/2001] - Additions to Schedule I of the Wild Life (Protection) Act, 1972 (53 of 1972)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=SO474E.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "28-05-2001",
+  "description": "S.O.474(E), [28/5/2001] - Additions to Schedule I of the Wild Life (Protection) Act, 1972 (53 of 1972)",
+  "hindi_description": null,
+  "file_title": "SO474E.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=SO474E.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=SO474E.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=SO474E.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=SO474E.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00007_197253_1517807324579/notificationindividualfile/&file=SO474E.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00007_197253_1517807324579&type=notification&filename=SO474E.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "MINISTRY OF ENVIRONMENT AND FORESTS (Wildlife Section I) NOTIFICATION New Delhi, the 28th May, 2001 S.O. 474(E). In exercise of the powers conferred by sub-section (1) of section 61 of the Wildlife (Protection) Act, 1972 (53 of 1972), the Central Government, being of the opinion that it is expedient so to do, hereby makes the following addition to the Schedule I of the said Act with immediate effect. In Schedule I to the said Act After Part II, the following shall be added, namely: Part II A Fishes 1Whale shark (Rhincodon typus) [No. 1-2/2001 WL-I] R.H. KHWAJA, Jt. Secy. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:29:40.017Z"
+}

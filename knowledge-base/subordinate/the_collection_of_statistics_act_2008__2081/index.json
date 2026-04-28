@@ -1,0 +1,37 @@
+{
+  "act_id": "the_collection_of_statistics_act_2008__2081",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 35,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 35,
+    "modal_duplicate_count": 1,
+    "successful_candidate_count": 35,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 7,
+      "regulations": 1,
+      "order": 3,
+      "orders": 1,
+      "notification": 3,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under the CoS Rules",
+      "Power to make rules"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2081?view_type=browse",
+    "scanned_at": "2026-04-13T10:05:09.002Z"
+  },
+  "failed_candidates": []
+}

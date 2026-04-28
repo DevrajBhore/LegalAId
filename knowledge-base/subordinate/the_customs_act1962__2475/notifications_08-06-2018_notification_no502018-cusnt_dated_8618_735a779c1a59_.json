@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_08-06-2018_notification_no502018-cusnt_dated_8618_735a779c1a59_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.50/2018-Cus(NT), dated 8.6.18",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt50-2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "08-06-2018",
+  "description": "Notification No.50/2018-Cus(NT), dated 8.6.18",
+  "hindi_description": null,
+  "file_title": "csnt50-2018.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt50-2018.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt50-2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt50-2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt50-2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=csnt50-2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=csnt50-2018.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE DEPARTMENT OF REVENUE (CENTRAL BOARD OF INDIRECT TAXES AND CUSTOMS) Notification No. 50 /2018-Customs (N.T.) North Block, New Delhi, 8th June, 2018 G.S.R. … (E) – In exercise of the powers conferred by section 122 of the Customs Act, 1962 (52 of 1962), the Central Board of Indirect Taxes and Customs hereby confers power, for the purposes of adjudging confiscation or penalty, on the Customs Officer as mentioned in column (2) of the Table below, in terms of value limit as specified in column (3) of the said Table, in relation to goods which are liable to confiscation under Chapter XIV of the said Act: Table Sl. No. Customs Officer Value of goods liable for confiscation (1) (2) (3) (1) Assistant Commissioner of Customs or Deputy Commissioner of Customs Above rupees one lakh but not exceeding rupees ten lakhs (2) A Gazetted Officer of Customs lower in rank than an Assistant Commissioner of Customs or Deputy Commissioner of Customs Not exceeding rupees one lakh 2. This notification shall come into force on the date of its publication. [F. No. 450/117/2009- Cus IV] (Zubair Riaz) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:45:29.153Z"
+}

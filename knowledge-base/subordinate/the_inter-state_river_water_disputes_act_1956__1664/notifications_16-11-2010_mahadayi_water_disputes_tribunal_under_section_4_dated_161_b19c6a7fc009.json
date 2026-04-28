@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_16-11-2010_mahadayi_water_disputes_tribunal_under_section_4_dated_16112010_2dd08ff6c90d_",
+  "parent_act_id": "the_inter-state_river_water_disputes_act_1956__1664",
+  "title": "Mahadayi Water Disputes Tribunal under section 4 dated 16/11/2010",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=MWDT+constituion-2010.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "16-11-2010",
+  "description": "Mahadayi Water Disputes Tribunal under section 4 dated 16/11/2010",
+  "hindi_description": null,
+  "file_title": "MWDT constituion-2010.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT%20constituion-2010.pdf",
+    "num_pages": 2,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=MWDT+constituion-2010.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT+constituion-2010.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT%2Bconstituion-2010.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT+constituion-2010.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT%2Bconstituion-2010.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_24_32_00003_195633_1517807321564/notificationindividualfile/&file=MWDT+constituion-2010.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_24_32_00003_195633_1517807321564&type=notification&filename=MWDT%20constituion-2010.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "fetched_at": "2026-04-13T13:36:20.615Z"
+}

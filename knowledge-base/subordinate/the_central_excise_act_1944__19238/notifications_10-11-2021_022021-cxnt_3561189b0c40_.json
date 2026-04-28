@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-11-2021_022021-cxnt_3561189b0c40_",
+  "parent_act_id": "the_central_excise_act_1944__19238",
+  "title": "02/2021-CX(NT)",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02-2021.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-11-2021",
+  "description": "02/2021-CX(NT)",
+  "hindi_description": null,
+  "file_title": "cx-nt02-2021.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02-2021.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02-2021.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02-2021.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02-2021.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00036_A1944-01_1671705649438/notificationindividualfile/&file=cx-nt02-2021.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00036_A1944-01_1671705649438&type=notification&filename=cx-nt02-2021.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART Il, SECTION 3, SUB- SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 02/2021- Central Excise (N.T.) New Delhi, the 10\" November, 2021 GS: Rs (El\\aicac —— In exercise of the powers conferred by sub-rule (2) of rule 9 of the Central Excise Rules, 2017, the Central Board of Indirect Taxes and Customs hereby exempts from the operation of said rule, every manufacturing unit engaged in the manufacture or production of Petroleum Crude, falling under tariff heading 2709 00 10 of the Fourth Schedule to the Central Excise Act, 1944 (1 of 1944) (hereinafter referred to as the specified goods), where the manufacturer of such goods has a centralised billing or accounting system in respect of specified goods manufactured or produced by different units or premises and opts for registering only the unit or premises or office, from where such centralised billing or accounting is done. Provided that prior intimation shall be given before starting commercial production at any additional premises subsequent to obtaining such registration. [F. No. 116/40/20-Cx-3] (Varun Kumar Singh) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:05:45.280Z"
+}

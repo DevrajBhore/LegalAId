@@ -1,0 +1,191 @@
+{
+  "act_id": "the_disaster_management_act_2005__2045",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 42,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 42,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 42,
+    "failed_candidate_count": 3,
+    "keyword_hits": {
+      "rules": 20,
+      "regulations": 6,
+      "order": 5,
+      "orders": 2,
+      "notification": 6,
+      "notifications": 1,
+      "direction": 3,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "Power to issue direction",
+      "Power to make regulations"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2045?view_type=browse",
+    "scanned_at": "2026-04-13T19:24:46.411Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "NDRF Technical Post RR (Group A, B & C)",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rule&filename=NDRF%20Technical%20Post%20RR%20(Group%20A,%20B%20&%20C).pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF+Technical+Post+RR+%28Group+A%2C+B+%26+C%29.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=NDRF%2BTechnical%2BPost%2BRR%2B(Group%2BA%2C%2BB%2B%26%2BC).pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "The National Disaster Response Force,Group 'B' and Group 'C',Non-Gazetted,Combatised Posts Recuritment Rules 2011.",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "finalUrl": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/rulesindividualfile/&file=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The specified URL cannot be found"
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The+National+Disaster+Response+Force%2CGroup+%27B%27+and+Group+%27C%27%2CNon-Gazetted%2CCombatised+Posts+Recuritment+Rules+2011..pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The specified URL cannot be found"
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=rules&filename=The%2BNational%2BDisaster%2BResponse%2BForce%2CGroup%2B'B'%2Band%2BGroup%2B'C'%2CNon-Gazetted%2CCombatised%2BPosts%2BRecuritment%2BRules%2B2011..pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The specified URL cannot be found"
+        }
+      ],
+      "error": "The specified URL cannot be found",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "Nomination of Members of NDMA",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_5_5_00053_200553_1517807327022/notificationindividualfile/&file=Nomination+of+Members+of+NDMA.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%20of%20Members%20of%20NDMA.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination+of+Members+of+NDMA.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_5_5_00053_200553_1517807327022&type=notification&filename=Nomination%2Bof%2BMembers%2Bof%2BNDMA.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

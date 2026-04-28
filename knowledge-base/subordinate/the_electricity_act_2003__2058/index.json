@@ -1,0 +1,175 @@
+{
+  "act_id": "the_electricity_act_2003__2058",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 97,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 97,
+    "modal_duplicate_count": 5,
+    "successful_candidate_count": 97,
+    "failed_candidate_count": 3,
+    "keyword_hits": {
+      "rules": 52,
+      "regulation": 5,
+      "regulations": 33,
+      "order": 7,
+      "orders": 4,
+      "notification": 30,
+      "notifications": 1,
+      "directions": 13,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [
+      "under this Act. Section 171. Services of notices, orders"
+    ],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/2058?view_type=browse",
+    "scanned_at": "2026-04-13T19:33:07.558Z"
+  },
+  "failed_candidates": [
+    {
+      "title": "Intimation of Accidents (Form & time of Service of Notice) Rules, 2005",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/rulesindividualfile/&file=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/rulesindividualfile/&file=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/rulesindividualfile/&file=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rule&filename=Intimation%20of%20Accidents%20(Form%20&%20time%20of%20Service%20of%20Notice)%20Rules,%202005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf",
+          "status": 200,
+          "outcome": "source_error",
+          "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation+of+Accidents+%28Form+%26+time+of+Service+of+Notice%29+Rules%2C+2005.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=rules&filename=Intimation%2Bof%2BAccidents%2B(Form%2B%26%2Btime%2Bof%2BService%2Bof%2BNotice)%2BRules%2C%2B2005.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "MoP Notification dated 24.05.2018",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=in_exercise_of_the_powers_conferred_by_clause_j_of_sub_section_2_of_section.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    },
+    {
+      "title": "JERC Notification dated 26.11.2018",
+      "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+      "attempted_urls": [
+        "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+        "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf"
+      ],
+      "recovery_attempts": [
+        {
+          "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_19_22_00001_200336_1517807317930/notificationindividualfile/&file=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+          "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+          "status": 503,
+          "outcome": "source_error",
+          "error": "> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_%28electricity_supply_code%29_regulations_2018.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        },
+        {
+          "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+          "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_19_22_00001_200336_1517807317930&type=notification&filename=jerc_(electricity_supply_code)_regulations_2018.pdf",
+          "status": 404,
+          "outcome": "source_error",
+          "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+        }
+      ],
+      "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+      "error_code": "source_unavailable",
+      "error_status": 404
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "act_id": "the_khuda_bakhsh_oriental_public_library_act_1969__1731",
+  "has_subordinate_legislation": true,
+  "possible_subordinate_legislation": false,
+  "count": 9,
+  "detection_status": "modal_subordinate_detected",
+  "legal_conclusion": "likely_exists",
+  "confidence": "high",
+  "detection_version": 10,
+  "note": "Subordinate documents were detected directly from the India Code subordinate modal tables.",
+  "evidence": {
+    "candidate_link_count": 0,
+    "candidate_duplicate_count": 0,
+    "modal_entry_count": 9,
+    "modal_duplicate_count": 0,
+    "successful_candidate_count": 9,
+    "failed_candidate_count": 0,
+    "keyword_hits": {
+      "rules": 2,
+      "regulation": 6,
+      "regulations": 2,
+      "order": 3,
+      "orders": 2,
+      "notification": 2,
+      "notifications": 1,
+      "directions": 1,
+      "circulars": 1,
+      "ordinance": 1
+    },
+    "context_signals": [],
+    "scanned_source_url": "https://www.indiacode.nic.in/handle/123456789/1731?view_type=browse",
+    "scanned_at": "2026-04-11T15:51:37.453Z"
+  },
+  "failed_candidates": []
+}

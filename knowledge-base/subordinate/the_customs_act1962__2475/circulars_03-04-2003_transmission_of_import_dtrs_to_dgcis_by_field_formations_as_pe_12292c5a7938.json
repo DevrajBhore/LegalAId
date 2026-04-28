@@ -1,0 +1,46 @@
+{
+  "sub_id": "circulars_03-04-2003_transmission_of_import_dtrs_to_dgcis_by_field_formations_as_per_the_revised_8_digit_customs_classification_codes-_circular_no282003-customs_dated_2ea81b778144",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Transmission of import DTRs to DGCI&S by field formations as per the revised 8 digit Customs Classification Codes- Circular No.28/2003-Customs, dated 3.4.2003",
+  "type": "circular",
+  "category_label": "Circulars",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir28-03.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "03-04-2003",
+  "description": "Transmission of import DTRs to DGCI&S by field formations as per the revised 8 digit Customs Classification Codes- Circular No.28/2003-Customs, dated 3.4.2003",
+  "hindi_description": null,
+  "file_title": "Cir28-03.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir28-03.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir28-03.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir28-03.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir28-03.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/circularindividualfile/&file=Cir28-03.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=circular&filename=Cir28-03.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Circular No. 28/2003-Cus. 3rd April, 2003 F.No.401/43/03-Cus III Government of India Ministry of Finance & Company Affairs Department of Revenue (Central Board of Excise & Customs) Subject: Transmission of import DTRs to DGCI&S by field formations as per the revised 8 digit Customs Classification Codes-reg I am directed to invite your attention to the Customs Tariff ( Amendment), Act, 2003 vide which the revised 8 digit Customs Classification Codes based on Harmonised Classification has been adopted by the Customs with effect from 1st February, 2003. The new 8 digit codes have also been adopted by Directorate General of Foreign Trade (DGFT) and Directorate General of Commercial Intelligence and Statistics (DGCI&S). 2. The Director General, DGCI&S, Kolkata has brought to the notice of the Board that the Customs field formations (sea, air and land) are not sending the DTRs as per the revised Customs Classification Codes for all categories of data, i.e, EDI, Non-EDI and Manual . He has also stated that if the data are not received with the revised codes right from April, 03 onwards it may not be possible for them to adopt the new classification for the year 2003-04 .The data processing system of DGCI&S will suffer a serious setback if the data are reported both with the old and new codes. 3. In view of the importance attached to the DTRs sent by the field formations of the Customs, you are requested to ensure that the DTRs are sent to DGCI&S as per the revised 8 digit codes . 4. Suitable instruction to all field formations may kindly be issued in this regard. Necessary compliance report may be sent to Board immediately. 5. Please acknowledge the receipt. 6. Hindi version will follow. D.S. Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:32:49.701Z"
+}

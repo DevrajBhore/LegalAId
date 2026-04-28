@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-09-1994_notification_no491994-cusnt_dated_3091994_e6ba01ae616c_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.49/1994-Cus(NT), dated 30.9.1994",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=49-1994.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-09-1994",
+  "description": "Notification No.49/1994-Cus(NT), dated 30.9.1994",
+  "hindi_description": null,
+  "file_title": "49-1994.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=49-1994.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=49-1994.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=49-1994.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=49-1994.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=49-1994.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=49-1994.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Import of Gold and Silver by Passengers (Form of Bill of Entry) Regulations, 1994 Notification No. 49/94-Cus. (N.T.), dated 30-9-1994 In exercise of the powers conferred by section 157, read with section 46, of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following regulations namely :- 1. Short title and commencement.- (1) These regulations may be called the Import of Gold and Silver by Passengers (Form of Bill of Entry) Regulations, 1994. (2) They shall come into force on the 1st day of November, 1994. 2. Form of Bill of Entry.- The Bill of Entry to be presented for ex-bond clearance for home consumption of gold or silver from a customs bonded warehouse by a passenger coming into India shall be in the form appended to these Regulations. -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:55:40.858Z"
+}

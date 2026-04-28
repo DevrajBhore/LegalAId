@@ -1,0 +1,48 @@
+{
+  "sub_id": "notifications_14-10-2003_appointment_of_sh_vinod_k_dhall_as_member_of_cci_6c0d858f5f4c_",
+  "parent_act_id": "the_competition_act_2002__2010",
+  "title": "Appointment of Sh. Vinod K. Dhall as Member of CCI",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00005_200312_1517807324781/notificationindividualfile/&file=notification_s.o._1199%28e%29.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "14-10-2003",
+  "description": "Appointment of Sh. Vinod K. Dhall as Member of CCI",
+  "hindi_description": null,
+  "file_title": "notification_s.o._1199(e).pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199(e).pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00005_200312_1517807324781/notificationindividualfile/&file=notification_s.o._1199%28e%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199%28e%29.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199(e).pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199%28e%29.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199(e).pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_22_29_00005_200312_1517807324781/notificationindividualfile/&file=notification_s.o._1199%28e%29.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_22_29_00005_200312_1517807324781&type=notification&filename=notification_s.o._1199(e).pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "8/7/2019 Notification S.O. 1199(E) mca.gov.in/Ministry/notification/Notifications_2003/noti_14102003_1199(E).html 1/1 PUBLISHED IN THE GAZETTE OF INDIA PART-II, SECTION 3, SUB-SECTION (ii), EXTRAORDINARY MINISTRY OF FINANCE (DEPARTMENT OF COMPANY AFFAIRS) NOTIFICATION New Delhi, the 14th October, 2003 S.O. 1199 (E). - In exercise of the powers conferred by Sub-section (1) of Section 8 read with Sub- section (1) of Section 10 of the Competition Act, 2002 (12 of 2003), the Central Government hereby appoints Shri Vinod K. Dhall as Member of the Competition Commission of India for a period of five years from the date on which he enters upon his office or till he attains the age of sixty-five years, whichever is earlier. F. No. 1/10/2003-CL.V (Rajiv Mehrishi) Joint Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:14:59.971Z"
+}

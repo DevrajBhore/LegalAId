@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_30-06-2017_notification_no-152017_-integrated_tax_rate_dated_30062017_53336f7a0335_",
+  "parent_act_id": "the_integrated_goods_and_services_tax_act_2017__2251",
+  "title": "Notification No-15/2017 -Integrated Tax (Rate) dated 30.06.2017",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification15-IGST-rate.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "30-06-2017",
+  "description": "Notification No-15/2017 -Integrated Tax (Rate) dated 30.06.2017",
+  "hindi_description": null,
+  "file_title": "Notification15-IGST-rate.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification15-IGST-rate.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification15-IGST-rate.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification15-IGST-rate.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification15-IGST-rate.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00043_201713_1517807328116/notificationindividualfile/&file=Notification15-IGST-rate.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00043_201713_1517807328116&type=notification&filename=Notification15-IGST-rate.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] GOVERNMENT OF INDIA MINISTRY OF FINANCE (DEPARTMENT OF REVENUE) Notification No. 15/2017-Integrated Tax (Rate) New Delhi, the 30th June, 2017 G.S.R. (E).- In exercise of the powers conferred by sub-section (1) of section 6 of the Integrated Goods and Service Tax Act, 2017 (13 of 2017), the Central Government, on being satisfied that it is necessary in the public interest so to do, hereby exempts all goods or services or both imported by a unit or a developer in the Special Economic Zone, from the whole of the integrated tax leviable thereon under sub-section (7) of section 3 of the Customs Tariff Act, 1975 (51 of 1975) for authorised operations. 2. This Notification shall come into force with effect from the 1st July, 2017. F.No. DGEP/SEZ/09/2017 ( Dharmvir Sharma) Under Secretary -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:51:07.037Z"
+}

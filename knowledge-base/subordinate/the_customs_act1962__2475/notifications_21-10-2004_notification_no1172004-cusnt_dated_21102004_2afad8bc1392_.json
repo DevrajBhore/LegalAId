@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_21-10-2004_notification_no1172004-cusnt_dated_21102004_2afad8bc1392_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.117/2004-Cus(NT), dated 21.10.2004",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=117-04.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "21-10-2004",
+  "description": "Notification No.117/2004-Cus(NT), dated 21.10.2004",
+  "hindi_description": null,
+  "file_title": "117-04.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=117-04.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=117-04.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=117-04.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=117-04.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=117-04.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=117-04.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "21st October, 2004 Notification No.117 /2004-Customs(N.T.) In exercise of the powers conferred by sub-section (1) of section 4 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby appoints the Commissioner of Customs(Adjudication), New Customs House, Mumbai to act as Commissioner of Customs(Imports), Jawahar Customs House, Nhava Sheva and Commissioner of Customs (Export Promotion), New Customs House, Mumbai for the purpose of adjudicating the matters relating to Show Cause Notice pertaining to M/s. Far East Exports, Room No.602, 15/D, Khwaja Manzil , 6th Floor, Nishanpada Road, Dongri , Mumbai issued vide, F. No. DRI/NS/INT-2/2003, dated the 17th May, 2004, by the Additional Director General, Directorate of Revenue Intelligence, Mumbai Zonal Unit, Mumbai. F.NO.437/38/2004-CUS.IV D.S.Garbyal Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:05:03.343Z"
+}

@@ -1,0 +1,76 @@
+{
+  "sub_id": "notifications_27-08-2014_so_2169_27082014_final_eco_sensitive_zone_shingba_rhododendron_sanctuary_sikkim_d0e4961b0a40_",
+  "parent_act_id": "the_environment_protection_act_1986__1876",
+  "title": "S.O. 2169 27.08.2014 Final Eco Sensitive Zone Shingba Rhododendron Sanctuary, Sikkim",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/notificationindividualfile/&file=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "27-08-2014",
+  "description": "S.O. 2169 27.08.2014 Final Eco Sensitive Zone Shingba Rhododendron Sanctuary, Sikkim",
+  "hindi_description": "null",
+  "file_title": "S.O. 2169 [27.08.2014] Final ESZ Shingba Rhododendron Sanctuary, Sikkim.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "text/html",
+    "final_url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+    "num_pages": null,
+    "parser": null,
+    "status": "source_error",
+    "error_message": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator.",
+    "error_code": "source_unavailable",
+    "error_status": 404,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/notificationindividualfile/&file=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_16_18_00011_198629_1517807327582/notificationindividualfile/&file=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%202169%20%5B27.08.2014%5D%20Final%20ESZ%20Shingba%20Rhododendron%20Sanctuary,%20Sikkim.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+        "status": 200,
+        "outcome": "source_error",
+        "error": "Threre is some problem. Please contact to Administrator. GOTO Home --> Site designed and developed by National Informatics Centre, A- Block, C.G.O. Complex, Lodhi Road, New Delhi - 110 003, INDIA."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.+2169+%5B27.08.2014%5D+Final+ESZ+Shingba+Rhododendron+Sanctuary%2C+Sikkim.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      },
+      {
+        "url": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+        "finalUrl": "https://www.indiacode.nic.in/showfile?actid=AC_CEN_16_18_00011_198629_1517807327582&type=notification&filename=S.O.%2B2169%2B%5B27.08.2014%5D%2BFinal%2BESZ%2BShingba%2BRhododendron%2BSanctuary%2C%2BSikkim.pdf",
+        "status": 404,
+        "outcome": "source_error",
+        "error": "The Problem may be due to 500 Server Error/404 Page Not Found.Please contact your system administrator."
+      }
+    ]
+  },
+  "text": "S.O. 2169 27.08.2014 Final Eco Sensitive Zone Shingba Rhododendron Sanctuary, Sikkim",
+  "fetched_at": "2026-04-13T19:56:29.181Z"
+}

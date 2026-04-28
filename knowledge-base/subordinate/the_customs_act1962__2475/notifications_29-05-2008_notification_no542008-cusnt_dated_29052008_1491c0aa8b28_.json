@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_29-05-2008_notification_no542008-cusnt_dated_29052008_1491c0aa8b28_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.54/2008-Cus(NT), dated 29.05.2008",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=54-08.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "29-05-2008",
+  "description": "Notification No.54/2008-Cus(NT), dated 29.05.2008",
+  "hindi_description": null,
+  "file_title": "54-08.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=54-08.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=54-08.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=54-08.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=54-08.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=54-08.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=54-08.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "Notification No. 54 / 2008-Customs (N.T.) New Delhi, the 29th May, 2008 S.O. (E). - In exercise of the powers conferred by sub-section (1) of section 4 and sub-section (1) of section 5 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs, hereby appoints the Commissioner of Customs, Inland Container Depot, Tughlakabad, New Delhi to act as a common adjudicating authority to exercise the powers and discharge the duties conferred or imposed on the Commissioner of Customs (Exports), Jawaharlal Nehru Custom House, Nhava Sheva, Tehsil Uran, District Raigad, Maharashtra for the purpose of adjudicating the matters relating to show cause notice pertaining to M/s Alborz Industries, Delhi, 5570/22, Basti Harphool Singh, Sadar Bazar, Delhi and Others issued vide, DRI F.No. 23/105/2005-DZU/3316- 21 & 25-27, Dated the 25th May, 2007, by the Additional Director, Directorate General of Revenue Intelligence, Delhi Zonal Unit, New Delhi. [F.No. 437/76/2007-Cus.IV] (Aseem Kumar) Under Secretary to the Government of India -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:17:48.991Z"
+}

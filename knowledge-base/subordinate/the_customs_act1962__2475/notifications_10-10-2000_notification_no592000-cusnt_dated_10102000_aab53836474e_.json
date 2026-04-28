@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_10-10-2000_notification_no592000-cusnt_dated_10102000_aab53836474e_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notification No.59/2000-Cus(NT), dated 10.10.2000",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=59-2000.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "10-10-2000",
+  "description": "Notification No.59/2000-Cus(NT), dated 10.10.2000",
+  "hindi_description": null,
+  "file_title": "59-2000.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=59-2000.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=59-2000.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=59-2000.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=59-2000.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=59-2000.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=59-2000.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "10-10-2000 Notification No. 59-2000-Customs (N.T.) In exercise of the powers conferred by section 157, read with sub-section (3) of section 54 and section 158 of the Customs Act, 1962 (52 of 1962), the Central Board of Excise and Customs hereby makes the following regulations to amend the Goods Imported (Conditions of Transhipment Regulations, 1995, namely :- 1. Short title and commencement - (1) These regulations may be called the Goods Goods Imported (Conditions of Transhipment Regulations, 2000. (2) They shall come into force on the date of their publication in the Official Gazette. 2. In regulation 6 of the Goods Imported (Conditions of Transhipment) Regulations, 1995, in the sub-regulation (1), after clause (b), the following clause shall be inserted, namely:- \"(C) in the case of a container which has been sealed by one time bottle seal by shipping lines or their agents and the Customs have been informed of the serial number of such seal, such container shall not be required to be sealed by the Customs as required under clause (a) or clause (b) at the gateway port prior to their despatch to ICDs/CFS/Ports by rail/motor vehicle/vessels\". -- 1 of 1 --",
+  "fetched_at": "2026-04-13T19:56:57.795Z"
+}

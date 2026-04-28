@@ -1,0 +1,46 @@
+{
+  "sub_id": "notifications_05-11-2018_notfno91_2018-customs_nt_dated_51118_16490cff2bb8_",
+  "parent_act_id": "the_customs_act1962__2475",
+  "title": "Notf.No.91 /2018-Customs (NT), dated 5.11.18",
+  "type": "notification",
+  "category_label": "Notifications",
+  "source": "IndiaCode",
+  "source_url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=91-2018.pdf",
+  "detection_method": "modal-table-scan",
+  "document_date": "05-11-2018",
+  "description": "Notf.No.91 /2018-Customs (NT), dated 5.11.18",
+  "hindi_description": null,
+  "file_title": "91-2018.pdf",
+  "duplicate_count": 0,
+  "alternate_source_urls": [],
+  "alternate_file_titles": [],
+  "alternate_descriptions": [],
+  "document_format": "pdf",
+  "extraction": {
+    "content_type": "application/pdf",
+    "final_url": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=91-2018.pdf",
+    "num_pages": 1,
+    "parser": "pdf-parse",
+    "status": "parsed",
+    "error_message": null,
+    "error_code": null,
+    "error_status": null,
+    "recovered_from_alternate_source": false,
+    "attempted_urls": [
+      "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=91-2018.pdf",
+      "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=91-2018.pdf",
+      "https://www.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=91-2018.pdf"
+    ],
+    "recovery_attempts": [
+      {
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_CEN_2_2_00042_196252_1534829466423/notificationindividualfile/&file=91-2018.pdf",
+        "finalUrl": "https://upload.indiacode.nic.in/showfile?actid=AC_CEN_2_2_00042_196252_1534829466423&type=notification&filename=91-2018.pdf",
+        "status": 200,
+        "outcome": "parsed",
+        "error": null
+      }
+    ]
+  },
+  "text": "[TO BE PUBLISHED IN THE GAZETTE OF INDIA, EXTRAORDINARY, PART II, SECTION 3, SUB-SECTION (i)] Government of India Ministry of Finance Department of Revenue (Central Board of Indirect Taxes and Customs) Notification No. 91 /2018-Customs (N.T.) New Delhi, the 5th November, 2018 G.S.R._____ (E). - In exercise of powers conferred by clause (a) of section 152 of the Customs Act, 1962 (52 of 1962), the Central Government hereby directs that the powers exercisable by the Central Board of Indirect Taxes and Customs under sub-section (1) of section 5 of the Customs Act, 1962, shall also be exercised by the Principal Chief Commissioner or Chief Commissioner of Customs for the purposes assigning the cases for adjudication of show cause notices issued under the provisions of the said Act or rules, regulations made there under, within his jurisdiction. [F.No. 450/150/2017-Cus. -IV] (Zubair Riaz) Director (Customs) -- 1 of 1 --",
+  "fetched_at": "2026-04-13T20:45:45.878Z"
+}
