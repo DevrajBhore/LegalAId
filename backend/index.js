@@ -28,6 +28,7 @@ import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
 import { getIntakeAssistantResponse } from "./services/intakeAssistantService.js";
 import { searchClauses } from "./services/clauseSearch.js";
+import { getInterviewResponse } from "./services/interviewService.js";
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
 
 import authRoutes from "./auth/authRoutes.js";
@@ -41,20 +42,30 @@ const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
 
 // Restrict CORS to configured client origin(s). CLIENT_URL may be a single
 // origin or a comma-separated list; if unset, fall back to permissive (dev).
+// Origins are normalized (trailing slash stripped, lower-cased) because browser
+// Origin headers never carry a trailing slash while CLIENT_URL often does.
+const normalizeOrigin = (value) =>
+  String(value || "").trim().replace(/\/+$/, "").toLowerCase();
 const ALLOWED_ORIGINS = (process.env.CLIENT_URL || "")
   .split(",")
-  .map((value) => value.trim())
+  .map(normalizeOrigin)
   .filter(Boolean);
+if (ALLOWED_ORIGINS.length) {
+  console.log(`[CORS] Allowed origins: ${ALLOWED_ORIGINS.join(", ")}`);
+}
 app.use(
   cors(
     ALLOWED_ORIGINS.length
       ? {
           origin(origin, callback) {
             // Allow same-origin / server-to-server (no Origin header) and listed origins.
-            if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+            if (!origin || ALLOWED_ORIGINS.includes(normalizeOrigin(origin))) {
               return callback(null, true);
             }
-            return callback(new Error("Not allowed by CORS"));
+            // Deny without throwing (avoids noisy 500 stack traces); the browser
+            // simply won't receive CORS headers. Log so misconfig is visible.
+            console.warn(`[CORS] Blocked origin: ${origin}`);
+            return callback(null, false);
           },
           credentials: true,
         }
@@ -330,6 +341,25 @@ app.post("/generate", protect, aiLimiter, async (req, res) => {
           statusCode: 500,
         }),
       });
+  }
+});
+
+// Legal interview — free-text situation → structured field pre-fills
+app.post("/interview", protect, aiLimiter, async (req, res) => {
+  try {
+    const { document_type: documentType, message } = req.body || {};
+    if (!documentType || !String(message || "").trim()) {
+      return res
+        .status(400)
+        .json({ error: "Missing document_type or message in request body" });
+    }
+    const result = await getInterviewResponse({ documentType, message });
+    res.json(result);
+  } catch (error) {
+    console.error("Interview error:", error);
+    res
+      .status(error.statusCode || 500)
+      .json({ error: "Interview failed", details: error.message });
   }
 });
 

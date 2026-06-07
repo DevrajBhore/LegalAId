@@ -183,6 +183,24 @@ function normalizeError(status, details = "") {
   return "AI_PROVIDER_ERROR";
 }
 
+// Groq strict json_schema mode requires additionalProperties:false on EVERY
+// object. Caller-provided schemas (via the safety path) may omit it, so enforce
+// it recursively here rather than burdening every caller.
+function enforceStrictSchema(node) {
+  if (Array.isArray(node)) return node.map(enforceStrictSchema);
+  if (node && typeof node === "object") {
+    const next = {};
+    for (const [key, value] of Object.entries(node)) {
+      next[key] = enforceStrictSchema(value);
+    }
+    if (next.type === "object" && next.additionalProperties === undefined) {
+      next.additionalProperties = false;
+    }
+    return next;
+  }
+  return node;
+}
+
 async function requestGroq(messages, { schemaName, schema }) {
   const apiKey = process.env.GROQ_API_KEY;
 
@@ -215,7 +233,7 @@ async function requestGroq(messages, { schemaName, schema }) {
           json_schema: {
             name: schemaName,
             strict: true,
-            schema,
+            schema: enforceStrictSchema(schema),
           },
         },
       }),

@@ -6,6 +6,7 @@ import {
   generateDocument,
 } from "../services/api";
 import { Icons } from "../utils/icons";
+import InterviewPanel from "../components/InterviewPanel";
 import "./Form.css";
 
 const STEP_LABELS = ["Fill Details", "Review Inputs", "Generate Draft"];
@@ -758,6 +759,7 @@ export default function Form() {
   const [error, setError] = useState(null);
   const [generationValidation, setGenerationValidation] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
+  const [showInterview, setShowInterview] = useState(true);
 
   useEffect(() => {
     if (!documentType) {
@@ -1127,16 +1129,27 @@ export default function Form() {
         </aside>
 
         <main className="form-main">
+          {!showInterview && (
+            <button
+              type="button"
+              className="form-back interview-back"
+              onClick={() => setShowInterview(true)}
+            >
+              <span aria-hidden="true">←</span> Back to situation
+            </button>
+          )}
           <div className="form-header animate-in">
             <span className="form-header-kicker">{family} - Indian Law</span>
             <h1 className="form-header-title">{displayName}</h1>
-            <p className="form-header-sub">
-              Fill the intake form to generate a polished, editable first draft
-              with AI-guided drafting cues.
-            </p>
+            {!showInterview && (
+              <p className="form-header-sub">
+                Fill the intake form to generate a polished, editable first draft
+                with AI-guided drafting cues.
+              </p>
+            )}
           </div>
 
-          {visibleSections.length > 1 && (
+          {!showInterview && visibleSections.length > 1 && (
             <div className="form-section-nav animate-in-d1">
               <span className="form-section-nav-label">Jump to:</span>
               {visibleSections.map((section, index) => (
@@ -1245,6 +1258,15 @@ export default function Form() {
               <div className="spinner" />
               <span>Loading form...</span>
             </div>
+          ) : showInterview ? (
+            <InterviewPanel
+              pageMode
+              documentType={documentType}
+              onApply={applyAssistantSuggestion}
+              appliedValues={form}
+              onContinue={() => setShowInterview(false)}
+              onSkip={() => setShowInterview(false)}
+            />
           ) : (
             <>
               {visibleSections.map((section, sectionIndex) => (

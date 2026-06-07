@@ -128,13 +128,29 @@ function extractJSON(raw) {
   return JSON.parse(text);
 }
 
+// Gemini's responseSchema does not support JSON-Schema keywords like
+// additionalProperties; strip them so a strict-shaped schema (shared with Groq)
+// is still accepted by Gemini.
+function sanitizeGeminiSchema(node) {
+  if (Array.isArray(node)) return node.map(sanitizeGeminiSchema);
+  if (node && typeof node === "object") {
+    const next = {};
+    for (const [key, value] of Object.entries(node)) {
+      if (key === "additionalProperties") continue;
+      next[key] = sanitizeGeminiSchema(value);
+    }
+    return next;
+  }
+  return node;
+}
+
 function buildGenerateRequest(prompt, responseSchema) {
   return {
     contents: [{ role: "user", parts: [{ text: prompt }] }],
     generationConfig: responseSchema
       ? {
           ...BASE_GENERATION_CONFIG,
-          responseSchema,
+          responseSchema: sanitizeGeminiSchema(responseSchema),
         }
       : BASE_GENERATION_CONFIG,
   };

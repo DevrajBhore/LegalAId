@@ -41,6 +41,7 @@ export const getDocumentConfig = (type) => API.get(`/document-config/${type}`);
 export const generateDocument = (data) => API.post("/generate", data);
 export const chatWithIntakeAssistant = (data) =>
   API.post("/intake-assistant", data);
+export const runLegalInterview = (data) => API.post("/interview", data);
 export const getDocumentHistoryList = () => API.get("/history/documents");
 export const getDocumentHistoryDetail = (draftId) =>
   API.get(`/history/documents/${draftId}`);

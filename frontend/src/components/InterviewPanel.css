@@ -1,0 +1,373 @@
+/* InterviewPanel — matches the LegalAId dark/gold/serif design system
+   (tokens from index.css; surfaces/buttons mirror pages/Form.css). */
+
+/* ── Inline collapsible mode ──────────────────────────────────────────────── */
+.interview-panel {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--r-xl);
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.interview-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 16px 18px;
+  cursor: pointer;
+  text-align: left;
+}
+.interview-toggle__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--white);
+  font-size: 16px;
+}
+.interview-toggle__hint {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.interview-toggle__chev {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.interview-body {
+  padding: 0 18px 18px;
+}
+
+/* ── Textarea (mirrors .field-input/.field-textarea) ──────────────────────── */
+.interview-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.interview-textarea:focus {
+  outline: none;
+  border-color: rgba(184, 147, 58, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+}
+.interview-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+.interview-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.interview-analyze {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: var(--gold);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(184, 147, 58, 0.24);
+  transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.interview-analyze:hover:not(:disabled) {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+.interview-analyze:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.interview-applyall {
+  border: 1px solid rgba(184, 147, 58, 0.45);
+  background: var(--gold-pale);
+  color: var(--gold);
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.interview-applyall:hover {
+  background: var(--gold-glow);
+}
+
+.interview-error {
+  color: #ffb4b4;
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+
+/* ── "Understood" summary (mirrors .form-sidebar-tip) ─────────────────────── */
+.interview-summary {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.55;
+  background: var(--gold-pale);
+  border: 1px solid rgba(184, 147, 58, 0.18);
+  border-radius: var(--r-lg);
+  padding: 12px 14px;
+}
+.interview-summary strong {
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-right: 6px;
+}
+
+/* ── Suggested field updates ──────────────────────────────────────────────── */
+.interview-updates {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.interview-update {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--r-lg);
+  padding: 12px 14px;
+}
+.interview-update__main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.interview-update__field {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.90);
+}
+.interview-update__value {
+  font-size: 13.5px;
+  color: var(--gold);
+}
+.interview-update__reason {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.40);
+  line-height: 1.45;
+}
+.interview-update__apply {
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s;
+}
+.interview-update__apply:hover:not(:disabled) {
+  border-color: rgba(184, 147, 58, 0.45);
+  color: var(--gold);
+}
+.interview-update__apply:disabled {
+  background: var(--green-bg);
+  border-color: var(--green-border);
+  color: var(--green);
+  cursor: default;
+}
+
+/* ── Follow-up questions ──────────────────────────────────────────────────── */
+.interview-followups {
+  margin-top: 14px;
+}
+.interview-followups__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.interview-followups ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.interview-followups li {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+/* ── Full-page interview step (shown before the form) ─────────────────────── */
+.interview-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.interview-page__head {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.interview-page__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3.5vw, 34px);
+  color: var(--white);
+  letter-spacing: -0.4px;
+  margin: 0 0 10px;
+}
+.interview-page__sub {
+  color: rgba(255, 255, 255, 0.40);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 620px;
+}
+.interview-page .interview-body {
+  padding: 0;
+}
+.interview-page__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 20px;
+}
+.interview-skip {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.interview-skip:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.interview-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: var(--gold);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 13px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(184, 147, 58, 0.28);
+  transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.interview-continue:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(184, 147, 58, 0.36);
+}
+
+/* ── Polished page elements (card, examples, badge) ───────────────────────── */
+.interview-page__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-pale);
+  border: 1px solid rgba(184, 147, 58, 0.22);
+  border-radius: var(--r-full);
+  padding: 5px 13px;
+  margin-bottom: 18px;
+}
+.interview-page__badge-icon { font-size: 11px; }
+
+.interview-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-xl);
+  padding: 16px;
+}
+
+/* override: hint left, buttons right */
+.interview-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+.interview-actions__hint {
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.interview-examples {
+  margin-top: 18px;
+}
+.interview-examples__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.30);
+}
+.interview-examples__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.interview-example-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: var(--r-full);
+  padding: 7px 14px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.interview-example-chip:hover {
+  border-color: rgba(184, 147, 58, 0.40);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* "Back to situation" link on the form (returns to the interview step) */
+.interview-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.interview-back span { font-size: 15px; line-height: 1; }
