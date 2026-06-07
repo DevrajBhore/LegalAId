@@ -44,6 +44,10 @@
     {
       "clause": "CORE_FORCE_MAJEURE_001",
       "include_if": "long_term_lease == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
     }
   ],
   "mandatory_legal_checks": [

@@ -1,0 +1,19 @@
+{
+  "clause_id": "SERVICE_TERMINATION_DEFAULT_001",
+  "name": "Termination for Default (Non-Performance)",
+  "category": "TERMINATION",
+  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "If the Service Provider fails to perform the Services within the agreed timelines or to the agreed standard, such failure shall constitute a default. The Client may, upon written notice, terminate this Agreement in whole or in part, and may procure substitute services from a third party, holding the Service Provider liable for any excess cost so incurred. The Client may also recover, by way of liquidated damages or compensation, any loss suffered as a result of the default, in accordance with the Indian Contract Act, 1872. Termination for default shall be without prejudice to any other right or remedy of the Client.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "73", "note": "Compensation for loss or damage caused by breach" },
+    { "act": "Indian Contract Act, 1872", "section": "74", "note": "Compensation for breach where penalty / liquidated damages stipulated" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Liquidated damages are extravagant and unconscionable (penalty)"],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Termination for Default"
+}

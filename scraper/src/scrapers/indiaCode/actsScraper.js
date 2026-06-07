@@ -188,6 +188,8 @@ export async function runActsScraper({
                 title,
                 source_url: link.url,
                 fetched_at: new Date().toISOString(),
+                full_text: pageData.text,
+                headings: pageData.headings,
                 sections_count: sectionsArr.length,
                 metadata: {
                   ...meta,

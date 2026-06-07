@@ -1,0 +1,124 @@
+{
+  "document_type": "NDA",
+  "variant": "ip_focused",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "inked_signature_digital_signature",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Inked Signature / Digital Signature]"
+      }
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Name]"
+      }
+    },
+    {
+      "name": "designation",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Designation]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    }
+  ],
+  "body": "Policy for assessing the Land Border compliance - only with respect to ‘control through other means’ as per the DOE’s OM no. F.7/10/2021-PPD (1) dated 23.02.2023 Date of Policy 15-May-26 Policy Version v1.0 For all the applications received for VA / VAE, while assessing Land Border compliance, logic as mentioned in the subsequent para shall be applied for the purpose of examining ‘control through other means’ (as mentioned at Para 13 (i) of the Department of Expenditure OM no. F.7/10/2021-PPD (1) dated 23.02.2023) for the following entities: • The applicant entity, and • The OEM entity (if the applicant is a Deemed OEM), and • The Contract manufacturing entity (wherever applicable), and • The entities in the ownership tree of either of the above-mentioned entities (wherever applicable) If 3 conditions mentioned at (a), (b) and (c) below are collectively met regarding the count of director(s) in any of the above-mentioned entity/ies, who are national(s) from the ‘country sharing Land Border with India’, then the applicant or/and OEM or/and Contract Manufacturer (as the case may be) may not be required to get themselves registered with the competent authority (for the category/ies applied) as per the DOE’s OM no. F.7/10/2021-PPD (1) dated 23.02.2023: a. Condition 1 – Count of such Director(s) who are 'Other than Independent Directors' is equal to or less than 25% of the total count of directors in the respective entity (entity level or at every level of entity’s ownership) b. Condition 2 – Count of such Director(s) who are 'Independent directors' is less than 50% of the total count of directors in the respective entity (entity level or at every level of entity’s ownership) c. Condition 3 - The ratio of count of director(s) (irrespective of their type) who are national(s) from the ‘country sharing land border with India’ to the total count of directors of the respective entity (entity level or at every level of entity’s ownership) is less than 50%. If any of the above-mentioned conditions is not met, then the applicant or/and OEM or/and Contract Manufacturer (as the case may be) shall be required to get themselves registered with the competent authority as per the DOE’s OM no. F.7/10/2021-PPD (1) dated 23.02.2023. In case, there exists any director(s) who is/are national(s) from the ‘country sharing land border with India’ in the applicant entity or/and OEM or/and Contract Manufacturer (as the case may be) including entity/ies in the ownership tree of either of these entities, but the above 3 conditions are met, then an undertaking (as per Annexure-A) must be submitted stating that such director(s) does not exercise control of the management or policy decisions of the respective entity. The above-mentioned undertaking must be signed by the competent authority of the respective entity (applicant entity or/and OEM or/and Contract Manufacturer, as the case may be) and uploaded in the application submitted by the applicant entity. The competent authority for signing the above-mentioned undertaking shall be as under: SN Type of Case Competent Authority 1 Applicant is OEM AND No contract manufacturing is involved Undertaking to be signed by one of the Directors of the applicant entity or the Statutory auditor of the applicant entity, for the applicant entity and all the relevant entities in their ownership tree 2 The Applicant is an OEM AND Contract manufacturing is involved: 1. Undertaking to be signed by one of the Directors of the applicant entity or the Statutory auditor of the applicant entity, for the applicant entity and all the relevant entities in their ownership tree 2. Undertaking to be signed by one of the Directors of the contract manufacturing entity or the Statutory auditor of the contract manufacturing entity, for the contract manufacturing entity and all the relevant entities in their ownership tree. 3 The Applicant is a Deemed OEM AND No contract Manufacturing is involved 1. Undertaking to be signed by one of the Directors of the applicant entity or the Statutory auditor of the applicant entity, for the applicant entity and all the relevant entities in their ownership tree. 2. Undertaking to be signed by one of the Directors of the OEM or the Statutory auditor of the OEM, for the OEM and all the relevant entities in their ownership tree. In case, the applicant entity is a fully owned subsidiary of the OEM entity, then the requirement of undertaking from one of the directors / statutory auditors of the applicant entity shall suffice. 4 The Applicant is Deemed OEM AND Contract Manufacturing is involved 1. Undertaking to be signed by one of the Directors of the applicant entity or the Statutory auditor of the applicant entity, for the applicant entity and all the relevant entities in their ownership tree. 2. Undertaking to be signed by one of the Directors of the contract manufacturing entity or the Statutory auditor of the contract manufacturing entity, for the contract manufacturing entity and all the relevant entities in their ownership tree. 3. Undertaking to be signed by one of the Directors of the OEM or the Statutory auditor of the OEM, for the OEM and all the relevant entities in their ownership tree. In case, the applicant entity is a fully owned subsidiary of the OEM entity, then the requirement of undertaking from one of the directors / statutory auditors of the applicant entity shall suffice. The following points are to be kept in mind while calculating the percentage / ratio of director(s): • Rounding off shall not be applicable • For this policy, OEM means OEM as defined in GeM GTC • If the ownership of an entity at higher level of ownership tree in its immediate lower level is equal or less than 25%, then the nationality of directors at higher level need not be taken into cognizance. • The concept of weighted average ownership of an entity/ies in the ownership tree of applicant or/and OEM or/and Contract Manufacturer (as the case may be) is not applicable while assessing ‘control through other means’. • Please note that assessment of VA / VAE applications as per the above procedure shall be applicable only for ongoing and future applications. • All the conditions mentioned in this policy are to be read in conjunction with the DOE’s OM no. F.7/10/2021-PPD (1) dated 23.02.2023. It should be noted that all the related provisions of the said DOE’s OM shall also prevail, and the assessment of vendors shall be subject to those provisions. An Illustration: for Land Border compliance only with respect to ‘control through other means’ as stipulated in DOE’s OM no. F.7/10/2021-PPD (1) dated 23.02.2023. In an application received from OEM, the applicant entity has: • Total 9 directors. • Two of them are independent directors who are national(s) from the ‘country sharing Land Border with India’. • Two of them are Executive directors who are national(s) from the ‘country sharing land border with India’. • Remaining 5 directors are Indian national(s) or national(s) from the country other than the ‘country sharing land border with India’. Observations: 1. Other than Independent directors being national(s) from the ‘country sharing land border with India’ (2 nos.) constitute less than 25% of total directors. 2. Independent directors who are national(s) from the ‘country sharing land border with India’ (2 nos.) constitute less than 50% of total directors. 3. Ratio of the count of directors who are national(s) from the ‘country sharing land border with India’ (4 nos.) to the count of total directors (9 nos) is 4/9 = 44.44%, i.e., less than 50%. Conclusion: Since all the 3 conditions are met, the applicant entity is not required to get itself registered with the competent authority for the category/ies applied. Annexure-A Undertaking regarding Role of Director(s) (to be submitted wherever applicable) Undertaking to be signed by the competent authority (one of the Directors “OR” Statutory auditor) of the respective entity (applicant entity or/and OEM or/and Contract Manufacturer, as the case may be) on their official letterhead and submitted by the applicant entity. To Whomsoever It May Concern This is to certify that in M/s <…Name of the Applicant Entity / OEM / Contract Manufacturer…># having its corporate office at <…Office Address…> and entities in its ownership tree, the following Director(s) is/are a national(s) from the “country sharing land border with India” and is/are working in the capacity as mentioned below: SN Name of the Entity Corporate Address of the Entity Name of the Director Type of Director (Independent ‘OR’ Other than Independent) Nationality of Director 1 2 3 so on It is also certified that the above-mentioned Director(s) does/do not exercise control of the management or policy decisions in the respective entity. # Strike off wherever not applicable For M/s <… Name of the Applicant Entity / OEM / Contract Manufacturer…> [Inked Signature / Digital Signature] [Name] [Designation] Date: Place:",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/policy_for_assessing_the_land_border_compliance_on_undated_c01ab1d5eb31.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/policy-for-assessing-the-land-border-compliance-on_1778827342.pdf",
+    "quality_score": 71,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

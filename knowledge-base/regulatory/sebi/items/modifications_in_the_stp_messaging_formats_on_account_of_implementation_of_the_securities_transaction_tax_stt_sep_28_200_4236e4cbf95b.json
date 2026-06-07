@@ -1,0 +1,25 @@
+{
+  "id": "modifications_in_the_stp_messaging_formats_on_account_of_implementation_of_the_securities_transaction_tax_stt_sep_28_200_4236e4cbf95b",
+  "title": "Modifications in the STP messaging formats on account of implementation of the Securities Transaction Tax STT",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/sep-2004/modifications-in-the-stp-messaging-formats-on-account-of-implementation-of-the-securities-transaction-tax-stt_9699.html",
+  "document_url": "https://www.sebi.gov.in/legal/circulars/sep-2004/modifications-in-the-stp-messaging-formats-on-account-of-implementation-of-the-securities-transaction-tax-stt_9699.html",
+  "document_date": "Sep 28, 2004",
+  "document_format": "html",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "reason": "html_text_extracted"
+  },
+  "text": "Modifications in the STP messaging formats on account of implementation of the Securities Transaction Tax STT Sep 28, 2004| Circulars CHIEF GENERAL MANAGER DERIVATIVES AND NEW PRODUCTS DEPARTMENT DNPD/Cir-28/04 September 28, 2004 The STP centralised hub and all the STP service providers and all the exchanges Sub: Modifications in the STP messaging formats on account of implementation of the Securities Transaction Tax (STT) Dear Sir, 1) This is in continuation to the SEBI circular no. MRD/DoP/SE/Cir-28/2004 dated August 23, 2004 & circular no. MRD/DoP/SE/Cir-32/2004 dated September 23, 2004 with respect to the Securities Transaction Tax (STT) 2) Further to the SEBI circular no. circular no. DNPD/Cir-25/04 dated June 10, 2004 which outlined the transaction work flow for the system of Straight Through Processing (STP) in the Indian Securities Market and standardisation of the messaging formats, in order to integrate the STT in the STP system, it would be necessary to provide for necessary fields in the appropriate messaging standards. After deliberation with the STP centralised hub and the STP service providers, it has been decided to make the following modifications in the prescribed messaging formats: a) Message Types that shall be modified are IFN515, IFN540, IFN541, IFN542 and IFN543 b) A Qualifier shall be used to identify Securities Transaction Tax Amount: \"COUN\", Country, National Federal Tax. c) The change in the ISO Structure for the impacted message types shall be as follows: M 16R AMT Start of block M 19A Amount :4!c//3!a11d To identify the Securities Transaction Tax Amount Format: (Qualifier) //(Currency Code) (Amount)For: Securities Transaction tax AmountQualifier: \"COUN\" (4 Upper case Characters)Narrative: \"INR\" (3 Upper Letters)Amount: Up to 10 digits (only Integer value allowed) followed by a comma (used as decimal sign) . Comma is mandatory. Amount can be zero or greater than zero. M 16S AMT End of block d) Securities Transaction Tax Block shall be placed before the Settlement Amount Block in the stated Message Types. (IFN515, IFN540, IFN541, IFN542 and IFN543) e) Securities Transaction Tax block will be mandatory amount block in IFN515 and optional amount block in IFN540, IFN541, IFN542 and IFN543. f) If the Contract Note (issued by means of IFN 515) is rejected on the basis of Securities Transaction Tax amount then the reason for the rejection shall be specified in the \"Tag70D Narrative\" field and \"Tag 24B Reason\" specified should be \"NARR\". g) The STP centralised hub and the STP service providers are directed to make the necessary changes to their STP system to ensure that the above changes are implemented w. e. f. October 1, 2004 with the implementation of STT. h) The exchanges are directed to immediately make the relevant modifications / amendments to their bye-laws, rules and regulations to incorporate the above provisions. 3) This circular is being issued in exercise of powers conferred by section 11 (1) of the Securities and Exchange Board of India Act, 1992, read with section 10 of the Securities Contracts(regulation) Act 1956, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours sincerely, N. PARAKH",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

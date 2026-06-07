@@ -1,0 +1,29 @@
+{
+  "clause_id": "EMP_GARDEN_LEAVE_001",
+  "name": "Garden Leave",
+  "category": "TERMINATION",
+  "document_types": ["EMPLOYMENT"],
+  "jurisdiction": "India",
+  "text": "Upon notice of termination being given by either Party, the Employer may, at its sole discretion, require the Employee to serve all or part of the notice period on garden leave. During any period of garden leave, the Employee shall: (a) continue to receive their salary and contractual benefits; (b) remain an employee bound by all obligations under this Agreement, including those of confidentiality, fidelity, and exclusivity; (c) not, without the prior written consent of the Employer, attend the Employer's premises, contact clients, customers, suppliers, or employees of the Employer, or commence any other employment or engagement; and (d) deliver up or cease to access the Employer's property, systems, and Confidential Information as directed. Garden leave shall not extend beyond the unexpired portion of the applicable notice period.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Garden leave operates during employment and is valid as the contract subsists throughout the notice period"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Salary and benefits are not continued during garden leave",
+    "Garden leave extends beyond the contractual notice period"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Garden Leave",
+  "depends_on": ["EMP_NOTICE_PERIOD_001"],
+  "suggested_with": ["EMP_CONFIDENTIALITY_001", "EMP_NON_COMPETE_001"],
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "MEDIUM"
+}

@@ -6,6 +6,7 @@ import {
   getDocumentHistoryList,
 } from "../services/api";
 import { Icons } from "../utils/icons";
+import ErrorExplainer from "../components/ErrorExplainer";
 import "./Documents.css";
 
 function formatDate(value) {
@@ -30,7 +31,16 @@ export default function Documents() {
   useEffect(() => {
     getDocumentHistoryList()
       .then((res) => setDocuments(res.data?.documents || []))
-      .catch(() => setError("Could not load your saved drafts."))
+      .catch(() =>
+        setError({
+          title: "Couldn't load your saved drafts",
+          message: "LegalAId could not retrieve your document history.",
+          cause:
+            "The backend may be unreachable, your session may have expired, or the history service failed.",
+          solution:
+            "Check that you are signed in and the backend is running, then refresh this page.",
+        })
+      )
       .finally(() => setLoading(false));
   }, []);
 
@@ -40,7 +50,12 @@ export default function Documents() {
       const res = await getDocumentHistoryDetail(draftId);
       navigate("/editor", { state: res.data });
     } catch {
-      setError("Could not open that draft.");
+      setError({
+        title: "Couldn't open that draft",
+        message: "LegalAId could not load the selected document.",
+        cause: "The draft may have been deleted, or the backend could not be reached.",
+        solution: "Refresh the page and try again. If it persists, regenerate the document.",
+      });
     } finally {
       setActionId(null);
     }
@@ -64,7 +79,12 @@ export default function Documents() {
         current.filter((document) => document.draftId !== draftId)
       );
     } catch {
-      setError("Could not delete that saved draft.");
+      setError({
+        title: "Couldn't delete that draft",
+        message: "LegalAId could not remove the saved draft.",
+        cause: "The backend may be unreachable, or the draft may already be gone.",
+        solution: "Refresh the page and try again.",
+      });
     } finally {
       setDeleteId(null);
     }
@@ -97,10 +117,14 @@ export default function Documents() {
             <span>Loading saved drafts...</span>
           </div>
         ) : error ? (
-          <div className="documents-state documents-state--error">
-            <span className="documents-state-icon">{Icons.warning}</span>
-            <span>{error}</span>
-          </div>
+          <ErrorExplainer
+            variant="error"
+            title={error.title}
+            message={error.message}
+            cause={error.cause}
+            solution={error.solution}
+            onClose={() => setError(null)}
+          />
         ) : documents.length === 0 ? (
           <div className="documents-state">
             <span className="documents-state-icon">{Icons.scroll}</span>

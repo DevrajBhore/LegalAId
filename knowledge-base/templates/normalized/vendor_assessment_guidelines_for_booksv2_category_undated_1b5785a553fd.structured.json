@@ -1,0 +1,96 @@
+{
+  "document_type": "NDA",
+  "variant": "vendor",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_1",
+      "clause_name": "Clause 1",
+      "category": "jurisdiction"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_3",
+      "clause_name": "Below steps to be followed for validating the ISBN",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_5",
+      "clause_name": "Clause 5",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    }
+  ],
+  "body": "GUIDELINES FOR VENDOR ASSESSMENT OF PUBLISHERS IN “BOOKS (V2)” CATEGORY Apart from the applicant’s Land Border compliance, the undermentioned guidelines will be followed by GeM’s Vendor validation agency to assess the vendor for the Category - “Books (V2)”. For the purpose of vendor assessment, following definition shall be followed - a) Definition of a Publisher: A publisher refers to an individual, organization, company, or an entity responsible for initiating the production and distribution of a publication. b) Definition of ISBN: The International Standard Book Number (ISBN) is a unique numerical identifier assigned to books, consisting of a 13-digit code starting with the prefix 978 and 979. c) Authority to Assign ISBNs: ISBNs are assigned by designated ISBN Agencies worldwide, with over 160 such agencies operating globally. Each agency functions as the exclusive authority for issuing ISBNs to publishers based within its respective country or geographic jurisdiction. In India, the official authority for allocation of ISBN is the Raja Rammohun Roy National Agency for ISBN, operating under the Department of Higher Education, Ministry of Education, Government of India. Procedure to be followed by GeM’s Vendor Validation Agency for Vendor Assessment applied in category “Books (V2)” on GeM: 1. To qualify as an OEM, the applicant (Publisher) must provide at least 1 ISBN for their published books. This provided ISBN shall be validated for processing the applicant’s request. 2. Below steps to be followed for validating the ISBN: a) In case of Indian publishers - i. Step 1: Visit the official Indian ISBN portal at https://isbn.gov.in/Home/Index. ii. Step 2: Click on the “CLICK HERE” button under the \"Search ISBN\" section. iii. Step 3: Select the “Advanced Search” option. iv. Step 4: Enter the ISBN and click on the “Search” button. v. Step 5: The system will retrieve and display relevant details, including the name of the publisher, author/editor, and other associated information. b) For the publishers based outside India – Applicant must provide their ISBN along with the respective official website link of the ISBN agency (responsible for their country), from where the ISBN can be validated. 3. At least one duly signed agreement between author and the publisher must be submitted as proof of publishing rights. However, in the case of self-published authors, the applicant must provide a duly signed self-declaration. 4. At least one recent invoice from the printing agency / press issued to the applicant (publisher) must be submitted as evidence of book printing activities. However, in the case of self-printed publications, the applicant must provide a duly signed self- declaration. 5. Name and address of the applicant (publisher) shall be checked & validated against the information flowing to the present vendor validation agency from the vendor’s profile on GeM. There should not be any mismatch of name or address or both between vendor’s GeM profile details and submitted documents. 6. GSTIN is not mandatory for Printed Books falling under the HSN 4901 (as GST is 0%). In such a case, the publisher may declare GSTIN Number as “Not Available”. 7. In the Vendor Assessment form filed online, under the Part B – “Details of the firm”, for the information sought for Production Capability, Process, Quality, Safety, Suppliers & raw material, the publisher may mention “No”, if not applicable. 8. The Video Assessment shall be done for the publisher for his office premises, and the inventory of published books shall be checked. 9. For the photographs, the publisher can provide the photographs of their Publishing house / office premises and Finished books.",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/vendor-assessment-guidelines-for-booksv2-category_1755671758.pdf",
+    "quality_score": 77,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

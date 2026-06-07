@@ -1,0 +1,42 @@
+{
+  "id": "review_of_internet_based_trading_ibt_and_securities_trading_using_wireless_technology_stwt_jun_30_2011_9fb3a20ceb5a",
+  "title": "Review of Internet Based Trading (IBT) and Securities trading using Wireless Technology (STWT)",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jun-2011/review-of-internet-based-trading-ibt-and-securities-trading-using-wireless-technology-stwt-_20005.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1310550838844.pdf",
+  "document_date": "Jun 30, 2011",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": true,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "CreationDate": "D:20110630170335+05'30'",
+      "Author": "1149",
+      "Creator": "PScript5.dll Version 5.2",
+      "Producer": "Acrobat Distiller 7.0.5 (Windows)",
+      "ModDate": "D:20110630170335+05'30'",
+      "Title": "Microsoft Word - Cir-8%20-%2020110630%20Internet%20Based%20Trading%20circul…"
+    },
+    "reason": null
+  },
+  "text": "¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 1 of 2 CIRCULAR CIR/MRD/DP/ 8 /2011 June 30, 2011 To, All Stock Exchanges Dear Sir / Madam, Sub: Review of Internet Based Trading (IBT) and Securities trading using Wireless Technology (STWT) 1. Further to the SEBI circular no SMDRP/POLICY/CIR-06/2000 dated January 31, 2000 on Internet Based Trading and SEBI circular no CIR/MRD/DP/25/2010 dated August 27, 2010 on Securities Trading using Wireless Technology, it has been decided that the stock exchange shall ensure that the broker comply with the following – a. The broker shall capture the IP (Internet Protocol) address (from where the orders are originating), for all IBT/ STWT orders. b. The brokers system should have built-in high system availability to address any single point failure. c. There should be secure end-to-end encryption for all data transmission between the client and the broker through a Secure Standardized Protocol. A procedure of mutual authentication between the client and the broker server should be implemented. d. The broker system should have adequate safety features to ensure it is not susceptible to internal/ external attacks. e. In case of failure of IBT/ STWT, the alternate channel of communication shall have adequate capabilities for client identification and authentication. f. Two-factor authentication for login session may be implemented for all orders emanating using Internet Protocol. Public Key Infrastructure (PKI) based implementation using digital signatures, supported by one of the agencies certified by the government of India, is advisable. Further the two factors in the Two-factor authentication framework should not be same. -- 1 of 2 -- ¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 2 of 2 g. In case of no activity by the client, the system should provide for automatic trading session logout. Further to the above, the following practice is advisable – h. The back-up and restore systems implemented by the broker should be adequate to deliver sustained performance and high availability. The broker system should have on-site as well as remote site back-up capabilities. 2. The clauses 1(a) to 1(g) shall be implemented within 9 months from the date of this circular. 3. SEBI vide circular no SMDRP/POLICY/CIR-06/2000 dated January 31, 2000 specified that exchanges shall put in place a system for handling of complaints with regard to IBT. In continuation to the above, the exchanges shall put in place a system for monitoring of specific complaints with regard to unauthorized access using IBT. 4. Exchanges are advised to a) make necessary amendments to the relevant bye-laws, rules and regulations for the implementation of the above decision. b) bring the provisions of this circular to the notice of the member brokers/clearing members of the Exchange and also to disseminate the same on the website. c) communicate to SEBI, the status of the implementation of this circular in the Monthly Development Report. 5. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully, Harini Balaji Deputy General Manager 022-26449372 email : harinib@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

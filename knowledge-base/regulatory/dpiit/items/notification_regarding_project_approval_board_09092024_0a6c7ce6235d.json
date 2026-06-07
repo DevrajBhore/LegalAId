@@ -1,0 +1,40 @@
+{
+  "id": "notification_regarding_project_approval_board_09092024_0a6c7ce6235d",
+  "title": "Notification regarding Project Approval Board",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/sia-55897",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/483ebbb3e3c7240e92a3353bb4ec5497.pdf",
+  "document_date": "09/09/2024",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.2",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Producer": "Hewlett-Packard Intelligent Scanning Technology\r3",
+      "Author": "nic [ 3I ]",
+      "CreationDate": "D:20130122155134"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

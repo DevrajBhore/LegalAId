@@ -106,8 +106,76 @@ function extractConditionalClauseIds(blueprint, label) {
   return clauseIds;
 }
 
+function extractVariantClauseIds(blueprint, label) {
+  const variants = blueprint.variant_clauses || [];
+
+  if (!Array.isArray(variants)) {
+    throw new Error(
+      `Invalid blueprint format for "${label}": variant_clauses must be an array.`
+    );
+  }
+
+  const clauseIds = [];
+  for (const variant of variants) {
+    if (!variant || typeof variant !== "object") {
+      throw new Error(
+        `Invalid variant clause entry in "${label}": ${JSON.stringify(variant)}`
+      );
+    }
+
+    const candidates = variant.select_first_match || variant.variants || [];
+    if (!Array.isArray(candidates) || candidates.length === 0) {
+      throw new Error(
+        `Variant slot "${variant.slot || "?"}" in "${label}" must list at least one candidate clause.`
+      );
+    }
+
+    for (const candidate of candidates) {
+      if (typeof candidate?.clause !== "string" || !candidate.clause.trim()) {
+        throw new Error(
+          `Invalid variant candidate in "${label}" slot "${variant.slot || "?"}": ${JSON.stringify(candidate)}`
+        );
+      }
+      clauseIds.push(candidate.clause);
+    }
+
+    if (variant.default) {
+      if (typeof variant.default !== "string" || !variant.default.trim()) {
+        throw new Error(
+          `Invalid default clause for variant slot "${variant.slot || "?"}" in "${label}".`
+        );
+      }
+      clauseIds.push(variant.default);
+    }
+
+    if (variant.replaces && typeof variant.replaces !== "string") {
+      throw new Error(
+        `Invalid "replaces" reference for variant slot "${variant.slot || "?"}" in "${label}".`
+      );
+    }
+  }
+
+  return clauseIds;
+}
+
 function extractAllBlueprintClauseIds(blueprint, label) {
-  return [...extractClauseIds(blueprint, label), ...extractConditionalClauseIds(blueprint, label)];
+  return [
+    ...extractClauseIds(blueprint, label),
+    ...extractConditionalClauseIds(blueprint, label),
+    ...extractVariantClauseIds(blueprint, label),
+  ];
+}
+
+function chooseVariantClause(variant, variables = {}) {
+  const candidates = variant.select_first_match || variant.variants || [];
+
+  for (const candidate of candidates) {
+    if (evaluateConditionalExpression(candidate.when ?? candidate.include_if, variables)) {
+      return candidate.clause;
+    }
+  }
+
+  return variant.default || null;
 }
 
 function evaluateConditionalExpression(expression, variables = {}) {
@@ -136,13 +204,33 @@ function evaluateConditionalExpression(expression, variables = {}) {
 function resolveClauseIdsForBlueprint(blueprint, documentType, variables = {}) {
   const requiredClauseIds = extractClauseIds(blueprint, documentType);
   const conditionals = blueprint.conditional_clauses || [];
+  const variants = blueprint.variant_clauses || [];
   const resolvedVariables = deriveGenerationControls(documentType, variables);
+
+  // Apply variant slots: each slot resolves to a single clause chosen by context.
+  // When the slot declares `replaces`, the chosen clause is swapped in place of
+  // the replaced clause so the document keeps a single clause for that role;
+  // otherwise the chosen clause is appended.
+  let clauseIds = [...requiredClauseIds];
+  for (const variant of variants) {
+    const chosen = chooseVariantClause(variant, resolvedVariables);
+    if (!chosen) continue;
+
+    const replaces = variant.replaces;
+    if (replaces && clauseIds.includes(replaces)) {
+      if (chosen !== replaces) {
+        clauseIds = clauseIds.map((id) => (id === replaces ? chosen : id));
+      }
+    } else if (!clauseIds.includes(chosen)) {
+      clauseIds.push(chosen);
+    }
+  }
 
   const conditionalClauseIds = conditionals
     .filter((entry) => evaluateConditionalExpression(entry.include_if, resolvedVariables))
     .map((entry) => entry.clause);
 
-  return [...new Set([...requiredClauseIds, ...conditionalClauseIds])];
+  return [...new Set([...clauseIds, ...conditionalClauseIds])];
 }
 
 function getClauseSchemaValidator() {
@@ -375,6 +463,10 @@ export function getKnowledgeBaseStats() {
 export function getClauseById(clauseId) {
   if (!clauseId) return null;
   return getKnowledgeBaseCache().clausesById.get(clauseId) || null;
+}
+
+export function getAllClauses() {
+  return [...getKnowledgeBaseCache().clausesById.values()];
 }
 
 export function clearClauseCache() {

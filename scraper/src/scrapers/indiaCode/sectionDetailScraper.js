@@ -84,6 +84,7 @@ export async function fetchAllSections(actBrowseUrl, actSlug) {
         const existing = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
         if (existing.content && existing.content.length > 50) {
           console.log(`[Scraper] Skipping valid section ${sectionno}`);
+          results.push(existing);
           continue;
         }
         console.log(`[Scraper] Refetching incomplete section ${sectionno}`);

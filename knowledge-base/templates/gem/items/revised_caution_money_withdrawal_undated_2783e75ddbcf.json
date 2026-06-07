@@ -1,0 +1,46 @@
+{
+  "id": "revised_caution_money_withdrawal_undated_2783e75ddbcf",
+  "title": "revised caution money withdrawal",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "GeM Reference Documents",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/revised_caution_money_withdrawal_1772100284.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "Discontinuation of Caution Money on GeM and Refund Process for Existing Deposits Government e Marketplace (GeM), as part of its ongoing efforts to simplify processes and promote ease of doing business, has discontinued the requirement of Caution Money for Sellers and Service Providers. Background Caution Money was a one-time, refundable security deposit collected at the time of seller registration, linked to the declared annual turnover, with the objective of promoting compliance and discouraging non-serious participation. Earlier Applicable Caution Money Slabs Annual Turnover Caution Money Less than ₹1 crore ₹2,000 ₹1 crore to < ₹10 crore ₹10,000 ₹10 crore and above ₹25,000 Refund of Caution Money Already Deposited Sellers who have already deposited Caution Money may withdraw the same through the GeM portal by following the steps below: Step 1: Log in to Seller Account → Dashboard → Manage Caution Money Account (Ensure that a valid and verified bank account is available) -- 1 of 4 -- Step 2: Click Recalculate Threshold Step 3: Click Withdraw Excess Funds The approved amount shall be credited directly to the seller’s verified bank account within 24 hours. -- 2 of 4 -- Please Note: If your beneficiary bank account details are not visible in the pop up window as shown below, Please follow these steps: 1. Go to your Seller Profile. 2. Check if your bank account is added, marked as primary, and PFMS verified. 3. If the bank account is not added or not verified: o Add the bank account, Complete the PFMS verification, & Mark as Primary Account and after waiting for 2 hours try to withdraw the caution money again. 4. If your bank account is already added and verified, but you still cannot see it while withdrawing: o Take clear screenshots of the issue & raise a Helpdesk ticket and attach the screenshots in the ticket. Important: Withdrawals made on bank holidays or after working hours will be processed the next working day. Submit during working hours for same-day processing. Support -- 3 of 4 -- For any issue related to Caution Money refund, call us on 1800-419-3436/1800-102-3436 Or Raise a ticket through the GeM portal -- 4 of 4 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Title": "Revised_caution money withdrawal",
+      "Producer": "Skia/PDF m147 Google Docs Renderer"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/upload/shared_doc/revised_caution_money_withdrawal_1772100284.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

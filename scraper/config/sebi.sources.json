@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "sid": "1",
+      "ssid": "7",
+      "smid": "0"
+    },
+    {
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&smid=0&ssid=6",
+      "type": "master-circulars",
+      "label": "SEBI Master Circulars",
+      "sid": "1",
+      "ssid": "6",
+      "smid": "0"
+    }
+  ]
+}

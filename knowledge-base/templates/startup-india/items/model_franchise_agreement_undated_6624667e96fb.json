@@ -1,0 +1,35 @@
+{
+  "id": "model_franchise_agreement_undated_6624667e96fb",
+  "title": "model franchise agreement",
+  "source_type": "startup-templates",
+  "source_label": "Startup India Templates",
+  "source_mode": "template-page",
+  "category": "English Model Contracts",
+  "language": "English",
+  "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/model_franchise_agreement.docx",
+  "detail_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+  "page_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+  "document_date": null,
+  "document_format": "docx",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "source_error",
+    "num_pages": null,
+    "info": {},
+    "link_status": "invalid_binary",
+    "recovery_attempts": [
+      "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/model_franchise_agreement.docx"
+    ],
+    "source_error": "source_did_not_return_docx"
+  },
+  "source_refs": [
+    {
+      "label": "Startup India Templates",
+      "type": "startup-templates",
+      "mode": "template-page",
+      "page_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+      "detail_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html"
+    }
+  ]
+}

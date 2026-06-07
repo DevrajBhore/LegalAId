@@ -14,18 +14,18 @@ function shouldUsePuppeteer() {
   return configured !== "false";
 }
 
-function normalizeText(value = "") {
+export function normalizeText(value = "") {
   return String(value).replace(/\s+/g, " ").trim();
 }
 
-function slugify(value = "") {
+export function slugify(value = "") {
   return normalizeText(value)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "_")
     .replace(/^_+|_+$/g, "");
 }
 
-function normalizeUrl(href, baseUrl = EGAZETTE_HOME_URL) {
+export function normalizeUrl(href, baseUrl = EGAZETTE_HOME_URL) {
   if (!href) return null;
   const trimmed = String(href).trim();
   if (!trimmed) return null;
@@ -89,21 +89,21 @@ function extractDownloadCandidates($node, baseUrl) {
   return [...urls];
 }
 
-function buildItemId(entry) {
+export function buildItemId(entry) {
   const basis = entry.gazette_id || entry.download_url || entry.detail_url || entry.title || "egazette";
   const slug = slugify(basis).slice(0, 120) || "egazette";
   const hash = crypto.createHash("sha1").update(basis).digest("hex").slice(0, 12);
   return `${slug}_${hash}`;
 }
 
-function classifySection(gazetteId = "") {
+export function classifySection(gazetteId = "") {
   const value = String(gazetteId).toUpperCase();
   if (value.includes("-E-")) return "recent-extraordinary";
   if (value.includes("-W-")) return "recent-weekly";
   return "recent-gazettes";
 }
 
-function inferDownloadUrlFromGazetteId(gazetteId = "", publishDate = null) {
+export function inferDownloadUrlFromGazetteId(gazetteId = "", publishDate = null) {
   const match = String(gazetteId).match(/-(\d{8})-(\d+)$/);
   if (!match) return null;
 
@@ -115,7 +115,7 @@ function inferDownloadUrlFromGazetteId(gazetteId = "", publishDate = null) {
   return normalizeUrl(inferred, EGAZETTE_HOME_URL);
 }
 
-function buildEntryFromCells(cells, candidates, buttonId = null) {
+export function buildEntryFromCells(cells, candidates, buttonId = null) {
   const normalizedCells = cells.map((cell) => normalizeText(cell)).filter(Boolean);
   const rawText = normalizeText(normalizedCells.join(" "));
   const gazetteIdMatches = rawText.match(/[A-Z]{2}-[A-Z]{2}-[EW]-\d{8}-\d+/gi) || [];
@@ -159,7 +159,7 @@ function buildEntryFromCells(cells, candidates, buttonId = null) {
   return entry;
 }
 
-function extractEntriesFromHtml(html, baseUrl = EGAZETTE_HOME_URL) {
+export function extractEntriesFromHtml(html, baseUrl = EGAZETTE_HOME_URL) {
   const $ = cheerio.load(html);
   const entries = new Map();
 

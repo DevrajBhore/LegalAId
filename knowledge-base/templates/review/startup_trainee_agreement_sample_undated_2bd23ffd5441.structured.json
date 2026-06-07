@@ -1,0 +1,275 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "City",
+  "variables": [
+    {
+      "name": "company_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Company Name]"
+      }
+    },
+    {
+      "name": "date",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[date]"
+      }
+    },
+    {
+      "name": "address",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Address]"
+      }
+    },
+    {
+      "name": "country",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Country]"
+      }
+    },
+    {
+      "name": "phone_number",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Phone Number]"
+      }
+    },
+    {
+      "name": "manager_name_title",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Manager name & Title]"
+      }
+    },
+    {
+      "name": "trainee_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Trainee Name]"
+      }
+    },
+    {
+      "name": "trainee_address",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Trainee Address]"
+      }
+    },
+    {
+      "name": "trainee_email",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Trainee Email]"
+      }
+    },
+    {
+      "name": "trainee_phone",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Trainee Phone]"
+      }
+    },
+    {
+      "name": "trainee_position_title",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Trainee Position Title]"
+      }
+    },
+    {
+      "name": "placeholder_13",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_____________________"
+      }
+    },
+    {
+      "name": "applicable_law_and_jurisdiction",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[applicable law and jurisdiction]"
+      }
+    },
+    {
+      "name": "how_where_ie_court_at_city_country",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[How & Where ie. Court at City & Country]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "email"
+      }
+    },
+    {
+      "name": "notice_period",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "positive_integer"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_13",
+      "clause_name": "Clause 13",
+      "category": "termination"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_14",
+      "clause_name": "Clause 14",
+      "category": "termination"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_15",
+      "clause_name": "Clause 15",
+      "category": "termination"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_17",
+      "clause_name": "Clause 17",
+      "category": "confidentiality"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_2",
+      "clause_name": "Clause 2",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_12",
+      "clause_name": "Clause 12",
+      "category": "general"
+    },
+    {
+      "clause_id": "startup_trainee_agreement_sample_undated_2bd23ffd5441_16",
+      "clause_name": "Clause 16",
+      "category": "general"
+    }
+  ],
+  "body": "[Company Name] Trainee Agreement Agreement For Trainee Position At [Company Name] Purpose The purpose of the Trainee Agreement is to identify the skill, trade or occupation for which the trainee is being trained and confirm the qualifying trainee framework that the trainee is following. General Company will take the trainee on board for the trainee position, where he/she will initially learn by observing our team on key projects. Trainee will have the opportunity to ask questions and company will share useful resources that will help trainee to develop in his/her role. Company will nominate a trainer from within the company. The trainer will also dedicate some time on a regular basis to personally give some tutorials about trainee position fundamentals. At some point, if/when trainer believes trainee to be ready, he/she will let the trainee be more hands-on in more demanding tasks. Before that the trainer will also ensure that trainee gets hands-on practice less demanding tasks that are going on within the company. Learning Objectives (Identify learning objectives with estimated training duration) 1. Trainee will learn: 2. Trainee will learn: 3. Trainee will learn: 4. Etc. [Company Name] Trainee Agreement Trainee Agreement THIS AGREEMENT is made on [date] BETWEEN: [Company name] (the “Company”), [Address], [Country], [Phone Number], [Manager name & Title] AND [Trainee Name] (the “Trainee”), [Trainee Address], [Trainee Email], [Trainee Phone], for [Trainee Position Title] NOW IT IS HEREBY AGREED as follows: In consideration by the Company, the parties agree as follows: 1. That under the terms of this Agreement, the Company agrees to provide the Trainee with a traineeship period for identified learning objectives and the Trainee agrees to provide all work and services (the “Services”) reasonably required by the Company. 2. That the Trainee is expected to attend the training period for trainee position work experience, which will commence on _____________________ and shall end on _____________________ (the “Training Period”), with a review of the position at the end of the ____ month of the Training Period. During this time the trainee will commit a minimum of ___hours per week to work on his/her trainee obligations (the “Minimum Hours Requirement”). 3. That any tasks undertaken by the Trainee while on a traineeship period will have the purpose of promoting the Trainee's competence, understanding and familiarity of the Company’s business as well as in the Trainee's agreed learning objectives. 4. That the Trainee will be under an obligation to the Company to make satisfactory progress on the training period program, such progress will be agreed between the Company and the Trainee. 5. The Trainee will be expected to reach a reasonable standard of competence and performance for each task for which he/she has been trained. 6. That the Trainee will have no contractual relationship with the Company and that the training contract is not an employment contract. However, the Trainee will be expected to behave as part of the Company on whatever position he/she is assigned and shall abide by all the terms and conditions applicable to the Company’s own staff and respect the Company’s policies, values and procedures. 7. That the Trainee will not be paid for his/her traineeship period. With an exception to possible individual tasks or projects agreed separately in writing. 8. That the Trainee must keep a record of all tasks through the daily task and time record. [Company Name] Trainee Agreement 9. That if the Trainee will be unable to attend the training, his trainer must be informed on the first day of absence. 10. That the Company will designate an individual (the “Trainer”) to train, mentor and monitor the Trainee. The Trainer shall be the primary point of contact for the Trainee. Any requests from the Trainee should be communicated to the Trainer. 11. That the Trainee wishing to terminate the traineeship period must give one-week notice to the Trainer. 12. That the Company may terminate the traineeship period during the training period itself if the Trainee is unsatisfactory and by the discretion of the Trainer to terminate the Trainee’s training. 13. Grounds for immediate termination as determined solely by the Company of the Trainee yet include but are not limited to the following actions or events: a. Unauthorized absences or lack of communication b. Incapacity to attend training experience c. Inappropriate language or conduct to the Company’s customers or employees d. Inappropriate behavior to any employees of the company e. Misuse of tools or information of the company f. Actions that go against company values as set out in appendix A g. Failure to make progress in the skills and towards the goals set out between the Trainee and Trainer h. Failure to commit the Minimum Hours Requirement or to provide the Services i. Fraud or any criminal offence j. Breach of this agreement 14. That after the Trainee successfully ended his/her training period indicated in the paragraph two, his contract training with the company also ended. 15. That the progress and performance of all Trainees will be reviewed during and after the training period and performance review shall be conducted with the following criteria: a. Standard of work and behavior during period b. Reliability and performance c. Timekeeping & task records d. General conduct Proprietary Information and Confidentiality Trainee is aware that in the course of her/his engagement with the Company and/or in connection therewith, Trainee may have access to, and be entrusted with, technical, proprietary, sales, legal, financial, and other data and information with respect to the affairs and business of the Company, its affiliates, customers and suppliers, and including information received by the Company from any third party subject to obligations of confidentiality towards said third party, all of which data and information, whether documentary, written, oral or computer generated, shall be deemed to be, and referred to as [Company Name] Trainee Agreement “Proprietary Information”, which, by way of illustration but not limitation, shall include trade and business secrets, processes, patents, improvements, ideas, inventions (whether reduced to practice or not), techniques, products, and technologies (actual or planned), financial statements, marketing plans, strategies, forecasts, customer and/or supplier lists and/or relations, research and development activities, formula, data, know-how, designs, discoveries, models, computer hardware and software and any and all documentation relating thereto, drawings, dealings and transactions, except for such information which, on the date of disclosure, is, or thereafter becomes, available in the public domain or is generally known in the industry through no fault on the part of the Trainee. Trainee agrees and declares that all Proprietary Information, patents and/or patent applications, copyrights and other intellectual property rights in connection therewith, are and shall remain the sole property of the Company and its affiliates and their assigns. During the Trainee Period and upon its expiration thereafter, Trainee shall keep in confidence and trust all Proprietary Information, and any part thereof, and will not use or disclose and/or make available, directly or indirectly, to any third party any Proprietary Information without the prior written consent of the Company, except and to the extent as may be necessary in the ordinary course of performing Trainee’s duties pertaining to the Company and except and to the extent following, possible written notice from the Trainee to the Trainer and/or Company as may be required under any applicable law, regulation, judicial decision or determination of any governmental entity. Without derogating from the generality of the foregoing, the Trainee agrees: (a) not to copy, transmit, reproduce, summarize, quote, publish and/or make any commercial or other use whatsoever of the Proprietary Information, or any part thereof, without the prior written consent of Company, except as may be necessary in the performance of her/his duties pertaining to the Company; (b) to exercise the highest degree of care in safeguarding the Proprietary Information against loss, theft or other inadvertent disclosure and to take all reasonable steps necessary to ensure the maintaining of confidentiality; (c) upon a request by the Company to do so, the Trainee shall immediately deliver to the Company or destroy all Proprietary Information and any and all copies thereof, in whatever form, that had been furnished to the Trainee, prepared thereby and/or came to her/his possession in any manner whatsoever, during and in the course of her/his engagement with the Company, and shall not retain and/or make copies thereof in whatever form. Trainee acknowledges that any breach of her/his obligations pursuant to this Section would cause the Company substantial damage for which the Company shall hold them liable. The provisions of this Section shall survive termination of this Agreement and shall remain in full force and effect for a period of two (2) years thereafter. Inventions and Work Product Trainee agrees to promptly and from time to time fully inform and disclose to the Company all inventions, work product, designs, improvements, discoveries, algorithms, code, executable code, compilation and execution, configuration instructions and the like, which Trainee shall have created, developed or altered during her/his engagement with the Company, and which result from and are related directly to the Services rendered by Trainee to the Company, or which derive from any experimental work performed by the Company, whether conceived by Trainee alone or with others (the “Inventions”). All Inventions, and any and all rights, interests and title therein, shall be the exclusive property of the Company and Trainee shall not be entitled, and hereby waives, now and/or in the future, any claim to any right, [Company Name] Trainee Agreement compensation and/or reward in connection therewith. In the event that by operation of law, any Invention shall be deemed property of or owned by (in whole or in part) the Trainee, Trainee hereby assigns and shall in the future take all the requisite steps (including by signing all appropriate documents) to assign to the Company and/or its designee any and all of her/his foregoing rights, titles and interests in such Inventions, on a worldwide basis, and hereby further acknowledges and shall in the future acknowledge the Company’s full and exclusive ownership in all such Inventions. To the extent necessary, Trainee shall, during her/his engagement with the Company or at any time thereafter, execute all documents and take all steps necessary to effectuate the assignment to the Company and/or its designee and/or to assist the Company to obtain the exclusive and absolute rights, title and interests in and to all Inventions, whether by the registration of patent, trademark, trade secret, copyright, and/or any other applicable legal protection, and to protect same against infringement by any third party. This provision shall apply with equal force and effect to all items that may be subject to copyright or trademark protection. The provisions of this Section shall survive termination of this Agreement and shall remain in full force and effect at all times thereafter. Disputes and Governing Law This Agreement will be governed by and constructed in accordance with the [applicable law and jurisdiction]. Any disputes arising out of this agreement shall be resolved in [How & Where ie. Court at City & Country]. IN WITNESS WHEREOF, the parties have executed this Agreement as of the date below. Date Trainee Company xx xx [Company Name] Trainee Agreement Appendix A (Sample of Company Values etc.) Company Values At Work Ɣ Deliverables matter. Everyone should add measurable value; these can include, but not limited to design templates, wireframes, documentations, diagrams, improvement in existing process or lines of code that may/not carry monetary terms. Ɣ Being proactive and taking charge Ɣ Being passionate about your work, if you don’t care, why should anyone else Ɣ Using common sense Ɣ Including others and leveraging each other Ɣ Thinking outside the box Ɣ Active communication, updating tasks and asking for feedback Ɣ Constructive criticism. If you think something is not good, you should always have suggestion on how to improve. Ɣ True honesty Ɣ Iterative processes Ɣ If you are unsure – ask. If you don't know – say you don't know How We Work We do not believe in putting people in boxes, but rather we believe in new people finding what is the most motivating and valuable for them in their role. We expect everyone to take ownership of their tasks, responsibility for what they do and be accountable for their successes and their mishaps. We are an entrepreneurial company and we care about one thing above all, building value for the company and our customers. As an entrepreneurial organization we should always consider ourselves a team and work as one. We have vast expertise on several continents, it is crucial that we take advantage of this vast knowledge. In local operations, we must leverage other local operations to make the most of our efforts. Working in Company is an opportunity, not an obligation. Being part of this journey is earned every week by every team member.",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/startup_trainee_agreement_sample_undated_2bd23ffd5441.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/startup_trainee_agreement_sample.pdf",
+    "quality_score": 74,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

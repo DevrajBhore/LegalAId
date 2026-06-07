@@ -1,0 +1,78 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "____________"
+      }
+    },
+    {
+      "name": "placeholder_2",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_____________________"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "email"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "pre_shareholder_agreement_undated_b923ef252b82_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "pre_shareholder_agreement_undated_b923ef252b82_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "pre_shareholder_agreement_undated_b923ef252b82_3",
+      "clause_name": "Clause 3",
+      "category": "ip_ownership"
+    },
+    {
+      "clause_id": "pre_shareholder_agreement_undated_b923ef252b82_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "pre_shareholder_agreement_undated_b923ef252b82_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    }
+  ],
+  "body": "Pre Shareholder Agreement Parties: 1. Name / address / email / phone 2. Name / address / email / phone 3. Name / address / email / phone Terms of agreement 1. Parties have agreed to work together on a concept named ____________ 2. Parties are hereby agreeing that all the IPR and learnings that have been generated during the agreement period that relate to concept, can be freely and independently used by either party of this agreement 3. In case of any IPR where by law the individual have rights to IPR that can not be transferred (copyright text, audio, etc.), all the other parties will get unlimited license to use any such IPR for free 4. Any created, registered etc. IPR that can not be copied or licensed to multiple party (ie. domain name), regardless to whose name it’s been registered, who paid for it etc. can not be used by any party individually, unless separately agreed by all parties. Any accumulated costs known to parties need to be balanced out, equally between parties for this clause to remain effective. 5. The parties will negotiate in good faith on follow up agreements needed for further development of the concept Agreement period Effective from xx.xx.xxxx until xx.xx.xxxx Signatures _____________________ _____________________ _____________________",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/pre_shareholder_agreement_undated_b923ef252b82.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/pre-sha-agreement.pdf",
+    "quality_score": 62,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

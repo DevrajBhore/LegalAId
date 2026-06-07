@@ -1,0 +1,157 @@
+{
+  "source_count": 1,
+  "total_items": 20,
+  "unique_items": 20,
+  "parsed_items": 20,
+  "sources": [
+    {
+      "label": "IRDAI Circulars",
+      "type": "circulars",
+      "url": "https://irdai.gov.in/en/circulars",
+      "status": "ok",
+      "item_count": 20,
+      "items": [
+        {
+          "id": "_advisory_to_all_insurers_reinsurers_life_insurance_council_and_general_insurance_councilpdf_undated_43e408a7757f",
+          "title": "सभी बीमाकर्ताओं, पुनर्बीमाकर्ताओं, जीवन बीमा परिषद और साधारण बीमा परिषद के लिए परामर्शक _ Advisory to All Insurers, Reinsurers, Life Insurance Council and General Insurance Council.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B8%E0%A4%AD%E0%A5%80+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE%E0%A4%95%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BE%E0%A4%93%E0%A4%82%2C+%E0%A4%AA%E0%A5%81%E0%A4%A8%E0%A4%B0%E0%A5%8D%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE%E0%A4%95%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BE%E0%A4%93%E0%A4%82%2C+%E0%A4%9C%E0%A5%80%E0%A4%B5%E0%A4%A8+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B7%E0%A4%A6+%E0%A4%94%E0%A4%B0+%E0%A4%B8%E0%A4%BE%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%A3+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B7%E0%A4%A6+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%AA%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A4%B0%E0%A5%8D%E0%A4%B6%E0%A4%95+_+Advisory+to+All+Insurers%2C+Reinsurers%2C+Life+Insurance+Council+and+General+Insurance+Council.pdf/9ad3d8c8-71bd-5c27-62d6-6a98ec7b512a?version=2.1&t=1750146488575&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_circular_on_cyber_incident_or_crisis_preparednesspdf_undated_adfe74f91245",
+          "title": "साइबर घटना या संकट हेतु तैयारी पर परिपत्र _ Circular on Cyber Incident or Crisis Preparedness.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B8%E0%A4%BE%E0%A4%87%E0%A4%AC%E0%A4%B0+%E0%A4%98%E0%A4%9F%E0%A4%A8%E0%A4%BE+%E0%A4%AF%E0%A4%BE+%E0%A4%B8%E0%A4%82%E0%A4%95%E0%A4%9F+%E0%A4%B9%E0%A5%87%E0%A4%A4%E0%A5%81+%E0%A4%A4%E0%A5%88%E0%A4%AF%E0%A4%BE%E0%A4%B0%E0%A5%80+%E0%A4%AA%E0%A4%B0+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0+_+Circular+on+Cyber+Incident+or+Crisis+Preparedness.pdf/2b53047f-cf15-ea35-f8af-882a3150ef2c?version=2.0&t=1744030330726&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_clarifications_on_implementation_of_indian_accounting_standards_ind_aspdf_undated_6dbf2ae64f6e",
+          "title": "भारतीय लेखांकन मानकों (इंड एएस) के कार्यान्वयन संबंधी स्पष्टीकरण _ Clarifications on implementation of Indian Accounting Standards (Ind AS).pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%80%E0%A4%AF+%E0%A4%B2%E0%A5%87%E0%A4%96%E0%A4%BE%E0%A4%82%E0%A4%95%E0%A4%A8+%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A5%8B%E0%A4%82+%28%E0%A4%87%E0%A4%82%E0%A4%A1+%E0%A4%8F%E0%A4%8F%E0%A4%B8%29+%E0%A4%95%E0%A5%87+%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%B5%E0%A4%AF%E0%A4%A8+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%80+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+_+Clarifications+on+implementation+of+Indian+Accounting+Standards+%28Ind+AS%29.pdf/75505922-46a0-cd6a-efc2-00b38d38f49c?version=3.0&t=1775558439491&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_clarifications_on_provisions_with_respect_to_investment_in_alternative_investment_fundsaifspdf_undated_3d8b2d366de4",
+          "title": "वैकल्पिक निवेश निधियों (एआईएफएस) में निवेश के संबंध में उपबंधों संबंधी स्पष्टीकरण _ Clarifications on provisions with respect to investment in Alternative Investment Funds(AIFs).pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B5%E0%A5%88%E0%A4%95%E0%A4%B2%E0%A5%8D%E0%A4%AA%E0%A4%BF%E0%A4%95+%E0%A4%A8%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%B6+%E0%A4%A8%E0%A4%BF%E0%A4%A7%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82+%28%E0%A4%8F%E0%A4%86%E0%A4%88%E0%A4%8F%E0%A4%AB%E0%A4%8F%E0%A4%B8%29+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%A8%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%B6+%E0%A4%95%E0%A5%87+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%89%E0%A4%AA%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%8B%E0%A4%82+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%80+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+_+Clarifications+on+provisions+with+respect+to+investment+in+Alternative+Investment+Funds%28AIFs%29.pdf/f7d75129-66cd-99d4-2cc5-3bb4fe1f4ff4?version=2.0&t=1771505532123&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_exposure_to_forward_contracts_in_government_securities_bond_forwardspdf_undated_7848ffb3741e",
+          "title": "सरकारी प्रतिभूतियों में वायदा संविदाओं (बांड फार्वर्ड्स) में एक्सपोज़र _ Exposure to Forward Contracts in Government Securities (Bond Forwards).pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B8%E0%A4%B0%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A4%E0%A4%BF%E0%A4%AD%E0%A5%82%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%B5%E0%A4%BE%E0%A4%AF%E0%A4%A6%E0%A4%BE+%E0%A4%B8%E0%A4%82%E0%A4%B5%E0%A4%BF%E0%A4%A6%E0%A4%BE%E0%A4%93%E0%A4%82+%28%E0%A4%AC%E0%A4%BE%E0%A4%82%E0%A4%A1+%E0%A4%AB%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%A1%E0%A5%8D%E0%A4%B8%29+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%8F%E0%A4%95%E0%A5%8D%E0%A4%B8%E0%A4%AA%E0%A5%8B%E0%A4%9C%E0%A4%BC%E0%A4%B0+_+Exposure+to+Forward+Contracts+in+Government+Securities+%28Bond+Forwards%29.pdf/0537a8ef-0854-a1ad-e8d6-57295e432496?version=1.0&t=1741606296187&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_master_circular_on_rural_social_sector_and_motor_third_party_obligationspdf_undated_71246253199c",
+          "title": "ग्रामीण, सामाजिक क्षेत्र और मोटर अन्य पक्ष दायित्वों संबंधी मास्टर परिपत्र _ Master Circular on Rural, Social Sector and Motor Third Party Obligations.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A5%80%E0%A4%A3%2C+%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9C%E0%A4%BF%E0%A4%95+%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0+%E0%A4%94%E0%A4%B0+%E0%A4%AE%E0%A5%8B%E0%A4%9F%E0%A4%B0+%E0%A4%85%E0%A4%A8%E0%A5%8D%E0%A4%AF+%E0%A4%AA%E0%A4%95%E0%A5%8D%E0%A4%B7+%E0%A4%A6%E0%A4%BE%E0%A4%AF%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B5%E0%A5%8B%E0%A4%82+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%80+%E0%A4%AE%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A4%B0+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0+_+Master+Circular+on+Rural%2C+Social+Sector+and+Motor+Third+Party+Obligations.pdf/22343683-1b1b-8b6b-55f7-f80317a4cad8?version=1.0&t=1753450439575&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_review_of_revision_in_premium_rates_under_health_insurance_policies_for_senior_citizenspdf_undated_791d4a52cc1d",
+          "title": "वरिष्ठ नागरिकों के लिए स्वास्थ्य बीमा पालिसियों के अंतर्गत प्रीमियम दरों में संशोधन की समीक्षा _ Review of revision in premium rates under health insurance policies for senior citizens.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B5%E0%A4%B0%E0%A4%BF%E0%A4%B7%E0%A5%8D%E0%A4%A0+%E0%A4%A8%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A5%8D%E0%A4%AF+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE+%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%BF%E0%A4%B8%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%87+%E0%A4%85%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%A4+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AE%E0%A4%BF%E0%A4%AF%E0%A4%AE+%E0%A4%A6%E0%A4%B0%E0%A5%8B%E0%A4%82+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%B8%E0%A4%82%E0%A4%B6%E0%A5%8B%E0%A4%A7%E0%A4%A8+%E0%A4%95%E0%A5%80+%E0%A4%B8%E0%A4%AE%E0%A5%80%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE+_+Review+of+revision+in+premium+rates+under+health+insurance+policies+for+senior+citizens.pdf/b703b6bf-d407-e8f0-a302-c17260bec4a5?version=3.0&t=1738652759491&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "_transitional_arrangements_for_payment_of_annual_fee_and_issuance_of_certificate_of_registration_intermediariespdf_undat_ec5b412ab0aa",
+          "title": "वार्षिक शुल्क के भुगतान और पंजीकरण प्रमाणपत्र के निर्गम के लिए परिवर्ती व्यवस्थाएँ (मध्यवर्तियों) _ Transitional arrangements for payment of Annual Fee and issuance of Certificate of Registration (Intermediaries).pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B6%E0%A5%81%E0%A4%B2%E0%A5%8D%E0%A4%95+%E0%A4%95%E0%A5%87+%E0%A4%AD%E0%A5%81%E0%A4%97%E0%A4%A4%E0%A4%BE%E0%A4%A8+%E0%A4%94%E0%A4%B0+%E0%A4%AA%E0%A4%82%E0%A4%9C%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A3%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0+%E0%A4%95%E0%A5%87+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%AE+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A5%80+%E0%A4%B5%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%E0%A4%8F%E0%A4%81+%28%E0%A4%AE%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82%29+_+Transitional+arrangements+for+payment+of+Annual+Fee+and+issuance++of++Certificate++of++Registration+%28Intermediaries%29.pdf/840b8111-53f2-566b-e1ce-e2d5a6b961aa?version=2.0&t=1774597157001&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "-_-2_risk_based_capital_rbc-_quantitative_impact_study-2pdf_undated_43574d16a05a",
+          "title": "जोखिम आधारित पूँजी (आरबीसी) - मात्रात्मक प्रभाव अध्ययन-2 _ Risk Based Capital (RBC)- Quantitative Impact Study-2.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%9C%E0%A5%8B%E0%A4%96%E0%A4%BF%E0%A4%AE+%E0%A4%86%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%BF%E0%A4%A4+%E0%A4%AA%E0%A5%82%E0%A4%81%E0%A4%9C%E0%A5%80+%28%E0%A4%86%E0%A4%B0%E0%A4%AC%E0%A5%80%E0%A4%B8%E0%A5%80%29+-+%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%AE%E0%A4%95+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AD%E0%A4%BE%E0%A4%B5+%E0%A4%85%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%AF%E0%A4%A8-2+_+Risk+Based+Capital+%28RBC%29-+Quantitative+Impact+Study-2.pdf/01cf8c82-398b-078f-fba7-4c50d7101e15?version=2.0&t=1755498489847&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "-_2024-25_servicing_to_the_policyholder_-_special_measure_for_fy_2024-25pdf_undated_9dc7bb6a707e",
+          "title": "पॉलिसीधारकों की सर्विसिंग- चालू वित्तीय वर्ष 2024-25 के लिए विशेष उपाय _ Servicing to the policyholder - Special measure for FY 2024-25.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%AA%E0%A5%89%E0%A4%B2%E0%A4%BF%E0%A4%B8%E0%A5%80%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%80+%E0%A4%B8%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A4%BF%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%97-+%E0%A4%9A%E0%A4%BE%E0%A4%B2%E0%A5%82+%E0%A4%B5%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A5%80%E0%A4%AF+%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%B7+2024-25+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%B5%E0%A4%BF%E0%A4%B6%E0%A5%87%E0%A4%B7+%E0%A4%89%E0%A4%AA%E0%A4%BE%E0%A4%AF+_+Servicing+to+the+policyholder+-+Special+measure+for+FY+2024-25.pdf/e829051f-29de-4174-4892-37489943d755?version=2.0&t=1742204749546&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "-_2025-26_servicing_to_the_policyholders_special_measure_for_the_current_financial_year_2025-26pdf_undated_c0b8896833cc",
+          "title": "पॉलिसीधारकों को सेवाएं प्रदान करने हेतु- चालू वित्तीय वर्ष 2025-26 के लिए विशेष उपाय _ Servicing to the policyholders – Special Measure for the current Financial Year 2025-26.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%AA%E0%A5%89%E0%A4%B2%E0%A4%BF%E0%A4%B8%E0%A5%80%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%8B+%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%E0%A4%8F%E0%A4%82+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A6%E0%A4%BE%E0%A4%A8+%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87+%E0%A4%B9%E0%A5%87%E0%A4%A4%E0%A5%81-+%E0%A4%9A%E0%A4%BE%E0%A4%B2%E0%A5%82+%E0%A4%B5%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A5%80%E0%A4%AF+%E0%A4%B5%E0%A4%B0%E0%A5%8D%E0%A4%B7+2025-26+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%B5%E0%A4%BF%E0%A4%B6%E0%A5%87%E0%A4%B7+%E0%A4%89%E0%A4%AA%E0%A4%BE%E0%A4%AF+_+Servicing+to+the+policyholders+%E2%80%93+Special+Measure+for+the+current+Financial+Year+2025-26.pdf/a20f0d9f-d9b2-757f-8d12-30b5d1a845c1?version=1.0&t=1774444019239&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "-_circular_-_surveyors_and_loss_assessors_clarification_regarding_payment_of_annual_feespdf_undated_668c1d57a77a",
+          "title": "परिपत्र - सर्वेक्षकों और हानि निर्धारकों के लिए वार्षिक शुल्क भुगतान संबंधी स्पष्टीकरण _ Circular - Surveyors and Loss Assessors clarification regarding payment of Annual Fees.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0+-+%E0%A4%B8%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A5%87%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%94%E0%A4%B0+%E0%A4%B9%E0%A4%BE%E0%A4%A8%E0%A4%BF+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%B7%E0%A4%BF%E0%A4%95+%E0%A4%B6%E0%A5%81%E0%A4%B2%E0%A5%8D%E0%A4%95+%E0%A4%AD%E0%A5%81%E0%A4%97%E0%A4%A4%E0%A4%BE%E0%A4%A8+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%80+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+_+Circular+-+Surveyors+and+Loss+Assessors+clarification+regarding+payment+of+Annual+Fees.pdf/8b47078c-d4e8-9a3d-0ead-e4f0a515ea4f?version=1.0&t=1775642573794&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "-_one-time_mandate_for_blocking_the_amount_towards_premium_through_upi_for_issuance_of_life_and_health_insurance_policie_403f33157353",
+          "title": "जीवन और स्वास्थ्य बीमा पालिसियों के निर्गम हेतु यूपीआई मैंडेट के माध्यम से एकबारगी अधिदेश – बीमा-एएसबीए _ One-time Mandate for blocking the amount towards premium through UPI for issuance of life and health insurance policies- Bima-ASBA.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%9C%E0%A5%80%E0%A4%B5%E0%A4%A8+%E0%A4%94%E0%A4%B0+%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A5%8D%E0%A4%AF+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE+%E0%A4%AA%E0%A4%BE%E0%A4%B2%E0%A4%BF%E0%A4%B8%E0%A4%BF%E0%A4%AF%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%87+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%AE+%E0%A4%B9%E0%A5%87%E0%A4%A4%E0%A5%81+%E0%A4%AF%E0%A5%82%E0%A4%AA%E0%A5%80%E0%A4%86%E0%A4%88+%E0%A4%AE%E0%A5%88%E0%A4%82%E0%A4%A1%E0%A5%87%E0%A4%9F+%E0%A4%95%E0%A5%87+%E0%A4%AE%E0%A4%BE%E0%A4%A7%E0%A5%8D%E0%A4%AF%E0%A4%AE+%E0%A4%B8%E0%A5%87+%E0%A4%8F%E0%A4%95%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A4%97%E0%A5%80+%E0%A4%85%E0%A4%A7%E0%A4%BF%E0%A4%A6%E0%A5%87%E0%A4%B6+%E2%80%93+%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE-%E0%A4%8F%E0%A4%8F%E0%A4%B8%E0%A4%AC%E0%A5%80%E0%A4%8F+_+One-time+Mandate+for+blocking+the+amount+towards+premium+through+UPI+for+issuance+of+life+and+health+insurance+policies-+Bima-ASBA.pdf/d78302e2-fe28-e201-3bb0-0457a943db6e?version=2.0&t=1740135792276&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "03_2024_03_oct_2024_circular_on_observing_ncsampdf_03-oct-2024_6fc4732717a4",
+          "title": "03 अक्टूबर 2024 एनसीएसएएम के अवलोकन पर परिपत्र_ 03 Oct 2024 Circular on observing NCSAM.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/03+%E0%A4%85%E0%A4%95%E0%A5%8D%E0%A4%9F%E0%A5%82%E0%A4%AC%E0%A4%B0+2024+%E0%A4%8F%E0%A4%A8%E0%A4%B8%E0%A5%80%E0%A4%8F%E0%A4%B8%E0%A4%8F%E0%A4%8F%E0%A4%AE+%E0%A4%95%E0%A5%87+%E0%A4%85%E0%A4%B5%E0%A4%B2%E0%A5%8B%E0%A4%95%E0%A4%A8+%E0%A4%AA%E0%A4%B0+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0_+03+Oct+2024+Circular+on+observing+NCSAM.pdf/3c1d1291-1334-34ac-a047-617dd0513da7?version=2.0&t=1727959307940&download=true",
+          "document_date": "03-Oct-2024",
+          "type": "circulars"
+        },
+        {
+          "id": "1_2_permitting_insurers_investments_in_at1_bonds_and_tier_2_capital_of_rbi_regulated_aifispdf_undated_7cb2989d998f",
+          "title": "बीमाकर्ताओं को आरबीआई द्वारा विनियमित एआईएफआईएस के एटी1 बांडों और टियर 2 पूँजी में निवेश करने के लिए अनुमति देना_Permitting insurers’ investments in AT1 bonds and Tier 2 Capital of RBI regulated AIFIs.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%AC%E0%A5%80%E0%A4%AE%E0%A4%BE%E0%A4%95%E0%A4%B0%E0%A5%8D%E0%A4%A4%E0%A4%BE%E0%A4%93%E0%A4%82+%E0%A4%95%E0%A5%8B+%E0%A4%86%E0%A4%B0%E0%A4%AC%E0%A5%80%E0%A4%86%E0%A4%88+%E0%A4%A6%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A4%BE+%E0%A4%B5%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%E0%A4%BF%E0%A4%A4+%E0%A4%8F%E0%A4%86%E0%A4%88%E0%A4%8F%E0%A4%AB%E0%A4%86%E0%A4%88%E0%A4%8F%E0%A4%B8+%E0%A4%95%E0%A5%87+%E0%A4%8F%E0%A4%9F%E0%A5%801+%E0%A4%AC%E0%A4%BE%E0%A4%82%E0%A4%A1%E0%A5%8B%E0%A4%82+%E0%A4%94%E0%A4%B0+%E0%A4%9F%E0%A4%BF%E0%A4%AF%E0%A4%B0+2+%E0%A4%AA%E0%A5%82%E0%A4%81%E0%A4%9C%E0%A5%80+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%A8%E0%A4%BF%E0%A4%B5%E0%A5%87%E0%A4%B6+%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87+%E0%A4%95%E0%A5%87+%E0%A4%B2%E0%A4%BF%E0%A4%8F+%E0%A4%85%E0%A4%A8%E0%A5%81%E0%A4%AE%E0%A4%A4%E0%A4%BF+%E0%A4%A6%E0%A5%87%E0%A4%A8%E0%A4%BE_Permitting+insurers%E2%80%99+investments+in+AT1+bonds+and+Tier+2+Capital+of+RBI+regulated+AIFIs.pdf/9ff35188-7c9d-6020-f5dd-520eb24e43ee?version=2.0&t=1766489111419&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "1_2025_corporate_agency_matters_concerning_rrbs_amalgamated_from_1st_may_2025_and_beyondpdf_undated_a3ce390639d2",
+          "title": "क्षेत्रीय ग्रामीण बैंकों के कारपोरेट एजेंसी विषय, जिनका समामेलन 1 मई 2025 से और उसके बाद हुआ है _ Corporate Agency Matters Concerning RRBs Amalgamated from 1st May 2025 and Beyond.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AF+%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A5%80%E0%A4%A3+%E0%A4%AC%E0%A5%88%E0%A4%82%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%87+%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%87%E0%A4%9F+%E0%A4%8F%E0%A4%9C%E0%A5%87%E0%A4%82%E0%A4%B8%E0%A5%80+%E0%A4%B5%E0%A4%BF%E0%A4%B7%E0%A4%AF%2C+%E0%A4%9C%E0%A4%BF%E0%A4%A8%E0%A4%95%E0%A4%BE+%E0%A4%B8%E0%A4%AE%E0%A4%BE%E0%A4%AE%E0%A5%87%E0%A4%B2%E0%A4%A8+1+%E0%A4%AE%E0%A4%88+2025+%E0%A4%B8%E0%A5%87+%E0%A4%94%E0%A4%B0+%E0%A4%89%E0%A4%B8%E0%A4%95%E0%A5%87+%E0%A4%AC%E0%A4%BE%E0%A4%A6+%E0%A4%B9%E0%A5%81%E0%A4%86+%E0%A4%B9%E0%A5%88+_+Corporate+Agency+Matters+Concerning+RRBs+Amalgamated+from+1st+May+2025+and+Beyond.pdf/c3efa19e-e64e-a922-1bc1-511470960416?version=2.0&t=1747138379147&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "1600-_implementation_of_1600_series_trai_directionspdf_undated_c65ecfdddce3",
+          "title": "1600-शृंखला के अनिवार्य अंगीकरण संबंधी ट्राई (भारतीय दूरसंचार विनियामक प्राधिकरण) के निदेश का कार्यान्वयन _ Implementation of 1600 Series TRAI directions.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/1600-%E0%A4%B6%E0%A5%83%E0%A4%82%E0%A4%96%E0%A4%B2%E0%A4%BE+%E0%A4%95%E0%A5%87+%E0%A4%85%E0%A4%A8%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF+%E0%A4%85%E0%A4%82%E0%A4%97%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+%E0%A4%B8%E0%A4%82%E0%A4%AC%E0%A4%82%E0%A4%A7%E0%A5%80+%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%88+%28%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%A4%E0%A5%80%E0%A4%AF+%E0%A4%A6%E0%A5%82%E0%A4%B0%E0%A4%B8%E0%A4%82%E0%A4%9A%E0%A4%BE%E0%A4%B0+%E0%A4%B5%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%BE%E0%A4%AE%E0%A4%95+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%A7%E0%A4%BF%E0%A4%95%E0%A4%B0%E0%A4%A3%29+%E0%A4%95%E0%A5%87+%E0%A4%A8%E0%A4%BF%E0%A4%A6%E0%A5%87%E0%A4%B6+%E0%A4%95%E0%A4%BE+%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%B5%E0%A4%AF%E0%A4%A8+_+Implementation+of+1600+Series+TRAI+directions.pdf/c8e0e0d1-4359-b70a-da07-63c175e8491b?version=1.0&t=1767791333736&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "2001-02_cessation_of_the_practice_of_allowing_additional_line_of_business_department_to_sla_based_on_categorizpdf_undate_321e8ac864d6",
+          "title": "2001-02 में जारी किये गये श्रेणीकरण पत्र के आधार पर सर्वेक्षकों और हानि निर्धारकों को व्यवसाय_विभाग की अतिरिक्त व्यवस्था की अनुमति की प्रथा का समापन_Cessation of the practice of allowing additional line of business_department to SLA based on categoriz.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/2001-02+%E0%A4%AE%E0%A5%87%E0%A4%82+%E0%A4%9C%E0%A4%BE%E0%A4%B0%E0%A5%80+%E0%A4%95%E0%A4%BF%E0%A4%AF%E0%A5%87+%E0%A4%97%E0%A4%AF%E0%A5%87+%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%87%E0%A4%A3%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0+%E0%A4%95%E0%A5%87+%E0%A4%86%E0%A4%A7%E0%A4%BE%E0%A4%B0+%E0%A4%AA%E0%A4%B0+%E0%A4%B8%E0%A4%B0%E0%A5%8D%E0%A4%B5%E0%A5%87%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%94%E0%A4%B0+%E0%A4%B9%E0%A4%BE%E0%A4%A8%E0%A4%BF+%E0%A4%A8%E0%A4%BF%E0%A4%B0%E0%A5%8D%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A4%95%E0%A5%8B%E0%A4%82+%E0%A4%95%E0%A5%8B+%E0%A4%B5%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%B8%E0%A4%BE%E0%A4%AF_%E0%A4%B5%E0%A4%BF%E0%A4%AD%E0%A4%BE%E0%A4%97+%E0%A4%95%E0%A5%80+%E0%A4%85%E0%A4%A4%E0%A4%BF%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%A4+%E0%A4%B5%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE+%E0%A4%95%E0%A5%80+%E0%A4%85%E0%A4%A8%E0%A5%81%E0%A4%AE%E0%A4%A4%E0%A4%BF+%E0%A4%95%E0%A5%80+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A5%E0%A4%BE+%E0%A4%95%E0%A4%BE+%E0%A4%B8%E0%A4%AE%E0%A4%BE%E0%A4%AA%E0%A4%A8_Cessation+of+the+practice+of+allowing+additional+line+of+business_department+to+SLA+based+on+categoriz.pdf/daea8863-7c52-ebfa-1468-9892bcf8b35c?version=1.0&t=1760247032356&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "2025_clarification_on_irdai_maintenance_of_information_by_the_regulated_entities_and_sharing_of_information_by_the_autho_fb4e3706e5b3",
+          "title": "आईआरडीएआई (विनियमित संस्थाओं द्वारा सूचना का अनुरक्षण और प्राधिकरण द्वारा सूचना की साझेदारी) विनियम, 2025 पर स्पष्टीकरण _ Clarification on IRDAI (Maintenance of Information by the Regulated Entities and Sharing of information by the Authority) Reg, 20.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%86%E0%A4%88%E0%A4%86%E0%A4%B0%E0%A4%A1%E0%A5%80%E0%A4%8F%E0%A4%86%E0%A4%88+%28%E0%A4%B5%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%E0%A4%BF%E0%A4%A4+%E0%A4%B8%E0%A4%82%E0%A4%B8%E0%A5%8D%E0%A4%A5%E0%A4%BE%E0%A4%93%E0%A4%82+%E0%A4%A6%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A4%BE+%E0%A4%B8%E0%A5%82%E0%A4%9A%E0%A4%A8%E0%A4%BE+%E0%A4%95%E0%A4%BE+%E0%A4%85%E0%A4%A8%E0%A5%81%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3+%E0%A4%94%E0%A4%B0+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%A7%E0%A4%BF%E0%A4%95%E0%A4%B0%E0%A4%A3+%E0%A4%A6%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%B0%E0%A4%BE+%E0%A4%B8%E0%A5%82%E0%A4%9A%E0%A4%A8%E0%A4%BE+%E0%A4%95%E0%A5%80+%E0%A4%B8%E0%A4%BE%E0%A4%9D%E0%A5%87%E0%A4%A6%E0%A4%BE%E0%A4%B0%E0%A5%80%29+%E0%A4%B5%E0%A4%BF%E0%A4%A8%E0%A4%BF%E0%A4%AF%E0%A4%AE%2C+2025+%E0%A4%AA%E0%A4%B0+%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%80%E0%A4%95%E0%A4%B0%E0%A4%A3+_+Clarification+on+IRDAI+%28Maintenance+of+Information+by+the+Regulated+Entities+and+Sharing+of+information+by+the+Authority%29+Reg%2C+20.pdf/d34e4953-ded1-c474-a5b5-d8d9f19818d6?version=2.0&t=1753266458446&download=true",
+          "document_date": null,
+          "type": "circulars"
+        },
+        {
+          "id": "ncsam_2025_national_cyber_security_awareness_month_ncsam_2025pdf_undated_62188ba6cf21",
+          "title": "राष्ट्रीय साइबर सुरक्षा जागरूकता माह (NCSAM) 2025 _ National Cyber Security Awareness Month (NCSAM) 2025.pdf",
+          "document_url": "https://irdai.gov.in/documents/37343/365525/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AF+%E0%A4%B8%E0%A4%BE%E0%A4%87%E0%A4%AC%E0%A4%B0+%E0%A4%B8%E0%A5%81%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE+%E0%A4%9C%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A5%82%E0%A4%95%E0%A4%A4%E0%A4%BE+%E0%A4%AE%E0%A4%BE%E0%A4%B9+%28NCSAM%29+2025+_+National+Cyber+Security+Awareness+Month+%28NCSAM%29+2025.pdf/7d436948-a8a1-94f0-267e-a0030b4828e2?version=1.1&t=1759818487723&download=true",
+          "document_date": null,
+          "type": "circulars"
+        }
+      ]
+    }
+  ]
+}

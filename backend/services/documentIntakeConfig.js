@@ -30,6 +30,7 @@ function shouldExposeField(name, vars = {}) {
 
 const AUTO_SECTION_ORDER = [
   "Agreement Basics",
+  "Context & Risk Profile",
   "Termination & Remedies",
   "Jurisdiction & Dispute",
   "Commercial & Tax",

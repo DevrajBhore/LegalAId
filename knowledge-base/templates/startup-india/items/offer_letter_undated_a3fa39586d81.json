@@ -1,0 +1,37 @@
+{
+  "id": "offer_letter_undated_a3fa39586d81",
+  "title": "Offer Letter",
+  "source_type": "startup-templates",
+  "source_label": "Startup India Templates",
+  "source_mode": "template-page",
+  "category": "HR Templates",
+  "language": "English",
+  "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Offer%20Letter.docx",
+  "detail_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+  "page_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+  "document_date": null,
+  "document_format": "docx",
+  "has_text": true,
+  "text": "OFFER LETTER Date: To Mr. _______ _____________ (residential address) Phone No: ________________________ Sub: Offer Letter Dear ________, We are pleased to offer you the post of __________ based at ________. The compensation structure is enclosed for your reference as Annexure. Your employment with the Company will be subject to strict adherence to the policies and procedures of the Company. You will be on probation for six months. This offer is subjected to background verification and medical fitness. On acceptance of the terms of conditions as per this offer letter, you will be able to terminate your employment with the Company by giving one (1) month notice to the Company and vice versa. You shall not be eligible to avail leave during the notice period. We welcome you to join the Company and would be happy if you can sign the duplicate copy of this letter in token of your acceptance of the offer of employment with the Company. If you have any question, please clarify from the undersigned. With regards, ___________________________ ____________________________ HR - Head I accept the aforesaid terms & conditions and this offer of employment. I shall keep the contents of this document confidential. I will join on _____________. Name: _______________ Signature: _________________ Date: ______________________ Annexure Components* Monthly (INR) Annual (INR) Basic HRA Special Allowance Conveyance Medical LTA PF (Employer Contribution) Bonus (Annual) Total CTC * - The components can vary depending on the company and the way it would want to structure the salary.",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": null,
+    "info": {
+      "messages": []
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Offer%20Letter.docx"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "Startup India Templates",
+      "type": "startup-templates",
+      "mode": "template-page",
+      "page_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+      "detail_url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html"
+    }
+  ]
+}

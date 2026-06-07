@@ -1,0 +1,39 @@
+{
+  "clause_id": "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+  "name": "Heightened Confidentiality (Investor / Diligence Grade)",
+  "category": "CONFIDENTIALITY",
+  "document_types": ["NDA"],
+  "jurisdiction": "India",
+  "text": "The Receiving Party shall hold all Confidential Information in strict confidence and shall apply a standard of care no less rigorous than that which it applies to its own most sensitive information, and in no event less than a reasonable standard of care. The Receiving Party shall: (a) restrict access to Confidential Information strictly to those of its directors, officers, employees, and professional advisers who have a bona fide need to know such information for the Purpose and who are bound by written confidentiality obligations no less protective than those set out herein; (b) maintain a record of persons to whom Confidential Information has been disclosed; (c) not use the Confidential Information, directly or indirectly, for any purpose other than the Purpose, including for any competing, investment, or commercial advantage; and (d) promptly notify the Disclosing Party in writing upon becoming aware of any unauthorised access, use, or disclosure. Where the Receiving Party is evaluating a potential investment or transaction, the Confidential Information shall not be used to solicit, replicate, or compete with the business of the Disclosing Party.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Confidentiality narrowly targeting specific information is valid and enforceable"
+    },
+    {
+      "act": "SEBI (Prohibition of Insider Trading) Regulations, 2015",
+      "section": "3",
+      "note": "Restriction on use of unpublished price sensitive information during diligence"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43A",
+      "note": "Reasonable security practices for sensitive information"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Confidential Information is not defined",
+    "No need-to-know restriction is included"
+  ],
+  "source": "Indian Contract Act, 1872; SEBI PIT Regulations, 2015; IT Act, 2000",
+  "version": "1.0",
+  "title": "Confidentiality Obligation",
+  "depends_on": ["CORE_IDENTITY_001", "CORE_DEFINITIONS_001"],
+  "suggested_with": ["NDA_DATA_SECURITY_001", "CORE_SURVIVAL_001"],
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG"
+}

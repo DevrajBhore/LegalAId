@@ -3,7 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getDocumentTypes } from "../services/api";
 import { Icons } from "../utils/icons";
-import { getFeaturedDocumentTypes } from "../utils/documentCatalog";
+import {
+  getDocumentInfoPath,
+  getFeaturedDocumentTypes,
+} from "../utils/documentCatalog";
 import "./Home.css";
 
 const FEATURES = [
@@ -71,10 +74,7 @@ export default function Home() {
     [docTypes]
   );
 
-  const goToDocument = (type) =>
-    user
-      ? navigate("/form", { state: { document_type: type } })
-      : navigate("/login", { state: { from: "/form", document_type: type } });
+  const goToDocument = (type) => navigate(getDocumentInfoPath(type));
 
   return (
     <div className="home">

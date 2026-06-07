@@ -1,0 +1,49 @@
+{
+  "id": "country_of_origin_undated_b3bad3f776c9",
+  "title": "country of origin",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "GeM Reference Documents",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/country-of-origin_1600683712.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "Updating Country of Origin on your Products All products removed due to missing Country of Origin details will be marked as \"Country of Origin Not Provided\". To Update the Country of Origin, check which case from the following list is applicable for your product and follow the steps mentioned in the case: a. Case 1 -- You have uploaded the product as OEM i. Open the product that you need to update by clicking on the edit button in the Action(s) column ii. Scroll down to the “Offering Quantity and Price” section and select the applicable Country of Origin from the list -- 1 of 4 -- iii. If you have selected “India”, provide details for the other fields as applicable. You will need to provide the Manufacturing Location of your product in this case - kindly ensure you have configured an address of type Manufacturing by going to My Account → Office Locations: iv. After filling the details, you can update the stock. Ensure all other details (Stock, offer price, Delivery Locations etc.) are correct before updating the stock. Your offering will now be live on the market. b. Case 2a -- You have uploaded the product as a Reseller and OEM for your product also exists on GeM i. You will need to contact your OEM to update the Country of Origin ii. The OEM can follow the steps mentioned above in Case 1 to update the Country of Origin on the product iii. Once the OEM has confirmed to you that the Country of Origin has been updated, you can proceed as below iv. Open the Product by clicking on the Edit option under the Actions(s) column v. You can check the Country of Origin provided by the OEM under the “Offering Quantity and Price” section: vi. Update other stock details as required or click on “I confirm that all the details of my offering are up to date” and click on Update Stock to make your offering live on the market. -- 2 of 4 -- c. Case 2b -- You have uploaded the product as a Reseller the OEM for your product DOES NOT exist on GeM i. In this case, you can update the Country of Origin yourself. ii. Follow the steps mentioned in Case 1 to update the Country of Origin (step iii will not be applicable for you) iii. Once you Update the Stock and publish, the catalog ownership will transfer to you. Important Note for OEMs: As an OEM of a brand on GeM, you are responsible for maintaining the correctness of the details of the catalog selling under your brand name on GeM. Correctness includes product specifications, descriptive attributes, images, supporting documentation, MRP and now Country of Origin with Domestic value addition (Local Content %) as well. The GeM Sanitisation team is constantly monitoring the products on offer on GeM, and any products having wrong information will be sanitised and a Show Cause will be issued to the OEM if present. All catalogs uploaded by you on GeM as an OEM will be visible on your seller dashboard. However there will be cases where your brand was already present on GeM before you claimed OEM rights, and some sellers may have uploaded various products under the brand. These products will not be visible on your seller dashboard, unless you have also paired with them. 1. To view these products, you will need to navigate to My Account → OEM Panel. Locate the category and brand you are interested in under the OEM Actions list and click on Manage Catalogs in the last column: 2. This panel will show a list of all catalogs that are active under your brand in the category that you have not paired with. a. To keep the product active on the market (and to update Country of Origin if your reseller has approached you), click on Pair. You will need to provide the Country -- 3 of 4 -- of Origin and update. The product will now be visible under the Published list on the seller dashboard. The catalog ownership will transfer to you. b. You can also click on Discontinue to take the product off the GeM marketplace completely. Please note that this is to be done only if the product is at end of life or has wrong details. i. If you are not interested in selling the product yourself, you can keep your stock as 0. You do not need to discontinue the product in this case. -- 4 of 4 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Title": "Microsoft Word - Country of Origin Update .docx",
+      "Producer": "macOS Version 10.15.4 (Build 19E287) Quartz PDFContext",
+      "Creator": "Word",
+      "CreationDate": "D:20200919111422Z00'00'",
+      "ModDate": "D:20200919111422Z00'00'"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/upload/shared_doc/country-of-origin_1600683712.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

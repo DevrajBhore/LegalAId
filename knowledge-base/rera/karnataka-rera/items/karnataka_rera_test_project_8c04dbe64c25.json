@@ -1,0 +1,17 @@
+{
+  "id": "karnataka_rera_test_project_8c04dbe64c25",
+  "authority": "Karnataka RERA",
+  "source_type": "rera-project",
+  "source_label": "Karnataka Real Estate Regulatory Authority",
+  "application_no": "ACK/KA/RERA/1251/310/PR/190325/003154",
+  "registration_no": "",
+  "project_name": "Test Project",
+  "promoter_name": "a",
+  "source_url": "https://rera.karnataka.gov.in/viewAllProjects",
+  "text": "Test Project a ACK/KA/RERA/1251/310/PR/190325/003154",
+  "extraction": {
+    "status": "parsed",
+    "source_mode": "viewAllProjects_javascript_arrays"
+  },
+  "fetched_at": "2026-05-21T15:42:47.453Z"
+}

@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
     isVerified: { type: Boolean, default: false },
+    isAdmin: { type: Boolean, default: false },
     verificationToken: { type: String, select: false },
     verificationTokenExpiry: { type: Date, select: false },
     resetPasswordToken: { type: String, select: false },

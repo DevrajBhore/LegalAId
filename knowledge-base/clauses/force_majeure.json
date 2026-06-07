@@ -1,0 +1,20 @@
+{
+  "category": "force_majeure",
+  "clause_name": "Force Majeure",
+  "risk_level": "medium",
+  "variant_count": 1,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Clause 15",
+      "text": "10. Force Majeure Neither Party shall be responsible for delays or failures in performance resulting from acts of god, acts of civil or military authority, fire, flood, strikes, war, epidemics, shortage of power, or other acts or causes reasonably beyond the control of such Party. The Party experiencing the force majeure event agrees to give the other Party notice promptly following the occurrence of a force majeure event, and to use diligent efforts to re-commence performance as promptly as commercially practicable.",
+      "char_length": 522,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/consultancy_agreement_undated_f028fb9ea0eb.json",
+      "source_document_name": "Consultancy Agreement"
+    }
+  ]
+}

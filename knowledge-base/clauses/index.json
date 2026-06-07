@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-06-07T11:50:09.805Z",
+  "policy": "Clause variants mined from raw templates. Not wired into the main generator. Every variant is UNREVIEWED.",
+  "family_count": 9,
+  "variant_count": 46,
+  "families": [
+    {
+      "category": "arbitration",
+      "file": "arbitration.json",
+      "variant_count": 6
+    },
+    {
+      "category": "confidentiality",
+      "file": "confidentiality.json",
+      "variant_count": 6
+    },
+    {
+      "category": "force_majeure",
+      "file": "force_majeure.json",
+      "variant_count": 1
+    },
+    {
+      "category": "indemnity",
+      "file": "indemnity.json",
+      "variant_count": 6
+    },
+    {
+      "category": "ip_ownership",
+      "file": "ip_ownership.json",
+      "variant_count": 6
+    },
+    {
+      "category": "jurisdiction",
+      "file": "jurisdiction.json",
+      "variant_count": 6
+    },
+    {
+      "category": "notice_period",
+      "file": "notice_period.json",
+      "variant_count": 3
+    },
+    {
+      "category": "payment_terms",
+      "file": "payment_terms.json",
+      "variant_count": 6
+    },
+    {
+      "category": "termination",
+      "file": "termination.json",
+      "variant_count": 6
+    }
+  ]
+}

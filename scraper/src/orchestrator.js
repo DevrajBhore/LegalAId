@@ -30,6 +30,7 @@ const TARGET_GROUPS = {
   dpiit: "regulatory",
   "egazette-index": "gazette",
   "egazette-notifications": "gazette",
+  "egazette-recent": "gazette",
   "egazette-pdf": "gazette",
   indiankanoon: "case-law",
   judis: "case-law",
@@ -41,11 +42,26 @@ const TARGET_GROUPS = {
   "startup-india": "templates",
 };
 
+const LEGALAID_ESSENTIAL_GROUPS = [
+  "india-code",
+  "regulatory",
+  "gazette",
+  "templates",
+];
+
+const BULK_REFERENCE_GROUPS = ["case-law", "rera"];
+
 function parseCsv(input) {
   return String(input || "")
     .split(",")
     .map((value) => value.trim().toLowerCase())
     .filter(Boolean);
+}
+
+function isTruthy(value) {
+  return ["1", "true", "yes", "y"].includes(
+    String(value || "").trim().toLowerCase()
+  );
 }
 
 function parseOptionalInteger(value) {
@@ -76,6 +92,8 @@ function buildActsOptions() {
 function buildRunConfiguration() {
   const requested = parseCsv(process.env.SCRAPER_TARGETS);
   const runAll = requested.includes("all");
+  const includeBulkReference = isTruthy(process.env.SCRAPER_INCLUDE_BULK_REFERENCE);
+  const includeSubordinate = isTruthy(process.env.SCRAPER_INCLUDE_SUBORDINATE);
   const normalizedGroups = new Set();
   const subTargets = {
     "india-code": [],
@@ -98,19 +116,29 @@ function buildRunConfiguration() {
   }
 
   if (runAll) {
+    const groups = includeBulkReference
+      ? [...LEGALAID_ESSENTIAL_GROUPS, ...BULK_REFERENCE_GROUPS]
+      : [...LEGALAID_ESSENTIAL_GROUPS];
+
+    subTargets["india-code"].push("central-acts", "state-acts");
+    if (includeSubordinate) {
+      subTargets["india-code"].push("subordinate");
+    }
+
     return {
-      runAll,
+      runAll: false,
       requested,
-      groups: [
-        "india-code",
-        "regulatory",
-        "gazette",
-        "case-law",
-        "rera",
-        "templates",
-      ],
+      groups,
       subTargets,
       actsOptions: buildActsOptions(),
+      scrapePolicy: {
+        mode: "legalaid-essential",
+        included: groups,
+        excluded: [
+          ...(!includeSubordinate ? ["subordinate"] : []),
+          ...(!includeBulkReference ? BULK_REFERENCE_GROUPS : []),
+        ],
+      },
     };
   }
 
@@ -118,6 +146,9 @@ function buildRunConfiguration() {
     const groupKey = GROUP_ALIASES[token];
     if (groupKey) {
       normalizedGroups.add(groupKey);
+      if (groupKey === "india-code" && !includeSubordinate) {
+        subTargets["india-code"].push("central-acts", "state-acts");
+      }
       continue;
     }
 
@@ -137,6 +168,11 @@ function buildRunConfiguration() {
     groups: [...normalizedGroups],
     subTargets,
     actsOptions: buildActsOptions(),
+    scrapePolicy: {
+      mode: "explicit-targets",
+      included: [...normalizedGroups],
+      excluded: [],
+    },
   };
 }
 
@@ -148,6 +184,7 @@ function createAggregateSummary(config) {
         ? config.requested
         : config.subTargets["india-code"],
     groups: config.groups,
+    scrapePolicy: config.scrapePolicy,
     actsOptions: config.actsOptions,
     jobs: [],
     totals: {

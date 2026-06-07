@@ -15,11 +15,11 @@
     }
   ],
   "extraction": {
-    "status": "skipped",
+    "status": "error",
     "content_type": null,
     "num_pages": null,
     "info": null,
-    "reason": "non-pdf-response"
+    "reason": "parse-failed"
   },
   "text": ""
 }

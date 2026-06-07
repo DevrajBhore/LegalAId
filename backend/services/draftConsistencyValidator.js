@@ -639,7 +639,11 @@ export function validateDraftConsistency(
     );
   }
 
-  if (hasMeaningfulValue(variables.party_2_gstin) && !includesNormalized(paymentText, variables.party_2_gstin)) {
+  if (
+    paymentText &&
+    hasMeaningfulValue(variables.party_2_gstin) &&
+    !includesNormalized(paymentText, variables.party_2_gstin)
+  ) {
     issues.push(
       buildIssue(
         "INPUT_MISMATCH_SUPPLIER_GSTIN",
@@ -650,7 +654,11 @@ export function validateDraftConsistency(
     );
   }
 
-  if (hasMeaningfulValue(variables.party_1_gstin) && !includesNormalized(paymentText, variables.party_1_gstin)) {
+  if (
+    paymentText &&
+    hasMeaningfulValue(variables.party_1_gstin) &&
+    !includesNormalized(paymentText, variables.party_1_gstin)
+  ) {
     issues.push(
       buildIssue(
         "INPUT_MISMATCH_RECIPIENT_GSTIN",

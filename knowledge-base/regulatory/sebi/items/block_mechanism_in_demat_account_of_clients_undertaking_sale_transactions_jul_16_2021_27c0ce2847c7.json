@@ -1,0 +1,47 @@
+{
+  "id": "block_mechanism_in_demat_account_of_clients_undertaking_sale_transactions_jul_16_2021_27c0ce2847c7",
+  "title": "Block Mechanism in demat account of clients undertaking sale transactions",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jul-2021/block-mechanism-in-demat-account-of-clients-undertaking-sale-transactions_51170.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/jul-2021/1626432254060.pdf",
+  "document_date": "Jul 16, 2021",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "2384",
+      "CreationDate": "D:20210716160626+05'30'",
+      "ModDate": "D:20210716160830+05'30'",
+      "Producer": "Microsoft: Print To PDF; modified using iTextSharp™ 5.4.4 ©2000-2013 1T3XT BVBA (AGPL-version)",
+      "Title": "Microsoft Word - Circular - Block Mechanism in demat account",
+      "Custom": {
+        "ParentAuthor": "2384@SEBINT",
+        "Classification": "SEBI-INTERNAL",
+        "FClassification": "SEBI-INTERNAL",
+        "KID": "E4B97AF592B8637620485102823965"
+      }
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 4 CIRCULAR SEBI/HO/MIRSD/DOP/P/CIR/2021/595 July 16, 2021 To, All Depositories All recognized Stock Exchanges and Clearing Corporations Madam / Sir, Sub: Block Mechanism in demat account of clients undertaking sale transactions 1. SEBI, vide circular no. SEBI/HO/MIRSD/DOP/CIR/P/2020/73 dated September 15, 2020, issued clarification w.r.t. collection and reporting of margins by Trading Member (TM) / Clearing Member (CM) in Cash Segment. It was inter alia clarified that if Early Pay-In (EPI) of securities has been made to the Clearing Corporation (CC), then all margins would deemed to have been collected and penalty for short /non-collection of margin including other margins shall not arise. 2. SEBI has received representations from the clients undertaking sale transactions, wherein the clients give Early Pay-In (EPI) for sale trades which are yet to be executed. If the sale trade is executed, then the securities get adjusted against EPI, however, if securities remain unsold, then the securities are required to be returned back to client’s demat account, which take time and involve cost. 3. SEBI had extensive consultations with Depositories, Clearing Corporations and Stock Exchanges to provide a mechanism of block in the demat account of clients undertaking sale transactions. When the client intends to make a sale transaction, shares will be blocked in the demat account of the client in favour of Clearing Corporation. If sale transaction is not executed, shares shall continue to remain in the client’s demat account and will be unblocked at the end of the T day. Thus, this mechanism will do away with the movement of shares from client’s demat account for early pay-in and back to client’s demat account if trade is not executed. -- 1 of 4 -- Page 2 of 4 4. Process flow for Block Mechanism: 4.1. The securities lying in client’s demat account will be blocked either by client himself using depository’s online system or eDIS mandate or through depository participant based on physical DIS given by client or Power of Attorney (POA) holder. 4.2. Depositories may keep block on the securities in client’s demat account in respect of Intra or Inter depository transfer instruction till pay-in day. The blocked securities will be transferred only after checking against the client level net delivery obligation received from CCs. 4.3. Depositories will provide the details of transfer instructions viz., UCC, TM ID, Exchange ID etc. to CCs for clients to avail EPI benefit. 4.4. CC will match the client level net obligations with the Block details provided by depositories and CC will provide EPI benefit to client if the client level net obligation exists for that client. Matched orders: 4.5. In case of matched orders, block securities will be debited from Client’s demat account and will be credited to linked TM Pool account upto pay-in day. TM shall further transfer such securities to CM Pool account. 4.6. TM shall not transfer the securities to any other pool account other than CM pool account mapped to the TM account. Pool to Pool transfers except TM pool to CM pool shall not be permitted. 4.7. Inter-settlement shall not be allowed from TM Pool account and CM pool account. 4.8. Securities lying in CM pool account will be delivered in settlement process on the Pay-in date. If TM Pool Account is also mapped as a CM Pool Account, -- 2 of 4 -- Page 3 of 4 then, securities lying in such TM/CM Pool Account can also be delivered in the settlement process. Unblocking of Securities: 4.9. After receiving client level net obligations on T day from CCs, depositories will match the Intra or Inter depository transfer instruction details with CC obligation details based on UCC, TM ID, CM ID, Exchange ID, etc. 4.10. In case of unmatched orders, CCs shall upload cancellation of Block instruction on T day so that securities are unblocked and become free in client’s demat account on T day itself. 4.11. Broker or client shall not be allowed to unblock securities if EPI benefit is provided by CC to client for the same. Margining of Trades: 4.12. When the client intends to block securities for a sale transaction, shares will remain blocked in favour of CC. If securities are blocked in favour of CC, then all Margin would deemed to have been collected and penalty for short/non- collection of margin including other margins shall not arise. 4.13. Blocking shall be on ‘time basis’ and would mean if the order is not executed by the end of the T day, the block shall be released. 5. The proposed facility of block mechanism is on optional basis and Early Pay-in mechanism shall also continue. 6. Depositories are advised to make the facility of block mechanism available to the clients by August 01, 2021 and inform their participants of the step by step guide for block mechanism. Depositories and CCs shall put in place an appropriate system by participants / members to make available the Block Mechanism for clients in the securities market. -- 3 of 4 -- Page 4 of 4 7. This circular is issued in exercise of powers conferred under Section 11(1) of the Securities and Exchange Board of India Act, 1992, and Section 19 of the Depositories Act, 1996 to protect the interests of investors in securities and to promote the development of, and to regulate the securities markets. Yours faithfully Narendra Rawat General Manager Market Intermediaries Regulation and Supervision Department -- 4 of 4 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

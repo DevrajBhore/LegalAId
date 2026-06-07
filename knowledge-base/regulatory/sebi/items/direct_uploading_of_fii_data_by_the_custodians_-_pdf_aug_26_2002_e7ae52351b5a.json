@@ -1,0 +1,43 @@
+{
+  "id": "direct_uploading_of_fii_data_by_the_custodians_-_pdf_aug_26_2002_e7ae52351b5a",
+  "title": "Direct uploading of FII data by the Custodians - PDF",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/aug-2002/direct-uploading-of-fii-data-by-the-custodians-pdf_13144.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1293166358247.pdf",
+  "document_date": "Aug 26, 2002",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.2",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Creator": "",
+      "CreationDate": "D:20030214105100",
+      "Title": "",
+      "Author": "uploadserver",
+      "Producer": "Acrobat PDFWriter 3.02 for Windows NT",
+      "Keywords": "",
+      "Subject": ""
+    },
+    "reason": null
+  },
+  "text": "FII DIVISION FITTC DEPARTMENT EMAIL: santoshks@sebi.gov.in Fax No: 91-22-2845776 Circular No.FITTC/FII/05/2002 August 26, 2002 To All Custodians of Securities Dear Sir/Madam, Sub: Direct uploading of FII data by the Custodians It has been decided in the meeting held on August 13, 2002 of the FIIs and their representatives regarding offline uploading of daily FII investment data from the custodian site from September 2, 2002. Custodians are advised to submit the following: 1. Registration form in the enclosed format duly filled and signed. (Annexure I) 2. One time registration fee of Rs 25,000 by means of demand draft in favour of \"Securities and Exchange Board of India\" payable at Mumbai, towards availing facility of electronic filing of data. It may be note that this facility can be used for filling of any other document to SEBI. Further in this regard, we advise the following operational procedure keeping in view the proposed offline reporting: 1. Custodian may load FII investment data on a working day from 10 A.M. to 4 P.M. 2. For SEBI holiday, the custodian is advised to load data from their site in case the same is not market/custodian holiday. 3. Instructions for loading the data is also enclosed for your kind perusal. (Annexure II) Yours faithfully SANTOSH SHARMA ASST. GENERAL MANAGER Encl: as above -- 1 of 3 -- Annexure -I -- 2 of 3 -- Annexure – II Step-by Step Instructions for loading the data through Internet 1. Open Internet Explorer 2. In the address filed type http://extranet.sebi.gov.in:8585 3. In the citrix login form type username and password and click the login button 4. In you login for the first time click on install client and citrix client will be installed on your machine. You are requested to change the password immediately. 5. If the client is already installed click on electronic filing of FII data 6. If the menu select Data loading 7. Insert a floppy in A drive containing two files the DTR and DTS having the names in the following format : DTR DRDDMMYY DTS DSDDMMYY Where DD stands for day of the month, MM stands for Month of the Year YY stands for last two digits of the year. 9. Enter the reporting date 10. Press the load button 11. If there are no transactions to load press the No Transactions Button. 12. Exit the form. 13. If any error occurred while loading, you can view the errors, correct them and again load the data in the following manner : Go to view errors. Here you can query the error record, correct them and load them by pressing the load button. 14. Go to exit to log out from the database. -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

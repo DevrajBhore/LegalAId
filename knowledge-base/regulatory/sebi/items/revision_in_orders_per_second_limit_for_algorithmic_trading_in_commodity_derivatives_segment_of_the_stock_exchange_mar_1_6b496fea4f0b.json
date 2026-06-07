@@ -1,0 +1,47 @@
+{
+  "id": "revision_in_orders_per_second_limit_for_algorithmic_trading_in_commodity_derivatives_segment_of_the_stock_exchange_mar_1_6b496fea4f0b",
+  "title": "Revision in Orders Per Second limit for algorithmic trading in Commodity Derivatives Segment of the Stock Exchange",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/mar-2022/revision-in-orders-per-second-limit-for-algorithmic-trading-in-commodity-derivatives-segment-of-the-stock-exchange_56977.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/mar-2022/1647513325561.pdf",
+  "document_date": "Mar 17, 2022",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "Dhruba Jyoti Das",
+      "Creator": "Microsoft® Word 2016",
+      "CreationDate": "D:20220317151726+05'30'",
+      "ModDate": "D:20220317153704+05'30'",
+      "Producer": "Microsoft® Word 2016; modified using iTextSharp™ 5.4.4 ©2000-2013 1T3XT BVBA (AGPL-version)",
+      "Custom": {
+        "ParentAuthor": "2385@SEBINT",
+        "Classification": "SEBI-INTERNAL",
+        "FClassification": "SEBI-INTERNAL",
+        "KID": "E4B97AF5A859637831282248972222"
+      }
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 2 CIRCULAR SEBI/HO/CDMRD/CDMRD_DRM/P/CIR/2022/30 March 17, 2022 The Managing Directors / Chief Executive Officers Of All Exchanges having Commodity Derivatives Segment Sir / Madam, Subject: Revision in Orders Per Second limit for algorithmic trading in Commodity Derivatives Segment of the Stock Exchange 1. SEBI had issued broad guidelines on algorithmic trading for Commodity Derivatives segment of Stock Exchanges vide SEBI circular no. SEBI/HO/CDMRD/DMP/CIR/P/2016/97 dated September 27, 2016. The circular inter-alia required Stock Exchange to place a limit on the number of orders per second (OPS) from a particular CTCL ID/ATS User-ID to twenty (20) OPS. The limit on number of OPS from a particular CTCL ID/ATS User–ID was relaxed upto hundred (100) OPS from twenty (20) OPS, vide SEBI circular no. SEBI/HO/CDMRD/DRMP/CIR/P/2018/60 dated April 03, 2018. 2. Based on representations received from Stock Exchanges and discussions in the Technical Advisory Committee of SEBI, it has been decided to permit Stock Exchanges to further relax the aforesaid limit upto one hundred and twenty (120) OPS, as against the present hundred (100). Thus, clause ‘3’ of SEBI Circular SEBI/HO/CDMRD/DRMP/CIR/P/2018/60 dated April 03, 2018 stands revised as follows- “The Stock Exchange shall place a limit (X) on the numbers of orders per second from a particular CTCL ID/ATS User-ID not exceeding one hundred and twenty orders per second. Compliance with the limit “X” so set by a particular CTCL ID/ATS User-ID shall be measured over a rolling period of five seconds (i.e., 5X orders for 0th – 5th second, 5X orders for 1st-6th second, 5X orders for 2nd to 7th second and so on). For number of orders exceeding the limit (X) set by the Stock Exchange, the Stock Exchange shall prescribe economic disincentives and inform the same to SEBI. Further, Stock Exchange shall ensure that the limits provided is subject to its ability to handle the load.” 3. The limit on OPS may be further relaxed by the Stock Exchanges based on the increased peak order load observed and corresponding upgrade of infrastructure capacity to ensure that the capacity of trading system of the Stock Exchange remains at least four times the peak order load. The relaxation in limit shall be subject to approval of SEBI. 4. The circular shall be effective from April 01, 2022. -- 1 of 2 -- Page 2 of 2 5. All other terms and conditions specified in circular no. SEBI/HO/CDMRD/DMP/CIR/P/2016/97 dated September 27, 2016 and SEBI circular no. SEBI/HO/CDMRD/DRMP/CIR/P/2018/60 dated April 03, 2018 shall remain the same. 6. This circular is issued in exercise of the powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 7. The circular is issued with the approval of the competent authority. 8. This circular is available on SEBI website at www.sebi.gov.in. Yours faithfully, Priyanka Mahapatra Deputy General Manager Division of Risk Management Commodity Derivatives Market Regulation Department priyankam@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

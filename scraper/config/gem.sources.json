@@ -1,0 +1,31 @@
+{
+  "sources": [
+    {
+      "url": "https://gem.gov.in/support/sellers/?lang=english",
+      "type": "gem-support-documents",
+      "label": "GeM Support Documents",
+      "mode": "support-page"
+    },
+    {
+      "url": "https://gem.gov.in/terms-of-use",
+      "type": "gem-terms",
+      "label": "GeM Terms of Use",
+      "mode": "direct-document",
+      "title": "GeM Terms of Use"
+    },
+    {
+      "url": "https://gem.gov.in/support/terms_conditions",
+      "type": "gem-terms",
+      "label": "GeM Terms and Conditions",
+      "mode": "direct-document",
+      "title": "GeM Terms and Conditions"
+    },
+    {
+      "url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/gtc/general-te-1675401798.pdf",
+      "type": "gem-general-terms",
+      "label": "GeM General Terms and Conditions",
+      "mode": "direct-document",
+      "title": "General Terms and Conditions on GeM 4.0"
+    }
+  ]
+}

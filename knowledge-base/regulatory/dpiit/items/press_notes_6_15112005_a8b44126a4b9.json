@@ -1,0 +1,40 @@
+{
+  "id": "press_notes_6_15112005_a8b44126a4b9",
+  "title": "Press Notes 6",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/press-notes-2005-58854",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/8920b5d5a78cfa968b17ecf11b2c788b.pdf",
+  "document_date": "15/11/2005",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 1,
+    "info": {
+      "PDFFormatVersion": "1.2",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Producer": "Hewlett-Packard Intelligent Scanning Technology\r3",
+      "Author": "NIC [ NIC352-T4-1 ]",
+      "CreationDate": "D:20051116131402"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 1 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

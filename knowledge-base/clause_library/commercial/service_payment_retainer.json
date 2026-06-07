@@ -1,0 +1,19 @@
+{
+  "clause_id": "SERVICE_PAYMENT_RETAINER_001",
+  "name": "Payment - Monthly Retainer",
+  "category": "PAYMENT",
+  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Client shall pay the Service Provider a recurring monthly retainer as set out in this Agreement, in advance, on or before the fifth (5th) day of each calendar month, against a valid tax invoice. The retainer covers the agreed scope of Services for the relevant month; work materially beyond that scope shall be charged separately on terms agreed in writing. Applicable GST shall be charged additionally, and the Client shall deduct TDS where required under the Income-tax Act, 1961. Either Party may revise the retainer prospectively on not less than thirty (30) days' written notice.",
+  "legal_basis": [
+    { "act": "Central Goods and Services Tax Act, 2017", "section": "31", "note": "Tax invoice requirements for recurring supplies" },
+    { "act": "Income-tax Act, 1961", "section": "194J", "note": "TDS on professional/technical service fees" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Retainer amount or billing cycle is not specified"],
+  "source": "CGST Act, 2017; Income-tax Act, 1961",
+  "version": "1.0",
+  "title": "Payment Terms"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "market_promotion_development_scheme_mpda_undated_2b3583cdf339",
+  "title": "Market Promotion & Development Scheme (MPDA)",
+  "source_type": "scheme-guidelines",
+  "source_label": "MyMSME Scheme Guidelines",
+  "source_mode": "scheme-table",
+  "document_url": "https://msme.gov.in/sites/default/files/Khadi_MPDA_Guidelines.pdf",
+  "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "linked_but_unresolved",
+    "num_pages": null,
+    "info": {},
+    "link_status": "broken_upstream",
+    "recovery_attempts": [
+      "https://msme.gov.in/sites/default/files/Khadi_MPDA_Guidelines.pdf"
+    ],
+    "source_error": "binary_fetch_status_404"
+  },
+  "source_refs": [
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx"
+    }
+  ]
+}

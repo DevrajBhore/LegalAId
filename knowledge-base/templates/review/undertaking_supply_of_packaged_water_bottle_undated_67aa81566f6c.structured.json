@@ -1,0 +1,116 @@
+{
+  "document_type": "NDA",
+  "variant": "standard",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "to_be_printed_on_seller_s_letterhead",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[To be printed on Seller’s Letterhead]"
+      }
+    },
+    {
+      "name": "placeholder_2",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "___________"
+      }
+    },
+    {
+      "name": "placeholder_3",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_______________"
+      }
+    },
+    {
+      "name": "placeholder_4",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "__________________"
+      }
+    },
+    {
+      "name": "placeholder_5",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "____________"
+      }
+    },
+    {
+      "name": "placeholder_6",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "________________"
+      }
+    },
+    {
+      "name": "placeholder_7",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_________"
+      }
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Name]"
+      }
+    },
+    {
+      "name": "designation",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Designation]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "undertaking_supply_of_packaged_water_bottle_undated_67aa81566f6c_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "undertaking_supply_of_packaged_water_bottle_undated_67aa81566f6c_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "undertaking_supply_of_packaged_water_bottle_undated_67aa81566f6c_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    }
+  ],
+  "body": "[To be printed on Seller’s Letterhead] UNDERTAKING 1. I, ___________, s/o _______________, aged about _____, residing / having office at __________________, the undersigned hereby solemnly undertake and affirm that: 2. I am presently working as ____________ (proprietor/director/partner or any other designation) with ________________ (Entity Name) and am competent to certify and affirm the present undertaking. 3. I am an authorized distributor/reseller of 20 Litre water bottle of brand ________________ for a period_________ to ___________. The authorization certificate issued by the ___________i.e. OEM of the said brand, is attached herewith in the next page as Annexure. 4. I undertake and affirm that the present undertaking is true and correct. I understand that any violation of the above undertaking shall be strictly dealt with and may attract severe repercussions including administrative and legal actions as per applicable laws and policies of GeM. Sincerely, For Name of Entity Signature of Authorised Signatory [Name] [Designation] Contact No. : Place: Date: (Stamp of Organization, if applicable)",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/undertaking_supply_of_packaged_water_bottle_undated_67aa81566f6c.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/undertaking-supply-of-packaged-water-bottle_1775823932.pdf",
+    "quality_score": 40,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

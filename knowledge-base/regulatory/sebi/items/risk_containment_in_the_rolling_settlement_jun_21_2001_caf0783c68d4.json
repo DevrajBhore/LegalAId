@@ -1,0 +1,43 @@
+{
+  "id": "risk_containment_in_the_rolling_settlement_jun_21_2001_caf0783c68d4",
+  "title": "Risk containment in the Rolling settlement",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jun-2001/risk-containment-in-the-rolling-settlement_17997.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1300872608391.pdf",
+  "document_date": "Jun 21, 2001",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Keywords": "Winnovative HTML to PDF Converter for .NET",
+      "Author": "http://www.winnovative-software.com",
+      "Producer": "Winnovative HTML to PDF Converter 6.4",
+      "Title": "Winnovative HTML to PDF Converter for .NET - www.winnovative-software.com",
+      "Subject": "Winnovative HTML to PDF Converter for .NET",
+      "CreationDate": "D:20110323145722",
+      "ModDate": "D:20110323012746-08'00'"
+    },
+    "reason": null
+  },
+  "text": "SECURITIES AND EXCHANGE BOARD OF INDIA SECONDARY MARKET DEPARTMENT Mittal Court, B Wing, First Floor, 224, Nariman Point, Mumbai 400 021 SMDRP/Policy/CIR-34/01 June 21, 2001 To The President/Executive Director/Managing Director Of all the Stock Exchanges Sir/Madam, Sub :- Risk containment in the Rolling settlement The sub-group of the Group on Risk Management Systems for Equity Markets met on May 31, 2001 to discuss various issues relating to the compulsory rolling settlement. The sub-group discussed among other things the modalities for the implementation of risk containment system based on Value At Risk (VaR) margin in the rolling settlement. Pursuant to the discussions, the following decisions were taken: 1. Margins based on VaR a. For the scrips in the compulsory rolling settlement, the 99% VaR based margin system would be introduced with effect from July 02, 2001 in the following manner: ¡ For the additional 251 scrips which will be included in the compulsory rolling settlement with effect from July 02, 2001 and 15 scrips (out of 163 scrips already in compulsory rolling settlement) having the facility of CNS,CFRS, ALBRS, BLESS, exchanges will calculate scrip wise VaR and index based VaR as indicated below and apply the higher of the two as the margin percentage: n Scrip wise daily volatility calculated using the same exponentially weighted moving average methodology that is used in the index futures market and the scrip wise daily VaR will be calculated as 3.5 times the volatility so calculated. n The index based VaR calculated as the index VaR times a suitable multiplier which is discussed below. n The multiplier factor for each of these stocks will be calculated on the first trading day of every calendar month based on average stock volatility during previous six months on a rolling basis. The higher of Sensex and Nifty VaR will be used. The multiplier shall not in any case be less than 1.75. n The multiplier will be rounded upto two decimals and the margin percentage would be rounded upto next integer. ¡ For the 148 (163-15) scrips already in the compulsory rolling settlement the margin will be 3 times the daily index VaR. ¡ The minimum daily index VaR shall be 5% as in the index futures market at present. The higher of Sensex and Nifty VaR will be used. a. While the above calculations will address 99% of the cases, it would be necessary to have an additional level of margin to address the 1% of the cases to supplement the VaR based margins. Based on the analysis of historical data of individual stock VaRs, it was felt that additional margin of 12% may be necessary. Therefore, additional 12% margin would be imposed to address 1% of the cases. b. The VaR calculations will be based either on BSE Sensex or S & P CNX Nifty and would be disseminated by the BSE and NSE daily on .their websites by 6:30 pm in a downloadable format. c. Other stock exchanges could make their own VaR calculations based on BSE Sensex and S&P CNX Nifty or freely adopt the VaR calculations available on the sites of BSE and NSE. It will be mandatory for BSE/NSE to provide real time Sensex/Nifty data free. It will also be mandatory for all the stock exchanges to have real time information of Sensex/Nifty data either from the respective exchange or through a vendor. -- 1 of 2 -- d. The VaR based margin would be capped at 100% e. The VaR based margin calculated by an exchange at the end of the day would be used for the purpose of margin calculations for the transactions carried out next day. f. The VaR based margin would be collected on T+1 basis. g. In addition to the margin calculated on the VaR basis, exchanges shall continue to collect mark-to- market margin. h. The VaR based margin is basically replacing the present margin structure except the mark-to- market margin. This does not make any change in the present capital adequacy and exposure limits etc. i. Currently, the financial institutions, FIIs, Banks and Mutual Funds are required to pay additional volatility margin on their net outstanding sale position. In the present model of VaR based margin, since minimum multiplier is 1.75, positive differential between the minimum VaR (1.75 times index VaR) and the actual margin percentage calculated as above is analogous to scrip being volatile. Hence, these institutions will be required to pay margin calculated on the basis of this differential for the 251+ 15 stocks for the sale side as is being currently done. j. The exchanges should at their discretion impose additional margin on scrips wherever necessary to contain the risks in the market. 2. Direct debits of members SEBI vide its earlier circular no SMDRP/POLICY/Cir-16/2000 dated April 16, 2000 advised exchanges that to ensure the efficiency of collection and the refund/remittance of the margins system, the clearing banks of the exchanges should have connectivity with the clearing house/ corporations. It is again being reiterated that the exchanges should put in place a system of direct debit of the members’ settlement accounts for the purposes of margin payment and the practice of payment of margin by cheque shall be completely done away with. 3. Gross margins in the cash market. Presently margins are calculated on a gross basis across clients in the ALBM/MCFS/BLESS. This is being extended to the entire market. As this step would involve certain modifications in the system software of the exchanges, the gross margining for the entire market would come into effect from September 03, 2001. The exchanges are advised to make suitable changes in their system software to implement the system based margin calculation on a gross basis across clients in the cash market. 4. Responsibility of the Stock Exchanges The introduction of the rolling settlement across a large number of scrips which would cover majority of the trading volume, is an important structural change for the market and would require the exchanges to remain vigilant and strengthen their surveillance and monitoring mechanisms. The exchanges are advised to take steps to give effect to these decisions. Thanking you, Yours faithfully P K Bindlish Deputy General Manager Secondary Market Depository, Research & Publications Department e-mail : pkb@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

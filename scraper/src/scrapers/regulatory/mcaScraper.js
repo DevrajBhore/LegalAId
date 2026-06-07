@@ -227,6 +227,11 @@ function sourceMatchesDocumentType(sourceType, documentType) {
 
 function canReuseExistingItem(existingItem, nextItemBase) {
   if (!existingItem) return false;
+  const previousExtraction = existingItem.extraction || {};
+  if (shouldFetchPdf() && previousExtraction.status !== "parsed") {
+    return false;
+  }
+
   return (
     existingItem.title === nextItemBase.title &&
     existingItem.document_url === nextItemBase.document_url &&
@@ -238,6 +243,11 @@ function canReuseExistingItem(existingItem, nextItemBase) {
 
 function canReuseExistingDocument(existingItem, nextItemBase) {
   if (!existingItem) return false;
+  const previousExtraction = existingItem.extraction || {};
+  if (shouldFetchPdf() && previousExtraction.status !== "parsed") {
+    return false;
+  }
+
   return (
     existingItem.document_url === nextItemBase.document_url &&
     existingItem.document_date === nextItemBase.document_date &&
@@ -267,7 +277,23 @@ async function maybeFetchPdfText(url) {
   }
 
   const contentType = response?.headers?.["content-type"] || "";
-  if (!String(contentType).toLowerCase().includes("pdf")) {
+  const data = Buffer.from(response.data);
+  const hasPdfHeader = data.slice(0, 5).toString("utf8") === "%PDF-";
+  const looksLikePdfUrl = String(url).toLowerCase().includes(".pdf");
+  const isHtmlResponse = String(contentType).toLowerCase().includes("html") || data.slice(0, 80).toString("utf8").toLowerCase().includes("<!doctype html");
+  const shouldAttemptPdfParse =
+    hasPdfHeader || String(contentType).toLowerCase().includes("pdf") || (looksLikePdfUrl && !isHtmlResponse);
+  if (looksLikePdfUrl && isHtmlResponse && !hasPdfHeader) {
+    return {
+      status: "error",
+      reason: "html_response_instead_of_pdf",
+      content_type: contentType,
+      text: "",
+      num_pages: null,
+      info: null,
+    };
+  }
+  if (!shouldAttemptPdfParse) {
     return {
       status: "skipped",
       reason: "non-pdf-response",
@@ -278,7 +304,7 @@ async function maybeFetchPdfText(url) {
     };
   }
 
-  const parsed = await parsePDF(Buffer.from(response.data)).catch((error) => ({ error }));
+  const parsed = await parsePDF(data).catch((error) => ({ error }));
   if (!parsed || parsed.error) {
     return {
       status: "error",

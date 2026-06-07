@@ -1,0 +1,75 @@
+{
+  "document_type": "NDA",
+  "variant": "ip_focused",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_5",
+      "clause_name": "Clause 5",
+      "category": "jurisdiction"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_1",
+      "clause_name": "Clause 1",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_2",
+      "clause_name": "CMS definitions",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_3",
+      "clause_name": "OEM dashboard",
+      "category": "general"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_6",
+      "clause_name": "Catalogue approval process",
+      "category": "general"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_7",
+      "clause_name": "Proper flagging of Catalogues",
+      "category": "general"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_8",
+      "clause_name": "Updating of status",
+      "category": "general"
+    },
+    {
+      "clause_id": "quadrant_policy_of_gem_undated_7b7d61b25bd8_9",
+      "clause_name": "Undertaking to be given by re-sellers",
+      "category": "general"
+    }
+  ],
+  "body": "CMS 3.0 – Enhanced Catalogue Management System on GeM Based on insights acquired from stakeholders – OEMs, Resellers, MSEs, Industry representative Organizations and Buyer Entities, GeM shall be implementing enhanced Catalogue Management System (CMS 3.0). The primary objective of CMS 3.0 is to offer higher level of ownership & accountability to OEMs & its Approved Resellers while maintaining “Efficiency, Transparency & Inclusiveness” of GeM. Product Categories on GeM will now be classified into four quadrants (groups) based on the nature of the Products offered, profile of Stakeholders (Buyers/Sellers) and Business Intelligence derived from the transaction data available on GeM platform. A complete and detailed Obligations and Privileges matrix of the different stakeholders in different quadrants is given in Annexure 1 of this document. A. CMS definitions: 1) CMS Quadrant 1 (CMS Q1): Product offers in categories under this group will be solely offered by GeM validated OEMs. • OEM shall be exclusively offer and transact these products and be responsible for maintaining currency and sanity of catalogue and its offer in the Market Place. • OEM shall be absolutely and exclusively responsible and be legally liable for sanity and quality of offers including Warranty and After Sales Service obligations GeM will do one-time OEM white-listing / QCI VA/VE of OEM and keep oversight for any deviation from OEM commitment with appropriate response and action. GeM shall provide an online panel to all such OEMs for listing and managing the Market Place. 2) CMS Quadrant 2 (CMS Q2): OEMs shall operate Market Place subject to providing its complete list of Open market authorized sellers along with formal commitment to list and maintain all appropriate and current Product Catalogue for pairing by its Resellers. Authorize Resellers shall be responsible for the following: • Pair the Product offered with the already existing Product Catalogue created by the OEM (Authorized Resellers will not be allowed to create new Product Catalogue). • Update their Offer Price, Stock and Delivery Locations solely at their own discretion. GeM shall continuously review specially with reference to availability, currency and geographical coverage of Products offered and wherever needed, share list of vendors currently operational on GeM with their rating for consideration of OEM for authorization. 3) CMS Quadrant 3 (CMS Q3): Product offers in categories under this group can be from OEMs and/or their Authorized Resellers concurrently. In case OEM has not created Product Catalogue, Authorized Resellers of OEMs are also permitted to do the same. OEM shall be responsible for the following: • Maintain the Catalogue by adding/updating the Products, Specifications, MRP & Offers specific to Product • Provide list of all its resellers and shall respond as per Service level commitments to queries relating to Products Specifications and/or verification of a Reseller, failing which they shall own responsibility of all and every fall out, by any act of such Resellers and/or offer of an insane catalogue. • Validating & verifying the Catalogue uploaded by Reseller • Assume all responsibility and legal liability for sanity and quality of offers including Warranty and After Sales Service obligations Authorize Resellers for OEM shall also be responsible for the following: • Create the Product Catalogue in case not already done so by the OEM (Product Catalogue created is subject to approval of OEM) GeM may undertake validation & verification of the Product Catalogue created by OEMs and/or Authorized Resellers. 4) CMS Quadrant 4 (CMS Q4): Product and/or Offers in categories under this group can be from OEMs and/or Resellers. In case OEM has created Product Catalogue, then their catalogue will be used exclusively for pairing by all Resellers without any requirement of further endorsement of any kind by the OEM. OEMs will also be responsible for Validating & verifying the Catalogue uploaded by Reseller. Product and/or Offers in this category shall be fully moderated and controlled by GeM from entry, sanitization, and market operations perspective. 5) CMS Quadrant 5 (CMS Q5): The Q5 quadrant is a specialized quadrant for select few categories that require a customized behaviour. Currently Q5 is applicable only in the context of Self-Help Groups (SHG) categories. These categories are created under the L1 category \"SHG Products\". The quadrant Q5 is auto assigned to these categories. The Q5 quadrant is not available for selection in a category under any other Level 1 category. All brands for these categories are auto created from the backend. During catalogue upload, the sellers are not given the option to request for a new brand. All sellers can only upload as Resellers -- there is no OEM or OEM Dashboard concept. B. OEM dashboard: OEMs in GeM will be provided with dashboards with privileges as defined in Annexure 1. The OEM Dashboard shall have following functionality as per the Category Quadrant (If any OEM comes and takes OEM dashboard at a later stage, he will get these privileges even for existing catalogues and resellers in the marketplace – he can review them and take appropriate action): 1. Q1 Categories - No role of OEM Dashboard since reseller not allowed. 2. Q2 Categories - a. Allow OEMs to Upload Authorization Codes (these authorization codes will be used by their resellers to get authorized on GeM). b. Allow OEMs to process MRP Change Requests raised by resellers 3. Q3 Categories - a. Allow OEMs to approve/reject catalogues uploaded by any reseller b. Allow OEMs to approve/reject a reseller or authorization code uploaded by a reseller c. Allow OEMs to process MRP Change requests raised by resellers 4. Q4 Categories - a. Allow OEMs to approve/reject catalogues uploaded by any reseller C. Handling of Re-seller pairing requests shall be governed by following business rules: Q2 – Resellers can only pair with catalogues uploaded by OEMs. The reseller’s listing (i.e. pairing) will be auto approved. Q3 – For Resellers of brands that have OEMs with dashboard - Resellers can pair with an existing catalogue - if the Resellers is pairing for the first time in that category, the reseller’s credentials (seller name and authorization code input by the reseller) will go to the OEM Dashboard for approval. The Reseller’s listing will be published only after the OEM approves the reseller credentials. If the reseller pairs with another catalogue in same category with the same re- seller credentials / authorization code, the listing will be auto approved. Q4 – For Resellers of brands that have OEMs with dashboard - Resellers can pair with an existing catalogue with no need for any OEM approval. D. Catalogue approval process: In Q3 and Q4 when re-seller is uploading a new catalogue, it would go to OEM first for approval. OEM has to approve or reject it in 72 hrs. Rejection has to be with reasons recorded in CMS and Resellers can represent to OEM directly against rejection. If OEM does not act on any reseller catalogue for 72 hrs, OEM's own product upload will be kept on hold till he liquidates all reseller requests pending for 72 hrs or more. But the re-seller catalogue not approved by OEM should not come to GeM for approval. E. Proper flagging of Catalogues: All catalogues will be appropriately flagged in Marketplace as under: “OEM verified Catalogue” : All catalogues created by OEM or approved by the OEM trough OEM dashboard. “Catalogue not verified by OEM” : All re-seller created catalogues that have not been approved by the OEM using OEM dashboard. F. Updating of status: Upgradation of Brand from “Un registered” to “Registered”: If any OEM gets his brand Registered under trademarks registration, he would get the option to upgrade his existing listing also from un-registered to registered. Similarly, if any re-seller gets himself upgraded to OEM level after OEM Vendor Assessment, he can take control of all privileges of OEM dashboard for his existing catalogues also. G. Undertaking to be given by re-sellers: In case of re-sellers, if the reseller has not been approved as an authorized re-seller i.e. all stocks tagged as “Reseller - Not Verified by OEM”, the re-seller will have to give an undertaking as under while uploading the product, while accepting any order and while participating in any bid: “I hereby undertake that I have made arrangements for getting the stores from authorized distributor / dealer / channel partner of the OEM of the offered product. At the time of delivery of goods, I will provide necessary chain documents to prove that the supplied goods are genuine and are being sourced from authorized distributor / dealer / channel partner of the OEM. In case of any complaint from the Buyer / Consignee about genuineness of the supplied products, I shall be responsible for providing genuine replacement supplies.” CMS Quad rant Expected Item Profile Creation of New Catalogue allowed by: Pairing by Reseller Approval of Re-Seller to pair with catalogue Type of OEM Catalog ue upload ed by Approval of New catalogue by OEM Approval of catalogue by GeM Team Catalogue display in Marketplace and contract Catalogue display in Marketplace and contract Stock display in Marketplace and contract (Selling As) Undertakings to provide Chain Documents by Reseller With TradeMark OEM N/A NO “XYZ R” Un Registered Brand OEM N/A YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” Un Branded OEM N/A YES “Unbranded Manufactured by : Name of OEM” With TradeMark OEM N/A NO “XYZ R” Un Registered Brand OEM N/A YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” Un Branded OEM N/A YES “Unbranded Manufactured by : Name of OEM” OEM N/A NO “XYZ R” Re- seller YES if taken dashboard NO “XYZ R” OEM N/A YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” Re- seller YES if taken dashboard YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” OEM N/A YES “Unbranded Manufactured by : Name of OEM” Re- seller YES if taken dashboard YES “Unbranded Manufactured by : Name of OEM” OEM N/A NO “XYZ R” Re- seller YES if taken dashboard NO “XYZ R” OEM N/A YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” Re- seller YES if taken dashboard YES “XYZ UR” Brand – unregistered Manufactured by : Name of OEM” OEM N/A YES “Unbranded Manufactured by : Name of OEM” Re- seller YES if taken dashboard YES “Unbranded Manufactured by : Name of OEM” Reseller created catalogues not approved by the OEM through OEM dashboard will be flagged as “Catalogue not verified by OEM” ANNEXURE 1 Q3 Q4 OEM / RESELLER Normal items that may be sold by re- seller also but requiring warranty support f+C9rom OEM With TradeMark Un Registered Brand Un Branded With TradeMark Un Registered Brand Un Branded Consumables not generally requiring OEM warranty support, rplecament by re- seller would suffice in case of problems OEM / RESELLER Allowed Allowed Pairing request will go to OEM if OEM dashboard is taken - else auto pairing allowed - OEM can amange resellers whenever he takes dashboard. If OEM has taken dashboard, he can view list / names of paired re-sellers (without offer price details) can mark some as verfied if he want to, but OEM can not remove any re-seller. OEM can raise incident against a re-seller. \"OEM\" or \"OEM Verified Reseller\" or \"Reseller - Not Verified by OEM\" as the case may be N/A NOT REQUIRED To be procured directly from OEM only. OEM or pre- approved Reseller who are technically qualified enough to provide support OEM \"OEM\" or \"OEM Verified Reseller\" as the case may be \"OEM\" or \"OEM Verified Reseller\" or \"Reseller - Not Verified by OEM\" as the case may be YES if re-seller is not approved / verified through OEM dashboard YES if re-seller is not approved / verified through OEM dashboard Not Allowed Only by QCI verified / exempted OEM (category specific VA / VE) Allowed by Pre- Authorized Resllers only N/A N/A Reseller created catalogues not approved by the OEM through OEM dashboard will be flagged as “Catalogue not verified by OEM” Q2 Only by QCI verified / exempted OEM (category specific VA / VE) Q1 NOT REQUIRED YES Reseller - has to be pre approved by OEM",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/quadrant_policy_of_gem_undated_7b7d61b25bd8.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/pdf/quadrant-policy-of-gem.pdf",
+    "quality_score": 77,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

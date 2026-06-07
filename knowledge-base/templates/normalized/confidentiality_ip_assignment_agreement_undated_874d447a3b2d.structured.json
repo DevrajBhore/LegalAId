@@ -1,0 +1,149 @@
+{
+  "document_type": "NDA",
+  "variant": "employee",
+  "jurisdiction": "competent jurisdiction holds that the res",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[___]"
+      }
+    },
+    {
+      "name": "placeholder_2",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[__]"
+      }
+    },
+    {
+      "name": "signature_pages_to_follow",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Signature Pages to follow]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "email"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_1",
+      "clause_name": "Clause 1",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_2",
+      "clause_name": "Clause 2",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_4",
+      "clause_name": "Clause 4",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_5",
+      "clause_name": "Clause 5",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_6",
+      "clause_name": "Clause 6",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_7",
+      "clause_name": "Clause 7",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_8",
+      "clause_name": "Clause 8",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_10",
+      "clause_name": "Clause 10",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_11",
+      "clause_name": "Clause 11",
+      "category": "confidentiality"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_3",
+      "clause_name": "Clause 3",
+      "category": "ip_ownership"
+    },
+    {
+      "clause_id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d_9",
+      "clause_name": "Clause 9",
+      "category": "indemnity"
+    }
+  ],
+  "body": "Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 Confidentiality and Intellectual Property Assignment Agreement This confidentiality and intellectual property assignment agreement (\"Agreement\") is entered into on [___] (“Effective Date”), at [___] by and between: 1. [___] hereinafter referred to as the “Company” (which expression shall, unless repugnant to the context or meaning thereof, be deemed to mean and include its successors and assigns) of the First Part and 2. [___] hereinafter referred to as “Employee”, (which expression shall, unless repugnant to the meaning or context hereof mean and include its successors and permitted assigns) of the Second Part. The Company and the Employee are each hereinafter collectively referred to as \"Parties\" and individually as “Party”. WHEREAS: A. The Employee is an employee of the Company and by virtue of being an employee, is provided access to confidential and proprietary information of the Company; B. The Employee may conceive and contribute to the development of intellectual property of the Company during the course of his/her employment with the Company and for the discharge of the Employee’s obligations set forth in the employment agreement executed by the Employee with the Company; C. The Parties wish to enter into this Agreement to set forth the terms relating to confidentiality obligations and ownership of intellectual property rights in information shared with the Employee. In consideration of the employment provided by the Company and other mutual promises and agreements contained herein below, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows: 1. DEFINITIONS AND INTERPRETATION 1.1. In this Agreement (including in the recitals herein above or schedules hereto), the following words and expressions shall have, where the context so permits, the following meaning ascribed to them: 1.1.1. \"Affiliate\", with respect to either Party means any Person who directly or indirectly, Controls, is controlled by, or is under the common Control of such Parties. The term “Control” is used in the sense of the possession by a Person or a group of Persons acting in concert, directly or indirectly, of the right to direct or cause the direction of the management and policies of another Person, whether through the board of directors or ownership of voting rights by such other Person, by the Articles of Association, contract or otherwise. A Person or a group of Persons acting in concert shall be deemed to be in control of a body corporate if such Person or group of Persons is in a position to appoint or appoints the majority of the directors of such body corporate. 1.1.2. “Confidential Information” shall mean and includes information which is confidential including Proprietary Information and other information related to the business of the Company, its affiliates or any third parties with which the Company associates, whether or not such information is expressly marked or designated as confidential information and includes but is not limited to: ' a) information of value or significance to the Company or its competitors (including potential competitors) such as: i. data of or about the Company or its vendors, customers, employees, advisors, mentors, service providers or consultants, in particular, contact information and sales information; ii. data about Company’s compliance with applicable law including data about licenses, permissions, approvals, permissions or consents applied for, requested by, granted to or denied to the Company or its promoters; Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 iii. data about all filings and official submissions made by the Company to governmental authorities and the content of the discussion and communication by the Company with such authorities; iv. data related to the Company’s business, its existing and upcoming products, services, business strategy, terms of engagement with its vendors or customers, pricing data, business plans; v. any data, documents, sketches, designs, plans, drawings, photographs, reports, communication, technical information, information about Intellectual Property Rights, user information, compilation, subscription details, asset information, know-how, research and development, internal policies; vi. any information related to the Company’s technology, software, hardware, code, design, business strategy, business plan, internal systems, business architecture; vii. financial data, in particular, concerning budgets, fees and revenue calculations, sales figures, financial statements, profit expectations and inventories of the Company; viii. training data, particularly documents, videos, processes, multimedia files, presentations and any such training resources that the Employee gains access to during his association with the Company; ix. security information (including passwords, login credentials) used to access any resource owned or operated by the Company, its affiliates, clients or third party agents; x. client or user data, user credits, user analytics, user preferences, feedback information; b) any information which may be reasonably understood by its nature, or by the context of its disclosure, to be confidential; and c) any information derived from any of the above-mentioned information; and d) original information supplied by the Company or information provided to the Company by third parties which the Company is obligated to keep confidential. 1.1.3. “Intellectual Property Rights” means and includes, without limitation, any patents, copyrights, trademarks, trade secrets, service marks, database right, design right, moral right or any other property rights (in each case, whether registered or not and including applications for registration, if any) that grant similar rights as the foregoing, anywhere in the world. 1.1.4. “Company Intellectual Property” means any Proprietary Information created, conceived, developed, improved upon or contributed to by the Employee during the course of Employment. 1.1.5. “Proprietary Information” means and includes, but is not limited to, Company Intellectual Property information about software programs, designs, source code, object code, algorithms, trade secrets, formulae, designs, know-how, domain names, processes, applications, data, ideas, techniques, documents, notes, presentations, works of authorship, business plans, customer lists, user information, vendor data, customer data, operational data, terms of compensation and performance levels of employees, and other information concerning the actual or anticipated business, research or development, prices and pricing structures, marketing and sales information, competitive analysis, and any information and materials relating thereto, or which is received in confidence by or for the Company or its Affiliates from any other person, whether or not it is in written or permanent form. 2. CONFIDENTIALITY OBLIGATIONS 2.1. The Employee agrees and acknowledges that during the term of his employment with the Company (“Employment”), the Employee shall have access to Confidential Information through oral, visual, electronic or written means, solely by virtue of the Employment and for the purpose of enabling the Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 Employee to discharge his obligations towards the Company as an employee. The provision of access to Confidential Information to the Employee shall be at the discretion of the Company. 2.2. The Employee understands and acknowledges that the Confidential Information is of immense value to the Company and its Affiliates and/or its present, past or prospective clients. The Employee understands that any use or disclosure of such Confidential Information including any inadvertent disclosure can cause immense and irreparable harm, loss, damage and injury to the Company and its Affiliates and its reputation and hence undertakes to keep such Confidential Information confidential and use it solely in the manner expressly authorized by the Company and only during the term of his Employment. 2.3. The Employee agrees and undertakes that at all times during the term of his Employment and thereafter on termination of his Employment for whatever reason to hold in the strictest confidence, and not to use, except for the benefit of the Company and its Affiliates, and absolutely refrain from in any manner divulging, discussing, disclosing the Confidential Information to any third party or in any manner directly or indirectly using the Confidential Information without the written authorisation of the Company. 2.4. The Employee recognises that the Company and its Affiliates have received and in the future will receive from third parties, information that would be confidential and proprietary in nature to such third parties, during the course of his Employment. The Employee agrees to hold all such third party information in the strictest confidence and not to disclose it to any person, firm or corporation or to use it except as necessary in carrying out his work for the Company consistent with the Company’s agreement with such third party. 2.5. The Employee further undertakes not to make copies of such Confidential Information except as authorised by the Company. Nothing contained in this Agreement shall be construed as granting or conferring any rights either as a license or otherwise in the Confidential Information. The Employee shall not claim or represent to hold any interest by way of ownership, assignment or otherwise in the Confidential Information. 2.6. The Employee shall, upon termination of the Employment, promptly return to the Company all Confidential Information including all materials and documents obtained from or through the Company (in hard or soft copy). 2.7. Nothing in this Clause 2 shall apply to information: (i) that was previously known by the Employee, as established by written records of the Employee prior to receipt of such information from the Company; (ii) that was lawfully obtained by the Employee from a third party without any obligations of confidentiality to Company; (iii) that was developed by the Employee independent of the Confidential Information; and (iv) information disclosed to the Employee by the Company without confidentiality restrictions. 2.8. This Clause shall survive the expiration or termination of this Agreement. 3. INTELLECTUAL PROPERTY RIGHTS 3.1. The Company shall retain all rights, title and interest and Intellectual Property Rights in any Company Intellectual Property created, conceived, developed, contributed to or improved upon by the Employee during the course of his Employment, shall vest with the Company upon such creation, conception, development, contribution or improvement. Notwithstanding anything to the contrary, no license with respect to Intellectual Property Rights shall be deemed or implied to be granted by the Company to the Employee in respect of the Company Intellectual Property. 3.2. The Employee shall not reverse- engineer, decompile, or disassemble, modify or copy (except for making a single back-up copy) any methodologies, software or whitepaper article, themes, headlines, or Confidential Information disclosed under this Agreement and shall not remove, overprint, deface or change any notice of confidentiality, copyright, trademark, logo, legend or other notices of ownership from any originals or copies of Confidential Information it receives from the Company. Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 3.3. To the extent that any rights referred to under Clause 3.1 do not vest with the Company automatically as per the terms above or through operation of law, the Employee hereby irrevocably and in perpetuity assigns to the Company all of right, title and interest (including without limitation any and all Intellectual Property Rights), that is now or may be available, in: (a) any and all Company Intellectual Property; and (b) any and all Proprietary Information that the Employee may have conceived, created, improved upon, developed or contributed to prior to the Effective Date, as part of his association with, contribution to the Company or its incorporation (including as part of work undertaken for the business of the Company prior to its incorporation). 3.4. The Employee agrees and understands that any and all copyrightable works that are prepared by the Employee, within his scope of service, is “work for hire” under applicable law and the Company will be considered the first owner of such copyrightable works. To the extent that the Company is not considered the first owner of the Intellectual Property Rights created by the Employee, the copyright and all related rights, title and interest in all such Company Intellectual Property is irrevocably assigned by the Employee to the Company in consideration of the Employment which constitutes valid and adequate consideration. The Employee hereby waives any right to and agrees that he shall not raise any objection or claims under applicable law in respect of ownership of such Company Intellectual Property. 3.5. During the Employment, whatever gets created, developed, modified in the form of any hardware or software design, engineering, hardware code, software code, hardware and software library , schematic, architectural, layout, protocol, model or any Intellectual Property or document in any format by the Employee with or without the assistance or involvement of any other Person during the Term using own tools or the Company’s or its partners/Affiliates’ tools and systems will always be property of the Company. 3.6. The Employee shall do all acts, deeds and things including execution of necessary documents without charge or compensation but at the cost of the Company for fully and effectively vesting in the Company the rights in any Intellectual Property Rights as referred to in this Clause 3. 3.7. The Employee hereby irrevocably appoints the Company as his attorney for the purpose of executing in the name and on behalf of the Employee all such deeds and documents as may be required pursuant to this Clause 3. 3.8. The Employee represents and warrants that the Employee has not violated and will not violate the Intellectual Property Rights of any third party and agrees not to violate the Intellectual Property Rights of any third party in the course of Employment. 3.9. The Employee acknowledges that the Employment and the remuneration paid by the Company to the Employee is a good, valuable and adequate consideration, to be bound by the terms and conditions of this Agreement. 4. NON COMPETE AND NON SOLICITATION AGREEMENT 4.1. The Employee hereby agrees that pursuant to the termination of their employment in the Company as per this Agreement or for any reason whatsoever, they shall not directly or indirectly compete with the Business of the Company or its Affiliates for a period of 1 (one) year from the Termination Date. The non-compete period referred to in this Clause 4 shall be extended by the length of time during which the Employee shall have been in breach of the provisions of this Clause 4. 4.2. The Employee hereby agrees and undertakes that during the term of the Employment with the Company and for a period of 1 (one) year following the Termination Date, the Employee shall not, directly or indirectly, either as an individual on his own account or as a partner, employee, consultant, advisor, agent, contractor, director, trustee, committee member, office bearer, or shareholder (or in a similar capacity or function): 4.2.1. Solicit employment of or advise any of the Company’s or Affiliate’s existing employees or any person who was employed by the Company or an Affiliate within 6 (six) months prior to such solicitation or Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 any person or organization providing services to or through Company to terminate his or her contract or relationship with Company or its Affiliate or to accept any contract (directly or indirectly) or other arrangement for providing services to any other person or organization; or 4.2.2. Contact any of the clients of the Company or its Affiliate to entice such clients away from the Company of Affiliate or to damage in any way their business relationship with the Company or its Affiliate or for the provision of substantially the same services provided to such clients by the Company or its Affiliate; or 4.2.3. Solicit or undertake employment with any client of the Company or its Affiliate or any organization where the employee has been taken or sent for training, deputation or secondment or professional work by the Company; or 4.2.4. Enter the employment of, or render any other services to, any person engaged in a business which competes with the Business of the Company. 4.3. The Employee hereby acknowledges and agrees that the covenants set forth in this Clause 4 are a condition of the employment by the Company and that the breach of any such covenants would cause irreparable harm to the Company. 5. INDEMNITY AND REMEDIES 5.1 Without prejudice to any other right available to the Company in law or under equity, the Employee shall jointly and severally be liable to compensate and indemnify, defend and hold harmless the Company, its Affiliates, their directors, officers and employees, from and against losses, liabilities, damages, deficiencies, demands, claims, actions, judgments or causes of action, assessments, interest, penalties and other costs or expenses (including, without limitation, reasonable attorneys’ fees and expenses) based upon, arising out of, or in relation to or otherwise in respect of breach of its obligations under this Agreement. 5.2 The Employee acknowledges and agrees that breach of this Agreement may cause the Company irreparable damage and harm and therefore, without prejudice to any other rights or remedies that the Company may have, the Employee agrees that the Company shall be entitled to seek extraordinary relief in court, including without limitation, specific performance, preliminary or permanent injunctions or other appropriate remedy without the necessity of posting a bond or other security. If any court of competent jurisdiction holds that the restrictions contained in this Agreement are unreasonable on any criteria, the said restrictions shall be deemed to be reduced to the extent necessary in the opinion of such Court to make them reasonable. 6. NOTICE Any notice pursuant to this Agreement shall be in writing by (or by some person duly authorised) the person giving it and may be served at the address or email address provided below: If to the Company: Address: Attention: Email: If to the Employee: Address: Attention: Email: Confidentiality and Intellectual Property Assignment Agreement Template (India) | OS v. 1 | November 2016 7. MISCELLANEOUS 7.1. This Agreement shall become valid, effective and binding from the Effective Date and shall continue to be valid until terminated by the Company. The confidentiality obligations shall survive the termination of this Agreement. 7.2. Neither this Agreement nor any right granted hereunder shall be assignable or otherwise transferable by the Employee. 7.3. This Agreement shall be governed by the laws of India. The competent courts in {{placeholder}} shall have exclusive jurisdiction over all disputes arising from or relating to this Agreement. 7.4. This Agreement along with the employment agreement, if any, executed by the Employee with the Company constitutes the entire agreement of the Parties pertaining to the subject matter of this Agreement and may be modified only by an instrument in writing signed by each Party to this Agreement. This Agreement supersedes any and all prior oral discussions and/or written correspondence or agreements between the Parties in respect of the subject matter. 7.5. The failure or delay on the part of one Party to exercise or enforce any rights resulting from this Agreement shall not be a waiver of any such rights, nor shall any single or partial exercise thereof operate so as to bar the later exercise or enforcement thereof. IN WITNESS WHEREOF THE PARTIES HERETO HAVE EXECUTED THIS AGREEMENT ON THE DATE HEREINABOVE LAST MENTIONED. [Signature Pages to follow]",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/confidentiality_ip_assignment_agreement_undated_874d447a3b2d.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/CONFIDENTIALITY_IP_ASSIGNMENT_AGREEMENT.pdf",
+    "quality_score": 80,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

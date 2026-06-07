@@ -1,0 +1,648 @@
+{
+  "source_rows": 86,
+  "unique_items": 80,
+  "canonical_item_files": 80,
+  "parsed_items": 48,
+  "unresolved_items": 32,
+  "fetch_pdf": true,
+  "sources": [
+    {
+      "label": "MSME Circulars Archive",
+      "type": "circular-orders",
+      "mode": "archive-table",
+      "url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders",
+      "item_count": 50,
+      "items": [
+        {
+          "id": "activities_-nic_codes-_not_covered_-with_exception_of_certain_categories-_under_msmed_act_2006_for_udyam_registration-regarding_2020_4c00fe6588c8",
+          "title": "Activities -NIC Codes- not covered -with exception of certain categories- under MSMED Act, 2006 for Udyam Registration-regarding",
+          "document_url": "https://msme.gov.in/sites/default/files/OM_NIC.pdf",
+          "document_date": "2020",
+          "format": "pdf"
+        },
+        {
+          "id": "amendment_of_recruitment_rules_of_coir_board_a_statutory_body_under_ministry_of_micro_small_and_medium_enterprises_reg_2025_853802b5d371",
+          "title": "Amendment of Recruitment Rules of Coir Board, a statutory body under Ministry of Micro, Small and Medium Enterprises reg.",
+          "document_url": "https://msme.gov.in/sites/default/files/MoMSMEOM10.02.2025.pdf",
+          "document_date": "2025",
+          "format": "pdf"
+        },
+        {
+          "id": "amendment_to_the_government_of_india_allocation_of_business_rules_1961_creation_of_ministry_of_micro_small_and_medium_enterprises_by_merging_aece5fb850b4",
+          "title": "Amendment to the Government of India (Allocation of Business) Rules, 1961 – creation of Ministry of Micro, Small and Medium Enterprises by merging the Ministry of Small Scale Industries and Ministry of Agro and Rural Industries - 17 May 2007",
+          "document_url": "https://msme.gov.in/sites/default/files/MSME_circular.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "appointment_of_sole_arbitrator_in_the_residual_arbitration_matters_pertaining_to_supply_orders_placed_against_dgsd_rate_contracts-reg_2024_ddbf77dbaee4",
+          "title": "Appointment of Sole Arbitrator in the residual Arbitration matters pertaining to supply orders placed against DGS&D Rate Contracts-reg.",
+          "document_url": "https://msme.gov.in/sites/default/files/AppointmentofSoleArbitrator.pdf",
+          "document_date": "2024",
+          "format": "pdf"
+        },
+        {
+          "id": "authority_for_filling_memorandum_by_medium_enterprises_for_service_sector_-_7_november_2006_2016_496070f8fe76",
+          "title": "Authority for filling Memorandum by medium enterprises for service sector - 7 November 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201909-E-Hindi-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "coir_board_bye_laws_1955_2016_18643654a673",
+          "title": "Coir Board Bye Laws, 1955",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_4_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "coir_board_services_classification_control_and_appeal_bye-laws_1969_2016_f2d471cf62b6",
+          "title": "Coir board services (classification, control and appeal) bye-laws, 1969",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_6_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "coir_industry_registration_rules_2008_2016_1eff32db2341",
+          "title": "Coir Industry (Registration) Rules 2008",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_3_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "coir_industry_rules1954_2016_94a44ebebe32",
+          "title": "Coir Industry Rules,1954",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_2_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "compliance_of_the_order_of_the_honble_supreme_court_in_the_matter_of_shri_anuj_goyal_vs_uoi_and_others_-_identification_of_posts_for_pwd_-_r_97e0f6683f22",
+          "title": "Compliance of the order of the Honble Supreme Court in the matter of Shri Anuj Goyal vs. UOI and others - Identification of posts for PWD - regarding",
+          "document_url": "https://msme.gov.in/sites/default/files/circular.pdf",
+          "document_date": "2020",
+          "format": "pdf"
+        },
+        {
+          "id": "constitutes_the_coir_baord_and_appoints_chairman_and_members_-_24_may_2005_2015_2e169a2cd0b8",
+          "title": "Constitutes the Coir Baord and appoints Chairman and members - 24 May 2005",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette_703_E.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "designating_sh_sesh_kumar_pulipaka_jt_secretary_and_sh_s_k_arora_dy_secretary_as_appellate_authority_and_cpio_for_ministry_of_agro_rural_ind_865add957207",
+          "title": "Designating Sh Sesh Kumar Pulipaka, Jt. Secretary and Sh S K Arora, Dy. Secretary as Appellate Authority and CPIO for Ministry of Agro & Rural Industries - September' 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette4%2834%29-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "engagement_of_consultants_at_group_-b_level_in_the_ministry_of_msme_2020_fd30dba30282",
+          "title": "Engagement of Consultants at Group -B Level in the Ministry of MSME",
+          "document_url": "https://msme.gov.in/sites/default/files/Circularhr.pdf",
+          "document_date": "2020",
+          "format": "pdf"
+        },
+        {
+          "id": "gazette_notification_dated_1612013_regarding_amendment_of_nomination_of_members_of_kvic_pages_59_60_2016_27e20613039d",
+          "title": "Gazette Notification dated 16.1.2013 regarding amendment of nomination of members of KVIC (pages 59 & 60)",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_52.docx",
+          "document_date": "2016",
+          "format": "link"
+        },
+        {
+          "id": "gazette_notification_dated_1712012_regarding_nomination_of_joint_secretary_msme_to_particite_kvic_meeting_page_56_2015_87501ae67460",
+          "title": "Gazette Notification dated 17.1.2012 regarding nomination of Joint Secretary MSME to particite KVIC meeting (Page 56).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_49.docx",
+          "document_date": "2015",
+          "format": "link"
+        },
+        {
+          "id": "gazette_notification_dated_2272013_regarding_khadi_mark_regulation_2013_pages_127_to_206_2015_97d30c880e6f",
+          "title": "Gazette Notification dated 22.7.2013 regarding Khadi Mark Regulation, 2013 (pages 127 to 206).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_56_0.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "gazette_notification_dated_23112012_regarding_appointment_of_dr_pb_kale_as_director_mgiri_page_58_2016_1aef7ada73cf",
+          "title": "Gazette Notification dated 23.11.2012 regarding appointment of Dr. P.B. Kale, as director, MGIRI (page 58).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_51.docx",
+          "document_date": "2016",
+          "format": "link"
+        },
+        {
+          "id": "gazette_notification_dated_28112011_regarding_re-establishment_kvic_pages_50_to_55_hindi_english_version_2016_e3e5ebd3087a",
+          "title": "Gazette Notification dated 28.11.2011 regarding re-establishment KVIC (pages 50 to 55) Hindi & English version).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_48_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "gazette_notification_dated_572012_regarding_nomination_of_ea_of_ifw_msme_page_57_2016_bd8fcd3c6031",
+          "title": "Gazette Notification dated 5.7.2012 regarding nomination of EA of IFW, MSME (page 57).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_50%20%283%29.docx",
+          "document_date": "2016",
+          "format": "link"
+        },
+        {
+          "id": "gazette_notification_dated_932013_regarding_nomination_of_members_of_kvic_pages_61_to_64_2016_15a5ee164760",
+          "title": "Gazette Notification dated 9.3.2013 regarding nomination of members of KVIC (pages 61 to 64).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_53.docx",
+          "document_date": "2016",
+          "format": "link"
+        },
+        {
+          "id": "guidelines_for_calculating_investment_in_plant_machinery_-_5_october_2006_2016_e2931e9e8bee",
+          "title": "Guidelines for calculating Investment in Plant & Machinery - 5 October 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201722-E-Hindi-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "guidelines_on_prime_ministers_employement_generation_programme_pmegp_pages_207_to_230_2015_d9f9b6222fc0",
+          "title": "Guidelines on Prime Minister’s Employement Generation Programme (PMEGP) (Pages 207 to 230)",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_57_0.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "instructions_for_approved_lbi_tbi_projects_under_aspire_scheme_2017_d4928f37365d",
+          "title": "Instructions for approved LBI TBI Projects under ASPIRE Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/Instructions%20for%20approved%20LBI%20TBI%20Projects%20under%20ASPIRE%20Scheme.pdf",
+          "document_date": "2017",
+          "format": "pdf"
+        },
+        {
+          "id": "instructions_for_projects_under_sfurti_schemes_-_regarding_2017_13b6740ac754",
+          "title": "Instructions for projects under SFURTI Schemes - regarding.",
+          "document_url": "https://msme.gov.in/sites/default/files/Instrucions%20for%20projects%20under%20SFURTI%20%281%29.pdf",
+          "document_date": "2017",
+          "format": "pdf"
+        },
+        {
+          "id": "jt_secretary_ministry_of_agro_rural_industries_handling_work_related_to_kvic_-_august_2006_2015_0a12f4b6bbc3",
+          "title": "Jt. Secretary, Ministry of Agro & Rural Industries handling work related to KVIC - August' 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette1376-E-Hindi-English.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "khadi_village_industries_rules_2006_pages_17_to_38_2016_03b57b15374c",
+          "title": "Khadi & Village Industries Rules, 2006 (Pages 17 to 38).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_46_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "kvic_employees_classification_control_appeal_regulations_2003_pages_65_to_110_2016_ff831505b640",
+          "title": "KVIC Employees (Classification, Control & Appeal) Regulations 2003 (Pages 65 to 110).",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_54_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "kvic_regulations_2007_pages_39_to_49_2015_b217338e2fda",
+          "title": "KVIC Regulations 2007 (Pages 39 to 49)",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_48_1.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "meeting_of_the_review_committee_on_public_procurement_policy_for_mses_order_2012-reg_2025_534b2f75f082",
+          "title": "Meeting of the review committee on public procurement policy for MSEs Order 2012-reg.",
+          "document_url": "https://msme.gov.in/sites/default/files/MoMPPP.pdf",
+          "document_date": "2025",
+          "format": "pdf"
+        },
+        {
+          "id": "mgiri_memorandum_of_association_rules_and_regulations_pages_111_to_126_2015_53891cd10b67",
+          "title": "MGIRI Memorandum of Association& Rules and Regulations (Pages 111 to 126)",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_55_0.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "modification_in_annexure-5_of_khadi_mark_regulations_2013_regarding_2017_bb817b91354b",
+          "title": "Modification in Annexure-5 of Khadi Mark Regulations, 2013 _ regarding.",
+          "document_url": "https://msme.gov.in/sites/default/files/Modification%20in%20Annexure%20-%205.pdf",
+          "document_date": "2017",
+          "format": "pdf"
+        },
+        {
+          "id": "msme_development_act_2006_-_authorities_with_which_the_memorandum_shall_be_filed_to_establish_or_already_established_medium_enterprises_enga_ece53c12d96b",
+          "title": "MSME Development Act, 2006 - Authorities with which the memorandum shall be filed to establish or already established medium enterprises engaged in the manufacture or production of goods - 29 September 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201636-E-Hindi-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "msme_development_act_2006_-_constitution_of_advisory_committee_-_27_september_2006_2016_9a53a6b8511e",
+          "title": "MSME Development Act, 2006 - Constitution of Advisory Committee - 27 September 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201622-E-Hindi-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "msme_development_act_2006_-_date_on_which_provisions_of_the_act_shall_come_into_force_-_18_july_2006_2015_66aa2ce69cd7",
+          "title": "MSME Development Act, 2006 - Date on which Provisions of the Act shall come into force - 18 July 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201154-E-Hindi-English.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "msme_development_act_2006_-_notifying_the_micro_small_and_medium_enterprises_-_30_september_2006_2016_94c26278cd10",
+          "title": "MSME Development Act, 2006 - Notifying the Micro. Small and Medium Enterprises - 30 September 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%201642-E-Hindi-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "msme_development_act_2006_-_rules_-_26_september_2006_2016_4be9d0608d53",
+          "title": "MSME Development Act, 2006 - Rules - 26 September 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/gazette%20596-E-English.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "notification_dated_23rd_jan2015_regarding_constitution_of_national_board_for_micro_small_and_medium_enterprises_2016_4ad57e44b64d",
+          "title": "Notification dated 23rd Jan.2015 regarding constitution of National Board for Micro, Small and Medium Enterprises",
+          "document_url": "https://msme.gov.in/sites/default/files/Gazette_india_1.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "notification_dated_29th_oct_2014_regarding_constitution_of_advisory_commiittee_under_msmed_act_2006_2016_4209c6309027",
+          "title": "Notification dated 29th Oct .2014 regarding constitution of Advisory Commiittee under MSMED Act , 2006",
+          "document_url": "https://msme.gov.in/sites/default/files/Legal%20framework_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "participation_in_international_exhibitionsfairs_etc_-_directions_from_ministry_of_finance_-_31_july_2007_2016_7aa9c0be6598",
+          "title": "Participation in International Exhibitions/fairs etc. - Directions from Ministry of Finance - 31 July 2007",
+          "document_url": "https://msme.gov.in/sites/default/files/MSME_MOF_Notice_31.07.2007.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "performance_and_credit_rating_schemepcrs_2017_81a1ad37840b",
+          "title": "Performance and Credit Rating Scheme(PCRS)",
+          "document_url": "https://msme.gov.in/sites/default/files/PCR%20Scheme.pdf",
+          "document_date": "2017",
+          "format": "pdf"
+        },
+        {
+          "id": "procedure_and_guideline_issued_for_engagement_of_young_professionalsconsultantssenior_consultants_in_the_mo_msme_on_contract_basis_2024_b7c5761f13af",
+          "title": "Procedure and guideline issued for engagement of Young Professionals/Consultants/Senior Consultants in the M/o MSME on contract basis",
+          "document_url": "https://msme.gov.in/sites/default/files/YPConsultantSrConsultantGuideline.pdf",
+          "document_date": "2024",
+          "format": "pdf"
+        },
+        {
+          "id": "re-constitution_of_hindi_salahkar_samiti_-_18_march_2005_2016_2be49595090a",
+          "title": "Re-Constitution of Hindi Salahkar Samiti - 18 March 2005",
+          "document_url": "https://msme.gov.in/sites/default/files/4.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "recruitment_bye-laws_1988_2016_10555919dfc8",
+          "title": "Recruitment bye-laws, 1988",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_9_0.pdf",
+          "document_date": "2016",
+          "format": "pdf"
+        },
+        {
+          "id": "request_for_including_activities_in_nic_code-regarding_2022_6cc7fc732506",
+          "title": "Request for including activities in NIC Code-regarding.",
+          "document_url": "https://msme.gov.in/sites/default/files/OMdated18Nov2022relatedtoinclusionactivitiesinNICCode_0.pdf",
+          "document_date": "2022",
+          "format": "pdf"
+        },
+        {
+          "id": "service_bye-laws_1983_2015_eeb9fa2ce99b",
+          "title": "Service bye-laws 1983",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_8_0.pdf",
+          "document_date": "2015",
+          "format": "pdf"
+        },
+        {
+          "id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_and_to_take_action_on_the_recommendations_bb77a6972cd1",
+          "title": "Speedy disposal of grievances related to discrepancy or complaints pertaining to updating requests and to take action on the recommendations of Directorate of Industries for cancellation/amendments of Udyam Registration Certificate within 48 Hours-reg.",
+          "document_url": "https://msme.gov.in/sites/default/files/Disposalofgrievances.pdf",
+          "document_date": "2024",
+          "format": "pdf"
+        },
+        {
+          "id": "the_list_of_cpios_aas_2019_a58140c4a1e5",
+          "title": "The List of CPIOs & AAs",
+          "document_url": "https://msme.gov.in/sites/default/files/Office_Order_Of_CPIOs_%26_AAs_2019.pdf",
+          "document_date": "2019",
+          "format": "pdf"
+        },
+        {
+          "id": "transfer_posting_orders_2018_dbc9b3ba9f23",
+          "title": "Transfer & Posting Orders",
+          "document_url": "https://msme.gov.in/sites/default/files/transferandposting.PDF",
+          "document_date": "2018",
+          "format": "pdf"
+        },
+        {
+          "id": "transfer_posting_orders_2018_e86fa2bbd595",
+          "title": "Transfer & Posting Orders",
+          "document_url": "https://msme.gov.in/sites/default/files/Office-Order_0.pdf",
+          "document_date": "2018",
+          "format": "pdf"
+        },
+        {
+          "id": "udyam_registration_clarification_regarding_financial_year_in_respect_of_the_data_of_investment_turnover_and_export_from_the_it_department_an_2c2d4b3f34f7",
+          "title": "Udyam Registration: Clarification regarding Financial Year in respect of the data of Investment, Turnover and Export from the IT Department and GSTN for effecting the Classification of MSMEs -reg.",
+          "document_url": "https://msme.gov.in/sites/default/files/Clarificationletterdated28_Sep_2021.pdf",
+          "document_date": "2021",
+          "format": "pdf"
+        }
+      ]
+    },
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "item_count": 34,
+      "items": [
+        {
+          "id": "a_scheme_for_promoting_innovation_rural_industry_entrepreneurship_aspire_undated_b956fca6041a",
+          "title": "A Scheme for Promoting Innovation, Rural Industry & Entrepreneurship (ASPIRE)",
+          "document_url": "https://msme.gov.in/sites/default/files/ASPIRE-Guidelines-Final-03Jun15.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "assistance_to_training_institutions_ati_undated_a323d95229c0",
+          "title": "Assistance to Training Institutions (ATI)",
+          "document_url": "https://msme.gov.in/sites/default/files/PDF%20REVISED%20ATI%20GUIDELINES%20English%201.9.2016%20%281%29.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "building_awareness_on_intellectual_property_rights_ipr_undated_4e912810cfe5",
+          "title": "Building Awareness on Intellectual Property Rights (IPR)",
+          "document_url": "https://msme.gov.in/sites/default/files/Revised%20IPR%20Guidelines_5.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "coir_udyami_yojana_cuy_undated_08ed61519a34",
+          "title": "Coir Udyami Yojana (CUY)",
+          "document_url": "http://coirboard.gov.in/",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "coir_vikas_yojana_cvy_undated_6ca4d8607ec7",
+          "title": "Coir Vikas Yojana (CVY)",
+          "document_url": "https://msme.gov.in/sites/default/files/Latest%20guidelines-for-CVY.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "credit_guarantee_trust_fund_for_micro_small_enterprises_cgtmse_undated_9181d3058794",
+          "title": "Credit Guarantee Trust Fund for Micro & Small Enterprises (CGTMSE)",
+          "document_url": "https://www.cgtmse.in/schemes.aspx",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "credit_linked_capital_subsidy_for_technology_upgradation_undated_d18aadc0a8c0",
+          "title": "Credit Linked Capital Subsidy for Technology Upgradation",
+          "document_url": "https://msme.gov.in/sites/default/files/CreditLinkCapitalSubsidyScheme%282%29%282%29.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "design_clinic_for_design_expertise_to_msmes_undated_9a076295061a",
+          "title": "Design Clinic for Design Expertise to MSMEs",
+          "document_url": "http://www.dcmsme.gov.in/schemes/DesignClinic.htm",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "development_of_production_infrastructure_dpi_undated_16cadea67fe9",
+          "title": "Development Of Production Infrastructure (DPI)",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir-Vikas-YojanaContents.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "domestic_market_promotion_scheme_undated_16cadea67fe9",
+          "title": "Domestic Market Promotion Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir-Vikas-YojanaContents.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "edpmdp_schemes_undated_0fa23c2f841a",
+          "title": "EDP/MDP schemes",
+          "document_url": "http://www.dcmsme.gov.in/",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "enabling_manufacturing_sector_to_be_competitive_through_qmsqtt_undated_1f8cadae12e0",
+          "title": "Enabling Manufacturing Sector to be Competitive through QMS&QTT",
+          "document_url": "https://msme.gov.in/sites/default/files/QMSQTT10.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "entrepreneurial_and_managerial_development_of_smes_through_incubators_undated_beedf98c9ce9",
+          "title": "Entrepreneurial and Managerial Development of SMEs through Incubators",
+          "document_url": "https://msme.gov.in/sites/default/files/incubators10.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "export_market_promotion_undated_16cadea67fe9",
+          "title": "Export Market Promotion",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir-Vikas-YojanaContents.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "financial_support_to_msmes_in_zed_certification_scheme_undated_fefec17d0cf5",
+          "title": "Financial Support to MSMEs in ZED Certification Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/guidelines-zed-final.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "interest_subsidy_eligibility_certificate_isec_undated_d6aa7de830b8",
+          "title": "Interest Subsidy Eligibility Certificate (ISEC)",
+          "document_url": "https://msme.gov.in/sites/default/files/ISEC-Guideline.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "international_cooperation_undated_add7d97207ba",
+          "title": "International Cooperation",
+          "document_url": "https://msme.gov.in/sites/default/files/Revised-IC-Scheme%20Guidelines%2016.12.2016_New_06032017.PDF",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "iso_9000iso_14001_certification_reimbursement_undated_d64c82612dce",
+          "title": "ISO 9000/ISO 14001 Certification Reimbursement",
+          "document_url": "http://www.dcmsme.gov.in/publications/forms/ISO9form_old.htm",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "lean_manufacturing_competitiveness_for_msmes_undated_bab6d0350d9b",
+          "title": "Lean Manufacturing Competitiveness for MSMEs",
+          "document_url": "https://msme.gov.in/sites/default/files/guidelines%20lean.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "market_promotion_development_scheme_mpda_undated_2b3583cdf339",
+          "title": "Market Promotion & Development Scheme (MPDA)",
+          "document_url": "https://msme.gov.in/sites/default/files/Khadi_MPDA_Guidelines.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "marketing_assistance_scheme_undated_0e13e150a17e",
+          "title": "Marketing Assistance Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/MASCHEME-New-18112014.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "marketing_assistance_technology_upgradation_matu_undated_c82f80bc2b6f",
+          "title": "Marketing Assistance & Technology Upgradation (MATU)",
+          "document_url": "https://msme.gov.in/sites/default/files/MATU_30616.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "marketing_supportassistance_to_msmes_bar_code_undated_fbc714911e51",
+          "title": "Marketing Support/Assistance to MSMEs (Bar Code)",
+          "document_url": "https://msme.gov.in/sites/default/files/MarkAssis.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "micro_small_enterprises_cluster_development_mse-cdp_undated_a11edb9883ae",
+          "title": "Micro & Small Enterprises Cluster Development (MSE-CDP)",
+          "document_url": "http://www.dcmsme.gov.in/mse-cdprog.htm",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "msme_market_development_assistance_mda_undated_4381d31e621f",
+          "title": "MSME Market Development Assistance (MDA)",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_58.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "ner_schames_undated_0fa23c2f841a",
+          "title": "NER Schames",
+          "document_url": "http://www.dcmsme.gov.in/",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b",
+          "title": "Performance and Credit Rating Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/PCRSchemeGuidelines.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "prime_minister_employment_generation_programmepmegp_undated_2e25c2dba671",
+          "title": "Prime Minister Employment Generation Programme(PMEGP)",
+          "document_url": "https://msme.gov.in/sites/default/files/Revisedguidelines07.12.2023.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "revamped_scheme_of_fund_for_regeneration_of_traditional_industries_sfurti_undated_b685918a4823",
+          "title": "Revamped Scheme Of Fund for Regeneration Of Traditional Industries (SFURTI)",
+          "document_url": "https://msme.gov.in/sites/default/files/SFURTI_GUIDELINES_REVISED.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "science_and_technology_scheme_undated_9b2d18a6cd31",
+          "title": "Science and Technology Scheme",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_11.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "skill_upgradation_mahila_coir_yojana_mcy_undated_16cadea67fe9",
+          "title": "Skill Upgradation & Mahila Coir Yojana (MCY)",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir-Vikas-YojanaContents.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "tcsp_schemes_undated_0fa23c2f841a",
+          "title": "TCSP Schemes",
+          "document_url": "http://www.dcmsme.gov.in/",
+          "document_date": null,
+          "format": "link"
+        },
+        {
+          "id": "technology_and_quality_upgradation_support_to_msmes_undated_7c6059ab3ad9",
+          "title": "Technology and Quality Upgradation Support to MSMEs",
+          "document_url": "https://msme.gov.in/sites/default/files/technology_quality.pdf",
+          "document_date": null,
+          "format": "pdf"
+        },
+        {
+          "id": "trade_and_industry_related_functional_support_services_tirfss_undated_16cadea67fe9",
+          "title": "Trade and Industry Related Functional Support Services (TIRFSS)",
+          "document_url": "https://msme.gov.in/sites/default/files/Coir-Vikas-YojanaContents.pdf",
+          "document_date": null,
+          "format": "pdf"
+        }
+      ]
+    },
+    {
+      "label": "MSME Schemes E-Book",
+      "type": "scheme-ebook",
+      "mode": "attachment-page",
+      "url": "https://msme.gov.in/e-book-schemes-msme",
+      "item_count": 1,
+      "items": [
+        {
+          "id": "e-book_on_schemes_of_msme-2025_english_undated_6fd4d93dbc6c",
+          "title": "E-Book On Schemes of MSME-2025 (English)",
+          "document_url": "https://msme.gov.in/sites/default/files/Scheme-booklet-Eng.pdf",
+          "document_date": null,
+          "format": "pdf"
+        }
+      ]
+    },
+    {
+      "label": "Operational Guideline of all Schemes of MSME",
+      "type": "operational-guidelines",
+      "mode": "attachment-page",
+      "url": "https://msme.gov.in/knowledge/operational-guideline-all-schemes-ministry-msme",
+      "item_count": 1,
+      "items": [
+        {
+          "id": "kvi_policy_and_establishment_section_128pdf_undated_c64f948d45a3",
+          "title": "KVI_Policy_and_Establishment_Section_128.pdf",
+          "document_url": "https://msme.gov.in/sites/default/files/KVI_Policy_and_Establishment_Section_128.pdf",
+          "document_date": null,
+          "format": "pdf"
+        }
+      ]
+    }
+  ]
+}

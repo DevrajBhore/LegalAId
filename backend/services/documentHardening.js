@@ -8,6 +8,11 @@ import {
   getPartyNamingLabels,
   getParticipantExpectations,
 } from "./draftingPolicy.js";
+import {
+  formatFormalDate,
+  formatIndianAmount,
+  parseNumberish as parseFormattedNumber,
+} from "./formattingEngine.js";
 
 function getRequiredHardeningClauseIds(documentType) {
   return getDocumentDraftingPolicy(documentType)?.hardening?.requiredClauseIds || [];
@@ -23,25 +28,17 @@ function isNotApplicable(value = "") {
 }
 
 function parseNumberish(value) {
-  if (value === undefined || value === null || value === "") return null;
-  const match = String(value).replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
-  if (!match) return null;
-  const parsed = Number(match[0]);
-  return Number.isFinite(parsed) ? parsed : null;
+  return parseFormattedNumber(value);
 }
 
-function formatCurrency(value) {
+function formatCurrency(value, options = {}) {
   const numeric = parseNumberish(value);
   if (numeric === null) return "the agreed amount";
-  return `₹${numeric.toLocaleString("en-IN")}`;
+  return formatIndianAmount(numeric, options);
 }
 
 function formatDate(value) {
-  const raw = String(value || "").trim();
-  if (!raw) return "the agreed date";
-  const parsed = new Date(raw);
-  if (Number.isNaN(parsed.getTime())) return raw;
-  return parsed.toLocaleDateString("en-GB");
+  return formatFormalDate(value);
 }
 
 function formatFormalExecutionDate(value) {
@@ -284,15 +281,20 @@ function resolveServicePurposeClause(documentType, namedParties, variables = {})
       )}` : ""}, including shareholding, governance, transfer restrictions, reserved matters, and shareholder exit rights.`;
 
     case "joint_venture_purpose":
-      return `The purpose of this Agreement is to establish and govern the Joint Venture${hasMeaningfulValue(
-        variables.jv_name
-      ) ? ` known as ${normalizeWhitespace(variables.jv_name)}` : ""} for ${stripExternalReferencePhrases(
-        variables.jv_purpose,
-        "the agreed joint business objective"
-      )}.${hasMeaningfulValue(variables.jv_structure) ? ` The Parties further agree that the joint venture structure shall be as follows: ${stripExternalReferencePhrases(
-        variables.jv_structure,
-        ""
-      )}.` : ""}`;
+      return [
+        `The purpose of this Agreement is to establish and govern the Joint Venture${hasMeaningfulValue(
+          variables.jv_name
+        ) ? ` known as ${normalizeWhitespace(variables.jv_name)}` : ""} for ${stripExternalReferencePhrases(
+          variables.jv_purpose,
+          "the agreed joint business objective"
+        )}.`,
+        `The Joint Venture shall operate through the structure selected by the Parties, being ${stripExternalReferencePhrases(
+          variables.jv_structure,
+          "the agreed contractual or entity-based joint venture structure"
+        )}, and that structure shall be used to allocate ownership, voting control, contribution obligations, operational responsibilities, and authority to bind the Joint Venture.`,
+        `The commercial objectives of the Joint Venture shall include pursuing the business activities described in this Agreement, using the Parties' respective capital, personnel, know-how, intellectual property, regulatory permissions, and market access only for the agreed purpose.`,
+        "Governance of the Joint Venture shall be exercised through the agreed management mechanism, reserved matters, deadlock procedure, reporting obligations, and exit rights set out in this Agreement, so that no Party can unilaterally alter the scope, ownership economics, or risk profile of the Joint Venture except as expressly permitted.",
+      ].join(" ");
 
     case "memorandum_cooperation":
       return `The purpose of this Memorandum of Understanding is to record the commercial understanding of the Parties in relation to ${stripExternalReferencePhrases(
@@ -531,6 +533,35 @@ function resolveSourceCodeDeliverySentence(variables = {}) {
   return ` Source code delivery, repositories, credentials, and related handover obligations shall be governed by the following arrangement: ${sourceCodeTerms}.`;
 }
 
+function resolveGovernanceProtectionSentences(variables = {}) {
+  return [
+    hasMeaningfulValue(variables.audit_rights)
+      ? ` Audit rights shall operate as follows: ${stripExternalReferencePhrases(
+          variables.audit_rights,
+          ""
+        )}.`
+      : "",
+    hasMeaningfulValue(variables.information_rights)
+      ? ` Information rights and periodic reporting shall operate as follows: ${stripExternalReferencePhrases(
+          variables.information_rights,
+          ""
+        )}.`
+      : "",
+    hasMeaningfulValue(variables.escalation_mechanism)
+      ? ` Operational escalation shall follow this mechanism before formal remedies are invoked where commercially reasonable: ${stripExternalReferencePhrases(
+          variables.escalation_mechanism,
+          ""
+        )}.`
+      : "",
+    hasMeaningfulValue(variables.additional_protection_clauses)
+      ? ` The following additional protection clauses shall also apply: ${stripExternalReferencePhrases(
+          variables.additional_protection_clauses,
+          ""
+        )}.`
+      : "",
+  ].join("");
+}
+
 function resolveLiabilityCapText(variables = {}) {
   const basis = normalizeWhitespace(variables.liability_cap_basis).toLowerCase();
   const amount = parseNumberish(variables.liability_cap_amount);
@@ -591,6 +622,58 @@ function resolveStructuredRepaymentTerms(variables = {}) {
   return parts.join(" ");
 }
 
+function renderSecuritySchedule(collateral = "") {
+  const value = normalizeWhitespace(collateral);
+  if (!value || /^unsecured$/i.test(value)) return "";
+  const lower = value.toLowerCase();
+  if (lower.includes("gold")) {
+    return [
+      "Schedule B - Description of Gold Security",
+      "(a) Description: gold ornaments, bullion, coins, or other gold assets described by the Borrower and accepted by the Lender as security",
+      "(b) Weight: as recorded in the security creation documents or valuation certificate",
+      "(c) Purity: as recorded in the valuation certificate or assayer's report",
+      "(d) Identification: photographs, inventory references, pouch numbers, locker details, or other identification particulars recorded at the time of pledge",
+      "(e) Valuation: fair market value determined by an independent or lender-approved valuer on or before creation of security",
+      `(f) Additional particulars supplied by the Parties: ${value}.`,
+    ].join("\n");
+  }
+
+  return [
+    "Schedule B - Description of Security",
+    `(a) Collateral: ${value}.`,
+    "(b) Identification: serial numbers, registration details, title documents, account references, possession records, or other identifying particulars applicable to the collateral.",
+    "(c) Valuation: the value accepted by the Lender at the time of security creation or as updated under the security documents.",
+    "(d) Perfection: filings, registrations, stamping, possession, notices, or control arrangements required under applicable law shall be completed by the Borrower.",
+  ].join("\n");
+}
+
+function resolveJointVentureTerminationText(variables = {}) {
+  const cureDays = resolveCurePeriodDays(variables, 30);
+  return [
+    "This Agreement may terminate only on the occurrence of one or more of the following events:",
+    formatStructuredSubparts([
+      "mutual written agreement of the Parties",
+      `material breach by a Party which remains uncured for ${cureDays} days after written notice requiring cure`,
+      "insolvency, liquidation, dissolution, or cessation of business of a Party",
+      "a regulatory prohibition, change in law, or governmental order that makes continuation of the Joint Venture unlawful or commercially impossible",
+      "a deadlock exit event where the deadlock remains unresolved after escalation under this Agreement",
+      "expiry of the agreed Joint Venture term without renewal",
+    ]),
+    "Termination shall not by itself extinguish accrued rights, payment obligations, confidentiality obligations, dispute resolution provisions, or the exit and unwind obligations expressly stated in this Agreement.",
+  ].join("\n");
+}
+
+function resolveGuaranteeTermText(variables = {}) {
+  const guaranteeType = normalizeWhitespace(variables.guarantee_type).toLowerCase();
+  if (guaranteeType.includes("continuing")) {
+    return `This Guarantee shall commence on ${formatDate(
+      variables.effective_date
+    )} (the "Effective Date"). This Guarantee is a continuing guarantee under the Indian Contract Act, 1872 and shall remain in force for the guaranteed obligations until discharged in accordance with law and this Agreement. The Guarantor may revoke the continuing guarantee only in respect of future obligations by written notice to the Lender, and such revocation shall not affect liability for obligations, transactions, interest, costs, or defaults existing or accrued before the Lender receives such notice.`;
+  }
+
+  return resolveServiceTermClause("GUARANTEE_AGREEMENT", resolveNamedPartyLabels("GUARANTEE_AGREEMENT"), variables);
+}
+
 function resolveGstRateSentence(variables = {}) {
   const gstRate = normalizeWhitespace(variables.gst_rate);
   if (!gstRate) {
@@ -620,22 +703,36 @@ function buildParticipantDescriptor(participant, variables = {}) {
   const name = normalizeWhitespace(participant?.name);
   if (!name) return "";
 
-  const segments = [name];
-  if (hasMeaningfulValue(participant?.type)) {
-    segments.push(withIndefiniteArticle(normalizeWhitespace(participant.type).toLowerCase()));
+  const type = normalizeWhitespace(participant?.type).toLowerCase();
+  const pan = normalizeWhitespace(participant?.pan || variables[`${participant?.id}_pan`]);
+  const gstin = normalizeWhitespace(participant?.gstin || variables[`${participant?.id}_gstin`]);
+  const cin = normalizeWhitespace(
+    participant?.cin || variables[`${participant?.id}_cin`] || variables.employer_cin
+  );
+  const llpin = normalizeWhitespace(participant?.llpin || variables[`${participant?.id}_llpin`]);
+
+  let descriptor = name;
+  if (type.includes("individual")) {
+    descriptor = `${name}, an individual${hasMeaningfulValue(participant?.address) ? ` residing at ${stripExternalReferencePhrases(participant.address, "")}` : ""}${pan ? ` having PAN ${pan}` : ""}`;
+    return descriptor;
   }
 
-  if (participant?.id === "employer" && hasMeaningfulValue(variables.employer_cin)) {
-    segments.push(`bearing Corporate Identification Number ${normalizeWhitespace(variables.employer_cin)}`);
+  if (type.includes("private limited")) {
+    descriptor = `${name}, a private limited company${cin ? ` having Corporate Identity Number (CIN) ${cin}` : ""} incorporated under the provisions of the Companies Act, 2013${pan ? ` and PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
+  } else if (type.includes("public limited") || type === "public company") {
+    descriptor = `${name}, a public limited company${cin ? ` having Corporate Identity Number (CIN) ${cin}` : ""} incorporated under the provisions of the Companies Act, 2013${pan ? ` and PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
+  } else if (type.includes("llp")) {
+    descriptor = `${name}, a Limited Liability Partnership duly registered under the provisions of the Limited Liability Partnership Act, 2008${llpin ? ` having LLPIN ${llpin}` : ""}${pan ? ` and PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
+  } else if (type.includes("partnership")) {
+    descriptor = `${name}, a Partnership Firm governed by the provisions of the Indian Partnership Act, 1932${pan ? ` having PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
+  } else if (type.includes("proprietorship")) {
+    descriptor = `${name}, a sole proprietorship business carried on under the name and style of ${name}${pan ? ` having PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
+  } else if (hasMeaningfulValue(participant?.type)) {
+    descriptor = `${name}, ${withIndefiniteArticle(normalizeWhitespace(participant.type).toLowerCase())}`;
   }
 
-  if (participant?.id === "employee" && hasMeaningfulValue(variables.employee_pan)) {
-    segments.push(`holding PAN ${normalizeWhitespace(variables.employee_pan)}`);
-  }
-
-  let descriptor = segments.join(", ");
   if (hasMeaningfulValue(participant?.address)) {
-    descriptor += `, having the address at ${stripExternalReferencePhrases(
+    descriptor += `, having its address at ${stripExternalReferencePhrases(
       participant.address,
       ""
     )}`;
@@ -898,12 +995,14 @@ function renderHardClause(
         return clause.text;
       }
 
-      const firstDescriptor = semanticDescriptors[0]
-        ? semanticDescriptors[0]
-        : buildParticipantDescriptor(participants[0], variables) || namedParties.first;
-      const secondDescriptor = semanticDescriptors[1]
-        ? semanticDescriptors[1]
-        : buildParticipantDescriptor(participants[1], variables) || namedParties.second;
+      const firstDescriptor =
+        buildParticipantDescriptor(participants[0], variables) ||
+        semanticDescriptors[0] ||
+        namedParties.first;
+      const secondDescriptor =
+        buildParticipantDescriptor(participants[1], variables) ||
+        semanticDescriptors[1] ||
+        namedParties.second;
 
       const executionVenue = resolveExecutionVenue(variables);
       const recitalPurpose = stripExternalReferencePhrases(
@@ -958,6 +1057,44 @@ function renderHardClause(
       ].join("\n");
     },
 
+    GUARANTEE_IDENTITY_001: () => {
+      const participants = getParticipantExpectations(documentType, variables);
+      if (participants.length < 3) return clause.text;
+
+      const [creditor, debtor, guarantor] = participants;
+      const creditorDescriptor = buildParticipantDescriptor(creditor, variables);
+      const debtorDescriptor = buildParticipantDescriptor(debtor, variables);
+      const guarantorDescriptor = buildParticipantDescriptor(guarantor, variables);
+
+      return [
+        `THIS GUARANTEE AGREEMENT ("Agreement") is made and executed on ${formatFormalExecutionDate(
+          variables.effective_date
+        )}.`,
+        "",
+        "BY AND AMONG",
+        "",
+        `${creditorDescriptor} (hereinafter referred to as the "Creditor", ${resolveSuccessorPhrase(
+          creditor
+        )});`,
+        "",
+        `${debtorDescriptor} (hereinafter referred to as the "Principal Debtor", ${resolveSuccessorPhrase(
+          debtor
+        )}); and`,
+        "",
+        `${guarantorDescriptor} (hereinafter referred to as the "Guarantor", ${resolveSuccessorPhrase(
+          guarantor
+        )}).`,
+        "",
+        `The Creditor, the Principal Debtor, and the Guarantor are collectively referred to as the "Parties" and individually as a "Party".`,
+        "",
+        "WHEREAS, the Creditor has agreed to extend, continue, or secure financial accommodation to the Principal Debtor on the faith of this Guarantee;",
+        "",
+        "WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation; and",
+        "",
+        "NOW, THEREFORE, in consideration of the mutual covenants, promises, and obligations contained herein, the Parties agree as follows:",
+      ].join("\n");
+    },
+
     CORE_PURPOSE_001: () => {
       const rendered = resolveServicePurposeClause(documentType, namedParties, variables);
       return rendered || normalizeWhitespace(semanticContext?.objective_summary) || clause.text;
@@ -975,11 +1112,17 @@ function renderHardClause(
       text: buildInterpretationClauseText(),
     }),
 
-    CORE_TERM_001: () => resolveServiceTermClause(documentType, namedParties, variables),
+    CORE_TERM_001: () =>
+      documentType === "GUARANTEE_AGREEMENT"
+        ? resolveGuaranteeTermText(variables)
+        : resolveServiceTermClause(documentType, namedParties, variables),
 
     CORE_TERMINATION_001: () => ({
       title: "Termination",
-      text: resolveGenericTerminationText(namedParties, variables),
+      text:
+        documentType === "JOINT_VENTURE_AGREEMENT"
+          ? resolveJointVentureTerminationText(variables)
+          : resolveGenericTerminationText(namedParties, variables),
     }),
 
     EMPLOYMENT_ROLE_001: () =>
@@ -1257,7 +1400,9 @@ function renderHardClause(
     }),
 
     SERVICE_REPORTING_001: () => {
-      return `The ${actor} shall submit written progress and status reports to ${timelineLabels.reviewer}, setting out the work completed, milestones achieved, issues encountered, anticipated delays, and next steps, at a reasonable periodic frequency consistent with the deliverables and reporting requirements recorded in this Agreement.`;
+      return `The ${actor} shall submit written progress and status reports to ${timelineLabels.reviewer}, setting out the work completed, milestones achieved, issues encountered, anticipated delays, and next steps, at a reasonable periodic frequency consistent with the deliverables and reporting requirements recorded in this Agreement.${resolveGovernanceProtectionSentences(
+        variables
+      )}`;
     },
 
     SERVICE_SLA_001: () => {
@@ -1459,26 +1604,26 @@ function renderHardClause(
     }),
 
     JV_CONTRIBUTION_001: () =>
-      `Each Party shall contribute to the Joint Venture the agreed resources, expertise, and capital. Party 1 shall contribute ${formatCurrency(
+      `Each Party shall contribute to the Joint Venture the agreed resources, expertise, and capital. The ${namedParties.first} shall contribute ${formatCurrency(
         variables.capital_contribution_1
-      )} and Party 2 shall contribute ${formatCurrency(
+      )} and the ${namedParties.second} shall contribute ${formatCurrency(
         variables.capital_contribution_2
       )}. Profits and losses arising from the Joint Venture shall be shared between the Parties in the ratio of ${normalizeWhitespace(
         variables.profit_sharing_ratio || "the agreed ratio"
       )}. Each Party's contribution shall be made within the timeframes agreed between the Parties in writing, and failure to contribute shall constitute a material breach of this Agreement.`,
 
     JV_GOVERNANCE_001: () =>
-      `The Joint Venture shall be managed by a Management Committee comprising equal representatives from each Party.${hasMeaningfulValue(
-        variables.jv_structure
-      ) ? ` The Parties further agree that the Joint Venture structure shall be as follows: ${stripExternalReferencePhrases(
+      `The Joint Venture shall be managed by a Management Committee comprising representatives from each Party. The agreed structure of the Joint Venture is ${stripExternalReferencePhrases(
         variables.jv_structure,
-        ""
-      )}.` : ""}${hasMeaningfulValue(
+        "the structure expressly agreed between the Parties"
+      )}, and the Parties shall use that structure to govern ownership economics, contribution obligations, decision rights, operational responsibility, and authority to deal with third parties.${hasMeaningfulValue(
         variables.management_control
       ) ? ` The Parties specifically agree that management control shall operate as follows: ${stripExternalReferencePhrases(
         variables.management_control,
         ""
-      )}.` : " Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational decisions."} Major decisions shall include approval of the annual budget, entry into any third-party contract outside the ordinary course of business, any material change in the scope of the Joint Venture, and admission of any new party to the Joint Venture. Each Party shall designate its representatives to the Management Committee in writing and may replace them at any time on written notice.`,
+      )}.` : " Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational decisions."} Major decisions shall include approval of the annual budget, entry into any third-party contract outside the ordinary course of business, any material change in the scope of the Joint Venture, and admission of any new party to the Joint Venture. Each Party shall designate its representatives to the Management Committee in writing and may replace them at any time on written notice.${resolveGovernanceProtectionSentences(
+        variables
+      )}`,
 
     CORP_SHARE_SUBSCRIPTION_001: () =>
       `Each Shareholder shall subscribe to and hold shares in ${normalizeWhitespace(
@@ -1595,10 +1740,15 @@ function renderHardClause(
       )}.` : " Upon the occurrence of a deadlock, senior representatives of the Parties shall meet in good faith to attempt a resolution, failing which either Party may invoke the agreed dispute-resolution mechanism or trigger a valuation-led buyout or sale process where such remedy is expressly available under this Agreement."}`,
 
     JV_EXIT_001: () =>
-      `Upon termination of this Agreement or upon a Party's wish to exit the Joint Venture, the following exit mechanism shall apply: ${stripExternalReferencePhrases(
-        variables.exit_terms,
-        "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer to acquire the exiting Party's interest at fair market value determined by an independent valuer, and if no buyout is completed within the agreed period the Parties shall jointly implement a commercially reasonable unwind, transfer, or sale process"
-      )}. Unless the Parties agree otherwise in writing, the allocation of assets, liabilities, contracts, and intellectual property on exit shall reflect the agreed ownership structure and the Parties' respective contributions.`,
+      [
+        `Exit from the Joint Venture shall be treated separately from termination of this Agreement. The agreed exit mechanism shall apply as follows: ${stripExternalReferencePhrases(
+          variables.exit_terms,
+          "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer to acquire the exiting Party's interest at fair market value determined by an independent valuer, and if no buyout is completed within the agreed period the Parties shall jointly implement a commercially reasonable unwind, transfer, or sale process"
+        )}.`,
+        "Where an exit is implemented by buyout, the purchase price, valuation date, payment timeline, transfer documentation, and release of guarantees or support obligations shall be documented in writing.",
+        "Where an exit is implemented by winding up or unwind, the Parties shall allocate assets, liabilities, contracts, employees or personnel, receivables, payables, licences, and permits in a commercially reasonable manner consistent with their ownership structure and accrued obligations.",
+        "Intellectual property created for or used by the Joint Venture shall be allocated in accordance with the agreed IP ownership terms, and each Party shall retain only those rights expressly reserved to it or necessary to comply with post-exit obligations.",
+      ].join(" "),
 
     IP_TRADEMARK_USAGE_001: () =>
       `Subject to the terms and conditions of this Agreement, ${namedParties.first} grants ${namedParties.second} a limited licence to use the relevant trade names, marks, logos, and brand materials solely for the purpose of marketing and distributing the contracted products within the agreed Territory during the term of this Agreement.${hasMeaningfulValue(
@@ -1757,7 +1907,11 @@ function renderHardClause(
       if (!collateral || /^unsecured$/i.test(collateral)) {
         return "This Loan is unsecured. The Borrower confirms that no security interest is being created in favour of the Lender under this Agreement, but all repayment and default obligations under this Agreement shall remain fully enforceable.";
       }
-      return `As security for the due repayment of the Loan and discharge of all obligations under this Agreement, the Borrower shall create and maintain the following security in favour of the Lender: ${collateral}. The Borrower shall execute all ancillary security documents, complete all filings or registrations required by applicable law, and maintain adequate insurance over any secured assets where commercially appropriate.`;
+      return [
+        `As security for the due repayment of the Loan and discharge of all obligations under this Agreement, the Borrower shall create and maintain security in favour of the Lender over the collateral described below. The Borrower shall execute all ancillary security documents, complete all filings or registrations required by applicable law, and maintain adequate insurance over any secured assets where commercially appropriate.`,
+        "",
+        renderSecuritySchedule(collateral),
+      ].join("\n");
     },
 
     LOAN_COVENANTS_001: () =>
@@ -1780,12 +1934,7 @@ function renderHardClause(
         ""
       )}.` : " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand."} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor except to the extent expressly limited in this Agreement.`,
 
-    GUARANTEE_CONTINUING_001: () =>
-      `This Guarantee is a ${normalizeWhitespace(
-        variables.guarantee_type || "continuing guarantee"
-      ).toLowerCase()} and shall remain in full force and effect for ${normalizeWhitespace(
-        variables.guarantee_period || "so long as any guaranteed obligation remains outstanding"
-      )}. The Guarantor's liability shall not be affected, impaired, or discharged by any amendment, indulgence, waiver, variation, delay in enforcement, or insolvency affecting the Principal Debtor, except to the extent discharge is required by non-excludable law.`,
+    GUARANTEE_CONTINUING_001: () => resolveGuaranteeTermText(variables),
 
     GUARANTEE_INDEMNITY_001: () =>
       `The Guarantor shall indemnify and hold harmless the Lender against all losses, damages, costs, and expenses suffered or incurred as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the underlying financing arrangements. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to the rights and remedies of the Lender against the Principal Debtor to the extent of such payment, provided that the Guarantor shall not exercise such subrogation rights until the Lender has been paid in full.`,

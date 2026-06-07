@@ -1,0 +1,192 @@
+{
+  "document_type": "NDA",
+  "variant": "employee",
+  "jurisdiction": "competent jurisdiction",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[ ]"
+      }
+    },
+    {
+      "name": "company",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[company]"
+      }
+    },
+    {
+      "name": "companies_act_2013",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Companies Act, 2013]"
+      }
+    },
+    {
+      "name": "placeholder_4",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[___]"
+      }
+    },
+    {
+      "name": "signature_to_follow",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Signature to follow]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "email"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_6",
+      "clause_name": "Clause 6",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_10",
+      "clause_name": "Clause 10",
+      "category": "jurisdiction"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_12",
+      "clause_name": "Clause 12",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_13",
+      "clause_name": "Clause 13",
+      "category": "termination"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_14",
+      "clause_name": "Clause 14",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_15",
+      "clause_name": "Clause 15",
+      "category": "jurisdiction"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_16",
+      "clause_name": "Clause 16",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_18",
+      "clause_name": "Clause 18",
+      "category": "confidentiality"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_5",
+      "clause_name": "Clause 5",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_9",
+      "clause_name": "Clause 9",
+      "category": "indemnity"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_11",
+      "clause_name": "Clause 11",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "employment_agreement_3_undated_fcc5af6e481d_17",
+      "clause_name": "Clause 17",
+      "category": "general"
+    }
+  ],
+  "body": "Employment Agreement Template (India) | OS v.1 | November 2016 Employment Agreement This Employment Agreement (“Agreement”) is executed on [ ] (“Execution Date”): BETWEEN [ ], a [company] incorporated under the [Companies Act, 2013] having its registered office at [ ] (hereinafter referred to as the “Company”, which expression shall, unless it be repugnant to the context or meaning thereof, be deemed to mean and include its successors and permitted assigns) of the FIRST PART; AND [ ], son/daughter of [ ] residing at [ ] (hereinafter referred as the “Employee” which expression shall unless it be repugnant or contrary to the context thereof, mean and include his/her heirs, legal representatives, successors and permitted assigns) of the SECOND PART; The Company and the Employee shall hereinafter be individually referred to as “Party” and collectively referred to as “Parties”. WHEREAS: A. The Company is engaged in the business of [ ] (“Business”). B. The Company recognizes that the Employee has the requisite skill set to be employed as a [ ] C. On basis of the Employee’s representations to the Company as set forth herein and considering that the Employee has been associated with the Company since its incorporation, the Company wishes to retain the Employee’s services and the Employee wishes to provide such services to the Company. D. The Parties intend to record the terms of the engagement of the Company and the Employee under this Agreement. NOW, THEREFORE, in consideration of the mutual covenants and agreements set forth in this Agreement, and for other good and valuable consideration, the sufficiency of which is acknowledged by the Parties, the Parties hereby agree as follows: 1. DEFINITIONS Unless repugnant to the context, in this Agreement the expressions mentioned below shall have the meaning as follows: “Act” means the Companies Act, 2013, as amended from time to time, or with reference to such sections as are notified and made applicable on the relevant date, the Companies Act, 2013 or any other statutory amendment, re- enactment thereof; “Affiliate” shall mean with respect to any Person, any company, corporation, association or other entity, which, directly or indirectly, Controls, is controlled by or is under common Control with, such Person; “Agreement” includes the recitals and annexures to this management agreement and any amendments made to this management agreement by the Parties in writing; “Applicable Law” means any statute, law, regulation, ordinance, rule, judgment, notification, order, decree, bye- law, permits, licenses, approvals, consents, authorizations, government approvals, directives, guidelines, requirements or other governmental restrictions, or any similar form of decision of, or determination by, or any interpretation, policy or administration, having the force of law of any of the foregoing, by any authority having jurisdiction over the matter in question, whether in effect as of the Effective Date or thereafter; “Articles of Association” or “Articles” means the articles of association of the Company as amended from time Employment Agreement Template (India) | OS v.1 | November 2016 1 to time; “Board” means the board of directors of the Company; “Business” shall mean the business of the Company and includes [___]; “Cause” means any of the following: (a) there has been a gross negligence and willful misconduct on the part of the Employee in the course of his/her employment with the Company; (b) the Employee has engaged in fraud, embezzlement, theft, commission of a felony, or dishonesty etc. in the course of his employment with the Company; (c) the Employee has engaged in such behaviour materially detrimental to the interests of the Company; (d) a material breach by the Employee of any of the terms and conditions of this Agreement; (e) any unauthorised or negligent disclosure of confidential information by the Employee, provided however any disclosure of confidential information that are required to be made in ordinary course of business shall not be deemed to be an un-authorized or negligent disclosure herein; or (f) the Employee is charged with any felony or crime involving moral turpitude, fraud or misrepresentation; “Competitor” means (i) any Person who is, directly or indirectly, engaged in any commercial activity which is the same as and/or substantially similar to the Business or which competes with the Business (“Relevant Person”); and/ or (ii) any Person in Control of, Controlled by or under common Control with, the Relevant Person; “Confidential Information” shall have the meaning ascribed to it in the Confidentiality and Intellectual Property Assignment Agreement; “Confidentiality and Intellectual Property Assignment Agreement” means the agreement entered into between the Company and the Employee on [ ] which sets out the obligations owed by the Employee with respect to Confidential Information and Intellectual Property; “Control”, as used with respect to any Person means the direct or indirect beneficial ownership of or the right to vote in respect of, directly or indirectly, more than 50% of the voting shares or securities of a Person and/or the power to control the majority of the composition of the Board of directors of a Person and/or the power to create or direct the management or policies of a Person by contract or otherwise or any or all of the above; “Effective Date” shall mean [ ] being the date of appointment of the Employee of the Company; “Intellectual Property” shall have the meaning ascribed to it in the Confidentiality and Intellectual Property Assignment Agreement; “Person” means any natural person, limited or unlimited liability company, corporation, partnership (whether limited or unlimited), proprietorship, Hindu undivided family, trust, union, association, government or any agency or political subdivision thereof or any other entity that may be treated as a person under Applicable Law; “Proprietary Information” means and includes, but is not limited to, information about software programs, source or object code, algorithms, trade secrets, designs, know-how, domain names, processes, data, ideas, techniques, works of authorship, business and product development plans, customer lists, terms of compensation and performance levels of Company employees, Company customers and other information concerning the Company’s actual or anticipated business, research or development, prices and pricing structures, marketing and sales information, product lines and any information and materials relating thereto, or which is received in confidence by or for the Company from any other person, whether or not it is in written or permanent form. “Relative” shall have the same meaning as defined under the Act; 2. EMPLOYMENT 2.1 The Company has employed the Employee to render services as described herein from the Effective Date and the Parties hereby set forth the terms of the Employee’s employment. Employment Agreement Template (India) | OS v.1 | November 2016 2 2.2 The Employee represents and warrants to the Company that, as on the Effective Date: (a) he is free to enter into employment with the Company without violation of any third party rights and that the employment with the Company shall not result in a violation of any agreement or restrictive condition that he may have with any third party including former employers; (b) he is not a party to any arrangement or agreement which will compromise his ability to carry out the duties for the Company; and (c) all information provided by the Employee in this Agreement is truthful and accurate; (d) he is competent to enter into this Agreement and capable of performing the obligations hereunder. 3. PLACE OF WORK The principal place of work from where the Employee shall perform services for the Company will be the Company's offices located in [ ]. 4. DUTIES AND OBLIGATIONS From the Effective Date, the following shall be the duties and obligations of the Employee: 4.1 The Employee agrees to devote his full time and attention to provide services and perform such other duties as required by the Company. 4.2 The Employee, shall at all times, be subject to and bound by the policies, rules and regulations of the Company as may be in force from time to time or as may be brought to his notice by the Company. 4.3 The Employee shall not commit any act or misconduct, or commit any acts subversive to the discipline of the Company, or otherwise misbehave in a manner that would be construed as being in violation of the rules of the Company for the time being in force. 4.4 The Employee agrees that during the term of his employment, he shall work exclusively for the Company and will not perform or undertake to perform any work for any other Person without the specific prior written permission of the Company for each such instance of work. 4.5 The Employee shall have the power to sign contracts, deeds and documents proposed to be executed by the Company, to represent the Company in dealings with the Government and other authorities and to sign pleadings and applications required to be filed in any legal proceedings by or against the Company, subject, however, to such action having first been approved by the Board or in pursuance of a power of attorney granted in favour of the Employee by the Company. In the event the Company is held liable for any damage, loss, claim or action arising directly or indirectly from his action in violation of this Clause 4.5, the Employee shall indemnify the Company, its shareholders, officers, directors, employees, and professional representatives to the maximum extent permissible under Applicable ;aw for the time being in force in India. 5. REMUNERATION AND BENEFITS 5.1 In consideration of the duties and obligations, the Employee shall be entitled to the remuneration and other employee benefits, both statutory as well as non-statutory, in accordance with the Annexure. The remuneration payable to the Employee will be effective from the Effective Date and shall be reviewed on a periodic basis as the Board may decide, and may be revised or maintained as determined by the Board. 5.2 The Company shall reimburse all expenses actually and properly incurred by the Employee in the course of business of the Company during the term of employment of the Employee with the Company and in accordance with relevant Company policy (as amended from time to time by the Company in its sole and absolute discretion), upon presentation of appropriate documentation of such expenses at such time and in such form and manner as the Company may prescribe. 5.3 The Company shall deduct from all compensation or benefits payable pursuant to this Agreement such withholding and other taxes as are required by Applicable Law, any debts owed by the Employee to the Company and any deduction from remuneration to which the Employee has previously signified his consent in writing. Employment Agreement Template (India) | OS v.1 | November 2016 3 5.4 The Employee shall not be entitled to any benefits over and above what he is entitled to under this Agreement and any statutory benefits accruing to him under Applicable Law. The holidays and the leave entitlement of the Employee shall be governed by the Company’s policies as amended from time to time by the Company in its sole and absolute discretion. 6. RECEIPT OF PAYMENTS AND BENEFITS FROM THIRD PARTIES Neither the Employee nor the Employee’s Relatives, nor any company or business entity in which the Employee or the Employee’s Relatives have an interest, are entitled to receive or obtain directly or indirectly any payment, discount, rebate, commission or other benefit in respect of any business transacted (whether or not by the Employee) by or on behalf of the Company or any Affiliate or associated company; and if Employee, Employee’s Relatives or any company or business entity in which Employee or Employee’s Relatives have an interest, directly or indirectly obtain any such payment, discount, rebate, commission or other benefit; the Employee shall forthwith account to the Company or its Affiliates or the relevant associated company for the amount received or the value of the benefit so obtained. 7. INTELLECTUAL PROPERTY RIGHTS The Employee’s obligations with respect to Intellectual Property shall be as set forth in the Confidentiality and Intellectual Property Assignment Agreement. 8. NON COMPETE AND NON SOLICIT 8.1 The Employee covenants and agrees that during the course of his employment starting from the Effective Date the Employee shall not: (a) carry on or participate (whether as a partner, shareholder, principal, agent, director, employee or consultant) in any business and/ or activity which is the same as or substantially similar to the Business, including in the business of any Competitor, other than through the Company; (b) render any services to a Competitor or enter into employment with any of the Competitors; (c) solicit or influence or attempt to influence any client, customer or other Person to direct its purchase of the products and/or services of the Company to itself or any Competitor; and/or (d) solicit or attempt to influence any Person, employed or engaged by the Company (whether as an employee consultant, advisor or distributor or in any other manner) to terminate or otherwise cease such employment or engagement with the Company or become the employee of or directly or indirectly offer services in any form or manner to himself or any other Person which is a Competitor of the Company. 8.2 The Employee covenants and agrees that during the course of his employment starting from the Effective Date the Employee shall not, directly or indirectly: (a) attempt in any manner to contact any client/customer or solicit from any client/customer, except on behalf of the Company, business of the type carried on by the Company or to persuade any Person, which is a client/customer of the Company to cease doing business or to reduce the amount of business which any such client/customer has customarily done or might propose doing with the Company or damage in any way the business relationship that the Company has with any customer/client, whether or not the relationship between the Company and such client/customer was originally established in whole or in part through his efforts; or (b) employ or attempt to employ or assist anyone else to employ any person who is in the employment of the Company, or was in the employment of the Company at any time during the preceding 12 (twelve) months. 8.3 The Employee undertakes to ensure that all business opportunities known to him or made known to him at any time, with respect to and/or connected with the Business are referred to the Company. Employment Agreement Template (India) | OS v.1 | November 2016 4 9. CONFIDENTIALITY The Employee shall have executed a separate confidentiality and intellectual property assignment agreement with the Company which sets forth the confidentiality obligations of the Employee towards the Company. 10. REMEDIES 10.1 Notwithstanding anything contained herein, the Employee acknowledges that a breach of any of the covenants contained in this Agreement could result in irreparable injury to the Company for which there might be no adequate remedy at law, and that, in the event of such a breach or threat thereof, the Company shall be entitled to obtain remedies available under Applicable Law including but not limited to injunctive relief through any court of competent jurisdiction. The injunctive remedies are cumulative and are in addition to any other rights and remedies that the Company may have at law or in equity. 11. TERMINATION This Agreement and the employment of the Employee with the Company may be terminated by the Company, without Cause by giving the Employee 2 (two) months’ notice in writing or payment of 2 (two) months’ salary in lieu of such notice. 11.1 It is clarified that upon termination of this Agreement, the Employee shall cease to be an Employee of the Company. The management of the Company reserves the sole right to extend the termination of this Agreement. 11.2 Upon termination of this Agreement, the Employee shall hand over all documents and materials constituting the property of the Company, including any proprietary rights, Intellectual Property Rights and Confidential Information, which may be in the possession of the Employee at the time of termination of this Agreement. 11.3 Termination of this Agreement for any reason shall not entitle the Employee to any compensation for loss of office under the Companies Act and he shall only be entitled to such dues as may be contractually or statutorily payable in terms of this Agreement. 11.4 Subject to the other terms of this Agreement upon cessation of this Agreement for any reason (either by of way termination by the Company or resignation by the Employee or retirement of the Employee in accordance with Company policies), the Employee shall cease to be an employee of the Company. 12. NOTICES 12.1 Notices, demands or other communication required or permitted to be given or made under this Agreement shall be in writing and shall be provided by email or registered post to the addresses mentioned below:: If to the Company: Address: [ ] Kind Attn: [ ] E-mail: [ ] If to the Employee: Address: [ ] Kind Attn: [ ] E-mail: [ ] In the event of any change in the address, the Party whose address is subject to change shall communicate such change to the other Party in writing. Employment Agreement Template (India) | OS v.1 | November 2016 5 13. MISCELLANEOUS 13.1 This Agreement shall be interpreted in accordance with and governed by the laws of India without regard to any conflict of laws principles. All disputes arising out of or in connection with this Agreement shall be subject to the sole and exclusive jurisdiction of the courts of [___]. 13.2 The rights of each Party under this Agreement shall not be to the exclusion of the rights granted under Applicable Law but shall be in addition to such rights. 13.3 Each of the provisions of this Agreement is severable. If any provision of this Agreement (or part of a provision) is found by any competent authority to be invalid, unenforceable or illegal, the other provisions shall remain in force. If any invalid, unenforceable or illegal provision would be valid, enforceable or legal if some part of it were deleted or modified, the provision shall apply with whatever modification is necessary to give effect to the commercial intention of the Parties. 13.4 No amendment or waiver of any of the provisions of this Agreement shall be effective unless made in writing and signed both Parties. 16.5 This Agreement along with the Confidentiality and Intellectual Property Assignment Agreement constitutes the entire agreement between the Parties with respect to the subject matter of this Agreement. This Agreement, supersedes all prior discussions and agreements (whether oral or written, including all correspondence) if any, between the Parties with respect to the subject matter of this Agreement. Annexure – Remuneration of Employee [Signature to follow]",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/employment_agreement_3_undated_fcc5af6e481d.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/EMPLOYMENT_AGREEMENT%20(3).pdf",
+    "quality_score": 86,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

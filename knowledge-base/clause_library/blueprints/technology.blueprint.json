@@ -39,6 +39,10 @@
     {
       "clause": "CORE_INDEMNITY_001",
       "include_if": "include_indemnity_clause == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
     }
   ]
 }

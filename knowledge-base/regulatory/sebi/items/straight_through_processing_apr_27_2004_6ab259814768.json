@@ -1,0 +1,25 @@
+{
+  "id": "straight_through_processing_apr_27_2004_6ab259814768",
+  "title": "Straight Through Processing",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/apr-2004/straight-through-processing_9630.html",
+  "document_url": "https://www.sebi.gov.in/legal/circulars/apr-2004/straight-through-processing_9630.html",
+  "document_date": "Apr 27, 2004",
+  "document_format": "html",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "reason": "html_text_extracted"
+  },
+  "text": "Straight Through Processing Apr 27, 2004| Circulars GENERAL MANAGER DNPD/Cir-23/04 April 27, 2004 All Exchanges, Clearing Corporation / Clearing House, Depositories, Custodians, AMFI, STP service providers and STP Centralized Hub Dear Sir, 1) Further to the circular no. DNPD/Cir-22/2004 dated April 1, 2004 mandating the use of the Straight Through Processing (STP) System for all institutional trades w. e. f. July 1, 2004. The present circular contains the detailed system flow which was referred to in the said circular. 2) The system flow of the STP framework would be as follows: a) A STP user intending to send an instruction would send the message to his STP service provider after digitally signing the same. b) The STP service provider would verify the signature of the STP user and forward it to the i) recipient STP user, if the recipient STP user is availing services of the same STP service provider; or the ii) STP centralized hub if the recipient STP user is not with the same STP service provider. In such a case the STP service provider would be required to prepare a message as per the STP centralized hub prescribed message format, enclose the user’s message, digitally sign the message and then send it to the STP centralized hub c) On receipt of the message by the STP centralized hub, the STP centralized hub would i) verify the signature of the sending STP service provider only. ii) send an acknowledgment to the sending STP service provider. d) The STP centralized hub would forward the message to the recipient STP service provider after digitally signing on the message. e) The recipient STP service provider on receipt of the message from the STP centralized hub, shall verify the signature of the STP centralized hub, verify if the recipient STP user is associated with itself and send an appropriate acknowledgment with digital signature to the STP centralized hub. The STP centralized hub would in turn forward the acknowledgment (received from the recipient STP service provider) duly signed to the sending STP service provider. f) The recipient STP service provider shall forward the message to the recipient STP user. The recipient STP user would receive the message and verify the signature of the recipient STP service provider and sending STP user. 3) To enable inter-operation, the STP centralized hub would provide a utility / client software to the STP service provider. The STP service provider’s point of interface with the STP centralized hub would be through this utility / client software. The PKI (Public key infrastructure) system for the interface shall be implemented at a later stage. 4) The block diagram of the entire STP System is enclosed in Annexure I. 5) This circular is being issued in exercise of powers conferred by section 11 (1) of the Securities and Exchange Board of India Act, 1992, read with section 10 of the Securities Contracts(regulation) Act 1956, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully, D. RAVIKUMAR",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

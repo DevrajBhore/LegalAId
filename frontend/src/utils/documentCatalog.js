@@ -104,3 +104,7 @@ export function getFeaturedDocumentTypes(docTypes = [], limit = 6) {
 
   return selected.slice(0, limit);
 }
+
+export function getDocumentInfoPath(type) {
+  return `/documents/${encodeURIComponent(type)}/about`;
+}

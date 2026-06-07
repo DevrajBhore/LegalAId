@@ -1,0 +1,140 @@
+{
+  "document_type": "NDA",
+  "variant": "vendor",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "email"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_4",
+      "clause_name": "Clause 4",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_5",
+      "clause_name": "Clause 5",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_12",
+      "clause_name": "Clause 12",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_13",
+      "clause_name": "Clause 13",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_14",
+      "clause_name": "Clause 14",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_15",
+      "clause_name": "Clause 15",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_16",
+      "clause_name": "Clause 16",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_17",
+      "clause_name": "Clause 17",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_18",
+      "clause_name": "Clause 18",
+      "category": "general"
+    },
+    {
+      "clause_id": "final_user_manual_05_09_2024_2_undated_a1df63a4be66_19",
+      "clause_name": "Clause 19",
+      "category": "general"
+    }
+  ],
+  "body": "Manual for VA Page 1 of 29 RITES-GeM User Manual For Vendor Assessment Manual for VA Page 2 of 29 RITES-GeM Table of Content S.No. Topics Covered Page No. 01 Eligibility for Vendor Assessment 03 02 Vendor Assessment Methodology 04 03 Process Flow 05 04 Login credentials 06 05 GeM VA portal 07 06 Login Page 08 07 Home Page 09 08 Vendor Dashboard 10 09 Application Form 11 10 Forgot Password 12-13 11 Functions involved while filling the application 14-26 12 Mobile Application 27-28 11 Contact Us 29 Manual for VA Page 3 of 29 RITES-GeM 1. Eligibility for Vendor Assessment Check if you fall in exemption category. Click on the following link to see the exemption list: https://assets-bg.gem.gov.in/resources/upload/shared_doc/gem-2024-vendor-validation-policy-v-3_1704955566.pdf If you fall in any of the Exemption categories If you do not fall into any of the exemption categories Apply for exemption on GeM Portal Apply for Vendor Assessment on GeM Portal Manual for VA Page 4 of 29 RITES-GeM 2. Vendor Assessment Methodology The Vendor Assessment (VA) for OEMs is based on following parameters:  Vendor profile  Financial capacity  Production capability The assessment will be carried out in following 2 stages: 1) Desktop Assessment– Information and documents will be submitted by the vendor in the Desktop Assessment (DA) stage and if any discrepancy is found then non-compliance (NC) will be raised. Vendor will close NC before closure of VA. 2) Video Assessment – Video Assessment will be conducted by using the mobile based application through video calling. It will validate the entire process submitted by the vendor through documents in Desktop Assessment. Manual for VA Page 5 of 29 RITES-GeM 3. Process Flow for Registration on GeM Portal Fill Vendor profile details Vendor Application received by RITES Login to RITES Portal Login Id & Password send to registered Email Confirmation sent over SMS and phone Fill vendor details and upload documents and make online payment Application Submitted Desktop Assessment Application approved for video assessment Assessor select date and time for video assessment as per discussion with vendor Validation through video call Application Approved/Rejected 2days will be given to vendor for closing the NC’s Manual for VA Page 6 of 29 RITES-GeM 4. Login Credentials received over E-mail  Getting Started with Vendor Assessment: The login credentials will be share with the vendor through an email  https://ritesva.com Click on the link for login The login credentials for VA-XXXXXXXXXX User Id Password The applicant will fill the relevant fields on the RITES Vendor assessment web portal along with the payment After successfully submission of the application, the assessment will start in two stages.  Desktop Assessment (Stage 1) The Desktop Assessment requires you to fill in basic information along with uploading relevant documents within 2 working days, After the Desktop Assessment is completed, RITES will take 2 days’ time to review the submitted form. If any non-compliance is detected, inform on Web portal and an e-mail informing about the same will be sent to you and another 2 working days will be given to correct it. Once the Desktop Assessment form is fully verified by RITES Ltd, you would be eligible for stage-2 i.e., Video Assessment.  Video Assessment (Stage 2) The Video Assessment will be conducted through a video calling process. Video Assessment will involve validating all the processes as mentioned in Desktop Assessment. Before proceeding in this phase of the assessment, a mail regarding the date and time slot will be shared with you. The 2nd phase of the assessment will begin as per the carefully chosen time and date slot. Request you to attach relevant documents, wherever applicable in the Assessment. abc@email.com 123abc Manual for VA Page 7 of 29 RITES-GeM 5. GeM portal Login on GeM Portal for Vendor Assessment application. After submission of application on GeM portal, vendor has to fill the form on www.ritesva.com On successful submission of application on GeM portal, vendor will receive an email regarding login credentials for www.ritesva.com. If vendor do not find email in inbox, then kindly check spam. 9 Manual for VA Page 8 of 29 RITES-GeM 6. GeM VA portal–Login Page When vendor search www.ritesva.com, then this interface will open. Vendor can login through the credentials which he gets through email. After login, vendor can start filling his application form for vendor assessment If vendor did not get email then use forgot password option. 9 Manual for VA Page 9 of 29 RITES-GeM 7. GeM VA portal–Home Page Manual for VA Page 10 of 29 RITES-GeM 8. GeM VA portal– Dashboard Click here to fill the applicatio n form Manual for VA Page 11 of 29 RITES-GeM 9. GeM VA portal–Application Form Manual for VA Page 12 of 29 RITES-GeM 10. Forgot Password Click on Forgot Password. Manual for VA Page 13 of 29 RITES-GeM After entering the email, Click on the link. Link will be sent on register email, click on it and you change the password. Manual for VA Page 14 of 29 RITES-GeM 11. Function Involved while filling the application A. Upload Document B. View Document C. Delete uploaded document D. Select option from Dropdown E. Save and Final Submit form F. Payment of fees G. Replying to a NC Manual for VA Page 15 of 29 RITES-GeM A. How to Upload Documents? Click on upload document button A pop will open. Click on choose file Another pop will open and select file to upload After selecting file, click on open button Manual for VA Page 16 of 29 RITES-GeM Click on Upload A pop will be displayed after successful uploading of documents The upload button will turn green Manual for VA Page 17 of 29 RITES-GeM B, C. How to View and delete Uploaded Documents? Click on Eye A pop will be displayed Click on download button to check the uploaded file Click on red bin button to delete the uploaded file If you delete all uploaded file, then upload button will turn into yellow color Manual for VA Page 18 of 29 RITES-GeM D. Selecting options from drop down To use the drop-down menu, click on the small down arrow and a list of available options can be seen. Click on option you want to select The option selected will be displayed in the box Manual for VA Page 19 of 29 RITES-GeM E. Saving the Application Form If you have filled the Form partially and want to save the details filled or want to close the form and continue filling in later, click on save as Draft. When all the details are filled and all documents are uploaded click on Submit. Manual for VA Page 20 of 29 RITES-GeM F. Payment Submitting Steps After submit the filled form, proceed for payment button will appear on screen. To pay fee of vendor assessment, click on proceed payment Manual for VA Page 21 of 29 RITES-GeM A new pop window appear and click on Yes option. Manual for VA Page 22 of 29 RITES-GeM Anew screen will appear where applicant has to fill the details and then click on the pay button. Manual for VA Page 23 of 29 RITES-GeM A new pop screen will appear and select yes option. It will redirect to payment gateway. Manual for VA Page 24 of 29 RITES-GeM After filling the details, Click on the Make payment Fill the details and select appropriate payment options. Manual for VA Page 25 of 29 RITES-GeM After making payment, transaction details will appear and then click on send response After that payment success screen will appear. Manual for VA Page 26 of 29 RITES-GeM G. Replying to NC If any non-conformity is found in the information and documents submitted than Vendor is required to change the input answers in the text box. The button will be shown as NC button in front of the question. Click on the button. Reply against the remark provided by assessor and upload the supporting document if any to close NC. After typing the reply to the NC, you will be able to see to Save button. Click on it to save the reply. Manual for VA Page 27 of 29 RITES-GeM 12. Mobile Application LOGIN ANSWER CALL ############################ Manual for VA Page 28 of 29 RITES-GeM Note: All the information and documents submitted during desktop assessment, will be validated during video-assessment process. VIDEO ASSESSMENT Manual for VA Page 29 of 29 RITES-GeM 13. Contact Us For any queries regarding the Vendor Assessment and while filling the application form, please contact us on the below mentioned details: Email: gem.helpdesk@rites.com Helpline No.: +91- 8800199168, 8130990762 Web portal: https://ritesva.com www.ritesva.com",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/final_user_manual_05_09_2024_2_undated_a1df63a4be66.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/final-user-manual-05-09-2024-2_1726048300.pdf",
+    "quality_score": 68,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

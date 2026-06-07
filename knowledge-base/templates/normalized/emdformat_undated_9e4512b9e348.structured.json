@@ -1,0 +1,76 @@
+{
+  "document_type": "NDA",
+  "variant": "standard",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "insert_date_of_issue_of_bg",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Insert date of issue of BG]"
+      }
+    },
+    {
+      "name": "insert_guarantee_number",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Insert guarantee number]"
+      }
+    },
+    {
+      "name": "insert_name_and_address_of_the_issuing_bank",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Insert name and address of the issuing Bank]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "emdformat_undated_9e4512b9e348_1",
+      "clause_name": "Bid Number",
+      "category": "general"
+    },
+    {
+      "clause_id": "emdformat_undated_9e4512b9e348_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "emdformat_undated_9e4512b9e348_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    }
+  ],
+  "body": "Bid Number: GEM/2020/B/69497/EMD Dated: 29-10-2020 Format for EMD Bank Guarantee Beneficiary: test Hq, Dedicated Freight Corridor Corporation of India Ltd., NA, Ministry of Railways (Nilesh Kumar Pal) (hereinafter referred to as Beneficiary / Government) Date: ….......................................... [Insert date of issue of BG](To be insert by issuing bank) ……. BANK GUARANTEE No.: … [Insert guarantee number] …(To be insert by issuing bank)........... BANK GUARANTEE Amount: 200,000.00 Bid / RA No.: GEM/2020/B/69497/EMD Applicant / Bidder: Hemant Sharma M/S BKTESTING pvt.ltd, Rohini Office, 101,Flat no 101 1 Rohini,West Delhi DELHI 110087 Guarantor: …. [Insert name and address of the issuing Bank] ….(To be insert by issuing bank)... Whereas Applicant / Bidder is willing to submit its bid against above referred Bid / RA by the Beneficiary on behalf of President of India/Governor of State/Chairman, CMD, Secretary, Commissioner etc. of Central/State PSUs/Departments for the supply of Goods and / or Services and as per Bid / RA conditions, Applicant is required to submit a Bank Guarantee as EMD. At the request of the Applicant, we as Guarantor, hereby irrevocably undertake to pay the Beneficiary any sum or sums not exceeding in total an amount of 200,000.00 (Two Lakh Rupees ) . 1. If the Bidder withdraws or amends, impairs or derogates from the bid in any respect within the period of validity of this bid. 2. If the Bidder having been notified of the acceptance of his bid by the Purchaser during the period of its validity. If the Bidder fails to furnish the Performance Security for the due performance of the contract. Fails or refuses to execute the contract. We undertake to pay the Beneficiary up to the above amount upon receipt of its first written demand, without the Beneficiary having to substantiate its demand, provided that in its demand the Beneficiary will note that the amount claimed by it is due to it owing to the occurrence of one or both the two conditions, specifying the occurred condition or conditions. 1 / 3 This guarantee will remain in force up to and including 45 days after the period of bid validity up to 200,000.00 (Two Lakh Rupees ) and any demand in respect thereof should reach the Bank not later than the above date. Dated ................. For........................................................................... (Indicate the name of the Bank) Signature.................................................................. Name of the Officer................................................. Designation of the officer ....................................... Code no ................................................................... Name of the Bank and Branch................................. Advisory: For Applicant and its BG Issuing Bank Branch. Not the integral part of the Paper BG as above. It is to be noted that paper PBG will not be operational unless same is transmitted to the advisory bank through SFMS platform. For ready reference and updation of BG in GEM portal, it is necessary that BG issuing bank send the BG advice in the form of message format 760COV via SFMS (structural financial messaging system) as provided by RBI. In the event of BG issuing bank not sending the message 760COV or committing any error while capturing the details atleast in the below field, BG confirmation may not happen and subsequent processing may get stopped. BG advising message - 760COV via SFMS Fields Number Particulars 7039 GEM/2020/B/69497/EMD 7025 200000 (Two Lakh Rupees ) 7029 23-01-2021 7033 461116 7034 uatbuyer 7035 (Non mandatory) IDFC0000001 7036 (Non mandatory) WORLI, MUMBAI,First floor, Moti Mahal, Dr. Annie Besant Road, Worli, Mumbai Please note that your bank while issuing the BG ensure that above information is correctly captured as mentioned above in BG advising message i.e. 760COV In case of any error by the applicant or BG issuing banker, neither GEM or its service partners would be responsible for any consequences whatsoever it may be. Note: 1) If issuing bank does not adhere to advisory GeM will not be responsible. 2) PBG shall be issued within 72 hour's by the SFMS otherwise system will not recognize the receipt for placing the order by buyer. 3) Bank shall mandatorily use SFMS 760COV message protocal for inland BG. 4) Download IBA Guide Line of SFMS from https://gem.gov.in/support for the details instruction. ---Thank You--- 2 / 2",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/emdformat_undated_9e4512b9e348.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/emdformat_1604313092.pdf",
+    "quality_score": 46,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

@@ -20,6 +20,246 @@ const LEGAL_DISCLAIMER =
 const INTAKE_ASSISTANT_WELCOME =
   "Ask me what to write in any field, and I will suggest practical wording you can apply directly to the form.";
 
+function humanizeFieldName(name = "") {
+  return String(name || "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function buildFieldDefinitionText(field = {}) {
+  if (field.description) return field.description;
+
+  const label = field.label || humanizeFieldName(field.name) || "This input";
+  const lowerName = String(field.name || "").toLowerCase();
+  const lowerLabel = String(label || "").toLowerCase();
+
+  if (lowerName.includes("effective_date")) {
+    return "The date from which the agreement should start applying to the parties.";
+  }
+  if (lowerName.includes("operating_state")) {
+    return "The Indian state or union territory most closely connected to the transaction or performance of the agreement.";
+  }
+  if (lowerName.includes("governing_law")) {
+    return "The Indian state whose law and local legal context should guide interpretation of the agreement.";
+  }
+  if (lowerName.includes("arbitration") || lowerLabel.includes("arbitration")) {
+    return "The city or process used for resolving disputes outside regular court proceedings.";
+  }
+  if (lowerName.includes("party") && lowerName.includes("name")) {
+    return "The full legal name of the person, company, firm, LLP, trust, or other entity signing this document.";
+  }
+  if (lowerName.includes("address")) {
+    return "The complete address used to identify the party and send formal notices under the agreement.";
+  }
+  if (lowerName.includes("amount") || lowerName.includes("fee") || lowerName.includes("rent") || lowerName.includes("salary")) {
+    return "The commercial value to be inserted into the document, entered as a clear number or amount.";
+  }
+  if (lowerName.includes("notice") || lowerName.includes("period") || lowerName.includes("days")) {
+    return "The time period the parties must follow before a right, obligation, renewal, or termination takes effect.";
+  }
+  if (lowerName.includes("scope") || lowerName.includes("services") || lowerName.includes("deliverables")) {
+    return "A practical description of the work, goods, services, or obligations covered by this agreement.";
+  }
+  if (field.type === "select" && field.options?.length) {
+    return `Choose the option that best matches the transaction. Available choices: ${field.options.join(", ")}.`;
+  }
+  if (field.type === "date") {
+    return `The date LegalAId should place in the document for ${label.toLowerCase()}.`;
+  }
+  if (field.type === "number") {
+    return `A numeric value needed for ${label.toLowerCase()}.`;
+  }
+  if (field.type === "textarea") {
+    return `A short, specific explanation of ${label.toLowerCase()} so the draft can use accurate clause language.`;
+  }
+
+  return `The value LegalAId needs for ${label.toLowerCase()} while preparing this document.`;
+}
+
+function buildFormIssue({
+  title,
+  message,
+  cause,
+  solution,
+  technicalDetail,
+} = {}) {
+  return {
+    title: title || "We found an issue before generating",
+    message:
+      message ||
+      "LegalAId could not generate the document from the current form state.",
+    cause:
+      cause ||
+      "The form, backend, or AI drafting service did not return a complete draft.",
+    solution:
+      solution ||
+      "Review the highlighted items, correct the inputs, and generate the document again.",
+    technicalDetail: technicalDetail || "",
+  };
+}
+
+function summarizeValidation(validation) {
+  const issues = [
+    ...(validation?.blockingIssues || []),
+    ...(validation?.advisoryIssues || []),
+  ].filter(Boolean);
+  const firstIssue = issues[0];
+
+  if (!firstIssue) return "";
+
+  return firstIssue.suggestion
+    ? `${firstIssue.message} Suggested fix: ${firstIssue.suggestion}`
+    : firstIssue.message;
+}
+
+function buildGenerationIssue(err, { fieldErrorCount = 0 } = {}) {
+  const apiError = err?.response?.data || {};
+  const status = err?.response?.status;
+  const backendIssue = apiError.issue;
+  const backendMessage = apiError.error || apiError.message;
+  const details = apiError.details || apiError.detail || "";
+  const validationSummary = summarizeValidation(apiError.validation);
+  const rawText = `${backendMessage || ""} ${details || ""}`.toLowerCase();
+
+  if (backendIssue?.category && !apiError.validation) {
+    return buildFormIssue({
+      title:
+        backendIssue.category === "AI_RATE_LIMITED"
+          ? "AI service is temporarily busy"
+          : backendIssue.category === "AI_PROVIDER_UNAVAILABLE"
+          ? "AI drafting service could not complete"
+          : backendIssue.category === "INPUT_ERROR"
+          ? "Some inputs need correction"
+          : "Document could not be generated",
+      message:
+        backendMessage ||
+        "The backend could not generate a complete draft from this request.",
+      cause: backendIssue.cause,
+      solution: backendIssue.solution,
+      technicalDetail: details,
+    });
+  }
+
+  if (!err?.response) {
+    return buildFormIssue({
+      title: "Backend is not reachable",
+      message:
+        "The form was submitted, but the app could not reach the document-generation server.",
+      cause:
+        "This usually happens when the backend is stopped, restarting, blocked by the network, or the API URL is incorrect.",
+      solution:
+        "Start or restart the backend server, confirm it is available, then click Generate document again. Your form values are still on this page.",
+      technicalDetail: err?.message,
+    });
+  }
+
+  if (status === 401 || status === 403) {
+    return buildFormIssue({
+      title: "Sign-in is required",
+      message:
+        "LegalAId could not generate the document because your session is missing, expired, or not verified.",
+      cause:
+        status === 403
+          ? "The backend rejected the request because the account must be verified before drafting."
+          : "The backend rejected the request because it could not confirm your login session.",
+      solution:
+        "Sign in again, verify your email if prompted, return to the form, and generate the document again.",
+      technicalDetail: backendMessage,
+    });
+  }
+
+  if (status === 413) {
+    return buildFormIssue({
+      title: "Form data is too large",
+      message:
+        "The backend refused the request because one or more inputs made the payload too large.",
+      cause:
+        "Very long pasted text can exceed the server request limit before generation starts.",
+      solution:
+        "Shorten large textarea responses, remove pasted documents from form fields, and try again.",
+      technicalDetail: backendMessage || details,
+    });
+  }
+
+  if (status === 429 || rawText.includes("rate_limited") || rawText.includes("rate limited")) {
+    return buildFormIssue({
+      title: "AI service is temporarily busy",
+      message:
+        "LegalAId reached the AI drafting service, but the provider is rate limiting requests right now.",
+      cause:
+        "AI providers sometimes throttle traffic when too many requests arrive in a short time.",
+      solution:
+        "Wait a minute, keep the form open, and generate again. If the issue repeats, try a shorter set of inputs.",
+      technicalDetail: backendMessage || details,
+    });
+  }
+
+  if (
+    rawText.includes("ai_provider_error") ||
+    rawText.includes("no_model_available") ||
+    rawText.includes("timeout") ||
+    rawText.includes("ai")
+  ) {
+    return buildFormIssue({
+      title: "AI drafting service could not complete",
+      message:
+        "The backend could not get a usable drafting response from the AI service.",
+      cause:
+        rawText.includes("timeout")
+          ? "The AI request took too long and timed out before a complete draft came back."
+          : "The configured AI provider rejected, failed, or could not complete the drafting request.",
+      solution:
+        "Try again after a short wait. If it keeps happening, simplify very long inputs and check that the AI provider keys/models are configured on the backend.",
+      technicalDetail: backendMessage || details,
+    });
+  }
+
+  if (status === 400 || status === 422 || apiError.validation || fieldErrorCount > 0) {
+    return buildFormIssue({
+      title: "Some inputs need correction",
+      message:
+        fieldErrorCount > 0
+          ? "Generation was blocked because LegalAId found form values that need attention."
+          : backendMessage || "Generation was blocked by validation.",
+      cause:
+        validationSummary ||
+        "The backend could not safely use one or more inputs to assemble a legally coherent first draft.",
+      solution:
+        "Use the field links below, read the highlighted explanation beside each input, correct the values, and generate again.",
+      technicalDetail: details,
+    });
+  }
+
+  if (status >= 500) {
+    return buildFormIssue({
+      title: "Backend generation failed",
+      message:
+        backendMessage ||
+        "The backend started generation but failed before it could return a draft.",
+      cause:
+        details ||
+        "A server-side generation, validation, database, export, or drafting dependency failed unexpectedly.",
+      solution:
+        "Try again once. If it repeats, check the backend logs for the technical detail shown here and fix the failing service or configuration.",
+      technicalDetail: details,
+    });
+  }
+
+  return buildFormIssue({
+    title: "Document could not be generated",
+    message:
+      backendMessage ||
+      "LegalAId could not generate this document from the current request.",
+    cause:
+      details ||
+      validationSummary ||
+      "The backend returned an error that did not include a more specific cause.",
+    solution:
+      "Review the highlighted fields if any are shown, then try again. If there are no highlighted fields, refresh the page and retry.",
+    technicalDetail: details,
+  });
+}
+
 function normalizeText(value) {
   return String(value || "")
     .toLowerCase()
@@ -35,6 +275,78 @@ function buildFieldPlaceholder(field) {
   if (field?.placeholder) return field.placeholder;
   if (field?.example) return `Example: ${field.example}`;
   return `Enter ${field?.label?.toLowerCase() || "details"}...`;
+}
+
+function buildFieldFix(field) {
+  if (!field) return "Review this input and correct the highlighted value.";
+
+  if (field.type === "select" && field.options?.length) {
+    return `Choose one of the available options: ${field.options.join(", ")}.`;
+  }
+
+  if (field.type === "date") {
+    return "Select the correct date from the calendar so the document can place it accurately.";
+  }
+
+  if (field.type === "number") {
+    return "Enter only the numeric amount or value, without extra words or symbols unless the field asks for them.";
+  }
+
+  if (field.type === "textarea") {
+    return field.example
+      ? `Write a clear paragraph. You can follow this example: ${field.example}`
+      : "Write the relevant details in complete, specific sentences. If unsure, open the AI help under this field.";
+  }
+
+  return field.example
+    ? `Enter a clear value. Example: ${field.example}`
+    : "Enter the correct details for this field. If unsure, use the AI help directly below it.";
+}
+
+function findSectionTitleForField(sections = [], fieldName) {
+  for (const section of sections || []) {
+    const names = (section.fields || []).map((field) =>
+      typeof field === "string" ? field : field?.name
+    );
+    if (names.includes(fieldName)) return section.title;
+  }
+  return "Form details";
+}
+
+function createFieldError(field, {
+  title,
+  why,
+  fix,
+  sourceMessage,
+  sectionTitle,
+  severity = "error",
+} = {}) {
+  return {
+    title: title || `${field.label} needs attention`,
+    where: `${sectionTitle || "Form details"} > ${field.label}`,
+    why:
+      why ||
+      sourceMessage ||
+      "LegalAId could not safely use this value while preparing the draft.",
+    fix: fix || buildFieldFix(field),
+    sourceMessage: sourceMessage || "",
+    severity,
+  };
+}
+
+function normalizeFieldError(error) {
+  if (!error) return null;
+  if (typeof error === "string") {
+    return {
+      title: "This field needs attention",
+      where: "This field",
+      why: error,
+      fix: "Review the highlighted field and enter the missing or corrected information.",
+      sourceMessage: error,
+      severity: "error",
+    };
+  }
+  return error;
 }
 
 function formatReviewValue(field, rawValue) {
@@ -59,47 +371,97 @@ function formatReviewValue(field, rawValue) {
   return String(value).trim();
 }
 
-function buildFieldErrorMap(fields, { missingFields = [], apiError, validation } = {}) {
+function findFieldForIssue(fields, issueOrMessage) {
+  const message =
+    typeof issueOrMessage === "string"
+      ? issueOrMessage
+      : [
+          issueOrMessage?.field,
+          issueOrMessage?.fieldName,
+          issueOrMessage?.path,
+          issueOrMessage?.variable,
+          issueOrMessage?.input_field,
+          issueOrMessage?.offending_field,
+          issueOrMessage?.message,
+          issueOrMessage?.suggestion,
+        ]
+          .filter(Boolean)
+          .join(" ");
+  const normalizedMessage = normalizeText(message);
+
+  for (const field of fields) {
+    const fieldNamePattern = new RegExp(
+      `\\b${escapeRegex(field.name.toLowerCase())}\\b`,
+      "i"
+    );
+    const labelPattern = new RegExp(
+      `\\b${escapeRegex(field.label.toLowerCase())}\\b`,
+      "i"
+    );
+
+    if (
+      fieldNamePattern.test(String(message).toLowerCase()) ||
+      labelPattern.test(String(message).toLowerCase())
+    ) {
+      return field;
+    }
+
+    const normalizedLabel = normalizeText(field.label);
+    if (normalizedLabel && normalizedMessage.includes(normalizedLabel)) {
+      return field;
+    }
+  }
+
+  return null;
+}
+
+function buildFieldErrorMap(
+  fields,
+  { missingFields = [], apiError, validation, sections = [] } = {}
+) {
   const map = {};
 
   missingFields.forEach((field) => {
-    map[field.name] = `${field.label} is required.`;
+    map[field.name] = createFieldError(field, {
+      title: `${field.label} is required`,
+      sectionTitle: findSectionTitleForField(sections, field.name),
+      why: `This field is marked required because LegalAId needs it to generate a usable ${field.label.toLowerCase()} clause or document detail.`,
+      fix: buildFieldFix(field),
+      sourceMessage: `${field.label} is required.`,
+    });
   });
 
-  const messages = [
-    apiError,
-    ...(validation?.blockingIssues || []).map((issue) => issue?.message),
-    ...(validation?.advisoryIssues || []).map((issue) => issue?.message),
-  ]
-    .filter(Boolean)
-    .map((message) => String(message).trim());
+  const issues = [
+    ...(validation?.blockingIssues || []),
+    ...(validation?.advisoryIssues || []),
+  ].filter(Boolean);
 
-  for (const message of messages) {
-    const normalizedMessage = normalizeText(message);
+  for (const issue of issues) {
+    const field = findFieldForIssue(fields, issue);
+    if (!field || map[field.name]) continue;
 
-    for (const field of fields) {
-      const fieldNamePattern = new RegExp(
-        `\\b${escapeRegex(field.name.toLowerCase())}\\b`,
-        "i"
-      );
-      const labelPattern = new RegExp(
-        `\\b${escapeRegex(field.label.toLowerCase())}\\b`,
-        "i"
-      );
+    map[field.name] = createFieldError(field, {
+      title: `${field.label} needs attention`,
+      sectionTitle: findSectionTitleForField(sections, field.name),
+      why:
+        issue.message ||
+        "Final validation found a problem connected to this input.",
+      fix: issue.suggestion || buildFieldFix(field),
+      sourceMessage: issue.message || "",
+      severity: issue.severity || "error",
+    });
+  }
 
-      if (
-        fieldNamePattern.test(message.toLowerCase()) ||
-        labelPattern.test(message.toLowerCase())
-      ) {
-        map[field.name] = message;
-        break;
-      }
-
-      const normalizedLabel = normalizeText(field.label);
-      if (normalizedLabel && normalizedMessage.includes(normalizedLabel)) {
-        map[field.name] = message;
-        break;
-      }
+  if (apiError) {
+    const field = findFieldForIssue(fields, apiError);
+    if (field && !map[field.name]) {
+      map[field.name] = createFieldError(field, {
+        title: `${field.label} could not be used`,
+        sectionTitle: findSectionTitleForField(sections, field.name),
+        why: apiError,
+        fix: buildFieldFix(field),
+        sourceMessage: apiError,
+      });
     }
   }
 
@@ -110,7 +472,7 @@ function findFirstErroredField(fields, fieldErrors) {
   return fields.find((field) => fieldErrors[field.name]);
 }
 
-function FormField({ field, value, onChange, hasError }) {
+function FormField({ field, value, onChange, hasError, errorId }) {
   const id = `field-${field.name}`;
   const props = {
     id,
@@ -118,6 +480,8 @@ function FormField({ field, value, onChange, hasError }) {
     value: value ?? "",
     onChange,
     className: `field-input${hasError ? " field-input--error" : ""}`,
+    "aria-invalid": hasError ? "true" : "false",
+    "aria-describedby": hasError ? errorId : undefined,
   };
 
   if (field.type === "textarea") {
@@ -188,6 +552,29 @@ function buildFieldAssistantPrompt(field, userPrompt) {
   return parts.join("\n");
 }
 
+function buildAssistantFailureReply(error) {
+  const status = error?.response?.status;
+  const data = error?.response?.data || {};
+  const text = `${data.error || ""} ${data.details || ""}`.toLowerCase();
+
+  if (!error?.response) {
+    return "The field assistant could not reach the backend. Why: the server may be stopped or unreachable. Solution: keep your form open, restart/check the backend, then ask again.";
+  }
+  if (status === 401 || status === 403) {
+    return "The field assistant could not answer because your session is not authorized. Why: your login may have expired or your email may need verification. Solution: sign in again, then return to this form.";
+  }
+  if (status === 429 || text.includes("rate")) {
+    return "The field assistant is temporarily rate limited. Why: the AI provider is handling too many requests. Solution: wait a minute and ask again.";
+  }
+  if (text.includes("ai") || text.includes("timeout") || text.includes("model")) {
+    return "The field assistant could not complete the AI request. Why: the AI provider failed, timed out, or is not configured. Solution: try again shortly, and check backend AI keys/models if it keeps happening.";
+  }
+
+  return `The field assistant could not respond. Why: ${
+    data.error || "the backend returned an unexpected error"
+  }. Solution: try again, or fill the field using the definition and example shown above.`;
+}
+
 function FieldGroup({
   field,
   value,
@@ -197,6 +584,9 @@ function FieldGroup({
   onApplyAssistantSuggestion,
 }) {
   if (!field?.name) return null;
+  const resolvedError = normalizeFieldError(error);
+  const errorId = `field-error-${field.name}`;
+  const definitionText = buildFieldDefinitionText(field);
   const [assistantOpen, setAssistantOpen] = useState(false);
   const [assistantPrompt, setAssistantPrompt] = useState("");
   const [assistantLoading, setAssistantLoading] = useState(false);
@@ -214,10 +604,8 @@ function FieldGroup({
       setAssistantSuggestions(response.suggested_updates || []);
       setAssistantOpen(true);
       setAssistantPrompt("");
-    } catch {
-      setAssistantReply(
-        "The field assistant could not respond right now. Please try again."
-      );
+    } catch (err) {
+      setAssistantReply(buildAssistantFailureReply(err));
       setAssistantSuggestions([]);
       setAssistantOpen(true);
     } finally {
@@ -228,7 +616,7 @@ function FieldGroup({
   return (
     <div
       className={`field-group${field.type === "textarea" ? " field-group--full" : ""}${
-        error ? " field-group--error" : ""
+        resolvedError ? " field-group--error" : ""
       }`}
     >
       <label className="field-label" htmlFor={`field-${field.name}`}>
@@ -239,11 +627,37 @@ function FieldGroup({
         field={field}
         value={value}
         onChange={onChange}
-        hasError={Boolean(error)}
+        hasError={Boolean(resolvedError)}
+        errorId={errorId}
       />
-      {error && (
-        <div className="field-inline-error">
-          {Icons.warning} {error}
+      {/* <div className="field-help">
+        <div className="field-help__definition">
+          <strong>Definition:</strong> {definitionText}
+        </div>
+        {field.example && (
+          <div className="field-help__example">Example: {field.example}</div>
+        )}
+        {field.aiGuidance && (
+          <div className="field-help__ai">AI tip: {field.aiGuidance}</div>
+        )}
+      </div> */}
+      {resolvedError && (
+        <div className="field-inline-error" id={errorId} role="alert">
+          <div className="field-inline-error__icon">{Icons.warning}</div>
+          <div className="field-inline-error__body">
+            <div className="field-inline-error__title">
+              {resolvedError.title}
+            </div>
+            <div className="field-inline-error__row">
+              <strong>Where:</strong> {resolvedError.where}
+            </div>
+            <div className="field-inline-error__row">
+              <strong>Why:</strong> {resolvedError.why}
+            </div>
+            <div className="field-inline-error__row">
+              <strong>How to fix:</strong> {resolvedError.fix}
+            </div>
+          </div>
         </div>
       )}
       <div className="field-assistant">
@@ -257,6 +671,10 @@ function FieldGroup({
 
         {assistantOpen && (
           <div className="field-assistant__panel">
+            <div className="field-assistant__context">
+              <strong>{field.label}</strong>
+              <span>{definitionText}</span>
+            </div>    
             <textarea
               className="field-assistant__input"
               rows={2}
@@ -321,19 +739,6 @@ function FieldGroup({
           </div>
         )}
       </div>
-      {(field.description || field.example || field.aiGuidance) && (
-        <div className="field-help">
-          {field.description && (
-            <div className="field-help__desc">{field.description}</div>
-          )}
-          {field.example && (
-            <div className="field-help__example">Example: {field.example}</div>
-          )}
-          {field.aiGuidance && (
-            <div className="field-help__ai">AI tip: {field.aiGuidance}</div>
-          )}
-        </div>
-      )}
     </div>
   );
 }
@@ -379,7 +784,21 @@ export default function Form() {
         });
         setForm(defaults);
       })
-      .catch(() => setError("Failed to load the document form. Please try again."))
+      .catch((err) =>
+        setError(
+          buildFormIssue({
+            title: "Form could not be loaded",
+            message:
+              "LegalAId could not load the intake fields for this document type.",
+            cause:
+              err?.response?.data?.error ||
+              "The document configuration endpoint did not return the required form setup.",
+            solution:
+              "Refresh the page and choose the document again from the library. If it repeats, check that the backend is running and this document type is configured.",
+            technicalDetail: err?.message,
+          })
+        )
+      )
       .finally(() => setLoading(false));
   }, [documentType, navigate]);
 
@@ -416,17 +835,33 @@ export default function Form() {
     );
 
     if (missingFields.length > 0) {
-      const nextFieldErrors = buildFieldErrorMap(fields, { missingFields });
+      const nextFieldErrors = buildFieldErrorMap(fields, {
+        missingFields,
+        sections: visibleSections,
+      });
       setFieldErrors(nextFieldErrors);
       setGenerationValidation(null);
-      setError("Please fix the highlighted fields and try again.");
+      setError(
+        buildFormIssue({
+          title: "Required details are missing",
+          message: `${missingFields.length} required ${
+            missingFields.length === 1 ? "field is" : "fields are"
+          } missing.`,
+          cause:
+            "LegalAId needs every required field before it can assemble the legal clauses safely.",
+          solution:
+            "Use the links below to jump to each missing field, read its definition, fill the value, and generate again.",
+        })
+      );
       const firstMissingField = findFirstErroredField(fields, nextFieldErrors);
-      document
-        .getElementById(`field-${firstMissingField?.name}`)
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
+      if (firstMissingField) {
+        document
+          .getElementById(`field-${firstMissingField.name}`)
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+      }
       return;
     }
 
@@ -448,9 +883,14 @@ export default function Form() {
       const nextFieldErrors = buildFieldErrorMap(fields, {
         apiError: apiError?.error,
         validation: apiError?.validation,
+        sections: visibleSections,
       });
       setFieldErrors(nextFieldErrors);
-      setError(apiError?.error || "Generation failed. Please try again.");
+      setError(
+        buildGenerationIssue(err, {
+          fieldErrorCount: Object.keys(nextFieldErrors).length,
+        })
+      );
       setGenerationValidation(apiError?.validation || null);
 
       const firstErroredField = findFirstErroredField(fields, nextFieldErrors);
@@ -537,6 +977,22 @@ export default function Form() {
       behavior: "smooth",
       block: "start",
     });
+  const scrollToField = (fieldName) =>
+    document.getElementById(`field-${fieldName}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+  const errorSummaryItems = useMemo(
+    () =>
+      fields
+        .filter((field) => fieldErrors[field.name])
+        .map((field) => ({
+          field,
+          error: normalizeFieldError(fieldErrors[field.name]),
+        })),
+    [fieldErrors, fields]
+  );
 
   const validationGroups = useMemo(() => {
     if (!generationValidation) return [];
@@ -698,7 +1154,48 @@ export default function Form() {
 
           {error && (
             <div className="form-error">
-              {Icons.warning} {error}
+              <div className="form-error__icon">{Icons.warning}</div>
+              <div className="form-error__body">
+                <div className="form-error__title">
+                  {typeof error === "string"
+                    ? "We found an issue before generating"
+                    : error.title}
+                </div>
+                <div className="form-error__message">
+                  {typeof error === "string" ? error : error.message}
+                </div>
+                {typeof error !== "string" && (
+                  <div className="form-error__details">
+                    <div>
+                      <strong>Why it happened:</strong> {error.cause}
+                    </div>
+                    <div>
+                      <strong>How to fix:</strong> {error.solution}
+                    </div>
+                    {error.technicalDetail && (
+                      <div>
+                        <strong>Technical detail:</strong>{" "}
+                        {error.technicalDetail}
+                      </div>
+                    )}
+                  </div>
+                )}
+                {errorSummaryItems.length > 0 && (
+                  <div className="form-error__links">
+                    {errorSummaryItems.map(({ field, error: itemError }) => (
+                      <button
+                        key={field.name}
+                        type="button"
+                        className="form-error__link"
+                        onClick={() => scrollToField(field.name)}
+                      >
+                        Fix {field.label}
+                        <span>{itemError?.title}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           )}
 

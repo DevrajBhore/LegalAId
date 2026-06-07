@@ -34,5 +34,15 @@
     "ICA S.10 — MOU may or may not be a binding contract depending on language; ensure non-binding intent is clear",
     "Specific enforceable provisions within MOU (e.g. confidentiality) are binding even if overall MOU is not",
     "SEBI — MOU disclosures between listed companies may trigger continuous disclosure obligations"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true"
+    }
   ]
 }

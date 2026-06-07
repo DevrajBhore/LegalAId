@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
+import DocumentInfo from "./pages/DocumentInfo";
 import Form from "./pages/Form";
 import Editor from "./pages/Editor";
 import Profile from "./pages/Profile";
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="library" element={<Library />} />
+            <Route path="documents/:type/about" element={<DocumentInfo />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="help" element={<Help />} />

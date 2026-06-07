@@ -1,0 +1,196 @@
+{
+  "document_type": "NDA",
+  "variant": "standard",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "name_of_oem",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Name of OEM]"
+      }
+    },
+    {
+      "name": "full_address",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Full Address]"
+      }
+    },
+    {
+      "name": "name_of_the_product",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Name of the Product]"
+      }
+    },
+    {
+      "name": "brand_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Brand Name]"
+      }
+    },
+    {
+      "name": "model_number",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Model Number]"
+      }
+    },
+    {
+      "name": "gem_category_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[GeM Category Name]"
+      }
+    },
+    {
+      "name": "xxxxxxx",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[XXXXXXX]"
+      }
+    },
+    {
+      "name": "placeholder_8",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "__________________"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_2",
+      "clause_name": "Product approval (also known as product catalog approval) policy",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_3",
+      "clause_name": "Brand approval policy The Product Approval policy",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_4",
+      "clause_name": "Category relevance",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_5",
+      "clause_name": "Brand name",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_6",
+      "clause_name": "Catalog image",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_8",
+      "clause_name": "Model Name / Number",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_9",
+      "clause_name": "BIS (CML / CRS) details (if applicable in the product category concerned)",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_10",
+      "clause_name": "Values selected for each technical parameter",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_11",
+      "clause_name": "Clause 11",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_12",
+      "clause_name": "Clause 12",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_13",
+      "clause_name": "Country of origin details",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_14",
+      "clause_name": "Seller Information",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_15",
+      "clause_name": "Clause 15",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_16",
+      "clause_name": "Clause 16",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_17",
+      "clause_name": "Clause 17",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_18",
+      "clause_name": "Clause 18",
+      "category": "general"
+    },
+    {
+      "clause_id": "policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef_19",
+      "clause_name": "Clause 19",
+      "category": "payment_terms"
+    }
+  ],
+  "body": "Policy of Brand and Product Approval on GeM (version 2.0) This document covers: 1. Product approval (also known as product catalog approval) policy 2. MRP updation policy 3. Brand approval policy The Product Approval policy: It is applicable to all the sellers requesting / uploading a product catalog on GeM Marketplace. The Quadrant policy of GeM Marketplace may be referred to, which specifies whether an OEM or a reseller or both are permitted to upload products / catalogs in categories of different quadrants. Certain types of catalogs are, however, not subject to GeM approval at present and they are auto approved (approved by OEM). GeM, however, reserves the right to subject all such catalogues to GeM approval in future. Notwithstanding the catalogues approved by GeM or auto approved, the final responsibility regarding correctness of catalogues rests with the concerned OEMs/ resellers. The concerned OEMs/ resellers are advised to adhere to this policy mandatorily. They are also supposed to adhere to the policy concerning product image. The seller can request approval of a catalog by uploading the required details in his dashboard. The TAT for processing of a product approval request by GeM is presently 3 working days, excluding the date of submission. However, depending on workload or other exigencies the processing may take more than 3 working days. The request, based on merit, may be: (i) Approved (ii) Notified: seeking more clarification from the requestor (iii) Rejected The request will be examined for the following criteria: 1. Category relevance: It is checked whether the catalogue is requested in the appropriate product category or not. If not, the request is rejected. 2. Brand name: The brand name (under which request is made) is verified against the image or brochure or any other relevant document provided. If the brand under which the catalog request is made does not match with the brand name on the uploaded image (if applicable) or on the shared brochure or other relevant document (if any), the request is notified / rejected. 3. Catalog image: The uploaded image is examined & evaluated as per the image guidelines (uploaded on the GeM Portal ). In case the image is non-compliant, the request is notified / rejected. 4. MRP: MRP as mentioned in the catalog approval request must be supported by following documentary proof: Photo of the product packaging (depicting MRP) wherever packaging is applicable for the product. The photo must be real and depiction of MRP on it should be as per the laws of the Land. In case packaging is not applicable for the product (GeM’s decision shall be final in this matter) then either of the following documents can be submitted: • MRP document (Annexure – 1) issued by the OEM on the official letterhead (not older than one year from the date of issuance) duly containing the following - o The date of issuance of letter o Either ink signed (directly on the document) or digitally signed by the OEM o OEM company stamp • Price/ rate list issued by OEM (not more than one year old) MRP may be checked / compared with the information on the brand / company website or other ecommerce portals (if applicable). If the MRP is not found to be in sync with the market price for the product, the request is notified. Note: Seller should upload the price of the requested catalog in alignment with the UOM (Unit of Measurement) of the corresponding GeM product category. 5. Model Name / Number: A valid model name / number must be provided, which may be verified through the company's website or other e-commerce platforms. If the model name / number provided does not match the model name / number on the uploaded image (if applicable) as well as on the brochure / other relevant document (if shared), the request is notified/ rejected. Note: • If the model Name provided by the applicant in the Model field on the portal is not in sync with the industry practice, then such request is liable to be notified/ rejected (GeM’s decision shall be final in this matter). This should also be adhered to by sellers in those cases where catalogues are getting auto approved. • In case, model name / number is not applicable, applicant may mention 'NA'. 6. BIS (CML / CRS) details (if applicable in the product category concerned): The BIS (CML Number/R-Number) details provided in the catalog request are checked & verified from BIS manak portal in respect of brand name, model, OEM name and variety level detail (as applicable). 7. Values selected for each technical parameter: Values of the technical parameters of the requested catalog are checked against the images / brochure and BIS (CML / CRS) variety (if applicable) provided by the seller. If any inconsistencies are found, the request is notified / rejected, and if required the seller is asked to furnish the brochure or additional reference documents to check/verify technical specifications. 8. Certificates* (if applicable in the product category concerned): The shared certificates are checked for the information furnished therein to be in alignment with the technical parameters of the product category concerned. Following certificates are currently verified/checked by the GeM Team: 1. MTCTE 2. BEE star rating 3. BIS (CML Number/R-Number) GeM may enlarge the list of certificates verified/checked by it in future. Any addition/deletion/modification to the list shall be informed to Buyers through e-mail. GeM may also run a ticker on its website for limited duration w.r.t. any addition/deletion/modification to the above list. *For certificates furnished in the catalog requests which are not processed by the GeM team (may kindly refer the GeM Quadrant Policy for details) or processed by GeM team but not verified/checked by the team, the concerned documents are uploaded / approved by the corresponding OEM or trusted to be correct if approved by GeM. For such products, the buyer may ensure the accuracy / veracity of the necessary certificates / documents furnished on his own. 9. Country of origin details: It is expected that the details shared by the seller should be complying with the land border policy. These details provided by the seller are verified against the information shared via product image uploaded or the documents provided (Brochure, MRP related document etc.). In case of any mismatch found, the request is rejected. Notwithstanding the Country of origin (as declared by applicant) accepted by GeM, the responsibility of declaring correct Country of Origin lies squarely with the concerned OEM/ reseller. 10. Seller Information: It must be ensured that seller details are not mentioned in any field in the product approval request. If the request received is found to follow all the above-mentioned criteria, the request is approved, and the catalog becomes live on the GeM marketplace. If, however, any shortcoming / incomplete details are found in the request, the request is notified to the applicant/rejected. Upon resubmission (if applicable) along with the requested details / information, the request is re-examined. The TAT of the resubmitted request by GeM is again 3 working days, excluding the date of re-submission. However, depending on workload or other exigencies the processing of resubmitted request may take more than 3 working days. If the request is repeatedly re-submitted without the requisite information sought, then such a request may be rejected. Also, if any information provided by the applicant is glaringly incorrect in the initial attempt (without any scope of correction), such a request is rejected. MRP Updation Policy: The entities requesting MRP updation on GeM or approving MRP updation in certain specific cases on their own on GeM need to follow this policy mandatorily. MRP update request can either be approved or rejected only. The TAT for processing of an MRP update request by GeM is presently 3 working days, excluding the date of submission. However, depending on workload or other exigencies the processing of request may take more than 3 working days The basis for processing this request is to accommodate sellers seeking to update the MRP of existing catalogs. Such requests must be supported by following documentary proof: Photo of the product packaging (depicting MRP) wherever packaging is applicable for the product. The photo must be real and depiction of MRP on it should be as per the laws of the Land. In case packaging is not applicable for the product (GeM’s decision shall be final in this matter) then either of the following documents can be submitted: • MRP document (Annexure – 1) issued by the OEM on the official letterhead (not older than one year from the date of issuance) duly containing the following - o The date of issuance of letter o Either ink signed (directly on the document) or digitally signed by the OEM o OEM company stamp • Price/ rate list issued by OEM (not more than one year old) MRP may be checked / compared with the information on the brand / company website or other ecommerce portals (if applicable). If the MRP is not found to be in sync with the market price for the product, the request is notified. Note: Seller should upload the price of the requested catalog in alignment with the UOM (Unit of Measurement) of the corresponding GeM product category. Brand Approval Policy: The seller may request for brand (and / or OEM dashboard) approval in a particular product category by making a request along with the required documents in his dashboard. A maximum of three attempts is permitted for brand approval request in a particular product category. The present TAT for processing of a brand approval request by GEM is presently 4 working days, excluding the date of submission. However, depending on workload or other exigencies the processing of request may take more than 4 working days. The request, based on merit, can be: (i) Approved (ii) Notified: (request notified 3rd time will be considered as rejection of request) (iii) Rejected In case a request is rejected, the seller may initiate a Brand Revival request by contacting the GeM helpdesk. The seller must provide the necessary documents while requesting brand revival. The following 5 types are covered under the brand approval requests: 1. Registered Brand Only 2. Registered Brand + OEM 3. Unregistered Brand + OEM 4. Unbranded + OEM 5. OEM Only (for already available Registered Brand in a product category on GeM) The necessary checks conducted while examining a Brand approval request vary depending on the type of request submitted by the applicant: 1. Authenticity of the Trademark Certificate (applicable for request type 1, 2 and 5) The trademark certificate is verified through relevant websites. The applied brand must have a \"Registered\" status and should be listed under the relevant class. 2. Trademark ownership (applicable for request type 2 and 5) The shared trademark certificate must be in the name of the applicant, or the application should contain requisite enabling documents. 3. For an Unregistered Brand + OEM request (request type 3), the applied brand name must not be registered on the IP India website (https://tmrsearch.ipindia.gov.in/tmrpublicsearch/) under the relevant class. Additionally, the applicant must provide an undertaking document (in the prescribed format available on GeM portal) that should be duly signed, stamped by an authorized signatory, notarized, and attested on each page. 4. Vendor Assessment Exemption (VAE) + Deemed OEM letter – The seller requesting for OEM dashboard and submitting a combination of VAE and deemed OEM letter is not permitted as per the current policy, except If the applicant is a Medical Device importer with “Valid Import License” from the issuing Licensing Authority and the “Deemed OEM letter” issued by the actual OEM (situated overseas), in favor of the applicant entity. Annexure – 1 (MRP declaration from OEM on company letterhead) To Government E Marketplace, New Delhi. Subject: Declaration of MRP Date: XX/XX/20XX This is to certify that we M/s [Name of OEM], having its registered office at [Full Address], is the Original Equipment Manufacturer (OEM) of the product mentioned below. We hereby declare that the Maximum Retail Price (MRP) of [Name of the Product], bearing brand name [Brand Name] and Model No. [Model Number], to be listed under GeM Category: [GeM Category Name], is Rs. [XXXXXXX] (Rupees __________________ only). We further undertake that this declaration is issued in compliance with GeM policies and guidelines, and we shall be fully responsible for any discrepancy identified at any stage. This declaration is true to the best of our knowledge. For <…Name of the OEM…> Signed By (Digital Signature/ Directly ink signed & OEM Stamp) (Name) (Designation) Place:",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/policy_of_brand_and_product_approval_on_gem_versio_undated_43f461071bef.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/policy-of-brand-and-product-approval-on-gem-versio_1768542947.pdf",
+    "quality_score": 71,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "modifications_in_guidelines_for_business_continuity_plan_bcp_and_disaster_recovery_dr_of_market_infrastructure_instituti_45b04cbbbafd",
+  "title": "Modifications in Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR) of Market Infrastructure Institutions (MIIs)",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/sep-2024/modifications-in-guidelines-for-business-continuity-plan-bcp-and-disaster-recovery-dr-of-market-infrastructure-institutions-miis-_86601.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/sep-2024/1726134414026.pdf",
+  "document_date": "Sep 12, 2024",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Title": "The circulars may be defined in two parts, one to convey background, rationale, objective of a decision and the other to commu",
+      "Author": "1171",
+      "Creator": "Microsoft® Word 2016",
+      "CreationDate": "D:20240912114326+05'30'",
+      "ModDate": "D:20240912114326+05'30'",
+      "Producer": "Microsoft® Word 2016"
+    },
+    "reason": null
+  },
+  "text": "1 CIRCULAR SEBI/HO/MRD/TPD/P/CIR/2024/119 September 12, 2024 To, All Stock Exchanges, All Clearing Corporations, All Depositories Madam/ Sir, Modifications in Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR) of Market Infrastructure Institutions (MIIs) 1. SEBI has specified the Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR) for Stock Exchanges and Clearing Corporations in Master Circular No. SEBI/HO/MRD2/PoD-2/CIR/P/2023/171 dated October 16, 2023 at Clause 9.1 of Chapter 2. Additionally, SEBI has specified the Guidelines for BCP and DR for Depositories in Master Circular No. SEBI/HO/MRD2/PoD-2/CIR/P/2023/166 dated October 06, 2023 at Clause 4.31. Further, SEBI has specified the Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR) for Commodity Derivatives Segment in Master Circular No. SEBI/HO/MRD/MRD-PoD- 1/P/CIR/2023/136 dated August 04, 2023 at Clause No. 16.4. 2. Based on consultations with MIIs and recommendations of the Technical Advisory Committee (TAC) of SEBI, the following provisions of aforesaid circulars on BCP and DR for MIIs stand modified as under: - 2.1 Clause 9.1.1.2 of Chapter 2 of the SEBI Master Circular dated October 16, 2023, Clause 4.31.1.2 of Section 4 of the SEBI Master Circular dated October 06, 2023 and Clause 16.4.2(b) of Section 16 of the SEBI Master Circular dated August 4, 2023 shall be read as under: \"For Stock Exchanges: Apart from DRS, all Stock Exchanges shall also have a Near Site (NS) to ensure near zero data loss. For Clearing Corporations and Depositories: Apart from DRS, all Clearing Corporations and Depositories shall also have a Near Site (NS) to ensure zero data loss.” -- 1 of 3 -- 2 2.2 Clause 9.1.1.4 of Chapter 2 of the SEBI Master Circular dated October 16, 2023, Clause 4.31.1.4 of Section 4 of the SEBI Master Circular dated October 06, 2023 and Clause 16.4.2(d) of Section 16 of the SEBI Master Circular dated August 4, 2023 shall be read as under: “The manpower deployed at DRS shall have the same expertise as available at PDC in terms of knowledge/ awareness of various technological and procedural systems and processes relating to all operations such that DRS can function at short notice, independently. MIIs shall have sufficient number of trained staff at their DRS so as to have the capability of running live operations from DRS without involving staff of the PDC.” 2.3 Clause 9.1.2.4 of Chapter 2 of the SEBI Master Circular dated October 16, 2023, Clause 4.31.2.4 of Section 4 of the SEBI Master Circular dated October 06, 2023 and Clause 16.4.3(d) of Section 16 of the SEBI Master Circular dated August 4, 2023 shall be read as under: “MIIs shall ensure that the Recovery Point Objective (RPO) - the maximum tolerable period for which data might be lost due to a major incident - shall be near zero. Further, MIIs shall have a documented methodology for data reconciliation when resuming operations from DRS or any other site as applicable.” 2.4 Clause 9.1.2.5 of Chapter 2 of the SEBI Master Circular dated October 16, 2023, Clause 4.31.2.5 of Section 4 of the SEBI Master Circular dated October 06, 2023 and Clause 16.4.3(e) of Section 16 of the SEBI Master Circular dated August 4, 2023 shall be read as under: “For Stock Exchanges: Solution architecture of PDC and DRS / NS shall ensure high availability, fault tolerance, no single point of failure, near zero data loss, and data and transaction integrity. For Clearing Corporations and Depositories: Solution architecture of PDC and DRS / NS shall ensure high availability, fault tolerance, no single point of failure, zero data loss, and data and transaction integrity.” 2.5 Clause 9.1.2.8 of Chapter 2 of the SEBI Master Circular dated October 16, 2023, Clause 4.31.2.8 of Section 4 of the SEBI Master Circular dated October 06, 2023 and Clause 16.4.3(h) of Section 16 of the SEBI Master Circular dated August 4, 2023 shall be read as under: “For Stock Exchanges: Synchronous replication or appropriate replication between PDC and NS shall be implemented to ensure near zero data loss. -- 2 of 3 -- 3 Asynchronous replication may be implemented between PDC and DRS and between NS and DRS. For Clearing Corporations and Depositories: Synchronous replication between PDC and NS shall be implemented to ensure zero data loss. Asynchronous replication may be implemented between PDC and DRS and between NS and DRS.” 3. MIIs are advised to collaborate in developing a standardized definition of “near zero data loss” and submit the same to SEBI after taking approval from their respective Standing Committee on Technology (SCOT). 4. MIIs are required to take necessary steps to put in place systems for implementation of this Circular, including necessary amendments to the relevant bye-laws, rules and regulations, if any. 5. The provision at para 2.2 of this Circular shall come into force with immediate effect. The remaining provisions of this Circular shall come into effect 2 months from the date of this circular. 6. This Circular is issued with the approval of the Competent Authority. 7. This Circular is being issued in exercise of the powers conferred by Section 11(1) of Securities and Exchange Board of India Act, 1992 read with Regulation 51 of Securities Contracts (Regulation) (Stock Exchanges and Clearing Corporations) Regulations, 2018 and Section 19 of the Depositories Act, 1996 read with Regulation 97 of Securities and Exchange Board of India (Depositories and Participants) Regulations, 2018 to protect the interest of investors in securities market and to promote the development of, and to regulate the securities market. 8. This Circular is available on SEBI website at www.sebi.gov.in at “Legal Framework – Circulars”. Yours faithfully, Ansuman Dev Pradhan General Manager Market Regulation Department Email: ansumanp@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

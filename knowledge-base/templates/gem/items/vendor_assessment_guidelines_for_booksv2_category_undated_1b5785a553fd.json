@@ -1,0 +1,49 @@
+{
+  "id": "vendor_assessment_guidelines_for_booksv2_category_undated_1b5785a553fd",
+  "title": "vendor assessment guidelines for booksv2 category",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "Guidelines and Manuals",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/vendor-assessment-guidelines-for-booksv2-category_1755671758.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "GUIDELINES FOR VENDOR ASSESSMENT OF PUBLISHERS IN “BOOKS (V2)” CATEGORY Apart from the applicant’s Land Border compliance, the undermentioned guidelines will be followed by GeM’s Vendor validation agency to assess the vendor for the Category - “Books (V2)”. For the purpose of vendor assessment, following definition shall be followed - a) Definition of a Publisher: A publisher refers to an individual, organization, company, or an entity responsible for initiating the production and distribution of a publication. b) Definition of ISBN: The International Standard Book Number (ISBN) is a unique numerical identifier assigned to books, consisting of a 13-digit code starting with the prefix 978 and 979. c) Authority to Assign ISBNs: ISBNs are assigned by designated ISBN Agencies worldwide, with over 160 such agencies operating globally. Each agency functions as the exclusive authority for issuing ISBNs to publishers based within its respective country or geographic jurisdiction. In India, the official authority for allocation of ISBN is the Raja Rammohun Roy National Agency for ISBN, operating under the Department of Higher Education, Ministry of Education, Government of India. Procedure to be followed by GeM’s Vendor Validation Agency for Vendor Assessment applied in category “Books (V2)” on GeM: 1. To qualify as an OEM, the applicant (Publisher) must provide at least 1 ISBN for their published books. This provided ISBN shall be validated for processing the applicant’s request. 2. Below steps to be followed for validating the ISBN: a) In case of Indian publishers - i. Step 1: Visit the official Indian ISBN portal at https://isbn.gov.in/Home/Index. ii. Step 2: Click on the “CLICK HERE” button under the \"Search ISBN\" section. iii. Step 3: Select the “Advanced Search” option. iv. Step 4: Enter the ISBN and click on the “Search” button. -- 1 of 2 -- v. Step 5: The system will retrieve and display relevant details, including the name of the publisher, author/editor, and other associated information. b) For the publishers based outside India – Applicant must provide their ISBN along with the respective official website link of the ISBN agency (responsible for their country), from where the ISBN can be validated. 3. At least one duly signed agreement between author and the publisher must be submitted as proof of publishing rights. However, in the case of self-published authors, the applicant must provide a duly signed self-declaration. 4. At least one recent invoice from the printing agency / press issued to the applicant (publisher) must be submitted as evidence of book printing activities. However, in the case of self-printed publications, the applicant must provide a duly signed self- declaration. 5. Name and address of the applicant (publisher) shall be checked & validated against the information flowing to the present vendor validation agency from the vendor’s profile on GeM. There should not be any mismatch of name or address or both between vendor’s GeM profile details and submitted documents. 6. GSTIN is not mandatory for Printed Books falling under the HSN 4901 (as GST is 0%). In such a case, the publisher may declare GSTIN Number as “Not Available”. 7. In the Vendor Assessment form filed online, under the Part B – “Details of the firm”, for the information sought for Production Capability, Process, Quality, Safety, Suppliers & raw material, the publisher may mention “No”, if not applicable. 8. The Video Assessment shall be done for the publisher for his office premises, and the inventory of published books shall be checked. 9. For the photographs, the publisher can provide the photographs of their Publishing house / office premises and Finished books. -- 2 of 2 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": "en",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "GeM B5",
+      "Creator": "Microsoft® Word for Microsoft 365",
+      "CreationDate": "D:20250818154347+05'30'",
+      "ModDate": "D:20250818154347+05'30'",
+      "Producer": "Microsoft® Word for Microsoft 365"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/upload/shared_doc/vendor-assessment-guidelines-for-booksv2-category_1755671758.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

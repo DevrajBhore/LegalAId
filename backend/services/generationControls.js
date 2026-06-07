@@ -126,5 +126,63 @@ export function deriveGenerationControls(documentType, variables = {}) {
 
   derived.include_deliverables = hasMeaningfulValue(variables.deliverables);
 
+  // ── Context & risk-profile flags ──────────────────────────────────────────
+  // These map intake "context questions" onto the boolean / token flags that
+  // blueprint variant slots and conditional clauses test via include_if.
+  const sourceCode = normalizeBooleanLike(variables.involves_source_code);
+  if (sourceCode !== null) derived.involves_source_code = sourceCode;
+
+  const tradeSecrets = normalizeBooleanLike(variables.involves_trade_secrets);
+  if (tradeSecrets !== null) derived.involves_trade_secrets = tradeSecrets;
+
+  const personalData = normalizeBooleanLike(
+    variables.involves_personal_data ?? variables.processes_personal_data
+  );
+  if (personalData !== null) {
+    derived.involves_personal_data = personalData;
+    derived.processes_personal_data =
+      personalData || derived.processes_personal_data === true;
+    // Bridge the shared question onto blueprint-specific personal-data flags so
+    // a single intake answer drives data-processing clauses across all types.
+    if (personalData) {
+      derived.firm_processes_personal_data = true;
+      derived.company_processes_personal_data = true;
+    }
+  }
+
+  // Counterparty type is captured as a free/select token; expose stable boolean
+  // flags so blueprint conditions don't depend on exact option wording.
+  const counterparty = normalizeText(variables.counterparty_type).toLowerCase();
+  if (counterparty) {
+    derived.counterparty_is_investor = counterparty.includes("investor");
+    derived.counterparty_is_vendor =
+      counterparty.includes("vendor") || counterparty.includes("supplier");
+    derived.counterparty_is_employee = counterparty.includes("employee");
+    derived.counterparty_is_customer = counterparty.includes("customer");
+  }
+
+  // Employment seniority drives garden leave and exclusivity.
+  const seniority = normalizeText(variables.seniority_level).toLowerCase();
+  if (seniority) {
+    derived.is_senior_employee =
+      seniority.includes("senior") ||
+      seniority.includes("leadership") ||
+      seniority.includes("exec");
+  }
+
+  // Moonlighting / exclusivity restriction: explicit opt-in, or implied by a
+  // senior role or sensitive IP / trade-secret exposure.
+  const explicitMoonlighting = normalizeBooleanLike(
+    variables.restrict_moonlighting
+  );
+  if (explicitMoonlighting !== null) {
+    derived.restrict_moonlighting = explicitMoonlighting;
+  } else {
+    derived.restrict_moonlighting =
+      derived.is_senior_employee === true ||
+      derived.involves_source_code === true ||
+      derived.involves_trade_secrets === true;
+  }
+
   return derived;
 }

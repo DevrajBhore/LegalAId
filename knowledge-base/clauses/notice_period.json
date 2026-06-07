@@ -1,0 +1,42 @@
+{
+  "category": "notice_period",
+  "clause_name": "Notice",
+  "risk_level": "low",
+  "variant_count": 3,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Clause 10",
+      "text": "9. DISRUPTION You agree that you have no expectation of, or right to permanent and uninterrupted access to the Services. While the Services are intended to be accessible to you from everywhere on a 24x7 basis, from time to time and without prior notice of downtime, access to the App or the Services or to any part thereof may be suspended on either a temporary or permanent basis and either with respect to all or a certain class of users.",
+      "char_length": 440,
+      "risk_level": "low",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/sahay_gem_terms_of_service_undated_b88cfefdbfe0.json",
+      "source_document_name": "sahay gem terms of service"
+    },
+    {
+      "clause_name": "Clause 7",
+      "text": "8. In the event either Party receives a summons or other validly issued administrative or judicial process requiring the disclosure of Confidential Information of the other Party, the Receiving Party shall promptly notify the Disclosing Party. The Receiving Party may disclose Confidential Information to the extent such disclosure is required by law, rule, regulation or legal process; provided however, that, to the extent practicable, the Receiving Party shall give prompt written notice of any such request for such information to the Disclosing Party, and agrees to co-operate with the Disclosing Party, at the Disclosing Party’s expense, to the extent permissible and practicable, to challenge the request or limit the scope there of, as the Disclosing Party may reasonably deem appropriate.",
+      "char_length": 797,
+      "risk_level": "low",
+      "quality_score": 40,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/non_disclosure_agreement_undated_deb52210f2d0.json",
+      "source_document_name": "Non Disclosure Agreement"
+    },
+    {
+      "clause_name": "Clause 10",
+      "text": "This Section shall come into effect only after the completion of the Probationary Period. Manner of Exercise: To the extent that the Options have become and remain exercisable as provided in sub-clauses b and c, and subject to such reasonable administrative regulations as the Compensation Committee may adopt, the Options may be exercised, by written notice to the Compensation Committee, specifying the number of Exercise Shares and the date on which the Employee intends to exercise the Options (the “Exercise Date”). On or before the Exercise Date, the Employee shall deliver to the Company full payment for the Options being exercised in cash, or cash equivalent satisfactory to the Compensation Committee, and in an amount equal to the aggregate purchase price for the Exercise Shares. The Compensation Committee may require The Employee to furnish or execute such other documents as the Compensation Committee reasonably deems necessary: To evidence such exercise and To comply with or satisfy the requirements of the Securities Act of 1933, as amended, applicable state securities laws or any other law. No Rights as Stockholder: The Employee will have no voting or other rights as a stockholder of the Company with respect to any shares of Common Stock covered by the Options until the exercise of such Options and the issuance of a certificate or certificates to him for such shares of Common Stock. No adjustment will be made for dividends or other rights for which the record date is prior to the issuance of such certificate or certificates. Freedom to transfer shares: The Company shall have the right of first refusal, if the employee proposes to sell/transfer all or any of their shares in the Company to a third party, the employee shall at the first instance offer such shares to the Founder on the same terms as offered by such third party and in the event of the Founder not agreeing to purchase the shares so offered within a period of 60 days, the employee shall be free to sell the shares to any third party.",
+      "char_length": 2031,
+      "risk_level": "low",
+      "quality_score": 20,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/employment_agreement_with_esops_undated_c029de1da2df.json",
+      "source_document_name": "Employment Agreement with ESOPs"
+    }
+  ]
+}

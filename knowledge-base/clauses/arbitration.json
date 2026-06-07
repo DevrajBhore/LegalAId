@@ -1,0 +1,75 @@
+{
+  "category": "arbitration",
+  "clause_name": "Arbitration",
+  "risk_level": "medium",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Clause 19",
+      "text": "18. That all disputes and questions in ...................... connection with the partnership or this deed arising between the partners or between any one of them or their legal representatives and whether during or after the partnership, shall be referred to the arbitrator to be appointed with mutual consent of the partners, in accordance with the provisions of the Arbitration and Conciliation Act, 1996 then in force. IN WITNESS WHEREOF the parties to this deed have set their hands on the day and year first above written and in the presence of: First Party Second Party Third Party Fourth Party WITNESSES;",
+      "char_length": 612,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/deed_of_partnership_undated_fa336e44ef1d.json",
+      "source_document_name": "Deed of Partnership"
+    },
+    {
+      "clause_name": "Clause 23",
+      "text": "2.3.5 Alternative dispute resolution Alternative Dispute Resolution refers to any means of settling disputes outside of the court. ADR typically includes Negotiations, conciliations, mediation and arbitration. Arbitration: Arbitration is\nthe settlement of a dispute by the decision not of a court of law but of one or more persons called arbitrators which is executable as a decree of the court. Model deeds and forms attached for your reference, these documents are for reference only. Any document a person or an entity wishes to enter into should be in consultation with Advocate or a Solicitor.",
+      "char_length": 598,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/instructions_on_contracts_and_agreement_undated_c4b374a518fb.json",
+      "source_document_name": "Instructions on contracts and agreement"
+    },
+    {
+      "clause_name": "Clause 19",
+      "text": "18. That in the event of any dispute arising out of or in relation to or touching upon the agreement, the same shall be decided by arbitration in accordance with the provisions of the Arbitration and Conciliation Act, 1996 by the Arbitrator appointed with mutual consent.",
+      "char_length": 271,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/model_agency_agreement_undated_5d5b8c1029bb.json",
+      "source_document_name": "Model Agency Agreement"
+    },
+    {
+      "clause_name": "Clause 20",
+      "text": "The parties shall each appoint an arbitrator who shall then appoint a sole arbitrator to preside over the Arbitration proceedings. Counterparts The Agreement may be executed in two or more counterparts, any one of which shall be deemed the original without reference to the others. IN WITNESS WHEREOF, the Employee has hereunto set his hand, and the Company has caused these presents to be executed in its name and on its behalf, all as of the day and year first above written. ____________________ ___________________ (Employee) (The Employer) Name: _________________ Represented By: Designation: ______________",
+      "char_length": 612,
+      "risk_level": "medium",
+      "quality_score": 44,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/employment_agreement_with_esops_undated_c029de1da2df.json",
+      "source_document_name": "Employment Agreement with ESOPs"
+    },
+    {
+      "clause_name": "Clause 20",
+      "text": "1. The award of the Arbitrator shall be final, conclusive and binding upon the Parties, and the provisions of the [Indian] Arbitration and Conciliation Act, 1996 shall apply.",
+      "char_length": 174,
+      "risk_level": "medium",
+      "quality_score": 36,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/model_agency_agreement_undated_5d5b8c1029bb.json",
+      "source_document_name": "Model Agency Agreement"
+    },
+    {
+      "clause_name": "Clause 20",
+      "text": "19. Dispute Resolution 19.1 The Sahay-GeM Ecosystem has been designed to provide indisputable evidence of the compliance or otherwise by the Participants of their various obligations under these Terms. During the Beta Testing Phase, any dispute between the Participants (other than between the Lender and the Borrower) arising out of or in connection with these Terms the disputing Participants shall first reference such evidence and in the event it is still not possible to resolve their dispute, shall attempt resolution through the process of mediation or conciliation.\nAnnex 1 This declaration is executed by Government e-Marketplace having its registered office at 3rd Floor, Tower II, Jeevan Bharti Building, Connaught Place, New Delhi-110001 (hereinafter the Acceptor). The Acceptor, having reviewed the Sahay-GeM Ecosystem Participation Terms (version 1.1), wishes to participate in the Sahay-GeM Ecosystem as GeM. The Acceptor hereby agrees the Sahay-GeM Ecosystem Participation Terms shall be binding on it and commits to perform all the obligations required of it, in accordance with the terms thereof. The Acceptor acknowledges that its continued participation in the Sahay-GeM Ecosystem is conditional upon its continued compliance with the Sahay-GeM Ecosystem Participation Terms. This declaration is made by the Acceptor on this the 12th day of April 2021. Executed by Samta Kumari Simmy ______________________________ Name Company Secretary ______________________________ Designation Affix the digital signature, here.\nAnnex 2",
+      "char_length": 1543,
+      "risk_level": "medium",
+      "quality_score": 32,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/sahay_gem_ecosystem_participation_terms_undated_d90e2810e87b.json",
+      "source_document_name": "sahay gem ecosystem participation terms"
+    }
+  ]
+}

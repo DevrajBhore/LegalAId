@@ -1,0 +1,33 @@
+{
+  "id": "recruitment_bye-laws_1988_2016_10555919dfc8",
+  "title": "Recruitment bye-laws, 1988",
+  "source_type": "circular-orders",
+  "source_label": "MSME Circulars Archive",
+  "source_mode": "archive-table",
+  "document_url": "https://msme.gov.in/sites/default/files/Coir_Section_9_0.pdf",
+  "detail_url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders?page=1",
+  "page_url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders?page=1",
+  "document_date": "2016",
+  "document_format": "pdf",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "linked_but_unresolved",
+    "num_pages": null,
+    "info": {},
+    "link_status": "broken_upstream",
+    "recovery_attempts": [
+      "https://msme.gov.in/sites/default/files/Coir_Section_9_0.pdf"
+    ],
+    "source_error": "binary_fetch_status_404"
+  },
+  "source_refs": [
+    {
+      "label": "MSME Circulars Archive",
+      "type": "circular-orders",
+      "mode": "archive-table",
+      "page_url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders?page=1",
+      "detail_url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders?page=1"
+    }
+  ]
+}

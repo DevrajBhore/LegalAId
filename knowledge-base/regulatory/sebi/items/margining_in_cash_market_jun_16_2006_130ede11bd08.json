@@ -1,0 +1,25 @@
+{
+  "id": "margining_in_cash_market_jun_16_2006_130ede11bd08",
+  "title": "Margining in Cash Market.",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jun-2006/margining-in-cash-market-_14682.html",
+  "document_url": "https://www.sebi.gov.in/legal/circulars/jun-2006/margining-in-cash-market-_14682.html",
+  "document_date": "Jun 16, 2006",
+  "document_format": "html",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "reason": "html_text_extracted"
+  },
+  "text": "Margining in Cash Market. Jun 16, 2006| Circulars GENERAL MANAGER Market Regulation Department E-mail: sundaresanvs@sebi.gov.in MRD/DoP/SE/Cir- 6 /2006 June 16, 2006 The Executive Directors/Managing Directors/Administrators of All Stock Exchanges Dear Sir / Madam, Sub:- Margining in Cash Market. 1. This is further to SEBI Circular No.MRD/DoP/SE/Cir-07/2005 dated February 23, 2005 on the comprehensive Risk Management Framework for the cash market. 2. Currently in the cash market, VaR margin rate is calculated at the end of the trading day and then applied to the open positions of the subsequent trading day. However, in the derivative market, the risk parameter files for computation of the margins are updated intra-day. 3. With a view to ensure market safety and protect the interest of investors and also to further align the risk management framework across the cash and derivative markets, it has been decided that the risk arrays should be updated intra-day in the cash market as has been done in the derivative market. The applicable VaR margin rates shall be updated atleast 5 times in a day, which may be carried out by taking the closing price of the previous day at the start of trading and the prices at 11:00 a.m., 12:30 p.m., 2:00 p.m. and at the end of the trading session. 4. While BSE and NSE shall implement the aforesaid methodology with effect from July 10, 2006, the other stock exchanges shall implement the same with effect from August 28, 2006. The stock exchanges are advised to note that from the date of the said implementation, no stock exchange shall permit trading activity unless it is in a position to implement the aforesaid methodology. 5. The Stock Exchanges are also advised to ; 5.1. make necessary amendments to the relevant bye-laws, rules and regulations for the implementation of the above decision immediately. 5.2. bring the provisions of this circular to the notice of the member brokers/clearing members of the Exchange and also to disseminate the same on the website. 5.3. communicate to SEBI, the status of the implementation of the provisions of this circular in Section II, item no. 13 of the Monthly Development Report for the month of July, 2006. 6. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully, V S SUNDARESAN",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

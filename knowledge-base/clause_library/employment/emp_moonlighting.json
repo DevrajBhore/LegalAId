@@ -1,0 +1,33 @@
+{
+  "clause_id": "EMP_MOONLIGHTING_001",
+  "name": "Exclusivity of Service and Restriction on Dual Employment",
+  "category": "OBLIGATIONS",
+  "document_types": ["EMPLOYMENT"],
+  "jurisdiction": "India",
+  "text": "During the subsistence of employment, the Employee shall devote their whole time, attention, and skill to the business of the Employer and shall not, without the prior written consent of the Employer, engage directly or indirectly in any other trade, business, profession, consultancy, or employment, whether or not for remuneration, that conflicts with the interests of the Employer, interferes with the performance of the Employee's duties, or involves the use or disclosure of the Employer's Confidential Information. This restriction shall not prevent the Employee from holding passive investments or undertaking activities that have been disclosed to and approved by the Employer in writing. Any breach of this clause shall constitute misconduct and may attract disciplinary action including termination.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Restriction operating during employment (not post-employment) is valid and not a restraint of trade"
+    },
+    {
+      "act": "Industrial Employment (Standing Orders) Act, 1946",
+      "section": "3",
+      "note": "Conduct and discipline conditions of service"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Restriction purports to operate after termination of employment"
+  ],
+  "source": "Indian Contract Act, 1872; Industrial Employment (Standing Orders) Act, 1946",
+  "version": "1.0",
+  "title": "Exclusivity of Service",
+  "depends_on": ["EMPLOYMENT_ROLE_001", "EMP_DUTIES_001"],
+  "suggested_with": ["EMP_CONFIDENTIALITY_001"],
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG"
+}

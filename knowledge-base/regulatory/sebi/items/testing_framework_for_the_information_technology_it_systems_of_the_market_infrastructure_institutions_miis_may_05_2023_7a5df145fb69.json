@@ -1,0 +1,41 @@
+{
+  "id": "testing_framework_for_the_information_technology_it_systems_of_the_market_infrastructure_institutions_miis_may_05_2023_7a5df145fb69",
+  "title": "Testing Framework for the Information Technology (IT) systems of the Market Infrastructure Institutions (MIIs)",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/may-2023/testing-framework-for-the-information-technology-it-systems-of-the-market-infrastructure-institutions-miis-_70939.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/may-2023/1683282187340.pdf",
+  "document_date": "May 05, 2023",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "2297",
+      "CreationDate": "D:20230505151052+05'30'",
+      "ModDate": "D:20230505151052+05'30'",
+      "Producer": "Microsoft: Print To PDF",
+      "Title": "Microsoft Word - Testing Framework for the Information Technology (IT) systems of the Market Infrastructure Institutions (MIIs)"
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 4 SEBI/HO/MRD/TPD/P/CIR/2023/65 May 05, 2023 CIRCULAR To, All Stock Exchanges All Clearing Corporations All Depositories Sir/ Madam, Subject: - Testing Framework for the Information Technology (IT) systems of the Market Infrastructure Institutions (MIIs) 1. MIIs (i.e. Stock Exchanges, Clearing Corporations and Depositories) are systemically important institutions as they, inter-alia, provide infrastructure necessary for the smooth and uninterrupted functioning of the securities market. Therefore, it is imperative to devise a comprehensive testing framework to manage the IT systems/applications of MIIs throughout their lifecycle, which can assist the MIIs in performing thorough risk assessment before deploying any IT systems in production/ live environment. 2. Based on the recommendations of the Technology Advisory Committee (TAC), MIIs are hereby directed to ensure the following requirements while establishing the testing framework of their IT systems/applications: - a) All MIIs should do extensive testing, validation and documentation whenever new systems/ applications or changes to existing systems/applications are introduced before the deployment in production/live environment. b) A comprehensive methodology for system testing, functional testing, application security testing should be established and the same shall be approved by Standing -- 1 of 4 -- Page 2 of 4 Committee on Technology (SCOT) of respective MIIs. The scope of testing shall, inter-alia, cover business logic, system function, security controls and system performance under load and stress conditions. Any dependency on the existing systems shall be properly tested. c) Testing should be carried out in a separate environment that replicates/mirrors the production environment in order to minimize any disruption. d) All MIIs shall have the practice of traceability matrix to ensure that the test plan covers all intended functionality of the IT system and application. e) All MIIs shall adopt the practice of using automated testing techniques to run the test cases automatically, which may increase the depth and scope of tests and ultimately help to improve the software quality. f) All MIIs shall establish policy/procedures on the use of third party systems/applications/software codes to ensure these systems are subject to review and testing before they are integrated with the systems of the MIIs. g) All MIIs shall ensure that core code components operate as intended and do not produce unintended consequences. Further, any new code shall not have any impact on the existing functionality. All MIIs shall also ensure that Application Programming Interface Testing is done so that the concerned application can interact with other applications without causing disruptions of any kind. h) All MIIs should perform regression testing for changes (e.g. enhancement, rectification, etc.) to an existing IT system to validate that it continues to function properly after the changes have been implemented. After fixing the defects found during the testing, all MIIs shall perform regression testing again to ensure that other -- 2 of 4 -- Page 3 of 4 existing functionalities are not affected during fixing the defects. All MIIs shall explore to capture the automated test cases so that regression testing can be performed multiple times with much wider coverage test cases in a short time. i) All MIIs may institute tools to measure test/code coverage to assess comprehensiveness of the test. j) All Issues identified from testing, including system defects or software bugs, should be properly tracked and remediated immediately. Major issues that could have an adverse impact on the MII should be reported to their SCOT and addressed prior to deployment to the production environment. k) All MIIs should ensure that the results of all testing, including results of User Acceptance Testing (UAT), that was conducted, are documented in the test report. The same shall be checked by the auditor during System and Network Audit. l) All MIIs shall periodically conduct non-functional testing such as volume testing, resilience testing, scalability testing, performance testing, stress testing, application security testing, BCP testing, negative/destructive testing etc. for all IT systems/applications throughout their lifecycle (pre-implementation, post implementation, after changes). m) All MIIs shall perform white box testing or structural testing, which shall inter-alia include analyzing data flow, control flow, information flow, coding practices, exception and error handling within the system. 3. The stock exchanges, clearing corporations and depositories are required to take necessary steps to put in place systems for implementation of the circular, including necessary amendments to the relevant bye-laws, rules and regulations, if any. The -- 3 of 4 -- Page 4 of 4 MIIs are advised to submit the testing framework of all their IT systems after approval of SCOT within 30 days from the date of this circular. 4. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of and to regulate the securities market. 5. The circular is issued with the approval of competent authority. 6. The circular shall come into force with immediate effect. 7. This circular is available on SEBI website at www.sebi.gov.in under the categories “Legal Framework” and “Circulars”. Yours faithfully, Ansuman Dev Pradhan Deputy General Manager +91-22-26449622 ansumanp@sebi.gov.in -- 4 of 4 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

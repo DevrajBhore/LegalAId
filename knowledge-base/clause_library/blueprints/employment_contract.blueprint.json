@@ -16,8 +16,6 @@
     "EMP_RETIREMENT_001",
     "EMP_CONFIDENTIALITY_001",
     "EMP_IP_ASSIGNMENT_001",
-    "EMP_NON_COMPETE_001",
-    "EMP_NON_SOLICITATION_001",
     "EMP_NOTICE_PERIOD_001",
     "EMP_DISCIPLINARY_ACTION_001",
     "EMP_GRIEVANCE_PROCEDURE_001",
@@ -44,8 +42,6 @@
     "EMP_RETIREMENT_001",
     "EMP_CONFIDENTIALITY_001",
     "EMP_IP_ASSIGNMENT_001",
-    "EMP_NON_COMPETE_001",
-    "EMP_NON_SOLICITATION_001",
     "EMP_NOTICE_PERIOD_001",
     "EMP_DISCIPLINARY_ACTION_001",
     "EMP_GRIEVANCE_PROCEDURE_001",
@@ -57,8 +53,8 @@
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
-  "version": "3.0",
-  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001, removed duplicate EMPLOYMENT_TERMINATION_001/EMP_TERMINATION_001, added conditional clauses",
+  "version": "3.1",
+  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001, removed duplicate EMPLOYMENT_TERMINATION_001/EMP_TERMINATION_001, added conditional clauses. v3.1: moved non-compete/non-solicitation out of required (now opt-in conditionals), added context-driven moonlighting & garden-leave clauses.",
   "conditional_clauses": [
     {
       "clause": "EMP_NON_COMPETE_001",
@@ -69,6 +65,16 @@
       "clause": "EMP_NON_SOLICITATION_001",
       "include_if": "include_non_compete == true",
       "note": "Non-solicitation of clients and employees"
+    },
+    {
+      "clause": "EMP_MOONLIGHTING_001",
+      "include_if": "restrict_moonlighting == true",
+      "note": "Exclusivity / dual-employment restriction — senior roles or sensitive IP"
+    },
+    {
+      "clause": "EMP_GARDEN_LEAVE_001",
+      "include_if": "is_senior_employee == true",
+      "note": "Garden leave during notice period for senior / leadership roles"
     },
     {
       "clause": "CORE_ENTIRE_AGREEMENT_001",

@@ -1,0 +1,75 @@
+{
+  "category": "ip_ownership",
+  "clause_name": "Intellectual Property",
+  "risk_level": "high",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Limitation of Liability",
+      "text": "18. Limitation of Liability: Notwithstanding anything contained in this agreement, no party will be liable for any special, incidental or consequential damages arising out of or in connection with this agreement or any breach hereof (including for loss of data or profits, or cost of cover), whether or not such party has been advised of the possibility of such damages, and whether under a theory of contract, tort\nGeneral Terms and Conditions on GeM 4.0 (Version 1.7) dt 13th Jan 2023 Page 34 of 53 (including negligence) or otherwise; except for liabilities arising out of any violation, misappropriation or infringement of a party’s intellectual property rights, or from a breach by either party of its obligation. In no event will either party’s aggregate liability arising out of or in connection with this agreement or any breach hereof (whether under a theory of contract, tort (including negligence), warranty or otherwise) exceed the Contract Price entered into the Contract between Buyer and Seller.",
+      "char_length": 1010,
+      "risk_level": "high",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    },
+    {
+      "clause_name": "Clause 3",
+      "text": "B. The Employee may conceive and contribute to the development of intellectual property of the Company during the course of his/her employment with the Company and for the discharge of the Employee’s obligations set forth in the employment agreement executed by the Employee with the Company;",
+      "char_length": 292,
+      "risk_level": "high",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/confidentiality_ip_assignment_agreement_undated_874d447a3b2d.json",
+      "source_document_name": "Confidentiality IP Assignment Agreement"
+    },
+    {
+      "clause_name": "Clause 8",
+      "text": "4. Intellectual Property Rights The Deliverables shall be deemed to be ‘work for hire’ and all Intellectual Property Rights therein shall vest solely with the Company upon creation. To the extent that any right, title or interest in the Deliverables is not vested with the Company by operation of law or by contract, each Consultant hereby irrevocably and perpetually assigns, transfers and conveys, to the Company any and all of such Consultant’s worldwide, right, title and interest, and to\nConsultancy Agreement Template (India) | OS v.1 | November 2016 Page 2 the Intellectual Property Rights, in such Deliverables. Each Consultant shall provide such further assurances, take such action, and execute such further documents and instruments as the Company may reasonably request in order to carry out the purposes of this Clause",
+      "char_length": 831,
+      "risk_level": "high",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/consultancy_agreement_undated_f028fb9ea0eb.json",
+      "source_document_name": "Consultancy Agreement"
+    },
+    {
+      "clause_name": "Clause 3",
+      "text": "3. In case of any IPR where by law the individual have rights to IPR that can not be transferred (copyright text, audio, etc.), all the other parties will get unlimited license to use any such IPR for free",
+      "char_length": 205,
+      "risk_level": "high",
+      "quality_score": 40,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/pre_shareholder_agreement_undated_b923ef252b82.json",
+      "source_document_name": "Pre Shareholder Agreement"
+    },
+    {
+      "clause_name": "Clause 10",
+      "text": "8. Declaration or registration in writing in Form-10 for the purposes of obtaining a sub-code. Intellectual property Regulatory Checklist - [•]Private Limited (the \"Company\") CENTRAL LABOUR LAWS\n3 Payme nt of Gratuit y Act, 1972",
+      "char_length": 228,
+      "risk_level": "high",
+      "quality_score": 36,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/legal_due_diligence_undated_b02984a2cf89.json",
+      "source_document_name": "Legal Due Diligence"
+    },
+    {
+      "clause_name": "Clause 9",
+      "text": "TERM This Agreement shall be effective from the date hereof and all non-disclosure provisions shall continue to be in force at all times even after the cessation of the discussions or business relationship between the parties. Upon any demand made by either Party, the other Party shall immediately cease any and all disclosures or uses of Confidential Information, and at the request of the Party, shall promptly return or destroy all written, graphic or other tangible forms of the Confidential Information and all copies, abstracts, extracts, samples, notes or modules or like thereof, in accordance with this clause and Section 6 of this Agreement. The obligations of the Parties with respect to disclosure and confidentiality shall continue to be binding and applicable without limit in point in time except and until such information enters the public domain. TITLE AND PROPRIETARY RIGHTS Notwithstanding the disclosure of any Confidential Information by one Party to the other Party, the original Party shall retain title and all intellectual property and proprietary rights in the Confidential Information. No license under any trademark, patent or copyright, or application for same, which are now or thereafter may be obtained by the one Party is either granted or implied by the conveying of Confidential Information, to the other Party.",
+      "char_length": 1348,
+      "risk_level": "high",
+      "quality_score": 20,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/mutual_nda_undated_40b7a9c7e268.json",
+      "source_document_name": "Mutual NDA"
+    }
+  ]
+}

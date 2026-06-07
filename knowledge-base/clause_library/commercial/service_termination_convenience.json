@@ -1,0 +1,18 @@
+{
+  "clause_id": "SERVICE_TERMINATION_CONVENIENCE_001",
+  "name": "Termination for Convenience",
+  "category": "TERMINATION",
+  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "Either Party may terminate this Agreement at any time, without cause, by giving the other Party not less than thirty (30) days' prior written notice. Upon such termination, the Client shall pay the Service Provider for all Services satisfactorily rendered up to the effective date of termination, together with any non-cancellable costs reasonably incurred. Neither Party shall be liable to the other for damages, compensation, or loss of anticipated profits solely by reason of termination for convenience exercised in accordance with this clause.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "11", "note": "Freedom of competent parties to agree termination terms" }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Notice period is not specified"],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Termination for Convenience"
+}

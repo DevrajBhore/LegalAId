@@ -1,0 +1,45 @@
+{
+  "id": "stqc_certification_for_quality_evaluation_of_gem_undated_e8dd97261f89",
+  "title": "STQC Certification for Quality Evaluation of GeM",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "GeM Reference Documents",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/gem_certificate_1651680716.PDF",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "-- 1 of 1 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 1,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "CreationDate": "D:20220504139521082844+09'00'"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/upload/shared_doc/gem_certificate_1651680716.PDF"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

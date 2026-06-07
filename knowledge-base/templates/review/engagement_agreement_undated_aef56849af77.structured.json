@@ -1,0 +1,243 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "England shall have exclusive jurisdiction",
+  "variables": [
+    {
+      "name": "company_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[company name]"
+      }
+    },
+    {
+      "name": "country",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[country]"
+      }
+    },
+    {
+      "name": "address",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[address]"
+      }
+    },
+    {
+      "name": "placeholder_4",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_______"
+      }
+    },
+    {
+      "name": "placeholder_5",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "________"
+      }
+    },
+    {
+      "name": "placeholder_6",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "___________"
+      }
+    },
+    {
+      "name": "company_person_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[company person name]"
+      }
+    },
+    {
+      "name": "placeholder_8",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "________________________"
+      }
+    },
+    {
+      "name": "placeholder_9",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_______________________"
+      }
+    },
+    {
+      "name": "consultants_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[CONSULTANTS NAME]"
+      }
+    },
+    {
+      "name": "share_type",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[share type]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    },
+    {
+      "name": "notice_period",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "positive_integer"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_6",
+      "clause_name": "Clause 6",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_7",
+      "clause_name": "Clause 7",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_8",
+      "clause_name": "Clause 8",
+      "category": "termination"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_9",
+      "clause_name": "Clause 9",
+      "category": "termination"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_10",
+      "clause_name": "Clause 10",
+      "category": "termination"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_12",
+      "clause_name": "Clause 12",
+      "category": "termination"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_17",
+      "clause_name": "Clause 17",
+      "category": "termination"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_1",
+      "clause_name": "Clause 1",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_4",
+      "clause_name": "Clause 4",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_5",
+      "clause_name": "Clause 5",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_13",
+      "clause_name": "Clause 13",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_14",
+      "clause_name": "Clause 14",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_15",
+      "clause_name": "Clause 15",
+      "category": "general"
+    },
+    {
+      "clause_id": "engagement_agreement_undated_aef56849af77_16",
+      "clause_name": "Clause 16",
+      "category": "general"
+    }
+  ],
+  "body": "ENGAGEMENT AGREEMENT THIS ENGAGEMENT AGREEMENT (the “Agreement”) is entered into effect as of __ of __, ___ by and between [company name], a corporation incorporated under the laws of [country], having its principal office at [address] (the “Company”), and _______, residing at ________, with the phone number _____ and the e-mail ___________ (the “Consultant”). WHEREAS, Consultant warrants and represents that he has the requisite qualifications, knowledge and experience to render the Services (as such term is defined below) to the Company; and WHEREAS, Consultant is interested in providing the Services to Company and the Company, pursuant to such foregoing warrants and representations, is interested in receiving the Services from the Consultant, all subject to and in accordance with the terms set forth herein. NOW THEREFORE, in consideration of the mutual premises, covenants and understandings contained herein, the parties agree as follows: 1. Representations and Warranties. Consultant represents and warrants to the Company that: (i) there are no contracts and/or restrictive covenants preventing full performance of her/his duties and obligations under this Agreement; and (ii) she/he has the requisite qualifications, knowledge and experience to perform the obligations under this Agreement. 2. The Engagement. Consultant shall provide the Company with the services set forth in the document attached hereto as Exhibit A (the “Services”). The Services shall be provided by the Consultant, in person, in the scope of at least ___ hours per week. The nature and scope of the Services may be updated and adjusted from time to time, upon a mutual written consent by the parties. The Consultant shall report directly to [company person name]. 3. Compensation. In consideration for her/his Services, the Consultant shall be entitled to the compensation set forth in the document attached hereto as Exhibit B (the “Consideration”). 4. Independent Contractor; Taxes. The parties understand and agree that the Consultant is an independent contractor and there are and shall not be employer-employee relationship between the parties. The Consultant recognizes that she/he shall have sole responsibility to pay any taxes related to the Consideration or to any other compensation he will receive from the Company in consideration for the Services. 5. Duties of Consultant. The Consultant hereby affirms and undertakes that, during the hours of providing the Services to the Company, she/he shall: (a) devote her/his time, know-how, energy, expertise, talent, experience and best efforts, to the business and affairs of the Company and to the performance of her/his duties with the Company within the framework of specific tasks assigned to her/him from time to time, by mutual agreement between herself/himself and the Company; (b) perform and discharge well and faithfully, with devotion, honesty and fidelity, her/his obligations as set forth herein; (c) comply with all of Company’s disciplinary regulations, work rules, policies, procedures and objectives, as may be determined by Company from time to time, and as notified to her/him by the Company; (d) immediately and without delay, inform [company person name] of any affairs and/or matters that might constitute a conflict of interest with her/his position in the Company; and (e) not use any trade secrets or proprietary information in such a manner that may breach any confidentiality and/or other obligation the Consultant may have undertaken relating to any former employer(s) and/or any third party. 6. Proprietary Information and Confidentiality. 6.1. Consultant is aware that in the course of her/his engagement with the Company and/or in connection therewith, Consultant may have access to, and be entrusted with, technical, proprietary, sales, legal, financial, and other data and information with respect to the affairs and business of the Company, its affiliates, customers and suppliers, and including information received by the Company from any third party subject to obligations of confidentiality towards said third party, all of which data and information, whether documentary, written, oral or computer generated, shall be deemed to be, and referred to as “Proprietary Information”, which, by way of illustration but not limitation, shall include trade and business secrets, processes, patents, improvements, ideas, inventions (whether reduced to practice or not), techniques, products, and technologies (actual or planned), financial statements, marketing plans, strategies, forecasts, customer and/or supplier lists and/or relations, research and development activities, formula, data, know-how, designs, discoveries, models, computer hardware and software and any and all documentation relating 2 thereto, drawings, dealings and transactions, except for such information which, on the date of disclosure, is, or thereafter becomes, available in the public domain or is generally known in the industry through no fault on the part of the Consultant. 6.2. Consultant agrees and declares that all Proprietary Information, patents and/or patent applications, copyrights and other intellectual property rights in connection therewith, are and shall remain the sole property of the Company and its assigns. During the Term and upon its expiration thereafter, Consultant shall keep in confidence and trust all Proprietary Information, and any part thereof, and will not use or disclose and/or make available, directly or indirectly, to any third party any Proprietary Information without the prior written consent of the Company, except and to the extent as may be necessary in the ordinary course of performing Consultant’s duties pertaining to the Company and except and to the extent as may be required under any applicable law, regulation, judicial decision or determination of any governmental entity. 6.3. Without derogating from the generality of the foregoing, the Consultant agrees: (a) not to copy, transmit, reproduce, summarize, quote, publish and/or make any commercial or other use whatsoever of the Proprietary Information, or any part thereof, without the prior written consent of Company, except as may be necessary in the performance of her/his duties pertaining to the Company; (b) to exercise the highest degree of care in safeguarding the Proprietary Information against loss, theft or other inadvertent disclosure and to take all reasonable steps necessary to ensure the maintaining of confidentiality; (c) upon a request by the Company to do so, the Consultant shall immediately deliver to the Company or destroy all Proprietary Information and any and all copies thereof, in whatever form, that had been furnished to the Consultant, prepared thereby and/or came to her/his possession in any manner whatsoever, during and in the course of her/his engagement with the Company, and shall not retain and/or make copies thereof in whatever form. 6.4. Consultant acknowledges that any breach of her/his obligations pursuant to this Section 6 would cause the Company substantial damage for which the Company shall hold them liable. The provisions of this Section 6 shall survive termination of this Agreement and shall remain in full force and effect for a period of 3 years thereafter. 7. Non-Competition and Non-Solicitation. Consultant hereby covenants that throughout her/his engagement with the Company and for a period of 12 months thereafter, she/he shall not: (a) engage, directly or indirectly, whether independently or as an employee, consultant or otherwise, through any corporate body and/or with or through others, in any activity, company, corporation, partnership, joint venture and/or other entity of any sort, competing directly with the actual and/or planned activities and/or products of the Company and its affiliates, as same have existed and shall exist from time to time during the Consultant’s engagement with the Company; and (b) whether on her/his own account and/or on behalf of others, in any way solicit, interfere with and/or endeavor to entice away from the Company and/or any of its affiliates, any person, firm or company with whom the Company and/or any of its affiliates shall have any contractual and/or commercial relationship as an employee, consultant, licenser, joint venturer, supplier, customer, distributor, agent or contractor of whatsoever nature, existing or under negotiation on or prior to the effective date of termination of Consultant’s engagement with the Company. 8. Inventions. Consultant agrees to promptly and from time to time fully inform and disclose to the Company all inventions, designs, improvements, discoveries, algorithms, code, executable code, compilation and execution, configuration instructions and the like, which Consultant shall have during her/his engagement with the Company, and which result directly from and are related directly to the Services rendered by Consultant to the Company, or which derive from any experimental work performed by the Company, whether conceived by Consultant alone or with others (the “Inventions”). All Inventions, and any and all rights, interests and title therein, shall be the exclusive property of the Company and Consultant shall not be entitled, and hereby waive, now and/or in the future, any claim to any right, compensation and/or reward in connection therewith. In the event that by operation of law, any Invention shall be deemed Consultant’s, Consultant hereby assigns and shall in the future take all the requisite steps (including by signing all appropriate documents) to assign to the Company and/or its designee any and all of her/his foregoing rights, titles and interests in such Inventions, on a worldwide basis, and hereby further acknowledges and shall in the future acknowledge the Company’s full and exclusive ownership in all such Inventions. To the extent necessary, Consultant shall, during her/his engagement with the Company or at any time thereafter, execute all documents and take all steps necessary to effectuate the assignment to the Company and/or its designee and/or to assist the Company 3 to obtain the exclusive and absolute rights, title and interests in and to all Inventions, whether by the registration of patent, trade mark, trade secret, copyright, and/or any other applicable legal protection, and to protect same against infringement by any third party. This provision shall apply with equal force and effect to all items that may be subject to copyright or trademark protection. The provisions of this Section 8 shall survive termination of this Agreement and shall remain in full force and effect at all times thereafter. 9. Term and Termination. 9.1. This Agreement shall be effective as of the date herein (the “Effective Date”) and shall remain in full force and effect until terminated by either party as provided in Sections 9.2-9.3 hereunder (the “Term”). 9.2. Either party may terminate this Agreement, for any reason, at the end of each quarter by furnishing the other party with a notice of termination (the “Notice of Termination”) 30 days prior to such Notice of Termination having effect (the “Notice Period”). Unless the Company has waived any and/or all of Consultant’s Services under this Agreement during the Notice Period, or any part thereof, Consultant shall be obligated to continue to discharge and perform all of her/his duties and obligations under this Agreement and to take all steps, satisfactory to Company, to ensure the orderly transition to any persons or entity designated by the Company of all matters handled by the Consultant during the course of the provision of the Services. 9.3. Notwithstanding the foregoing to the contrary, the Company shall be entitled to terminate this Agreement with immediate effect as a result of a breach by Consultant of any provisions of Sections 5, 6, 7 and 8 of this Agreement and/or if the Consultant has been convicted under a final judgment of a dishonorable criminal offense (the “Termination for Cause”). 9.4. Upon termination of the Consultant’s Services, the Consultant affirms and undertakes to (i) transfer her/his Services to her/his replacement, as shall be determined by Company, in an efficient, complete, appropriate and orderly manner; and (ii) return to the Company’s principal office all equipment or documentation, in any media which was given to her/him by the Company in connection with her/his Services (collectively, the “Equipment”). Consultant shall have no (and hereby waives any) rights of lien with respect to any asset or right comprising the Equipment. 10. Assignment. The rights and liabilities of the parties hereto shall bind and inure to the benefit of their respective successors, heirs, executors and administrators, as the case may be. Consultant may not assign any of her/his rights or obligations hereunder without first obtaining the Company’s written consent. The Company may assign its rights and obligations hereunder to any person or entity that succeeds to all or substantially all of the Company’s business. 11. General. (a) Either party’s failure at any time to require strict compliance by the other party of the provisions of this Agreement shall not diminish such party’s right thereafter to demand strict compliance therewith or with any other provision. Waiver of any particular default shall not waive any other default. (b) All disputes with respect to this Agreement shall be determined in accordance with the laws of the England, without giving effect to any principles of conflict of law, and the competent courts in England shall have exclusive jurisdiction of any such dispute. (c) In the event that any provision of this Agreement shall be deemed unlawful or otherwise unenforceable, such provision shall be severed from this Agreement and all other provisions of the Agreement shall continue in full force and effect. (d) This Agreement contains and sets forth the entire agreement and understanding between the parties with respect to the subject matter contained herein, and as such supersedes all prior discussions, agreements, representations and understandings in this regard. This Agreement shall not be modified except by an instrument in writing signed by both parties. (e) Provisions intended to survive the termination of this Agreement, shall so survive. (f) Each notice and/or demand given by one party to the other pursuant to this Agreement shall be given in writing and shall be sent by registered mail or delivered by hand to the other party at the addresses set forth above, and such notice and/or demand shall be deemed given at the expiration of 3 days from the date of mailing by registered mail or immediately if delivered by hand. Such address shall be effective unless notice of a change in address is provided by registered mail to the other party. (g) This Agreement may be executed in counterparts, which may be faxed counterparts, each of which when so delivered shall be deemed an original, and together, an original instrument. IN WITNESS WHEREOF, the parties have executed this Agreement as of the above-captioned date. 4 ________________________ _______________________ [company name] [CONSULTANTS NAME] By: [company person name]. Title: 5 Exhibit A Specification of Services The Consultant shall have the following responsibilities: • Any other responsibility determined by ___________. • Minimum of xx hours work per week • Hours reported by consultant via company project management tool 6 Exhibit B Consideration The Consultant shall be entitled to the following consideration: A. Prior to the Company completing a Qualified Financing (as such term is defined herein), the Consultant shall be granted, on a quarterly basis, as long as the Agreement is in effect, with a right to purchase ____ shares of the Company, par value GBP 0.01, per ____ hours of services performed by consultant, as pre-approved in writing by the company, for an exercise price of GBP 0.01 (the “Exercise Price” and the “Option”, respectively). B. For the purpose of this Agreement, the term “Qualified Financing” shall mean the closing of a financing round in which the Company shall raise at least USD xxxxxx in net proceeds. C. Upon the completion of the Qualified Financing (the “Conversion Date”) the Consultant shall be entitled to exercise 100% of the Options accumulated up to the Conversion Date to [share type] shares of the Company at the Exercise Price. D. Should the Company not complete a Qualified Financing prior to __ of ___, ___ then all the Options accumulated by the Consultant prior to such date shall be converted into [share type] shares of the Company at a 1:1 ratio (i.e. each Option shall be converted into one [share type] share). E. Upon termination or expiration of this Agreement for any reason whatsoever, other than through a Notice of Termination by the Company, any and all accumulated Options shall immediately expire. In case of termination by the Company through a Notice of Termination, the Consultant shall be entitled to exercise any accumulated Options within thirty (30) days of such termination or expiration, at the Exercise Price, provided, however, that if the Consultant does not do so, such Options shall expire as well.",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/engagement_agreement_undated_aef56849af77.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/ENGAGEMENT%20AGREEMENT.pdf",
+    "quality_score": 74,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

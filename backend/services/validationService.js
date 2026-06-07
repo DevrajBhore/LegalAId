@@ -3,6 +3,7 @@ import { commercialValidate } from "../ire/commercialValidator.js";
 import { validateDraftConsistency } from "./draftConsistencyValidator.js";
 import { validateDocumentHardening } from "./documentHardening.js";
 import { validateClauseQuality } from "./clauseQualityNormalizer.js";
+import { validateDocumentQuality } from "./documentQualityControl.js";
 
 function resolveSourceVariables(draft, sourceVariables) {
   if (sourceVariables && typeof sourceVariables === "object") {
@@ -62,6 +63,12 @@ export async function runDocumentValidation(
     ? validateDocumentHardening(draft, { documentType: resolvedDocumentType })
     : [];
   const clauseQualityIssues = validateClauseQuality(draft);
+  const finalQualityIssues = resolvedDocumentType
+    ? validateDocumentQuality(draft, {
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables || {},
+      })
+    : [];
 
   return formatValidationResult({
     mode: coreValidation.mode || mode,
@@ -71,6 +78,7 @@ export async function runDocumentValidation(
       ...consistencyIssues,
       ...hardeningIssues,
       ...clauseQualityIssues,
+      ...finalQualityIssues,
       ...extraIssues,
     ],
     layers: {
@@ -79,6 +87,7 @@ export async function runDocumentValidation(
       consistency_issues: consistencyIssues.length,
       hardening_issues: hardeningIssues.length,
       clause_quality_issues: clauseQualityIssues.length,
+      final_quality_issues: finalQualityIssues.length,
       extra_issues: extraIssues.length,
     },
   });

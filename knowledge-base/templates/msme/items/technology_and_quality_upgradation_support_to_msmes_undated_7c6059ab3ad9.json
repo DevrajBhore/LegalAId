@@ -1,0 +1,33 @@
+{
+  "id": "technology_and_quality_upgradation_support_to_msmes_undated_7c6059ab3ad9",
+  "title": "Technology and Quality Upgradation Support to MSMEs",
+  "source_type": "scheme-guidelines",
+  "source_label": "MyMSME Scheme Guidelines",
+  "source_mode": "scheme-table",
+  "document_url": "https://msme.gov.in/sites/default/files/technology_quality.pdf",
+  "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "linked_but_unresolved",
+    "num_pages": null,
+    "info": {},
+    "link_status": "broken_upstream",
+    "recovery_attempts": [
+      "https://msme.gov.in/sites/default/files/technology_quality.pdf"
+    ],
+    "source_error": "binary_fetch_status_404"
+  },
+  "source_refs": [
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx"
+    }
+  ]
+}

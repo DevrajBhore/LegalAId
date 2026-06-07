@@ -1,0 +1,163 @@
+{
+  "audited_at": "2026-05-22T14:38:14.182Z",
+  "scope": "LegalAId local knowledge-base priority audit",
+  "policy": {
+    "core_knowledge_first": true,
+    "avoid_bulk_reference_scraping_by_default": true,
+    "rera_role": "supplemental lookup/cache, not primary vector knowledge"
+  },
+  "inventory": {
+    "acts_json_files": 10774,
+    "sections_json_files": 104645,
+    "subordinate": {
+      "act_folders": 804,
+      "index_only_act_folders": 390,
+      "act_folders_with_documents": 414,
+      "missing_index_files": 0,
+      "subordinate_document_files": 12766
+    },
+    "case_law_json_files": 71,
+    "template_json_files": 224,
+    "forms_json_files": 0,
+    "procedures_json_files": 0,
+    "gazette_json_files": 457,
+    "regulatory": {
+      "dpiit": {
+        "json_files": 923
+      },
+      "irdai": {
+        "json_files": 21
+      },
+      "mca": {
+        "json_files": 16
+      },
+      "rbi": {
+        "json_files": 432
+      },
+      "sebi": {
+        "json_files": 2829
+      }
+    },
+    "rera": {
+      "delhi-rera": {
+        "json_files": 129,
+        "item_files": 128
+      },
+      "karnataka-rera": {
+        "json_files": 9627,
+        "item_files": 9626
+      },
+      "maharera": {
+        "json_files": 16498,
+        "item_files": 16497
+      }
+    }
+  },
+  "existing_indiacode_coverage": {
+    "total_acts": 804,
+    "acts_with_subordinate": 414,
+    "acts_without_subordinate": 237,
+    "acts_with_possible_or_inconclusive_subordinate": 153,
+    "missing_index_files": 0,
+    "count_mismatch_acts": 0,
+    "acts_with_duplicate_source_entries": 0,
+    "duplicate_source_rows": 0,
+    "acts_with_failed_candidates": 50,
+    "total_failed_candidates": 359,
+    "subordinate_files_with_recovery_attempts": 9242,
+    "subordinate_files_recovered_from_alternate_source": 140,
+    "detection_versions": {
+      "10": 804
+    },
+    "audited_at": "2026-04-28T12:51:17.102Z",
+    "scope": "IndiaCode only"
+  },
+  "prioritized_backlog": [
+    {
+      "rank": 1,
+      "area": "Subordinate legislation",
+      "classification": "core legal knowledge",
+      "status": "partially collected, needs targeted recovery and quality verification",
+      "local_evidence": {
+        "act_folders": 804,
+        "index_only_act_folders": 390,
+        "act_folders_with_documents": 414,
+        "missing_index_files": 0,
+        "subordinate_document_files": 12766
+      },
+      "recommended_next_action": "Do not re-run a blind scrape. Target the 153 inconclusive acts and 50 acts with failed candidates, then verify index-only folders against IndiaCode metadata."
+    },
+    {
+      "rank": 2,
+      "area": "Judgments and case law",
+      "classification": "core legal knowledge",
+      "status": "very thin seed",
+      "local_evidence": {
+        "case_law_json_files": 71
+      },
+      "recommended_next_action": "Add a curated case-law pipeline for Supreme Court, High Courts, and tribunals with court/date/citation/issues/summary/full-text fields."
+    },
+    {
+      "rank": 3,
+      "area": "Legal document corpus",
+      "classification": "drafting intelligence",
+      "status": "seed present",
+      "local_evidence": {
+        "template_json_files": 224
+      },
+      "recommended_next_action": "Expand into vetted variants for each supported document type, then map clauses to inputs used by the generator."
+    },
+    {
+      "rank": 4,
+      "area": "Procedures and government forms",
+      "classification": "workflow knowledge",
+      "status": "not yet represented as a dedicated KB area",
+      "local_evidence": {
+        "forms_json_files": 0,
+        "procedures_json_files": 0
+      },
+      "recommended_next_action": "Create a structured procedures/forms collection for filings, compliance workflows, and user action steps."
+    },
+    {
+      "rank": 5,
+      "area": "MCA/company data",
+      "classification": "supplemental lookup",
+      "status": "small regulatory seed only",
+      "local_evidence": {
+        "regulatory_mca": {
+          "json_files": 16
+        }
+      },
+      "recommended_next_action": "Keep MCA as an on-demand lookup/cache module unless a drafting workflow specifically needs company verification."
+    },
+    {
+      "rank": 6,
+      "area": "Lawyer ecosystem",
+      "classification": "product marketplace/support module",
+      "status": "not a scraping priority",
+      "local_evidence": {},
+      "recommended_next_action": "Build after core drafting and legal knowledge are stronger. Prefer verified onboarding data over scraping directories."
+    },
+    {
+      "rank": 7,
+      "area": "RERA expansion",
+      "classification": "supplemental lookup/cache",
+      "status": "seed cache is enough for prototype",
+      "local_evidence": {
+        "delhi-rera": {
+          "json_files": 129,
+          "item_files": 128
+        },
+        "karnataka-rera": {
+          "json_files": 9627,
+          "item_files": 9626
+        },
+        "maharera": {
+          "json_files": 16498,
+          "item_files": 16497
+        }
+      },
+      "recommended_next_action": "Stop bulk expansion for now. Later implement local search, official live fallback, normalization, last_verified_at, and user confirmation before draft injection."
+    }
+  ]
+}

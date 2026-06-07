@@ -1,0 +1,41 @@
+{
+  "id": "business_continuity_for_interoperable_segments_of_stock_exchanges_nov_28_2024_13a3d0f46b22",
+  "title": "Business Continuity for Interoperable Segments of Stock Exchanges",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/nov-2024/business-continuity-for-interoperable-segments-of-stock-exchanges_89032.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2024/1732796781597.pdf",
+  "document_date": "Nov 28, 2024",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "Darshil Bhatt",
+      "CreationDate": "D:20241128174155+05'30'",
+      "ModDate": "D:20241128174155+05'30'",
+      "Producer": "Microsoft: Print To PDF",
+      "Title": "Microsoft Word - Business Continuity for Interoperable Segments of Stock Exchanges"
+    },
+    "reason": null
+  },
+  "text": "1 CIRCULAR SEBI/HO/MRD/TPD/P/CIR/2024/167 November 28, 2024 To All Stock Exchanges All Clearing Corporations (Except Commodity Derivatives Exchanges and Clearing Corporations) Sir/Madam, Business Continuity for Interoperable Segments of Stock Exchanges 1. Clause 9 of Chapter 2 of SEBI Master Circular dated October 16, 2023, for Stock Exchanges and Clearing Corporations as well as Clause 4.31 of Section 4 of SEBI Master Circular dated October 06, 2023, for Depositories provide guidelines for Business Continuity Planning (BCP) and Disaster Recovery Site (DRS) for Market Infrastructure Institutions (MIIs). 2. In order to strengthen the Business Continuity framework of MIIs, in the first phase, Software as a Service Model was stipulated for Risk Management Systems of the Clearing Corporations (SEBI circular dated December 20, 2023). 3. In the second phase, discussions were held with exchanges/ Clearing Corporations (CCs) to put in place systems to address possible outage at stock exchanges. In case of outage of a trading venue (i.e. stock exchange) during trading hours, the participants with open positions would be exposed to price risk on such open positions, as there could be material news flow during that time. In such a case, the multi exchange set up along with interoperability among Clearing Corporations could be leveraged to provide an alternative trading venue to end investors. A working group of stock exchanges, CCs and representative qualified stock brokers (QSBs) was created to deliberate the matter. In view of the deliberations of the -- 1 of 3 -- 2 aforesaid working group and subsequent discussions with Secondary Market Advisory Committee of SEBI, following has been decided for the interoperable segments of stock exchanges (i.e. Cash Market/ Equity Derivatives/ Currency Derivatives/ Interest Rate Derivatives etc.): 3.1. Common scrips, derivatives on single stocks or correlated indices, currency derivatives segment and interest rate derivatives: If identical or correlated trading products are available on another trading venue, then participants can hedge their open positions by taking offsetting positions in identical or correlated indices on other exchange. Further, as these segments are interoperable, taking offsetting positions in other trading venue would net off such open positions for end clients and release the margin. Hence, no separate treatment is required for such category of products. 3.2. Scrips exclusively listed on an exchange: To ensure continuity, exchanges may create reserve contracts for scrips (i.e. exclusively listed scrips on other exchange) and single stock derivatives not traded on their exchange (and available on other exchange), to be invoked at the time of outage on the other exchange. 3.3. Index derivatives products not having correlated index derivatives products on another exchange: Exchange which does not have a highly correlated index derivatives product with one available on other exchange may consider creating such an index and introducing derivatives contracts on it, in line with extant Regulatory provisions. The aforesaid would provide an avenue to hedge positions in index derivatives products of an exchange that suffered an outage. 3.4. Intimation to SEBI and Alternative Trading Venue: The affected exchange should comply with extant Regulatory requirements with regard to handling of technical glitch/ outage and intimate about the invocation of the instant business continuity mechanism to the alternative trading venue and SEBI within 75 minutes of occurrence of impact. The alternative trading venue would invoke the business continuity plan as per the Standard Operating Procedure (SOP) within 15 minutes from such intimation. -- 2 of 3 -- 3 4. Upon discussion with exchanges, it has been decided that to begin with, NSE would act as an alternative trading venue for BSE and vice-a-versa. Both exchanges would prepare a joint SOP that would include plan to be invoked at the time of outage on one exchange along with flow of activity involving the affected exchange and its alternative trading venue and roles/responsibility of each of them. Further, the SOP shall also cover changes, if any, in the systems of stock brokers / CCs to implement the measures mentioned at para 3 of the circular for end investors. The aforesaid SOP should be submitted to SEBI within 60 days from the date of the Circular. 5. The Stock Exchange and Clearing Corporations are also directed to: 5.1. Take necessary steps to put in place requisite infrastructure and systems for implementation of the circular, including necessary amendments to the relevant bye-laws, rules and regulations; 5.2. Bring the provisions of this circular to the notice of their members and also disseminate the same on its website; and 5.3. Communicate to SEBI, the status of implementation of the provisions of this circular. 6. The provisions of this circular would come into effect from April 01, 2025. 7. This circular is issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully, Ansuman Dev Pradhan General Manager Technology, Process Re-engineering, Data Analytics Market Regulation Department +91-22-26449622 Email: ansumanp@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

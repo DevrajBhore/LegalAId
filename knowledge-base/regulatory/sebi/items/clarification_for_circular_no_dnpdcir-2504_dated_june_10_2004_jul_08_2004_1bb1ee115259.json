@@ -1,0 +1,25 @@
+{
+  "id": "clarification_for_circular_no_dnpdcir-2504_dated_june_10_2004_jul_08_2004_1bb1ee115259",
+  "title": "Clarification for circular no. DNPD/Cir-25/04 dated June 10, 2004",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jul-2004/clarification-for-circular-no-dnpd-cir-25-04-dated-june-10-2004_9643.html",
+  "document_url": "https://www.sebi.gov.in/legal/circulars/jul-2004/clarification-for-circular-no-dnpd-cir-25-04-dated-june-10-2004_9643.html",
+  "document_date": "Jul 08, 2004",
+  "document_format": "html",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "reason": "html_text_extracted"
+  },
+  "text": "Clarification for circular no. DNPD/Cir-25/04 dated June 10, 2004 Jul 08, 2004| Circulars CHIEF GENERAL MANAGER DERIVATIVES AND NEW PRODUCTS DEPARTMENT DNPD/14785/04 July 8, 2004 To All Exchanges, Clearing House / Corporation, STP centralised hub, STP service providers, custodians, AMFI Sub: Clarification for circular no. DNPD/Cir-25/04 dated June 10, 2004 Dear Sir, This is a clarification to our previous circular no. DNPD/Cir-25/04 dated June 10, 2004 which outlined the transaction work flow for the system of Straight Through Processing (STP) in the Indian Securities Market and standardisation of the messaging formats. The circular prescribed a standardized transaction work flow for the STP system whereby STP users shall be required to use IFN 515 messaging standard for issue of contract note, IFN 548 / 598 for confirmation of the contract note by the custodian / fund manager to the broker and messaging formats IFN 540 to 547 for settlement instructions and their confirmations between the fund manager and the custodians for settlement of such trades. It is reiterated that the messaging formats prescribed for STP in India is based on the internationally accepted ISO 15022 messaging standards. However the descriptors for each messaging format had been formulated in a manner to describe the practices followed in the Indian securities’ market (from the perspective of settlement obligation of a stock broker). However it has been observed that that there has been some confusion in certain sections of the market with respect to the intended use of the messaging format on account of the messaging descriptors. Accordingly it is clarified that the descriptors as stated in the said circular shall mean the following: IFN 540: settlement instruction for a buy trade free of payment IFN 541: settlement instruction for a buy trade against payment IFN 542: settlement instruction for a sell trade free of payment IFN 543: settlement instruction for a sell trade against payment IFN 544: confirmation of a settlement instruction for a buy trade free of payment (response to IFN 540) IFN 545: confirmation of a settlement instruction for a buy trade against payment (response to IFN 541) IFN 546: confirmation of a settlement instruction for a sell trade free of payment (response to IFN 542). IFN 547: confirmation of a settlement instruction for a sell trade against payment (response to IFN 543) It is also clarified that in the IFN 515 message, if the trade is intended to be settled by the custodian with the Clearing Corporation (by accepting the settlement obligation), then it shall be termed as \"FREE\" and if the trade is intended to be settled by the broker with the Clearing Corporation then it shall be termed as \"APMT\" (meaning against payment) in the tag 22H of the IFN 515 message. Yours sincerely, N. PARAKH",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

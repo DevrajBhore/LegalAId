@@ -1,0 +1,41 @@
+{
+  "id": "computation_of_daily_contract_settlement_value_interest_rate_futures_feb_20_2018_8b304743ca9a",
+  "title": "Computation of Daily Contract Settlement Value – Interest Rate Futures",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/feb-2018/computation-of-daily-contract-settlement-value-interest-rate-futures_37902.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/feb-2018/1519120191309.pdf",
+  "document_date": "Feb 20, 2018",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "Deepti Agrawal",
+      "Creator": "Microsoft® Word 2013",
+      "CreationDate": "D:20180220150801+05'30'",
+      "ModDate": "D:20180220150801+05'30'",
+      "Producer": "Microsoft® Word 2013"
+    },
+    "reason": null
+  },
+  "text": "CIRCULAR SEBI/HO/MRD/DRMNP/CIR/P/2018/27 February 20, 2018 All recognized Stock Exchanges and Clearing Corporations Dear Sir/Madam Computation of Daily Contract Settlement Value – Interest Rate Futures Kindly refer to SEBI circular CIR/MRD/DRMNP/35/2013 dated December 05, 2013 and circular CIR/MRD/DRMNP//11/2015 dated June 12, 2015 on Exchange Traded Cash Settled Interest Rate Futures (IRF) on Government of India security. 2. Based on the consultations held with the stakeholders, it has been decided to provide flexibility to the exchanges with regards the computation methodology of Daily Contract Settlement Value of Interest Rate Futures. Accordingly, Para 8 of Annexure 1 to aforesaid SEBI circulars shall now read as follows: The Daily Contract Settlement Value shall be = Pw*2000 (Here Pw is volume weighted average futures price of last half an hour). In the absence of last half an hour trading, theoretical futures price shall be considered for computation of Daily Contract Settlement Value. For computing theoretical futures price, volume weighted average price of underlying bond in last two hours of trading on NDS-OM shall be considered. In case, there are no trades in the last two hours of trading on NDS-OM, either of the following shall be considered:- A theoretical price with reference to FIMMDA rates shall be used. OR a) The volume weighted average price of underlying bond in the entire day shall be considered. b) In case there are no trades in the entire day on NDS-OM, then the previous day’s theoretical price shall be considered. The same can be considered up to maximum 5 trading days. c) If case there are no trades for more than 5 consecutive days, then a theoretical price with reference to FIMMDA rates shall be used. -- 1 of 2 -- 2 Exchanges shall be required to disclose the model/methodology used for arriving at the theoretical price. 3. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully (Sanjay Purao) General Manager Market Regulation Department Email: sanjayp@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

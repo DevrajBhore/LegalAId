@@ -1,0 +1,152 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[●]"
+      }
+    },
+    {
+      "name": "placeholder_2",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[___]"
+      }
+    },
+    {
+      "name": "placeholder_3",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[__]"
+      }
+    },
+    {
+      "name": "lead_investor",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[lead investor]"
+      }
+    },
+    {
+      "name": "note_this_is_optional_and_is_to_be_included_if_an_investor_is_getting_advisory_equity",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Note: This is optional and is to be included if an investor is getting advisory equity.]"
+      }
+    },
+    {
+      "name": "signature_pages_to_follow",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[Signature Pages to Follow]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_1",
+      "clause_name": "Clause 1",
+      "category": "termination"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_10",
+      "clause_name": "Clause 10",
+      "category": "confidentiality"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_3",
+      "clause_name": "Drag Along Option",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_4",
+      "clause_name": "Qualified Financing",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_7",
+      "clause_name": "Clause 7",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "term_sheet_ccps_undated_3d8ecb4fd546_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    }
+  ],
+  "body": "LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 1 Term Sheet This term sheet (“Term Sheet”) executed on [●] (“Effective Date”) summarizes the principal terms and conditions for the proposed investment (“Proposed Transaction”) in [●] (“Company”) by [●] (“Investor”) and is executed by and between [●] and [●] (collectively, “Promoters”), the Company and the Investor. This Term Sheet has been entered to facilitate negotiations for the Proposed Transaction and is an expression of intention only and does not constitute an offer, agreement, agreement in principle, agreement to agree or commitment to provide financing. This Term Sheet is non-binding except for Clause 4 which shall be legally binding on all parties hereto. 1.0 TRANSACTION DETAILS 1.1 Business The Company is currently engaged in the business of [●]. 1.2 Promoter(s) The Company is currently controlled by [●] and [●]. 1.3 Current Capital Structure The current paid up and issued share capital of the Company comprises of [●] equity shares with a face value of INR [●] per share and [●] preference shares with a face value of INR [●] per share. The Promoters hold [●] % in the current paid up and issued share capital of the Company. The shareholding pattern of the Company as on the Effective Date is as set forth in Schedule 1 hereto. 1.4 Instruments Compulsorily convertible preference shares of the Company having a face value of INR [●] each at a price of [●] per share with certain rights attached as mutually agreed upon by the Parties in the Definitive Documentation (“Preference Shares”) and equity shares having a face value of INR [●] each at a price of [●] per share (collectively, the “Subscription Shares”). “Definitive Documentation” shall have the meaning ascribed to it under Clause 3.1 of this Term Sheet. 1.5 Dividend The holders of Preference Shares shall be entitled to payment of [●]% non-cumulative coupon per annum on each of the Preference Shares by way of dividend from the Company, in preference to the holders of equity shares or any other securities of the Company. 1.6 Valuation For the purpose of the Proposed Transaction, the pre-money valuation of the Company is INR [●]. 1.7 Proposed Transaction (i) Subject to applicable law, the Investor, along certain other persons as set forth in the Definitive Documentation (collectively, “Investors”) proposes to make an investment of up to INR [●] (the “Investment Amount”) into the Company in the manner set out in Schedule 2 hereunder. The Investment Amount may be subject to change at any time subsequent to the execution of this Term Sheet but prior to the execution of the Definitive Documentation, and in the event of the same, the post-money valuation and shareholding pattern of the Company shall be accordingly revised. LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 2 (ii) The Parties will work towards achieving completion of the Proposed Transaction, including but not limited to the remittance of the Investment Amount and issue of corresponding Subscription Shares (“Closing”) within the timeframe specified in the SSSHA. (iii) The shareholding pattern of the Company, immediately upon Closing shall be as set forth in Schedule 2 hereunder. 1.8 Advisory Equity The Company agrees to issue at the time of Closing, to [___], Equity Shares (“Advisory Equity”) equivalent to {{placeholder}}% of the Investment Amount in value, in consideration of the advisory and mentoring services to be rendered by [lead investor] on an ongoing basis, subject to the terms set forth in the Definitive Documentation. [Note: This is optional and is to be included if an investor is getting advisory equity.] 2.0 KEY CONSIDERATIONS 2.1 Board Composition And Incidental Matters The Board of Directors of the Company (the “Board”) immediately upon Closing shall comprise of [●] directors, of which the Investors shall be entitled to nominate 1 (one) director (“Investor Director”) and the other directors shall be nominated by the Promoters. In the event of any increase or decrease in the number of directors, the number of directors so nominated by the Investors and the Promoters shall be proportionately increased or decreased. [Note: In the event the Investors do not have representation on the Board of Directors of the Company, a Board Observer position may be granted to the Investors as set forth below.] The Investors shall be entitled to nominated 1 (one) person as the observer of the proceedings of the Board (“Board Observer”). 2.2 Pre-emptive Rights The Investors shall have a pro rata right to participate in any future issue of shares by the Company to any third party and to retain their shareholding on a fully diluted basis in the Company on the same terms and conditions (including price) as offered to such third party. Circumstances where pre-emptive rights will not be applicable will be detailed in the Definitive Documentation. 2.3 Anti-Dilution Protection If at any time after Closing, the Company issues to any third party, equity shares or instruments convertible to equity shares, at a price per share that is lower than the price paid for the Subscription Shares (or their conversion price), then the Investors shall be entitled to anti-dilution protection on a broad based weighted average basis. In such an event, the Company shall be bound to, and the Promoters shall be bound to cooperate with the Investors and the Company such that, the Company forthwith takes all necessary steps to either adjust the conversion ratio or issue additional equity shares to the Investors. Circumstances where anti-dilution protection will not be applicable will be detailed in the Definitive Documentation. LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 3 2.4 Conversion Upon the occurrence of a liquidation event (as described in the Definitive Documentation) or prior to the end of 20 (twenty) years from the date of allotment (whichever is earlier), the Preference Shares shall convert into equity shares at a conversion ratio of 1:1 (“Conversion Factor”). The Conversion Factor shall be adjusted based on future bonus issue, issuances arising from exercise of any stock options, share splits, consolidation, reorganization, recapitalization, reclassification or similar events with respect to the share capital of the Company and the anti-dilution protection as provided in this Term Sheet. 2.5 Promoters’ Lock In The Promoters shall not be entitled to transfer to any person, the shares held by them in the Company, directly or indirectly, for a period of 3 (three) years from the date of Closing (“Lock-in Period”). The Promoters may however transfer their shares to any person during the Lock-in Period subject to the prior written approval of the Investors and right of first refusal or tag along right as set forth in this Clause 2. 2.6 Vesting of Promoters’ Shares 25% of the shares held by each Promoter shall be deemed to have vested on the date hereof, and the remaining 75% of the shares held by each Promoter (“Unvested Shares”) will be restricted over a 4-year period starting from the date of Closing (“Vesting Period”). Upon the completion of the first year, the Unvested Shares will be vested in equal instalments, every 3 (three) months, over the next 3 (three) years and shall cease to be part of the Unvested Shares. It is hereby clarified that the first quarterly vesting shall occur at the end of the 15th (fifteenth) month. In the event of termination of any of the Promoters’ employment with the Company any time during the Vesting Period, only the shares that remain part of the Unvested Shares shall be transferred to the Company and in the event such transfer to the Company is not feasible (by reason of restrictions under applicable law or otherwise), such Unvested Shares shall be disposed of in a manner determined by the Board and the Investors. [Note: The manner of disposal of the Unvested Shares can be customised based on the understanding between the Parties.] 2.7 Promoters’ and Non-Selling Investors’ Right of First Offer In the event any of the Investors (“Selling Investor”) intends to sell all or part of their shareholding (“ROFO Shares”) in the Company to a third party (“Third Party Buyer”), then such Selling Investor shall first offer to sell the same to the Promoters and in the event: (a) the Promoters refuse to purchase the same; or (b) such Selling Investor obtains an offer from any Investor other than the Selling Investor (“Non-Selling Investor”) for purchase of the ROFO Shares at a price higher than the price at which the same was offered to be purchased by the Promoters (“Offer Price”), then such Selling Investor shall sell the ROFO Shares to such Non-Selling Investor, provided that the price of the ROFO Shares shall not be lower than the Offer Price. The Promoters and the Non-Selling Investors shall each have the right to purchase the ROFO Shares in proportion of their respective shareholding in the Company at the Offer Price (or higher). In the event: (a) none of the Non-Selling Investors agree to purchase the ROFO Shares; or LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 4 (b) the Selling Investor obtains an offer from a Third Party Buyer for purchase of the ROFO Shares at a price higher than the Offer Price, then such Selling Investor shall sell such ROFO Shares to such Third Party Buyer, provided that the price of the ROFO Shares shall not be lower than the Offer Price. 2.8 Investors’ Right of First Refusal Subject to the Promoter’s lock-in as set forth in Clause 2.5 of this Term Sheet, in the event any of the Promoters or any other shareholders (other than the Investors) (“Selling Shareholder”) intends to sell all or part of their shareholding (“ROFR Shares”) in the Company to any person, then such Selling Shareholder(s) shall first offer the ROFR Shares, to all the Investors (“Non-Selling Shareholders”) at the same price as they have offered to such person. The Non-Selling Shareholders, at their sole discretion, shall have the right to purchase the ROFR Shares in proportion to their inter se shareholding in the Company. 2.9 Tag-Along Right Subject to the Promoter’s lock-in as set for in Clause 2.5 of this Term Sheet, in the event any of the Promoters, or the other shareholders (other than the Investors) decide to sell their shareholding in the Company or a portion of it to any person (“Buyer”), and the Investors do not exercise their right of first refusal as referred to under Clause 2.7 of this Term Sheet, then the Investors shall have the right (but not the obligation) to require the Promoters or the other shareholders as the case may be, to ensure that the Buyer purchases the pro-rata Subscription Shares on the same terms and simultaneously with the shares of the Promoters and the other shareholders. The Promoters and/or the other shareholders shall not sell any of their shares to the Buyer unless the Buyer purchases the Subscription Shares. It is hereby clarified that any transfer of shares by any of the Investors shall not be subject to any tag along rights. The procedure governing exercise of tag-along right will be detailed in the Definitive Documentation. 2.10 ESOP The Company shall implement an Employee Stock Option Plan (“ESOP”) constituting at least 10% and not exceeding [●]% of the post-issue share capital of the Company on a fully diluted basis, with approval of the Investor Director, the quantum of which will be decided in the Definitive Documentation. The ESOP will be used for attracting and retaining talent in the Company. It is hereby clarified that the ESOP shall not be dilutive to the Investors. 2.11 Affirmative Voting Rights The Company and its shareholders shall not be permitted to take any decisions on certain matters without such matters having first received the approval of the Investor Director at a Board meeting. The customary affirmative rights will be listed in the Definitive Documentation. The Investors will have the right to vote pro-rata to their shareholding (on an as if converted basis) in all shareholder meetings. 2.12 Liquidation Preference The holders of the Preference Shares shall be entitled to preferential right (“Liquidation Preference”) to distribution from the Company or from third parties, as the case may be, over the other shareholders, upon the occurrence of a liquidation event and shall be entitled to receive, in preference to the holders of equity shares and other securities, an amount LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 5 which is equal to either: (a) the pro-rata share of the Investor’s shareholding on as if converted basis plus all declared but unpaid dividends; or (b) the Investment Amount plus all declared but unpaid dividends, whichever is higher. Transactions constituting liquidity event will be detailed in the Definitive Documentation. 2.13 Information Rights As long as the Investors hold any shares in the Company, the Investors shall receive from the Company (i) quarterly (un-audited) financial statements within 30 (thirty) calendar days from the end of the preceding quarter, (ii) annual (audited) financial statements within 60 (sixty) calendar days following the closure of the preceding financial year, (iii) operating / business plan within 30 (thirty) calendar days prior to the commencement of the following year and (iv) any other operational and financial information as per the requirement of the Investors. 2.14 Exit Mechanism 1. The Company and the Promoters shall make all reasonable endeavors to provide exit to the Investors by way of: (a) an initial public offering of the Company at a mutually agreed minimum valuation within 5 (five) years from the date of Closing; or (b) strategic sale of the Subscription Shares at the price acceptable to the Investors within 6 (six) years from the date of Closing provided the Company and the Promoters fail to facilitate an exit under Clause 2.14(1)(a) above. 2. Drag Along Option: In the event the Company and the Promoters fail to provide an exit to the Investors in accordance with Clause 2.14(1) above, the Investors shall have the unilateral right to sell their Investor Instruments (including shares) to any third party and the right to drag along the Promoters requiring the Promoters to sell whole of part of their shares, if required by such third party, to enable exit by the Investors. 3. Qualified Financing: The Company shall endeavor to ensure that any future issuance by it of securities of a cumulative value equal to or higher than 125% of the Investment Amount to a third party (“Proposed Investor”) shall be done such that at least 25% of the amount proposed to be raised under such issuance shall be raised through sale by the Investors, of the Subscription Shares held them on a pro rata basis to such Proposed Investor, such sale being done at the discretion of such Investors. Detailed provisions with respect to the exit rights of the Investors shall be incorporated under the Definitive Documentation. 2.15 Free Transferability Subject to Clause 2.7 and provided that the Investors do not sell the Company’s securities held by them to any competitor of the Company, the securities held by the Investors in the Company shall be freely transferable at any point of time, subject to applicable law. The term ‘competitor’ shall be defined in the Definitive Documentation. 2.16 Power of The Investor shall be the power of attorney holder for the other Investors who are parties LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 6 Attorney to the Definitive Documentation, subject to the consent of such other Investors, in respect of matters set forth in this regard in the Definitive Documentation. 3.0 DOCUMENTATION AND INCIDENTAL MATTERS 3.1 Definitive Documentation; Consummation The parties shall enter into a Share Subscription and Shareholders’ Agreement (“SSSHA”) for the furtherance of the said Proposed Transaction and to inter alia incorporate the rights of the Investors and the rights and obligations of the other shareholders of the Company, within 90 (ninety) days from the date of signing of this Term Sheet, which date may be mutually extended by the Parties. The SSSHA, the restated articles, the articles of association of the Company and the memorandum of association of the Company and any other incidental documents shall be referred to as “Definitive Documentation”. 3.2 Conditions Precedent to Closing 1. A complete legal and financial due diligence of the Company to be completed to the satisfaction of the Investors. 2. Obtaining of all regulatory permissions, approvals or consents required in relation to the Investors’ acquisition of the Subscription Shares. 3. Execution of the Definitive Documentation in form and substance in accordance with the agreed terms as enshrined in this Term Sheet, together with any other agreements and documents that may be deemed necessary by the Parties. 4. Execution of an employment agreement between the Company and the Promoters in form and substance agreeable to the Investors. 5. Amendment of the Company’s articles and memorandum of association and any existing shareholders agreement to permit the issuance of the Subscription Shares and all associated rights of this Proposed Transaction and as provided for in the Definitive Documentation. 6. No material adverse change shall have occurred in the business, financial condition, results of operations, or prospects of the Company and its subsidiaries. 7. Any other conditions precedent that may be deemed necessary by the Investor(s) pursuant to the due diligence conducted on the Company or otherwise. 3.3 Standstill Provisions During the period between the Effective Date and the date of execution of the Definitive Documentation / or the date of termination of this Term Sheet, whichever is earlier, the Company shall not, without the Investor’s consent: a) enter into any commitment or transaction for acquisition of property, business or any other asset, or do anything which is not contemplated by this Term Sheet and which would have a material adverse effect on the business of the Company and the Proposed Transaction, save and except in the ordinary course of business; b) conduct the business of the Company otherwise than in the ordinary course; c) enter into any commitment, transaction, arrangement or agreement with related parties LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 7 (as defined under the Companies Act, 2013; d) incur any substantial indebtedness; e) appoint or relieve from the services of the Company any senior employee; or f) make any change in the share capital of the Company. 3.4 Representations and Warranties The Company represents to the Investors that the Proposed Transaction: (a) is in accordance with applicable law, including but not limited to, Indian foreign exchange regulations; and (b) shall not result in the Company violating any terms in respect of existing corporate or statutory approvals. 3.5 Statutory Approvals The parties understand and agree that each party shall be responsible for obtaining the statutory approvals required for completion of their respective commitments of the Proposed Transaction described herein. The parties agree that they shall, where necessary, provide no objection letters and any other correspondence that may be necessary for the other party to obtain statutory approvals. 3.6 Events of Default The Definitive Documentation will set out customary events of default and consequences. The events of default shall include breach of any provisions of the Definitive Documentation by a party. 4.0 GENERAL 4.1 Expenses All costs and expenses which constitute the basic and requisite transactional expenses in respect of the transaction contemplated herein (including consultancy/advisory fees, due diligence, stamp duty or other statutory charges) (“Basic Expenses”) shall be borne by the Company. Any expense in addition to the Basic Expenses initiated by an Investor shall be borne by such Investor. 4.2 Confidentiality All parties hereto shall keep all negotiations confidential and maintain the contents of this Term Sheet in strictest confidence and shall make no announcement or disclosure without the prior written approval of the other party save in respect of disclosures or announcements which may be required by any law or regulation, and any disclosures to each party’s consultants, advisors, employees/directors (or by the Investor to their affiliates or their employees/ directors/ advisors/ consultants) on a need-to-know basis. 4.3 Exclusivity The Company and the Promoters agree that following 60 (sixty) days from the execution of this Term Sheet, neither the Promoters nor the Company, either by themselves or through any other person, shall approach or participate in any discussions or negotiations or solicit, discuss and/or encourage any equity or quasi equity financing for the Company by any other person in any manner and will not provide any information relating to the Company to any other potential investor and will clearly indicate to other interested/ prospective investors that the Company and the Promoters are bound by the exclusivity period with the Investor(s) under this Term Sheet. The exclusivity period may be mutually extended by the LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 8 parties. 4.4 Termination This Term Sheet shall terminate 90 (ninety) days from its execution unless mutually extended by the parties or mutually cancelled by the parties. It shall automatically stand terminated upon replacement by the Definitive Documentation. 4.5 Amendment The parties may amend the terms of this Term Sheet by mutual consent in writing. 4.6 Governing Law and Arbitration Any disputes arising out of or in connection with the validity, interpretation or implementation of this Term Sheet or the Definitive Documentation shall be governed by the laws of India. For the purposes of this Term Sheet and the Definitive Documentation, the courts of [●] shall have exclusive jurisdiction. 4.7 Legally Binding Understanding It is hereby expressly agreed between the Parties that the terms and conditions set forth in this Term Sheet are not legally binding on the Parties, save and except to the extent specifically stated herein. Notwithstanding anything contained herein, the clauses pertaining to expenses, confidentiality, exclusivity, consummation, termination of term sheet, governing law and arbitration set out in this Term Sheet, shall be legally binding on the parties. LetsVenture Standard (CCPS) Termsheet Template (India) | 2017 9 Schedule 1 Shareholding Pattern (Pre-Closing) Name No of Shares Percentage of Shareholding [●] [●] [●] [●] [●] [●] Total [●] 100 Schedule 2 Shareholding Pattern (Post-Closing) Name No of Shares Percentage of Shareholding [●] [●] [●] [●] [●] [●] [●] [●] [●] Total [●] 100 Acknowledged and Agreed: [Signature Pages to Follow]",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/term_sheet_ccps_undated_3d8ecb4fd546.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/TERM_SHEET_CCPS.pdf",
+    "quality_score": 80,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

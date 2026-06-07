@@ -1,0 +1,33 @@
+{
+  "id": "lean_manufacturing_competitiveness_for_msmes_undated_bab6d0350d9b",
+  "title": "Lean Manufacturing Competitiveness for MSMEs",
+  "source_type": "scheme-guidelines",
+  "source_label": "MyMSME Scheme Guidelines",
+  "source_mode": "scheme-table",
+  "document_url": "https://msme.gov.in/sites/default/files/guidelines%20lean.pdf",
+  "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "linked_but_unresolved",
+    "num_pages": null,
+    "info": {},
+    "link_status": "broken_upstream",
+    "recovery_attempts": [
+      "https://msme.gov.in/sites/default/files/guidelines%20lean.pdf"
+    ],
+    "source_error": "binary_fetch_status_404"
+  },
+  "source_refs": [
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx"
+    }
+  ]
+}

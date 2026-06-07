@@ -1,0 +1,33 @@
+{
+  "id": "international_cooperation_undated_add7d97207ba",
+  "title": "International Cooperation",
+  "source_type": "scheme-guidelines",
+  "source_label": "MyMSME Scheme Guidelines",
+  "source_mode": "scheme-table",
+  "document_url": "https://msme.gov.in/sites/default/files/Revised-IC-Scheme%20Guidelines%2016.12.2016_New_06032017.PDF",
+  "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": false,
+  "text": "",
+  "extraction": {
+    "status": "linked_but_unresolved",
+    "num_pages": null,
+    "info": {},
+    "link_status": "broken_upstream",
+    "recovery_attempts": [
+      "https://msme.gov.in/sites/default/files/Revised-IC-Scheme%20Guidelines%2016.12.2016_New_06032017.PDF"
+    ],
+    "source_error": "binary_fetch_status_404"
+  },
+  "source_refs": [
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx"
+    }
+  ]
+}

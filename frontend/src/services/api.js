@@ -8,7 +8,12 @@ const API_BASE_URL =
 
 const API = axios.create({
   baseURL: API_BASE_URL,
+  // Send/receive the httpOnly auth cookie alongside the Bearer header.
+  withCredentials: true,
 });
+
+export const logoutRequest = () =>
+  API.post("/auth/logout").catch(() => {});
 
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("legalaid_token");

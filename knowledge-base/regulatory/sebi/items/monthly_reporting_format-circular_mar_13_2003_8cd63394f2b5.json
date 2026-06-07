@@ -1,0 +1,25 @@
+{
+  "id": "monthly_reporting_format-circular_mar_13_2003_8cd63394f2b5",
+  "title": "Monthly Reporting Format-Circular",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/mar-2003/monthly-reporting-format-circular_15839.html",
+  "document_url": "https://www.sebi.gov.in/legal/circulars/mar-2003/monthly-reporting-format-circular_15839.html",
+  "document_date": "Mar 13, 2003",
+  "document_format": "html",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "reason": "html_text_extracted"
+  },
+  "text": "Monthly Reporting Format-Circular Mar 13, 2003| Circulars CHIEF GENERAL MANAGER DERIVATIVE CELL SMD/DC/ 5413 /03 March 12, 2003 To, The Chief Executive Officer / Managing Director Of Derivative Segment of NSE & BSE And their Clearing House / Corporation. Dear Sir, Sub: Monthly Reporting Format This is in continuation with SEBI Circular No. SMD/DC/Cir-12/02 dated May 13, 2002 specifying the format for the Monthly Activity Report for the Derivative Segment / F &O Segment of the exchange. As the risk containment measures and eligibility criteria for selection of stocks for derivatives trading have undergone a change, the monthly reporting format stands modified in the following aspects: 1. Trading Statistics as given in Table I shall be given for Futures and Options contracts traded on all stocks and indices. 2. Table II giving the details of the Price Scanning Range shall now be replaced with the following table and the information shall be given for all derivative contracts traded in the exchange. II. PRICE SCANNING RANGE AND VOLATILITY DURING THE PREVIOUS MONTH: Name of the underlying Average scanning range (in % terms) Maximum scanning range (in % terms) Minimum scanning range (in % terms) Average volatility (in % terms) Maximum volatility (in % terms) Minimum volatility (in % terms) Impact Cost for the current month (in % terms) 3. Table III showing the compliance of the eligibility criteria of the stocks on which futures and options are traded shall be replaced with the following tables: III. Compliance of the eligibility criteria of the stocks from amongst top 500 stocks in terms of average daily market capitalisation and average daily traded value in the previous six months A. APPLICABILITY OF THE NEW ELIGIBILITY CRITERIA FOR STOCKS ON WHICH DERIVAITVES ARE TRADED Name of the underlying on which Futures and options are available for trading Quarter Sigma order size (Rs.) Whether the stock is fulfilling the eligibility criteria in the current month? (Y/N) If no, for how many consecutive months has the stock not been eligible? If the stock has not been eligible for 3 months consecutively including the current month, state the action taken B. MEDIAN QUARTER SIGMA ORDER SIZE FOR OTHER STOCKS Name of the stock (list all stocks from amongst the Top 500 stocks in terms of average daily market capitalization and average daily traded value in the previous six months) Median Quarter sigma order size required to cause a change in the stock price equal to one-quarter of a standard deviation over the last six months Whether the stock is eligible for derivatives trading in the current month? (Y/N) Number of months the scrip has been eligible. You are requested to submit the modified Monthly Activity Report after incorporating the above changes starting from the monthly report for the month of March 2003. Yours sincerely, N.PARAKH",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

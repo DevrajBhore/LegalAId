@@ -1,0 +1,51 @@
+{
+  "id": "epbgformat_undated_fdf8a990dc9d",
+  "title": "epbgformat",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "Bid Security and Guarantees",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/epbgformat_1604313133.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "Contract No.: GEMC-511687762772688 Dated: 29-10-2020 ePBG Draft Document Bank Guarantee Format for Performance Security Beneficiary: test Hq, Dedicated Freight Corridor Corporation of India Ltd., NA, Ministry of Railways (Nilesh Kumar Pal) (hereinafter referred to as Beneficiary / Government) Date: .................. [ date of issue of BG] (To be filled by issuing bank) ..................... PERFORMANCE BANK GUARANTEE No.: ......................[ guarantee number] (To be filled by issuing bank)...................... PERFORMANCE BANK GUARANTEE Amount: Rs 792,000.00(Seven Lakh Ninety Two Thousands Rupees ) Contract No.: GEMC-511687762772688 Bid Number: GEM/2020/B/69497 Applicant / Seller: Hemant M/S BKTESTING pvt.ltd Rohini Office, 101,Flat no 101 1 Rohini,West Delhi DELHI 110087 Guarantor: .... [ name and address of the issuing Bank] (To be filled by issuing bank)................. 1. The Applicant / Seller named above has entered into above referred contract with the Beneficiary on behalf of President of India/Governor of State/Chairman, CMD, Secretary, Commissioner etc. of Central/State PSUs/Departments for the supply of Goods and / or Services as defined in the said contract. According to the conditions of the Contract, a performance security is required to be furnished by the Seller to the Beneficiary for due performance of the contract. 2. At the request of the Applicant, we as Guarantor, hereby irrevocably undertake to pay the Beneficiary any sum or sums not exceeding in total an amount of 792,000.00(Seven Lakh Ninety Two Thousands Rupees ), upon receipt by us of the Beneficiary's demand stating that the Applicant is in breach of its obligation(s) under the Contract, without the Beneficiary needing to prove or to show grounds for your demand or the sum specified therein. 3.We do hereby undertake to pay the amount due and payable under this Guarantee without any demur, merely on a demand from the Beneficiary / Government. Any such demand made on the Bank shall be conclusive as regards the amount due and payable by the Bank under this Guarantee. However, our liability under this guarantee shall be restricted to an amount not exceeding Rs. 792,000.00(Seven Lakh Ninety Two Thousands Rupees ) 4.We undertake to pay the Government any money so demanded not withstanding any dispute or 1 / 3 -- 1 of 3 -- disputes raised by Seller(s)in any suit or proceeding pending before any Court or Tribunal relating thereto liability under this present being absolute and unequivocal. 5.The payment so made by us under this Bond shall be a valid discharge of our liability for payment thereunder and the Seller (s) shall have no claim against us for making such payment. 6.We further agree that the Guarantee here in contained shall remain in full force and effect during the period that would be taken for the performance of the said Contract including Guarantee/ Warrantee period and that it shall continue to be enforceable till all the dues of the Government under or by virtue of the said Contract have been fully paid and its claims satisfied or discharged. 7.We further agree with Government that the Government shall have the fullest liberty without our consent and without affecting in any manner our obligations hereunder to vary any of the terms and condition of the said Contractor to extend time of performance by the said Seller(s) from time to time or to postpone any time or from time to time powers exercisable by the Government against the said Seller(s) and to forbear or enforce any of the terms and condition relating to the said Contract and we shall not be relieved from our liability by reason of any such variation, or only extension being granted to the said Seller(s) or for any forbearance,act or omission on the part of the Government or any indulgence by the Government to the said Seller(s) or by any such matter or thing whatsoever which under the law relating to sureties would, but for this provision, have effect of so relieving us. 8.Notwithstanding anything contained herein above our liability under the Guarantee is restricted to Rs. 792,000.00(Seven Lakh Ninety Two Thousands Rupees ) and shall remain in force until . 9.This Guarantee will not be discharge due to be change in the constitution of the Bank or the Seller (s). 10.We lastly undertake not to revoke this Guarantee during its currency except with the previous consent of the Government in writing. Dated ................. For........................................................................... (Indicate the name of the Bank) Signature.................................................................. Name of the Officer................................................. Designation of the officer ....................................... Code no ................................................................... Name of the Bank and Branch................................. Advisory: For Applicant and its BG Issuing Bank Branch. Not the integral part of the Paper BG as above. It is to be noted that paper PBG will not be operational unless same is transmitted to the advisory bank through SFMS platform. For ready reference and updation of BG in GEM portal, it is necessary that BG issuing bank send the BG advice in the form of message format 760COV via SFMS (structural financial messaging system) as provided by RBI. In the event of BG issuing bank not sending the message 760COV or committing any error while capturing the details atleast in the below field, BG confirmation may not happen and subsequent processing may get stopped. 2 / 3 -- 2 of 3 -- BG advising message - 760COV via SFMS Fields Number Particulars 7039 GEMC-511687762772688 7025 792000 7029 2020-12-01(YYYY-MM-DD) 7033 GEM/S/BKTESTING pvt.ltd/461116 7034 GEM/GO/451455 7035 (Non mandatory) DCBL0000004 7036 (Non mandatory) laram shopping centre SV road andheri west Please note that your bank while issuing the BG ensure that above information is correctly captured as mentioned above in BG advising message i.e. 760COV In case of any error by the applicant or BG issuing banker, neither GEM or its service partners would be responsible for any consequences whatsoever it may be. Note: 1) If issuing bank does not adhere to advisory GeM will not be responsible. 2) PBG shall be issued within 72 hour's by the SFMS otherwise system will not recognize the receipt for placing the order by buyer. 3) Bank shall mandatorily use SFMS 760COV message protocal for inland BG. 4) Download IBA Guide Line of SFMS from https://gem.gov.in/support for the details instruction. ---Thank You--- Powered by TCPDF (www.tcpdf.org) 3 / 3 -- 3 of 3 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Producer": "SAMBox 2.2.3",
+      "CreationDate": "D:20201029115712+05'30'",
+      "ModDate": "D:20201030125551+01'00'",
+      "Trapped": {
+        "name": "False"
+      },
+      "Creator": "sejda.com (4.0.20)"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/upload/shared_doc/epbgformat_1604313133.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

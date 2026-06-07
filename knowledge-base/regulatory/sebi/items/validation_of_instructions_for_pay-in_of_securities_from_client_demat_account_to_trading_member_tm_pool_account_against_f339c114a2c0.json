@@ -1,0 +1,47 @@
+{
+  "id": "validation_of_instructions_for_pay-in_of_securities_from_client_demat_account_to_trading_member_tm_pool_account_against_f339c114a2c0",
+  "title": "Validation of Instructions for Pay-In of Securities from Client demat account to Trading Member (TM) Pool Account against obligations received from the Clearing Corporations",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/sep-2022/validation-of-instructions-for-pay-in-of-securities-from-client-demat-account-to-trading-member-tm-pool-account-against-obligations-received-from-the-clearing-corporations_63032.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/sep-2022/1663582106179.pdf",
+  "document_date": "Sep 19, 2022",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "GAURAV KUMAR",
+      "Creator": "Microsoft® Word 2016",
+      "CreationDate": "D:20220919150539+05'30'",
+      "ModDate": "D:20220919152230+05'30'",
+      "Producer": "Microsoft® Word 2016; modified using iTextSharp™ 5.4.4 ©2000-2013 1T3XT BVBA (AGPL-version)",
+      "Custom": {
+        "ParentAuthor": "2320@SEBINT",
+        "Classification": "SEBI-INTERNAL",
+        "FClassification": "SEBI-INTERNAL",
+        "KID": "E4B97AF588FA637991977501976478"
+      }
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 3 CIRCULAR SEBI/HO/MIRSD/DoP/P/CIR/2022/119 September 19, 2022 To, All Depositories All recognized Stock Exchanges and Clearing Corporations Madam / Sir, Sub: Validation of Instructions for Pay-In of Securities from Client demat account to Trading Member (TM) Pool Account against obligations received from the Clearing Corporations 1. In order to protect clients’ funds and securities and to ensure that the Stock Broker segregates securities or moneys of the client or clients and does not use the securities or moneys of a client or clients for self or for any other client, SEBI has issued various circulars from time to time. 2. Further, SEBI circular no. SEBI/HO/MIRSD/DOP/P/CIR/2021/595 dated July 16, 2021, inter-alia, specifies that “Depositories may keep block on the securities in client’s demat account in respect of Intra or Inter depository transfer instruction till pay-in day. The blocked securities will be transferred only after checking against the client level net delivery obligation received from CCs.” SEBI circular no. SEBI/HO/MIRSD/DOP/P/CIR/2022/109 dated August 18, 2022 made the aforementioned facility of block mechanism mandatory for all Early Pay-In transactions. 3. SEBI had extensive consultations with Exchanges, Depositories and Clearing Corporations (CCs) to further mitigate the risk for clients’ securities, particularly those given towards delivery/settlement obligations. Accordingly, the following is decided: 3.1. Depositories, prior to executing actual transfer of the securities for Pay-In from client demat account to TM Pool account, shall validate the transfer instruction -- 1 of 3 -- Page 2 of 3 received through any of the available channels for the purpose of Pay-in, i.e. either initiated by clients themselves or by the Power of Attorney (POA) / Demat Debit and Pledge Instruction (DDPI) holder against the client-wise net delivery obligation received from CCs. 3.2. For Early Pay-In transactions, the existing facility of Block mechanism shall continue. 4. In order to validate the Pay-In Instructions, the following process shall be put in place by the Depositories: Validation of transfer instruction details with CC obligation details 4.1. Depositories receive the debit instruction for the purpose of Pay-In, given either by client himself using depository’s online system or eDIS mandate or through depository participant based on physical DIS / digitally signed DIS given by client or POA / DDPI holder. 4.2. CCs shall provide client-wise net delivery obligations on T day to the depositories. 4.3. Based on the obligation data provided by CCs, Depositories shall validate the depository transfer instruction details with CC obligation details based on UCC, TM ID, CM ID, Exchange ID, ISIN, quantity, settlement details etc. Matched instruction: 4.4. In case of matching of all details like UCC, TM ID, CM ID, ISIN, quantity, settlement details etc. of the transfer instruction with the obligation data, the instruction shall be carried out by the Depositories and such securities will be debited from client’s demat account and credited to linked TM Pool account on or before the settlement day. Unmatched instruction: 4.5. In case of discrepancies in details like UCC, TM ID, CM ID, ISIN etc., between instruction and obligation, such transfer instructions will be rejected by the depositories. -- 2 of 3 -- Page 3 of 3 4.6. In case of discrepancies in quantity of securities between instruction and obligation, the following shall be noted: 4.6.1. If the quantity in instruction is less than the obligation provided by CC, then the instruction will be carried out by the depositories. 4.6.2. If the quantity in instruction is more than the obligation provided by CC, then the instruction will be partially processed by the depositories (i.e., upto the matching obligation quantity). Trades Confirmed by Custodians: 4.7. This process shall not be applicable to clients having arrangements with custodians registered with SEBI for clearing and settlement of trades. 5. Depositories and CCs shall put in place appropriate systems to ensure compliance of the provisions of this circular. 6. This circular shall be applicable with effect from November 25, 2022. 7. Stock Exchanges and Depositories are directed to: 7.1. bring the provisions of this circular to the notice of their members / participants and also disseminate the same on their websites; 7.2. make necessary amendments to the relevant Bye-laws, Rules and Regulations for the implementation of the above decision. 7.3. communicate to SEBI, the status of the implementation of the provisions of this circular on November 30, 2022 and in their Monthly Development Reports. 8. This circular is issued in exercise of powers conferred under Section 11(1) of the Securities and Exchange Board of India Act, 1992, and Section 19 of the Depositories Act, 1996 to protect the interests of investors in securities and to promote the development of, and to regulate the securities markets. Yours faithfully Aradhana Verma Deputy General Manager Tel. No: 022 26449633 aradhanad@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

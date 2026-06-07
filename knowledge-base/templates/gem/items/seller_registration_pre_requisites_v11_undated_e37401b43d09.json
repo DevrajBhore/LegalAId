@@ -1,0 +1,49 @@
+{
+  "id": "seller_registration_pre_requisites_v11_undated_e37401b43d09",
+  "title": "seller registration pre requisites v1.1",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "GeM Reference Documents",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/pdf/seller-registration-pre-requisites-v1.1.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "Last Updated: 30/12/2019 PRE-REQUISITES FOR GeM SELLER REGISTRATION Dear Seller, We welcome you to the registration process on Government e-Marketplace. To speed up your registration process on GeM, please ensure that you are an Authorized Person (Director of the Organization or a Key Person/Proprietor). Also, please have the following information available so that you can complete your Organization’s registration in a single step. BASIC INFORMATION (Mandatory): - Your Aadhaar Number/Virtual ID or Personal PAN Number allotted by the Income Tax Department. The 4th letter of Personal PAN number must be “P” (XXXPXXXXXX) - Your Mobile Number linked with Aadhaar OR Mobile Number if registering using PAN - Active Email id (can be Personal E-mail Id or Company/Organization allotted Email-Id) - Constitution Type o Proprietorship (If you are registering as a sole proprietor business) o Firm (If you are registering as a Partnership/LLP Firm) o Company (If you are registering a Private/Public limited company) o Trust/Society (If you are registering a Trust/Society) o Government Entity (If you are registering a Government Entity) - Date of Incorporation/Registration of your business - CIN (Company Information Number) in case you are registering as a Private/Public Limited Company - PAN Number of your Business (as per Income Tax records) o Proprietorship PAN (4th letter of PAN should be “P” (XXXPXXXXXX)) if you are registering a Sole Proprietorship Business o Partnership/LLP PAN (4th letter of PAN should be “F” (XXXFXXXXXX)) if you are registering a Firm o Company PAN (4th letter of PAN should be “C” (XXXCXXXXXX)) if you are registering a private or public limited Company o Trust/Society PAN (4th letter of PAN should be “T” (XXXTXXXXXX) or as applicable) if you are registering a Trust/Society o Government Entity PAN (4th letter of PAN should be “G” (XXXGXXXXXX)) if you are registering a Government Entity - Income Tax Return Details (ITR Form and ITR acknowledgment) for the last three years. Please note that details shall be validated as per the information furnished by you while filing Income Tax Returns. Verified ITR details are mandatory for participating in Bid/RA for all entities unless incorporated less than 24 months ago or exempted from filing ITR. ITR details are not mandatory if you do not want to participate in Bid/RA. - Bank Account Number and IFSC Code of Bank Account which will be used for receiving payments for business done on GeM - Complete Registered Office Address Details along with Alternate E-Mail Id & Contact Number (for printing on GeM Artifacts like Contract, Order, Invoice etc. You may decide to use your E-Mail Id and/or Contact Number but it is mandatory to enter this information for transacting on GeM) -- 1 of 2 -- Last Updated: 30/12/2019 - Billing Address with GSTIN Number (in absence of GSTIN you will not be able to accept any Orders beyond INR 2.5 lacs on GeM) - Companies and Firms are also required to verify Key Person information as per ITR records. OPTIONAL INFORMATION: If you are registering as a Start-Up, in addition to the above-mentioned Basic Information, the following will also be needed: - DIPP Number - Mobile Number linked with DIPP If you are registering as an MSE, in addition to the above-mentioned Basic Information, the following will also be needed: - UAM Number (Udyog Aadhaar Memorandum Number) - Mobile Number linked with UAM Experience Details - Total Experience (in years) of supplying to Government of India (if any) - Total Number of Orders received from Government of India (if any) - Total Value of Orders received from Government of India (in Rupees) (if any) IMPORTANT:  Registration on GeM should be done only by an Authorized Person (Director of the Organization or a Key Person/Proprietor)  Details of the Authorized Person will get validated as per the Income Tax Return filing  Primary Seller has an option to create Secondary Seller(s) to assign roles like Bid  Participation, Creation of Catalog, Purchase Requisition, and Order Fulfillment.  The Secondary Seller should register using the same method (Aadhaar or Personal Pan) as the primary seller. Team GeM -- 2 of 2 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "jitendra.kumar",
+      "CreationDate": "D:20191231182620+05'30'",
+      "ModDate": "D:20191231182620+05'30'",
+      "Producer": "Microsoft: Print To PDF",
+      "Title": "Microsoft Word - Seller Registration Pre-requisites v1.1 _1_.doc"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/pdf/seller-registration-pre-requisites-v1.1.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

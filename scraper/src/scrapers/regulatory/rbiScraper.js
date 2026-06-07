@@ -368,6 +368,14 @@ function canReuseExistingItem(existingItem, nextItem) {
 
 function canReuseExistingDocument(existingItem, nextItem) {
   if (!existingItem) return false;
+  const previousExtraction = existingItem.extraction || {};
+  if (
+    String(process.env.SCRAPER_RBI_FETCH_PDF || "").toLowerCase() === "true" &&
+    previousExtraction.status !== "parsed"
+  ) {
+    return false;
+  }
+
   return (
     existingItem.id === nextItem.id &&
     existingItem.title === nextItem.title &&
@@ -461,7 +469,19 @@ async function maybeFetchPdfText(url) {
 
   const response = await fetchBinary(url);
   const contentType = response?.headers?.["content-type"] || "";
-  if (!String(contentType).toLowerCase().includes("pdf")) {
+  const data = Buffer.from(response.data);
+  const hasPdfHeader = data.slice(0, 5).toString("utf8") === "%PDF-";
+  const isHtmlResponse = String(contentType).toLowerCase().includes("html") || data.slice(0, 80).toString("utf8").toLowerCase().includes("<!doctype html");
+  const shouldAttemptPdfParse =
+    hasPdfHeader || String(contentType).toLowerCase().includes("pdf") || (looksLikePdf(url) && !isHtmlResponse);
+  if (looksLikePdf(url) && isHtmlResponse && !hasPdfHeader) {
+    return {
+      status: "error",
+      reason: "html_response_instead_of_pdf",
+      content_type: contentType,
+    };
+  }
+  if (!shouldAttemptPdfParse) {
     return {
       status: "skipped",
       reason: "non-pdf-response",
@@ -469,7 +489,7 @@ async function maybeFetchPdfText(url) {
     };
   }
 
-  const parsed = await parsePDF(Buffer.from(response.data));
+  const parsed = await parsePDF(data);
   if (parsed?.error) {
     return {
       status: "error",

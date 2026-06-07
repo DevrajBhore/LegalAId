@@ -1,0 +1,89 @@
+{
+  "source_label": "Delhi RERA registered projects",
+  "source_url": "https://rera.delhi.gov.in/registered_promoters_list",
+  "source_rows": 128,
+  "unique_items": 128,
+  "total_pages_detected": 13,
+  "pages_fetched": 13,
+  "pages": [
+    {
+      "page": 0,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 1,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=1",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 2,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=2",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 3,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=3",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 4,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=4",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 5,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=5",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 6,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=6",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 7,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=7",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 8,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=8",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 9,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=9",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 10,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=10",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 11,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=11",
+      "status": 500,
+      "parsed": 10
+    },
+    {
+      "page": 12,
+      "source_url": "https://rera.delhi.gov.in/registered_promoters_list?page=12",
+      "status": 500,
+      "parsed": 8
+    }
+  ],
+  "fetched_at": "2026-05-21T15:46:50.994Z"
+}

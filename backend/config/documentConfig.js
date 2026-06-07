@@ -53,8 +53,11 @@ export const DOCUMENT_CONFIG = {
       "employer_name",
       "employer_address",
       "employer_cin",
+      "employer_pan",
+      "employer_gstin",
       "employee_name",
       "employee_address",
+      "employee_pan",
       "job_title",
       "work_location",
       "salary",
@@ -70,7 +73,7 @@ export const DOCUMENT_CONFIG = {
     sections: [
       {
         title: "Employer Details",
-        fields: ["employer_name", "employer_address", "employer_cin"],
+        fields: ["employer_name", "employer_address", "employer_cin", "employer_pan", "employer_gstin"],
       },
       {
         title: "Employee Details",
@@ -760,6 +763,7 @@ export const DOCUMENT_CONFIG = {
       "guarantor_name",
       "guarantor_address",
       "guarantor_type",
+      "guarantor_pan",
       "guaranteed_amount",
       "purpose",
       "guarantee_type",
@@ -779,7 +783,7 @@ export const DOCUMENT_CONFIG = {
       },
       {
         title: "Guarantor",
-        fields: ["guarantor_name", "guarantor_address", "guarantor_type"],
+        fields: ["guarantor_name", "guarantor_address", "guarantor_type", "guarantor_pan", "guarantor_gstin", "guarantor_cin", "guarantor_llpin"],
       },
       {
         title: "Guarantee Terms",

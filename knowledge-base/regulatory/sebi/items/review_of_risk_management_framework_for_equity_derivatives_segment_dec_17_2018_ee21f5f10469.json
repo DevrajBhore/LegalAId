@@ -1,0 +1,42 @@
+{
+  "id": "review_of_risk_management_framework_for_equity_derivatives_segment_dec_17_2018_ee21f5f10469",
+  "title": "Review of risk management framework for Equity Derivatives Segment",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/dec-2018/review-of-risk-management-framework-for-equity-derivatives-segment_41314.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/dec-2018/1545055477548.pdf",
+  "document_date": "Dec 17, 2018",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Title": "OIAE//2004",
+      "Author": "1216",
+      "Creator": "Microsoft® Word 2013",
+      "CreationDate": "D:20181217183835+05'30'",
+      "ModDate": "D:20181217183835+05'30'",
+      "Producer": "Microsoft® Word 2013"
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 3 CIRCULAR SEBI/HO/MRD/DRMNP/CIR/P/2018/155 December 17, 2018 All Recognized Stock Exchanges and Clearing Corporations (except Stock Exchanges and Clearing Corporations in International Financial Services Centre) Madam/Sir Review of risk management framework for Equity Derivatives Segment The Principles for Financial Market Infrastructures (PFMI) inter alia prescribe that a central counterparty (CCP) should identify and consider a number of elements, including Margin Period of Risk (MPOR) or close-out period, when constructing an appropriate margin system to address risks that arise from the products cleared. The assumed MPOR or close-out period should incorporate the market depth and characteristics of the products cleared. A CCP should consider multiple MPOR assumptions or seek to ensure that a single MPOR assumption is appropriate for all cleared products in case it clears products with different market characteristics. 2. The PFMI further prescribe that a CCP should adopt a margin system and parameters that are risk-based and generate margin requirements that are sufficient to cover its potential future exposures to participants in the interval between the last margin collection and the close-out of positions following a participant default. A CCP should also consider the potential market liquidation costs that it assumes to incur while liquidating a participant’s portfolio. 3. In order to bring MPOR in greater conformity with the PFMI, the Risk Management Review Committee (RMRC) of SEBI recommended that the MPOR may be increased to 2 (two) days as compared to current MPOR of 1 (one) day. -- 1 of 3 -- Page 2 of 3 4. SEBI circular SEBI/DNPD/Cir-26/2004/07/16 dated July 16, 2004 inter alia prescribes that the Stock Exchanges/ Clearing Corporations may offer a choice to the members to opt for payment of mark to market margin (MTM) either before the start of trading on the next day (T+0) or, on the next day (T+1) with scaled up margins to cover the potential for losses over the time elapsed in the collection of MTM. 5. Based on the aforementioned recommendation made by RMRC and in consultation with the Clearing Corporations, it has been decided that Exchanges/ Clearing Corporations shall estimate the appropriate MPOR, subject to a minimum of 2 days, for each equity derivative product based on liquidity therein and scale up the initial margins and exposure margins accordingly. For initial margins, the revised MPOR shall be given effect by way of scaling up the Price Scan Range (PSR) used for computing the Worst Scenario Loss. 6. It has further been decided to stipulate PSR for computation of initial margins across index options and index futures contracts as three standard deviations (3σ) or 5% of the underlying value, whichever is higher. The Short Option Minimum Charge (SOMC) for index option contracts also stands revised to 5%. 7. Additionally, in order to make risk management framework more robust, the payment of MTM shall now mandatorily be made by all the members on T+0 basis i.e. before start of trading on the next day. 8. Stock Exchanges and Clearing Corporations are directed to: a) take necessary steps to put in place systems for implementation of the circular, including necessary amendments to the relevant bye-laws, rules and regulations; b) bring the provisions of this circular to the notice of their members and also disseminate the same on their websites; and c) communicate to SEBI, the status of implementation of the provisions of this circular in the Monthly Report. 9. The provision(s) of this circular shall come into effect from January 21, 2019. -- 2 of 3 -- Page 3 of 3 10. This circular is being issued in exercise of powers conferred under Section 11(1) of the Securities and Exchange Board of India Act, 1992, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. This circular is available on SEBI website at www.sebi.gov.in under the category \"Circulars\". Yours faithfully (Sanjay Purao) General Manager Market Regulation Department Division of Risk Management and New Products E-mail: sanjayp@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "category": "termination",
+  "clause_name": "Termination",
+  "risk_level": "medium",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Termination",
+      "text": "19. Termination for Default: If the seller does not perform its obligations within the Delivery Period / Date mentioned in the Contract, the same would constitute the breach of the Contract and the Buyer shall have the right to Cancel or Withdraw the Contract for the unsupplied portion after the expiry of the original, extended or re-fixed delivery date or period stipulated in the Contract. Such cancellation of contract on account of non - performance by the Seller would entitle the Buyer to forfeit the performance security besides other actions such as downgrading the Seller’s rating or debarment from the GeM for specified period as decided by GeM on merits.",
+      "char_length": 667,
+      "risk_level": "medium",
+      "quality_score": 85,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    },
+    {
+      "clause_name": "Clause 35",
+      "text": "V. An Agent is a person employed to do any act for another, or to represent another in dealings with third person. VI. The successful bidder shall not be allowed to sub-contract works to any contractor from a country which shares a land border with India unless such contractor is registered with the Competent Authority. Any false declaration and non-compliance of the above would be a ground for immediate termination of the contract and further legal action in accordance with the laws. 27: Caution Money Deposit: (i) All sellers on GeM are required to deposit a one-time amount as under as caution money:",
+      "char_length": 608,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    },
+    {
+      "clause_name": "Name of persons representing the unit Name",
+      "text": "13. Name of persons representing the unit Name: in the fair with passport details Passport No.: (Maximum two representatives) Date of Issue: (Attach Passport copy) Date of Expiry: Applicable only in case of International Trade fairs Place of issue: ( supported with relevant passport copy)",
+      "char_length": 289,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/marketing_assistance_technology_upgradation_matu_undated_c82f80bc2b6f.json",
+      "source_document_name": "Marketing Assistance & Technology Upgradation (MATU)"
+    },
+    {
+      "clause_name": "Clause 16",
+      "text": "7. Details of ISO 18000/ISO 22000 /ISO 27000 Certificate, Name and Address of Certification agency; The certificate must have address of the site/location certified; Scope of certification, Certificate No., Date of issue & period of validity (or date of expiry), Name & Logo (Enclose an attested copy of the Certificate)\n20",
+      "char_length": 323,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/marketing_supportassistance_to_msmes_bar_code_undated_fbc714911e51.json",
+      "source_document_name": "Marketing Support/Assistance to MSMEs (Bar Code)"
+    },
+    {
+      "clause_name": "Clause 4",
+      "text": "10. Documentation for MDA claims MDA shall be disbursed to eligible institutions on their submission of detailed claims as per the prescribed format {Annexure – I, II, III, IV & V}. The State / Divisional Directors of KVIC shall furnish the quarterly details of settlement of MDA claims to the Programme Directorate and Directorate of Accounts of KVIC within a period of one month after expiry of each quarter and a consolidated statement for the whole financial year by 30 April of the following year.",
+      "char_length": 502,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/msme_market_development_assistance_mda_undated_4381d31e621f.json",
+      "source_document_name": "MSME Market Development Assistance (MDA)"
+    },
+    {
+      "clause_name": "Guard File/Service Book",
+      "text": "8. Guard File/Service Book\nNo.A-12023/3/2014-HR Government of India Ministry of Micro, Small and Medium Enterprises (HR Section) OFFICE ORDER With the approval of the competent authority the services of Shri Santosh Ranjan, Additional PS (non-official) in the Personal Establishment of Hon'ble Minister of State(I/C) (MSME) is terminated w.e.f. 01.02.2018(FN). (Bhaskar Kalra) Under Secretary to the Govt. of India Tel. No. 23063293 To",
+      "char_length": 435,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/transfer_posting_orders_2018_e86fa2bbd595.json",
+      "source_document_name": "Transfer & Posting Orders"
+    }
+  ]
+}

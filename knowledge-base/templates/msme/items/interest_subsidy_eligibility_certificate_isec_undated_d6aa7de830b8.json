@@ -1,0 +1,43 @@
+{
+  "id": "interest_subsidy_eligibility_certificate_isec_undated_d6aa7de830b8",
+  "title": "Interest Subsidy Eligibility Certificate (ISEC)",
+  "source_type": "scheme-guidelines",
+  "source_label": "MyMSME Scheme Guidelines",
+  "source_mode": "scheme-table",
+  "document_url": "https://msme.gov.in/sites/default/files/ISEC-Guideline.pdf",
+  "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "-- 1 of 9 -- -- 2 of 9 -- -- 3 of 9 -- -- 4 of 9 -- -- 5 of 9 -- -- 6 of 9 -- -- 7 of 9 -- -- 8 of 9 -- -- 9 of 9 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 9,
+    "info": {
+      "PDFFormatVersion": "1.3",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Creator": "Panasonic Multi-Function Station 2.25",
+      "CreationDate": "D:20140619180501",
+      "Producer": "PDFlib 3.03 (Win32)"
+    },
+    "link_status": null,
+    "recovery_attempts": [],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "MyMSME Scheme Guidelines",
+      "type": "scheme-guidelines",
+      "mode": "scheme-table",
+      "page_url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "detail_url": "https://my.msme.gov.in/mymsme/Scheme.aspx"
+    }
+  ]
+}

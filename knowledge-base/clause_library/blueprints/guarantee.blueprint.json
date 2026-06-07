@@ -34,5 +34,15 @@
     "ICA S.130 — revocation of continuing guarantee — possible for future transactions",
     "Stamp duty on guarantee — must be adequately stamped under applicable State Stamp Act",
     "Board resolution required if guarantor is a company"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true"
+    }
   ]
 }

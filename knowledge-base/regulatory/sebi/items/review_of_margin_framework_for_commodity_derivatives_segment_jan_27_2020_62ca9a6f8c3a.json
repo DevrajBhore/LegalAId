@@ -1,0 +1,46 @@
+{
+  "id": "review_of_margin_framework_for_commodity_derivatives_segment_jan_27_2020_62ca9a6f8c3a",
+  "title": "Review of Margin Framework for Commodity Derivatives Segment",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jan-2020/review-of-margin-framework-for-commodity-derivatives-segment_45803.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/jan-2020/1580122402849.pdf",
+  "document_date": "Jan 27, 2020",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-IN",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "1908@SEBINT",
+      "Creator": "Microsoft® Word 2016",
+      "CreationDate": "D:20200127150403+05'30'",
+      "ModDate": "D:20200127160144+05'30'",
+      "Producer": "Microsoft® Word 2016; modified using iTextSharp™ 5.4.4 ©2000-2013 1T3XT BVBA (AGPL-version)",
+      "Custom": {
+        "Classification": "SEBI-INTERNAL",
+        "FClassification": "SEBI-INTERNAL",
+        "KID": "E4B97AF59941637157377047999354"
+      }
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 4 CIRCULAR SEBI/HO/CDMRD/DRMP/CIR/P/2020/15 January 27, 2020 To, The Managing Directors / Chief Executive Officers, All Clearing Corporations having Commodity Derivatives Segment Sir / Madam, Sub: Review of Margin Framework for Commodity Derivatives Segment 1. SEBI vide Circular CIR/CDMRD/DRMP/01/2015 dated October 01, 2015 and SEBI/HO/CDMRD/DRMP/CIR/P/2016/77 dated September 01, 2016 prescribed Risk Management Framework for the Commodity Derivatives Segment (CDS). These circulars, inter alia, stipulated minimum value for Initial Margin(IM) and Margin Period of Risk (MPOR). 2. CPSS-IOSCO Principles for Financial Market Infrastructure (PFMI) inter alia prescribes under Key Considerations for Principle 6 on margin that margining model should to the extent practicable and prudent, limit the need for destabilising, pro-cyclical changes. 3. It is further explained under Clause 3.6.10 of PFMI that: Limiting procyclicality: A CCP should appropriately address pro-cyclicality in its margin arrangements. In this context, pro-cyclicality typically refers to changes in risk- management practices that are positively correlated with market, business, or credit cycle fluctuations and that may cause or exacerbate financial instability. For example, in a period of rising price volatility or credit risk of participants, a CCP may require additional initial margin for a given portfolio beyond the amount required by the current margin model. This could exacerbate market stress and volatility further, resulting in additional margin requirements. To support this objective, a CCP could consider increasing the size of its prefunded default arrangements to limit the need and likelihood of large or unexpected margin calls in times of market stress. These procedures may create additional costs for CCPs and their participants in periods of low market volatility due to higher margin or prefunded default arrangement contributions, but they may also result in additional protection and potentially less costly and less disruptive adjustments in periods of high market volatility. 4. In light of the above and given the wide variation of liquidity and volatility among different commodity derivatives, it has been decided, in consultation with -- 1 of 4 -- Page 2 of 4 stakeholders, to categorize commodities as per their realized volatility and to prescribe floor values of IM and IMPOR depending upon their categories. 5. Accordingly, norms regarding Minimum IM and minimum MPOR for commodity derivatives segment stands revised as per the framework mentioned below. The norms on risk management prescribed vide circulars referred to at Para ‘1’ above, which are not modified herewith, shall continue to prevail. a. Clearing Corporations (CCs) shall categorise their commodities into three categories of volatility based upon the realized volatility for last three years as given below: - Volatility Category of Commodity Realized Annualized Volatility criteria Low 0 to 15% Medium Above 15 % to 20% High Above 20% b. Realized volatility shall be calculated from series of daily log normal return of main near month future contracts of the respective commodity. The series of daily log normal return shall be rolled over to next month contract on start of staggered delivery period if it is applicable. If staggered delivery is not applicable, then rollover shall be done on the day after the expiry of near month contract. c. Exchange having maximum average daily turnover across all derivative contracts on the respective commodity based on last six months’ period shall be termed as Lead Exchange. The CC of the Lead Exchange shall do the categorisation of the respective commodities and same shall be intimated to, and adopted by all other CCs d. Based on volatility category, minimum initial margin (IM) and minimum MPOR shall be as under: Volatility Category of Commodity Minimum IM Minimum MPOR Non-Agri Agri Non-Agri Agri Low 6% 8% 2 3 Medium 8% 10% 2 3 High 10% 12% 3 4 -- 2 of 4 -- Page 3 of 4 e. It is also clarified that floor values prescribed for IM in table above need not be scaled up by MPOR. f. CCs shall review the categories of all commodities once in every six months’ period based upon past three years’ data. Commodity may be moved from higher volatility category to lower category only if it satisfies criteria of the revised category of volatility for two consecutive reviews. However, movement from a lower to higher volatility category shall be done based upon a single review. g. The categorisation shall be done on 1st March and 1st September of each year on rolling basis and changes if any shall be made applicable from 1st April and 1st October respectively of each year. h. In case derivatives are launched on any new underlying commodity for the first time for which no reference futures prices are available, it shall be initially categorised based upon prices available in the spot markets subject to a minimum of Medium Category of volatility. Re-categorisation of such commodity from higher to lower category of volatility can only be done after two consecutive reviews. 6. Lean Period in Agri Commodities: a. In case of Agri commodities, it has been observed that during lean period (i.e. the period before the arrival of new crop) there is often uncertainty about the arrivals of new crop. This may lead to higher volatility in prices of commodities during this period. Therefore, CCs shall levy additional lean period margin of 2% on contracts expiring during lean period. b. Lead exchanges shall determine the lean period in consultation with their relevant Product Advisory Committee and disclose the same on their websites. 7. It is reiterated that risk management is primarily a responsibility of CCs and the framework prescribed by SEBI is minimum framework. CCs are allowed to be more conservative as per their own perception of risk. 8. CCs shall also disclose detailed break up of various applicable margins on contracts cleared by them along with volatility on their websites. 9. Initial categorisation of commodities as prescribed under Para ‘5’ above shall be done and notified by CCs within 15 days of the circular. The revised norms with -- 3 of 4 -- Page 4 of 4 regard to IM, MPOR and lean period margin may be implemented by CCs in a phased manner and shall be fully implemented within a period of three months from the date of the circular. The corresponding update in stress testing scenarios, if applicable, shall also be done by CCs immediately after the circular is fully implemented. 10. This circular is issued in exercise of the powers conferred under Section 11(1) of the Securities and Exchange Board of India Act 1992, read with Section 10 of the Securities Contracts (Regulation) Act, 1956 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 11. This circular is available on SEBI website at www.sebi.gov.in. Yours faithfully, Vishal V. Nair Deputy General Manager Division of Risk Management Commodity Derivatives Market Regulation Department vishaln@sebi.gov.in -- 4 of 4 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

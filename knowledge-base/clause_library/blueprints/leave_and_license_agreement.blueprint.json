@@ -12,5 +12,19 @@
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
+    },
+    {
+      "clause": "CORE_FORCE_MAJEURE_001",
+      "include_if": "include_force_majeure == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true"
+    }
   ]
 }

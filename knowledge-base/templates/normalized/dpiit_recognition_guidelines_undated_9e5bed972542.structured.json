@@ -1,0 +1,87 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_1",
+      "clause_name": "Merger/ Demerger/ Acquisition/ Amalgamation/ Absorption",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_2",
+      "clause_name": "Compromise/ Arrangement",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_3",
+      "clause_name": "Conversion",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_5",
+      "clause_name": "Name Change",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_6",
+      "clause_name": "CIN/LLPIN Change",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_7",
+      "clause_name": "Incorporating additional entities",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_8",
+      "clause_name": "Common directorship/partnership",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_9",
+      "clause_name": "Regulatory Areas",
+      "category": "general"
+    },
+    {
+      "clause_id": "dpiit_recognition_guidelines_undated_9e5bed972542_10",
+      "clause_name": "Sole Proprietorship",
+      "category": "general"
+    }
+  ],
+  "body": "GUIDELINES FOR RECOGNITION OF STARTUPS 1. Merger/ Demerger/ Acquisition/ Amalgamation/ Absorption: Resultant entity or entities formed due to merger demerger/ acquisition/ amalgamation/ absorption/will not be recognized as Startup. However, merger or amalgamation under section 233 of the Companies Act, 2013 between any of the following class of companies will be allowed subject to fulfillment of norms of DPIIT Notification by the resultant company: i. two or more start-up companies; or ii. one or more start-up company with one or more small company 2. Compromise/ Arrangement: Entities formed due to compromise/ arrangement as provided under the Companies Act, 2013 will not be recognized as Startup. 3. Conversion: Conversion of an entity from one form to another shall not be a bar for availing recognition subject to the fulfilment of condition provided in sub-section (3) of section 80-IAC of the Income- tax Act, 1961. 4. Holding including foreign holding, Subsidiary including foreign subsidiary, Joint Ventures, entities incorporated outside territory Indian Territory: i. Holding/Subsidiary Companies will not be permitted for recognition. Any startup becoming holding/subsidiary of any company after recognition will be derecognized. ii. Any entity formed by Joint Venture will not be recognized. Any Startup entering into any Joint Venture will be derecognized. iii. Entities incorporated outside India will be ineligible for recognition. iv. Shareholding by Indian promoters in the startup should be at least 51%, as per Companies Act, 2013 and SEBI (ICDR) Regulations, 2018. 5. Name Change: Changes in the name of a recognized Startup necessitated under the relevant provisions of the applicable Act will be permitted. The benefits will be applicable starting from the original date of incorporation/registration or commencement of business by the original entity, whichever is earlier. 6. CIN/LLPIN Change: Changes necessitated in CIN/LLPIN due to (a) change in domicile State, or (b) due to conversion as in para-3 above, (c) change in industry/ sector subject to cancellation of existing certificate, shall be permitted subject to approval obtained as per the relevant act. The benefits will be applicable starting from the original date of incorporation/registration or commencement of business by the original entity, whichever is earlier. Changes in CIN/LLPIN for any other reasons will not be permitted. Contd…2/- ~2~ 7. Incorporating additional entities: Incorporating additional entities having similar address with same production line/services and at least one common director/ designated partner/partner will not be recognized as startup. 8. Common directorship/partnership: Recognition of an entity having common director/designated partner/ partner with any other entity shall be allowed to the extent permissible under the provisions of the Companies Act, 2013. Related party transaction shall not be allowed except transactions on arm’s length basis. 9. Regulatory Areas: Entities operating in domains specifically prohibited by law shall not be recognized. 10. Sole Proprietorship: A sole proprietorship is not eligible to apply for recognition. If a sole proprietorship changes its type of entity into a type permissible for recognition, then the recognition will be granted from date of commencement of business of the sole proprietorship. **********************",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/dpiit_recognition_guidelines_undated_9e5bed972542.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Revised%20Guidelines%20for%20recognition.pdf",
+    "quality_score": 68,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

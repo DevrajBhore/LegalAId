@@ -1,0 +1,130 @@
+{
+  "document_type": "NDA",
+  "variant": "vendor",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_2",
+      "clause_name": "Definition",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_4",
+      "clause_name": "Clause 4",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_5",
+      "clause_name": "Factory Licence",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_6",
+      "clause_name": "Environmental Compliance",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_7",
+      "clause_name": "Commercial Documentation",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_8",
+      "clause_name": "Waste Management and EPR Compliance",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_12",
+      "clause_name": "Clause 12",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_13",
+      "clause_name": "Clause 13",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_14",
+      "clause_name": "Densitometer Note",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_15",
+      "clause_name": "Eligibility Criteria for Exemption from Vendor Assessment",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_16",
+      "clause_name": "Clause 16",
+      "category": "general"
+    },
+    {
+      "clause_id": "vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67_17",
+      "clause_name": "Clause 17",
+      "category": "general"
+    }
+  ],
+  "body": "Policy applicable w.e.f. 17.09.2025 Version 1.0 Vendor Assessment Policy for Toner Cartridges / Ink Cartridges / Consumables used in Printing machines This policy outlines the mandatory eligibility criteria, documentary requirements, infrastructure standards, and quality control measures for entities engaged in the manufacturing of OEM and Compatible Cartridges/Consumables seeking registration on the Government e-Marketplace (GeM). It includes provisions for statutory compliance, manufacturing capacity verification, acceptable machinery and processes, assembler eligibility, and disqualification conditions, thereby ensuring transparency, standardisation, and authenticity in the vendor assessment process. I. Definition: This policy defines the two categories of cartridges as follows: 1. OEM Cartridge/Consumable – An OEM (Original Equipment Manufacturer) Cartridge/Consumable shall refer to a cartridge that is manufactured by a company that also manufactures printing machines, such as printers, multifunction (all-in-one) and Plotter printers. These cartridges are specifically designed to be used with the printing machines produced by the same OEM. 2. Compatible Cartridge/Consumable – A Compatible Cartridge/Consumable shall refer to a cartridge that is manufactured by an entity other than the OEM of the printing machine (e.g. printer or multifunction/all-in-one/Plotter printer). Although not produced by the original printer manufacturer, these cartridges are designed to be compatible with and can be used in place of the OEM cartridges. II. Mandatory Requirements for Cartridge/Consumable Manufacturers: 1. Factory Licence: All applicant entities shall be required to possess a valid Factory Licence issued by the Labour Department of the respective State/Union Territory or any other statutorily authorised body, in accordance with applicable laws and regulations governing industrial establishments. An exemption from the requirement of a Factory Licence shall be permitted in cases where the applicant entity employs fewer than ten (10) employees, subject to the following conditions: a. Declaration of Exemption: Entities claiming exemption under Clause II.1 must submit a formal undertaking on non-judicial stamp paper, duly signed by the authorised signatory of the entity, affirming that: i. The total number of employees engaged by the entity is less than ten (10); and ii. The entity is exempted under the relevant provisions of the applicable Factory Act or related statutory framework. b. Verification by Assessment Agency: The Vendor Assessment (VA) Agency shall: i. Conduct on-site physical verification to confirm the actual number of employees. ii. Examine employment and attendance records such as salary slips, PF record, medical record, ESIC slips, group insurance, as applicable during such visits; and 2. Environmental Compliance: Submission of valid Consent to Establish and Consent to Operate from the concerned Pollution Control Board is mandatory. 3. Commercial Documentation: The following documentary evidence shall be mandatorily submitted by the applicant entity to demonstrate active manufacturing Policy applicable w.e.f. 17.09.2025 Version 1.0 operations at the time of desktop assessment: a. Raw Material Procurement: The applicant shall furnish three (3) manufacturing- related raw material invoices, each of which must: i. Be for at least three unique/different raw material items ii. Not be older than six (6) months from the date of submission iii. Clearly indicate the purchase of materials directly related to the cartridge/consumable manufacturing process iv. Bear valid GST (Good and Services Tax) numbers (both for buyer and seller), names (both buyer and seller) and item descriptions. Those applicants who are GST exempted shall furnish documentary evidence to that effect. b. Sales Transaction: The applicant shall also submit three (3) sales invoices, each of which must: i. Not be older than six (6) months from the date of submission ii. Clearly show the sale of manufactured cartridges/consumables iii. Include product descriptions, quantities sold, buyer details, and GST number of applicants. Those applicants who are GST exempted shall furnish documentary evidence to that effect. The Vendor Assessment (VA) Agency shall ensure that the invoices correspond to genuine manufacturing and sales transactions linked to the applicant’s declared product line. 4. Waste Management and EPR Compliance: The entity must demonstrate an appropriate mechanism for handling rejected material, along with possession of required State/Central government licences/authorisations, including: a. Extended Producer Responsibility (EPR) compliance or, b. EPR Exemption: Micro enterprises (as defined in the Micro, Small and Medium Enterprises Development Act, 2006) shall be exempted from EPR requirements. Classification as Micro Enterprise shall be verified through Udyam Registration. III. Quality Control and Record Maintenance: All entities engaged in the manufacturing of OEM or Compatible Cartridges/Consumables must implement comprehensive quality control procedures at every stage of the production lifecycle. These shall include: 1. Incoming Quality Control (IQC) – Inspection and verification of raw materials prior to their use in production to ensure conformance with quality specifications. 2. In-Process Quality Control (IPQC) – Periodic quality checks during the manufacturing process to identify and rectify deviations in real-time, ensuring adherence to technical and performance standards. 3. Final Quality Control (FQC) – Thorough testing and inspection of finished products before packaging and dispatch to ensure that only fully compliant cartridges/consumables enter the market. 4. Documentation and Record Maintenance – Entities must maintain accurate and complete records of all quality control checks, production batch data, and relevant process parameters for traceability and audit purposes. VA agency to check all aforementioned records. The VA agency shall ensure that above QC measures are in place. In case of non-compliance, the application may be rejected. Policy applicable w.e.f. 17.09.2025 Version 1.0 IV. Minimum Manufacturing Process and Machineries Required: a. Assembly and Toner ink Filling – Assembly line and toner filling machine/ink filling machine for toner cartridge/ink cartridge b. Packaging Process – 1. Punch Sealer Machine 2. Box Pasting Machine 3. Suitable packaging arrangement of individual cartridge to sustain shock/sudden drop and vibration during transportation. In case of vendors who are not in possession of box pasting machine, purchase order and invoice copy of corrugated box can be submitted for verification Undertaking may also be obtained for verification. Undertaking may also be obtained from such vendor that they shall ensure sourcing of corrugated box for proper packing and records of purchase of same shall be maintained c. Final Quality Control (FQC) – 1. Digital Weighing machine 2. Printers for testing 3. Final Print Quality Check 4. Densitometer Note: Entities engaged in mere refilling or refurbishment of used cartridges shall not be considered cartridge manufacturers or OEMs under this policy. V. Eligibility Criteria for Exemption from Vendor Assessment: An applicant may be granted exemption from the Vendor Assessment process if it is already registered on the GeM as an OEM for printers/multifunction printers/all-in-one printers/Plotter Printer of the same brand for which it intends to offer cartridges/consumables and applies on the basis of existing Valid VA report in aforementioned categories. VI. Declaration and Verification of Cartridge Compatibility: The applicant shall declare the specific cartridge model number along with the corresponding printer/ compatible printer’s brand & model number to the Vendor Assessment (VA) Agency. During the physical assessment, the VA Agency shall: 1. Verify the cartridge model numbers as declared by the vendor. 2. Confirm compatibility of the cartridges with the respective printer models mentioned. The applicant entity shall arrange the printers for VA agency to check. Applicants must ensure that the model number of a Compatible Cartridge, wherever applicable is distinct from the OEM’s cartridge model number. VA agency shall compare Compatible cartridge model number, OEM cartridge model number and OEM printer model number to check for same. VII. Adherence to Policy-Specified Checks: The VA Agency shall be responsible for ensuring strict compliance with all checks and procedures outlined in this policy document. These checks shall be conducted in addition to the standard Vendor Assessment criteria applicable under the existing Vendor Assessment framework. *Note: The previous “Vendor Assessment Criteria for Cartridge/Consumable” stand withdrawn and shall be applicable to Vendor Assessment applications received till 16.09.25 only. The same will be replaced with this policy effective from 17.09.2025.",
+  "metadata": {
+    "source": "knowledge-base/templates/gem/items/vendor_assessment_policy_for_toner_cartridges_ink_undated_ef1ee93eed67.json",
+    "source_label": "GeM Support Documents",
+    "source_url": "https://assets-bg.gem.gov.in/resources/upload/shared_doc/vendor-assessment-policy-for-toner-cartridges-ink-_1758711804.pdf",
+    "quality_score": 68,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

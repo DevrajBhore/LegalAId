@@ -89,8 +89,8 @@ function buildHistorySummary(record) {
     documentMeta:
       record.documentMeta || buildDocumentTypeMeta(record.documentType),
     status: record.status,
-    currentVersionNumber: 1,
-    versionCount: 1,
+    currentVersionNumber: record.currentVersionNumber || 1,
+    versionCount: record.versionCount || 1,
     updatedAt: record.updatedAt,
     createdAt: record.createdAt,
     lastOpenedAt: record.lastOpenedAt,
@@ -131,16 +131,70 @@ async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
     await DocumentDraft.deleteMany({ _id: { $in: staleIds }, userId });
   }
 
-  const allIdsForCleanup = keepRecordId
-    ? [keepRecordId, ...staleIds]
-    : staleIds;
-
-  if (allIdsForCleanup.length > 0) {
+  // Only orphaned (stale) drafts have their versions purged. The kept record's
+  // version history is preserved.
+  if (staleIds.length > 0) {
     await DocumentVersion.deleteMany({
       userId,
-      draftId: { $in: allIdsForCleanup },
+      draftId: { $in: staleIds },
     });
   }
+}
+
+const VERSION_CHANGE_TYPES = new Set([
+  "generated",
+  "autosave",
+  "manual_edit",
+  "ai_edit",
+  "validated",
+  "exported",
+  "restored",
+]);
+const MAX_STORED_VERSIONS = 20;
+
+function normalizeChangeType(changeType) {
+  return VERSION_CHANGE_TYPES.has(changeType) ? changeType : "autosave";
+}
+
+async function createVersion(record, { draft, validation, changeType, contentHash, summary }) {
+  const versionNumber = (record.versionCount || 0) + 1;
+  const version = await DocumentVersion.create({
+    draftId: record._id,
+    userId: record.userId,
+    versionNumber,
+    changeType: normalizeChangeType(changeType),
+    contentHash,
+    draftSnapshot: cloneValue(draft),
+    validationSnapshot: cloneValue(validation),
+    summary: summary || summarizeValidation(validation),
+  });
+
+  record.currentVersionNumber = versionNumber;
+  record.versionCount = versionNumber;
+  record.latestVersionId = version._id;
+  return version;
+}
+
+// Keep the most recent MAX_STORED_VERSIONS snapshots per draft.
+async function pruneVersions(record) {
+  const stale = await DocumentVersion.find({ draftId: record._id, userId: record.userId })
+    .sort({ versionNumber: -1 })
+    .skip(MAX_STORED_VERSIONS)
+    .select("_id")
+    .lean();
+  if (stale.length > 0) {
+    await DocumentVersion.deleteMany({ _id: { $in: stale.map((v) => v._id) } });
+  }
+}
+
+function serializeVersionSummary(version) {
+  return {
+    versionId: String(version._id),
+    versionNumber: version.versionNumber,
+    changeType: version.changeType,
+    createdAt: version.createdAt,
+    validation: summarizeValidation(version.validationSnapshot),
+  };
 }
 
 async function findPrimaryDraftRecord(userId, draftId, documentType) {
@@ -213,14 +267,24 @@ export async function saveDocumentHistory({
     });
 
     await record.save();
+    const firstVersion = await createVersion(record, {
+      draft,
+      validation,
+      changeType: changeType === "autosave" ? "generated" : changeType,
+      contentHash,
+    });
+    await record.save();
     await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
 
     return {
       history: buildHistorySummary(record),
-      versionCreated: false,
-      latestVersion: null,
+      versionCreated: true,
+      latestVersion: serializeVersionSummary(firstVersion),
     };
   }
+
+  const previousHash = record.lastContentHash;
+  const contentChanged = previousHash !== contentHash;
 
   record.title = buildTitle(draft.document_type, normalizedMeta);
   record.documentType = draft.document_type;
@@ -230,9 +294,6 @@ export async function saveDocumentHistory({
   record.sourceVariables = sourceVariables;
   record.status = status;
   record.lastOpenedAt = now;
-  record.currentVersionNumber = 1;
-  record.versionCount = 1;
-  record.latestVersionId = null;
   record.lastContentHash = contentHash;
 
   if (validation) {
@@ -243,13 +304,31 @@ export async function saveDocumentHistory({
     record.lastExportedAt = now;
   }
 
+  // Snapshot a new version when content changed, or for explicit milestone events
+  // (validated/exported/manual/ai edits) even if the hash is unchanged.
+  const milestone = ["validated", "exported", "manual_edit", "ai_edit", "restored"].includes(
+    changeType
+  );
+  let createdVersion = null;
+  if (contentChanged || milestone) {
+    createdVersion = await createVersion(record, {
+      draft,
+      validation,
+      changeType,
+      contentHash,
+    });
+  }
+
   await record.save();
+  if (createdVersion) {
+    await pruneVersions(record);
+  }
   await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
 
   return {
     history: buildHistorySummary(record),
-    versionCreated: false,
-    latestVersion: null,
+    versionCreated: Boolean(createdVersion),
+    latestVersion: createdVersion ? serializeVersionSummary(createdVersion) : null,
   };
 }
 
@@ -291,13 +370,18 @@ export async function getDocumentHistoryDetail(userId, draftId) {
 
   ensureOwnedDraft(record, draftId);
 
+  const versions = await DocumentVersion.find({ draftId, userId })
+    .sort({ versionNumber: -1 })
+    .limit(MAX_STORED_VERSIONS)
+    .lean();
+
   return {
     draft: cloneValue(record.currentDraft),
     validation: cloneValue(record.currentValidation),
     documentMeta:
       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
     history: buildHistorySummary(record),
-    versions: [],
+    versions: versions.map(serializeVersionSummary),
   };
 }
 
@@ -337,10 +421,50 @@ export async function deleteDocumentHistory(userId, draftId) {
   };
 }
 
-export async function restoreDocumentHistoryVersion() {
-  const error = new Error(
-    "Version history is no longer stored. Only the latest saved draft is kept for each document type."
-  );
-  error.statusCode = 410;
-  throw error;
+export async function restoreDocumentHistoryVersion({ userId, draftId, versionId }) {
+  const record = await DocumentDraft.findOne({ _id: draftId, userId });
+  ensureOwnedDraft(record, draftId);
+
+  const version = await DocumentVersion.findOne({ _id: versionId, draftId, userId });
+  if (!version) {
+    const error = new Error(`Version "${versionId}" was not found for this document.`);
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const restoredDraft = cloneValue(version.draftSnapshot);
+  const restoredValidation = cloneValue(version.validationSnapshot);
+  const now = new Date();
+
+  record.currentDraft = restoredDraft;
+  record.currentValidation = restoredValidation;
+  record.lastContentHash = version.contentHash || buildContentHash(restoredDraft);
+  record.status = deriveStatus({ changeType: "restored", validation: restoredValidation });
+  record.lastOpenedAt = now;
+
+  // Record the restore itself as a new version so history stays linear/auditable.
+  await createVersion(record, {
+    draft: restoredDraft,
+    validation: restoredValidation,
+    changeType: "restored",
+    contentHash: record.lastContentHash,
+    summary: { restored_from_version: version.versionNumber },
+  });
+  await record.save();
+  await pruneVersions(record);
+
+  const versions = await DocumentVersion.find({ draftId, userId })
+    .sort({ versionNumber: -1 })
+    .limit(MAX_STORED_VERSIONS)
+    .lean();
+
+  return {
+    draft: cloneValue(record.currentDraft),
+    validation: cloneValue(record.currentValidation),
+    documentMeta:
+      cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
+    history: buildHistorySummary(record),
+    versions: versions.map(serializeVersionSummary),
+    restoredFromVersion: version.versionNumber,
+  };
 }

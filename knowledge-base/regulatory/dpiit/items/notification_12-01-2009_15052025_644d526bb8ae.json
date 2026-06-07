@@ -1,0 +1,47 @@
+{
+  "id": "notification_12-01-2009_15052025_644d526bb8ae",
+  "title": "Notification 12-01-2009",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/paper-2-55730",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/93160727cdfcdec9f1fcc710120ee446.pdf",
+  "document_date": "15/05/2025",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 1,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": "EN-US",
+      "EncryptFilterName": null,
+      "IsLinearized": true,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "CreationDate": "D:20090325143444+05'30'",
+      "Author": "BHAT",
+      "Creator": "Acrobat PDFMaker 7.0 for Word",
+      "Producer": "Acrobat Distiller 7.0 (Windows)",
+      "ModDate": "D:20090325143517+05'30'",
+      "Custom": {
+        "Company": "BHATT",
+        "SourceModified": "D:20090324043858"
+      },
+      "Title": " "
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 1 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

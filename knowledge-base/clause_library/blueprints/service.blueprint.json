@@ -71,5 +71,47 @@
       "include_if": "include_non_solicit == true",
       "note": "Non-solicitation of client's employees"
     }
+  ],
+  "variant_clauses": [
+    {
+      "slot": "termination_style",
+      "replaces": "SERVICE_TERMINATION_001",
+      "note": "Choose the termination model from intake.",
+      "select_first_match": [
+        {
+          "clause": "SERVICE_TERMINATION_CONVENIENCE_001",
+          "when": "termination_style == convenience"
+        },
+        {
+          "clause": "SERVICE_TERMINATION_DEFAULT_001",
+          "when": "termination_style == default"
+        },
+        {
+          "clause": "SERVICE_TERMINATION_CAUSE_001",
+          "when": "termination_style == cause"
+        }
+      ],
+      "default": "SERVICE_TERMINATION_001"
+    },
+    {
+      "slot": "payment_model",
+      "replaces": "SERVICE_PAYMENT_001",
+      "note": "Payment model from intake.",
+      "select_first_match": [
+        {
+          "clause": "SERVICE_PAYMENT_MILESTONE_001",
+          "when": "payment_model == milestone"
+        },
+        {
+          "clause": "SERVICE_PAYMENT_RETAINER_001",
+          "when": "payment_model == retainer"
+        },
+        {
+          "clause": "SERVICE_PAYMENT_FIXED_FEE_001",
+          "when": "payment_model == fixed"
+        }
+      ],
+      "default": "SERVICE_PAYMENT_001"
+    }
   ]
 }

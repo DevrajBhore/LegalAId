@@ -12,8 +12,6 @@
     "NDA_DATA_SECURITY_001",
     "NDA_RETURN_OF_INFORMATION_001",
     "NDA_BREACH_REMEDIES_001",
-    "NDA_NON_COMPETE_001",
-    "NDA_NON_SOLICITATION_001",
     "NDA_DURATION_001",
     "NDA_TERM_SURVIVAL_001",
     "CORE_SURVIVAL_001",
@@ -32,8 +30,6 @@
     "NDA_DATA_SECURITY_001",
     "NDA_RETURN_OF_INFORMATION_001",
     "NDA_BREACH_REMEDIES_001",
-    "NDA_NON_COMPETE_001",
-    "NDA_NON_SOLICITATION_001",
     "NDA_DURATION_001",
     "NDA_TERM_SURVIVAL_001",
     "CORE_SURVIVAL_001",
@@ -41,8 +37,26 @@
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
-  "version": "3.0",
-  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001 for SEBI/DPDPA, improved dispute resolution.",
+  "version": "3.1",
+  "_notes": "Hardened: added CORE_COMPLIANCE_WITH_LAW_001 for SEBI/DPDPA, improved dispute resolution. v3.1: context-aware confidentiality variant slot + source-code/trade-secret/non-circumvention conditionals.",
+  "variant_clauses": [
+    {
+      "slot": "confidentiality_strength",
+      "replaces": "CORE_CONFIDENTIALITY_001",
+      "note": "Selects the confidentiality standard from context — trade-secret > investor/diligence > standard.",
+      "select_first_match": [
+        {
+          "clause": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+          "when": "involves_trade_secrets == true"
+        },
+        {
+          "clause": "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+          "when": "counterparty_is_investor == true"
+        }
+      ],
+      "default": "CORE_CONFIDENTIALITY_001"
+    }
+  ],
   "conditional_clauses": [
     {
       "clause": "NDA_NON_COMPETE_001",
@@ -57,6 +71,21 @@
       "clause": "CORE_DATA_PROCESSING_001",
       "include_if": "involves_personal_data == true",
       "note": "DPDPA 2023 — required if NDA covers personal data"
+    },
+    {
+      "clause": "NDA_SOURCE_CODE_PROTECTION_001",
+      "include_if": "involves_source_code == true",
+      "note": "Source code / software exchanged — Copyright Act 1957"
+    },
+    {
+      "clause": "NDA_TRADE_SECRET_PROTECTION_001",
+      "include_if": "involves_trade_secrets == true",
+      "note": "Dedicated trade-secret non-use obligation"
+    },
+    {
+      "clause": "NDA_NON_CIRCUMVENTION_001",
+      "include_if": "counterparty_is_vendor == true",
+      "note": "Vendor / supplier counterparty — protect business contacts"
     }
   ],
   "removed_from_v2": [],

@@ -1,0 +1,26 @@
+{
+  "id": "gi_catalogue_03032026_698774d75070",
+  "title": "GI Catalogue",
+  "type": "publications",
+  "category": "DPIIT Publications",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=publications",
+  "detail_url": "https://www.dpiit.gov.in/documents/publications/details/gi-catalogue-76909",
+  "document_url": "https://anjwhitebox.in/DPIIT/",
+  "document_date": "03/03/2026",
+  "document_format": "link",
+  "language": null,
+  "has_text": false,
+  "extraction": {
+    "status": "linked_only",
+    "reason": "not_pdf"
+  },
+  "text": "",
+  "source_refs": [
+    {
+      "type": "publications",
+      "label": "DPIIT Publications",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=publications"
+    }
+  ]
+}

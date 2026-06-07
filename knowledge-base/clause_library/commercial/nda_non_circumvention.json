@@ -1,0 +1,34 @@
+{
+  "clause_id": "NDA_NON_CIRCUMVENTION_001",
+  "name": "Non-Circumvention",
+  "category": "RESTRAINT",
+  "document_types": ["NDA"],
+  "jurisdiction": "India",
+  "text": "During the term of this Agreement and for a period tied to the confidentiality obligations herein, the Receiving Party shall not, without the prior written consent of the Disclosing Party, use the Confidential Information to circumvent or bypass the Disclosing Party in order to deal directly or indirectly with any supplier, vendor, customer, channel partner, or other business contact first identified to the Receiving Party through the Confidential Information, where the purpose or effect of such dealing is to deprive the Disclosing Party of a commercial benefit it would otherwise have obtained. This clause is limited to relationships and opportunities derived from the Confidential Information and shall not restrict the Receiving Party's pre-existing or independently developed relationships.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Restriction valid where narrowly tied to protection of confidential information and not a general restraint of trade"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by circumvention in breach of contract"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Restriction extends to relationships not derived from the Confidential Information",
+    "Restriction operates as a general restraint of trade"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Non-Circumvention",
+  "depends_on": ["NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"],
+  "suggested_with": ["NDA_NON_SOLICITATION_001"],
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "MEDIUM"
+}

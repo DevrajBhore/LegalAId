@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "url": "https://msme.gov.in/acts-and-rules/circular-orders/archive-circular-orders",
+      "type": "circular-orders",
+      "label": "MSME Circulars Archive",
+      "mode": "archive-table"
+    },
+    {
+      "url": "https://my.msme.gov.in/mymsme/Scheme.aspx",
+      "type": "scheme-guidelines",
+      "label": "MyMSME Scheme Guidelines",
+      "mode": "scheme-table"
+    },
+    {
+      "url": "https://msme.gov.in/e-book-schemes-msme",
+      "type": "scheme-ebook",
+      "label": "MSME Schemes E-Book",
+      "mode": "attachment-page"
+    },
+    {
+      "url": "https://msme.gov.in/knowledge/operational-guideline-all-schemes-ministry-msme",
+      "type": "operational-guidelines",
+      "label": "Operational Guideline of all Schemes of MSME",
+      "mode": "attachment-page"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "fair_and_transparent_access_to_data_feeds_of_the_stock_exchanges_jan_20_2017_5f8e0590e28e",
+  "title": "Fair and transparent access to data feeds of the stock exchanges",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jan-2017/fair-and-transparent-access-to-data-feeds-of-the-stock-exchanges_34083.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1484915770520.pdf",
+  "document_date": "Jan 20, 2017",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-GB",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "pawandeep",
+      "Creator": "Microsoft® Word 2013",
+      "CreationDate": "D:20170120171357+05'30'",
+      "ModDate": "D:20170120171357+05'30'",
+      "Producer": "Microsoft® Word 2013"
+    },
+    "reason": null
+  },
+  "text": "¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 1 of 2 CIRCULAR SEBI/HO/MRD/DP/CIR/P/2017/08 January 20, 2017 To, All Stock Exchanges (except for Commodity Derivatives Exchanges). Dear Sir / Madam, Subject: Fair and transparent access to data feeds of the stock exchanges SEBI in consultation with the Technical Advisory Committee (TAC) of SEBI had reviewed the market data feed mechanism of the stock exchanges. 2. Based on the recommendations of SEBI’s Technical Advisory Committee (TAC), it has been decided that stock exchanges shall formulate a comprehensive policy document for providing stock market related data to the market participants in a fair and transparent manner, irrespective of the type of mechanism used by the stock exchanges for broadcasting of data. 3. In this context, stock exchanges shall ensure that : (i) Appropriate tools are deployed so as to monitor service quality of data feeds; (ii) Appropriate mechanism (viz. load balancers, randomizers, etc.) to manage load across systems disseminating data in order to ensure consistent response time to all market participants; (iii) All communication to the market participants, especially on all technology related matters such as Monitoring Tool, Load Balancer, Randomisation etc., are abundantly clear and precise providing all necessary details related to the concerned facility / service, including information on features, benefits, risks, etc. of the concerned facility / service, particularly for participants who have opted for colocation facility. 4. Further, SEBI vide circular dated March 30, 2013 had inter alia directed stock exchanges to synchronize their system clocks with the atomic clock before the start of market such that their clocks have precision of atleast one microsecond and accuracy of atleast +/- one millisecond. In this regard, the -- 1 of 2 -- ¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 2 of 2 stock exchange should ensure that all clocks of the servers and other related systems are synchronized. Stock exchanges may adopt suitable mechanism to ensure such synchronization of system clocks. 5. Stock exchanges are directed to: (a) take necessary steps to put in place systems for implementation of the circular, including necessary amendments to the relevant bye- laws, rules and regulations. (b) bring the provisions of this circular to the notice of the stock brokers and also disseminate the same on their website; (c) communicate to SEBI the status of implementation of the provisions of this circular. 6. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. Yours faithfully, Susanta Kumar Das Deputy General Manager email: susantad@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

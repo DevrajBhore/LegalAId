@@ -20,6 +20,20 @@ function generateToken() {
   return crypto.randomBytes(32).toString("hex");
 }
 
+// Sets the JWT as an httpOnly cookie (not readable by JS → resistant to XSS).
+// The token is still returned in the JSON body for backward compatibility with
+// the existing localStorage flow, so this is additive and non-breaking.
+function setAuthCookie(res, token) {
+  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+  res.cookie("legalaid_token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    maxAge: sevenDaysMs,
+    path: "/",
+  });
+}
+
 function serializeUser(user) {
   return {
     id: user._id,
@@ -108,6 +122,7 @@ router.get("/verify-email", async (req, res) => {
     await user.save();
 
     const jwtToken = generateJWT(user._id);
+    setAuthCookie(res, jwtToken);
     res.json({
       message: "Email verified! You're now logged in.",
       token: jwtToken,
@@ -143,8 +158,10 @@ router.post("/login", async (req, res) => {
           email: user.email,
         });
 
+    const loginToken = generateJWT(user._id);
+    setAuthCookie(res, loginToken);
     res.json({
-      token: generateJWT(user._id),
+      token: loginToken,
       user: serializeUser(user),
     });
   } catch (err) {
@@ -266,6 +283,12 @@ router.get("/me", protect, async (req, res) => {
   } catch {
     res.status(401).json({ error: "Invalid or expired token." });
   }
+});
+
+// ── POST /auth/logout ─────────────────────────────────────────────────────────
+router.post("/logout", (_req, res) => {
+  res.clearCookie("legalaid_token", { path: "/" });
+  res.json({ message: "Logged out." });
 });
 
 // ── POST /auth/change-password (authenticated) ────────────────────────────────

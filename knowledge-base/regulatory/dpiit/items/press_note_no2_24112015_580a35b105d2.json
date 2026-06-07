@@ -1,0 +1,40 @@
+{
+  "id": "press_note_no2_24112015_580a35b105d2",
+  "title": "Press Note No.2",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/press-notes-2015-50026",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/d0a3c29bd9733a6e63ea75ce30ef6119.pdf",
+  "document_date": "24/11/2015",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.3",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": true,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "CreationDate": "D:20150106112458+05'30'",
+      "ModDate": "D:20150106112458+05'30'",
+      "Producer": ""
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 3 -- -- 2 of 3 -- -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

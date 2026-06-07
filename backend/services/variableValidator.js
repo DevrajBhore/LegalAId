@@ -272,6 +272,10 @@ function validateIdentifierFormats(errors, key, value) {
   if (key.endsWith("_cin") && !/^[A-Z][0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}$/.test(normalized)) {
     addError(errors, `${key} must be a valid CIN / registration number.`);
   }
+
+  if (key.endsWith("_llpin") && !/^[A-Z]{3}-?[0-9]{4}$/.test(normalized)) {
+    addError(errors, `${key} must be a valid LLPIN.`);
+  }
 }
 
 function validateInlineDetailsOnly(errors, key, value, definition = {}) {
@@ -535,6 +539,61 @@ function addCrossFieldChecks(errors, input) {
   }
 }
 
+function getEntityRequiredIdentifierFields(base, type = "") {
+  const normalizedType = normalizeOption(type);
+  if (!normalizedType) return [];
+
+  if (normalizedType.includes("individual")) {
+    return [[`${base}_pan`, "PAN"]];
+  }
+
+  if (normalizedType.includes("private limited") || normalizedType.includes("public limited")) {
+    return [
+      [`${base}_pan`, "PAN"],
+      [`${base}_gstin`, "GSTIN"],
+      [`${base}_cin`, "CIN"],
+    ];
+  }
+
+  if (normalizedType.includes("llp")) {
+    return [
+      [`${base}_pan`, "PAN"],
+      [`${base}_llpin`, "LLPIN"],
+      [`${base}_gstin`, "GSTIN"],
+    ];
+  }
+
+  if (normalizedType.includes("partnership") || normalizedType.includes("proprietorship")) {
+    return [
+      [`${base}_pan`, "PAN"],
+      [`${base}_gstin`, "GSTIN"],
+    ];
+  }
+
+  return [];
+}
+
+function addEntityIdentifierChecks(errors, schema, input) {
+  const bases = new Set(
+    Object.keys(schema)
+      .filter((fieldName) => fieldName.endsWith("_type"))
+      .map((fieldName) => fieldName.slice(0, -5))
+  );
+
+  for (const base of bases) {
+    const type = input[`${base}_type`];
+    for (const [fieldName, label] of getEntityRequiredIdentifierFields(base, type)) {
+      if (!Object.prototype.hasOwnProperty.call(schema, fieldName)) continue;
+      if (isBlank(input[fieldName])) {
+        addError(
+          errors,
+          `${fieldName} is required because ${base}_type is "${normalizeText(type)}"; LegalAId cannot generate ${label} ________ placeholders.`
+        );
+      }
+    }
+  }
+}
+
 function addDocumentSpecificChecks(errors, input, documentType) {
   if (
     documentType === "LOAN_AGREEMENT" &&
@@ -570,6 +629,7 @@ export function validateVariables(schema, input, options = {}) {
   addDistinctPartyChecks(errors, input);
   validateTypeConsistency(errors, input);
   addCrossFieldChecks(errors, input);
+  addEntityIdentifierChecks(errors, schema, input);
   addDocumentSpecificChecks(errors, input, documentType);
 
   return errors;

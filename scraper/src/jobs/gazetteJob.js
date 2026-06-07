@@ -12,6 +12,11 @@ const GAZETTE_MODULES = [
     exportNames: ["runNotificationScraper", "scrapeNotifications"],
   },
   {
+    key: "egazette-recent",
+    relativePath: "../scrapers/egazette/recentUploadsScraper.js",
+    exportNames: ["runRecentUploadsScraper", "scrapeRecentUploads"],
+  },
+  {
     key: "egazette-pdf",
     relativePath: "../scrapers/egazette/pdfExtractor.js",
     exportNames: ["runPdfExtractor", "extractGazettePdf"],

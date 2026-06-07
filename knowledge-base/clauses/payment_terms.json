@@ -1,0 +1,75 @@
+{
+  "category": "payment_terms",
+  "clause_name": "Payment",
+  "risk_level": "medium",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Payment",
+      "text": "12. Payment Authority and Payment Terms: Payments shall be made to the Seller in the manner below: i. For Goods: In case of goods, 100% payment will be released within ten (10) days of issue of consignee receipt-cum-acceptance certificate (CRAC) and on-line submission of bills unless otherwise specified in STC / ATC.\nGeneral Terms and Conditions on GeM 4.0 (Version 1.7) dt 13th Jan 2023 Page 29 of 53 ii. For Services: In case of services, 100% payments on the basis of monthly (unless otherwise specified) bills will be paid within ten (10) days of issue of consignee receipt- cum- acceptance certificate (CRAC) and on-line submission of bills unless otherwise specified in STC / ATC.",
+      "char_length": 688,
+      "risk_level": "medium",
+      "quality_score": 85,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    },
+    {
+      "clause_name": "Clause 1",
+      "text": "On Stamp Paper/OEM Letterhead To CEO GeM-Government EMarketplace Delhi TO WHOMSOEVER IT MAY CONCERN This is to confirm that we (OEM name) are OEM of (Brand and category name). We are selling through our Authorized Distributors in India. We are providing required technical support, consumable & spare parts. We also facilitate imperative trainings time to time. We hereby authorize (Deemed OEM name) to register as “Deemed OEM” for brand (OEM brand) for our different range of products. _ (Deemed OEM name) will perform product brochure uploading, manage and remove unauthorized resellers & other day to day fulfilment/ meeting etc. in consultation with us. (Deemed OEM name) is also authorized to operate OEM Panel on our behalf and also give undertaking as attached in annexure2. It is requested that (Deemed OEM name) should be approved as Deemed OEM with immediate action. It is hereby declared that the OEM i.e. (OEM name) is not registered on GeM as a seller/service provider. (Signature of Authorized Signatory) For OEM Name: - Designation: - Date: - (Signature of Authorized Signatory) For Deemed OEM Name: - Designation: - Date: -\nAnnexure 1 Details of Authorizing OEM",
+      "char_length": 1177,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/deemed_oem_undertaking_v2_undated_2f5cb712bf8a.json",
+      "source_document_name": "deemed oem undertaking v2"
+    },
+    {
+      "clause_name": "Clause 4",
+      "text": "3. Process Flow for Registration on GeM Portal Fill Vendor profile details Vendor Application received by RITES Login to RITES Portal Login Id & Password send to registered Email Confirmation sent over SMS and phone Fill vendor details and upload documents and make online payment Application Submitted Desktop Assessment Application approved for video assessment Assessor select date and time for video assessment as per discussion with vendor Validation through video call Application Approved/Rejected 2days will be given to vendor for closing the NC’s\nManual for VA Page 6 of 29 RITES-GeM",
+      "char_length": 592,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/final_user_manual_05_09_2024_2_undated_a1df63a4be66.json",
+      "source_document_name": "final user manual 05 09 2024 2"
+    },
+    {
+      "clause_name": "Clause 16",
+      "text": "F. Payment Submitting Steps After submit the filled form, proceed for payment button will appear on screen. To pay fee of vendor assessment, click on proceed payment\nManual for VA Page 21 of 29 RITES-GeM A new pop window appear and click on Yes option.\nManual for VA Page 22 of 29 RITES-GeM Anew screen will appear where applicant has to fill the details and then click on the pay button.\nManual for VA Page 23 of 29 RITES-GeM A new pop screen will appear and select yes option. It will redirect to payment gateway.\nManual for VA Page 24 of 29 RITES-GeM After filling the details, Click on the Make payment Fill the details and select appropriate payment options.\nManual for VA Page 25 of 29 RITES-GeM After making payment, transaction details will appear and then click on send response After that payment success screen will appear.\nManual for VA Page 26 of 29 RITES-GeM",
+      "char_length": 872,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/final_user_manual_05_09_2024_2_undated_a1df63a4be66.json",
+      "source_document_name": "final user manual 05 09 2024 2"
+    },
+    {
+      "clause_name": "Use of Aadhaar Number in GeM",
+      "text": "25. Use of Aadhaar Number in GeM: Purpose of the Aadhaar authentication in GeM is to identify the user using eKYC. GeM has provisioned the option for Sellers and Buyers to provide virtual Aadhaar ID instead Aadhaar number. GeM receives First Name, Last Name, Mobile Number, Email ID, DOB and Gender details. It is used to link the mobile number with the user who is registering on GeM; on which subsequently OTP is sent for achieving the property of non-repudiation in different artefacts / documents generated on GeM. GeM has provisioned an alternative Identity Information option through PAN based verification to Sellers.",
+      "char_length": 624,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    },
+    {
+      "clause_name": "Clause 38",
+      "text": "2. CMS Quadrant 2 (CMS Q2): OEMs as well as pre-Authorized Resellers can offer products in Q2. OEMs shall operate Market Place subject to providing its complete list of Open market authorized sellers along with formal commitment to list and maintain all appropriate and current Product Catalogue for pairing by its Resellers. OEM shall be absolutely and exclusively responsible and be legally liable for sanity and quality of catalogues including Warranty and After Sales Service obligations. Authorize Resellers shall be responsible for Pairing their offer with the already existing Product Catalogue created by the OEM. However, resellers can Update their Offer Price, Stock and Delivery Locations solely at their own discretion and shall be solely responsible for the same.",
+      "char_length": 776,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    }
+  ]
+}

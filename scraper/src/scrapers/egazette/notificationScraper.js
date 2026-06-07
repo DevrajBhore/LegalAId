@@ -42,6 +42,35 @@ function buildItemPayload(entry) {
   };
 }
 
+function readExistingItem(itemId) {
+  if (!itemId) return null;
+  const filePath = path.join(EGAZETTE_ITEMS_DIR, `${itemId}.json`);
+  try {
+    if (!fs.existsSync(filePath)) return null;
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
+function mergeWithExistingItem(entry) {
+  const nextItem = buildItemPayload(entry);
+  const existingItem = readExistingItem(entry.id);
+
+  if (existingItem?.extraction?.status === "parsed" && String(existingItem.text || "").trim()) {
+    return {
+      ...existingItem,
+      ...nextItem,
+      download_url: existingItem.download_url || nextItem.download_url,
+      detail_url: existingItem.detail_url || nextItem.detail_url,
+      extraction: existingItem.extraction,
+      text: existingItem.text,
+    };
+  }
+
+  return nextItem;
+}
+
 function removeStaleEgazetteItems(activeIds = new Set()) {
   if (!fs.existsSync(EGAZETTE_ITEMS_DIR)) return;
 
@@ -66,7 +95,7 @@ export async function runNotificationScraper() {
   const activeIds = new Set(entries.map((entry) => entry.id).filter(Boolean));
 
   for (const entry of entries) {
-    const saved = await saveJSON(`${EGAZETTE_ITEMS_ROOT}/${entry.id}.json`, buildItemPayload(entry));
+    const saved = await saveJSON(`${EGAZETTE_ITEMS_ROOT}/${entry.id}.json`, mergeWithExistingItem(entry));
     if (saved) {
       savedCount += 1;
     }

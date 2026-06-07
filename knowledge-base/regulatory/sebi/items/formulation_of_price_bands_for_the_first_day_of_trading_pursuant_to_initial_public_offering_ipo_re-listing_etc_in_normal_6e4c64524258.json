@@ -1,0 +1,41 @@
+{
+  "id": "formulation_of_price_bands_for_the_first_day_of_trading_pursuant_to_initial_public_offering_ipo_re-listing_etc_in_normal_6e4c64524258",
+  "title": "Formulation of price bands for the first day of trading pursuant to Initial Public Offering (IPO), re-listing etc. in normal trading session",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/apr-2023/formulation-of-price-bands-for-the-first-day-of-trading-pursuant-to-initial-public-offering-ipo-re-listing-etc-in-normal-trading-session_70019.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/apr-2023/1681211550939.pdf",
+  "document_date": "Apr 11, 2023",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "1911",
+      "CreationDate": "D:20230411163610+05'30'",
+      "ModDate": "D:20230411163610+05'30'",
+      "Producer": "Microsoft: Print To PDF",
+      "Title": "Microsoft Word - Modification with regard to price band computation for the first day of trading pursuant to Initial Public Offering (IPO), re-listing etc. in normal trading session"
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 3 CIRCULAR SEBI/HO/MRD-TPD1/CIR/P/2023/55 April 11, 2023 To All Stock Exchanges Dear Sir/ Madam, Sub.: Formulation of price bands for the first day of trading pursuant to Initial Public Offering (IPO), re-listing etc. in normal trading session 1. SEBI vide circular no. CIR/MRD/DP/02/2012 dated January 20, 2012 prescribed parameters regarding price discovery through Call Auction and applicable price band for the first day of trading pursuant to IPO or recommencement of trading for re-listed scrips in normal trading session. 2. As aforesaid Call Auction sessions are conducted on multiple stock exchanges, the discovered price / equilibrium price pursuant to such Call Auction sessions could be different on each exchange. If the difference in these discovered prices is significant, there could be a situation wherein price bands on individual exchanges are far apart from each other, giving an incorrect picture of price band to investors. 3. Accordingly, after discussion with stock exchanges and SMAC, the following has been decided for trading on first day pursuant to IPO or re-listing (including re-listing on account of scheme of arrangement but excluding scrips for which derivative contracts are available): a. Call Auction session would continue to be conducted separately on individual exchanges and orders would be matched by respective exchanges after computation of equilibrium price. b. If difference in the equilibrium price between exchanges in percentage terms (i.e. absolute difference/minimum of equilibrium prices, expressed as %) is more than the applicable price band for the scrip, a Common Equilibrium Price (CEP) would be computed by exchanges. The CEP shall be volume weighted average of equilibrium prices on individual exchanges as determined by the Call Auction. -- 1 of 3 -- Page 2 of 3 c. The exchanges shall set the aforesaid CEP in their trading systems and apply uniform price bands based on the CEP, as applicable. d. Only unexecuted pending orders from Call Auction session within the aforesaid price band shall be carried forward to the normal market segment. 4. Illustration of the aforesaid is provided below: Consider the following details for a scrip after completion of Call Auction session on two exchanges with applicable price band as 5% for the day: Exchange 1 Exchange 2 Equilibrium Price Qty Lowest bid/ask price Highest bid/ask price Equilibrium Price Qty Lowest bid/ask price Highest bid/ask price 120 300 100 140 100 500 80 130 As percentage difference in the two equilibrium prices (i.e. 100 and 120) is more than the applicable price band (i.e. 20% against 5%), CEP would be calculated viz. (120*300+100*500)/800 = 107.50. Further, the lower and upper price band on both exchanges would be 5% around the aforesaid price of 107.50 and the unexecuted pending orders of the Call Auction session, lying within this price band, would be carried to normal session. 5. The provisions of this circular shall come into effect after 60 days from the date of issuance of this circular. 6. Stock Exchanges are directed to: a. take necessary steps to put in place systems for implementation of the circular, including necessary amendments to the relevant bye-laws, rules and regulations; b. bring the provisions of this circular to the notice of their members and also disseminate the same on their websites; and c. communicate to SEBI, the status of implementation of the provisions of this circular in the Monthly Development Report -- 2 of 3 -- Page 3 of 3 7. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 8. This circular is available on SEBI website at www.sebi.gov.in under the categories “Legal Framework” and “Circulars”. Yours faithfully, Ansuman Dev Pradhan Deputy General Manager Technology, Process Re-engineering, Data Analytics Market Regulation Department +91-22-26449622 Email: ansumanp@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

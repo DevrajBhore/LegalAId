@@ -1,0 +1,181 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "competent jurisdiction to be illegal",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "[__]"
+      }
+    },
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "party_1_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "kind": "required"
+      }
+    },
+    {
+      "name": "party_2_name",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "kind": "required"
+      }
+    },
+    {
+      "name": "notice_period",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "positive_integer"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_1",
+      "clause_name": "Clause 1",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_2",
+      "clause_name": "Clause 2",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_3",
+      "clause_name": "Clause 3",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_4",
+      "clause_name": "Clause 4",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_5",
+      "clause_name": "Clause 5",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_6",
+      "clause_name": "Clause 6",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_7",
+      "clause_name": "Clause 7",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_8",
+      "clause_name": "Clause 8",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_11",
+      "clause_name": "Clause 11",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_12",
+      "clause_name": "Clause 12",
+      "category": "confidentiality"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_13",
+      "clause_name": "Clause 13",
+      "category": "termination"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_14",
+      "clause_name": "Clause 14",
+      "category": "jurisdiction"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_18",
+      "clause_name": "Clause 18",
+      "category": "jurisdiction"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_15",
+      "clause_name": "Clause 15",
+      "category": "general"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_16",
+      "clause_name": "Clause 16",
+      "category": "general"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_17",
+      "clause_name": "Clause 17",
+      "category": "general"
+    },
+    {
+      "clause_id": "non_disclosure_agreement_undated_faa85455db3b_19",
+      "clause_name": "Clause 19",
+      "category": "general"
+    }
+  ],
+  "body": "Non-Disclosure Agreement Template (India) | OS v.1 | November 2016 1 NON-DISCLOSURE AGREEMENT This non-disclosure agreement (“Agreement”) is dated {{placeholder}} (“Effective Date”) and is entered into by and between: {{placeholder}} (“Party 1”) AND {{placeholder}} (“Party 2”) Party 1 and Party 2 are hereinafter referred to individually as a \"Party\" and collectively as the \"Parties\". Wherever the context requires, the Party disclosing the confidential information shall be referred to as the “Disclosing Party” and the Party receiving the confidential information shall be referred to as the “Receiving Party”. Whereas: A. Party 1 engages in {{placeholder}} and Party 2 engages in {{placeholder}}. B. The Parties wish to collaborate and enter into discussions for the purpose of {{placeholder}} (“Purpose”) and wish to keep such discussions confidential. Now therefore, in consideration for the mutual promises and covenants set forth herein, the Parties agree as follows: 1. “Confidential Information” shall mean and include all non-public information, written or oral, disclosed, directly or indirectly, through any means of communication or observation (including oral, graphic, written or electronic form) by the Disclosing Party or any of its affiliates or representatives to or for the benefit of the Receiving Party from the Effective Date, irrespective of whether such information: (a) has been specifically marked as “confidential” at the time of disclosure; (b) is treated as proprietary information by the Disclosing Party; or (c) is owned or developed by the Disclosing Party. 2. Confidential Information shall include any financial, business, proprietary or technical information of the Disclosing Party. 3. All such Confidential Information shared under this Agreement shall be used by the Parties exclusively for the Purpose and neither Party shall disclose or otherwise use the Confidential Information for any other purpose or in any other manner without the prior written approval of the Disclosing Party. 4. The Confidential Information shared under this Agreement may be disclosed by the Receiving Party to other employees on a need to know basis, with written consent from the Disclosing Party, in connection with the Purpose, and who shall protect the Confidential Information in accordance with the terms of this Agreement. 5. The Receiving Party shall protect the Confidential Information in the same manner as it would protect its own confidential information. 6. The confidentiality obligations under this Agreement shall not apply to Confidential Information which: a. was in the public domain or generally available to the public prior to receipt thereof by Receiving Party from the Disclosing Party, or which subsequently becomes part of the public domain or generally available to the public other than as a result of a breach of this Agreement by Receiving Party; b. was in the possession of Receiving Party prior to receipt from the Disclosing Party; c. is later lawfully received by Receiving Party from a third party without any confidentiality restrictions applicable; d. is independently created or developed by the Receiving Party without use or reference of the Confidential Information of the Disclosing Party; or, e. is required to be disclosed by operation of applicable law. 7. Notwithstanding anything to the contrary contained in this Agreement, Confidential Information may be disclosed as required by applicable law, regulations or governmental procedure, provided the Receiving Party notifies the Disclosing Party prior to such disclosure, unless prohibited by law, so as to afford the Disclosing Non-Disclosure Agreement Template (India) | OS v.1 | November 2016 2 Party reasonable opportunity to object or seek an appropriate protective order with respect to such disclosure. 8. The Receiving Party agrees not to issue or release for publication any articles or advertising or publicity matter relating to this Agreement which mention or imply the name of the Disclosing Party any of its affiliates, or subject matter hereof, unless prior written consent is granted by the Disclosing Party subject only to Clause 7. The Receiving Party shall make such amendments to any such press release or public statement as are reasonably requested by the Disclosing Party. 9. No transfer of intellectual property right either by way of assignment or license is either granted or implied by the disclosure of Confidential Information to the Receiving Party. The fact that Confidential Information is disclosed to the Receiving Party shall not be deemed to constitute any representation, warranty or inducement by the Disclosing Party of any kind (including of its accuracy or correctness) with respect to the Confidential Information, including without limitation, which such use will not infringe on intellectual property rights of any third party. 10. The Receiving Party shall, upon the request of the Disclosing Party or upon the termination of this Agreement, return to the Disclosing Party all Confidential Information, including drawings, documents, reports and other tangible manifestations of Confidential Information received by the Receiving Party pursuant to this Agreement, together with all copies and reproductions thereof. 11. This Agreement shall be effective as of the Effective Date and shall terminate on the delivery of written notice of termination from either Party; provided, however, that the obligations of the Receiving Party under this Agreement shall remain in effect for a period of {{placeholder}} years from the date of termination. 12. This Agreement shall be governed and construed in accordance with the laws of India. The competent courts at {{placeholder}} India shall have the sole and exclusive jurisdiction over any dispute that arises in relation to this Agreement. 13. The Partner represents and covenants that its performance of this Agreement does not and will not breach any agreement it has entered into or will enter into with any third party. The Partner agrees not to enter into any written or oral agreement that conflicts with the provisions of this Agreement. 14. The individuals executing this Agreement represent and warrant that they are empowered and duly authorized execute this Agreement on behalf of the parties they represent. Each Party represents and warrants to the other Party that it is authorised to execute this Agreement and is competent to discharge the obligations under this Agreement. 15. Nothing in this Agreement will be construed to create a partnership, joint venture, franchise, fiduciary, employment or agency relationship between the parties. Neither Party has any express or implied authority to assume or create any obligations on behalf of the other or to bind the other to any contract, agreement or undertaking with any third party. 16. If any provision of this Agreement shall be held by a court of competent jurisdiction to be illegal, invalid or unenforceable, the remaining provisions shall remain in full force and effect. 17. This Agreement contains the full and complete understanding of the parties with respect to the subject matter hereof, and supersedes all prior representations and understandings, whether oral or written. This Agreement may be amended only in writing by mutual agreement of the Parties. IN WITNESS WHEREOF, the parties have executed this Agreement under seal as of the Effective Date. Signature Name Designation Organisation Party",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/non_disclosure_agreement_undated_faa85455db3b.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/NON_DISCLOSURE_AGREEMENT.pdf",
+    "quality_score": 80,
+    "approval_eligible": true,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

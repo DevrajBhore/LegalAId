@@ -1,0 +1,110 @@
+{
+  "document_type": "NDA",
+  "variant": "startup",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "placeholder_1",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "_______"
+      }
+    },
+    {
+      "name": "placeholder_2",
+      "type": "text",
+      "required": true,
+      "validation": {
+        "source": "______"
+      }
+    },
+    {
+      "name": "party_address",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "complete_address"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_1",
+      "clause_name": "Clause 1",
+      "category": "general"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_3",
+      "clause_name": "Clause 3",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_4",
+      "clause_name": "Clause 4",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_7",
+      "clause_name": "Clause 7",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_8",
+      "clause_name": "Clause 8",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_9",
+      "clause_name": "Clause 9",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_10",
+      "clause_name": "Clause 10",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_12",
+      "clause_name": "Clause 12",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "pitch_deck_guidelines_undated_f3245d6c8cd3_13",
+      "clause_name": "Clause 13",
+      "category": "general"
+    }
+  ],
+  "body": "The initial pitch presentation (this could be a PPT or a PDF document) should not be more than 12 - 15 slides, covering the points mentioned below. At this stage, details and numbers are not necessary. At the preliminary stage, the review committee, as well as investors, are keen to understand if the concept addresses a real opportunity, if the business case is strong, if the team is well rounded, competent & committed, and the traction that the team has been able to achieve so far. 1. Cover Slide · Company name and logo · Contact details (city, e-mail, mobile) · URL · One line that clearly describes the concept/product/service 2. Team · Highlight what each member of the team does/will do in the venture, and why he/she is best suited for the role · Indicate if the person is a co-founder or founding team member or an employee – against each indicate the % of equity held (currently or planned if not yet distributed) 3. The Issue or Pain Point That Your Product/Solution Addresses · Explain why your customers need your solution · Mention what they are currently doing and how your product/service is a better solution 4. Product/Technology Overview · Highlight the uniqueness of the product or service or technology and NOT the technical details for each feature in the product/solution/service 5. Business Model · This is about how you will make money from this business opportunity · This is NOT the excel sheet, in simple terms, this is about who will pay how much and to whom for your product 6. Size of the Market Opportunity · Be clear about where and who is going to buy your product/service and how much would they pay for it · Mention the size of the opportunity in the markets you are planning to address (e.g. In India, there are ____ number of parents who will buy our service at Rs/$_____ per year. This translates into a market potential of Rs/$_____ per year. In year 3, we plan to tap US and Canada, and the size of the opportunity there is Rs/$_______ (No. of parents ______ x Price per year_____) · This section is NOT about what your plans are, but about what the size of the market is. This section should therefore give a sense about how many customers are there in your target market and at what price are you selling your product to them, what is the revenue potential if all of them were to buy (not that they will, but this is to give an indication of what the size of the market is) 7. Current Traction · What have you achieved so far – product, customers, revenues, etc. · Include photographs, if possible (e.g. if you have physical stores or products that you manufacture or office pictures) 8. Competitive Landscape · Who are currently or in future likely to compete against your product/service and what is your plan to win this battle? · Explain why are you better than your competitors (a comparison chart is usually not seen seriously by investors because all presentations tend to show a comparison chart that will be favourable to your solutions/product) 9. Financials Current and Projections · Summary of your business plan excel sheet for 3 years (Note: the detailed excel sheet is NOT required. Just key figures at annual level for 3 years are sufficient for the preliminary evaluation. If there is sufficient interest from investors in the venture, then we will evaluate your excel sheet and business case in detail) · Break-up of your costs into CAPEX and OPEX (In OPEX, highlight major cost components – salaries, marketing, etc.) · Cover the unit economics, i.e. how much revenue do you get per transaction/customer, how much does it cost you to service that customer/order 10. Funding Needs, Use of Funds & Proposed Valuation · Describe how much money you want to raise and its planned usage · Mention if there are other co-investors (or others who have already committed) · Clearly indicate how long will these funds last and what you will be able to achieve with it (e.g. this investment of $______ will last us for _____ months. With this, we will be able to get to _______ customers and _______ in revenues) · Clearly mention if you are going to require follow-on capital, and if so, how much (e.g. post this we will raise a Series A round of $ _______) · The valuation you are seeking for this round 11. Current Equity Structure, Fundraising History and Investors · Table of current equity holding (cap table) · How much money have you invested? · Mention previous investment history, including year, amount and investors 12. Exit Options · How do you think the investors can exit (i.e. who will buy their equity or do you feel that this can be an IPO) · If you can, give examples of exits in your industry (or comparable examples)",
+  "metadata": {
+    "source": "knowledge-base/templates/startup-india/items/pitch-deck_guidelines_undated_f3245d6c8cd3.json",
+    "source_label": "Startup India Templates",
+    "source_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/pitch_guidelines/Pitch%20deck%20Guidelines.pdf",
+    "quality_score": 64,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

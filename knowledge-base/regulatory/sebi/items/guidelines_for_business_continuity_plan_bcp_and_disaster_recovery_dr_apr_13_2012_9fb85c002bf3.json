@@ -1,0 +1,42 @@
+{
+  "id": "guidelines_for_business_continuity_plan_bcp_and_disaster_recovery_dr_apr_13_2012_9fb85c002bf3",
+  "title": "Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR)",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/apr-2012/guidelines-for-business-continuity-plan-bcp-and-disaster-recovery-dr-_22564.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1334316648611.pdf",
+  "document_date": "Apr 13, 2012",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.3",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Producer": "GPL Ghostscript 8.64",
+      "CreationDate": "D:20120413172646+05'30'",
+      "ModDate": "D:20120413172646+05'30'",
+      "Title": "Microsoft Word - Cir - 12 - 2012 - BCP DR Guidelines1.docx",
+      "Creator": "PScript5.dll Version 5.2",
+      "Author": "2013"
+    },
+    "reason": null
+  },
+  "text": "¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 1 of 3 CIRCULAR CIR/MRD/DMS/ 12 /2012 April 13, 2012 To, All Stock Exchanges / All Depositories Dear Sir / Madam, Sub: Guidelines for Business Continuity Plan (BCP) and Disaster Recovery (DR) 1. In the event of disaster, the disruption in trading system of stock exchanges / depository system may not only affect the market integrity but also the confidence of investors. In order to address this issue, the current BCP - DR setups of some of the stock exchanges having nation-wide terminals and depositories were examined by the Technical Advisory Committee of SEBI (TAC). Based on the recommendations of TAC, the broad guidelines for BCP - DR are given below: i. The stock exchanges and depositories should have in place Business Continuity Plan (BCP) and Disaster Recovery Site (DRS) so as to maintain data and transaction integrity. ii. Apart from DRS, stock exchanges should also have a Near Site (NS) to ensure zero data loss. iii. The DRS should be set up sufficiently away, i.e. in a different seismic zone, from Primary Data Centre (PDC) to ensure that both DRS and PDC are not affected by the same disasters. iv. The manpower deployed at DRS / NS should have similar expertise as available at PDC in terms of knowledge / awareness of various technological and procedural systems and processes relating to all operations such that DRS / NS can function at short notice, independently. v. Configuration of DRS / NS with PDC a) Hardware, system software, application environment, network and security devices and associated application environments of DRS / NS and PDC should have one to one correspondence between them. -- 1 of 3 -- ¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 2 of 3 b) Exchanges / Depositories should have Recovery Time Objective (RTO) and Recovery Point Objective (RPO) not more than 30 minutes and 4 hours, respectively. c) Solution architecture of PDC and DRS / NS should ensure high availability, fault tolerance, no single point of failure, zero data loss, and data and transaction integrity. d) Any updates made at the PDC should be reflected at DRS / NS immediately (before end of day) with head room flexibility without compromising any of the performance metrics. e) Replication architecture, bandwidth and load consideration between the DRS / NS and PDC should be within stipulated RTO and ensure high availability, right sizing, and no single point of failure. f) Replication between PDC and NS should be synchronous to ensure zero data loss. Whereas the one between PDC and DR and between NS and DR may be asynchronous. g) Adequate resources (with appropriate training and experience) should be available at all times to handle operations on a regular basis as well as during disasters. vi. DR Drills / Testing a) DR drills should be conducted on quarterly basis. In case of exchanges, these drills should be closer to real life scenario (trading days) with minimal notice to DR staff involved. b) During the drills, the staff based at PDC should not be involved in supporting operations in any manner. To begin with, initial three DR drills from the date of this circular may be conducted with the support of staff based at PDC. c) The drill should include running all operations from DRS for at least 1 full trading day. d) Before DR drills, the timing diagrams clearly identifying resources at both ends (DRS as well as PDC) should be in place. e) The results and observations of these drills should be documented and placed before the Governing Board of Stock Exchange / Depositories. Subsequently, the same along with the comments of the Governing Board should be forwarded to SEBI within a month of the DR drill. f) The system auditor while covering the BCP – DR as a part of mandated annual system audit should also comment on documented results and observations of DR drills. vii. BCP – DR Policy Document -- 2 of 3 -- ¼ããÀ¦ããè¾ã ¹ãÆãä¦ã¼ãîãä¦ã ‚ããõÀ ãäÌããä¶ã½ã¾ã ºããñ¡Ã Securities and Exchange Board of India Page 3 of 3 a) The BCP – DR policy of stock exchanges and depositories should be well documented covering all areas as mentioned above including disaster escalation hierarchy. b) The stock exchanges should specifically address their preparedness in terms of proper system and infrastructure in case disaster strikes during business hours. c) Depositories should also demonstrate their preparedness to handle any issue which may arise due to trading halts in stock exchanges. d) The policy document and subsequent changes / additions / deletions should be approved by Governing Board of the Stock Exchange / Depositories and thereafter communicated to SEBI. 2. Considering the above, stock exchanges and depositories are advised to submit their BCP – DR policy to SEBI within 3 months from the date of this circular. Further, they should also ensure that point 1 (vi) (f) mentioned above is also included in scope of system audit as mentioned in the circular no. CIR/MRD/DMS/13/2011 dated November 29, 2011. 3. These guidelines will be applicable to depositories, stock exchanges having nation- wide terminals and stock exchanges having trading on their own platforms. Further stock exchanges, currently having no trading on their own platforms, will be required to comply with these guidelines before recommencement of trading on their own platforms in terms of Circular No. MRD/DSA/SE/Cir-12/09 dated October 07, 2009. 4. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992 to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 5. This circular is available on SEBI website at www.sebi.gov.in under the categories “Legal Framework” and “Circulars”. Yours faithfully, B. J. Dilip Deputy General Manager +91-22-26449682 dilipbj@sebi.gov.in -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

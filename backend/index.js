@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import rateLimit from "express-rate-limit";
 
 import { loadVariables } from "./services/variableLoader.js";
 import { generateDocument } from "./services/documentService.js";
@@ -26,19 +27,85 @@ import { callAIChat } from "./ai/aiClient.js";
 import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
 import { getIntakeAssistantResponse } from "./services/intakeAssistantService.js";
+import { searchClauses } from "./services/clauseSearch.js";
+import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
 
 import authRoutes from "./auth/authRoutes.js";
-import { protect } from "./auth/authMiddleware.js";
+import { protect, requireAdmin } from "./auth/authMiddleware.js";
 import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
+import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
+import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
 
 const app = express();
 const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
 
-app.use(cors());
+// Restrict CORS to configured client origin(s). CLIENT_URL may be a single
+// origin or a comma-separated list; if unset, fall back to permissive (dev).
+const ALLOWED_ORIGINS = (process.env.CLIENT_URL || "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
+app.use(
+  cors(
+    ALLOWED_ORIGINS.length
+      ? {
+          origin(origin, callback) {
+            // Allow same-origin / server-to-server (no Origin header) and listed origins.
+            if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+              return callback(null, true);
+            }
+            return callback(new Error("Not allowed by CORS"));
+          },
+          credentials: true,
+        }
+      : {}
+  )
+);
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
 app.use(express.urlencoded({ extended: true, limit: REQUEST_BODY_LIMIT }));
 
 const VALIDATION_MODES = new Set(["background", "generation", "final"]);
+
+// ── Rate limiters ─────────────────────────────────────────────────────────────
+// Sensitive auth endpoints (login/register/reset) — protect against brute force.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 40,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error:
+      "Too many authentication attempts. Please wait a few minutes and try again.",
+  },
+});
+
+// Expensive AI/generation endpoints — protect provider quota and server load.
+const aiLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error:
+      "You are generating documents very quickly. Please wait a moment before trying again.",
+  },
+});
+
+// ── Config ⊆ registry invariant ──────────────────────────────────────────────
+// The shared registry may stage types ahead of config, but backend config must
+// never reference a document type that is missing from the registry.
+{
+  const unregistered = Object.keys(DOCUMENT_CONFIG).filter(
+    (type) => !DOCUMENT_TYPE_REGISTRY[type]
+  );
+  if (unregistered.length > 0) {
+    console.error(
+      "[Config] Document types missing from shared registry:",
+      unregistered.join(", ")
+    );
+    process.exit(1);
+  }
+}
 
 try {
   validateDocumentIntakeConfiguration();
@@ -77,6 +144,72 @@ function resolveValidationMode(mode, deep) {
   return VALIDATION_MODES.has(mode) ? mode : null;
 }
 
+function buildGenerationErrorInfo({ error, details, validation, statusCode }) {
+  const text = `${error || ""} ${details || ""}`.toLowerCase();
+  const firstIssue = [
+    ...(validation?.blockingIssues || []),
+    ...(validation?.advisoryIssues || []),
+  ].find(Boolean);
+
+  if (firstIssue) {
+    return {
+      category: "VALIDATION_BLOCKED",
+      cause: firstIssue.message,
+      solution:
+        firstIssue.suggestion ||
+        "Correct the related intake fields and generate the document again.",
+    };
+  }
+
+  if (
+    text.includes("rate_limited") ||
+    text.includes("rate limited") ||
+    statusCode === 429
+  ) {
+    return {
+      category: "AI_RATE_LIMITED",
+      cause: "The configured AI provider is temporarily rate limiting requests.",
+      solution:
+        "Wait a short time and retry. If this repeats, reduce very long inputs or check provider quota.",
+    };
+  }
+
+  if (
+    text.includes("ai_provider_error") ||
+    text.includes("no_model_available") ||
+    text.includes("timeout")
+  ) {
+    return {
+      category: "AI_PROVIDER_UNAVAILABLE",
+      cause:
+        "The AI drafting provider failed, timed out, or no configured model was available.",
+      solution:
+        "Retry after a short wait, and verify backend AI provider keys and model configuration if it keeps failing.",
+    };
+  }
+
+  if (statusCode === 400 || statusCode === 422) {
+    return {
+      category: "INPUT_ERROR",
+      cause:
+        error ||
+        "The backend could not safely use the submitted form inputs.",
+      solution:
+        "Review the form values, fill missing details, correct invalid formats, and try again.",
+    };
+  }
+
+  return {
+    category: "GENERATION_FAILED",
+    cause:
+      details ||
+      error ||
+      "The backend failed before returning a generated draft.",
+    solution:
+      "Try again once. If the failure repeats, check backend logs and service configuration.",
+  };
+}
+
 // ── MongoDB connection ────────────────────────────────────────────────────────
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -95,8 +228,8 @@ mongoose
   })
   .catch((err) => console.error("❌ MongoDB connection failed:", err.message));
 
-// ── Auth routes (public) ──────────────────────────────────────────────────────
-app.use("/auth", authRoutes);
+// ── Auth routes (public, rate limited) ────────────────────────────────────────
+app.use("/auth", authLimiter, authRoutes);
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {
@@ -128,6 +261,9 @@ app.get("/document-config/:type", (req, res) => {
 // Get variable schema
 app.use("/history", protect, documentHistoryRoutes);
 
+// Clause legal-review workflow (admin only)
+app.use("/admin/clause-reviews", protect, requireAdmin, clauseReviewRoutes);
+
 app.get("/variables/:documentType", protect, (req, res) => {
   try {
     const schema = loadVariables(req.params.documentType);
@@ -137,14 +273,42 @@ app.get("/variables/:documentType", protect, (req, res) => {
   }
 });
 
+// Full-text clause-library search
+app.get("/search/clauses", protect, (req, res) => {
+  try {
+    const query = String(req.query.q || "").trim();
+    if (!query) {
+      return res.status(400).json({ error: "Missing search query parameter 'q'." });
+    }
+    const limit = Math.min(50, Math.max(1, Number(req.query.limit) || 20));
+    const result = searchClauses(query, {
+      limit,
+      documentType: req.query.document_type || null,
+    });
+    res.json(result);
+  } catch (error) {
+    console.error("Clause search error:", error);
+    res.status(500).json({ error: "Search failed", details: error.message });
+  }
+});
+
 // Generate document
-app.post("/generate", protect, async (req, res) => {
+app.post("/generate", protect, aiLimiter, async (req, res) => {
   try {
     const result = await generateDocument(req.body);
     if (result.error) {
+      const statusCode = result.statusCode || 503;
       return res
-        .status(result.statusCode || 503)
-        .json({ error: result.error, validation: result.validation || null });
+        .status(statusCode)
+        .json({
+          error: result.error,
+          validation: result.validation || null,
+          issue: buildGenerationErrorInfo({
+            error: result.error,
+            validation: result.validation,
+            statusCode,
+          }),
+        });
     }
     res.json({
       ...result,
@@ -154,14 +318,23 @@ app.post("/generate", protect, async (req, res) => {
     });
   } catch (error) {
     console.error("Generate error:", error);
+    const details = error.message;
     res
       .status(500)
-      .json({ error: "Generation failed", details: error.message });
+      .json({
+        error: "Generation failed",
+        details,
+        issue: buildGenerationErrorInfo({
+          error: "Generation failed",
+          details,
+          statusCode: 500,
+        }),
+      });
   }
 });
 
 // Intake assistant
-app.post("/intake-assistant", protect, async (req, res) => {
+app.post("/intake-assistant", protect, aiLimiter, async (req, res) => {
   try {
     const { document_type: documentType, variables, message } = req.body || {};
     if (!documentType || !String(message || "").trim()) {
@@ -231,10 +404,15 @@ app.post("/export", protect, async (req, res) => {
       });
     }
 
-    const validation = await runDocumentValidation(draft, {
+    const exportDraft = applyDocumentQualityControls(draft, {
+      document_type: draft.document_type,
+      variables: req.body?.variables || draft?.metadata?.source_variables || {},
+    });
+
+    const validation = await runDocumentValidation(exportDraft, {
       mode: "final",
-      documentType: draft.document_type,
-      sourceVariables: req.body?.variables,
+      documentType: exportDraft.document_type,
+      sourceVariables: req.body?.variables || exportDraft?.metadata?.source_variables,
     });
 
     const openIssueCount =
@@ -257,7 +435,7 @@ app.post("/export", protect, async (req, res) => {
       .replace(/\s+/g, "_");
 
     if (resolvedFormat === "txt") {
-      const text = draftToText(draft);
+      const text = draftToText(exportDraft);
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       res.setHeader(
         "Content-Disposition",
@@ -267,7 +445,7 @@ app.post("/export", protect, async (req, res) => {
     }
 
     if (resolvedFormat === "pdf") {
-      const buffer = await draftToPdf(draft);
+      const buffer = await draftToPdf(exportDraft);
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(
         "Content-Disposition",
@@ -276,7 +454,7 @@ app.post("/export", protect, async (req, res) => {
       return res.send(buffer);
     }
 
-    const buffer = await draftToDocx(draft);
+    const buffer = await draftToDocx(exportDraft);
     res.setHeader(
       "Content-Type",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -293,7 +471,7 @@ app.post("/export", protect, async (req, res) => {
 });
 
 // AI Chat
-app.post("/chat", protect, async (req, res) => {
+app.post("/chat", protect, aiLimiter, async (req, res) => {
   try {
     const { draft, message } = req.body;
     if (!message) return res.status(400).json({ error: "Missing message" });
@@ -306,7 +484,7 @@ app.post("/chat", protect, async (req, res) => {
 });
 
 // ── AI Fix Issue (repair a specific IRE-flagged clause) ───────────────────────
-app.post("/fix-issue", protect, async (req, res) => {
+app.post("/fix-issue", protect, aiLimiter, async (req, res) => {
   try {
     const { draft, issue } = req.body;
     if (!draft || !issue)
@@ -326,7 +504,7 @@ app.post("/fix-issue", protect, async (req, res) => {
 });
 
 // ── List available Gemini models (diagnostic) ─────────────────────────────────
-app.get("/admin/models", protect, async (req, res) => {
+app.get("/admin/models", protect, requireAdmin, async (req, res) => {
   const models = await listAvailableModels();
   res.json(models);
 });

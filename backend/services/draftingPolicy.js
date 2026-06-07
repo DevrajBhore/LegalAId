@@ -1,6 +1,7 @@
 import fs from "fs";
 
 import { DOCUMENT_CONFIG } from "../config/documentConfig.js";
+import { getVariables } from "../config/variableConfig.js";
 import {
   getCanonicalDocumentType,
   getDocumentFamily,
@@ -137,7 +138,10 @@ function getDocumentConfig(documentType = "") {
 
 function getConfiguredFields(documentType = "") {
   const config = getDocumentConfig(documentType);
-  const fields = new Set(config.requiredFields || []);
+  const fields = new Set([
+    ...Object.keys(getVariables(normalizeDocumentType(documentType)) || {}),
+    ...(config.requiredFields || []),
+  ]);
 
   for (const section of config.sections || []) {
     for (const field of section.fields || []) {
@@ -338,6 +342,10 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
       name: variables?.[participant.nameField],
       address: participant.addressField ? variables?.[participant.addressField] : undefined,
       type: participant.typeField ? variables?.[participant.typeField] : undefined,
+      pan: variables?.[`${participant.id}_pan`],
+      gstin: variables?.[`${participant.id}_gstin`],
+      cin: variables?.[`${participant.id}_cin`],
+      llpin: variables?.[`${participant.id}_llpin`],
     }))
     .filter((participant) => participant.name || participant.address);
 }

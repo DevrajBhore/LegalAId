@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getDocumentTypes } from "../services/api";
 import { Icons } from "../utils/icons";
-import { FAMILY_ICONS, getGroupedCatalog } from "../utils/documentCatalog";
+import {
+  FAMILY_ICONS,
+  getDocumentInfoPath,
+  getGroupedCatalog,
+} from "../utils/documentCatalog";
 import "./Library.css";
 
 export default function Library() {
@@ -28,12 +32,7 @@ export default function Library() {
   );
 
   const goToDocument = (type) => {
-    if (user) {
-      navigate("/form", { state: { document_type: type } });
-      return;
-    }
-
-    navigate("/login", { state: { from: "/form", document_type: type } });
+    navigate(getDocumentInfoPath(type));
   };
 
   return (

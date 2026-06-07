@@ -1,0 +1,75 @@
+{
+  "category": "jurisdiction",
+  "clause_name": "Jurisdiction",
+  "risk_level": "medium",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Clause 5",
+      "text": "C. Handling of Re-seller pairing requests shall be governed by following business rules: Q2 – Resellers can only pair with catalogues uploaded by OEMs. The reseller’s listing (i.e. pairing) will be auto approved. Q3 – For Resellers of brands that have OEMs with dashboard - Resellers can pair with an existing catalogue - if the Resellers is pairing for the first time in that category, the reseller’s credentials (seller name and authorization code input by the reseller) will go to the OEM Dashboard for approval. The Reseller’s listing will be published only after the OEM approves the reseller credentials.\nIf the reseller pairs with another catalogue in same category with the same re- seller credentials / authorization code, the listing will be auto approved. Q4 – For Resellers of brands that have OEMs with dashboard - Resellers can pair with an existing catalogue with no need for any OEM approval.",
+      "char_length": 908,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/quadrant_policy_of_gem_undated_7b7d61b25bd8.json",
+      "source_document_name": "quadrant policy of gem"
+    },
+    {
+      "clause_name": "Clause 70",
+      "text": "9. Outlays (Year wise) SI.No Year Amount (Rs. in Cr)) 1. 2017-18 0.35 2. 2018-19 0.55 3. 2019-20 0.60 Total 1.50 List of Field Offices of Coir Board Authorized Office Jurisdiction 1.The Regional Officer, Coir Board Regional Office, No.30, Mariammal Layout, Palladam Road, Pollachi, Coimbatore. Pin — 642 002.Tel/Fax : 04259-222450 Tamil Nadu, Andaman & Nicobar Islands, Puducherry",
+      "char_length": 380,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/coir_vikas_yojana_cvy_undated_6ca4d8607ec7.json",
+      "source_document_name": "Coir Vikas Yojana (CVY)"
+    },
+    {
+      "clause_name": "Clause 1",
+      "text": "P-01002/1/2024-POLICY-DCMSME (e-4026565) Government of India Ministry of Micro, Small and Medium Enterprisei Office of Development Commissioner (MSME) (Policy & Governance Division) ***** RoomlNo. 710, 'A' Wing, Nirman Bhawan, New Delhi. Dated: 15.01.2024 OFFICE MEMORANDUM The undersigned is directed to state that in pursuance of Para 9(4) of this Ministry's Notification Number S.O. 2119 (E) dated 26.06.2020 and to facilitate the speedy disposal of grievances related to discrepancy or complaint(s) pertaining to updating requests and to take action on the recommendations of Directorate of Industries for cancellation/amendments of the Udyam Registration Certificate within 48 Hours, the Competent Authorit hereby authorizes MSME-DFOs to take such action to resolve the issue in the StatelUTs of heir jurisdiction on behalf of this Ministry. This has the approval of the Competent Authority. To,",
+      "char_length": 900,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/msme/items/speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_and_to_take_action_on_the_recommendations_bb77a6972cd1.json",
+      "source_document_name": "Speedy disposal of grievances related to discrepancy or complaints pertaining to updating requests and to take action on the recommendations of Directorate of Industries for cancellation/amendments of Udyam Registration Certificate within 48 Hours-reg."
+    },
+    {
+      "clause_name": "Clause 15",
+      "text": "10. REMEDIES 10.1 Notwithstanding anything contained herein, the Employee acknowledges that a breach of any of the covenants contained in this Agreement could result in irreparable injury to the Company for which there might be no adequate remedy at law, and that, in the event of such a breach or threat thereof, the Company shall be entitled to obtain remedies available under Applicable Law including but not limited to injunctive relief through any court of competent jurisdiction. The injunctive remedies are cumulative and are in addition to any other rights and remedies that the Company may have at law or in equity.",
+      "char_length": 624,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/employment_agreement_3_undated_fcc5af6e481d.json",
+      "source_document_name": "EMPLOYMENT AGREEMENT (3)"
+    },
+    {
+      "clause_name": "Clause 14",
+      "text": "10. REMEDIES 10.1 Notwithstanding anything contained herein, the Founder acknowledges that a breach of any of the covenants contained in this Agreement could result in irreparable injury to the Company for which there might be no adequate remedy at law, and that, in the event of such a breach or threat thereof, the Company shall be entitled to obtain remedies available under Applicable Law including but not limited to injunctive relief through any court of competent jurisdiction. The injunctive remedies are cumulative and are in addition to any other rights and remedies that the Company may have at law or in equity.",
+      "char_length": 623,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/founder_agreement_1_undated_264b230c080f.json",
+      "source_document_name": "FOUNDER AGREEMENT (1)"
+    },
+    {
+      "clause_name": "Clause 2",
+      "text": "1. Introduction This document is an electronic record published by GeM under the provisions of the Information Technology Act, 2000 and the rules made there under (as applicable) and shall act as valid agreement between Seller / Service Provider and Buyer. Further the use of GeM Portal for Sale / Purchase of Goods / Services and the resulting Contracts shall be governed by the following General Terms and Conditions (GTC) (unless otherwise superseded by Product / Service specific Special Terms and Conditions (STC), Product / Track / Domain Specific STC of Particular Service including its SLA (Service Level Agreement) and BID/Reverse Auction Specific Additional Terms and Conditions (ATC) as applicable). Government e-Marketplace (GeM) is the National Public Procurement Portal; an end- to-end online Marketplace for Central and State Government Ministries / Departments, Central & State Public Sector Undertakings (CPSUs & SPSUs), Autonomous institutions and Local bodies, for procurement of common use goods & services. The portal is owned and managed by GeM SPV which is a Section 8 (Non- Profit) Company registered under the Companies Act, 2013. GeM SPV operates, monitors and supervises all the business transactions on the portal through the Managed Service Provider as per defined roles and responsibilities.",
+      "char_length": 1321,
+      "risk_level": "medium",
+      "quality_score": 40,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/general_terms_and_conditions_on_gem_40_undated_8325977cf37b.json",
+      "source_document_name": "General Terms and Conditions on GeM 4.0"
+    }
+  ]
+}

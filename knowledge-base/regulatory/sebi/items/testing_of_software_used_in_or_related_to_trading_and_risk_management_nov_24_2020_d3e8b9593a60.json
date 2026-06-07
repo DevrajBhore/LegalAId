@@ -1,0 +1,46 @@
+{
+  "id": "testing_of_software_used_in_or_related_to_trading_and_risk_management_nov_24_2020_d3e8b9593a60",
+  "title": "Testing of software used in or related to Trading and Risk Management",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/nov-2020/testing-of-software-used-in-or-related-to-trading-and-risk-management_48244.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2020/1606209953496.pdf",
+  "document_date": "Nov 24, 2020",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "1740@SEBINT",
+      "CreationDate": "D:20201124105832+05'30'",
+      "ModDate": "D:20201124144052+05'30'",
+      "Producer": "Microsoft: Print To PDF; modified using iTextSharp™ 5.4.4 ©2000-2013 1T3XT BVBA (AGPL-version)",
+      "Title": "Microsoft Word - Draft Cir - Mock testing",
+      "Custom": {
+        "Classification": "SEBI-INTERNAL",
+        "FClassification": "SEBI-INTERNAL",
+        "KID": "00155D57B16B637418256526023085"
+      }
+    },
+    "reason": null
+  },
+  "text": "भारतीय ᮧितभूित और िविनमय बोडᭅ Securities and Exchange Board of India CIRCULAR SEBI/HO/MRD1/DSAP/CIR/P/2020/234 November 24, 2020 All Recognised Stock Exchanges Dear Sir / Madam, Subject: Testing of software used in or related to Trading and Risk Management 1. SEBI vide Circulars CIR/MRD/DP/24/2013 dated August 19, 2013 and CIR/MRD/DP/06/2014 February 7, 2014 came out with guidelines on ‘Testing of software used in or related to Trading and Risk management’. Subsequent to the above, SEBI has received various suggestions/ representation from stakeholders seeking relaxation from the requirement of software testing, prescribed in the aforementioned circulars. 2. After due examination and consultation with stakeholders, it has been decided that requirement of mandatory mock trading sessions to facilitate testing of new software or existing software that has undergone any change of functionality shall be optional if a Stock Exchange provides suitable simulated test environment to test new software or existing software that has undergone any change of functionality and ensures the following: i) The test environment shall be made available to all the members. ii) The test environment shall be made available for at least two hours after market hours and at least on two trading days in a week. iii) For the purpose of testing, Stock Exchange shall make available data from at least one trading day in all segments and the same shall not be older than one month from the day of the testing environment. iv) All trading members (excluding those who use only Exchange provided front end and/or ASP services) having approved Algorithms available with the member, irrespective of the algorithm having undergone change or not, shall participate in the Simulated Environment at least on one trading day during each calendar month at all the exchanges where they are members. This shall be audited and reported in the System Auditors report. v) Exchange shall provide a daily log, including Algos used, of members participation in Simulated Environment to all participating members. The Exchange shall provide summary report of such activity to SEBI in the monthly development report (MDR). -- 1 of 2 -- भारतीय ᮧितभूित और िविनमय बोडᭅ Securities and Exchange Board of India 3. Other conditions prescribed in SEBI Circulars dated August 19, 2013 and February 07, 2014 shall remain unchanged. 4. Stock exchanges are directed to: 4.1. take necessary steps and put in place necessary systems for implementation of the above. 4.2. make necessary amendments to the relevant bye-laws, rules and regulations for the implementation of the above decision. 4.3. bring the provisions of this circular to the notice of the stock brokers/ trading members of the stock exchanges and also disseminate the same on its websites. 5. This circular is being issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 6. This circular is available on SEBI website at www.sebi.gov.in under the categories “Legal Framework”  “Circulars” Yours faithfully, Amit Kapoor General Manager Market Regulation Department +91-22-2644 9374 Email: amitk@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

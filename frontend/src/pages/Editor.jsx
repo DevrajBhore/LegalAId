@@ -2,10 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
+import ErrorExplainer from "../components/ErrorExplainer";
 import {
   chatWithDocument,
   downloadDocument,
   fixIssue,
+  getDocumentHistoryDetail,
+  restoreDocumentHistoryVersion,
   saveDocumentHistory,
   validateDocument,
 } from "../services/api";
@@ -23,6 +26,90 @@ const LEGAL_DISCLAIMER =
 
 function formatExportLabel(format = "docx") {
   return String(format || "docx").toUpperCase();
+}
+
+// The /export endpoint is requested with responseType "blob", so an error body
+// (e.g. a 422 with validation) arrives as a Blob and must be parsed back to JSON.
+async function parseExportError(error) {
+  const response = error?.response;
+  let data = response?.data;
+
+  if (data instanceof Blob) {
+    try {
+      data = JSON.parse(await data.text());
+    } catch {
+      data = null;
+    }
+  }
+  return { status: response?.status, data, raw: error?.message };
+}
+
+function buildExportErrorExplainer(format, { status, data, raw }) {
+  const validation = data?.validation;
+  const blocking = [
+    ...(validation?.blockingIssues || []),
+    ...(validation?.advisoryIssues || []),
+  ].filter(Boolean);
+
+  if (status === 422) {
+    return {
+      variant: "blocked",
+      title: `${formatExportLabel(format)} export is blocked by final validation`,
+      message:
+        data?.error ||
+        "This document still has open issues that must be resolved before it can be exported.",
+      cause:
+        "Export is only allowed once the document passes final validation with zero open issues — duplicate clauses, unresolved placeholders, invalid party details, or currency problems all block it.",
+      solution:
+        "Open the Validation tab, resolve each issue below (use Fix where offered), re-validate, then export again.",
+      items: blocking.map((issue) => ({
+        title: issue.title || issue.rule_id || "Validation issue",
+        detail: issue.message,
+        suggestion: issue.suggestion,
+        clauseId: issue.clause_id || issue.clauseId || null,
+      })),
+      technicalDetail: data?.details || raw || "",
+    };
+  }
+
+  if (status === 401 || status === 403) {
+    return {
+      variant: "error",
+      title: "Sign-in required to export",
+      message: "Your session is missing, expired, or not verified.",
+      cause:
+        "The backend rejected the export because it could not confirm a verified login session.",
+      solution: "Sign in again, verify your email if prompted, then export.",
+      technicalDetail: data?.error || raw || "",
+    };
+  }
+
+  if (!status) {
+    return {
+      variant: "error",
+      title: "Backend is not reachable",
+      message: "LegalAId could not reach the export server.",
+      cause:
+        "The backend may be stopped, restarting, blocked by the network, or the API URL may be incorrect.",
+      solution:
+        "Start or restart the backend, confirm it is available, then export again. Your draft is preserved.",
+      technicalDetail: raw || "",
+    };
+  }
+
+  return {
+    variant: "error",
+    title: `${formatExportLabel(format)} export failed`,
+    message:
+      data?.error ||
+      "The backend started the export but failed before returning a file.",
+    cause:
+      data?.details ||
+      "A server-side export, validation, or formatting dependency failed unexpectedly.",
+    solution:
+      "Try again once. If it repeats, check the backend logs for the technical detail shown here.",
+    technicalDetail: data?.details || raw || "",
+  };
 }
 
 function markDraftEdited(nextDraft, { aiTouched = false } = {}) {
@@ -102,6 +189,7 @@ export default function Editor() {
   const [history, setHistory] = useState(initialState.history);
   const [exportFormat, setExportFormat] = useState("pdf");
   const [downloadingFormat, setDownloadingFormat] = useState(null);
+  const [exportError, setExportError] = useState(null);
   const [hasEdited, setHasEdited] = useState(false);
   const [needsValidation, setNeedsValidation] = useState(false);
   const [validating, setValidating] = useState(false);
@@ -109,6 +197,9 @@ export default function Editor() {
     initialState.history?.draftId ? "saved" : "pending"
   );
   const [activeTab, setActiveTab] = useState("validation");
+  const [versions, setVersions] = useState([]);
+  const [versionsLoading, setVersionsLoading] = useState(false);
+  const [restoringId, setRestoringId] = useState(null);
   const [editedClauses, setEditedClauses] = useState(new Set());
   const [fixingIssueId, setFixingIssueId] = useState(null);
   const [messages, setMessages] = useState([
@@ -212,6 +303,7 @@ export default function Editor() {
   const handleDownload = async (format = exportFormat) => {
     const resolvedFormat = String(format || exportFormat).toLowerCase();
     setDownloadingFormat(resolvedFormat);
+    setExportError(null);
     try {
       await downloadDocument(draft, validation, resolvedFormat);
       setSaveState("saving");
@@ -232,10 +324,59 @@ export default function Editor() {
         console.error("History export save failed:", error);
         setSaveState("error");
       }
-    } catch {
-      alert(`Export failed for ${formatExportLabel(resolvedFormat)}. Please check that the backend is running.`);
+    } catch (error) {
+      const parsed = await parseExportError(error);
+      // A 422 export block returns refreshed validation — surface it on the tab too.
+      if (parsed.data?.validation?.risk) {
+        setValidation(parsed.data.validation);
+      }
+      setExportError(buildExportErrorExplainer(resolvedFormat, parsed));
+      setActiveTab("validation");
     } finally {
       setDownloadingFormat(null);
+    }
+  };
+
+  const handleJumpToClause = (item) => {
+    if (!item?.clauseId) return;
+    const node = document.getElementById(`clause-${item.clauseId}`);
+    if (node?.scrollIntoView) {
+      node.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  const loadVersions = async () => {
+    if (!history?.draftId) return;
+    setVersionsLoading(true);
+    try {
+      const res = await getDocumentHistoryDetail(history.draftId);
+      setVersions(res.data?.versions || []);
+    } catch (error) {
+      console.error("Version list load failed:", error);
+    } finally {
+      setVersionsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === "versions") loadVersions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab, history?.draftId]);
+
+  const handleRestore = async (versionId) => {
+    if (!history?.draftId || restoringId) return;
+    setRestoringId(versionId);
+    try {
+      const res = await restoreDocumentHistoryVersion(history.draftId, versionId);
+      if (res.data?.draft) setDraft(res.data.draft);
+      if (res.data?.validation) setValidation(res.data.validation);
+      if (res.data?.history) setHistory(res.data.history);
+      setVersions(res.data?.versions || []);
+      setActiveTab("validation");
+    } catch (error) {
+      console.error("Restore failed:", error);
+    } finally {
+      setRestoringId(null);
     }
   };
 
@@ -597,6 +738,20 @@ export default function Editor() {
       </div>
 
       <div className="editor-shell">
+        {exportError && (
+          <ErrorExplainer
+            variant={exportError.variant}
+            title={exportError.title}
+            message={exportError.message}
+            cause={exportError.cause}
+            solution={exportError.solution}
+            items={exportError.items}
+            onItemAction={handleJumpToClause}
+            itemActionLabel="Go to clause"
+            technicalDetail={exportError.technicalDetail}
+            onClose={() => setExportError(null)}
+          />
+        )}
         <div className="editor-status-strip">
           {statusItems.map((item) => (
             <div key={item.label} className="editor-status-item">
@@ -682,7 +837,62 @@ export default function Editor() {
               >
                 AI Assistant
               </button>
+              <button
+                className={`sidebar-tab${
+                  activeTab === "versions" ? " sidebar-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("versions")}
+              >
+                Versions
+              </button>
             </div>
+
+            {activeTab === "versions" && (
+              <div className="sidebar-panel">
+                {!history?.draftId && (
+                  <p className="version-empty">
+                    Save this document to start tracking versions.
+                  </p>
+                )}
+                {history?.draftId && versionsLoading && (
+                  <p className="version-empty">Loading version history…</p>
+                )}
+                {history?.draftId && !versionsLoading && versions.length === 0 && (
+                  <p className="version-empty">No saved versions yet.</p>
+                )}
+                {versions.length > 0 && (
+                  <ul className="version-list">
+                    {versions.map((version) => (
+                      <li className="version-item" key={version.versionId}>
+                        <div className="version-item__main">
+                          <span className="version-item__num">
+                            v{version.versionNumber}
+                          </span>
+                          <span className="version-item__type">
+                            {String(version.changeType || "").replace(/_/g, " ")}
+                          </span>
+                          <span className="version-item__date">
+                            {version.createdAt
+                              ? new Date(version.createdAt).toLocaleString("en-IN")
+                              : ""}
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          className="version-item__restore"
+                          disabled={restoringId === version.versionId}
+                          onClick={() => handleRestore(version.versionId)}
+                        >
+                          {restoringId === version.versionId
+                            ? "Restoring…"
+                            : "Restore"}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
 
             {activeTab === "validation" && (
               <div className="sidebar-panel">

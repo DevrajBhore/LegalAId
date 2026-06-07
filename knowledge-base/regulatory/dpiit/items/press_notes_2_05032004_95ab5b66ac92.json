@@ -1,0 +1,41 @@
+{
+  "id": "press_notes_2_05032004_95ab5b66ac92",
+  "title": "Press Notes 2",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/press-notes-2004-58861",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/e2c6ce3d4284fa21bb8b78bdeb8f2d51.pdf",
+  "document_date": "05/03/2004",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "ModDate": "D:20040305165125+05'30'",
+      "CreationDate": "D:20040305165121+05'30'",
+      "Producer": "Adobe PDF Library 5.0",
+      "Creator": "HP PDF Formatter version 1.0.0.229"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 3 -- -- 2 of 3 -- -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

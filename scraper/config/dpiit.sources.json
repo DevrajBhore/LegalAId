@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "category": "orders-and-notices"
+    },
+    {
+      "type": "gazette-notifications",
+      "label": "DPIIT Gazette Notifications",
+      "category": "gazette-notifications"
+    },
+    {
+      "type": "acts-and-policy",
+      "label": "DPIIT Acts and Policy",
+      "category": "acts-and-policy"
+    },
+    {
+      "type": "guidelines",
+      "label": "DPIIT Guidelines",
+      "category": "guidelines"
+    },
+    {
+      "type": "publications",
+      "label": "DPIIT Publications",
+      "category": "publications"
+    }
+  ]
+}

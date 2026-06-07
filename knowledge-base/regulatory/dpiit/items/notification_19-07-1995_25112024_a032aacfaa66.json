@@ -1,0 +1,40 @@
+{
+  "id": "notification_19-07-1995_25112024_a032aacfaa66",
+  "title": "Notification 19-07-1995",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/cement-55881",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/5c7bc2d002c16f611d7f081a597e5e2e.pdf",
+  "document_date": "25/11/2024",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 4,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Creator": "I.R.I.S.",
+      "Producer": "5,0,0,255 1236832",
+      "CreationDate": "D:20101007101631+05'00'"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 4 -- -- 2 of 4 -- -- 3 of 4 -- -- 4 of 4 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

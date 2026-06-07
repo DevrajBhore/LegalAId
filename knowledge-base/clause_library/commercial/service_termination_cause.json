@@ -1,0 +1,19 @@
+{
+  "clause_id": "SERVICE_TERMINATION_CAUSE_001",
+  "name": "Termination for Cause",
+  "category": "TERMINATION",
+  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "Either Party may terminate this Agreement for cause by written notice if the other Party commits a material breach of this Agreement and fails to remedy such breach within thirty (30) days of receiving written notice specifying the breach. Either Party may also terminate immediately if the other Party becomes insolvent, is wound up, or has a receiver appointed over its assets. Termination shall be without prejudice to any rights or remedies that have accrued up to the date of termination.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "39", "note": "Effect of refusal to perform / breach of contract" },
+    { "act": "Indian Contract Act, 1872", "section": "75", "note": "Right to compensation on rightful rescission" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["No cure period is provided for a remediable breach"],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Termination for Cause"
+}

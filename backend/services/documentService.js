@@ -21,6 +21,7 @@ import { lockCriticalClauses } from "./clauseLocker.js";
 import { resolveDependencies } from "./dependencyResolver.js";
 import { injectJurisdictionRules } from "./jurisdictionEngine.js";
 import { applyDocumentHardening } from "./documentHardening.js";
+import { applyDocumentQualityControls } from "./documentQualityControl.js";
 import {
   formatValidationResult,
   runDocumentValidation,
@@ -199,6 +200,7 @@ function applyGenerationStages(draft, input) {
   draft = enforceScopeGuard(draft, input);
   draft = resolveSignatures(draft, input);
   draft = applyDocumentHardening(draft, input);
+  draft = applyDocumentQualityControls(draft, input);
   draft = enhanceCommercially(draft);
   draft = lockCriticalClauses(draft);
   draft.document_type = input.document_type;
@@ -211,15 +213,30 @@ function applyGenerationStages(draft, input) {
   }
 
   draft = normalizeClauseText(draft);
+  draft = applyDocumentQualityControls(draft, input);
 
   return draft;
 }
 
 function shouldUseSemanticGeneration(input = {}) {
-  return (
+  // Explicit opt-out always wins (lets callers force the deterministic path).
+  if (input?.semantic_generation === false) return false;
+  if (String(input?.generation_style || "").toLowerCase() === "deterministic") {
+    return false;
+  }
+
+  // Explicit opt-in.
+  if (
     input?.semantic_generation === true ||
     String(input?.generation_style || "").toLowerCase() === "semantic"
-  );
+  ) {
+    return true;
+  }
+
+  // Default: use semantic drafting whenever an AI provider is configured. The
+  // deterministic pipeline below remains the automatic fallback if the provider
+  // is unavailable, errors, or the AI draft fails final validation.
+  return hasSemanticProviderConfigured();
 }
 
 function hasSemanticProviderConfigured() {

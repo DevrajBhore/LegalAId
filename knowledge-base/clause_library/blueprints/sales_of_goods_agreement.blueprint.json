@@ -37,5 +37,19 @@
     "Consumer Protection Act 2019 — applies where buyer is consumer; cannot be contracted out",
     "BIS certification for notified goods",
     "TDS S.194Q on purchase of goods exceeding Rs.50 lakhs"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
+    },
+    {
+      "clause": "CORE_FORCE_MAJEURE_001",
+      "include_if": "include_force_majeure == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true"
+    }
   ]
 }

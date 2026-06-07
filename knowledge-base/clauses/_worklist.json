@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-06-07T11:50:09.808Z",
+  "purpose": "Curation worklist. Mined clause variants awaiting human selection, schema-upgrade, and legal review before they can feed the variant engine (clause_library/ blueprints variant_clauses[]).",
+  "totals": {
+    "families": 9,
+    "variants": 46,
+    "reviewed": 0,
+    "unreviewed": 46
+  },
+  "families": [
+    {
+      "category": "arbitration",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "confidentiality",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "force_majeure",
+      "variant_count": 1,
+      "unreviewed": 1,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "indemnity",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "ip_ownership",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "jurisdiction",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "notice_period",
+      "variant_count": 3,
+      "unreviewed": 3,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "payment_terms",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    },
+    {
+      "category": "termination",
+      "variant_count": 6,
+      "unreviewed": 6,
+      "next_action": "Pick the genuinely distinct variants, author into base_clause.schema.json (clause_id, document_types, legal_basis, enforceability), then add to a blueprint variant_clauses[] slot."
+    }
+  ]
+}

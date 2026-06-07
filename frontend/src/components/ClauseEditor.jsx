@@ -58,6 +58,7 @@ export default function ClauseEditor({
 
   return (
     <div
+      id={clause.clause_id ? `clause-${clause.clause_id}` : undefined}
       className={`clause-block${editing ? " clause-block--editing" : ""}${
         isSignature ? " clause-block--sig" : ""
       }${recentlyEdited ? " clause-block--edited" : ""}`}

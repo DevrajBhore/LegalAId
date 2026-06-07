@@ -1,0 +1,49 @@
+{
+  "id": "bank_guarantee_undated_c98558ecaac3",
+  "title": "bank guarantee",
+  "source_type": "gem-support-documents",
+  "source_label": "GeM Support Documents",
+  "source_mode": "support-page",
+  "category": "Bid Security and Guarantees",
+  "language": "English",
+  "document_url": "https://assets-bg.gem.gov.in/resources/pdf/bank-guarantee.pdf",
+  "detail_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+  "document_date": null,
+  "document_format": "pdf",
+  "has_text": true,
+  "text": "Format for Bank Guarantee Beneficiary : Date : (BG Date) Bank Guarantee No.: (BG No.) Bank Guarantee Amount: Rs ………. Seller : << Name of Seller Company and address>> __________________________ __________________________ Guarantor: ………………….. Transaction Charges of 0.5% of the total contract value, shall be payable by all Sellers to Government e Marketplace (hereinafter called “GeM”) for all types of awarded contracts on GeM Portal exceeding INR 30 Lakhs effective from 10th July 2018. Whereas it is agreed between <<Name of Seller Company>> (hereafter called the Seller) and GeM that the seller has to provide a Bank Guarantee of Rs …………. (In Words)…. for fulfilling the following obligation: After receipt of GST Invoice from GeM on a quarterly basis, the seller is required to pay the Transaction charges inclusive of GST within 21 days. If the seller fails to pay the Transaction charges as specified above, GeM can invoke the Bank Guarantee not more than the amount specified in the outstanding invoices. We undertake to pay the beneficiary up to the above amount upon receipt of its first written demand, without the Beneficiary having to substantiate its demand, provided that in its demand the Beneficiary will note that the amount claimed by it is due to it owing to the occurrence of the above obligation, specifying the occurred condition or conditions. This guarantee will remain in force up to ………………. and any demand in respect thereof should reach the Bank not later than the above date. Notwithstanding anything contained herein: - i) Our liability under this bank guarantee shall not exceed of Rs………. (In words) ii) This Bank Guarantee shall be valid up to ………….. -- 1 of 2 -- And iii) We are liable to pay the guaranteed amount or any part thereof under this bank guarantee only and only if you serve us a written claim or demand on or before ………….. Dated ……………. For …………………………………………… (Indicate the name of the Bank) Signature ……………………………….. Name of the Officer ……………………………. Designation of the Officer……………………. Code No. …………………………………………….. Name of the Bank and Branch …………………………. -- 2 of 2 --",
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-US",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "PAWAN RAO [ CVBU, Finance, Mumbai ]",
+      "Creator": "Microsoft® Word 2016",
+      "CreationDate": "D:20180730035949+00'00'",
+      "Producer": "www.ilovepdf.com",
+      "ModDate": "D:20180730035950Z"
+    },
+    "link_status": "resolved",
+    "recovery_attempts": [
+      "https://assets-bg.gem.gov.in/resources/pdf/bank-guarantee.pdf"
+    ],
+    "source_error": null
+  },
+  "source_refs": [
+    {
+      "label": "GeM Support Documents",
+      "type": "gem-support-documents",
+      "mode": "support-page",
+      "page_url": "https://gem.gov.in/support/sellers/?lang=english",
+      "detail_url": "https://gem.gov.in/support/sellers/?lang=english"
+    }
+  ]
+}

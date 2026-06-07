@@ -1,0 +1,37 @@
+{
+  "id": "press_note_1_2025_23072025_c6dc94cc5833",
+  "title": "Press Note 1 (2025)",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/press-notes-2025-50004",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/38d1fa621d059c5250c04280be3f0273.pdf",
+  "document_date": "23/07/2025",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

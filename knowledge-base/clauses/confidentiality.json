@@ -1,0 +1,75 @@
+{
+  "category": "confidentiality",
+  "clause_name": "Confidentiality",
+  "risk_level": "medium",
+  "variant_count": 6,
+  "policy": "UNREVIEWED clause variants mined from raw templates. Must be upgraded to base_clause.schema.json and lawyer-reviewed before use in generation.",
+  "variants": [
+    {
+      "clause_name": "Clause 16",
+      "text": "15. Confidentiality Obligation All the Participants recognise that in the course of their participation in the Sahay Ecosystem they will gain access to confidential information. The Participants agree that they will not use this confidential information for any purpose that has not specifically consented to under a lender-borrower relationship, including but not limited to the disclosure or sale to data aggregators, telemarketers and/or competitors, or for cross-selling. Notwithstanding anything contained herein, the use of aggregate anonymous data for the purpose of improving the performance and quality of the Sahay App shall be permitted.",
+      "char_length": 648,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/sahay_gem_ecosystem_participation_terms_undated_d90e2810e87b.json",
+      "source_document_name": "sahay gem ecosystem participation terms"
+    },
+    {
+      "clause_name": "Clause 35",
+      "text": "5. DATA SECURITY The Participants shall take all organisational and technical measures required under any law or statute applicable to a given Participant, to protect the confidentiality and security of the information in their control. Participants shall ensure that data is encrypted in transit as well as at rest.",
+      "char_length": 316,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/gem/items/sahay_gem_ecosystem_participation_terms_undated_d90e2810e87b.json",
+      "source_document_name": "sahay gem ecosystem participation terms"
+    },
+    {
+      "clause_name": "Clause 12",
+      "text": "The terms of this Agreement shall also be part of Confidential Information. Non - Disclosure The Employee acknowledges that, in the course of performing and fulfilling his duties hereunder, he may have access to and be entrusted with confidential information concerning the present and contemplated financial status and other activities of the Employer, the disclosure of any of which confidential information to the competitors of the Employer would be highly detrimental to the interests of the Employer. The Employee agrees that at all times during or subsequent to the performance of the Services, the employee will keep confidential and not disclose or cause to be disclosed, publish, disseminate or otherwise make available or use Confidential Information, except for the Employee’s own use during the term of this Agreement and only to the extent necessary to perform the Services.",
+      "char_length": 888,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/employment_agreement_with_esops_undated_c029de1da2df.json",
+      "source_document_name": "Employment Agreement with ESOPs"
+    },
+    {
+      "clause_name": "Clause 1",
+      "text": "SECOND PART. The Party of First and the Second Part are individually referred to as “Party” individually and collectively referred to as “Parties”. WHEREASthe Parties intend to participate in discussions in order to explore a potential business relationship and the Parties may share information that is confidential and proprietary either during the discussions or during the course of the business relationship, for the purpose of enabling the parties to interact and work productively(hereinafter referred to as the “Purpose\"); WHEREASthe Parties desire to protect such Confidential Information and ensure that it is not disclosed to any third party with the permission of the Party. NOW, THEREFORE,",
+      "char_length": 702,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/mutual_nda_undated_40b7a9c7e268.json",
+      "source_document_name": "Mutual NDA"
+    },
+    {
+      "clause_name": "Clause 5",
+      "text": "Either Party shall not copy or reproduce in any way (including without limitation, store in any computer or electronic system) any Confidential Information or any documents containing Confidential Information without the Party’s prior written consent.",
+      "char_length": 251,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/mutual_nda_undated_40b7a9c7e268.json",
+      "source_document_name": "Mutual NDA"
+    },
+    {
+      "clause_name": "Clause 8",
+      "text": "PUBLICATIONS NeitherParty shall not make news releases, public announcements, give interviews, issue or publish advertisements or publicize in any other manner whatsoever in connection with this Agreement, the contents/provisions thereof, other information relating to this Agreement, the Purpose, the Confidential Information or other matter of this Agreement, without the prior written approval of the other Party. Further, neither Party shall use any photographs/video/other materials belonging or related to the other Party in promotional content through electronic, print or other mediums.",
+      "char_length": 594,
+      "risk_level": "medium",
+      "quality_score": 60,
+      "review_status": "unreviewed",
+      "production_ready": false,
+      "source_template": "knowledge-base/templates/startup-india/items/mutual_nda_undated_40b7a9c7e268.json",
+      "source_document_name": "Mutual NDA"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "document_type": "NDA",
+  "variant": "standard",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "payment_amount",
+      "type": "number",
+      "required": false,
+      "validation": {
+        "kind": "numeric"
+      }
+    },
+    {
+      "name": "purpose",
+      "type": "textarea",
+      "required": false,
+      "validation": {
+        "kind": "meaningful_text"
+      }
+    }
+  ],
+  "mandatory_clauses": [],
+  "optional_clauses": [
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_1",
+      "clause_name": "SIC Performance & Credit Rating Scheme for Small Industries",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_2",
+      "clause_name": "Clause 2",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_4",
+      "clause_name": "RATING PROCESS The rating process will be undertaken in the following manner",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_6",
+      "clause_name": "Clause 6",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_7",
+      "clause_name": "Clause 7",
+      "category": "payment_terms"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_8",
+      "clause_name": "Clause 8",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_9",
+      "clause_name": "Clause 9",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_10",
+      "clause_name": "Clause 10",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_11",
+      "clause_name": "Clause 11",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_12",
+      "clause_name": "Clause 12",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_13",
+      "clause_name": "Clause 13",
+      "category": "general"
+    },
+    {
+      "clause_id": "performance_and_credit_rating_scheme_undated_d21b8ae7a81b_14",
+      "clause_name": "Clause 14",
+      "category": "general"
+    }
+  ],
+  "body": "NSIC Performance & Credit Rating Scheme for Small Industries Performance & Credit Scheme for Rating of Small Scale Industries BACKGROUND The Small Scale Sector occupies an important position in any developing economy the world over. Fast changing global economic scenario has thrown up many opportunities and challenges to the Small Scale Industries in India. While, on the one hand, many opportunities have opened up for the small scale sector to enhance productivity and look for new markets in other countries, it has also put an obligation on them to upgrade their competence in terms of technology, management & financial strength to successfully meet the global competition. Therefore, there is a need to create awareness amongst Small-Scale Units about the strengths and weaknesses of their existing operations and to provide them an opportunity to enhance their organizational strengths. As a step in this direction, a need was felt for introducing a Rating Scheme for the Small Scale Industries. It is expected that the Rating Scheme would encourage SSI sector in improving its contribution to the economy by way of increasing their productivity, since a good rating would enhance their acceptability in the market and also make access to credit quicker and cheaper and thus help in economizing the cost of credit. Besides, the rating would also infuse a sense of confidence amongst the buyers for taking a decision on the options of sourcing material from Small Scale Units. With above background, a Performance & Credit Rating Scheme for Small Scale Industries has been formulated in consultation with various stakeholders i.e. Small Industries Associations, & Indian Banks’ Association and various Rating Agencies viz. CRISIL, ICRA, Dun & Bradstreet (D&B) and ONICRA. It has the approval of the Government. Contd….. .2. TITLE OF THE SCHEME The scheme is titled: “PERFORMANCE & CREDIT RATING SCHEME FOR SMALL INDUSTRIES” SALIENT FEATURES OF THE SCHEME 1. APPROACH FOR RATING OF SSI UNITS i. NSIC is the nodal agency for implementing the scheme of performance and credit rating for Small Scale Industries through its various branches/offices located in the country. ii. The unit’s rating shall be a combination of performance and credit worthiness of the unit. The SSI rating methodology shall cover a combination of credit and performance factors including parameters measuring operational, financial, business and management risks. iii. The Rating Agencies shall be empanelled by NSIC Head Office, for implementing the Scheme in order to facilitate the Rating process. iv. NSIC shall maintain a database about the units awarded Rating by different Rating Agencies. 2. SELECTION OF THE RATING AGENCY BY SSI UNITS The Small Scale Unit shall be at liberty to select any of the rating agencies empanelled under the rating scheme with NSIC. The rating agency chosen by the unit shall be mentioned in its request for obtaining the rating. Contd… .3. 3. RATING PROCESS The rating process will be undertaken in the following manner: STEPS RATING PROCESS 1. Request for Rating from SSI units 2. Collection of Information from the SSI unit(s) 3. Onsite meeting with SSI Management 4. Analysis of Information obtained from the SSI Unit(s) 5. Assign Rating The validity of a rating shall be for a period of one year from the date of issue of the rating letter. 4. RATING FEE The Rating Agencies have different fee structure for their rating of various clients including Small-Scale Units. The Rating Agencies will devise their fee structure for SSI units under this Scheme separately. As the evaluation criteria for award of Rating is different with various Rating Agencies and their acceptability also varies with the users, the rating fee to be charged by the Rating Agencies will be varying. The Rating Agencies will, however, be free to decide their rating fees which will be intimated to NSIC at the time of empanelment, so that fee is well known in advance to the applicant unit as well as NSIC. The rating fees may, however, be reviewed by Rating Agencies from time to time due to the competition and the number / size of clientele. Although, the rating fee of different Rating Agencies may vary but for the purpose of subsidizing the fee, a ceiling has been prescribed by the Government as per table give below under Sharing of Fees. Contd… .4. The Small-Scale Units will have to pay their contribution towards the rating fee along with its application. The payment can be made by way of pay order / demand draft drawn in favour of the Rating Agency selected by the SSI unit. In the event of the request for Rating being treated as closed by the Rating Agency due to non-receipt of the complete information, 50% of the fees received from the SSI unit shall be refunded by the Rating Agency. However, if the SSI unit backs out from the rating process after the Rating Agency has carried out its inspection, no amount shall be refunded back. 5. SHARING OF FEES The fee to be paid to the rating agencies shall be based on the turnover of the Small-Scale Units which has been categorized into three slabs. The slabs of the Turnover and the Share of Ministry of SSI towards the fee charged by the Rating Agency have been indicated in the table given below:- Turnover Fee to be reimbursed by Ministry of SSI Up to Rs.50 lacs 75% of the fee charged by the rating agency subject to a ceiling of Rs.25,000/- Above Rs.50 lacs to Rs.200 lacs 75% of the fee charged by the rating agency subject to a ceiling of Rs.30,000/- Above Rs.200 lacs 75% of the fee charged by the rating agency subject to a ceiling of Rs.40,000/- The balance amount towards the fee shall be borne by the Small-Scale Units. The portion of the fee to be subsidized by the Ministry shall be released through NSIC after submission of the Rating Report to NSIC by the Rating Agencies. Contd… .5. 6. RATING SCALES While the criteria for evaluation would be left to each of the Rating Agencies, the symbols and their definition for indicating the risk score in the rating awarded has been evolved for uniform implementation by the Rating Agencies. The symbols along with their definition while assigning a Rating to Small-Scale Units are placed at Annexure-I. These symbols depict both the performance evaluation as well as the credit worthiness of the unit. The Rating to be awarded by each of the Rating Agencies shall be prefixed by the word NSIC. Thus Rating awarded by say ICRA shall be termed as “NSIC-ICRA Performance and Credit Rating” 7. SHARING OF THE EVALUATION/RATING OF SSI UNITS The Rating Agencies shall share the Rating awarded to SSI units with NSIC. 8. PROMOTION OF THE SCHEME The scheme would be given wide publicity by NSIC, IBA and Credit Rating Agencies. The details of the scheme would also be available on the website of the Ministry of SSI, NSIC, IBA & its member banks, SSI Associations and the Rating Agencies shall also be used to promote the Rating Scheme. 9. APPLICATION FORM The application forms will be available at all the offices of NSIC and with the empanelled Rating Agencies. Contd… .6. The forms will also be made available at the website of NSIC, IBA and the Rating Agencies. Interested Small Industries Associations will also be requested to make available the Application Form from their website. Any SSI unit wishing to apply for rating will have to fill up the prescribed application form and submit the same to NSIC or the rating agency chosen by it. 10. PROCESS FLOW OF APPLICATION The SSI unit will have to submit its application for rating in duplicate. It can be submitted to any of the offices/branches of NSIC or directly to the Rating Agency selected by the Small-Scale Unit. On receipt of Application, NSIC will forward the IInd copy along with the information and documents submitted by the unit to the Rating Agency along with their comments, if any. Alternatively, if the Application is submitted to the Rating Agency, one copy of the application shall be sent by Rating Agency to NSIC for their reference and comments. 11. INFORMATION REQUIRED FOR RATING SSI units applying for rating will have to submit the documents as per list placed as Annexure-I (B) along with the application. 12. TIME FRAME FOR COMPLETION The Rating Agencies shall peruse the documents received and in case of any short fall, communicate the same to the unit for completion / rectification thereof within a period of 15 days. Contd… .7. If the particulars are not received within the period mentioned the agency shall the reminder giving further 15 days time for submission. In the event of the unit not responding within 15 days from the date of 2nd communication to the unit, the case will be treated as closed. From the date of receipt of all information from the applicant unit, the rating agency shall complete the exercise of evaluation and award of Rating within one month thereof. **************************** Annexure-I Rating Scale of SEs on Performance and Credit Parameters under the NSIC Scheme of Rating of SEs. SE 1A: Highest Performance capability; High Financial strength. Prospects of performance are the highest and the entity has high capacity to meet its financial obligations. SE 1B: Highest Performance capability; Moderate Financial strength. Prospects of performance are the highest. However, the entity has moderate capacity to meet its financial obligations. SE 1C: Highest Performance capability; Low Financial strength. Prospects of performance are the highest. However, the entity has low capacity to meet its financial obligations. SE 2A: High Performance capability; High Financial strength. Prospects of performance are high and the entity has high capacity to meet its financial obligations. SE 2B: High Performance capability; Moderate Financial strength. Prospects of performance are high. Howe ver, the entity has moderate capacity to meet its financial obligations. SE 2C: High Performance capability; Low Financial strength. Prospects of performance are high. However, the entity has low capacity to meet its financial obligations. SE 3A: Moderate Performance capability; High Financial strength. Prospects of performance are moderate. However, the entity has high capacity to meet its financial obligations. SE 3B: Moderate Performance capability; Moderate Financial strength. Prospects of performance are moderate and the entity has moderate capacity to meet its financial obligations. SE 3C: Moderate Performance capability; Low Financial strength. Prospects of performance are moderate. However, the entity has low capacity to meet its financial obligations. SE 4A: Weak Performance capability; High Financial strength. Prospects of performance are weak. However, the entity has high capacity to meet its financial obligations. Contd… .2. SE 4B: Weak Performance capability; Moderate Financial strength. Prospects of performance are weak. However, the entity has moderate capacity to meet its financial obligations. SE 4C: Weak Performance capability; Low Financial strength. Prospects of performance are weak and the entity has low capacity to meet its financial obligations. SE 5A: Poor Performance capability; High Financial strength. Prospects of performance are poor. However, the entity has high capacity to meet its financial obligations. SE 5B: Poor Performance capability; Moderate Financial strength. Prospects of performance are poor. However, the entity has moderate capacity to meet its financial obligations. SE 5C: Poor Performance capability; Low Financial strength. Prospects of performance are poor and the entity has low capacity to meet its financial obligations.",
+  "metadata": {
+    "source": "knowledge-base/templates/msme/items/performance_and_credit_rating_scheme_undated_d21b8ae7a81b.json",
+    "source_label": "MyMSME Scheme Guidelines",
+    "source_url": "https://msme.gov.in/sites/default/files/PCRSchemeGuidelines.pdf",
+    "quality_score": 68,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

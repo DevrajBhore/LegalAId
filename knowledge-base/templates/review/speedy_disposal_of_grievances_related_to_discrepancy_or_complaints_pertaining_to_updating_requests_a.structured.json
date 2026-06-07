@@ -1,0 +1,68 @@
+{
+  "document_type": "NDA",
+  "variant": "standard",
+  "jurisdiction": "India",
+  "variables": [
+    {
+      "name": "effective_date",
+      "type": "date",
+      "required": true,
+      "validation": {
+        "kind": "valid_date"
+      }
+    },
+    {
+      "name": "jurisdiction_city",
+      "type": "text",
+      "required": false,
+      "validation": {
+        "kind": "city"
+      }
+    }
+  ],
+  "mandatory_clauses": [
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_1",
+      "clause_name": "Clause 1",
+      "category": "jurisdiction"
+    }
+  ],
+  "optional_clauses": [
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_2",
+      "clause_name": "Clause 2",
+      "category": "general"
+    },
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_3",
+      "clause_name": "Clause 3",
+      "category": "general"
+    },
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_4",
+      "clause_name": "RTIIPG Cell (For necessary arrangement related to Public Grievances & RTI)",
+      "category": "general"
+    },
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_5",
+      "clause_name": "Clause 5",
+      "category": "general"
+    },
+    {
+      "clause_id": "speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_a_6",
+      "clause_name": "Clause 6",
+      "category": "general"
+    }
+  ],
+  "body": "P-01002/1/2024-POLICY-DCMSME (e-4026565) Government of India Ministry of Micro, Small and Medium Enterprisei Office of Development Commissioner (MSME) (Policy & Governance Division) ***** RoomlNo. 710, 'A' Wing, Nirman Bhawan, New Delhi. Dated: 15.01.2024 OFFICE MEMORANDUM The undersigned is directed to state that in pursuance of Para 9(4) of this Ministry's Notification Number S.O. 2119 (E) dated 26.06.2020 and to facilitate the speedy disposal of grievances related to discrepancy or complaint(s) pertaining to updating requests and to take action on the recommendations of Directorate of Industries for cancellation/amendments of the Udyam Registration Certificate within 48 Hours, the Competent Authorit hereby authorizes MSME-DFOs to take such action to resolve the issue in the StatelUTs of heir jurisdiction on behalf of this Ministry. This has the approval of the Competent Authority. To, 1. All MSME-Development and Facilitation Offices, MoMSME. 2. Directorate of Industries/MSME Department of the States/UTs. 3. PPS to Secretary (MSME), MoMSME 4. PPS to AS & DC(MSME), 0/0 DC(MSME, MoMSME 5. JS(AFI)I]S(ARI)I]S(SME)/EA(IFW)IDDG(PP), MoMSME. 6. ADC(SK)/DDG(AB)/ADC(AL), 0/0 DC(MSME), MoMSME 7. PA to ADC(Policy) 8. Champions Desk (For making necessary arrangement for redreSring grievances by MSME-DFO concerned in connection with Udyam Registration). 9. RTIIPG Cell (For necessary arrangement related to Public Grievances & RTI) 10. Sf. Technical Director, NIC (For advising Udyam Tech. Team to make relevant provisions to give effect to above changes in consultation with the Policy Division). 11. SENET Division-To upload on the websites of the 0/0 DC(MSME) & MoMSME.",
+  "metadata": {
+    "source": "knowledge-base/templates/msme/items/speedy_disposal_of_grievances_related_to_discrepancy_or_complaints_pertaining_to_updating_requests_and_to_take_action_on_the_recommendations_bb77a6972cd1.json",
+    "source_label": "MSME Circulars Archive",
+    "source_url": "https://msme.gov.in/sites/default/files/Disposalofgrievances.pdf",
+    "quality_score": 59,
+    "approval_eligible": false,
+    "version": "0.1.0",
+    "generated_by": "scripts/auditTemplates.cjs",
+    "generation_policy": "not connected to main generation pipeline"
+  }
+}

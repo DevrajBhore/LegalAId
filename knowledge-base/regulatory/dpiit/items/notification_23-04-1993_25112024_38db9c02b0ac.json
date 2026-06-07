@@ -1,0 +1,40 @@
+{
+  "id": "notification_23-04-1993_25112024_38db9c02b0ac",
+  "title": "Notification 23-04-1993",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/cement-55881",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/137e9ce9058ff210b599197751801207.pdf",
+  "document_date": "25/11/2024",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 7,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Creator": "I.R.I.S.",
+      "Producer": "5,0,0,255 1236832",
+      "CreationDate": "D:20101007110916+05'00'"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 7 -- -- 2 of 7 -- -- 3 of 7 -- -- 4 of 7 -- -- 5 of 7 -- -- 6 of 7 -- -- 7 of 7 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

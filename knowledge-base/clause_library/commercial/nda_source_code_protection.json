@@ -1,0 +1,38 @@
+{
+  "clause_id": "NDA_SOURCE_CODE_PROTECTION_001",
+  "name": "Source Code and Software Protection",
+  "category": "IP",
+  "document_types": ["NDA"],
+  "jurisdiction": "India",
+  "text": "Where the Confidential Information includes source code, object code, software, algorithms, architecture, or related technical materials (collectively, \"Source Materials\"), the Receiving Party shall: (a) access the Source Materials solely within a controlled environment and solely to the extent necessary for the Purpose; (b) not copy, store, transmit, or transfer the Source Materials except as expressly authorised in writing by the Disclosing Party; (c) not reverse engineer, decompile, disassemble, modify, or create derivative works from the Source Materials; (d) not incorporate any part of the Source Materials into its own products, code base, or systems; and (e) ensure that no rights, title, or licence in the Source Materials or any intellectual property therein pass to the Receiving Party under this Agreement. All Source Materials and any permitted copies shall be returned or irretrievably destroyed upon request or upon expiry of the Purpose, with written certification of such destruction.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "2(o)",
+      "note": "Computer programmes and source code are protected as literary works"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "14",
+      "note": "Exclusive rights of the owner including reproduction and adaptation"
+    },
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "43",
+      "note": "Liability for unauthorised access, copying, or extraction of data and software"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "No source code or software is exchanged under the Agreement"
+  ],
+  "source": "Copyright Act, 1957; IT Act, 2000",
+  "version": "1.0",
+  "title": "Source Code Protection",
+  "depends_on": ["CORE_IDENTITY_001", "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"],
+  "suggested_with": ["NDA_DATA_SECURITY_001", "NDA_RETURN_OF_INFORMATION_001"],
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG"
+}

@@ -48,6 +48,10 @@
     {
       "clause": "CORE_ASSIGNMENT_001",
       "include_if": "assignment_addressed == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
     }
   ],
   "mandatory_legal_checks": [

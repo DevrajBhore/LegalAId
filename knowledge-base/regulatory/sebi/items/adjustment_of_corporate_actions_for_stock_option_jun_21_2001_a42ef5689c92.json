@@ -1,0 +1,43 @@
+{
+  "id": "adjustment_of_corporate_actions_for_stock_option_jun_21_2001_a42ef5689c92",
+  "title": "Adjustment of Corporate Actions for Stock Option",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jun-2001/adjustment-of-corporate-actions-for-stock-option_17994.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/1300872414144.pdf",
+  "document_date": "Jun 21, 2001",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 3,
+    "info": {
+      "PDFFormatVersion": "1.4",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Keywords": "Winnovative HTML to PDF Converter for .NET",
+      "Author": "http://www.winnovative-software.com",
+      "Producer": "Winnovative HTML to PDF Converter 6.4",
+      "Title": "Winnovative HTML to PDF Converter for .NET - www.winnovative-software.com",
+      "Subject": "Winnovative HTML to PDF Converter for .NET",
+      "CreationDate": "D:20110323145345",
+      "ModDate": "D:20110323012431-08'00'"
+    },
+    "reason": null
+  },
+  "text": "SECURITIES AND EXCHANGE BOARD OF INDIA SECONDARY MARKET DEPARTMENT Mittal Court, B Wing, First Floor, 224, Nariman Point, Mumbai 400 021 SMDRP/DC/CIR- 8/01 June 21, 2001 To, The Chief Executive Officer/ Managing Director of Derivative Segment of NSE & BSE and their Clearing House / Corporation. Dear Sir, Sub: Adjustment of Corporate Actions for Stock Option. The ‘Technical Group’ headed by Prof. J.R Varma, set up to prescribe risk containment measures for new derivative products, has recommended the risk containment measure for Exchange traded Stock Option Contracts. The Technical Group had set up a sub group comprising officials of BSE & NSE to determine a common methodology for adjusting corporate actions on Stock Options. Based on the recommendation of the sub-group, the Technical Group decided that since options on common stock would be trading on both NSE & BSE the corporate adjustment for the Option on the same underlying should be uniform across markets. While a uniform adjustment methodology could be adopted for certain corporate action, it would be difficult to specify any uniform policy for all corporate actions at this stage. For this purpose, it has been decided to constitute a group comprising NSE, BSE and other knowledgeable persons, which would decide a uniform course of action for adjusting stock option contracts on corporate actions, taking into account best practices followed internationally, where a uniform criterion cannot be laid down at persent. However, certain adjustments for Corporate Actions for Stock Options would be as follows: 1. The basis for any adjustment for corporate action shall be such that the value of the position of the market participants on cum and ex-date for corporate action shall continue to remain the same as far as possible. This will facilitate in retaining the relative status of positions viz. in-the-money, at- the-money and out-of-money. This will also address issues related to exercise and assignments. 2. Any adjustment for corporate actions shall be carried out on the last day on which a security is traded on a cum basis in the underlying cash market. 3. Adjustments shall mean modifications to positions and / or contract specifications as listed below such that the basic premise of adjustment laid down under 1. above is satisfied : a. Strike Price b. Position c. Market Lot / Multiplier The adjustments shall be carried out on any or all of the above based on the nature of the corporate action. The adjustments for corporate actions shall be carried out on all open, exercised as well as assigned positions. 1. The corporate actions may be broadly classified under stock benefits and cash benefits. The various stock benefits declared by the issuer of capital are : l Bonus l Rights l Merger / De-merger l Amalgamation l Splits l Consolidations l Hive-off l Warrants, and -- 1 of 3 -- l Secured Premium Notes (SPNs) among others. l Extraordinary dividends 1. The methodology proposed to be followed for adjustment of various corporate actions to be carried out are as follows : Bonus, Stock Splits and Consolidations Strike Price : The new strike price shall be arrived at by dividing the old strike price by the adjustment factor as under. Market Lot / Multiplier : The new market lot / multiplier shall be arrived at by multiplying the old market lot by the adjustment factor as under. Position : The new position shall be arrived at by multiplying the old position by the adjustment factor as under. The adjustment factor for Bonus, Stock Splits and Consolidations is arrived at as follows: Bonus Ratio – A : B Adjustment factor : (A+B)/B Stock Splits and Consolidations Ratio – A : B Adjustment factor : A/B Right Ratio – A : B Premium – C Face Value – D Existing Strike Price : X New Strike Price : ((B * X) + A * (C + D))/(A+B) Existing Market Lot / Multiplier / Position : Y New issue size : Y * (A+B)/B The above methodology may result in fractions due to the corporate action e.g. a bonus ratio of 3:7. With a view to minimizing fraction settlements, the following methodology is proposed to be adopted : 1. Compute value of the position before adjustment 2. Compute value of the position taking into account the exact adjustment factor 3. Carry out rounding off for the Strike Price and Market Lot 4. Compute value of the position based on the revised strike price and market lot The difference between 1 and 4 above, if any, shall be decided in the manner laid down by the group by adjusting Strike Price or Market Lot, so that no forced closure of open position is mandated. 1. Dividends which are below 10% of the market value of the underlying stock, would be deemed to be ordinary dividends and no adjustment in the Strike Price would be made for ordinary dividends. For extra-ordinary dividends, above 10% of the market value of the underlying stock, the Strike Price would be adjusted. 2. The Exchange may on a case to case basis carry out adjustments for other corporate actions as decided by the group in conformity with the above guidelines. Yours sincerely, -- 2 of 3 -- ÿ (N.PARAKH) CHIEF GENERAL MANAGER DERIVATIVE CELL < size=-1> -- 3 of 3 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

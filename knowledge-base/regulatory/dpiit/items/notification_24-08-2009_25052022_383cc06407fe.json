@@ -1,0 +1,42 @@
+{
+  "id": "notification_24-08-2009_25052022_383cc06407fe",
+  "title": "Notification 24-08-2009",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/general-56028",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/775af2985af2af4e6c964113e045d2e4.pdf",
+  "document_date": "25/05/2022",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 1,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-US",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "Dell",
+      "Creator": "Microsoft® Word 2010",
+      "CreationDate": "D:20150527160432+05'30'",
+      "ModDate": "D:20150527160432+05'30'",
+      "Producer": "Microsoft® Word 2010"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 1 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}

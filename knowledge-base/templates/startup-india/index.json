@@ -1,0 +1,875 @@
+{
+  "source_rows": 107,
+  "unique_items": 107,
+  "canonical_item_files": 107,
+  "parsed_items": 77,
+  "unresolved_items": 30,
+  "fetch_text": true,
+  "sources": [
+    {
+      "label": "Startup India Templates",
+      "type": "startup-templates",
+      "mode": "template-page",
+      "url": "https://www.startupindia.gov.in/content/sih/en/reources/templates.html",
+      "item_count": 107,
+      "items": [
+        {
+          "id": "adoption_deed_mal_undated_ebf9e6d9e534",
+          "title": "Adoption Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Adoption_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "agreement_for_sale_tamil_1_undated_b39262d6c0c7",
+          "title": "Agreement For Sale Tamil (1)",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Agreement%20For%20Sale_Tamil%20(1).doc",
+          "format": "doc"
+        },
+        {
+          "id": "agreement_relating_to_deposit_of_title_deeds_tamil_undated_cebc9d527766",
+          "title": "AGREEMENT RELATING TO DEPOSIT OF TITLE DEEDS TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/AGREEMENT%20RELATING%20TO%20DEPOSIT%20OF%20TITLE%20DEEDS_TAMIL.Doc",
+          "format": "doc"
+        },
+        {
+          "id": "bank_guarantee_undated_d0a394499eb1",
+          "title": "Bank Guarantee",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Bank%20Guarantee.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "bank_resolution_undated_da7ec146d8e8",
+          "title": "Bank Resolution",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/bank%20resolution.doc",
+          "format": "doc"
+        },
+        {
+          "id": "basic_hiring_contract_undated_3d99a6afbf27",
+          "title": "Basic Hiring Contract",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Basic%20Hiring%20Contract.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "cancellation_deed_mal_undated_253802a3d080",
+          "title": "Cancellation Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Cancellation_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "cancellation_tamil_undated_566203987097",
+          "title": "cancellation Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/cancellation_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "commercial_lease_agreement_undated_51b2df78215b",
+          "title": "Commercial Lease Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Commercial%20Lease%20Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "confidentiality_ip_assignment_agreement_undated_874d447a3b2d",
+          "title": "Confidentiality IP Assignment Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/CONFIDENTIALITY_IP_ASSIGNMENT_AGREEMENT.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "constructed_property_lease_deed_undated_0590148c9262",
+          "title": "Constructed Property Lease Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Constructed%20property%20lease%20deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "consultancy_agreement_undated_34caf52e0250",
+          "title": "Consultancy Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Consultancy%20Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "consultancy_agreement_undated_f028fb9ea0eb",
+          "title": "Consultancy Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/CONSULTANCY_AGREEMENT.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "declaration_of_deposit_of_instruments_undated_cfda58eef738",
+          "title": "Declaration of Deposit of Instruments",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Declaration%20of%20deposit%20of%20instruments.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "deed_of_adoption_tamil_undated_0ac238833b60",
+          "title": "Deed Of Adoption Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Deed%20Of%20Adoption_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "deed_of_indemnity_tamil_undated_4d70b10df40e",
+          "title": "DEED OF INDEMNITY TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/DEED%20OF%20INDEMNITY_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "deed_of_partnership_undated_fa336e44ef1d",
+          "title": "Deed of Partnership",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Deed%20of%20Partnership.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "deed_of_settlement_tamil_undated_ac15ae27d42b",
+          "title": "Deed of Settlement Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Deed%20of%20Settlement_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "deed_of_undertaking_tamil_undated_ae88a2ba17ee",
+          "title": "deed of Undertaking Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/deed%20of%20Undertaking_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "deed_release_tamil_undated_db12858e93b7",
+          "title": "Deed Release Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Deed%20Release_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "deposit_of_the_title_deed_undated_25d7ef0ca7a8",
+          "title": "Deposit of the Title Deed",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Deposit_of_Title_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "dpiit_recognition_guidelines_undated_9e5bed972542",
+          "title": "DPIIT Recognition Guidelines",
+          "category": "Startup India Resources",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Revised%20Guidelines%20for%20recognition.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "employment_agreement_3_undated_fcc5af6e481d",
+          "title": "EMPLOYMENT AGREEMENT (3)",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/EMPLOYMENT_AGREEMENT%20(3).pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "employment_agreement_undated_cfcca01f324b",
+          "title": "Employment Agreement",
+          "category": "HR Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Employment%20Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "employment_agreement_with_esops_undated_c029de1da2df",
+          "title": "Employment Agreement with ESOPs",
+          "category": "HR Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Employment%20Agreement%20w%20ESOP.docx",
+          "format": "docx"
+        },
+        {
+          "id": "engagement_agreement_undated_aef56849af77",
+          "title": "Engagement Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/ENGAGEMENT%20AGREEMENT.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "exchange_deed_mal_undated_2550aaba8932",
+          "title": "Exchange Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Exchange_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "exchange_deed_tamil_undated_95339cb00d8b",
+          "title": "EXCHANGE DEED TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/EXCHANGE%20DEED_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "experience_letter_undated_19a12c460dcb",
+          "title": "Experience Letter",
+          "category": "HR Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Experience%20Letter.docx",
+          "format": "docx"
+        },
+        {
+          "id": "financial_due_diligence_undated_f5b5b4751b0c",
+          "title": "Financial Due Diligence",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/FDD_Checklist.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "founder_agreement_1_undated_264b230c080f",
+          "title": "FOUNDER AGREEMENT (1)",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/FOUNDER_AGREEMENT%20(1).pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "general_power_of_attorney_mal_undated_9d59a5c4185f",
+          "title": "General Power of Attorney Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/General_Power_of_Attorney_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "general_power_of_attorney_tamil_undated_97ff655b2b82",
+          "title": "General Power of Attorney Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/General%20Power%20of%20Attorney_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "gift_deed_mal_undated_8ad4dd11f811",
+          "title": "Gift Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Gift_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "gst_resolution_undated_689f10a2d438",
+          "title": "GST Resolution",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/GST%20Resolution.doc",
+          "format": "doc"
+        },
+        {
+          "id": "hiring_purchased_machinery_undated_a7d724a0ffe0",
+          "title": "Hiring Purchased Machinery",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Hire%20Purchase%20Machinery.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "immovable_property_agreement_to_sell_undated_3a2629dce3dc",
+          "title": "Immovable Property Agreement to Sell",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Immovable%20property%20agreement%20to%20sell.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "indeminity_bond_deed_mal_undated_629608a81397",
+          "title": "Indeminity Bond Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Indeminity_Bond_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "indemnity_for_title_undated_9d15a4dfd706",
+          "title": "Indemnity for Title",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Indemnity%20for%20title.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "instructions_on_contracts_and_agreement_undated_c4b374a518fb",
+          "title": "Instructions on contracts and agreement",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Instructions_on_contracts_and_agreement.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "lease_deed_mal_undated_7b79a56fa5b6",
+          "title": "Lease Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Lease_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "lease_deed_tamil_undated_df182d2a4d53",
+          "title": "LEASE DEED TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/LEASE%20DEED_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "lease_deed_undated_21fb3c8fa9a4",
+          "title": "Lease Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Lease%20deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "leave_and_license_agreement_undated_70bb3d14886a",
+          "title": "Leave and License Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Leave%20and%20License%20Agreement.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "legal_due_diligence_undated_b02984a2cf89",
+          "title": "Legal Due Diligence",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/LDD_Checklist.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "letter_of_guarantee_and_indemnity_undated_7473cc437d77",
+          "title": "Letter of Guarantee and Indemnity",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Letter%20of%20Guarantee%20and%20Indemnity.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "letter_of_intent_undated_347ff077ea8b",
+          "title": "Letter of Intent",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Letter%20of%20Intent.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "letter_of_intent_undated_b16fa84e08da",
+          "title": "Letter of Intent",
+          "category": "Legal Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/legal_templates/Letter%20of%20Intent.docx",
+          "format": "docx"
+        },
+        {
+          "id": "licence_agreement_mal_undated_d88e2e907f28",
+          "title": "Licence Agreement Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Licence_Agreement_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "licence_agreement_tamil_undated_8c843cfb17c8",
+          "title": "LICENCE AGREEMENT TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/LICENCE%20AGREEMENT_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "model_agency_agreement_undated_5d5b8c1029bb",
+          "title": "Model Agency Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Agency-Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_agreemnt_to_sell_undated_45c29c3f409a",
+          "title": "Model Agreemnt to sell",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Agreemnt-to-sell.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_franchise_agreement_undated_6624667e96fb",
+          "title": "model franchise agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/model_franchise_agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_house_building_agreement_undated_b8ffd6de567a",
+          "title": "Model House Building Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-House-Building-Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_lease_agreement_undated_4cd5a9b609c7",
+          "title": "Model Lease Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Lease-Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_partnership_agreement_undated_c2740d049f4e",
+          "title": "Model Partnership Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Partnership-Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_sale_deed_undated_20f3ede7f7eb",
+          "title": "Model Sale Deed",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Sale-Deed.docx",
+          "format": "docx"
+        },
+        {
+          "id": "model_service_agreement_undated_9da1e545a799",
+          "title": "Model Service Agreement",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/more_contracts/Model-Service-Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "mutation_document_undated_2e0182f8218d",
+          "title": "Mutation Document",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Mutation.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "mutual_nda_undated_40b7a9c7e268",
+          "title": "Mutual NDA",
+          "category": "Legal Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/legal_templates/Mutual%20NDA.docx",
+          "format": "docx"
+        },
+        {
+          "id": "non_compete_document_undated_a5b7384147ae",
+          "title": "Non Compete Document",
+          "category": "Legal Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/legal_templates/Non%20-%20Compete.doc",
+          "format": "doc"
+        },
+        {
+          "id": "non_disclosure_agreement_undated_deb52210f2d0",
+          "title": "Non Disclosure Agreement",
+          "category": "Legal Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/legal_templates/Non%20Disclosure%20Agreement.docx",
+          "format": "docx"
+        },
+        {
+          "id": "non_disclosure_agreement_undated_faa85455db3b",
+          "title": "Non Disclosure Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/NON_DISCLOSURE_AGREEMENT.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "offer_letter_undated_a3fa39586d81",
+          "title": "Offer Letter",
+          "category": "HR Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Offer%20Letter.docx",
+          "format": "docx"
+        },
+        {
+          "id": "ordinary_bond_undated_b8088f4c2fef",
+          "title": "Ordinary Bond",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Ordinary%20bond.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "partition_deed_mal_undated_b77aa3bd273a",
+          "title": "Partition Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Partition_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "partition_tamil_undated_21caed6200d5",
+          "title": "PARTITION TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/PARTITION_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "partnership_deed_division_undated_7b5fdf1816d1",
+          "title": "Partnership Deed (Division)",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Partnership%20deed%20(Division).pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "partnership_deed_mal_undated_1dc195165631",
+          "title": "Partnership Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Partnership_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "partnership_deed_undated_c752a7bac1c3",
+          "title": "Partnership Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Partnership%20deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "partnership_tamil_undated_fcc29bd69dfe",
+          "title": "Partnership Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Partnership_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "pitch-deck_guidelines_undated_f3245d6c8cd3",
+          "title": "Pitch-Deck Guidelines",
+          "category": "Pitch Deck Guidelines",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/pitch_guidelines/Pitch%20deck%20Guidelines.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "power_of_atttorney_undated_4d5fabe15de6",
+          "title": "Power of atttorney",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Power%20of%20atttorney.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "pre_shareholder_agreement_undated_b923ef252b82",
+          "title": "Pre Shareholder Agreement",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/pre-sha-agreement.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "promisorry_note_undated_870810d4312c",
+          "title": "Promisorry note",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Promisorry%20note.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "public_trust_deed_mal_undated_566aac31130d",
+          "title": "Public Trust Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Public_Trust_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "ratification_deed_mal_undated_59088ce347eb",
+          "title": "Ratification Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Ratification_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "ratification_document_undated_2972a24e9fa3",
+          "title": "Ratification Document",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/RATIFICATION_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "recitification_document_undated_3a4194aa9b4d",
+          "title": "Recitification Document",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/RECTIFICATION_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "rectification_deed_mal_undated_6e517e684260",
+          "title": "Rectification Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Rectification_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "release_deed_mal_undated_7601e783d2d0",
+          "title": "Release Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Release_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "release_deed_undated_37887b27b027",
+          "title": "Release Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Release%20deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "release_to_the_rights_of_possession_undated_cf796f0461b1",
+          "title": "Release to the Rights of Possession",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Release%20to%20the%20Rights%20of%20Possession.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "relieving_letter_undated_253af75323dc",
+          "title": "Relieving Letter",
+          "category": "HR Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/hr_templates/Relieving%20Letter.docx",
+          "format": "docx"
+        },
+        {
+          "id": "rent_deed_undated_1b3c66a0a2f2",
+          "title": "Rent Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Rent%20Deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "sale_deed_land_and_building_undated_f3b3f467cbb9",
+          "title": "Sale deed (Land and building)",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Sale%20deed%20(Land%20and%20building).pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "sale_deed_mal_undated_46389e79022c",
+          "title": "Sale Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Sale_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "sale_deed_proforma_undated_58632a15ac01",
+          "title": "Sale Deed Proforma",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Sale%20deed%20proforma.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "sale_deed_tamil_undated_9438d38b82e6",
+          "title": "Sale Deed Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Sale%20Deed_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "sale-purchase_agreement_undated_3f948404085d",
+          "title": "Sale-Purchase Agreement",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Sale_Purchase%20agreement.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "settlement_deed_mal_undated_b61204678a79",
+          "title": "Settlement Deed Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Settlement_Deed_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "shareholder_agreement_of_company_undated_6dbda71f37b8",
+          "title": "Shareholder Agreement of Company",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/startup_founders_sha_sample.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "simple_mortgage_deed_tamil_undated_5b52d297d43c",
+          "title": "Simple Mortgage Deed Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Simple%20Mortgage%20Deed_Tamil.doc",
+          "format": "doc"
+        },
+        {
+          "id": "special_power_of_attorney_mal_undated_35689e70e6b5",
+          "title": "Special Power of Attorney Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Special_Power_of_Attorney_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "special_power_of_attorney_tamil_undated_1e80e0299d96",
+          "title": "SPECIAL POWER OF ATTORNEY TAMIL",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/SPECIAL%20POWER%20OF%20ATTORNEY_TAMIL.doc",
+          "format": "doc"
+        },
+        {
+          "id": "special_power_of_attorney_to_present_document_for_registration_undated_caad4499a030",
+          "title": "Special Power of Attorney to Present Document for Registration",
+          "category": "English Model Contracts",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_english/Special%20Power%20of%20Attorney%20to%20Present%20Document%20for%20Registration.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "startup_india_action_plan_undated_19671949db71",
+          "title": "Startup India Action Plan",
+          "category": "Startup India Resources",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Action__Plan.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "startup_india_fund_of_funds_20_scheme_undated_91c1a5f8c425",
+          "title": "Startup India Fund of Funds 2.0 Scheme",
+          "category": "Startup India Resources",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/startupindia/Startup-India-Fund-of-Funds-2.0-Scheme.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "startup_trainee_agreement_sample_undated_2bd23ffd5441",
+          "title": "startup trainee agreement sample",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/startup_trainee_agreement_sample.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "term_sheet_ccps_undated_3d8ecb4fd546",
+          "title": "TERM SHEET CCPS",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/TERM_SHEET_CCPS.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "term_sheet-ccd_undated_9c65daa735cb",
+          "title": "Term Sheet-CCD",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/TERM_SHEET_CCD.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "term_sheet-equity_undated_0ed97d7d27c0",
+          "title": "Term Sheet-Equity",
+          "category": "Startup Relevant Templates",
+          "language": "English",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/Lets_Venture/TERM_SHEET_EQUITY.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "testament_undated_3437eb2b2e14",
+          "title": "Testament",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Will.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "trade_proforma_undated_10af7a4a3217",
+          "title": "Trade Proforma",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Trade%20proforma.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "trust_deed_undated_73b86444c655",
+          "title": "Trust Deed",
+          "category": "Hindi Model Contracts",
+          "language": "Hindi",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_hindi/Trust%20deed.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "will_mal_undated_7c9788ce1b49",
+          "title": "Will Mal",
+          "category": "Malayalam Model Contracts",
+          "language": "Malayalam",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_malayalam/Will_Mal.pdf",
+          "format": "pdf"
+        },
+        {
+          "id": "will_tamil_undated_466604761378",
+          "title": "Will Tamil",
+          "category": "Tamil Model Contracts",
+          "language": "Tamil",
+          "document_url": "https://www.startupindia.gov.in/content/dam/invest-india/Templates/public/Tools_templates/internal_templates/in_tamil/Will_Tamil.doc",
+          "format": "doc"
+        }
+      ]
+    }
+  ]
+}

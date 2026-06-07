@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getCurrentUser } from "../services/api";
+import { getCurrentUser, logoutRequest } from "../services/api";
 
 const AuthContext = createContext(null);
 
@@ -30,6 +30,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
+    logoutRequest(); // clear the httpOnly cookie server-side
     setToken(null);
     setUser(null);
   };

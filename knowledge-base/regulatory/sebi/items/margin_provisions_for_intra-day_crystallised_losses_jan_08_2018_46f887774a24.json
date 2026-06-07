@@ -1,0 +1,39 @@
+{
+  "id": "margin_provisions_for_intra-day_crystallised_losses_jan_08_2018_46f887774a24",
+  "title": "Margin provisions for intra-day crystallised losses",
+  "type": "circulars",
+  "category": "SEBI Circulars",
+  "source": "SEBI",
+  "source_url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7",
+  "detail_url": "https://www.sebi.gov.in/legal/circulars/jan-2018/margin-provisions-for-intra-day-crystallised-losses_37321.html",
+  "document_url": "https://www.sebi.gov.in/sebi_data/attachdocs/jan-2018/1515421840954.pdf",
+  "document_date": "Jan 08, 2018",
+  "document_format": "pdf",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.7",
+      "Language": null,
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "CreationDate": "D:20180108195943",
+      "Creator": "PDFium",
+      "Producer": "PDFium"
+    },
+    "reason": null
+  },
+  "text": "Page 1 of 2 भारतीय प्र ततभूतत और वितिमय बोर्ड Securities and Exchange Board of India CIRCULAR CIR/MRD/DRMNP/008/2018 January 08, 2018 All Recognised Clearing Corporations Dear Sir/Madam, Sub: Margin provisions for intra-day crystallised losses 1. The margining system of Clearing Corporations currently levies margin based on net buy value (Buy – Sales value of underlying) of unsettled trades in the cash segment and based on the net open positions (Open Interest) in the derivatives segments. As such, the risk of crystallised obligations (Profit/Loss on trade) incurred due to intra-day trades does not get fully captured in the margining system and consequently in the clearing corporation’s risk management system for the purpose of providing further exposure to the clearing member. 2. In this regard, the issue of risk arising out of accumulation of crystallised obligations incurred on account of intra-day squaring off of positions was discussed in SEBI’s Risk Management Review Committee meeting. Based on the recommendation of the Risk Management Review Committee, in order to mitigate such risk, the following has been decided: (a) The intra-day crystallised losses shall be monitored and blocked by Clearing Corporations from the free collateral on a real-time basis only for those transactions which are subject to upfront margining. For this purpose, crystallised losses can be offset against crystallised profits at a client level, if any. (b) If crystallised losses exceed the free collateral available with the Clearing Corporation, then the entity shall be put into risk reduction mode as specified in Para 7 of SEBI Circular no. CIR/MRD/DP/34/2012 dated December 13, 2012. (c) Crystallised losses shall be calculated based on weighted average prices of trades executed. -- 1 of 2 -- Page 2 of 2 भारतीय प्र ततभूतत और वितिमय बोर्ड Securities and Exchange Board of India (d) Adjustment of intraday crystallised losses shall not be done from exposure free liquid networth of the clearing member. 3. The recognised Clearing Corporations are advised to:- (a) implement the directions of this circular latest within three months from the date of issue of this circular. (b) bring the provisions of this circular to the notice of its clearing members and also to disseminate the same through their website ; and (c) communicate to SEBI, the status of implementation of this circular in the Monthly Development Reports to SEBI. 4. This circular is issued in exercise of powers conferred under Section 11 (1) of the Securities and Exchange Board of India Act, 1992, to protect the interests of investors in securities and to promote the development of, and to regulate the securities market. 5. This circular is available on SEBI website at www.sebi.gov.in. Yours faithfully, Sanjay Purao General Manager Email: sanjayp@sebi.gov.in -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "circulars",
+      "label": "SEBI Circulars",
+      "url": "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7"
+    }
+  ]
+}

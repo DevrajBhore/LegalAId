@@ -51,6 +51,10 @@
     {
       "clause": "SERVICE_REPORTING_001",
       "include_if": "reporting_required == true"
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true"
     }
   ],
   "mandatory_legal_checks": [

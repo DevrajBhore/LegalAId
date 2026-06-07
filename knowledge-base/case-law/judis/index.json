@@ -1,0 +1,90 @@
+{
+  "source_label": "Supreme Court of India",
+  "source_url": "https://www.sci.gov.in/judgements-case-no/",
+  "source_status": 200,
+  "page_title": "Case Number | Supreme Court of India | India",
+  "official_links": [
+    {
+      "label": "Judges",
+      "href": "https://www.sci.gov.in/#"
+    },
+    {
+      "label": "Chief Justice & Judges",
+      "href": "https://www.sci.gov.in/chief-justice-judges/"
+    },
+    {
+      "label": "Former Judges",
+      "href": "https://www.sci.gov.in/former-judges/"
+    },
+    {
+      "label": "Judges Roster",
+      "href": "https://www.sci.gov.in/judges-roster-2/"
+    },
+    {
+      "label": "Judges Library",
+      "href": "https://www.sci.gov.in/judges-library/"
+    },
+    {
+      "label": "Assets of Judges",
+      "href": "https://www.sci.gov.in/assets-of-judges/"
+    },
+    {
+      "label": "Case Status",
+      "href": "https://www.sci.gov.in/case-status-case-no/"
+    },
+    {
+      "label": "Daily Orders",
+      "href": "https://www.sci.gov.in/daily-order-case-no/"
+    },
+    {
+      "label": "Judgments",
+      "href": "https://www.sci.gov.in/judgements-case-no/"
+    },
+    {
+      "label": "Office Reports",
+      "href": "https://www.sci.gov.in/office-report-case-no/"
+    },
+    {
+      "label": "Caveat",
+      "href": "https://www.sci.gov.in/caveat-case-no/"
+    },
+    {
+      "label": "Guidelines & Orders",
+      "href": "https://www.sci.gov.in/guidelines-orders/"
+    },
+    {
+      "label": "Case Category",
+      "href": "https://www.sci.gov.in/case-category/"
+    },
+    {
+      "label": "Basic Structure Judgment",
+      "href": "https://judgments.ecourts.gov.in/KBJ/"
+    },
+    {
+      "label": "Diary No",
+      "href": "https://www.sci.gov.in/judgements-diary-no/"
+    },
+    {
+      "label": "Case Number",
+      "href": "https://www.sci.gov.in/#"
+    },
+    {
+      "label": "Judge",
+      "href": "https://www.sci.gov.in/judgements-judge/"
+    },
+    {
+      "label": "Judgment Date",
+      "href": "https://www.sci.gov.in/judgements-judgement-date/"
+    },
+    {
+      "label": "Free Text",
+      "href": "https://www.sci.gov.in/free-text-judgements/"
+    }
+  ],
+  "unique_items": 0,
+  "fetched_at": "2026-05-21T15:42:37.309Z",
+  "extraction": {
+    "status": "source_requires_query",
+    "note": "The official Supreme Court judgments page is form/API driven. Bulk case-law text is collected through the Indian Kanoon target; this target records the official source endpoint for future query-specific expansion."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "notification_17-02-2014_02022014_cddbd3d40898",
+  "title": "Notification 17-02-2014",
+  "type": "orders-and-notices",
+  "category": "DPIIT Orders and Notices",
+  "source": "DPIIT",
+  "source_url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices",
+  "detail_url": "https://www.dpiit.gov.in/documents/orders-and-notices/details/paper-2-55730",
+  "document_url": "https://www.dpiit.gov.in/static/uploads/2025/07/0e8ae75dfd5f0fc3700ffe3556532ac5.pdf",
+  "document_date": "02/02/2014",
+  "document_format": "pdf",
+  "language": "English",
+  "has_text": true,
+  "extraction": {
+    "status": "parsed",
+    "num_pages": 2,
+    "info": {
+      "PDFFormatVersion": "1.5",
+      "Language": "en-US",
+      "EncryptFilterName": null,
+      "IsLinearized": false,
+      "IsAcroFormPresent": false,
+      "IsXFAPresent": false,
+      "IsCollectionPresent": false,
+      "IsSignaturesPresent": false,
+      "Author": "Dell",
+      "Creator": "Microsoft® Word 2010",
+      "CreationDate": "D:20150527161835+05'30'",
+      "ModDate": "D:20150527161835+05'30'",
+      "Producer": "Microsoft® Word 2010"
+    },
+    "reason": null
+  },
+  "text": "-- 1 of 2 -- -- 2 of 2 --",
+  "source_refs": [
+    {
+      "type": "orders-and-notices",
+      "label": "DPIIT Orders and Notices",
+      "url": "https://www.dpiit.gov.in/cms/wp-json/document/documents?document_category=orders-and-notices"
+    }
+  ]
+}
