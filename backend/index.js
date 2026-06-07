@@ -69,7 +69,10 @@ app.use(
           },
           credentials: true,
         }
-      : {}
+      : // No CLIENT_URL configured: reflect the request origin (NOT wildcard) so
+        // credentialed requests still work. Wildcard "*" is incompatible with
+        // credentials:true and would be blocked by the browser.
+        { origin: true, credentials: true }
   )
 );
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
