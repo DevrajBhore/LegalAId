@@ -110,7 +110,7 @@ export default function Home() {
               How it works
             </Link>
           </div>
-          <div className="hero-stats animate-in-d4">
+          {/* <div className="hero-stats animate-in-d4">
             <div className="hero-stat">
               <span className="hero-stat-num">{docTypes.length || 17}+</span>
               <span className="hero-stat-label">Document types</span>
@@ -123,7 +123,7 @@ export default function Home() {
               <span className="hero-stat-num">LIVE</span>
               <span className="hero-stat-label">Browser workspace</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
