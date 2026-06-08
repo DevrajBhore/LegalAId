@@ -1,0 +1,21 @@
+{
+  "clause_id": "LOAN_KYC_AML_001",
+  "name": "KYC / AML Compliance (NBFC)",
+  "category": "COMPLIANCE",
+  "document_types": ["LOAN_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Borrower shall provide and keep updated all documents and information required by the Lender to discharge its obligations under the Reserve Bank of India's Know Your Customer (KYC) Directions and the Prevention of Money-Laundering Act, 2002, including proof of identity, address, beneficial ownership, and source of funds. The Lender shall process such information in accordance with applicable RBI directions and the Digital Personal Data Protection Act, 2023, and shall maintain records for the period required by law. The Borrower represents that the loan and any repayments are not derived from, and shall not be used for, any unlawful activity, and shall promptly notify the Lender of any change in the information furnished.",
+  "legal_basis": [
+    { "act": "Prevention of Money-Laundering Act, 2002", "section": "12", "note": "Reporting entity obligations" },
+    { "act": "Reserve Bank of India (Know Your Customer) Directions, 2016", "section": "3", "note": "Customer due diligence" },
+    { "act": "Digital Personal Data Protection Act, 2023", "section": "4", "note": "Lawful processing of personal data" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [],
+  "source": "PMLA, 2002; RBI KYC Directions; DPDP Act, 2023",
+  "version": "0.1.0-draft",
+  "title": "KYC / AML Compliance",
+  "review_status": "draft-needs-legal-review"
+}

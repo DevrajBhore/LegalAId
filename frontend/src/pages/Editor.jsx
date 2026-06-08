@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
@@ -26,6 +26,44 @@ const LEGAL_DISCLAIMER =
 
 function formatExportLabel(format = "docx") {
   return String(format || "docx").toUpperCase();
+}
+
+// High-value protections that are commonly recommended. If a document lacks the
+// category entirely, we surface it as a "recommended addition" (gap analysis).
+const RECOMMENDED_PROTECTIONS = [
+  {
+    category: "RISK",
+    match: ["RISK", "LIABILITY"],
+    label: "Limitation of Liability",
+    why: "Caps each party's financial exposure if something goes wrong — without it, liability can be unlimited.",
+  },
+  {
+    category: "INDEMNITY",
+    match: ["INDEMNITY"],
+    label: "Indemnity",
+    why: "Allocates who bears losses from third-party claims arising out of the agreement.",
+  },
+  {
+    category: "FORCE_MAJEURE",
+    match: ["FORCE_MAJEURE"],
+    label: "Force Majeure",
+    why: "Excuses performance delayed or prevented by events beyond a party's reasonable control.",
+  },
+  {
+    category: "DISPUTE_RESOLUTION",
+    match: ["DISPUTE_RESOLUTION", "DISPUTE", "ARBITRATION"],
+    label: "Dispute Resolution",
+    why: "Defines how disputes are resolved (arbitration or courts) — avoids costly jurisdiction fights later.",
+  },
+];
+
+function computeDocumentGaps(clauses = []) {
+  const present = new Set(
+    clauses.map((clause) => String(clause?.category || "").toUpperCase())
+  );
+  return RECOMMENDED_PROTECTIONS.filter(
+    (protection) => !protection.match.some((category) => present.has(category))
+  );
 }
 
 // The /export endpoint is requested with responseType "blob", so an error body
@@ -200,6 +238,10 @@ export default function Editor() {
   const [versions, setVersions] = useState([]);
   const [versionsLoading, setVersionsLoading] = useState(false);
   const [restoringId, setRestoringId] = useState(null);
+  const documentGaps = useMemo(
+    () => computeDocumentGaps(draft?.clauses || []),
+    [draft?.clauses]
+  );
   const [editedClauses, setEditedClauses] = useState(new Set());
   const [fixingIssueId, setFixingIssueId] = useState(null);
   const [messages, setMessages] = useState([
@@ -813,6 +855,9 @@ export default function Editor() {
                     onChange={handleClauseChange}
                     index={index}
                     recentlyEdited={editedClauses.has(clause.clause_id)}
+                    provenance={
+                      draft?.metadata?.clause_provenance?.[clause.clause_id]
+                    }
                   />
                 ))}
               </div>
@@ -903,6 +948,7 @@ export default function Editor() {
                   hideDownload
                   onFixIssue={handleFixIssue}
                   fixingIssueId={fixingIssueId}
+                  gaps={documentGaps}
                 />
               </div>
             )}

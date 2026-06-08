@@ -161,6 +161,12 @@ export function deriveGenerationControls(documentType, variables = {}) {
     derived.counterparty_is_customer = counterparty.includes("customer");
   }
 
+  // Employment statutory-compliance triggers.
+  const gender = normalizeText(variables.employee_gender).toLowerCase();
+  if (gender) derived.is_female_employee = gender.includes("female");
+  const headcount = normalizeText(variables.workplace_headcount).toLowerCase();
+  if (headcount) derived.employer_headcount_ge_10 = headcount.includes("10 or more");
+
   // Employment seniority drives garden leave and exclusivity.
   const seniority = normalizeText(variables.seniority_level).toLowerCase();
   if (seniority) {
@@ -168,6 +174,24 @@ export function deriveGenerationControls(documentType, variables = {}) {
       seniority.includes("senior") ||
       seniority.includes("leadership") ||
       seniority.includes("exec");
+  }
+
+  // Secured vs unsecured loan: a security clause must only appear when there is
+  // actual collateral. Explicit flag wins; otherwise infer from collateral.
+  const explicitSecured = normalizeBooleanLike(
+    variables.loan_is_secured ?? variables.is_secured
+  );
+  derived.is_secured =
+    explicitSecured !== null
+      ? explicitSecured
+      : hasMeaningfulValue(variables.security_collateral);
+
+  // Lender-type regulatory triggers (finance ruleset feature class).
+  const lender = normalizeText(variables.lender_type).toLowerCase();
+  if (lender) {
+    derived.lender_is_nbfc = lender.includes("nbfc");
+    derived.lender_is_regulated = lender.includes("bank") || lender.includes("nbfc");
+    derived.is_cross_border = lender.includes("foreign");
   }
 
   // Moonlighting / exclusivity restriction: explicit opt-in, or implied by a

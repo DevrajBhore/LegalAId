@@ -1,0 +1,20 @@
+{
+  "clause_id": "EMP_MATERNITY_BENEFITS_001",
+  "name": "Maternity Benefits",
+  "category": "COMPLIANCE",
+  "document_types": ["EMPLOYMENT"],
+  "jurisdiction": "India",
+  "text": "To the extent applicable, the Employee shall be entitled to maternity benefits in accordance with the Maternity Benefit Act, 1961 (as amended), including paid maternity leave, nursing breaks, and protection against dismissal during the statutory maternity period. The Employer shall not require any work of a nature that is arduous or likely to interfere with pregnancy or the normal development of the foetus during the periods specified under the Act. Nothing in this Agreement shall reduce any benefit to which the Employee is statutorily entitled.",
+  "legal_basis": [
+    { "act": "Maternity Benefit Act, 1961", "section": "5", "note": "Right to payment of maternity benefit" },
+    { "act": "Maternity Benefit Act, 1961", "section": "12", "note": "Dismissal during absence due to pregnancy is void" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Agreement purports to waive statutory maternity entitlements"],
+  "source": "Maternity Benefit Act, 1961",
+  "version": "0.1.0-draft",
+  "title": "Maternity Benefits",
+  "review_status": "draft-needs-legal-review"
+}

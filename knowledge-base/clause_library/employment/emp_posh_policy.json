@@ -1,0 +1,20 @@
+{
+  "clause_id": "EMP_POSH_POLICY_001",
+  "name": "Prevention of Sexual Harassment (POSH)",
+  "category": "COMPLIANCE",
+  "document_types": ["EMPLOYMENT"],
+  "jurisdiction": "India",
+  "text": "The Employer is committed to providing a workplace free from sexual harassment. The Employee shall comply with the Employer's policy on prevention of sexual harassment framed under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. Where the Employer's workplace has ten or more employees, an Internal Committee has been or shall be constituted to receive and redress complaints in accordance with the Act. Any act of sexual harassment shall constitute misconduct and may result in disciplinary action up to and including termination, without prejudice to any proceedings under the Act.",
+  "legal_basis": [
+    { "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013", "section": "4", "note": "Constitution of Internal Committee" },
+    { "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013", "section": "19", "note": "Duties of the employer" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "POSH Act, 2013",
+  "version": "0.1.0-draft",
+  "title": "Prevention of Sexual Harassment",
+  "review_status": "draft-needs-legal-review"
+}

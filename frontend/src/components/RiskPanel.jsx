@@ -23,6 +23,15 @@ const SEVERITY_META = {
   LOW: { cls: "sev-low", label: "Low" },
 };
 
+const RISK_BASE_SCORE = { LOW: 92, MEDIUM: 76, HIGH: 52, BLOCKED: 32, UNKNOWN: 70 };
+
+function computeRiskScore({ overall, certified, blocking, advisory }) {
+  let score = RISK_BASE_SCORE[overall] ?? 70;
+  score -= blocking * 6 + advisory * 1.5;
+  if (certified && blocking === 0) score = Math.max(score, 85);
+  return Math.max(5, Math.min(100, Math.round(score)));
+}
+
 export default function RiskPanel({
   validation,
   onDownload,
@@ -30,6 +39,7 @@ export default function RiskPanel({
   hideDownload,
   onFixIssue,
   fixingIssueId,
+  gaps = [],
 }) {
   if (!validation) {
     return (
@@ -69,6 +79,12 @@ export default function RiskPanel({
     blockingCount + advisoryCount;
 
   const meta = RISK_META[overall] || RISK_META.UNKNOWN;
+  const riskScore = computeRiskScore({
+    overall,
+    certified,
+    blocking: blockingCount,
+    advisory: advisoryCount,
+  });
   const sortedBlockingIssues = [...blockingIssues].sort(
     (a, b) =>
       (SEVERITY_ORDER[a?.severity] ?? 99) - (SEVERITY_ORDER[b?.severity] ?? 99)
@@ -97,6 +113,17 @@ export default function RiskPanel({
       <div className={`risk-badge ${meta.cls}`}>
         <span className="risk-icon">{meta.icon}</span>
         <span>{meta.label}</span>
+      </div>
+
+      <div className={`risk-score ${meta.cls}`}>
+        <div className="risk-score-num">{riskScore}<span>/100</span></div>
+        <div className="risk-score-bar">
+          <div
+            className="risk-score-fill"
+            style={{ width: `${riskScore}%` }}
+          />
+        </div>
+        <div className="risk-score-label">Document health score</div>
       </div>
 
       <div className="risk-breakdown">
@@ -205,6 +232,25 @@ export default function RiskPanel({
             ))}
           </div>
         </details>
+      )}
+
+      {gaps.length > 0 && (
+        <div className="gaps-section">
+          <div className="gaps-title-row">
+            <p className="gaps-title">Recommended additions</p>
+            <span className="gaps-count">{gaps.length}</span>
+          </div>
+          <p className="gaps-subtitle">
+            Common protections this document doesn't currently include. Consider
+            adding them via the AI assistant.
+          </p>
+          {gaps.map((gap) => (
+            <div className="gap-item" key={gap.category}>
+              <div className="gap-item-name">{gap.label}</div>
+              <p className="gap-item-why">{gap.why}</p>
+            </div>
+          ))}
+        </div>
       )}
 
       {!hideDownload &&

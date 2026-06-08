@@ -169,11 +169,19 @@ const emailShell = (content) => `
 </body>
 </html>`;
 
+// CLIENT_URL may be a comma-separated list (used as the CORS allowlist). Email
+// links need exactly ONE URL — use the first configured origin.
+function getAppUrl() {
+  const first = String(process.env.CLIENT_URL || "")
+    .split(",")[0]
+    .trim()
+    .replace(/\/+$/, "");
+  return first || "http://localhost:5173";
+}
+
 // ── Send verification email ────────────────────────────────────────────────────
 export async function sendVerificationEmail(name, email, token) {
-  const url = `${
-    process.env.CLIENT_URL
-  }/verify-email?token=${encodeURIComponent(token)}`;
+  const url = `${getAppUrl()}/verify-email?token=${encodeURIComponent(token)}`;
 
   await sendMailWithRetry({
     from: getEmailFromAddress(),
@@ -220,9 +228,7 @@ export async function sendVerificationEmail(name, email, token) {
 
 // ── Send password reset email ──────────────────────────────────────────────────
 export async function sendPasswordResetEmail(name, email, token) {
-  const url = `${
-    process.env.CLIENT_URL
-  }/reset-password?token=${encodeURIComponent(token)}`;
+  const url = `${getAppUrl()}/reset-password?token=${encodeURIComponent(token)}`;
 
   await sendMailWithRetry({
     from: getEmailFromAddress(),

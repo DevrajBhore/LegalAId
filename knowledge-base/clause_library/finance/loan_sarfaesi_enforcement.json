@@ -1,0 +1,19 @@
+{
+  "clause_id": "LOAN_SARFAESI_ENFORCEMENT_001",
+  "name": "SARFAESI Enforcement of Security",
+  "category": "REMEDIES",
+  "document_types": ["LOAN_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Parties acknowledge that the Lender is a secured creditor entitled to enforce security interests under the Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002 (SARFAESI). Upon the account being classified as a non-performing asset and on default continuing after a notice under Section 13(2) of SARFAESI, the Lender may, without the intervention of any court or tribunal, take possession of, manage, and transfer the secured assets and exercise all rights available to a secured creditor under the Act and the Security Interest (Enforcement) Rules, 2002. This clause applies only to the extent the Lender is a 'secured creditor' eligible to invoke SARFAESI (i.e. a scheduled bank or notified financial institution / NBFC); it shall not be construed to confer SARFAESI rights on a lender not so eligible.",
+  "legal_basis": [
+    { "act": "Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002", "section": "13", "note": "Enforcement of security interest by secured creditor" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Lender is not a SARFAESI-eligible secured creditor", "Loan is unsecured"],
+  "source": "SARFAESI Act, 2002",
+  "version": "0.1.0-draft",
+  "title": "SARFAESI Enforcement",
+  "review_status": "draft-needs-legal-review"
+}

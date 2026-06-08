@@ -201,16 +201,25 @@ function evaluateConditionalExpression(expression, variables = {}) {
   return isAffirmative(variables?.[raw]);
 }
 
-function resolveClauseIdsForBlueprint(blueprint, documentType, variables = {}) {
+function capitalize(text) {
+  const value = String(text || "").trim();
+  return value ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+}
+
+// Resolves the clause ids AND a per-clause "why it's included" reason, so the
+// document can explain itself to the user (the explainability feature).
+function resolveClauseSelection(blueprint, documentType, variables = {}) {
   const requiredClauseIds = extractClauseIds(blueprint, documentType);
   const conditionals = blueprint.conditional_clauses || [];
   const variants = blueprint.variant_clauses || [];
   const resolvedVariables = deriveGenerationControls(documentType, variables);
 
+  const reasons = new Map();
+  for (const id of requiredClauseIds) {
+    reasons.set(id, "Core clause included in every document of this type.");
+  }
+
   // Apply variant slots: each slot resolves to a single clause chosen by context.
-  // When the slot declares `replaces`, the chosen clause is swapped in place of
-  // the replaced clause so the document keeps a single clause for that role;
-  // otherwise the chosen clause is appended.
   let clauseIds = [...requiredClauseIds];
   for (const variant of variants) {
     const chosen = chooseVariantClause(variant, resolvedVariables);
@@ -224,13 +233,26 @@ function resolveClauseIdsForBlueprint(blueprint, documentType, variables = {}) {
     } else if (!clauseIds.includes(chosen)) {
       clauseIds.push(chosen);
     }
+    reasons.set(
+      chosen,
+      variant.note ? capitalize(variant.note) : "Selected to match your situation."
+    );
   }
 
   const conditionalClauseIds = conditionals
     .filter((entry) => evaluateConditionalExpression(entry.include_if, resolvedVariables))
-    .map((entry) => entry.clause);
+    .map((entry) => {
+      reasons.set(
+        entry.clause,
+        entry.note ? capitalize(entry.note) : "Added based on the details you provided."
+      );
+      return entry.clause;
+    });
 
-  return [...new Set([...clauseIds, ...conditionalClauseIds])];
+  return {
+    ids: [...new Set([...clauseIds, ...conditionalClauseIds])],
+    reasons,
+  };
 }
 
 function getClauseSchemaValidator() {
@@ -427,7 +449,12 @@ export function assembleDocument(documentType, variables = {}) {
     );
   }
 
-  const clauseIds = resolveClauseIdsForBlueprint(blueprint, documentType, variables);
+  const { ids: clauseIds, reasons } = resolveClauseSelection(
+    blueprint,
+    documentType,
+    variables
+  );
+  const clauseProvenance = {};
   const clauses = clauseIds.map((id, index) => {
     const clause = clausesById.get(id);
     if (!clause) {
@@ -435,10 +462,21 @@ export function assembleDocument(documentType, variables = {}) {
         `Clause "${id}" referenced by "${documentType}" was not found in the preloaded cache.`
       );
     }
+    const reason = reasons.get(id) || "Core clause for this document type.";
+    // Per-clause provenance so the editor can explain "why this clause" and
+    // "which Indian law backs it". Stored in metadata so it survives the
+    // generation/AI pipeline even if clause text is rewritten.
+    clauseProvenance[id] = {
+      reason,
+      legal_basis: clause.legal_basis || [],
+      name: clause.title || clause.name || id,
+      category: normalizeClauseCategory(clause.category),
+    };
     return {
       ...clause,
       category: normalizeClauseCategory(clause.category),
       title: clause.title || clause.name || null,
+      inclusion_reason: reason,
       blueprint_position: index + 1,
     };
   });
@@ -451,6 +489,7 @@ export function assembleDocument(documentType, variables = {}) {
       blueprint_clause_count: clauseIds.length,
       loaded_clause_count: clauses.length,
       missing_clauses: [],
+      clause_provenance: clauseProvenance,
       resolved_generation_controls: deriveGenerationControls(documentType, variables),
     },
   };

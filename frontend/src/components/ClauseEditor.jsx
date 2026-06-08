@@ -27,14 +27,29 @@ const CATEGORY_LABELS = {
   REPRESENTATIONS: "Representations",
 };
 
+function formatLegalBasis(entry) {
+  const ref = entry?.section
+    ? `§${entry.section}`
+    : entry?.article
+    ? `Art. ${entry.article}`
+    : "";
+  return [entry?.act, ref].filter(Boolean).join(", ");
+}
+
 export default function ClauseEditor({
   clause,
   onChange,
   index,
   recentlyEdited,
+  provenance,
 }) {
   const [editing, setEditing] = useState(false);
+  const [showWhy, setShowWhy] = useState(false);
   const textareaRef = useRef(null);
+
+  const reason = provenance?.reason || clause.inclusion_reason || "";
+  const legalBasis = provenance?.legal_basis || clause.legal_basis || [];
+  const hasExplain = Boolean(reason) || legalBasis.length > 0;
 
   const label =
     CATEGORY_LABELS[clause.category] ||
@@ -131,6 +146,42 @@ export default function ClauseEditor({
         >
           {clause.text || (
             <span className="clause-empty">No content - click to add</span>
+          )}
+        </div>
+      )}
+
+      {hasExplain && !editing && (
+        <div className="clause-why">
+          <button
+            type="button"
+            className="clause-why-toggle"
+            onClick={() => setShowWhy((value) => !value)}
+            aria-expanded={showWhy}
+          >
+            {showWhy ? "Hide" : "Why this clause?"}
+          </button>
+          {showWhy && (
+            <div className="clause-why-body">
+              {reason && (
+                <div className="clause-why-reason">
+                  <span className="clause-why-label">Why it's here</span>
+                  <span>{reason}</span>
+                </div>
+              )}
+              {legalBasis.length > 0 && (
+                <div className="clause-why-basis">
+                  <span className="clause-why-label">Indian law basis</span>
+                  <ul>
+                    {legalBasis.map((entry, i) => (
+                      <li key={i}>
+                        {formatLegalBasis(entry)}
+                        {entry?.note ? ` — ${entry.note}` : ""}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           )}
         </div>
       )}

@@ -164,3 +164,48 @@
   .clause-text, .clause-textarea { font-size: 16px; }
   .clause-edit-footer { flex-direction: column; align-items: flex-start; }
 }
+
+/* Explainability — "Why this clause?" */
+.clause-why { margin-top: 10px; }
+.clause-why-toggle {
+  border: none;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+}
+.clause-why-toggle:hover { color: var(--gold-light); }
+.clause-why-body {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: var(--gold-pale);
+  border: 1px solid rgba(184, 147, 58, 0.18);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.clause-why-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.clause-why-reason span:last-child {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+}
+.clause-why-basis ul { margin: 0; padding-left: 16px; }
+.clause-why-basis li {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}

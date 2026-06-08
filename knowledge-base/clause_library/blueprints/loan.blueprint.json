@@ -10,7 +10,6 @@
     "LOAN_REPAYMENT_001",
     "CORE_TERM_001",
     "LOAN_PREPAYMENT_001",
-    "LOAN_SECURITY_001",
     "LOAN_COVENANTS_001",
     "LOAN_DEFAULT_001",
     "LOAN_ACCELERATION_001",
@@ -29,7 +28,6 @@
     "LOAN_REPAYMENT_001",
     "CORE_TERM_001",
     "LOAN_PREPAYMENT_001",
-    "LOAN_SECURITY_001",
     "LOAN_COVENANTS_001",
     "LOAN_DEFAULT_001",
     "LOAN_ACCELERATION_001",
@@ -43,13 +41,29 @@
   "_notes": "Hardened: explicit TDS/IBC provisions, representation and warranty clause, FEMA compliance for cross-border.",
   "conditional_clauses": [
     {
-      "clause": "CORE_DATA_PROCESSING_001",
+      "clause": "LOAN_KYC_AML_001",
       "include_if": "lender_is_nbfc == true",
-      "note": "RBI KYC/AML compliance for NBFCs"
+      "note": "NBFC must follow RBI KYC/AML and data norms (dedicated clause)."
     },
     {
       "clause": "GUARANTEE_OBLIGATION_001",
-      "include_if": "personal_guarantee_required == true"
+      "include_if": "personal_guarantee_required == true",
+      "note": "Personal guarantee backing the loan."
+    },
+    {
+      "clause": "LOAN_SECURITY_001",
+      "include_if": "is_secured == true",
+      "note": "Security / collateral — included ONLY for secured loans. is_secured is derived from collateral being present."
+    },
+    {
+      "clause": "LOAN_FEMA_ECB_001",
+      "include_if": "is_cross_border == true",
+      "note": "Foreign lender / overseas funds → FEMA + ECB compliance."
+    },
+    {
+      "clause": "LOAN_SARFAESI_ENFORCEMENT_001",
+      "include_if": "lender_is_regulated == true",
+      "note": "SARFAESI enforcement rights for scheduled banks / NBFCs only (clause self-limits to eligible lenders)."
     }
   ],
   "mandatory_legal_checks": [
@@ -58,5 +72,6 @@
     "FEMA compliance required if lender is foreign entity or funds are from abroad",
     "SARFAESI applicability — only for scheduled banks and NBFCs, not private lenders",
     "Stamp duty on loan agreement — varies by state and loan amount"
-  ]
+  ],
+  "_generated_from": "ruleset (scripts/rulesetToBlueprint.mjs)"
 }

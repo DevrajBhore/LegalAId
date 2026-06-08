@@ -1,0 +1,70 @@
+{
+  "document_type": "LOAN_AGREEMENT",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "description": "Level-3 ruleset for Indian loan agreements. Finance is regulation-driven: the dominant feature is WHO the lender is (bank / NBFC / private / foreign), which fans out into RBI, FEMA, SARFAESI, usury and TDS obligations. The current blueprint barely branches (2 conditionals) — this ruleset surfaces the gaps and a real bug.",
+
+  "feature_taxonomy": [
+    { "feature": "lender_type", "type": "enum", "values": ["scheduled_bank", "nbfc", "private_individual", "company", "foreign"], "source_field": "lender_type", "derive": "lender_is_nbfc = lender_type==nbfc; lender_is_regulated = lender_type in {scheduled_bank, nbfc}; is_cross_border = lender_type==foreign", "note": "The single biggest driver — fans out into multiple regulatory flags." },
+    { "feature": "is_secured", "type": "boolean", "source_field": "security_collateral", "derive": "is_secured = security_collateral is meaningful", "note": "Secured vs unsecured changes the security + enforcement clauses fundamentally." },
+    { "feature": "personal_guarantee_required", "type": "boolean", "source_field": "personal_guarantee_required" },
+    { "feature": "repayment_type", "type": "enum", "values": ["bullet", "emi", "milestone"], "source_field": "repayment_schedule" },
+    { "feature": "interest_type", "type": "enum", "values": ["fixed", "floating"], "source_field": "interest_type" }
+  ],
+
+  "missing_features_gaps": [
+    { "feature": "is_cross_border", "why_needed": "Foreign lender / funds from abroad triggers FEMA + ECB (External Commercial Borrowing) compliance.", "status": "GAP — no feature, no clause." },
+    { "feature": "loan_amount_tier", "why_needed": "Stamp duty (state-specific) and some RBI thresholds scale with amount.", "status": "GAP — handled only by IRE stamp-duty validation, not as a clause/feature." }
+  ],
+
+  "baseline_clauses": [
+    { "clause": "CORE_IDENTITY_001", "why": "Lender and borrower identity.", "legal_basis": "ICA s.10" },
+    { "clause": "CORE_INTERPRETATION_001", "why": "Definitions / interpretation." },
+    { "clause": "CORE_PURPOSE_001", "why": "Purpose of the loan (end-use restriction)." },
+    { "clause": "LOAN_AMOUNT_001", "why": "Principal amount and disbursal." },
+    { "clause": "LOAN_INTEREST_001", "why": "Interest rate — must not be usurious; TDS on interest applies.", "legal_basis": "Usurious Loans Act, 1918; IT Act s.194A (TDS on interest); RBI rate guidance" },
+    { "clause": "LOAN_REPAYMENT_001", "why": "Repayment schedule (flat — see gap G6 for a variant)." },
+    { "clause": "CORE_TERM_001", "why": "Tenure." },
+    { "clause": "LOAN_PREPAYMENT_001", "why": "Prepayment / foreclosure terms." },
+    { "clause": "LOAN_COVENANTS_001", "why": "Affirmative/negative covenants." },
+    { "clause": "LOAN_DEFAULT_001", "why": "Events of default." },
+    { "clause": "LOAN_ACCELERATION_001", "why": "Acceleration on default." },
+    { "clause": "CORE_NOTICE_001", "why": "Notices." },
+    { "clause": "CORE_SEVERABILITY_001", "why": "Severability." },
+    { "clause": "CORE_DISPUTE_RESOLUTION_001", "why": "Dispute resolution." },
+    { "clause": "CORE_GOVERNING_LAW_001", "why": "India governing law." },
+    { "clause": "CORE_SIGNATURE_BLOCK_001", "why": "Execution." }
+  ],
+
+  "rules": [
+    { "id": "LOAN-R1", "when": "lender_is_nbfc == true", "action": "add", "clause": "LOAN_KYC_AML_001", "why": "NBFC must follow RBI KYC/AML and data norms (dedicated clause).", "legal_basis": "PMLA 2002; RBI KYC Directions; DPDP Act 2023", "review_status": "approved", "wired": "2026-06-08 (was gap G5 — replaced generic data-processing reuse)" },
+    { "id": "LOAN-R2", "when": "personal_guarantee_required == true", "action": "add", "clause": "GUARANTEE_OBLIGATION_001", "why": "Personal guarantee backing the loan.", "legal_basis": "ICA s.126", "review_status": "approved" },
+    { "id": "LOAN-R3", "when": "is_secured == true", "action": "add", "clause": "LOAN_SECURITY_001", "why": "Security / collateral — included ONLY for secured loans. is_secured is derived from collateral being present.", "legal_basis": "Transfer of Property Act, 1882; SARFAESI (regulated lenders only)", "review_status": "approved", "wired": "2026-06-08 (fixes bug G1)" },
+    { "id": "LOAN-R4", "when": "is_cross_border == true", "action": "add", "clause": "LOAN_FEMA_ECB_001", "why": "Foreign lender / overseas funds → FEMA + ECB compliance.", "legal_basis": "FEMA 1999; RBI ECB Framework", "review_status": "approved", "wired": "2026-06-08 (was gap G2)" },
+    { "id": "LOAN-R5", "when": "lender_is_regulated == true", "action": "add", "clause": "LOAN_SARFAESI_ENFORCEMENT_001", "why": "SARFAESI enforcement rights for scheduled banks / NBFCs only (clause self-limits to eligible lenders).", "legal_basis": "SARFAESI Act, 2002", "review_status": "approved", "wired": "2026-06-08 (was gap G3)" }
+  ],
+
+  "proposed_rules_gaps": [
+    { "id": "LOAN-G1", "severity": "BUG", "target": "LOAN_SECURITY_001", "status": "RESOLVED 2026-06-08 — security moved from required to conditional rule LOAN-R3 (include_if is_secured == true). is_secured derived in generationControls. Unsecured loans no longer get a security clause." },
+    { "id": "LOAN-G2", "proposed_clause": "LOAN_FEMA_ECB_001", "status": "RESOLVED 2026-06-08 — wired as rule LOAN-R4 (is_cross_border)." },
+    { "id": "LOAN-G3", "proposed_clause": "LOAN_SARFAESI_ENFORCEMENT_001", "status": "RESOLVED 2026-06-08 — wired as rule LOAN-R5 (lender_is_regulated; clause self-limits to eligible lenders)." },
+    { "id": "LOAN-G4", "when": "always", "action": "add", "proposed_clause": "LOAN_TDS_INTEREST_001", "why": "TDS on interest (s.194A) should be an explicit clause, not buried.", "legal_basis": "IT Act s.194A", "status": "OPEN — may be partly covered inside LOAN_INTEREST_001; verify before authoring." },
+    { "id": "LOAN-G5", "proposed_clause": "LOAN_KYC_AML_001", "status": "RESOLVED 2026-06-08 — rule LOAN-R1 now uses the dedicated KYC/AML clause instead of generic data-processing." },
+    { "id": "LOAN-G6", "when": "repayment_type in {bullet, emi, milestone}", "action": "replace", "slot": "repayment_model", "target": "LOAN_REPAYMENT_001", "why": "Repayment should vary (bullet vs EMI vs milestone) like the Service payment variant.", "status": "OPEN — variant opportunity, clauses not built (lower priority than compliance)." }
+  ],
+
+  "fallback_policy": {
+    "principle": "Open-world honest degradation, with a regulatory floor: usury, TDS and (for regulated lenders) RBI norms always apply. If lender type or cross-border status is unknown, assume the SAFER stance (e.g. do not assert SARFAESI rights) and flag.",
+    "when_no_rule_matches": "Produce the baseline loan agreement.",
+    "uncovered_signal_action": "advisory_flag",
+    "review_message": "Lending is heavily regulated (RBI/FEMA/SARFAESI). This draft may not reflect lender-type-specific obligations — a lawyer review is strongly recommended."
+  },
+
+  "gaps_summary": [
+    "BUG (G1): security clause is forced even on unsecured loans. This is the headline finding — and it exposes a real ENGINE limitation: the format supports add/replace but NOT 'conditionally remove a required clause'. Either add a 'remove'/'mandatory:false' action, or model security as a variant slot (secured vs unsecured).",
+    "REGULATORY GAPS: no FEMA/ECB (G2), no SARFAESI-gated enforcement (G3, also a correctness risk), KYC/AML reuses the wrong clause (G5). Finance needs a 'regulatory-trigger' feature class driven by lender_type.",
+    "FORMAT VALIDATION (3rd type): the ruleset format held, but loan revealed TWO new needs the first two types didn't — (a) conditional REMOVAL of a baseline clause (unsecured), and (b) one feature (lender_type) deriving MANY regulatory flags. Both should inform the eventual ruleset→blueprint generator. This is exactly why we validated on 3 types before building it."
+  ],
+
+  "execution_note": "Maps onto knowledge-base/clause_library/blueprints/loan.blueprint.json. `rules` reflect the live blueprint (2 conditionals). `proposed_rules_gaps` are NOT wired and mostly reference clauses that don't exist yet. G1 cannot be fixed by adding a clause — it needs an engine change (conditional removal) or a variant slot; do not silently leave unsecured loans with a security clause."
+}

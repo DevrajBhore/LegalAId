@@ -85,6 +85,36 @@ export const VARIABLE_CONFIG = {
         "Excuses performance delayed or prevented by events beyond a party's reasonable control (natural disasters, government action, etc.).",
       options: ["No", "Yes"],
     },
+    employee_gender: {
+      label: "Employee gender (for statutory benefits)",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["EMPLOYMENT_CONTRACT"],
+      description:
+        "Used only to include the correct statutory entitlements — maternity benefits under the Maternity Benefit Act, 1961 apply to female employees.",
+      options: ["Female", "Male", "Prefer not to say"],
+    },
+    workplace_headcount: {
+      label: "How many employees at the workplace?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["EMPLOYMENT_CONTRACT"],
+      description:
+        "The POSH Act, 2013 mandates an anti-sexual-harassment policy and Internal Committee for workplaces with 10 or more employees.",
+      options: ["Fewer than 10", "10 or more"],
+    },
+    lender_type: {
+      label: "Who is the lender?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["LOAN_AGREEMENT"],
+      description:
+        "The lender type drives regulatory clauses: NBFC → KYC/AML; scheduled bank/NBFC → SARFAESI enforcement; foreign lender → FEMA/ECB compliance.",
+      options: ["Scheduled Bank", "NBFC", "Private Individual", "Company", "Foreign"],
+    },
     payment_model: {
       label: "How is the Service Provider paid?",
       type: "select",

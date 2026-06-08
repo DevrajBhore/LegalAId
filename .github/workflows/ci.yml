@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install backend deps
+        run: cd backend && npm install
+
+      - name: Ruleset ↔ blueprint drift check
+        # Fails the build if any blueprint was hand-edited out of sync with its
+        # ruleset (rulesets are the source of truth).
+        run: node scripts/rulesetToBlueprint.mjs all
+
+      - name: Clause engine regression test
+        run: node tests/clauseEngine.test.mjs
+
+      - name: Clause search test
+        run: node tests/clauseSearch.test.mjs
+
+      - name: Interview safety test
+        run: node tests/interview.test.mjs
+
+      - name: Template audit test
+        run: node tests/auditTemplates.test.cjs

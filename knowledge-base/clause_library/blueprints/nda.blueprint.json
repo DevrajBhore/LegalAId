@@ -43,7 +43,6 @@
     {
       "slot": "confidentiality_strength",
       "replaces": "CORE_CONFIDENTIALITY_001",
-      "note": "Selects the confidentiality standard from context — trade-secret > investor/diligence > standard.",
       "select_first_match": [
         {
           "clause": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
@@ -59,33 +58,34 @@
   ],
   "conditional_clauses": [
     {
-      "clause": "NDA_NON_COMPETE_001",
-      "include_if": "include_non_compete == true",
-      "note": "Narrow non-compete tied to CI — ICA S.27"
-    },
-    {
-      "clause": "NDA_NON_SOLICITATION_001",
-      "include_if": "include_non_solicit == true"
-    },
-    {
-      "clause": "CORE_DATA_PROCESSING_001",
-      "include_if": "involves_personal_data == true",
-      "note": "DPDPA 2023 — required if NDA covers personal data"
-    },
-    {
       "clause": "NDA_SOURCE_CODE_PROTECTION_001",
       "include_if": "involves_source_code == true",
-      "note": "Source code / software exchanged — Copyright Act 1957"
+      "note": "Source code needs no-copy / no-reverse-engineer / no-derivative protection."
     },
     {
       "clause": "NDA_TRADE_SECRET_PROTECTION_001",
       "include_if": "involves_trade_secrets == true",
-      "note": "Dedicated trade-secret non-use obligation"
+      "note": "Dedicated non-use / account-for-gains obligation over trade secrets."
     },
     {
       "clause": "NDA_NON_CIRCUMVENTION_001",
       "include_if": "counterparty_is_vendor == true",
-      "note": "Vendor / supplier counterparty — protect business contacts"
+      "note": "Vendor/supplier counterparties: protect business contacts from circumvention."
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true",
+      "note": "Personal data of Indian residents triggers DPDP-aligned data-processing obligations."
+    },
+    {
+      "clause": "NDA_NON_COMPETE_001",
+      "include_if": "include_non_compete == true",
+      "note": "Optional narrow non-compete tied to confidential information."
+    },
+    {
+      "clause": "NDA_NON_SOLICITATION_001",
+      "include_if": "include_non_solicit == true",
+      "note": "Optional non-solicitation of employees/customers."
     }
   ],
   "removed_from_v2": [],
@@ -93,5 +93,6 @@
     "Confidentiality duration must be limited — perpetual NDA risks enforceability challenge",
     "SEBI UPSI provision required where parties include or advise listed companies",
     "DPDPA 2023 applies if confidential information includes personal data of Indian residents"
-  ]
+  ],
+  "_generated_from": "ruleset (scripts/rulesetToBlueprint.mjs)"
 }

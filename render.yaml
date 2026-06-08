@@ -17,12 +17,22 @@ services:
         sync: false
       - key: CLIENT_URL
         sync: false
+      # AI provider selection — swap providers by changing these, no code change.
+      # AI_PROVIDER ∈ gemini | groq | openai ; AI_FALLBACK_PROVIDER same options.
+      - key: AI_PROVIDER
+        value: gemini
+      - key: AI_FALLBACK_PROVIDER
+        value: groq
       - key: GEMINI_API_KEY
         sync: false
       - key: GROQ_API_KEY
         sync: false
       - key: GROQ_MODEL
         value: openai/gpt-oss-20b
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
       - key: RESEND_API_KEY
         sync: false
       - key: EMAIL_FROM

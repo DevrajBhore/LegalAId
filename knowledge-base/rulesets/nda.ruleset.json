@@ -1,0 +1,126 @@
+{
+  "document_type": "NDA",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "description": "Gold-standard Level-3 ruleset for NDAs. Situations are infinite; this maps them onto a FINITE feature set and writes deterministic rules over those features. The AI's only job is to fill these features from the user's free-text situation (the interview); the rules below — authored and reviewed by lawyers — decide the document.",
+
+  "feature_taxonomy": [
+    { "feature": "counterparty_type", "type": "enum", "values": ["investor", "vendor", "employee", "customer", "partner", "other"], "source_field": "counterparty_type", "note": "Who is receiving the information — the single biggest driver of clause shape." },
+    { "feature": "involves_source_code", "type": "boolean", "source_field": "involves_source_code", "note": "Source code / software being shared." },
+    { "feature": "involves_trade_secrets", "type": "boolean", "source_field": "involves_trade_secrets", "note": "Formulae, processes, methods with independent economic value." },
+    { "feature": "involves_personal_data", "type": "boolean", "source_field": "involves_personal_data", "note": "Personal data of Indian residents (DPDP Act 2023 trigger)." },
+    { "feature": "mutual", "type": "boolean", "source_field": "nda_type", "derive": "nda_type == Mutual", "note": "Mutual vs one-way disclosure." },
+    { "feature": "include_non_compete", "type": "boolean", "source_field": "include_non_compete" },
+    { "feature": "include_non_solicit", "type": "boolean", "source_field": "include_non_solicit" }
+  ],
+
+  "baseline_clauses": [
+    { "clause": "CORE_IDENTITY_001", "why": "Parties must be identified for any enforceable contract.", "legal_basis": "Indian Contract Act, 1872 s.10" },
+    { "clause": "CORE_DEFINITIONS_001", "why": "Defined terms used throughout the agreement." },
+    { "clause": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001", "why": "Confidential Information must be defined to be enforceable.", "legal_basis": "ICA s.27, s.29" },
+    { "clause": "CORE_CONFIDENTIALITY_001", "why": "The core confidentiality obligation (default; may be upgraded by a rule).", "legal_basis": "ICA s.27" },
+    { "clause": "NDA_EXCLUSIONS_001", "why": "Standard carve-outs (public domain, prior knowledge, legal compulsion)." },
+    { "clause": "NDA_DISCLOSURE_PERMITTED_001", "why": "Permitted disclosures (need-to-know, legal compulsion)." },
+    { "clause": "NDA_THIRD_PARTY_DISCLOSURE_001", "why": "Controls on onward disclosure to third parties." },
+    { "clause": "NDA_DATA_SECURITY_001", "why": "Security measures protecting the confidential information.", "legal_basis": "IT Act, 2000 s.43A" },
+    { "clause": "NDA_RETURN_OF_INFORMATION_001", "why": "Return / destruction of information on termination." },
+    { "clause": "NDA_BREACH_REMEDIES_001", "why": "Remedies for breach (including injunctive relief)." },
+    { "clause": "NDA_DURATION_001", "why": "Confidentiality must be time-limited; perpetual NDAs risk unenforceability." },
+    { "clause": "NDA_TERM_SURVIVAL_001", "why": "Which obligations survive expiry/termination." },
+    { "clause": "CORE_SURVIVAL_001", "why": "General survival of key obligations." },
+    { "clause": "CORE_DISPUTE_RESOLUTION_001", "why": "How disputes are resolved." },
+    { "clause": "CORE_GOVERNING_LAW_001", "why": "India governing law.", "legal_basis": "Indian law" },
+    { "clause": "CORE_SIGNATURE_BLOCK_001", "why": "Execution block." }
+  ],
+
+  "rules": [
+    {
+      "id": "NDA-R1",
+      "when": "involves_trade_secrets == true",
+      "action": "replace",
+      "slot": "confidentiality_strength",
+      "replaces": "CORE_CONFIDENTIALITY_001",
+      "clause": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+      "why": "Trade secrets require the highest grade of confidentiality and survive longer.",
+      "legal_basis": "ICA s.27; IT Act 2000 s.43A; ICA s.73",
+      "review_status": "approved",
+      "priority": 1
+    },
+    {
+      "id": "NDA-R2",
+      "when": "counterparty_is_investor == true",
+      "action": "replace",
+      "slot": "confidentiality_strength",
+      "replaces": "CORE_CONFIDENTIALITY_001",
+      "clause": "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+      "why": "Investor / diligence counterparties get heightened, need-to-know confidentiality with non-use for competing/investment advantage.",
+      "legal_basis": "ICA s.27; SEBI (PIT) Regulations 2015 s.3",
+      "review_status": "approved",
+      "priority": 2,
+      "note": "Lower priority than R1 — if both trade secrets AND investor, trade-secret grade wins."
+    },
+    {
+      "id": "NDA-R3",
+      "when": "involves_source_code == true",
+      "action": "add",
+      "clause": "NDA_SOURCE_CODE_PROTECTION_001",
+      "why": "Source code needs no-copy / no-reverse-engineer / no-derivative protection.",
+      "legal_basis": "Copyright Act 1957 s.2(o), s.14; IT Act 2000 s.43",
+      "review_status": "approved"
+    },
+    {
+      "id": "NDA-R4",
+      "when": "involves_trade_secrets == true",
+      "action": "add",
+      "clause": "NDA_TRADE_SECRET_PROTECTION_001",
+      "why": "Dedicated non-use / account-for-gains obligation over trade secrets.",
+      "legal_basis": "ICA s.27, s.73",
+      "review_status": "approved"
+    },
+    {
+      "id": "NDA-R5",
+      "when": "counterparty_is_vendor == true",
+      "action": "add",
+      "clause": "NDA_NON_CIRCUMVENTION_001",
+      "why": "Vendor/supplier counterparties: protect business contacts from circumvention.",
+      "legal_basis": "ICA s.27 (narrow), s.73",
+      "review_status": "approved"
+    },
+    {
+      "id": "NDA-R6",
+      "when": "involves_personal_data == true",
+      "action": "add",
+      "clause": "CORE_DATA_PROCESSING_001",
+      "why": "Personal data of Indian residents triggers DPDP-aligned data-processing obligations.",
+      "legal_basis": "Digital Personal Data Protection Act, 2023",
+      "review_status": "approved"
+    },
+    {
+      "id": "NDA-R7",
+      "when": "include_non_compete == true",
+      "action": "add",
+      "clause": "NDA_NON_COMPETE_001",
+      "why": "Optional narrow non-compete tied to confidential information.",
+      "legal_basis": "ICA s.27 — enforceable only if narrowly tied to CI",
+      "review_status": "approved"
+    },
+    {
+      "id": "NDA-R8",
+      "when": "include_non_solicit == true",
+      "action": "add",
+      "clause": "NDA_NON_SOLICITATION_001",
+      "why": "Optional non-solicitation of employees/customers.",
+      "review_status": "approved"
+    }
+  ],
+
+  "fallback_policy": {
+    "principle": "Open-world, honest degradation. If a situation has aspects not covered by the feature taxonomy or rules, generate the baseline NDA and tell the user — never silently guess.",
+    "when_no_rule_matches": "Produce the baseline NDA (above).",
+    "uncovered_signal_action": "advisory_flag",
+    "review_message": "This NDA covers aspects we don't yet have a specific rule for. We recommend a lawyer review before relying on it.",
+    "learning": "Recurring uncovered signals should be promoted into new features/rules here, with legal review — this is how coverage grows over time."
+  },
+
+  "execution_note": "This ruleset is the canonical, human-reviewable source of truth. It currently maps 1:1 onto knowledge-base/clause_library/blueprints/nda.blueprint.json (variant_clauses ↔ replace rules, conditional_clauses ↔ add rules). The blueprint is what the engine executes; this file is what a lawyer reviews and what other document types should be modelled on."
+}

@@ -1,0 +1,90 @@
+{
+  "document_type": "EMPLOYMENT_CONTRACT",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "description": "Level-3 ruleset for Indian employment contracts. Employment is statute-heavy (Minimum Wages, EPF, Payment of Wages, Factories/Shops, Maternity, POSH, Industrial Employment Standing Orders), so much of the 'rule' logic is mandatory statutory compliance, not optional context. AI fills the features; these reviewed rules decide the document.",
+
+  "feature_taxonomy": [
+    { "feature": "seniority_level", "type": "enum", "values": ["junior", "mid", "senior"], "source_field": "seniority_level", "derive": "is_senior_employee = seniority in {senior}", "note": "Drives garden leave, moonlighting, probation length, ESOP." },
+    { "feature": "involves_source_code", "type": "boolean", "source_field": "involves_source_code" },
+    { "feature": "involves_trade_secrets", "type": "boolean", "source_field": "involves_trade_secrets" },
+    { "feature": "involves_personal_data", "type": "boolean", "source_field": "involves_personal_data", "note": "Employee handles customer/employee personal data → DPDP obligations." },
+    { "feature": "include_non_compete", "type": "boolean", "source_field": "include_non_compete" },
+    { "feature": "restrict_moonlighting", "type": "boolean", "derive": "is_senior_employee OR involves_source_code OR involves_trade_secrets", "note": "Derived in generationControls." },
+    { "feature": "employment_termination_type", "type": "enum", "values": ["notice-based", "for-cause-and-notice", "fixed-term"], "source_field": "employment_termination_type" },
+    { "feature": "include_entire_agreement", "type": "boolean", "source_field": "include_entire_agreement" },
+    { "feature": "is_female_employee", "type": "boolean", "source_field": "employee_gender", "derive": "employee_gender == Female", "note": "Gates maternity benefits (EMP-R8)." },
+    { "feature": "employer_headcount_ge_10", "type": "boolean", "source_field": "workplace_headcount", "derive": "workplace_headcount == '10 or more'", "note": "Gates POSH policy (EMP-R9)." }
+  ],
+
+  "missing_features_gaps": [
+    { "feature": "workplace_type", "values": ["factory", "shop_or_office"], "why_needed": "Working hours / overtime differ under Factories Act, 1948 vs the State Shops & Establishments Act.", "status": "GAP — working-hours clause is generic, not workplace-aware." },
+    { "feature": "has_esop_or_variable_pay", "why_needed": "Senior/leadership hires commonly have ESOPs / variable pay needing a dedicated clause.", "status": "GAP — no ESOP/variable-pay clause (a scraped ESOP template exists to mine)." },
+    { "feature": "is_fixed_term", "why_needed": "Fixed-term employment (Industrial Employment Standing Orders, 2018 amendment) changes term + termination + gratuity eligibility.", "status": "GAP — employment_termination_type has 'fixed-term' but no distinct fixed-term clause set." }
+  ],
+
+  "baseline_clauses": [
+    { "clause": "CORE_IDENTITY_001", "why": "Identify employer and employee.", "legal_basis": "ICA s.10" },
+    { "clause": "CORE_PURPOSE_001", "why": "Purpose / engagement recital." },
+    { "clause": "EMPLOYMENT_ROLE_001", "why": "Designation, role, reporting." },
+    { "clause": "EMPLOYMENT_COMPENSATION_001", "why": "Compensation structure (CTC breakdown)." },
+    { "clause": "EMP_WAGES_001", "why": "Wages — must not fall below applicable minimum wage.", "legal_basis": "Minimum Wages Act, 1948; Payment of Wages Act, 1936; Code on Wages, 2019" },
+    { "clause": "CORE_TERM_001", "why": "Commencement and term." },
+    { "clause": "EMP_PROBATION_001", "why": "Probation period and confirmation." },
+    { "clause": "EMP_DUTIES_001", "why": "Duties and obligations of the employee." },
+    { "clause": "EMP_WORKING_HOURS_001", "why": "Working hours / overtime.", "legal_basis": "Factories Act, 1948 / State Shops & Establishments Act" },
+    { "clause": "EMP_LEAVE_POLICY_001", "why": "Leave entitlements." },
+    { "clause": "EMP_BENEFITS_001", "why": "Statutory benefits (PF/ESI) — EPF non-deduction is a criminal offence.", "legal_basis": "EPF & MP Act, 1952 s.14; ESI Act, 1948" },
+    { "clause": "EMP_RETIREMENT_001", "why": "Retirement / superannuation and gratuity.", "legal_basis": "Payment of Gratuity Act, 1972" },
+    { "clause": "EMP_CONFIDENTIALITY_001", "why": "Employee confidentiality obligation.", "legal_basis": "ICA s.27 (during employment)" },
+    { "clause": "EMP_IP_ASSIGNMENT_001", "why": "Assignment of work-product IP to employer.", "legal_basis": "Copyright Act, 1957 s.17(c)" },
+    { "clause": "EMP_NOTICE_PERIOD_001", "why": "Notice period for resignation/termination." },
+    { "clause": "EMP_DISCIPLINARY_ACTION_001", "why": "Discipline and misconduct.", "legal_basis": "Industrial Employment (Standing Orders) Act, 1946" },
+    { "clause": "EMP_GRIEVANCE_PROCEDURE_001", "why": "Grievance redressal." },
+    { "clause": "EMPLOYMENT_TERMINATION_001", "why": "Termination framework." },
+    { "clause": "EMP_TERMINATION_001", "why": "Termination specifics / consequences." },
+    { "clause": "CORE_SEVERABILITY_001", "why": "Severability." },
+    { "clause": "CORE_NOTICE_001", "why": "Notices." },
+    { "clause": "CORE_DISPUTE_RESOLUTION_001", "why": "Dispute resolution." },
+    { "clause": "CORE_GOVERNING_LAW_001", "why": "India governing law." },
+    { "clause": "CORE_COMPLIANCE_WITH_LAW_001", "why": "Statutory-compliance umbrella — employer complies with all applicable labour codes.", "legal_basis": "All applicable labour codes", "wired": "2026-06-08 (was gap G1)" },
+    { "clause": "CORE_SIGNATURE_BLOCK_001", "why": "Execution." }
+  ],
+
+  "rules": [
+    { "id": "EMP-R1", "when": "include_non_compete == true", "action": "add", "clause": "EMP_NON_COMPETE_001", "why": "Post-employment non-compete — enforceable in India only if narrowly tied to confidential information.", "legal_basis": "ICA s.27", "review_status": "approved" },
+    { "id": "EMP-R2", "when": "include_non_compete == true", "action": "add", "clause": "EMP_NON_SOLICITATION_001", "why": "Non-solicitation of clients and employees.", "review_status": "approved", "note": "Currently shares the non-compete trigger — see gap G-NS." },
+    { "id": "EMP-R3", "when": "restrict_moonlighting == true", "action": "add", "clause": "EMP_MOONLIGHTING_001", "why": "Exclusivity / dual-employment restriction for senior roles or sensitive IP.", "legal_basis": "ICA s.27 (operates during employment)", "review_status": "approved" },
+    { "id": "EMP-R4", "when": "is_senior_employee == true", "action": "add", "clause": "EMP_GARDEN_LEAVE_001", "why": "Garden leave during notice for senior / leadership roles.", "review_status": "approved" },
+    { "id": "EMP-R5", "when": "include_entire_agreement == true", "action": "add", "clause": "CORE_ENTIRE_AGREEMENT_001", "why": "Entire-agreement (no oral terms) clause.", "review_status": "approved" },
+    { "id": "EMP-R6", "when": "involves_personal_data == true", "action": "add", "clause": "CORE_DATA_PROCESSING_001", "why": "Employee handling personal data triggers DPDP-aligned obligations.", "legal_basis": "DPDP Act, 2023", "review_status": "approved", "wired": "2026-06-08 (was gap G4)" },
+    { "id": "EMP-R7", "when": "involves_trade_secrets == true", "action": "replace", "slot": "employee_confidentiality_strength", "replaces": "EMP_CONFIDENTIALITY_001", "clause": "EMP_CONFIDENTIALITY_TRADE_SECRET_001", "priority": 1, "why": "Trade-secret-handling roles get heightened employee confidentiality.", "legal_basis": "ICA s.27; IT Act 2000 s.43A", "review_status": "approved", "wired": "2026-06-08 (was gap G5)" },
+    { "id": "EMP-R8", "when": "is_female_employee == true", "action": "add", "clause": "EMP_MATERNITY_BENEFITS_001", "why": "Maternity benefits apply to female employees under the Maternity Benefit Act.", "legal_basis": "Maternity Benefit Act, 1961", "review_status": "approved", "wired": "2026-06-08 (gated, was gap G2)" },
+    { "id": "EMP-R9", "when": "employer_headcount_ge_10 == true", "action": "add", "clause": "EMP_POSH_POLICY_001", "why": "POSH policy + Internal Committee mandatory for workplaces with 10+ employees.", "legal_basis": "POSH Act, 2013", "review_status": "approved", "wired": "2026-06-08 (gated, was gap G3)" }
+  ],
+
+  "proposed_rules_gaps": [
+    { "id": "EMP-G1", "proposed_clause": "CORE_COMPLIANCE_WITH_LAW_001", "status": "RESOLVED 2026-06-08 — now a mandatory baseline clause." },
+    { "id": "EMP-G2", "proposed_clause": "EMP_MATERNITY_BENEFITS_001", "status": "RESOLVED 2026-06-08 — GATED rule EMP-R8 (fires when is_female_employee, derived from employee_gender)." },
+    { "id": "EMP-G3", "proposed_clause": "EMP_POSH_POLICY_001", "status": "RESOLVED 2026-06-08 — GATED rule EMP-R9 (fires when employer_headcount_ge_10)." },
+    { "id": "EMP-G4", "proposed_clause": "CORE_DATA_PROCESSING_001", "status": "RESOLVED 2026-06-08 — now wired as rule EMP-R6." },
+    { "id": "EMP-G5", "proposed_clause": "EMP_CONFIDENTIALITY_TRADE_SECRET_001", "status": "RESOLVED 2026-06-08 — now variant rule EMP-R7 (replaces EMP_CONFIDENTIALITY_001 when involves_trade_secrets)." },
+    { "id": "EMP-G6", "when": "has_esop_or_variable_pay == true", "action": "add", "proposed_clause": "EMP_ESOP_001", "why": "Senior hires commonly have ESOPs/variable pay.", "status": "OPEN — clause + feature not built (mine the scraped ESOP template). Lower priority (commercial, not compliance)." },
+    { "id": "EMP-G7", "id_note": "G-NS", "when": "include_non_solicit == true", "action": "separate-trigger", "why": "Non-solicitation should be independently selectable, not bundled with non-compete (you may want non-solicit without a non-compete).", "status": "GAP — refinement: split EMP-R2 onto its own feature." }
+  ],
+
+  "fallback_policy": {
+    "principle": "Open-world honest degradation, but employment has a hard floor: statutory-compliance clauses (wages, EPF, working hours, gratuity) are NON-NEGOTIABLE and always included regardless of situation.",
+    "when_no_rule_matches": "Produce the baseline contract with all statutory clauses.",
+    "uncovered_signal_action": "advisory_flag",
+    "review_message": "This contract may involve obligations (e.g. maternity, POSH, fixed-term, ESOP) we don't yet have a specific rule for — a lawyer review is recommended."
+  },
+
+  "gaps_summary": [
+    "STATUTORY (highest priority): no POSH clause (G3), no maternity rule (G2), and the compliance-umbrella clause referenced in the blueprint isn't actually wired (G1). These are legal-risk gaps, not nice-to-haves.",
+    "QUICK WINS: G1 (compliance-with-law) and G4 (data-processing) reference clauses that ALREADY EXIST in the library — they just aren't wired into the employment blueprint. Add them and they work immediately; G1 is also a current compliance hole.",
+    "FORMAT VALIDATION: the ruleset format generalised to employment, but employment needed two things NDA didn't — (a) a large set of always-on STATUTORY baseline clauses with legal_basis, and (b) features tied to compliance facts (headcount, female employee, workplace type), not just commercial preferences. The format handled both; recommend adding a 'mandatory: true' marker on statutory rules so they can never be toggled off."
+  ],
+
+  "execution_note": "Maps onto knowledge-base/clause_library/blueprints/employment_contract.blueprint.json. The `rules` section reflects the live blueprint; `proposed_rules_gaps` are NOT yet wired and reference clauses that mostly don't exist yet (except CORE_DATA_PROCESSING_001). Do not point the engine at proposed_rules until their clauses are authored + lawyer-reviewed."
+}

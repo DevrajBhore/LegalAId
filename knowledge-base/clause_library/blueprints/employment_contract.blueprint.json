@@ -25,6 +25,7 @@
     "CORE_NOTICE_001",
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
+    "CORE_COMPLIANCE_WITH_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
   "required_clauses": [
@@ -51,6 +52,7 @@
     "CORE_NOTICE_001",
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_GOVERNING_LAW_001",
+    "CORE_COMPLIANCE_WITH_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
   "version": "3.1",
@@ -59,26 +61,42 @@
     {
       "clause": "EMP_NON_COMPETE_001",
       "include_if": "include_non_compete == true",
-      "note": "Post-employment non-compete — valid only if narrowly tied to Confidential Information (ICA S.27)"
+      "note": "Post-employment non-compete — enforceable in India only if narrowly tied to confidential information."
     },
     {
       "clause": "EMP_NON_SOLICITATION_001",
       "include_if": "include_non_compete == true",
-      "note": "Non-solicitation of clients and employees"
+      "note": "Non-solicitation of clients and employees."
     },
     {
       "clause": "EMP_MOONLIGHTING_001",
       "include_if": "restrict_moonlighting == true",
-      "note": "Exclusivity / dual-employment restriction — senior roles or sensitive IP"
+      "note": "Exclusivity / dual-employment restriction for senior roles or sensitive IP."
     },
     {
       "clause": "EMP_GARDEN_LEAVE_001",
       "include_if": "is_senior_employee == true",
-      "note": "Garden leave during notice period for senior / leadership roles"
+      "note": "Garden leave during notice for senior / leadership roles."
     },
     {
       "clause": "CORE_ENTIRE_AGREEMENT_001",
-      "include_if": "include_entire_agreement == true"
+      "include_if": "include_entire_agreement == true",
+      "note": "Entire-agreement (no oral terms) clause."
+    },
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true",
+      "note": "Employee handling personal data triggers DPDP-aligned obligations."
+    },
+    {
+      "clause": "EMP_MATERNITY_BENEFITS_001",
+      "include_if": "is_female_employee == true",
+      "note": "Maternity benefits apply to female employees under the Maternity Benefit Act."
+    },
+    {
+      "clause": "EMP_POSH_POLICY_001",
+      "include_if": "employer_headcount_ge_10 == true",
+      "note": "POSH policy + Internal Committee mandatory for workplaces with 10+ employees."
     }
   ],
   "removed_from_v2": [
@@ -89,5 +107,19 @@
     "EPF deduction clause must be present — criminal liability for employer under EPF Act S.14",
     "Maternity benefits compliance clause required for female employees",
     "Working hours must comply with Factories Act 1948 or applicable Shops Act"
+  ],
+  "_generated_from": "ruleset (scripts/rulesetToBlueprint.mjs)",
+  "variant_clauses": [
+    {
+      "slot": "employee_confidentiality_strength",
+      "replaces": "EMP_CONFIDENTIALITY_001",
+      "select_first_match": [
+        {
+          "clause": "EMP_CONFIDENTIALITY_TRADE_SECRET_001",
+          "when": "involves_trade_secrets == true"
+        }
+      ],
+      "default": "EMP_CONFIDENTIALITY_001"
+    }
   ]
 }

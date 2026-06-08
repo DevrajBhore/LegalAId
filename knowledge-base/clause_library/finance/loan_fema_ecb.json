@@ -1,0 +1,20 @@
+{
+  "clause_id": "LOAN_FEMA_ECB_001",
+  "name": "FEMA / External Commercial Borrowing Compliance",
+  "category": "COMPLIANCE",
+  "document_types": ["LOAN_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "Where the Lender is a person resident outside India or the loan proceeds originate from outside India, this loan shall constitute an External Commercial Borrowing (ECB) and the Parties shall ensure full compliance with the Foreign Exchange Management Act, 1999 and the Reserve Bank of India's ECB Framework, including eligibility of lender and borrower, permitted end-use, all-in-cost ceilings, minimum average maturity, and the obtaining of a Loan Registration Number (LRN) and filing of Form ECB and monthly ECB-2 returns through the authorised dealer bank. Drawdown shall not occur until all applicable approvals and registrations are in place. Any provision inconsistent with FEMA or the ECB Framework shall be read down to the extent necessary to ensure compliance.",
+  "legal_basis": [
+    { "act": "Foreign Exchange Management Act, 1999", "section": "6", "note": "Capital account transactions" },
+    { "act": "Foreign Exchange Management (Borrowing and Lending) Regulations, 2018", "section": "3", "note": "RBI ECB Framework" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": ["Borrowing is not eligible under the ECB Framework", "Required RBI approvals/registrations are not obtained"],
+  "source": "FEMA, 1999; RBI ECB Framework",
+  "version": "0.1.0-draft",
+  "title": "FEMA / ECB Compliance",
+  "review_status": "draft-needs-legal-review"
+}
