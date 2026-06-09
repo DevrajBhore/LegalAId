@@ -1,0 +1,111 @@
+.admin-clauses {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+.admin-head { margin-bottom: 24px; }
+.admin-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.admin-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.5vw, 34px);
+  color: var(--white);
+  margin: 6px 0 8px;
+}
+.admin-sub { color: rgba(255, 255, 255, 0.4); font-size: 14px; line-height: 1.6; max-width: 640px; }
+
+.admin-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-xl);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.admin-panel-head h2 { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin: 0; }
+.admin-panel-head p { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin: 4px 0 0; }
+.admin-panel-head--row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+
+.admin-propose-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.admin-select {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.admin-btn {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: var(--r-md);
+  padding: 9px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.admin-btn:hover:not(:disabled) { border-color: rgba(184, 147, 58, 0.45); color: var(--gold); }
+.admin-btn:disabled { opacity: 0.5; cursor: default; }
+.admin-btn--primary { background: var(--gold); color: var(--ink); border: none; box-shadow: 0 6px 24px rgba(184, 147, 58, 0.24); }
+.admin-btn--primary:hover:not(:disabled) { background: var(--gold-light); color: var(--ink); }
+.admin-btn--ok { border-color: var(--green-border); color: var(--green); }
+.admin-btn--no { border-color: var(--red-border); color: var(--red); }
+
+.admin-note { margin: 12px 0 0; font-size: 13px; color: rgba(255, 255, 255, 0.55); }
+
+.admin-proposals, .admin-reviews { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.admin-proposal, .admin-review {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-lg);
+  padding: 12px 14px;
+}
+.admin-proposal-top, .admin-review-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.admin-proposal-name { font-weight: 600; color: rgba(255, 255, 255, 0.9); font-size: 13.5px; }
+.admin-kind { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
+.admin-kind--reuse { color: var(--green); background: var(--green-bg); }
+.admin-kind--draft { color: var(--gold); background: var(--gold-pale); }
+.admin-proposal-why { font-size: 12.5px; color: rgba(255, 255, 255, 0.55); line-height: 1.5; margin: 6px 0; }
+.admin-proposal-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11.5px; color: rgba(255, 255, 255, 0.4); }
+
+.admin-filters { display: flex; gap: 8px; margin: 16px 0 12px; flex-wrap: wrap; }
+.admin-chip {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.admin-chip--active { color: var(--gold); border-color: rgba(184, 147, 58, 0.45); background: var(--gold-pale); }
+
+.admin-review { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.admin-review-main { min-width: 0; }
+.admin-review-cat { font-family: var(--font-mono); font-size: 11px; color: var(--gold); }
+.admin-review-name { font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.85); }
+.admin-status { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
+.admin-status--pending { color: var(--amber); background: var(--amber-bg); }
+.admin-status--approved { color: var(--green); background: var(--green-bg); }
+.admin-status--rejected { color: var(--red); background: var(--red-bg); }
+.admin-status--promoted { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+.admin-review-preview { font-size: 12.5px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; margin: 6px 0 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.admin-review-src { font-size: 11px; color: rgba(255, 255, 255, 0.32); }
+.admin-review-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.admin-promoted { font-family: var(--font-mono); font-size: 12px; color: var(--green); }
+
+.admin-empty { color: rgba(255, 255, 255, 0.4); font-size: 14px; padding: 16px 4px; }
+.admin-error { color: #ffb4b4; font-size: 13.5px; padding: 10px 0; }

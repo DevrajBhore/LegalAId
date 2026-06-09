@@ -43,6 +43,11 @@
     {
       "clause": "CORE_DATA_PROCESSING_001",
       "include_if": "involves_personal_data == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ]
 }

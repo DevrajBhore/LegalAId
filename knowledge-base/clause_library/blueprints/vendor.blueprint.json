@@ -1,19 +1,26 @@
 {
-    "document_type": "VENDOR_AGREEMENT",
-    "family": "supply",
-    "clauses": [
-      "CORE_CONTRACT_FORMATION_001",
-      "CORE_DEFINITIONS_001",
-      "SUPPLY_GOODS_DESCRIPTION_001",
-      "SUPPLY_DELIVERY_001",
-      "SUPPLY_QUALITY_001",
-      "SUPPLY_PAYMENT_001",
-      "SUPPLY_WARRANTY_001",
-      "SUPPLY_INSPECTION_001",
-      "SUPPLY_REJECTION_001",
-      "CORE_TERMINATION_001",
-      "CORE_DISPUTE_RESOLUTION_001",
-      "CORE_GOVERNING_LAW_001",
-      "CORE_SIGNATURE_BLOCK_001"
-    ]
-  }
+  "document_type": "VENDOR_AGREEMENT",
+  "family": "supply",
+  "clauses": [
+    "CORE_CONTRACT_FORMATION_001",
+    "CORE_DEFINITIONS_001",
+    "SUPPLY_GOODS_DESCRIPTION_001",
+    "SUPPLY_DELIVERY_001",
+    "SUPPLY_QUALITY_001",
+    "SUPPLY_PAYMENT_001",
+    "SUPPLY_WARRANTY_001",
+    "SUPPLY_INSPECTION_001",
+    "SUPPLY_REJECTION_001",
+    "CORE_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
+    }
+  ]
+}

@@ -8,5 +8,12 @@
     "SERVICE_PAYMENT_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
+    }
   ]
 }

@@ -111,6 +111,15 @@
       "clause": "NDA_NON_SOLICITATION_001",
       "why": "Optional non-solicitation of employees/customers.",
       "review_status": "approved"
+    },
+    {
+      "id": "NDA-R9",
+      "when": "include_entire_agreement == true",
+      "action": "add",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "why": "Optional entire-agreement (no oral terms) clause.",
+      "review_status": "approved",
+      "wired": "2026-06-08 (universal-protection pass)"
     }
   ],
 

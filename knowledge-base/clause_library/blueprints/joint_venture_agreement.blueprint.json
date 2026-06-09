@@ -58,6 +58,11 @@
     {
       "clause": "CORP_ANTI_DILUTION_001",
       "include_if": "jv_involves_equity == true"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ],
   "mandatory_legal_checks": [

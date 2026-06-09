@@ -10,6 +10,7 @@ import Form from "./pages/Form";
 import Editor from "./pages/Editor";
 import Profile from "./pages/Profile";
 import Documents from "./pages/Documents";
+import AdminClauses from "./pages/AdminClauses";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Help from "./pages/Help";
@@ -50,6 +51,7 @@ function App() {
             <Route path="editor" element={<ProtectedRoute><Editor /></ProtectedRoute>} />
             <Route path="documents" element={<ProtectedRoute><Documents /></ProtectedRoute>} />
             <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="admin/clauses" element={<ProtectedRoute><AdminClauses /></ProtectedRoute>} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

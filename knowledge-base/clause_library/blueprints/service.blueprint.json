@@ -70,6 +70,11 @@
       "clause": "EMP_NON_SOLICITATION_001",
       "include_if": "include_non_solicit == true",
       "note": "Non-solicitation of client's employees"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ],
   "variant_clauses": [

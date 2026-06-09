@@ -40,6 +40,7 @@ function serializeUser(user) {
     name: user.name,
     email: user.email,
     phone: user.phone,
+    isAdmin: Boolean(user.isAdmin),
     createdAt: user.createdAt,
   };
 }

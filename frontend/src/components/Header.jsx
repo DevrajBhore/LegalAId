@@ -43,6 +43,7 @@ export default function Header() {
           { label: "Profile", path: "/profile" },
         ]
       : []),
+    ...(user?.isAdmin ? [{ label: "Clauses", path: "/admin/clauses" }] : []),
   ];
 
   return (

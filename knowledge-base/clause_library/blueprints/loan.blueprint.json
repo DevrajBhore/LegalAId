@@ -64,6 +64,11 @@
       "clause": "LOAN_SARFAESI_ENFORCEMENT_001",
       "include_if": "lender_is_regulated == true",
       "note": "SARFAESI enforcement rights for scheduled banks / NBFCs only (clause self-limits to eligible lenders)."
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ],
   "mandatory_legal_checks": [

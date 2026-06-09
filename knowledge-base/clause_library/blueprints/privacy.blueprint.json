@@ -34,5 +34,12 @@
     "IT (Reasonable Security Practices) Rules 2011 — SPDI protection for sensitive personal data",
     "Grievance officer mandatory under IT Act — name, designation and contact must be published",
     "Data localisation — certain categories of sensitive data must be stored in India"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
+    }
   ]
 }

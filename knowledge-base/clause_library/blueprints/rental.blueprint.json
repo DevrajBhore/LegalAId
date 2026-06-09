@@ -50,6 +50,11 @@
     {
       "clause": "RENT_RENT_INCREASE_001",
       "include_if": "rent_escalation > 0"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ],
   "mandatory_legal_checks": [

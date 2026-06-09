@@ -42,6 +42,18 @@ export const generateDocument = (data) => API.post("/generate", data);
 export const chatWithIntakeAssistant = (data) =>
   API.post("/intake-assistant", data);
 export const runLegalInterview = (data) => API.post("/interview", data);
+
+// ── Admin: clause review queue + AI authoring ────────────────────────────────
+export const getClauseReviews = (params) =>
+  API.get("/admin/clause-reviews", { params });
+export const importMinedClauses = () =>
+  API.post("/admin/clause-reviews/import");
+export const setClauseReviewStatus = (id, body) =>
+  API.patch(`/admin/clause-reviews/${id}`, body);
+export const promoteClauseReview = (id) =>
+  API.post(`/admin/clause-reviews/${id}/promote`);
+export const proposeClauseAuthoring = (documentType) =>
+  API.post("/admin/clause-authoring/propose", { document_type: documentType });
 export const getDocumentHistoryList = () => API.get("/history/documents");
 export const getDocumentHistoryDetail = (draftId) =>
   API.get(`/history/documents/${draftId}`);

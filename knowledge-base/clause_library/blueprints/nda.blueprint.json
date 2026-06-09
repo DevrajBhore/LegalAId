@@ -86,6 +86,11 @@
       "clause": "NDA_NON_SOLICITATION_001",
       "include_if": "include_non_solicit == true",
       "note": "Optional non-solicitation of employees/customers."
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement (no oral terms) clause."
     }
   ],
   "removed_from_v2": [],

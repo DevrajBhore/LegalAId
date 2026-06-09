@@ -41,7 +41,8 @@
     { "id": "LOAN-R2", "when": "personal_guarantee_required == true", "action": "add", "clause": "GUARANTEE_OBLIGATION_001", "why": "Personal guarantee backing the loan.", "legal_basis": "ICA s.126", "review_status": "approved" },
     { "id": "LOAN-R3", "when": "is_secured == true", "action": "add", "clause": "LOAN_SECURITY_001", "why": "Security / collateral — included ONLY for secured loans. is_secured is derived from collateral being present.", "legal_basis": "Transfer of Property Act, 1882; SARFAESI (regulated lenders only)", "review_status": "approved", "wired": "2026-06-08 (fixes bug G1)" },
     { "id": "LOAN-R4", "when": "is_cross_border == true", "action": "add", "clause": "LOAN_FEMA_ECB_001", "why": "Foreign lender / overseas funds → FEMA + ECB compliance.", "legal_basis": "FEMA 1999; RBI ECB Framework", "review_status": "approved", "wired": "2026-06-08 (was gap G2)" },
-    { "id": "LOAN-R5", "when": "lender_is_regulated == true", "action": "add", "clause": "LOAN_SARFAESI_ENFORCEMENT_001", "why": "SARFAESI enforcement rights for scheduled banks / NBFCs only (clause self-limits to eligible lenders).", "legal_basis": "SARFAESI Act, 2002", "review_status": "approved", "wired": "2026-06-08 (was gap G3)" }
+    { "id": "LOAN-R5", "when": "lender_is_regulated == true", "action": "add", "clause": "LOAN_SARFAESI_ENFORCEMENT_001", "why": "SARFAESI enforcement rights for scheduled banks / NBFCs only (clause self-limits to eligible lenders).", "legal_basis": "SARFAESI Act, 2002", "review_status": "approved", "wired": "2026-06-08 (was gap G3)" },
+    { "id": "LOAN-R6", "when": "include_entire_agreement == true", "action": "add", "clause": "CORE_ENTIRE_AGREEMENT_001", "why": "Optional entire-agreement (no oral terms) clause.", "review_status": "approved", "wired": "2026-06-08 (universal-protection pass)" }
   ],
 
   "proposed_rules_gaps": [

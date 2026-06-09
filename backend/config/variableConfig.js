@@ -140,13 +140,7 @@ export const VARIABLE_CONFIG = {
       type: "select",
       required: false,
       group: "Context & Risk Profile",
-      applicableDocuments: [
-        "EMPLOYMENT_CONTRACT",
-        "SALES_OF_GOODS_AGREEMENT",
-        "LEAVE_AND_LICENSE_AGREEMENT",
-        "GUARANTEE_AGREEMENT",
-        "MOU",
-      ],
+      // Universally applicable optional protection — offered on every type.
       description:
         "Confirms the written agreement is the complete and final understanding, overriding prior oral or written discussions.",
       options: ["No", "Yes"],

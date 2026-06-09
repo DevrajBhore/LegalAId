@@ -278,6 +278,27 @@ app.use("/history", protect, documentHistoryRoutes);
 // Clause legal-review workflow (admin only)
 app.use("/admin/clause-reviews", protect, requireAdmin, clauseReviewRoutes);
 
+// AI clause authoring / gap analysis (admin only) — proposes missing protections
+// for a document type into the review queue. Build-time acceleration only.
+app.post("/admin/clause-authoring/propose", protect, requireAdmin, aiLimiter, async (req, res) => {
+  try {
+    const documentType = req.body?.document_type;
+    if (!documentType) {
+      return res.status(400).json({ error: "Missing document_type." });
+    }
+    const { proposeProtectionsForType } = await import(
+      "./services/clauseAuthoringService.js"
+    );
+    const result = await proposeProtectionsForType({ documentType });
+    res.json(result);
+  } catch (error) {
+    console.error("Clause authoring error:", error);
+    res
+      .status(error.statusCode || 500)
+      .json({ error: "Clause authoring failed", details: error.message });
+  }
+});
+
 app.get("/variables/:documentType", protect, (req, res) => {
   try {
     const schema = loadVariables(req.params.documentType);
