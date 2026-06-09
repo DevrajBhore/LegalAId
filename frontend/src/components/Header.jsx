@@ -34,6 +34,8 @@ export default function Header() {
     { label: "Library", path: "/library" },
     { label: "Help", path: "/help" },
     { label: "About", path: "/about" },
+    // Visible in the top nav for admins only.
+    ...(user?.isAdmin ? [{ label: "Admin", path: "/admin/clauses" }] : []),
   ];
   const secondaryLinks = [
     { label: "Contact", path: "/contact" },
