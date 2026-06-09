@@ -243,7 +243,7 @@
   border: none;
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   color: var(--ink);
-  box-shadow: 0 10px 24px rgba(184, 147, 58, 0.22);
+  box-shadow: var(--shadow-gold);
 }
 
 .validate-download-btn {

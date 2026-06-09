@@ -50,7 +50,7 @@ export default function ErrorExplainer({
             onClick={onClose}
             aria-label="Dismiss"
           >
-            ×
+            {Icons.x}
           </button>
         )}
       </div>

@@ -100,14 +100,14 @@
   padding:13px 26px; border-radius:var(--r-md);
   background:var(--gold); color:var(--ink);
   font-size:14px; font-weight:600; border:none;
-  box-shadow: 0 6px 24px rgba(184,147,58,0.30);
+  box-shadow: var(--shadow-gold);
   transition: all .18s cubic-bezier(.22,1,.36,1);
 }
 
 .hero-btn-primary:hover {
   background:var(--gold-light);
   transform:translateY(-2px);
-  box-shadow: 0 10px 32px rgba(184,147,58,0.38);
+  box-shadow: var(--shadow-gold);
 }
 
 .hero-btn-ghost {

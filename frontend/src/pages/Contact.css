@@ -43,7 +43,7 @@
   width:100%; padding:13px 24px; border-radius:var(--r-md);
   background:var(--gold); color:var(--ink);
   font-size:14px; font-weight:600; border:none;
-  box-shadow:0 6px 24px rgba(184,147,58,0.24);
+  box-shadow: var(--shadow-gold);
   transition:all .18s; cursor:pointer;
 }
 .contact-submit:hover:not(:disabled) { background:var(--gold-light); transform:translateY(-1px); }

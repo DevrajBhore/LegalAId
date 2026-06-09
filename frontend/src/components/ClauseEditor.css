@@ -141,12 +141,12 @@
   text-align: justify;
   text-justify: inter-word;
   resize: none; outline: none; overflow: hidden;
-  box-shadow: 0 0 0 4px rgba(184,147,58,0.07), inset 0 1px 3px rgba(43,32,18,0.04);
+  box-shadow: var(--shadow-gold);
   transition: box-shadow .15s, border-color .15s;
 }
 .clause-textarea:focus {
   border-color: rgba(184,147,58,0.38);
-  box-shadow: 0 0 0 5px rgba(184,147,58,0.10), inset 0 1px 3px rgba(43,32,18,0.04);
+  box-shadow: var(--shadow-gold);
 }
 
 .clause-edit-footer {

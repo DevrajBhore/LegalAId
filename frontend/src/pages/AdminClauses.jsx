@@ -8,6 +8,7 @@ import {
   getDocumentTypes,
 } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { Scales, ArrowRight } from "../utils/icons";
 import "./AdminClauses.css";
 
 const STATUS_FILTERS = ["pending", "approved", "rejected", "promoted"];
@@ -153,7 +154,11 @@ export default function AdminClauses() {
                 </div>
                 <p className="admin-proposal-why">{p.why}</p>
                 <div className="admin-proposal-meta">
-                  {p.legal_basis && <span>⚖ {p.legal_basis}</span>}
+                  {p.legal_basis && (
+                    <span className="admin-meta-item">
+                      <Scales size={12} /> {p.legal_basis}
+                    </span>
+                  )}
                   <span>when: {p.rule_when}</span>
                 </div>
               </li>
@@ -243,7 +248,9 @@ export default function AdminClauses() {
                     </button>
                   )}
                   {r.status === "promoted" && r.promotedClauseId && (
-                    <span className="admin-promoted">→ {r.promotedClauseId}</span>
+                    <span className="admin-promoted">
+                      <ArrowRight size={12} /> {r.promotedClauseId}
+                    </span>
                   )}
                 </div>
               </li>

@@ -60,7 +60,7 @@
 .about-cta-title { font-family:var(--font-display); font-size:clamp(28px,3.5vw,42px); color:var(--white); font-weight:400; letter-spacing:-.8px; margin-bottom:12px; position:relative; }
 .about-cta-sub { font-size:15px; color:rgba(255,255,255,0.42); margin-bottom:32px; position:relative; }
 .about-cta-actions { display:flex; justify-content:center; gap:12px; position:relative; }
-.about-cta-btn-primary { display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:var(--r-md); background:var(--gold); color:var(--ink); font-size:14px; font-weight:600; transition:all .18s; box-shadow:0 6px 24px rgba(184,147,58,0.28); }
+.about-cta-btn-primary { display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:var(--r-md); background:var(--gold); color:var(--ink); font-size:14px; font-weight:600; transition:all .18s; box-shadow: var(--shadow-gold); }
 .about-cta-btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); }
 .about-cta-btn-ghost { display:inline-flex; align-items:center; padding:13px 22px; border-radius:var(--r-md); background:transparent; color:rgba(255,255,255,0.60); border:1px solid rgba(255,255,255,0.12); font-size:14px; font-weight:500; transition:all .18s; }
 .about-cta-btn-ghost:hover { color:#fff; border-color:rgba(255,255,255,0.24); }

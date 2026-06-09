@@ -58,7 +58,7 @@
 }
 .admin-btn:hover:not(:disabled) { border-color: rgba(184, 147, 58, 0.45); color: var(--gold); }
 .admin-btn:disabled { opacity: 0.5; cursor: default; }
-.admin-btn--primary { background: var(--gold); color: var(--ink); border: none; box-shadow: 0 6px 24px rgba(184, 147, 58, 0.24); }
+.admin-btn--primary { background: var(--gold); color: var(--ink); border: none; box-shadow: var(--shadow-gold); }
 .admin-btn--primary:hover:not(:disabled) { background: var(--gold-light); color: var(--ink); }
 .admin-btn--ok { border-color: var(--green-border); color: var(--green); }
 .admin-btn--no { border-color: var(--red-border); color: var(--red); }
@@ -109,3 +109,8 @@
 
 .admin-empty { color: rgba(255, 255, 255, 0.4); font-size: 14px; padding: 16px 4px; }
 .admin-error { color: #ffb4b4; font-size: 13.5px; padding: 10px 0; }
+
+/* Inline-icon alignment */
+.admin-meta-item { display: inline-flex; align-items: center; gap: 5px; }
+.admin-promoted { display: inline-flex; align-items: center; gap: 5px; }
+.admin-kicker { display: inline-flex; align-items: center; gap: 6px; }

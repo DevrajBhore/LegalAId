@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { runLegalInterview } from "../services/api";
+import { Sparkles, ChevronRight } from "../utils/icons";
 import "./InterviewPanel.css";
 
 // Document-type-specific example prompts. Keyed by canonical document type;
@@ -265,7 +266,7 @@ export default function InterviewPanel({
       <section className="interview-page">
         <div className="interview-page__head">
           <div className="interview-page__badge">
-            <span className="interview-page__badge-icon">✦</span>
+            <Sparkles size={11} />
             <span>AI-guided intake</span>
           </div>
           <h2 className="interview-page__title">Tell us about your situation</h2>
@@ -300,12 +301,14 @@ export default function InterviewPanel({
         aria-expanded={open}
       >
         <span className="interview-toggle__title">
-          ✨ Describe your situation (optional)
+          <Sparkles size={13} /> Describe your situation (optional)
         </span>
         <span className="interview-toggle__hint">
           Let LegalAId pre-fill the form and shape the document around your needs
         </span>
-        <span className="interview-toggle__chev">{open ? "▲" : "▼"}</span>
+        <span className={`interview-toggle__chev${open ? " interview-toggle__chev--open" : ""}`}>
+          <ChevronRight size={12} />
+        </span>
       </button>
       {open && body}
     </section>

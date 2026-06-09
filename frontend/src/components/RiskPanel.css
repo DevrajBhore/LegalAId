@@ -192,10 +192,10 @@
   width: 100%; padding: 12px 16px; border: none; border-radius: var(--r-full);
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   color: var(--ink); font-size: 13px; font-weight: 700;
-  box-shadow: 0 4px 16px rgba(184,147,58,0.24);
+  box-shadow: var(--shadow-gold);
   transition: all .18s;
 }
-.download-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(184,147,58,0.35); }
+.download-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-gold); }
 .download-btn:disabled { opacity: .55; cursor: not-allowed; }
 .download-btn-icon svg { width: 15px; height: 15px; }
 
