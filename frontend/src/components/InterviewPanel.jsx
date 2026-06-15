@@ -136,10 +136,24 @@ export default function InterviewPanel({
     setError("");
     try {
       const res = await runLegalInterview({ document_type: documentType, message: text });
-      setResult(res.data);
       if (res.data?.available === false) {
+        // Don't render the result block — just the single error line.
         setError(res.data.summary || "The interview assistant is unavailable right now.");
+        return;
       }
+      setResult(res.data);
+      // Auto-apply every validated extraction to fields the user hasn't filled
+      // yet — the interview should DO the work, not just suggest it. Values are
+      // schema-validated server-side; the user still reviews them on the form.
+      const updates = res.data?.field_updates || [];
+      const autoApplied = new Set();
+      for (const update of updates) {
+        if (!String(appliedValues[update.field] ?? "").trim()) {
+          onApply(update.field, update.value);
+          autoApplied.add(update.field);
+        }
+      }
+      setAppliedKeys(autoApplied);
     } catch (err) {
       setError(
         err?.response?.data?.error ||
@@ -219,6 +233,14 @@ export default function InterviewPanel({
           {result?.summary && (
             <p className="interview-summary">
               <strong>Understood:</strong> {result.summary}
+            </p>
+          )}
+
+          {result?.field_updates?.length > 0 && (
+            <p className="interview-filled">
+              <strong>{appliedKeys.size}</strong> field
+              {appliedKeys.size === 1 ? "" : "s"} filled into your form
+              automatically — you only complete what's left.
             </p>
           )}
 

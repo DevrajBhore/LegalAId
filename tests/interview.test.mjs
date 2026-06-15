@@ -63,4 +63,57 @@ assert.strictEqual(
   "empty value rejected"
 );
 
+// 6. Date fields normalize to YYYY-MM-DD; garbage dates are rejected.
+fieldsByName.set("effective_date", { name: "effective_date", label: "Effective Date", type: "date" });
+const date = validateInterviewUpdate(
+  { field: "effective_date", value: "15 June 2026", confidence: 0.8, reason: "stated" },
+  fieldsByName
+);
+assert.ok(date, "parseable date accepted");
+assert.match(date.value, /^\d{4}-\d{2}-\d{2}$/, "date normalized to ISO");
+assert.strictEqual(
+  validateInterviewUpdate({ field: "effective_date", value: "sometime soon", confidence: 0.8, reason: "x" }, fieldsByName),
+  null,
+  "unparseable date rejected"
+);
+
+// 7. Number fields strip currency symbols; non-numeric rejected.
+fieldsByName.set("salary", { name: "salary", label: "Salary", type: "number" });
+const num = validateInterviewUpdate(
+  { field: "salary", value: "₹12,00,000", confidence: 0.9, reason: "stated" },
+  fieldsByName
+);
+assert.ok(num, "currency-formatted number accepted");
+assert.strictEqual(num.value, "1200000", "currency symbols and commas stripped");
+assert.strictEqual(
+  validateInterviewUpdate({ field: "salary", value: "around twelve lakh", confidence: 0.9, reason: "x" }, fieldsByName),
+  null,
+  "non-numeric number rejected"
+);
+
+// 8. Fuzzy option snapping: common phrasings that don't string-match an option
+//    are snapped to the right one, while ambiguous/unknown values are rejected
+//    (never guess an out-of-schema value onto the form).
+fieldsByName.set("party_1_type", {
+  name: "party_1_type",
+  label: "Party Type",
+  type: "select",
+  options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship"],
+});
+const snapCases = [
+  ["company", "Private Limited Company"],
+  ["pvt ltd", "Private Limited Company"],
+  ["llc", "LLP"],
+  ["partnership", "Partnership Firm"],
+  ["sole proprietor", "Sole Proprietorship"],
+  ["banana", null], // no clear match -> rejected
+];
+for (const [value, want] of snapCases) {
+  const r = validateInterviewUpdate(
+    { field: "party_1_type", value, confidence: 0.9, reason: "stated" },
+    fieldsByName
+  );
+  assert.strictEqual(r?.value ?? null, want, `snap "${value}" -> ${want}`);
+}
+
 console.log("Interview safety test passed.");

@@ -271,12 +271,34 @@ function findCurrencyIssues(draft) {
     );
 }
 
+// A forbidden party term is only a real defect when the draft uses it as a
+// PARTY LABEL — i.e. the capitalized role noun in label context ("the Employee",
+// `"Employee"`, "Employee shall…", "(the "Employee")"). The same word appearing
+// lowercase as an ordinary noun — e.g. "...customer, vendor, employee, and other
+// information..." inside an NDA's confidential-information scope — is not a party
+// label and must not be flagged. Matching case-sensitively on the capitalized
+// form in label context removes that false positive.
+function usesTermAsPartyLabel(text, term) {
+  const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const labelContext = new RegExp(
+    // quoted label, or preceded by an article/quantifier, or followed by an
+    // operative verb / possessive that only a party label would take.
+    `(?:"\\s*${escaped}\\s*"` +
+      `|\\b(?:the|each|any|such|said|a|an)\\s+${escaped}\\b` +
+      `|\\b${escaped}\\b\\s+(?:shall|agrees?|hereby|represents?|warrants?|undertakes?|acknowledges?|covenants?|may|must|will|is|are|'s|s')` +
+      `)`,
+    // case-sensitive: the genuine party label is always the capitalized role noun.
+    ""
+  );
+  return labelContext.test(text);
+}
+
 function findPartyReferenceIssues(draft, documentType, variables = {}) {
   const text = collectFullText(draft);
   const issues = [];
   const forbidden = getForbiddenPartyTerms(documentType);
   for (const term of forbidden) {
-    if (new RegExp(`\\b${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(text)) {
+    if (usesTermAsPartyLabel(text, term)) {
       issues.push(
         buildIssue(
           `FORMAT_FORBIDDEN_PARTY_TERM_${normalizeText(term).toUpperCase().replace(/\s+/g, "_")}`,

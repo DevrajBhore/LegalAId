@@ -378,3 +378,15 @@
 .interview-toggle__chev svg { transform: rotate(90deg); transition: transform 0.18s ease; }
 .interview-toggle__chev--open svg { transform: rotate(-90deg); }
 .interview-page__badge svg { color: var(--gold); }
+
+/* "Filled N fields" banner — make the interview's work visible */
+.interview-filled {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--green);
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--r-md);
+  padding: 9px 12px;
+}
+.interview-filled strong { font-size: 15px; }

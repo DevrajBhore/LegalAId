@@ -174,5 +174,6 @@ function serialize(row) {
     promotedClauseId: row.promotedClauseId,
     sourceDocumentName: row.sourceDocumentName,
     textPreview: String(row.text || "").slice(0, 240),
+    text: String(row.text || ""),
   };
 }

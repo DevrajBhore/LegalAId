@@ -13,7 +13,9 @@ import dotenv from "dotenv";
 dotenv.config();
 import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 
-const MODEL = "gemini-2.5-flash";
+// Configurable so an overloaded model can be swapped via env (no code change),
+// e.g. GEMINI_MODEL=gemini-2.0-flash when 2.5-flash returns 503 "high demand".
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const TIMEOUT = 90_000;
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

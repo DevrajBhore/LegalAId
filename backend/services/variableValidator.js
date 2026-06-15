@@ -580,18 +580,13 @@ function addEntityIdentifierChecks(errors, schema, input) {
       .map((fieldName) => fieldName.slice(0, -5))
   );
 
-  for (const base of bases) {
-    const type = input[`${base}_type`];
-    for (const [fieldName, label] of getEntityRequiredIdentifierFields(base, type)) {
-      if (!Object.prototype.hasOwnProperty.call(schema, fieldName)) continue;
-      if (isBlank(input[fieldName])) {
-        addError(
-          errors,
-          `${fieldName} is required because ${base}_type is "${normalizeText(type)}"; LegalAId cannot generate ${label} ________ placeholders.`
-        );
-      }
-    }
-  }
+  // Statutory identifiers (PAN/CIN/GSTIN/LLPIN) are DEFERRED fields: a first
+  // draft is valid without them (party descriptors omit them gracefully), and
+  // users complete them in the editor. We therefore no longer BLOCK generation
+  // on missing identifiers — format checks elsewhere still validate any value
+  // that IS provided. The entity-type → identifier mapping is kept above for
+  // future advisory use.
+  void bases;
 }
 
 function addDocumentSpecificChecks(errors, input, documentType) {

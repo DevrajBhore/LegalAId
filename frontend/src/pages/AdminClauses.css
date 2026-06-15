@@ -114,3 +114,28 @@
 .admin-meta-item { display: inline-flex; align-items: center; gap: 5px; }
 .admin-promoted { display: inline-flex; align-items: center; gap: 5px; }
 .admin-kicker { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Full clause view */
+.admin-review { align-items: flex-start; }
+.admin-review-preview--full {
+  display: block;
+  -webkit-line-clamp: unset;
+  white-space: pre-wrap;
+  color: rgba(255, 255, 255, 0.78);
+  max-height: 360px;
+  overflow: auto;
+  padding-right: 6px;
+}
+.admin-readmore {
+  border: none;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  padding: 0;
+  margin: 2px 0 6px;
+}
+.admin-readmore:hover { color: var(--gold-light); }

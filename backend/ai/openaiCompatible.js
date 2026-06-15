@@ -191,39 +191,43 @@ export function createOpenAICompatibleClient({
   getModel,
   timeout = 60_000,
 }) {
-  async function request(messages, { schemaName, schema }) {
-    const apiKey = getApiKey();
-    if (!apiKey) {
-      return { success: false, error: "AI_PROVIDER_ERROR", details: `Missing ${apiKeyName}` };
-    }
+  // Detects "the model's OUTPUT failed strict-schema validation" (common with
+  // smaller models) — distinct from a malformed-schema error on our side.
+  function isOutputValidationFailure(details = "") {
+    return /failed to validate json|json_validate_failed/i.test(details);
+  }
 
+  async function attempt(messages, responseFormat) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
     const model = getModel();
 
     try {
-      console.log(`[${label}] ${model} generating...`);
       const response = await fetch(`${getBaseUrl()}/chat/completions`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${apiKey}`,
+          Authorization: `Bearer ${getApiKey()}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           model,
           temperature: 0.15,
           messages,
-          response_format: {
-            type: "json_schema",
-            json_schema: { name: schemaName, strict: true, schema: enforceStrictSchema(schema) },
-          },
+          ...(responseFormat ? { response_format: responseFormat } : {}),
         }),
         signal: controller.signal,
       });
 
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        const details = payload?.error?.message || `${response.status} ${response.statusText}`.trim();
+        // Surface what the model actually produced when schema validation failed.
+        const failedGen = payload?.error?.failed_generation;
+        const details = [
+          payload?.error?.message || `${response.status} ${response.statusText}`.trim(),
+          failedGen ? `failed_generation: ${String(failedGen).slice(0, 300)}` : null,
+        ]
+          .filter(Boolean)
+          .join(" | ");
         throw Object.assign(new Error(details), { status: response.status });
       }
 
@@ -232,11 +236,9 @@ export function createOpenAICompatibleClient({
         throw Object.assign(new Error("EMPTY_RESPONSE"), { status: response.status });
       }
 
-      console.log(`[${label}] ${model} done`);
       return { success: true, data: extractJSON(content) };
     } catch (error) {
       const details = error.name === "AbortError" ? "TIMEOUT" : error.message || "Unknown error";
-      console.error(`[${label}] Failed:`, details);
       return {
         success: false,
         error: error.name === "AbortError" ? "TIMEOUT" : normalizeError(error.status, details),
@@ -245,6 +247,34 @@ export function createOpenAICompatibleClient({
     } finally {
       clearTimeout(timeoutId);
     }
+  }
+
+  async function request(messages, { schemaName, schema }) {
+    if (!getApiKey()) {
+      return { success: false, error: "AI_PROVIDER_ERROR", details: `Missing ${apiKeyName}` };
+    }
+
+    const model = getModel();
+    console.log(`[${label}] ${model} generating...`);
+
+    // First try strict schema-constrained output.
+    let result = await attempt(messages, {
+      type: "json_schema",
+      json_schema: { name: schemaName, strict: true, schema: enforceStrictSchema(schema) },
+    });
+
+    // If the MODEL's output failed strict validation (small models often do),
+    // retry once in plain JSON mode. The prompt already demands strict JSON and
+    // every caller validates/sanitizes the parsed result server-side, so this
+    // is a safe resilience fallback — not a loosening of any safety guarantee.
+    if (!result.success && isOutputValidationFailure(result.details)) {
+      console.warn(`[${label}] strict schema output failed — retrying in json_object mode.`);
+      result = await attempt(messages, { type: "json_object" });
+    }
+
+    if (result.success) console.log(`[${label}] ${model} done`);
+    else console.error(`[${label}] Failed:`, result.details);
+    return result;
   }
 
   return {

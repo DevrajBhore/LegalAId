@@ -900,3 +900,21 @@ export const DOCUMENT_CONFIG = {
     ],
   },
 };
+
+// ── Deferred identity fields ──────────────────────────────────────────────────
+// Addresses and statutory identifiers (PAN/CIN/GSTIN/LLPIN) are NOT needed to
+// produce a valid first draft: party descriptors omit them gracefully when
+// absent ("Acme, a Private Limited Company"), and users complete them in the
+// editor. Requiring them up-front was the single biggest cause of form fatigue
+// (Employment demanded 19 fields incl. 4 tax IDs). They stay on the form as
+// OPTIONAL fields — this filter only removes them from the generation gate.
+// Exception: property_address is the SUBJECT MATTER of lease/license documents.
+const DEFERRED_IDENTITY_PATTERN = /(_address|_pan|_cin|_gstin|_llpin)$/;
+const DEFERRED_EXCEPTIONS = new Set(["property_address"]);
+
+for (const config of Object.values(DOCUMENT_CONFIG)) {
+  config.requiredFields = (config.requiredFields || []).filter(
+    (field) =>
+      !DEFERRED_IDENTITY_PATTERN.test(field) || DEFERRED_EXCEPTIONS.has(field)
+  );
+}

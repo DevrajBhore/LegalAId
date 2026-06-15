@@ -954,3 +954,79 @@
   .field-assistant__send,
   .field-assistant__apply { width:100%; }
 }
+
+/* Collapsible form sections (reduce form length / overwhelm) */
+.form-section-header--toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+.form-section--collapsed .form-section-header { margin-bottom: 0; }
+.form-section-head-text { flex: 1; min-width: 0; }
+.form-section-chev {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+}
+.form-section-chev svg { transform: rotate(90deg); transition: transform 0.18s ease; }
+.form-section-chev--open svg { transform: rotate(-90deg); }
+.form-section-header--toggle:hover .form-section-chev { color: var(--gold); }
+.form-section-header--toggle:hover .form-section-title { color: #fff; }
+
+/* "Still needed" panel — the short list of what the user actually has to do */
+.form-stillneeded {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--r-lg);
+  background: var(--gold-pale);
+  border: 1px solid rgba(184, 147, 58, 0.25);
+  margin-bottom: 18px;
+}
+.form-stillneeded__head { display: flex; align-items: center; gap: 12px; }
+.form-stillneeded__count {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 14px;
+}
+.form-stillneeded__title { font-size: 14.5px; font-weight: 600; color: rgba(255,255,255,0.92); }
+.form-stillneeded__sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.form-stillneeded__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.form-stillneeded__chip {
+  border: 1px solid rgba(184, 147, 58, 0.4);
+  background: rgba(12, 13, 15, 0.5);
+  color: var(--gold-light);
+  border-radius: var(--r-full);
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.form-stillneeded__chip:hover { background: var(--gold); color: var(--ink); }
+.form-stillneeded--done {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background: var(--green-bg);
+  border-color: var(--green-border);
+  color: var(--green);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.form-stillneeded__check { display: inline-flex; }

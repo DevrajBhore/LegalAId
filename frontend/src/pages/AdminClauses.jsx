@@ -26,6 +26,7 @@ export default function AdminClauses() {
   const [loading, setLoading] = useState(true);
   const [actionId, setActionId] = useState(null);
   const [error, setError] = useState("");
+  const [expanded, setExpanded] = useState(() => new Set());
 
   useEffect(() => {
     getDocumentTypes()
@@ -210,7 +211,24 @@ export default function AdminClauses() {
                     {r.clauseName && <span className="admin-review-name">{r.clauseName}</span>}
                     <span className={`admin-status admin-status--${r.status}`}>{r.status}</span>
                   </div>
-                  <p className="admin-review-preview">{r.textPreview}</p>
+                  <p className={`admin-review-preview${expanded.has(r.id) ? " admin-review-preview--full" : ""}`}>
+                    {expanded.has(r.id) ? r.text : r.textPreview}
+                  </p>
+                  {(r.text || "").length > 240 && (
+                    <button
+                      type="button"
+                      className="admin-readmore"
+                      onClick={() =>
+                        setExpanded((prev) => {
+                          const next = new Set(prev);
+                          next.has(r.id) ? next.delete(r.id) : next.add(r.id);
+                          return next;
+                        })
+                      }
+                    >
+                      {expanded.has(r.id) ? "Show less" : "Read full clause"}
+                    </button>
+                  )}
                   {r.sourceDocumentName && (
                     <span className="admin-review-src">{r.sourceDocumentName}</span>
                   )}

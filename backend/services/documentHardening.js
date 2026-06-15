@@ -840,15 +840,10 @@ function buildDefinitionsClauseText(documentType, namedParties, variables = {}) 
     entries.push(["Territory", territory]);
   }
 
-  if (documentType === "NDA") {
-    entries.push([
-      "Confidential Information",
-      stripExternalReferencePhrases(
-        variables.confidential_information_definition,
-        "all non-public, proprietary, commercial, financial, technical, operational, and business information disclosed in connection with the permitted purpose"
-      ),
-    ]);
-  }
+  // NOTE: NDAs intentionally do NOT define "Confidential Information" here.
+  // The dedicated NDA_CONFIDENTIAL_INFORMATION_SCOPE_001 clause is the
+  // authoritative definition; redefining it in the general Definitions clause
+  // created a genuine duplicate definition that blocked the export gate.
 
   if (documentType === "SOFTWARE_DEVELOPMENT_AGREEMENT") {
     entries.push([

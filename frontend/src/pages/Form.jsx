@@ -5,11 +5,52 @@ import {
   getDocumentConfig,
   generateDocument,
 } from "../services/api";
-import { Icons } from "../utils/icons";
+import { Icons, ChevronRight } from "../utils/icons";
 import InterviewPanel from "../components/InterviewPanel";
 import "./Form.css";
 
 const STEP_LABELS = ["Fill Details", "Review Inputs", "Generate Draft"];
+
+// Default arbitration seat per operating state (capital / main commercial hub).
+// Only used to pre-fill an EMPTY field — always editable by the user.
+const STATE_ARBITRATION_SEAT = {
+  "Andhra Pradesh": "Amaravati",
+  "Arunachal Pradesh": "Itanagar",
+  Assam: "Guwahati",
+  Bihar: "Patna",
+  Chhattisgarh: "Raipur",
+  Delhi: "New Delhi",
+  Goa: "Panaji",
+  Gujarat: "Ahmedabad",
+  Haryana: "Chandigarh",
+  "Himachal Pradesh": "Shimla",
+  Jharkhand: "Ranchi",
+  Karnataka: "Bengaluru",
+  Kerala: "Kochi",
+  "Madhya Pradesh": "Bhopal",
+  Maharashtra: "Mumbai",
+  Odisha: "Bhubaneswar",
+  Punjab: "Chandigarh",
+  Rajasthan: "Jaipur",
+  "Tamil Nadu": "Chennai",
+  Telangana: "Hyderabad",
+  "Uttar Pradesh": "Lucknow",
+  Uttarakhand: "Dehradun",
+  "West Bengal": "Kolkata",
+};
+
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+// Sensible defaults for abstract select fields a typical user can't readily
+// answer but which have a strong, standard choice. Applied ONLY into empty
+// fields whose option list actually contains the default, and always editable —
+// so they shrink the "still needed" list without ever overriding user/AI input.
+const SELECT_DEFAULTS = {
+  ip_ownership: "Employer owns work product IP",
+  employment_termination_type: "Notice-based termination",
+};
 const GEN_MESSAGES = [
   "Assembling legal knowledge...",
   "Translating your inputs into legal drafting language...",
@@ -760,6 +801,71 @@ export default function Form() {
   const [generationValidation, setGenerationValidation] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
   const [showInterview, setShowInterview] = useState(true);
+  // Which sections are expanded. Derived fresh each time the user leaves the
+  // interview: only sections that still have EMPTY required fields open.
+  const [openSections, setOpenSections] = useState(() => new Set());
+
+  const toggleSection = (index) =>
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      next.has(index) ? next.delete(index) : next.add(index);
+      return next;
+    });
+
+  // Smart defaults for abstract select fields (e.g. IP ownership, termination
+  // structure): apply the standard choice into EMPTY fields whose options
+  // include it. Runs once fields load; user/AI input always wins.
+  useEffect(() => {
+    if (loading || !fields.length) return;
+    setForm((prev) => {
+      const next = { ...prev };
+      let changed = false;
+      for (const field of fields) {
+        const def = SELECT_DEFAULTS[field.name];
+        if (
+          def &&
+          Array.isArray(field.options) &&
+          field.options.includes(def) &&
+          !String(prev[field.name] ?? "").trim()
+        ) {
+          next[field.name] = def;
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, fields]);
+
+  // Smart defaults: derive governing law + arbitration seat from the operating
+  // state — but only into EMPTY fields, so user/AI input always wins.
+  useEffect(() => {
+    if (loading || !fields.length) return;
+    const state = String(form.operating_state ?? "").trim();
+    if (!state) return;
+    const hasField = (name) => fields.some((field) => field.name === name);
+    setForm((prev) => {
+      const next = { ...prev };
+      let changed = false;
+      if (
+        hasField("governing_law_state") &&
+        !String(prev.governing_law_state ?? "").trim()
+      ) {
+        next.governing_law_state = state;
+        changed = true;
+      }
+      if (
+        hasField("arbitration_city") &&
+        !String(prev.arbitration_city ?? "").trim() &&
+        STATE_ARBITRATION_SEAT[state]
+      ) {
+        next.arbitration_city = STATE_ARBITRATION_SEAT[state];
+        changed = true;
+      }
+      return changed ? next : prev;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, fields, form.operating_state]);
 
   useEffect(() => {
     if (!documentType) {
@@ -781,8 +887,9 @@ export default function Form() {
 
         const defaults = {};
         rawFields.forEach((field) => {
-          if (field.name === "arbitration_city") defaults[field.name] = "Mumbai";
           if (field.name === "operating_state") defaults[field.name] = "";
+          // Smart default: effective date = today (always editable).
+          if (field.name === "effective_date") defaults[field.name] = todayISO();
         });
         setForm(defaults);
       })
@@ -1040,6 +1147,47 @@ export default function Form() {
     [form, resolveField, visibleSections]
   );
 
+  // The short list that matters: required fields that are still empty. This is
+  // what the user actually has to do — everything else is filled or optional.
+  const missingRequiredFields = useMemo(
+    () =>
+      fields.filter(
+        (field) => field.required && !String(form[field.name] ?? "").trim()
+      ),
+    [fields, form]
+  );
+
+  // Each time the user lands on the form (after interview/skip), open only the
+  // sections that still have empty required fields. Deliberately not reactive to
+  // typing — sections don't collapse under the user mid-input.
+  useEffect(() => {
+    if (loading || showInterview) return;
+    const open = new Set();
+    visibleSections.forEach((section, index) => {
+      const hasMissingRequired = (section.fields || [])
+        .map((item) => resolveField(item))
+        .filter(Boolean)
+        .some(
+          (field) => field.required && !String(form[field.name] ?? "").trim()
+        );
+      if (hasMissingRequired) open.add(index);
+    });
+    setOpenSections(open);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showInterview, loading]);
+
+  const focusMissingField = (fieldName) => {
+    const sectionIndex = visibleSections.findIndex((section) =>
+      (section.fields || []).some(
+        (item) => (typeof item === "string" ? item : item?.name) === fieldName
+      )
+    );
+    if (sectionIndex >= 0) {
+      setOpenSections((prev) => new Set(prev).add(sectionIndex));
+    }
+    setTimeout(() => scrollToField(fieldName), 80);
+  };
+
   return (
     <div className="form-page">
       <div className="form-topbar">
@@ -1269,25 +1417,92 @@ export default function Form() {
             />
           ) : (
             <>
-              {visibleSections.map((section, sectionIndex) => (
-                <section
-                  key={`${section.title}-${sectionIndex}`}
-                  className="form-section animate-in"
-                  id={`form-section-${sectionIndex}`}
-                  style={{ animationDelay: `${sectionIndex * 60}ms` }}
-                >
-                  <div className="form-section-header">
-                    <span className="form-section-num">
-                      {String(sectionIndex + 1).padStart(2, "0")}
+              {missingRequiredFields.length > 0 ? (
+                <div className="form-stillneeded animate-in">
+                  <div className="form-stillneeded__head">
+                    <span className="form-stillneeded__count">
+                      {missingRequiredFields.length}
                     </span>
                     <div>
-                      <div className="form-section-title">{section.title}</div>
-                      <div className="form-section-sub">
-                        Provide the details for this section. Examples and AI
-                        tips are shown where useful.
+                      <div className="form-stillneeded__title">
+                        Almost there — we just need:
+                      </div>
+                      <div className="form-stillneeded__sub">
+                        Everything else is already filled or optional.
                       </div>
                     </div>
                   </div>
+                  <div className="form-stillneeded__chips">
+                    {missingRequiredFields.map((field) => (
+                      <button
+                        key={field.name}
+                        type="button"
+                        className="form-stillneeded__chip"
+                        onClick={() => focusMissingField(field.name)}
+                      >
+                        {field.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="form-stillneeded form-stillneeded--done animate-in">
+                  <span className="form-stillneeded__check">
+                    {Icons.checkCircle}
+                  </span>
+                  <span>
+                    All required details are filled — review below and generate
+                    your draft.
+                  </span>
+                </div>
+              )}
+
+              {visibleSections.map((section, sectionIndex) => {
+                const sectionFields = (section.fields || [])
+                  .map((item) => resolveField(item))
+                  .filter(Boolean);
+                const requiredLeft = sectionFields.filter(
+                  (f) => f.required && !String(form[f.name] ?? "").trim()
+                ).length;
+                const filledCount = sectionFields.filter((f) =>
+                  String(form[f.name] ?? "").trim()
+                ).length;
+                const hasError = sectionFields.some((f) => fieldErrors[f.name]);
+                // Open = derived on form entry (sections with missing required
+                // fields) + user toggles; an error always forces a section open.
+                const open = hasError || openSections.has(sectionIndex);
+                return (
+                <section
+                  key={`${section.title}-${sectionIndex}`}
+                  className={`form-section animate-in${open ? "" : " form-section--collapsed"}`}
+                  id={`form-section-${sectionIndex}`}
+                  style={{ animationDelay: `${sectionIndex * 60}ms` }}
+                >
+                  <button
+                    type="button"
+                    className="form-section-header form-section-header--toggle"
+                    onClick={() => toggleSection(sectionIndex)}
+                    aria-expanded={open}
+                  >
+                    <span className="form-section-num">
+                      {String(sectionIndex + 1).padStart(2, "0")}
+                    </span>
+                    <div className="form-section-head-text">
+                      <div className="form-section-title">{section.title}</div>
+                      <div className="form-section-sub">
+                        {requiredLeft > 0
+                          ? `${requiredLeft} required left`
+                          : filledCount > 0
+                          ? "Done — nothing required left"
+                          : "Optional"}{" "}
+                        · {filledCount}/{sectionFields.length} filled
+                      </div>
+                    </div>
+                    <span className={`form-section-chev${open ? " form-section-chev--open" : ""}`}>
+                      <ChevronRight size={18} />
+                    </span>
+                  </button>
+                  {open && (
                   <div className="fields-grid">
                     {(section.fields || []).map((item) => {
                       const field = resolveField(item);
@@ -1304,8 +1519,10 @@ export default function Form() {
                       ) : null;
                     })}
                   </div>
+                  )}
                 </section>
-              ))}
+                );
+              })}
 
               <section className="form-review-panel animate-in">
                 <div className="form-section-header">
