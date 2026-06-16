@@ -92,7 +92,7 @@ export default function Home() {
           </div>
           <h1 className="hero-title animate-in-d1">
             Draft legally sound
-            <em className="hero-title-line2"> Indian documents</em>
+            <em className="hero-title-line2"> documents</em>
             <span className="hero-title-line2"> in minutes</span>
           </h1>
           <p className="hero-sub animate-in-d2">

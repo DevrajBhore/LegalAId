@@ -4,6 +4,10 @@ export class IndianRuleRegistry {
     this.mappings = new Map();
     this.constraintsByDomain = new Map();
     this.mandatoryClauses = new Map();
+    // documentType -> [{ replaces, alternatives: [clauseId, ...] }]
+    // A variant slot may swap a required clause for a stronger, context-matched
+    // one; the blueprint check must accept any alternative as satisfying it.
+    this.variantGroups = new Map();
   }
 
   addClauses(clauses) {
@@ -23,6 +27,16 @@ export class IndianRuleRegistry {
   
   getMandatoryClauses(documentType) {
     return this.mandatoryClauses?.get(documentType) || [];
+  }
+
+  addVariantGroups(documentType, groups) {
+    if (Array.isArray(groups) && groups.length) {
+      this.variantGroups.set(documentType, groups);
+    }
+  }
+
+  getVariantGroups(documentType) {
+    return this.variantGroups?.get(documentType) || [];
   }
 
   addConstraints(domain, rules) {

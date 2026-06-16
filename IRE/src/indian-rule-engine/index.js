@@ -117,7 +117,10 @@ export function runIRE(registry, documentType, draftedClauses = []) {
 
   // 1️⃣ Blueprint clause enforcement
   const requiredClauses = planDocument(registry, documentType);
-  issues.push(...validateBlueprint(requiredClauses, draftedClauses));
+  const variantGroups = registry.getVariantGroups
+    ? registry.getVariantGroups(documentType)
+    : [];
+  issues.push(...validateBlueprint(requiredClauses, draftedClauses, variantGroups));
 
   // 2️⃣ Structural validation
   const structural = validateDocument(registry, { clauses: draftedClauses });

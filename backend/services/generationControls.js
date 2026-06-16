@@ -147,6 +147,7 @@ export function deriveGenerationControls(documentType, variables = {}) {
     if (personalData) {
       derived.firm_processes_personal_data = true;
       derived.company_processes_personal_data = true;
+      derived.jv_processes_personal_data = true;
     }
   }
 
@@ -192,6 +193,26 @@ export function deriveGenerationControls(documentType, variables = {}) {
     derived.lender_is_nbfc = lender.includes("nbfc");
     derived.lender_is_regulated = lender.includes("bank") || lender.includes("nbfc");
     derived.is_cross_border = lender.includes("foreign");
+  }
+
+  // NOTE: loan `personal_guarantee_required` is intentionally NOT wired to an
+  // intake question yet — the conditional clause it gates (GUARANTEE_OBLIGATION_001)
+  // introduces a third "Guarantor" party that the loan's Lender/Borrower model
+  // doesn't define, so enabling it produces a label-inconsistent draft. Needs a
+  // dedicated loan-guarantee clause + a guarantor party (name/descriptor/signature)
+  // before it can be exposed. Tracked in memory.
+
+  // Joint venture: whether partners contribute equity / share capital (drives the
+  // equity-contribution & shareholding clauses rather than a pure contractual JV).
+  const explicitJvEquity = normalizeBooleanLike(variables.jv_involves_equity);
+  if (explicitJvEquity !== null) {
+    derived.jv_involves_equity = explicitJvEquity;
+  }
+
+  // Shareholders: company holds IP assets → adds an IP-ownership/assignment clause.
+  const explicitCompanyIp = normalizeBooleanLike(variables.company_has_ip_assets);
+  if (explicitCompanyIp !== null) {
+    derived.company_has_ip_assets = explicitCompanyIp;
   }
 
   // Moonlighting / exclusivity restriction: explicit opt-in, or implied by a

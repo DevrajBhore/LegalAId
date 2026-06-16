@@ -16,6 +16,7 @@
     "IP_FEEDBACK_001",
     "TECH_ACCEPTANCE_001",
     "TECH_SOURCE_CODE_001",
+    "TECH_WARRANTY_001",
     "CORE_CONFIDENTIALITY_001",
     "CORE_TERM_001",
     "CORE_TERMINATION_001",
@@ -31,10 +32,6 @@
     {
       "clause": "CORE_DEFINITIONS_001",
       "include_if": "include_nomenclature_clause == true"
-    },
-    {
-      "clause": "TECH_WARRANTY_001",
-      "include_if": "include_warranty_clause == true"
     },
     {
       "clause": "CORE_INDEMNITY_001",

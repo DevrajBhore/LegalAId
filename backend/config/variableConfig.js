@@ -115,6 +115,26 @@ export const VARIABLE_CONFIG = {
         "The lender type drives regulatory clauses: NBFC → KYC/AML; scheduled bank/NBFC → SARFAESI enforcement; foreign lender → FEMA/ECB compliance.",
       options: ["Scheduled Bank", "NBFC", "Private Individual", "Company", "Foreign"],
     },
+    jv_involves_equity: {
+      label: "Will the partners contribute equity / share capital?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["JOINT_VENTURE_AGREEMENT"],
+      description:
+        "If yes, LegalAId adds equity-contribution and shareholding clauses for an equity JV rather than a purely contractual one.",
+      options: ["No", "Yes"],
+    },
+    company_has_ip_assets: {
+      label: "Does the company own material IP assets?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["SHAREHOLDERS_AGREEMENT"],
+      description:
+        "If yes, LegalAId adds an IP-ownership/assignment clause ensuring the company holds rights to its intellectual property.",
+      options: ["No", "Yes"],
+    },
     payment_model: {
       label: "How is the Service Provider paid?",
       type: "select",

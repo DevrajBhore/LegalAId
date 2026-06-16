@@ -110,10 +110,22 @@ function isClauseCompatibleWithDocument(clause, documentType = "") {
   return false;
 }
 
+// Categories a document must have exactly ONE of. A dependency on (say) the
+// generic CORE_IDENTITY_001 is satisfied by a document-specific identity clause
+// (e.g. GUARANTEE_IDENTITY_001) that already occupies that role — injecting a
+// second one creates a duplicate that later dedup may resolve in favour of the
+// wrong (generic) clause, dropping the blueprint-required one.
+const SINGLETON_ROLE_CATEGORIES = new Set(["IDENTITY", "SIGNATURE_BLOCK"]);
+
 function resolveExplicitKbDependencies(clauses = [], variables = {}, documentType = "") {
   const resolvedClauses = [...clauses];
   const existingClauseIds = new Set(
     resolvedClauses.map((clause) => String(clause.clause_id || ""))
+  );
+  const existingSingletonRoles = new Set(
+    resolvedClauses
+      .map((clause) => normalizeClauseCategory(clause.category))
+      .filter((category) => SINGLETON_ROLE_CATEGORIES.has(category))
   );
 
   let changed = true;
@@ -136,6 +148,16 @@ function resolveExplicitKbDependencies(clauses = [], variables = {}, documentTyp
           continue;
         }
 
+        // Don't inject a generic singleton-role clause when the draft already
+        // has one (e.g. a document-specific identity clause).
+        const referencedRole = normalizeClauseCategory(referencedClause.category);
+        if (
+          SINGLETON_ROLE_CATEGORIES.has(referencedRole) &&
+          existingSingletonRoles.has(referencedRole)
+        ) {
+          continue;
+        }
+
         const injectedClause = buildInjectedClauseFromKB(requiredClauseId, variables);
         if (!injectedClause) {
           continue;
@@ -143,6 +165,9 @@ function resolveExplicitKbDependencies(clauses = [], variables = {}, documentTyp
 
         resolvedClauses.push(injectedClause);
         existingClauseIds.add(requiredClauseId);
+        if (SINGLETON_ROLE_CATEGORIES.has(referencedRole)) {
+          existingSingletonRoles.add(referencedRole);
+        }
         changed = true;
       }
     }

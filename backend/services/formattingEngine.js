@@ -38,7 +38,11 @@ const TENS = [
 
 export function parseNumberish(value) {
   if (value === undefined || value === null || value === "") return null;
-  const match = String(value).replace(/,/g, "").match(/-?\d+(?:\.\d+)?/);
+  // Strip BOTH commas and internal whitespace before parsing — an already-
+  // formatted Indian amount like "5,00,000" (or one captured with stray spaces,
+  // "5 00 000") must parse to 500000, not 5 (parseFloat-style truncation at the
+  // first separator was corrupting re-normalized amounts, e.g. ₹5,00,000 → ₹5).
+  const match = String(value).replace(/[\s,]/g, "").match(/-?\d+(?:\.\d+)?/);
   if (!match) return null;
   const parsed = Number(match[0]);
   return Number.isFinite(parsed) ? parsed : null;
@@ -107,10 +111,15 @@ export function normalizeCurrencyText(text = "", { includeWords = false } = {}) 
     (_match, amount, offset, source) => {
       const numeric = parseNumberish(amount);
       if (numeric === null) return _match;
+      // The amount class consumes any trailing whitespace before the next token;
+      // preserve it so we don't fuse the amount with the following word
+      // (e.g. "₹5,00,000(Rupees…" or "…Only)prior").
+      const trailingWs = (amount.match(/\s+$/) || [""])[0];
       const tail = source.slice(offset + _match.length, offset + _match.length + 24);
-      return formatIndianAmount(numeric, {
+      const formatted = formatIndianAmount(numeric, {
         includeWords: includeWords && !/^\s*\(Rupees\b/i.test(tail),
       });
+      return formatted + trailingWs;
     }
   );
 }

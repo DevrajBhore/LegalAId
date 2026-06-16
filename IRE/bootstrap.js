@@ -110,6 +110,20 @@ export function bootstrapIRE() {
         overridden++;
       }
       registry.addMapping(b.document_type, clauseIds);
+
+      // Record variant substitution groups so a slot that REPLACES a required
+      // clause with a context-matched alternative doesn't trip MISSING_REQUIRED_CLAUSE.
+      const groups = [];
+      for (const slot of b.variant_clauses || []) {
+        if (!slot || !slot.replaces) continue;
+        const candidates = slot.select_first_match || slot.variants || [];
+        const alternatives = candidates
+          .map((c) => c && c.clause)
+          .filter(Boolean);
+        if (slot.default) alternatives.push(slot.default);
+        groups.push({ replaces: slot.replaces, alternatives });
+      }
+      registry.addVariantGroups(b.document_type, groups);
     }
 
     // Show total blueprints on disk, and how many doc types are registered overall

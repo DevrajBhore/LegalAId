@@ -54,8 +54,11 @@ export async function validateDocument(
 
   // ── Layer 1a: Blueprint (required clause IDs for this doc type)
   const requiredClauses = planDocument(registry, normalizedType);
+  const variantGroups = registry.getVariantGroups
+    ? registry.getVariantGroups(normalizedType)
+    : [];
   const blueprintIssues = structuredDraft
-    ? validateBlueprint(requiredClauses, draftedClauses)
+    ? validateBlueprint(requiredClauses, draftedClauses, variantGroups)
     : [];
 
   // ── Layer 1b: Structural (per-doctype required categories + constraints)
