@@ -37,6 +37,15 @@ function formatCurrency(value, options = {}) {
   return formatIndianAmount(numeric, options);
 }
 
+// Free-text fields that may hold either a bare amount ("10000") or a description
+// ("joint signatures required") — render a bare number as Indian currency, else
+// leave the text as-is.
+function formatAmountOrText(value) {
+  const s = String(value || "").trim();
+  if (/^[₹\s]*-?\d[\d,\s]*(?:\.\d+)?$/.test(s)) return formatIndianAmount(parseNumberish(s));
+  return s;
+}
+
 function formatDate(value) {
   return formatFormalDate(value);
 }
@@ -1691,10 +1700,10 @@ function renderHardClause(
       )}.` : ""}${hasMeaningfulValue(variables.bank_name) ? ` The Firm's banking operations shall be conducted through ${stripExternalReferencePhrases(
         variables.bank_name,
         ""
-      )}${hasMeaningfulValue(variables.drawing_limit) ? ` with partner drawing authority operating in accordance with the following limit or approval arrangement: ${stripExternalReferencePhrases(
+      )}${hasMeaningfulValue(variables.drawing_limit) ? ` with partner drawing authority operating in accordance with the following limit or approval arrangement: ${formatAmountOrText(stripExternalReferencePhrases(
         variables.drawing_limit,
         ""
-      )}` : ""}.` : ""}${hasMeaningfulValue(variables.dissolution_terms) ? ` Dissolution shall be governed by the following agreed terms: ${stripExternalReferencePhrases(
+      ))}` : ""}.` : ""}${hasMeaningfulValue(variables.dissolution_terms) ? ` Dissolution shall be governed by the following agreed terms: ${stripExternalReferencePhrases(
         variables.dissolution_terms,
         ""
       )}.` : ""}`,

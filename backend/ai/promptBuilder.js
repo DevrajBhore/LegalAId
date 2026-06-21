@@ -11,7 +11,7 @@ function formatVariableEntries(variables = {}) {
 function formatClauseBlueprint(baseDraft) {
   return (baseDraft?.clauses || [])
     .map((clause) => {
-      const snippet = String(clause.text || "").slice(0, 500).trim();
+      const snippet = String(clause.text || "").slice(0, 1500).trim();
       return [
         `[${clause.clause_id}]`,
         `category: ${clause.category || ""}`,

@@ -257,11 +257,20 @@ function hasSemanticProviderConfigured() {
   return Boolean(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY);
 }
 
-function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
+// Resilient per-clause merge. The rule engine has ALREADY decided the clause set
+// (the seed); the AI's job is to TAILOR the wording of each clause to the user's
+// situation. So we never decide structure from the AI — we keep the seed's exact
+// clause set, and for each clause use the AI's rewritten text when it returned a
+// usable one, otherwise keep the deterministic (hardened) version. This turns the
+// old all-or-nothing gate (one drift → 100% boilerplate) into "tailor what the AI
+// rewrote, keep the rest." The merged draft is still validated downstream, and if
+// it fails the deterministic base draft remains the safety net.
+export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
   if (!seedDraft?.clauses?.length || !aiDraft?.clauses?.length) {
     return null;
   }
 
+  // Reject only on a genuine error: the AI drafted the WRONG document type.
   if (
     aiDraft.document_type &&
     String(aiDraft.document_type).toUpperCase() !==
@@ -270,29 +279,27 @@ function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
     return null;
   }
 
-  const aiClauses = aiDraft.clauses.filter((clause) => clause?.clause_id);
-  const aiById = new Map(aiClauses.map((clause) => [clause.clause_id, clause]));
-
-  if (
-    aiById.size !== seedDraft.clauses.length ||
-    aiClauses.length !== seedDraft.clauses.length
-  ) {
-    return null;
+  // Index the AI clauses that are actually usable (real id + non-empty text).
+  const aiById = new Map(
+    aiDraft.clauses
+      .filter((c) => c?.clause_id && typeof c.text === "string" && c.text.trim())
+      .map((c) => [c.clause_id, c])
+  );
+  if (aiById.size === 0) {
+    return null; // nothing usable — fall back to the deterministic draft
   }
 
-  const mergedClauses = [];
-
-  for (const seedClause of seedDraft.clauses) {
+  let tailored = 0;
+  const mergedClauses = seedDraft.clauses.map((seedClause) => {
     const aiClause = aiById.get(seedClause.clause_id);
-
-    if (!aiClause || typeof aiClause.text !== "string" || !aiClause.text.trim()) {
-      return null;
+    if (!aiClause) {
+      return seedClause; // keep the deterministic, hardened clause as-is
     }
-
-    mergedClauses.push({
+    tailored += 1;
+    return {
       ...seedClause,
       ...aiClause,
-      clause_id: seedClause.clause_id,
+      clause_id: seedClause.clause_id, // structure is the rule engine's, not the AI's
       category: aiClause.category || seedClause.category,
       title:
         typeof aiClause.title === "string" && aiClause.title.trim()
@@ -301,8 +308,8 @@ function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
       statutory_reference:
         aiClause.statutory_reference ?? seedClause.statutory_reference ?? null,
       text: aiClause.text.trim(),
-    });
-  }
+    };
+  });
 
   return normalizeClauseText({
     ...seedDraft,
@@ -311,7 +318,9 @@ function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
     clauses: mergedClauses,
     metadata: {
       ...(seedDraft.metadata || {}),
-      ai_touched: true,
+      ai_touched: tailored > 0,
+      ai_tailored_clause_count: tailored,
+      ai_total_clause_count: seedDraft.clauses.length,
       ai_generation_provider: provider || null,
     },
   });
