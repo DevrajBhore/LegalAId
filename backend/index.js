@@ -351,6 +351,11 @@ app.post("/generate", protect, aiLimiter, async (req, res) => {
         ? buildDocumentTypeMeta(req.body.document_type)
         : null,
     });
+    // Auto-seed the flywheel: record any gaps this generation revealed. Fire-and-
+    // forget — never affects the response or fails the request.
+    import("./services/gapSignalService.js")
+      .then(({ recordGaps }) => recordGaps(req.body?.document_type, result.draft, result.validation))
+      .catch(() => {});
   } catch (error) {
     console.error("Generate error:", error);
     const details = error.message;

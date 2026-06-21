@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
 import ErrorExplainer from "../components/ErrorExplainer";
+import DocumentIntelligence from "../components/DocumentIntelligence";
 import {
   chatWithDocument,
   downloadDocument,
@@ -187,6 +188,8 @@ export default function Editor() {
       return {
         draft: location.state.draft,
         validation: location.state.validation || null,
+        intelligence: location.state.intelligence || null,
+        obligations: location.state.obligations || null,
         documentMeta: location.state.documentMeta || null,
         history: location.state.history || null,
       };
@@ -199,6 +202,8 @@ export default function Editor() {
         return {
           draft: parsed.draft || null,
           validation: parsed.validation || null,
+          intelligence: parsed.intelligence || null,
+          obligations: parsed.obligations || null,
           documentMeta: parsed.documentMeta || null,
           history: parsed.history || null,
         };
@@ -206,6 +211,8 @@ export default function Editor() {
         return {
           draft: null,
           validation: null,
+          intelligence: null,
+          obligations: null,
           documentMeta: null,
           history: null,
         };
@@ -215,6 +222,8 @@ export default function Editor() {
     return {
       draft: null,
       validation: null,
+      intelligence: null,
+      obligations: null,
       documentMeta: null,
       history: null,
     };
@@ -223,6 +232,8 @@ export default function Editor() {
   const [initialState] = useState(getInitialState);
   const [draft, setDraft] = useState(initialState.draft);
   const [validation, setValidation] = useState(initialState.validation);
+  const [intelligence] = useState(initialState.intelligence);
+  const [obligations] = useState(initialState.obligations);
   const [documentMeta] = useState(initialState.documentMeta);
   const [history, setHistory] = useState(initialState.history);
   const [exportFormat, setExportFormat] = useState("pdf");
@@ -876,6 +887,17 @@ export default function Editor() {
               </button>
               <button
                 className={`sidebar-tab${
+                  activeTab === "insights" ? " sidebar-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("insights")}
+              >
+                Insights
+                {intelligence?.overall?.conflict_count > 0
+                  ? ` (${intelligence.overall.conflict_count})`
+                  : ""}
+              </button>
+              <button
+                className={`sidebar-tab${
                   activeTab === "chat" ? " sidebar-tab--active" : ""
                 }`}
                 onClick={() => setActiveTab("chat")}
@@ -891,6 +913,17 @@ export default function Editor() {
                 Versions
               </button>
             </div>
+
+            {activeTab === "insights" && (
+              <div className="sidebar-panel">
+                <DocumentIntelligence
+                  intelligence={intelligence}
+                  obligations={obligations}
+                  validation={validation}
+                  documentTitle={documentMeta?.displayName || draft?.document_type || "Agreement"}
+                />
+              </div>
+            )}
 
             {activeTab === "versions" && (
               <div className="sidebar-panel">

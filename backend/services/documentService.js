@@ -29,6 +29,20 @@ import {
 import { callAI } from "../ai/aiClient.js";
 import { deriveGenerationControls } from "./generationControls.js";
 import { buildSemanticContext } from "./inputSemantics.js";
+import { buildDocumentIntelligence } from "./documentIntelligence.js";
+import { buildObligations } from "./obligationTracker.js";
+
+// Attach the advisory risk-&-explainability report + lifecycle obligations to a
+// successful generation.
+function buildSuccess(draft, validation) {
+  const variables = draft?.metadata?.source_variables || {};
+  return {
+    draft,
+    validation,
+    intelligence: buildDocumentIntelligence(draft, validation),
+    obligations: buildObligations(draft, variables),
+  };
+}
 
 let CategoryMapper = null;
 
@@ -383,7 +397,7 @@ export async function generateDocument(input) {
       let validation = await runGenerationStageValidation(draft, generationInput);
 
       if (isGenerationReady(validation)) {
-        return { draft, validation };
+        return buildSuccess(draft, validation);
       }
 
       const repairedDraft = applyDeterministicRepairRound(draft, validation);
@@ -394,7 +408,7 @@ export async function generateDocument(input) {
         validation = await runGenerationStageValidation(draft, generationInput);
 
         if (isGenerationReady(validation)) {
-          return { draft, validation };
+          return buildSuccess(draft, validation);
         }
       }
     }
@@ -413,7 +427,7 @@ export async function generateDocument(input) {
   let validation = await runGenerationStageValidation(draft, generationInput);
 
   if (isGenerationReady(validation)) {
-    return { draft, validation };
+    return buildSuccess(draft, validation);
   }
 
   const repairedDraft = applyDeterministicRepairRound(draft, validation);
@@ -425,7 +439,7 @@ export async function generateDocument(input) {
     validation = await runGenerationStageValidation(draft, generationInput);
 
     if (isGenerationReady(validation)) {
-      return { draft, validation };
+      return buildSuccess(draft, validation);
     }
   }
 

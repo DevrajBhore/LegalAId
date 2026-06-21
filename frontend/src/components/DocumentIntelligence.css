@@ -1,0 +1,108 @@
+/* DocumentIntelligence — risk & explainability panel.
+   Uses the shared dark/gold tokens from index.css. */
+
+.di { display: flex; flex-direction: column; gap: 16px; }
+.di-empty { color: rgba(255, 255, 255, 0.4); font-size: 13.5px; line-height: 1.6; padding: 16px 4px; }
+
+/* ── Headline risk score ─────────────────────────────────────── */
+.di-score {
+  display: flex; align-items: center; gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.di-score__num { font-family: var(--font-display); font-size: 34px; line-height: 1; font-weight: 400; }
+.di-score--ok .di-score__num { color: var(--green); }
+.di-score--warn .di-score__num { color: var(--amber); }
+.di-score--bad .di-score__num { color: var(--red); }
+.di-score--neutral .di-score__num { color: rgba(255, 255, 255, 0.6); }
+.di-score__meta { display: flex; flex-direction: column; gap: 3px; }
+.di-score__label { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: rgba(255, 255, 255, 0.9); }
+.di-score--ok .di-score__label { color: var(--green); }
+.di-score__sub { font-size: 12px; color: rgba(255, 255, 255, 0.4); text-transform: capitalize; }
+
+/* ── Stat rows ───────────────────────────────────────────────── */
+.di-stats { display: flex; flex-direction: column; gap: 8px; }
+.di-stat { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12.5px; }
+.di-stat__k { color: rgba(255, 255, 255, 0.45); }
+.di-stat__v { display: inline-flex; gap: 6px; align-items: center; color: rgba(255, 255, 255, 0.85); }
+
+.di-pill {
+  font-family: var(--font-mono); font-size: 10.5px; font-style: normal;
+  text-transform: uppercase; letter-spacing: 0.3px;
+  padding: 2px 7px; border-radius: 99px;
+  color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.06);
+}
+.di-pill--ok { color: var(--green); background: var(--green-bg); }
+.di-pill--warn { color: var(--amber); background: var(--amber-bg); }
+.di-pill--bad { color: var(--red); background: var(--red-bg); }
+
+.di-section__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.di-ics-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  border: 1px solid rgba(184, 147, 58, 0.4); background: var(--gold-pale);
+  color: var(--gold); border-radius: var(--r-sm);
+  padding: 4px 10px; font-size: 11.5px; font-weight: 600; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.di-ics-btn:hover { background: var(--gold-glow); border-color: rgba(184, 147, 58, 0.6); }
+
+/* ── Key dates / obligations timeline ────────────────────────── */
+.di-dates { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.di-date {
+  display: flex; gap: 12px; padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid transparent; padding-left: 10px;
+}
+.di-date--high { border-left-color: var(--red); }
+.di-date--medium { border-left-color: var(--amber); }
+.di-date--info { border-left-color: rgba(255, 255, 255, 0.18); }
+.di-date__when {
+  flex: 0 0 84px; font-family: var(--font-mono); font-size: 11.5px;
+  color: var(--gold); padding-top: 1px;
+}
+.di-date__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.di-date__title { font-size: 13px; color: rgba(255, 255, 255, 0.9); display: inline-flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.di-date__desc { font-size: 12px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; }
+
+/* ── Sections ────────────────────────────────────────────────── */
+.di-section { display: flex; flex-direction: column; gap: 8px; }
+.di-section__title {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.4px;
+  text-transform: uppercase; color: var(--gold); margin: 4px 0 0;
+}
+
+/* ── Conflicts ───────────────────────────────────────────────── */
+.di-conflicts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.di-conflict {
+  border: 1px solid var(--amber-border); background: var(--amber-bg);
+  border-radius: var(--r-md); padding: 10px 12px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.di-conflict--high { border-color: var(--red-border); background: var(--red-bg); }
+.di-conflict__msg { font-size: 12.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.85); }
+.di-conflict__ids { font-family: var(--font-mono); font-size: 10.5px; color: rgba(255, 255, 255, 0.4); }
+
+/* ── Per-clause explainability ───────────────────────────────── */
+.di-clauses { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.di-clause { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 8px 0; }
+.di-clause__head {
+  width: 100%; display: flex; align-items: center; gap: 8px;
+  background: transparent; border: none; cursor: pointer; text-align: left; padding: 0;
+}
+.di-clause__chev { color: var(--gold); display: inline-flex; width: 12px; transition: transform 0.15s; }
+.di-clause__chev--open { transform: rotate(90deg); }
+.di-clause__title { flex: 1; font-size: 13px; color: rgba(255, 255, 255, 0.9); }
+.di-clause__why { margin: 4px 0 0 20px; font-size: 12px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; }
+
+.di-clause__detail { margin: 8px 0 4px 20px; display: flex; flex-direction: column; gap: 10px; }
+.di-detail-block { display: flex; flex-direction: column; gap: 4px; }
+.di-detail-block__k { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; color: rgba(255, 255, 255, 0.35); }
+.di-basis { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.di-basis li { font-size: 11.5px; color: var(--gold); font-family: var(--font-mono); }
+.di-hotspots { margin: 0; padding-left: 16px; }
+.di-hotspots li { font-size: 12px; color: rgba(255, 255, 255, 0.55); line-height: 1.5; margin-bottom: 2px; }
+
+.di-footnote { font-size: 11px; color: rgba(255, 255, 255, 0.32); line-height: 1.5; margin: 4px 0 0; font-style: italic; }

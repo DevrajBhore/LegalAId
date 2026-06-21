@@ -5,12 +5,24 @@ import {
   setReviewStatus,
   promoteClause,
 } from "../services/clauseReviewService.js";
+import { listTopGaps } from "../services/gapSignalService.js";
 
 const router = express.Router();
 
 // NOTE: AI gap-detection (propose missing protections → queue) is exposed at
 // POST /admin/clause-authoring/propose (index.js), which carries the aiLimiter.
 // This router owns the review/promote half of the flywheel.
+
+// GET /admin/clause-reviews/gaps?documentType=NDA  — usage-driven gap signals,
+// the auto-detected backlog that feeds AI proposals (flywheel step 4).
+router.get("/gaps", async (req, res) => {
+  try {
+    const gaps = await listTopGaps({ documentType: req.query.documentType || null });
+    res.json({ count: gaps.length, gaps });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ error: error.message });
+  }
+});
 
 // GET /admin/clause-reviews?status=pending&category=termination
 router.get("/", async (req, res) => {
