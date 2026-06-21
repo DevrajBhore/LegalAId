@@ -105,6 +105,26 @@ export const VARIABLE_CONFIG = {
         "The POSH Act, 2013 mandates an anti-sexual-harassment policy and Internal Committee for workplaces with 10 or more employees.",
       options: ["Fewer than 10", "10 or more"],
     },
+    workplace_type: {
+      label: "What type of workplace is this?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["EMPLOYMENT_CONTRACT"],
+      description:
+        "A factory is governed by the stricter Factories Act, 1948 working-hours/overtime regime; a shop or office follows the applicable State Shops & Establishments Act.",
+      options: ["Shop / Office", "Factory"],
+    },
+    has_esop_or_variable_pay: {
+      label: "Does the role include ESOPs or variable/performance pay?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["EMPLOYMENT_CONTRACT"],
+      description:
+        "If yes, LegalAId adds a tax-aware stock-option / variable-pay clause (vesting, leaver treatment, perquisite tax) under the Companies Act, 2013 and SEBI SBEB Regulations.",
+      options: ["No", "Yes"],
+    },
     lender_type: {
       label: "Who is the lender?",
       type: "select",
@@ -133,6 +153,56 @@ export const VARIABLE_CONFIG = {
       applicableDocuments: ["SHAREHOLDERS_AGREEMENT"],
       description:
         "If yes, LegalAId adds an IP-ownership/assignment clause ensuring the company holds rights to its intellectual property.",
+      options: ["No", "Yes"],
+    },
+    repayment_structure: {
+      label: "How is the loan repaid?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["LOAN_AGREEMENT"],
+      description:
+        "Amortising repays principal over scheduled instalments/EMIs; Bullet (balloon) repays the entire principal in one lump sum at maturity, with interest serviced periodically.",
+      options: ["Amortising / EMI", "Bullet / Balloon"],
+    },
+    guarantee_extent: {
+      label: "Is the guarantor's liability limited or unlimited?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["GUARANTEE_AGREEMENT"],
+      description:
+        "Unlimited makes the guarantor's liability co-extensive with the debtor; Limited caps the guarantor's aggregate liability at the guaranteed amount (Indian Contract Act, 1872 s.128).",
+      options: ["Unlimited", "Limited / Capped"],
+    },
+    governance_control: {
+      label: "What is the governance posture?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["SHAREHOLDERS_AGREEMENT"],
+      description:
+        "Investor-protective adds investor board-nomination rights, quorum requirements, and affirmative-vote reserved matters; Founder-controlled keeps standard board composition.",
+      options: ["Founder-controlled", "Investor-protective"],
+    },
+    title_transfer: {
+      label: "When does ownership (title) of the goods pass to the buyer?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["SALES_OF_GOODS_AGREEMENT", "SUPPLY_AGREEMENT"],
+      description:
+        "On delivery is the default. On full payment adds a retention-of-title (Romalpa) clause keeping ownership with the seller until paid — important for sales on credit (Sale of Goods Act, 1930 s.25).",
+      options: ["On delivery", "On full payment"],
+    },
+    include_inspection_rights: {
+      label: "Should the buyer have a right to inspect and reject goods?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      applicableDocuments: ["SALES_OF_GOODS_AGREEMENT", "SUPPLY_AGREEMENT"],
+      description:
+        "Adds the buyer's right to examine the goods and reject non-conforming deliveries (Sale of Goods Act, 1930 s.41).",
       options: ["No", "Yes"],
     },
     payment_model: {

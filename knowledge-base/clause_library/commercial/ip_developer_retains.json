@@ -1,0 +1,32 @@
+{
+  "clause_id": "IP_DEVELOPER_RETAINS_001",
+  "name": "IP Ownership — Developer Retains, Licenses to Client",
+  "category": "IP",
+  "document_types": ["SOFTWARE_DEVELOPMENT_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "All Intellectual Property Rights in and to the Deliverables, the underlying software, source code, tools, libraries, and know-how shall vest in and remain the sole property of the Service Provider, and nothing in this Agreement shall operate to assign such rights to the Client. (a) The Service Provider hereby grants the Client a non-exclusive, non-transferable, perpetual, irrevocable licence to use, operate, and maintain the Deliverables for the Client's internal business purposes, subject to payment of all fees due under this Agreement. (b) The Client shall not, except as expressly permitted, sub-license, sell, distribute, reverse-engineer, decompile, or create derivative works from the Deliverables, and shall not remove any proprietary notices. (c) The Service Provider retains the right to use the general skills, know-how, techniques, and pre-existing or background materials developed or used in performing the Services, including for other clients. (d) Any materials, data, or content supplied by the Client shall remain the property of the Client, who grants the Service Provider a licence to use the same solely to perform the Services. (e) The Service Provider warrants that, to the best of its knowledge, the Deliverables do not infringe the Intellectual Property Rights of any third party, and the licence granted is sufficient for the Client's permitted use.",
+  "legal_basis": [
+    { "act": "Copyright Act, 1957", "section": "17", "note": "Author/first owner of copyright; ownership absent assignment" },
+    { "act": "Copyright Act, 1957", "section": "30", "note": "Licence of copyright" },
+    { "act": "Information Technology Act, 2000", "section": "—", "note": "Software as a protectable work" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Client pays for bespoke development but is left with an inadequate licence scope", "Licence terms uncertain as to term or territory"],
+  "source": "Copyright Act, 1957",
+  "version": "1.0",
+  "title": "IP Ownership (Developer Retains)",
+  "depends_on": [],
+  "conflicts_with": ["IP_OWNERSHIP_001"],
+  "required_with": [],
+  "suggested_with": ["IP_LICENSE_RESTRICTIONS_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Client expected to own bespoke code", "Scope of retained licence on termination / non-payment"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

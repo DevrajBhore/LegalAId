@@ -1,0 +1,43 @@
+{
+  "clause_id": "PROP_REGISTRATION_MANDATORY_001",
+  "name": "Compulsory Registration and Stamp Duty (Long-Term Lease)",
+  "category": "PROPERTY",
+  "document_types": [
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "LEAVE_AND_LICENSE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "As the term of this Agreement exceeds twelve (12) months, this Agreement is compulsorily registrable and shall be made by a registered instrument. (a) The Parties shall, within four (4) months from the date of execution, present this Agreement for registration before the jurisdictional Sub-Registrar of Assurances under the Registration Act, 1908, together with the prescribed fees. (b) This Agreement shall first be duly stamped in accordance with the Indian Stamp Act, 1899 and the applicable State Stamp Act at the rate prescribed for a lease/leave-and-license for the relevant term, calculated on the rent, premium, and security deposit as applicable in the State; instruments that are not duly stamped are inadmissible in evidence and may be impounded by the authorities until duly stamped. (c) Unless otherwise agreed in writing, the stamp duty and registration charges shall be borne by the Tenant/Licensee, and both Parties shall appear in person or through a duly authorised representative to complete registration. (d) A lease exceeding one year that is not effected by a registered instrument does not create a valid lease and is inadmissible to prove the terms of the tenancy, save to the limited extent permitted by the proviso to Section 49 of the Registration Act, 1908. (e) The Landlord/Licensor shall retain the original registered instrument and furnish a certified copy to the Tenant/Licensee on request.",
+  "legal_basis": [
+    { "act": "Registration Act, 1908", "section": "17(1)(d)", "note": "Leases of immovable property from year to year or exceeding one year are compulsorily registrable" },
+    { "act": "Registration Act, 1908", "section": "23", "note": "Document to be presented for registration within four months of execution" },
+    { "act": "Registration Act, 1908", "section": "49", "note": "Effect of non-registration — inadmissibility" },
+    { "act": "Transfer of Property Act, 1882", "section": "107", "note": "Lease exceeding one year only by registered instrument" },
+    { "act": "Indian Stamp Act, 1899", "section": "—", "note": "Stamp duty as per applicable State Stamp Act" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Long-term lease left unregistered — creates no valid lease and is inadmissible under Registration Act 1908 S.49",
+    "Instrument under-stamped contrary to the applicable State Stamp Act"
+  ],
+  "source": "Registration Act, 1908; Transfer of Property Act, 1882",
+  "version": "1.0",
+  "title": "Compulsory Registration and Stamp Duty",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unregistered long lease — landlord cannot prove agreed term; tenancy treated as month-to-month",
+    "Under-stamping — instrument impounded and penalty levied before admission in evidence"
+  ],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

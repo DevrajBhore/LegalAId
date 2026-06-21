@@ -112,5 +112,18 @@ function isProtectedReference(ruleId, text = "") {
     );
   }
 
+  // A clause that affirmatively requires Competition Act compliance, or disclaims
+  // resale-price-maintenance / foreclosure, is the OPPOSITE of an anti-competitive
+  // agreement — the over-broad price/compete patterns must not flag it.
+  if (ruleId === "COMPETITION_ACT_VIOLATION") {
+    return (
+      /\bcomply with the competition act\b/.test(lower) ||
+      /\bcompetition act,? 2002\b/.test(lower) ||
+      /\bnot\b[^.]{0,80}\bresale price maintenance\b/.test(lower) ||
+      /\bfree to determine its own resale price\b/.test(lower) ||
+      /\bappreciable adverse effect on competition\b/.test(lower)
+    );
+  }
+
   return false;
 }

@@ -61,5 +61,15 @@
     "Registration Act 1908 S.17 — mandatory registration for lease > 12 months",
     "Model Tenancy Act 2021 — security deposit capped at 6 months for commercial",
     "Rent Control Acts — most commercial premises now decontrolled; verify applicability"
+  ],
+  "variant_clauses": [
+    {
+      "slot": "registration_strength",
+      "replaces": "PROP_REGISTRATION_001",
+      "select_first_match": [
+        { "clause": "PROP_REGISTRATION_MANDATORY_001", "when": "is_registrable == true" }
+      ],
+      "default": "PROP_REGISTRATION_001"
+    }
   ]
 }

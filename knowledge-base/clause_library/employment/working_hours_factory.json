@@ -1,0 +1,49 @@
+{
+  "clause_id": "EMP_WORKING_HOURS_FACTORY_001",
+  "name": "Working Hours and Overtime (Factory)",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_CONTRACT",
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "As the Employee is engaged in a factory within the meaning of the Factories Act, 1948, the Employee's working hours shall be regulated as follows: (a) no Employee shall be required or allowed to work for more than forty-eight (48) hours in any week and not more than nine (9) hours in any day, with a maximum daily spread-over of ten and one-half (10.5) hours; (b) the Employee shall be allowed a rest interval of at least thirty (30) minutes so that no period of continuous work exceeds five (5) hours; (c) the Employee shall be entitled to a weekly holiday and shall not be required to work on the first day of the week unless a substituted holiday is granted within three days before or after that day; (d) where the Employee works in excess of nine (9) hours in a day or forty-eight (48) hours in a week, the Employee shall be paid overtime wages at twice the ordinary rate of wages; and (e) no woman or young person shall be required to work except between the hours permitted under the Act, and no woman shall be required to work between 7 PM and 6 AM save in accordance with the conditions and safeguards prescribed by the appropriate Government. The Employer shall maintain the registers and records of working hours, overtime, and leave as prescribed under the Factories Act, 1948 and the rules made thereunder.",
+  "legal_basis": [
+    { "act": "Factories Act, 1948", "section": "51", "note": "Weekly hours limit — 48 hours" },
+    { "act": "Factories Act, 1948", "section": "54", "note": "Daily hours limit — 9 hours" },
+    { "act": "Factories Act, 1948", "section": "55", "note": "Rest interval — 30 minutes after 5 hours" },
+    { "act": "Factories Act, 1948", "section": "56", "note": "Spread-over — 10.5 hours" },
+    { "act": "Factories Act, 1948", "section": "59", "note": "Overtime — twice ordinary wages" },
+    { "act": "Factories Act, 1948", "section": "66", "note": "Restriction on employment of women" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Daily working hours exceed 9 hours or weekly hours exceed 48 contrary to Factories Act 1948",
+    "Spread-over exceeds 10.5 hours contrary to Factories Act 1948 S.56",
+    "No overtime at twice ordinary wages for excess hours contrary to Factories Act 1948 S.59"
+  ],
+  "source": "Factories Act, 1948",
+  "version": "1.0",
+  "title": "Working Hours (Factory)",
+  "depends_on": [
+    "EMPLOYMENT_ROLE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_LEAVE_POLICY_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unpaid overtime — worker claims double wages under Factories Act S.59",
+    "Excess spread-over beyond 10.5 hours — penalty under Factories Act"
+  ],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -1,0 +1,36 @@
+{
+  "domain": "distribution",
+  "rules": [
+    {
+      "rule_id": "DIST_REQUIRES_APPOINTMENT",
+      "severity": "CRITICAL",
+      "description": "A distribution agreement must appoint the distributor and define the basis (exclusive, sole, or non-exclusive) and territory of the appointment.",
+      "statutory_reference": "Indian Contract Act 1872 – S.10",
+      "fails_if": [
+        "DIST_APPOINTMENT_001",
+        "DIST_APPOINTMENT_EXCLUSIVE_001",
+        "DIST_APPOINTMENT_SOLE_001"
+      ]
+    },
+    {
+      "rule_id": "DIST_REQUIRES_PRODUCTS",
+      "severity": "HIGH",
+      "description": "A distribution agreement must identify the products to be distributed.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.15",
+      "fails_if": [
+        "SUPPLY_GOODS_DESCRIPTION_001",
+        "CORE_PURPOSE_001"
+      ]
+    },
+    {
+      "rule_id": "DIST_REQUIRES_TERMINATION",
+      "severity": "HIGH",
+      "description": "A distribution agreement must provide for term and termination, including notice — abrupt termination of a distributorship is a frequent dispute.",
+      "statutory_reference": "Indian Contract Act 1872 – S.73",
+      "fails_if": [
+        "SERVICE_TERMINATION_001",
+        "CORE_TERMINATION_001"
+      ]
+    }
+  ]
+}

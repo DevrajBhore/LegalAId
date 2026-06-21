@@ -65,7 +65,37 @@
       "description": "Employment contracts should specify working hours in compliance with applicable labour statutes.",
       "statutory_reference": "Factories Act 1948 – S.51; Shops and Establishments Acts (State-specific)",
       "fails_if": [
-        "EMP_WORKING_HOURS_001"
+        "EMP_WORKING_HOURS_001",
+        "EMP_WORKING_HOURS_FACTORY_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_MINIMUM_WAGES",
+      "severity": "HIGH",
+      "description": "Employment contract must state wages, which may not fall below the applicable minimum wage.",
+      "statutory_reference": "Minimum Wages Act 1948; Payment of Wages Act 1936 – S.3; Code on Wages 2019",
+      "fails_if": [
+        "EMP_WAGES_001",
+        "EMPLOYMENT_COMPENSATION_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_PF_ESI",
+      "severity": "HIGH",
+      "description": "Employment contract must provide for statutory social-security contributions. Non-deduction/non-deposit of EPF is a criminal offence for the employer.",
+      "statutory_reference": "EPF & MP Act 1952 – S.14; ESI Act 1948",
+      "fails_if": [
+        "EMP_BENEFITS_001"
+      ]
+    },
+    {
+      "rule_id": "EMP_REQUIRES_GRATUITY",
+      "severity": "MEDIUM",
+      "description": "Employment contract should address gratuity / terminal benefits on cessation of employment.",
+      "statutory_reference": "Payment of Gratuity Act 1972 – S.4",
+      "fails_if": [
+        "EMP_RETIREMENT_001",
+        "EMP_FIXED_TERM_001"
       ]
     }
   ]

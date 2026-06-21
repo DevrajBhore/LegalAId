@@ -67,6 +67,22 @@
         "INDEPENDENT_CONTRACTOR_AGREEMENT",
         "SOFTWARE_DEVELOPMENT_AGREEMENT"
       ]
+    },
+    {
+      "rule_id": "CONTRACTOR_REQUIRES_INDEPENDENT_STATUS",
+      "severity": "HIGH",
+      "description": "An independent contractor agreement must state that the relationship is principal-to-contractor and not employment, to avoid misclassification and consequent labour-law liability.",
+      "statutory_reference": "Indian Contract Act 1872 – S.10; labour-law misclassification principles",
+      "fails_if": ["CORE_RELATIONSHIP_OF_PARTIES_001"],
+      "applies_to_doc_types": ["INDEPENDENT_CONTRACTOR_AGREEMENT"]
+    },
+    {
+      "rule_id": "CONTRACTOR_REQUIRES_IP_ASSIGNMENT",
+      "severity": "HIGH",
+      "description": "An independent contractor agreement should address ownership/assignment of work-product intellectual property — absent assignment, the contractor may retain copyright as first author.",
+      "statutory_reference": "Copyright Act 1957 – S.17",
+      "fails_if": ["IP_ASSIGNMENT_001", "IP_OWNERSHIP_001", "IP_CONTRACTOR_RETAINS_001"],
+      "applies_to_doc_types": ["INDEPENDENT_CONTRACTOR_AGREEMENT"]
     }
   ]
 }

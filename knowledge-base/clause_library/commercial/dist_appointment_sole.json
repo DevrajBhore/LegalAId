@@ -1,0 +1,31 @@
+{
+  "clause_id": "DIST_APPOINTMENT_SOLE_001",
+  "name": "Appointment of Distributor (Sole)",
+  "category": "SUPPLY",
+  "document_types": ["DISTRIBUTION_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Principal hereby appoints the Distributor as its sole distributor for the sale and distribution of the Products within the Territory, and the Distributor accepts such appointment on the terms of this Agreement. (a) During the term, the Principal shall not appoint any other distributor, dealer, or agent for the Products in the Territory; however, the Principal reserves the right to sell the Products directly to customers in the Territory. (b) The Distributor shall use commercially reasonable efforts to promote and sell the Products and to meet any agreed performance targets, and shall not deal in directly competing products in the Territory without the Principal's prior written consent. (c) The Distributor shall purchase the Products from the Principal and resell them in its own name and for its own account, free to determine its own resale prices. (d) Any territorial or customer restrictions shall be construed so as to comply with the Competition Act, 2002 and shall not amount to resale price maintenance or absolute territorial protection causing an appreciable adverse effect on competition. (e) The relationship is principal-to-principal on a buyer-seller basis; the Distributor is not an agent of the Principal.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "10", "note": "Valid contract — sole appointment" },
+    { "act": "Competition Act, 2002", "section": "3(4)", "note": "Vertical restraints assessed on AAEC" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Restrictions causing AAEC under Competition Act 2002 s.3(4)"],
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0",
+  "title": "Appointment of Distributor (Sole)",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Principal's direct sales eroding the distributor's market"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

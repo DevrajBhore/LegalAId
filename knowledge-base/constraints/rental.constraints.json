@@ -52,7 +52,8 @@
       "description": "Lease/rental agreements for periods exceeding 12 months must be registered. Agreement should reference this requirement.",
       "statutory_reference": "Registration Act 1908 – S.17; Transfer of Property Act 1882 – S.107",
       "fails_if": [
-        "PROP_REGISTRATION_001"
+        "PROP_REGISTRATION_001",
+        "PROP_REGISTRATION_MANDATORY_001"
       ]
     }
   ]

@@ -12,6 +12,15 @@ const clauseReviewSchema = new mongoose.Schema(
     riskLevel: { type: String, default: "medium" },
     sourceTemplate: { type: String, default: null },
     sourceDocumentName: { type: String, default: null },
+    // Provenance of the candidate: "mined" (scraped templates) or "ai-proposed".
+    source: { type: String, enum: ["mined", "ai-proposed"], default: "mined", index: true },
+    // For AI proposals: the document type it was proposed for, plus the rule that
+    // should wire it in (so promotion can stage a near-complete, wireable clause).
+    documentType: { type: String, default: null },
+    legalBasis: { type: String, default: null },
+    ruleWhen: { type: String, default: null },
+    ruleAction: { type: String, default: null },
+    proposalWhy: { type: String, default: null },
     status: {
       type: String,
       enum: ["pending", "approved", "rejected", "promoted"],

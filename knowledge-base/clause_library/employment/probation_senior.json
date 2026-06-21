@@ -1,0 +1,31 @@
+{
+  "clause_id": "EMP_PROBATION_SENIOR_001",
+  "name": "Probation Period (Senior / Leadership)",
+  "category": "EMPLOYMENT",
+  "document_types": ["EMPLOYMENT_CONTRACT", "EMPLOYMENT_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "Given the seniority of the role, the Employee shall not be subject to probation, or shall be subject only to a short confirmation period as specified in this Agreement. (a) Where no probation period is specified, the Employee's employment shall be confirmed with effect from the date of joining. (b) Where a short confirmation period is specified, it shall not exceed three (3) months, during which either Party may terminate the employment on the notice stated in this Agreement, and upon expiry the Employee shall be deemed confirmed without the need for any further communication. (c) Confirmation shall not be unreasonably withheld, and any decision not to confirm shall be communicated in writing with reasons. (d) Nothing in this clause shall reduce the statutory protections available to the Employee under applicable law, and the period of any confirmation period shall count towards continuous service for the purpose of statutory benefits.",
+  "legal_basis": [
+    { "act": "Industrial Employment (Standing Orders) Act, 1946", "section": "—", "note": "Probation/confirmation as a condition of service" },
+    { "act": "Payment of Gratuity Act, 1972", "section": "2A", "note": "Continuous service includes any confirmation period" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": ["Confirmation period used to deny statutory benefits that accrue from date of joining"],
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0",
+  "title": "Probation Period (Senior)",
+  "depends_on": [],
+  "conflicts_with": ["EMP_PROBATION_001"],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": ["Non-confirmation of a senior hire treated as termination requiring notice/dues"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

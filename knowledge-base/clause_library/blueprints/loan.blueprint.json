@@ -78,5 +78,18 @@
     "SARFAESI applicability — only for scheduled banks and NBFCs, not private lenders",
     "Stamp duty on loan agreement — varies by state and loan amount"
   ],
-  "_generated_from": "ruleset (scripts/rulesetToBlueprint.mjs)"
+  "_generated_from": "ruleset (scripts/rulesetToBlueprint.mjs)",
+  "variant_clauses": [
+    {
+      "slot": "repayment_structure",
+      "replaces": "LOAN_REPAYMENT_001",
+      "select_first_match": [
+        {
+          "clause": "LOAN_REPAYMENT_BULLET_001",
+          "when": "is_bullet_repayment == true"
+        }
+      ],
+      "default": "LOAN_REPAYMENT_001"
+    }
+  ]
 }

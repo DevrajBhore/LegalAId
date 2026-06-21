@@ -1,0 +1,54 @@
+{
+  "domain": "goods",
+  "rules": [
+    {
+      "rule_id": "GOODS_REQUIRES_DESCRIPTION",
+      "severity": "CRITICAL",
+      "description": "A contract for the sale or supply of goods must describe the goods. In a sale by description the goods must correspond with the description.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.15",
+      "fails_if": [
+        "SUPPLY_GOODS_DESCRIPTION_001",
+        "CORE_PURPOSE_001"
+      ]
+    },
+    {
+      "rule_id": "GOODS_REQUIRES_PRICE",
+      "severity": "CRITICAL",
+      "description": "A contract of sale must fix or provide a means to ascertain the price of the goods.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.9, S.10",
+      "fails_if": [
+        "SERVICE_PAYMENT_001",
+        "SUPPLY_PAYMENT_001"
+      ]
+    },
+    {
+      "rule_id": "GOODS_REQUIRES_DELIVERY",
+      "severity": "HIGH",
+      "description": "A contract for the sale/supply of goods must address delivery (mode, place, time) — the seller's duty to deliver and the buyer's to accept.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.31 to S.39",
+      "fails_if": [
+        "SUPPLY_DELIVERY_001"
+      ]
+    },
+    {
+      "rule_id": "GOODS_REQUIRES_RISK_AND_TITLE",
+      "severity": "HIGH",
+      "description": "A contract for the sale of goods should state when property (title) and risk pass from seller to buyer.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.19 to S.26",
+      "fails_if": [
+        "SUPPLY_RISK_TRANSFER_001",
+        "SUPPLY_RETENTION_OF_TITLE_001"
+      ]
+    },
+    {
+      "rule_id": "GOODS_REQUIRES_WARRANTY",
+      "severity": "MEDIUM",
+      "description": "A contract for the sale of goods should address quality/fitness — implied conditions of merchantable quality and fitness for purpose unless validly excluded.",
+      "statutory_reference": "Sale of Goods Act 1930 – S.16",
+      "fails_if": [
+        "SUPPLY_WARRANTY_001",
+        "SERVICE_WARRANTY_001"
+      ]
+    }
+  ]
+}

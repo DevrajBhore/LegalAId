@@ -44,5 +44,15 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true"
     }
+  ],
+  "variant_clauses": [
+    {
+      "slot": "guarantee_extent",
+      "replaces": "GUARANTEE_OBLIGATION_001",
+      "select_first_match": [
+        { "clause": "GUARANTEE_OBLIGATION_LIMITED_001", "when": "is_limited_guarantee == true" }
+      ],
+      "default": "GUARANTEE_OBLIGATION_001"
+    }
   ]
 }

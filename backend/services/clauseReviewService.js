@@ -122,31 +122,14 @@ export async function promoteClause({ id }) {
     throw error;
   }
 
-  const clauseId = `${row.category.toUpperCase()}_REVIEWED_${row.fingerprint
-    .slice(0, 8)
-    .toUpperCase()}`;
-
-  const stub = {
-    clause_id: clauseId,
-    name: row.clauseName || row.category,
-    category: row.category.toUpperCase(),
-    document_types: ["ALL"],
-    jurisdiction: "India",
-    text: row.text,
-    legal_basis: [{ act: "REVIEW REQUIRED", section: "TBD", note: "Fill before production use" }],
-    mandatory: false,
-    enforceability: "MEDIUM",
-    risk_level: String(row.riskLevel || "medium").toUpperCase(),
-    invalid_if: [],
-    source: row.sourceDocumentName || "scraped template (reviewed)",
-    version: "0.1.0-draft",
-    needs_legal_basis: true,
-    promoted_from_review: String(row._id),
-  };
+  const { clauseId, stub, wiringRule } = buildPromotedArtifacts(row);
 
   fs.mkdirSync(PROMOTED_DIR, { recursive: true });
   const outPath = path.join(PROMOTED_DIR, `${clauseId}.json`);
-  fs.writeFileSync(outPath, JSON.stringify(stub, null, 2) + "\n");
+  fs.writeFileSync(
+    outPath,
+    JSON.stringify(wiringRule ? { ...stub, _wiring_rule: wiringRule } : stub, null, 2) + "\n"
+  );
 
   row.status = "promoted";
   row.promotedClauseId = clauseId;
@@ -156,9 +139,82 @@ export async function promoteClause({ id }) {
     promoted: true,
     clause_id: clauseId,
     staged_path: path.relative(path.resolve(__dirname, "../.."), outPath),
-    note: "Stub written to a staging folder (not auto-loaded). Fill legal_basis and move into clause_library/ to activate.",
+    wiring_rule: wiringRule,
+    note: row.source === "ai-proposed"
+      ? "Reviewed clause + wiring rule staged in knowledge-base/clauses/_promoted/ (not auto-loaded). Move the clause file into clause_library/<family>/ and add _wiring_rule to the blueprint (or ruleset) to activate."
+      : "Stub written to a staging folder (not auto-loaded). Fill legal_basis and move into clause_library/ to activate.",
     stub,
   };
+}
+
+// Pure: build the staged clause file + wiring rule from a review row.
+// Exported for unit testing without Mongo / the filesystem.
+export function buildPromotedArtifacts(row) {
+  const clauseId = `${String(row.category).toUpperCase()}_REVIEWED_${String(row.fingerprint)
+    .slice(0, 8)
+    .toUpperCase()}`;
+  const isAi = row.source === "ai-proposed";
+  // For AI proposals the lawyer-reviewed legal basis is already present; parse the
+  // free-text "Act – Section" into the structured legal_basis the engine expects.
+  const legalBasis = isAi && row.legalBasis
+    ? parseLegalBasis(row.legalBasis)
+    : [{ act: "REVIEW REQUIRED", section: "TBD", note: "Fill before production use" }];
+
+  const stub = {
+    clause_id: clauseId,
+    name: row.clauseName || row.category,
+    category: String(row.category).toUpperCase(),
+    document_types: isAi && row.documentType ? [row.documentType] : ["ALL"],
+    jurisdiction: "India",
+    text: row.text,
+    legal_basis: legalBasis,
+    mandatory: false,
+    enforceability: "MEDIUM",
+    risk_level: String(row.riskLevel || "medium").toUpperCase(),
+    invalid_if: [],
+    source: row.sourceDocumentName || "scraped template (reviewed)",
+    version: "0.1.0-draft",
+    review_status: "approved-pending-activation",
+    needs_legal_basis: !(isAi && row.legalBasis),
+    promoted_from_review: String(row._id),
+  };
+
+  // The blueprint rule needed to wire this clause in — so activation is a copy,
+  // not a re-derivation. (AI proposals carry the when/action; mined ones don't.)
+  const wiringRule = isAi && row.ruleWhen
+    ? {
+        document_type: row.documentType,
+        action: row.ruleAction || "add",
+        clause: clauseId,
+        ...(String(row.ruleAction) === "replace"
+          ? { slot: `${String(row.category).toLowerCase()}_variant`, replaces: "REVIEW_TARGET_CLAUSE_ID" }
+          : { include_if: row.ruleWhen }),
+        why: row.proposalWhy || undefined,
+        review_status: "draft-needs-legal-review",
+      }
+    : null;
+
+  return { clauseId, stub, wiringRule };
+}
+
+// Parse a free-text legal basis like "Indian Contract Act, 1872 – S.27; IT Act 2000 – S.43A"
+// into the structured [{act, section, note}] form the clause schema uses.
+function parseLegalBasis(raw) {
+  return String(raw)
+    .split(/;|\band\b/i)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      // Require an explicit section marker (S. / Sec. / Section) so we don't
+      // mistake a year ("...Act, 1872") for a section number.
+      const m = part.match(
+        /^(.+?)[\s,]*(?:–|-|—)?\s*(?:S\.?|Sec\.?|Section)\s*([0-9][0-9A-Za-z().]*)\s*$/i
+      );
+      const stripTail = (s) => s.replace(/[–\-—,\s]+$/, "").trim();
+      if (m) return { act: stripTail(m[1]), section: m[2].trim(), note: "" };
+      return { act: stripTail(part), section: "", note: "" };
+    })
+    .slice(0, 6);
 }
 
 function serialize(row) {
@@ -173,6 +229,12 @@ function serialize(row) {
     reviewedAt: row.reviewedAt,
     promotedClauseId: row.promotedClauseId,
     sourceDocumentName: row.sourceDocumentName,
+    source: row.source || "mined",
+    documentType: row.documentType || null,
+    legalBasis: row.legalBasis || null,
+    ruleWhen: row.ruleWhen || null,
+    ruleAction: row.ruleAction || null,
+    proposalWhy: row.proposalWhy || null,
     textPreview: String(row.text || "").slice(0, 240),
     text: String(row.text || ""),
   };

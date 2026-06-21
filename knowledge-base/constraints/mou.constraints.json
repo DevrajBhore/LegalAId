@@ -1,0 +1,19 @@
+{
+  "domain": "mou",
+  "rules": [
+    {
+      "rule_id": "MOU_REQUIRES_PURPOSE",
+      "severity": "CRITICAL",
+      "description": "A memorandum of understanding must state the purpose and scope of the proposed understanding or collaboration.",
+      "statutory_reference": "Indian Contract Act 1872 – S.10",
+      "fails_if": ["CORE_PURPOSE_001"]
+    },
+    {
+      "rule_id": "MOU_REQUIRES_BINDING_NATURE",
+      "severity": "HIGH",
+      "description": "A memorandum of understanding must make clear whether it is legally binding or non-binding, to avoid the 'agreement to agree' uncertainty.",
+      "statutory_reference": "Indian Contract Act 1872 – S.10, S.29",
+      "fails_if": ["MOU_NON_BINDING_001", "MOU_BINDING_001"]
+    }
+  ]
+}

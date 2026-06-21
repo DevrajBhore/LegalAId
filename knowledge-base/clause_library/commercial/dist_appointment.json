@@ -1,0 +1,31 @@
+{
+  "clause_id": "DIST_APPOINTMENT_001",
+  "name": "Appointment of Distributor (Non-Exclusive)",
+  "category": "SUPPLY",
+  "document_types": ["DISTRIBUTION_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Principal hereby appoints the Distributor as its non-exclusive distributor for the sale and distribution of the Products within the Territory, and the Distributor accepts such appointment on the terms of this Agreement. (a) The appointment is non-exclusive, and the Principal expressly reserves the right, in its sole discretion, to appoint other distributors, dealers, or agents for the Products in the Territory and to sell the Products directly to any customer in the Territory. (b) The Distributor shall purchase the Products from the Principal and resell them in its own name and for its own account, and shall be free to determine its own resale prices. (c) The Distributor shall use commercially reasonable efforts to promote, market, and sell the Products in the Territory and to maintain adequate stocks, sales organisation, and after-sales support. (d) The relationship between the Parties is that of independent principal-to-principal on a buyer-seller basis; the Distributor is not an agent of the Principal and shall not pledge the Principal's credit, make any representation, or assume any obligation on the Principal's behalf.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "10", "note": "Valid contract — appointment and acceptance" },
+    { "act": "Sale of Goods Act, 1930", "section": "—", "note": "Distributor resells on a principal-to-principal basis" }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Appointment so framed as to make the distributor an agent while denying agency protections"],
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0",
+  "title": "Appointment of Distributor",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["SUPPLY_GOODS_DESCRIPTION_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": ["Distributor claims de-facto exclusivity", "Agency vs distributorship characterisation on termination"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -1,0 +1,31 @@
+{
+  "clause_id": "MOU_BINDING_001",
+  "name": "Legally Binding Nature",
+  "category": "PURPOSE",
+  "document_types": ["MOU"],
+  "jurisdiction": "India",
+  "text": "The Parties intend this Memorandum of Understanding to be a legally binding and enforceable agreement and to create legal relations between them. (a) Each Party acknowledges that the obligations recorded herein are made with the intention to be legally bound and are supported by good and valuable consideration, the receipt and sufficiency of which are acknowledged. (b) The provisions of this Memorandum relating to confidentiality, exclusivity (if any), intellectual property, governing law, dispute resolution, and the obligations expressly stated to be binding shall be enforceable in accordance with their terms. (c) Where the Parties contemplate executing a more detailed definitive agreement, this Memorandum shall remain binding and in full force until superseded by such definitive agreement duly executed by the Parties, and the absence of a definitive agreement shall not render the binding obligations herein unenforceable. (d) This Memorandum constitutes a valid contract under Section 10 of the Indian Contract Act, 1872, the Parties being competent to contract, with free consent, for a lawful consideration and object.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "10", "note": "Essentials of a valid, enforceable contract" },
+    { "act": "Indian Contract Act, 1872", "section": "2(h)", "note": "Agreement enforceable by law is a contract" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["MOU labelled binding but lacks consideration or certainty of terms"],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Legally Binding Nature",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": ["MOU_NON_BINDING_001"],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Party argues MOU was merely an agreement to agree", "Certainty of essential terms challenged"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

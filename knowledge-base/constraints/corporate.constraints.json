@@ -28,6 +28,46 @@
         "CORE_DISPUTE_RESOLUTION_001",
         "CORE_ARBITRATION_001"
       ]
+    },
+    {
+      "rule_id": "PARTNERSHIP_REQUIRES_CAPITAL",
+      "severity": "HIGH",
+      "applies_to_doc_types": ["PARTNERSHIP"],
+      "description": "A partnership deed must state each partner's capital contribution and the profit/loss sharing arrangement.",
+      "statutory_reference": "Indian Partnership Act 1932 – S.4, S.13",
+      "fails_if": ["PARTNERSHIP_CAPITAL_001"]
+    },
+    {
+      "rule_id": "PARTNERSHIP_REQUIRES_DISSOLUTION",
+      "severity": "MEDIUM",
+      "applies_to_doc_types": ["PARTNERSHIP"],
+      "description": "A partnership deed should provide for dissolution / cessation and settlement of accounts.",
+      "statutory_reference": "Indian Partnership Act 1932 – S.39 to S.44",
+      "fails_if": ["CORE_TERMINATION_001", "PARTNERSHIP_DISSOLUTION_001"]
+    },
+    {
+      "rule_id": "JV_REQUIRES_CONTRIBUTION",
+      "severity": "HIGH",
+      "applies_to_doc_types": ["JOINT_VENTURE"],
+      "description": "A joint venture agreement must state each party's contribution (capital, assets, or resources).",
+      "statutory_reference": "Indian Contract Act 1872 – S.10; Companies Act 2013",
+      "fails_if": ["JV_CONTRIBUTION_001", "JV_CONTRIBUTION_EQUITY_001"]
+    },
+    {
+      "rule_id": "JV_REQUIRES_GOVERNANCE",
+      "severity": "HIGH",
+      "applies_to_doc_types": ["JOINT_VENTURE"],
+      "description": "A joint venture agreement must define management, control, and decision-making (board, reserved matters, deadlock).",
+      "statutory_reference": "Companies Act 2013 – S.166; partnership/JV governance principles",
+      "fails_if": ["JV_GOVERNANCE_001"]
+    },
+    {
+      "rule_id": "JV_REQUIRES_EXIT",
+      "severity": "MEDIUM",
+      "applies_to_doc_types": ["JOINT_VENTURE"],
+      "description": "A joint venture agreement should provide for exit, transfer of interest, and termination.",
+      "statutory_reference": "Indian Contract Act 1872 – S.73",
+      "fails_if": ["JV_EXIT_001", "CORE_TERMINATION_001"]
     }
   ]
 }

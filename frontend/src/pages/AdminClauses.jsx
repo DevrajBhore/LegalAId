@@ -209,8 +209,23 @@ export default function AdminClauses() {
                   <div className="admin-review-top">
                     <span className="admin-review-cat">{r.category}</span>
                     {r.clauseName && <span className="admin-review-name">{r.clauseName}</span>}
+                    <span className={`admin-kind admin-kind--${r.source === "ai-proposed" ? "draft" : "reuse"}`}>
+                      {r.source === "ai-proposed" ? "AI proposal" : "mined"}
+                    </span>
                     <span className={`admin-status admin-status--${r.status}`}>{r.status}</span>
                   </div>
+                  {r.source === "ai-proposed" && (
+                    <div className="admin-review-meta">
+                      {r.documentType && <span className="admin-meta-item">for {r.documentType}</span>}
+                      {r.legalBasis && <span className="admin-meta-item">📖 {r.legalBasis}</span>}
+                      {r.ruleWhen && (
+                        <span className="admin-meta-item">
+                          wires as: {r.ruleAction || "add"} when <code>{r.ruleWhen}</code>
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  {r.proposalWhy && <p className="admin-review-why">{r.proposalWhy}</p>}
                   <p className={`admin-review-preview${expanded.has(r.id) ? " admin-review-preview--full" : ""}`}>
                     {expanded.has(r.id) ? r.text : r.textPreview}
                   </p>

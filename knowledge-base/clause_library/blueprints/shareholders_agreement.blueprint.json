@@ -78,5 +78,15 @@
     "Stamp duty — SHA must be properly stamped under applicable State Stamp Act",
     "RBI FDI circular — SHA with foreign shareholders must comply with FDI policy and sectoral caps",
     "Competition Act 2002 S.6 — transactions above threshold require CCI approval"
+  ],
+  "variant_clauses": [
+    {
+      "slot": "governance_control",
+      "replaces": "CORP_BOARD_COMPOSITION_001",
+      "select_first_match": [
+        { "clause": "CORP_BOARD_INVESTOR_CONTROL_001", "when": "is_investor_controlled == true" }
+      ],
+      "default": "CORP_BOARD_COMPOSITION_001"
+    }
   ]
 }

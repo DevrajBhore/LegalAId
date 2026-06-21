@@ -40,11 +40,11 @@
   ],
   "conflicts_with": [],
   "required_with": [
-    "RENTAL_TERMINATION_001",
-    "PROP_REGISTRATION_001"
+    "RENTAL_TERMINATION_001"
   ],
   "suggested_with": [
-    "RENT_LOCKIN_PERIOD_001"
+    "RENT_LOCKIN_PERIOD_001",
+    "PROP_REGISTRATION_001"
   ],
   "jurisdiction_constraints": {
     "general": "Leases for >12 months require compulsory registration (Registration Act 1908 S.17); standard practice is 11-month leave & licence to avoid registration"

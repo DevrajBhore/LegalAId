@@ -1,0 +1,35 @@
+{
+  "clause_id": "DIST_APPOINTMENT_EXCLUSIVE_001",
+  "name": "Appointment of Distributor (Exclusive)",
+  "category": "SUPPLY",
+  "document_types": ["DISTRIBUTION_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The Principal hereby appoints the Distributor as its sole and exclusive distributor for the sale and distribution of the Products within the Territory, and the Distributor accepts such appointment on the terms of this Agreement. (a) During the term, the Principal shall not appoint any other distributor, dealer, or agent for the Products in the Territory, and shall not itself sell the Products directly to customers in the Territory, save for any reserved accounts expressly listed in the Schedule. (b) In consideration of such exclusivity, the Distributor shall not, during the term, manufacture, distribute, market, or deal in any products that directly compete with the Products in the Territory without the Principal's prior written consent, and shall use its best efforts to promote and maximise sales of the Products and to meet any agreed minimum purchase or performance targets. (c) The Distributor shall purchase the Products from the Principal and resell them in its own name and for its own account, and shall remain free to determine its own resale prices. (d) The exclusivity and any territorial or customer restrictions in this Agreement are intended to be no wider than reasonably necessary to protect the Parties' legitimate interests and shall be read and applied so as to comply with the Competition Act, 2002; in particular they shall not operate as resale price maintenance or as an absolute territorial protection that causes an appreciable adverse effect on competition. (e) The relationship is principal-to-principal on a buyer-seller basis; the Distributor is not an agent of the Principal.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "10", "note": "Valid contract — exclusive appointment" },
+    { "act": "Competition Act, 2002", "section": "3(4)", "note": "Vertical restraints — exclusive distribution assessed on AAEC; restrictions must be reasonable" },
+    { "act": "Indian Contract Act, 1872", "section": "27", "note": "Restraint on the distributor limited to the term (in-term exclusivity enforceable)" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Exclusivity drafted as absolute territorial protection / resale price maintenance causing AAEC under Competition Act 2002 s.3(4)",
+    "Post-term restraint on the distributor (void under ICA s.27)"
+  ],
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0",
+  "title": "Appointment of Distributor (Exclusive)",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["DIST_COMPETITION_COMPLIANCE_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["CCI scrutiny of exclusivity / RPM", "Direct sales by principal into the exclusive territory"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

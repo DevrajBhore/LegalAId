@@ -258,14 +258,15 @@
       "reference": "Competition Act 2002 – S.3",
       "suggestion": "Remove any price-fixing, market-sharing, bid-rigging or output limitation provisions which are per se void under S.3(3).",
       "patterns": [
-        "fix.*price.*competitor",
-        "agree.*not.*to.*compete.*price",
-        "divide.*market.*between.*parties",
-        "coordinate.*bid.*with",
-        "restrict.*output.*in.*agreement.*with",
-        "price.*fix",
-        "cartel.*agreement",
-        "collud.*on.*price"
+        "fix[^.]*price[^.]*competitor",
+        "agree[^.]*not to compete[^.]*price",
+        "divide[^.]*market[^.]*between[^.]*parties",
+        "coordinate[^.]*bid[^.]*with",
+        "restrict[^.]*output[^.]*in agreement[^.]*with",
+        "fix[^.]*the price",
+        "price[ -]fixing",
+        "cartel",
+        "collud[^.]*price"
       ],
       "blocks_generation": true,
       "context": "PRESENCE"

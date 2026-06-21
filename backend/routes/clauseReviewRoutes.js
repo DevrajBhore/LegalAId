@@ -8,6 +8,10 @@ import {
 
 const router = express.Router();
 
+// NOTE: AI gap-detection (propose missing protections → queue) is exposed at
+// POST /admin/clause-authoring/propose (index.js), which carries the aiLimiter.
+// This router owns the review/promote half of the flywheel.
+
 // GET /admin/clause-reviews?status=pending&category=termination
 router.get("/", async (req, res) => {
   try {

@@ -8,6 +8,7 @@
       "statutory_reference": "Copyright Act 1957 – S.17; Patents Act 1970 – S.68",
       "fails_if": [
         "IP_OWNERSHIP_001",
+        "IP_DEVELOPER_RETAINS_001",
         "IP_ASSIGNMENT_001",
         "EMP_IP_ASSIGNMENT_001",
         "IP_LICENSE_001"
@@ -21,6 +22,7 @@
       "fails_if": [
         "IP_LICENSE_001",
         "IP_OWNERSHIP_001",
+        "IP_DEVELOPER_RETAINS_001",
         "IP_ASSIGNMENT_001",
         "CORE_PURPOSE_001"
       ]

@@ -132,6 +132,14 @@ Return strict JSON:
           charLength: p.draft_clause_text.length,
           riskLevel: "medium",
           sourceDocumentName: `AI authoring proposal for ${canonical}`,
+          // Carry the AI's proposed wiring + basis so promotion can stage a
+          // near-complete clause + the rule needed to add it to the blueprint.
+          source: "ai-proposed",
+          documentType: canonical,
+          legalBasis: p.legal_basis || null,
+          ruleWhen: p.rule_when || null,
+          ruleAction: p.rule_action || null,
+          proposalWhy: p.why || null,
           status: "pending",
         });
         queued += 1;

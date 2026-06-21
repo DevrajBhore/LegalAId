@@ -2024,8 +2024,12 @@ export function applyDocumentHardening(draft, input = {}) {
   );
   const existingClauseIds = new Set(baseClauses.map((clause) => clause.clause_id));
 
+  // Clauses a variant slot deliberately swapped out must not be re-injected as a
+  // "missing required" clause (its replacement already covers the role).
+  const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
+
   const extraClauses = requiredClauseIds
-    .filter((clauseId) => !existingClauseIds.has(clauseId))
+    .filter((clauseId) => !existingClauseIds.has(clauseId) && !replacedClauseIds.has(clauseId))
     .map((clauseId) => cloneClauseForDraft(clauseId, variables));
 
   const clauses = [...baseClauses, ...extraClauses].map((clause) =>
@@ -2078,8 +2082,11 @@ function findUnresolvedScheduleReferenceIssues(draft) {
 function findMissingRequiredClauseIssues(draft, documentType) {
   const requiredClauseIds = getRequiredHardeningClauseIds(documentType);
   const existingClauseIds = new Set((draft.clauses || []).map((clause) => clause.clause_id));
+  // A clause a variant slot deliberately swapped out is not "missing" — its
+  // replacement is present and covers the role.
+  const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
   return requiredClauseIds
-    .filter((clauseId) => !existingClauseIds.has(clauseId))
+    .filter((clauseId) => !existingClauseIds.has(clauseId) && !replacedClauseIds.has(clauseId))
     .map((clauseId) =>
       buildIssue(
         `MISSING_REQUIRED_CLAUSE_${clauseId}`,

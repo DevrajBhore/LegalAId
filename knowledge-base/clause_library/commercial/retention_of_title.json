@@ -1,0 +1,45 @@
+{
+  "clause_id": "SUPPLY_RETENTION_OF_TITLE_001",
+  "name": "Retention of Title and Passing of Risk",
+  "category": "SUPPLY",
+  "document_types": [
+    "SALES_OF_GOODS_AGREEMENT",
+    "SUPPLY_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Risk and title in the Goods shall pass as follows: (a) RISK — risk of loss of or damage to the Goods shall pass to the Buyer upon delivery of the Goods at the agreed delivery point, and the Buyer shall insure the Goods against all risks from delivery until title passes. (b) RETENTION OF TITLE — notwithstanding delivery and the passing of risk, legal and beneficial ownership of, and title to, the Goods shall remain with the Seller and shall not pass to the Buyer until the Seller has received payment in full, in cleared funds, of the price of the Goods and of all other sums then due from the Buyer to the Seller on any account. (c) Until title passes, the Buyer shall hold the Goods as bailee of the Seller, shall store them separately and in a manner enabling them to be identified as the Seller's property, and shall not pledge, charge, or otherwise encumber them. (d) The Seller reserves the right of disposal of the Goods until the conditions in this clause are fulfilled, in accordance with Section 25 of the Sale of Goods Act, 1930, and may, upon the Buyer's default in payment or insolvency, repossess and resell the Goods, for which purpose the Buyer grants the Seller and its agents an irrevocable licence to enter any premises where the Goods are stored. (e) Nothing in this clause shall entitle the Buyer to return the Goods or delay payment, and the price shall remain payable notwithstanding that title has not passed.",
+  "legal_basis": [
+    { "act": "Sale of Goods Act, 1930", "section": "25", "note": "Reservation of right of disposal — seller may retain title until conditions fulfilled" },
+    { "act": "Sale of Goods Act, 1930", "section": "26", "note": "Risk prima facie passes with property, but parties may agree otherwise (risk on delivery, title on payment)" },
+    { "act": "Sale of Goods Act, 1930", "section": "19", "note": "Property passes when the parties intend it to pass" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Goods are commingled/processed so as to lose identity, defeating the retention-of-title claim",
+    "Clause used to claim a charge over proceeds without registration where required"
+  ],
+  "source": "Sale of Goods Act, 1930",
+  "version": "1.0",
+  "title": "Retention of Title and Risk",
+  "depends_on": [
+    "SUPPLY_GOODS_DESCRIPTION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SERVICE_PAYMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Buyer insolvency — seller asserts title over unpaid goods against the liquidator",
+    "Goods commingled or resold — tracing into proceeds disputed"
+  ],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -1,0 +1,31 @@
+{
+  "clause_id": "LOAN_REPAYMENT_BULLET_001",
+  "name": "Repayment — Bullet / Balloon",
+  "category": "FINANCE",
+  "document_types": ["LOAN_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "This is a bullet (balloon) facility. The Borrower shall repay the entire Principal Amount in a single lump sum on the Maturity Date, and there shall be no scheduled amortisation of principal prior thereto. (a) Interest on the outstanding Principal Amount shall accrue and be paid by the Borrower periodically on each interest payment date specified in this Agreement until the Maturity Date, when all accrued and unpaid interest shall also fall due together with the Principal Amount. (b) The Borrower may, subject to the prepayment terms of this Agreement, prepay the Principal Amount in whole or in part before the Maturity Date. (c) Time shall be of the essence in respect of repayment, and any failure to repay the Principal Amount in full on the Maturity Date shall constitute an Event of Default entitling the Lender to exercise its rights under this Agreement. (d) All payments shall be made in Indian Rupees in immediately available cleared funds to the account notified by the Lender, free of any set-off or counterclaim and without deduction save as required by law.",
+  "legal_basis": [
+    { "act": "Indian Contract Act, 1872", "section": "55", "note": "Time as essence — repayment on the maturity date" },
+    { "act": "Indian Contract Act, 1872", "section": "37", "note": "Obligation to perform — repay principal on maturity" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Interest rate rendering the facility usurious under the Usurious Loans Act 1918"],
+  "source": "LegalAId Knowledge Base",
+  "version": "1.0",
+  "title": "Repayment (Bullet)",
+  "depends_on": ["LOAN_AMOUNT_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["LOAN_INTEREST_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Borrower unable to refinance the balloon at maturity", "Acceleration on missed bullet payment"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

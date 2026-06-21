@@ -1,0 +1,32 @@
+{
+  "clause_id": "CORP_BOARD_INVESTOR_CONTROL_001",
+  "name": "Board Composition and Reserved Matters — Investor-Protective",
+  "category": "CORPORATE",
+  "document_types": ["SHAREHOLDERS_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "The governance of the Company shall reflect the protective rights agreed in favour of the Investor(s), and the board composition shall be {{board_structure}}. (a) The Board of Directors shall comprise such number of Directors as agreed; each Investor holding not less than the agreed threshold shall be entitled to nominate at least one Investor Director, and the quorum for any Board meeting shall require the presence of at least one Investor Director (subject to adjournment provisions where an Investor Director is absent from successive meetings). (b) Notwithstanding any other provision, none of the matters listed as Reserved Matters (including {{reserved_matters}}, and any change to the charter documents, share capital, business plan, related-party transactions, incurrence of indebtedness above agreed thresholds, winding up, or any merger, acquisition, or disposal of material assets) shall be undertaken by the Company or its Board without the prior written affirmative consent of the Investor(s) or the Investor Director(s). (c) The Investor(s) shall have customary information and inspection rights, including audited and management accounts, and access to the books and records of the Company. (d) These rights are intended to operate within the framework of the Companies Act, 2013, and shall, to the extent required, be incorporated into the Articles of Association of the Company; in the event of any conflict between this Agreement and the Articles as between the Shareholders, this Agreement shall prevail and the Shareholders shall procure amendment of the Articles accordingly.",
+  "legal_basis": [
+    { "act": "Companies Act, 2013", "section": "166", "note": "Duties of directors; reserved matters operate around board powers" },
+    { "act": "Companies Act, 2013", "section": "6", "note": "Act overrides the Articles/Memorandum to the extent repugnant" },
+    { "act": "Companies Act, 2013", "section": "58/59", "note": "Enforceability of share-transfer / affirmative-vote arrangements" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Reserved matters or veto rights that contravene the Companies Act or oppress minority unfairly", "SHA terms not reflected in the Articles where required for enforceability against the company"],
+  "source": "Companies Act, 2013",
+  "version": "1.0",
+  "title": "Board and Reserved Matters (Investor-Protective)",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": ["CORP_BOARD_COMPOSITION_001"],
+  "required_with": [],
+  "suggested_with": ["CORP_DEADLOCK_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Whether a Reserved Matter veto amounts to oppression/mismanagement", "SHA vs Articles conflict and enforceability against the company"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

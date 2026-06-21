@@ -93,7 +93,7 @@ export const DOCUMENT_TYPE_REGISTRY = {
   SUPPLY_AGREEMENT: {
     displayName: "Supply Agreement",
     family: "CONTRACTS",
-    domains: ["contract", "service"],
+    domains: ["contract", "service", "goods"],
     categories: [
       "IDENTITY",
       "PURPOSE",
@@ -110,7 +110,7 @@ export const DOCUMENT_TYPE_REGISTRY = {
   DISTRIBUTION_AGREEMENT: {
     displayName: "Distribution Agreement",
     family: "CONTRACTS",
-    domains: ["contract", "service"],
+    domains: ["contract", "service", "distribution"],
     categories: [
       "IDENTITY",
       "PURPOSE",
@@ -127,7 +127,7 @@ export const DOCUMENT_TYPE_REGISTRY = {
   SALES_OF_GOODS_AGREEMENT: {
     displayName: "Sale of Goods Agreement",
     family: "CONTRACTS",
-    domains: ["contract", "service"],
+    domains: ["contract", "goods"],
     categories: [
       "IDENTITY",
       "PURPOSE",
@@ -177,7 +177,7 @@ export const DOCUMENT_TYPE_REGISTRY = {
   MOU: {
     displayName: "Memorandum of Understanding",
     family: "CONTRACTS",
-    domains: ["contract"],
+    domains: ["contract", "mou"],
     categories: ["IDENTITY", "PURPOSE", "GOVERNING_LAW", "SIGNATURE_BLOCK"],
     stampDuty: true,
     registration: false,
@@ -222,6 +222,26 @@ export const DOCUMENT_TYPE_REGISTRY = {
 
   EMPLOYMENT_AGREEMENT: {
     displayName: "Employment Agreement",
+    family: "EMPLOYMENT",
+    domains: ["contract", "employment"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "CONSIDERATION",
+      "TERM",
+      "TERMINATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: true,
+    registration: false,
+  },
+
+  // Alias: the product/document_type is EMPLOYMENT_CONTRACT, but the IRE registry
+  // was keyed only on EMPLOYMENT_AGREEMENT — so getDocumentTypeInfo fell back to
+  // ["contract"] and the "employment" statutory-constraint domain never loaded.
+  EMPLOYMENT_CONTRACT: {
+    displayName: "Employment Contract",
     family: "EMPLOYMENT",
     domains: ["contract", "employment"],
     categories: [

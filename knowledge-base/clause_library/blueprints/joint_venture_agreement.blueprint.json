@@ -70,5 +70,15 @@
     "FDI Policy — if foreign partner involved, comply with sector-specific FDI caps",
     "FEMA — equity dilution and fund flows between Indian and foreign JV partners",
     "Companies Act 2013 — if JV is incorporated as company, SHA provisions cannot override Companies Act"
+  ],
+  "variant_clauses": [
+    {
+      "slot": "jv_contribution_type",
+      "replaces": "JV_CONTRIBUTION_001",
+      "select_first_match": [
+        { "clause": "JV_CONTRIBUTION_EQUITY_001", "when": "jv_involves_equity == true" }
+      ],
+      "default": "JV_CONTRIBUTION_001"
+    }
   ]
 }

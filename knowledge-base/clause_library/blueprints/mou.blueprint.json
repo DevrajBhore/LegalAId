@@ -44,5 +44,15 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true"
     }
+  ],
+  "variant_clauses": [
+    {
+      "slot": "mou_binding_nature",
+      "replaces": "MOU_NON_BINDING_001",
+      "select_first_match": [
+        { "clause": "MOU_BINDING_001", "when": "is_binding_mou == true" }
+      ],
+      "default": "MOU_NON_BINDING_001"
+    }
   ]
 }

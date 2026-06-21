@@ -177,6 +177,26 @@ export function deriveGenerationControls(documentType, variables = {}) {
       seniority.includes("exec");
   }
 
+  // Fixed-term employment (IR Code / IESO Rules 2018) — distinct term, non-renewal
+  // treatment, and pro-rata gratuity. Derived from the termination-structure enum.
+  const terminationType = normalizeText(variables.employment_termination_type).toLowerCase();
+  if (terminationType) {
+    derived.is_fixed_term = terminationType.includes("fixed");
+  }
+
+  // Factory vs shop/office workplace selects the stricter Factories Act, 1948
+  // working-hours regime (variant slot working_hours_regime).
+  const workplaceType = normalizeText(variables.workplace_type).toLowerCase();
+  if (workplaceType) {
+    derived.is_factory = workplaceType.includes("factory");
+  }
+
+  // ESOP / variable pay clause (Companies Act s.62; SEBI SBEB) — opt-in.
+  const explicitEsop = normalizeBooleanLike(variables.has_esop_or_variable_pay);
+  if (explicitEsop !== null) {
+    derived.has_esop_or_variable_pay = explicitEsop;
+  }
+
   // Secured vs unsecured loan: a security clause must only appear when there is
   // actual collateral. Explicit flag wins; otherwise infer from collateral.
   const explicitSecured = normalizeBooleanLike(
@@ -213,6 +233,106 @@ export function deriveGenerationControls(documentType, variables = {}) {
   const explicitCompanyIp = normalizeBooleanLike(variables.company_has_ip_assets);
   if (explicitCompanyIp !== null) {
     derived.company_has_ip_assets = explicitCompanyIp;
+  }
+
+  // Loan repayment structure: amortising (default) vs bullet/balloon.
+  const repaymentStructure = normalizeText(variables.repayment_structure).toLowerCase();
+  if (repaymentStructure) {
+    derived.is_bullet_repayment =
+      repaymentStructure.includes("bullet") || repaymentStructure.includes("balloon");
+  }
+
+  // Guarantee extent: unlimited (default, co-extensive) vs limited/capped.
+  const guaranteeExtent = normalizeText(variables.guarantee_extent).toLowerCase();
+  if (guaranteeExtent) {
+    derived.is_limited_guarantee =
+      (guaranteeExtent.includes("limit") && !guaranteeExtent.includes("unlimit")) ||
+      guaranteeExtent.includes("cap");
+  }
+
+  // Software IP ownership: client owns (default) vs developer retains + licenses.
+  // Reads the existing `ip_ownership` select.
+  const ipOwnership = normalizeText(variables.ip_ownership).toLowerCase();
+  if (ipOwnership) {
+    derived.is_developer_ip =
+      ipOwnership.includes("developer retains") || ipOwnership.includes("contractor retains");
+  }
+
+  // Shareholders governance posture: founder-controlled (default) vs investor-protective.
+  const governanceControl = normalizeText(variables.governance_control).toLowerCase();
+  if (governanceControl) {
+    derived.is_investor_controlled =
+      governanceControl.includes("investor") || governanceControl.includes("protective");
+  }
+
+  // MOU binding nature: non-binding (default) vs legally binding. Reads the
+  // existing `binding_nature` intake field (Non-binding / Binding / Partly
+  // binding); "Binding" or "Partly binding" select the binding-nature variant.
+  const mouBinding = normalizeText(variables.binding_nature ?? variables.mou_binding).toLowerCase();
+  const explicitBindingMou = normalizeBooleanLike(variables.is_binding_mou);
+  if (mouBinding || explicitBindingMou !== null) {
+    derived.is_binding_mou =
+      explicitBindingMou !== null
+        ? explicitBindingMou
+        : mouBinding.includes("binding") && !mouBinding.startsWith("non");
+  }
+
+  // Lease/leave-and-license term (in months) → registration regime. A lease
+  // exceeding one year is compulsorily registrable (Registration Act, 1908 s.17;
+  // TPA s.107), so it gets the stronger mandatory-registration variant; a long
+  // term also warrants force-majeure cover (previously a dead `long_term_lease`).
+  // Sale/supply of goods: retention of title (Romalpa) — title stays with the
+  // seller until full payment even though risk passes on delivery. Explicit, or
+  // implied when the buyer pays on credit / deferred terms (the seller's security).
+  const explicitRetention = normalizeBooleanLike(variables.retention_of_title);
+  if (explicitRetention !== null) {
+    derived.retention_of_title = explicitRetention;
+  } else {
+    const paymentTiming = normalizeText(
+      variables.title_transfer ?? variables.payment_timing ?? variables.payment_terms
+    ).toLowerCase();
+    if (paymentTiming) {
+      derived.retention_of_title =
+        paymentTiming.includes("full payment") ||
+        paymentTiming.includes("credit") ||
+        paymentTiming.includes("deferred");
+    }
+  }
+
+  // Buyer's right to inspect and reject non-conforming goods (SoGA s.41).
+  const explicitInspection = normalizeBooleanLike(variables.include_inspection_rights);
+  if (explicitInspection !== null) {
+    derived.include_inspection_rights = explicitInspection;
+  }
+
+  // Distribution exclusivity: non-exclusive (default) / sole / exclusive. Reads
+  // the existing `exclusivity` intake field (Exclusive / Non-Exclusive /
+  // Semi-Exclusive ≈ sole); selects the appointment-clause variant and, for
+  // sole/exclusive, adds a Competition Act, 2002 compliance clause. Back-compat:
+  // legacy exclusive_territory == true.
+  const distributionType = normalizeText(
+    variables.exclusivity ?? variables.distribution_type
+  ).toLowerCase();
+  const legacyExclusive = normalizeBooleanLike(variables.exclusive_territory) === true;
+  if (distributionType || legacyExclusive) {
+    derived.is_exclusive_distribution =
+      (distributionType.includes("exclusive") &&
+        !distributionType.includes("non") &&
+        !distributionType.includes("semi")) ||
+      legacyExclusive;
+    derived.is_sole_distribution =
+      distributionType.includes("semi") || distributionType.includes("sole");
+    derived.include_competition_compliance =
+      derived.is_exclusive_distribution === true || derived.is_sole_distribution === true;
+  }
+
+  const leaseTermRaw = String(variables.lease_term ?? variables.license_term ?? "")
+    .replace(/[\s,]/g, "")
+    .match(/\d+(?:\.\d+)?/);
+  if (leaseTermRaw) {
+    const leaseMonths = Number(leaseTermRaw[0]);
+    derived.is_registrable = leaseMonths >= 12;
+    derived.long_term_lease = leaseMonths >= 12;
   }
 
   // Moonlighting / exclusivity restriction: explicit opt-in, or implied by a

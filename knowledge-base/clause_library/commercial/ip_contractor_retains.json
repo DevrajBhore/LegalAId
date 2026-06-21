@@ -1,0 +1,31 @@
+{
+  "clause_id": "IP_CONTRACTOR_RETAINS_001",
+  "name": "IP Ownership — Contractor Retains, Licenses to Client",
+  "category": "IP",
+  "document_types": ["INDEPENDENT_CONTRACTOR_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "All Intellectual Property Rights in and to the work product, deliverables, and any pre-existing or background materials shall vest in and remain the property of the Contractor, and nothing in this Agreement shall operate to assign such rights to the Client. (a) The Contractor grants the Client a non-exclusive, non-transferable, perpetual, irrevocable licence to use the deliverables for the Client's internal business purposes, conditional upon payment in full of all fees due under this Agreement. (b) The Client shall not sub-license, resell, reverse-engineer, or create derivative works from the deliverables except as expressly permitted, and shall not remove any proprietary notices. (c) The Contractor retains the right to use the general skills, know-how, and techniques acquired in performing the services, including for other clients. (d) Any materials or data supplied by the Client remain the Client's property, who grants the Contractor a licence to use them solely to perform the services. (e) The Contractor warrants that, to the best of its knowledge, the deliverables do not infringe any third party's Intellectual Property Rights and that the licence granted is sufficient for the Client's permitted use.",
+  "legal_basis": [
+    { "act": "Copyright Act, 1957", "section": "17", "note": "Author/first owner of copyright absent assignment" },
+    { "act": "Copyright Act, 1957", "section": "30", "note": "Licence of copyright" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Client pays for bespoke work but receives an inadequate licence scope"],
+  "source": "Copyright Act, 1957",
+  "version": "1.0",
+  "title": "IP Ownership (Contractor Retains)",
+  "depends_on": [],
+  "conflicts_with": ["IP_ASSIGNMENT_001"],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Client expected to own bespoke work product", "Licence scope on non-payment / termination"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

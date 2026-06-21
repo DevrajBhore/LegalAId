@@ -117,7 +117,12 @@ function isClauseCompatibleWithDocument(clause, documentType = "") {
 // wrong (generic) clause, dropping the blueprint-required one.
 const SINGLETON_ROLE_CATEGORIES = new Set(["IDENTITY", "SIGNATURE_BLOCK"]);
 
-function resolveExplicitKbDependencies(clauses = [], variables = {}, documentType = "") {
+function resolveExplicitKbDependencies(
+  clauses = [],
+  variables = {},
+  documentType = "",
+  replacedClauseIds = new Set()
+) {
   const resolvedClauses = [...clauses];
   const existingClauseIds = new Set(
     resolvedClauses.map((clause) => String(clause.clause_id || ""))
@@ -140,6 +145,12 @@ function resolveExplicitKbDependencies(clauses = [], variables = {}, documentTyp
 
       for (const requiredClauseId of requiredClauseIds) {
         if (!requiredClauseId || existingClauseIds.has(requiredClauseId)) {
+          continue;
+        }
+
+        // Don't re-inject a clause that a variant slot deliberately swapped out
+        // (its replacement is already present and covers the role).
+        if (replacedClauseIds.has(requiredClauseId)) {
           continue;
         }
 
@@ -218,10 +229,12 @@ export function resolveDependencies(draft, input = {}) {
 
   const variables = input.variables || draft.metadata?.source_variables || {};
   const documentType = input.document_type || draft.document_type;
+  const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
   const clausesWithKbDependencies = resolveExplicitKbDependencies(
     draft.clauses,
     variables,
-    documentType
+    documentType,
+    replacedClauseIds
   );
   const clausesWithFallbacks = resolveFallbackDependencies(
     { ...draft, clauses: clausesWithKbDependencies },

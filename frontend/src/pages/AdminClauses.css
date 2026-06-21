@@ -104,6 +104,9 @@
 .admin-status--promoted { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
 .admin-review-preview { font-size: 12.5px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; margin: 6px 0 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .admin-review-src { font-size: 11px; color: rgba(255, 255, 255, 0.32); }
+.admin-review-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 2px; font-size: 11.5px; color: rgba(255, 255, 255, 0.5); }
+.admin-review-meta code { font-family: var(--font-mono); font-size: 11px; color: var(--gold); background: var(--gold-pale); padding: 1px 5px; border-radius: 4px; }
+.admin-review-why { font-size: 12px; color: rgba(255, 255, 255, 0.5); line-height: 1.45; margin: 4px 0; font-style: italic; }
 .admin-review-actions { display: flex; gap: 8px; flex-shrink: 0; }
 .admin-promoted { font-family: var(--font-mono); font-size: 12px; color: var(--green); }
 

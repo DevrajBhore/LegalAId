@@ -19,7 +19,8 @@
       "description": "Loan agreements must include a repayment schedule.",
       "statutory_reference": "Indian Contract Act 1872 – S.55",
       "fails_if": [
-        "LOAN_REPAYMENT_001"
+        "LOAN_REPAYMENT_001",
+        "LOAN_REPAYMENT_BULLET_001"
       ],
       "applies_to_doc_types": [
         "LOAN_AGREEMENT"
@@ -55,7 +56,20 @@
       "description": "Guarantee agreements must specify the guarantor's obligation in clear terms as required by ICA 1872 S.126.",
       "statutory_reference": "Indian Contract Act 1872 – S.126, S.128",
       "fails_if": [
-        "GUARANTEE_OBLIGATION_001"
+        "GUARANTEE_OBLIGATION_001",
+        "GUARANTEE_OBLIGATION_LIMITED_001"
+      ],
+      "applies_to_doc_types": [
+        "GUARANTEE_AGREEMENT"
+      ]
+    },
+    {
+      "rule_id": "FIN_GUARANTEE_REQUIRES_PARTIES",
+      "severity": "CRITICAL",
+      "description": "A contract of guarantee must identify all three parties — the surety (guarantor), the principal debtor, and the creditor.",
+      "statutory_reference": "Indian Contract Act 1872 – S.126",
+      "fails_if": [
+        "GUARANTEE_IDENTITY_001"
       ],
       "applies_to_doc_types": [
         "GUARANTEE_AGREEMENT"

@@ -1,0 +1,32 @@
+{
+  "clause_id": "JV_CONTRIBUTION_EQUITY_001",
+  "name": "Contributions — Equity / Incorporated JV",
+  "category": "CONSIDERATION",
+  "document_types": ["JOINT_VENTURE_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "This is an equity (incorporated) joint venture. The Parties shall incorporate, or cause to be incorporated, a joint venture company under the Companies Act, 2013 (the 'JV Company') to carry on the business of the joint venture, and shall make their contributions as follows. (a) Each Party shall subscribe to and pay for equity shares in the JV Company in the proportion set out in this Agreement, such that the agreed shareholding ratio is achieved, and shall execute a shareholders' agreement and adopt Articles of Association consistent with this Agreement. (b) Contributions may be made in cash or, where agreed, in kind (including assets, intellectual property, or business undertakings) at a value determined by an independent valuer in accordance with applicable law, and any contribution in kind shall be made by valid transfer or assignment to the JV Company. (c) The Parties shall procure that the JV Company issues share certificates and files the requisite returns with the Registrar of Companies, and, where any Party is a non-resident, the subscription shall comply with the Foreign Exchange Management Act, 1999 and applicable RBI pricing and reporting requirements. (d) No Party shall be obliged to provide funding beyond its agreed subscription except as expressly agreed in writing, and any further funding shall be made pro rata or as the Parties may agree, with anti-dilution protection as set out in this Agreement.",
+  "legal_basis": [
+    { "act": "Companies Act, 2013", "section": "2(68)/2(20)", "note": "Incorporation of the JV company; subscription to shares" },
+    { "act": "Companies Act, 2013", "section": "62", "note": "Further issue of capital — pre-emption / pro-rata" },
+    { "act": "Foreign Exchange Management Act, 1999", "section": "—", "note": "FDI pricing/reporting where a party is non-resident" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Contribution-in-kind valued without an independent valuer", "Non-resident subscription not compliant with FEMA pricing guidelines"],
+  "source": "Companies Act, 2013",
+  "version": "1.0",
+  "title": "Contributions (Equity JV)",
+  "depends_on": ["CORE_IDENTITY_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["JV_GOVERNANCE_001"],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["Valuation of contribution in kind", "FEMA non-compliance on cross-border subscription"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

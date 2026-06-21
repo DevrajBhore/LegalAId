@@ -221,6 +221,7 @@ function resolveClauseSelection(blueprint, documentType, variables = {}) {
 
   // Apply variant slots: each slot resolves to a single clause chosen by context.
   let clauseIds = [...requiredClauseIds];
+  const replacedClauseIds = new Set();
   for (const variant of variants) {
     const chosen = chooseVariantClause(variant, resolvedVariables);
     if (!chosen) continue;
@@ -229,6 +230,9 @@ function resolveClauseSelection(blueprint, documentType, variables = {}) {
     if (replaces && clauseIds.includes(replaces)) {
       if (chosen !== replaces) {
         clauseIds = clauseIds.map((id) => (id === replaces ? chosen : id));
+        // Record the swap so later stages (dependencyResolver) don't re-inject the
+        // replaced baseline clause via a `required_with`/`depends_on` reference.
+        replacedClauseIds.add(replaces);
       }
     } else if (!clauseIds.includes(chosen)) {
       clauseIds.push(chosen);
@@ -252,6 +256,7 @@ function resolveClauseSelection(blueprint, documentType, variables = {}) {
   return {
     ids: [...new Set([...clauseIds, ...conditionalClauseIds])],
     reasons,
+    replacedClauseIds,
   };
 }
 
@@ -449,7 +454,7 @@ export function assembleDocument(documentType, variables = {}) {
     );
   }
 
-  const { ids: clauseIds, reasons } = resolveClauseSelection(
+  const { ids: clauseIds, reasons, replacedClauseIds } = resolveClauseSelection(
     blueprint,
     documentType,
     variables
@@ -491,6 +496,7 @@ export function assembleDocument(documentType, variables = {}) {
       missing_clauses: [],
       clause_provenance: clauseProvenance,
       resolved_generation_controls: deriveGenerationControls(documentType, variables),
+      variant_replaced_clause_ids: [...replacedClauseIds],
     },
   };
 }

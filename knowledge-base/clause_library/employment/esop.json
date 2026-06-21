@@ -1,0 +1,44 @@
+{
+  "clause_id": "EMP_ESOP_001",
+  "name": "Employee Stock Options and Variable Pay",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "EMPLOYMENT_CONTRACT",
+    "EMPLOYMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In addition to fixed compensation, the Employee may be granted variable pay and/or stock options as follows: (a) Variable / Performance Pay shall be discretionary or as per the Employer's prevailing incentive policy, payable subject to the Employee's individual performance and the Employer's business performance, and shall not form part of fixed wages for the purpose of statutory contributions unless required by law. (b) Stock Options, if granted, shall be governed by the Employer's Employee Stock Option Plan (ESOP/ESOS) and the grant letter issued to the Employee, including the number of options, exercise price, and vesting schedule; options shall vest only over the period and on the conditions set out therein, with a minimum vesting period of one (1) year from the date of grant in accordance with applicable law. (c) Unvested options shall lapse on cessation of employment, and the treatment of vested options on resignation, termination, or for-cause termination shall be governed by the Plan. (d) The grant of options creates no right to continued employment and does not guarantee any particular value, the Employer making no representation as to the future value of any options or shares. (e) The Employee shall bear all taxes (including perquisite tax under the Income-tax Act, 1961) arising on exercise or sale, and the Employer may withhold or recover applicable tax. The Plan shall comply with the Companies Act, 2013 and, where applicable, SEBI (Share Based Employee Benefits) Regulations.",
+  "legal_basis": [
+    { "act": "Companies Act, 2013", "section": "62(1)(b)", "note": "Issue of shares to employees under ESOP" },
+    { "act": "Companies (Share Capital and Debentures) Rules, 2014", "section": "12", "note": "ESOP conditions; minimum 1-year vesting" },
+    { "act": "Income-tax Act, 1961", "section": "17(2)(vi)", "note": "ESOP perquisite taxation" },
+    { "act": "SEBI (Share Based Employee Benefits and Sweat Equity) Regulations, 2021", "section": "—", "note": "Applicable to listed companies" }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Vesting period less than one year contrary to Companies (Share Capital and Debentures) Rules 2014",
+    "Variable pay characterised so as to evade statutory wage / PF contributions"
+  ],
+  "source": "Companies Act, 2013; SEBI SBEB Regulations, 2021",
+  "version": "1.0",
+  "title": "ESOP and Variable Pay",
+  "depends_on": [
+    "EMPLOYMENT_COMPENSATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "MEDIUM",
+  "dispute_hotspots": [
+    "Treatment of vested options on exit — good leaver / bad leaver disputes",
+    "Variable pay withheld — claim that it formed part of guaranteed wages"
+  ],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

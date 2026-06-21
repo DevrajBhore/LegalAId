@@ -1,0 +1,32 @@
+{
+  "clause_id": "DIST_COMPETITION_COMPLIANCE_001",
+  "name": "Competition Law Compliance",
+  "category": "SUPPLY",
+  "document_types": ["DISTRIBUTION_AGREEMENT", "SUPPLY_AGREEMENT"],
+  "jurisdiction": "India",
+  "text": "Nothing in this Agreement shall require or permit either Party to act in contravention of the Competition Act, 2002. In particular: (a) the Distributor shall be free at all times to determine its own resale prices, and no provision of this Agreement shall be construed to impose minimum resale price maintenance; (b) any exclusivity, territorial allocation, or customer restriction is limited to what is reasonably necessary to protect the Parties' legitimate interests and is not intended to, and shall not, cause an appreciable adverse effect on competition within the meaning of Section 3(4) of the Act; (c) neither Party shall enter into or give effect to any tie-in arrangement, exclusive supply or distribution arrangement, or refusal to deal that forecloses or is likely to foreclose competition in the relevant market; and (d) if any restriction in this Agreement is or becomes contrary to the Act or any order of the Competition Commission of India, that restriction shall be severed or read down to the minimum extent necessary so that the remainder of this Agreement continues in full force and effect.",
+  "legal_basis": [
+    { "act": "Competition Act, 2002", "section": "3(4)", "note": "Anti-competitive vertical agreements — AAEC test" },
+    { "act": "Competition Act, 2002", "section": "3(3)", "note": "Resale price maintenance and horizontal concerns" },
+    { "act": "Competition Act, 2002", "section": "27", "note": "CCI orders / penalties for contravention" }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": ["Used as cover while operative clauses still impose RPM or absolute territorial protection"],
+  "source": "Competition Act, 2002",
+  "version": "1.0",
+  "title": "Competition Law Compliance",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": ["CCI investigation into RPM or exclusivity", "Severance of an offending restraint"],
+  "review_status": "draft-needs-legal-review",
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

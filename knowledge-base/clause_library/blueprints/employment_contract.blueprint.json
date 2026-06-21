@@ -65,8 +65,8 @@
     },
     {
       "clause": "EMP_NON_SOLICITATION_001",
-      "include_if": "include_non_compete == true",
-      "note": "Non-solicitation of clients and employees."
+      "include_if": "include_non_solicit == true",
+      "note": "Non-solicitation of clients and employees — independently selectable (more enforceable in India than a post-term non-compete)."
     },
     {
       "clause": "EMP_MOONLIGHTING_001",
@@ -97,6 +97,16 @@
       "clause": "EMP_POSH_POLICY_001",
       "include_if": "employer_headcount_ge_10 == true",
       "note": "POSH policy + Internal Committee mandatory for workplaces with 10+ employees."
+    },
+    {
+      "clause": "EMP_ESOP_001",
+      "include_if": "has_esop_or_variable_pay == true",
+      "note": "Senior/leadership and many startup hires have ESOPs / variable pay needing a dedicated, tax-aware clause."
+    },
+    {
+      "clause": "EMP_FIXED_TERM_001",
+      "include_if": "is_fixed_term == true",
+      "note": "Fixed-term employment changes term, non-renewal treatment, and grants pro-rata gratuity under the IR Code / IESO Rules 2018."
     }
   ],
   "removed_from_v2": [
@@ -120,6 +130,28 @@
         }
       ],
       "default": "EMP_CONFIDENTIALITY_001"
+    },
+    {
+      "slot": "working_hours_regime",
+      "replaces": "EMP_WORKING_HOURS_001",
+      "select_first_match": [
+        {
+          "clause": "EMP_WORKING_HOURS_FACTORY_001",
+          "when": "is_factory == true"
+        }
+      ],
+      "default": "EMP_WORKING_HOURS_001"
+    },
+    {
+      "slot": "employee_probation_strength",
+      "replaces": "EMP_PROBATION_001",
+      "select_first_match": [
+        {
+          "clause": "EMP_PROBATION_SENIOR_001",
+          "when": "is_senior_employee == true"
+        }
+      ],
+      "default": "EMP_PROBATION_001"
     }
   ]
 }

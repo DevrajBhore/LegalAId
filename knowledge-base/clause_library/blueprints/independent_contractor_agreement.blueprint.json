@@ -78,5 +78,15 @@
     "Contract Labour (Regulation and Abolition) Act 1970 — if contractor engages >20 workers, registration required",
     "EPF liability for principal employer — Supreme Court rulings on deemed employment",
     "TDS under S.194C for contracts or S.194J for professionals"
+  ],
+  "variant_clauses": [
+    {
+      "slot": "contractor_ip_ownership",
+      "replaces": "IP_ASSIGNMENT_001",
+      "select_first_match": [
+        { "clause": "IP_CONTRACTOR_RETAINS_001", "when": "is_developer_ip == true" }
+      ],
+      "default": "IP_ASSIGNMENT_001"
+    }
   ]
 }
