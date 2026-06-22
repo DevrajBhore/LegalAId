@@ -175,8 +175,20 @@ function enforceStrictSchema(node) {
   if (node && typeof node === "object") {
     const next = {};
     for (const [key, value] of Object.entries(node)) next[key] = enforceStrictSchema(value);
-    if (next.type === "object" && next.additionalProperties === undefined) {
-      next.additionalProperties = false;
+    if (next.type === "object") {
+      if (next.additionalProperties === undefined) {
+        next.additionalProperties = false;
+      }
+      // OpenAI/Groq strict json_schema mode requires EVERY property to be
+      // listed in `required` (optional fields are not allowed). Callers mark
+      // only the semantically-mandatory fields; here we promote all property
+      // keys so strict validation passes. The model returns "" for fields it
+      // has no value for, and every caller sanitizes the parsed result, so
+      // this changes nothing downstream — it only stops Groq/OpenAI from
+      // rejecting an otherwise-valid schema.
+      if (next.properties && typeof next.properties === "object") {
+        next.required = Object.keys(next.properties);
+      }
     }
     return next;
   }
