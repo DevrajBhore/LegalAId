@@ -229,7 +229,14 @@ function serialize(row) {
     reviewedAt: row.reviewedAt,
     promotedClauseId: row.promotedClauseId,
     sourceDocumentName: row.sourceDocumentName,
-    source: row.source || "mined",
+    // Prefer the explicit source; for rows queued before the `source` field
+    // existed, infer AI origin from the authoring-proposal document name so the
+    // admin badge stays accurate instead of defaulting everything to "mined".
+    source:
+      row.source ||
+      (/^AI authoring proposal/i.test(row.sourceDocumentName || "")
+        ? "ai-proposed"
+        : "mined"),
     documentType: row.documentType || null,
     legalBasis: row.legalBasis || null,
     ruleWhen: row.ruleWhen || null,
