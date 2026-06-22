@@ -74,9 +74,11 @@
 }
 .admin-proposal-top, .admin-review-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .admin-proposal-name { font-weight: 600; color: rgba(255, 255, 255, 0.9); font-size: 13.5px; }
-.admin-kind { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
-.admin-kind--reuse { color: var(--green); background: var(--green-bg); }
-.admin-kind--draft { color: var(--gold); background: var(--gold-pale); }
+.admin-kind { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 99px; border: 1px solid transparent; }
+/* Mined from a reviewed template */
+.admin-kind--mined { color: var(--green); background: var(--green-bg); border-color: var(--green); }
+/* Authored by the AI, awaiting human sign-off */
+.admin-kind--ai { color: var(--gold); background: var(--gold-pale); border-color: var(--gold); }
 .admin-proposal-why { font-size: 12.5px; color: rgba(255, 255, 255, 0.55); line-height: 1.5; margin: 6px 0; }
 .admin-proposal-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11.5px; color: rgba(255, 255, 255, 0.4); }
 

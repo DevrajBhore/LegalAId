@@ -209,8 +209,15 @@ export default function AdminClauses() {
                   <div className="admin-review-top">
                     <span className="admin-review-cat">{r.category}</span>
                     {r.clauseName && <span className="admin-review-name">{r.clauseName}</span>}
-                    <span className={`admin-kind admin-kind--${r.source === "ai-proposed" ? "draft" : "reuse"}`}>
-                      {r.source === "ai-proposed" ? "AI proposal" : "mined"}
+                    <span
+                      className={`admin-kind admin-kind--${r.source === "ai-proposed" ? "ai" : "mined"}`}
+                      title={
+                        r.source === "ai-proposed"
+                          ? "Authored by the AI and queued for your review"
+                          : "Mined from an existing reviewed template"
+                      }
+                    >
+                      {r.source === "ai-proposed" ? "🤖 AI-authored" : "⛏ Mined"}
                     </span>
                     <span className={`admin-status admin-status--${r.status}`}>{r.status}</span>
                   </div>
