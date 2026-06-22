@@ -8,7 +8,7 @@ import {
   getDocumentTypes,
 } from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import { Scales, ArrowRight } from "../utils/icons";
+import { Scales, ArrowRight, Sparkles, Search } from "../utils/icons";
 import "./AdminClauses.css";
 
 const STATUS_FILTERS = ["pending", "approved", "rejected", "promoted"];
@@ -35,7 +35,7 @@ export default function AdminClauses() {
         setDocTypes(types);
         if (types[0]) setSelectedType(types[0].type);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const loadReviews = async () => {
@@ -217,14 +217,22 @@ export default function AdminClauses() {
                           : "Mined from an existing reviewed template"
                       }
                     >
-                      {r.source === "ai-proposed" ? "🤖 AI-authored" : "⛏ Mined"}
+                      {r.source === "ai-proposed" ? (
+                        <><Sparkles size={11} /> AI-authored</>
+                      ) : (
+                        <><Search size={11} /> Mined</>
+                      )}
                     </span>
                     <span className={`admin-status admin-status--${r.status}`}>{r.status}</span>
                   </div>
                   {r.source === "ai-proposed" && (
                     <div className="admin-review-meta">
                       {r.documentType && <span className="admin-meta-item">for {r.documentType}</span>}
-                      {r.legalBasis && <span className="admin-meta-item">📖 {r.legalBasis}</span>}
+                      {r.legalBasis && (
+                        <span className="admin-meta-item">
+                          <Scales size={12} /> {r.legalBasis}
+                        </span>
+                      )}
                       {r.ruleWhen && (
                         <span className="admin-meta-item">
                           wires as: {r.ruleAction || "add"} when <code>{r.ruleWhen}</code>
@@ -294,10 +302,10 @@ export default function AdminClauses() {
                   )}
                 </div>
               </li>
-            ))}
-          </ul>
+        ))}
+      </ul>
         )}
-      </section>
-    </div>
+    </section>
+    </div >
   );
 }
