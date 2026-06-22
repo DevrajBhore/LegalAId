@@ -38,6 +38,10 @@ import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
 
 const app = express();
+// Render (and most PaaS) put the app behind a reverse proxy that sets
+// X-Forwarded-For. Trust the first proxy hop so express-rate-limit can key on
+// the real client IP instead of throwing ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+app.set("trust proxy", 1);
 const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
 
 // Restrict CORS to configured client origin(s). CLIENT_URL may be a single

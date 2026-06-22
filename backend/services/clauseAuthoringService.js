@@ -25,7 +25,18 @@ const AUTHORING_SCHEMA = {
       type: "array",
       items: {
         type: "object",
-        required: ["protection", "why", "rule_when"],
+        // OpenAI-compatible strict structured outputs (Groq) require EVERY
+        // property to be listed in `required`. Unused optional fields are
+        // returned as empty strings and treated as absent by validateProposal.
+        required: [
+          "protection",
+          "why",
+          "legal_basis",
+          "reuse_clause_id",
+          "draft_clause_text",
+          "rule_when",
+          "rule_action",
+        ],
         properties: {
           protection: { type: "string" },
           why: { type: "string" },
@@ -90,15 +101,16 @@ ${catalog}
 Propose the protections/clauses this document is MISSING and genuinely should offer
 (e.g. limitation of liability, indemnity, force majeure, dispute/arbitration, data
 protection, sector-specific compliance). For each proposal:
-- If a suitable clause already exists in the catalog, set "reuse_clause_id" to its EXACT id.
-- Otherwise draft a concise, India-law-correct clause in "draft_clause_text".
+- If a suitable clause already exists in the catalog, set "reuse_clause_id" to its EXACT id and set "draft_clause_text" to an empty string "".
+- Otherwise draft a concise, India-law-correct clause in "draft_clause_text" and set "reuse_clause_id" to an empty string "".
+- Always include every field; use an empty string "" for any field that does not apply (e.g. an unused "reuse_clause_id" or "legal_basis").
 - Give "legal_basis" (Act + section) and "rule_when" (the condition under which it
   should apply, e.g. "include_indemnity == true" or "involves_personal_data == true";
   use "always" for universally-needed clauses), and "rule_action" (add | replace).
 - Do NOT propose clauses already present. Be concise; quality over quantity.
 
 Return strict JSON:
-{ "proposals": [ { "protection": "...", "why": "...", "legal_basis": "...", "reuse_clause_id": "EXACT_ID_or_omit", "draft_clause_text": "...or omit", "rule_when": "...", "rule_action": "add" } ] }`;
+{ "proposals": [ { "protection": "...", "why": "...", "legal_basis": "...", "reuse_clause_id": "EXACT_ID_or_empty_string", "draft_clause_text": "full_clause_text_or_empty_string", "rule_when": "...", "rule_action": "add" } ] }`;
 
   const response = await callAISafetyRaw(prompt, {
     schemaName: "clause_authoring_proposals",
