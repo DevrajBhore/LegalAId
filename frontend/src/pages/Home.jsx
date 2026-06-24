@@ -91,7 +91,7 @@ export default function Home() {
             AI DRAFTING | INDIAN LEGAL KNOWLEDGE | LEGAL VALIDATION
           </div>
           <h1 className="hero-title animate-in-d1">
-            Draft legally sound
+            Draft legal
             <em className="hero-title-line2"> documents</em>
             <span className="hero-title-line2"> in minutes</span>
           </h1>
