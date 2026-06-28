@@ -5,8 +5,9 @@ import {
   getDocumentConfig,
   generateDocument,
 } from "../services/api";
-import { Icons, ChevronRight } from "../utils/icons";
+import { Icons, ChevronRight, Zap, FileText, MessageSquare, ArrowRight } from "../utils/icons";
 import InterviewPanel from "../components/InterviewPanel";
+import ConversationalIntake from "../components/ConversationalIntake";
 import "./Form.css";
 
 const STEP_LABELS = ["Fill Details", "Review Inputs", "Generate Draft"];
@@ -800,10 +801,65 @@ export default function Form() {
   const [error, setError] = useState(null);
   const [generationValidation, setGenerationValidation] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
-  const [showInterview, setShowInterview] = useState(true);
+  // The chosen entry flow, picked on a chooser screen before anything else:
+  //   "guided" = the original experience (describe-your-situation interview,
+  //              then the full detailed form)
+  //   "quick"  = straight to the form with only the essential fields
+  //   "chat"   = conversational, one question at a time
+  // null = the chooser is showing.
+  const [flow, setFlow] = useState(null);
+  const [showInterview, setShowInterview] = useState(false);
+  // Which intake style the interview stage shows: "chat" or "describe".
+  const [intakeStyle, setIntakeStyle] = useState("describe");
+  // "quick" = only essential fields are shown/required; "detailed" = full form.
+  const [mode, setMode] = useState("detailed");
+
+  // Apply a chosen flow: sets the interview stage + form detail level together.
+  const chooseFlow = (nextFlow) => {
+    setFlow(nextFlow);
+    if (nextFlow === "guided") {
+      setIntakeStyle("describe");
+      setMode("detailed");
+      setShowInterview(true);
+    } else if (nextFlow === "chat") {
+      setIntakeStyle("chat");
+      setMode("detailed");
+      setShowInterview(true);
+    } else if (nextFlow === "quick") {
+      setMode("quick");
+      setShowInterview(false);
+    }
+  };
+
+  const resetToChooser = () => {
+    setFlow(null);
+    setShowInterview(false);
+    setError(null);
+    setGenerationValidation(null);
+  };
   // Which sections are expanded. Derived fresh each time the user leaves the
   // interview: only sections that still have EMPTY required fields open.
   const [openSections, setOpenSections] = useState(() => new Set());
+
+  // Quick mode is only offered when the backend marked essential fields for
+  // this document type; otherwise we silently stay in detailed mode.
+  const quickAvailable = useMemo(
+    () => fields.some((field) => field.essential),
+    [fields]
+  );
+  const quickMode = mode === "quick" && quickAvailable;
+  // In quick mode a field is "active" (shown) only if it's essential; in
+  // detailed mode every field is active.
+  const isActiveField = useCallback(
+    (field) => (quickMode ? Boolean(field?.essential) : true),
+    [quickMode]
+  );
+  // What counts as required-to-submit: essentials in quick mode, the full
+  // required set in detailed mode. Mirrors the backend's mode-aware validation.
+  const isRequiredField = useCallback(
+    (field) => (quickMode ? Boolean(field?.essential) : Boolean(field?.required)),
+    [quickMode]
+  );
 
   const toggleSection = (index) =>
     setOpenSections((prev) => {
@@ -940,7 +996,7 @@ export default function Form() {
 
   const handleGenerate = async () => {
     const missingFields = fields.filter(
-      (field) => field.required && !form[field.name]?.toString().trim()
+      (field) => isRequiredField(field) && !form[field.name]?.toString().trim()
     );
 
     if (missingFields.length > 0) {
@@ -985,6 +1041,7 @@ export default function Form() {
         jurisdiction: "India",
         variables: form,
         semantic_generation: true,
+        mode: quickMode ? "quick" : "detailed",
       });
       navigate("/editor", { state: res.data });
     } catch (err) {
@@ -1057,7 +1114,7 @@ export default function Form() {
     documentType
       ?.replace(/_/g, " ")
       .replace(/\b\w/g, (letter) => letter.toUpperCase());
-  const required = fields.filter((field) => field.required);
+  const required = fields.filter((field) => isRequiredField(field));
   const filled = required.filter((field) =>
     form[field.name]?.toString().trim()
   );
@@ -1152,9 +1209,9 @@ export default function Form() {
   const missingRequiredFields = useMemo(
     () =>
       fields.filter(
-        (field) => field.required && !String(form[field.name] ?? "").trim()
+        (field) => isRequiredField(field) && !String(form[field.name] ?? "").trim()
       ),
-    [fields, form]
+    [fields, form, isRequiredField]
   );
 
   // Each time the user lands on the form (after interview/skip), open only the
@@ -1168,13 +1225,13 @@ export default function Form() {
         .map((item) => resolveField(item))
         .filter(Boolean)
         .some(
-          (field) => field.required && !String(form[field.name] ?? "").trim()
+          (field) => isRequiredField(field) && !String(form[field.name] ?? "").trim()
         );
       if (hasMissingRequired) open.add(index);
     });
     setOpenSections(open);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showInterview, loading]);
+  }, [showInterview, loading, mode]);
 
   const focusMissingField = (fieldName) => {
     const sectionIndex = visibleSections.findIndex((section) =>
@@ -1188,15 +1245,139 @@ export default function Form() {
     setTimeout(() => scrollToField(fieldName), 80);
   };
 
+  // ── Standalone "how to start" chooser — its own full screen, shown before the
+  // form scaffolding (no sidebar / steps / progress). ────────────────────────
+  if (!flow) {
+    return (
+      <div className="intake-landing">
+        <div className="intake-landing__bar">
+          <button className="form-back" onClick={() => navigate("/library")}>
+            {Icons.arrowLeft} Back to library
+          </button>
+          {displayName && (
+            <span className="intake-landing__doc">{displayName}</span>
+          )}
+        </div>
+
+        <div className="intake-landing__inner">
+          <div className="intake-hero">
+            <span className="intake-landing__eyebrow">Draft a {displayName || "document"}</span>
+            <h1 className="intake-landing__title">How would you like to start?</h1>
+            <p className="intake-hero__sub">
+              Three ways in — all produce the same draft, checked against Indian law.
+              Pick whatever suits you; you can switch anytime.
+            </p>
+          </div>
+
+          <div className="intake-panel__split">
+          {/* Illustration — gold-only, matches the app palette */}
+          <div className="intake-art" aria-hidden="true">
+            <svg viewBox="0 0 320 280" className="intake-art__svg">
+              <circle className="intake-art__float1" cx="58" cy="54" r="15" fill="var(--gold)" opacity="0.18" />
+              <circle className="intake-art__float2" cx="284" cy="78" r="10" fill="var(--gold)" opacity="0.28" />
+              <circle className="intake-art__float3" cx="40" cy="214" r="9" fill="var(--gold)" opacity="0.22" />
+              <rect x="92" y="56" width="150" height="184" rx="20" fill="#16171a" stroke="rgba(255,255,255,0.10)" />
+              <g className="intake-art__card">
+                <rect x="110" y="48" width="150" height="184" rx="20" fill="#1d1f23" stroke="rgba(184,147,58,0.5)" />
+                <rect x="128" y="80" width="80" height="10" rx="5" fill="var(--gold)" />
+                <rect x="128" y="104" width="116" height="7" rx="3.5" fill="rgba(255,255,255,0.20)" />
+                <rect x="128" y="120" width="116" height="7" rx="3.5" fill="rgba(255,255,255,0.13)" />
+                <rect x="128" y="136" width="82" height="7" rx="3.5" fill="rgba(255,255,255,0.13)" />
+                <circle cx="210" cy="190" r="23" fill="var(--gold)" />
+                <path d="M200 190 l6.5 6.5 l13 -14" fill="none" stroke="#1a1505" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+              <path className="intake-art__spark1" d="M254 156 l4.5 12 l12 4.5 l-12 4.5 l-4.5 12 l-4.5 -12 l-12 -4.5 l12 -4.5 z" fill="var(--gold)" opacity="0.7" />
+              <path className="intake-art__spark2" d="M70 118 l2.8 7.6 l7.6 2.8 l-7.6 2.8 l-2.8 7.6 l-2.8 -7.6 l-7.6 -2.8 l7.6 -2.8 z" fill="var(--gold)" opacity="0.85" />
+            </svg>
+          </div>
+
+          {/* Choices */}
+          <div className="intake-choices">
+            <button
+              className="intake-feature"
+              onClick={() => chooseFlow("quick")}
+              disabled={!quickAvailable}
+            >
+              <span className="intake-feature__icon"><Zap size={22} /></span>
+              <span className="intake-feature__body">
+                <span className="intake-feature__title">
+                  Quick draft <span className="intake-feature__badge">Fastest</span>
+                </span>
+                <span className="intake-feature__desc">
+                  Just the essentials — a complete draft in seconds, refine later.
+                </span>
+              </span>
+              <span className="intake-feature__go">
+                Start <ArrowRight size={17} />
+              </span>
+            </button>
+
+            <div className="intake-mini-row">
+              <button className="intake-mini" onClick={() => chooseFlow("guided")}>
+                <span className="intake-mini__top">
+                  <span className="intake-mini__icon"><FileText size={19} /></span>
+                  <span className="intake-mini__arrow"><ArrowRight size={16} /></span>
+                </span>
+                <span className="intake-mini__title">Guided</span>
+                <span className="intake-mini__desc">Describe it, then the full form</span>
+                <span className="intake-mini__go">Start</span>
+              </button>
+              <button className="intake-mini" onClick={() => chooseFlow("chat")}>
+                <span className="intake-mini__top">
+                  <span className="intake-mini__icon"><MessageSquare size={19} /></span>
+                  <span className="intake-mini__arrow"><ArrowRight size={16} /></span>
+                </span>
+                <span className="intake-mini__title">Conversational</span>
+                <span className="intake-mini__desc">Answer a few questions</span>
+                <span className="intake-mini__go">Start</span>
+              </button>
+            </div>
+          </div>
+          </div>
+
+          <div className="intake-assure">
+            <div className="intake-assure__item">
+              <span className="intake-assure__icon">{Icons.sparkles}</span>
+              <div>
+                <div className="intake-assure__t">Tailored to your situation</div>
+                <div className="intake-assure__d">Every clause written around your facts</div>
+              </div>
+            </div>
+            <div className="intake-assure__item">
+              <span className="intake-assure__icon">{Icons.shieldCheck}</span>
+              <div>
+                <div className="intake-assure__t">Checked against Indian law</div>
+                <div className="intake-assure__d">Validated before it's ever finished</div>
+              </div>
+            </div>
+            <div className="intake-assure__item">
+              <span className="intake-assure__icon">{Icons.download}</span>
+              <div>
+                <div className="intake-assure__t">Edit, then export</div>
+                <div className="intake-assure__d">Refine in the workspace and download</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="form-page">
       <div className="form-topbar">
         <div className="form-topbar-inner">
-          <button className="form-back" onClick={() => navigate("/library")}>
-            {Icons.arrowLeft} Back to library
+          <button
+            className="form-back"
+            onClick={() => (flow ? resetToChooser() : navigate("/library"))}
+          >
+            {Icons.arrowLeft} {flow ? "Back to options" : "Back to library"}
           </button>
           <div className="form-topbar-sep" />
           <span className="form-topbar-type">{displayName}</span>
+          {flow === "quick" && <span className="form-topbar-mode">Quick draft</span>}
+          {flow === "chat" && <span className="form-topbar-mode">Chat</span>}
+          {flow === "guided" && <span className="form-topbar-mode">Guided</span>}
           <span className="form-topbar-tag">AI DRAFT</span>
         </div>
         <div className="form-progress-bar">
@@ -1277,19 +1458,10 @@ export default function Form() {
         </aside>
 
         <main className="form-main">
-          {!showInterview && (
-            <button
-              type="button"
-              className="form-back interview-back"
-              onClick={() => setShowInterview(true)}
-            >
-              <span aria-hidden="true">←</span> Back to situation
-            </button>
-          )}
           <div className="form-header animate-in">
             <span className="form-header-kicker">{family} - Indian Law</span>
             <h1 className="form-header-title">{displayName}</h1>
-            {!showInterview && (
+            {flow && !showInterview && (
               <p className="form-header-sub">
                 Fill the intake form to generate a polished, editable first draft
                 with AI-guided drafting cues.
@@ -1407,14 +1579,24 @@ export default function Form() {
               <span>Loading form...</span>
             </div>
           ) : showInterview ? (
-            <InterviewPanel
-              pageMode
-              documentType={documentType}
-              onApply={applyAssistantSuggestion}
-              appliedValues={form}
-              onContinue={() => setShowInterview(false)}
-              onSkip={() => setShowInterview(false)}
-            />
+            intakeStyle === "chat" ? (
+              <ConversationalIntake
+                documentType={documentType}
+                onApply={applyAssistantSuggestion}
+                appliedValues={form}
+                onContinue={() => setShowInterview(false)}
+                onSkip={() => setShowInterview(false)}
+              />
+            ) : (
+              <InterviewPanel
+                pageMode
+                documentType={documentType}
+                onApply={applyAssistantSuggestion}
+                appliedValues={form}
+                onContinue={() => setShowInterview(false)}
+                onSkip={() => setShowInterview(false)}
+              />
+            )
           ) : (
             <>
               {missingRequiredFields.length > 0 ? (
@@ -1460,9 +1642,12 @@ export default function Form() {
               {visibleSections.map((section, sectionIndex) => {
                 const sectionFields = (section.fields || [])
                   .map((item) => resolveField(item))
-                  .filter(Boolean);
+                  .filter(Boolean)
+                  .filter((f) => isActiveField(f));
+                // In quick mode a section may have no essential fields — hide it.
+                if (sectionFields.length === 0) return null;
                 const requiredLeft = sectionFields.filter(
-                  (f) => f.required && !String(form[f.name] ?? "").trim()
+                  (f) => isRequiredField(f) && !String(form[f.name] ?? "").trim()
                 ).length;
                 const filledCount = sectionFields.filter((f) =>
                   String(form[f.name] ?? "").trim()
@@ -1506,7 +1691,7 @@ export default function Form() {
                   <div className="fields-grid">
                     {(section.fields || []).map((item) => {
                       const field = resolveField(item);
-                      return field ? (
+                      return field && isActiveField(field) ? (
                         <FieldGroup
                           key={field.name}
                           field={field}

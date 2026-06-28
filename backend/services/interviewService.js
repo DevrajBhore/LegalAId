@@ -11,6 +11,8 @@
 import { buildDocumentFields } from "./documentIntakeConfig.js";
 import { buildDocumentTypeMeta } from "./documentTypeNormalizer.js";
 import { callAISafetyRaw } from "../ai/aiClient.js";
+import { DOCUMENT_CONFIG } from "../config/documentConfig.js";
+import { ESSENTIAL_FIELDS } from "../config/essentialFields.js";
 
 const INTERVIEW_SCHEMA = {
   type: "object",
@@ -291,5 +293,161 @@ Return strict JSON only:
     field_updates: fieldUpdates,
     followup_questions: followups,
     available: true,
+  };
+}
+
+// ── Conversational intake ────────────────────────────────────────────────────
+// A bounded, one-question-at-a-time flow that feels like talking to a paralegal.
+// It reuses the SAME schema-safe extraction as the interview (no invented fields
+// or options), then deterministically asks for the next still-empty ESSENTIAL
+// field. Because it walks the essentials list, it can never wander — it asks at
+// most as many questions as there are essential fields, then signals "ready".
+
+function humanizeFieldName(name = "") {
+  return String(name).replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Craft a natural, paralegal-style question for a single field from its schema.
+function buildConversationalQuestion(field) {
+  if (!field) return null;
+  const label = field.label || humanizeFieldName(field.name);
+  const name = String(field.name).toLowerCase();
+
+  if (field.type === "select" && field.options?.length) {
+    return `${label}? You can choose from: ${field.options.join(", ")}.`;
+  }
+  if (name.includes("party_1") && name.includes("name")) {
+    return "Who is the first party — the full legal name of the person or company?";
+  }
+  if (name.includes("party_2") && name.includes("name")) {
+    return "And who is the second party — their full legal name?";
+  }
+  if (name.includes("employer") && name.includes("name")) {
+    return "Who is the employer — the company's full legal name?";
+  }
+  if (name.includes("employee") && name.includes("name")) {
+    return "Who is the employee — their full name?";
+  }
+  if (name.endsWith("_name")) {
+    return `What is the full legal name for the ${label.toLowerCase()}?`;
+  }
+  if (name.includes("operating_state")) {
+    return "Which Indian state is this agreement most connected to?";
+  }
+  if (name.includes("effective_date") || field.type === "date") {
+    return `What date should apply for the ${label.toLowerCase()}? (any clear date is fine)`;
+  }
+  if (name.includes("purpose") || name.includes("scope") || name.includes("services") || name.includes("description")) {
+    return `In a sentence, what's the ${label.toLowerCase()}?`;
+  }
+  if (name.includes("amount") || name.includes("fee") || name.includes("salary") || name.includes("price") || name.includes("value")) {
+    return `What is the ${label.toLowerCase()}? (just the figure is fine)`;
+  }
+  return `What is the ${label.toLowerCase()}?`;
+}
+
+function essentialsForType(documentType) {
+  const essentials = ESSENTIAL_FIELDS[documentType];
+  if (Array.isArray(essentials) && essentials.length) return essentials;
+  return DOCUMENT_CONFIG[documentType]?.requiredFields || [];
+}
+
+function isBlankValue(value) {
+  return value === undefined || value === null || String(value).trim() === "";
+}
+
+/**
+ * One conversational turn. Extracts field values from the user's latest answer
+ * (schema-validated), merges them into what's already filled, then returns the
+ * single next essential field to ask about — or ready:true when done.
+ *
+ * @param {object} args
+ * @param {string} args.documentType
+ * @param {string} [args.message]      the user's latest answer (empty on the first call)
+ * @param {object} [args.filled]       field values gathered so far
+ * @param {string} [args.targetField]  the field the last question was about (improves extraction)
+ */
+export async function getConversationalStep({ documentType, message, filled = {}, targetField = null }) {
+  if (!documentType) {
+    const error = new Error("document_type is required.");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const fields = buildDocumentFields(documentType);
+  const fieldsByName = new Map(fields.map((field) => [field.name, field]));
+  const meta = buildDocumentTypeMeta(documentType);
+  const merged = { ...(filled || {}) };
+  let updates = [];
+  let summary = "";
+  let available = true;
+
+  const trimmed = String(message || "").trim();
+  if (trimmed) {
+    const targetLabel = fieldsByName.get(targetField)?.label || targetField || null;
+    const prompt = `You are the LegalAId legal-interview assistant for Indian legal drafting.
+The user is in a step-by-step conversation. Extract any intake-field values their
+latest answer supports — primarily the field they were just asked about, but also
+any other fields the answer clearly reveals.
+
+Rules:
+- Only use fields from the AVAILABLE FIELDS list. Never invent a field.
+- For select fields, the value MUST be exactly one of the listed options.
+- For date fields use YYYY-MM-DD. For number fields use plain digits only.
+- Do not invent facts the user did not state or clearly imply.
+- confidence is 0..1.
+
+DOCUMENT TYPE: ${meta.displayName || documentType}
+${targetLabel ? `THE USER WAS JUST ASKED ABOUT: ${targetLabel} (field: ${targetField})` : ""}
+
+AVAILABLE FIELDS:
+${fields.map(describeField).join("\n")}
+
+USER ANSWER:
+${trimmed}
+
+Return strict JSON only:
+{
+  "summary": "one-sentence restatement of what the user just told you",
+  "field_updates": [
+    { "field": "exact_field_name", "value": "value or exact option", "confidence": 0.0, "reason": "why" }
+  ],
+  "followup_questions": []
+}`;
+
+    const response = await callAISafetyRaw(prompt, {
+      schemaName: "legal_interview_response",
+      schema: INTERVIEW_SCHEMA,
+    });
+
+    if (!response?.success) {
+      available = false;
+    } else {
+      const data = response.data || {};
+      summary = String(data.summary || "").trim();
+      updates = (Array.isArray(data.field_updates) ? data.field_updates : [])
+        .map((update) => validateUpdate(update, fieldsByName))
+        .filter(Boolean);
+      for (const update of updates) {
+        merged[update.field] = update.value;
+      }
+    }
+  }
+
+  // Deterministically pick the next still-empty essential field — this bounds
+  // the conversation and guarantees we collect everything a quick draft needs.
+  const essentials = essentialsForType(documentType);
+  const remaining = essentials.filter((name) => isBlankValue(merged[name]));
+  const nextField = remaining.length ? fieldsByName.get(remaining[0]) : null;
+
+  return {
+    summary,
+    field_updates: updates,
+    filled: merged,
+    next_field: nextField?.name || null,
+    next_question: nextField ? buildConversationalQuestion(nextField) : null,
+    remaining_count: remaining.length,
+    ready: remaining.length === 0,
+    available,
   };
 }

@@ -28,7 +28,7 @@ import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
 import { getIntakeAssistantResponse } from "./services/intakeAssistantService.js";
 import { searchClauses } from "./services/clauseSearch.js";
-import { getInterviewResponse } from "./services/interviewService.js";
+import { getInterviewResponse, getConversationalStep } from "./services/interviewService.js";
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
 
 import authRoutes from "./auth/authRoutes.js";
@@ -393,6 +393,35 @@ app.post("/interview", protect, aiLimiter, async (req, res) => {
     res
       .status(error.statusCode || 500)
       .json({ error: "Interview failed", details: error.message });
+  }
+});
+
+// Conversational intake — one question at a time, fills fields as the user
+// answers. State (filled values) is carried by the client, so this stays
+// stateless on the server.
+app.post("/interview/step", protect, aiLimiter, async (req, res) => {
+  try {
+    const {
+      document_type: documentType,
+      message,
+      filled,
+      target_field: targetField,
+    } = req.body || {};
+    if (!documentType) {
+      return res.status(400).json({ error: "Missing document_type in request body" });
+    }
+    const result = await getConversationalStep({
+      documentType,
+      message,
+      filled: filled || {},
+      targetField: targetField || null,
+    });
+    res.json(result);
+  } catch (error) {
+    console.error("Conversational interview error:", error);
+    res
+      .status(error.statusCode || 500)
+      .json({ error: "Conversational step failed", details: error.message });
   }
 });
 

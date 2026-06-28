@@ -42,6 +42,7 @@ export const generateDocument = (data) => API.post("/generate", data);
 export const chatWithIntakeAssistant = (data) =>
   API.post("/intake-assistant", data);
 export const runLegalInterview = (data) => API.post("/interview", data);
+export const runConversationalStep = (data) => API.post("/interview/step", data);
 
 // ── Admin: clause review queue + AI authoring ────────────────────────────────
 export const getClauseReviews = (params) =>

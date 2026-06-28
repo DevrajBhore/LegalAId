@@ -1,4 +1,5 @@
 import { DOCUMENT_CONFIG } from "../config/documentConfig.js";
+import { getRequiredFieldsForMode } from "../config/essentialFields.js";
 
 const COMPANY_MARKERS =
   /\b(private limited|public limited|pvt\.?\s*ltd|limited|llp|partnership|trust|government body|sole proprietorship)\b/i;
@@ -612,7 +613,16 @@ function addDocumentSpecificChecks(errors, input, documentType) {
 export function validateVariables(schema, input, options = {}) {
   const errors = [];
   const documentType = options.documentType;
-  const requiredFields = new Set(DOCUMENT_CONFIG[documentType]?.requiredFields || []);
+  // Quick mode requires only the curated essentials; detailed mode (default)
+  // requires the full list. Everything downstream (field/cross-field checks,
+  // post-generation validation, export gate) is identical either way.
+  const requiredFields = new Set(
+    getRequiredFieldsForMode(
+      documentType,
+      DOCUMENT_CONFIG[documentType]?.requiredFields || [],
+      options.mode
+    )
+  );
 
   for (const key of requiredFields) {
     if (isBlank(input[key])) {

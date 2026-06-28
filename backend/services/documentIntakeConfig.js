@@ -1,7 +1,8 @@
 import { DOCUMENT_CONFIG } from "../config/documentConfig.js";
 import { getVariables } from "../config/variableConfig.js";
+import { ESSENTIAL_FIELDS } from "../config/essentialFields.js";
 
-function buildFieldDefinition(name, variable, requiredFields = []) {
+function buildFieldDefinition(name, variable, requiredFields = [], essentialFields = []) {
   const definition = variable || {};
   return {
     name,
@@ -9,6 +10,8 @@ function buildFieldDefinition(name, variable, requiredFields = []) {
     type: definition.type || "text",
     options: definition.options || null,
     required: requiredFields.includes(name),
+    // Marks fields shown in Quick mode (the minimal set for a usable draft).
+    essential: essentialFields.includes(name),
     placeholder: definition.placeholder || "",
     description: definition.description || "",
     example: definition.example || "",
@@ -50,7 +53,7 @@ const AUTO_SECTION_ORDER = [
 
 const FALLBACK_SECTION_TITLE = "Additional Details";
 
-function buildAutoSections(vars, assignedFields = new Set(), requiredFields = []) {
+function buildAutoSections(vars, assignedFields = new Set(), requiredFields = [], essentialFields = []) {
   const groupedFields = new Map();
   const ungroupedFields = [];
 
@@ -61,7 +64,7 @@ function buildAutoSections(vars, assignedFields = new Set(), requiredFields = []
     const sectionTitle = variable?.group;
     if (!sectionTitle) {
       ungroupedFields.push(
-        buildFieldDefinition(fieldName, variable, requiredFields)
+        buildFieldDefinition(fieldName, variable, requiredFields, essentialFields)
       );
       continue;
     }
@@ -71,7 +74,7 @@ function buildAutoSections(vars, assignedFields = new Set(), requiredFields = []
     }
 
     groupedFields.get(sectionTitle).push(
-      buildFieldDefinition(fieldName, variable, requiredFields)
+      buildFieldDefinition(fieldName, variable, requiredFields, essentialFields)
     );
   }
 
@@ -99,28 +102,35 @@ export function buildDocumentFields(documentType) {
   const config = DOCUMENT_CONFIG[documentType];
   const vars = getVariables(documentType);
   const requiredFields = config?.requiredFields || [];
+  const essentialFields = ESSENTIAL_FIELDS[documentType] || [];
 
   return Object.entries(vars)
     .filter(([name]) => shouldExposeField(name, vars))
-    .map(([name, variable]) => buildFieldDefinition(name, variable, requiredFields));
+    .map(([name, variable]) =>
+      buildFieldDefinition(name, variable, requiredFields, essentialFields)
+    );
 }
 
 export function buildDocumentSections(documentType) {
   const config = DOCUMENT_CONFIG[documentType];
   const vars = getVariables(documentType);
   const requiredFields = config?.requiredFields || [];
+  const essentialFields = ESSENTIAL_FIELDS[documentType] || [];
   const sections =
     config?.sections?.map((section) => ({
       title: section.title,
       fields: (section.fields || []).map((fieldName) =>
-        buildFieldDefinition(fieldName, vars[fieldName], requiredFields)
+        buildFieldDefinition(fieldName, vars[fieldName], requiredFields, essentialFields)
       ),
     })) || [];
   const assignedFields = new Set(
     sections.flatMap((section) => (section.fields || []).map((field) => field.name))
   );
 
-  return [...sections, ...buildAutoSections(vars, assignedFields, requiredFields)];
+  return [
+    ...sections,
+    ...buildAutoSections(vars, assignedFields, requiredFields, essentialFields),
+  ];
 }
 
 export function validateDocumentIntakeConfiguration() {

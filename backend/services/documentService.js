@@ -72,6 +72,7 @@ function validateInputByDocumentType(input) {
   );
   const errors = validateVariables(schema, sanitizedVariables, {
     documentType: input.document_type,
+    mode: input.mode,
   });
   return errors.length > 0 ? { valid: false, errors } : { valid: true };
 }
