@@ -212,3 +212,59 @@ button, a, input, textarea, select {
 
 /* Tooltip utility */
 [title] { cursor: help; }
+
+/* ── App-wide responsive safety net ──────────────────────────────────────────
+   Catches the most common phone-portrait failures everywhere at once, without
+   changing desktop layout. */
+
+/* Replaced/wide elements never exceed their column. */
+img, svg, video, canvas, table { max-width: 100%; height: auto; }
+table { display: block; overflow-x: auto; }       /* wide tables scroll, not clip */
+
+/* Long unbroken strings (clause IDs, emails, URLs) wrap instead of overflowing. */
+p, span, li, dd, dt, label, h1, h2, h3, h4, h5, h6, .field-label, code {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Form controls and buttons stay inside their container on narrow screens. */
+input, textarea, select, button { max-width: 100%; }
+
+/* Comfortable tap targets + readable inputs on phones (16px avoids iOS zoom). */
+@media (max-width: 600px) {
+  button, a.nav-link, .nav-link, .footer-link, [role="tab"], [role="button"] {
+    min-height: 40px;
+  }
+  /* Footer/menu link lists get vertical breathing room so rows don't merge. */
+  .footer-link { display: inline-flex; align-items: center; padding: 4px 0; }
+  input, textarea, select { font-size: 16px; }
+}
+
+/* ── Hero compression on phones ───────────────────────────────────────────────
+   Every page leads with a tall hero (oversized clamp title + 80–100px padding +
+   long subtitle) that fills the first screen before any content/actions. On
+   phones we shrink the title, cut the hero padding, and tame the subtitle so the
+   actual content sits near the top. Page-level heroes only — card titles are
+   left alone. */
+@media (max-width: 560px) {
+  .hero, .about-hero, .help-hero, .contact-hero, .documents-hero,
+  .library-hero, .document-info-hero, .legal-hero, .profile-hero {
+    padding-top: 30px !important;
+    padding-bottom: 22px !important;
+  }
+  .hero-title, .about-hero-title, .help-title, .contact-title, .documents-title,
+  .library-title, .document-info-title, .legal-title, .auth-title, .admin-title {
+    font-size: clamp(23px, 7vw, 30px) !important;
+    line-height: 1.18 !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-sub, .about-hero-sub, .legal-subtitle, .auth-subtitle, .admin-sub,
+  .editor-subtitle, .documents-sub, .library-sub {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+  /* Decorative oversized numerals/orbs add height without meaning on phones. */
+  .about-acts-num { font-size: 38px !important; }
+  /* Big blurred background decoration — visual noise + wasted paint on phones. */
+  .hero-orb, .hero-noise, .hero-bg { display: none !important; }
+}

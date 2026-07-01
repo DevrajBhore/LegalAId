@@ -6,8 +6,8 @@ import {
   generateDocument,
 } from "../services/api";
 import { Icons, ChevronRight, Zap, FileText, MessageSquare, ArrowRight } from "../utils/icons";
-import InterviewPanel from "../components/InterviewPanel";
 import ConversationalIntake from "../components/ConversationalIntake";
+import MobileActionBar from "../components/MobileActionBar";
 import "./Form.css";
 
 const STEP_LABELS = ["Fill Details", "Review Inputs", "Generate Draft"];
@@ -809,24 +809,24 @@ export default function Form() {
   // null = the chooser is showing.
   const [flow, setFlow] = useState(null);
   const [showInterview, setShowInterview] = useState(false);
-  // Which intake style the interview stage shows: "chat" or "describe".
-  const [intakeStyle, setIntakeStyle] = useState("describe");
   // "quick" = only essential fields are shown/required; "detailed" = full form.
   const [mode, setMode] = useState("detailed");
 
-  // Apply a chosen flow: sets the interview stage + form detail level together.
+  // Apply a chosen flow. Three distinct surfaces:
+  //   guided → the full detailed form (no interview; per-field AI help on the form)
+  //   quick  → the short essentials-only form
+  //   chat   → the conversational (prompt-first) intake
   const chooseFlow = (nextFlow) => {
     setFlow(nextFlow);
-    if (nextFlow === "guided") {
-      setIntakeStyle("describe");
-      setMode("detailed");
-      setShowInterview(true);
-    } else if (nextFlow === "chat") {
-      setIntakeStyle("chat");
+    if (nextFlow === "chat") {
       setMode("detailed");
       setShowInterview(true);
     } else if (nextFlow === "quick") {
       setMode("quick");
+      setShowInterview(false);
+    } else {
+      // guided
+      setMode("detailed");
       setShowInterview(false);
     }
   };
@@ -1319,7 +1319,7 @@ export default function Form() {
                   <span className="intake-mini__arrow"><ArrowRight size={16} /></span>
                 </span>
                 <span className="intake-mini__title">Guided</span>
-                <span className="intake-mini__desc">Describe it, then the full form</span>
+                <span className="intake-mini__desc">Fill the full form, with AI help on any field</span>
                 <span className="intake-mini__go">Start</span>
               </button>
               <button className="intake-mini" onClick={() => chooseFlow("chat")}>
@@ -1364,7 +1364,7 @@ export default function Form() {
   }
 
   return (
-    <div className="form-page">
+    <div className={`form-page${flow && !showInterview ? " has-mobile-action-bar" : ""}`}>
       <div className="form-topbar">
         <div className="form-topbar-inner">
           <button
@@ -1579,24 +1579,13 @@ export default function Form() {
               <span>Loading form...</span>
             </div>
           ) : showInterview ? (
-            intakeStyle === "chat" ? (
-              <ConversationalIntake
-                documentType={documentType}
-                onApply={applyAssistantSuggestion}
-                appliedValues={form}
-                onContinue={() => setShowInterview(false)}
-                onSkip={() => setShowInterview(false)}
-              />
-            ) : (
-              <InterviewPanel
-                pageMode
-                documentType={documentType}
-                onApply={applyAssistantSuggestion}
-                appliedValues={form}
-                onContinue={() => setShowInterview(false)}
-                onSkip={() => setShowInterview(false)}
-              />
-            )
+            <ConversationalIntake
+              documentType={documentType}
+              onApply={applyAssistantSuggestion}
+              appliedValues={form}
+              onContinue={() => setShowInterview(false)}
+              onSkip={() => setShowInterview(false)}
+            />
           ) : (
             <>
               {missingRequiredFields.length > 0 ? (
@@ -1775,6 +1764,16 @@ export default function Form() {
           )}
         </main>
       </div>
+
+      {flow && !showInterview && !loading && (
+        <MobileActionBar
+          label={generating ? "Generating…" : "Generate document"}
+          onClick={handleGenerate}
+          disabled={generating}
+          hint={progress < 100 ? `${filled.length}/${required.length}` : "Ready"}
+          trailing={generating ? null : Icons.arrowRight}
+        />
+      )}
     </div>
   );
 }

@@ -727,30 +727,20 @@
 
 @media (max-width: 760px) {
   .editor-topbar-inner {
-    padding: 14px 16px;
+    padding: 12px 16px;
     min-height: auto;
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
   }
 
-  .editor-topbar-left,
-  .editor-topbar-right {
-    width: 100%;
-  }
+  .editor-topbar-left { min-width: 0; flex: 1; }
 
-  .editor-topbar-right {
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .export-controls {
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  .export-format-label {
-    display: none;
-  }
+  /* The topbar export/validate controls are replaced by the sticky bottom bar on
+     mobile — hide them so the top bar stays compact and there's one clear action. */
+  .editor-topbar-right,
+  .export-controls,
+  .validate-download-btn { display: none; }
 
   .editor-shell {
     padding: 18px 14px 40px;

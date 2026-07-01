@@ -266,7 +266,7 @@ function hasSemanticProviderConfigured() {
 // old all-or-nothing gate (one drift → 100% boilerplate) into "tailor what the AI
 // rewrote, keep the rest." The merged draft is still validated downstream, and if
 // it fails the deterministic base draft remains the safety net.
-export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
+export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, options = {}) {
   if (!seedDraft?.clauses?.length || !aiDraft?.clauses?.length) {
     return null;
   }
@@ -290,8 +290,31 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
     return null; // nothing usable — fall back to the deterministic draft
   }
 
+  // Stability across regens: a clause is UNCHANGED if a prior accepted version
+  // exists and its deterministic seed text is identical to this regen's. For
+  // those we reuse the prior AI-tailored wording verbatim, so a revision that
+  // only changes the term never silently re-words clauses the user accepted.
+  const priorById = options.priorClausesById || null;
+  const isUnchanged = (seedClause) => {
+    if (!priorById) return false;
+    const prior = priorById.get(seedClause.clause_id);
+    return Boolean(
+      prior &&
+        typeof prior.text === "string" &&
+        prior.text.trim() &&
+        prior._seed_text !== undefined &&
+        prior._seed_text === seedClause._seed_text
+    );
+  };
+
   let tailored = 0;
+  let reused = 0;
   const mergedClauses = seedDraft.clauses.map((seedClause) => {
+    if (isUnchanged(seedClause)) {
+      reused += 1;
+      const prior = priorById.get(seedClause.clause_id);
+      return { ...seedClause, text: prior.text }; // keep accepted wording + new seed meta
+    }
     const aiClause = aiById.get(seedClause.clause_id);
     if (!aiClause) {
       return seedClause; // keep the deterministic, hardened clause as-is
@@ -309,6 +332,7 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
       statutory_reference:
         aiClause.statutory_reference ?? seedClause.statutory_reference ?? null,
       text: aiClause.text.trim(),
+      _seed_text: seedClause._seed_text,
     };
   });
 
@@ -321,21 +345,53 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider) {
       ...(seedDraft.metadata || {}),
       ai_touched: tailored > 0,
       ai_tailored_clause_count: tailored,
+      ai_reused_clause_count: reused,
       ai_total_clause_count: seedDraft.clauses.length,
       ai_generation_provider: provider || null,
     },
   });
 }
 
-async function attemptSemanticDraft(seedDraft, input) {
+async function attemptSemanticDraft(seedDraft, input, options = {}) {
   if (!hasSemanticProviderConfigured()) {
     return null;
+  }
+
+  const priorClausesById = options.priorClausesById || null;
+
+  // On a revision regen, only send the AI the clauses that actually changed
+  // (new id, or its deterministic seed text differs from the accepted version).
+  // Unchanged clauses keep their prior wording in the merge — so revisions are
+  // fast and don't silently re-word what the user already accepted.
+  let baseForAI = seedDraft;
+  if (priorClausesById) {
+    const changedClauses = seedDraft.clauses.filter((clause) => {
+      const prior = priorClausesById.get(clause.clause_id);
+      return (
+        !prior ||
+        !prior.text ||
+        prior._seed_text === undefined ||
+        prior._seed_text !== clause._seed_text
+      );
+    });
+    if (changedClauses.length === 0) {
+      // Nothing to re-tailor — rebuild final wording from the prior draft.
+      return normalizeClauseText({
+        ...seedDraft,
+        clauses: seedDraft.clauses.map((clause) => {
+          const prior = priorClausesById.get(clause.clause_id);
+          return prior?.text ? { ...clause, text: prior.text } : clause;
+        }),
+        metadata: { ...(seedDraft.metadata || {}), ai_touched: true, ai_tailored_clause_count: 0 },
+      });
+    }
+    baseForAI = { ...seedDraft, clauses: changedClauses };
   }
 
   const aiResult = await callAI({
     document_type: input.document_type,
     variables: input.variables || {},
-    baseDraft: seedDraft,
+    baseDraft: baseForAI,
     semanticContext: input.semanticContext,
   });
 
@@ -343,22 +399,21 @@ async function attemptSemanticDraft(seedDraft, input) {
     return null;
   }
 
-  return mergeAIDraftWithSeed(
-    seedDraft,
-    aiResult.draft,
-    input,
-    aiResult.provider
-  );
+  return mergeAIDraftWithSeed(seedDraft, aiResult.draft, input, aiResult.provider, {
+    priorClausesById,
+  });
 }
 
-async function runGenerationStageValidation(draft, input) {
+async function runGenerationStageValidation(draft, input, mode = "final") {
   return runDocumentValidation(
     {
       ...draft,
       jurisdiction: input.jurisdiction,
     },
     {
-      mode: "final",
+      // "final" = the strict six-layer gate (export). "generation" = the faster
+      // interactive depth a revision regen requests. Export always forces final.
+      mode,
       documentType: input.document_type,
       sourceVariables: input.variables,
       isUserEdit: false,
@@ -366,8 +421,34 @@ async function runGenerationStageValidation(draft, input) {
   );
 }
 
-export async function generateDocument(input) {
+// Stamp each clause with its deterministic seed text so a later regen can tell
+// which clauses are unchanged (and reuse their accepted wording).
+function stampSeedText(draft) {
+  if (!draft?.clauses) return draft;
+  draft.clauses = draft.clauses.map((clause) => ({
+    ...clause,
+    _seed_text: typeof clause.text === "string" ? clause.text : "",
+  }));
+  return draft;
+}
+
+// Prior accepted clauses keyed by id (text + seed text) for stability matching.
+function buildPriorClauseMap(priorDraft) {
+  const map = new Map();
+  for (const clause of priorDraft?.clauses || []) {
+    if (clause?.clause_id) {
+      map.set(clause.clause_id, { text: clause.text, _seed_text: clause._seed_text });
+    }
+  }
+  return map;
+}
+
+export async function generateDocument(input, options = {}) {
   await loadIREModules();
+  const mode = options.mode === "generation" ? "generation" : "final";
+  const priorClausesById = options.priorDraft
+    ? buildPriorClauseMap(options.priorDraft)
+    : null;
 
   if (!input.document_type) {
     return buildBlockedGenerationResult([
@@ -394,17 +475,18 @@ export async function generateDocument(input) {
   const generationInput = prepareGenerationInput(input);
 
   if (shouldUseSemanticGeneration(input)) {
-    const semanticSeed = applyGenerationStages(
-      createBlueprintDraft(generationInput),
-      generationInput
+    const semanticSeed = stampSeedText(
+      applyGenerationStages(createBlueprintDraft(generationInput), generationInput)
     );
-    const semanticDraft = await attemptSemanticDraft(semanticSeed, generationInput);
+    const semanticDraft = await attemptSemanticDraft(semanticSeed, generationInput, {
+      priorClausesById,
+    });
 
     if (semanticDraft) {
       let draft = attachDraftContext(semanticDraft, generationInput, {
         resetBaseline: true,
       });
-      let validation = await runGenerationStageValidation(draft, generationInput);
+      let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
       if (isGenerationReady(validation)) {
         return buildSuccess(draft, validation);
@@ -415,7 +497,7 @@ export async function generateDocument(input) {
         draft = attachDraftContext(repairedDraft, generationInput, {
           resetBaseline: true,
         });
-        validation = await runGenerationStageValidation(draft, generationInput);
+        validation = await runGenerationStageValidation(draft, generationInput, mode);
 
         if (isGenerationReady(validation)) {
           return buildSuccess(draft, validation);
@@ -428,13 +510,13 @@ export async function generateDocument(input) {
   // disabled, unavailable, or fails validation.
   const baseDraft = createDeterministicBaseDraft(generationInput);
   let draft = attachDraftContext(
-    applyGenerationStages(baseDraft, generationInput),
+    stampSeedText(applyGenerationStages(baseDraft, generationInput)),
     generationInput,
     {
       resetBaseline: true,
     }
   );
-  let validation = await runGenerationStageValidation(draft, generationInput);
+  let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
   if (isGenerationReady(validation)) {
     return buildSuccess(draft, validation);
@@ -446,7 +528,7 @@ export async function generateDocument(input) {
     draft = attachDraftContext(repairedDraft, generationInput, {
       resetBaseline: true,
     });
-    validation = await runGenerationStageValidation(draft, generationInput);
+    validation = await runGenerationStageValidation(draft, generationInput, mode);
 
     if (isGenerationReady(validation)) {
       return buildSuccess(draft, validation);

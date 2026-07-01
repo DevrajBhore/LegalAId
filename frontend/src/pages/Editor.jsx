@@ -4,6 +4,7 @@ import ClauseEditor from "../components/ClauseEditor";
 import RiskPanel from "../components/RiskPanel";
 import ErrorExplainer from "../components/ErrorExplainer";
 import DocumentIntelligence from "../components/DocumentIntelligence";
+import MobileActionBar from "../components/MobileActionBar";
 import {
   chatWithDocument,
   downloadDocument,
@@ -685,7 +686,7 @@ export default function Editor() {
   ];
 
   return (
-    <div className="editor-page">
+    <div className="editor-page has-mobile-action-bar">
       <div className="editor-topbar">
         <div className="editor-topbar-inner">
           <div className="editor-topbar-left">
@@ -1054,6 +1055,23 @@ export default function Editor() {
           </div>
         </div>
       </div>
+
+      {isCertified ? (
+        <MobileActionBar
+          label={isExporting ? `Preparing ${formatExportLabel(downloadingFormat)}…` : `Export ${formatExportLabel(exportFormat)}`}
+          onClick={() => handleDownload(exportFormat)}
+          disabled={isExporting}
+          hint="Certified"
+          trailing={isExporting ? null : Icons.download}
+        />
+      ) : (
+        <MobileActionBar
+          label={validating ? "Validating…" : "Validate document"}
+          onClick={handleValidate}
+          disabled={validating}
+          hint="Not yet exportable"
+        />
+      )}
     </div>
   );
 }

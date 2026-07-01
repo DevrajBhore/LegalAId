@@ -5,6 +5,7 @@ import {
   INFORMATIONAL_DISCLAIMER,
 } from "../data/documentInfo";
 import { Icons } from "../utils/icons";
+import MobileActionBar from "../components/MobileActionBar";
 import "./DocumentInfo.css";
 
 function normalizeDocumentType(type = "") {
@@ -123,7 +124,7 @@ export default function DocumentInfo() {
   };
 
   return (
-    <div className="document-info-page">
+    <div className="document-info-page has-mobile-action-bar">
       <section className="document-info-hero">
         <div className="document-info-hero-inner">
           <Link to="/library" className="document-info-back">
@@ -237,6 +238,13 @@ export default function DocumentInfo() {
           </aside>
         </div>
       </main>
+
+      <MobileActionBar
+        label={generateLabel}
+        onClick={goToForm}
+        hint="Guide · form · export"
+        trailing={Icons.arrowRight}
+      />
     </div>
   );
 }

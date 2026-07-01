@@ -278,14 +278,24 @@
   padding:2px 10px; border-radius:var(--r-full);
 }
 
-@media (max-width:840px) {
-  .intake-panel { padding:28px 24px 22px; }
-  .intake-panel__split { grid-template-columns:1fr; gap:20px; }
-  .intake-art { order:-1; }
-  .intake-art__svg { max-width:200px; }
-  .intake-assure { grid-template-columns:1fr; gap:14px; }
+@media (max-width:900px) {
+  /* Mobile: actionable OPTIONS come first; the illustration shrinks and drops
+     below them so the user doesn't scroll past decoration to choose. */
+  .intake-landing__inner { padding:20px 20px 36px; gap:18px; justify-content:flex-start; }
+  .intake-hero { max-width:none; margin-bottom:0; }
+  .intake-panel__split { grid-template-columns:1fr; gap:18px; }
+  .intake-choices { order:1; }
+  .intake-art { order:2; }
+  .intake-art__svg { max-width:150px; opacity:0.85; }
+  .intake-landing__title { font-size:28px; }
+  .intake-assure { grid-template-columns:1fr; gap:14px; padding-top:18px; }
 }
-@media (max-width:430px) {
+@media (max-width:560px) {
+  .intake-landing__bar { padding:14px 16px; }
+  .intake-landing__title { font-size:24px; }
+  .intake-hero__sub { display:none; }              /* cut the long subtitle on phones */
+  .intake-feature { flex-wrap:wrap; }
+  .intake-feature__go { width:100%; justify-content:center; margin-top:6px; }
   .intake-mini-row { flex-direction:column; }
 }
 @media (prefers-reduced-motion:reduce) {
@@ -1095,23 +1105,42 @@
 .gen-dots span:nth-child(3) { animation-delay:.4s; }
 
 @media (max-width:820px) {
-  .form-layout { grid-template-columns:1fr; }
-  .form-sidebar { position:static; }
+  .form-layout { grid-template-columns:1fr; padding:20px 20px 96px; }
+  /* The desktop sidebar (progress, step rail, tips, disclaimer) is all secondary
+     or duplicated elsewhere. On mobile it just pushed the actual form way down,
+     so hide it — the form fields now start near the top. */
+  .form-sidebar { display:none; }
   .fields-grid { grid-template-columns:1fr; }
   .form-review-items { grid-template-columns:1fr; }
+  /* Tighten the header preamble so the first field is reachable sooner. */
+  .form-header { margin-bottom:14px; }
+  .form-header-sub { display:none; }                /* preamble — cut on mobile */
+  /* The "Jump to" section nav is a tall wrapped chip block on phones and is
+     redundant with the "still needed" chips below — hide it so the actionable
+     panel and first field sit near the top. */
+  .form-section-nav { display:none; }
+}
+
+/* Top-bar pills must never wrap into stacked characters ("Gu ids d"). */
+.form-topbar-type, .form-topbar-mode, .form-topbar-tag { white-space:nowrap; flex-shrink:0; }
+
+@media (max-width:560px) {
+  /* Keep the top bar to the essentials: back + the mode pill. The doc name and
+     "AI DRAFT" tag are noise on a narrow bar and caused the cramped wrapping. */
+  .form-topbar-type, .form-topbar-sep, .form-topbar-tag { display:none; }
+  .form-topbar-mode { margin-left:auto; }
 }
 
 @media (max-width:520px) {
-  .form-layout { padding:24px 16px 96px; }
+  .form-layout { padding:18px 16px 96px; }
   .form-topbar { padding:0 16px; }
-  .form-section { padding:20px; }
+  .form-section { padding:18px; }
   .form-header-title {
-    font-size:clamp(22px, 8vw, 30px);
+    font-size:clamp(22px, 8vw, 28px);
     line-height:1.15;
   }
-  .form-header-sub {
-    font-size:13px;
-  }
+  .form-header-kicker { font-size:10px; }
+  .form-header-sub { font-size:13px; }
   .field-assistant__actions { justify-content:stretch; }
   .field-assistant__send,
   .field-assistant__apply { width:100%; }

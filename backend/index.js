@@ -1,5 +1,9 @@
 import dotenv from "dotenv";
-dotenv.config();
+import path from "path";
+import { fileURLToPath } from "url";
+// Load backend/.env regardless of the process's working directory, so the server
+// boots with the right secrets whether started from the repo root or backend/.
+dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".env") });
 
 import express from "express";
 import cors from "cors";
@@ -28,7 +32,11 @@ import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
 import { getIntakeAssistantResponse } from "./services/intakeAssistantService.js";
 import { searchClauses } from "./services/clauseSearch.js";
-import { getInterviewResponse, getConversationalStep } from "./services/interviewService.js";
+import {
+  getInterviewResponse,
+  getConversationalStep,
+  extractIntakeFromPrompt,
+} from "./services/interviewService.js";
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
 
 import authRoutes from "./auth/authRoutes.js";
@@ -393,6 +401,25 @@ app.post("/interview", protect, aiLimiter, async (req, res) => {
     res
       .status(error.statusCode || 500)
       .json({ error: "Interview failed", details: error.message });
+  }
+});
+
+// Prompt-first conversational intake — bulk-extract one free-form description
+// into the intake schema (variables only). Gaps are then collected by
+// /interview/step. Stateless: the client carries the filled values.
+app.post("/interview/extract", protect, aiLimiter, async (req, res) => {
+  try {
+    const { document_type: documentType, description } = req.body || {};
+    if (!documentType) {
+      return res.status(400).json({ error: "Missing document_type in request body" });
+    }
+    const result = await extractIntakeFromPrompt({ documentType, description });
+    res.json(result);
+  } catch (error) {
+    console.error("Intake extraction error:", error);
+    res
+      .status(error.statusCode || 500)
+      .json({ error: "Intake extraction failed", details: error.message });
   }
 });
 

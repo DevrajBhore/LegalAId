@@ -374,11 +374,14 @@
 
   .library-hero-copy,
   .library-browser {
-    padding: 24px 20px;
+    padding: 22px 18px;
   }
 
+  /* The stats "panel" (17 document types, drafting flow…) is marketing, not the
+     task. Hiding it on phones brings the actual document cards up near the top
+     instead of a full screen below. */
   .library-hero-panel {
-    padding: 18px;
+    display: none;
   }
 
   .library-group {

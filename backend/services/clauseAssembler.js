@@ -505,6 +505,15 @@ export function getKnowledgeBaseStats() {
   return getKnowledgeBaseCache().stats;
 }
 
+// The resolved blueprint object for a document type (required/conditional/variant
+// clauses). Exposed so the revision layer can derive concept→variable levers from
+// the SAME blueprint the assembler uses — single source, no drift.
+export function getBlueprintForDocumentType(documentType) {
+  const { blueprintsByFile } = getKnowledgeBaseCache();
+  const { blueprint } = resolveBlueprint(documentType, blueprintsByFile);
+  return blueprint || null;
+}
+
 export function getClauseById(clauseId) {
   if (!clauseId) return null;
   return getKnowledgeBaseCache().clausesById.get(clauseId) || null;

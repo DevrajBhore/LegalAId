@@ -326,7 +326,9 @@
     width: min(100% - 28px, 1120px);
   }
 
-  .document-info-quick div {
-    width: 100%;
-  }
+  /* Decorative metadata strip — noise on a phone; the CTA box (moved to the top)
+     and the sticky Generate bar carry the action. */
+  .document-info-quick { display: none; }
+  /* Tighten the side CTA box that now sits at the top of the stack. */
+  .document-info-side-box { padding: 18px; }
 }

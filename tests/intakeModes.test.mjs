@@ -7,7 +7,10 @@ import {
   getRequiredFieldsForMode,
   ESSENTIAL_FIELDS,
 } from "../backend/config/essentialFields.js";
-import { getConversationalStep } from "../backend/services/interviewService.js";
+import {
+  getConversationalStep,
+  extractIntakeFromPrompt,
+} from "../backend/services/interviewService.js";
 
 test("quick mode relaxes required validation to essentials", () => {
   const schema = getVariables("NDA");
@@ -47,13 +50,15 @@ test("unknown type falls back to required fields in quick mode", () => {
   assert.deepEqual(getRequiredFieldsForMode("NOT_A_TYPE", required, "quick"), required);
 });
 
-test("conversational step walks essentials and signals ready when filled", async () => {
+test("conversational loop is required-driven (validateVariables detailed), not essentials", async () => {
   const first = await getConversationalStep({ documentType: "NDA", filled: {} });
   assert.equal(first.ready, false);
   assert.ok(first.next_field, "should ask for a field first");
   assert.ok(first.next_question, "should produce a natural question");
 
-  const allFilled = {
+  // The old quick-mode essentials subset must NOT satisfy the loop — detailed
+  // mode still requires confidentiality_period, agreement_term, arbitration_city.
+  const essentialsOnly = {
     operating_state: "Maharashtra",
     party_1_name: "TechCorp",
     party_1_type: "Private Limited Company",
@@ -62,9 +67,28 @@ test("conversational step walks essentials and signals ready when filled", async
     purpose: "share pricing data for negotiations",
     effective_date: "2026-07-01",
   };
-  const done = await getConversationalStep({ documentType: "NDA", filled: allFilled });
-  assert.equal(done.ready, true, "all essentials filled -> ready");
+  const partial = await getConversationalStep({ documentType: "NDA", filled: essentialsOnly });
+  assert.equal(partial.ready, false, "essentials alone must NOT be ready (required-driven)");
+  assert.ok(partial.remaining_count > 0, "should still be missing required fields");
+
+  // Full required set -> ready, and the structured echo is returned for confirmation.
+  const allRequired = {
+    ...essentialsOnly,
+    confidentiality_period: "3 years",
+    agreement_term: "2 years",
+    arbitration_city: "Mumbai",
+  };
+  const done = await getConversationalStep({ documentType: "NDA", filled: allRequired });
+  assert.equal(done.ready, true, "full required set -> ready");
   assert.equal(done.next_question, null);
+  assert.ok(Array.isArray(done.collected) && done.collected.length > 0, "returns structured interpretation for confirmation");
+  assert.ok(done.collected.every((c) => c.label && c.value), "each collected item has a label and value");
 });
 
-console.log("# Intake modes (quick + conversational) test passed.");
+test("prompt-first extractor returns nothing (no invented values) for an empty description", async () => {
+  const result = await extractIntakeFromPrompt({ documentType: "NDA", description: "" });
+  assert.deepEqual(result.field_updates, [], "empty description must extract nothing");
+  assert.equal(result.available, true);
+});
+
+console.log("# Intake modes (quick + conversational + prompt-first) test passed.");

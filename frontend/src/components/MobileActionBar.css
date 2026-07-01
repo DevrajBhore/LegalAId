@@ -1,0 +1,46 @@
+/* Phone-only sticky bottom action bar (thumb zone). Hidden on desktop. */
+.mobile-action-bar { display: none; }
+
+@media (max-width: 760px) {
+  .mobile-action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(12, 13, 15, 0) 0%, #0c0d0f 26%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mobile-action-bar__hint {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .mobile-action-bar__btn {
+    flex: 1;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 13px;
+    background: var(--gold, #c9a24a);
+    color: var(--ink, #1a1505);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .mobile-action-bar__btn:disabled {
+    opacity: 0.5;
+  }
+
+  /* Pages that use the bar add this class so their content clears the fixed bar. */
+  .has-mobile-action-bar {
+    padding-bottom: 88px !important;
+  }
+}
