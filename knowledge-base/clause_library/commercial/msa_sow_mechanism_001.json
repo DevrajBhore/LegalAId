@@ -1,0 +1,44 @@
+{
+  "clause_id": "MSA_SOW_MECHANISM_001",
+  "name": "Statements of Work",
+  "category": "SUPPLY",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The Parties may from time to time execute one or more statements of work under this Agreement (each, a 'Statement of Work' or 'SOW'). Each SOW shall describe the services to be performed, including {{services_description}}, and shall specify the scope, deliverables, timelines, fees, invoicing schedule, acceptance criteria, and any service levels applicable to that engagement. Each SOW shall be executed in writing by authorised representatives of both Parties and shall, upon execution, be deemed incorporated into and governed by the terms of this Agreement. No SOW shall be effective unless it expressly references this Agreement. Each SOW constitutes a separate contract between the Parties, and termination or expiry of one SOW shall not, of itself, affect any other SOW then in force. Changes to an executed SOW shall be made only through a written change order signed by both Parties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Agreements become contracts when made with free consent for lawful consideration"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "No mechanism for executing or incorporating SOWs is stated"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Statements of Work",
+  "depends_on": [
+    "CORE_IDENTITY_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [
+    "MSA_ORDER_OF_PRECEDENCE_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Unsigned or informal SOWs — work performed without an executed SOW",
+    "SOW terms conflicting with master terms without a precedence rule"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": true
+}

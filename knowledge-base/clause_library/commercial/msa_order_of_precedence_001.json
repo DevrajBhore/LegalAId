@@ -1,0 +1,43 @@
+{
+  "clause_id": "MSA_ORDER_OF_PRECEDENCE_001",
+  "name": "Order of Precedence",
+  "category": "SUPPLY",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In the event of any conflict or inconsistency between the terms of this Agreement and the terms of any Statement of Work, the terms of this Agreement shall prevail, except where the Statement of Work expressly identifies the specific clause of this Agreement that it intends to vary and states that it takes precedence, in which case the variation shall apply solely to that Statement of Work. In the event of any conflict between a Statement of Work and any purchase order, invoice, or other administrative document, the Statement of Work shall prevail. Pre-printed or standard terms appearing on either Party's purchase orders, acknowledgements, or invoices shall have no legal effect.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "91-92 (Indian Evidence Act, 1872)",
+      "note": "Written contract terms exclude inconsistent extrinsic terms"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "No rule for resolving conflicts between master terms and SOW terms"
+  ],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Order of Precedence",
+  "depends_on": [
+    "MSA_SOW_MECHANISM_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_ENTIRE_AGREEMENT_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Battle of forms — conflicting purchase-order boilerplate"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

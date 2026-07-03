@@ -106,6 +106,41 @@
         "purposeMode": "service_engagement"
       }
     },
+    "MASTER_SERVICE_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "second": {
+            "aliases": [
+              "Service Provider",
+              "Consultant",
+              "Contractor",
+              "Vendor"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "IP_OWNERSHIP_001",
+          "CORE_CONFIDENTIALITY_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_COUNTERPARTS_001"
+        ]
+      },
+      "rendering": {
+        "purposeMode": "service_engagement"
+      }
+    },
     "CONSULTANCY_AGREEMENT": {
       "naming": {
         "participants": {

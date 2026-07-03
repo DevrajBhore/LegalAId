@@ -5,7 +5,8 @@
   "document_types": [
     "SERVICE_AGREEMENT",
     "SOFTWARE_DEVELOPMENT_AGREEMENT",
-    "TECHNOLOGY_AGREEMENT"
+    "TECHNOLOGY_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT"
   ],
   "jurisdiction": "India",
   "text": "The Service Provider shall meet the service levels specified in Schedule 2 ('Service Levels'). In the event that the Service Provider fails to meet any Service Level in a given calendar month, the Client shall be entitled to service credits as specified in Schedule 2. Service credits shall be the Client's sole and exclusive remedy for Service Level failures, unless such failure constitutes a material breach of this Agreement. The Service Provider shall provide the Client with monthly reports detailing Service Level performance within five (5) Business Days after the end of each calendar month. The Client shall raise service credit claims within fifteen (15) days of receiving the monthly report. Service credits shall be applied against the next payable invoice.",
@@ -38,8 +39,8 @@
   "litigation_risk": "HIGH",
   "drafting_strength": "STRONG",
   "dispute_hotspots": [
-    "Uptime measurement — client and vendor have different uptime data",
-    "Credits as sole remedy — client claims credits insufficient for catastrophic outage"
+    "Uptime measurement â€” client and vendor have different uptime data",
+    "Credits as sole remedy â€” client claims credits insufficient for catastrophic outage"
   ],
   "tds_applicable": false,
   "gst_applicable": false,

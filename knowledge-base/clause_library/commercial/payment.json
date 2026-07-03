@@ -5,7 +5,8 @@
   "document_types": [
     "SERVICE_AGREEMENT",
     "CONSULTANCY_AGREEMENT",
-    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT"
   ],
   "jurisdiction": "India",
   "text": "In consideration of the Services rendered under this Agreement, the Client shall pay the Service Provider the fees as set out in Schedule 1 (the 'Fees'). Payment shall be made within thirty (30) days of receipt of a valid tax invoice from the Service Provider. All invoices shall be raised in Indian Rupees and shall comply with the Goods and Services Tax Act, 2017, including the requirement to specify the applicable GST registration number, HSN/SAC code, and GST amount. In the event of delayed payment beyond the due date, the Service Provider shall be entitled to charge simple interest at the rate of eighteen percent (18%) per annum on the outstanding amount from the due date until the date of actual payment. All payments shall be made by electronic transfer to the bank account designated by the Service Provider in writing.",
@@ -13,7 +14,7 @@
     {
       "act": "Indian Contract Act, 1872",
       "section": "10",
-      "note": "Consideration — essential element"
+      "note": "Consideration â€” essential element"
     },
     {
       "act": "Central Goods and Services Tax Act, 2017",
@@ -38,7 +39,7 @@
     {
       "act": "MSMED Act, 2006",
       "section": "16",
-      "note": "Interest on delayed payment — 3x bank rate, compounded"
+      "note": "Interest on delayed payment â€” 3x bank rate, compounded"
     }
   ],
   "mandatory": true,
@@ -67,15 +68,15 @@
     "SERVICE_DELIVERABLES_001"
   ],
   "jurisdiction_constraints": {
-    "general": "Place of supply determines IGST vs CGST+SGST — verify GST registration states"
+    "general": "Place of supply determines IGST vs CGST+SGST â€” verify GST registration states"
   },
   "litigation_risk": "HIGH",
   "drafting_strength": "STRONG",
   "dispute_hotspots": [
-    "MSME delayed payment — MSME Samadhan portal complaints; compounded interest creates significant liability",
-    "TDS rate dispute — 194C vs 194J classification",
-    "GST input credit — invoice non-compliance blocks client's ITC",
-    "Invoice disputes — vague dispute mechanism leads to non-payment standoffs"
+    "MSME delayed payment â€” MSME Samadhan portal complaints; compounded interest creates significant liability",
+    "TDS rate dispute â€” 194C vs 194J classification",
+    "GST input credit â€” invoice non-compliance blocks client's ITC",
+    "Invoice disputes â€” vague dispute mechanism leads to non-payment standoffs"
   ],
   "tds_applicable": true,
   "gst_applicable": true,

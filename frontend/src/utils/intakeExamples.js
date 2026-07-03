@@ -98,6 +98,11 @@ export const EXAMPLE_PROMPTS_BY_TYPE = {
     "A vendor agreement with inspection, rejection rights, and 30-day payments.",
     "Procuring components from a vendor with a one-year term and warranty.",
   ],
+  MASTER_SERVICE_AGREEMENT: [
+    "An MSA with an IT vendor; individual projects will be scoped in SOWs.",
+    "A framework agreement for ongoing marketing services across multiple campaigns.",
+    "A master agreement with monthly retainer defaults and per-SOW deliverables.",
+  ],
   PRIVACY_POLICY: [
     "A privacy policy for my D2C store collecting names, addresses, and payment info.",
     "A SaaS app privacy policy covering analytics and support data under the DPDP Act.",

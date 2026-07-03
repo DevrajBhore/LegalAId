@@ -101,12 +101,21 @@ export const DOCUMENT_TYPE_REGISTRY = {
     ireType: "MOU",
     blueprintName: "mou",
   },
-  // NOTE: PRIVACY_POLICY and RENTAL_AGREEMENT are registered (and have
-  // blueprints) but are intentionally NOT yet exposed in backend
-  // DOCUMENT_CONFIG, so they are not user-selectable. The startup invariant
-  // in backend/index.js asserts DOCUMENT_CONFIG ⊆ this registry — the registry
-  // is allowed to stage types ahead of config, but config may never reference
-  // a type that is missing here.
+  VENDOR_AGREEMENT: {
+    displayName: "Vendor Agreement",
+    family: "Contracts & Commercial",
+    ireType: "VENDOR_AGREEMENT",
+    blueprintName: "vendor",
+  },
+  MASTER_SERVICE_AGREEMENT: {
+    displayName: "Master Service Agreement",
+    family: "Contracts & Commercial",
+    ireType: "MASTER_SERVICE_AGREEMENT",
+    blueprintName: "msa",
+  },
+  // The startup invariant in backend/index.js asserts DOCUMENT_CONFIG ⊆ this
+  // registry — the registry is allowed to stage types ahead of config, but
+  // config may never reference a type that is missing here.
   PRIVACY_POLICY: {
     displayName: "Privacy Policy",
     family: "Contracts & Commercial",
@@ -131,6 +140,7 @@ export const DOCUMENT_TYPE_ALIASES = {
   Employment: "EMPLOYMENT_CONTRACT",
   Service: "SERVICE_AGREEMENT",
   PrivacyPolicy: "PRIVACY_POLICY",
+  MSA: "MASTER_SERVICE_AGREEMENT",
 };
 
 function prettifyDocumentType(type) {

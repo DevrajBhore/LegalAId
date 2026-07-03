@@ -990,6 +990,45 @@ export const DOCUMENT_CONFIG = {
     ],
   },
 
+  MASTER_SERVICE_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "party_1_name",
+      "party_1_type",
+      "party_2_name",
+      "party_2_type",
+      "services_description",
+      "contract_value",
+      "payment_terms",
+      "contract_duration",
+      "effective_date",
+      "arbitration_city",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Client",
+        fields: ["party_1_name", "party_1_address", "party_1_type", "party_1_gstin"],
+      },
+      {
+        title: "Service Provider",
+        fields: ["party_2_name", "party_2_address", "party_2_type", "party_2_gstin"],
+      },
+      {
+        title: "Framework Terms",
+        fields: [
+          "services_description",
+          "contract_value",
+          "payment_terms",
+          "service_levels",
+          "contract_duration",
+          "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
+
   PRIVACY_POLICY: {
     requiredFields: [
       "operating_state",

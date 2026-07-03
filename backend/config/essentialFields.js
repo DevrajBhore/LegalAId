@@ -133,6 +133,13 @@ export const ESSENTIAL_FIELDS = {
     "party_2_name", "party_2_type",
     "goods_description", "price", "effective_date",
   ],
+  MASTER_SERVICE_AGREEMENT: [
+    "operating_state",
+    "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "services_description", "contract_value", "payment_terms",
+    "contract_duration", "effective_date",
+  ],
   PRIVACY_POLICY: [
     "operating_state",
     "company_name", "company_address", "website_url",

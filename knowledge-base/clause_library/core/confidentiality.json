@@ -6,7 +6,8 @@
     "NDA",
     "EMPLOYMENT",
     "SERVICE",
-    "MOU"
+    "MOU",
+    "MASTER_SERVICE_AGREEMENT"
   ],
   "jurisdiction": "India",
   "text": "The Receiving Party shall maintain the confidentiality of all Confidential Information and shall not disclose or use such information except as permitted under this Agreement.",
@@ -56,10 +57,10 @@
   "litigation_risk": "MEDIUM",
   "drafting_strength": "STRONG",
   "dispute_hotspots": [
-    "What constitutes 'Confidential Information' — definition disputes",
-    "Disclosure to employees — missing 'need to know' restriction",
-    "Compelled legal disclosure — no notice obligation to disclosing party",
-    "UPSI leakage — SEBI enforcement action risk"
+    "What constitutes 'Confidential Information' â€” definition disputes",
+    "Disclosure to employees â€” missing 'need to know' restriction",
+    "Compelled legal disclosure â€” no notice obligation to disclosing party",
+    "UPSI leakage â€” SEBI enforcement action risk"
   ],
   "tds_applicable": false,
   "gst_applicable": false,

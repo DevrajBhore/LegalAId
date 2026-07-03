@@ -2517,6 +2517,28 @@ export const VARIABLE_CONFIG = {
 // SUPPLY_* clause set, so the same field names fill the same placeholders.
 VARIABLE_CONFIG.VENDOR_AGREEMENT = { ...VARIABLE_CONFIG.SUPPLY_AGREEMENT };
 
+// The MSA reuses the SERVICE_* clause set (payment, termination, SLA), so the
+// service intake fields fill the same placeholders. Framework-specific tweaks:
+// scope describes the kinds of services SOWs will cover, and the fee fields
+// describe default commercial terms that individual SOWs may override.
+VARIABLE_CONFIG.MASTER_SERVICE_AGREEMENT = {
+  ...VARIABLE_CONFIG.SERVICE_AGREEMENT,
+  services_description: {
+    ...VARIABLE_CONFIG.SERVICE_AGREEMENT.services_description,
+    label: "Types of Services Covered",
+    description:
+      "Describe the categories of services the master agreement will cover. Specific engagements are detailed in individual Statements of Work.",
+    example:
+      "IT consulting, software development, system integration, and managed support services, as detailed in individual SOWs.",
+  },
+  contract_value: {
+    ...VARIABLE_CONFIG.SERVICE_AGREEMENT.contract_value,
+    label: "Estimated Contract Value (₹)",
+    description:
+      "Enter the estimated or committed aggregate value across SOWs as a number only. Individual SOWs state their own fees.",
+  },
+};
+
 /**
  * Get merged variable definitions for a document type.
  * Returns COMMON vars + doc-type-specific vars, with effective_date and arbitration_city always included.

@@ -56,6 +56,23 @@ export const DOCUMENT_TYPE_REGISTRY = {
     registration: false,
   },
 
+  MASTER_SERVICE_AGREEMENT: {
+    displayName: "Master Service Agreement",
+    family: "CONTRACTS",
+    domains: ["contract", "service"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "CONSIDERATION",
+      "TERM",
+      "TERMINATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: true,
+    registration: false,
+  },
+
   CONSULTANCY_AGREEMENT: {
     displayName: "Consultancy Agreement",
     family: "CONTRACTS",

@@ -3,7 +3,7 @@
   "category": "IDENTITY",
   "title": "Parties and Recitals",
   "text": "This Agreement (\"Agreement\") is entered into as of {{effective_date}} by and between {{party_1_descriptor}} (\"Party 1\") and {{party_2_descriptor}} (\"Party 2\") (collectively, the \"Parties\"). WHEREAS, the Parties desire to enter into this Agreement for a lawful purpose and lawful consideration under the Indian Contract Act, 1872; NOW, THEREFORE, in consideration of the mutual covenants and promises set forth herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:",
-  "statutory_reference": "Indian Contract Act, 1872 – S.10",
+  "statutory_reference": "Indian Contract Act, 1872 â€“ S.10",
   "mandatory": true,
   "jurisdiction": "India",
   "name": "Parties, Recitals and Execution Date",
@@ -27,7 +27,8 @@
     "SERVICE",
     "SHAREHOLDERS_AGREEMENT",
     "SUPPLY_AGREEMENT",
-    "TECHNOLOGY"
+    "TECHNOLOGY",
+    "MASTER_SERVICE_AGREEMENT"
   ],
   "legal_basis": [
     {
@@ -70,8 +71,8 @@
   "drafting_strength": "STRONG",
   "dispute_hotspots": [
     "Vague party descriptions leading to questions of contract privity",
-    "Unsigned or partially signed agreements — ICA S.10 enforceability challenge",
-    "Wrong effective date — impacts limitation period calculation"
+    "Unsigned or partially signed agreements â€” ICA S.10 enforceability challenge",
+    "Wrong effective date â€” impacts limitation period calculation"
   ],
   "blocks_generation_if_absent": true,
   "tds_applicable": false,
