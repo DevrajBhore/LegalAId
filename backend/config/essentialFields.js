@@ -121,6 +121,27 @@ export const ESSENTIAL_FIELDS = {
     "party_2_name", "party_2_type",
     "mou_purpose", "effective_date",
   ],
+  RENTAL_AGREEMENT: [
+    "operating_state",
+    "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "property_address", "occupancy_fee", "occupancy_term", "effective_date",
+  ],
+  VENDOR_AGREEMENT: [
+    "operating_state",
+    "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "goods_description", "price", "effective_date",
+  ],
+  PRIVACY_POLICY: [
+    "operating_state",
+    "company_name", "company_address", "website_url",
+    "data_categories", "processing_purpose",
+    // Grievance officer details are statutorily required (IT Rules 2011 /
+    // DPDP Act), so even quick mode must collect them.
+    "grievance_officer", "grievance_officer_email",
+    "effective_date",
+  ],
 };
 
 /**

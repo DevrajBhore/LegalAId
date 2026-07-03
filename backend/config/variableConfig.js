@@ -2436,7 +2436,86 @@ export const VARIABLE_CONFIG = {
       ],
     },
   },
+
+  RENTAL_AGREEMENT: {
+    party_1_name: { label: "Owner Name", type: "text", required: true },
+    party_1_address: { label: "Owner Address", type: "textarea", required: true },
+    party_2_name: { label: "Tenant Name", type: "text", required: true },
+    party_2_address: { label: "Tenant Address", type: "textarea", required: true },
+    property_address: {
+      label: "Property Address",
+      type: "textarea",
+      required: true,
+      example: "Flat 4B, Sunshine Apartments, MG Road, Pune, Maharashtra 411001",
+    },
+    permitted_use: {
+      label: "Permitted Use",
+      type: "text",
+      required: true,
+      example: "Residential use by the tenant and immediate family",
+    },
+    occupancy_fee: {
+      label: "Monthly Rent (INR)",
+      type: "number",
+      required: true,
+      example: "25000",
+    },
+    security_deposit: {
+      label: "Security Deposit (INR)",
+      type: "number",
+      required: true,
+      example: "100000",
+    },
+    occupancy_term: {
+      label: "Term of Occupancy",
+      type: "text",
+      required: true,
+      example: "11 months",
+    },
+  },
+
+  PRIVACY_POLICY: {
+    company_name: { label: "Company / Business Name", type: "text", required: true },
+    company_address: {
+      label: "Registered Address",
+      type: "textarea",
+      required: true,
+    },
+    website_url: {
+      label: "Website / App",
+      type: "text",
+      required: true,
+      example: "https://www.example.in",
+    },
+    data_categories: {
+      label: "Personal Data Collected",
+      type: "textarea",
+      required: true,
+      example: "Name, email, phone number, shipping address, payment details",
+    },
+    processing_purpose: {
+      label: "Why the Data Is Used",
+      type: "textarea",
+      required: true,
+      example: "Order fulfilment, customer support, and service improvement",
+    },
+    grievance_officer: {
+      label: "Grievance Officer Name",
+      type: "text",
+      required: true,
+    },
+    grievance_officer_email: {
+      label: "Grievance Officer Email",
+      type: "text",
+      required: true,
+      example: "grievance@example.in",
+    },
+  },
 };
+
+// Vendor procurement mirrors the supply intake — the vendor blueprint reuses the
+// SUPPLY_* clause set, so the same field names fill the same placeholders.
+VARIABLE_CONFIG.VENDOR_AGREEMENT = { ...VARIABLE_CONFIG.SUPPLY_AGREEMENT };
 
 /**
  * Get merged variable definitions for a document type.

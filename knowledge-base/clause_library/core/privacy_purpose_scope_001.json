@@ -1,0 +1,47 @@
+{
+  "clause_id": "PRIVACY_PURPOSE_SCOPE_001",
+  "name": "Purpose and Scope of this Policy",
+  "category": "PURPOSE",
+  "document_types": [
+    "PRIVACY_POLICY"
+  ],
+  "jurisdiction": "India",
+  "text": "This Privacy Policy is issued by {{company_name}} ('the Company', 'we', 'us') and applies to personal data collected through {{website_url}} and related services. It describes how we collect, use, store, and protect personal data — including {{data_categories}} — for the purpose of {{processing_purpose}}, in accordance with the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000 and rules made thereunder. This Policy is effective from {{effective_date}} and applies to all users and data principals whose personal data we process.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "5",
+      "note": "Notice must state the personal data collected and the purpose of processing"
+    },
+    {
+      "act": "Information Technology (Reasonable Security Practices) Rules, 2011",
+      "section": "4",
+      "note": "Body corporate must publish a privacy policy describing data handled"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "Categories of personal data collected are not stated",
+    "Purpose of processing is not stated"
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "version": "1.0",
+  "title": "Purpose and Scope",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DEFINITIONS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Vague or open-ended purpose — DPDP notice must be purpose-specific"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

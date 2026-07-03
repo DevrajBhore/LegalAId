@@ -88,6 +88,21 @@ export const EXAMPLE_PROMPTS_BY_TYPE = {
     "An MOU between a startup and a university for a research pilot.",
     "A non-binding MOU outlining scope, with confidentiality of shared data.",
   ],
+  RENTAL_AGREEMENT: [
+    "Renting my flat in Pune to a tenant for 11 months at ₹25,000/month.",
+    "A residential rental with a ₹1,00,000 security deposit and family use only.",
+    "Renting a furnished apartment; owner covers society charges.",
+  ],
+  VENDOR_AGREEMENT: [
+    "Appointing a vendor to supply packaging materials monthly with quality checks.",
+    "A vendor agreement with inspection, rejection rights, and 30-day payments.",
+    "Procuring components from a vendor with a one-year term and warranty.",
+  ],
+  PRIVACY_POLICY: [
+    "A privacy policy for my D2C store collecting names, addresses, and payment info.",
+    "A SaaS app privacy policy covering analytics and support data under the DPDP Act.",
+    "A marketplace app policy with a grievance officer and cookie disclosure.",
+  ],
 };
 
 const DEFAULT_EXAMPLE_PROMPTS = [

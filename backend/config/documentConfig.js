@@ -899,6 +899,131 @@ export const DOCUMENT_CONFIG = {
       },
     ],
   },
+
+  RENTAL_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "party_1_name",
+      "party_1_address",
+      "party_1_type",
+      "party_2_name",
+      "party_2_address",
+      "party_2_type",
+      "property_address",
+      "permitted_use",
+      "occupancy_fee",
+      "security_deposit",
+      "occupancy_term",
+      "effective_date",
+      "arbitration_city",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      // Section titles double as the canonical party labels the quality
+      // controls enforce — the rental clause texts speak of Landlord/Tenant.
+      {
+        title: "Landlord",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Tenant",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
+      {
+        title: "Property & Terms",
+        fields: [
+          "property_address",
+          "permitted_use",
+          "occupancy_fee",
+          "security_deposit",
+          "occupancy_term",
+          "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
+
+  VENDOR_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "party_1_name",
+      "party_1_type",
+      "party_2_name",
+      "party_2_type",
+      "goods_description",
+      "price",
+      "payment_terms",
+      "delivery_terms",
+      "delivery_location",
+      "contract_duration",
+      "warranty_period",
+      "effective_date",
+      "arbitration_city",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      // Party 1 = the vendor/supplier: the SUPPLY_* clause texts this type
+      // reuses are written with the supplier as the first party.
+      {
+        title: "Supplier",
+        fields: ["party_1_name", "party_1_address", "party_1_type"],
+      },
+      {
+        title: "Buyer",
+        fields: ["party_2_name", "party_2_address", "party_2_type"],
+      },
+      {
+        title: "Procurement Terms",
+        fields: [
+          "goods_description",
+          "price",
+          "payment_terms",
+          "delivery_terms",
+          "delivery_location",
+          "contract_duration",
+          "warranty_period",
+          "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
+
+  PRIVACY_POLICY: {
+    requiredFields: [
+      "operating_state",
+      "company_name",
+      "company_address",
+      "website_url",
+      "data_categories",
+      "processing_purpose",
+      "grievance_officer",
+      "grievance_officer_email",
+      "effective_date",
+      "arbitration_city",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Business",
+        fields: ["company_name", "company_address", "website_url"],
+      },
+      {
+        title: "Data Practices",
+        fields: ["data_categories", "processing_purpose"],
+      },
+      {
+        title: "Compliance",
+        fields: [
+          "grievance_officer",
+          "grievance_officer_email",
+          "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
 };
 
 // ── Deferred identity fields ──────────────────────────────────────────────────

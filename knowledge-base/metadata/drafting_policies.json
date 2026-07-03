@@ -30,10 +30,14 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Discloser"]
+            "aliases": [
+              "Discloser"
+            ]
           },
           "second": {
-            "aliases": ["Recipient"]
+            "aliases": [
+              "Recipient"
+            ]
           }
         }
       },
@@ -67,7 +71,11 @@
       "naming": {
         "participants": {
           "second": {
-            "aliases": ["Consultant", "Contractor", "Developer"]
+            "aliases": [
+              "Consultant",
+              "Contractor",
+              "Developer"
+            ]
           }
         }
       },
@@ -102,7 +110,11 @@
       "naming": {
         "participants": {
           "second": {
-            "aliases": ["Service Provider", "Contractor", "Developer"]
+            "aliases": [
+              "Service Provider",
+              "Contractor",
+              "Developer"
+            ]
           }
         }
       },
@@ -161,10 +173,14 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Client"]
+            "aliases": [
+              "Client"
+            ]
           },
           "second": {
-            "aliases": ["Service Provider"]
+            "aliases": [
+              "Service Provider"
+            ]
           }
         }
       },
@@ -190,7 +206,11 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Seller", "Principal", "Manufacturer"]
+            "aliases": [
+              "Seller",
+              "Principal",
+              "Manufacturer"
+            ]
           }
         }
       },
@@ -216,10 +236,18 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Supplier", "Seller", "Manufacturer", "Licensor"]
+            "aliases": [
+              "Supplier",
+              "Seller",
+              "Manufacturer",
+              "Licensor"
+            ]
           },
           "second": {
-            "aliases": ["Buyer", "Licensee"]
+            "aliases": [
+              "Buyer",
+              "Licensee"
+            ]
           }
         }
       },
@@ -251,7 +279,9 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Supplier"]
+            "aliases": [
+              "Supplier"
+            ]
           }
         }
       },
@@ -273,7 +303,11 @@
       "naming": {
         "participants": {
           "second": {
-            "aliases": ["Service Provider", "Consultant", "Developer"]
+            "aliases": [
+              "Service Provider",
+              "Consultant",
+              "Developer"
+            ]
           }
         }
       },
@@ -303,10 +337,14 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Licensor"]
+            "aliases": [
+              "Licensor"
+            ]
           },
           "second": {
-            "aliases": ["Licensee"]
+            "aliases": [
+              "Licensee"
+            ]
           }
         }
       },
@@ -322,10 +360,14 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Landlord"]
+            "aliases": [
+              "Landlord"
+            ]
           },
           "second": {
-            "aliases": ["Tenant"]
+            "aliases": [
+              "Tenant"
+            ]
           }
         }
       },
@@ -341,10 +383,14 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Creditor"]
+            "aliases": [
+              "Creditor"
+            ]
           },
           "second": {
-            "aliases": ["Principal"]
+            "aliases": [
+              "Principal"
+            ]
           }
         }
       },
@@ -369,10 +415,15 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Lender"]
+            "aliases": [
+              "Lender"
+            ]
           },
           "second": {
-            "aliases": ["Borrower", "Principal"]
+            "aliases": [
+              "Borrower",
+              "Principal"
+            ]
           }
         }
       },
@@ -397,10 +448,18 @@
       "naming": {
         "participants": {
           "first": {
-            "aliases": ["Licensee"]
+            "aliases": [
+              "Licensee"
+            ]
           },
           "second": {
-            "aliases": ["Service Provider", "Consultant", "Contractor", "Agency", "Licensor"]
+            "aliases": [
+              "Service Provider",
+              "Consultant",
+              "Contractor",
+              "Agency",
+              "Licensor"
+            ]
           }
         }
       },
@@ -438,6 +497,38 @@
       },
       "rendering": {
         "purposeMode": "memorandum_cooperation"
+      }
+    },
+    "VENDOR_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": [
+              "Vendor",
+              "Seller",
+              "Principal",
+              "Manufacturer"
+            ]
+          }
+        }
+      }
+    },
+    "RENTAL_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "aliases": [
+              "Owner",
+              "Lessor"
+            ]
+          },
+          "second": {
+            "aliases": [
+              "Renter",
+              "Lessee"
+            ]
+          }
+        }
       }
     }
   }

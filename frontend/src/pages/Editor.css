@@ -694,6 +694,38 @@
   color: var(--ink);
 }
 
+/* Phone-only pane switcher (Document / Validation / Insights / Chat).
+   Hidden on desktop, where both panes render side by side. */
+.editor-mobile-switch {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(12, 13, 15, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  overflow-x: auto;
+}
+.editor-mobile-switch__tab {
+  flex: 1;
+  min-height: 38px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.editor-mobile-switch__tab--active {
+  background: var(--gold-pale);
+  border-color: rgba(184, 147, 58, 0.45);
+  color: var(--gold);
+}
+
 @media (max-width: 1260px) {
   .editor-status-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -743,15 +775,30 @@
   .validate-download-btn { display: none; }
 
   .editor-shell {
-    padding: 18px 14px 40px;
+    padding: 14px 14px 40px;
   }
 
+  /* Status facts: a compact 2-up strip instead of a tall 1-column stack, so the
+     document surfaces sooner. */
   .editor-status-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
+  .editor-status-item { padding: 10px 12px; }
+
+  /* The legal disclaimer repeats what's shown elsewhere and just pushes the
+     document down on a phone — hide it here (it stays on the form/export). */
+  .editor-disclaimer { display: none; }
+
+  /* Pane switcher: one view at a time on phones. The side panel was otherwise
+     buried below the whole document (~13k px down on a 24-clause draft). */
+  .editor-mobile-switch { display: flex; }
+  .editor-body--document .editor-right { display: none; }
+  /* Keep the panel's own tab row: it's how Versions stays reachable on phones. */
+  .editor-body--panel .editor-left { display: none; }
 
   .doc-paper {
-    padding: 26px 20px 52px;
+    padding: 24px 18px 48px;
   }
 
   .doc-title-main {

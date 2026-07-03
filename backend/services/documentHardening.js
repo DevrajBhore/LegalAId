@@ -1783,9 +1783,9 @@ function renderHardClause(
       )} prior to or at the time of execution of this Agreement. The Security Deposit shall be held as security for due performance of the Tenant's obligations, shall not carry interest unless expressly agreed otherwise, and shall be refunded within thirty (30) days after the Tenant vacates and delivers peaceful possession, subject only to deductions for unpaid rent, documented damage beyond fair wear and tear, and other amounts lawfully due under this Agreement.`,
 
     RENTAL_SECURITY_DEPOSIT_001: () =>
-      `The Licensee/Tenant shall pay a refundable security deposit of ${formatCurrency(
+      `The Tenant shall pay a refundable security deposit of ${formatCurrency(
         variables.security_deposit
-      )} prior to or at the time of execution of this Agreement. The security deposit shall be held as security for the due performance of the Licensee/Tenant's obligations and shall not carry interest. The Licensor/Landlord shall refund the security deposit within thirty (30) days of the Licensee/Tenant vacating the Premises and delivering peaceful possession, after deducting any outstanding dues, unpaid license fee or rent, or costs of repairing damage caused by the Licensee/Tenant beyond fair wear and tear. The Licensor/Landlord shall furnish a written account of all deductions made.`,
+      )} prior to or at the time of execution of this Agreement. The security deposit shall be held as security for the due performance of the Tenant's obligations and shall not carry interest. The Landlord shall refund the security deposit within thirty (30) days of the Tenant vacating the Premises and delivering peaceful possession, after deducting any outstanding dues, unpaid rent, or costs of repairing damage caused by the Tenant beyond fair wear and tear. The Landlord shall furnish a written account of all deductions made.`,
 
     RENT_RENT_INCREASE_001: () =>
       `The monthly rent or licence fee payable under this Agreement shall be subject to periodic escalation at the rate of ${normalizeWhitespace(
@@ -1813,7 +1813,7 @@ function renderHardClause(
         resolveTerminationNoticeDays(variables)
       )} days' prior written notice after expiry of the lock-in period, if any${hasMeaningfulValue(
         variables.lock_in_period
-      ) ? `, such lock-in period being ${normalizeWhitespace(variables.lock_in_period)}` : ""}; and (b) by the Licensor/Landlord immediately upon material breach, persistent payment default, or unlawful use, subject to the contractual cure process and applicable law. Upon termination, the Licensee/Tenant shall vacate the Premises within the notice period, return them in the same condition as at commencement (reasonable wear and tear excepted), and hand over all keys and access devices.`,
+      ) ? `, such lock-in period being ${normalizeWhitespace(variables.lock_in_period)}` : ""}; and (b) by the Landlord immediately upon material breach, persistent payment default, or unlawful use, subject to the contractual cure process and applicable law. Upon termination, the Tenant shall vacate the Premises within the notice period, return them in the same condition as at commencement (reasonable wear and tear excepted), and hand over all keys and access devices.`,
 
     PROP_REGISTRATION_001: () =>
       `The Parties acknowledge that this Agreement shall be stamped and, where required by law, registered in accordance with the applicable State Stamp Act and the Registration Act, 1908.${normalizeBooleanChoice(

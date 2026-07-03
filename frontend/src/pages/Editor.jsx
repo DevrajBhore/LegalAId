@@ -247,6 +247,9 @@ export default function Editor() {
     initialState.history?.draftId ? "saved" : "pending"
   );
   const [activeTab, setActiveTab] = useState("validation");
+  // Phone-only: which pane is visible — the document or the side panel. On
+  // desktop both are visible side by side and this is ignored.
+  const [mobileView, setMobileView] = useState("document");
   const [versions, setVersions] = useState([]);
   const [versionsLoading, setVersionsLoading] = useState(false);
   const [restoringId, setRestoringId] = useState(null);
@@ -823,7 +826,44 @@ export default function Editor() {
           <p>{LEGAL_DISCLAIMER}</p>
         </div>
 
-        <div className="editor-body">
+        {/* Phone-only pane switcher: document vs the side panel (validation /
+            insights / chat / versions). Desktop shows both side by side. */}
+        <div className="editor-mobile-switch" role="tablist" aria-label="Editor view">
+          <button
+            role="tab"
+            aria-selected={mobileView === "document"}
+            className={`editor-mobile-switch__tab${mobileView === "document" ? " editor-mobile-switch__tab--active" : ""}`}
+            onClick={() => setMobileView("document")}
+          >
+            Document
+          </button>
+          <button
+            role="tab"
+            aria-selected={mobileView === "panel" && activeTab === "validation"}
+            className={`editor-mobile-switch__tab${mobileView === "panel" && activeTab === "validation" ? " editor-mobile-switch__tab--active" : ""}`}
+            onClick={() => { setActiveTab("validation"); setMobileView("panel"); }}
+          >
+            Validation{issueCount > 0 ? ` (${issueCount})` : ""}
+          </button>
+          <button
+            role="tab"
+            aria-selected={mobileView === "panel" && activeTab === "insights"}
+            className={`editor-mobile-switch__tab${mobileView === "panel" && activeTab === "insights" ? " editor-mobile-switch__tab--active" : ""}`}
+            onClick={() => { setActiveTab("insights"); setMobileView("panel"); }}
+          >
+            Insights
+          </button>
+          <button
+            role="tab"
+            aria-selected={mobileView === "panel" && activeTab === "chat"}
+            className={`editor-mobile-switch__tab${mobileView === "panel" && activeTab === "chat" ? " editor-mobile-switch__tab--active" : ""}`}
+            onClick={() => { setActiveTab("chat"); setMobileView("panel"); }}
+          >
+            Chat
+          </button>
+        </div>
+
+        <div className={`editor-body editor-body--${mobileView}`}>
           <div className="editor-left">
             <div className="editor-doc-shell">
               <div className="editor-doc-shell-bar">

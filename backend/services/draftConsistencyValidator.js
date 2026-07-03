@@ -544,15 +544,23 @@ export function validateDraftConsistency(
     }
   }
 
-  if (variables.effective_date && !includesDateVariant(termText, variables.effective_date)) {
-    issues.push(
-      buildIssue(
-        "INPUT_MISMATCH_EFFECTIVE_DATE_TERM",
-        "CRITICAL",
-        "The generated term clause does not clearly reflect the requested effective date.",
-        "Ensure the term clause expressly states the effective date supplied in the form."
-      )
-    );
+  if (variables.effective_date) {
+    // Documents without a term clause (e.g. privacy policies) state the
+    // effective date elsewhere, so fall back to the full document text.
+    const effectiveDateScope =
+      termText || clauses.map((clause) => clause.text || "").join("\n");
+    if (!includesDateVariant(effectiveDateScope, variables.effective_date)) {
+      issues.push(
+        buildIssue(
+          "INPUT_MISMATCH_EFFECTIVE_DATE_TERM",
+          "CRITICAL",
+          termText
+            ? "The generated term clause does not clearly reflect the requested effective date."
+            : "The generated document does not clearly state the requested effective date.",
+          "Ensure the document expressly states the effective date supplied in the form."
+        )
+      );
+    }
   }
 
   const renewalOption = normalizeText(variables.renewal_option || "");

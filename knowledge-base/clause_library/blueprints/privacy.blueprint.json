@@ -2,6 +2,7 @@
   "document_type": "PRIVACY_POLICY",
   "family": "data_protection",
   "clauses": [
+    "PRIVACY_PURPOSE_SCOPE_001",
     "CORE_DEFINITIONS_001",
     "CORE_DATA_PROCESSING_001",
     "PRIVACY_DATA_SUBJECT_RIGHTS_001",
@@ -15,6 +16,7 @@
     "PRIVACY_SIGNATURE_BLOCK_001"
   ],
   "required_clauses": [
+    "PRIVACY_PURPOSE_SCOPE_001",
     "CORE_DEFINITIONS_001",
     "CORE_DATA_PROCESSING_001",
     "PRIVACY_DATA_SUBJECT_RIGHTS_001",

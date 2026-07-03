@@ -727,9 +727,28 @@ export const DOCUMENT_TYPE_REGISTRY = {
   PRIVACY_POLICY: {
     displayName: "Privacy Policy",
     family: "IP",
-    domains: ["contract"],
+    // A privacy policy is a unilateral notice under the DPDP Act / IT Rules,
+    // not a bilateral contract — the contract domain's consideration and
+    // bilateral-signature constraints must not apply to it.
+    domains: ["privacy"],
     categories: ["PURPOSE"],
     stampDuty: false,
+    registration: false,
+  },
+
+  VENDOR_AGREEMENT: {
+    displayName: "Vendor Agreement",
+    family: "COMMERCIAL",
+    domains: ["contract", "goods"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "CONSIDERATION",
+      "TERMINATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: true,
     registration: false,
   },
 
