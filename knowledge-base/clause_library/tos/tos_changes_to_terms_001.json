@@ -1,0 +1,37 @@
+{
+  "clause_id": "TOS_CHANGES_TO_TERMS_001",
+  "name": "Changes to the Terms",
+  "category": "PROCEDURAL",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "The Company may modify these Terms from time to time to reflect changes in the Services, in law, or in its business practices. Where changes are material, the Company shall provide reasonable notice through the Services or by other means before the changes take effect. The updated Terms shall indicate the date of the latest revision. Your continued use of the Services after the effective date of the revised Terms constitutes your acceptance of them. If you do not agree to the revised Terms, you must stop using the Services. The Company will retain prior versions of these Terms and make them available on reasonable request.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62",
+      "note": "Effect of novation, rescission, and alteration of contract"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Changes to the Terms",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Unilateral amendment — enforceability of changes without fresh consent"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -1,0 +1,39 @@
+{
+  "clause_id": "TOS_ELIGIBILITY_ACCOUNT_001",
+  "name": "Eligibility and User Accounts",
+  "category": "GENERAL",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "You must be at least 18 (eighteen) years of age and competent to contract under the Indian Contract Act, 1872 to use the Services. Where you use the Services on behalf of an organisation, you represent that you are authorised to bind that organisation to these Terms. If registration is required, you agree to provide accurate, current, and complete information and to keep it updated. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify the Company promptly of any unauthorised use of your account. The Company shall not be liable for any loss arising from your failure to safeguard your credentials.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "11",
+      "note": "Competence to contract — minors' agreements are void"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Eligibility and Accounts",
+  "depends_on": [
+    "TOS_ACCEPTANCE_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Account takeover — allocation of liability for compromised credentials"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

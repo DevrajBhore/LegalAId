@@ -1029,6 +1029,41 @@ export const DOCUMENT_CONFIG = {
     ],
   },
 
+  TERMS_OF_SERVICE: {
+    requiredFields: [
+      "operating_state",
+      "company_name",
+      "company_address",
+      "service_name",
+      "website_url",
+      "service_description",
+      "grievance_officer",
+      "grievance_officer_email",
+      "effective_date",
+      "arbitration_city",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Business",
+        fields: ["company_name", "company_address", "service_name", "website_url"],
+      },
+      {
+        title: "The Service",
+        fields: ["service_description"],
+      },
+      {
+        title: "Compliance",
+        fields: [
+          "grievance_officer",
+          "grievance_officer_email",
+          "effective_date",
+          "arbitration_city",
+        ],
+      },
+    ],
+  },
+
   PRIVACY_POLICY: {
     requiredFields: [
       "operating_state",

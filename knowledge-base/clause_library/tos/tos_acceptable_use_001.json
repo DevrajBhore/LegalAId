@@ -1,0 +1,39 @@
+{
+  "clause_id": "TOS_ACCEPTABLE_USE_001",
+  "name": "Acceptable Use and Prohibited Conduct",
+  "category": "GENERAL",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "You agree to use the Services only for lawful purposes and in compliance with these Terms and all applicable laws, including the Information Technology Act, 2000 and the rules made thereunder. You shall not: (a) upload, transmit, or share any content that is unlawful, defamatory, obscene, infringing, or that violates the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021; (b) impersonate any person or misrepresent your affiliation; (c) transmit any virus, malware, or harmful code; (d) attempt to gain unauthorised access to the Services, other accounts, or connected systems; (e) use the Services to send spam or unsolicited communications; or (f) engage in any activity that interferes with or disrupts the Services. The Company reserves the right to investigate and take appropriate action, including removal of content and suspension of access, against any User who violates this clause.",
+  "legal_basis": [
+    {
+      "act": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
+      "section": "3",
+      "note": "Due diligence and prohibited categories of content"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Information Technology Act, 2000",
+  "version": "1.0",
+  "title": "Acceptable Use",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "TOS_SUSPENSION_TERMINATION_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Intermediary safe harbour — adequacy of the due-diligence and takedown process"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

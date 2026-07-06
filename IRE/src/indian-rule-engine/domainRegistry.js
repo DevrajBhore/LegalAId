@@ -753,6 +753,19 @@ export const DOCUMENT_TYPE_REGISTRY = {
     registration: false,
   },
 
+  TERMS_OF_SERVICE: {
+    displayName: "Terms of Service",
+    family: "IP",
+    // Terms of Service are unilateral published terms accepted by use
+    // (clickwrap under IT Act S.10A), not a bilateral signed contract — so,
+    // like a privacy policy, the contract domain's consideration and
+    // bilateral-signature constraints must not apply.
+    domains: ["tos"],
+    categories: ["PURPOSE"],
+    stampDuty: false,
+    registration: false,
+  },
+
   VENDOR_AGREEMENT: {
     displayName: "Vendor Agreement",
     family: "COMMERCIAL",

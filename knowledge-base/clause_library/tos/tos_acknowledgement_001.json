@@ -1,0 +1,37 @@
+{
+  "clause_id": "TOS_ACKNOWLEDGEMENT_001",
+  "name": "Acknowledgement Block",
+  "category": "SIGNATURE_BLOCK",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "These Terms of Service are published by {{company_name}} in accordance with applicable Indian law and constitute a valid electronic agreement under Section 10A of the Information Technology Act, 2000. By accessing or using the Services, you acknowledge that you have read, understood, and agree to be bound by these Terms. These Terms were last updated on the date indicated above and supersede all prior versions. No physical or electronic signature is required for these Terms to be binding.",
+  "legal_basis": [
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "10A",
+      "note": "Validity of contracts formed through electronic means"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "MEDIUM",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Information Technology Act, 2000",
+  "version": "1.0",
+  "title": "Acknowledgement",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Version control — user consented to an older version of the Terms"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

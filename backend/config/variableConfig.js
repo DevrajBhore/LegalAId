@@ -2511,6 +2511,45 @@ export const VARIABLE_CONFIG = {
       example: "grievance@example.in",
     },
   },
+
+  TERMS_OF_SERVICE: {
+    company_name: { label: "Company / Business Name", type: "text", required: true },
+    company_address: {
+      label: "Registered Address",
+      type: "textarea",
+      required: true,
+    },
+    service_name: {
+      label: "Service / Product Name",
+      type: "text",
+      required: true,
+      example: "Bloom Basket, the online grocery marketplace",
+    },
+    website_url: {
+      label: "Website / App URL",
+      type: "text",
+      required: true,
+      example: "https://www.example.in",
+    },
+    service_description: {
+      label: "What the Service Does",
+      type: "textarea",
+      required: true,
+      description: "Describe what users can do with the service. This anchors the acceptance and scope clauses.",
+      example: "browse and order groceries for home delivery, manage orders, and rate products",
+    },
+    grievance_officer: {
+      label: "Grievance Officer Name",
+      type: "text",
+      required: true,
+    },
+    grievance_officer_email: {
+      label: "Grievance Officer Email",
+      type: "text",
+      required: true,
+      example: "grievance@example.in",
+    },
+  },
 };
 
 // Vendor procurement mirrors the supply intake — the vendor blueprint reuses the

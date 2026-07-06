@@ -113,6 +113,12 @@ export const DOCUMENT_TYPE_REGISTRY = {
     ireType: "MASTER_SERVICE_AGREEMENT",
     blueprintName: "msa",
   },
+  TERMS_OF_SERVICE: {
+    displayName: "Terms of Service",
+    family: "Contracts & Commercial",
+    ireType: "TERMS_OF_SERVICE",
+    blueprintName: "tos",
+  },
   // The startup invariant in backend/index.js asserts DOCUMENT_CONFIG ⊆ this
   // registry — the registry is allowed to stage types ahead of config, but
   // config may never reference a type that is missing here.
@@ -141,6 +147,9 @@ export const DOCUMENT_TYPE_ALIASES = {
   Service: "SERVICE_AGREEMENT",
   PrivacyPolicy: "PRIVACY_POLICY",
   MSA: "MASTER_SERVICE_AGREEMENT",
+  TOS: "TERMS_OF_SERVICE",
+  TERMS_OF_USE: "TERMS_OF_SERVICE",
+  TermsOfService: "TERMS_OF_SERVICE",
 };
 
 function prettifyDocumentType(type) {

@@ -1,0 +1,47 @@
+{
+  "clause_id": "TOS_ACCEPTANCE_001",
+  "name": "Acceptance of Terms",
+  "category": "PURPOSE",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "These Terms of Service ('Terms') govern your access to and use of {{service_name}} and any related websites, applications, and services (collectively, the 'Services') provided by {{company_name}} ('Company', 'we', 'us', or 'our'). The Services enable {{service_description}}. By accessing, registering for, or using the Services, you ('User' or 'you') acknowledge that you have read, understood, and agree to be bound by these Terms and by our Privacy Policy, which is incorporated herein by reference. If you do not agree to these Terms, you must not access or use the Services. These Terms constitute a legally binding electronic agreement under the Information Technology Act, 2000 and do not require a physical or digital signature to be enforceable. These Terms are effective from {{effective_date}}.",
+  "legal_basis": [
+    {
+      "act": "Information Technology Act, 2000",
+      "section": "10A",
+      "note": "Validity of contracts formed through electronic means"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Essentials of a valid contract — acceptance by conduct"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "No mechanism of acceptance is described",
+    "Services are not identified"
+  ],
+  "source": "Information Technology Act, 2000",
+  "version": "1.0",
+  "title": "Acceptance of Terms",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_DEFINITIONS_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Browsewrap vs clickwrap — whether the user had adequate notice of the terms"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

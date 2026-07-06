@@ -103,6 +103,11 @@ export const EXAMPLE_PROMPTS_BY_TYPE = {
     "A framework agreement for ongoing marketing services across multiple campaigns.",
     "A master agreement with monthly retainer defaults and per-SOW deliverables.",
   ],
+  TERMS_OF_SERVICE: [
+    "Terms of Service for my SaaS app where users create accounts and post content.",
+    "ToS for an e-commerce marketplace covering acceptable use and account suspension.",
+    "Website terms with an IP licence, disclaimer, and grievance officer under the IT Rules.",
+  ],
   PRIVACY_POLICY: [
     "A privacy policy for my D2C store collecting names, addresses, and payment info.",
     "A SaaS app privacy policy covering analytics and support data under the DPDP Act.",

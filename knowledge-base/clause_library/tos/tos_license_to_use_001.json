@@ -1,0 +1,44 @@
+{
+  "clause_id": "TOS_LICENSE_TO_USE_001",
+  "name": "Licence to Use the Services",
+  "category": "IP",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "Subject to your continued compliance with these Terms, the Company grants you a limited, non-exclusive, non-transferable, non-sublicensable, and revocable licence to access and use the Services for your personal or internal business purposes. All intellectual property rights in and to the Services, including the software, content, design, trademarks, and underlying technology, are and shall remain the exclusive property of the Company or its licensors. Except as expressly permitted, you shall not copy, modify, distribute, sell, lease, reverse engineer, or create derivative works from any part of the Services, nor use any automated means to access or extract data from the Services without the Company's prior written consent.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "14",
+      "note": "Exclusive rights of the copyright owner in software and content"
+    },
+    {
+      "act": "Trade Marks Act, 1999",
+      "section": "29",
+      "note": "Infringement of registered trade marks"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Copyright Act, 1957",
+  "version": "1.0",
+  "title": "Licence to Use",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "IP_OWNERSHIP_001"
+  ],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Scraping and reverse engineering — enforceability of use restrictions"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

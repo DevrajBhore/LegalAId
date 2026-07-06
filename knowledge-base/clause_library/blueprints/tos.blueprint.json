@@ -1,0 +1,56 @@
+{
+  "document_type": "TERMS_OF_SERVICE",
+  "family": "data_protection",
+  "clauses": [
+    "TOS_ACCEPTANCE_001",
+    "CORE_DEFINITIONS_001",
+    "TOS_ELIGIBILITY_ACCOUNT_001",
+    "TOS_LICENSE_TO_USE_001",
+    "TOS_ACCEPTABLE_USE_001",
+    "TOS_USER_CONTENT_001",
+    "IP_OWNERSHIP_001",
+    "TOS_DISCLAIMER_001",
+    "CORE_LIMITATION_LIABILITY_001",
+    "CORE_INDEMNITY_001",
+    "TOS_SUSPENSION_TERMINATION_001",
+    "TOS_CHANGES_TO_TERMS_001",
+    "PRIVACY_GRIEVANCE_OFFICER_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "TOS_ACKNOWLEDGEMENT_001"
+  ],
+  "required_clauses": [
+    "TOS_ACCEPTANCE_001",
+    "TOS_LICENSE_TO_USE_001",
+    "TOS_ACCEPTABLE_USE_001",
+    "TOS_DISCLAIMER_001",
+    "CORE_LIMITATION_LIABILITY_001",
+    "TOS_SUSPENSION_TERMINATION_001",
+    "TOS_CHANGES_TO_TERMS_001",
+    "PRIVACY_GRIEVANCE_OFFICER_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "TOS_ACKNOWLEDGEMENT_001"
+  ],
+  "version": "1.0",
+  "_notes": "Unilateral published terms (clickwrap), accepted by use. Modelled on the privacy pattern: no bilateral signature, grievance officer under IT Rules 2021.",
+  "mandatory_legal_checks": [
+    "IT Act 2000 S.10A — electronic contracts are valid and enforceable",
+    "IT (Intermediary Guidelines) Rules 2021 — due diligence, grievance officer, prohibited content",
+    "Consumer Protection Act 2019 — disclaimers cannot exclude statutory consumer rights",
+    "DPDP Act 2023 — cross-reference to the Privacy Policy for personal data handling",
+    "Copyright Act 1957 / Trade Marks Act 1999 — IP ownership and user-content licence"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "processes_personal_data == true",
+      "note": "DPDPA 2023 — where the service processes personal data"
+    },
+    {
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "include_if": "include_entire_agreement == true",
+      "note": "Optional entire-agreement clause."
+    }
+  ]
+}

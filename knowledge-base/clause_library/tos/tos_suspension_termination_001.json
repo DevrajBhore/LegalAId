@@ -1,0 +1,37 @@
+{
+  "clause_id": "TOS_SUSPENSION_TERMINATION_001",
+  "name": "Suspension and Termination of Access",
+  "category": "TERMINATION",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "The Company may suspend or terminate your access to all or part of the Services, with or without notice, if you breach these Terms, if required to do so by law, or if the Company reasonably believes such action is necessary to protect the Services, other users, or third parties. You may stop using the Services at any time and, where applicable, close your account. Upon termination, your licence to use the Services shall immediately cease. Provisions that by their nature are intended to survive termination — including those relating to intellectual property, disclaimers, limitation of liability, indemnity, and governing law — shall survive. The Company shall, where reasonably practicable and not prejudicial to any investigation, provide you an opportunity to retrieve your User Content before deletion.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "39",
+      "note": "Consequences of a party refusing to perform or breaching"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [],
+  "source": "Indian Contract Act, 1872",
+  "version": "1.0",
+  "title": "Suspension and Termination",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STRONG",
+  "dispute_hotspots": [
+    "Arbitrary termination — fairness of suspension without notice or cure"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

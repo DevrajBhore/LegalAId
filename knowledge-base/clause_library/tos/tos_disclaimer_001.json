@@ -1,0 +1,39 @@
+{
+  "clause_id": "TOS_DISCLAIMER_001",
+  "name": "Disclaimer of Warranties",
+  "category": "RISK",
+  "document_types": [
+    "TERMS_OF_SERVICE"
+  ],
+  "jurisdiction": "India",
+  "text": "The Services are provided on an 'as is' and 'as available' basis without warranties of any kind, whether express or implied, except as required under applicable Indian law. To the maximum extent permitted by law, the Company disclaims all implied warranties of merchantability, fitness for a particular purpose, and non-infringement. The Company does not warrant that the Services will be uninterrupted, error-free, secure, or free from viruses or other harmful components, or that any defects will be corrected. You acknowledge that your use of the Services is at your own risk. Nothing in this clause shall exclude or limit any liability that cannot be excluded or limited under the Consumer Protection Act, 2019 or other applicable law.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(46)",
+      "note": "Deficiency in service — statutory rights that cannot be contracted out"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [],
+  "source": "Consumer Protection Act, 2019",
+  "version": "1.0",
+  "title": "Disclaimer of Warranties",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [
+    "CORE_LIMITATION_LIABILITY_001"
+  ],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "HIGH",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Consumer law override — blanket disclaimers unenforceable against consumers"
+  ],
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -140,6 +140,14 @@ export const ESSENTIAL_FIELDS = {
     "services_description", "contract_value", "payment_terms",
     "contract_duration", "effective_date",
   ],
+  TERMS_OF_SERVICE: [
+    "operating_state",
+    "company_name", "company_address",
+    "service_name", "website_url", "service_description",
+    // Grievance officer is statutorily required for intermediaries (IT Rules 2021).
+    "grievance_officer", "grievance_officer_email",
+    "effective_date",
+  ],
   PRIVACY_POLICY: [
     "operating_state",
     "company_name", "company_address", "website_url",
