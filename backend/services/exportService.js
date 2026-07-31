@@ -1,9 +1,13 @@
 import {
   AlignmentType,
+  BorderStyle,
   Document,
+  Footer,
+  PageNumber,
   Packer,
   Paragraph,
   TextRun,
+  UnderlineType,
   convertInchesToTwip,
 } from "docx";
 import PDFDocument from "pdfkit";
@@ -15,19 +19,24 @@ import {
 
 const BODY_FONT = "Times New Roman";
 const BODY_SIZE = 24;
-const TITLE_SIZE = 26;
-const BODY_LINE_SPACING = 240;
-const BODY_AFTER_SPACING = 60;
-const RECITAL_LEFT = 720;
+const TITLE_SIZE = 28;
+const SECTION_HEADING_SIZE = 24;
+const FOOTER_SIZE = 18;
+const BODY_LINE_SPACING = 276;
+const BODY_AFTER_SPACING = 90;
+const SECTION_AFTER_SPACING = 140;
+const RECITAL_LEFT = 360;
 const OPERATIVE_LEFT = 360;
 const CLAUSE_HEADING_LEFT = 360;
 const CLAUSE_HEADING_HANGING = 360;
-const CLAUSE_ITEM_LEFT = 792;
-const CLAUSE_ITEM_HANGING = 432;
+const CLAUSE_ITEM_LEFT = 720;
+const CLAUSE_ITEM_HANGING = 360;
+const SIGNATURE_LEFT = 360;
 const PDF_MARGIN = 72;
 const SCHEDULE_CATEGORIES = new Set(["SCHEDULE", "ANNEXURE", "SPECIFICATIONS"]);
 const STYLE_ID = {
   title: "LegalTitle",
+  sectionHeading: "LegalSectionHeading",
   body: "LegalBody",
   recital: "LegalRecital",
   heading: "LegalClauseHeading",
@@ -54,6 +63,24 @@ function buildBodyRun(text, options = {}) {
     font: BODY_FONT,
     size: BODY_SIZE,
     ...options,
+  });
+}
+
+function buildSectionHeading(text, options = {}) {
+  return new Paragraph({
+    style: STYLE_ID.sectionHeading,
+    alignment: AlignmentType.CENTER,
+    spacing: {
+      before: options.before ?? 260,
+      after: options.after ?? SECTION_AFTER_SPACING,
+      line: BODY_LINE_SPACING,
+    },
+    children: [
+      buildBodyRun(String(text || "").toUpperCase(), {
+        bold: true,
+        size: SECTION_HEADING_SIZE,
+      }),
+    ],
   });
 }
 
@@ -167,6 +194,7 @@ function buildBodyParagraph(text, options = {}) {
     },
     children: buildRunsWithSuperscriptOrdinals(text),
     indent: options.indent || undefined,
+    keepLines: options.keepLines || undefined,
     ...options,
   });
 }
@@ -374,8 +402,9 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
   children.push(
     new Paragraph({
       style: STYLE_ID.heading,
-      spacing: { before: 240, after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+      spacing: { before: 260, after: 90, line: BODY_LINE_SPACING },
       indent: { left: CLAUSE_HEADING_LEFT, hanging: CLAUSE_HEADING_HANGING },
+      keepNext: true,
       children: [
         buildBodyRun(prefix),
         buildBodyRun(heading, { bold: true }),
@@ -390,7 +419,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
       children.push(
         new Paragraph({
           style: STYLE_ID.item,
-          alignment: AlignmentType.LEFT,
+          alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
           indent: { left: CLAUSE_ITEM_LEFT, hanging: CLAUSE_ITEM_HANGING },
           children: [buildBodyRun(block.text)],
@@ -412,6 +441,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
       new Paragraph({
         style: STYLE_ID.body,
         spacing: { after: 180 },
+        indent: { left: OPERATIVE_LEFT },
         children: [
           new TextRun({
             text: `[Ref: ${clause.statutory_reference}]`,
@@ -428,7 +458,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
 
 function renderSignatureBlock(children, text) {
   children.push(
-    buildBlankParagraph({ spacing: { before: 300, after: 240 } })
+    buildBlankParagraph({ spacing: { before: 260, after: 140 } })
   );
 
   const lines = String(text || "")
@@ -451,18 +481,57 @@ function renderSignatureBlock(children, text) {
       new Paragraph({
         style: STYLE_ID.signature,
         spacing: {
+          before: /^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
+            ? 120
+            : 0,
           after: /^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? 180 : BODY_AFTER_SPACING,
           line: BODY_LINE_SPACING,
         },
+        indent: { left: SIGNATURE_LEFT },
         children: [
           buildBodyRun(
             line,
-            /^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? { bold: true } : {}
+            /^IN WITNESS WHEREOF|^Witnesses:|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
+              ? { bold: true }
+              : {}
           ),
         ],
       })
     );
   }
+}
+
+function buildPageFooter() {
+  return new Footer({
+    children: [
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { before: 80, after: 0 },
+        border: {
+          top: {
+            style: BorderStyle.SINGLE,
+            size: 2,
+            color: "B7B7B7",
+            space: 4,
+          },
+        },
+        children: [
+          new TextRun({ text: "Page ", font: BODY_FONT, size: FOOTER_SIZE }),
+          new TextRun({
+            children: [PageNumber.CURRENT],
+            font: BODY_FONT,
+            size: FOOTER_SIZE,
+          }),
+          new TextRun({ text: " of ", font: BODY_FONT, size: FOOTER_SIZE }),
+          new TextRun({
+            children: [PageNumber.TOTAL_PAGES],
+            font: BODY_FONT,
+            size: FOOTER_SIZE,
+          }),
+        ],
+      }),
+    ],
+  });
 }
 
 function createPdfBuffer(buildFn) {
@@ -492,6 +561,15 @@ function createPdfBuffer(buildFn) {
       reject(error);
     }
   });
+}
+
+function renderPdfSectionHeading(doc, text, options = {}) {
+  doc.moveDown(options.before ?? 0.55);
+  doc
+    .font("Times-Bold")
+    .fontSize(12)
+    .text(String(text || "").toUpperCase(), { align: "center" });
+  doc.moveDown(options.after ?? 0.45);
 }
 
 function renderPdfLeadInParagraph(doc, lead, remainder, options = {}) {
@@ -610,7 +688,7 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
   for (const block of blocks) {
     if (block.type === "item") {
       doc.font("Times-Roman").fontSize(12).text(block.text, {
-        align: "left",
+        align: "justify",
         lineGap: 2,
         indent: 54,
       });
@@ -651,9 +729,9 @@ function renderPdfSignatureBlock(doc, text) {
     }
 
     doc
-      .font(/^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? "Times-Bold" : "Times-Roman")
+      .font(/^IN WITNESS WHEREOF|^Witnesses:|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line) ? "Times-Bold" : "Times-Roman")
       .fontSize(12)
-      .text(line, { align: "left", lineGap: 2 });
+      .text(line, { align: "left", lineGap: 2, indent: 24 });
     doc.moveDown(/^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? 0.5 : 0.25);
   }
 }
@@ -669,21 +747,25 @@ export async function draftToDocx(draft) {
     new Paragraph({
       style: STYLE_ID.title,
       alignment: AlignmentType.CENTER,
-      spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+      spacing: { after: 260, line: BODY_LINE_SPACING },
       children: [
         new TextRun({
           text: title.toUpperCase(),
           bold: true,
+          underline: { type: UnderlineType.SINGLE },
           size: TITLE_SIZE,
           font: BODY_FONT,
         }),
       ],
     }),
-    buildBlankParagraph({ alignment: AlignmentType.CENTER }),
   ];
 
   if (identityClause?.text?.trim()) {
     renderIdentityClause(children, identityClause.text);
+  }
+
+  if (bodyClauses.length) {
+    children.push(buildSectionHeading("Terms and Conditions", { before: 300 }));
   }
 
   bodyClauses.forEach((clause, index) => {
@@ -691,18 +773,15 @@ export async function draftToDocx(draft) {
   });
 
   if (scheduleClauses.length) {
-    children.push(
-      new Paragraph({
-        style: STYLE_ID.heading,
-        alignment: AlignmentType.CENTER,
-        spacing: { before: 420, after: 220 },
-        children: [buildBodyRun("SCHEDULES AND SPECIFICATIONS", { bold: true })],
-      })
-    );
+    children.push(buildSectionHeading("Schedules and Specifications", { before: 420, after: 220 }));
 
     scheduleClauses.forEach((clause, index) => {
       renderBodyClause(children, clause, index + 1, { scheduleMode: true });
     });
+  }
+
+  if (signatureClauses.length) {
+    children.push(buildSectionHeading("Execution", { before: 420, after: 160 }));
   }
 
   signatureClauses.forEach((clause) => {
@@ -728,10 +807,31 @@ export async function draftToDocx(draft) {
           basedOn: "Normal",
           next: STYLE_ID.body,
           quickFormat: true,
-          run: { font: BODY_FONT, size: TITLE_SIZE, bold: true },
+          run: {
+            font: BODY_FONT,
+            size: TITLE_SIZE,
+            bold: true,
+            underline: { type: UnderlineType.SINGLE },
+          },
           paragraph: {
             alignment: AlignmentType.CENTER,
-            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            spacing: { after: 260, line: BODY_LINE_SPACING },
+          },
+        },
+        {
+          id: STYLE_ID.sectionHeading,
+          name: "Legal Section Heading",
+          basedOn: "Normal",
+          next: STYLE_ID.body,
+          quickFormat: true,
+          run: { font: BODY_FONT, size: SECTION_HEADING_SIZE, bold: true },
+          paragraph: {
+            alignment: AlignmentType.CENTER,
+            spacing: {
+              before: 260,
+              after: SECTION_AFTER_SPACING,
+              line: BODY_LINE_SPACING,
+            },
           },
         },
         {
@@ -809,6 +909,9 @@ export async function draftToDocx(draft) {
             },
           },
         },
+        footers: {
+          default: buildPageFooter(),
+        },
         children,
       },
     ],
@@ -831,10 +934,14 @@ export async function draftToPdf(draft) {
       .font("Times-Bold")
       .fontSize(12)
       .text(title.toUpperCase(), { align: "center", underline: true });
-    doc.moveDown(0.4);
+    doc.moveDown(0.7);
 
     if (identityClause?.text?.trim()) {
       renderPdfIdentityClause(doc, identityClause.text);
+    }
+
+    if (bodyClauses.length) {
+      renderPdfSectionHeading(doc, "Terms and Conditions", { before: 0.65, after: 0.45 });
     }
 
     bodyClauses.forEach((clause, index) => {
@@ -842,16 +949,18 @@ export async function draftToPdf(draft) {
     });
 
     if (scheduleClauses.length) {
-      doc.moveDown(1);
-      doc
-        .font("Times-Bold")
-        .fontSize(13)
-        .text("SCHEDULES AND SPECIFICATIONS", { align: "center" });
-      doc.moveDown(0.6);
+      renderPdfSectionHeading(doc, "Schedules and Specifications", {
+        before: 0.9,
+        after: 0.55,
+      });
 
       scheduleClauses.forEach((clause, index) => {
         renderPdfBodyClause(doc, clause, index + 1, { scheduleMode: true });
       });
+    }
+
+    if (signatureClauses.length) {
+      renderPdfSectionHeading(doc, "Execution", { before: 0.9, after: 0.35 });
     }
 
     signatureClauses.forEach((clause) => {
