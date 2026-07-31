@@ -10,40 +10,58 @@
 //   "SIGNATURE_BLOCK"
 // ];
 
-export function buildStructuredDraft(aiContent, baseDraft) {
+const PROTECTED_CATEGORIES = new Set([
+  "GOVERNING_LAW",
+  "DISPUTE_RESOLUTION",
+  "SIGNATURE_BLOCK",
+  "SIGNATURES",
+  "LIABILITY_CAP",
+]);
 
+const PROTECTED_CLAUSE_IDS = new Set([
+  "CORE_GOVERNING_LAW_001",
+  "CORE_DISPUTE_RESOLUTION_001",
+  "CORE_SIGNATURE_BLOCK_001",
+  "CORE_LIABILITY_CAP_001",
+]);
+
+function isProtectedClause(clause = {}) {
+  return Boolean(
+    clause.locked ||
+      PROTECTED_CATEGORIES.has(clause.category) ||
+      PROTECTED_CLAUSE_IDS.has(clause.clause_id)
+  );
+}
+
+export function buildStructuredDraft(aiContent, baseDraft) {
   if (!aiContent || !aiContent.clauses) {
     throw new Error("Invalid AI content structure");
   }
 
-  const clauses = baseDraft.clauses.map(baseClause => {
-
-    // Never overwrite SIGNATURE_BLOCK with AI text —
-    // signatureResolver always builds this from user-provided variables
-    if (baseClause.category === "SIGNATURE_BLOCK") {
+  const clauses = baseDraft.clauses.map((baseClause) => {
+    // Never overwrite deterministic legal guardrails with AI text.
+    if (isProtectedClause(baseClause)) {
       return baseClause;
     }
 
     const aiClause = aiContent.clauses.find(
-      c => c.clause_id === baseClause.clause_id
+      (clause) => clause.clause_id === baseClause.clause_id
     );
 
     if (aiClause && aiClause.text && aiClause.text.trim() !== "") {
       return {
         ...baseClause,
         title: aiClause.title || baseClause.title,
-        text: aiClause.text
+        text: aiClause.text,
       };
     }
 
     return baseClause;
-
   });
 
   return {
     document_type: baseDraft.document_type,
     jurisdiction: "India",
-    clauses
+    clauses,
   };
-
 }

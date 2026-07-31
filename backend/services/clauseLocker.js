@@ -15,15 +15,26 @@ export function lockCriticalClauses(draft) {
     return draft;
   }
 
-  const CORE_CATEGORIES = [
+  const CORE_CATEGORIES = new Set([
     "GOVERNING_LAW",
     "DISPUTE_RESOLUTION",
+    "SIGNATURE_BLOCK",
     "SIGNATURES",
     "LIABILITY_CAP"
-  ];
+  ]);
+
+  const CORE_CLAUSE_IDS = new Set([
+    "CORE_GOVERNING_LAW_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_SIGNATURE_BLOCK_001",
+    "CORE_LIABILITY_CAP_001",
+  ]);
 
   draft.clauses = draft.clauses.map(clause => {
-    if (CORE_CATEGORIES.includes(clause.category)) {
+    if (
+      CORE_CATEGORIES.has(clause.category) ||
+      CORE_CLAUSE_IDS.has(clause.clause_id)
+    ) {
       return {
         ...clause,
         locked: true

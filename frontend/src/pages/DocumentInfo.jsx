@@ -4,6 +4,7 @@ import {
   getDocumentInfo,
   INFORMATIONAL_DISCLAIMER,
 } from "../data/documentInfo";
+import { getDocumentFormPath } from "../utils/documentCatalog";
 import { Icons } from "../utils/icons";
 import MobileActionBar from "../components/MobileActionBar";
 import "./DocumentInfo.css";
@@ -113,13 +114,15 @@ export default function DocumentInfo() {
   const generateLabel = `Generate ${content.title}`;
 
   const goToForm = () => {
+    const formPath = getDocumentFormPath(documentType);
+
     if (user) {
-      navigate("/form", { state: { document_type: documentType } });
+      navigate(formPath, { state: { document_type: documentType } });
       return;
     }
 
     navigate("/login", {
-      state: { from: "/form", document_type: documentType },
+      state: { from: formPath, document_type: documentType },
     });
   };
 

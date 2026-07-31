@@ -108,3 +108,7 @@ export function getFeaturedDocumentTypes(docTypes = [], limit = 6) {
 export function getDocumentInfoPath(type) {
   return `/documents/${encodeURIComponent(type)}/about`;
 }
+
+export function getDocumentFormPath(type) {
+  return `/form/${encodeURIComponent(type)}`;
+}

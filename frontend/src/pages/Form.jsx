@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   chatWithIntakeAssistant,
   getDocumentConfig,
@@ -789,7 +789,12 @@ function FieldGroup({
 export default function Form() {
   const location = useLocation();
   const navigate = useNavigate();
-  const documentType = location.state?.document_type;
+  const params = useParams();
+  const documentType = (
+    params.type
+      ? decodeURIComponent(params.type)
+      : location.state?.document_type
+  )?.toUpperCase();
 
   const [sections, setSections] = useState([]);
   const [fields, setFields] = useState([]);

@@ -47,6 +47,7 @@ function App() {
             <Route path="help" element={<Help />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="terms-of-service" element={<TermsOfService />} />
+            <Route path="form/:type" element={<ProtectedRoute><Form /></ProtectedRoute>} />
             <Route path="form" element={<ProtectedRoute><Form /></ProtectedRoute>} />
             <Route path="editor" element={<ProtectedRoute><Editor /></ProtectedRoute>} />
             <Route path="documents" element={<ProtectedRoute><Documents /></ProtectedRoute>} />

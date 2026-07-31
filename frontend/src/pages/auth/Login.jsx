@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { loginUser } from "../../services/api";
+import { getDocumentFormPath } from "../../utils/documentCatalog";
 import { Icons } from "../../utils/icons";
 import AuthShowcase from "./AuthShowcase";
 import "./Auth.css";
@@ -25,8 +26,11 @@ export default function Login() {
     try {
       const res = await loginUser(form);
       login(res.data.token, res.data.user);
-      if (from==="/form" && docType) { navigate("/form",{state:{document_type:docType},replace:true}); return; }
-      navigate(from, {replace:true});
+      const target = from === "/form" && docType ? getDocumentFormPath(docType) : from;
+      navigate(target, {
+        replace: true,
+        state: docType ? { document_type: docType } : undefined,
+      });
     } catch(err) {
       const d = err.response?.data;
       if (d?.unverified) { setError("Your email is not verified."); return; }

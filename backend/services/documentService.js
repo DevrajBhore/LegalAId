@@ -258,6 +258,39 @@ function hasSemanticProviderConfigured() {
   return Boolean(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY);
 }
 
+function isSignatureClause(clause = {}) {
+  return (
+    clause?.category === "SIGNATURE_BLOCK" ||
+    clause?.clause_id === "CORE_SIGNATURE_BLOCK_001"
+  );
+}
+
+const PROTECTED_SEMANTIC_CATEGORIES = new Set([
+  "GOVERNING_LAW",
+  "DISPUTE_RESOLUTION",
+  "SIGNATURE_BLOCK",
+  "SIGNATURES",
+  "LIABILITY_CAP",
+]);
+
+function isProtectedSemanticClause(clause = {}) {
+  return Boolean(
+    clause?.locked ||
+      isSignatureClause(clause) ||
+      PROTECTED_SEMANTIC_CATEGORIES.has(clause?.category)
+  );
+}
+
+function applyPostSemanticFinalization(draft, input) {
+  let next = resolveSignatures(draft, input);
+  next = applyDocumentHardening(next, input);
+  next = applyDocumentQualityControls(next, input);
+  next = lockCriticalClauses(next);
+  next = normalizeClauseText(next);
+  next = applyDocumentQualityControls(next, input);
+  return next;
+}
+
 // Resilient per-clause merge. The rule engine has ALREADY decided the clause set
 // (the seed); the AI's job is to TAILOR the wording of each clause to the user's
 // situation. So we never decide structure from the AI — we keep the seed's exact
@@ -310,6 +343,10 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
   let tailored = 0;
   let reused = 0;
   const mergedClauses = seedDraft.clauses.map((seedClause) => {
+    if (isProtectedSemanticClause(seedClause)) {
+      return seedClause;
+    }
+
     if (isUnchanged(seedClause)) {
       reused += 1;
       const prior = priorById.get(seedClause.clause_id);
@@ -336,7 +373,7 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
     };
   });
 
-  return normalizeClauseText({
+  const mergedDraft = normalizeClauseText({
     ...seedDraft,
     document_type: input.document_type,
     jurisdiction: aiDraft.jurisdiction || seedDraft.jurisdiction || "India",
@@ -350,6 +387,8 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
       ai_generation_provider: provider || null,
     },
   });
+
+  return applyPostSemanticFinalization(mergedDraft, input);
 }
 
 async function attemptSemanticDraft(seedDraft, input, options = {}) {
@@ -366,6 +405,8 @@ async function attemptSemanticDraft(seedDraft, input, options = {}) {
   let baseForAI = seedDraft;
   if (priorClausesById) {
     const changedClauses = seedDraft.clauses.filter((clause) => {
+      if (isProtectedSemanticClause(clause)) return false;
+
       const prior = priorClausesById.get(clause.clause_id);
       return (
         !prior ||
@@ -376,16 +417,29 @@ async function attemptSemanticDraft(seedDraft, input, options = {}) {
     });
     if (changedClauses.length === 0) {
       // Nothing to re-tailor — rebuild final wording from the prior draft.
-      return normalizeClauseText({
+      const unchangedDraft = normalizeClauseText({
         ...seedDraft,
         clauses: seedDraft.clauses.map((clause) => {
+          if (isProtectedSemanticClause(clause)) {
+            return clause;
+          }
+
           const prior = priorClausesById.get(clause.clause_id);
           return prior?.text ? { ...clause, text: prior.text } : clause;
         }),
         metadata: { ...(seedDraft.metadata || {}), ai_touched: true, ai_tailored_clause_count: 0 },
       });
+
+      return applyPostSemanticFinalization(unchangedDraft, input);
     }
     baseForAI = { ...seedDraft, clauses: changedClauses };
+  } else {
+    const draftableClauses = seedDraft.clauses.filter(
+      (clause) => !isProtectedSemanticClause(clause)
+    );
+    if (draftableClauses.length > 0) {
+      baseForAI = { ...seedDraft, clauses: draftableClauses };
+    }
   }
 
   const aiResult = await callAI({
