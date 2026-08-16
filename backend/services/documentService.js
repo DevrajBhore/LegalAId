@@ -6,6 +6,8 @@ const __dirname = path.dirname(__filename);
 
 const IRE_ROOT = path.resolve(__dirname, "../../IRE");
 
+export const GENERATION_GUARDRAIL_BUILD = "identity-guardrails-2026-08-16";
+
 import { injectDoctrine } from "./doctrineInjector.js";
 import { enforceScopeGuard } from "./scopeGuard.js";
 import { resolveSignatures } from "./signatureResolver.js";
@@ -36,10 +38,18 @@ import { buildObligations } from "./obligationTracker.js";
 // successful generation.
 function buildSuccess(draft, validation) {
   const variables = draft?.metadata?.source_variables || {};
+  const markedDraft = {
+    ...draft,
+    metadata: {
+      ...(draft?.metadata || {}),
+      generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
+    },
+  };
+
   return {
-    draft,
+    draft: markedDraft,
     validation,
-    intelligence: buildDocumentIntelligence(draft, validation),
+    intelligence: buildDocumentIntelligence(markedDraft, validation),
     obligations: buildObligations(draft, variables),
   };
 }
@@ -187,6 +197,7 @@ function buildGenerationFailureResult(validation) {
     draft: null,
     validation,
     statusCode: 422,
+    generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
     error: latestIssue
       ? `We couldn't produce a fully validated first draft yet. Latest issue: ${latestIssue}`
       : "We couldn't produce a fully validated first draft yet. Please try again.",

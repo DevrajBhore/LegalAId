@@ -11,7 +11,10 @@ import mongoose from "mongoose";
 import rateLimit from "express-rate-limit";
 
 import { loadVariables } from "./services/variableLoader.js";
-import { generateDocument } from "./services/documentService.js";
+import {
+  GENERATION_GUARDRAIL_BUILD,
+  generateDocument,
+} from "./services/documentService.js";
 import { preloadKnowledgeBase } from "./services/clauseAssembler.js";
 import { buildDocumentTypeMeta } from "./services/documentTypeNormalizer.js";
 import {
@@ -259,7 +262,11 @@ app.use("/auth", authLimiter, authRoutes);
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {
-  res.json({ status: "LegalAId backend running", version: "2.0" });
+  res.json({
+    status: "LegalAId backend running",
+    version: "2.0",
+    generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
+  });
 });
 
 // ── Get all supported document types (public — needed for home page) ──────────
