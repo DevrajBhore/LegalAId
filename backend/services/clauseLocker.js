@@ -5,6 +5,7 @@
  * that should not be touched by the AI `/fix-issue` generator.
  * 
  * Allowed locked tags:
+ * - IDENTITY
  * - GOVERNING_LAW / DISPUTE_RESOLUTION
  * - SIGNATURE_BLOCK
  * - LIABILITY_CAP
@@ -16,6 +17,7 @@ export function lockCriticalClauses(draft) {
   }
 
   const CORE_CATEGORIES = new Set([
+    "IDENTITY",
     "GOVERNING_LAW",
     "DISPUTE_RESOLUTION",
     "SIGNATURE_BLOCK",
@@ -24,6 +26,7 @@ export function lockCriticalClauses(draft) {
   ]);
 
   const CORE_CLAUSE_IDS = new Set([
+    "CORE_IDENTITY_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_DISPUTE_RESOLUTION_001",
     "CORE_SIGNATURE_BLOCK_001",

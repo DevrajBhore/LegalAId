@@ -193,7 +193,7 @@ function buildGenerationFailureResult(validation) {
   };
 }
 
-function applyDeterministicRepairRound(draft, validation) {
+function applyDeterministicRepairRound(draft, validation, input) {
   const issues = [
     ...(validation?.blockingIssues || []),
     ...(validation?.advisoryIssues || []),
@@ -203,7 +203,7 @@ function applyDeterministicRepairRound(draft, validation) {
     return draft;
   }
 
-  return applyDeterministicFixes(draft, issues);
+  return applyFinalDraftGuardrails(applyDeterministicFixes(draft, issues), input);
 }
 
 function applyGenerationStages(draft, input) {
@@ -266,6 +266,7 @@ function isSignatureClause(clause = {}) {
 }
 
 const PROTECTED_SEMANTIC_CATEGORIES = new Set([
+  "IDENTITY",
   "GOVERNING_LAW",
   "DISPUTE_RESOLUTION",
   "SIGNATURE_BLOCK",
@@ -273,15 +274,24 @@ const PROTECTED_SEMANTIC_CATEGORIES = new Set([
   "LIABILITY_CAP",
 ]);
 
+const PROTECTED_SEMANTIC_CLAUSE_IDS = new Set([
+  "CORE_IDENTITY_001",
+  "CORE_GOVERNING_LAW_001",
+  "CORE_DISPUTE_RESOLUTION_001",
+  "CORE_SIGNATURE_BLOCK_001",
+  "CORE_LIABILITY_CAP_001",
+]);
+
 function isProtectedSemanticClause(clause = {}) {
   return Boolean(
     clause?.locked ||
       isSignatureClause(clause) ||
-      PROTECTED_SEMANTIC_CATEGORIES.has(clause?.category)
+      PROTECTED_SEMANTIC_CATEGORIES.has(clause?.category) ||
+      PROTECTED_SEMANTIC_CLAUSE_IDS.has(clause?.clause_id)
   );
 }
 
-function applyPostSemanticFinalization(draft, input) {
+function applyFinalDraftGuardrails(draft, input) {
   let next = resolveSignatures(draft, input);
   next = applyDocumentHardening(next, input);
   next = applyDocumentQualityControls(next, input);
@@ -388,7 +398,7 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
     },
   });
 
-  return applyPostSemanticFinalization(mergedDraft, input);
+  return applyFinalDraftGuardrails(mergedDraft, input);
 }
 
 async function attemptSemanticDraft(seedDraft, input, options = {}) {
@@ -430,7 +440,7 @@ async function attemptSemanticDraft(seedDraft, input, options = {}) {
         metadata: { ...(seedDraft.metadata || {}), ai_touched: true, ai_tailored_clause_count: 0 },
       });
 
-      return applyPostSemanticFinalization(unchangedDraft, input);
+      return applyFinalDraftGuardrails(unchangedDraft, input);
     }
     baseForAI = { ...seedDraft, clauses: changedClauses };
   } else {
@@ -546,7 +556,11 @@ export async function generateDocument(input, options = {}) {
         return buildSuccess(draft, validation);
       }
 
-      const repairedDraft = applyDeterministicRepairRound(draft, validation);
+      const repairedDraft = applyDeterministicRepairRound(
+        draft,
+        validation,
+        generationInput
+      );
       if (repairedDraft !== draft) {
         draft = attachDraftContext(repairedDraft, generationInput, {
           resetBaseline: true,
@@ -576,7 +590,11 @@ export async function generateDocument(input, options = {}) {
     return buildSuccess(draft, validation);
   }
 
-  const repairedDraft = applyDeterministicRepairRound(draft, validation);
+  const repairedDraft = applyDeterministicRepairRound(
+    draft,
+    validation,
+    generationInput
+  );
 
   if (repairedDraft !== draft) {
     draft = attachDraftContext(repairedDraft, generationInput, {
