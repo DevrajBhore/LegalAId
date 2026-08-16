@@ -73,7 +73,7 @@ const missingBuyerDraft = {
   ...shortenedNameDraft,
   clauses: shortenedNameDraft.clauses.map((clause) => ({
     ...clause,
-    text: clause.text.replace(/\bSharma\b/g, "Counterparty"),
+    text: clause.text.replace(/\bSharma\b/gi, "Counterparty"),
   })),
 };
 const missingBuyerIssues = validateDocumentQuality(missingBuyerDraft, {
