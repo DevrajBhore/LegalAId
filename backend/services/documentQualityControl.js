@@ -7,6 +7,7 @@ import {
   parseNumberish,
 } from "./formattingEngine.js";
 import { hasMeaningfulValue, isAffirmative } from "./generationControls.js";
+import { partyNameAppears } from "./partyNameMatcher.js";
 
 const INTERNAL_NOTE_PATTERN =
   /\b(TODO|FIXME|\?\?\?|Reviewer Notes?|Draft Comments?|Internal Notes?)\b/i;
@@ -311,7 +312,7 @@ function findPartyReferenceIssues(draft, documentType, variables = {}) {
   }
 
   for (const participant of getParticipantExpectations(documentType, variables)) {
-    if (participant.name && !text.toLowerCase().includes(String(participant.name).toLowerCase())) {
+    if (participant.name && !partyNameAppears(text, participant.name)) {
       issues.push(
         buildIssue(
           `FORMAT_MISSING_PARTY_${participant.id.toUpperCase()}`,

@@ -1,6 +1,7 @@
 import { hasMeaningfulValue } from "./generationControls.js";
 import { getParticipantExpectations } from "./draftingPolicy.js";
 import { getVariables } from "../config/variableConfig.js";
+import { partyNameAppears } from "./partyNameMatcher.js";
 
 function normalizeText(value = "") {
   return String(value)
@@ -204,6 +205,24 @@ function inferPartyType(name = "", explicitType = "") {
 
 function expectsRepresentativeExecution(type = "", name = "") {
   return !inferPartyType(name, type).toLowerCase().includes("individual");
+}
+
+function hasRepresentativeExecutionBlock(signatureText = "", name = "") {
+  const normalizedSignature = normalizeText(signatureText);
+  const normalizedName = normalizeText(name);
+  if (!normalizedName) return true;
+  if (normalizedSignature.includes(`for and on behalf of ${normalizedName}`)) {
+    return true;
+  }
+
+  const representativeSegments = normalizedSignature
+    .split("for and on behalf of")
+    .slice(1)
+    .map((segment) => segment.slice(0, 180));
+
+  return representativeSegments.some((segment) =>
+    partyNameAppears(segment, name)
+  );
 }
 
 function buildIssue(ruleId, severity, message, suggestion) {
@@ -426,7 +445,7 @@ export function validateDraftConsistency(
   for (const participant of participants) {
     const inferredType = inferPartyType(participant.name, participant.type);
 
-    if (participant.name && !includesNormalized(identityText, participant.name)) {
+    if (participant.name && !partyNameAppears(identityText, participant.name)) {
       issues.push(
         buildIssue(
           `INPUT_MISMATCH_${participant.id.toUpperCase()}_NAME`,
@@ -465,7 +484,7 @@ export function validateDraftConsistency(
       );
     }
 
-    if (participant.name && !includesNormalized(signatureText, participant.name)) {
+    if (participant.name && !partyNameAppears(signatureText, participant.name)) {
       issues.push(
         buildIssue(
           `INPUT_MISMATCH_${participant.id.toUpperCase()}_SIGNATURE_NAME`,
@@ -476,11 +495,10 @@ export function validateDraftConsistency(
       );
     }
 
-    const representativePattern = `for and on behalf of ${participant.name || ""}`;
     if (
       participant.name &&
       expectsRepresentativeExecution(participant.type, participant.name) &&
-      !includesNormalized(signatureText, representativePattern)
+      !hasRepresentativeExecutionBlock(signatureText, participant.name)
     ) {
       issues.push(
         buildIssue(
