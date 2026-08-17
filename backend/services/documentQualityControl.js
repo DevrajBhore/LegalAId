@@ -87,12 +87,19 @@ function applyConditionalClauseResolution(clauses = [], documentType, variables 
       return false;
     }
 
+    // Mirror of the branch above: a limited / performance guarantee must NOT
+    // carry the continuing-guarantee clause. The blueprint lists
+    // GUARANTEE_CONTINUING_001 unconditionally and the variant slot only swaps
+    // the obligation clause, so this filter is the only thing that drops it.
+    // `guarantee_type` is an optional field — only drop a blueprint-required
+    // clause when the user actually chose a non-continuing type.
     if (
       documentType === "GUARANTEE_AGREEMENT" &&
+      guaranteeType &&
       !guaranteeType.includes("continuing") &&
       clauseId === "GUARANTEE_CONTINUING_001"
     ) {
-      return true;
+      return false;
     }
 
     return true;

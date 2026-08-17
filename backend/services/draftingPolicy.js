@@ -94,6 +94,11 @@ const EXCLUDED_FALLBACK_BASES = new Set([
   "goods",
   "board",
   "bank",
+  // `service_name` is the name of the product being offered, not a contracting
+  // party. Without this, TERMS_OF_SERVICE derived a participant `service`
+  // labelled "Business" from the intake section title, and then validated the
+  // product name as if it were a party to the instrument.
+  "service",
 ]);
 
 let draftingPolicyCache = null;

@@ -180,6 +180,33 @@ function includesDateVariant(haystack = "", rawDate = "") {
   );
 }
 
+// Addresses get legitimately reformatted in a draft ("12 M.G. Road, Bengaluru –
+// 560 001" for "12 MG Road, Bengaluru 560001"), so an exact normalized substring
+// is the same brittle test that broke party names. Require the distinctive parts
+// — the PIN code when there is one, plus most of the remaining words.
+function addressAppears(haystack = "", address = "") {
+  if (includesNormalized(haystack, address)) return true;
+
+  const normalizedAddress = normalizeText(address);
+  if (!normalizedAddress) return true;
+
+  const normalizedHaystack = normalizeText(haystack);
+  if (!normalizedHaystack) return false;
+
+  const haystackDigits = String(haystack || "").replace(/\D+/g, "");
+  const pin = (String(address || "").match(/\b\d{6}\b/) || [])[0];
+  if (pin && !haystackDigits.includes(pin)) return false;
+
+  const haystackWords = new Set(normalizedHaystack.split(" ").filter(Boolean));
+  const words = normalizedAddress
+    .split(" ")
+    .filter((word) => word.length > 2 && !/^\d+$/.test(word));
+  if (!words.length) return Boolean(pin);
+
+  const matched = words.filter((word) => haystackWords.has(word)).length;
+  return matched / words.length >= 0.7;
+}
+
 function inferPartyType(name = "", explicitType = "") {
   const normalizedType = String(explicitType || "").trim();
   if (normalizedType) {
@@ -205,6 +232,25 @@ function inferPartyType(name = "", explicitType = "") {
 
 function expectsRepresentativeExecution(type = "", name = "") {
   return !inferPartyType(name, type).toLowerCase().includes("individual");
+}
+
+// True only when the draft actually renders a signed execution block. Unilateral
+// instruments (Terms of Service, Privacy Policy) carry a SIGNATURE_BLOCK-category
+// clause that is an acknowledgement, not an execution block — it says in terms
+// that no signature is required. Demanding a company-style signatory block there
+// is a guaranteed false positive.
+function hasExecutionBlock(signatureText = "") {
+  const normalized = normalizeText(signatureText);
+  if (!normalized) return false;
+  if (/no (?:physical|electronic|digital)[a-z ]*signature is required/.test(normalized)) {
+    return false;
+  }
+  if (/does not require a (?:physical|digital|electronic)/.test(normalized)) {
+    return false;
+  }
+  return /for and on behalf of|signed by|signature of|authorised signatory|authorized signatory|in the presence of/.test(
+    normalized
+  );
 }
 
 function hasRepresentativeExecutionBlock(signatureText = "", name = "") {
@@ -246,8 +292,21 @@ export function validateDraftConsistency(
 
   const supportedFields = new Set(Object.keys(getVariables(documentType)));
   const clauses = draft.clauses;
+
+  // Whole-document fallback for the party checks below. Not every instrument has
+  // a dedicated IDENTITY clause: the Terms of Service and Privacy Policy
+  // blueprints have none at all — they introduce the business inside the opening
+  // acceptance clause (category PURPOSE). Checking party details against an empty
+  // string made those documents fail `INPUT_MISMATCH_*_NAME` (CRITICAL) on every
+  // single generation, no matter what the user typed, so they could never be
+  // generated. Where a real IDENTITY clause exists the narrow check is kept.
+  const partyContextText = clauses
+    .map((clause) => `${clause.title || ""}\n${clause.text || ""}`)
+    .join("\n");
+
   const identityText =
-    clauses.find((clause) => clause.category === "IDENTITY")?.text || "";
+    clauses.find((clause) => clause.category === "IDENTITY")?.text ||
+    partyContextText;
   const disputeText =
     clauses.find(
       (clause) =>
@@ -257,7 +316,8 @@ export function validateDraftConsistency(
   const governingLawText =
     clauses.find((clause) => clause.category === "GOVERNING_LAW")?.text || "";
   const signatureText =
-    clauses.find((clause) => clause.category === "SIGNATURE_BLOCK")?.text || "";
+    clauses.find((clause) => clause.category === "SIGNATURE_BLOCK")?.text ||
+    partyContextText;
   const termText =
     clauses.find((clause) => clause.clause_id === "CORE_TERM_001")?.text ||
     clauses.find((clause) => clause.category === "TERM")?.text ||
@@ -458,7 +518,7 @@ export function validateDraftConsistency(
 
     if (
       participant.address &&
-      !includesNormalized(identityText, participant.address)
+      !addressAppears(identityText, participant.address)
     ) {
       issues.push(
         buildIssue(
@@ -498,6 +558,7 @@ export function validateDraftConsistency(
     if (
       participant.name &&
       expectsRepresentativeExecution(participant.type, participant.name) &&
+      hasExecutionBlock(signatureText) &&
       !hasRepresentativeExecutionBlock(signatureText, participant.name)
     ) {
       issues.push(
