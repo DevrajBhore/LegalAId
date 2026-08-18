@@ -1,0 +1,68 @@
+{
+  "_note": "What the validation stack does and does not machine-verify. Surfaced to the user beside the issue list so 'no issues found' is never read as 'legally compliant'. Reviewed and maintained by the supervising advocate, not by engineering.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "not_machine_verified": [
+    {
+      "id": "STAMP_DUTY_ADEQUACY",
+      "area": "Stamp duty",
+      "statement": "The duty payable is now estimated from the rate table and the values on the intake form, but rates are held for 6 states only, and whether duty was actually paid is not verified -- no amount paid is collected.",
+      "statutory_reference": "Indian Stamp Act, 1899 - S.3, S.35"
+    },
+    {
+      "id": "REGISTRATION_BEYOND_CLAUSE",
+      "area": "Registration",
+      "statement": "Whether registration is required is now decided from the instrument type and its term. Whether registration was actually effected, and within the 4-month window under S.23, is not verified.",
+      "statutory_reference": "Registration Act, 1908 - S.17, S.23, S.49"
+    },
+    {
+      "id": "SIGNATORY_AUTHORITY",
+      "area": "Authority to execute",
+      "statement": "Whether the person signing is authorised - by board resolution, power of attorney or partnership deed - is not verified.",
+      "statutory_reference": "Companies Act, 2013 - S.179"
+    },
+    {
+      "id": "COMMERCIAL_REASONABLENESS",
+      "area": "Commercial terms",
+      "statement": "Whether the price, term, liability cap or notice period is commercially reasonable for this transaction is not assessed.",
+      "statutory_reference": null
+    },
+    {
+      "id": "FACTUAL_ACCURACY",
+      "area": "Facts and recitals",
+      "statement": "The truth of the party details, addresses, identifiers and recited background is taken from the intake form and is not independently verified.",
+      "statutory_reference": null
+    },
+    {
+      "id": "COUNTERPARTY_SPECIFIC_RISK",
+      "area": "Negotiated position",
+      "statement": "Whether the allocation of risk is appropriate to the parties' relative bargaining position is a matter of legal judgement and is not assessed.",
+      "statutory_reference": null
+    },
+    {
+      "id": "CASE_LAW_CURRENCY",
+      "area": "Judicial interpretation",
+      "statement": "Clauses are checked against statute, not against the current state of judicial interpretation; the case-law corpus is a partial seed.",
+      "statutory_reference": null
+    }
+  ],
+  "by_document_type": {
+    "TERMS_OF_SERVICE": [
+      {
+        "id": "IT_RULES_GRIEVANCE_TIMELINES",
+        "area": "Grievance redressal",
+        "statement": "Acknowledgement and resolution timelines for the grievance officer are not checked against the IT Rules 2021.",
+        "statutory_reference": "IT (Intermediary Guidelines) Rules, 2021 - Rule 3(2)"
+      }
+    ],
+    "EMPLOYMENT_CONTRACT": [
+      {
+        "id": "HEADCOUNT_TRIGGERED_OBLIGATIONS",
+        "area": "Establishment-size obligations",
+        "statement": "Obligations that switch on at a headcount or wage threshold - POSH, PF, ESI, gratuity - are not evaluated, because headcount is not collected.",
+        "statutory_reference": "POSH Act, 2013 - S.4; EPF Act, 1952 - S.1(3)"
+      }
+    ]
+  }
+}

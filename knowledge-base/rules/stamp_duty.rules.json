@@ -1,5 +1,5 @@
 {
-  "_comment": "Stamp duty rates by document type and state. basis: fixed=flat amount, percent=% of financial value. Update rates here without touching code.",
+  "_comment": "Stamp duty rates by document type and state. basis: fixed=flat amount, percent=% of financial value. Update rates here without touching code. | financial_bases added so the adequacy check can derive a value from the intake form instead of requiring a figure nothing ever supplied.",
   "mandatory_stamp_doctypes": [
     "Rental",
     "NDA",
@@ -340,6 +340,41 @@
         "basis": "fixed",
         "amount": 500
       }
+    }
+  },
+  "financial_bases": {
+    "totalRent": {
+      "_note": "Total rent/licence fee over the term = periodic amount x term in months.",
+      "periodic_fields": [
+        "occupancy_fee",
+        "license_fee",
+        "monthly_rent",
+        "rent_amount",
+        "rent"
+      ],
+      "term_fields": [
+        "occupancy_term",
+        "license_term",
+        "lease_term",
+        "rental_term",
+        "agreement_term"
+      ],
+      "periodicity": "monthly"
+    },
+    "loanAmount": {
+      "amount_fields": [
+        "loan_amount",
+        "principal_amount",
+        "facility_amount",
+        "credit_limit"
+      ]
+    },
+    "guaranteedAmount": {
+      "amount_fields": [
+        "guaranteed_amount",
+        "guarantee_amount",
+        "secured_amount"
+      ]
     }
   }
 }

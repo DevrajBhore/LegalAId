@@ -1,0 +1,45 @@
+{
+  "domain": "contract",
+  "_note": "Authority to execute. A company, LLP or firm signs through a natural person, and the instrument should show that authority on its face -- otherwise the signatory's capacity has to be proved later. These are NOTICES, not defects: the details are optional on the intake form, so a missing authority reference must not block generation. Reviewed and maintained by the supervising advocate.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "rules": [
+    {
+      "rule_id": "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+      "severity": "LOW",
+      "notice_only": true,
+      "description": "Party 1 is a body corporate or firm, but the instrument does not record who signs for it or under what authority.",
+      "statutory_reference": "Companies Act, 2013 - S.179; Indian Partnership Act, 1932 - S.19",
+      "excludes_doc_types": ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      "when": [
+        { "var": "party_1_type", "op": "matches", "value": "company|llp|limited|partnership|firm|corporation" }
+      ],
+      "assert": [
+        { "any_of": [
+          { "var": "party_1_authority_reference", "op": "present" },
+          { "var": "party_1_signatory_name", "op": "present" }
+        ]}
+      ],
+      "remedy": "Record the authorised signatory and the board resolution or power of attorney under which they sign."
+    },
+    {
+      "rule_id": "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+      "severity": "LOW",
+      "notice_only": true,
+      "description": "Party 2 is a body corporate or firm, but the instrument does not record who signs for it or under what authority.",
+      "statutory_reference": "Companies Act, 2013 - S.179; Indian Partnership Act, 1932 - S.19",
+      "excludes_doc_types": ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      "when": [
+        { "var": "party_2_type", "op": "matches", "value": "company|llp|limited|partnership|firm|corporation" }
+      ],
+      "assert": [
+        { "any_of": [
+          { "var": "party_2_authority_reference", "op": "present" },
+          { "var": "party_2_signatory_name", "op": "present" }
+        ]}
+      ],
+      "remedy": "Record the authorised signatory and the board resolution or power of attorney under which they sign."
+    }
+  ]
+}

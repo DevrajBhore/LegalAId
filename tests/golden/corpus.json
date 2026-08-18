@@ -1,0 +1,173 @@
+{
+  "_note": "Golden corpus. Each fixture is a realistic intake, plus the verdict a lawyer expects. The harness scores FALSE NEGATIVES (a defect the engine missed) and FALSE POSITIVES (a correct document blocked, or a rule fired that should not have) separately -- a validator that blocks correct documents trains users to ignore it, which is worse than not having it.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "shared_variables": {
+    "party_1_name": "Rajput Estates Private Limited",
+    "party_1_type": "Private Limited Company",
+    "party_1_address": "12 Market Road, Mumbai, Maharashtra 400001",
+    "party_2_name": "Sharma Textiles LLP",
+    "party_2_type": "LLP",
+    "party_2_address": "44 Industrial Estate, Pune, Maharashtra 411001",
+    "effective_date": "2026-09-01",
+    "execution_city": "Pune",
+    "operating_state": "Maharashtra",
+    "arbitration_city": "Pune"
+  },
+  "fixtures": [
+    {
+      "id": "rental-18m-long-lease",
+      "document_type": "RENTAL_AGREEMENT",
+      "description": "18-month tenancy. Compulsorily registrable, so the instrument must address registration.",
+      "variables": {
+        "property_address": "Unit 4B, Prabhat Chambers, Shivajinagar, Pune 411005",
+        "permitted_use": "commercial office use",
+        "occupancy_fee": "85000",
+        "security_deposit": "510000",
+        "occupancy_term": "18 months",
+        "lease_term": "18 months"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_not_flag": [
+          "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
+          "FORMAT_UNRESOLVED_PLACEHOLDER"
+        ],
+        "must_contain_clauses": [
+          "CORE_DEFINITIONS_001",
+          "CORE_NOTICE_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "PROP_REGISTRATION_001"
+        ],
+        "must_notice": [
+          "STAMP_ACT_S17_NOTICE",
+          "REGISTRATION_REQUIRED_NOTICE"
+        ],
+        "must_not_notice": [
+          "REGISTRATION_NOT_REQUIRED_NOTICE"
+        ]
+      }
+    },
+    {
+      "id": "rental-11m-short-licence",
+      "document_type": "RENTAL_AGREEMENT",
+      "description": "11-month tenancy. NOT compulsorily registrable -- the old engine nagged this one, which is the false positive being guarded against.",
+      "variables": {
+        "property_address": "Shop 2, Laxmi Road, Pune 411030",
+        "permitted_use": "retail use",
+        "occupancy_fee": "45000",
+        "security_deposit": "270000",
+        "occupancy_term": "11 months",
+        "lease_term": "11 months"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_not_flag": [
+          "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
+          "FORMAT_UNRESOLVED_PLACEHOLDER"
+        ],
+        "must_notice": [
+          "STAMP_ACT_S17_NOTICE",
+          "REGISTRATION_NOT_REQUIRED_NOTICE"
+        ],
+        "must_not_notice": [
+          "REGISTRATION_REQUIRED_NOTICE"
+        ]
+      }
+    },
+    {
+      "id": "service-agreement-standard",
+      "document_type": "SERVICE_AGREEMENT",
+      "description": "Ordinary services engagement between two entities.",
+      "variables": {
+        "services_description": "software implementation and support services",
+        "deliverables": "a deployed system, user documentation, and two training sessions",
+        "contract_value": "1200000",
+        "payment_terms": "monthly in arrears within 15 days of invoice",
+        "contract_duration": "12 months"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_not_flag": [
+          "FORMAT_UNRESOLVED_PLACEHOLDER",
+          "FORMAT_MISSING_PARTY_PARTY_1"
+        ],
+        "must_contain_clauses": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_NOTICE_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_WAIVER_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_SURVIVAL_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
+        ],
+        "must_notice": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1"
+        ]
+      }
+    },
+    {
+      "id": "leave-and-license-11m",
+      "document_type": "LEAVE_AND_LICENSE_AGREEMENT",
+      "description": "Standard 11-month leave and licence, the common Maharashtra arrangement. In Maharashtra this is registrable regardless of term (s.55 MRC Act), so the requirement notice must fire even at 11 months.",
+      "variables": {
+        "property_address": "Flat 301, Sai Residency, Baner, Pune 411045",
+        "property_description": "a 2BHK residential flat admeasuring 950 sq ft carpet area",
+        "permitted_use": "residential use by the licensee and immediate family",
+        "license_fee": "38000",
+        "security_deposit": "228000",
+        "license_term": "11",
+        "maintenance_party": "Licensor"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_not_flag": [
+          "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
+          "FORMAT_UNRESOLVED_PLACEHOLDER"
+        ],
+        "must_notice": [
+          "REGISTRATION_REQUIRED_NOTICE",
+          "STAMP_ACT_S17_NOTICE"
+        ],
+        "must_not_notice": [
+          "REGISTRATION_NOT_REQUIRED_NOTICE"
+        ]
+      }
+    },
+    {
+      "id": "service-agreement-with-authority",
+      "document_type": "SERVICE_AGREEMENT",
+      "description": "Same engagement, but the authorised signatory and board resolution are supplied. The authority notice must stand down and the deed must recite the authority.",
+      "variables": {
+        "services_description": "software implementation and support services",
+        "deliverables": "a deployed system, user documentation, and two training sessions",
+        "contract_value": "1200000",
+        "payment_terms": "monthly in arrears within 15 days of invoice",
+        "contract_duration": "12 months",
+        "party_1_signatory_name": "Mr Vikram Rajput",
+        "party_1_signatory_designation": "Director",
+        "party_1_authority_reference": "Board Resolution dated 12 August 2026",
+        "party_2_signatory_name": "Ms Anita Sharma",
+        "party_2_signatory_designation": "Designated Partner",
+        "party_2_authority_reference": "Resolution of Partners dated 5 August 2026"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_not_notice": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2"
+        ],
+        "must_contain_text": [
+          "duly authorised vide Board Resolution dated 12 August 2026",
+          "represented by Ms Anita Sharma, Designated Partner"
+        ]
+      }
+    }
+  ]
+}

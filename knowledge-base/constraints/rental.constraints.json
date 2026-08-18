@@ -47,14 +47,67 @@
       ]
     },
     {
-      "rule_id": "RENTAL_REQUIRES_REGISTRATION_CLAUSE",
-      "severity": "HIGH",
-      "description": "Lease/rental agreements for periods exceeding 12 months must be registered. Agreement should reference this requirement.",
-      "statutory_reference": "Registration Act 1908 – S.17; Transfer of Property Act 1882 – S.107",
-      "fails_if": [
-        "PROP_REGISTRATION_001",
-        "PROP_REGISTRATION_MANDATORY_001"
-      ]
+      "rule_id": "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
+      "severity": "CRITICAL",
+      "description": "A lease or tenancy for a term of 12 months or more is compulsorily registrable; the instrument must address registration.",
+      "statutory_reference": "Registration Act 1908 - S.17(1)(d); S.49; Transfer of Property Act 1882 - S.107",
+      "when": [
+        {
+          "var": [
+            "lease_term",
+            "occupancy_term",
+            "rental_term",
+            "agreement_term"
+          ],
+          "op": "months_gte",
+          "value": 12
+        }
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "PROP_REGISTRATION_MANDATORY_001",
+            "PROP_REGISTRATION_001"
+          ]
+        }
+      ],
+      "remedy": "Include the compulsory-registration clause and record which party bears the registration fee and stamp duty.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "RENTAL_SHORT_TERM_REGISTRATION_NOT_REQUIRED",
+      "severity": "LOW",
+      "description": "A tenancy of less than 12 months is not compulsorily registrable; a mandatory-registration clause overstates the requirement.",
+      "statutory_reference": "Registration Act 1908 - S.17(1)(d) proviso",
+      "applies_to_doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT"
+      ],
+      "when": [
+        {
+          "var": [
+            "lease_term",
+            "occupancy_term",
+            "rental_term",
+            "agreement_term"
+          ],
+          "op": "months_lt",
+          "value": 12
+        }
+      ],
+      "assert": [
+        {
+          "clause_absent": [
+            "PROP_REGISTRATION_MANDATORY_001"
+          ]
+        }
+      ],
+      "remedy": "Use the optional-registration clause for a sub-12-month tenancy.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
     }
   ]
 }

@@ -2,7 +2,22 @@
   "defaults": {
     "hardening": {
       "requiredClauseIds": [],
-      "disallowedProtections": []
+      "disallowedProtections": [],
+      "baselineClauseIds": [
+        "CORE_DEFINITIONS_001",
+        "CORE_INTERPRETATION_001",
+        "CORE_NOTICE_001",
+        "CORE_SEVERABILITY_001",
+        "CORE_WAIVER_001",
+        "CORE_ENTIRE_AGREEMENT_001",
+        "CORE_AMENDMENT_001",
+        "CORE_ASSIGNMENT_001",
+        "CORE_COUNTERPARTS_001",
+        "CORE_FORCE_MAJEURE_001",
+        "CORE_SURVIVAL_001",
+        "CORE_STAMP_AND_COSTS_001",
+        "CORE_FURTHER_ASSURANCE_001"
+      ]
     },
     "style": {
       "density": "lawyer_formal_dense",
@@ -99,7 +114,8 @@
           "CORE_NOTICE_001",
           "CORE_ASSIGNMENT_001",
           "CORE_WAIVER_001",
-          "CORE_COUNTERPARTS_001"
+          "CORE_COUNTERPARTS_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
         ]
       },
       "rendering": {
@@ -134,7 +150,8 @@
           "CORE_NOTICE_001",
           "CORE_ASSIGNMENT_001",
           "CORE_WAIVER_001",
-          "CORE_COUNTERPARTS_001"
+          "CORE_COUNTERPARTS_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
         ]
       },
       "rendering": {
@@ -263,7 +280,8 @@
           "CORE_CONFIDENTIALITY_001",
           "CORE_INDEMNITY_001",
           "CORE_FORCE_MAJEURE_001",
-          "CORE_NOTICE_001"
+          "CORE_NOTICE_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
         ]
       }
     },
@@ -295,7 +313,8 @@
           "CORE_LIABILITY_CAP_001",
           "CORE_NOTICE_001",
           "CORE_ASSIGNMENT_001",
-          "CORE_WAIVER_001"
+          "CORE_WAIVER_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
         ]
       },
       "roles": {
@@ -515,7 +534,8 @@
           "CORE_AMENDMENT_001",
           "CORE_WAIVER_001",
           "CORE_COUNTERPARTS_001",
-          "CORE_NOTICE_001"
+          "CORE_NOTICE_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
         ]
       },
       "rendering": {
@@ -546,6 +566,11 @@
             ]
           }
         }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
+        ]
       }
     },
     "RENTAL_AGREEMENT": {
@@ -564,6 +589,28 @@
             ]
           }
         }
+      }
+    },
+    "TERMS_OF_SERVICE": {
+      "hardening": {
+        "baselineClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_WAIVER_001"
+        ]
+      }
+    },
+    "PRIVACY_POLICY": {
+      "hardening": {
+        "baselineClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_WAIVER_001"
+        ]
       }
     }
   }

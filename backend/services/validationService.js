@@ -1,9 +1,51 @@
+import fs from "fs";
+
 import { validate } from "../ire/runner.js";
 import { commercialValidate } from "../ire/commercialValidator.js";
 import { validateDraftConsistency } from "./draftConsistencyValidator.js";
 import { validateDocumentHardening } from "./documentHardening.js";
 import { validateClauseQuality } from "./clauseQualityNormalizer.js";
 import { validateDocumentQuality } from "./documentQualityControl.js";
+
+const COVERAGE_FILE = new URL(
+  "../../knowledge-base/metadata/verification_coverage.json",
+  import.meta.url
+);
+
+let coverageCache = null;
+
+function loadCoverageDisclosure() {
+  if (coverageCache === null) {
+    try {
+      coverageCache = JSON.parse(fs.readFileSync(COVERAGE_FILE, "utf8"));
+    } catch {
+      coverageCache = { not_machine_verified: [], by_document_type: {} };
+    }
+  }
+  return coverageCache;
+}
+
+// What this run actually checked, and what it could not. Reported alongside the
+// issues so an empty issue list is never presented as "legally compliant" -- it
+// means the checks that ran found nothing, which is a different statement.
+function buildCoverage({ documentType, layersRun, layersSkipped, constraintOutcomes }) {
+  const disclosure = loadCoverageDisclosure();
+  const outcomes = Array.isArray(constraintOutcomes) ? constraintOutcomes : [];
+  const counted = (name) => outcomes.filter((entry) => entry.outcome === name).length;
+
+  return {
+    layers_run: layersRun,
+    layers_skipped: layersSkipped,
+    rules_evaluated: outcomes.length,
+    rules_passed: counted("pass"),
+    rules_failed: counted("fail"),
+    rules_not_applicable: counted("not_applicable"),
+    not_machine_verified: [
+      ...(disclosure.not_machine_verified || []),
+      ...((disclosure.by_document_type || {})[documentType] || []),
+    ],
+  };
+}
 
 function resolveSourceVariables(draft, sourceVariables) {
   if (sourceVariables && typeof sourceVariables === "object") {
@@ -45,30 +87,60 @@ export async function runDocumentValidation(
 ) {
   const resolvedDocumentType = documentType || draft?.document_type;
   const resolvedSourceVariables = resolveSourceVariables(draft, sourceVariables);
+  const layersRun = [];
+  const layersSkipped = [];
+
   const coreValidation = await validate(draft, {
     mode,
     isUserEdit: resolveIsUserEdit(draft, isUserEdit),
   });
-  const commercialIssues = resolvedDocumentType
-    ? commercialValidate(draft, resolvedDocumentType)
-    : [];
-  const consistencyIssues =
-    resolvedDocumentType && resolvedSourceVariables
-      ? validateDraftConsistency(draft, {
-          documentType: resolvedDocumentType,
-          variables: resolvedSourceVariables,
-        })
-      : [];
-  const hardeningIssues = resolvedDocumentType
-    ? validateDocumentHardening(draft, { documentType: resolvedDocumentType })
-    : [];
+  layersRun.push("rule_engine");
+
+  const runLayer = (name, condition, run, skipReason) => {
+    if (!condition) {
+      layersSkipped.push({ layer: name, reason: skipReason });
+      return [];
+    }
+    layersRun.push(name);
+    return run();
+  };
+
+  const commercialIssues = runLayer(
+    "commercial",
+    Boolean(resolvedDocumentType),
+    () => commercialValidate(draft, resolvedDocumentType),
+    "document type unknown"
+  );
+  const consistencyIssues = runLayer(
+    "input_consistency",
+    Boolean(resolvedDocumentType && resolvedSourceVariables),
+    () =>
+      validateDraftConsistency(draft, {
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables,
+      }),
+    resolvedDocumentType
+      ? "the submitted form values were not available to compare against"
+      : "document type unknown"
+  );
+  const hardeningIssues = runLayer(
+    "hardening",
+    Boolean(resolvedDocumentType),
+    () => validateDocumentHardening(draft, { documentType: resolvedDocumentType }),
+    "document type unknown"
+  );
+  layersRun.push("clause_quality");
   const clauseQualityIssues = validateClauseQuality(draft);
-  const finalQualityIssues = resolvedDocumentType
-    ? validateDocumentQuality(draft, {
+  const finalQualityIssues = runLayer(
+    "document_quality",
+    Boolean(resolvedDocumentType),
+    () =>
+      validateDocumentQuality(draft, {
         documentType: resolvedDocumentType,
         variables: resolvedSourceVariables || {},
-      })
-    : [];
+      }),
+    "document type unknown"
+  );
 
   return formatValidationResult({
     mode: coreValidation.mode || mode,
@@ -90,6 +162,13 @@ export async function runDocumentValidation(
       final_quality_issues: finalQualityIssues.length,
       extra_issues: extraIssues.length,
     },
+    coverage: buildCoverage({
+      documentType: resolvedDocumentType,
+      layersRun,
+      layersSkipped,
+      constraintOutcomes:
+        coreValidation.constraint_outcomes || coreValidation._constraint_outcomes,
+    }),
   });
 }
 
@@ -97,6 +176,7 @@ export function formatValidationResult({
   mode = "final",
   issues = [],
   layers = {},
+  coverage = null,
 } = {}) {
   const dedupedIssues = collapseClauseIssueNoise(deduplicateIssues(issues));
   const notices = dedupedIssues.filter(isNoticeIssue);
@@ -119,8 +199,10 @@ export function formatValidationResult({
   let score = 100 - (critical * 40) - (high * 20) - (medium * 10) - (low * 2);
   score = Math.max(0, score);
 
-  // Determine Certification Band
-  let certification = "Certified";
+  // Verification band. Deliberately NOT the word "certified": passing means the
+  // checks that ran found nothing, which is a narrower claim than compliance.
+  // The `certified` field below is retained as the internal export gate.
+  let certification = "No issues detected";
   if (blockingIssues.length > 0) certification = "Blocked";
   else if (actionableIssues.length > 0) certification = "Review Required";
 
@@ -136,7 +218,11 @@ export function formatValidationResult({
     risk: overallRisk,
     overall_risk: overallRisk,
     risk_level: overallRisk,
+    // Internal gate flag consumed by the generation and export paths. It means
+    // "every check that ran passed", not "this document is legally compliant".
     certified: actionableIssues.length === 0,
+    checks_passed: actionableIssues.length === 0,
+    coverage,
     blockingIssues,
     advisoryIssues,
     notices,

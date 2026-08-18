@@ -1,0 +1,68 @@
+{
+  "_comment": "When an instrument must be registered under the Registration Act, 1908, and what follows if it is not. Previously this lived as a boolean on three document types in domainRegistry.js, tested by searching the draft text for words like 'sub-registrar' -- which asked whether the document TALKS about registration, not whether registration is legally required. Reviewed and maintained by the supervising advocate.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "presentation_deadline_months": 4,
+  "deadline_reference": "Registration Act, 1908 - S.23",
+  "consequence_reference": "Registration Act, 1908 - S.49",
+  "consequence": "An instrument requiring registration that is not registered cannot be received in evidence of any transaction affecting the immovable property it relates to, and confers no power to adjudge.",
+  "always_registrable": [
+    {
+      "doc_types": [
+        "SALE_DEED"
+      ],
+      "statutory_reference": "Registration Act, 1908 - S.17(1)(b)"
+    },
+    {
+      "doc_types": [
+        "GIFT_DEED"
+      ],
+      "statutory_reference": "Registration Act, 1908 - S.17(1)(a); Transfer of Property Act, 1882 - S.123"
+    },
+    {
+      "doc_types": [
+        "MORTGAGE_DEED"
+      ],
+      "statutory_reference": "Registration Act, 1908 - S.17(1)(b); Transfer of Property Act, 1882 - S.59"
+    }
+  ],
+  "term_triggered": [
+    {
+      "doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ],
+      "threshold_months": 12,
+      "term_fields": [
+        "lease_term",
+        "occupancy_term",
+        "license_term",
+        "rental_term",
+        "agreement_term"
+      ],
+      "statutory_reference": "Registration Act, 1908 - S.17(1)(d); Transfer of Property Act, 1882 - S.107",
+      "at_or_above": "A lease of immovable property from year to year, or for any term exceeding one year, must be registered.",
+      "below": "A lease for a term of less than one year is not compulsorily registrable, though it may still attract stamp duty."
+    }
+  ],
+  "state_overrides": [
+    {
+      "doc_types": [
+        "LEAVE_AND_LICENSE_AGREEMENT"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "always_registrable": true,
+      "statutory_reference": "Maharashtra Rent Control Act, 1999 - S.55",
+      "reason": "In Maharashtra a leave and licence agreement must be registered regardless of its term, and the licensor bears the responsibility for effecting registration."
+    }
+  ],
+  "state_notes": {
+    "Maharashtra": "Registration is effected before the Sub-Registrar; leave and licence agreements are registrable under S.55 of the Maharashtra Rent Control Act, 1999 regardless of term.",
+    "Delhi": "Registration through the DORIS portal.",
+    "Karnataka": "Registration through the Kaveri portal."
+  }
+}

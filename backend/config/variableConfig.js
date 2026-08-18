@@ -47,6 +47,62 @@ export const VARIABLE_CONFIG = {
         "West Bengal",
       ],
     },
+    // ─── Authority to execute (optional) ──────────────────────────────────
+    // A company or LLP signs through a natural person, and the instrument
+    // should show on its face that the signatory was authorised. Excluded from
+    // unilateral published instruments, which have no counterparty execution.
+    party_1_signatory_name: {
+      label: "Party 1 — Authorised Signatory Name",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description:
+        "The individual signing for Party 1, where Party 1 is a company, LLP or firm.",
+    },
+    party_1_signatory_designation: {
+      label: "Party 1 — Signatory Designation",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description: "For example Director, Managing Partner, Authorised Signatory.",
+    },
+    party_1_authority_reference: {
+      label: "Party 1 — Authority (Board Resolution / POA)",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description:
+        "For example \"Board Resolution dated 12 August 2026\" or \"Power of Attorney dated 3 March 2026\".",
+    },
+    party_2_signatory_name: {
+      label: "Party 2 — Authorised Signatory Name",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description:
+        "The individual signing for Party 2, where Party 2 is a company, LLP or firm.",
+    },
+    party_2_signatory_designation: {
+      label: "Party 2 — Signatory Designation",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description: "For example Director, Managing Partner, Authorised Signatory.",
+    },
+    party_2_authority_reference: {
+      label: "Party 2 — Authority (Board Resolution / POA)",
+      type: "text",
+      required: false,
+      group: "Party Details",
+      excludeDocuments: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+      description:
+        "For example \"Board Resolution dated 12 August 2026\" or \"Power of Attorney dated 3 March 2026\".",
+    },
     effective_date: {
       label: "Effective Date",
       type: "date",

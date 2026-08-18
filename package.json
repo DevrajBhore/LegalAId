@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cd backend && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/verificationCoverage.test.mjs && node tests/goldenCorpus.test.mjs",
+    "test:golden": "node tests/goldenCorpus.test.mjs"
   },
   "keywords": [],
   "author": "",

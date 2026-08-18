@@ -1,0 +1,292 @@
+{
+  "domain": "contract",
+  "_note": "The general-provisions floor, expressed as rules so a new document type cannot silently ship below it. Mirrors drafting_policies.json -> defaults.hardening.baselineClauseIds. Unilateral instruments (Terms of Service, Privacy Policy) carry a narrower set and are excluded via applies_to_doc_types on the engine side. Filed under the 'contract' domain because every document type carries it; registry.addConstraints appends, so this coexists with contract.constraints.json.",
+  "rules": [
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_DEFINITIONS",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a definitions clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_DEFINITIONS_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_DEFINITIONS_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_INTERPRETATION",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain an interpretation clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_INTERPRETATION_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_INTERPRETATION_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_NOTICE",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a notices clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_NOTICE_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_NOTICE_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_SEVERABILITY",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a severability clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_SEVERABILITY_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_SEVERABILITY_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_WAIVER",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a waiver clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_WAIVER_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_WAIVER_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_ENTIRE_AGREEMENT",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain an entire-agreement clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_ENTIRE_AGREEMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_ENTIRE_AGREEMENT_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_AMENDMENT",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain an amendment clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_AMENDMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_AMENDMENT_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_ASSIGNMENT",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain an assignment clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_ASSIGNMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_ASSIGNMENT_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_COUNTERPARTS",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a counterparts clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_COUNTERPARTS_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_COUNTERPARTS_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_FORCE_MAJEURE",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a force majeure clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_FORCE_MAJEURE_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_FORCE_MAJEURE_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "when": [
+        {
+          "not": {
+            "doc_type_in": [
+              "LOAN_AGREEMENT",
+              "GUARANTEE_AGREEMENT"
+            ]
+          }
+        }
+      ],
+      "_note": "Loan and Guarantee disallow force majeure by policy (drafting_policies.json -> hardening.disallowedProtections); this rule stands down for them.",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_SURVIVAL",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a survival clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_SURVIVAL_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_SURVIVAL_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_STAMP_AND_COSTS",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should state who bears stamp duty, registration charges and incidental costs.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_STAMP_AND_COSTS_001",
+            "PROP_REGISTRATION_001",
+            "PROP_REGISTRATION_MANDATORY_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_STAMP_AND_COSTS_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    },
+    {
+      "rule_id": "GENERAL_PROVISION_MISSING_FURTHER_ASSURANCE",
+      "severity": "MEDIUM",
+      "description": "A bilateral commercial instrument should contain a further-assurance clause.",
+      "statutory_reference": "Drafting standard - LegalAId general provisions floor",
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_FURTHER_ASSURANCE_001"
+          ]
+        }
+      ],
+      "remedy": "Add CORE_FURTHER_ASSURANCE_001 (supplied automatically by drafting_policies.json -> hardening.baselineClauseIds).",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review",
+      "excludes_doc_types": [
+        "TERMS_OF_SERVICE",
+        "PRIVACY_POLICY"
+      ]
+    }
+  ]
+}

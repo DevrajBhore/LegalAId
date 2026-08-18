@@ -14,8 +14,21 @@ import {
   parseNumberish as parseFormattedNumber,
 } from "./formattingEngine.js";
 
+// A document's clause floor comes from two places: `baselineClauseIds`, the
+// general provisions every instrument of that kind carries (declared once in
+// defaults/families), plus the `requiredClauseIds` the specific document type
+// adds on top. They are UNIONED here rather than merged upstream, because
+// mergePolicy REPLACES arrays -- a document declaring requiredClauseIds would
+// otherwise silently wipe out the inherited baseline.
 function getRequiredHardeningClauseIds(documentType) {
-  return getDocumentDraftingPolicy(documentType)?.hardening?.requiredClauseIds || [];
+  const hardening = getDocumentDraftingPolicy(documentType)?.hardening || {};
+  const baseline = Array.isArray(hardening.baselineClauseIds)
+    ? hardening.baselineClauseIds
+    : [];
+  const required = Array.isArray(hardening.requiredClauseIds)
+    ? hardening.requiredClauseIds
+    : [];
+  return [...new Set([...baseline, ...required])];
 }
 
 function normalizeWhitespace(value = "") {
@@ -708,6 +721,37 @@ function resolveOwnershipAssignmentClause(ownerLabel, creatorLabel, ownershipVal
   return `All deliverables, work product, inventions, developments, documents, reports, source code, designs, materials, discoveries, and other intellectual property created, conceived, authored, or reduced to practice in the course of performing this Agreement for ${ownerLabel} shall vest exclusively in ${ownerLabel} from creation, and to the extent any such rights do not automatically vest by operation of law, ${creatorLabel} hereby irrevocably assigns, and shall procure the assignment of, all such rights to ${ownerLabel}. ${creatorLabel} shall retain ownership only of pre-existing intellectual property, general know-how, and reusable tools that are not specific to ${ownerLabel}, but grants ${ownerLabel} a non-exclusive, perpetual, royalty-free licence to use any such background materials to the extent embedded in or necessary to use the deliverables.`;
 }
 
+// A company or LLP contracts through a natural person. Indian instruments show
+// that authority on the face of the deed -- "represented by its authorised
+// signatory Mr X, duly authorised vide Board Resolution dated Y" -- so that the
+// signatory's capacity is not left to be proved later. Rendered only when the
+// details were supplied; an entity party with no authority details is reported
+// separately as an advisory rather than papered over with blanks.
+function buildAuthorityPhrase(participant, variables = {}) {
+  const id = participant?.id;
+  if (!id) return "";
+
+  const signatory = normalizeWhitespace(variables[`${id}_signatory_name`]);
+  const designation = normalizeWhitespace(variables[`${id}_signatory_designation`]);
+  const authority = normalizeWhitespace(variables[`${id}_authority_reference`]);
+
+  if (!signatory && !authority) return "";
+
+  const parts = [];
+  if (signatory) {
+    parts.push(
+      `represented by ${signatory}${designation ? `, ${designation}` : ""}`
+    );
+  } else {
+    parts.push("represented by its authorised signatory");
+  }
+  if (authority) {
+    parts.push(`duly authorised vide ${authority}`);
+  }
+
+  return `, ${parts.join(", ")}`;
+}
+
 function buildParticipantDescriptor(participant, variables = {}) {
   const name = normalizeWhitespace(participant?.name);
   if (!name) return "";
@@ -746,6 +790,8 @@ function buildParticipantDescriptor(participant, variables = {}) {
       ""
     )}`;
   }
+
+  descriptor += buildAuthorityPhrase(participant, variables);
 
   return descriptor;
 }
@@ -922,9 +968,21 @@ function buildSignatureBlockText(documentType, participants = []) {
     documentType === "COMMERCIAL_LEASE_AGREEMENT" ||
     documentType === "LEAVE_AND_LICENSE_AGREEMENT"
   ) {
-    lines.push("Witnesses:");
+    // Attestation clause. The set of instruments that carry witnesses is a
+    // legal question and is deliberately left as-is; only the FORM of the
+    // block is corrected here -- an attestation line plus the particulars a
+    // witness must actually give.
+    lines.push("IN THE PRESENCE OF:");
+    lines.push("");
+    lines.push("WITNESSES:");
+    lines.push("");
     lines.push("1. ______________________________");
+    lines.push("   Name: ________________________");
+    lines.push("   Address: _____________________");
+    lines.push("");
     lines.push("2. ______________________________");
+    lines.push("   Name: ________________________");
+    lines.push("   Address: _____________________");
   }
 
   return lines.join("\n").trim();
@@ -1051,11 +1109,13 @@ function renderHardClause(
         "",
         `The ${namedParties.first} and the ${namedParties.second} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
         "",
-        `WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to ${recitalPurpose};`,
+        // Indian drafting convention letters the recitals and uses AND WHEREAS
+        // from the second onward, so they can be cross-referred as Recital A/B/C.
+        `A. WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to ${recitalPurpose};`,
         "",
-        "WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and",
+        "B. AND WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and",
         "",
-        "WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;",
+        "C. AND WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;",
         "",
         "NOW, THEREFORE, in consideration of the mutual covenants and undertakings contained herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:",
       ].join("\n");
@@ -1091,9 +1151,9 @@ function renderHardClause(
         "",
         `The Creditor, the Principal Debtor, and the Guarantor are collectively referred to as the "Parties" and individually as a "Party".`,
         "",
-        "WHEREAS, the Creditor has agreed to extend, continue, or secure financial accommodation to the Principal Debtor on the faith of this Guarantee;",
+        "A. WHEREAS, the Creditor has agreed to extend, continue, or secure financial accommodation to the Principal Debtor on the faith of this Guarantee;",
         "",
-        "WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation; and",
+        "B. AND WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation; and",
         "",
         "NOW, THEREFORE, in consideration of the mutual covenants, promises, and obligations contained herein, the Parties agree as follows:",
       ].join("\n");
@@ -2037,8 +2097,34 @@ export function applyDocumentHardening(draft, input = {}) {
   // "missing required" clause (its replacement already covers the role).
   const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
 
+  // Honour the clause library's own `conflicts_with` declarations, so a general
+  // provision is not injected on top of a document-specific clause covering the
+  // same ground -- e.g. CORE_STAMP_AND_COSTS_001 must stand down for the
+  // property registration-and-stamp clause rather than duplicate it.
+  const conflictsDeclaredByDraft = new Set();
+  for (const clause of baseClauses) {
+    for (const other of clause?.conflicts_with || []) {
+      conflictsDeclaredByDraft.add(other);
+    }
+  }
+
+  function conflictsWithDraft(clauseId) {
+    if (conflictsDeclaredByDraft.has(clauseId)) return true;
+    const candidate = getClauseById(clauseId);
+    return (candidate?.conflicts_with || []).some((id) => existingClauseIds.has(id));
+  }
+
+  // A clause the document type disallows must not be re-introduced through the
+  // required/baseline set -- otherwise a Loan or Guarantee that explicitly
+  // disallows FORCE_MAJEURE would have it injected right back.
   const extraClauses = requiredClauseIds
-    .filter((clauseId) => !existingClauseIds.has(clauseId) && !replacedClauseIds.has(clauseId))
+    .filter(
+      (clauseId) =>
+        !existingClauseIds.has(clauseId) &&
+        !replacedClauseIds.has(clauseId) &&
+        !genericClausesToRemove.has(clauseId) &&
+        !conflictsWithDraft(clauseId)
+    )
     .map((clauseId) => cloneClauseForDraft(clauseId, variables));
 
   const clauses = [...baseClauses, ...extraClauses].map((clause) =>
@@ -2094,8 +2180,31 @@ function findMissingRequiredClauseIssues(draft, documentType) {
   // A clause a variant slot deliberately swapped out is not "missing" — its
   // replacement is present and covers the role.
   const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
+
+  // Nor is a clause that stood down for a conflicting one already in the
+  // draft. This mirrors the injection rule in applyDocumentHardening; without
+  // it, the validator demands the very clause the injector correctly withheld
+  // (e.g. CORE_STAMP_AND_COSTS_001 in a rental that already carries
+  // PROP_REGISTRATION_001).
+  const conflictsDeclaredByDraft = new Set();
+  for (const clause of draft.clauses || []) {
+    for (const other of clause?.conflicts_with || []) {
+      conflictsDeclaredByDraft.add(other);
+    }
+  }
+  const supersededByPresentClause = (clauseId) => {
+    if (conflictsDeclaredByDraft.has(clauseId)) return true;
+    const candidate = getClauseById(clauseId);
+    return (candidate?.conflicts_with || []).some((id) => existingClauseIds.has(id));
+  };
+
   return requiredClauseIds
-    .filter((clauseId) => !existingClauseIds.has(clauseId) && !replacedClauseIds.has(clauseId))
+    .filter(
+      (clauseId) =>
+        !existingClauseIds.has(clauseId) &&
+        !replacedClauseIds.has(clauseId) &&
+        !supersededByPresentClause(clauseId)
+    )
     .map((clauseId) =>
       buildIssue(
         `MISSING_REQUIRED_CLAUSE_${clauseId}`,

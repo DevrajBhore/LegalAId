@@ -157,6 +157,36 @@ function buildLeadInRuns(line, leadPattern) {
   return runs;
 }
 
+// Parses a recital line, with or without a letter label:
+//   "A. WHEREAS, x"  /  "(B) AND WHEREAS, y"  /  "WHEREAS, z"
+// The label is PRESERVED (recitals get cross-referred as Recital A/B/C) and is
+// emphasised together with the WHEREAS / AND WHEREAS lead-in.
+function matchRecitalLine(line = "") {
+  const source = String(line || "").trim();
+  const match = source.match(
+    /^(?:(?:\(([A-Z])\)|([A-Z])[.)])\s+)?((?:AND\s+)?WHEREAS[,:]?\s+)(.*)$/i
+  );
+  if (match) {
+    const letter = match[1] || match[2];
+    return {
+      label: letter ? `${letter.toUpperCase()}. ` : "",
+      lead: match[3],
+      rest: match[4] || "",
+    };
+  }
+
+  // A lettered recital that does not spell out WHEREAS. Restricted to the
+  // PARENTHESISED form "(A) ..." on purpose: a bare "A. ..." would swallow a
+  // party line for an initialled name such as "A. K. Sharma & Co, ... of the
+  // First Part;", which is rendered by the party branch further down.
+  const lettered = source.match(/^\(([A-Z])\)\s+(.*)$/);
+  if (lettered) {
+    return { label: `${lettered[1].toUpperCase()}. `, lead: "WHEREAS, ", rest: lettered[2] || "" };
+  }
+
+  return null;
+}
+
 function buildPartyParagraphRuns(line) {
   let remainder = String(line || "").trim();
   const runs = [];
@@ -275,6 +305,20 @@ function tokenizeClauseText(text = "") {
   return blocks;
 }
 
+// Indian deeds head a schedule "THE FIRST SCHEDULE ABOVE REFERRED TO" rather
+// than "SCHEDULE 1", and place schedules AFTER the testimonium and signatures.
+const SCHEDULE_ORDINALS = [
+  "FIRST", "SECOND", "THIRD", "FOURTH", "FIFTH",
+  "SIXTH", "SEVENTH", "EIGHTH", "NINTH", "TENTH",
+];
+
+function scheduleHeadingPrefix(index) {
+  const ordinal = SCHEDULE_ORDINALS[index - 1];
+  return ordinal
+    ? `THE ${ordinal} SCHEDULE ABOVE REFERRED TO — `
+    : `SCHEDULE ${index} — `;
+}
+
 function resolveFallbackHeading(clause, clauseNumber) {
   const explicitTitle = String(clause?.title || "").trim();
   if (explicitTitle) return explicitTitle;
@@ -343,18 +387,18 @@ function renderIdentityClause(children, text) {
       continue;
     }
 
-    if (/^(?:\([A-Z]\)\s*)?WHEREAS[,:\s]/i.test(line) || /^\([A-Z]\)\s+/i.test(line)) {
-      const recitalText = line.replace(/^\([A-Z]\)\s*/i, "");
+    const recital = matchRecitalLine(line);
+    if (recital) {
       children.push(
         new Paragraph({
           style: STYLE_ID.recital,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
           indent: { left: RECITAL_LEFT },
-          children: buildLeadInRuns(
-            /^WHEREAS[,:\s]/i.test(recitalText) ? recitalText : `WHEREAS, ${recitalText}`,
-            /^(WHEREAS,?\s*)/i
-          ),
+          children: [
+            buildBodyRun(`${recital.label}${recital.lead}`, { bold: true }),
+            ...buildRunsWithSuperscriptOrdinals(recital.rest),
+          ],
         })
       );
       continue;
@@ -481,17 +525,17 @@ function renderSignatureBlock(children, text) {
       new Paragraph({
         style: STYLE_ID.signature,
         spacing: {
-          before: /^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
+          before: /^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b|^IN THE PRESENCE OF/i.test(line)
             ? 120
             : 0,
-          after: /^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? 180 : BODY_AFTER_SPACING,
+          after: /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF/i.test(line) ? 180 : BODY_AFTER_SPACING,
           line: BODY_LINE_SPACING,
         },
         indent: { left: SIGNATURE_LEFT },
         children: [
           buildBodyRun(
             line,
-            /^IN WITNESS WHEREOF|^Witnesses:|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
+            /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
               ? { bold: true }
               : {}
           ),
@@ -637,17 +681,14 @@ function renderPdfIdentityClause(doc, text) {
       continue;
     }
 
-    if (/^(?:\([A-Z]\)\s*)?WHEREAS[,:\s]/i.test(line) || /^\([A-Z]\)\s+/i.test(line)) {
-      const recitalText = line.replace(/^\([A-Z]\)\s*/i, "");
-      const normalized = /^WHEREAS[,:\s]/i.test(recitalText)
-        ? recitalText
-        : `WHEREAS, ${recitalText}`;
-      const leadMatch = normalized.match(/^(WHEREAS,?\s*)(.*)$/i);
-      renderPdfLeadInParagraph(doc, leadMatch?.[1] || "WHEREAS, ", leadMatch?.[2] || "", {
-        align: "justify",
-        after: 0.35,
-        indent: 54,
-      });
+    const pdfRecital = matchRecitalLine(line);
+    if (pdfRecital) {
+      renderPdfLeadInParagraph(
+        doc,
+        `${pdfRecital.label}${pdfRecital.lead}`,
+        pdfRecital.rest,
+        { align: "justify", after: 0.35, indent: 54 }
+      );
       continue;
     }
 
@@ -729,10 +770,10 @@ function renderPdfSignatureBlock(doc, text) {
     }
 
     doc
-      .font(/^IN WITNESS WHEREOF|^Witnesses:|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line) ? "Times-Bold" : "Times-Roman")
+      .font(/^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line) ? "Times-Bold" : "Times-Roman")
       .fontSize(12)
       .text(line, { align: "left", lineGap: 2, indent: 24 });
-    doc.moveDown(/^IN WITNESS WHEREOF|^Witnesses:/i.test(line) ? 0.5 : 0.25);
+    doc.moveDown(/^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF/i.test(line) ? 0.5 : 0.25);
   }
 }
 
@@ -764,28 +805,27 @@ export async function draftToDocx(draft) {
     renderIdentityClause(children, identityClause.text);
   }
 
-  if (bodyClauses.length) {
-    children.push(buildSectionHeading("Terms and Conditions", { before: 300 }));
-  }
-
+  // A deed runs continuously from the testatum to the testimonium: no interior
+  // "TERMS AND CONDITIONS" / "EXECUTION" banner headings.
   bodyClauses.forEach((clause, index) => {
     renderBodyClause(children, clause, index + 1);
   });
 
-  if (scheduleClauses.length) {
-    children.push(buildSectionHeading("Schedules and Specifications", { before: 420, after: 220 }));
-
-    scheduleClauses.forEach((clause, index) => {
-      renderBodyClause(children, clause, index + 1, { scheduleMode: true });
-    });
-  }
-
-  if (signatureClauses.length) {
-    children.push(buildSectionHeading("Execution", { before: 420, after: 160 }));
-  }
-
   signatureClauses.forEach((clause) => {
     renderSignatureBlock(children, clause.text);
+  });
+
+  // Schedules follow the execution block, each on a fresh page.
+  scheduleClauses.forEach((clause, index) => {
+    children.push(
+      new Paragraph({
+        style: STYLE_ID.body,
+        pageBreakBefore: true,
+        spacing: { after: 0 },
+        children: [],
+      })
+    );
+    renderBodyClause(children, clause, index + 1, { scheduleMode: true });
   });
 
   const doc = new Document({
@@ -940,31 +980,18 @@ export async function draftToPdf(draft) {
       renderPdfIdentityClause(doc, identityClause.text);
     }
 
-    if (bodyClauses.length) {
-      renderPdfSectionHeading(doc, "Terms and Conditions", { before: 0.65, after: 0.45 });
-    }
-
     bodyClauses.forEach((clause, index) => {
       renderPdfBodyClause(doc, clause, index + 1);
     });
 
-    if (scheduleClauses.length) {
-      renderPdfSectionHeading(doc, "Schedules and Specifications", {
-        before: 0.9,
-        after: 0.55,
-      });
-
-      scheduleClauses.forEach((clause, index) => {
-        renderPdfBodyClause(doc, clause, index + 1, { scheduleMode: true });
-      });
-    }
-
-    if (signatureClauses.length) {
-      renderPdfSectionHeading(doc, "Execution", { before: 0.9, after: 0.35 });
-    }
-
     signatureClauses.forEach((clause) => {
       renderPdfSignatureBlock(doc, clause.text);
+    });
+
+    // Schedules follow the execution block, each on a fresh page.
+    scheduleClauses.forEach((clause, index) => {
+      doc.addPage();
+      renderPdfBodyClause(doc, clause, index + 1, { scheduleMode: true });
     });
   });
 }
@@ -989,21 +1016,21 @@ export function draftToText(draft) {
     }
   });
 
-  if (scheduleClauses.length) {
-    lines.push(`\nSCHEDULES AND SPECIFICATIONS\n${"=".repeat(28)}`);
-    scheduleClauses.forEach((clause, index) => {
-      const heading = resolveFallbackHeading(clause, index + 1);
-      lines.push(`\nSCHEDULE ${index + 1}. ${heading.toUpperCase()}\n${"-".repeat(40)}`);
-      lines.push(String(clause.text || "").trim());
-      if (clause.statutory_reference) {
-        lines.push(`[Ref: ${clause.statutory_reference}]`);
-      }
-    });
-  }
-
   signatureClauses.forEach((clause) => {
     lines.push(`\n${"-".repeat(40)}`);
     lines.push(String(clause.text || "").trim());
+  });
+
+  // Schedules follow the execution block.
+  scheduleClauses.forEach((clause, index) => {
+    const heading = resolveFallbackHeading(clause, index + 1);
+    lines.push(
+      `\n${scheduleHeadingPrefix(index + 1)}${heading.toUpperCase()}\n${"-".repeat(40)}`
+    );
+    lines.push(String(clause.text || "").trim());
+    if (clause.statutory_reference) {
+      lines.push(`[Ref: ${clause.statutory_reference}]`);
+    }
   });
 
   return lines.join("\n");

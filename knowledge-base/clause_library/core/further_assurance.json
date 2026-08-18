@@ -1,0 +1,43 @@
+{
+  "clause_id": "CORE_FURTHER_ASSURANCE_001",
+  "name": "Further Assurance",
+  "category": "FURTHER_ASSURANCE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party shall, at the reasonable request and cost of the requesting Party, promptly execute and deliver such further documents, instruments, declarations, forms, and writings, and do or procure to be done all such further acts and things, as may be reasonably necessary or expedient to give full force and effect to this Agreement and to perfect, record, or protect the rights, title, interests, and obligations created or intended to be created under it, including any filings, registrations, or intimations required to be made before any statutory or regulatory authority.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Obligation of parties to perform their promises"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The further acts sought are outside the scope of the obligations expressly created by this Agreement",
+    "Performance of the further act would be unlawful or require a consent that has been refused by a competent authority"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Further Assurance",
+  "review_status": "draft-needs-legal-review",
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Who bears the cost of the further act where the agreement is silent",
+    "Refusal to execute statutory transfer forms after assignment of intellectual property or shares"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}

@@ -4,6 +4,7 @@ import { runUniversalValidation } from "./src/universal/universalEngine.js";
 import { runStatutoryValidation } from "./src/statutes/statutoryEngine.js";
 import { illegalClauseValidate } from "./src/indian-rule-engine/illegalClauseValidator.js";
 import { stampDutyValidate } from "./src/indian-rule-engine/stampDutyValidator.js";
+import { registrationValidate } from "./src/indian-rule-engine/registrationValidator.js";
 import { aiLegalSafetyValidate } from "./src/indian-rule-engine/aiLegalSafetyValidator.js";
 import { toIREDocType } from "../shared/documentRegistry.js";
 
@@ -107,6 +108,13 @@ export async function validateDocument(
     ? stampDutyValidate(draft, meta)
     : [];
 
+  // ── Layer 5b: Registration under the Registration Act, 1908
+  // Notices, not blockers: an unregistered instrument is not void, it is
+  // inadmissible in evidence (S.49).
+  const registrationIssues = shouldRunStamp(validationMode)
+    ? registrationValidate(draft, meta)
+    : [];
+
   // ── Layer 6: AI clause integrity check (only on user-triggered deep validate)
   const aiIntegrityIssues = shouldRunAISafety(validationMode)
     ? await aiLegalSafetyValidate(draft, {
@@ -126,7 +134,7 @@ export async function validateDocument(
   ];
 
   const deduped = deduplicate(nonStampIssues);
-  const dedupedStamp = deduplicate(stampIssues);  
+  const dedupedStamp = deduplicate([...stampIssues, ...registrationIssues]);
   const allDeduped = [...deduped, ...dedupedStamp];
 
   const risk_level = calculateRisk(deduped);                      
@@ -136,6 +144,9 @@ export async function validateDocument(
     issues: allDeduped,
     certified: risk_level !== "BLOCKED",
     risk_level,
+    // Per-rule outcomes from the constraint engine, so the validation result can
+    // report how many rules were evaluated rather than only how many failed.
+    constraint_outcomes: structuralResult.constraint_outcomes || [],
     _layers: {
       blueprint_issues: blueprintIssues.length,
       structural_issues: structuralIssues.length,
@@ -144,6 +155,7 @@ export async function validateDocument(
       semantic_issues: semanticIssues.length,
       universal_issues: universalIssues.length,
       statutory_issues: statutoryIssues.length,
+      registration_issues: registrationIssues.length,
       subordinate_notice_issues: statutoryIssues.filter(
         (issue) => issue?.rule_id === "SUBORDINATE_LEGISLATION_REVIEW"
       ).length,

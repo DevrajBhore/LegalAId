@@ -33,6 +33,7 @@ import { deriveGenerationControls } from "./generationControls.js";
 import { buildSemanticContext } from "./inputSemantics.js";
 import { buildDocumentIntelligence } from "./documentIntelligence.js";
 import { buildObligations } from "./obligationTracker.js";
+import { resolveStampFinancials } from "./stampDutyBasis.js";
 
 // Attach the advisory risk-&-explainability report + lifecycle obligations to a
 // successful generation.
@@ -168,6 +169,15 @@ function attachDraftContext(draft, input, { resetBaseline = false } = {}) {
       document_type: input.document_type,
       jurisdiction: input.jurisdiction || draft?.jurisdiction || "India",
       source_variables: sanitizeSourceVariables(input.variables),
+      // The stamp rate table charges duty on totalRent / loanAmount /
+      // guaranteedAmount. Nothing ever populated these, so the adequacy check
+      // returned early on every document. Derive them from the intake form.
+      financials: resolveStampFinancials(input.variables || {}),
+      state:
+        input.variables?.governing_law_state ||
+        input.variables?.operating_state ||
+        draft?.metadata?.state ||
+        null,
       interpreted_facts:
         input.semanticContext ||
         draft?.metadata?.interpreted_facts ||

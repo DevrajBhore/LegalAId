@@ -6,7 +6,7 @@
  * categories and domain constraints automatically.
  */
 
-import { evaluateConstraints } from "./constraintEngine.js";
+import { runConstraints } from "./constraintEngine.js";
 import { getDocumentTypeInfo } from "./domainRegistry.js";
 
 function normalizeCategory(category = "") {
@@ -133,8 +133,19 @@ export function validateDocument(
   }
 
   if (typeInfo.registrationMandatory) {
+    // Whether registration is REQUIRED is decided by registrationValidator.js
+    // against the Registration Act rules data. This check is narrower: given
+    // that it is required, does the instrument actually address it? A dedicated
+    // registration clause satisfies that; the keyword scan is kept only as a
+    // fallback for drafts assembled outside the clause library.
     const fullText = draft.clauses.map((clause) => clause.text || "").join(" ");
+    const REGISTRATION_CLAUSE_IDS = [
+      "PROP_REGISTRATION_001",
+      "PROP_REGISTRATION_MANDATORY_001",
+      "CORE_STAMP_AND_COSTS_001",
+    ];
     const hasRegistration =
+      REGISTRATION_CLAUSE_IDS.some((id) => clauseIds.includes(id)) ||
       /sub-registrar|registered under|registration act|registration no/i.test(
         fullText
       );
@@ -156,10 +167,18 @@ export function validateDocument(
     enforceExactConstraintRules && registry.getConstraintsForDomains
     ? registry.getConstraintsForDomains(domains)
     : [];
-  const violations = evaluateConstraints(clauseIds, constraintRules, docType);
+  // Rules can now test their own conditions (lease term, state, intake answers),
+  // so the draft's source variables are passed through as evaluation context.
+  const { violations, evaluated } = runConstraints(clauseIds, constraintRules, docType, {
+    variables: draft?.metadata?.source_variables || draft?.source_variables || {},
+    clauses: draft.clauses,
+  });
 
   return {
     pass: issues.length === 0 && violations.length === 0,
     violations: [...issues, ...violations],
+    // Per-rule outcomes (pass / fail / not_applicable) so the validation result
+    // can report what was actually checked instead of only what failed.
+    constraint_outcomes: evaluated,
   };
 }

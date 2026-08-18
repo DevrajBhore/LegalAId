@@ -2,6 +2,7 @@
   "document_type": "CONTRACTOR_AGREEMENT",
   "family": "contractor",
   "clauses": [
+    "CORE_IDENTITY_001",
     "CORE_CONTRACT_FORMATION_001",
     "CORE_DEFINITIONS_001",
     "SERVICE_SCOPE_001",

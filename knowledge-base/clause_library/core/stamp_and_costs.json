@@ -1,0 +1,56 @@
+{
+  "clause_id": "CORE_STAMP_AND_COSTS_001",
+  "name": "Stamp Duty, Registration and Costs",
+  "category": "EXECUTION_FORMALITIES",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "This Agreement shall be stamped with non-judicial stamp duty of the appropriate value payable under the Indian Stamp Act, 1899 read with the stamp legislation in force in the State in which this Agreement is executed. Unless otherwise expressly agreed in writing, the stamp duty, registration fees (where registration is required under applicable law), and all incidental charges payable in respect of this Agreement shall be borne equally by the Parties, and each Party shall bear its own legal, professional, and advisory costs. The Parties acknowledge that an instrument which is not duly stamped is inadmissible in evidence until the deficiency in duty is made good in accordance with the applicable Stamp Act, and each Party shall extend reasonable cooperation to cure any such deficiency.",
+  "legal_basis": [
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "3",
+      "note": "Instruments chargeable with duty"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "35",
+      "note": "Instruments not duly stamped inadmissible in evidence"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17",
+      "note": "Documents of which registration is compulsory"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The document is executed in a State whose stamp legislation prescribes a different incidence of duty than allocated here",
+    "The parties have separately agreed in writing that one party bears the entire stamp duty and registration cost"
+  ],
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "title": "Stamp Duty, Registration and Costs",
+  "review_status": "draft-needs-legal-review",
+  "depends_on": [],
+  "conflicts_with": [
+    "PROP_REGISTRATION_001",
+    "PROP_REGISTRATION_MANDATORY_001"
+  ],
+  "required_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Allocation of stamp duty where one party is a government or public-sector entity",
+    "Under-stamping discovered at the time of enforcement — impounding under Stamp Act S.33"
+  ],
+  "blocks_generation_if_absent": false,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false
+}
