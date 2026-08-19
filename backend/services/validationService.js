@@ -218,9 +218,42 @@ export function formatValidationResult({
     else low++;
   });
 
-  // Calculate Weighted Score
-  let score = 100 - (critical * 40) - (high * 20) - (medium * 10) - (low * 2);
-  score = Math.max(0, score);
+  // Weighted score, plus the arithmetic that produced it. "Why is this 92 and
+  // not 100?" was unanswerable from the output: the score appeared as a bare
+  // number with no way to see which findings cost what. Every deduction is now
+  // itemised, so the number can be traced back to named issues.
+  const SEVERITY_WEIGHTS = { CRITICAL: 40, HIGH: 20, MEDIUM: 10, LOW: 2 };
+
+  const deductions = actionableIssues.map((issue) => {
+    const severity =
+      issue.severity === "CRITICAL" || issue.blocks_generation
+        ? "CRITICAL"
+        : ["HIGH", "MEDIUM", "LOW"].includes(issue.severity)
+          ? issue.severity
+          : "LOW";
+    return {
+      rule_id: issue.rule_id || "UNKNOWN_RULE",
+      severity,
+      points: SEVERITY_WEIGHTS[severity],
+      message: issue.message || null,
+      offending_clause_id: issue.offending_clause_id || null,
+    };
+  });
+
+  const deducted = deductions.reduce((total, entry) => total + entry.points, 0);
+  let score = Math.max(0, 100 - deducted);
+
+  const scoreBreakdown = {
+    starting_score: 100,
+    deducted,
+    final_score: score,
+    weights: SEVERITY_WEIGHTS,
+    // Notices (stamp duty, registration, statutory checklist) never cost points
+    // -- they are information, not defects. Counted here so their absence from
+    // the arithmetic is visible rather than mysterious.
+    notices_excluded: notices.length,
+    deductions: deductions.sort((left, right) => right.points - left.points),
+  };
 
   // Verification band. Deliberately NOT the word "certified": passing means the
   // checks that ran found nothing, which is a narrower claim than compliance.
@@ -237,6 +270,7 @@ export function formatValidationResult({
   return {
     mode,
     score,
+    score_breakdown: scoreBreakdown,
     certification,
     risk: overallRisk,
     overall_risk: overallRisk,

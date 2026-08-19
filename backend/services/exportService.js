@@ -10,6 +10,7 @@ import {
   UnderlineType,
   convertInchesToTwip,
 } from "docx";
+import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parseIdentityClause } from "./documentStructure.js";
 import { getDocumentDisplayName } from "../../shared/documentRegistry.js";
@@ -18,14 +19,22 @@ import {
   sortClausesByOrder,
 } from "../config/clauseOrder.js";
 
+// ── Typography (Indian transactional-drafting convention) ───────────────────
+// Body 11-12 pt, section headings 12-14 pt, title 14-16 pt, all Times New
+// Roman, justified, 1.15 line spacing. Paragraph separation is carried by
+// space-after rather than empty paragraphs: a blank paragraph is a gap an
+// unauthorised party can type into after execution, and it makes the gaps
+// between clauses uneven, which pushes text onto extra pages and complicates
+// stamp-duty page counts and registry binding.
 const BODY_FONT = "Times New Roman";
-const BODY_SIZE = 24;
-const TITLE_SIZE = 28;
-const SECTION_HEADING_SIZE = 24;
-const FOOTER_SIZE = 18;
-const BODY_LINE_SPACING = 276;
-const BODY_AFTER_SPACING = 90;
-const SECTION_AFTER_SPACING = 140;
+const BODY_SIZE = 24; // 12 pt (half-points)
+const TITLE_SIZE = 30; // 15 pt
+const SECTION_HEADING_SIZE = 26; // 13 pt
+const FOOTER_SIZE = 18; // 9 pt
+const BODY_LINE_SPACING = 276; // 1.15 lines (276 / 240)
+const QUOTE_LINE_SPACING = 240; // single — statutory quotes and citations
+const BODY_AFTER_SPACING = 120; // 6 pt after each paragraph
+const SECTION_AFTER_SPACING = 160; // 8 pt
 const RECITAL_LEFT = 360;
 const OPERATIVE_LEFT = 360;
 const CLAUSE_HEADING_LEFT = 360;
@@ -33,7 +42,28 @@ const CLAUSE_HEADING_HANGING = 360;
 const CLAUSE_ITEM_LEFT = 720;
 const CLAUSE_ITEM_HANGING = 360;
 const SIGNATURE_LEFT = 360;
-const PDF_MARGIN = 72;
+
+// ── PDF geometry ────────────────────────────────────────────────────────────
+// Mirrors the DOCX grid exactly so the same draft lays out identically in both
+// formats. DOCX indents are twips, PDF indents are points: 20 twips = 1 pt, so
+// RECITAL_LEFT (360 tw) is PDF_L1 (18 pt) — the same quarter inch.
+const PDF_MARGIN = 72; // 1 in
+const PDF_PAGE_WIDTH = 595.28; // A4
+const PDF_CONTENT_WIDTH = PDF_PAGE_WIDTH - PDF_MARGIN * 2;
+const PDF_TITLE_SIZE = 15;
+const PDF_HEADING_SIZE = 13;
+const PDF_BODY_SIZE = 12;
+const PDF_REF_SIZE = 9;
+const PDF_L1 = 18; // 0.25 in — recitals, parties, clause body
+const PDF_L2 = 36; // 0.50 in — lettered sub-items
+const PDF_HANGING = 18; // 0.25 in — hanging indent for numbered leads
+const PDF_LINE_GAP = 1.8; // 12 pt x 1.15 line spacing
+const PDF_PARA_GAP = 6; // 6 pt after each paragraph
+const PDF_BLOCK_GAP = 10; // between structural blocks
+
+// The first page of a stampable instrument must leave the top of the sheet
+// clear for physical stamp paper or the e-stamp certificate header block.
+const STAMP_HEADER_RESERVE_IN = 3;
 const SCHEDULE_CATEGORIES = new Set(["SCHEDULE", "ANNEXURE", "SPECIFICATIONS"]);
 const STYLE_ID = {
   title: "LegalTitle",
@@ -56,6 +86,142 @@ export function normalizeExportFormat(format = "docx") {
     .trim()
     .toLowerCase();
   return SUPPORTED_EXPORT_FORMATS.has(normalized) ? normalized : null;
+}
+
+// Document types that attract stamp duty need the top of page 1 kept clear for
+// the stamp paper / e-stamp certificate. Read from the same rules file the
+// stamp validator uses so the two never drift apart.
+let stampDocTypesCache = null;
+
+function stampableDocTypes() {
+  if (stampDocTypesCache === null) {
+    try {
+      const raw = fs.readFileSync(
+        new URL("../../knowledge-base/rules/stamp_duty.rules.json", import.meta.url),
+        "utf8"
+      );
+      const parsed = JSON.parse(raw);
+      stampDocTypesCache = new Set(
+        (parsed.mandatory_stamp_doctypes || []).map((entry) =>
+          String(entry).toUpperCase()
+        )
+      );
+    } catch {
+      stampDocTypesCache = new Set();
+    }
+  }
+  return stampDocTypesCache;
+}
+
+function requiresStampHeader(docType) {
+  return stampableDocTypes().has(String(docType || "").toUpperCase());
+}
+
+// ── PDF text sanitising ─────────────────────────────────────────────────────
+//
+// pdfkit's built-in Times faces are WinAnsi (CP1252) encoded, and CP1252 has no
+// Indian Rupee sign (U+20B9). Every "₹" in a generated PDF was therefore
+// rendering as a superscript "¹" — so the consideration clause of a contract
+// silently lost its currency symbol, while the DOCX of the same draft was fine.
+// Rather than embed a Unicode face (which would mean shipping a font, or
+// depending on one being installed on whatever host runs this), the PDF path
+// uses "Rs." — the long-standing and equally correct form in Indian
+// instruments, and one that keeps the mandated Times New Roman typeface.
+const PDF_TEXT_SUBSTITUTIONS = [
+  [/\u20B9\s*/g, "Rs. "], // ₹ Indian Rupee sign
+  [/\u20A8\s*/g, "Rs. "], // ₨ legacy rupee sign
+  [/[\u2010\u2011\u2212]/g, "-"], // hyphen / non-breaking hyphen / minus
+  [/\u00A0/g, " "], // non-breaking space
+];
+
+// Anything still outside CP1252 after substitution cannot be drawn by the
+// built-in faces and would render as a wrong glyph rather than as nothing, so
+// it is dropped deliberately instead of corrupting the text silently.
+const PDF_UNSUPPORTED = /[^\u0000-\u00FF\u20AC\u201A\u0192\u201E\u2026\u2020\u2021\u02C6\u2030\u0160\u2039\u0152\u017D\u2018\u2019\u201C\u201D\u2022\u2013\u2014\u02DC\u2122\u0161\u203A\u0153\u017E\u0178]/g;
+
+function pdfSafeText(value) {
+  let text = String(value ?? "");
+  for (const [pattern, replacement] of PDF_TEXT_SUBSTITUTIONS) {
+    text = text.replace(pattern, replacement);
+  }
+  return text.replace(PDF_UNSUPPORTED, "");
+}
+
+// ── PDF paragraph primitive ─────────────────────────────────────────────────
+//
+// pdfkit's `indent` option shifts only the FIRST line of a paragraph. The
+// renderer previously passed `{ indent: 54 }`, which inset the opening line by
+// three quarters of an inch and let every wrapped line fall back to the margin
+// — so party descriptions, recitals and lettered sub-items all appeared to
+// start in the wrong place and their continuations ran ragged against the body
+// text. Passing an explicit x and width instead indents the whole block, and a
+// negative `indent` on top of that produces a true hanging indent, so "(a)"
+// sits proud of the text it introduces and the wrapped lines align beneath it.
+function pdfParagraph(doc, segments, options = {}) {
+  const runs = (Array.isArray(segments) ? segments : [{ text: segments }]).filter(
+    (run) => run && String(run.text ?? "").length > 0
+  );
+  if (!runs.length) return;
+
+  const left = options.left ?? 0;
+  const hanging = options.hanging ?? 0;
+  const x = PDF_MARGIN + left;
+  const width = PDF_CONTENT_WIDTH - left;
+  const align = options.align || "justify";
+  const size = options.size ?? PDF_BODY_SIZE;
+  const lineGap = options.lineGap ?? PDF_LINE_GAP;
+
+  // Don't open a paragraph in the last sliver of a page.
+  const bottom = doc.page.height - doc.page.margins.bottom;
+  if (doc.y >= bottom - size * 2) doc.addPage();
+
+  runs.forEach((run, index) => {
+    const isFirst = index === 0;
+    const isLast = index === runs.length - 1;
+    const font = run.bold
+      ? "Times-Bold"
+      : run.italic
+        ? "Times-Italic"
+        : "Times-Roman";
+
+    doc.font(font).fontSize(run.size ?? size);
+    if (run.color) doc.fillColor(run.color);
+
+    const textOptions = {
+      width,
+      align,
+      lineGap,
+      indent: isFirst && hanging ? -hanging : 0,
+      continued: !isLast,
+    };
+
+    // pdfkit only honours the options object in the 4-argument form, so x and y
+    // must both be passed explicitly even though y is just the current cursor.
+    const safe = pdfSafeText(run.text);
+    if (isFirst) doc.text(safe, x, doc.y, textOptions);
+    else doc.text(safe, textOptions);
+
+    if (run.color) doc.fillColor("black");
+  });
+
+  doc.y += options.after ?? PDF_PARA_GAP;
+  doc.x = PDF_MARGIN;
+}
+
+// Splits "THIS AGREEMENT (...)" style openings into a bold lead-in plus the
+// remainder, matching how the DOCX renderer builds the same line.
+function pdfLeadRuns(text, leadPattern, fallbackLead = "") {
+  const source = String(text || "").trim();
+  const match = source.match(leadPattern);
+  if (!match) {
+    return fallbackLead
+      ? [{ text: fallbackLead, bold: true }, { text: source }]
+      : [{ text: source }];
+  }
+  return [
+    { text: match[1], bold: true },
+    { text: source.slice(match[1].length) },
+  ];
 }
 
 function buildBodyRun(text, options = {}) {
@@ -234,46 +400,66 @@ function isScheduleLikeClause(clause = {}) {
   );
 }
 
+const SUBPART_MARKER =
+  /^(\(?[a-zA-Z0-9ivxlcdmIVXLCDM]{1,5}\)|\(?[a-zA-Z0-9ivxlcdmIVXLCDM]{1,5}[.)]|[-*\u2022])\s+/;
+
 function isStructuredSubpartLine(line = "") {
-  return (
-    /^\(?[a-z0-9ivxlcdm]+\)?[.)-]\s+/i.test(line) ||
-    /^[-*•]\s+/.test(line)
-  );
+  return SUBPART_MARKER.test(String(line || ""));
 }
 
+// Splits a clause into renderable blocks and records the outline depth of each,
+// so the renderers can apply decimal sub-clause numbering (5.1, 5.2, 5.2.1) in
+// place of whatever ad-hoc "(a)" / "(i)" markers the clause text carries.
+// Depth is taken from leading indentation: a limb indented by two or more
+// spaces is a sub-limb of the one above it.
 function tokenizeClauseText(text = "") {
-  const paragraphs = String(text || "")
-    .trim()
-    .split(/\n{2,}/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
-
   const blocks = [];
-  for (const paragraph of paragraphs) {
-    const lines = paragraph
-      .split(/\n/)
-      .map((line) => line.trim())
-      .filter(Boolean);
 
+  for (const paragraph of String(text || "")
+    .trim()
+    .split(/\n{2,}/)) {
+    const lines = paragraph.split(/\n/).filter((line) => line.trim());
     if (!lines.length) continue;
 
-    if (lines.length === 1) {
-      blocks.push({
-        type: isStructuredSubpartLine(lines[0]) ? "item" : "paragraph",
-        text: lines[0],
-      });
-      continue;
-    }
+    const soleLine = lines.length === 1;
 
     for (const line of lines) {
+      const indent = (line.match(/^[ \t]*/) || [""])[0].replace(/\t/g, "  ").length;
+      const trimmed = line.trim();
+      const marker = trimmed.match(SUBPART_MARKER);
+      const isItem = Boolean(marker) || (!soleLine && indent >= 2);
+
       blocks.push({
-        type: isStructuredSubpartLine(line) ? "item" : "paragraph",
-        text: line,
+        type: isItem ? "item" : "paragraph",
+        depth: indent >= 2 ? 2 : 1,
+        text: trimmed,
+        body: marker ? trimmed.slice(marker[0].length) : trimmed,
       });
     }
   }
 
   return blocks;
+}
+
+// Assigns decimal outline labels within a clause. Indian firm drafting numbers
+// sub-clauses "11.1", "11.1.1" rather than lettering them, and a cross-reference
+// elsewhere in the instrument is only meaningful if those numbers exist.
+function numberClauseBlocks(blocks, clauseNumber) {
+  let first = 0;
+  let second = 0;
+
+  return blocks.map((block) => {
+    if (block.type !== "item") return { ...block, label: null };
+
+    if (block.depth >= 2 && first > 0) {
+      second += 1;
+      return { ...block, label: `${clauseNumber}.${first}.${second}` };
+    }
+
+    first += 1;
+    second = 0;
+    return { ...block, label: `${clauseNumber}.${first}` };
+  });
 }
 
 // Indian deeds head a schedule "THE FIRST SCHEDULE ABOVE REFERRED TO" rather
@@ -314,15 +500,13 @@ function resolveFallbackHeading(clause, clauseNumber) {
 function renderIdentityClause(children, text) {
   const structure = parseIdentityClause(text);
 
-  const pushBlank = () =>
-    children.push(buildBlankParagraph({ spacing: { after: BODY_AFTER_SPACING } }));
-
+  // Separation between blocks is carried by each paragraph's space-after, not by
+  // empty paragraphs. An empty paragraph is a blank line an unauthorised party
+  // can type into after execution, and stacking them produces the uneven gaps
+  // that push a contract onto an extra page.
   if (!structure.parsed) {
     for (const line of structure.lines) {
-      if (!line) {
-        pushBlank();
-        continue;
-      }
+      if (!line) continue;
       children.push(
         buildBodyParagraph(line, { style: STYLE_ID.recital, indent: { left: RECITAL_LEFT } })
       );
@@ -330,8 +514,7 @@ function renderIdentityClause(children, text) {
     return;
   }
 
-  structure.blocks.forEach((block, index) => {
-    if (index > 0) pushBlank();
+  structure.blocks.forEach((block) => {
 
     switch (block.type) {
       case "opening":
@@ -417,7 +600,11 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
   children.push(
     new Paragraph({
       style: STYLE_ID.heading,
-      spacing: { before: 260, after: 90, line: BODY_LINE_SPACING },
+      spacing: {
+        before: SECTION_AFTER_SPACING,
+        after: BODY_AFTER_SPACING,
+        line: BODY_LINE_SPACING,
+      },
       indent: { left: CLAUSE_HEADING_LEFT, hanging: CLAUSE_HEADING_HANGING },
       keepNext: true,
       children: [
@@ -427,17 +614,26 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
     })
   );
 
-  const blocks = tokenizeClauseText(clause.text || "");
+  const blocks = numberClauseBlocks(
+    tokenizeClauseText(clause.text || ""),
+    clauseNumber
+  );
 
   for (const block of blocks) {
     if (block.type === "item") {
+      const nested = block.depth >= 2;
       children.push(
         new Paragraph({
           style: STYLE_ID.item,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: { left: CLAUSE_ITEM_LEFT, hanging: CLAUSE_ITEM_HANGING },
-          children: [buildBodyRun(block.text)],
+          indent: {
+            left: nested ? CLAUSE_ITEM_LEFT + CLAUSE_ITEM_HANGING : CLAUSE_ITEM_LEFT,
+            hanging: CLAUSE_ITEM_HANGING,
+          },
+          children: block.label
+            ? [buildBodyRun(`${block.label}  `), buildBodyRun(block.body)]
+            : [buildBodyRun(block.text)],
         })
       );
       continue;
@@ -455,7 +651,9 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
     children.push(
       new Paragraph({
         style: STYLE_ID.body,
-        spacing: { after: 180 },
+        // A citation to external material is set single-spaced, per the
+        // convention for quoted or referenced statutory text.
+        spacing: { after: SECTION_AFTER_SPACING, line: QUOTE_LINE_SPACING },
         indent: { left: OPERATIVE_LEFT },
         children: [
           new TextRun({
@@ -472,45 +670,48 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
 }
 
 function renderSignatureBlock(children, text) {
-  children.push(
-    buildBlankParagraph({ spacing: { before: 260, after: 140 } })
-  );
+  const EMPHASISED =
+    /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i;
+  const SECTION_LEAD = /^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b|^IN THE PRESENCE OF/i;
 
-  const lines = String(text || "")
-    .split(/\n/)
-    .map((line) => line.trim());
+  // Blank source lines are folded into the preceding paragraph's space-after
+  // rather than emitted as empty paragraphs: the same visible gap, but no
+  // editable blank line sitting in the executed document. Signature rules still
+  // get their clear space, they just get it from spacing rather than from
+  // stacked empty paragraphs.
+  const entries = [];
+  let pendingBefore = 320; // 16 pt of clear space before the execution block
 
-  for (const line of lines) {
+  for (const raw of String(text || "").split(/\n/)) {
+    const line = raw.trim();
+
     if (!line) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.signature,
-          spacing: { after: 80 },
-          children: [],
-        })
-      );
+      if (entries.length) entries[entries.length - 1].after += 160;
+      else pendingBefore += 160;
       continue;
     }
 
+    const emphasised = EMPHASISED.test(line);
+    entries.push({
+      line,
+      emphasised,
+      before: pendingBefore + (SECTION_LEAD.test(line) ? 120 : 0),
+      after: emphasised ? 180 : BODY_AFTER_SPACING,
+    });
+    pendingBefore = 0;
+  }
+
+  for (const entry of entries) {
     children.push(
       new Paragraph({
         style: STYLE_ID.signature,
         spacing: {
-          before: /^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b|^IN THE PRESENCE OF/i.test(line)
-            ? 120
-            : 0,
-          after: /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF/i.test(line) ? 180 : BODY_AFTER_SPACING,
+          before: entry.before,
+          after: entry.after,
           line: BODY_LINE_SPACING,
         },
         indent: { left: SIGNATURE_LEFT },
-        children: [
-          buildBodyRun(
-            line,
-            /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line)
-              ? { bold: true }
-              : {}
-          ),
-        ],
+        children: [buildBodyRun(entry.line, entry.emphasised ? { bold: true } : {})],
       })
     );
   }
@@ -579,45 +780,24 @@ function createPdfBuffer(buildFn) {
 }
 
 function renderPdfSectionHeading(doc, text, options = {}) {
-  doc.moveDown(options.before ?? 0.55);
-  doc
-    .font("Times-Bold")
-    .fontSize(12)
-    .text(String(text || "").toUpperCase(), { align: "center" });
-  doc.moveDown(options.after ?? 0.45);
-}
-
-function renderPdfLeadInParagraph(doc, lead, remainder, options = {}) {
-  doc.font("Times-Bold").fontSize(12).text(lead, {
-    align: options.align || "justify",
-    lineGap: 2,
-    indent: options.indent || 0,
-    continued: Boolean(remainder),
+  doc.y += options.before ?? PDF_BLOCK_GAP;
+  pdfParagraph(doc, [{ text: String(text || "").toUpperCase(), bold: true }], {
+    align: "center",
+    size: PDF_HEADING_SIZE,
+    after: options.after ?? PDF_BLOCK_GAP,
   });
-
-  if (remainder) {
-    doc.font("Times-Roman").fontSize(12).text(remainder, {
-      align: options.align || "justify",
-      lineGap: 2,
-      indent: options.indent || 0,
-    });
-  }
-
-  doc.moveDown(options.after ?? 0.35);
 }
 
-// PDF counterpart, consuming the same parsed structure as the DOCX renderer.
+// PDF counterpart, consuming the same parsed structure as the DOCX renderer and
+// laid out on the same indent grid (PDF_L1 === RECITAL_LEFT, PDF_L2 ===
+// CLAUSE_ITEM_LEFT), so both exports of one draft are visually identical.
 function renderPdfIdentityClause(doc, text) {
   const structure = parseIdentityClause(text);
 
   if (!structure.parsed) {
     for (const line of structure.lines) {
-      if (!line) {
-        doc.moveDown(0.4);
-        continue;
-      }
-      doc.font("Times-Roman").fontSize(11).text(line, { align: "justify", indent: 54 });
-      doc.moveDown(0.35);
+      if (!line) continue;
+      pdfParagraph(doc, line, { left: PDF_L1 });
     }
     return;
   }
@@ -625,112 +805,136 @@ function renderPdfIdentityClause(doc, text) {
   for (const block of structure.blocks) {
     switch (block.type) {
       case "opening":
-        renderPdfLeadInParagraph(
+        pdfParagraph(
           doc,
-          (block.text.match(/^(THIS\s+[A-Z\s]+?)(?=\s*\()/) || [null, ""])[1] || "",
-          block.text.replace(/^(THIS\s+[A-Z\s]+?)(?=\s*\()/, ""),
-          { align: "justify", after: 0.4, indent: 36 }
+          pdfLeadRuns(block.text, /^(THIS\s+[A-Z\s]+?)(?=\s*\()/),
+          { left: PDF_L1, after: PDF_BLOCK_GAP }
         );
         break;
 
       case "connective":
-        doc.font("Times-Bold").fontSize(12).text(block.text, { align: "center" });
-        doc.moveDown(0.4);
-        break;
-
-      case "party":
-        doc.font("Times-Roman").fontSize(11).text(block.text, { align: "justify", indent: 54 });
-        doc.moveDown(0.4);
-        break;
-
-      case "recital":
-        renderPdfLeadInParagraph(doc, `${block.label}${block.lead}`, block.text, {
-          align: "justify",
-          after: 0.35,
-          indent: 54,
+        pdfParagraph(doc, [{ text: block.text, bold: true }], {
+          align: "center",
+          after: PDF_BLOCK_GAP,
         });
         break;
 
-      case "testatum": {
-        const lead = block.text.match(/^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i);
-        renderPdfLeadInParagraph(
+      case "party":
+        pdfParagraph(doc, block.text, { left: PDF_L1 });
+        break;
+
+      case "recital":
+        pdfParagraph(
           doc,
-          lead?.[1] || "NOW, THEREFORE, ",
-          block.text.slice((lead?.[1] || "").length),
-          { align: "justify", after: 0.4, indent: 36 }
+          [
+            { text: `${block.label}${block.lead}`, bold: true },
+            { text: block.text },
+          ],
+          { left: PDF_L1 }
         );
         break;
-      }
+
+      case "testatum":
+        pdfParagraph(
+          doc,
+          pdfLeadRuns(
+            block.text,
+            /^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i,
+            "NOW, THEREFORE, "
+          ),
+          { left: PDF_L1, after: PDF_BLOCK_GAP }
+        );
+        break;
 
       default:
-        doc.font("Times-Roman").fontSize(11).text(block.text, { align: "justify", indent: 54 });
-        doc.moveDown(0.35);
+        pdfParagraph(doc, block.text, { left: PDF_L1 });
     }
   }
 }
 
 function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
   const heading = resolveFallbackHeading(clause, clauseNumber);
-  const prefix = options.scheduleMode ? `SCHEDULE ${clauseNumber}. ` : `${clauseNumber}. `;
+  const prefix = options.scheduleMode
+    ? `SCHEDULE ${clauseNumber}. `
+    : `${clauseNumber}. `;
 
-  doc.moveDown(0.45);
-  doc
-    .font("Times-Roman")
-    .fontSize(12)
-    .text(prefix, { align: "left", continued: true, indent: 24 });
-  doc.font("Times-Bold").fontSize(12).text(heading, { align: "left", indent: 24 });
-  doc.moveDown(0.25);
+  doc.y += PDF_BLOCK_GAP;
 
-  const blocks = tokenizeClauseText(clause.text || "");
+  // Hanging indent: the number sits flush at the margin and the heading text
+  // starts on the same 0.25 in grid line as the clause body beneath it. The old
+  // renderer indented the heading 24 pt while leaving its own body at 0, so
+  // every heading hung to the right of the text it governed.
+  pdfParagraph(
+    doc,
+    [
+      { text: prefix },
+      { text: heading, bold: true },
+    ],
+    {
+      left: PDF_L1,
+      hanging: PDF_HANGING,
+      align: "left",
+      after: PDF_PARA_GAP,
+    }
+  );
+
+  const blocks = numberClauseBlocks(
+    tokenizeClauseText(clause.text || ""),
+    clauseNumber
+  );
 
   for (const block of blocks) {
     if (block.type === "item") {
-      doc.font("Times-Roman").fontSize(12).text(block.text, {
-        align: "justify",
-        lineGap: 2,
-        indent: 54,
-      });
-      doc.moveDown(0.2);
+      const left = block.depth >= 2 ? PDF_L2 + PDF_HANGING : PDF_L2;
+      pdfParagraph(
+        doc,
+        block.label
+          ? [{ text: `${block.label}  ` }, { text: block.body }]
+          : [{ text: block.text }],
+        { left, hanging: PDF_HANGING }
+      );
       continue;
     }
 
-    doc.font("Times-Roman").fontSize(12).text(block.text, {
-      align: "justify",
-      lineGap: 2,
-      indent: 24,
-    });
-    doc.moveDown(0.35);
+    pdfParagraph(doc, block.text, { left: PDF_L1 });
   }
 
   if (clause.statutory_reference) {
-    doc
-      .font("Times-Italic")
-      .fontSize(9)
-      .fillColor("#777777")
-      .text(`[Ref: ${clause.statutory_reference}]`, { align: "left" })
-      .fillColor("black");
-    doc.moveDown(0.4);
+    // A citation to external material is set single-spaced, per the convention
+    // for quoted or referenced statutory text.
+    pdfParagraph(
+      doc,
+      [
+        {
+          text: `[Ref: ${clause.statutory_reference}]`,
+          italic: true,
+          color: "#777777",
+        },
+      ],
+      { left: PDF_L1, align: "left", size: PDF_REF_SIZE, lineGap: 0 }
+    );
   }
 }
 
 function renderPdfSignatureBlock(doc, text) {
-  doc.moveDown(0.8);
+  doc.y += PDF_BLOCK_GAP;
 
-  const lines = String(text || "")
-    .split(/\n/)
-    .map((line) => line.trim());
+  const emphasised =
+    /^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i;
 
-  for (const line of lines) {
+  for (const raw of String(text || "").split(/\n/)) {
+    const line = raw.trim();
     if (!line) {
-      doc.moveDown(0.3);
+      doc.y += PDF_PARA_GAP;
       continue;
     }
 
-    doc
-      .font(/^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF|^FOR AND ON BEHALF OF|^PARTNER\s+\d|^WITNESS(?:ES)?\b/i.test(line) ? "Times-Bold" : "Times-Roman")
-      .fontSize(12)
-      .text(line, { align: "left", lineGap: 2, indent: 24 });
-    doc.moveDown(/^IN WITNESS WHEREOF|^Witnesses:|^IN THE PRESENCE OF/i.test(line) ? 0.5 : 0.25);
+    const isHeading = emphasised.test(line);
+    pdfParagraph(doc, [{ text: line, bold: isHeading }], {
+      left: PDF_L1,
+      align: "left",
+      after: isHeading ? PDF_BLOCK_GAP : PDF_PARA_GAP,
+    });
   }
 }
 
@@ -741,11 +945,18 @@ export async function draftToDocx(draft) {
     draft?.clauses || []
   );
 
+  // The title carries the page-1 stamp reserve as space-before, so a stampable
+  // instrument opens roughly three inches down the sheet and leaves the head of
+  // the page clear for the stamp paper or the e-stamp certificate block.
+  const stampReserve = requiresStampHeader(docType)
+    ? convertInchesToTwip(STAMP_HEADER_RESERVE_IN - 1) // page margin already gives 1 in
+    : 0;
+
   const children = [
     new Paragraph({
       style: STYLE_ID.title,
       alignment: AlignmentType.CENTER,
-      spacing: { after: 260, line: BODY_LINE_SPACING },
+      spacing: { before: stampReserve, after: 260, line: BODY_LINE_SPACING },
       children: [
         new TextRun({
           text: title.toUpperCase(),
@@ -927,11 +1138,21 @@ export async function draftToPdf(draft) {
   return createPdfBuffer((doc) => {
     doc.info.Title = title;
 
+    // Clear the head of page 1 for the stamp paper / e-stamp certificate.
+    if (requiresStampHeader(docType)) {
+      doc.y = STAMP_HEADER_RESERVE_IN * 72;
+    }
+
     doc
       .font("Times-Bold")
-      .fontSize(12)
-      .text(title.toUpperCase(), { align: "center", underline: true });
-    doc.moveDown(0.7);
+      .fontSize(PDF_TITLE_SIZE)
+      .text(pdfSafeText(title.toUpperCase()), PDF_MARGIN, doc.y, {
+        width: PDF_CONTENT_WIDTH,
+        align: "center",
+        underline: true,
+      });
+    doc.y += PDF_BLOCK_GAP * 1.6;
+    doc.x = PDF_MARGIN;
 
     if (identityClause?.text?.trim()) {
       renderPdfIdentityClause(doc, identityClause.text);
@@ -967,7 +1188,13 @@ export function draftToText(draft) {
   bodyClauses.forEach((clause, index) => {
     const heading = resolveFallbackHeading(clause, index + 1);
     lines.push(`\n${index + 1}. ${heading.toUpperCase()}\n${"-".repeat(40)}`);
-    lines.push(String(clause.text || "").trim());
+    for (const block of numberClauseBlocks(
+      tokenizeClauseText(clause.text || ""),
+      index + 1
+    )) {
+      const pad = block.depth >= 2 ? "      " : "    ";
+      lines.push(block.label ? `${pad}${block.label}  ${block.body}` : block.text);
+    }
     if (clause.statutory_reference) {
       lines.push(`[Ref: ${clause.statutory_reference}]`);
     }

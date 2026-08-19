@@ -910,11 +910,75 @@ function buildDefinitionsClauseText(documentType, namedParties, variables = {}) 
     ]);
   }
 
+  // Beyond the terms derived from intake answers, every commercial instrument
+  // needs the standard interpretive vocabulary. Clauses elsewhere in the
+  // document already used "Applicable Law", "Business Day", "Affiliate" and
+  // "Force Majeure Event" as though they were defined terms, and they were not
+  // defined anywhere -- so a capitalised term carried no agreed meaning and a
+  // court would have been left to supply one.
+  const defined = new Set(entries.map(([term]) => term));
+  const push = (term, definition) => {
+    if (!defined.has(term)) {
+      entries.push([term, definition]);
+      defined.add(term);
+    }
+  };
+
+  push(
+    "Affiliate",
+    'in relation to a Party, any entity that directly or indirectly controls, is controlled by, or is under common control with that Party, where "control" means the ownership of more than fifty percent (50%) of the voting securities of an entity, or the power to direct its management and policies, whether through ownership of voting securities, by contract, or otherwise'
+  );
+  push(
+    "Applicable Law",
+    "all statutes, enactments, ordinances, rules, regulations, notifications, circulars, guidelines, policies, directions, judgments, decrees, and orders of any Government Authority having the force of law in India, as in force from time to time and as amended, consolidated, re-enacted, or replaced"
+  );
+  push(
+    "Business Day",
+    "a day other than a Saturday, a Sunday, or a day declared to be a public holiday under the Negotiable Instruments Act, 1881 in the State in which this Agreement is executed, on which scheduled commercial banks are open for normal banking business in that State"
+  );
+  push(
+    "Government Authority",
+    "any national, state, municipal, or local government, any statutory, regulatory, or self-regulatory authority, tribunal, commission, board, or agency, and any court or other judicial body exercising jurisdiction in India"
+  );
+  push(
+    "Force Majeure Event",
+    "any event or circumstance beyond the reasonable control of the affected Party which prevents or materially impedes the performance of its obligations, including act of God, fire, flood, earthquake, cyclone, epidemic, pandemic, lockdown or other restriction imposed by order of a Government Authority, war, hostilities, act of terrorism, riot, civil commotion, strike or other industrial action not confined to the affected Party's own workforce, failure of public utilities or telecommunications infrastructure, and any change in Applicable Law that renders performance unlawful"
+  );
+  push(
+    "Intellectual Property Rights",
+    "all rights in patents, copyright and related rights, moral rights, trade marks, service marks, trade names, domain names, designs, semiconductor topographies, database rights, trade secrets, know-how, and confidential information, together with all applications, registrations, renewals, and extensions of any of them, in each case subsisting under the laws of India and all analogous rights subsisting under the laws of every other jurisdiction"
+  );
+  push(
+    "Term",
+    "the period commencing on the Effective Date and continuing until this Agreement expires or is terminated in accordance with its terms"
+  );
+
+  // NDAs carry their own authoritative definition in
+  // NDA_CONFIDENTIAL_INFORMATION_SCOPE_001; defining it twice would create a
+  // genuine duplicate definition and block the export gate.
+  if (documentType !== "NDA" && documentType !== "NON_DISCLOSURE_AGREEMENT") {
+    push(
+      "Confidential Information",
+      "all non-public, proprietary, commercially sensitive, technical, financial, business, strategic, operational, customer, vendor, and personnel information disclosed by or on behalf of a Party, in oral, written, visual, digital, or any other form, whether or not marked as confidential, which is designated as confidential or which by its nature ought reasonably to be regarded as confidential, together with all copies, notes, analyses, and derivative materials containing or derived from it"
+    );
+  }
+
+  if (
+    variables.processes_personal_data === true ||
+    variables.involves_personal_data === true
+  ) {
+    push(
+      "Personal Data",
+      "any data about an individual who is identifiable by or in relation to such data, within the meaning of the Digital Personal Data Protection Act, 2023"
+    );
+  }
+
   return [
-    "In this Agreement, unless the context otherwise requires, the following expressions shall have the meanings set out below:",
+    "In this Agreement, unless the context otherwise requires, the following expressions shall have the meanings set out below, and cognate expressions shall be construed accordingly:",
     formatStructuredSubparts(
       entries.map(([term, definition]) => `"${term}" means ${definition}.`)
     ),
+    "A term defined in this clause bears that meaning wherever it appears in this Agreement in capitalised form, including in the recitals, the schedules, and any annexure, unless the context otherwise requires.",
   ].join("\n");
 }
 
@@ -1421,20 +1485,119 @@ function renderHardClause(
         "all such rights shall vest exclusively in the Employer from creation, and the Employee shall execute all documents reasonably required to perfect or record such vesting or assignment"
       )}. The Employee shall promptly disclose to the Employer all such intellectual property and shall retain ownership only of pre-existing materials that were created independently of the employment and are not incorporated into the Employer's work product except under an agreed licence.`,
 
-    CORE_INDEMNITY_001: () =>
-      `Each Party ('Indemnifying Party') shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised representatives from and against ${resolveIndemnityScopeText(
-        variables
-      )}. The indemnified Party shall promptly notify the Indemnifying Party of any claim for which indemnity is sought, shall provide reasonable cooperation at the cost of the Indemnifying Party, and shall not settle any third-party claim affecting the Indemnifying Party without prior consultation, except where urgent action is reasonably required to mitigate loss.`,
+    CORE_INDEMNITY_001: () => ({
+      title: "Indemnity",
+      text: [
+        `Each Party (the "Indemnifying Party") shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised representatives (each an "Indemnified Party") from and against ${resolveIndemnityScopeText(
+          variables
+        )}. The conduct of any claim to which this indemnity applies shall be governed as follows:`,
+        formatStructuredSubparts([
+          "the Indemnified Party shall notify the Indemnifying Party in writing as soon as reasonably practicable after becoming aware of a claim for which indemnity is sought, giving reasonable particulars of the claim; a delay in giving notice shall reduce the Indemnifying Party's liability only to the extent it is actually prejudiced by that delay",
+          "the Indemnifying Party may, on written notice, assume conduct of the defence of the claim at its own cost using legal advisers reasonably acceptable to the Indemnified Party, and the Indemnified Party shall provide reasonable cooperation, access to relevant records, and assistance at the Indemnifying Party's cost",
+          "the Indemnifying Party shall not settle or compromise a claim on terms that impose a non-indemnified liability, an admission of wrongdoing, or an ongoing restriction on the Indemnified Party without that Party's prior written consent, and the Indemnified Party shall not settle or compromise a claim without prior consultation with the Indemnifying Party except where urgent action is reasonably required to mitigate loss",
+          "the Indemnified Party shall take reasonable steps to mitigate its loss, and the indemnity shall not extend to loss to the extent caused or increased by the Indemnified Party's own breach, negligence, or failure to mitigate",
+          "recovery under this indemnity shall be reduced by any amount actually recovered by the Indemnified Party from insurance or from a third party in respect of the same loss, so that the Indemnified Party is not compensated twice for the same loss",
+        ]),
+      ].join("\n"),
+    }),
 
     CORE_LIABILITY_CAP_001: () =>
-      `Except for liability arising from fraud, wilful misconduct, breach of confidentiality, deliberate infringement or misappropriation of intellectual property rights, and any liability that cannot be excluded or limited under applicable law, the aggregate liability of either Party under or in connection with this Agreement, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, ${resolveLiabilityCapText(
+      [
+      `Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement, whether arising in contract, tort (including negligence), breach of statutory duty, restitution, or otherwise, ${resolveLiabilityCapText(
         variables
-      )}. Neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, including loss of profits, loss of opportunity, or loss of business, except to the extent expressly recoverable under an agreed indemnity or as mandated by law.`,
+      )}.`,
+      formatStructuredSubparts([
+        "neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, or for loss of profits, loss of anticipated savings, loss of opportunity, loss of goodwill, or loss of business, in each case whether or not that loss was foreseeable at the date of this Agreement",
+        "the limitations and exclusions in this clause shall not apply to liability arising from fraud or fraudulent misrepresentation, wilful misconduct, breach of the confidentiality provisions of this Agreement, deliberate infringement or misappropriation of intellectual property rights, a Party's payment obligations in respect of amounts properly due, or any liability which cannot lawfully be excluded or limited",
+        "the cap in this clause applies to the aggregate of all claims taken together and not to each claim separately, and each Party's liability shall be reduced to the extent that the loss was caused or contributed to by the other Party's own breach, negligence, or failure to mitigate",
+        "the Parties confirm that the allocation of risk recorded in this clause is a genuine and reasonable commercial apportionment, negotiated in light of the consideration payable under this Agreement, and that each Party has had the opportunity to price and insure the risk it bears",
+      ]),
+    ].join("\n"),
 
     CORE_LIMITATION_LIABILITY_001: () =>
-      `Except for liability arising from fraud, wilful misconduct, breach of confidentiality, deliberate infringement or misappropriation of intellectual property rights, and any liability that cannot be excluded or limited under applicable law, the aggregate liability of either Party under or in connection with this Agreement, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, ${resolveLiabilityCapText(
+      [
+      `Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement, whether arising in contract, tort (including negligence), breach of statutory duty, restitution, or otherwise, ${resolveLiabilityCapText(
         variables
-      )}. Neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, including loss of profits, loss of opportunity, or loss of business, except to the extent expressly recoverable under an agreed indemnity or as mandated by law.`,
+      )}.`,
+      formatStructuredSubparts([
+        "neither Party shall be liable for indirect, incidental, special, punitive, exemplary, or consequential loss, or for loss of profits, loss of anticipated savings, loss of opportunity, loss of goodwill, or loss of business, in each case whether or not that loss was foreseeable at the date of this Agreement",
+        "the limitations and exclusions in this clause shall not apply to liability arising from fraud or fraudulent misrepresentation, wilful misconduct, breach of the confidentiality provisions of this Agreement, deliberate infringement or misappropriation of intellectual property rights, a Party's payment obligations in respect of amounts properly due, or any liability which cannot lawfully be excluded or limited",
+        "the cap in this clause applies to the aggregate of all claims taken together and not to each claim separately, and each Party's liability shall be reduced to the extent that the loss was caused or contributed to by the other Party's own breach, negligence, or failure to mitigate",
+        "the Parties confirm that the allocation of risk recorded in this clause is a genuine and reasonable commercial apportionment, negotiated in light of the consideration payable under this Agreement, and that each Party has had the opportunity to price and insure the risk it bears",
+      ]),
+    ].join("\n"),
+
+    // ── Boilerplate depth ────────────────────────────────────────────────
+    // These provisions were one-sentence stubs. A stub is not merely thin: a
+    // notices clause with no deemed-receipt rule cannot fix the date a notice
+    // took effect, a severability clause with no reading-down limb forces an
+    // all-or-nothing result, and a force majeure clause with no prolonged-event
+    // limb leaves the parties bound indefinitely. Each is now drafted as
+    // numbered sub-clauses so it can be cross-referred to.
+
+    CORE_FORCE_MAJEURE_001: () => ({
+      title: "Force Majeure",
+      text: [
+        "Neither Party shall be liable for any failure or delay in performing its obligations under this Agreement to the extent that the failure or delay is caused by a Force Majeure Event, provided that the affected Party complies with this clause. An obligation to pay an amount already due and payable shall not be excused by a Force Majeure Event.",
+        formatStructuredSubparts([
+          "the affected Party shall notify the other Party in writing within seven (7) days of becoming aware of the Force Majeure Event, describing the event, the obligations affected, and its anticipated duration, and shall keep the other Party reasonably informed of material developments",
+          "the affected Party's obligations shall be suspended for so long as the Force Majeure Event continues, and the time for performance shall be extended by the period of suspension",
+          "the affected Party shall use reasonable endeavours to mitigate the effect of the Force Majeure Event and to resume full performance as soon as reasonably practicable, and shall notify the other Party promptly upon the event ceasing",
+          "if a Force Majeure Event continues for a continuous period exceeding sixty (60) days, either Party may terminate this Agreement by written notice to the other, without liability except in respect of obligations accrued before the date of termination",
+        ]),
+      ].join("\n"),
+    }),
+
+    CORE_NOTICE_001: () => ({
+      title: "Notices",
+      text: [
+        "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this Agreement, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:",
+        formatStructuredSubparts([
+          "if delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. local time, and otherwise on the next Business Day",
+          "if sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier",
+          "if sent by a reputed courier service, on the second (2nd) Business Day after the date of despatch",
+          "if sent by electronic mail to the address notified for that purpose, on the date of transmission where sent on a Business Day before 5:00 p.m. local time and no delivery-failure notification is received, and otherwise on the next Business Day",
+        ]),
+        "A Party changing its address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the change, and until that notice is given a communication sent to the last notified address shall be validly given.",
+      ].join("\n"),
+    }),
+
+    CORE_SURVIVAL_001: () => ({
+      title: "Survival",
+      text: "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, ownership of intellectual property, indemnity, limitation of liability, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+    }),
+
+    CORE_ASSIGNMENT_001: () => ({
+      title: "Assignment",
+      text: [
+        "Neither Party shall assign, transfer, charge, subcontract, or otherwise deal with all or any of its rights or obligations under this Agreement without the prior written consent of the other Party, such consent not to be unreasonably withheld or delayed.",
+        formatStructuredSubparts([
+          "a Party may, on written notice to the other Party, assign or novate this Agreement to an Affiliate, or to a successor in title to substantially the whole of the business or assets to which this Agreement relates, provided that the assignee agrees in writing to be bound by this Agreement",
+          "any purported assignment, transfer, or charge in breach of this clause shall be void and of no effect",
+          "this Agreement shall be binding on, and shall enure for the benefit of, each Party and its permitted successors and assigns",
+        ]),
+      ].join("\n"),
+    }),
+
+    CORE_SEVERABILITY_001: () => ({
+      title: "Severability",
+      text: "If any provision or part-provision of this Agreement is or becomes invalid, illegal, or unenforceable under Applicable Law, it shall be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, and if such modification is not possible, the provision or part-provision concerned shall be deemed deleted. Any modification to, or deletion of, a provision or part-provision under this clause shall not affect the validity and enforceability of the remainder of this Agreement, which shall continue in full force and effect. Where a provision is modified or deleted under this clause, the Parties shall negotiate in good faith to substitute a valid and enforceable provision that achieves, so far as possible, the commercial result originally intended.",
+    }),
+
+    CORE_WAIVER_001: () => ({
+      title: "Waiver",
+      text: "No failure, delay, or indulgence by a Party in exercising any right, power, or remedy under this Agreement shall operate as a waiver of that right, power, or remedy, nor shall any single or partial exercise of it preclude any further exercise of that or any other right, power, or remedy. A waiver of any right, power, or remedy under this Agreement is effective only if it is given in writing and signed by or on behalf of the waiving Party, and shall not be treated as a waiver of any subsequent breach or default. The rights and remedies provided under this Agreement are cumulative and are not exclusive of any rights or remedies available under Applicable Law.",
+    }),
+
+    CORE_AMENDMENT_001: () => ({
+      title: "Amendment",
+      text: "No amendment, variation, or modification of this Agreement shall be valid or binding unless it is recorded in writing, expressly refers to this Agreement, and is signed by or on behalf of each Party by a person duly authorised for that purpose. No course of dealing between the Parties, exchange of correspondence, or oral assurance shall operate to vary this Agreement. Where an amendment attracts stamp duty or compulsory registration under Applicable Law, that amendment shall be duly stamped and, where required, registered before either Party relies upon it.",
+    }),
+
+    CORE_COUNTERPARTS_001: () => ({
+      title: "Counterparts and Electronic Execution",
+      text: "This Agreement may be executed in any number of counterparts, each of which when executed and delivered shall constitute an original, and all counterparts taken together shall constitute one and the same instrument. A Party may enter into this Agreement by executing a counterpart and delivering it by electronic mail in portable document format, or by affixing an electronic signature to it. The Parties acknowledge that, under Section 5 of the Information Technology Act, 2000, an electronic signature affixed in the prescribed manner satisfies a requirement of law that information be authenticated by signature, save in respect of the classes of document excluded by the First Schedule to that Act; and where this Agreement or any amendment to it falls within that Schedule, it shall be executed as a physical instrument bearing wet-ink signatures.",
+    }),
 
     EMP_NON_SOLICITATION_001: () => ({
       title: "Non-Solicitation",
@@ -1886,6 +2049,18 @@ function renderHardClause(
         ""
       )}.` : ""} Stamp duty and registration charges shall be borne in the manner agreed by the Parties or, in the absence of a specific agreement, equally.`,
 
+    CORE_ENTIRE_AGREEMENT_001: () => ({
+      title: "Entire Agreement",
+      text: [
+        "This Agreement, together with its schedules and annexures, constitutes the entire agreement between the Parties in relation to its subject matter and supersedes all prior agreements, arrangements, understandings, term sheets, proposals, quotations, and representations, whether written or oral, relating to that subject matter.",
+        formatStructuredSubparts([
+          "each Party acknowledges that in entering into this Agreement it does not rely on, and shall have no remedy in respect of, any statement, representation, assurance, or warranty that is not expressly set out in this Agreement",
+          "nothing in this clause shall exclude or limit any liability for fraud or fraudulent misrepresentation, or operate to exclude any term implied by Applicable Law which cannot lawfully be excluded",
+          "where any purchase order, invoice, acknowledgement, portal terms, or other standard-form document issued by either Party contains terms inconsistent with this Agreement, the terms of this Agreement shall prevail unless the Parties expressly agree otherwise in a written amendment executed in accordance with this Agreement",
+        ]),
+      ].join("\n"),
+    }),
+
     CORE_RELATIONSHIP_OF_PARTIES_001: () =>
       `The Parties acknowledge and agree that the relationship created by this Agreement is that of independent contracting parties and not of employer and employee, partnership, joint venture, agency, or fiduciary relationship.${normalizeBooleanChoice(
         variables.no_employment_ack,
@@ -1895,7 +2070,12 @@ function renderHardClause(
       ) ? ` Responsibility for GST, TDS, professional tax, income tax, and other applicable taxes shall be allocated as follows: ${stripExternalReferencePhrases(
         variables.tax_responsibility,
         ""
-      )}.` : ""}`,
+      )}.` : ""}\n${formatStructuredSubparts([
+        "neither Party shall hold itself out as having authority to bind the other, and neither Party shall incur any obligation, liability, or expense on behalf of the other, without that other Party's prior written authority",
+        "each Party shall be solely responsible for the wages, statutory benefits, provident fund, gratuity, and social security contributions of its own personnel, and for its own taxes, duties, returns, and statutory filings arising in connection with this Agreement",
+        "the personnel deployed by a Party shall at all times remain under that Party's direction, supervision, and control, and shall not be treated as employees or workmen of the other Party for the purposes of any labour, industrial, or social-security legislation",
+        "each Party shall indemnify the other against any claim, demand, or proceeding brought by its own personnel, or by any authority on their behalf, which asserts an employment or engagement relationship with that other Party",
+      ])}`,
 
     CORE_SIGNATURE_BLOCK_001: () => ({
       title: clause.title || "Execution and Signatures",
