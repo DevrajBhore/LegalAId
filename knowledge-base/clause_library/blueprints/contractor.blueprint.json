@@ -20,5 +20,8 @@
       "include_if": "include_entire_agreement == true",
       "note": "Optional entire-agreement (no oral terms) clause."
     }
-  ]
+  ],
+  "_unreachable": true,
+  "_unreachable_reason": "CONTRACTOR_AGREEMENT has no entry in backend/config/documentConfig.js, so it has no intake form, no party fields, and getParticipantExpectations() returns []. The document type cannot be generated; the formal deed opening silently falls back to raw library text. Pinned by tests/generalProvisionsBaseline.test.mjs so no NEW orphan is introduced. Superseded by INDEPENDENT_CONTRACTOR_AGREEMENT.",
+  "_superseded_by": "INDEPENDENT_CONTRACTOR_AGREEMENT"
 }

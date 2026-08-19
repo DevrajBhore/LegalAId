@@ -2,7 +2,7 @@
   "clause_id": "RENTAL_PROPERTY_DESCRIPTION_001",
   "category": "PURPOSE",
   "title": "Description of Premises",
-  "text": "The Landlord/Landlord hereby licenses or leases to the Tenant/Tenant the premises situated at {{property_address}} (\"Premises\"), together with all fixtures, fittings, and facilities forming part thereof. The Premises shall be used solely for {{permitted_use}} and for no other purpose without the prior written consent of the Landlord/Landlord. The Tenant/Tenant has inspected the Premises and is satisfied with its condition. The Landlord/Landlord warrants that it has full right and authority to license or lease the Premises and that the Premises are free from encumbrances that would materially affect the Tenant/Tenant's peaceful enjoyment.",
+  "text": "The {{party_1_label}} hereby licenses or leases to the {{party_2_label}} the premises situated at {{property_address}} (\"Premises\"), together with all fixtures, fittings, and facilities forming part thereof. The Premises shall be used solely for {{permitted_use}} and for no other purpose without the prior written consent of the {{party_1_label}}. The {{party_2_label}} has inspected the Premises and is satisfied with its condition. The {{party_1_label}} warrants that it has full right and authority to license or lease the Premises and that the Premises are free from encumbrances that would materially affect the {{party_2_label}}'s peaceful enjoyment.",
   "statutory_reference": "Transfer of Property Act, 1882 – S.108",
   "mandatory": true,
   "jurisdiction": "India",

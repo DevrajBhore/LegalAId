@@ -1,0 +1,392 @@
+{
+  "domain": "contract",
+  "_note": "Migrated from knowledge-base/rules/indian_law_enforcement.rules.json, which declared 16 enforcement rules and stated that 'the IRE engine checks these rules during generation and validation' -- but was loaded by nothing. In this constraints file they actually run. They are admitted as notice_only pending review: switching 8 CRITICAL blocking rules on at once would refuse documents that generate today.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "rules": [
+    {
+      "rule_id": "ENFC_EMPLOYMENT_EPF",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "_authored_severity": "CRITICAL",
+      "_authored_blocks_generation": true,
+      "description": "Employment contracts must address EPF contributions. Criminal liability for employer under EPF Act S.14 if EPF is not deducted.",
+      "statutory_reference": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952 – S.6",
+      "applies_to_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "EMP_BENEFITS_001"
+          ]
+        }
+      ],
+      "remedy": "Include EMP_BENEFITS_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_MINIMUM_WAGES",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "_authored_severity": "CRITICAL",
+      "_authored_blocks_generation": true,
+      "description": "Salary must not be below applicable minimum wages. Employer faces criminal prosecution for below-minimum wages.",
+      "statutory_reference": "Minimum Wages Act, 1948 – S.3",
+      "applies_to_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "EMP_WAGES_001"
+          ]
+        }
+      ],
+      "remedy": "Include EMP_WAGES_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_NATURAL_JUSTICE",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Employment contracts must include a disciplinary procedure providing opportunity to be heard before adverse action. Violation is grounds for reinstatement.",
+      "statutory_reference": "Industrial Employment (Standing Orders) Act, 1946; Constitution Art.21",
+      "applies_to_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "EMP_DISCIPLINARY_ACTION_001"
+          ]
+        }
+      ],
+      "remedy": "Include EMP_DISCIPLINARY_ACTION_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_EMPLOYMENT_MATERNITY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Employment contracts must address maternity benefits. Denial of maternity leave is a criminal offence under MBA S.21.",
+      "statutory_reference": "Maternity Benefit Act, 1961 – S.5",
+      "applies_to_doc_types": [
+        "EMPLOYMENT_CONTRACT",
+        "EMPLOYMENT_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "EMP_LEAVE_POLICY_001"
+          ]
+        }
+      ],
+      "remedy": "Include EMP_LEAVE_POLICY_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_SERVICE_TDS",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Service agreements must address TDS deduction. Payment clause must specify whether S.194C (contracts, 2%) or S.194J (professional, 10%) applies.",
+      "statutory_reference": "Income Tax Act, 1961 – S.194C, S.194J",
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "SERVICE_PAYMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Include SERVICE_PAYMENT_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_SERVICE_GST_INVOICE",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Payment clause must require GST-compliant tax invoices with GSTIN, SAC/HSN code, and GST amount. Non-compliant invoices block input tax credit.",
+      "statutory_reference": "Central Goods and Services Tax Act, 2017 – S.31",
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "CONSULTANCY_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "SUPPLY_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "SERVICE_PAYMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Include SERVICE_PAYMENT_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_LOAN_TDS_194A",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Loan agreements must address TDS on interest under S.194A (10% TDS when interest > Rs.40,000 p.a. for resident individuals).",
+      "statutory_reference": "Income Tax Act, 1961 – S.194A",
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "LOAN_INTEREST_001"
+          ]
+        }
+      ],
+      "remedy": "Include LOAN_INTEREST_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_LOAN_USURY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Interest rate in loan agreement must not be usurious. Courts may reduce interest rates above commercially reasonable levels.",
+      "statutory_reference": "Usurious Loans Act, 1918 – S.3",
+      "applies_to_doc_types": [
+        "LOAN_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "LOAN_INTEREST_001"
+          ]
+        }
+      ],
+      "remedy": "Include LOAN_INTEREST_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_RENTAL_REGISTRATION",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Leases for a term exceeding 12 months must be compulsorily registered. Unregistered leases are inadmissible as evidence under Registration Act S.49.",
+      "statutory_reference": "Registration Act, 1908 – S.17",
+      "applies_to_doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "PROP_REGISTRATION_001"
+          ]
+        }
+      ],
+      "remedy": "Include PROP_REGISTRATION_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_RENTAL_STAMP_DUTY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Rental and lease agreements must be executed on adequately stamped paper. Unstamped instruments are inadmissible under Indian Stamp Act S.35.",
+      "statutory_reference": "Indian Stamp Act, 1899 – S.3; State Stamp Acts",
+      "applies_to_doc_types": [
+        "RENTAL_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT",
+        "COMMERCIAL_LEASE_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_IDENTITY_001"
+          ]
+        }
+      ],
+      "remedy": "Include CORE_IDENTITY_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_RENTAL_TDS_194I",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "_authored_severity": "MEDIUM",
+      "_authored_blocks_generation": false,
+      "description": "Where annual rent exceeds Rs.2,40,000, the tenant must deduct TDS at 10% on commercial rent (S.194I). Rent payment clause should address TDS obligations.",
+      "statutory_reference": "Income Tax Act, 1961 – S.194I",
+      "applies_to_doc_types": [
+        "COMMERCIAL_LEASE_AGREEMENT",
+        "RENTAL_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "RENTAL_RENT_PAYMENT_001"
+          ]
+        }
+      ],
+      "remedy": "Include RENTAL_RENT_PAYMENT_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_SHA_COMPANIES_ACT",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "_authored_severity": "CRITICAL",
+      "_authored_blocks_generation": true,
+      "description": "Shareholders Agreement cannot override Companies Act provisions, MoA or AoA. Any SHA provision inconsistent with Companies Act is void.",
+      "statutory_reference": "Companies Act, 2013 – S.6",
+      "applies_to_doc_types": [
+        "SHAREHOLDERS_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_COMPLIANCE_WITH_LAW_001"
+          ]
+        }
+      ],
+      "remedy": "Include CORE_COMPLIANCE_WITH_LAW_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_IP_COPYRIGHT_WRITING",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "_authored_severity": "CRITICAL",
+      "_authored_blocks_generation": true,
+      "description": "Copyright assignment must be in writing and signed by the assignor (Copyright Act S.19). Service agreements must include written IP assignment — unlike employment, contractor IP does NOT auto-vest in client.",
+      "statutory_reference": "Copyright Act, 1957 – S.19",
+      "applies_to_doc_types": [
+        "SERVICE_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "CONSULTANCY_AGREEMENT"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "IP_OWNERSHIP_001"
+          ]
+        }
+      ],
+      "remedy": "Include IP_OWNERSHIP_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_ARBITRATION_SEAT",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "Arbitration clause must specify the seat of arbitration. Without seat, Part I vs Part II applicability is ambiguous and Indian courts may lack supervisory jurisdiction.",
+      "statutory_reference": "Arbitration and Conciliation Act, 1996 – S.20; BALCO v Kaiser Aluminium (SC)",
+      "applies_to_doc_types": [
+        "ALL"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_DISPUTE_RESOLUTION_001"
+          ]
+        }
+      ],
+      "remedy": "Include CORE_DISPUTE_RESOLUTION_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_NDA_SEBI_UPSI",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "NDAs involving listed companies or their advisors must explicitly address UPSI obligations under SEBI PIT Regulations 2015.",
+      "statutory_reference": "SEBI (Prohibition of Insider Trading) Regulations, 2015 – Regulation 3",
+      "applies_to_doc_types": [
+        "NDA"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_COMPLIANCE_WITH_LAW_001"
+          ]
+        }
+      ],
+      "remedy": "Include CORE_COMPLIANCE_WITH_LAW_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "rule_id": "ENFC_CONTRACT_STAMP_DUTY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "_authored_severity": "HIGH",
+      "_authored_blocks_generation": false,
+      "description": "All contracts must be executed on adequately stamped paper. Stamp duty varies by document type, value and state. Unstamped instruments are inadmissible (S.35).",
+      "statutory_reference": "Indian Stamp Act, 1899 – S.3; State Stamp Acts",
+      "applies_to_doc_types": [
+        "ALL"
+      ],
+      "assert": [
+        {
+          "clause_present": [
+            "CORE_SIGNATURE_BLOCK_001"
+          ]
+        }
+      ],
+      "remedy": "Include CORE_SIGNATURE_BLOCK_001 or an equivalent clause addressing this requirement.",
+      "reviewed_by": "PENDING",
+      "reviewed_on": null,
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

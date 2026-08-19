@@ -30,8 +30,9 @@
       "expect": {
         "must_generate": true,
         "must_not_flag": [
-          "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
-          "FORMAT_UNRESOLVED_PLACEHOLDER"
+          "FORMAT_DUPLICATED_PARTY_LABEL",
+          "FORMAT_UNRESOLVED_PLACEHOLDER",
+          "RENTAL_REGISTRATION_MANDATORY_OVER_12M"
         ],
         "must_contain_clauses": [
           "CORE_DEFINITIONS_001",
@@ -46,6 +47,14 @@
         ],
         "must_not_notice": [
           "REGISTRATION_NOT_REQUIRED_NOTICE"
+        ],
+        "must_contain_text": [
+          "Landlord",
+          "Tenant"
+        ],
+        "must_not_contain_text": [
+          "Licensor",
+          "Licensee"
         ]
       }
     },
@@ -128,8 +137,9 @@
       "expect": {
         "must_generate": true,
         "must_not_flag": [
-          "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
-          "FORMAT_UNRESOLVED_PLACEHOLDER"
+          "FORMAT_DUPLICATED_PARTY_LABEL",
+          "FORMAT_UNRESOLVED_PLACEHOLDER",
+          "RENTAL_REGISTRATION_MANDATORY_OVER_12M"
         ],
         "must_notice": [
           "REGISTRATION_REQUIRED_NOTICE",
@@ -137,6 +147,15 @@
         ],
         "must_not_notice": [
           "REGISTRATION_NOT_REQUIRED_NOTICE"
+        ],
+        "must_contain_text": [
+          "Licensor",
+          "Licensee"
+        ],
+        "must_not_contain_text": [
+          "Landlord",
+          "Tenant",
+          "Landlord/Landlord"
         ]
       }
     },
@@ -167,6 +186,43 @@
           "duly authorised vide Board Resolution dated 12 August 2026",
           "represented by Ms Anita Sharma, Designated Partner"
         ]
+      }
+    },
+    {
+      "id": "terms-of-service-marketplace",
+      "document_type": "TERMS_OF_SERVICE",
+      "description": "Unilateral published terms. Must open with acceptance, must carry the eligibility, user-content and IP-ownership clauses the blueprint declares, and must NOT acquire bilateral commercial terms (late-payment interest, mutual termination notice).",
+      "variables": {
+        "company_name": "Rockodile Technologies Private Limited",
+        "company_address": "12 MG Road, Bengaluru, Karnataka 560001",
+        "service_name": "Rockodile",
+        "website_url": "https://rockodile.example",
+        "service_description": "an online marketplace connecting buyers and sellers of industrial equipment",
+        "grievance_officer": "Rijul Mehta",
+        "grievance_officer_email": "grievance@rockodile.example"
+      },
+      "expect": {
+        "must_generate": true,
+        "must_contain_clauses": [
+          "TOS_ACCEPTANCE_001",
+          "TOS_ELIGIBILITY_ACCOUNT_001",
+          "TOS_USER_CONTENT_001",
+          "IP_OWNERSHIP_001",
+          "TOS_ACCEPTABLE_USE_001",
+          "PRIVACY_GRIEVANCE_OFFICER_001"
+        ],
+        "must_not_contain_clauses": [
+          "AUTO-LPI-001",
+          "NOTICE_PERIOD_DEFAULT",
+          "CORE_COUNTERPARTS_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001"
+        ],
+        "must_not_flag": [
+          "FORMAT_UNRESOLVED_PLACEHOLDER",
+          "FORMAT_DUPLICATED_PARTY_LABEL"
+        ],
+        "first_clause_id": "TOS_ACCEPTANCE_001"
       }
     }
   ]

@@ -58,7 +58,20 @@ function readJsonFile(filePath) {
 }
 
 function extractClauseIds(blueprint, label) {
-  const clauseIds = blueprint.required_clauses || blueprint.clauses || [];
+  // `clauses` is the content of the instrument; `required_clauses` is the subset
+  // that must be present. Reading `required_clauses || clauses` meant that once a
+  // blueprint declared any required list, everything in `clauses` and not in it
+  // was silently dropped -- Terms of Service lost its eligibility, user-content
+  // and IP-ownership clauses, and the MSA lost five. Take the union, preserving
+  // the order declared in `clauses`.
+  const declared = Array.isArray(blueprint.clauses) ? blueprint.clauses : [];
+  const required = Array.isArray(blueprint.required_clauses)
+    ? blueprint.required_clauses
+    : [];
+  const clauseIds =
+    declared.length || required.length
+      ? [...new Set([...declared, ...required])]
+      : blueprint.required_clauses || blueprint.clauses || [];
 
   if (!Array.isArray(clauseIds)) {
     throw new Error(

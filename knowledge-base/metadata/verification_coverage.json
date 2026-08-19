@@ -45,6 +45,18 @@
       "area": "Judicial interpretation",
       "statement": "Clauses are checked against statute, not against the current state of judicial interpretation; the case-law corpus is a partial seed.",
       "statutory_reference": null
+    },
+    {
+      "id": "STATUTORY_CHECKLIST_ITEMS",
+      "area": "Tax, exchange control and sector regulation",
+      "statement": "Each document type carries a checklist of statutory matters -- TDS, GST, FEMA, competition, BIS and similar -- that are surfaced to the drafter as a notice but are not evaluated against the facts of the transaction.",
+      "statutory_reference": null
+    },
+    {
+      "id": "CLAUSE_LEGAL_REVIEW",
+      "area": "Advocate review of clause text",
+      "statement": "Clause text is drafted from statute but has not necessarily been signed off by an advocate. The proportion of this document's clauses that carry a sign-off is reported under coverage.clause_review.",
+      "statutory_reference": null
     }
   ],
   "by_document_type": {

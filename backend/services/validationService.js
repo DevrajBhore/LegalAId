@@ -1,6 +1,8 @@
 import fs from "fs";
 
 import { validate } from "../ire/runner.js";
+import { summariseProvenance } from "../../shared/clauseProvenance.js";
+import { buildStatutoryChecklistNotices } from "./statutoryChecklist.js";
 import { commercialValidate } from "../ire/commercialValidator.js";
 import { validateDraftConsistency } from "./draftConsistencyValidator.js";
 import { validateDocumentHardening } from "./documentHardening.js";
@@ -28,14 +30,26 @@ function loadCoverageDisclosure() {
 // What this run actually checked, and what it could not. Reported alongside the
 // issues so an empty issue list is never presented as "legally compliant" -- it
 // means the checks that ran found nothing, which is a different statement.
-function buildCoverage({ documentType, layersRun, layersSkipped, constraintOutcomes }) {
+function buildCoverage({ documentType, layersRun, layersSkipped, constraintOutcomes, clauses }) {
   const disclosure = loadCoverageDisclosure();
   const outcomes = Array.isArray(constraintOutcomes) ? constraintOutcomes : [];
   const counted = (name) => outcomes.filter((entry) => entry.outcome === name).length;
 
+  // How much of THIS document has actually been through legal review. Reported
+  // beside the issue list so an empty issue list is never read as "an advocate
+  // has approved this".
+  const provenance = summariseProvenance(clauses || []);
+
   return {
     layers_run: layersRun,
     layers_skipped: layersSkipped,
+    clause_review: {
+      total_clauses: provenance.total,
+      advocate_reviewed: provenance.reviewed,
+      awaiting_review: provenance.awaiting_review,
+      unmarked: provenance.unmarked,
+      reviewed_fraction: provenance.reviewed_fraction,
+    },
     rules_evaluated: outcomes.length,
     rules_passed: counted("pass"),
     rules_failed: counted("fail"),
@@ -131,6 +145,12 @@ export async function runDocumentValidation(
   );
   layersRun.push("clause_quality");
   const clauseQualityIssues = validateClauseQuality(draft);
+  const statutoryChecklistNotices = runLayer(
+    "statutory_checklist",
+    Boolean(resolvedDocumentType),
+    () => buildStatutoryChecklistNotices(resolvedDocumentType),
+    "document type unknown"
+  );
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -151,6 +171,7 @@ export async function runDocumentValidation(
       ...hardeningIssues,
       ...clauseQualityIssues,
       ...finalQualityIssues,
+      ...statutoryChecklistNotices,
       ...extraIssues,
     ],
     layers: {
@@ -160,6 +181,7 @@ export async function runDocumentValidation(
       hardening_issues: hardeningIssues.length,
       clause_quality_issues: clauseQualityIssues.length,
       final_quality_issues: finalQualityIssues.length,
+      statutory_checklist_items: statutoryChecklistNotices[0]?.items?.length || 0,
       extra_issues: extraIssues.length,
     },
     coverage: buildCoverage({
@@ -168,6 +190,7 @@ export async function runDocumentValidation(
       layersSkipped,
       constraintOutcomes:
         coreValidation.constraint_outcomes || coreValidation._constraint_outcomes,
+      clauses: draft?.clauses || [],
     }),
   });
 }

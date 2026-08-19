@@ -1,3 +1,5 @@
+import { getPartyNamingLabels } from "./draftingPolicy.js";
+
 function normalizeText(value = "") {
   return String(value || "")
     .trim()
@@ -44,6 +46,21 @@ function mentionsReporting(value = "") {
 
 export function deriveGenerationControls(documentType, variables = {}) {
   const derived = { ...(variables || {}) };
+
+  // Party labels as data, not baked into clause prose.
+  //
+  // Five property clauses are shared by RENTAL_AGREEMENT, COMMERCIAL_LEASE_AGREEMENT
+  // and LEAVE_AND_LICENSE_AGREEMENT, which use different role names (Landlord/Tenant
+  // vs Licensor/Licensee). That was handled by writing a dual label -- "the
+  // Landlord/Licensor" -- into the text by hand, and a later bulk rename of
+  // Licensor -> Landlord turned 24 of them into "the Landlord/Landlord". Exposing
+  // the resolved labels as variables lets a shared clause say {{party_1_label}}
+  // and read correctly in every document type that uses it.
+  const namingLabels = getPartyNamingLabels(documentType);
+  if (namingLabels) {
+    if (!hasMeaningfulValue(derived.party_1_label)) derived.party_1_label = namingLabels.first;
+    if (!hasMeaningfulValue(derived.party_2_label)) derived.party_2_label = namingLabels.second;
+  }
 
   const hasRestrictionPeriod = hasMeaningfulValue(variables.non_compete_period);
   const explicitNonSolicit = normalizeBooleanLike(variables.include_non_solicit);

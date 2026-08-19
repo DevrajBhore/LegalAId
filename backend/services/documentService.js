@@ -192,6 +192,18 @@ function attachDraftContext(draft, input, { resetBaseline = false } = {}) {
   };
 }
 
+// A document is BLOCKED only by a blocking issue. Advisory findings -- a missing
+// nice-to-have clause, a formatting nit, a stamp or registration notice -- are
+// things the user should see ON the draft, not reasons to withhold it. Before
+// this, `certified` meant "zero actionable issues of any severity", so a single
+// MEDIUM advisory returned draft: null and the user got nothing at all.
+function hasBlockingIssues(validation) {
+  return (validation?.blockingIssues?.length ?? 0) > 0;
+}
+
+// Stricter test, used only to decide whether a draft is good enough to stop
+// trying: a clean result short-circuits the repair round and, on the semantic
+// path, is preferred over falling back to the deterministic draft.
 function isGenerationReady(validation) {
   return (
     validation?.certified === true &&
@@ -592,6 +604,13 @@ export async function generateDocument(input, options = {}) {
           return buildSuccess(draft, validation);
         }
       }
+
+      // The tailored draft carries no blocking defect, only advisory findings.
+      // Return it with those attached rather than discarding the tailoring and
+      // falling back to boilerplate.
+      if (!hasBlockingIssues(validation)) {
+        return buildSuccess(draft, validation);
+      }
     }
   }
 
@@ -626,6 +645,11 @@ export async function generateDocument(input, options = {}) {
     if (isGenerationReady(validation)) {
       return buildSuccess(draft, validation);
     }
+  }
+
+  // Only a blocking issue withholds the draft.
+  if (!hasBlockingIssues(validation)) {
+    return buildSuccess(draft, validation);
   }
 
   return buildGenerationFailureResult(validation);

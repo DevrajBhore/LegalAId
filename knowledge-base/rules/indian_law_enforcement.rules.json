@@ -1,6 +1,6 @@
 {
   "_version": "3.0",
-  "_description": "Indian Law Enforcement Rules — maps document types to mandatory Indian statutory requirements. The IRE engine checks these rules during generation and validation.",
+  "_description": "SUPERSEDED. These rules now live in knowledge-base/constraints/statutory_enforcement.constraints.json, where the constraint engine actually loads them. This file is retained only as the authoring record; nothing reads it. The previous description claimed the IRE engine checked these rules -- it did not.",
   "enforcement_rules": [
     {
       "rule_id": "ENFC_EMPLOYMENT_EPF",
@@ -194,5 +194,6 @@
       "message": "All contracts must be executed on adequately stamped paper. Stamp duty varies by document type, value and state. Unstamped instruments are inadmissible (S.35).",
       "blocks_generation": false
     }
-  ]
+  ],
+  "_superseded_by": "constraints/statutory_enforcement.constraints.json"
 }

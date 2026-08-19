@@ -73,11 +73,26 @@ export function enhanceCommercially(draft) {
     draft = injectProtection(draft, "IP_OWNERSHIP");
   }
 
-  if (signals.hasPayment && !protects.hasLatePaymentInterest) {
+  // These two were triggered by a TEXT SIGNAL alone -- no document-type gate and
+  // no disallowedProtections check, unlike the three above. Any mention of
+  // payment anywhere in a Terms of Service earned it an 18% late-payment
+  // interest clause, and any mention of termination earned it a mutual notice
+  // period. Both are bilateral commercial terms and are now gated as such.
+  if (
+    isBilateral &&
+    signals.hasPayment &&
+    !disallowedProtections.has("LATE_PAYMENT_INTEREST") &&
+    !protects.hasLatePaymentInterest
+  ) {
     draft = injectProtection(draft, "LATE_PAYMENT_INTEREST");
   }
 
-  if (signals.hasTermination && !protects.hasTerminationNotice) {
+  if (
+    isBilateral &&
+    signals.hasTermination &&
+    !disallowedProtections.has("TERMINATION_NOTICE") &&
+    !protects.hasTerminationNotice
+  ) {
     draft = injectProtection(draft, "TERMINATION_NOTICE");
   }
 

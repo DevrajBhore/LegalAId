@@ -1,6 +1,11 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import {
+  summariseProvenance,
+  clauseReviewState,
+  strictReviewRequired,
+} from "../shared/clauseProvenance.js";
 
 import { loadJSONFiles } from "./src/indian-rule-engine/loader.js";
 import { IndianRuleRegistry } from "./src/indian-rule-engine/registry.js";
@@ -62,6 +67,9 @@ export function bootstrapIRE() {
         .map(d => d.name)
     : [];
   let totalClauses = 0;
+  const allLoadedClauses = [];
+  const strictReview = strictReviewRequired();
+  let refusedUnreviewed = 0;
 
   for (const folder of clauseFolders) {
     const folderPath = path.join(CLAUSE_LIBRARY_PATH, folder);
@@ -76,11 +84,38 @@ export function bootstrapIRE() {
       try { validateClause(c); } catch { /* schema errors are non-fatal */ }
     });
 
-    registry.addClauses(validClauses);
-    totalClauses += validClauses.length;
+    // Provenance gate. Under LEGALAID_REQUIRE_REVIEWED_CLAUSES=1 an unreviewed
+    // clause is not loaded at all, so it cannot reach a generated document.
+    // Off by default because the library is not yet reviewed — turning it on
+    // today would load nothing. See shared/clauseProvenance.js.
+    const admittedClauses = strictReview
+      ? validClauses.filter((c) => {
+          const admitted = clauseReviewState(c).reviewed;
+          if (!admitted) refusedUnreviewed += 1;
+          return admitted;
+        })
+      : validClauses;
+
+    allLoadedClauses.push(...admittedClauses);
+    registry.addClauses(admittedClauses);
+    totalClauses += admittedClauses.length;
   }
 
+  const provenance = summariseProvenance(allLoadedClauses);
+  registry.clauseProvenance = provenance;
+
   console.log(`[IRE Bootstrap] Loaded ${totalClauses} clauses`);
+  if (strictReview) {
+    console.log(
+      `[IRE Bootstrap] Strict review mode: refused ${refusedUnreviewed} unreviewed clause(s)`
+    );
+  } else if (provenance.reviewed < provenance.total) {
+    console.warn(
+      `[IRE Bootstrap] ${provenance.total - provenance.reviewed} of ${provenance.total} clauses ` +
+      `have no advocate sign-off (${provenance.awaiting_review} awaiting review, ` +
+      `${provenance.unmarked} unmarked). Set LEGALAID_REQUIRE_REVIEWED_CLAUSES=1 to refuse them.`
+    );
+  }
 
   // ── 2. Load mappings (document_type → clause IDs) ───────────────────────
   if (MAPPINGS_PATH && fs.existsSync(MAPPINGS_PATH)) {

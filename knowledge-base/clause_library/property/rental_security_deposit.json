@@ -2,7 +2,7 @@
   "clause_id": "RENTAL_SECURITY_DEPOSIT_001",
   "category": "CONSIDERATION",
   "title": "Security Deposit",
-  "text": "The Tenant/Tenant shall pay a refundable security deposit of INR {{security_deposit}} prior to or at the time of execution of this Agreement. The security deposit shall be held as security for the due performance of the Tenant/Tenant's obligations and shall not carry interest. The Landlord/Landlord shall refund the security deposit within thirty (30) days of the Tenant/Tenant vacating the Premises and delivering peaceful possession, after deducting any outstanding dues, unpaid license fee/rent, or costs of repairing damage caused by the Tenant/Tenant beyond fair wear and tear. The Landlord/Landlord shall furnish a written account of all deductions made.",
+  "text": "The {{party_2_label}} shall pay a refundable security deposit of INR {{security_deposit}} prior to or at the time of execution of this Agreement. The security deposit shall be held as security for the due performance of the {{party_2_label}}'s obligations and shall not carry interest. The {{party_1_label}} shall refund the security deposit within thirty (30) days of the {{party_2_label}} vacating the Premises and delivering peaceful possession, after deducting any outstanding dues, unpaid license fee/rent, or costs of repairing damage caused by the {{party_2_label}} beyond fair wear and tear. The {{party_1_label}} shall furnish a written account of all deductions made.",
   "statutory_reference": "Model Tenancy Act, 2021 – S.11",
   "mandatory": true,
   "jurisdiction": "India",

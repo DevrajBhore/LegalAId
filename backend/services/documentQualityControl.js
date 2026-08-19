@@ -128,34 +128,59 @@ function scoreClause(clause = {}) {
   return score;
 }
 
+// Clauses are deduplicated on two independent keys:
+//
+//   title  -- the same heading twice
+//   text   -- the same body under two different headings
+//
+// The previous implementation looped over both keys but every branch inside
+// the loop returned, so the second key was never reached: `semanticKey` was
+// computed and discarded, and a duplicated body under a different heading
+// survived into the document. It could not simply be un-returned either --
+// registering one clause under two keys in the old shape emitted it twice.
+// Keys now map to a shared group, so a clause matched by either key collapses
+// into one entry.
+const SEMANTIC_DEDUPE_MIN_LENGTH = 80;
+
 function dedupeClauses(clauses = []) {
-  const bestByKey = new Map();
-  const order = [];
+  const groupIdByKey = new Map();
+  const groups = [];
 
   clauses.forEach((clause, index) => {
     const titleKey = normalizeText(clause.title || clause.name || clause.clause_id);
     const textKey = normalizeText(clause.text || "").slice(0, 220);
     const key = titleKey || clause.clause_id || textKey;
-    const semanticKey = `${titleKey}:${textKey.slice(0, 80)}`;
 
-    for (const candidateKey of [key, semanticKey]) {
-      if (!bestByKey.has(candidateKey)) {
-        bestByKey.set(candidateKey, { clause, index });
-        order.push(candidateKey);
-        return;
-      }
+    // Text-only, so it can catch a duplicate body under a different heading --
+    // which is what the old key could never do, since it embedded the title.
+    // Short bodies are excluded: boilerplate one-liners legitimately repeat.
+    const semanticKey =
+      textKey.length >= SEMANTIC_DEDUPE_MIN_LENGTH ? `text:${textKey}` : null;
 
-      const current = bestByKey.get(candidateKey);
-      if (scoreClause(clause) > scoreClause(current.clause)) {
-        bestByKey.set(candidateKey, { clause, index: current.index });
+    const candidateKeys = [key, semanticKey].filter(Boolean);
+    let groupId;
+    for (const candidateKey of candidateKeys) {
+      if (groupIdByKey.has(candidateKey)) {
+        groupId = groupIdByKey.get(candidateKey);
+        break;
       }
-      return;
+    }
+
+    if (groupId === undefined) {
+      groupId = groups.length;
+      groups.push({ clause, index });
+    } else if (scoreClause(clause) > scoreClause(groups[groupId].clause)) {
+      // Keep the better version, but hold the position of the first one seen.
+      groups[groupId] = { clause, index: groups[groupId].index };
+    }
+
+    for (const candidateKey of candidateKeys) {
+      if (!groupIdByKey.has(candidateKey)) groupIdByKey.set(candidateKey, groupId);
     }
   });
 
-  return order
-    .map((key) => bestByKey.get(key))
-    .filter(Boolean)
+  return groups
+    .slice()
     .sort((left, right) => left.index - right.index)
     .map((entry) => entry.clause);
 }
@@ -263,6 +288,42 @@ function findPlaceholderIssues(draft) {
         clause.clause_id
       )
     );
+}
+
+// A role noun repeated on both sides of a slash -- "the Landlord/Landlord" --
+// is never correct. It is the signature of a bulk rename collapsing a dual
+// label: five shared property clauses carried "the Landlord/Licensor" so they
+// could serve both a lease and a leave-and-licence, and renaming Licensor to
+// Landlord turned 24 of them into nonsense that shipped in every rental
+// document. The forbidden-party-term check could not catch it, because
+// Landlord is an ALLOWED alias in a leave and licence (the underlying intake
+// fields are landlord_name / tenant_name). This test is independent of which
+// labels are permitted: X/X is wrong whatever X is.
+const DUPLICATED_LABEL_PATTERN = /\b([A-Z][a-zA-Z]{2,})\/\1\b/g;
+
+function findDuplicatedLabelIssues(draft) {
+  const issues = [];
+  for (const clause of draft?.clauses || []) {
+    const matches = [
+      ...new Set(
+        [...String(clause.text || "").matchAll(DUPLICATED_LABEL_PATTERN)].map(
+          (match) => match[0]
+        )
+      ),
+    ];
+    if (!matches.length) continue;
+
+    issues.push(
+      buildIssue(
+        "FORMAT_DUPLICATED_PARTY_LABEL",
+        "HIGH",
+        `Clause "${clause.title || clause.clause_id}" repeats a label on both sides of a slash: ${matches.join(", ")}.`,
+        "Use the resolved party label for the document type (for example {{party_1_label}}) instead of a hand-written dual label.",
+        clause.clause_id
+      )
+    );
+  }
+  return issues;
 }
 
 function findCurrencyIssues(draft) {
@@ -390,6 +451,7 @@ export function validateDocumentQuality(draft, { documentType, variables = {} } 
     ...findDuplicateDefinitionIssues(draft),
     ...findPlaceholderIssues(draft),
     ...findCurrencyIssues(draft),
+    ...findDuplicatedLabelIssues(draft),
     ...findPartyReferenceIssues(draft, documentType, variables),
     ...findCrossReferenceIssues(draft),
     ...findMissingRequiredFieldIssues(draft, documentType, variables),

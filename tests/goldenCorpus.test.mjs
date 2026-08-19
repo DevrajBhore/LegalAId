@@ -99,6 +99,28 @@ for (const fixture of corpus.fixtures) {
     }
   }
 
+  for (const snippet of expect.must_not_contain_text || []) {
+    if (fullText.includes(snippet)) {
+      fp += 1;
+      falsePositives.push({ fixture: fixture.id, reason: `draft contains "${snippet}", which belongs to a different document type` });
+    }
+  }
+
+  for (const clauseId of expect.must_not_contain_clauses || []) {
+    if (clauseIds.includes(clauseId)) {
+      fp += 1;
+      falsePositives.push({ fixture: fixture.id, reason: `clause ${clauseId} does not belong in this document type` });
+    }
+  }
+
+  if (expect.first_clause_id && clauseIds[0] !== expect.first_clause_id) {
+    fn += 1;
+    falseNegatives.push({
+      fixture: fixture.id,
+      reason: `document should open with ${expect.first_clause_id}, opens with ${clauseIds[0] || "(nothing)"}`,
+    });
+  }
+
   for (const clauseId of expect.must_contain_clauses || []) {
     if (!clauseIds.includes(clauseId)) {
       fn += 1;

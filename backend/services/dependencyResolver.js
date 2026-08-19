@@ -21,6 +21,9 @@ const DEPENDENCY_RULES = [
   },
   {
     trigger_category: "TERMINATION",
+    // A unilateral published instrument suspends or terminates accounts under
+    // its own terms; it has no counterparty to give mutual notice to.
+    excluded_document_types: ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
     trigger_condition: (draft) => {
       const hasTermination = draft.clauses.some((clause) =>
         String(clause.category || "").toUpperCase().includes("TERMINATION")
@@ -187,12 +190,21 @@ function resolveExplicitKbDependencies(
   return resolvedClauses;
 }
 
-function resolveFallbackDependencies(draft, variables = {}) {
+function resolveFallbackDependencies(draft, variables = {}, documentType = "") {
   const existingCategories = new Set(draft.clauses.map((clause) => clause.category));
   const existingClauseIds = new Set(draft.clauses.map((clause) => clause.clause_id));
   const resolvedClauses = [...draft.clauses];
 
+  const normalizedDocumentType = String(documentType || draft.document_type || "").toUpperCase();
+
   for (const rule of DEPENDENCY_RULES) {
+    if (
+      Array.isArray(rule.excluded_document_types) &&
+      rule.excluded_document_types.includes(normalizedDocumentType)
+    ) {
+      continue;
+    }
+
     const triggerActivated = rule.trigger_condition
       ? rule.trigger_condition({ ...draft, clauses: resolvedClauses })
       : existingCategories.has(rule.trigger_category);
@@ -238,7 +250,8 @@ export function resolveDependencies(draft, input = {}) {
   );
   const clausesWithFallbacks = resolveFallbackDependencies(
     { ...draft, clauses: clausesWithKbDependencies },
-    variables
+    variables,
+    documentType
   );
 
   return {

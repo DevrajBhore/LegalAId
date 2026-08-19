@@ -11,6 +11,7 @@ import {
   convertInchesToTwip,
 } from "docx";
 import PDFDocument from "pdfkit";
+import { parseIdentityClause } from "./documentStructure.js";
 import { getDocumentDisplayName } from "../../shared/documentRegistry.js";
 import {
   normalizeClauseCategory,
@@ -155,36 +156,6 @@ function buildLeadInRuns(line, leadPattern) {
     runs.push(...buildRunsWithSuperscriptOrdinals(remainder));
   }
   return runs;
-}
-
-// Parses a recital line, with or without a letter label:
-//   "A. WHEREAS, x"  /  "(B) AND WHEREAS, y"  /  "WHEREAS, z"
-// The label is PRESERVED (recitals get cross-referred as Recital A/B/C) and is
-// emphasised together with the WHEREAS / AND WHEREAS lead-in.
-function matchRecitalLine(line = "") {
-  const source = String(line || "").trim();
-  const match = source.match(
-    /^(?:(?:\(([A-Z])\)|([A-Z])[.)])\s+)?((?:AND\s+)?WHEREAS[,:]?\s+)(.*)$/i
-  );
-  if (match) {
-    const letter = match[1] || match[2];
-    return {
-      label: letter ? `${letter.toUpperCase()}. ` : "",
-      lead: match[3],
-      rest: match[4] || "",
-    };
-  }
-
-  // A lettered recital that does not spell out WHEREAS. Restricted to the
-  // PARENTHESISED form "(A) ..." on purpose: a bare "A. ..." would swallow a
-  // party line for an initialled name such as "A. K. Sharma & Co, ... of the
-  // First Part;", which is rendered by the party branch further down.
-  const lettered = source.match(/^\(([A-Z])\)\s+(.*)$/);
-  if (lettered) {
-    return { label: `${lettered[1].toUpperCase()}. `, lead: "WHEREAS, ", rest: lettered[2] || "" };
-  }
-
-  return null;
 }
 
 function buildPartyParagraphRuns(line) {
@@ -335,108 +306,108 @@ function resolveFallbackHeading(clause, clauseNumber) {
   return `Clause ${clauseNumber}`;
 }
 
+// Renders the deed opening from the PARSED structure. The line-by-line regex
+// that used to live here (and again in the PDF renderer) is now in
+// documentStructure.js, parsed once. When the clause is not in deed form,
+// `parsed` is false and the raw lines are rendered as ordinary paragraphs
+// rather than silently dropped.
 function renderIdentityClause(children, text) {
-  const lines = String(text || "")
-    .split(/\n/)
-    .map((line) => line.trim());
+  const structure = parseIdentityClause(text);
 
-  for (const line of lines) {
-    if (!line) {
-      children.push(buildBlankParagraph({ spacing: { after: BODY_AFTER_SPACING } }));
-      continue;
-    }
+  const pushBlank = () =>
+    children.push(buildBlankParagraph({ spacing: { after: BODY_AFTER_SPACING } }));
 
-    if (/^THIS\s+AGREEMENT/i.test(line)) {
+  if (!structure.parsed) {
+    for (const line of structure.lines) {
+      if (!line) {
+        pushBlank();
+        continue;
+      }
       children.push(
-        new Paragraph({
-          style: STYLE_ID.body,
-          alignment: AlignmentType.JUSTIFIED,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: { left: OPERATIVE_LEFT },
-          children: buildOpeningLineRuns(line),
-        })
+        buildBodyParagraph(line, { style: STYLE_ID.recital, indent: { left: RECITAL_LEFT } })
       );
-      continue;
     }
-
-    if (/^BY AND BETWEEN$/i.test(line)) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.body,
-          alignment: AlignmentType.CENTER,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          children: [buildBodyRun("BY AND BETWEEN", { bold: true })],
-        })
-      );
-      continue;
-    }
-
-    if (/^AND$/i.test(line)) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.body,
-          alignment: AlignmentType.CENTER,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          children: [buildBodyRun("AND", { bold: true })],
-        })
-      );
-      continue;
-    }
-
-    if (/^WHEREAS[,:.]*$/i.test(line)) {
-      continue;
-    }
-
-    const recital = matchRecitalLine(line);
-    if (recital) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.recital,
-          alignment: AlignmentType.JUSTIFIED,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: { left: RECITAL_LEFT },
-          children: [
-            buildBodyRun(`${recital.label}${recital.lead}`, { bold: true }),
-            ...buildRunsWithSuperscriptOrdinals(recital.rest),
-          ],
-        })
-      );
-      continue;
-    }
-
-    if (/^NOW[,\s]+(THEREFORE|WITNESSETH)/i.test(line)) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.body,
-          alignment: AlignmentType.JUSTIFIED,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: { left: OPERATIVE_LEFT },
-          children: buildLeadInRuns(line, /^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i),
-        })
-      );
-      continue;
-    }
-
-    if (/of the\s+(?:First|Second|Third|Other)\s+Part[;.]?$/i.test(line)) {
-      children.push(
-        new Paragraph({
-          style: STYLE_ID.recital,
-          alignment: AlignmentType.JUSTIFIED,
-          spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: { left: RECITAL_LEFT },
-          children: buildPartyParagraphRuns(line),
-        })
-      );
-      continue;
-    }
-
-    children.push(
-      buildBodyParagraph(line, {
-        style: STYLE_ID.recital,
-        indent: { left: RECITAL_LEFT },
-      })
-    );
+    return;
   }
+
+  structure.blocks.forEach((block, index) => {
+    if (index > 0) pushBlank();
+
+    switch (block.type) {
+      case "opening":
+        children.push(
+          new Paragraph({
+            style: STYLE_ID.body,
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: OPERATIVE_LEFT },
+            children: buildOpeningLineRuns(block.text),
+          })
+        );
+        return;
+
+      case "connective":
+        children.push(
+          new Paragraph({
+            style: STYLE_ID.body,
+            alignment: AlignmentType.CENTER,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            children: [buildBodyRun(block.text, { bold: true })],
+          })
+        );
+        return;
+
+      case "party":
+        children.push(
+          new Paragraph({
+            style: STYLE_ID.recital,
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: RECITAL_LEFT },
+            children: buildPartyParagraphRuns(block.text),
+          })
+        );
+        return;
+
+      case "recital":
+        children.push(
+          new Paragraph({
+            style: STYLE_ID.recital,
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: RECITAL_LEFT },
+            children: [
+              buildBodyRun(`${block.label}${block.lead}`, { bold: true }),
+              ...buildRunsWithSuperscriptOrdinals(block.text),
+            ],
+          })
+        );
+        return;
+
+      case "testatum":
+        children.push(
+          new Paragraph({
+            style: STYLE_ID.body,
+            alignment: AlignmentType.JUSTIFIED,
+            spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
+            indent: { left: OPERATIVE_LEFT },
+            children: buildLeadInRuns(
+              block.text,
+              /^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i
+            ),
+          })
+        );
+        return;
+
+      default:
+        children.push(
+          buildBodyParagraph(block.text, {
+            style: STYLE_ID.recital,
+            indent: { left: RECITAL_LEFT },
+          })
+        );
+    }
+  });
 }
 
 function renderBodyClause(children, clause, clauseNumber, options = {}) {
@@ -635,80 +606,66 @@ function renderPdfLeadInParagraph(doc, lead, remainder, options = {}) {
   doc.moveDown(options.after ?? 0.35);
 }
 
+// PDF counterpart, consuming the same parsed structure as the DOCX renderer.
 function renderPdfIdentityClause(doc, text) {
-  const lines = String(text || "")
-    .split(/\n/)
-    .map((line) => line.trim());
+  const structure = parseIdentityClause(text);
 
-  for (const line of lines) {
-    if (!line) {
-      doc.moveDown(0.25);
-      continue;
+  if (!structure.parsed) {
+    for (const line of structure.lines) {
+      if (!line) {
+        doc.moveDown(0.4);
+        continue;
+      }
+      doc.font("Times-Roman").fontSize(11).text(line, { align: "justify", indent: 54 });
+      doc.moveDown(0.35);
     }
+    return;
+  }
 
-    if (/^THIS\s+AGREEMENT/i.test(line)) {
-      const match = line.match(/^(THIS\s+[A-Z\s]+?)(\s*\(.*)$/);
-      if (match) {
-        renderPdfLeadInParagraph(doc, match[1], match[2], {
+  for (const block of structure.blocks) {
+    switch (block.type) {
+      case "opening":
+        renderPdfLeadInParagraph(
+          doc,
+          (block.text.match(/^(THIS\s+[A-Z\s]+?)(?=\s*\()/) || [null, ""])[1] || "",
+          block.text.replace(/^(THIS\s+[A-Z\s]+?)(?=\s*\()/, ""),
+          { align: "justify", after: 0.4, indent: 36 }
+        );
+        break;
+
+      case "connective":
+        doc.font("Times-Bold").fontSize(12).text(block.text, { align: "center" });
+        doc.moveDown(0.4);
+        break;
+
+      case "party":
+        doc.font("Times-Roman").fontSize(11).text(block.text, { align: "justify", indent: 54 });
+        doc.moveDown(0.4);
+        break;
+
+      case "recital":
+        renderPdfLeadInParagraph(doc, `${block.label}${block.lead}`, block.text, {
           align: "justify",
           after: 0.35,
-          indent: 24,
+          indent: 54,
         });
-      } else {
-        doc.font("Times-Bold").fontSize(12).text(line, {
-          align: "justify",
-          lineGap: 2,
-          indent: 24,
-        });
-        doc.moveDown(0.35);
+        break;
+
+      case "testatum": {
+        const lead = block.text.match(/^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)/i);
+        renderPdfLeadInParagraph(
+          doc,
+          lead?.[1] || "NOW, THEREFORE, ",
+          block.text.slice((lead?.[1] || "").length),
+          { align: "justify", after: 0.4, indent: 36 }
+        );
+        break;
       }
-      continue;
-    }
 
-    if (/^BY AND BETWEEN$/i.test(line)) {
-      doc.font("Times-Bold").fontSize(12).text("BY AND BETWEEN", { align: "center" });
-      doc.moveDown(0.35);
-      continue;
+      default:
+        doc.font("Times-Roman").fontSize(11).text(block.text, { align: "justify", indent: 54 });
+        doc.moveDown(0.35);
     }
-
-    if (/^AND$/i.test(line)) {
-      doc.font("Times-Bold").fontSize(12).text("AND", { align: "center" });
-      doc.moveDown(0.35);
-      continue;
-    }
-
-    if (/^WHEREAS[,:.]*$/i.test(line)) {
-      continue;
-    }
-
-    const pdfRecital = matchRecitalLine(line);
-    if (pdfRecital) {
-      renderPdfLeadInParagraph(
-        doc,
-        `${pdfRecital.label}${pdfRecital.lead}`,
-        pdfRecital.rest,
-        { align: "justify", after: 0.35, indent: 54 }
-      );
-      continue;
-    }
-
-    if (/^NOW[,\s]+(THEREFORE|WITNESSETH)/i.test(line)) {
-      const leadMatch = line.match(/^(NOW,\s*(?:THEREFORE|WITNESSETH),?\s*)(.*)$/i);
-      renderPdfLeadInParagraph(
-        doc,
-        leadMatch?.[1] || "NOW, THEREFORE, ",
-        leadMatch?.[2] || "",
-        { align: "justify", after: 0.35, indent: 24 }
-      );
-      continue;
-    }
-
-    doc.font("Times-Roman").fontSize(12).text(line, {
-      align: "justify",
-      lineGap: 2,
-      indent: 54,
-    });
-    doc.moveDown(0.35);
   }
 }
 

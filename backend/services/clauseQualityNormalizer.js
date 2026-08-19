@@ -103,7 +103,11 @@ export function normalizeClauseBody(text = "", { documentType } = {}) {
     .replace(/\u00a0/g, " ");
 
   value = value.replace(/\.{2,}/g, ".");
-  value = value.replace(/\.\s+(and|or)\b/gi, ", $1");
+  // Join a stray full stop before a conjunction ("...the instrument. and the")
+  // into a comma. Requires at least TWO letters before the stop, so a lettered
+  // recital label is left alone: this rule was rewriting "B. AND WHEREAS" as
+  // "B, AND WHEREAS" in every deed that used lettered recitals.
+  value = value.replace(/(^|[^A-Za-z])([A-Za-z]{2,})\.\s+(and|or)\b/gi, "$1$2, $3");
   value = value.replace(/([,;:!?])\1+/g, "$1");
   value = value.replace(/\s+([,;:.!?])/g, "$1");
   value = value.replace(/([,;:.!?])(?![\s"')\]])/g, "$1 ");
