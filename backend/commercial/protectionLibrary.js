@@ -12,13 +12,25 @@ export const PROTECTION_LIBRARY = {
     }),
   },
 
+  // These AUTO-* clauses are injected by the commercial engine AFTER document
+  // hardening has run, so they are never seen by the clause builders in
+  // documentHardening.js. That meant NDAs, employment contracts and the two
+  // property types received this 29-word indemnity while every other document
+  // type received the full conduct-of-claims version -- an indemnity with no
+  // notice requirement, no conduct mechanism and no mitigation limb.
   INDEMNITY: {
     build: () => ({
       clause_id: "AUTO-INDEM-001",
       category: "RISK",
       title: "Indemnity",
-      text:
-        "Each Party shall indemnify and hold harmless the other Party against losses, damages, claims, costs, and liabilities arising from that Party's breach of this Agreement, negligence, or wilful misconduct.",
+      text: [
+        'Each Party (the "Indemnifying Party") shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised representatives (each an "Indemnified Party") from and against all losses, damages, claims, costs, and liabilities arising from the Indemnifying Party\'s breach of this Agreement, negligence, or wilful misconduct. The conduct of any claim to which this indemnity applies shall be governed as follows:',
+        "(a) the Indemnified Party shall notify the Indemnifying Party in writing as soon as reasonably practicable after becoming aware of a claim for which indemnity is sought, giving reasonable particulars; a delay in giving notice shall reduce the Indemnifying Party's liability only to the extent it is actually prejudiced by that delay",
+        "(b) the Indemnifying Party may, on written notice, assume conduct of the defence at its own cost using legal advisers reasonably acceptable to the Indemnified Party, and the Indemnified Party shall provide reasonable cooperation and access to relevant records at the Indemnifying Party's cost",
+        "(c) neither Party shall settle or compromise a claim on terms that impose a non-indemnified liability, an admission of wrongdoing, or an ongoing restriction on the other without that other Party's prior written consent, save where urgent action is reasonably required to mitigate loss",
+        "(d) the Indemnified Party shall take reasonable steps to mitigate its loss, and this indemnity shall not extend to loss to the extent caused or increased by the Indemnified Party's own breach, negligence, or failure to mitigate",
+        "(e) recovery under this indemnity shall be reduced by any amount actually recovered from insurance or from a third party in respect of the same loss, so that the Indemnified Party is not compensated twice",
+      ].join("\n"),
       statutory_reference: "Indian Contract Act, 1872, Section 124",
     }),
   },

@@ -9,13 +9,23 @@ function buildFieldDefinition(name, variable, requiredFields = [], essentialFiel
     label: definition.label || name,
     type: definition.type || "text",
     options: definition.options || null,
-    required: requiredFields.includes(name),
+    // "Required" had two sources that disagreed: DOCUMENT_CONFIG.requiredFields
+    // (what the form starred) and variableConfig's own `required` flag (what
+    // generation actually demands). 70 fields across the 22 types were in the
+    // second but not the first, so the form let a user submit and only then
+    // reported "Missing required field". Take either as authoritative.
+    required: requiredFields.includes(name) || definition.required === true,
     // Marks fields shown in Quick mode (the minimal set for a usable draft).
     essential: essentialFields.includes(name),
     placeholder: definition.placeholder || "",
     description: definition.description || "",
     example: definition.example || "",
     aiGuidance: definition.aiGuidance || "",
+    // Conditional display: { field, equals: [...] }. The form hides this field
+    // until the referenced answer is one of the listed values. Serialised here
+    // because the response is an explicit whitelist -- without this line the
+    // rule exists in variableConfig.js but never reaches the form.
+    showIf: definition.showIf || null,
   };
 }
 

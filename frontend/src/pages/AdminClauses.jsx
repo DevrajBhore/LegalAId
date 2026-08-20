@@ -8,6 +8,7 @@ import {
   getDocumentTypes,
 } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import LibraryReviewPanel from "../components/LibraryReviewPanel";
 import { Scales, ArrowRight, Sparkles, Search } from "../utils/icons";
 import "./AdminClauses.css";
 
@@ -115,10 +116,15 @@ export default function AdminClauses() {
         <span className="admin-kicker">Admin · Clause governance</span>
         <h1 className="admin-title">Clause authoring &amp; review</h1>
         <p className="admin-sub">
-          AI proposes missing protections; you approve. Nothing reaches the
-          production clause library without sign-off here.
+          Advocate sign-off on the live clause library, and approval of new
+          protections the AI proposes. Nothing reaches production without a
+          named reviewer.
         </p>
       </header>
+
+      {/* Advocate review of the live library. Placed first: these clauses are
+          already reaching users, whereas the queue below is candidate text. */}
+      <LibraryReviewPanel />
 
       {/* AI authoring */}
       <section className="admin-panel">

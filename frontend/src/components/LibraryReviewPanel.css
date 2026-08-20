@@ -1,0 +1,185 @@
+/* Follows the dark admin surface established in AdminClauses.css — same panel
+   background, border, radius tokens and muted-white type scale. */
+
+.lib-coverage { margin: 16px 0 18px; }
+.lib-coverage-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.lib-coverage-fill {
+  height: 100%;
+  background: var(--gold, #c8a24a);
+  transition: width 240ms ease;
+}
+.lib-coverage-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  flex-wrap: wrap;
+}
+.lib-coverage-stats strong { font-size: 18px; color: var(--white, #fff); }
+.lib-coverage-stats span { color: rgba(255, 255, 255, 0.4); }
+.lib-hint {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.34);
+  font-family: var(--font-mono);
+}
+
+.lib-signature {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-md, 8px);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 16px;
+}
+.lib-signature label,
+.lib-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 220px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.lib-optional {
+  color: rgba(255, 255, 255, 0.28);
+  font-weight: 400;
+  text-transform: none;
+}
+.lib-signature input,
+.lib-field input,
+.lib-field textarea,
+.lib-search input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--r-md, 8px);
+  color: var(--text-primary, #fff);
+  padding: 9px 11px;
+  font: inherit;
+  font-size: 13px;
+  width: 100%;
+}
+.lib-field textarea { resize: vertical; line-height: 1.6; }
+
+.lib-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.lib-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.lib-search {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  min-width: 220px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.lib-list { list-style: none; margin: 0; padding: 0; }
+.lib-row {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-md, 8px);
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.015);
+}
+.lib-row-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  flex-wrap: wrap;
+}
+.lib-row-head:hover { background: rgba(255, 255, 255, 0.03); }
+.lib-row-title {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.lib-row-title code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+}
+.lib-row-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lib-reach,
+.lib-risk,
+.lib-mandatory,
+.lib-state {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+.lib-risk--high { color: #f2a3a3; border-color: rgba(242, 163, 163, 0.35); }
+.lib-risk--medium { color: #e8c98a; border-color: rgba(232, 201, 138, 0.32); }
+.lib-mandatory { color: rgba(255, 255, 255, 0.75); }
+.lib-state--ok { color: #93d3a2; border-color: rgba(147, 211, 162, 0.35); }
+.lib-state--open { color: rgba(255, 255, 255, 0.4); }
+
+.lib-row-body {
+  padding: 4px 14px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lib-docs,
+.lib-basis,
+.lib-prior-note,
+.lib-caveat {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.6;
+}
+.lib-basis { display: flex; align-items: center; gap: 6px; }
+.lib-prior-note { color: #e8c98a; }
+.lib-caveat { color: rgba(255, 255, 255, 0.3); font-style: italic; }
+.lib-text {
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--r-md, 8px);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: pre-wrap;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.lib-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.lib-btn--approve { border-color: rgba(147, 211, 162, 0.4); color: #93d3a2; }
+.lib-btn--amend { border-color: rgba(232, 201, 138, 0.4); color: #e8c98a; }
+.lib-btn--reject { border-color: rgba(242, 163, 163, 0.4); color: #f2a3a3; }
+.lib-btn--discuss { color: rgba(255, 255, 255, 0.6); }
+.lib-btn--reset { color: rgba(255, 255, 255, 0.4); margin-left: auto; }

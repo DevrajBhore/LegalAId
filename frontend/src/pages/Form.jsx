@@ -673,7 +673,11 @@ function FieldGroup({
         hasError={Boolean(resolvedError)}
         errorId={errorId}
       />
-      {/* <div className="field-help">
+      {/* Every field now carries a written definition in variableConfig.js
+          explaining what it means and what to write. This block was commented
+          out, so none of it reached the user and the form asked bare questions
+          with no guidance. The .field-help styles were already in Form.css. */}
+      <div className="field-help">
         <div className="field-help__definition">
           <strong>Definition:</strong> {definitionText}
         </div>
@@ -683,7 +687,7 @@ function FieldGroup({
         {field.aiGuidance && (
           <div className="field-help__ai">AI tip: {field.aiGuidance}</div>
         )}
-      </div> */}
+      </div>
       {resolvedError && (
         <div className="field-inline-error" id={errorId} role="alert">
           <div className="field-inline-error__icon">{Icons.warning}</div>
@@ -855,15 +859,41 @@ export default function Form() {
   const quickMode = mode === "quick" && quickAvailable;
   // In quick mode a field is "active" (shown) only if it's essential; in
   // detailed mode every field is active.
+  // A field carrying `showIf: { field, equals: [...] }` is only meaningful once
+  // the referenced answer is one of the listed values -- party_1_llpin only
+  // matters when the first party is an LLP, and the specific liability cap
+  // amount only when the cap basis is a specific amount. Without this, every
+  // form showed all four registration numbers for both parties regardless of
+  // what they were, which is most of the repetition in the intake.
+  const passesShowIf = useCallback(
+    (field) => {
+      const rule = field?.showIf;
+      if (!rule?.field || !Array.isArray(rule.equals)) return true;
+      const current = String(form[rule.field] ?? "").trim().toLowerCase();
+      if (!current) return false;
+      return rule.equals.some(
+        (option) => String(option).trim().toLowerCase() === current
+      );
+    },
+    [form]
+  );
+
   const isActiveField = useCallback(
-    (field) => (quickMode ? Boolean(field?.essential) : true),
-    [quickMode]
+    (field) => {
+      if (!passesShowIf(field)) return false;
+      return quickMode ? Boolean(field?.essential) : true;
+    },
+    [quickMode, passesShowIf]
   );
   // What counts as required-to-submit: essentials in quick mode, the full
   // required set in detailed mode. Mirrors the backend's mode-aware validation.
   const isRequiredField = useCallback(
-    (field) => (quickMode ? Boolean(field?.essential) : Boolean(field?.required)),
-    [quickMode]
+    (field) => {
+      // A field the user cannot see must never block submission.
+      if (!passesShowIf(field)) return false;
+      return quickMode ? Boolean(field?.essential) : Boolean(field?.required);
+    },
+    [quickMode, passesShowIf]
   );
 
   const toggleSection = (index) =>

@@ -56,6 +56,16 @@ export const promoteClauseReview = (id) =>
   API.post(`/admin/clause-reviews/${id}/promote`);
 export const proposeClauseAuthoring = (documentType) =>
   API.post("/admin/clause-authoring/propose", { document_type: documentType });
+
+// ── Admin: advocate review of the live clause library ───────────────────────
+// Distinct from the candidate queue above: these clauses are already shipping
+// in generated documents.
+export const getLibraryReview = (params) =>
+  API.get("/admin/library-review", { params });
+export const getLibraryReviewSummary = () =>
+  API.get("/admin/library-review/summary");
+export const recordLibraryReview = (clauseId, body) =>
+  API.patch(`/admin/library-review/${clauseId}`, body);
 export const getDocumentHistoryList = () => API.get("/history/documents");
 export const getDocumentHistoryDetail = (draftId) =>
   API.get(`/history/documents/${draftId}`);

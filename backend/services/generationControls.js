@@ -47,6 +47,35 @@ function mentionsReporting(value = "") {
 
 const REGISTRATION_THRESHOLD_MONTHS = 12;
 
+// A seat of arbitration is conventionally a place, not a state. Indian postal
+// addresses in this system read "1 First Road, Mumbai, Maharashtra 400001", so
+// the city is the segment immediately before the one carrying the state name or
+// the PIN. Returns "" when the address cannot be read confidently, and the
+// caller then falls back to the state.
+function cityFromAddress(address = "", state = "") {
+  const segments = normalizeText(address)
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (segments.length < 2) return "";
+
+  const stateName = normalizeText(state).toLowerCase();
+  const isStateOrPin = (part) => {
+    const lowered = part.toLowerCase();
+    if (stateName && lowered.includes(stateName)) return true;
+    return /^\d{6}$/.test(part.replace(/\s/g, ""));
+  };
+
+  for (let index = segments.length - 1; index >= 1; index -= 1) {
+    if (!isStateOrPin(segments[index])) continue;
+    const candidate = segments[index - 1];
+    // A street line ("1 First Road") is not a city; a city segment is words only.
+    if (/^[A-Za-z][A-Za-z\s.'-]{1,40}$/.test(candidate)) return candidate;
+  }
+
+  return "";
+}
+
 export function deriveGenerationControls(documentType, variables = {}) {
   // The commercial magnitude of the deal, derived from the user's own figures,
   // exposed as ordinary variables so blueprint conditions and clause builders
@@ -66,6 +95,20 @@ export function deriveGenerationControls(documentType, variables = {}) {
   // Licensor -> Landlord turned 24 of them into "the Landlord/Landlord". Exposing
   // the resolved labels as variables lets a shared clause say {{party_1_label}}
   // and read correctly in every document type that uses it.
+  // The seat of arbitration is no longer asked for separately: the jurisdiction
+  // the user already gave supplies it. The seat is NOT the same thing as the
+  // governing law -- under the Arbitration and Conciliation Act, 1996 the seat
+  // fixes which court exercises supervisory jurisdiction over the arbitration --
+  // so the clause must still state one. It is derived here rather than dropped.
+  if (!hasMeaningfulValue(derived.arbitration_city)) {
+    const seat =
+      variables.execution_city ||
+      cityFromAddress(variables.party_1_address, variables.operating_state) ||
+      variables.governing_law_state ||
+      variables.operating_state;
+    if (hasMeaningfulValue(seat)) derived.arbitration_city = normalizeText(seat);
+  }
+
   const namingLabels = getPartyNamingLabels(documentType);
   if (namingLabels) {
     if (!hasMeaningfulValue(derived.party_1_label)) derived.party_1_label = namingLabels.first;

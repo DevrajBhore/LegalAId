@@ -48,13 +48,32 @@ export function semanticValidate(draft) {
   // ── ICA s.23 – Unlawful Object ────────────────────────────────────────────
   // Flag only if explicitly unlawful language is present.
   const unlawfulPatterns = [
-    /forbidden\s+by\s+law/,
-    /defeat\s+the\s+provisions\s+of\s+any\s+law/,
-    /immoral\s+(purpose|object)/,
-    /against\s+public\s+policy/,
-    /involves\s+injury\s+to\s+the\s+person/,
+    /forbidden\s+by\s+law/g,
+    /defeat\s+the\s+provisions\s+of\s+any\s+law/g,
+    /immoral\s+(purpose|object)/g,
+    /against\s+public\s+policy/g,
+    /involves\s+injury\s+to\s+the\s+person/g,
   ];
-  if (unlawfulPatterns.some((p) => p.test(text))) {
+
+  // A well-drafted contract recites compliance with s.23 in the negative -- "the
+  // object and consideration are NOT forbidden by law, fraudulent, immoral, or
+  // opposed to public policy". Matching the bare phrase flagged that recital as
+  // evidence of the very defect it disclaims, and returned CRITICAL on
+  // perfectly sound drafting. Only treat a match as a finding when it is not
+  // governed by a negation.
+  const NEGATORS = /\b(not|nor|never|neither|no|without being|free from|excluding)\b[^.;:]{0,60}$/i;
+  const isNegated = (offset) => NEGATORS.test(text.slice(Math.max(0, offset - 80), offset));
+
+  const hasUnlawfulLanguage = unlawfulPatterns.some((pattern) => {
+    pattern.lastIndex = 0;
+    let match;
+    while ((match = pattern.exec(text)) !== null) {
+      if (!isNegated(match.index)) return true;
+    }
+    return false;
+  });
+
+  if (hasUnlawfulLanguage) {
     issues.push({
       rule_id: "UNLAWFUL_OBJECT_DETECTED",
       severity: "CRITICAL",

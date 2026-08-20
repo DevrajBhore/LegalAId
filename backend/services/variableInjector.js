@@ -167,7 +167,14 @@ function buildDerivedVariables(variables = {}) {
       variables.company_address,
       variables.party_1_address
     ),
-    arbitration_city: firstNonEmpty(variables.arbitration_city, "Mumbai"),
+    // Previously defaulted to a hardcoded "Mumbai", which silently seated every
+    // arbitration there regardless of where the parties actually were.
+    arbitration_city: firstNonEmpty(
+      variables.arbitration_city,
+      variables.execution_city,
+      variables.governing_law_state,
+      variables.operating_state
+    ),
   };
 }
 

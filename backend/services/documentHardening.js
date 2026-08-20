@@ -385,11 +385,23 @@ function resolveExpensePolicyClause(documentType, serviceLabels, variables = {})
   const payer = serviceLabels.payer;
   const policy = normalizeWhitespace(variables.expenses_policy);
 
+  // Whichever way expenses fall, the clause needs the mechanics: what evidence
+  // is required, by when a claim must be made, when it is paid, and what is not
+  // reimbursable. Without them "reimbursed at actuals" is an argument waiting to
+  // happen.
+  const mechanics = formatStructuredSubparts([
+    `a claim for reimbursement shall be made within thirty (30) days of the expense being incurred, supported by the original invoice or receipt and a short statement of the purpose for which it was incurred`,
+    `${payer} shall pay an approved claim within thirty (30) days of receiving it, together with the next payment falling due under this Agreement where that is more convenient`,
+    `where the expense attracts GST and ${actor} is registered, the claim shall be raised as a GST-compliant tax invoice so that input credit is not lost`,
+    `expenses of a personal nature, fines and penalties, and any cost arising from ${actor}'s own delay, breach, or failure to obtain approval are not reimbursable`,
+    `${payer} may decline a claim that was not approved in advance where approval was required, and shall give reasons in writing for doing so`,
+  ]);
+
   if (!hasMeaningfulValue(policy)) {
-    return `Except as expressly approved in writing in advance by ${payer}, all out-of-pocket, travel, accommodation, communication, and incidental expenses incurred by ${actor} in performing the Services shall be borne solely by ${actor}.`;
+    return `Except as expressly approved in writing in advance by ${payer}, all out-of-pocket, travel, accommodation, communication, and incidental expenses incurred by ${actor} in performing the Services shall be borne solely by ${actor}. Where an expense is approved in advance, the following shall apply:\n${mechanics}`;
   }
 
-  return `The following expense reimbursement arrangement shall apply under this Agreement: ${policy}. Any reimbursable expense claimed by ${actor} shall be supported by reasonable documentary evidence and, unless the stated policy provides otherwise, shall require the prior written approval of ${payer}.`;
+  return `The following expense reimbursement arrangement shall apply under this Agreement: ${policy}. Any reimbursable expense claimed by ${actor} shall be supported by reasonable documentary evidence and, unless the stated policy provides otherwise, shall require the prior written approval of ${payer}. In addition:\n${mechanics}`;
 }
 
 function resolveServiceFee(variables = {}) {
@@ -1380,7 +1392,13 @@ function renderHardClause(
       )}.` : ""}${hasMeaningfulValue(variables.statutory_benefits) ? ` The Employee shall additionally receive the following statutory or policy-linked benefits: ${stripExternalReferencePhrases(
         variables.statutory_benefits,
         ""
-      )}.` : ""}`,
+      )}.` : ""}\n${formatStructuredSubparts([
+        "salary shall be paid in arrears by direct credit to the Employee's designated bank account on or before the seventh (7th) day of the following month, consistent with the wage period and payment timelines under the Payment of Wages Act, 1936",
+        "the Employer shall deduct tax at source under Section 192 of the Income Tax Act, 1961, together with such other deductions as are authorised or required by law, including the Employee's contribution to the Employees' Provident Fund and, where applicable, professional tax and Employees' State Insurance",
+        "no deduction shall be made from the Employee's wages otherwise than as permitted by Section 7 of the Payment of Wages Act, 1936",
+        "the Employer shall issue a monthly pay slip recording gross salary, each deduction, and net pay, and shall furnish Form 16 within the time prescribed under the Income Tax Rules, 1962",
+        "the compensation is reviewed annually at the Employer's discretion and any revision shall be recorded in writing; a review does not of itself create an entitlement to an increase",
+      ])}`,
 
     EMP_WAGES_001: () =>
       `The Employer shall pay the Employee a gross annual cost-to-company of ${formatCurrency(
@@ -1535,11 +1553,25 @@ function renderHardClause(
         ""
       )}` : " is or becomes publicly available without breach of this Agreement, was lawfully known to the receiving party without restriction before disclosure, is lawfully received from a third party without confidentiality restriction, or is independently developed without reference to the disclosing party's Confidential Information"}.`,
 
-    NDA_DISCLOSURE_PERMITTED_001: () =>
-      `The ${namedParties.second} shall use Confidential Information solely for ${stripExternalReferencePhrases(
-        variables.permitted_use || variables.purpose,
-        "the permitted purpose expressly stated in this Agreement"
-      )}.${normalizeWhitespace(variables.nda_type).toLowerCase().includes("mutual") ? ` Where the Agreement operates as a mutual NDA, each Party shall be entitled to use the other Party's Confidential Information only for that same permitted purpose.` : ""}`,
+    // The clause stated the permitted purpose and stopped. Every NDA also needs a
+    // route for disclosure compelled by law or by a regulator -- without one the
+    // receiving party is contractually bound either to breach the agreement or
+    // to breach the order.
+    NDA_DISCLOSURE_PERMITTED_001: () => ({
+      title: "Permitted Use and Disclosure",
+      text: [
+        `The ${namedParties.second} shall use Confidential Information solely for ${stripExternalReferencePhrases(
+          variables.permitted_use || variables.purpose,
+          "the permitted purpose expressly stated in this Agreement"
+        )}.${normalizeWhitespace(variables.nda_type).toLowerCase().includes("mutual") ? ` Where this Agreement operates as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted purpose.` : ""} Disclosure is permitted only as follows:`,
+        formatStructuredSubparts([
+          "to those of its personnel, professional advisers, and auditors who need the Confidential Information for the permitted purpose and who are bound by obligations of confidence no less protective than those in this Agreement, the recipient remaining responsible for their compliance",
+          "where disclosure is required by Applicable Law, by a court or tribunal of competent jurisdiction, by a regulator, or by the rules of a stock exchange to which the recipient is subject",
+          "where disclosure is compelled under the preceding limb, the recipient shall, to the extent legally permitted, give the other Party prompt written notice before disclosing so that it may seek a protective order, and shall disclose only the minimum required while using reasonable endeavours to obtain confidential treatment",
+          "no other disclosure is permitted, and a disclosure made in reliance on this clause does not otherwise release the Confidential Information from the obligations of this Agreement",
+        ]),
+      ].join("\n"),
+    }),
 
     NDA_RETURN_OF_INFORMATION_001: () => {
       const option = normalizeWhitespace(variables.return_destruction_option).toLowerCase();
@@ -2163,6 +2195,192 @@ function renderHardClause(
         variables.society_rules,
         ""
       )}.` : ""} Stamp duty and registration charges shall be borne in the manner agreed by the Parties or, in the absence of a specific agreement, equally.`;
+    },
+
+    // ── Depth, tranche 2 ─────────────────────────────────────────────────
+    // These rendered under 40 words. Each was thin in a way that costs something
+    // concrete: a governing-law clause that never names a forum, an indemnity
+    // four document types received in a 29-word form while every other type got
+    // the full one, and confidentiality provisions with no security standard,
+    // no compelled-disclosure procedure and no route to an injunction.
+
+    // Governing law is not the same question as forum. This clause appeared in
+    // all 22 document types stating the applicable law and then stopping, so no
+    // court was ever named as having jurisdiction.
+    CORE_GOVERNING_LAW_001: () => {
+      const state = normalizeWhitespace(
+        variables.governing_law_state || variables.operating_state
+      );
+      const forum = normalizeWhitespace(variables.arbitration_city) || state;
+
+      return {
+        title: "Governing Law and Jurisdiction",
+        text: [
+          `This Agreement, and any dispute or claim arising out of or in connection with it, its subject matter or its formation (including non-contractual disputes or claims), shall be governed by and construed in accordance with the laws of India${
+            state ? `, and where local procedural, registration, or stamp matters are relevant, as applied in the State of ${state}` : ""
+          }.`,
+          formatStructuredSubparts([
+            forum
+              ? `subject to the dispute resolution provisions of this Agreement, the courts at ${forum} shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction`
+              : "subject to the dispute resolution provisions of this Agreement, the competent courts of India shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction",
+            "where this Agreement provides for arbitration, the jurisdiction conferred above is the supervisory jurisdiction over the arbitration, and nothing in this clause shall be read as permitting either Party to commence substantive proceedings in court in place of arbitration",
+            "each Party waives any objection to that forum on the ground of inconvenient forum or that proceedings have been brought in an inappropriate court",
+            "the rules of private international law shall not apply to the extent they would result in the application of the law of any jurisdiction other than India",
+            "nothing in this clause shall prevent either Party from applying to any court of competent jurisdiction for interim or protective relief, including injunctive relief, to preserve its rights pending resolution of the dispute",
+          ]),
+        ].join("\n"),
+      };
+    },
+
+    // The static text read "the goods specifically described and specified in
+    // this Agreement" -- but nothing in the Agreement ever described them. The
+    // detailed goods_description the user typed was discarded, so a supply
+    // contract went out with no identification of its own subject matter.
+    SUPPLY_GOODS_DESCRIPTION_001: () => {
+      const goods = stripExternalReferencePhrases(
+        variables.goods_description || variables.product_description,
+        ""
+      );
+      const quantity = stripExternalReferencePhrases(variables.quantity, "");
+
+      const opening = goods
+        ? `The Seller shall supply to the Purchaser the following goods${
+            quantity ? `, in the quantity of ${quantity}` : ""
+          }: ${goods}.`
+        : "The Seller shall supply to the Purchaser the goods described in the Schedule to this Agreement, in the quantities stated there.";
+
+      return {
+        title: "Description of Goods",
+        text: [
+          opening,
+          formatStructuredSubparts([
+            "the goods shall correspond with that description, and where the sale is by description the Purchaser is entitled to reject goods that do not so correspond, in accordance with Section 15 of the Sale of Goods Act, 1930",
+            "the goods shall be of merchantable quality and, where the Purchaser has made known the particular purpose for which they are required so as to show reliance on the Seller's skill or judgement, shall be reasonably fit for that purpose, in accordance with Section 16 of that Act",
+            "where the sale is by sample as well as by description, the bulk shall correspond with both the sample and the description",
+            "the goods shall be packed and marked so as to withstand the agreed mode of carriage, and shall be accompanied by the test certificates, manuals, and statutory documentation applicable to goods of that kind",
+            "any variation in specification, model, grade, or quantity requires the Purchaser's prior written agreement, and goods delivered outside the agreed specification are delivered at the Seller's risk",
+          ]),
+        ].join("\n"),
+      };
+    },
+
+    IP_COPYRIGHT_001: () => ({
+      title: "Copyright",
+      text: [
+        "Copyright and all other rights in the works, materials, designs, code, text, images, and other subject matter created under this Agreement shall vest as set out in the intellectual property provisions of this Agreement, and the following shall apply to that vesting:",
+        formatStructuredSubparts([
+          "an assignment of copyright under this Agreement is made in writing and signed as required by Section 19 of the Copyright Act, 1957, and takes effect on creation of the work or on the date of this Agreement, whichever is later",
+          "the Parties agree that Section 19(4) of that Act, under which an assignment lapses if the assignee does not exercise the rights within one year, shall not operate to defeat the assignment, and the assignee may exercise the assigned rights at any time during the term of copyright",
+          "the assignment extends to all media and formats, whether now known or later devised, and for the full term of copyright including all renewals, revivals, reversions, and extensions",
+          "the author waives, to the extent permissible under Section 57 of the Copyright Act, 1957, the right to restrain or claim damages in respect of any modification or adaptation of the work made in the ordinary course of its exploitation, save where the treatment is prejudicial to the author's honour or reputation",
+          "the assignor shall execute any further document reasonably required to record or perfect the assignment before the Registrar of Copyrights or any equivalent authority",
+        ]),
+      ].join("\n"),
+    }),
+
+    IP_LICENSE_001: () => ({
+      title: "Licence Grant",
+      text: [
+        "To the extent that any intellectual property is licensed rather than assigned under this Agreement, the licensor grants the licensee a licence on the terms set out below and retains all rights not expressly granted.",
+        formatStructuredSubparts([
+          "the licence is non-exclusive, non-transferable, and royalty-free unless this Agreement expressly provides otherwise, and extends to the territory of India unless a wider territory is expressly stated",
+          "the licence is granted solely for the purpose of receiving and using the deliverables or services under this Agreement, and for no other purpose",
+          "the licence continues for the term of this Agreement and, in respect of deliverables paid for in full, on a perpetual basis after termination, save where this Agreement is terminated for the licensee's material breach",
+          "the licensor warrants that it is entitled to grant the licence and that use of the licensed material in accordance with this Agreement will not infringe the intellectual property rights of any third party",
+          "no licence is granted by implication, estoppel, or otherwise in respect of any intellectual property other than that expressly identified",
+        ]),
+      ].join("\n"),
+    }),
+
+    IP_LICENSE_RESTRICTIONS_001: () => ({
+      title: "Licence Restrictions",
+      text: [
+        "The licensee shall not, and shall not permit any third party to, do any of the following in relation to the licensed material:",
+        formatStructuredSubparts([
+          "sub-license, assign, rent, lease, lend, distribute, or otherwise make the licensed material available to any third party, except to its own personnel and professional advisers who need access for the permitted purpose and who are bound by equivalent restrictions",
+          "reverse engineer, decompile, or disassemble the licensed material, or otherwise attempt to derive its source code, structure, or underlying ideas, except to the limited extent that such an act cannot lawfully be prohibited",
+          "remove, obscure, or alter any proprietary notice, trade mark, watermark, or attribution appearing on or in the licensed material",
+          "use the licensed material to build, train, or improve a competing product or service, or to benchmark it for publication without the licensor's prior written consent",
+          "use the licensed material beyond the scope, territory, user count, or period expressly permitted, and any such use shall be a material breach of this Agreement",
+        ]),
+      ].join("\n"),
+    }),
+
+    IP_FEEDBACK_001: () => ({
+      title: "Feedback",
+      text: "Either Party may from time to time provide the other with suggestions, comments, error reports, or other feedback relating to the deliverables or services under this Agreement. The receiving Party may use, incorporate, and exploit that feedback freely and without restriction, obligation of confidence, attribution, or payment, and the Party giving the feedback assigns to the receiving Party any intellectual property rights subsisting in it. Nothing in this clause obliges either Party to give feedback, obliges the recipient to act on it, or transfers any right in the Confidential Information or pre-existing materials of the Party giving the feedback.",
+    }),
+
+    CORE_CONTRACT_FORMATION_001: () => ({
+      title: "Formation and Validity",
+      text: [
+        "The Parties confirm that this Agreement satisfies the requirements of a valid contract under Section 10 of the Indian Contract Act, 1872, and record the following for the avoidance of doubt:",
+        formatStructuredSubparts([
+          "each Party is competent to contract within the meaning of Section 11 of that Act, being of the age of majority, of sound mind, and not disqualified from contracting by any law to which it is subject",
+          "each Party enters into this Agreement of its own free will within the meaning of Section 14, and not as a result of coercion, undue influence, fraud, misrepresentation, or mistake",
+          "the consideration and the object of this Agreement are lawful within the meaning of Section 23, and are not forbidden by law, fraudulent, or opposed to public policy",
+          "each Party has had the opportunity to take independent legal advice on this Agreement before executing it, whether or not it has chosen to do so",
+          "where a Party is a body corporate, the person executing this Agreement on its behalf is duly authorised to do so and that Party's entry into this Agreement is within its objects and powers",
+        ]),
+      ].join("\n"),
+    }),
+
+    CORE_COMPLIANCE_WITH_LAW_001: () => ({
+      title: "Compliance with Law",
+      text: [
+        "Each Party shall, in performing its obligations under this Agreement, comply with all Applicable Law, and shall obtain and maintain at its own cost every registration, licence, permission, consent, and approval necessary for it to perform those obligations lawfully.",
+        formatStructuredSubparts([
+          "neither Party shall offer, promise, give, request, or accept any undue advantage, whether directly or through a third party, in order to obtain or retain business or any improper advantage, and each Party shall comply with the Prevention of Corruption Act, 1988 and with any other anti-bribery legislation applicable to it",
+          "each Party shall comply with the applicable tax, labour, environmental, and data protection legislation in force from time to time, including the Digital Personal Data Protection Act, 2023 where personal data is processed under this Agreement",
+          "each Party shall promptly notify the other if it becomes aware of any circumstance that would make performance of this Agreement unlawful, or that would place the other Party in breach of Applicable Law",
+          "a Party shall not be required to do anything under this Agreement that would cause it to breach Applicable Law, and shall consult with the other Party in good faith to agree a lawful alternative before treating performance as excused",
+        ]),
+      ].join("\n"),
+    }),
+
+    NDA_DATA_SECURITY_001: () => ({
+      title: "Data Security",
+      text: [
+        "The Receiving Party shall protect the Confidential Information with reasonable security safeguards appropriate to its sensitivity, and in no event with less care than it applies to its own confidential information of a like kind.",
+        formatStructuredSubparts([
+          "Confidential Information shall be held in systems that are access-controlled, and access shall be limited to those personnel who need it for the permitted purpose",
+          "Confidential Information shall be encrypted in transit and, where stored electronically, at rest, using methods that are generally accepted as adequate at the relevant time",
+          "the Receiving Party shall maintain a record sufficient to identify who has accessed the Confidential Information and when, and shall produce that record to the Disclosing Party on reasonable written request",
+          "the Receiving Party shall notify the Disclosing Party in writing without undue delay, and in any event within seventy-two (72) hours, of becoming aware of any unauthorised access to, disclosure of, or loss of the Confidential Information, and shall provide reasonable assistance in investigating and mitigating the incident",
+          "where the Confidential Information includes personal data, the Receiving Party shall additionally comply with its obligations as a Data Fiduciary or Data Processor under the Digital Personal Data Protection Act, 2023, including the obligation to give notice of a personal data breach",
+        ]),
+      ].join("\n"),
+    }),
+
+    NDA_BREACH_REMEDIES_001: () => ({
+      title: "Remedies for Breach",
+      text: [
+        "The Parties acknowledge that Confidential Information is of a nature such that an award of damages alone would not be an adequate remedy for its unauthorised use or disclosure, and that a breach of the confidentiality provisions of this Agreement may cause harm that cannot be readily quantified.",
+        formatStructuredSubparts([
+          "the Disclosing Party shall be entitled to seek injunctive relief, specific performance, and any other equitable remedy from a court of competent jurisdiction to restrain a threatened or continuing breach, without being required to prove special damage and without any obligation to furnish security",
+          "the Parties record that, following the Specific Relief Act (Amendment) Act, 2018, specific performance is a general remedy rather than a discretionary one, and neither Party shall contend that damages are an adequate remedy for the purposes of resisting such relief",
+          "equitable relief under this clause is in addition to, and not in substitution for, any right to damages, an account of profits, or delivery up of materials containing the Confidential Information",
+          "the Receiving Party shall, on written demand, provide the Disclosing Party with a full account of the circumstances of any unauthorised use or disclosure, including the persons involved and the information affected",
+        ]),
+      ].join("\n"),
+    }),
+
+    NDA_DURATION_001: () => {
+      const period = stripExternalReferencePhrases(variables.confidentiality_period, "");
+
+      return {
+        title: "Duration of Confidentiality",
+        text: [
+          period
+            ? `The confidentiality obligations in this Agreement shall take effect on the Effective Date and shall continue for ${period} after the expiry or earlier termination of this Agreement.`
+            : "The confidentiality obligations in this Agreement shall take effect on the Effective Date and shall continue for three (3) years after the expiry or earlier termination of this Agreement.",
+          formatStructuredSubparts([
+            "in respect of any Confidential Information that constitutes a trade secret, the obligations shall continue for so long as that information retains the character of a trade secret, without limit of time",
+            "in respect of any Confidential Information that constitutes personal data, the obligations shall continue for so long as the Receiving Party retains that data, and the data shall be erased once the purpose for which it was shared is exhausted",
+            "expiry of the confidentiality period shall not operate to permit any use or disclosure that was a breach when it occurred, and shall not affect any liability already accrued",
+          ]),
+        ].join("\n"),
+      };
     },
 
     CORE_ENTIRE_AGREEMENT_001: () => ({

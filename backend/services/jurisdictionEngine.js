@@ -62,8 +62,15 @@ export function injectJurisdictionRules(draft, input) {
   const disputeResolutionMethod = normalizeWhitespace(
     input.variables?.dispute_resolution_method || "Arbitration"
   );
+  // The seat of arbitration is no longer a separate intake field -- the
+  // jurisdiction already captured supplies it. A seat is properly a place, so
+  // prefer the city where the instrument is executed over the bare state name,
+  // and fall back to the state only when no city is known.
   const disputeVenue = normalizeWhitespace(
-    input.variables?.arbitration_city || governingLawState || operatingState
+    input.variables?.arbitration_city ||
+      input.variables?.execution_city ||
+      governingLawState ||
+      operatingState
   );
 
   const modifiedClauses = draft.clauses.map((clause) => {

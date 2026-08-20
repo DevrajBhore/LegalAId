@@ -46,6 +46,7 @@ import authRoutes from "./auth/authRoutes.js";
 import { protect, requireAdmin } from "./auth/authMiddleware.js";
 import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
 import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
+import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
 
 const app = express();
@@ -296,6 +297,11 @@ app.use("/history", protect, documentHistoryRoutes);
 
 // Clause legal-review workflow (admin only)
 app.use("/admin/clause-reviews", protect, requireAdmin, clauseReviewRoutes);
+
+// Advocate review of the clauses already shipping in generated documents, as
+// distinct from the candidate queue above. Ordered by how much of the product
+// each clause touches so a partial review still covers real usage.
+app.use("/admin/library-review", protect, requireAdmin, libraryReviewRoutes);
 
 // AI clause authoring / gap analysis (admin only) — proposes missing protections
 // for a document type into the review queue. Build-time acceleration only.
