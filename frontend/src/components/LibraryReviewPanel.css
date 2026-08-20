@@ -31,17 +31,6 @@
   font-family: var(--font-mono);
 }
 
-.lib-signature {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--r-md, 8px);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-.lib-signature label,
 .lib-field {
   display: flex;
   flex-direction: column;
@@ -56,7 +45,6 @@
   font-weight: 400;
   text-transform: none;
 }
-.lib-signature input,
 .lib-field input,
 .lib-field textarea,
 .lib-search input {

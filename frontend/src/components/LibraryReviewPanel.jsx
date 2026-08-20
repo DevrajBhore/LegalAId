@@ -41,10 +41,6 @@ export default function LibraryReviewPanel() {
   const [expanded, setExpanded] = useState(null);
   const [busyId, setBusyId] = useState(null);
 
-  // The reviewer signs once for the sitting; the name is written onto every
-  // clause they approve, as the reviewer of record.
-  const [reviewer, setReviewer] = useState("");
-  const [enrolment, setEnrolment] = useState("");
   const [drafts, setDrafts] = useState({});
 
   const load = useCallback(async () => {
@@ -81,10 +77,6 @@ export default function LibraryReviewPanel() {
     if (busyId) return;
     const draft = draftFor(clause.clause_id);
 
-    if (!reviewer.trim()) {
-      setError("Enter the reviewing advocate's name before recording a decision.");
-      return;
-    }
     if (decision === "amend" && !draft.revised_text.trim()) {
       setError("Approving with an amendment needs the revised clause text.");
       return;
@@ -97,8 +89,6 @@ export default function LibraryReviewPanel() {
         decision,
         revised_text: draft.revised_text,
         note: draft.note,
-        reviewer: reviewer.trim(),
-        enrolment: enrolment.trim(),
       });
       setSummary(res.data?.summary || summary);
       setDrafts((prev) => {
@@ -171,25 +161,6 @@ export default function LibraryReviewPanel() {
           )}
         </div>
       )}
-
-      <div className="lib-signature">
-        <label>
-          Reviewing advocate
-          <input
-            value={reviewer}
-            onChange={(e) => setReviewer(e.target.value)}
-            placeholder="Full name — this is the signature of record"
-          />
-        </label>
-        <label>
-          Enrolment number <span className="lib-optional">optional</span>
-          <input
-            value={enrolment}
-            onChange={(e) => setEnrolment(e.target.value)}
-            placeholder="e.g. MAH/1234/2015"
-          />
-        </label>
-      </div>
 
       <div className="lib-controls">
         <div className="lib-filters">

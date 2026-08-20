@@ -210,10 +210,13 @@ export function recordLibraryReview({
     );
   }
 
+  // The reviewer comes from the authenticated session, so an empty value here
+  // means the request arrived without one rather than that someone forgot to
+  // type it.
   const name = String(reviewer || "").trim();
   if (action !== "reset" && PLACEHOLDER_REVIEWERS.has(name.toLowerCase())) {
     throw httpError(
-      "A reviewer name is required — that name is the signature of record.",
+      "Could not identify the reviewer from the session. Sign in again and retry.",
       400
     );
   }
