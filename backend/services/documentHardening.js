@@ -2,6 +2,7 @@ import { getClauseById } from "./clauseAssembler.js";
 import { injectVariables } from "./variableInjector.js";
 import { normalizeClauseCategory, sortClausesByOrder } from "../config/clauseOrder.js";
 import { hasMeaningfulValue } from "./generationControls.js";
+import { deriveRiskProfile } from "./riskProfile.js";
 import {
   getDocumentDraftingPolicy,
   getDocumentRoleContext,
@@ -134,6 +135,17 @@ function resolveRenewalSentence(variables = {}) {
   const renewalOption = normalizeWhitespace(variables.renewal_option).toLowerCase();
   const renewalTerms = stripExternalReferencePhrases(variables.renewal_terms, "");
 
+  // A user who describes a renewal arrangement has, by doing so, elected to
+  // allow renewal -- even if the separate renewal_option select was left
+  // untouched. Previously this branch was reached first and discarded
+  // renewal_terms entirely; the consistency validator then correctly observed
+  // that the term clause did not reflect the supplied renewal terms and blocked
+  // the whole document, so answering an optional question produced no draft at
+  // all and an error the user had no way to act on.
+  if ((!renewalOption || renewalOption === "no") && renewalTerms) {
+    return `Upon expiry of the initial term, this Agreement may be renewed or extended only in accordance with the following renewal arrangement: ${renewalTerms}.`;
+  }
+
   if (!renewalOption || renewalOption === "no") {
     return "Upon expiry of the initial term, this Agreement shall automatically expire unless the Parties expressly agree in writing to renew or extend it.";
   }
@@ -155,11 +167,21 @@ function resolveRenewalSentence(variables = {}) {
 
 function resolveTerminationNoticeDays(variables = {}) {
   const numericValue = parseNumberish(variables.termination_notice_period);
-  if (numericValue === null || numericValue <= 0) {
-    return 30;
+  if (numericValue !== null && numericValue > 0) {
+    return Math.round(numericValue);
   }
 
-  return Math.round(numericValue);
+  // No stated notice period. Rather than a flat 30 days for every engagement
+  // regardless of size, fall back to the period the deal's own magnitude
+  // suggests -- a three-year, multi-crore contract unwound on the same notice
+  // as a one-off small engagement is not a considered position, it is a default
+  // nobody chose. deriveGenerationControls supplies this from the intake.
+  const scaled = parseNumberish(variables.default_termination_notice_days);
+  if (scaled !== null && scaled > 0) {
+    return Math.round(scaled);
+  }
+
+  return 30;
 }
 
 function resolveCurePeriodDays(variables = {}, fallback = 15) {
@@ -600,7 +622,31 @@ function resolveLiabilityCapText(variables = {}) {
     return "shall not be subject to a pre-agreed monetary cap, provided that nothing in this clause shall permit recovery of punitive damages except where such remedy is non-excludable under applicable law";
   }
 
-  return "shall not exceed the aggregate fees paid or payable under this Agreement during the twelve (12) months preceding the event giving rise to the claim";
+  // Default market position: twelve months' charges. That is a formula, not a
+  // number -- and on a 36-month, multi-crore engagement neither party can tell
+  // from the page what they have actually agreed to. Where the consideration and
+  // the term are both known, state the indicative figure alongside the formula.
+  // This discloses the effect of the existing term; it does not alter it.
+  const annualised = annualisedConsideration(variables);
+  const indication = annualised
+    ? `, which on the consideration and term recorded in this Agreement the Parties presently estimate at approximately ${formatCurrency(
+        annualised
+      )}`
+    : "";
+
+  return `shall not exceed the aggregate fees paid or payable under this Agreement during the twelve (12) months preceding the event giving rise to the claim${indication}`;
+}
+
+// The value of twelve months of the engagement, from the total consideration and
+// the term. Returns null when either is unknown, so the clause simply omits the
+// indication rather than guessing.
+function annualisedConsideration(variables = {}) {
+  const total = parseNumberish(variables.contract_value_inr);
+  const months = parseNumberish(variables.term_months);
+  if (total === null || total <= 0) return null;
+  if (months === null || months <= 0) return null;
+  if (months <= 12) return total;
+  return Math.round((total * 12) / months);
 }
 
 function resolveIndemnityScopeText(variables = {}) {
@@ -685,12 +731,30 @@ function resolveJointVentureTerminationText(variables = {}) {
   ].join("\n");
 }
 
+// The DURATION of the guarantee. Its continuing character and the mechanics of
+// revocation belong to GUARANTEE_CONTINUING_001; drafting both from one function
+// produced two identical clauses under different headings.
 function resolveGuaranteeTermText(variables = {}) {
   const guaranteeType = normalizeWhitespace(variables.guarantee_type).toLowerCase();
+  const period = stripExternalReferencePhrases(
+    variables.guarantee_period || variables.guarantee_duration,
+    ""
+  );
+
   if (guaranteeType.includes("continuing")) {
+    const duration = period
+      ? `This Guarantee shall remain in force for ${period} from the Effective Date, and thereafter until all guaranteed obligations outstanding at the end of that period have been discharged in full.`
+      : "This Guarantee shall remain in force until all guaranteed obligations have been discharged in full, or until it is validly revoked as to future transactions in accordance with this Agreement, whichever is later.";
+
     return `This Guarantee shall commence on ${formatDate(
       variables.effective_date
-    )} (the "Effective Date"). This Guarantee is a continuing guarantee under the Indian Contract Act, 1872 and shall remain in force for the guaranteed obligations until discharged in accordance with law and this Agreement. The Guarantor may revoke the continuing guarantee only in respect of future obligations by written notice to the Lender, and such revocation shall not affect liability for obligations, transactions, interest, costs, or defaults existing or accrued before the Lender receives such notice.`;
+    )} (the "Effective Date"). ${duration} The discharge of this Guarantee shall not release the Guarantor from any liability that accrued before discharge, and the Lender shall, on written request following full discharge, provide the Guarantor with written confirmation that this Guarantee has been released.`;
+  }
+
+  if (period) {
+    return `This Guarantee shall commence on ${formatDate(
+      variables.effective_date
+    )} (the "Effective Date") and shall remain in force for ${period}, expiring automatically at the end of that period save in respect of any claim made in writing by the Lender before expiry. The Guarantor shall remain liable for any such claim until it is finally resolved.`;
   }
 
   return resolveServiceTermClause("GUARANTEE_AGREEMENT", resolveNamedPartyLabels("GUARANTEE_AGREEMENT"), variables);
@@ -752,11 +816,41 @@ function buildAuthorityPhrase(participant, variables = {}) {
   return `, ${parts.join(", ")}`;
 }
 
+// A participant's entity type decides how it is described in the testatum, which
+// statutory incorporation recital is used, whether its registration numbers are
+// recited, and which successor wording applies. Where the intake did not capture
+// a type, infer it from the identifiers and the name rather than silently
+// falling through to natural-person treatment -- which is what produced
+// employers described as a bare name with "legal heirs, executors and
+// administrators", and dropped the CIN the user had supplied.
+function inferParticipantType(participant = {}, variables = {}) {
+  const explicit = normalizeWhitespace(participant?.type);
+  if (explicit) return explicit.toLowerCase();
+
+  const id = participant?.id;
+  const has = (suffix) =>
+    hasMeaningfulValue(participant?.[suffix]) ||
+    (id && hasMeaningfulValue(variables[`${id}_${suffix}`]));
+
+  if (has("llpin")) return "llp";
+  if (has("cin")) return "private limited company";
+
+  const name = normalizeWhitespace(participant?.name).toLowerCase();
+  if (/\bllp\b/.test(name)) return "llp";
+  if (/\bprivate\s+limited\b|\bpvt\.?\s*ltd\b/.test(name)) return "private limited company";
+  if (/\blimited\b|\bltd\b/.test(name)) return "public limited company";
+  if (/\b(?:and|&)\s+(?:co|company|sons|associates)\b|\bpartnership\b/.test(name))
+    return "partnership firm";
+  if (/\btrust\b/.test(name)) return "trust";
+
+  return "";
+}
+
 function buildParticipantDescriptor(participant, variables = {}) {
   const name = normalizeWhitespace(participant?.name);
   if (!name) return "";
 
-  const type = normalizeWhitespace(participant?.type).toLowerCase();
+  const type = inferParticipantType(participant, variables);
   const pan = normalizeWhitespace(participant?.pan || variables[`${participant?.id}_pan`]);
   const gstin = normalizeWhitespace(participant?.gstin || variables[`${participant?.id}_gstin`]);
   const cin = normalizeWhitespace(
@@ -780,8 +874,8 @@ function buildParticipantDescriptor(participant, variables = {}) {
     descriptor = `${name}, a Partnership Firm governed by the provisions of the Indian Partnership Act, 1932${pan ? ` having PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
   } else if (type.includes("proprietorship")) {
     descriptor = `${name}, a sole proprietorship business carried on under the name and style of ${name}${pan ? ` having PAN ${pan}` : ""}${gstin ? ` and GSTIN ${gstin}` : ""}`;
-  } else if (hasMeaningfulValue(participant?.type)) {
-    descriptor = `${name}, ${withIndefiniteArticle(normalizeWhitespace(participant.type).toLowerCase())}`;
+  } else if (type) {
+    descriptor = `${name}, ${withIndefiniteArticle(type)}`;
   }
 
   if (hasMeaningfulValue(participant?.address)) {
@@ -796,8 +890,8 @@ function buildParticipantDescriptor(participant, variables = {}) {
   return descriptor;
 }
 
-function resolveSuccessorPhrase(participant = {}) {
-  const entityType = normalizeWhitespace(participant?.type).toLowerCase();
+function resolveSuccessorPhrase(participant = {}, variables = {}) {
+  const entityType = inferParticipantType(participant, variables);
 
   if (
     entityType.includes("company") ||
@@ -816,10 +910,12 @@ function buildFormalPartyIntroduction(
   label,
   positionLabel,
   participant = {},
-  lineEnding = ";"
+  lineEnding = ";",
+  variables = {}
 ) {
   return `${descriptor} (hereinafter referred to as the "${label}", ${resolveSuccessorPhrase(
-    participant
+    participant,
+    variables
   )}) of the ${positionLabel} Part${lineEnding}`;
 }
 
@@ -1158,7 +1254,8 @@ function renderHardClause(
           namedParties.first,
           "First",
           participants[0],
-          ";"
+          ";",
+          variables
         ),
         "",
         "AND",
@@ -1168,7 +1265,8 @@ function renderHardClause(
           namedParties.second,
           "Second",
           participants[1],
-          "."
+          ".",
+          variables
         ),
         "",
         `The ${namedParties.first} and the ${namedParties.second} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
@@ -1202,15 +1300,18 @@ function renderHardClause(
         "BY AND AMONG",
         "",
         `${creditorDescriptor} (hereinafter referred to as the "Creditor", ${resolveSuccessorPhrase(
-          creditor
+          creditor,
+          variables
         )});`,
         "",
         `${debtorDescriptor} (hereinafter referred to as the "Principal Debtor", ${resolveSuccessorPhrase(
-          debtor
+          debtor,
+          variables
         )}); and`,
         "",
         `${guarantorDescriptor} (hereinafter referred to as the "Guarantor", ${resolveSuccessorPhrase(
-          guarantor
+          guarantor,
+          variables
         )}).`,
         "",
         `The Creditor, the Principal Debtor, and the Guarantor are collectively referred to as the "Parties" and individually as a "Party".`,
@@ -2038,8 +2139,22 @@ function renderHardClause(
         variables.lock_in_period
       ) ? `, such lock-in period being ${normalizeWhitespace(variables.lock_in_period)}` : ""}; and (b) by the Landlord immediately upon material breach, persistent payment default, or unlawful use, subject to the contractual cure process and applicable law. Upon termination, the Tenant shall vacate the Premises within the notice period, return them in the same condition as at commencement (reasonable wear and tear excepted), and hand over all keys and access devices.`,
 
-    PROP_REGISTRATION_001: () =>
-      `The Parties acknowledge that this Agreement shall be stamped and, where required by law, registered in accordance with the applicable State Stamp Act and the Registration Act, 1908.${normalizeBooleanChoice(
+    // The engine already determines whether THIS instrument is compulsorily
+    // registrable -- an 11-month tenancy and a 24-month tenancy produce
+    // different registration notices. The clause itself, however, said "where
+    // required by law" in both cases, so the document hedged on a question the
+    // system had already answered from the user's own term. It now states the
+    // position, the s.23 presentation deadline, and the s.49 consequence.
+    PROP_REGISTRATION_001: () => {
+      const months = Number(variables.lease_term_months);
+      const registrable = variables.is_registrable === true;
+      const termPhrase = Number.isFinite(months) ? ` of ${months} months` : "";
+
+      const position = registrable
+        ? `The Parties acknowledge that, the term of this Agreement${termPhrase} being such as to attract Section 17(1)(d) of the Registration Act, 1908 read with Section 107 of the Transfer of Property Act, 1882, this Agreement is compulsorily registrable. The Parties shall present this Agreement for registration before the jurisdictional Sub-Registrar within four (4) months of its execution as required by Section 23 of the Registration Act, 1908. The Parties are aware that, under Section 49 of that Act, an instrument requiring registration which is not registered cannot be received in evidence of any transaction affecting the immovable property to which it relates.`
+        : `The Parties acknowledge that, the term of this Agreement${termPhrase} being within the threshold in Section 17(1)(d) of the Registration Act, 1908, registration of this Agreement is not compulsory. The Parties may nonetheless present it for registration, and shall do so if the term is extended or renewed such that the aggregate term attracts compulsory registration.`;
+
+      return `${position} This Agreement shall in any event be stamped in accordance with the applicable State Stamp Act before execution.${normalizeBooleanChoice(
         variables.police_verification_required,
         false
       ) ? " Police verification of the occupant shall be mandatory, and the Parties shall cooperate in filing the prescribed police-verification or tenant-information forms with the competent local authority." : ""}${hasMeaningfulValue(
@@ -2047,7 +2162,8 @@ function renderHardClause(
       ) ? ` The Parties shall also comply with the following society, association, or building-compliance requirements: ${stripExternalReferencePhrases(
         variables.society_rules,
         ""
-      )}.` : ""} Stamp duty and registration charges shall be borne in the manner agreed by the Parties or, in the absence of a specific agreement, equally.`,
+      )}.` : ""} Stamp duty and registration charges shall be borne in the manner agreed by the Parties or, in the absence of a specific agreement, equally.`;
+    },
 
     CORE_ENTIRE_AGREEMENT_001: () => ({
       title: "Entire Agreement",
@@ -2178,7 +2294,28 @@ function renderHardClause(
         ""
       )}.` : " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand."} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor except to the extent expressly limited in this Agreement.`,
 
-    GUARANTEE_CONTINUING_001: () => resolveGuaranteeTermText(variables),
+    // GUARANTEE_CONTINUING_001 and CORE_TERM_001 were both rendered by
+    // resolveGuaranteeTermText, so a guarantee carried the same paragraph twice
+    // under two headings. The semantic de-duplicator then removed one of them --
+    // and the one it removed was CORE_TERM_001, which the guarantee blueprint
+    // lists as required, so every GUARANTEE_AGREEMENT failed to generate with
+    // "Blueprint requires clause CORE_TERM_001 but it is missing". The two
+    // clauses answer different questions and are now drafted separately: this
+    // one states the continuing NATURE of the guarantee and how it may be
+    // revoked; CORE_TERM_001 states its DURATION.
+    GUARANTEE_CONTINUING_001: () => ({
+      title: "Continuing Guarantee and Liability",
+      text: [
+        "This Guarantee is a continuing guarantee within the meaning of Section 129 of the Indian Contract Act, 1872, and extends to the whole of the guaranteed obligations from time to time outstanding, and not merely to any single transaction or advance. The liability of the Guarantor is co-extensive with that of the Principal Debtor under Section 128 of that Act, and the following shall apply:",
+        formatStructuredSubparts([
+          "the Guarantor may revoke this Guarantee as to future transactions under Section 130 of the Indian Contract Act, 1872 by written notice to the Lender, and such revocation shall take effect only from the date the Lender actually receives the notice",
+          "revocation shall not affect the Guarantor's liability for any obligation, transaction, advance, interest, cost, or default existing or accrued before the Lender received that notice, and this Guarantee shall continue in force in respect of those amounts until they are discharged in full",
+          "the Lender may proceed against the Guarantor without first proceeding against the Principal Debtor, without enforcing any security held, and without exhausting any other remedy available to it",
+          "this Guarantee shall not be discharged or diminished by any variation of the underlying arrangement, any indulgence, time, or composition granted to the Principal Debtor, any release of security, or any act or omission which but for this provision would operate to discharge the Guarantor, save to the extent Section 133 or Section 135 of the Indian Contract Act, 1872 operates notwithstanding an agreement to the contrary",
+          "this Guarantee is in addition to, and not in substitution for, any other guarantee or security held by the Lender in respect of the guaranteed obligations",
+        ]),
+      ].join("\n"),
+    }),
 
     GUARANTEE_INDEMNITY_001: () =>
       `The Guarantor shall indemnify and hold harmless the Lender against all losses, damages, costs, and expenses suffered or incurred as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the underlying financing arrangements. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to the rights and remedies of the Lender against the Principal Debtor to the extent of such payment, provided that the Guarantor shall not exercise such subrogation rights until the Lender has been paid in full.`,
@@ -2233,6 +2370,28 @@ function cloneClauseForDraft(clauseId, variables = {}) {
   };
 }
 
+// Which clause ids each disallowed protection covers. Declared once so the
+// injector and the completeness validator cannot drift: previously only the
+// injector consulted it, so a Loan or Guarantee that disallows FORCE_MAJEURE
+// had the clause correctly withheld and was then penalised 20 points for
+// "Required hardening clause CORE_FORCE_MAJEURE_001 is missing" -- the same
+// module both forbidding and requiring the clause.
+const PROTECTION_CLAUSE_IDS = {
+  LIABILITY_CAP: ["AUTO-LIAB-001", "CORE_LIABILITY_CAP_001", "CORE_LIMITATION_LIABILITY_001"],
+  INDEMNITY: ["AUTO-INDEM-001", "CORE_INDEMNITY_001"],
+  FORCE_MAJEURE: ["AUTO-FM-001", "CORE_FORCE_MAJEURE_001"],
+};
+
+function getSuppressedProtectionClauseIds(documentType) {
+  const suppressed = new Set();
+  for (const protection of getDisallowedProtections(documentType)) {
+    for (const clauseId of PROTECTION_CLAUSE_IDS[protection] || []) {
+      suppressed.add(clauseId);
+    }
+  }
+  return suppressed;
+}
+
 export function getDisallowedProtections(documentType) {
   return new Set(
     getDocumentDraftingPolicy(documentType)?.hardening?.disallowedProtections || []
@@ -2249,24 +2408,7 @@ export function applyDocumentHardening(draft, input = {}) {
   const semanticContext =
     input.semanticContext || draft.metadata?.interpreted_facts || {};
   const requiredClauseIds = getRequiredHardeningClauseIds(documentType);
-  const genericClausesToRemove = new Set();
-  const disallowedProtections = getDisallowedProtections(documentType);
-
-  if (disallowedProtections.has("LIABILITY_CAP")) {
-    genericClausesToRemove.add("AUTO-LIAB-001");
-    genericClausesToRemove.add("CORE_LIABILITY_CAP_001");
-    genericClausesToRemove.add("CORE_LIMITATION_LIABILITY_001");
-  }
-
-  if (disallowedProtections.has("INDEMNITY")) {
-    genericClausesToRemove.add("AUTO-INDEM-001");
-    genericClausesToRemove.add("CORE_INDEMNITY_001");
-  }
-
-  if (disallowedProtections.has("FORCE_MAJEURE")) {
-    genericClausesToRemove.add("AUTO-FM-001");
-    genericClausesToRemove.add("CORE_FORCE_MAJEURE_001");
-  }
+  const genericClausesToRemove = getSuppressedProtectionClauseIds(documentType);
 
   const baseClauses = draft.clauses.filter(
     (clause) => !genericClausesToRemove.has(String(clause.clause_id || ""))
@@ -2378,11 +2520,15 @@ function findMissingRequiredClauseIssues(draft, documentType) {
     return (candidate?.conflicts_with || []).some((id) => existingClauseIds.has(id));
   };
 
+  // A protection the document type disallows cannot also be required of it.
+  const suppressed = getSuppressedProtectionClauseIds(documentType);
+
   return requiredClauseIds
     .filter(
       (clauseId) =>
         !existingClauseIds.has(clauseId) &&
         !replacedClauseIds.has(clauseId) &&
+        !suppressed.has(clauseId) &&
         !supersededByPresentClause(clauseId)
     )
     .map((clauseId) =>
@@ -2455,6 +2601,50 @@ function findDisallowedProtectionIssues(draft, documentType) {
   return issues;
 }
 
+// Raised, as a notice rather than a defect, when a deal is large enough or long
+// enough that leaving every risk term at its default ought to be a deliberate
+// choice. The engine will not pick a cap or an indemnity scope on the user's
+// behalf -- that is a drafting judgement -- but it should not stay silent about
+// having applied defaults to a multi-crore engagement either.
+function findRiskProfileNotices(draft, documentType) {
+  const variables = draft?.metadata?.source_variables || {};
+  const profile = deriveRiskProfile(documentType, variables);
+  if (!profile.warrants_risk_review) return [];
+
+  const untouched = [
+    !hasMeaningfulValue(variables.liability_cap_basis) && "the limitation of liability",
+    !hasMeaningfulValue(variables.indemnity_scope) && "the indemnity scope",
+    !hasMeaningfulValue(variables.termination_notice_period) && "the termination notice period",
+  ].filter(Boolean);
+
+  if (!untouched.length) return [];
+
+  const scale = [
+    profile.contract_value ? `a consideration of ${formatCurrency(profile.contract_value)}` : null,
+    profile.term_months ? `a term of ${profile.term_months} months` : null,
+  ]
+    .filter(Boolean)
+    .join(" and ");
+
+  const listed =
+    untouched.length === 1
+      ? untouched[0]
+      : `${untouched.slice(0, -1).join(", ")} and ${untouched[untouched.length - 1]}`;
+
+  return [
+    {
+      rule_id: "RISK_TERMS_AT_DEFAULT",
+      severity: "LOW",
+      notice_only: true,
+      blocks_generation: false,
+      message: `This ${documentType.replace(/_/g, " ").toLowerCase()} carries ${scale}, which places it in the "${profile.exposure}" exposure band, but ${listed} ${untouched.length === 1 ? "was" : "were"} left at the standard default rather than negotiated for this deal.`,
+      suggestion:
+        "Review the risk-allocation terms against the value and duration of this engagement, and record a deliberate position on the liability cap, the indemnity scope, and the notice period.",
+      offending_clause_id: null,
+    },
+  ];
+}
+
 export function validateDocumentHardening(draft, { documentType } = {}) {
   if (!draft?.clauses?.length || !documentType) {
     return [];
@@ -2464,5 +2654,6 @@ export function validateDocumentHardening(draft, { documentType } = {}) {
     ...findMissingRequiredClauseIssues(draft, documentType),
     ...findUnresolvedScheduleReferenceIssues(draft),
     ...findDisallowedProtectionIssues(draft, documentType),
+    ...findRiskProfileNotices(draft, documentType),
   ];
 }

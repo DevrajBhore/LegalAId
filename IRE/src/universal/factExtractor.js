@@ -74,16 +74,23 @@ export function extractFacts(document) {
   };
 }
 
+// Every entity-type field the intake may carry, whatever the document type names
+// its parties. The list used to be hardcoded to party_1/party_2/shareholder/
+// guarantor, so a partnership deed (partner_1_type) or an employment contract
+// (employer_type) was never recognised as having a corporate party at all.
+function collectPartyTypes(sourceVariables = {}) {
+  return Object.entries(sourceVariables)
+    .filter(([key, value]) => /_type$/.test(key) && value)
+    .filter(([key]) =>
+      /^(?:party_\d+|partner_\d+|shareholder_\d+|employer|employee|guarantor|lender|borrower|licensor|licensee|landlord|tenant|buyer|seller|purchaser|vendor|supplier|discloser|recipient|distributor|principal|creditor|contractor|consultant|client)_type$/.test(
+        key
+      )
+    )
+    .map(([, value]) => String(value).toLowerCase());
+}
+
 function detectCorporateParty({ sourceVariables = {}, identityText = "", signatureText = "" }) {
-  const partyTypes = [
-    sourceVariables.party_1_type,
-    sourceVariables.party_2_type,
-    sourceVariables.shareholder_1_type,
-    sourceVariables.shareholder_2_type,
-    sourceVariables.guarantor_type,
-  ]
-    .filter(Boolean)
-    .map((value) => String(value).toLowerCase());
+  const partyTypes = collectPartyTypes(sourceVariables);
 
   if (
     partyTypes.some(
@@ -109,13 +116,7 @@ function detectAuthorityEstablished({
 }) {
   const partyContext = `${identityText} ${signatureText}`.toLowerCase();
 
-  if (
-    sourceVariables.party_1_type ||
-    sourceVariables.party_2_type ||
-    sourceVariables.shareholder_1_type ||
-    sourceVariables.shareholder_2_type ||
-    sourceVariables.guarantor_type
-  ) {
+  if (collectPartyTypes(sourceVariables).length) {
     if (
       /\b(for and on behalf of|authorized signatory|authorised signatory|authorized representative|authorised representative|represented by|duly authorized|duly authorised)\b/i.test(
         partyContext

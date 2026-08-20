@@ -1,0 +1,52 @@
+{
+  "clause_id": "CORE_INSURANCE_001",
+  "name": "Insurance",
+  "title": "Insurance",
+  "category": "INSURANCE",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "VENDOR_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "COMMERCIAL_LEASE_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party shall, throughout the Term and for so long afterwards as any liability may arise out of this Agreement, maintain with a reputable insurer registered with the Insurance Regulatory and Development Authority of India insurance cover of a type and amount that a prudent person carrying on the same business would maintain, having regard to the nature and value of the obligations undertaken under this Agreement.\n(a) the cover shall include, to the extent relevant to that Party's obligations, commercial general liability, professional indemnity or errors-and-omissions cover, cover in respect of loss of or damage to the other Party's property in that Party's custody or control, and employer's liability and workmen's compensation cover in respect of its own personnel\n(b) each Party shall on written request produce a certificate of insurance or a broker's letter evidencing the cover in force, and shall notify the other Party promptly if the cover is cancelled, is not renewed, or is materially reduced\n(c) maintaining insurance shall not limit, satisfy, or otherwise affect a Party's liability or indemnity obligations under this Agreement, and a Party shall not be relieved of any obligation to the extent its insurer declines or disputes a claim\n(d) each Party shall bear its own policy excess or deductible in respect of a claim arising from its own acts or omissions",
+  "legal_basis": [
+    {
+      "act": "Insurance Act, 1938",
+      "section": "2",
+      "note": "Insurer registration and classes of insurance business"
+    },
+    {
+      "act": "Employee's Compensation Act, 1923",
+      "section": "3",
+      "note": "Employer's liability for compensation to its own workmen"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "Contract of indemnity — insurance does not displace the contractual indemnity"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause purports to require cover from an insurer not registered with the IRDAI",
+    "The clause is drafted so that the existence of insurance caps or extinguishes a liability the Party has separately accepted"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "source": "Insurance Act, 1938; Employee's Compensation Act, 1923; Indian Contract Act, 1872",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "authoring_note": "Added because the clause library contained no insurance covenant at any deal size. Included by the risk profile once an engagement reaches elevated exposure (large value or long term). The classes of cover and the no-limitation limb are conventional; the supervising advocate should confirm whether specific minimum sums insured should be stated per document type."
+}

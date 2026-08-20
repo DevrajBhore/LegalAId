@@ -53,6 +53,11 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true",
       "note": "Optional entire-agreement (no oral terms) clause."
+    },
+    {
+      "clause": "CORE_INSURANCE_001",
+      "include_if": "include_insurance == true",
+      "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
     }
   ],
   "mandatory_legal_checks": [
@@ -67,7 +72,10 @@
       "slot": "registration_strength",
       "replaces": "PROP_REGISTRATION_001",
       "select_first_match": [
-        { "clause": "PROP_REGISTRATION_MANDATORY_001", "when": "is_registrable == true" }
+        {
+          "clause": "PROP_REGISTRATION_MANDATORY_001",
+          "when": "is_registrable == true"
+        }
       ],
       "default": "PROP_REGISTRATION_001"
     }

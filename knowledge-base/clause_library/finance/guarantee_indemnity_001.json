@@ -6,7 +6,7 @@
     "GUARANTEE_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "The Guarantor shall indemnify and hold harmless the Lender/Creditor against all losses, damages, costs, and expenses (including legal fees) suffered or incurred by the Lender/Creditor as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the Principal Agreement. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to all rights and remedies of the Lender/Creditor against the Principal Debtor to the extent of such payment, subject to the Lender/Creditor having been paid in full. The Guarantor's right of subrogation shall not be exercised until all amounts due to the Lender/Creditor have been fully discharged.",
+  "text": "The Guarantor shall indemnify and hold harmless the {{party_1_label}} against all losses, damages, costs, and expenses (including legal fees) suffered or incurred by the {{party_1_label}} as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the Principal Agreement. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to all rights and remedies of the {{party_1_label}} against the Principal Debtor to the extent of such payment, subject to the {{party_1_label}} having been paid in full. The Guarantor's right of subrogation shall not be exercised until all amounts due to the {{party_1_label}} have been fully discharged.",
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",

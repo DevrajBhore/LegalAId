@@ -31,7 +31,10 @@
   "depends_on": [
     "CORE_IDENTITY_001"
   ],
-  "conflicts_with": [],
+  "conflicts_with": [
+    "AUTO-LIAB-001",
+    "CORE_LIMITATION_LIABILITY_001"
+  ],
   "required_with": [
     "CORE_INDEMNITY_001"
   ],

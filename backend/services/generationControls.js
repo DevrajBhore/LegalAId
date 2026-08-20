@@ -1,4 +1,5 @@
 import { getPartyNamingLabels } from "./draftingPolicy.js";
+import { riskProfileControls } from "./riskProfile.js";
 
 function normalizeText(value = "") {
   return String(value || "")
@@ -44,8 +45,17 @@ function mentionsReporting(value = "") {
   );
 }
 
+const REGISTRATION_THRESHOLD_MONTHS = 12;
+
 export function deriveGenerationControls(documentType, variables = {}) {
-  const derived = { ...(variables || {}) };
+  // The commercial magnitude of the deal, derived from the user's own figures,
+  // exposed as ordinary variables so blueprint conditions and clause builders
+  // can respond to it. Explicit answers still win: these are only defaults for
+  // dimensions the intake never asked about.
+  const derived = {
+    ...riskProfileControls(documentType, variables),
+    ...(variables || {}),
+  };
 
   // Party labels as data, not baked into clause prose.
   //
@@ -343,13 +353,40 @@ export function deriveGenerationControls(documentType, variables = {}) {
       derived.is_exclusive_distribution === true || derived.is_sole_distribution === true;
   }
 
-  const leaseTermRaw = String(variables.lease_term ?? variables.license_term ?? "")
-    .replace(/[\s,]/g, "")
-    .match(/\d+(?:\.\d+)?/);
-  if (leaseTermRaw) {
-    const leaseMonths = Number(leaseTermRaw[0]);
-    derived.is_registrable = leaseMonths >= 12;
-    derived.long_term_lease = leaseMonths >= 12;
+  // The registration ruleset (knowledge-base/rules/registration.rules.json) reads
+  // the term from any of five intake fields, but this derivation only looked at
+  // two of them -- so a rental agreement, whose intake field is `occupancy_term`,
+  // never set is_registrable and the blueprint condition that swaps in the
+  // mandatory-registration clause could never fire.
+  const TERM_FIELDS = [
+    "lease_term",
+    "occupancy_term",
+    "license_term",
+    "rental_term",
+    "agreement_term",
+  ];
+
+  for (const field of TERM_FIELDS) {
+    const match = String(variables[field] ?? "")
+      .replace(/[\s,]/g, "")
+      .match(/\d+(?:\.\d+)?/);
+    if (!match) continue;
+
+    const raw = Number(match[0]);
+    // "2 years" and "24 months" are the same term; normalise to months so the
+    // 12-month threshold in Registration Act s.17(1)(d) is applied to both.
+    const months = /year/i.test(String(variables[field])) ? raw * 12 : raw;
+
+    derived.lease_term_months = months;
+    // Threshold kept identical to knowledge-base/rules/registration.rules.json
+    // (threshold_months: 12, at-or-above). NOTE for the supervising advocate:
+    // Registration Act s.17(1)(d) speaks of a term "exceeding one year", so a
+    // lease of exactly 12 months is arguably outside it. The rule file and this
+    // derivation both currently treat exactly 12 months as registrable. If that
+    // is wrong, change BOTH -- they must not diverge.
+    derived.is_registrable = months >= REGISTRATION_THRESHOLD_MONTHS;
+    derived.long_term_lease = months >= REGISTRATION_THRESHOLD_MONTHS;
+    break;
   }
 
   // Moonlighting / exclusivity restriction: explicit opt-in, or implied by a

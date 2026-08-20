@@ -62,6 +62,11 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true",
       "note": "Optional entire-agreement (no oral terms) clause."
+    },
+    {
+      "clause": "CORE_INSURANCE_001",
+      "include_if": "include_insurance == true",
+      "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
     }
   ],
   "variant_clauses": [
@@ -69,8 +74,14 @@
       "slot": "distribution_exclusivity",
       "replaces": "DIST_APPOINTMENT_001",
       "select_first_match": [
-        { "clause": "DIST_APPOINTMENT_EXCLUSIVE_001", "when": "is_exclusive_distribution == true" },
-        { "clause": "DIST_APPOINTMENT_SOLE_001", "when": "is_sole_distribution == true" }
+        {
+          "clause": "DIST_APPOINTMENT_EXCLUSIVE_001",
+          "when": "is_exclusive_distribution == true"
+        },
+        {
+          "clause": "DIST_APPOINTMENT_SOLE_001",
+          "when": "is_sole_distribution == true"
+        }
       ],
       "default": "DIST_APPOINTMENT_001"
     }

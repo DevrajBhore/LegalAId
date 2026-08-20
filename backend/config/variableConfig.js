@@ -112,7 +112,7 @@ export const VARIABLE_CONFIG = {
     arbitration_city: {
       label: "Seat of Arbitration",
       type: "text",
-      required: false,
+      required: true,
       group: "Jurisdiction & Dispute",
     },
     involves_personal_data: {
@@ -605,7 +605,7 @@ export const VARIABLE_CONFIG = {
     party_1_type: {
       label: "First Party Type",
       type: "select",
-      required: false,
+      required: true,
       group: "Party Details",
       options: [
         "Individual",
@@ -621,7 +621,7 @@ export const VARIABLE_CONFIG = {
     party_2_type: {
       label: "Second Party Type",
       type: "select",
-      required: false,
+      required: true,
       group: "Party Details",
       options: [
         "Individual",
@@ -881,6 +881,28 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+    // Without this, the engine could not tell whether the employer was a company,
+    // an LLP or a natural person. The party descriptor branches entirely on the
+    // participant type, so every employer was rendered as a bare name -- no
+    // incorporation recital, no CIN, and the natural-person successor wording
+    // ("legal heirs, executors, administrators") applied to body corporates.
+    employer_type: {
+      label: "Employer Type",
+      type: "select",
+      required: false,
+      group: "Party Details",
+      options: [
+        "Private Limited Company",
+        "Public Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Sole Proprietorship",
+        "Trust",
+        "Government Body",
+        "Individual",
+      ],
+    },
+
     employer_cin: {
       label: "CIN / Registration Number",
       type: "text",
@@ -980,13 +1002,13 @@ export const VARIABLE_CONFIG = {
     employee_confidentiality_scope: {
       label: "Employee Confidentiality Obligations",
       type: "textarea",
-      required: false,
+      required: true,
       group: "Employment Terms",
     },
     ip_ownership: {
       label: "IP Ownership",
       type: "select",
-      required: false,
+      required: true,
       group: "Employment Terms",
       options: [
         "Employer owns work product IP",
@@ -997,7 +1019,7 @@ export const VARIABLE_CONFIG = {
     employment_termination_type: {
       label: "Employment Termination Structure",
       type: "select",
-      required: false,
+      required: true,
       group: "Employment Terms",
       options: [
         "Notice-based termination",
@@ -1086,7 +1108,7 @@ export const VARIABLE_CONFIG = {
     deliverables: {
       label: "Deliverables",
       type: "textarea",
-      required: false,
+      required: true,
       description: "List the documents, outputs, reports, code, dashboards, presentations, or other work product to be handed over.",
       example: "Monthly MIS, GST working papers, compliance tracker, executive summary, and final closure memo.",
       aiGuidance: "Use short bullet-style entries. LegalAId will turn them into a more formal deliverables clause where relevant.",
@@ -1198,7 +1220,7 @@ export const VARIABLE_CONFIG = {
     deliverables: {
       label: "Deliverables / Reporting Requirements",
       type: "textarea",
-      required: false,
+      required: true,
       description: "Set out the deliverables, reports, decks, notes, trackers, or status updates expected from the consultant.",
       example: "Weekly issue log, monthly strategy note, board deck comments, transaction checklist, and final recommendation memo.",
       aiGuidance: "If reporting matters to you, be specific about report frequency, format, and sign-off expectations.",
@@ -1214,7 +1236,7 @@ export const VARIABLE_CONFIG = {
     payment_terms: {
       label: "Payment Schedule (e.g. monthly retainer)",
       type: "text",
-      required: false,
+      required: true,
     },
     expenses_policy: {
       label: "Expense Reimbursement Policy (or NA)",
@@ -1301,6 +1323,28 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
+
+    // A partner under the Indian Partnership Act, 1932 may be a natural
+    // person or a body corporate. With no type field the descriptor fell
+    // through to natural-person treatment, so a corporate partner got no
+    // incorporation recital and was given "legal heirs, executors and
+    // administrators" as its successors.
+    partner_1_type: {
+      label: "Partner 1 Type",
+      type: "select",
+      required: true,
+      group: "Party Details",
+      options: [
+        "Individual",
+        "Private Limited Company",
+        "Public Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Sole Proprietorship",
+        "Trust",
+        "Government Body",
+      ],
+    },
     capital_contribution_1: {
       label: "Partner 1 Capital Contribution (₹)",
       type: "number",
@@ -1315,6 +1359,28 @@ export const VARIABLE_CONFIG = {
       label: "Partner 2 Residential Address",
       type: "textarea",
       required: true,
+    },
+
+    // A partner under the Indian Partnership Act, 1932 may be a natural
+    // person or a body corporate. With no type field the descriptor fell
+    // through to natural-person treatment, so a corporate partner got no
+    // incorporation recital and was given "legal heirs, executors and
+    // administrators" as its successors.
+    partner_2_type: {
+      label: "Partner 2 Type",
+      type: "select",
+      required: true,
+      group: "Party Details",
+      options: [
+        "Individual",
+        "Private Limited Company",
+        "Public Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Sole Proprietorship",
+        "Trust",
+        "Government Body",
+      ],
     },
     capital_contribution_2: {
       label: "Partner 2 Capital Contribution (₹)",
@@ -1400,7 +1466,7 @@ export const VARIABLE_CONFIG = {
     shareholder_1_type: {
       label: "Shareholder 1 Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Individual",
         "Private Limited Company",
@@ -1428,7 +1494,7 @@ export const VARIABLE_CONFIG = {
     shareholder_2_type: {
       label: "Shareholder 2 Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Individual",
         "Private Limited Company",
@@ -1446,12 +1512,12 @@ export const VARIABLE_CONFIG = {
     board_structure: {
       label: "Board Composition (e.g. 2 directors, 1 per shareholder)",
       type: "textarea",
-      required: false,
+      required: true,
     },
     reserved_matters: {
       label: "Reserved Matters (decisions requiring unanimous consent)",
       type: "textarea",
-      required: false,
+      required: true,
     },
     rofr_period: {
       label: "Right of First Refusal Period (days)",
@@ -1539,17 +1605,17 @@ export const VARIABLE_CONFIG = {
     jv_duration: {
       label: "JV Duration (e.g. 5 years / perpetual)",
       type: "text",
-      required: false,
+      required: true,
     },
     jv_structure: {
       label: "Governing Structure (Partnership / Company / LLP)",
       type: "text",
-      required: false,
+      required: true,
     },
     ip_ownership: {
       label: "IP Ownership Arrangement",
       type: "text",
-      required: false,
+      required: true,
     },
     management_control: {
       label: "Management Control",
@@ -1618,12 +1684,12 @@ export const VARIABLE_CONFIG = {
     delivery_location: {
       label: "Delivery Location",
       type: "text",
-      required: false,
+      required: true,
     },
     warranty_period: {
       label: "Warranty Period (e.g. 12 months)",
       type: "text",
-      required: false,
+      required: true,
     },
     inspection_acceptance_terms: {
       label: "Inspection & Acceptance Terms",
@@ -1658,7 +1724,7 @@ export const VARIABLE_CONFIG = {
     contract_duration: {
       label: "Contract Duration",
       type: "text",
-      required: false,
+      required: true,
     },
   },
 
@@ -1697,18 +1763,18 @@ export const VARIABLE_CONFIG = {
     exclusivity: {
       label: "Exclusivity",
       type: "select",
-      required: false,
+      required: true,
       options: ["Exclusive", "Non-Exclusive", "Semi-Exclusive"],
     },
     min_purchase: {
       label: "Minimum Purchase Commitment (₹ / units, or NA)",
       type: "text",
-      required: false,
+      required: true,
     },
     price_terms: {
       label: "Price / Discount Structure",
       type: "textarea",
-      required: false,
+      required: true,
     },
     pricing_model: {
       label: "Pricing Model",
@@ -1722,7 +1788,7 @@ export const VARIABLE_CONFIG = {
         "Custom written pricing formula",
       ],
     },
-    payment_terms: { label: "Payment Terms", type: "text", required: false },
+    payment_terms: { label: "Payment Terms", type: "text", required: true },
     minimum_purchase_quantity: {
       label: "Minimum Purchase Quantity",
       type: "number",
@@ -1757,7 +1823,7 @@ export const VARIABLE_CONFIG = {
     contract_duration: {
       label: "Contract Duration",
       type: "text",
-      required: false,
+      required: true,
     },
   },
 
@@ -1790,19 +1856,19 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
-    quantity: { label: "Quantity", type: "text", required: false },
+    quantity: { label: "Quantity", type: "text", required: true },
     price: { label: "Total Price (₹)", type: "number", required: true },
     gst_rate: {
       label: "Applicable GST Rate (%)",
       type: "number",
-      required: false,
+      required: true,
     },
-    payment_terms: { label: "Payment Terms", type: "text", required: false },
+    payment_terms: { label: "Payment Terms", type: "text", required: true },
     delivery_date: { label: "Delivery Date", type: "date", required: true },
     delivery_location: {
       label: "Delivery Location",
       type: "text",
-      required: false,
+      required: true,
     },
     inspection_acceptance_terms: {
       label: "Inspection & Acceptance Terms",
@@ -1873,7 +1939,7 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
     },
-    deliverables: { label: "Deliverables", type: "textarea", required: false },
+    deliverables: { label: "Deliverables", type: "textarea", required: true },
     contract_value: {
       label: "Contract Value / Fee (₹)",
       type: "number",
@@ -1899,7 +1965,7 @@ export const VARIABLE_CONFIG = {
     ip_ownership: {
       label: "IP Ownership",
       type: "select",
-      required: false,
+      required: true,
       options: ["Client owns all IP", "Contractor retains IP", "Shared IP"],
     },
     non_compete_period: {
@@ -1977,7 +2043,7 @@ export const VARIABLE_CONFIG = {
     permitted_use: {
       label: "Permitted Use (e.g. office, retail, warehouse)",
       type: "text",
-      required: false,
+      required: true,
     },
     rent_amount: {
       label: "Monthly Rent (₹)",
@@ -2007,7 +2073,7 @@ export const VARIABLE_CONFIG = {
     maintenance_party: {
       label: "Maintenance Responsibility",
       type: "select",
-      required: false,
+      required: true,
       options: ["Landlord", "Tenant", "Split equally"],
     },
   },
@@ -2038,9 +2104,9 @@ export const VARIABLE_CONFIG = {
     property_description: {
       label: "Property Description (area, floor, type)",
       type: "textarea",
-      required: false,
+      required: true,
     },
-    permitted_use: { label: "Permitted Use", type: "text", required: false },
+    permitted_use: { label: "Permitted Use", type: "text", required: true },
     license_fee: {
       label: "Monthly License Fee (₹)",
       type: "number",
@@ -2069,7 +2135,7 @@ export const VARIABLE_CONFIG = {
     maintenance_party: {
       label: "Maintenance Responsibility",
       type: "select",
-      required: false,
+      required: true,
       options: ["Licensor", "Licensee", "Split equally"],
     },
     police_verification_required: {
@@ -2110,7 +2176,7 @@ export const VARIABLE_CONFIG = {
       required: true,
     },
     loan_amount: { label: "Loan Amount (₹)", type: "number", required: true },
-    purpose: { label: "Purpose of Loan", type: "textarea", required: false },
+    purpose: { label: "Purpose of Loan", type: "textarea", required: true },
     interest_rate: {
       label: "Interest Rate (% per annum)",
       type: "number",
@@ -2143,22 +2209,22 @@ export const VARIABLE_CONFIG = {
     repayment_start_date: {
       label: "Repayment Start Date",
       type: "date",
-      required: false,
+      required: true,
     },
     security_collateral: {
       label: "Security / Collateral (or Unsecured)",
       type: "textarea",
-      required: false,
+      required: true,
     },
     prepayment_terms: {
       label: "Prepayment Permitted? (Yes / No + conditions)",
       type: "text",
-      required: false,
+      required: true,
     },
     default_interest_rate: {
       label: "Default Interest Rate (% per annum)",
       type: "number",
-      required: false,
+      required: true,
     },
     events_of_default: {
       label: "Events of Default / Invocation Triggers",
@@ -2203,7 +2269,7 @@ export const VARIABLE_CONFIG = {
     guarantor_type: {
       label: "Guarantor Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Individual",
         "Private Limited Company",
@@ -2253,12 +2319,12 @@ export const VARIABLE_CONFIG = {
     purpose: {
       label: "Underlying Obligation / Loan Description",
       type: "textarea",
-      required: false,
+      required: true,
     },
     guarantee_type: {
       label: "Guarantee Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Continuing Guarantee",
         "Limited Guarantee",
@@ -2268,7 +2334,7 @@ export const VARIABLE_CONFIG = {
     guarantee_period: {
       label: "Guarantee Period / Expiry (or Continuing)",
       type: "text",
-      required: false,
+      required: true,
     },
     invocation_conditions: {
       label: "Invocation Conditions",
@@ -2331,7 +2397,7 @@ export const VARIABLE_CONFIG = {
     services_description: {
       label: "Detailed Scope of Work",
       type: "textarea",
-      required: false,
+      required: true,
     },
     tech_stack: {
       label: "Technology Stack (e.g. React, Node.js)",
@@ -2341,13 +2407,13 @@ export const VARIABLE_CONFIG = {
     delivery_date: {
       label: "Project Delivery Date",
       type: "date",
-      required: false,
+      required: true,
     },
     total_fee: { label: "Total Fee (₹)", type: "number", required: true },
     payment_terms: {
       label: "Payment Milestones (e.g. 30% on start, 40% on UAT)",
       type: "textarea",
-      required: false,
+      required: true,
     },
     milestone_plan: {
       label: "Milestones / Delivery Plan",
@@ -2364,7 +2430,7 @@ export const VARIABLE_CONFIG = {
     ip_ownership: {
       label: "IP Ownership",
       type: "select",
-      required: false,
+      required: true,
       options: ["Client owns all IP", "Developer retains IP", "Shared IP"],
     },
     warranty_period: {
@@ -2418,7 +2484,7 @@ export const VARIABLE_CONFIG = {
     party_1_type: {
       label: "First Party Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Individual",
         "Private Limited Company",
@@ -2441,7 +2507,7 @@ export const VARIABLE_CONFIG = {
     party_2_type: {
       label: "Second Party Type",
       type: "select",
-      required: false,
+      required: true,
       options: [
         "Individual",
         "Private Limited Company",
@@ -2459,24 +2525,24 @@ export const VARIABLE_CONFIG = {
     mou_scope: {
       label: "Scope of Collaboration",
       type: "textarea",
-      required: false,
+      required: true,
     },
     mou_duration: {
       label: "Duration of MOU (e.g. 12 months)",
       type: "text",
-      required: false,
+      required: true,
     },
     binding_nature: {
       label: "Binding Nature of MOU",
       type: "select",
-      required: false,
+      required: true,
       group: "MOU Positioning",
       options: ["Non-binding", "Binding", "Partly binding"],
     },
     governing_law_state: {
       label: "Governing Law State",
       type: "select",
-      required: false,
+      required: true,
       group: "Jurisdiction & Dispute",
       options: [
         "Maharashtra",

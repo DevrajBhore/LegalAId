@@ -46,7 +46,12 @@ for (const folder of fs.readdirSync(CLAUSE_LIB, { withFileTypes: true })) {
 }
 
 const summary = summariseProvenance(clauses);
-const MAX_UNREVIEWED = 190; // as at Wave 4; lower this as clauses are signed off
+// Raised from 190 to 191 for CORE_INSURANCE_001, added because the library
+// carried no insurance covenant at any deal size. It is marked
+// review_status: draft-needs-legal-review / reviewed_by: PENDING like the rest.
+// This ceiling only ever moves up for a deliberately added clause; it should
+// come down as the supervising advocate signs clauses off.
+const MAX_UNREVIEWED = 191;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

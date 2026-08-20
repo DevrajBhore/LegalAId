@@ -72,6 +72,11 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true",
       "note": "Optional entire-agreement (no oral terms) clause."
+    },
+    {
+      "clause": "CORE_INSURANCE_001",
+      "include_if": "include_insurance == true",
+      "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
     }
   ],
   "mandatory_legal_checks": [
@@ -84,7 +89,10 @@
       "slot": "contractor_ip_ownership",
       "replaces": "IP_ASSIGNMENT_001",
       "select_first_match": [
-        { "clause": "IP_CONTRACTOR_RETAINS_001", "when": "is_developer_ip == true" }
+        {
+          "clause": "IP_CONTRACTOR_RETAINS_001",
+          "when": "is_developer_ip == true"
+        }
       ],
       "default": "IP_ASSIGNMENT_001"
     }

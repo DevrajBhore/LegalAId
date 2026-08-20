@@ -41,6 +41,9 @@ const CANONICAL_ORDER = [
   "LIABILITY",
   "INDEMNITY",
   "ENFORCEABILITY",
+  // Insurance sits with the other risk-transfer provisions, after liability and
+  // indemnity have defined what each party bears.
+  "INSURANCE",
   "EXPENSES",
   "TERM",
   "FORCE_MAJEURE",
