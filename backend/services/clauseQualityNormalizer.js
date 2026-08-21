@@ -122,7 +122,11 @@ export function normalizeClauseBody(text = "", { documentType } = {}) {
   value = replaceRoleAliases(value, roleRule);
   value = normalizeGrammar(value);
   value = normalizeRoleCapitalization(value, roleRule);
-  value = value.replace(/(^|[.!?]\s+|\n)([a-z])/g, (match, prefix, letter) => {
+  // Capitalise the opening of a sentence, but never a lone list letter: recitals
+  // are lettered "a." / "b." / "c.", and this rule was rewriting them to "A." on
+  // the way to the renderer, undoing the lettering the drafting convention asks
+  // for. A single letter followed by a stop or bracket is a marker, not a word.
+  value = value.replace(/(^|[.!?]\s+|\n)([a-z])(?![.)]\s)/g, (match, prefix, letter) => {
     return `${prefix}${letter.toUpperCase()}`;
   });
   return value.trim();

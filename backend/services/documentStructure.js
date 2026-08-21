@@ -28,14 +28,20 @@ const SCHEDULE_CATEGORIES = new Set(["SCHEDULE", "ANNEXURE", "SPECIFICATIONS"]);
 const SCHEDULE_TITLE_PATTERN =
   /\b(schedule|annexure|appendix|specification|approved materials)\b/i;
 
-// "A. WHEREAS, x" / "(B) AND WHEREAS, y" / "WHEREAS, z"
+// "a. WHEREAS, x" / "(b) AND WHEREAS, y" / "WHEREAS, z"
 const RECITAL_PATTERN =
   /^(?:(?:\(([A-Z])\)|([A-Z])[.,)])\s+)?((?:AND\s+)?WHEREAS[,:]?\s+)(.*)$/i;
-const LETTERED_RECITAL_PATTERN = /^\(([A-Z])\)\s+(.*)$/;
+const LETTERED_RECITAL_PATTERN = /^\(([A-Za-z])\)\s+(.*)$/;
 const PARTY_LINE_PATTERN = /of the\s+(First|Second|Third|Fourth|Other)\s+Part[;.]?$/i;
+// A deed among three or more parties names each one by role instead of by
+// ordinal part ("...(hereinafter referred to as the \"Guarantor\"...);"). Without
+// this the guarantee deed matched no party line, the whole opening failed to
+// parse, and every line fell through to the raw fallback -- which is why its
+// "BY AND AMONG" sat flush left while a two-party deed centred its connective.
+const PARTY_DESCRIPTOR_PATTERN = /hereinafter\s+referred\s+to\s+as\s+the\s+"/i;
 const OPENING_PATTERN = /^THIS\s+[A-Z][A-Z\s]*\(?/;
 const TESTATUM_PATTERN = /^NOW[,\s]+(THEREFORE|WITNESSETH)/i;
-const CONNECTIVE_PATTERN = /^(BY AND BETWEEN|AND|BETWEEN)$/i;
+const CONNECTIVE_PATTERN = /^(BY AND BETWEEN|BY AND AMONG|BY AND AMONGST|AMONG|AMONGST|AND|BETWEEN)$/i;
 
 function isScheduleLikeClause(clause = {}) {
   return (
@@ -95,11 +101,25 @@ export function parseIdentityClause(text = "") {
       continue;
     }
 
+    // The collective sentence also names roles, so it is excluded explicitly
+    // rather than left to ordering: it belongs to its own block type.
+    if (
+      PARTY_DESCRIPTOR_PATTERN.test(line) &&
+      !/collectively referred to as/i.test(line)
+    ) {
+      structure.parties.push({ text: line, part: null });
+      structure.blocks.push({ type: "party", text: line, part: null });
+      continue;
+    }
+
     const recital = line.match(RECITAL_PATTERN);
     if (recital) {
       const letter = recital[1] || recital[2];
       const parsedRecital = {
-        label: letter ? `${letter.toUpperCase()}. ` : "",
+        // Recitals are lettered in lower case, so a cross-reference reads
+        // "Recital a" and cannot be confused with clause numbering or with the
+        // capitalised defined terms around it.
+        label: letter ? `${letter.toLowerCase()}. ` : "",
         lead: recital[3],
         text: recital[4] || "",
       };
@@ -114,7 +134,7 @@ export function parseIdentityClause(text = "") {
     const lettered = line.match(LETTERED_RECITAL_PATTERN);
     if (lettered) {
       const letteredRecital = {
-        label: `${lettered[1].toUpperCase()}. `,
+        label: `${lettered[1].toLowerCase()}. `,
         lead: "WHEREAS, ",
         text: lettered[2] || "",
       };

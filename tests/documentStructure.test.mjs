@@ -23,7 +23,9 @@ assert.deepStrictEqual(s.connectives, ["BY AND BETWEEN", "AND"]);
 assert.strictEqual(s.parties.length, 2);
 assert.deepStrictEqual(s.parties.map((p) => p.part), ["First", "Second"]);
 assert.strictEqual(s.recitals.length, 3);
-assert.deepStrictEqual(s.recitals.map((r) => r.label.trim()), ["A.", "B.", "C."]);
+// The fixture feeds uppercase letters; recitals are lettered lower case on the
+// page, so the parser normalises whatever case the source clause carried.
+assert.deepStrictEqual(s.recitals.map((r) => r.label.trim()), ["a.", "b.", "c."]);
 assert.deepStrictEqual(s.recitals.map((r) => r.lead.trim()), ["WHEREAS,", "AND WHEREAS,", "AND WHEREAS,"]);
 assert.ok(s.testatum.startsWith("NOW, THEREFORE"));
 assert.ok(s.collective.includes("collectively referred to"));

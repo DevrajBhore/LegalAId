@@ -262,19 +262,22 @@ function buildInvoiceComplianceSentence(payeeLabel, variables = {}) {
     details.push(`recipient GSTIN ${payerGstin} where required`);
   }
 
-  return `All invoices shall be raised in Indian Rupees as valid GST-compliant tax invoices and shall specify the ${details.join(
-    ", "
+  return `All invoices shall be raised in Indian Rupees as valid GST-compliant tax invoices and shall specify the ${joinSeries(
+    details
   )}.`;
 }
 
 function resolveServicePurposeClause(documentType, namedParties, variables = {}) {
   const purposeMode =
     getDocumentDraftingPolicy(documentType)?.rendering?.purposeMode || "none";
-  const projectDescription = normalizeWhitespace(
-    variables.project_description || variables.deliverables
+  // The same treatment the recital gets. These values land mid sentence
+  // ("...in relation to X and to deliver..."), so an imperative or a stray
+  // terminal stop from the intake form reads as broken prose on the page.
+  const projectDescription = toRecitalPhrase(
+    normalizeWhitespace(variables.project_description || variables.deliverables)
   );
-  const serviceDescription = normalizeWhitespace(
-    variables.consulting_services || variables.services_description
+  const serviceDescription = toRecitalPhrase(
+    normalizeWhitespace(variables.consulting_services || variables.services_description)
   );
   const engagementModel = normalizeWhitespace(variables.engagement_model);
 
@@ -350,7 +353,7 @@ function resolveServicePurposeClause(documentType, namedParties, variables = {})
       )}.` : ""}`;
 
     case "consultancy_engagement":
-      return `The purpose of this Agreement is to set out the terms on which the ${namedParties.first} retains the ${namedParties.second} to provide consultancy and advisory services in relation to ${serviceDescription || "the agreed business requirements"} and to deliver the agreed work product under a clearly defined professional engagement${engagementModel ? ` on a ${engagementModel.toLowerCase()} basis` : ""}.`;
+      return `The purpose of this Agreement is to set out the terms on which the ${namedParties.first} retains the ${namedParties.second} to provide consultancy and advisory services in relation to ${serviceDescription || "the agreed business requirements"}, and to deliver the agreed work product under a clearly defined professional engagement${engagementModel ? ` on a ${engagementModel.toLowerCase()} basis` : ""}.`;
     case "independent_contractor_engagement":
       return `The purpose of this Agreement is to set out the terms on which the ${namedParties.first} engages the ${namedParties.second}, as an independent contractor and not an employee, to perform the agreed services and deliverables described in this Agreement.`;
     case "software_delivery":
@@ -485,6 +488,91 @@ function splitSentences(value = "") {
  *
  * @returns {{ items: string[], exclusions: string[] }}
  */
+// Joins a series for prose. Steps the separator up to a semicolon when any
+// member already contains a comma, so the reader can still see where one member
+// ends and the next begins.
+function joinSeries(parts = []) {
+  const items = parts.filter(Boolean);
+  if (items.length <= 1) return items[0] || "";
+
+  const separator = items.some((item) => item.includes(",")) ? "; " : ", ";
+  const head = items.slice(0, -1).join(separator);
+  const tail = items[items.length - 1];
+
+  // The serial comma is carried throughout the drafting, so a two-item series
+  // takes a bare conjunction and anything longer keeps the separator before it.
+  if (items.length === 2 && separator === ", ") return `${head} and ${tail}`;
+  return `${head}${separator.trimEnd()} and ${tail}`;
+}
+
+// Turns free-form purpose text into something that reads inside a recital.
+//
+// A recital continues the sentence "…in relation to …", so whatever follows has
+// to be a noun phrase. Users write scope fields as instructions — "Provide
+// strategic business advisory… Deliver monthly reports… Excludes direct
+// implementation" — and dropping that in verbatim produced "in relation to
+// Provide strategic business advisory", which reads as a command and starts
+// mid-recital with a capital. Raw input is not publication-ready legal prose and
+// should not be treated as though it were.
+const IMPERATIVE_LEAD =
+  /^(?:to\s+)?(?:provide|deliver|supply|perform|render|undertake|carry out|offer|furnish|prepare|conduct)\s+/i;
+
+// Lower-casing the first word is right for a common noun sitting mid sentence
+// ("Monthly reports" -> "monthly reports") and wrong for a name ("Mumbai Office
+// Fit-out"). A name is taken to be a token that is all capitals, carries an
+// internal capital, or is followed by another capitalised word -- the cases
+// where lower-casing would visibly corrupt the party's own wording.
+function looksLikeProperNoun(phrase = "") {
+  const [first = "", second = ""] = String(phrase).trim().split(/\s+/);
+  if (!/^[A-Z]/.test(first)) return false;
+  if (first === first.toUpperCase() && first.length > 1) return true;
+  if (/[A-Z]/.test(first.slice(1))) return true;
+  return /^[A-Z][a-z]/.test(second);
+}
+
+function openLowerCase(phrase = "") {
+  const value = String(phrase).trim();
+  if (!value || looksLikeProperNoun(value)) return value;
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function toRecitalPhrase(value = "") {
+  const sentences = String(value || "")
+    .split(/(?<=\.)\s+(?=[A-Z(])/)
+    .map((part) => part.trim().replace(/\s*[.;,]\s*$/, ""))
+    .filter(Boolean);
+
+  if (!sentences.length) return "";
+
+  const included = [];
+  const excluded = [];
+
+  for (const sentence of sentences) {
+    if (EXCLUSION_LEAD.test(sentence)) {
+      const carved = sentence.replace(EXCLUSION_LEAD, "").trim();
+      if (carved) excluded.push(openLowerCase(carved));
+      continue;
+    }
+    // Strip the imperative and lower-case what remains: the phrase sits mid
+    // sentence, so it should read as a thing, not an instruction.
+    const phrase = sentence.replace(IMPERATIVE_LEAD, "").trim();
+    if (phrase) included.push(openLowerCase(phrase));
+  }
+
+  // Each limb is usually itself a comma-separated list ("market entry,
+  // regulatory compliance, and operational efficiency"). Joining those with
+  // another comma buries the boundary between them, so the separator steps up
+  // to a semicolon whenever a limb already contains a comma -- the same rule a
+  // drafter applies to a series with internal punctuation.
+  const body = joinSeries(included);
+
+  if (!excluded.length) return body;
+
+  const carveOut = `excluding ${joinSeries(excluded)}`;
+
+  return body ? `${body}, but ${carveOut}` : carveOut;
+}
+
 function normaliseDetailItems(value = "", { allowComma = false } = {}) {
   const sentences = splitSentences(value);
   if (!sentences.length) return { items: [], exclusions: [] };
@@ -498,7 +586,13 @@ function normaliseDetailItems(value = "", { allowComma = false } = {}) {
       if (carved) exclusions.push(carved);
       continue;
     }
-    items.push(sentence);
+    // The lead-in above these limbs reads "...shall provide the following
+    // services:", so each limb has to be a thing, not an order. Users type scope
+    // fields as instructions ("Provide strategic advisory", "Deliver monthly
+    // reports"), which rendered as "shall provide the following services:
+    // Provide strategic advisory".
+    const phrase = sentence.replace(IMPERATIVE_LEAD, "").trim();
+    items.push(phrase || sentence);
   }
 
   // Only fragment on commas when the whole field is a single sentence reading as
@@ -578,7 +672,9 @@ function renderStructuredDetailText(prefix, value, options = {}) {
   // is drafted as one. Folding it into the list of services would state the
   // opposite of what they asked for.
   const excluded = exclusions.length
-    ? `\nThe following are expressly excluded from the scope of this Agreement and shall not be undertaken unless the Parties agree otherwise in writing: ${exclusions.join("; ")}.`
+    ? `\nThe following are expressly excluded from the scope of this Agreement and shall not be undertaken unless the Parties agree otherwise in writing: ${joinSeries(
+        exclusions
+      )}.`
     : "";
 
   if (!items.length) return `${prefix.replace(/:\s*$/, ".")}${excluded}`;
@@ -1015,7 +1111,7 @@ function buildDefinitionsClauseText(documentType, namedParties, variables = {}) 
     ""
   );
   if (purpose) {
-    entries.push(["Permitted Purpose", purpose]);
+    entries.push(["Permitted Purpose", toRecitalPhrase(purpose)]);
   }
 
   const services = stripExternalReferencePhrases(
@@ -1023,12 +1119,12 @@ function buildDefinitionsClauseText(documentType, namedParties, variables = {}) 
     ""
   );
   if (services) {
-    entries.push(["Services", services]);
+    entries.push(["Services", toRecitalPhrase(services)]);
   }
 
   const deliverables = stripExternalReferencePhrases(variables.deliverables, "");
   if (deliverables) {
-    entries.push(["Deliverables", deliverables]);
+    entries.push(["Deliverables", toRecitalPhrase(deliverables)]);
   }
 
   const goods = stripExternalReferencePhrases(
@@ -1178,10 +1274,15 @@ function buildSignatureBlockText(documentType, participants = []) {
       lines.push("Authorized Signatory");
       lines.push("Name: ________________________");
       lines.push("Designation: __________________");
+      // A signature date is separate from the execution date on the face of the
+      // deed: parties frequently sign on different days, and the date each one
+      // actually signed is what evidences when they became bound.
+      lines.push("Date: ________________________");
     } else {
       lines.push(`${name}`);
       lines.push("______________________________");
       lines.push(`Name: ${name}`);
+      lines.push("Date: ________________________");
     }
 
     lines.push("");
@@ -1335,12 +1436,19 @@ function renderHardClause(
         `The ${namedParties.first} and the ${namedParties.second} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
         "",
         // Indian drafting convention letters the recitals and uses AND WHEREAS
-        // from the second onward, so they can be cross-referred as Recital A/B/C.
-        `A. WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to ${recitalPurpose};`,
+        // from the second onward, so they can be cross-referred as Recital a/b/c.
+        // A recital is one grammatical sentence closing with a semicolon. The
+        // purpose text is free-form and usually ends with a full stop of its
+        // own, which produced "…implementation of policies. ;". Fold multiple
+        // sentences into a single clause and strip the terminal stop so the
+        // semicolon lands cleanly.
+        `a. WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to ${toRecitalPhrase(
+          recitalPurpose
+        )};`,
         "",
-        "B. AND WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and",
+        "b. AND WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and",
         "",
-        "C. AND WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;",
+        "c. AND WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;",
         "",
         "NOW, THEREFORE, in consideration of the mutual covenants and undertakings contained herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:",
       ].join("\n");
@@ -1379,9 +1487,9 @@ function renderHardClause(
         "",
         `The Creditor, the Principal Debtor, and the Guarantor are collectively referred to as the "Parties" and individually as a "Party".`,
         "",
-        "A. WHEREAS, the Creditor has agreed to extend, continue, or secure financial accommodation to the Principal Debtor on the faith of this Guarantee;",
+        "a. WHEREAS, the Creditor has agreed to extend, continue, or secure financial accommodation to the Principal Debtor on the faith of this Guarantee;",
         "",
-        "B. AND WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation; and",
+        "b. AND WHEREAS, the Guarantor has agreed to guarantee the due performance and payment obligations of the Principal Debtor in relation to the underlying financial accommodation; and",
         "",
         "NOW, THEREFORE, in consideration of the mutual covenants, promises, and obligations contained herein, the Parties agree as follows:",
       ].join("\n");

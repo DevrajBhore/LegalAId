@@ -6,8 +6,10 @@ import {
   PageNumber,
   Packer,
   Paragraph,
+  Tab,
+  TabStopPosition,
+  TabStopType,
   TextRun,
-  UnderlineType,
   convertInchesToTwip,
 } from "docx";
 import fs from "fs";
@@ -57,6 +59,7 @@ const PDF_REF_SIZE = 9;
 const PDF_L1 = 18; // 0.25 in — recitals, parties, clause body
 const PDF_L2 = 36; // 0.50 in — lettered sub-items
 const PDF_HANGING = 18; // 0.25 in — hanging indent for numbered leads
+const PDF_ITEM_HANGING = 28.8; // 0.40 in — label column for decimal sub-clauses
 const PDF_LINE_GAP = 1.8; // 12 pt x 1.15 line spacing
 const PDF_PARA_GAP = 6; // 6 pt after each paragraph
 const PDF_BLOCK_GAP = 10; // between structural blocks
@@ -218,9 +221,15 @@ function pdfLeadRuns(text, leadPattern, fallbackLead = "") {
       ? [{ text: fallbackLead, bold: true }, { text: source }]
       : [{ text: source }];
   }
+  // pdfkit drops leading whitespace on a `continued` fragment, so a space that
+  // separates the bold lead-in from what follows disappears at render time and
+  // the page reads "THIS AGREEMENT("Agreement")". Move that space onto the end
+  // of the lead, where it survives.
+  const remainder = source.slice(match[1].length);
+  const gap = /^\s/.test(remainder) ? " " : "";
   return [
-    { text: match[1], bold: true },
-    { text: source.slice(match[1].length) },
+    { text: `${match[1]}${gap}`, bold: true },
+    { text: remainder.replace(/^\s+/, "") },
   ];
 }
 
@@ -429,16 +438,84 @@ function tokenizeClauseText(text = "") {
       const marker = trimmed.match(SUBPART_MARKER);
       const isItem = Boolean(marker) || (!soleLine && indent >= 2);
 
+      const body = marker ? trimmed.slice(marker[0].length) : trimmed;
+
       blocks.push({
         type: isItem ? "item" : "paragraph",
         depth: indent >= 2 ? 2 : 1,
-        text: trimmed,
-        body: marker ? trimmed.slice(marker[0].length) : trimmed,
+        text: isItem ? toSentenceLimb(body) : toSentenceParagraph(trimmed),
+        body: isItem ? toSentenceLimb(body) : toSentenceParagraph(body),
       });
     }
   }
 
   return blocks;
+}
+
+// Every enumerated limb is set as one sentence: initial capital, terminal full
+// stop. Limbs arrive in three different conventions -- library clause text
+// writes them lower-case with no terminator, the hardening builders write them
+// in sentence case, and limbs derived from what the user typed keep whatever
+// case the user typed -- so a single agreement could show "4.1 neither Party
+// shall", "6.1 Provide strategic advisory" and "7.2 quarterly workshops" on
+// facing pages. Normalising at this seam rather than at each source means one
+// convention reaches both renderers whatever the limb was built from.
+const SENTENCE_END = /[.!?]["'\u2019\u201d)\]]?$/;
+const TRAILING_CONJUNCTION = /[,;]\s*(?:and|or)\s*$/i;
+// "s. 74 of the Act" must not become "S. 74"; a statutory reference opening a
+// limb is a citation, not a sentence.
+const STATUTE_LEAD = /^s{1,2}\.\s*\d/i;
+
+function toSentenceLimb(value = "") {
+  let text = String(value || "").trim();
+  if (!text) return text;
+
+  // A limb written for a semicolon-style list carries its conjunction in the
+  // terminator. Decimal sub-numbering already makes the list structure
+  // explicit, so a trailing "; and" is dropped rather than left stranded at the
+  // end of what is now a sentence.
+  text = text.replace(TRAILING_CONJUNCTION, "").replace(/[,;:]\s*$/, "").trim();
+  if (!text) return text;
+
+  const index = text.search(/[A-Za-z]/);
+  // Only capitalise when nothing but punctuation precedes the first letter, so
+  // an opening quote on a defined term is stepped over but "18% shall" is left
+  // alone rather than becoming "18% Shall".
+  if (
+    index !== -1 &&
+    /[a-z]/.test(text[index]) &&
+    !/[0-9]/.test(text.slice(0, index)) &&
+    !STATUTE_LEAD.test(text)
+  ) {
+    text = text.slice(0, index) + text[index].toUpperCase() + text.slice(index + 1);
+  }
+
+  return SENTENCE_END.test(text) ? text : `${text}.`;
+}
+
+// Body paragraphs get the terminator but keep their case: a lead-in ending in a
+// colon is introducing the limbs beneath it and must stay open.
+function toSentenceParagraph(value = "") {
+  const text = String(value || "").trim();
+  if (!text) return text;
+  if (SENTENCE_END.test(text) || /[:;,\u2014-]$/.test(text)) return text;
+  return /[A-Za-z0-9"'\u2019\u201d)\]%]$/.test(text) ? `${text}.` : text;
+}
+
+// The label column has to be wide enough for the widest label in the clause, or
+// "11.1" overhangs the grid that "4.1" sits on. Measured from Times metrics
+// (digits are a half em, the full stop a quarter) rather than from pdfkit, so
+// the DOCX tab stop and the PDF label box are computed identically and the two
+// exports lay out on the same grid.
+function labelColumnWidth(labels = []) {
+  const widest = labels.reduce((max, label) => {
+    const width = [...String(label || "")].reduce(
+      (sum, ch) => sum + PDF_BODY_SIZE * (ch === "." ? 0.25 : 0.5),
+      0
+    );
+    return Math.max(max, width);
+  }, 0);
+  return Math.max(PDF_ITEM_HANGING, widest + PDF_BODY_SIZE * 0.6);
 }
 
 // Assigns decimal outline labels within a clause. Indian firm drafting numbers
@@ -619,20 +696,34 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
     clauseNumber
   );
 
+  // One label column for the whole clause, wide enough for its longest label, so
+  // "4.1" and "11.1" open their text on the same vertical line. A tab carries
+  // the first line across to that column rather than two literal spaces, which
+  // land wherever the label happens to end.
+  const itemHangingTwips = Math.round(
+    labelColumnWidth(blocks.map((block) => block.label).filter(Boolean)) * 20
+  );
+
   for (const block of blocks) {
     if (block.type === "item") {
       const nested = block.depth >= 2;
+      const bodyLeft = RECITAL_LEFT + itemHangingTwips * (nested ? 2 : 1);
       children.push(
         new Paragraph({
           style: STYLE_ID.item,
           alignment: AlignmentType.JUSTIFIED,
           spacing: { after: BODY_AFTER_SPACING, line: BODY_LINE_SPACING },
-          indent: {
-            left: nested ? CLAUSE_ITEM_LEFT + CLAUSE_ITEM_HANGING : CLAUSE_ITEM_LEFT,
-            hanging: CLAUSE_ITEM_HANGING,
-          },
+          indent: { left: bodyLeft, hanging: itemHangingTwips },
+          tabStops: [{ type: TabStopType.LEFT, position: bodyLeft }],
           children: block.label
-            ? [buildBodyRun(`${block.label}  `), buildBodyRun(block.body)]
+            ? [
+                buildBodyRun(block.label),
+                // A real <w:tab/>, not a literal tab character: a tab inside
+                // <w:t> is not a tab stop instruction and Word simply swallows
+                // it, which put the limb text hard against its own number.
+                new TextRun({ children: [new Tab()], font: BODY_FONT, size: BODY_SIZE }),
+                buildBodyRun(block.body),
+              ]
             : [buildBodyRun(block.text)],
         })
       );
@@ -717,12 +808,30 @@ function renderSignatureBlock(children, text) {
   }
 }
 
-function buildPageFooter() {
+// Running footer. The document reference sits on the left and the page count on
+// the right, so a detached sheet of a long contract can be placed back into the
+// right instrument and a missing page is visible on the face of the paper.
+function buildPageFooter(label = "") {
+  const footerRun = (text) => new TextRun({ text, font: BODY_FONT, size: FOOTER_SIZE });
+  const fieldRun = (field) =>
+    new TextRun({ children: [field], font: BODY_FONT, size: FOOTER_SIZE });
+
+  const children = [];
+  if (label) children.push(footerRun(label));
+  children.push(
+    new TextRun({ children: [new Tab()], font: BODY_FONT, size: FOOTER_SIZE }),
+    footerRun("Page "),
+    fieldRun(PageNumber.CURRENT),
+    footerRun(" of "),
+    fieldRun(PageNumber.TOTAL_PAGES)
+  );
+
   return new Footer({
     children: [
       new Paragraph({
-        alignment: AlignmentType.CENTER,
+        alignment: AlignmentType.LEFT,
         spacing: { before: 80, after: 0 },
+        tabStops: [{ type: TabStopType.RIGHT, position: TabStopPosition.MAX }],
         border: {
           top: {
             style: BorderStyle.SINGLE,
@@ -731,29 +840,56 @@ function buildPageFooter() {
             space: 4,
           },
         },
-        children: [
-          new TextRun({ text: "Page ", font: BODY_FONT, size: FOOTER_SIZE }),
-          new TextRun({
-            children: [PageNumber.CURRENT],
-            font: BODY_FONT,
-            size: FOOTER_SIZE,
-          }),
-          new TextRun({ text: " of ", font: BODY_FONT, size: FOOTER_SIZE }),
-          new TextRun({
-            children: [PageNumber.TOTAL_PAGES],
-            font: BODY_FONT,
-            size: FOOTER_SIZE,
-          }),
-        ],
+        children,
       }),
     ],
   });
+}
+
+// Stamps a page number and a short document identifier on every page, after
+// layout is complete. A detached page of a twelve-page contract is otherwise
+// impossible to place, and a party cannot tell whether a page is missing.
+function stampPdfFooters(doc, label = "") {
+  const range = doc.bufferedPageRange();
+  if (!range || range.count < 2) return;
+
+  for (let index = 0; index < range.count; index += 1) {
+    doc.switchToPage(range.start + index);
+
+    // The footer sits inside the bottom margin, so it must be written with the
+    // page's own margins temporarily relaxed or pdfkit will start a new page.
+    const bottom = doc.page.margins.bottom;
+    doc.page.margins.bottom = 0;
+
+    const y = doc.page.height - PDF_MARGIN + 18;
+    doc.font("Times-Roman").fontSize(PDF_REF_SIZE).fillColor("#6b6b6b");
+
+    if (label) {
+      doc.text(pdfSafeText(label), PDF_MARGIN, y, {
+        width: PDF_CONTENT_WIDTH,
+        align: "left",
+        lineBreak: false,
+      });
+    }
+    doc.text(`Page ${index + 1} of ${range.count}`, PDF_MARGIN, y, {
+      width: PDF_CONTENT_WIDTH,
+      align: "right",
+      lineBreak: false,
+    });
+
+    doc.fillColor("black");
+    doc.page.margins.bottom = bottom;
+  }
 }
 
 function createPdfBuffer(buildFn) {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({
       size: "A4",
+      // Buffer the pages so the footer can say "Page 2 of 12" -- the total is
+      // only known once pagination has actually happened, and hard-coding a
+      // count before rendering is how documents end up claiming the wrong one.
+      bufferPages: true,
       margins: {
         top: PDF_MARGIN,
         right: PDF_MARGIN,
@@ -772,11 +908,42 @@ function createPdfBuffer(buildFn) {
 
     try {
       buildFn(doc);
+      stampPdfFooters(doc, doc.__footerLabel || "");
       doc.end();
     } catch (error) {
       reject(error);
     }
   });
+}
+
+// A numbered limb, laid out as a true hanging indent: the label is drawn into a
+// fixed-width box at the left of the grid and the body opens on the same line at
+// the far edge of that box. pdfkit's own negative first-line indent starts the
+// body immediately after the label instead, so a short label ("4.1") and a long
+// one ("11.1") began their text in different columns.
+// `left` is the BODY column, exactly as the DOCX paragraph indent is, and the
+// label is drawn one label-column to its left.
+function pdfHangingItem(doc, label, body, options = {}) {
+  const left = options.left ?? 0;
+  const hanging = options.hanging ?? PDF_ITEM_HANGING;
+  const size = options.size ?? PDF_BODY_SIZE;
+
+  const bottom = doc.page.height - doc.page.margins.bottom;
+  if (doc.y >= bottom - size * 2) doc.addPage();
+
+  const top = doc.y;
+  doc
+    .font("Times-Roman")
+    .fontSize(size)
+    .text(pdfSafeText(String(label)), PDF_MARGIN + left - hanging, top, {
+      width: hanging,
+      align: "left",
+      lineBreak: false,
+    });
+
+  // Reset the cursor so the body opens alongside the label rather than beneath.
+  doc.y = top;
+  pdfParagraph(doc, [{ text: body }], { ...options, left, hanging: 0 });
 }
 
 function renderPdfSectionHeading(doc, text, options = {}) {
@@ -860,6 +1027,17 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
 
   doc.y += PDF_BLOCK_GAP;
 
+  // Keep-with-next. A clause heading stranded at the foot of a page, with its
+  // text starting overleaf, is the classic typesetting fault -- and the previous
+  // renderer produced exactly that on page 1. Reserve room for the heading plus
+  // the first two lines of its body; if that does not fit, start the page now.
+  const KEEP_LINES = 2;
+  const needed =
+    PDF_HEADING_SIZE + (PDF_BODY_SIZE + PDF_LINE_GAP) * KEEP_LINES + PDF_PARA_GAP * 2;
+  if (doc.y + needed > doc.page.height - doc.page.margins.bottom) {
+    doc.addPage();
+  }
+
   // Hanging indent: the number sits flush at the margin and the heading text
   // starts on the same 0.25 in grid line as the clause body beneath it. The old
   // renderer indented the heading 24 pt while leaving its own body at 0, so
@@ -883,16 +1061,20 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
     clauseNumber
   );
 
+  const itemHanging = labelColumnWidth(
+    blocks.map((block) => block.label).filter(Boolean)
+  );
+
   for (const block of blocks) {
     if (block.type === "item") {
-      const left = block.depth >= 2 ? PDF_L2 + PDF_HANGING : PDF_L2;
-      pdfParagraph(
-        doc,
-        block.label
-          ? [{ text: `${block.label}  ` }, { text: block.body }]
-          : [{ text: block.text }],
-        { left, hanging: PDF_HANGING }
-      );
+      // The label sits on PDF_L1, the same grid line as the clause body above
+      // it, and the limb text opens one label-column further in.
+      const left = PDF_L1 + itemHanging * (block.depth >= 2 ? 2 : 1);
+      if (block.label) {
+        pdfHangingItem(doc, block.label, block.body, { left, hanging: itemHanging });
+      } else {
+        pdfParagraph(doc, [{ text: block.text }], { left });
+      }
       continue;
     }
 
@@ -961,7 +1143,6 @@ export async function draftToDocx(draft) {
         new TextRun({
           text: title.toUpperCase(),
           bold: true,
-          underline: { type: UnderlineType.SINGLE },
           size: TITLE_SIZE,
           font: BODY_FONT,
         }),
@@ -1019,7 +1200,6 @@ export async function draftToDocx(draft) {
             font: BODY_FONT,
             size: TITLE_SIZE,
             bold: true,
-            underline: { type: UnderlineType.SINGLE },
           },
           paragraph: {
             alignment: AlignmentType.CENTER,
@@ -1118,7 +1298,7 @@ export async function draftToDocx(draft) {
           },
         },
         footers: {
-          default: buildPageFooter(),
+          default: buildPageFooter(title),
         },
         children,
       },
@@ -1137,6 +1317,7 @@ export async function draftToPdf(draft) {
 
   return createPdfBuffer((doc) => {
     doc.info.Title = title;
+    doc.__footerLabel = title;
 
     // Clear the head of page 1 for the stamp paper / e-stamp certificate.
     if (requiresStampHeader(docType)) {
@@ -1149,7 +1330,6 @@ export async function draftToPdf(draft) {
       .text(pdfSafeText(title.toUpperCase()), PDF_MARGIN, doc.y, {
         width: PDF_CONTENT_WIDTH,
         align: "center",
-        underline: true,
       });
     doc.y += PDF_BLOCK_GAP * 1.6;
     doc.x = PDF_MARGIN;
