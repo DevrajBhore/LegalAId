@@ -448,36 +448,81 @@ function stripExternalReferencePhrases(value = "", fallback = "") {
   return rewritten || fallback;
 }
 
-function splitStructuredItems(value = "", { allowComma = false } = {}) {
-  const normalized = String(value || "")
+// Sentences that state what is NOT covered. These must never be rendered as a
+// service the party has agreed to perform.
+const EXCLUSION_LEAD =
+  /^(?:excludes?|excluding|does not include|shall not include|not included|other than)\b[:\s]*/i;
+
+// Splits free text into sentences. Deliberately sentence-first: this previously
+// split the whole field on commas, which turned
+//   "Provide strategic business advisory covering market entry, regulatory
+//    compliance, and operational efficiency. Deliver monthly strategy reports,
+//    quarterly workshops, and ad-hoc policy drafting. Excludes direct
+//    implementation of policies."
+// into five fragments, two of which ran across a full stop -- "(c) and
+// operational efficiency. Deliver monthly strategy reports" -- and one of which
+// presented an EXCLUSION as an included service. A comma inside a sentence is
+// almost always qualifying one obligation, not separating two.
+function splitSentences(value = "") {
+  return String(value || "")
     .replace(/\r/g, "")
     .replace(/\u2022/g, "\n")
-    .trim();
-
-  if (!normalized) return [];
-
-  let items = normalized
-    .split(/\n+|;\s*/)
-    .map((item) =>
-      item
-        .replace(/^\(?[a-z0-9ivxlcdm]+\)?[.)-]?\s+/i, "")
+    .split(/\n+|;\s*|(?<=\.)\s+(?=[A-Z(])/)
+    .map((part) =>
+      part
+        .trim()
+        .replace(/^\(?[a-z0-9ivxlcdm]{1,4}\)?[.)-]\s+/i, "")
         .replace(/^[-*]\s+/, "")
+        .replace(/\s*\.\s*$/, "")
         .trim()
     )
     .filter(Boolean);
+}
 
-  if (items.length <= 1 && allowComma) {
-    const commaItems = normalized
-      .split(/\s*,\s*/)
-      .map((item) => item.trim())
-      .filter((item) => item && item.split(/\s+/).length <= 12);
+/**
+ * Normalises a free-text scope / deliverables field into what is included and
+ * what is expressly excluded.
+ *
+ * @returns {{ items: string[], exclusions: string[] }}
+ */
+function normaliseDetailItems(value = "", { allowComma = false } = {}) {
+  const sentences = splitSentences(value);
+  if (!sentences.length) return { items: [], exclusions: [] };
 
-    if (commaItems.length >= 2) {
-      items = commaItems;
+  const items = [];
+  const exclusions = [];
+
+  for (const sentence of sentences) {
+    if (EXCLUSION_LEAD.test(sentence)) {
+      const carved = sentence.replace(EXCLUSION_LEAD, "").trim();
+      if (carved) exclusions.push(carved);
+      continue;
     }
+    items.push(sentence);
   }
 
-  return items.filter((item, index, list) => list.indexOf(item) === index);
+  // Only fragment on commas when the whole field is a single sentence reading as
+  // a bare list ("market entry, regulatory compliance, operational efficiency"),
+  // never when it is a sentence describing one obligation.
+  if (allowComma && items.length === 1 && !exclusions.length) {
+    const parts = items[0]
+      .split(/\s*,\s*/)
+      .map((part) => part.replace(/^(?:and|or)\s+/i, "").trim())
+      .filter(Boolean);
+
+    const bareList =
+      parts.length >= 2 && parts.every((part) => part.split(/\s+/).length <= 6);
+
+    if (bareList) return { items: parts, exclusions };
+  }
+
+  const dedupe = (list) => list.filter((item, i, all) => all.indexOf(item) === i);
+  return { items: dedupe(items), exclusions: dedupe(exclusions) };
+}
+
+// Retained for callers that only need the included items.
+function splitStructuredItems(value = "", options = {}) {
+  return normaliseDetailItems(value, options).items;
 }
 
 function formatStructuredSubparts(items = []) {
@@ -524,16 +569,22 @@ function buildCustomDefinitionEntries(value = "") {
 }
 
 function renderStructuredDetailText(prefix, value, options = {}) {
-  const items = splitStructuredItems(value, options);
-  if (!items.length) {
+  const { items, exclusions } = normaliseDetailItems(value, options);
+  if (!items.length && !exclusions.length) {
     return prefix;
   }
 
-  if (items.length === 1) {
-    return `${prefix} ${items[0]}`;
-  }
+  // An exclusion the user wrote into a scope field is a negative obligation and
+  // is drafted as one. Folding it into the list of services would state the
+  // opposite of what they asked for.
+  const excluded = exclusions.length
+    ? `\nThe following are expressly excluded from the scope of this Agreement and shall not be undertaken unless the Parties agree otherwise in writing: ${exclusions.join("; ")}.`
+    : "";
 
-  return `${prefix}\n${formatStructuredSubparts(items)}`;
+  if (!items.length) return `${prefix.replace(/:\s*$/, ".")}${excluded}`;
+  if (items.length === 1) return `${prefix} ${items[0]}.${excluded}`;
+
+  return `${prefix}\n${formatStructuredSubparts(items)}${excluded}`;
 }
 
 function resolveNamedPartyLabels(documentType) {
@@ -1487,7 +1538,7 @@ function renderHardClause(
             )}.`
           : "Any material expansion or variation of the service scope, timeline, or output expectations shall require prior written agreement between the Parties, including any corresponding commercial adjustment where applicable.";
 
-      return `${serviceScopeText}${techStackText ? `\n${techStackText}` : ""}\nThe ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the specifications, milestones, and service standards set out in this Agreement.${resolveAvailabilitySentence(
+      return `${serviceScopeText}${techStackText ? `\n${techStackText}` : ""}\nThe ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the scope described above and with the standard of skill and care reasonably expected of a competent provider of comparable services.${resolveAvailabilitySentence(
         actor,
         variables
       )}${resolveSupportMaintenanceSentence(variables)}${deliverablesSentence ? ` ${deliverablesSentence}` : ""}${acceptanceSentence ? ` ${acceptanceSentence}` : ""} ${changeControlSentence}`;
@@ -1868,19 +1919,22 @@ function renderHardClause(
     TECH_ACCEPTANCE_001: () =>
       `Upon delivery of the Software or any milestone deliverable, ${serviceLabels.payer} shall have a period of fifteen (15) business days ('Acceptance Testing Period') to test and evaluate the Software against ${stripExternalReferencePhrases(
         variables.acceptance_criteria,
-        "the agreed acceptance criteria described in this Agreement"
+        // No acceptance criteria were supplied, so the test is the scope and
+        // deliverables the document actually defines. Pointing at "the criteria
+        // described in this Agreement" would reference nothing.
+        "the requirements of the Services and the deliverables described in this Agreement, and its fitness for the purpose for which it was commissioned"
       )} and the project scope${
         variables.project_description
           ? ` for ${normalizeWhitespace(variables.project_description)}`
           : ""
-      }. If the Software meets the Acceptance Criteria, ${serviceLabels.payer} shall issue a written acceptance notice. If the Software fails to meet the Acceptance Criteria, ${serviceLabels.payer} shall notify ${serviceLabels.payee} in writing specifying the defects in reasonable detail, and ${serviceLabels.payee} shall remedy such defects within fifteen (15) business days of such notice, following which the Acceptance Testing Period shall recommence.${resolveSourceCodeDeliverySentence(
+      } (together, the "Acceptance Criteria"). If the Software meets the Acceptance Criteria, ${serviceLabels.payer} shall issue a written acceptance notice. If the Software fails to meet the Acceptance Criteria, ${serviceLabels.payer} shall notify ${serviceLabels.payee} in writing specifying the defects in reasonable detail, and ${serviceLabels.payee} shall remedy such defects within fifteen (15) business days of such notice, following which the Acceptance Testing Period shall recommence.${resolveSourceCodeDeliverySentence(
         variables
       )} If ${serviceLabels.payer} fails to issue an acceptance notice or a defect notice within the Acceptance Testing Period, the Software shall be deemed accepted.`,
 
     SERVICE_ACCEPTANCE_001: () =>
       `${serviceLabels.payer} shall review the relevant Services or deliverables against ${stripExternalReferencePhrases(
         variables.acceptance_criteria,
-        "the agreed specifications and acceptance criteria described in this Agreement"
+        "the scope of Services and the deliverables described in this Agreement, and their fitness for the purpose for which they were commissioned"
       )}. Unless a different review period is expressly agreed, ${serviceLabels.payer} shall notify ${serviceLabels.payee} of any material non-conformity within ${Math.max(
         5,
         resolveCurePeriodDays(variables, 10)
@@ -2211,7 +2265,15 @@ function renderHardClause(
       const state = normalizeWhitespace(
         variables.governing_law_state || variables.operating_state
       );
-      const forum = normalizeWhitespace(variables.arbitration_city) || state;
+      // A forum is a place. "the courts at Maharashtra" names nowhere a party
+      // can actually file, so compose "City, State" when the city is known and
+      // fall back to the competent courts OF the state when it is not.
+      const city = normalizeWhitespace(
+        variables.execution_city || variables.arbitration_city
+      );
+      const forum = city && state && city.toLowerCase() !== state.toLowerCase()
+        ? `${city}, ${state}`
+        : city;
 
       return {
         title: "Governing Law and Jurisdiction",
@@ -2221,8 +2283,10 @@ function renderHardClause(
           }.`,
           formatStructuredSubparts([
             forum
-              ? `subject to the dispute resolution provisions of this Agreement, the courts at ${forum} shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction`
-              : "subject to the dispute resolution provisions of this Agreement, the competent courts of India shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction",
+              ? `subject to the dispute resolution provisions of this Agreement, the competent courts at ${forum} shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction`
+              : state
+                ? `subject to the dispute resolution provisions of this Agreement, the competent courts having territorial jurisdiction in the State of ${state} shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction`
+                : "subject to the dispute resolution provisions of this Agreement, the competent courts of India shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction",
             "where this Agreement provides for arbitration, the jurisdiction conferred above is the supervisory jurisdiction over the arbitration, and nothing in this clause shall be read as permitting either Party to commence substantive proceedings in court in place of arbitration",
             "each Party waives any objection to that forum on the ground of inconvenient forum or that proceedings have been brought in an inappropriate court",
             "the rules of private international law shall not apply to the extent they would result in the application of the law of any jurisdiction other than India",
@@ -2436,7 +2500,7 @@ function renderHardClause(
       )}.` : " Any post-warranty maintenance or support shall be governed by the support obligations expressly stated in this Agreement or in a separate maintenance arrangement."}`,
 
     SERVICE_WARRANTY_001: () =>
-      `The ${actor} warrants that the Services and all Deliverables shall be performed with reasonable skill, care, diligence, and professional competence and shall materially conform to the agreed specifications, service standards, and acceptance criteria stated in this Agreement.${hasMeaningfulValue(
+      `The ${actor} warrants that the Services and all Deliverables shall be performed with reasonable skill, care, diligence, and professional competence and shall materially conform to the scope of Services and the deliverables described in this Agreement.${hasMeaningfulValue(
         variables.acceptance_criteria
       ) ? ` For clarity, conformity shall be tested against the following completion or acceptance standard: ${stripExternalReferencePhrases(
           variables.acceptance_criteria,
@@ -2863,6 +2927,80 @@ function findRiskProfileNotices(draft, documentType) {
   ];
 }
 
+// Cross-clause reference integrity.
+//
+// A clause that points at something — "the address set out in this Agreement",
+// "the acceptance criteria described in this Agreement", "the initial term" —
+// is only meaningful if that thing is actually in the document. Each clause is
+// individually well drafted, so no per-clause check catches this; it only shows
+// up when the assembled instrument is read as a whole, which is precisely what
+// a reader does. A notices clause pointing at addresses that were never
+// collected leaves the parties with no valid way to serve notice at all.
+const DANGLING_REFERENCE_CHECKS = [
+  {
+    rule_id: "DANGLING_NOTICE_ADDRESS",
+    references: /address of the recipient Party set out in this Agreement|address(?:es)? set out (?:in|below)/i,
+    satisfiedBy: /having (?:its |the )?address at|residing at|registered office at/i,
+    message:
+      "The notices clause directs notices to an address set out in this Agreement, but no party address appears anywhere in it.",
+    suggestion:
+      "Collect an address for each party, or redraft the notices clause to work without one.",
+  },
+  {
+    rule_id: "DANGLING_ACCEPTANCE_CRITERIA",
+    references: /acceptance criteria/i,
+    // Satisfied either by criteria stated outright, or by the term being defined
+    // at first use — `... (together, the "Acceptance Criteria")` — which is how
+    // a well-drafted clause introduces one.
+    // Satisfied three ways: criteria stated outright; the term defined at first
+    // use — `... (together, the "Acceptance Criteria")`; or the criteria
+    // deliberately delegated to a future instrument, which is exactly how a
+    // master services agreement is supposed to work ("each Statement of Work
+    // shall specify ... acceptance criteria"). That last case is a reference
+    // forward, not a dangling one.
+    satisfiedBy:
+      /acceptance criteria (?:shall be|are|means|include|comprise)|criteria for acceptance are|acceptance criteria:|the "Acceptance Criteria"|shall specify[^.]{0,160}acceptance criteria|acceptance criteria[^.]{0,80}(?:in|under) (?:each|the relevant|any) (?:Statement of Work|SOW|Order|Schedule)/i,
+    message:
+      "A clause tests deliverables against acceptance criteria, but no acceptance criteria are stated in the document.",
+    suggestion:
+      "Capture acceptance criteria at intake, or remove the acceptance mechanism for this document type.",
+  },
+  {
+    rule_id: "DANGLING_INITIAL_TERM",
+    references: /initial term/i,
+    satisfiedBy:
+      /remain in force for|shall continue for|for a (?:period|term) of|until .{0,60}(?:discharged|completed|terminated)/i,
+    message:
+      'A clause refers to the "initial term", but the document never states what that term is.',
+    suggestion: "State the duration in the term clause, or drop the reference to an initial term.",
+  },
+  {
+    rule_id: "DANGLING_SPECIFICATIONS",
+    references: /specifications (?:and|,) .{0,40}set out in this Agreement|agreed specifications/i,
+    // "The Goods shall conform to the agreed specifications" is not dangling in
+    // a supply agreement that describes the Goods — the description IS the
+    // specification. The reference is only unmet when nothing in the document
+    // describes or defines the subject matter at all. A check that cries wolf
+    // on sound drafting gets ignored, which costs more than it catches.
+    satisfiedBy:
+      /specifications (?:shall be|are|means|include)|specification:|"(?:Goods|Deliverables|Services|Software|Products)" means|shall (?:supply|deliver|provide) the following/i,
+    message:
+      "A clause refers to agreed specifications, but none are set out in the document.",
+    suggestion: "Capture the specifications at intake, or soften the reference.",
+  },
+];
+
+function findDanglingReferenceIssues(draft) {
+  const text = (draft.clauses || []).map((clause) => clause.text || "").join("\n");
+  if (!text.trim()) return [];
+
+  return DANGLING_REFERENCE_CHECKS.filter(
+    (check) => check.references.test(text) && !check.satisfiedBy.test(text)
+  ).map((check) =>
+    buildIssue(check.rule_id, "MEDIUM", check.message, check.suggestion)
+  );
+}
+
 export function validateDocumentHardening(draft, { documentType } = {}) {
   if (!draft?.clauses?.length || !documentType) {
     return [];
@@ -2873,5 +3011,6 @@ export function validateDocumentHardening(draft, { documentType } = {}) {
     ...findUnresolvedScheduleReferenceIssues(draft),
     ...findDisallowedProtectionIssues(draft, documentType),
     ...findRiskProfileNotices(draft, documentType),
+    ...findDanglingReferenceIssues(draft),
   ];
 }

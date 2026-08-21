@@ -15,14 +15,31 @@ function buildGoverningLawClause(governingLawState = "") {
   return `This Agreement shall be governed by and construed in accordance with the laws of India and, to the extent relevant to local procedural, registration, or stamp matters, as applied in the State of ${state}.`;
 }
 
-function buildDisputeResolutionClause(method = "", disputeVenue = "", governingLawState = "") {
-  const venue = normalizeWhitespace(disputeVenue || governingLawState || "Mumbai");
+// A seat of arbitration and a court's jurisdiction are both PLACES. Naming a
+// state ("the seat shall be Maharashtra", "the courts at Maharashtra") fixes
+// neither: under the Arbitration and Conciliation Act, 1996 the seat determines
+// which court exercises supervisory jurisdiction, and a state is not a forum a
+// party can file in. Render "City, State" whenever the city is known, and fall
+// back to naming the competent courts OF the state -- which is at least
+// grammatical and identifiable -- when it is not.
+function composeForum(city = "", state = "") {
+  const place = normalizeWhitespace(city);
+  const region = normalizeWhitespace(state);
+  if (place && region && place.toLowerCase() !== region.toLowerCase()) {
+    return `${place}, ${region}`;
+  }
+  return place || region || "";
+}
+
+function buildDisputeResolutionClause(method = "", disputeVenue = "", governingLawState = "", executionCity = "") {
+  const forum = composeForum(executionCity || disputeVenue, governingLawState);
+  const venue = forum || normalizeWhitespace(disputeVenue || governingLawState) || "Mumbai";
   const normalizedMethod = normalizeChoice(method);
   const arbitrationAppointmentSentence =
     "The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) days of a written request, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996.";
 
   if (normalizedMethod === "courts") {
-    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, the courts at ${venue} shall have exclusive jurisdiction, subject to applicable law.`;
+    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, the competent courts at ${venue} shall have exclusive jurisdiction, subject to applicable law.`;
   }
 
   if (normalizedMethod === "negotiation, then arbitration") {
@@ -81,7 +98,8 @@ export function injectJurisdictionRules(draft, input) {
       nextText = buildDisputeResolutionClause(
         disputeResolutionMethod,
         disputeVenue,
-        governingLawState
+        governingLawState,
+        normalizeWhitespace(input.variables?.execution_city)
       );
     }
 

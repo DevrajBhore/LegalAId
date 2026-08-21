@@ -54,6 +54,23 @@ export const VARIABLE_CONFIG = {
       description:
         "The Indian state whose law and courts will govern this agreement. Pick the state where the work is mainly done or where the main party is based — it also sets the stamp duty rate and the seat of arbitration.",
     },
+
+    // ONE city field, doing three jobs that share the same answer in almost
+    // every real engagement: where the deed is executed, the seat of
+    // arbitration, and the courts with jurisdiction. Asking three times would be
+    // the duplication we just removed; asking none left the drafting naming a
+    // STATE as the seat and as the court, which is wrong on both counts -- a
+    // seat is a place (and under Indus Mobile v Datawind it operates as an
+    // exclusive jurisdiction clause), and "the courts at Maharashtra" identifies
+    // no forum a party could actually file in.
+    execution_city: {
+      label: "City",
+      type: "text",
+      required: true,
+      group: "Jurisdiction & Dispute",
+      description:
+        "The city where the agreement is signed. This also becomes the seat of arbitration and the city whose courts have jurisdiction — a seat has to be a place, not a state. Use the city the parties would realistically litigate or arbitrate in, for example Mumbai, Pune or Bengaluru.",
+    },
     // ─── Authority to execute (optional) ──────────────────────────────────
     // A company or LLP signs through a natural person, and the instrument
     // should show on its face that the signatory was authorised. Excluded from

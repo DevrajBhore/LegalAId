@@ -110,7 +110,12 @@ export function normalizeClauseBody(text = "", { documentType } = {}) {
   value = value.replace(/(^|[^A-Za-z])([A-Za-z]{2,})\.\s+(and|or)\b/gi, "$1$2, $3");
   value = value.replace(/([,;:!?])\1+/g, "$1");
   value = value.replace(/\s+([,;:.!?])/g, "$1");
-  value = value.replace(/([,;:.!?])(?![\s"')\]])/g, "$1 ");
+  // Insert a space after punctuation that runs straight into the next word, but
+  // never when a digit follows. Without that guard this rule rewrote every
+  // Indian-format amount ("30,000" -> "30, 000"), every numeric date
+  // ("21.08.2026" -> "21. 08. 2026"), every decimal ("1.5%" -> "1. 5%") and
+  // every short statutory citation ("s.74" -> "s. 74").
+  value = value.replace(/([,;:.!?])(?![\s"')\]\d])/g, "$1 ");
   value = value.replace(/[ \t]{2,}/g, " ");
   value = value.replace(/\n{3,}/g, "\n\n");
 
