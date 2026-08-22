@@ -10,7 +10,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Load env from backend/.env, then root .env (first wins).
@@ -32,6 +31,15 @@ if (!process.env.MONGODB_URI) {
 const { default: User } = await import(
   "file://" + path.resolve(__dirname, "../backend/models/User.js").replace(/\\/g, "/")
 );
+
+// Take the mongoose instance off the model rather than importing "mongoose"
+// here. This script sits at the repo root, so a bare import resolves to the
+// ROOT node_modules copy, while backend/models/User.js resolves to the one in
+// backend/node_modules — a different version and a separate instance. Calling
+// connect() on the root copy leaves the model's own instance unconnected, so
+// every query silently buffers until it times out. User.base is by definition
+// the instance the model is registered on.
+const mongoose = User.base;
 
 await mongoose.connect(process.env.MONGODB_URI);
 const user = await User.findOne({ email: email.toLowerCase() });

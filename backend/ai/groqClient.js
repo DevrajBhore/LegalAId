@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "../loadEnv.js";
 
 import { createOpenAICompatibleClient } from "./openaiCompatible.js";
 

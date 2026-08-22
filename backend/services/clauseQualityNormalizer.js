@@ -115,7 +115,19 @@ export function normalizeClauseBody(text = "", { documentType } = {}) {
   // Indian-format amount ("30,000" -> "30, 000"), every numeric date
   // ("21.08.2026" -> "21. 08. 2026"), every decimal ("1.5%" -> "1. 5%") and
   // every short statutory citation ("s.74" -> "s. 74").
-  value = value.replace(/([,;:.!?])(?![\s"')\]\d])/g, "$1 ");
+  value = value.replace(/([,;:.!?])(?![\s"')\]\d])/g, (match, mark, offset, source) => {
+    // "5:00 p.m." and "e.g." are single-letter abbreviations, not two sentences:
+    // the stop belongs to the abbreviation and must not be opened up into
+    // "5:00 p. m.". Same guard as the one that protects "30,000" and "s.74".
+    if (
+      mark === "." &&
+      /(?:^|[^A-Za-z])[A-Za-z]$/.test(source.slice(0, offset)) &&
+      /^[A-Za-z]\./.test(source.slice(offset + 1))
+    ) {
+      return match;
+    }
+    return `${mark} `;
+  });
   value = value.replace(/[ \t]{2,}/g, " ");
   value = value.replace(/\n{3,}/g, "\n\n");
 

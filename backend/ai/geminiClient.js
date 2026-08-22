@@ -9,8 +9,7 @@
  * wrapping and returns raw JSON directly.
  */
 
-import dotenv from "dotenv";
-dotenv.config();
+import "../loadEnv.js";
 import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 
 // Configurable so an overloaded model can be swapped via env (no code change),
@@ -18,7 +17,19 @@ import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const TIMEOUT = 90_000;
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// Built lazily on first use rather than at import time. Reading the key during
+// module evaluation freezes whatever happened to be in process.env at that
+// instant, which makes the client silently unusable if env loading is ever
+// reordered — and unfixable afterwards, since the captured key is baked in.
+let cachedModel = null;
+function getModel() {
+  if (!cachedModel) {
+    cachedModel = new GoogleGenerativeAI(
+      process.env.GEMINI_API_KEY
+    ).getGenerativeModel({ model: MODEL });
+  }
+  return cachedModel;
+}
 
 const BASE_GENERATION_CONFIG = {
   temperature: 0.15,
@@ -94,7 +105,6 @@ const FIX_SCHEMA = {
   },
 };
 
-const model = genAI.getGenerativeModel({ model: MODEL });
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -272,7 +282,7 @@ JSON only:
 async function callModel(prompt, { responseSchema } = {}) {
   const attempt = async () => {
     const result = await Promise.race([
-      model.generateContent(buildGenerateRequest(prompt, responseSchema)),
+      getModel().generateContent(buildGenerateRequest(prompt, responseSchema)),
       new Promise((_, reject) =>
         setTimeout(() => reject(new Error("TIMEOUT")), TIMEOUT)
       ),

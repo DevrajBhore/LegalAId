@@ -100,9 +100,12 @@ export function formatFormalDate(value) {
   if (!raw) return "the agreed date";
   const parsed = new Date(raw);
   if (Number.isNaN(parsed.getTime())) return raw;
-  const day = String(parsed.getDate()).padStart(2, "0");
+  // House style is "1 September 2026" throughout. The zero-padded form read as a
+  // second date format sitting beside the ordinal one used in the testatum
+  // ("this 1st day of September, 2026"), and one document should not present
+  // dates two ways.
   const month = parsed.toLocaleString("en-GB", { month: "long" });
-  return `${day} ${month} ${parsed.getFullYear()}`;
+  return `${parsed.getDate()} ${month} ${parsed.getFullYear()}`;
 }
 
 export function normalizeCurrencyText(text = "", { includeWords = false } = {}) {

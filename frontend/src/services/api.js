@@ -8,17 +8,35 @@ const API_BASE_URL =
 
 const API = axios.create({
   baseURL: API_BASE_URL,
-  // Send/receive the httpOnly auth cookie alongside the Bearer header.
+  // The httpOnly auth cookie is the real session credential.
   withCredentials: true,
 });
 
+// The JWT is deliberately NOT persisted to localStorage. The backend already
+// issues it as an httpOnly cookie, which is what survives a refresh; keeping a
+// second readable copy in localStorage handed any XSS a stealable long-lived
+// token and defeated the point of the cookie.
+//
+// It is still held in memory for the current page session so the Bearer header
+// keeps working if the cookie is blocked (e.g. third-party-cookie restrictions
+// on a cross-site deployment). Losing it on refresh is harmless — AuthContext
+// re-establishes the session from the cookie via /auth/me.
+let inMemoryToken = null;
+
+export function setAuthToken(token) {
+  inMemoryToken = token || null;
+}
+
 export const logoutRequest = () =>
-  API.post("/auth/logout").catch(() => {});
+  API.post("/auth/logout")
+    .catch(() => {})
+    .finally(() => {
+      inMemoryToken = null;
+    });
 
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem("legalaid_token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (inMemoryToken) {
+    config.headers.Authorization = `Bearer ${inMemoryToken}`;
   }
   return config;
 });
@@ -27,7 +45,7 @@ API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401 && !error.config?.skipAuthRedirect) {
-      localStorage.removeItem("legalaid_token");
+      inMemoryToken = null;
       window.location.assign("/login");
     }
     return Promise.reject(error);

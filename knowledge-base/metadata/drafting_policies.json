@@ -496,6 +496,9 @@
           "INDEMNITY",
           "FORCE_MAJEURE"
         ]
+      },
+      "rendering": {
+        "purposeMode": "guarantee"
       }
     },
     "SOFTWARE_DEVELOPMENT_AGREEMENT": {

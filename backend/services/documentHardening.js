@@ -201,7 +201,7 @@ function normalizeBooleanChoice(value, fallback = true) {
   return fallback;
 }
 
-function resolveGenericTerminationText(namedParties, variables = {}) {
+function resolveGenericTerminationText(namedParties, variables = {}, present = EMPTY_PRESENCE) {
   const allowConvenience = normalizeBooleanChoice(
     variables.termination_for_convenience,
     true
@@ -213,23 +213,36 @@ function resolveGenericTerminationText(namedParties, variables = {}) {
 
   if (allowConvenience) {
     grounds.push(
-      `(a) by either ${namedParties.first} or ${namedParties.second} for convenience upon ${noticeDays} days' prior written notice to the other Party`
+      `by either ${namedParties.first} or ${namedParties.second} for convenience upon ${noticeDays} days' prior written notice to the other Party`
     );
   }
 
   if (allowCause) {
     grounds.push(
-      `(b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within ${cureDays} days after receipt of written notice requiring the same to be remedied`
+      `by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within ${cureDays} days after receipt of written notice requiring the same to be remedied`
     );
   }
 
   grounds.push(
-    `(c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business`
+    `by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business`
   );
 
-  return `This Agreement may be terminated ${grounds.join(
+  // Lettered from position rather than written in. With convenience termination
+  // switched off the list used to open at "(b)", which reads as though an item
+  // had been deleted from the executed document.
+  const lettered = grounds.map((ground, index) => `(${String.fromCharCode(97 + index)}) ${ground}`);
+
+  // The surviving provisions are named from what the document actually
+  // contains. This sentence used to promise that confidentiality and indemnity
+  // survive in agreements that had neither.
+  const surviving = joinSeries([
+    ...survivingProvisionLabels(present).filter((label) => label !== "this clause"),
+    "any accrued rights or remedies",
+  ]);
+
+  return `This Agreement may be terminated ${lettered.join(
     "; "
-  )}. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, indemnity, and any accrued rights or remedies.`;
+  )}. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including ${surviving}.`;
 }
 
 function resolveRestrictionPeriod(variables = {}) {
@@ -282,6 +295,25 @@ function resolveServicePurposeClause(documentType, namedParties, variables = {})
   const engagementModel = normalizeWhitespace(variables.engagement_model);
 
   switch (purposeMode) {
+    case "guarantee": {
+      const guaranteed = toRecitalPhrase(
+        normalizeWhitespace(
+          variables.underlying_agreement_description ||
+            variables.loan_purpose ||
+            variables.guarantee_purpose
+        )
+      );
+      return `The purpose of this Agreement is to record the guarantee given by the ${
+        namedParties.third || "Guarantor"
+      } to the ${
+        namedParties.first
+      } in respect of the due and punctual performance and payment of the obligations of the ${
+        namedParties.second
+      }${
+        guaranteed ? ` arising in relation to ${guaranteed}` : ""
+      }, and to set out the terms on which that guarantee may be invoked, enforced, and discharged.`;
+    }
+
     case "confidential_disclosure": {
       const disclosurePurpose = stripExternalReferencePhrases(
         variables.purpose || variables.permitted_use,
@@ -1354,11 +1386,103 @@ function getSemanticParticipantDescriptors(semanticContext = {}) {
     : [];
 }
 
+// The concepts a document can claim elsewhere, and what counts as proof that it
+// really carries one. Matched on clause id and category rather than on prose,
+// because a clause that merely mentions confidentiality is not a confidentiality
+// clause.
+const CONCEPT_MARKERS = [
+  { concept: "confidentiality", label: "confidentiality", id: /CONFIDENTIAL/i, category: /CONFIDENTIAL/i },
+  {
+    concept: "intellectual_property",
+    label: "ownership of intellectual property",
+    // Clause ids are underscore-joined, and \b does not fire between "_" and a
+    // letter, so IP_OWNERSHIP_001 has to be matched on the underscore boundary.
+    id: /(?:^|_)IP(?:_|$)|INTELLECTUAL/i,
+    category: /^IP$|INTELLECTUAL/i,
+  },
+  { concept: "indemnity", label: "indemnity", id: /INDEMNIT/i, category: /INDEMNIT/i },
+  {
+    concept: "liability_cap",
+    label: "limitation of liability",
+    id: /LIABILITY/i,
+    category: /LIABILITY/i,
+  },
+  {
+    concept: "dispute_resolution",
+    label: "dispute resolution",
+    id: /DISPUTE|ARBITRAT/i,
+    category: /DISPUTE|ARBITRAT/i,
+  },
+  {
+    concept: "governing_law",
+    label: "governing law and jurisdiction",
+    id: /GOVERNING_LAW|JURISDICTION/i,
+    category: /GOVERNING_LAW|JURISDICTION/i,
+  },
+  { concept: "notices", label: "notices", id: /NOTICE/i, category: /NOTICE/i },
+  {
+    concept: "representations",
+    label: "representations and warranties",
+    id: /REPRESENTATION|WARRANT/i,
+    category: /REPRESENTATION|WARRANT/i,
+  },
+  {
+    concept: "security",
+    label: "security",
+    id: /SECURITY|PLEDGE|MORTGAGE|CHARGE|HYPOTHEC/i,
+    category: /SECURITY|COLLATERAL/i,
+  },
+  {
+    concept: "insurance",
+    label: "insurance",
+    id: /INSURANCE/i,
+    category: /INSURANCE/i,
+  },
+];
+
+const EMPTY_PRESENCE = { has: () => false, concepts: new Set(), clauseIds: new Set() };
+
+function buildClausePresence(clauses = []) {
+  const clauseIds = new Set(clauses.map((clause) => String(clause?.clause_id || "")));
+  const concepts = new Set();
+
+  for (const clause of clauses) {
+    const id = String(clause?.clause_id || "");
+    const category = String(clause?.category || "");
+    for (const marker of CONCEPT_MARKERS) {
+      if (marker.id.test(id) || marker.category.test(category)) concepts.add(marker.concept);
+    }
+  }
+
+  return { has: (concept) => concepts.has(concept), concepts, clauseIds };
+}
+
+// The survival list, built from what the document contains rather than from a
+// fixed sentence. Order follows the order a reader meets the provisions.
+const SURVIVAL_ORDER = [
+  "confidentiality",
+  "intellectual_property",
+  "indemnity",
+  "liability_cap",
+  "dispute_resolution",
+  "governing_law",
+  "notices",
+];
+
+function survivingProvisionLabels(present) {
+  const labels = SURVIVAL_ORDER.filter((concept) => present.has(concept)).map(
+    (concept) => CONCEPT_MARKERS.find((marker) => marker.concept === concept).label
+  );
+  labels.push("this clause");
+  return labels;
+}
+
 function renderHardClause(
   clause,
   variables = {},
   documentType = "",
-  semanticContext = {}
+  semanticContext = {},
+  present = EMPTY_PRESENCE
 ) {
   const roleContext = getDocumentRoleContext(documentType);
   const serviceLabels = {
@@ -1496,8 +1620,14 @@ function renderHardClause(
     },
 
     CORE_PURPOSE_001: () => {
+      // `objective_summary` used to be the fallback here. It is an INTERNAL
+      // description of what the generator should produce ("This Guarantee
+      // Agreement should read as a coherent Indian legal document ...") and it
+      // was printing as Clause 1 for every document type with no purposeMode.
+      // An instruction to the drafter is not a term of the contract, and nothing
+      // written for the generator may ever reach the page.
       const rendered = resolveServicePurposeClause(documentType, namedParties, variables);
-      return rendered || normalizeWhitespace(semanticContext?.objective_summary) || clause.text;
+      return rendered || clause.text;
     },
 
     CORE_DEFINITIONS_001: () => ({
@@ -1517,13 +1647,27 @@ function renderHardClause(
         ? resolveGuaranteeTermText(variables)
         : resolveServiceTermClause(documentType, namedParties, variables),
 
-    CORE_TERMINATION_001: () => ({
-      title: "Termination",
-      text:
-        documentType === "JOINT_VENTURE_AGREEMENT"
-          ? resolveJointVentureTerminationText(variables)
-          : resolveGenericTerminationText(namedParties, variables),
-    }),
+    CORE_TERMINATION_001: () => {
+      // A guarantee has its own exit: revocation as to future transactions under
+      // Section 130, and discharge when the guaranteed obligations are paid. A
+      // generic convenience-termination clause sat beside that and contradicted
+      // it -- and, as drafted, let the Principal Debtor walk away from a
+      // guarantee given for the Creditor's benefit on thirty days' notice.
+      if (documentType === "GUARANTEE_AGREEMENT") {
+        return {
+          title: "Revocation and Discharge",
+          text: "This Guarantee may not be terminated for convenience by any Party. The Guarantor may revoke this Guarantee only as to future transactions, in the manner and with the effect set out in the continuing guarantee clause of this Agreement and Section 130 of the Indian Contract Act, 1872. This Guarantee is otherwise discharged only when the guaranteed obligations have been paid or performed in full, and no revocation, expiry, or discharge shall release the Guarantor from liability for any obligation that had accrued before it took effect.",
+        };
+      }
+
+      return {
+        title: "Termination",
+        text:
+          documentType === "JOINT_VENTURE_AGREEMENT"
+            ? resolveJointVentureTerminationText(variables)
+            : resolveGenericTerminationText(namedParties, variables, present),
+      };
+    },
 
     EMPLOYMENT_ROLE_001: () =>
       `The Employer hereby appoints the Employee as ${normalizeWhitespace(
@@ -1675,7 +1819,7 @@ function renderHardClause(
 
     SERVICE_TERMINATION_001: () => ({
       title: "Termination",
-      text: `${resolveGenericTerminationText(namedParties, variables)}${hasMeaningfulValue(
+      text: `${resolveGenericTerminationText(namedParties, variables, present)}${hasMeaningfulValue(
         variables.underperformance_termination
       ) ? ` The Parties additionally agree that underperformance-based termination shall operate as follows: ${stripExternalReferencePhrases(
         variables.underperformance_termination,
@@ -1847,7 +1991,7 @@ function renderHardClause(
         formatStructuredSubparts([
           "if delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. local time, and otherwise on the next Business Day",
           "if sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier",
-          "if sent by a reputed courier service, on the second (2nd) Business Day after the date of despatch",
+          "if sent by a reputed courier service, on the second (2nd) Business Day after the date of dispatch",
           "if sent by electronic mail to the address notified for that purpose, on the date of transmission where sent on a Business Day before 5:00 p.m. local time and no delivery-failure notification is received, and otherwise on the next Business Day",
         ]),
         "A Party changing its address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the change, and until that notice is given a communication sent to the last notified address shall be validly given.",
@@ -1856,7 +2000,9 @@ function renderHardClause(
 
     CORE_SURVIVAL_001: () => ({
       title: "Survival",
-      text: "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, ownership of intellectual property, indemnity, limitation of liability, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+      text: `Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to ${joinSeries(
+        survivingProvisionLabels(present)
+      )} shall survive expiry or termination and shall continue to bind the Parties.`,
     }),
 
     CORE_ASSIGNMENT_001: () => ({
@@ -2667,14 +2813,52 @@ function renderHardClause(
     LOAN_COVENANTS_001: () =>
       `For so long as any amount remains outstanding under this Agreement, the Borrower undertakes that it shall maintain its legal existence and necessary approvals, promptly notify the Lender of any default or material adverse event, provide financial information reasonably requested by the Lender, not create any encumbrance over its assets except as permitted under this Agreement, not materially alter the nature of its business without prior written consent of the Lender, and comply with all applicable laws and regulatory directions.`,
 
-    LOAN_DEFAULT_001: () =>
-      `Each of the following shall constitute an Event of Default under this Agreement: ${stripExternalReferencePhrases(
-        variables.events_of_default,
-        "(a) failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due date; (b) material breach by the Borrower of any representation, warranty, or covenant under this Agreement, which, if capable of remedy, remains unremedied for thirty (30) days after written notice; (c) insolvency of the Borrower, filing of any petition under the Insolvency and Bankruptcy Code, 2016, or appointment of a liquidator, receiver, or administrator; (d) any judgment, attachment, or enforcement action against the Borrower that materially impairs the Borrower's ability to perform its obligations under this Agreement; (e) any material adverse change in the financial condition or business of the Borrower; (f) cross-default under any other material financing agreement of the Borrower; or (g) if any security created under this Agreement ceases to be valid, enforceable, or perfected"
-      )}. Upon the occurrence of an Event of Default, the Lender may exercise all rights under this Agreement and applicable law.`,
+    // Events of Default used to be one paragraph carrying inline "(a) ... (g)"
+    // markers, which read as a wall of text and broke across pages mid-event.
+    // Each event is now its own limb, and two of them are conditional: an event
+    // predicated on breach of a representation is meaningless in a document that
+    // contains no representations, and an event predicated on security failing
+    // is meaningless in one that creates no security. A default clause that
+    // points at provisions which do not exist is unenforceable on its own terms.
+    LOAN_DEFAULT_001: () => {
+      const supplied = stripExternalReferencePhrases(variables.events_of_default, "");
+      if (supplied) {
+        return renderStructuredDetailText(
+          "Each of the following shall constitute an Event of Default under this Agreement:",
+          supplied
+        );
+      }
+
+      const events = [
+        "failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due date",
+        present.has("representations")
+          ? "material breach by the Borrower of any representation, warranty, or covenant under this Agreement, which, if capable of remedy, remains unremedied for thirty (30) days after written notice"
+          : "material breach by the Borrower of any covenant or obligation under this Agreement, which, if capable of remedy, remains unremedied for thirty (30) days after written notice",
+        "insolvency of the Borrower, filing of any petition under the Insolvency and Bankruptcy Code, 2016, or appointment of a liquidator, receiver, or administrator",
+        "any judgment, attachment, or enforcement action against the Borrower that materially impairs the Borrower's ability to perform its obligations under this Agreement",
+        // A bare "material adverse change" is a standing invitation to argue.
+        // Tying it to the effect the Lender actually cares about -- ability to
+        // pay -- gives the clause a testable meaning without inventing a
+        // threshold the Parties never agreed.
+        "any change in the financial condition or business of the Borrower which materially impairs the Borrower's ability to perform its payment obligations under this Agreement",
+        "cross-default under any other material financing agreement of the Borrower",
+      ];
+
+      if (present.has("security")) {
+        events.push(
+          "any security created under or in connection with this Agreement ceasing to be valid, enforceable, or perfected"
+        );
+      }
+
+      return [
+        "Each of the following shall constitute an Event of Default under this Agreement:",
+        formatStructuredSubparts(events),
+        "Upon the occurrence of an Event of Default, the Lender may exercise all rights under this Agreement and applicable law.",
+      ].join("\n");
+    },
 
     GUARANTEE_OBLIGATION_001: () =>
-      `In consideration of the Lender agreeing to extend financial accommodation to the Principal Debtor, the Guarantor hereby unconditionally and irrevocably guarantees to the Lender the due and punctual payment of all amounts payable by the Principal Debtor under the underlying financing arrangements up to ${formatCurrency(
+      `In consideration of the Lender agreeing to extend financial accommodation to the Principal Debtor, the Guarantor hereby unconditionally and irrevocably guarantees to the Lender the due and punctual payment of all amounts payable by the Principal Debtor under the underlying financing arrangements. The aggregate liability of the Guarantor under this Agreement, taken together with any liability under the indemnity given in this Agreement and including principal, interest, default interest, costs, and enforcement expenses, shall not exceed ${formatCurrency(
         variables.guaranteed_amount
       )}. This Guarantee shall be invoked in the circumstances described as follows: ${stripExternalReferencePhrases(
         variables.invocation_conditions,
@@ -2682,7 +2866,7 @@ function renderHardClause(
       )}.${hasMeaningfulValue(variables.invocation_procedure) ? ` The parties further agree that invocation shall be carried out in accordance with the following procedure: ${stripExternalReferencePhrases(
         variables.invocation_procedure,
         ""
-      )}.` : " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand."} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor except to the extent expressly limited in this Agreement.`,
+      )}.` : " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand."} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor under Section 128 of the Indian Contract Act, 1872, subject in all cases to the aggregate cap stated in this clause.`,
 
     // GUARANTEE_CONTINUING_001 and CORE_TERM_001 were both rendered by
     // resolveGuaranteeTermText, so a guarantee carried the same paragraph twice
@@ -2708,7 +2892,11 @@ function renderHardClause(
     }),
 
     GUARANTEE_INDEMNITY_001: () =>
-      `The Guarantor shall indemnify and hold harmless the Lender against all losses, damages, costs, and expenses suffered or incurred as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the underlying financing arrangements. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to the rights and remedies of the Lender against the Principal Debtor to the extent of such payment, provided that the Guarantor shall not exercise such subrogation rights until the Lender has been paid in full.`,
+      // Subject to the same cap, expressly. An uncapped indemnity sitting beside
+      // a capped guarantee lets the Creditor recover the whole loss under the
+      // indemnity and treat the cap as decorative, which defeats the only
+      // commercial term the Guarantor actually negotiated.
+      `The Guarantor shall indemnify and hold harmless the Lender against all losses, damages, costs, and expenses suffered or incurred as a result of or in connection with any failure by the Principal Debtor to perform its obligations under the underlying financing arrangements, provided that the Guarantor's liability under this indemnity forms part of, and shall not increase, the aggregate cap on the Guarantor's liability stated in the guarantee obligation clause of this Agreement. Upon the Guarantor making any payment under this Guarantee, the Guarantor shall be subrogated to the rights and remedies of the Lender against the Principal Debtor to the extent of such payment, provided that the Guarantor shall not exercise such subrogation rights until the Lender has been paid in full.`,
   };
 
   const render = renderers[clause.clause_id];
@@ -2839,8 +3027,16 @@ export function applyDocumentHardening(draft, input = {}) {
     )
     .map((clauseId) => cloneClauseForDraft(clauseId, variables));
 
-  const clauses = [...baseClauses, ...extraClauses].map((clause) =>
-    renderHardClause(clause, variables, documentType, semanticContext)
+  // What the assembled document actually contains, so a clause that enumerates
+  // other provisions can name only the ones that are really there. A survival
+  // clause listing confidentiality, intellectual property and a liability cap in
+  // an agreement that has none of them is not a harmless flourish: it tells the
+  // reader those provisions exist and invites a search for them.
+  const assembled = [...baseClauses, ...extraClauses];
+  const present = buildClausePresence(assembled);
+
+  const clauses = assembled.map((clause) =>
+    renderHardClause(clause, variables, documentType, semanticContext, present)
   );
 
   return {

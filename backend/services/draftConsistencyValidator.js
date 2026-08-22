@@ -230,6 +230,32 @@ function inferPartyType(name = "", explicitType = "") {
   return "Individual";
 }
 
+// The intake form records a party type as a short label ("LLP"); the deed states
+// it the way a deed must ("a Limited Liability Partnership duly registered under
+// the provisions of the Limited Liability Partnership Act, 2008"). Comparing the
+// label against the prose failed every correctly drafted LLP, so each label is
+// checked against the phrasings that actually satisfy it.
+const TYPE_PHRASINGS = [
+  { label: /llp|limited liability partnership/i, accepts: ["llp", "limited liability partnership"] },
+  { label: /private limited/i, accepts: ["private limited"] },
+  { label: /public limited/i, accepts: ["public limited", "public company"] },
+  { label: /partnership/i, accepts: ["partnership firm", "partnership"] },
+  { label: /proprietor/i, accepts: ["proprietorship", "proprietor"] },
+  { label: /individual|person/i, accepts: ["individual"] },
+  { label: /trust/i, accepts: ["trust"] },
+  { label: /society/i, accepts: ["society"] },
+  { label: /government|statutory/i, accepts: ["government", "statutory"] },
+];
+
+function partyTypeAppears(text = "", type = "") {
+  const declared = String(type || "").trim();
+  if (!declared) return true;
+
+  const entry = TYPE_PHRASINGS.find((candidate) => candidate.label.test(declared));
+  const accepted = entry ? entry.accepts : [declared];
+  return accepted.some((phrase) => includesNormalized(text, phrase));
+}
+
 function expectsRepresentativeExecution(type = "", name = "") {
   return !inferPartyType(name, type).toLowerCase().includes("individual");
 }
@@ -530,10 +556,7 @@ export function validateDraftConsistency(
       );
     }
 
-    if (
-      participant.type &&
-      !includesNormalized(identityText, inferredType)
-    ) {
+    if (participant.type && !partyTypeAppears(identityText, inferredType)) {
       issues.push(
         buildIssue(
           `INPUT_MISMATCH_${participant.id.toUpperCase()}_TYPE`,

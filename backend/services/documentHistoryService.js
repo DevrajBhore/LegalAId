@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import mongoose from "mongoose";
 import DocumentDraft from "../models/DocumentDraft.js";
 import DocumentVersion from "../models/DocumentVersion.js";
 import { buildDocumentTypeMeta } from "./documentTypeNormalizer.js";
@@ -82,6 +83,15 @@ function deriveStatus({ changeType, validation }) {
 function buildHistorySummary(record) {
   const validationSummary = summarizeValidation(record.currentValidation);
 
+  // record.versionCount is a monotonic high-water mark used to number new
+  // versions — pruneVersions() never decrements it when it trims old snapshots.
+  // Reporting it raw tells the UI "35 versions" while only MAX_STORED_VERSIONS
+  // are actually retained and restorable, so cap it at what still exists.
+  const retainedVersions = Math.min(
+    record.versionCount || 1,
+    MAX_STORED_VERSIONS
+  );
+
   return {
     draftId: String(record._id),
     documentType: record.documentType,
@@ -90,7 +100,7 @@ function buildHistorySummary(record) {
       record.documentMeta || buildDocumentTypeMeta(record.documentType),
     status: record.status,
     currentVersionNumber: record.currentVersionNumber || 1,
-    versionCount: record.versionCount || 1,
+    versionCount: retainedVersions,
     updatedAt: record.updatedAt,
     createdAt: record.createdAt,
     lastOpenedAt: record.lastOpenedAt,
@@ -108,6 +118,19 @@ function ensureOwnedDraft(record, draftId) {
     error.statusCode = 404;
     throw error;
   }
+}
+
+// Route params reach us as arbitrary strings. Handing a non-ObjectId straight to
+// a query makes Mongoose throw a CastError, which the routes surface as a 500 —
+// but a malformed id is a client mistake and simply cannot match anything, so it
+// belongs in the same 404 path as an id that is well-formed but unknown.
+function ensureObjectId(value, label) {
+  if (!mongoose.Types.ObjectId.isValid(String(value ?? ""))) {
+    const error = new Error(`${label} "${value}" was not found.`);
+    error.statusCode = 404;
+    throw error;
+  }
+  return value;
 }
 
 async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
@@ -128,7 +151,7 @@ async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
     .filter((id) => id !== keepRecordId);
 
   if (staleIds.length > 0) {
-    await DocumentDraft.deleteMany({ _id: { $in: staleIds }, userId });
+    await DocumentDraft.deleteMany({ _id: mongoose.trusted({ $in: staleIds }), userId });
   }
 
   // Only orphaned (stale) drafts have their versions purged. The kept record's
@@ -136,7 +159,7 @@ async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
   if (staleIds.length > 0) {
     await DocumentVersion.deleteMany({
       userId,
-      draftId: { $in: staleIds },
+      draftId: mongoose.trusted({ $in: staleIds }),
     });
   }
 }
@@ -183,7 +206,9 @@ async function pruneVersions(record) {
     .select("_id")
     .lean();
   if (stale.length > 0) {
-    await DocumentVersion.deleteMany({ _id: { $in: stale.map((v) => v._id) } });
+    await DocumentVersion.deleteMany({
+      _id: mongoose.trusted({ $in: stale.map((v) => v._id) }),
+    });
   }
 }
 
@@ -242,6 +267,7 @@ export async function saveDocumentHistory({
   let record = await findPrimaryDraftRecord(userId, draftId, draft.document_type);
 
   if (draftId && !record) {
+    ensureObjectId(draftId, "Document history record");
     const directRecord = await DocumentDraft.findOne({ _id: draftId, userId });
     ensureOwnedDraft(directRecord, draftId);
     record = directRecord;
@@ -335,7 +361,7 @@ export async function saveDocumentHistory({
 export async function listDocumentHistories(userId) {
   const records = await DocumentDraft.find({
     userId,
-    status: { $ne: "archived" },
+    status: mongoose.trusted({ $ne: "archived" }),
   })
     .sort({ updatedAt: -1, createdAt: -1 })
     .lean();
@@ -362,10 +388,12 @@ export async function listDocumentHistories(userId) {
 }
 
 export async function getDocumentHistoryDetail(userId, draftId) {
+  ensureObjectId(draftId, "Document history record");
+
   const record = await DocumentDraft.findOne({
     _id: draftId,
     userId,
-    status: { $ne: "archived" },
+    status: mongoose.trusted({ $ne: "archived" }),
   }).lean();
 
   ensureOwnedDraft(record, draftId);
@@ -386,6 +414,8 @@ export async function getDocumentHistoryDetail(userId, draftId) {
 }
 
 export async function deleteDocumentHistory(userId, draftId) {
+  ensureObjectId(draftId, "Document history record");
+
   const record = await DocumentDraft.findOne({
     _id: draftId,
     userId,
@@ -393,6 +423,11 @@ export async function deleteDocumentHistory(userId, draftId) {
 
   ensureOwnedDraft(record, draftId);
 
+  // Deliberately scoped to the document TYPE, not just this _id. The product
+  // model is one live document per type — purgeLegacyHistoryRecords collapses
+  // duplicates on every save and list — so deleting only the requested _id would
+  // let an older legacy duplicate of the same type resurface and read as a
+  // failed delete. Both queries stay filtered by userId.
   const relatedRecords = await DocumentDraft.find({
     userId,
     documentType: record.documentType,
@@ -405,7 +440,7 @@ export async function deleteDocumentHistory(userId, draftId) {
   if (relatedIds.length > 0) {
     await DocumentVersion.deleteMany({
       userId,
-      draftId: { $in: relatedIds },
+      draftId: mongoose.trusted({ $in: relatedIds }),
     });
   }
 
@@ -422,6 +457,9 @@ export async function deleteDocumentHistory(userId, draftId) {
 }
 
 export async function restoreDocumentHistoryVersion({ userId, draftId, versionId }) {
+  ensureObjectId(draftId, "Document history record");
+  ensureObjectId(versionId, "Version");
+
   const record = await DocumentDraft.findOne({ _id: draftId, userId });
   ensureOwnedDraft(record, draftId);
 

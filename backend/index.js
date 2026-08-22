@@ -1,9 +1,8 @@
-import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
-// Load backend/.env regardless of the process's working directory, so the server
-// boots with the right secrets whether started from the repo root or backend/.
-dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".env") });
+// Must stay the first import: loads backend/.env regardless of the process's
+// working directory, so the server boots with the right secrets whether started
+// from the repo root or backend/. See loadEnv.js for why this is an import
+// rather than an inline dotenv.config() call.
+import "./loadEnv.js";
 
 import express from "express";
 import cors from "cors";
@@ -48,6 +47,24 @@ import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
 import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
 import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
+
+// Defence in depth against NoSQL operator injection: any object that reaches a
+// query filter with a `$` key gets wrapped in `$eq` instead of being executed as
+// an operator. Route handlers still type-check credentials at the edge; this
+// catches anything that slips past. Filters that legitimately need an operator
+// must opt in with `mongoose.trusted({ ... })`.
+mongoose.set("sanitizeFilter", true);
+
+// Fail fast on missing auth config. Without this, jwt.sign throws inside the
+// login handler and every sign-in returns an opaque 500 instead of an obvious
+// boot-time error — matching how document config and the knowledge base below
+// already refuse to start when misconfigured.
+if (!process.env.JWT_SECRET) {
+  console.error(
+    "[Config] JWT_SECRET is not set. Authentication cannot work; refusing to start."
+  );
+  process.exit(1);
+}
 
 const app = express();
 // Render (and most PaaS) put the app behind a reverse proxy that sets
@@ -107,6 +124,19 @@ const authLimiter = rateLimit({
     error:
       "Too many authentication attempts. Please wait a few minutes and try again.",
   },
+});
+
+// Session-read endpoints (/auth/me, /auth/logout) are cheap and the SPA calls
+// /auth/me on every mount and refresh. They must not share the brute-force
+// budget above, or an ordinary active user rate-limits themselves out of their
+// own session long before an attacker would be slowed down.
+const SESSION_ENDPOINTS = new Set(["/me", "/logout"]);
+const sessionLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 300,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many session requests. Please wait a moment." },
 });
 
 // Expensive AI/generation endpoints — protect provider quota and server load.
@@ -259,7 +289,17 @@ mongoose
   .catch((err) => console.error("❌ MongoDB connection failed:", err.message));
 
 // ── Auth routes (public, rate limited) ────────────────────────────────────────
-app.use("/auth", authLimiter, authRoutes);
+// req.path is relative to the "/auth" mount point, so it reads "/me", "/login", …
+app.use(
+  "/auth",
+  (req, res, next) =>
+    (SESSION_ENDPOINTS.has(req.path) ? sessionLimiter : authLimiter)(
+      req,
+      res,
+      next
+    ),
+  authRoutes
+);
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {
@@ -547,24 +587,35 @@ app.post("/export", protect, async (req, res) => {
       sourceVariables: req.body?.variables || exportDraft?.metadata?.source_variables,
     });
 
-    const openIssueCount =
-      validation?.summary?.total ?? validation?.issueCount ?? 0;
-    const canExport =
-      validation?.certified === true &&
-      validation?.risk !== "BLOCKED" &&
-      openIssueCount === 0;
+    // Export is withheld by a BLOCKING issue, not by an advisory one. This gate
+    // used to demand zero open issues of any severity, which contradicted the
+    // rule documentService.js already states for generation: "Advisory findings
+    // -- a missing nice-to-have clause, a formatting nit, a stamp or
+    // registration notice -- are things the user should see ON the draft, not
+    // reasons to withhold it." A single MEDIUM advisory made a complete,
+    // correctly drafted document impossible to download, and every advisory
+    // check added to the engine made that worse rather than better.
+    const blockingCount = validation?.blockingIssues?.length ?? 0;
+    const canExport = blockingCount === 0 && validation?.risk !== "BLOCKED";
 
     if (!canExport) {
       return res.status(422).json({
         error:
-          "This document must pass final validation with zero open issues before export.",
+          "This document has issues that must be resolved before it can be exported.",
         validation,
       });
     }
 
-    const docTitle = (draft.document_type || "legal_document")
-      .toLowerCase()
-      .replace(/\s+/g, "_");
+    // document_type reaches us straight from the request body and lands in a
+    // Content-Disposition header. Node rejects CRLF outright, but quotes and
+    // path separators would still corrupt the filename, so allow only a safe
+    // charset rather than trying to strip the bad ones.
+    const docTitle =
+      String(draft.document_type || "legal_document")
+        .toLowerCase()
+        .replace(/\s+/g, "_")
+        .replace(/[^a-z0-9_-]/g, "")
+        .slice(0, 100) || "legal_document";
 
     if (resolvedFormat === "txt") {
       const text = draftToText(exportDraft);

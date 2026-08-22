@@ -421,14 +421,142 @@ function isStructuredSubpartLine(line = "") {
 // place of whatever ad-hoc "(a)" / "(i)" markers the clause text carries.
 // Depth is taken from leading indentation: a limb indented by two or more
 // spaces is a sub-limb of the one above it.
+// Clauses written as one paragraph with inline "(a) ... (b) ... (c) ..." markers
+// read as a wall of text and break across pages in the middle of an item. The
+// markers are already there; they are just not on their own lines. This lifts
+// them out so they go through the same decimal numbering as every other limb.
+//
+// Only a genuine run is split -- two or more markers in ascending letter order,
+// each opening a substantial item. A single stray "(a)" is left where it is, and
+// a cross-reference like "clause 5(a)" never matches because the marker has to
+// be preceded by whitespace.
+const INLINE_MARKER = /(?:^|\s)\((?<marker>[a-z]+)\)\s+/g;
+const MIN_INLINE_ITEM = 12;
+const ROMAN_SEQUENCE = [
+  "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii",
+];
+const LETTER_SEQUENCE = "abcdefghijklmnopqrstuvwxyz".split("");
+
+// A full stop that closes an abbreviation is not the end of the limb.
+const ABBREVIATION_TAIL =
+  /\b(?:[a-z]|no|nos|ltd|pvt|inc|co|cos|mr|mrs|ms|dr|vs|v|etc|viz|ss?|art|cl|para|a\.m|p\.m)\.$/i;
+
+function splitInlineMarkerRun(paragraph = "", sequence = LETTER_SEQUENCE) {
+  const source = String(paragraph || "");
+  const nested = sequence === LETTER_SEQUENCE ? ROMAN_SEQUENCE : [];
+  const marks = [];
+  INLINE_MARKER.lastIndex = 0;
+  let match;
+  while ((match = INLINE_MARKER.exec(source)) !== null) {
+    const token = match.groups.marker;
+    const expected = sequence[marks.length];
+    if (token !== expected) {
+      // Before the run has started, a non-matching marker is simply not part of
+      // it -- the roman pass has to step over the "(a)" that opens the item it
+      // is scanning inside. Once the run has started, a nested roman marker is
+      // stepped over so the outer lettered run can still be found, and anything
+      // else ends the run.
+      if (!marks.length || nested.includes(token)) {
+        INLINE_MARKER.lastIndex = match.index + match[0].length;
+        continue;
+      }
+      break;
+    }
+    marks.push({ start: match.index, bodyStart: match.index + match[0].length });
+    INLINE_MARKER.lastIndex = match.index + match[0].length;
+  }
+  if (marks.length < 2) return null;
+
+  let lead = source.slice(0, marks[0].start).trim();
+  // "This Agreement may be terminated" + a list of the ways it may be terminated
+  // is one sentence, so the lead-in opens with a colon. A lead that already ends
+  // in a full stop is a complete sentence introducing a separate list and is
+  // left as it stands.
+  if (lead && !/[.:;!?]$/.test(lead)) lead = `${lead}:`;
+  const items = [];
+  let tail = "";
+
+  marks.forEach((mark, index) => {
+    const end = index + 1 < marks.length ? marks[index + 1].start : source.length;
+    let body = source.slice(mark.bodyStart, end).trim();
+
+    // The closing sentence of the clause ("Upon the occurrence of an Event of
+    // Default, the Lender may ...") trails the last item and belongs to the
+    // clause, not to that item.
+    if (index + 1 === marks.length) {
+      const boundary = findSentenceBoundary(body);
+      if (boundary > 0) {
+        tail = body.slice(boundary).trim();
+        body = body.slice(0, boundary).trim();
+      }
+    }
+
+    body = body.replace(/^(?:and|or)\s+/i, "").replace(/\s*[;,]\s*(?:and|or)?\s*$/i, "");
+    // The marker is put back deliberately. tokenizeClauseText reads depth from
+    // indentation, so an indented item would be numbered as a sub-sub-clause
+    // (16.1.1) instead of a sibling (16.2); a marked item is a top-level limb.
+    if (body) items.push(`(${sequence[items.length]}) ${body}`);
+  });
+
+  // Every item has to carry real content, or what looked like a run was a
+  // sentence that happened to contain bracketed letters.
+  if (items.length < 2 || items.some((item) => item.length < MIN_INLINE_ITEM)) return null;
+  return { lead, items, tail };
+}
+
+function findSentenceBoundary(value = "") {
+  const pattern = /\.\s+(?=[A-Z])/g;
+  let match;
+  while ((match = pattern.exec(value)) !== null) {
+    const before = value.slice(0, match.index + 1);
+    if (ABBREVIATION_TAIL.test(before)) continue;
+    const rest = value.slice(match.index + match[0].length);
+    // A short fragment is more likely a mid-item aside than the clause's closing
+    // words.
+    if (rest.length >= 40) return match.index + 1;
+  }
+  return -1;
+}
+
 function tokenizeClauseText(text = "") {
   const blocks = [];
 
   for (const paragraph of String(text || "")
     .trim()
     .split(/\n{2,}/)) {
-    const lines = paragraph.split(/\n/).filter((line) => line.trim());
+    let lines = paragraph.split(/\n/).filter((line) => line.trim());
     if (!lines.length) continue;
+
+    // A line carrying a run of inline markers becomes a lead-in, one line per
+    // item, and any closing sentence -- the same shape a clause written with
+    // real line breaks already has. Applied per line, because a clause often
+    // mixes the two forms: real breaks between its top-level limbs and an inline
+    // "(a) ... (b) ..." run inside one of them.
+    const expandRun = (line, sequence, childIndent) => {
+      const indent = (line.match(/^[ \t]*/) || [""])[0];
+      const run = splitInlineMarkerRun(line.trim(), sequence);
+      if (!run) return [line];
+      return [
+        ...(run.lead ? [`${indent}${run.lead}`] : []),
+        ...run.items.map((item) => `${indent}${childIndent}${item}`),
+        ...(run.tail ? [`${indent}${run.tail}`] : []),
+      ];
+    };
+
+    lines = lines
+      .flatMap((line) => expandRun(line, LETTER_SEQUENCE, ""))
+      // A roman run nested inside a lettered item is a level down (5.2.1,
+      // 5.2.2). One introduced by an ordinary sentence is not nested in
+      // anything, so its items are siblings at the top level -- numbering them
+      // as children of whichever limb happened to come last would say they
+      // qualify that limb, which they do not.
+      .flatMap((line) => {
+        const trimmed = line.trim();
+        const nestedUnderItem =
+          isStructuredSubpartLine(trimmed) ||
+          (line.match(/^[ \t]*/) || [""])[0].replace(/\t/g, "  ").length >= 2;
+        return expandRun(line, ROMAN_SEQUENCE, nestedUnderItem ? "  " : "");
+      });
 
     const soleLine = lines.length === 1;
 
@@ -443,6 +571,10 @@ function tokenizeClauseText(text = "") {
       blocks.push({
         type: isItem ? "item" : "paragraph",
         depth: indent >= 2 ? 2 : 1,
+        // The letter or numeral the clause was written with, kept so a
+        // cross-reference to it elsewhere in the same clause can be repointed at
+        // the decimal number the limb is actually given.
+        marker: marker ? marker[0].replace(/[^A-Za-z0-9]/g, "") : null,
         text: isItem ? toSentenceLimb(body) : toSentenceParagraph(trimmed),
         body: isItem ? toSentenceLimb(body) : toSentenceParagraph(body),
       });
@@ -474,7 +606,12 @@ function toSentenceLimb(value = "") {
   // terminator. Decimal sub-numbering already makes the list structure
   // explicit, so a trailing "; and" is dropped rather than left stranded at the
   // end of what is now a sentence.
-  text = text.replace(TRAILING_CONJUNCTION, "").replace(/[,;:]\s*$/, "").trim();
+  // A limb ending in a colon is introducing the sub-limbs beneath it and stays
+  // open; only its case is normalised.
+  const introduces = /:\s*$/.test(text);
+  text = introduces
+    ? text.replace(/\s*:\s*$/, ":")
+    : text.replace(TRAILING_CONJUNCTION, "").replace(/[,;:]\s*$/, "").trim();
   if (!text) return text;
 
   const index = text.search(/[A-Za-z]/);
@@ -490,6 +627,7 @@ function toSentenceLimb(value = "") {
     text = text.slice(0, index) + text[index].toUpperCase() + text.slice(index + 1);
   }
 
+  if (introduces) return text;
   return SENTENCE_END.test(text) ? text : `${text}.`;
 }
 
@@ -525,7 +663,7 @@ function numberClauseBlocks(blocks, clauseNumber) {
   let first = 0;
   let second = 0;
 
-  return blocks.map((block) => {
+  const numbered = blocks.map((block) => {
     if (block.type !== "item") return { ...block, label: null };
 
     if (block.depth >= 2 && first > 0) {
@@ -537,6 +675,35 @@ function numberClauseBlocks(blocks, clauseNumber) {
     second = 0;
     return { ...block, label: `${clauseNumber}.${first}` };
   });
+
+  return repointInternalReferences(numbered);
+}
+
+// A clause that wrote its limbs as "(a) ... (d)" often refers back to them
+// ("for returns arising under (a) through (d) above"). Once those limbs are
+// renumbered 10.1 to 10.4, the reference points at nothing. Each reference is
+// repointed at the number its limb was actually given.
+function repointInternalReferences(blocks) {
+  const byMarker = new Map();
+  for (const block of blocks) {
+    if (block.label && block.marker) byMarker.set(block.marker.toLowerCase(), block.label);
+  }
+  if (!byMarker.size) return blocks;
+
+  const rewrite = (value) =>
+    String(value || "").replace(
+      /(^|[\s(,])\(([A-Za-z]{1,4})\)/g,
+      (match, prefix, token) => {
+        const label = byMarker.get(token.toLowerCase());
+        return label ? `${prefix}${label}` : match;
+      }
+    );
+
+  return blocks.map((block) => ({
+    ...block,
+    text: rewrite(block.text),
+    body: rewrite(block.body),
+  }));
 }
 
 // Indian deeds head a schedule "THE FIRST SCHEDULE ABOVE REFERRED TO" rather

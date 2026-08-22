@@ -665,10 +665,21 @@ export default function Editor() {
         : history?.draftId
           ? "Saved"
           : "Saving soon";
+  // "Certified" still means what it says: every check ran and found nothing.
+  // Whether the document can be EXPORTED is a different question, and answering
+  // both with one flag meant a single advisory finding -- a formatting nit, a
+  // missing nice-to-have clause -- left the user with a finished document they
+  // could not download. Blocking issues stop an export; advisories are shown in
+  // the Validation panel and exported past.
   const isCertified =
     validation?.certified === true &&
     riskLevel !== "BLOCKED" &&
     issueCount === 0 &&
+    !needsValidation;
+  const canExport =
+    Boolean(validation) &&
+    riskLevel !== "BLOCKED" &&
+    blockingIssues.length === 0 &&
     !needsValidation;
   const isExporting = Boolean(downloadingFormat);
   const workspaceLinks = [
@@ -739,7 +750,7 @@ export default function Editor() {
               </span>
             )}
 
-            {isCertified ? (
+            {canExport ? (
               <div className="export-controls">
                 <label className="export-format-label" htmlFor="editor-export-format">
                   Export as
@@ -1096,7 +1107,7 @@ export default function Editor() {
         </div>
       </div>
 
-      {isCertified ? (
+      {canExport ? (
         <MobileActionBar
           label={isExporting ? `Preparing ${formatExportLabel(downloadingFormat)}…` : `Export ${formatExportLabel(exportFormat)}`}
           onClick={() => handleDownload(exportFormat)}

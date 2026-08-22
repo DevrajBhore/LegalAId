@@ -1,4 +1,5 @@
 import fs from "fs";
+import { validateAgreementGraph } from "./agreementGraphValidator.js";
 
 import { validate } from "../ire/runner.js";
 import { summariseProvenance } from "../../shared/clauseProvenance.js";
@@ -151,6 +152,19 @@ export async function runDocumentValidation(
     () => buildStatutoryChecklistNotices(resolvedDocumentType),
     "document type unknown"
   );
+  // Graph-level checks: a clause that refers to a provision, a party capacity or
+  // a place the rest of the document does not carry. Run last, because it needs
+  // the assembled document rather than any single clause.
+  const graphIssues = runLayer(
+    "agreement_graph",
+    Boolean(resolvedDocumentType),
+    () =>
+      validateAgreementGraph(draft, {
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables || {},
+      }),
+    "document type unknown"
+  );
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -170,6 +184,7 @@ export async function runDocumentValidation(
       ...consistencyIssues,
       ...hardeningIssues,
       ...clauseQualityIssues,
+      ...graphIssues,
       ...finalQualityIssues,
       ...statutoryChecklistNotices,
       ...extraIssues,
@@ -180,6 +195,7 @@ export async function runDocumentValidation(
       consistency_issues: consistencyIssues.length,
       hardening_issues: hardeningIssues.length,
       clause_quality_issues: clauseQualityIssues.length,
+      agreement_graph_issues: graphIssues.length,
       final_quality_issues: finalQualityIssues.length,
       statutory_checklist_items: statutoryChecklistNotices[0]?.items?.length || 0,
       extra_issues: extraIssues.length,

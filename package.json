@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd backend && npm start",
-    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs",
+    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs",
     "test:golden": "node tests/goldenCorpus.test.mjs",
     "check:citations": "node scripts/checkStatuteCitations.mjs"
   },
@@ -13,23 +13,21 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "//dependencies": [
+    "Root-level deps cover ONLY tests/ and scripts/. The runtime app declares its",
+    "own in backend/package.json, the UI in frontend/package.json, and the",
+    "crawler in scraper/package.json.",
+    "Do not re-add server packages here. Declaring them at both levels installs a",
+    "second, different copy (root had express 5 / mongoose 9 / bcryptjs 3 while",
+    "the backend runs express 4 / mongoose 8 / bcryptjs 2), and a root script that",
+    "imports 'mongoose' then gets a different instance from the one the backend",
+    "models are registered on — connect() succeeds while every query buffers and",
+    "times out. scripts/makeAdmin.mjs hit exactly that."
+  ],
   "dependencies": {
-    "@fontsource/dm-mono": "^5.2.7",
-    "@fontsource/dm-sans": "^5.2.8",
-    "@google/genai": "^1.42.0",
     "@google/generative-ai": "^0.24.1",
     "ajv": "^8.17.1",
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "curl": "^0.1.4",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.2.1",
-    "fontsource-playfair-display": "^4.0.0",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.2.3",
-    "openai": "^6.18.0",
-    "puppeteer": "^24.37.5"
+    "dotenv": "^17.3.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

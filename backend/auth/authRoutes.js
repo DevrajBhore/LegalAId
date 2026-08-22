@@ -1,6 +1,7 @@
 import express from "express";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 import User from "../models/User.js";
 import { protect } from "./authMiddleware.js";
 import {
@@ -9,6 +10,17 @@ import {
 } from "./emailService.js";
 
 const router = express.Router();
+
+// Credentials arriving from a request body or query string must be plain
+// strings before they reach a Mongo filter. JSON bodies and the `extended`
+// query parser can both produce objects, and an object like { $gt: "" } would
+// otherwise be passed through by Mongoose as a live query operator — matching
+// an arbitrary user's token instead of the one that was actually emailed.
+// `mongoose.set("sanitizeFilter")` in index.js is the second layer; this is the
+// first, and it also turns malformed input into a clean 400 instead of a 500.
+function readCredential(value) {
+  return typeof value === "string" ? value : null;
+}
 
 function generateJWT(userId) {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
@@ -21,16 +33,27 @@ function generateToken() {
 }
 
 // Sets the JWT as an httpOnly cookie (not readable by JS → resistant to XSS).
-// The token is still returned in the JSON body for backward compatibility with
-// the existing localStorage flow, so this is additive and non-breaking.
+// This cookie is the durable session: the client keeps the token in memory only,
+// so a refresh is re-authenticated from here rather than from localStorage.
+const AUTH_COOKIE_NAME = "legalaid_token";
+
+// Shared by setAuthCookie and clearCookie. A cookie is only overwritten when the
+// attributes match, so logout must clear with the same flags it was set with.
+function authCookieOptions() {
+  const isProduction = process.env.NODE_ENV === "production";
+  return {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    path: "/",
+  };
+}
+
 function setAuthCookie(res, token) {
   const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-  res.cookie("legalaid_token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  res.cookie(AUTH_COOKIE_NAME, token, {
+    ...authCookieOptions(),
     maxAge: sevenDaysMs,
-    path: "/",
   });
 }
 
@@ -48,7 +71,10 @@ function serializeUser(user) {
 // ── POST /auth/register ───────────────────────────────────────────────────────
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, phone, password } = req.body;
+    const name = readCredential(req.body?.name);
+    const email = readCredential(req.body?.email);
+    const password = readCredential(req.body?.password);
+    const phone = readCredential(req.body?.phone);
     if (!name || !email || !password)
       return res
         .status(400)
@@ -100,13 +126,13 @@ router.post("/register", async (req, res) => {
 // ── GET /auth/verify-email?token=xxx ─────────────────────────────────────────
 router.get("/verify-email", async (req, res) => {
   try {
-    const { token } = req.query;
+    const token = readCredential(req.query.token);
     if (!token)
       return res.status(400).json({ error: "Verification token is missing." });
 
     const user = await User.findOne({
       verificationToken: token,
-      verificationTokenExpiry: { $gt: new Date() },
+      verificationTokenExpiry: mongoose.trusted({ $gt: new Date() }),
     }).select("+verificationToken +verificationTokenExpiry");
 
     if (!user)
@@ -138,7 +164,8 @@ router.get("/verify-email", async (req, res) => {
 // ── POST /auth/login ──────────────────────────────────────────────────────────
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = readCredential(req.body?.email);
+    const password = readCredential(req.body?.password);
     if (!email || !password)
       return res
         .status(400)
@@ -174,7 +201,7 @@ router.post("/login", async (req, res) => {
 // ── POST /auth/resend-verification ───────────────────────────────────────────
 router.post("/resend-verification", async (req, res) => {
   try {
-    const { email } = req.body;
+    const email = readCredential(req.body?.email);
     if (!email) return res.status(400).json({ error: "Email is required." });
 
     const user = await User.findOne({ email: email.toLowerCase() }).select(
@@ -206,7 +233,7 @@ router.post("/resend-verification", async (req, res) => {
 // ── POST /auth/forgot-password ────────────────────────────────────────────────
 router.post("/forgot-password", async (req, res) => {
   try {
-    const { email } = req.body;
+    const email = readCredential(req.body?.email);
     if (!email) return res.status(400).json({ error: "Email is required." });
 
     const user = await User.findOne({ email: email.toLowerCase() });
@@ -239,7 +266,8 @@ router.post("/forgot-password", async (req, res) => {
 // ── POST /auth/reset-password ─────────────────────────────────────────────────
 router.post("/reset-password", async (req, res) => {
   try {
-    const { token, password } = req.body;
+    const token = readCredential(req.body?.token);
+    const password = readCredential(req.body?.password);
     if (!token || !password)
       return res
         .status(400)
@@ -251,7 +279,7 @@ router.post("/reset-password", async (req, res) => {
 
     const user = await User.findOne({
       resetPasswordToken: token,
-      resetPasswordExpiry: { $gt: new Date() },
+      resetPasswordExpiry: mongoose.trusted({ $gt: new Date() }),
     }).select("+resetPasswordToken +resetPasswordExpiry +password");
 
     if (!user)
@@ -288,14 +316,15 @@ router.get("/me", protect, async (req, res) => {
 
 // ── POST /auth/logout ─────────────────────────────────────────────────────────
 router.post("/logout", (_req, res) => {
-  res.clearCookie("legalaid_token", { path: "/" });
+  res.clearCookie(AUTH_COOKIE_NAME, authCookieOptions());
   res.json({ message: "Logged out." });
 });
 
 // ── POST /auth/change-password (authenticated) ────────────────────────────────
 router.post("/change-password", protect, async (req, res) => {
   try {
-    const { currentPassword, newPassword } = req.body;
+    const currentPassword = readCredential(req.body?.currentPassword);
+    const newPassword = readCredential(req.body?.newPassword);
     if (!currentPassword || !newPassword)
       return res
         .status(400)

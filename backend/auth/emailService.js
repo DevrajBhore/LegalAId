@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "../loadEnv.js";
 import nodemailer from "nodemailer";
 import { Resend } from "resend";
 
