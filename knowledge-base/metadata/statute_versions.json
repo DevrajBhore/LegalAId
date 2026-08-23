@@ -1,0 +1,919 @@
+{
+  "//": [
+    "Which version of each cited Act the clause library was written against.",
+    "",
+    "458 citations across the library name an Act and a section, and none of them",
+    "records the version relied on. A citation that looks right long after the",
+    "section it points at was amended is worse than no citation: it carries the",
+    "authority of a checked reference without the substance of one.",
+    "",
+    "They collapse to 73 distinct Acts, so this is 73 decisions rather than 458.",
+    "For each Act the supervising advocate should set `amended_upto` to the date",
+    "the text was verified as in force, `source` to where it was read, and flip",
+    "`verified` to true. scripts/checkStatuteCitations.mjs resolves every citation",
+    "through this file, so filling one row pins every clause that cites that Act.",
+    "",
+    "`verified: false` is the honest default. It does not mean the citation is",
+    "wrong -- it means nobody has confirmed it against the current text."
+  ],
+  "schema": {
+    "amended_upto": "ISO date the Act text was verified as in force, or null",
+    "source": "Where it was read (India Code URL, gazette reference, or a named commentary)",
+    "verified": "true only once a person has actually checked it",
+    "note": "Anything the reviewer wants recorded — a pending amendment, a repeal, a state variation"
+  },
+  "acts": {
+    "Indian Contract Act, 1872": {
+      "citations": 134,
+      "sections_cited": [
+        "2(d)",
+        "2(h)",
+        "4",
+        "10",
+        "11",
+        "17",
+        "23",
+        "24",
+        "27",
+        "28",
+        "29",
+        "32",
+        "37",
+        "39",
+        "55",
+        "56",
+        "62",
+        "63",
+        "73",
+        "74",
+        "75",
+        "91-92 (Indian Evidence Act, 1872)",
+        "124",
+        "125",
+        "126",
+        "128",
+        "130",
+        "133",
+        "140",
+        "141",
+        "182"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Companies Act, 2013": {
+      "citations": 23,
+      "sections_cited": [
+        "2(68)/2(20)",
+        "6",
+        "42",
+        "54",
+        "56",
+        "58",
+        "58/59",
+        "62",
+        "62(1)(b)",
+        "77",
+        "149",
+        "166",
+        "177",
+        "179",
+        "184",
+        "188",
+        "230",
+        "271"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Transfer of Property Act, 1882": {
+      "citations": 22,
+      "sections_cited": [
+        "37",
+        "58",
+        "60",
+        "69",
+        "105",
+        "106",
+        "107",
+        "108"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Copyright Act, 1957": {
+      "citations": 21,
+      "sections_cited": [
+        "2(o)",
+        "14",
+        "17",
+        "18",
+        "19",
+        "30",
+        "52",
+        "55",
+        "57"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Information Technology Act, 2000": {
+      "citations": 21,
+      "sections_cited": [
+        "5",
+        "10A",
+        "13",
+        "43",
+        "43A",
+        "46",
+        "65",
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Sale of Goods Act, 1930": {
+      "citations": 21,
+      "sections_cited": [
+        "8",
+        "15",
+        "16",
+        "18",
+        "19",
+        "20",
+        "25",
+        "26",
+        "33",
+        "36",
+        "37",
+        "41",
+        "42",
+        "43",
+        "55",
+        "59",
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Digital Personal Data Protection Act, 2023": {
+      "citations": 15,
+      "sections_cited": [
+        "4",
+        "5",
+        "6",
+        "8",
+        "8(7)",
+        "11",
+        "12",
+        "13",
+        "16"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Factories Act, 1948": {
+      "citations": 9,
+      "sections_cited": [
+        "51",
+        "54",
+        "55",
+        "56",
+        "59",
+        "66",
+        "78"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Industrial Disputes Act, 1947": {
+      "citations": 9,
+      "sections_cited": [
+        "2(oo)",
+        "2(s)",
+        "9C",
+        "11A",
+        "25F",
+        "25G"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Registration Act, 1908": {
+      "citations": 9,
+      "sections_cited": [
+        "17",
+        "17(1)(d)",
+        "21",
+        "23",
+        "49"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Income Tax Act, 1961": {
+      "citations": 8,
+      "sections_cited": [
+        "50CA",
+        "192",
+        "194A",
+        "194C",
+        "194I",
+        "194J",
+        "194Q"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Patents Act, 1970": {
+      "citations": 8,
+      "sections_cited": [
+        "6",
+        "68",
+        "84",
+        "104"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Arbitration and Conciliation Act, 1996": {
+      "citations": 7,
+      "sections_cited": [
+        "7",
+        "11",
+        "20",
+        "36",
+        "42"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Indian Stamp Act, 1899": {
+      "citations": 7,
+      "sections_cited": [
+        "3",
+        "17",
+        "35",
+        "General",
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Industrial Employment (Standing Orders) Act, 1946": {
+      "citations": 7,
+      "sections_cited": [
+        "3",
+        "4",
+        "12",
+        "13",
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Model Tenancy Act, 2021": {
+      "citations": 7,
+      "sections_cited": [
+        "9",
+        "11",
+        "14",
+        "21"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Payment of Gratuity Act, 1972": {
+      "citations": 7,
+      "sections_cited": [
+        "2A",
+        "4"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Central Goods and Services Tax Act, 2017": {
+      "citations": 6,
+      "sections_cited": [
+        "7",
+        "9",
+        "13",
+        "31"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Competition Act, 2002": {
+      "citations": 6,
+      "sections_cited": [
+        "3",
+        "3(3)",
+        "3(4)",
+        "27"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Consumer Protection Act, 2019": {
+      "citations": 6,
+      "sections_cited": [
+        "2",
+        "2(11)",
+        "2(46)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Indian Evidence Act, 1872": {
+      "citations": 6,
+      "sections_cited": [
+        "65B",
+        "67",
+        "91",
+        "92"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Employees' Provident Funds Act, 1952": {
+      "citations": 4,
+      "sections_cited": [
+        "6"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Foreign Exchange Management Act, 1999": {
+      "citations": 4,
+      "sections_cited": [
+        "3",
+        "6",
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Income-tax Act, 1961": {
+      "citations": 4,
+      "sections_cited": [
+        "17(2)(vi)",
+        "194J"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Indian Partnership Act, 1932": {
+      "citations": 4,
+      "sections_cited": [
+        "4",
+        "12",
+        "13"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Limitation Act, 1963": {
+      "citations": 4,
+      "sections_cited": [
+        "3",
+        "18"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Maternity Benefit Act, 1961": {
+      "citations": 4,
+      "sections_cited": [
+        "5",
+        "12"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Specific Relief Act, 1963": {
+      "citations": 4,
+      "sections_cited": [
+        "6",
+        "8",
+        "14",
+        "38"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Bureau of Indian Standards Act, 2016": {
+      "citations": 3,
+      "sections_cited": [
+        "17"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "General Clauses Act, 1897": {
+      "citations": 3,
+      "sections_cited": [
+        "13",
+        "16"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "MSMED Act, 2006": {
+      "citations": 3,
+      "sections_cited": [
+        "15",
+        "15-16",
+        "16"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Payment of Wages Act, 1936": {
+      "citations": 3,
+      "sections_cited": [
+        "3",
+        "5"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013": {
+      "citations": 3,
+      "sections_cited": [
+        "4",
+        "19"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Trade Marks Act, 1999": {
+      "citations": 3,
+      "sections_cited": [
+        "2(1)(zg)",
+        "29"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Constitution of India": {
+      "citations": 2,
+      "sections_cited": [],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Employees State Insurance Act, 1948": {
+      "citations": 2,
+      "sections_cited": [
+        "40"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Goods and Services Tax Act, 2017": {
+      "citations": 2,
+      "sections_cited": [
+        "2",
+        "2(17)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Information Technology (SPDI) Rules, 2011": {
+      "citations": 2,
+      "sections_cited": [
+        "4",
+        "5(4)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Insolvency and Bankruptcy Code, 2016": {
+      "citations": 2,
+      "sections_cited": [
+        "7",
+        "14"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Legal Metrology Act, 2009": {
+      "citations": 2,
+      "sections_cited": [
+        "18"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Mediation Act, 2023": {
+      "citations": 2,
+      "sections_cited": [
+        "1"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Minimum Wages Act, 1948": {
+      "citations": 2,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Prevention of Money Laundering Act, 2002": {
+      "citations": 2,
+      "sections_cited": [
+        "3",
+        "12"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Reserve Bank of India Act, 1934": {
+      "citations": 2,
+      "sections_cited": [
+        "45"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI (Prohibition of Insider Trading) Regulations, 2015": {
+      "citations": 2,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002": {
+      "citations": 2,
+      "sections_cited": [
+        "13"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Shops and Establishments Acts": {
+      "citations": 2,
+      "sections_cited": [
+        "State-specific"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Usurious Loans Act, 1918": {
+      "citations": 2,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Civil Procedure Code, 1908": {
+      "citations": 1,
+      "sections_cited": [
+        "20"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Companies (Share Capital and Debentures) Rules, 2014": {
+      "citations": 1,
+      "sections_cited": [
+        "12"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Delhi Shops and Establishments Act, 1954": {
+      "citations": 1,
+      "sections_cited": [
+        "30"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Electricity Act, 2003": {
+      "citations": 1,
+      "sections_cited": [
+        "43"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Employee's Compensation Act, 1923": {
+      "citations": 1,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Employees Provident Funds Act, 1952": {
+      "citations": 1,
+      "sections_cited": [
+        "2(f)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Employees' Pension Scheme, 1995": {
+      "citations": 1,
+      "sections_cited": [
+        "11"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Foreign Exchange Management (Borrowing and Lending) Regulations, 2018": {
+      "citations": 1,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Industrial Employment (Standing Orders) Central (Amendment) Rules, 2018": {
+      "citations": 1,
+      "sections_cited": [
+        "Model Standing Order on fixed-term employment"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Industrial Relations Code, 2020": {
+      "citations": 1,
+      "sections_cited": [
+        "2(o)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021": {
+      "citations": 1,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Information Technology (Reasonable Security Practices) Rules, 2011": {
+      "citations": 1,
+      "sections_cited": [
+        "4"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Insurance Act, 1938": {
+      "citations": 1,
+      "sections_cited": [
+        "2"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Limited Liability Partnership Act, 2008": {
+      "citations": 1,
+      "sections_cited": [
+        "23"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Negotiable Instruments Act, 1881": {
+      "citations": 1,
+      "sections_cited": [
+        "4"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Payment of Bonus Act, 1965": {
+      "citations": 1,
+      "sections_cited": [
+        "10"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Prevention of Corruption Act, 1988": {
+      "citations": 1,
+      "sections_cited": [
+        "7"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Prevention of Money-Laundering Act, 2002": {
+      "citations": 1,
+      "sections_cited": [
+        "12"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "Reserve Bank of India (Know Your Customer) Directions, 2016": {
+      "citations": 1,
+      "sections_cited": [
+        "3"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SARFAESI Act, 2002": {
+      "citations": 1,
+      "sections_cited": [
+        "13"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI (ICDR) Regulations, 2018": {
+      "citations": 1,
+      "sections_cited": [
+        "1"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI (PIT) Regulations, 2015": {
+      "citations": 1,
+      "sections_cited": [
+        "2(1)(n)"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI (Share Based Employee Benefits and Sweat Equity) Regulations, 2021": {
+      "citations": 1,
+      "sections_cited": [
+        "—"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI Regulations": {
+      "citations": 1,
+      "sections_cited": [
+        "Various"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
+    "SEBI Takeover Code": {
+      "citations": 1,
+      "sections_cited": [
+        "4"
+      ],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    }
+  }
+}

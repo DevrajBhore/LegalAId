@@ -1386,6 +1386,18 @@ function getSemanticParticipantDescriptors(semanticContext = {}) {
     : [];
 }
 
+// States that have their own consolidated stamp legislation. Everywhere else the
+// Indian Stamp Act, 1899 applies as amended in its application to that State,
+// which is what the fallback says rather than inventing a local Act.
+const STATE_STAMP_ACTS = {
+  Maharashtra: "the Maharashtra Stamp Act, 1958",
+  Karnataka: "the Karnataka Stamp Act, 1957",
+  Gujarat: "the Gujarat Stamp Act, 1958",
+  Kerala: "the Kerala Stamp Act, 1959",
+  Rajasthan: "the Rajasthan Stamp Act, 1998",
+  "Uttar Pradesh": "the Uttar Pradesh Stamp Act, 2008",
+};
+
 // The concepts a document can claim elsewhere, and what counts as proof that it
 // really carries one. Matched on clause id and category rather than on prose,
 // because a clause that merely mentions confidentiality is not a confidentiality
@@ -1984,10 +1996,58 @@ function renderHardClause(
       ].join("\n"),
     }),
 
-    CORE_NOTICE_001: () => ({
+    // Stamp duty is a State subject. Naming only the Indian Stamp Act, 1899 in a
+    // Maharashtra instrument is not wrong so much as incomplete -- the duty
+    // actually payable is fixed by the State's own Act and Schedule. States with
+    // their own consolidated stamp Act are named; the rest are referred to the
+    // Indian Stamp Act as in force there, which is the accurate description
+    // rather than a guess at a local Act that may not exist.
+    // The supervising advocate should confirm this list against current State
+    // legislation before it is relied on for a filing.
+    CORE_STAMP_AND_COSTS_001: () => {
+      const state = normalizeWhitespace(
+        variables.operating_state || variables.governing_law_state
+      );
+      const statute = state
+        ? `${STATE_STAMP_ACTS[state] || `the Indian Stamp Act, 1899 as in force in ${state}`}`
+        : "the Indian Stamp Act, 1899 read with the stamp legislation in force in the State in which this Agreement is executed";
+
+      return {
+        title: "Stamp Duty, Registration and Costs",
+        text: [
+          `This Agreement shall be stamped with non-judicial stamp duty of the value payable under ${statute}, and shall be stamped before or at the time of execution.`,
+          "Unless otherwise expressly agreed in writing, the stamp duty, registration fees where registration is required under applicable law, and all incidental charges payable in respect of this Agreement shall be borne equally by the Parties, and each Party shall bear its own legal, professional, and advisory costs.",
+          "The Parties acknowledge that an instrument which is not duly stamped is inadmissible in evidence until the deficiency in duty, together with any penalty, is made good in accordance with the applicable stamp legislation.",
+        ].join("\n"),
+      };
+    },
+
+    CORE_NOTICE_001: () => {
+      // The clause used to point at "the address set out in this Agreement",
+      // which made a reader hunt through the recitals and made the clause fail
+      // outright if no address had been captured. The addresses are set out
+      // here, in the clause that uses them, so a notice can be served from this
+      // page alone.
+      const noticeParties = getParticipantExpectations(documentType, variables)
+        .map((participant) => {
+          const address = stripExternalReferencePhrases(participant.address, "");
+          if (!hasMeaningfulValue(address)) return "";
+          const email = normalizeWhitespace(participant.email);
+          const label = participant.label || participant.name;
+          return `${label}: ${normalizeWhitespace(participant.name)}, ${address}${
+            email ? `, marked for the attention of the authorised signatory, email ${email}` : ""
+          }`;
+        })
+        .filter(Boolean);
+
+      const addressBlock = noticeParties.length
+        ? `\nThe addresses for notices are:\n${formatStructuredSubparts(noticeParties)}`
+        : "";
+
+      return {
       title: "Notices",
       text: [
-        "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this Agreement, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:",
+        "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this clause, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:",
         formatStructuredSubparts([
           "if delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. local time, and otherwise on the next Business Day",
           "if sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier",
@@ -1995,8 +2055,9 @@ function renderHardClause(
           "if sent by electronic mail to the address notified for that purpose, on the date of transmission where sent on a Business Day before 5:00 p.m. local time and no delivery-failure notification is received, and otherwise on the next Business Day",
         ]),
         "A Party changing its address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the change, and until that notice is given a communication sent to the last notified address shall be validly given.",
-      ].join("\n"),
-    }),
+      ].join("\n") + addressBlock,
+      };
+    },
 
     CORE_SURVIVAL_001: () => ({
       title: "Survival",

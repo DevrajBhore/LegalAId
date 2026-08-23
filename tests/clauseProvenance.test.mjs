@@ -51,7 +51,11 @@ const summary = summariseProvenance(clauses);
 // review_status: draft-needs-legal-review / reviewed_by: PENDING like the rest.
 // This ceiling only ever moves up for a deliberately added clause; it should
 // come down as the supervising advocate signs clauses off.
-const MAX_UNREVIEWED = 191;
+// Raised from 191 deliberately: CORE_REPRESENTATIONS_001 was added because the
+// Events of Default clause in the guarantee and loan agreements defaulted on
+// "breach of any representation" in documents that contained none. It carries
+// review_status draft-needs-legal-review like the rest of the library.
+const MAX_UNREVIEWED = 192;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

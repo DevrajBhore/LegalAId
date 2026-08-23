@@ -347,6 +347,10 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
       name: variables?.[participant.nameField],
       address: participant.addressField ? variables?.[participant.addressField] : undefined,
       type: participant.typeField ? variables?.[participant.typeField] : undefined,
+      // Optional, and the notices clause simply omits the line when it is
+      // absent -- but a notice clause that can only work by post is a notice
+      // clause nobody will use.
+      email: variables?.[`${participant.id}_email`],
       pan: variables?.[`${participant.id}_pan`],
       gstin: variables?.[`${participant.id}_gstin`],
       cin: variables?.[`${participant.id}_cin`],

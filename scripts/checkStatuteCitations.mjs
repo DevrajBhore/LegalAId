@@ -25,6 +25,9 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CLAUSE_LIB = path.join(ROOT, "knowledge-base", "clause_library");
 const ACTS_DIR = path.join(ROOT, "knowledge-base", "acts");
+const VERSION_REGISTRY = path.join(
+  ROOT, "knowledge-base", "metadata", "statute_versions.json"
+);
 const asJson = process.argv.includes("--json");
 
 function readClauses() {
@@ -62,16 +65,47 @@ function actExists(actName) {
   return false;
 }
 
+// A citation is pinned either on the entry itself or, far more usefully, through
+// the per-Act registry: 458 citations name only 73 Acts, so pinning is 73
+// decisions rather than 458, and one verified row pins every clause citing it.
+function loadVersionRegistry() {
+  if (!fs.existsSync(VERSION_REGISTRY)) return { acts: {} };
+  try {
+    return JSON.parse(fs.readFileSync(VERSION_REGISTRY, "utf8"));
+  } catch {
+    return { acts: {} };
+  }
+}
+
+const versionRegistry = loadVersionRegistry();
+
+function registryPin(actName) {
+  const entry = versionRegistry.acts?.[String(actName || "").trim()];
+  if (!entry) return null;
+  return entry.verified === true && entry.amended_upto ? entry : null;
+}
+
 const report = {
   acts_corpus_available: actsAvailable,
   total_clauses: 0,
   citations: 0,
   pinned: 0,
   unpinned: 0,
+  pinned_via_registry: 0,
+  acts_cited: 0,
+  acts_verified: 0,
+  acts_unverified: [],
   malformed: [],
   unresolvable: [],
   unparseable: [],
 };
+
+for (const [act, entry] of Object.entries(versionRegistry.acts || {})) {
+  report.acts_cited += 1;
+  if (entry.verified === true && entry.amended_upto) report.acts_verified += 1;
+  else report.acts_unverified.push({ act, citations: entry.citations ?? null });
+}
+report.acts_unverified.sort((a, b) => (b.citations ?? 0) - (a.citations ?? 0));
 
 for (const { clause, file, unparseable } of readClauses()) {
   if (unparseable) {
@@ -104,8 +138,14 @@ for (const { clause, file, unparseable } of readClauses()) {
 
     // A pinned citation records which text was relied on, so an amendment can
     // be detected later rather than silently invalidating the clause.
-    if (entry.version || entry.as_at) report.pinned += 1;
-    else report.unpinned += 1;
+    if (entry.version || entry.as_at) {
+      report.pinned += 1;
+    } else if (registryPin(entry.act)) {
+      report.pinned += 1;
+      report.pinned_via_registry += 1;
+    } else {
+      report.unpinned += 1;
+    }
 
     if (actExists(entry.act) === false) {
       report.unresolvable.push({
@@ -123,8 +163,10 @@ if (asJson) {
   console.log("-".repeat(58));
   console.log(`  clauses examined        ${report.total_clauses}`);
   console.log(`  citations               ${report.citations}`);
-  console.log(`  version pinned          ${report.pinned}`);
+  console.log(`  version pinned          ${report.pinned}${report.pinned_via_registry ? ` (${report.pinned_via_registry} via the Act registry)` : ""}`);
   console.log(`  NOT pinned              ${report.unpinned}`);
+  console.log(`  Acts cited              ${report.acts_cited}`);
+  console.log(`  Acts version-verified   ${report.acts_verified} of ${report.acts_cited}`);
   console.log(`  malformed               ${report.malformed.length}`);
   console.log(`  unparseable files       ${report.unparseable.length}`);
   console.log(
@@ -139,9 +181,15 @@ if (asJson) {
   }
   if (report.unpinned > 0) {
     console.log(
-      `\n  ${report.unpinned} citation(s) have no version pin. Add "version" or "as_at" to the\n` +
-      `  legal_basis entry so an amendment to the cited provision can be detected.`
+      `\n  ${report.unpinned} citation(s) have no version pin, across ` +
+      `${report.acts_unverified.length} unverified Act(s).\n` +
+      `  Pinning is done per Act, not per citation: set amended_upto, source and\n` +
+      `  verified in knowledge-base/metadata/statute_versions.json and every clause\n` +
+      `  citing that Act is pinned at once. Highest-leverage rows first:`
     );
+    for (const entry of report.acts_unverified.slice(0, 10)) {
+      console.log(`    ${String(entry.citations ?? "?").padStart(4)} citation(s)  ${entry.act}`);
+    }
   }
 }
 

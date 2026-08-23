@@ -456,7 +456,8 @@
           "CORE_ASSIGNMENT_001",
           "CORE_WAIVER_001",
           "CORE_COUNTERPARTS_001",
-          "CORE_AMENDMENT_001"
+          "CORE_AMENDMENT_001",
+          "CORE_REPRESENTATIONS_001"
         ],
         "disallowedProtections": [
           "LIABILITY_CAP",
@@ -485,6 +486,7 @@
         "requiredClauseIds": [
           "CORE_DEFINITIONS_001",
           "CORE_INTERPRETATION_001",
+          "CORE_REPRESENTATIONS_001",
           "LOAN_DEFAULT_001",
           "GUARANTEE_INDEMNITY_001",
           "CORE_ENTIRE_AGREEMENT_001",

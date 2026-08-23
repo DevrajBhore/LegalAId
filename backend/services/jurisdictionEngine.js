@@ -38,19 +38,37 @@ function buildDisputeResolutionClause(method = "", disputeVenue = "", governingL
   const arbitrationAppointmentSentence =
     "The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) days of a written request, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996.";
 
+  // The terms an arbitration clause has to settle if it is going to work when it
+  // is finally needed. Leaving them out does not leave them open -- it leaves
+  // them to be argued about at the moment the Parties are least able to agree.
+  // Seat is stated separately from venue because under the 1996 Act the seat is
+  // what fixes supervisory jurisdiction, and a clause that names only a "venue"
+  // invites the argument that no court was chosen at all.
+  const arbitrationTerms = (place) =>
+    [
+      `The seat of arbitration shall be ${place}, and the courts at ${place} shall have exclusive supervisory jurisdiction over the arbitration.`,
+      `Hearings may be held at ${place} or, where the arbitrator so directs or the Parties agree, by video conference.`,
+      "The arbitral tribunal shall consist of a sole arbitrator, and the proceedings and the award shall be in the English language.",
+      "The award shall be in writing, shall state the reasons on which it is based, and shall be final and binding on the Parties.",
+      "The arbitrator shall determine the costs of the arbitration, including the fees and expenses of the arbitrator and the reasonable legal costs of the Parties, in accordance with Section 31A of the Arbitration and Conciliation Act, 1996.",
+      "Nothing in this clause prevents a Party from applying to a competent court for interim measures of protection under Section 9 of the Arbitration and Conciliation Act, 1996, before or during the arbitral proceedings.",
+    ]
+      .map((term, index) => `(${String.fromCharCode(97 + index)}) ${term}`)
+      .join("\n");
+
   if (normalizedMethod === "courts") {
     return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, the competent courts at ${venue} shall have exclusive jurisdiction, subject to applicable law.`;
   }
 
   if (normalizedMethod === "negotiation, then arbitration") {
-    return `The Parties shall first seek to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through good-faith negotiations for a period of fifteen (15) days after written notice of the dispute. If the dispute is not resolved within that period, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+    return `The Parties shall first seek to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through good-faith negotiations for a period of fifteen (15) days after written notice of the dispute. If the dispute is not resolved within that period, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The arbitration shall be conducted on the following terms:\n${arbitrationTerms(venue)}`;
   }
 
   if (normalizedMethod === "mediation, then arbitration") {
-    return `The Parties shall first attempt to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through mediation in ${venue}. If the dispute is not settled within thirty (30) days after the mediator is appointed, the dispute shall be finally resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+    return `The Parties shall first attempt to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through mediation in ${venue}. If the dispute is not settled within thirty (30) days after the mediator is appointed, the dispute shall be finally resolved by arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The arbitration shall be conducted on the following terms:\n${arbitrationTerms(venue)}`;
   }
 
-  return `Any dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The seat and venue of arbitration shall be ${venue}, the proceedings shall be conducted in English, and the arbitral award shall be final and binding on the Parties.`;
+  return `Any dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. ${arbitrationAppointmentSentence} The arbitration shall be conducted on the following terms:\n${arbitrationTerms(venue)}`;
 }
 
 function injectStampExecutionText(text = "", operatingState = "") {

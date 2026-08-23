@@ -1,0 +1,50 @@
+{
+  "clause_id": "CORE_REPRESENTATIONS_001",
+  "name": "Representations and Warranties",
+  "title": "Representations and Warranties",
+  "category": "REPRESENTATIONS",
+  "document_types": [
+    "GUARANTEE_AGREEMENT",
+    "LOAN_AGREEMENT",
+    "SHAREHOLDERS_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "SUPPLY_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party represents and warrants to the other Party, as at the date of this Agreement, that:\n(a) it is duly incorporated, registered, or otherwise validly constituted under the laws of India, and is validly existing and in good standing\n(b) it has full power and authority to enter into this Agreement and to perform the obligations undertaken by it, and has taken all corporate, partnership, or other internal action required to authorise its execution and performance\n(c) this Agreement has been duly executed by a person authorised to bind it, and constitutes its legal, valid, and binding obligation, enforceable against it in accordance with its terms\n(d) its execution and performance of this Agreement does not and will not breach its constitutional documents, any judgment or order binding on it, or any agreement to which it is a party\n(e) every consent, approval, licence, registration, and authorisation required for it to enter into and perform this Agreement has been obtained and is in force\n(f) no insolvency, winding-up, or similar proceeding has been commenced or, so far as it is aware, threatened against it\nThese representations and warranties are given on the date of this Agreement and are deemed repeated on each date on which an obligation falls due under this Agreement, by reference to the facts then subsisting.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Competence of the parties to contract is a condition of a valid agreement"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "179",
+      "note": "Board authority to borrow, invest, and execute instruments on behalf of a company"
+    },
+    {
+      "act": "Limited Liability Partnership Act, 2008",
+      "section": "23",
+      "note": "The LLP agreement governs the authority of partners to bind the LLP"
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A representation is given by a party that is not in fact incorporated or registered as described",
+    "The clause is used to warrant a state of affairs the party has no means of knowing, without an awareness qualifier"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "source": "Indian Contract Act, 1872; Companies Act, 2013; Limited Liability Partnership Act, 2008",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "authoring_note": "Added because Events of Default in the guarantee and loan agreements treat 'breach of any representation or warranty' as a default event while the documents contained no representations at all. The limbs are the conventional capacity-and-authority set. The supervising advocate should decide whether commercial or financial-condition representations should be added per document type, and whether limb (f) needs an awareness qualifier."
+}

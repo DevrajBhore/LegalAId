@@ -12,6 +12,7 @@ import {
   TextRun,
   convertInchesToTwip,
 } from "docx";
+import crypto from "crypto";
 import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parseIdentityClause } from "./documentStructure.js";
@@ -333,9 +334,21 @@ function buildLeadInRuns(line, leadPattern) {
   return runs;
 }
 
+// The party name is set in bold at the head of its block. Three parties
+// introduced one after another in identical grey prose are genuinely hard to
+// tell apart, and the name is the thing a reader scans for.
+const PARTY_NAME_LEAD = /^([^,]{2,120}?),\s+(?=an?\s|the\s|a\s)/i;
+
 function buildPartyParagraphRuns(line) {
   let remainder = String(line || "").trim();
   const runs = [];
+
+  const nameMatch = remainder.match(PARTY_NAME_LEAD);
+  if (nameMatch) {
+    runs.push(...buildRunsWithSuperscriptOrdinals(nameMatch[1], { bold: true }));
+    runs.push(...buildRunsWithSuperscriptOrdinals(", "));
+    remainder = remainder.slice(nameMatch[0].length);
+  }
 
   const roleMatch = remainder.match(/^(.*?referred to as the\s+[“"])([^"”]+)([”"].*)$/i);
   if (roleMatch) {
@@ -978,6 +991,33 @@ function renderSignatureBlock(children, text) {
 // Running footer. The document reference sits on the left and the page count on
 // the right, so a detached sheet of a long contract can be placed back into the
 // right instrument and a missing page is visible on the face of the paper.
+// A short reference printed on every page. Two people comparing printed copies
+// across a table have no other way to tell whether they are holding the same
+// version of the same instrument -- the title and the page count are identical
+// on a draft and on the executed text. The last block is a hash of the clause
+// text, so it changes if a single word does, and is stable if nothing does.
+function buildDocumentReference(draft) {
+  const docType = String(draft?.document_type || "DOC");
+  const initials =
+    docType
+      .split(/[^A-Za-z]+/)
+      .filter(Boolean)
+      .map((word) => word[0].toUpperCase())
+      .join("")
+      .slice(0, 4) || "DOC";
+
+  const effective = String(
+    draft?.metadata?.source_variables?.effective_date || ""
+  ).replace(/[^0-9]/g, "").slice(0, 8);
+
+  const body = (draft?.clauses || [])
+    .map((clause) => `${clause.clause_id || ""}:${clause.text || ""}`)
+    .join("\n");
+  const digest = crypto.createHash("sha256").update(body, "utf8").digest("hex").slice(0, 4).toUpperCase();
+
+  return [initials, effective, digest].filter(Boolean).join("-");
+}
+
 function buildPageFooter(label = "") {
   const footerRun = (text) => new TextRun({ text, font: BODY_FONT, size: FOOTER_SIZE });
   const fieldRun = (field) =>
@@ -1125,6 +1165,32 @@ function renderPdfSectionHeading(doc, text, options = {}) {
 // PDF counterpart, consuming the same parsed structure as the DOCX renderer and
 // laid out on the same indent grid (PDF_L1 === RECITAL_LEFT, PDF_L2 ===
 // CLAUSE_ITEM_LEFT), so both exports of one draft are visually identical.
+// PDF counterpart of buildPartyParagraphRuns: the party name and the defined
+// role label in bold, everything between them plain.
+function pdfPartyRuns(line) {
+  const source = String(line || "").trim();
+  const runs = [];
+  let remainder = source;
+
+  const nameMatch = remainder.match(PARTY_NAME_LEAD);
+  if (nameMatch) {
+    runs.push({ text: nameMatch[1], bold: true });
+    runs.push({ text: ", " });
+    remainder = remainder.slice(nameMatch[0].length);
+  }
+
+  const roleMatch = remainder.match(/^(.*?referred to as the\s+[\u201c"])([^"\u201d]+)([\u201d".]*)$/i);
+  if (roleMatch) {
+    runs.push({ text: roleMatch[1] });
+    runs.push({ text: roleMatch[2], bold: true });
+    runs.push({ text: roleMatch[3] });
+    return runs;
+  }
+
+  if (remainder) runs.push({ text: remainder });
+  return runs.length ? runs : [{ text: source }];
+}
+
 function renderPdfIdentityClause(doc, text) {
   const structure = parseIdentityClause(text);
 
@@ -1154,7 +1220,7 @@ function renderPdfIdentityClause(doc, text) {
         break;
 
       case "party":
-        pdfParagraph(doc, block.text, { left: PDF_L1 });
+        pdfParagraph(doc, pdfPartyRuns(block.text), { left: PDF_L1 });
         break;
 
       case "recital":
@@ -1465,7 +1531,7 @@ export async function draftToDocx(draft) {
           },
         },
         footers: {
-          default: buildPageFooter(title),
+          default: buildPageFooter(`${title}  ·  Ref ${buildDocumentReference(draft)}`),
         },
         children,
       },
@@ -1484,7 +1550,7 @@ export async function draftToPdf(draft) {
 
   return createPdfBuffer((doc) => {
     doc.info.Title = title;
-    doc.__footerLabel = title;
+    doc.__footerLabel = `${title}  \u00b7  Ref ${buildDocumentReference(draft)}`;
 
     // Clear the head of page 1 for the stamp paper / e-stamp certificate.
     if (requiresStampHeader(docType)) {
