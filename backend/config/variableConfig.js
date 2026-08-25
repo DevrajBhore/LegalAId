@@ -174,7 +174,7 @@ export const VARIABLE_CONFIG = {
       group: "Context & Risk Profile",
       applicableDocuments: ["EMPLOYMENT_CONTRACT"],
       description:
-        "Used only to include the correct statutory entitlements — maternity benefits under the Maternity Benefit Act, 1961 apply to female employees.",
+        "Used only to include the correct statutory entitlements — maternity benefits under Chapter VI of the Code on Social Security, 2020 apply to female employees.",
       options: ["Female", "Male", "Prefer not to say"],
     },
     workplace_headcount: {
@@ -194,7 +194,7 @@ export const VARIABLE_CONFIG = {
       group: "Context & Risk Profile",
       applicableDocuments: ["EMPLOYMENT_CONTRACT"],
       description:
-        "A factory is governed by the stricter Factories Act, 1948 working-hours/overtime regime; a shop or office follows the applicable State Shops & Establishments Act.",
+        "A factory is governed by the stricter working-hours and overtime regime in the Occupational Safety, Health and Working Conditions Code, 2020; a shop or office follows the applicable State Shops & Establishments Act.",
       options: ["Shop / Office", "Factory"],
     },
     has_esop_or_variable_pay: {
@@ -1227,7 +1227,7 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: false,
       description:
-        "Normal weekly working hours. Most states cap this at 48 hours a week under the Shops and Establishments Act; factories are governed by the Factories Act, 1948.",
+        "Normal weekly working hours. Most states cap this at 48 hours a week under the Shops and Establishments Act. Section 25(1)(a) of the Occupational Safety, Health and Working Conditions Code, 2020 caps the working day at eight hours.",
     },
     notice_period_days: {
       label: "Notice Period (days)",
@@ -1242,7 +1242,7 @@ export const VARIABLE_CONFIG = {
       required: false,
       group: "Employment Terms",
       description:
-        "How any bonus or incentive is calculated and when it is paid. Note that the Payment of Bonus Act, 1965 sets a statutory minimum for employees below a wage threshold, separate from any discretionary bonus.",
+        "How any bonus or incentive is calculated and when it is paid. Note that Section 26(1) of the Code on Wages, 2019 sets a statutory minimum bonus of 8.33 per cent of wages for employees below a wage threshold, separate from any discretionary bonus.",
     },
     leave_policy: {
       label: "Leave Policy",

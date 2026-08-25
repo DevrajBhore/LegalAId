@@ -47,5 +47,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "EMP_NON_COMPETE_001",
+  "deprecation_note": "Superseded. This text asserted a restraint without the confidentiality-and-goodwill justification that Section 27 of the Indian Contract Act, 1872 requires for any post-termination restriction to survive."
 }

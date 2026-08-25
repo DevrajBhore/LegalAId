@@ -39,5 +39,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "CORE_GOVERNING_LAW_001",
+  "deprecation_note": "Superseded. Governing law and the choice of forum are now composed at render time by jurisdictionEngine, which names a city and state rather than 'Indian courts' generally."
 }

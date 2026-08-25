@@ -6,22 +6,17 @@
     "EMPLOYMENT_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "The Employee shall retire from the service of the Employer upon attaining the age of sixty (60) years, unless the Employer, in its sole discretion, extends the Employee's service beyond the retirement age by mutual written agreement. Upon retirement: (a) the Employee shall be entitled to receive gratuity as per the Payment of Gratuity Act, 1972; (b) any accumulated provident fund balance shall be paid in accordance with the Employees' Provident Funds and Miscellaneous Provisions Act, 1952; (c) the Employee shall be entitled to encashment of accumulated earned leave as per the applicable policy; and (d) the Employee shall return all property, equipment, access credentials, and Confidential Information of the Employer. The Employee shall provide at least three (3) months' advance notice of anticipated retirement to facilitate transition planning.",
+  "text": "The Employee shall retire from the service of the Employer upon attaining the age of sixty (60) years, unless the Employer, in its sole discretion, extends the Employee's service beyond the retirement age by mutual written agreement. Upon retirement: (a) the Employee shall be entitled to receive gratuity as per Section 53 of the Code on Social Security, 2020; (b) any accumulated provident fund balance shall be paid in accordance with Chapter III of the Code on Social Security, 2020; (c) the Employee shall be entitled to encashment of accumulated earned leave as per the applicable policy; and (d) the Employee shall return all property, equipment, access credentials, and Confidential Information of the Employer. The Employee shall provide at least three (3) months' advance notice of anticipated retirement to facilitate transition planning.",
   "legal_basis": [
     {
-      "act": "Payment of Gratuity Act, 1972",
-      "section": "4",
+      "act": "Code on Social Security, 2020",
+      "section": "53",
       "note": "Gratuity payable on retirement"
     },
     {
-      "act": "Employees' Provident Funds Act, 1952",
-      "section": "6",
-      "note": "EPF disbursement on retirement"
-    },
-    {
-      "act": "Employees' Pension Scheme, 1995",
-      "section": "11",
-      "note": "Pension on superannuation at 58 years"
+      "act": "Code on Social Security, 2020",
+      "section": "Chapter III (ss. 14-23)",
+      "note": "Provident fund disbursement on retirement, and schemes framed under the Code"
     }
   ],
   "mandatory": false,
@@ -30,7 +25,7 @@
   "invalid_if": [
     "Retirement age below 58 years contrary to applicable service rules"
   ],
-  "source": "Payment of Gratuity Act, 1972; EPF Act, 1952",
+  "source": "Code on Social Security, 2020",
   "version": "3.0",
   "title": "Retirement",
   "depends_on": [
@@ -51,5 +46,9 @@
   ],
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. The Employees' Pension Scheme, 1995 was framed under the repealed EPF Act. Schemes framed under the repealed Acts are generally saved and continue under the corresponding Code provisions, but the saving provision was not verified, so the pension citation has been dropped rather than guessed. The advocate should confirm whether the 58-year superannuation reference should be restored and under what authority.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

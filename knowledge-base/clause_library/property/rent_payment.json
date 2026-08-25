@@ -57,5 +57,8 @@
   ],
   "tds_applicable": true,
   "gst_applicable": true,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "RENTAL_RENT_PAYMENT_001",
+  "deprecation_note": "Superseded by the templated rent clause, which injects the actual monthly figure from the user's answer instead of pointing at a 'Schedule 1' the generated document does not contain, and which resolves the party labels so the same clause serves both a tenancy and a leave and licence. Two points in this older text are NOT carried across and are left for the supervising advocate: the Model Tenancy Act, 2021 rent-receipt reference, and the bar on the tenant withholding rent pending a dispute."
 }

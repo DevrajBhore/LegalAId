@@ -6,22 +6,27 @@
     "EMPLOYMENT_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "The Employee's normal working hours shall be nine (9) hours per day, inclusive of a one-hour lunch break, five (5) days per week (Monday to Friday), subject to the requirements of the applicable State Shops and Establishments Act or the Factories Act, 1948, as applicable. The Employer may require the Employee to work additional hours as necessitated by business requirements, provided that: (a) total working hours shall not exceed forty-eight (48) hours per week; (b) overtime compensation shall be paid at twice the ordinary rate of wages for all hours worked in excess of nine (9) hours per day or forty-eight (48) hours per week, where applicable under the relevant statute; and (c) every Employee shall be entitled to one day of rest in every seven-day period. The Employer shall maintain a register of working hours as required under applicable labour legislation and shall not require female employees to work between 10 PM and 6 AM without appropriate safety measures.",
+  "text": "The Employee's normal working hours shall be eight (8) hours of work per day, exclusive of a one-hour meal interval, five (5) days per week (Monday to Friday), subject to Section 25 of the Occupational Safety, Health and Working Conditions Code, 2020 and to the applicable State Shops and Establishments Act. The Employer may require the Employee to work additional hours as necessitated by business requirements, provided that: (a) total working hours shall not exceed forty-eight (48) hours per week; (b) overtime compensation shall be paid at twice the ordinary rate of wages for all hours worked in excess of nine (9) hours per day or forty-eight (48) hours per week, where applicable under the relevant statute; and (c) every Employee shall be entitled to one day of rest in every seven-day period. The Employer shall maintain a register of working hours as required under applicable labour legislation and shall not require female employees to work between 10 PM and 6 AM without appropriate safety measures.",
   "legal_basis": [
     {
-      "act": "Factories Act, 1948",
-      "section": "51",
-      "note": "Weekly hours limit — 48 hours"
+      "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+      "section": "25(1)(a)",
+      "note": "No worker shall be required or allowed to work more than eight hours in a day"
     },
     {
-      "act": "Factories Act, 1948",
-      "section": "59",
-      "note": "Overtime rate — twice ordinary wages"
+      "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+      "section": "26(1)",
+      "note": "No worker shall work more than six days in any one week"
     },
     {
-      "act": "Shops and Establishments Acts",
+      "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+      "section": "27",
+      "note": "Overtime at twice the rate of wages"
+    },
+    {
+      "act": "State Shops and Establishments Acts",
       "section": "State-specific",
-      "note": "State-specific limits for shop employees"
+      "note": "State-specific limits for shop and commercial establishment employees. NOT repealed by the Codes."
     }
   ],
   "mandatory": true,
@@ -32,7 +37,7 @@
     "No overtime compensation for excess hours contrary to applicable labour law",
     "Female employees required to work night shifts without adequate safety measures"
   ],
-  "source": "Factories Act, 1948; State Shops Acts",
+  "source": "Occupational Safety, Health and Working Conditions Code, 2020; State Shops and Establishments Acts",
   "version": "3.0",
   "title": "Working Hours",
   "depends_on": [
@@ -55,5 +60,9 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. Reworded, not re-numbered. The old text read 'nine (9) hours per day, inclusive of a one-hour lunch break' -- which is eight working hours and was already compliant, but reads as a nine-hour cap on its face and OSH s.25(1)(a) caps the day at eight. It now states eight hours of work exclusive of the interval, which is the same working day expressed unambiguously. The advocate should confirm this is the intended day.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

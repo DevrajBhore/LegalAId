@@ -44,5 +44,8 @@
   ],
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "EMPLOYMENT_COMPENSATION_001",
+  "deprecation_note": "Superseded by the compensation clause, which states the actual salary, the payment date, and the statutory deductions rather than pointing at 'applicable law'."
 }

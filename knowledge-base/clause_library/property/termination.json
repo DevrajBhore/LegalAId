@@ -52,5 +52,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "RENTAL_TERMINATION_001",
+  "deprecation_note": "Superseded by the templated termination clause. Its tenant-side right to terminate on substantial interference with peaceful enjoyment has been carried across into the successor, which previously gave the landlord an immediate right and the tenant none."
 }

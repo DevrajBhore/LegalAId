@@ -2,8 +2,8 @@
   "clause_id": "EMPLOYMENT_COMPENSATION_001",
   "category": "CONSIDERATION",
   "title": "Compensation and Benefits",
-  "text": "The Employer shall pay the Employee a gross annual cost-to-company of {{salary}} inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month in accordance with the Payment of Wages Act, 1936. The Employee shall be entitled to statutory benefits including Provident Fund under the Employees' Provident Funds Act, 1952, and Gratuity upon completion of five years of continuous service under the Payment of Gratuity Act, 1972. The Employer shall deduct Tax Deducted at Source in accordance with the Income Tax Act, 1961.",
-  "statutory_reference": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
+  "text": "The Employer shall pay the Employee a gross annual cost-to-company of {{salary}} inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month in accordance with Section 17 of the Code on Wages, 2019. The Employee shall be entitled to statutory benefits including Provident Fund under Chapter III of the Code on Social Security, 2020, and gratuity upon completion of five years of continuous service under Section 53 of that Code, or upon completion of one year where the Employee is engaged on fixed term employment within the meaning of Section 2(o) of the Industrial Relations Code, 2020. For the purposes of every statutory entitlement under this Agreement, 'wages' bears the meaning given to it by Section 2(y) of the Code on Wages, 2019. The Employer shall deduct Tax Deducted at Source in accordance with the Income Tax Act, 1961.",
+  "statutory_reference": "Code on Wages, 2019 - S.2(y), S.5, S.17; Code on Social Security, 2020 - S.53",
   "mandatory": true,
   "jurisdiction": "India",
   "name": "Compensation Overview",
@@ -13,18 +13,35 @@
   ],
   "legal_basis": [
     {
-      "act": "Payment of Wages Act, 1936",
-      "section": "3"
+      "act": "Code on Wages, 2019",
+      "section": "2(y)",
+      "note": "Definition of wages — excluded allowances above one-half of total remuneration are added back"
     },
     {
-      "act": "Minimum Wages Act, 1948",
-      "section": "3"
+      "act": "Code on Wages, 2019",
+      "section": "5",
+      "note": "Payment of not less than the minimum rate of wages"
+    },
+    {
+      "act": "Code on Wages, 2019",
+      "section": "17",
+      "note": "Time limit for payment of wages"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "53",
+      "note": "Payment of gratuity on completion of five years continuous service"
+    },
+    {
+      "act": "Industrial Relations Code, 2020",
+      "section": "2(o)",
+      "note": "Fixed term employment — gratuity on completion of one year"
     }
   ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "Payment of Wages Act, 1936; Minimum Wages Act, 1948",
+  "source": "Code on Wages, 2019; Code on Social Security, 2020; Industrial Relations Code, 2020",
   "version": "3.0",
   "depends_on": [
     "CORE_IDENTITY_001",
@@ -50,5 +67,9 @@
   ],
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. Two substantive additions, not renames. (1) The wages definition at CoW s.2(y) adds back to 'wages' any excluded allowances exceeding one-half of total remuneration, which changes PF, gratuity and bonus bases for most CTC structures. (2) Fixed term employees qualify for gratuity at one year under IRC s.2(o), not five. Also note the transitional position: per the Labour Ministry FAQs, gratuity for service rendered BEFORE 21 November 2025 remains governed by the Payment of Gratuity Act, 1972, so a long-serving employee has a split calculation. The advocate should decide whether that split belongs in the clause.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

@@ -41,7 +41,11 @@ for (const folder of fs.readdirSync(CLAUSE_LIB, { withFileTypes: true })) {
     const clause = JSON.parse(
       fs.readFileSync(path.join(CLAUSE_LIB, folder.name, file), "utf8")
     );
-    if (clause?.clause_id) clauses.push(clause);
+    // A deprecated clause is not loaded by the engine and can never reach a
+    // document, so it must not sit in the review queue either -- counting it
+    // would ask an advocate to sign off text the product cannot emit. Mirrors
+    // the filter in IRE/bootstrap.js.
+    if (clause?.clause_id && clause.deprecated !== true) clauses.push(clause);
   }
 }
 
@@ -51,11 +55,14 @@ const summary = summariseProvenance(clauses);
 // review_status: draft-needs-legal-review / reviewed_by: PENDING like the rest.
 // This ceiling only ever moves up for a deliberately added clause; it should
 // come down as the supervising advocate signs clauses off.
-// Raised from 191 deliberately: CORE_REPRESENTATIONS_001 was added because the
+// Lowered to 184: eight superseded clauses have been deprecated and are no
+// longer loaded, so they left the queue -- five duplicated general provisions,
+// and three older rental clauses replaced by the templated RENTAL_* set. Previously raised to 192 because
+// CORE_REPRESENTATIONS_001 was added, since the
 // Events of Default clause in the guarantee and loan agreements defaulted on
 // "breach of any representation" in documents that contained none. It carries
 // review_status draft-needs-legal-review like the rest of the library.
-const MAX_UNREVIEWED = 192;
+const MAX_UNREVIEWED = 184;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

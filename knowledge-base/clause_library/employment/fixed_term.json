@@ -7,11 +7,18 @@
     "EMPLOYMENT_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "This is a contract of fixed-term employment. (a) The Employee is engaged for a fixed term commencing on the date of joining and expiring automatically on the end date specified in this Agreement, unless renewed in writing or terminated earlier in accordance with this Agreement. (b) During the fixed term, the Employee shall be entitled to hours of work, wages, allowances and other benefits that are not less than those available to a permanent workman doing the same or similar work, in accordance with the Industrial Employment (Standing Orders) Central (Amendment) Rules, 2018 and the Industrial Relations Code, 2020. (c) The Employee engaged on a fixed-term basis shall be eligible for gratuity if the Employee renders service under the contract for the period specified, on a pro-rata basis, notwithstanding that the period of continuous service is less than five (5) years. (d) Expiry of the fixed term by efflux of time shall not constitute retrenchment, and no notice of non-renewal or retrenchment compensation shall be payable solely by reason of such expiry, provided the term is not extended. (e) Nothing in this clause shall be construed to convert the fixed-term engagement into permanent employment by mere continuation beyond the stated term without an express written agreement.",
+  "text": "This is a contract of fixed-term employment. (a) The Employee is engaged for a fixed term commencing on the date of joining and expiring automatically on the end date specified in this Agreement, unless renewed in writing or terminated earlier in accordance with this Agreement. (b) During the fixed term, the Employee shall be entitled to hours of work, wages, allowances and other benefits that are not less than those available to a permanent workman doing the same or similar work, in accordance with Section 2(o) of the Industrial Relations Code, 2020. The Employee shall be eligible for gratuity on completion of one year of service under the fixed term contract, notwithstanding the five-year qualifying period that applies to other employees. (c) The Employee engaged on a fixed-term basis shall be eligible for gratuity if the Employee renders service under the contract for the period specified, on a pro-rata basis, notwithstanding that the period of continuous service is less than five (5) years. (d) Expiry of the fixed term by efflux of time shall not constitute retrenchment, and no notice of non-renewal or retrenchment compensation shall be payable solely by reason of such expiry, provided the term is not extended. (e) Nothing in this clause shall be construed to convert the fixed-term engagement into permanent employment by mere continuation beyond the stated term without an express written agreement.",
   "legal_basis": [
-    { "act": "Industrial Employment (Standing Orders) Central (Amendment) Rules, 2018", "section": "Model Standing Order on fixed-term employment", "note": "Parity of wages/benefits; pro-rata gratuity" },
-    { "act": "Industrial Relations Code, 2020", "section": "2(o)", "note": "Definition and treatment of fixed-term employment" },
-    { "act": "Payment of Gratuity Act, 1972", "section": "4", "note": "Pro-rata gratuity for fixed-term workers" }
+    {
+      "act": "Industrial Relations Code, 2020",
+      "section": "2(o)",
+      "note": "Fixed term employment — parity of hours, wages, allowances and benefits with a permanent worker, and gratuity on completion of one year"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "53",
+      "note": "Payment of gratuity"
+    }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
@@ -20,7 +27,7 @@
     "Fixed-term worker denied wages/benefits at parity with permanent workmen doing similar work",
     "Repeated renewals used to deny benefits or disguise permanent employment"
   ],
-  "source": "Industrial Relations Code, 2020; IESO Rules 2018",
+  "source": "Industrial Relations Code, 2020",
   "version": "1.0",
   "title": "Fixed-Term Employment",
   "depends_on": [
@@ -41,5 +48,8 @@
   "review_status": "draft-needs-legal-review",
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. This clause is now on firmer ground than before: fixed-term parity and one-year gratuity sit in the Code itself (IRC s.2(o)) rather than in the 2018 Model Standing Order amendment, which is repealed. The advocate should confirm the clause text states the one-year gratuity entitlement explicitly.",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

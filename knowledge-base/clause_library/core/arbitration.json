@@ -55,5 +55,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "CORE_DISPUTE_RESOLUTION_001",
+  "deprecation_note": "A single sentence referring disputes to the 1996 Act. CORE_DISPUTE_RESOLUTION_001 covers the same ground and settles seat, venue, appointment, language, costs and interim relief, which this does not."
 }

@@ -3,7 +3,7 @@
   "category": "TERMINATION",
   "title": "Termination of Employment",
   "text": "Either Party may terminate this Agreement by providing {{notice_period_days}} days' prior written notice. The Employer may terminate this Agreement immediately for cause including misconduct, gross negligence, fraud, or wilful violation of the Employer's policies, subject to compliance with the principles of natural justice including issuance of a show-cause notice and opportunity to respond. Upon termination, the Employee shall return all Company property and Confidential Information. The Employee shall be entitled to all accrued salary, earned leave encashment, and statutory dues up to the date of termination.",
-  "statutory_reference": "Industrial Disputes Act, 1947 – S.25F; Payment of Gratuity Act, 1972",
+  "statutory_reference": "Industrial Relations Code, 2020 - S.70; Code on Social Security, 2020 - S.53; Code on Wages, 2019 - S.17(2)",
   "mandatory": true,
   "jurisdiction": "India",
   "name": "Termination of Employment",
@@ -13,40 +13,35 @@
   ],
   "legal_basis": [
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "25F",
-      "note": "Retrenchment compensation for workmen"
+      "act": "Industrial Relations Code, 2020",
+      "section": "70",
+      "note": "Conditions precedent to retrenchment — notice and compensation"
     },
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "25G",
-      "note": "Procedure for retrenchment — last in first out"
+      "act": "Industrial Relations Code, 2020",
+      "section": "71",
+      "note": "Procedure for retrenchment"
     },
     {
-      "act": "Payment of Gratuity Act, 1972",
-      "section": "4",
-      "note": "Gratuity on termination after 5 years"
+      "act": "Code on Social Security, 2020",
+      "section": "53",
+      "note": "Gratuity on termination after five years of continuous service"
     },
     {
-      "act": "Industrial Employment (Standing Orders) Act, 1946",
-      "section": "12",
-      "note": "Procedure for dismissal"
+      "act": "Code on Wages, 2019",
+      "section": "17(2)",
+      "note": "Wages on removal, dismissal, retrenchment or resignation payable within two working days"
     },
     {
       "act": "Constitution of India",
       "article": "21",
       "note": "Right to livelihood — natural justice in termination"
-    },
-    {
-      "act": "Payment of Wages Act, 1936",
-      "section": "5",
-      "note": "Time for payment of wages on termination"
     }
   ],
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "Industrial Disputes Act, 1947; Payment of Gratuity Act, 1972",
+  "source": "Industrial Relations Code, 2020; Code on Social Security, 2020; Code on Wages, 2019",
   "version": "3.0",
   "depends_on": [
     "CORE_IDENTITY_001",
@@ -75,5 +70,9 @@
   ],
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. CoW s.17(2) is a materially shorter deadline than the previous regime: wages on removal, dismissal, retrenchment or resignation must be paid within TWO WORKING DAYS. The advocate should decide whether this clause and the full-and-final settlement clause should state that deadline expressly.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

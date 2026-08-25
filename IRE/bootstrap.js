@@ -70,6 +70,7 @@ export function bootstrapIRE() {
   const allLoadedClauses = [];
   const strictReview = strictReviewRequired();
   let refusedUnreviewed = 0;
+  let deprecatedCount = 0;
 
   for (const folder of clauseFolders) {
     const folderPath = path.join(CLAUSE_LIBRARY_PATH, folder);
@@ -77,8 +78,16 @@ export function bootstrapIRE() {
 
     const clauses = loadJSONFiles(folderPath);
 
-    // Skip empty-text stub clauses (don't pollute registry with blank entries)
-    const validClauses = clauses.filter(c => c.clause_id && c.text && c.text.trim().length > 0);
+    // Skip empty-text stub clauses (don't pollute registry with blank entries).
+    // A clause marked `deprecated` is a superseded draft kept only so its id
+    // stays resolvable in old saved documents. It is not loaded, so it cannot be
+    // assembled into a new one -- and, importantly, it drops out of the review
+    // provenance count, because asking an advocate to sign off text the product
+    // can never emit is a waste of the only scarce resource here.
+    const validClauses = clauses.filter(
+      (c) => c.clause_id && c.text && c.text.trim().length > 0 && c.deprecated !== true
+    );
+    deprecatedCount += clauses.filter((c) => c.deprecated === true).length;
 
     validClauses.forEach(c => {
       try { validateClause(c); } catch { /* schema errors are non-fatal */ }
@@ -104,7 +113,10 @@ export function bootstrapIRE() {
   const provenance = summariseProvenance(allLoadedClauses);
   registry.clauseProvenance = provenance;
 
-  console.log(`[IRE Bootstrap] Loaded ${totalClauses} clauses`);
+  console.log(
+    `[IRE Bootstrap] Loaded ${totalClauses} clauses` +
+      (deprecatedCount ? ` (${deprecatedCount} deprecated, not loaded)` : "")
+  );
   if (strictReview) {
     console.log(
       `[IRE Bootstrap] Strict review mode: refused ${refusedUnreviewed} unreviewed clause(s)`

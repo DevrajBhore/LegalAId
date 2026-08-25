@@ -9,19 +9,19 @@
   "text": "The Employee or Employer may terminate this Agreement by providing written notice for the period specified herein or salary in lieu of such notice, subject to applicable law.",
   "legal_basis": [
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "25F",
-      "note": "One month notice or payment in lieu for workmen"
+      "act": "Industrial Relations Code, 2020",
+      "section": "70",
+      "note": "Conditions precedent to retrenchment — notice or wages in lieu"
     },
     {
-      "act": "Industrial Employment (Standing Orders) Act, 1946",
-      "section": "13",
-      "note": "Notice of dismissal"
+      "act": "Industrial Relations Code, 2020",
+      "section": "29",
+      "note": "Notice of dismissal under standing orders, where Chapter IV applies"
     },
     {
-      "act": "Delhi Shops and Establishments Act, 1954",
-      "section": "30",
-      "note": "Notice period for shop employees (state-specific)"
+      "act": "State Shops and Establishments Acts",
+      "section": "State-specific",
+      "note": "Notice period for shop and commercial establishment employees. State legislation, NOT repealed."
     }
   ],
   "mandatory": true,
@@ -30,7 +30,7 @@
   "invalid_if": [
     "Notice period is waived contrary to statutory requirements"
   ],
-  "source": "Industrial Disputes Act, 1947 S.25F",
+  "source": "Industrial Relations Code, 2020; State Shops and Establishments Acts",
   "version": "3.0",
   "title": "Notice Period",
   "depends_on": [
@@ -58,5 +58,9 @@
   ],
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. The Delhi Shops and Establishments Act, 1954 reference has been generalised to state legislation, since the applicable state Act depends on the operating state and none of them are repealed by the Codes. The retrenchment notice and compensation figures under IRC s.70 were not individually verified.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

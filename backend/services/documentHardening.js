@@ -1708,9 +1708,9 @@ function renderHardClause(
         variables.statutory_benefits,
         ""
       )}.` : ""}\n${formatStructuredSubparts([
-        "salary shall be paid in arrears by direct credit to the Employee's designated bank account on or before the seventh (7th) day of the following month, consistent with the wage period and payment timelines under the Payment of Wages Act, 1936",
+        "salary shall be paid in arrears by direct credit to the Employee's designated bank account on or before the seventh (7th) day of the following month, consistent with the wage period and payment timelines under Section 17 of the Code on Wages, 2019",
         "the Employer shall deduct tax at source under Section 192 of the Income Tax Act, 1961, together with such other deductions as are authorised or required by law, including the Employee's contribution to the Employees' Provident Fund and, where applicable, professional tax and Employees' State Insurance",
-        "no deduction shall be made from the Employee's wages otherwise than as permitted by Section 7 of the Payment of Wages Act, 1936",
+        "no deduction shall be made from the Employee's wages otherwise than as permitted by Section 18 of the Code on Wages, 2019",
         "the Employer shall issue a monthly pay slip recording gross salary, each deduction, and net pay, and shall furnish Form 16 within the time prescribed under the Income Tax Rules, 1962",
         "the compensation is reviewed annually at the Employer's discretion and any revision shall be recorded in writing; a review does not of itself create an entitlement to an increase",
       ])}`,
@@ -2532,13 +2532,21 @@ function renderHardClause(
         variables.lock_in_period
       )}.` : ""} This Agreement may also be terminated earlier for non-payment, unlawful use, material damage, or other material breach that remains unremedied after notice. Upon termination, the Tenant shall vacate the Premises, return possession, and comply with all exit and settlement obligations under this Agreement.`,
 
+    // Limb (c) is the tenant's side of this clause. Until it was added the
+    // landlord could terminate immediately on breach and the tenant had no
+    // corresponding right at all, which is a one-sidedness a reviewing advocate
+    // would strike -- the lessor's covenant for quiet enjoyment is implied into
+    // every lease by Section 108(c) of the Transfer of Property Act, 1882, so a
+    // remedy for its breach is not a concession, it is the counterpart of the
+    // landlord's own remedy. Carried across from RENT_TERMINATION_001, now
+    // deprecated. The seven-day cure period matches limb (b).
     RENTAL_TERMINATION_001: () =>
       `This Agreement may be terminated: (a) by either Party by providing ${Math.max(
         15,
         resolveTerminationNoticeDays(variables)
       )} days' prior written notice after expiry of the lock-in period, if any${hasMeaningfulValue(
         variables.lock_in_period
-      ) ? `, such lock-in period being ${normalizeWhitespace(variables.lock_in_period)}` : ""}; and (b) by the Landlord immediately upon material breach, persistent payment default, or unlawful use, subject to the contractual cure process and applicable law. Upon termination, the Tenant shall vacate the Premises within the notice period, return them in the same condition as at commencement (reasonable wear and tear excepted), and hand over all keys and access devices.`,
+      ) ? `, such lock-in period being ${normalizeWhitespace(variables.lock_in_period)}` : ""}; (b) by the Landlord immediately upon material breach, persistent payment default, or unlawful use, subject to the contractual cure process and applicable law; and (c) by the Tenant immediately upon written notice if the Landlord substantially interferes with the Tenant's peaceful enjoyment of the Premises, or fails to remedy any breach of the Landlord's obligations within seven (7) days of written notice. Upon termination, the Tenant shall vacate the Premises within the notice period, return them in the same condition as at commencement (reasonable wear and tear excepted), and hand over all keys and access devices.`,
 
     // The engine already determines whether THIS instrument is compulsorily
     // registrable -- an 11-month tenancy and a 24-month tenancy produce

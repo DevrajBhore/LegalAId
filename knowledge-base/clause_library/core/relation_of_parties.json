@@ -48,5 +48,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "CORE_RELATIONSHIP_OF_PARTIES_001",
+  "deprecation_note": "Superseded by a fuller relationship clause that also disclaims agency and fiduciary duty, and carries limbs on personnel, taxes and indemnity."
 }

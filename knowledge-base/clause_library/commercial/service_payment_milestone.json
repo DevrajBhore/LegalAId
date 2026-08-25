@@ -1,19 +1,33 @@
 {
   "clause_id": "SERVICE_PAYMENT_MILESTONE_001",
   "name": "Payment - Milestone Based",
-  "category": "PAYMENT",
-  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SERVICE",
+    "SERVICE_AGREEMENT"
+  ],
   "jurisdiction": "India",
   "text": "The Client shall pay the Service Provider against completion and acceptance of defined milestones as set out in this Agreement or its Schedule. Each milestone payment shall become due only upon the Client's written acceptance of the corresponding deliverable, against a valid tax invoice, and shall be paid within thirty (30) days of such acceptance. Applicable GST shall be charged additionally, and the Client shall deduct TDS where required under the Income-tax Act, 1961. Disputed milestones shall not be withheld in their entirety where only part of the deliverable is in dispute; undisputed amounts shall be paid when due.",
   "legal_basis": [
-    { "act": "Central Goods and Services Tax Act, 2017", "section": "13", "note": "Time of supply of services for milestone-based billing" },
-    { "act": "Income-tax Act, 1961", "section": "194J", "note": "TDS on professional/technical service fees" }
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "13",
+      "note": "Time of supply of services for milestone-based billing"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194J",
+      "note": "TDS on professional/technical service fees"
+    }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "invalid_if": ["No milestones or acceptance criteria are defined"],
+  "invalid_if": [
+    "No milestones or acceptance criteria are defined"
+  ],
   "source": "CGST Act, 2017; Income-tax Act, 1961",
   "version": "1.0",
-  "title": "Payment Terms"
+  "title": "Payment Terms",
+  "authoring_note": "Categorised CONSIDERATION, not PAYMENT: this clause stands in the payment_structure slot for SERVICE_PAYMENT_001, which is the document's consideration clause. Tagged PAYMENT it satisfied no required category and every draft using it failed MISSING_CATEGORY_CONSIDERATION."
 }

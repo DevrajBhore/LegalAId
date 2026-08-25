@@ -247,18 +247,73 @@ export function deriveGenerationControls(documentType, variables = {}) {
       seniority.includes("exec");
   }
 
-  // Fixed-term employment (IR Code / IESO Rules 2018) — distinct term, non-renewal
-  // treatment, and pro-rata gratuity. Derived from the termination-structure enum.
+  // Fixed-term employment (Industrial Relations Code, 2020 s.2(o)) — distinct term,
+  // non-renewal treatment, and gratuity on one year rather than five. The IESO
+  // Rules 2018 that previously carried this were repealed on 21 November 2025.
+  // Derived from the termination-structure enum.
   const terminationType = normalizeText(variables.employment_termination_type).toLowerCase();
   if (terminationType) {
     derived.is_fixed_term = terminationType.includes("fixed");
   }
 
-  // Factory vs shop/office workplace selects the stricter Factories Act, 1948
-  // working-hours regime (variant slot working_hours_regime).
+  // Factory vs shop/office workplace selects the stricter working-hours regime in
+  // the OSH Code, 2020 ss.25-27 (variant slot working_hours_regime). The Factories
+  // Act, 1948 that previously governed this was repealed on 21 November 2025.
   const workplaceType = normalizeText(variables.workplace_type).toLowerCase();
   if (workplaceType) {
     derived.is_factory = workplaceType.includes("factory");
+  }
+
+  // How a services engagement is billed. The three payment clauses state the
+  // actual mechanics — retainer in advance, milestone on acceptance, fixed fee —
+  // where the generic clause only points at a fee schedule, and the mechanics are
+  // what a payment dispute actually turns on.
+  const engagement = normalizeText(variables.engagement_model).toLowerCase();
+  if (engagement) {
+    derived.is_retainer_engagement = engagement.includes("retainer");
+    derived.is_milestone_engagement = engagement.includes("project");
+    derived.is_fixed_fee_engagement =
+      engagement.includes("fixed") || engagement.includes("advisory");
+  }
+
+  // ── Conditions the blueprints ask for but nothing was answering ──────────
+  //
+  // Each of these gates a clause that exists and is good, and each was silently
+  // false forever, so the clause could never appear. None of them needs a new
+  // question: the answer is already sitting in something the user typed.
+
+  // NOT derived: `personal_guarantee_required` in LOAN_AGREEMENT. Setting it
+  // pulls in GUARANTEE_OBLIGATION_001, which is the guarantor's own covenant —
+  // and a two-party loan has no guarantor to give it. The consistency validator
+  // rightly refuses the draft ("uses the conflicting role label Guarantor").
+  // Making this work means adding a third participant and guarantor fields to
+  // the loan intake, not flipping a flag; until then the correct answer is a
+  // separate Guarantee Agreement, which the product already generates.
+
+  // A "rental agreement" let for an office, shop or godown is a commercial
+  // letting, and pulls the maintenance and permitted-use clauses written for
+  // one. The residential form is the default.
+  const use = normalizeText(variables.permitted_use).toLowerCase();
+  if (use) {
+    derived.is_commercial_lease =
+      /\boffice|\bshop\b|\bretail\b|\bcommercial\b|\bbusiness\b|\bwarehouse|\bgodown|\bclinic|\brestaurant|\bcafe|\bstudio\b|\bshowroom/.test(use);
+  }
+
+  // A letting that says nothing about subletting has a hole in it, whichever way
+  // the parties want it resolved, so the clause is included and states the
+  // position rather than leaving it unaddressed.
+  if (/RENTAL|LEASE|LICENSE|LICENCE/i.test(String(documentType || ""))) {
+    derived.subletting_addressed = true;
+  }
+
+  // Goods sold or supplied need a stated returns position and a shortage
+  // mechanism; both clauses exist and neither was reachable.
+  const goods = normalizeText(
+    variables.goods_description || variables.product_description
+  );
+  if (goods) {
+    derived.return_policy_required = true;
+    derived.shortage_risk = true;
   }
 
   // ESOP / variable pay clause (Companies Act s.62; SEBI SBEB) — opt-in.

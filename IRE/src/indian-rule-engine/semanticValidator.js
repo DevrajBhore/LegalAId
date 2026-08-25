@@ -108,8 +108,32 @@ export function semanticValidate(draft) {
   }
 
   // ── ICA s.74 – Penalty Clause ─────────────────────────────────────────────
+  // Section 74 governs a sum the PARTIES stipulate as payable on breach. It has
+  // nothing to say about a penalty imposed by a statute, and the bare word
+  // "penalty" appears in perfectly sound clauses for exactly that reason -- the
+  // stamp-duty clause notes that deficient duty must be made good "together with
+  // any penalty", which is the Stamp Act's penalty, not the parties' bargain.
+  // Matching the word alone put a MEDIUM finding on every document we generate.
+  // "Rs. 10,000" puts a full stop inside the very sentence being matched, so the
+  // window is bounded by a sentence BOUNDARY (a stop followed by a capital)
+  // rather than by any full stop at all.
+  const near = (n) => `(?:(?!\\.\\s+[A-Z])[\\s\\S]){0,${n}}`;
+  const STATUTORY_PENALTY = new RegExp(
+    `(?:stamp|duty|tax|gst|tds|statutory|registration|regulator|authority|late\\s+filing|non.?compliance)${near(90)}penalt` +
+      `|penalt${near(90)}(?:stamp|duty|tax|gst|tds|statute|statutory)`,
+    "i"
+  );
+
+  // A genuine s.74 clause ties the sum to breach, delay, or termination.
+  const CONTRACTUAL_PENALTY = new RegExp(
+    `(?:liquidated\\s+damage|pre.?determined\\s+amount)` +
+      `|penalt${near(140)}(?:breach|default|delay|failure to|terminat|non.?performance)` +
+      `|(?:breach|default|delay|failure to|terminat|non.?performance)${near(140)}penalt`,
+    "i"
+  );
+
   const hasPenalty =
-    /penalty|liquidated\s+damage|pre.?determined\s+amount/i.test(text);
+    CONTRACTUAL_PENALTY.test(text) && !STATUTORY_PENALTY.test(text);
   const hasQualifier =
     /genuine\s+(pre.?estimate|estimate)|reasonable\s+(estimate|compensation)/i.test(
       text

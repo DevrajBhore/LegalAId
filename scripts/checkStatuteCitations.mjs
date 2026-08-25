@@ -40,7 +40,12 @@ function readClauses() {
       if (!file.endsWith(".json")) continue;
       try {
         const clause = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
-        if (clause?.clause_id) clauses.push({ clause, file: path.join(folder.name, file) });
+        // A deprecated clause is not loaded by the engine and can never reach a
+        // document, so a stale citation inside one is not a live defect. Mirrors
+        // the filter in IRE/bootstrap.js and tests/clauseProvenance.test.mjs.
+        if (clause?.clause_id && clause.deprecated !== true) {
+          clauses.push({ clause, file: path.join(folder.name, file) });
+        }
       } catch {
         clauses.push({ clause: null, file: path.join(folder.name, file), unparseable: true });
       }
@@ -98,7 +103,21 @@ const report = {
   malformed: [],
   unresolvable: [],
   unparseable: [],
+  repealed: [],
 };
+
+// An Act that carries `repealed_on` in the registry has ceased to have effect.
+// A clause citing one is worse than a clause citing nothing: it carries the
+// authority of a checked reference to a provision that no longer exists.
+const repealRegistry = new Map(
+  Object.entries(versionRegistry.acts || {})
+    .filter(([, entry]) => entry?.repealed_on)
+    .map(([act, entry]) => [
+      act.toLowerCase(),
+      { on: entry.repealed_on, by: entry.superseded_by || "its successor" },
+    ])
+);
+const repealOf = (act) => repealRegistry.get(String(act || "").trim().toLowerCase()) || null;
 
 for (const [act, entry] of Object.entries(versionRegistry.acts || {})) {
   report.acts_cited += 1;
@@ -118,6 +137,24 @@ for (const { clause, file, unparseable } of readClauses()) {
   if (!Array.isArray(basis) || basis.length === 0) {
     report.malformed.push({ clause_id: clause.clause_id, file, reason: "no legal_basis" });
     continue;
+  }
+
+  // The citation loop above reads legal_basis. A repealed Act can also sit in
+  // `source`, in `statutory_reference` -- which is the field the PDF actually
+  // prints in its [Ref: ...] footer -- or in the clause text itself. Scanning
+  // the serialised clause catches all of them, including fields added later.
+  // authoring_note is excluded: those deliberately name repealed Acts to record
+  // what was changed and why.
+  const { authoring_note, deprecation_note, ...citable } = clause;
+  const haystack = JSON.stringify(citable);
+  for (const [actKey, repeal] of repealRegistry) {
+    if (!haystack.toLowerCase().includes(actKey)) continue;
+    if (report.repealed.some((r) => r.clause_id === clause.clause_id && r.act === actKey)) continue;
+    report.repealed.push({
+      clause_id: clause.clause_id, file, act: actKey,
+      citation: `${actKey} (named in the clause body, not in legal_basis)`,
+      repealed_on: repeal.on, cite_instead: repeal.by,
+    });
   }
 
   for (const entry of basis) {
@@ -147,6 +184,15 @@ for (const { clause, file, unparseable } of readClauses()) {
       report.unpinned += 1;
     }
 
+    const repeal = repealOf(entry.act);
+    if (repeal) {
+      report.repealed.push({
+        clause_id: clause.clause_id, file,
+        citation: `${entry.act} - ${entry.section || entry.article}`,
+        repealed_on: repeal.on, cite_instead: repeal.by,
+      });
+    }
+
     if (actExists(entry.act) === false) {
       report.unresolvable.push({
         clause_id: clause.clause_id, file,
@@ -168,11 +214,18 @@ if (asJson) {
   console.log(`  Acts cited              ${report.acts_cited}`);
   console.log(`  Acts version-verified   ${report.acts_verified} of ${report.acts_cited}`);
   console.log(`  malformed               ${report.malformed.length}`);
+  console.log(`  citing a REPEALED Act   ${report.repealed.length}`);
   console.log(`  unparseable files       ${report.unparseable.length}`);
   console.log(
     `  Acts corpus             ${actsAvailable ? "available" : "NOT PRESENT — citations could not be resolved"}`
   );
   if (actsAvailable) console.log(`  unresolvable citations  ${report.unresolvable.length}`);
+  for (const entry of report.repealed) {
+    console.log(
+      `    REPEALED   ${entry.clause_id}: ${entry.citation}` +
+      ` — repealed ${entry.repealed_on}, cite ${entry.cite_instead}`
+    );
+  }
   for (const entry of report.malformed.slice(0, 15)) {
     console.log(`    MALFORMED  ${entry.clause_id}: ${entry.reason}`);
   }
@@ -194,5 +247,8 @@ if (asJson) {
 }
 
 const failures =
-  report.malformed.length + report.unresolvable.length + report.unparseable.length;
+  report.malformed.length +
+  report.unresolvable.length +
+  report.unparseable.length +
+  report.repealed.length;
 process.exit(failures === 0 ? 0 : 1);

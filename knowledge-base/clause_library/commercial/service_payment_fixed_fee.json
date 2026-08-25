@@ -1,19 +1,33 @@
 {
   "clause_id": "SERVICE_PAYMENT_FIXED_FEE_001",
   "name": "Payment - Fixed Fee",
-  "category": "PAYMENT",
-  "document_types": ["SERVICE", "SERVICE_AGREEMENT"],
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SERVICE",
+    "SERVICE_AGREEMENT"
+  ],
   "jurisdiction": "India",
   "text": "In consideration of the Services, the Client shall pay the Service Provider a fixed fee as set out in this Agreement, exclusive of applicable Goods and Services Tax (GST), which shall be charged additionally at the prevailing rate. The fixed fee shall be payable against a valid tax invoice within thirty (30) days of receipt. The Client shall deduct tax at source (TDS) where applicable under the Income-tax Act, 1961, and shall furnish the corresponding TDS certificate. No additional amounts shall be payable unless agreed in writing.",
   "legal_basis": [
-    { "act": "Central Goods and Services Tax Act, 2017", "section": "9", "note": "Levy of GST on supply of services" },
-    { "act": "Income-tax Act, 1961", "section": "194J", "note": "TDS on fees for professional or technical services" }
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "9",
+      "note": "Levy of GST on supply of services"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194J",
+      "note": "TDS on fees for professional or technical services"
+    }
   ],
   "mandatory": false,
   "enforceability": "HIGH",
   "risk_level": "LOW",
-  "invalid_if": ["Fee amount is not specified"],
+  "invalid_if": [
+    "Fee amount is not specified"
+  ],
   "source": "CGST Act, 2017; Income-tax Act, 1961",
   "version": "1.0",
-  "title": "Payment Terms"
+  "title": "Payment Terms",
+  "authoring_note": "Categorised CONSIDERATION, not PAYMENT: this clause stands in the payment_structure slot for SERVICE_PAYMENT_001, which is the document's consideration clause. Tagged PAYMENT it satisfied no required category and every draft using it failed MISSING_CATEGORY_CONSIDERATION."
 }

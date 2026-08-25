@@ -49,5 +49,8 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "deprecated": true,
+  "superseded_by": "RENTAL_SECURITY_DEPOSIT_001",
+  "deprecation_note": "Superseded by the templated deposit clause, which states the actual deposit figure and the permitted deductions in the same terms. This older text fixed the deposit at two months' rent rather than taking the parties' own figure."
 }

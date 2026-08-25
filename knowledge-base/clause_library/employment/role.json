@@ -3,7 +3,7 @@
   "category": "PURPOSE",
   "title": "Role and Responsibilities",
   "text": "The Employee is employed as {{job_title}} and shall perform such duties and responsibilities as are assigned by the Employer from time to time. The Employee shall report to such person as the Employer may designate and shall work at {{work_location}} or such other location as directed. The Employee shall devote full working time and attention to the Employer's business and shall not, without prior written consent, engage in any other employment or business activity during the term of employment.",
-  "statutory_reference": "Industrial Employment (Standing Orders) Act, 1946",
+  "statutory_reference": "Industrial Relations Code, 2020 - S.29",
   "mandatory": true,
   "jurisdiction": "India",
   "name": "Designation, Role and Reporting",
@@ -13,14 +13,14 @@
   ],
   "legal_basis": [
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "25F",
-      "note": "Retrenchment — role definition affects workman status"
+      "act": "Industrial Relations Code, 2020",
+      "section": "70",
+      "note": "Conditions precedent to retrenchment — role definition affects worker status"
     },
     {
-      "act": "Industrial Employment (Standing Orders) Act, 1946",
-      "section": "4",
-      "note": "Certified standing orders define duties"
+      "act": "Industrial Relations Code, 2020",
+      "section": "29",
+      "note": "Standing orders define conditions of service, where Chapter IV applies"
     },
     {
       "act": "Indian Contract Act, 1872",
@@ -31,7 +31,7 @@
   "invalid_if": [],
   "enforceability": "HIGH",
   "risk_level": "MEDIUM",
-  "source": "Industrial Disputes Act, 1947; Standing Orders Act, 1946",
+  "source": "Industrial Relations Code, 2020; Indian Contract Act, 1872",
   "version": "3.0",
   "depends_on": [
     "CORE_IDENTITY_001"
@@ -54,5 +54,9 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. Standing orders now apply only to establishments with 300 or more workers (IRC s.28(1)), up from 100 under the repealed Standing Orders Act. For most users of this product the standing-orders limb is now inapplicable; the advocate should decide whether to keep the reference at all.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

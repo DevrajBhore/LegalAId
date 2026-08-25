@@ -6,37 +6,47 @@
     "EMPLOYMENT_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "The Employer shall pay the Employee a gross annual cost-to-company of such amount as specified in Annexure A ('CTC'), inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month, in accordance with the Payment of Wages Act, 1936. The compensation structure shall comprise: (a) Basic Salary (not less than fifty percent of the gross salary); (b) House Rent Allowance; (c) Special Allowance; and (d) such other components as specified in Annexure A. The Employer shall deduct Tax Deducted at Source ('TDS') in accordance with the Income Tax Act, 1961, and shall issue Form 16 annually. Any revision to the Employee's compensation shall be communicated in writing. The Employer shall ensure that the total compensation is not less than the applicable minimum wage prescribed under the Minimum Wages Act, 1948 for the relevant category of employment.",
+  "text": "The Employer shall pay the Employee a gross annual cost-to-company of such amount as specified in Annexure A ('CTC'), inclusive of all statutory contributions. The salary shall be disbursed monthly on or before the seventh (7th) day of the following month, in accordance with Section 17 of the Code on Wages, 2019. The compensation structure shall comprise: (a) Basic Salary (not less than fifty percent of the gross salary); (b) House Rent Allowance; (c) Special Allowance; and (d) such other components as specified in Annexure A. The Employer shall deduct Tax Deducted at Source ('TDS') in accordance with the Income Tax Act, 1961, and shall issue Form 16 annually. Any revision to the Employee's compensation shall be communicated in writing. The Employer shall ensure that the total compensation is not less than the applicable minimum rate of wages prescribed under Section 5 of the Code on Wages, 2019 for the relevant category of employment.",
   "legal_basis": [
     {
-      "act": "Payment of Wages Act, 1936",
-      "section": "3",
-      "note": "Obligation to pay wages"
+      "act": "Code on Wages, 2019",
+      "section": "2(y)",
+      "note": "Definition of wages — excluded allowances above one-half of total remuneration are added back"
     },
     {
-      "act": "Employees' Provident Funds Act, 1952",
-      "section": "6",
-      "note": "EPF contribution rate"
+      "act": "Code on Wages, 2019",
+      "section": "5",
+      "note": "Payment of not less than the minimum rate of wages"
     },
     {
-      "act": "Employees State Insurance Act, 1948",
-      "section": "40",
-      "note": "ESI contribution"
+      "act": "Code on Wages, 2019",
+      "section": "17",
+      "note": "Time limit for payment of wages"
     },
     {
-      "act": "Income Tax Act, 1961",
+      "act": "Code on Wages, 2019",
+      "section": "18",
+      "note": "No deductions except those authorised under the Code"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "Chapter III (ss. 14-23)",
+      "note": "Employees' Provident Fund contributions"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "Chapter IV (ss. 24-52)",
+      "note": "Employees' State Insurance contributions"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "53",
+      "note": "Payment of gratuity"
+    },
+    {
+      "act": "Income-tax Act, 1961",
       "section": "192",
-      "note": "TDS on salary"
-    },
-    {
-      "act": "Payment of Gratuity Act, 1972",
-      "section": "4",
-      "note": "Gratuity on completion of 5 years"
-    },
-    {
-      "act": "Minimum Wages Act, 1948",
-      "section": "3",
-      "note": "Wages cannot be below minimum wages"
+      "note": "TDS on salary. Not affected by the labour Codes."
     }
   ],
   "mandatory": true,
@@ -47,7 +57,7 @@
     "Salary disbursed after 7th of following month contrary to Payment of Wages Act 1936",
     "Basic salary below 50% of gross salary attracting higher PF liability risk"
   ],
-  "source": "Payment of Wages Act, 1936; EPF Act, 1952",
+  "source": "Code on Wages, 2019; Code on Social Security, 2020; Income-tax Act, 1961",
   "version": "3.0",
   "title": "Wages and Compensation",
   "depends_on": [
@@ -80,5 +90,9 @@
   "blocks_generation_if_absent": true,
   "tds_applicable": true,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. CoW s.2(y) is the change that matters commercially: where allowances excluded from 'wages' exceed one-half of total remuneration, the excess is added back into wages, raising the PF, gratuity and bonus base. Most Indian CTC structures are built the other way round. The advocate should decide whether this clause should state the 50 per cent floor expressly so the employer cannot structure around it.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

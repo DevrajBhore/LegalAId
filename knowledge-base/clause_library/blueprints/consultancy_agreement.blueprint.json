@@ -75,5 +75,27 @@
     "GST at 18% on consulting services — invoice compliance required",
     "Copyright Act S.19 — IP assignment must be in writing",
     "Independent contractor clause critical — EPF/ESI reclassification risk"
+  ],
+  "variant_clauses": [
+    {
+      "slot": "payment_structure",
+      "replaces": "SERVICE_PAYMENT_001",
+      "note": "How the engagement is billed. SERVICE_PAYMENT_001 points at a fee schedule; these state the actual mechanics, which is what a dispute turns on.",
+      "select_first_match": [
+        {
+          "clause": "SERVICE_PAYMENT_RETAINER_001",
+          "when": "is_retainer_engagement == true"
+        },
+        {
+          "clause": "SERVICE_PAYMENT_MILESTONE_001",
+          "when": "is_milestone_engagement == true"
+        },
+        {
+          "clause": "SERVICE_PAYMENT_FIXED_FEE_001",
+          "when": "is_fixed_fee_engagement == true"
+        }
+      ],
+      "default": "SERVICE_PAYMENT_001"
+    }
   ]
 }

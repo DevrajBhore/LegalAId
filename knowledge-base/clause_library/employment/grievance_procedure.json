@@ -9,14 +9,14 @@
   "text": "The Employer shall maintain a grievance redressal mechanism for the resolution of employee grievances. Any Employee who has a grievance relating to the conditions of service, working environment, conduct of colleagues, or any other employment-related matter shall follow the following procedure: (a) raise the grievance in writing with the immediate supervisor within thirty (30) days of the event giving rise to the grievance; (b) if unresolved within seven (7) days, escalate the grievance in writing to the HR Department; (c) if still unresolved within fifteen (15) days of escalation, the Employee may request a formal grievance hearing before a grievance committee constituted by the Employer. The Employer shall ensure that all grievances are addressed promptly, fairly, and without victimisation of the Employee. For grievances relating to sexual harassment, the Employer shall follow the procedure prescribed under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013.",
   "legal_basis": [
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "9C",
-      "note": "Grievance redressal committees in establishments with 20+ workers"
+      "act": "Industrial Relations Code, 2020",
+      "section": "4(1)",
+      "note": "Grievance Redressal Committee mandatory in every industrial establishment employing twenty or more workers"
     },
     {
       "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
       "section": "4",
-      "note": "Internal Complaints Committee — mandatory for 10+ employees"
+      "note": "Internal Committee — mandatory for 10 or more employees. This Act is NOT repealed by the labour Codes."
     }
   ],
   "mandatory": true,
@@ -25,7 +25,7 @@
   "invalid_if": [
     "No grievance mechanism for sexual harassment complaints as mandated by POSH Act 2013"
   ],
-  "source": "Industrial Disputes Act, 1947 S.9C; POSH Act, 2013",
+  "source": "Industrial Relations Code, 2020 s.4; POSH Act, 2013",
   "version": "3.0",
   "title": "Grievance Redressal Procedure",
   "depends_on": [
@@ -45,5 +45,9 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. The 20-worker threshold carries across unchanged from the repealed ID Act s.9C to IRC s.4(1). The POSH Act, 2013 is not touched by the Codes and remains in force in its own right.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

@@ -6,17 +6,17 @@
     "EMPLOYMENT_AGREEMENT"
   ],
   "jurisdiction": "India",
-  "text": "The Employer may initiate disciplinary proceedings against the Employee for misconduct, gross negligence, habitual absence, insubordination, fraud, or violation of the Employer's policies. Disciplinary proceedings shall be conducted in accordance with the principles of natural justice, including: (a) issuance of a written show-cause notice specifying the charges; (b) provision of reasonable time to the Employee to respond to the charges; (c) conduct of a fair inquiry where warranted; and (d) communication of the findings and disciplinary decision in writing. Disciplinary actions may include written warning, suspension, demotion, or termination, depending on the severity of misconduct. In cases of gross misconduct, the Employer reserves the right to suspend the Employee with pay pending inquiry and to terminate employment summarily upon completion of a fair inquiry. All disciplinary proceedings shall comply with the applicable Standing Orders or, where no standing orders apply, with the Model Standing Orders under the Industrial Employment (Standing Orders) Act, 1946.",
+  "text": "The Employer may initiate disciplinary proceedings against the Employee for misconduct, gross negligence, habitual absence, insubordination, fraud, or violation of the Employer's policies. Disciplinary proceedings shall be conducted in accordance with the principles of natural justice, including: (a) issuance of a written show-cause notice specifying the charges; (b) provision of reasonable time to the Employee to respond to the charges; (c) conduct of a fair inquiry where warranted; and (d) communication of the findings and disciplinary decision in writing. Disciplinary actions may include written warning, suspension, demotion, or termination, depending on the severity of misconduct. In cases of gross misconduct, the Employer reserves the right to suspend the Employee with pay pending inquiry and to terminate employment summarily upon completion of a fair inquiry. All disciplinary proceedings shall comply with the applicable Standing Orders or, where no standing orders apply, with the Model Standing Orders under the Industrial Relations Code, 2020.",
   "legal_basis": [
     {
-      "act": "Industrial Employment (Standing Orders) Act, 1946",
-      "section": "12",
-      "note": "Procedure for dismissal under certified standing orders"
+      "act": "Industrial Relations Code, 2020",
+      "section": "29",
+      "note": "Standing orders govern the procedure for dismissal, where Chapter IV applies"
     },
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "11A",
-      "note": "Labour court may examine proportionality of punishment"
+      "act": "Industrial Relations Code, 2020",
+      "section": "28(1)",
+      "note": "Chapter IV applies only to establishments with 300 or more workers"
     },
     {
       "act": "Constitution of India",
@@ -31,7 +31,7 @@
     "Disciplinary action without show-cause notice violates natural justice principles",
     "Summary dismissal without inquiry for offences other than gross misconduct"
   ],
-  "source": "Industrial Employment (Standing Orders) Act, 1946; Industrial Disputes Act, 1947",
+  "source": "Industrial Relations Code, 2020; Constitution of India",
   "version": "3.0",
   "title": "Disciplinary Action",
   "depends_on": [
@@ -54,5 +54,9 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. The repealed ID Act s.11A gave a labour court power to examine the proportionality of punishment. The equivalent tribunal power under the IR Code was not verified and has been omitted rather than guessed. The advocate should identify it and restore the citation. Note also that standing orders now bind only establishments of 300+ workers (IRC s.28(1)).",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }

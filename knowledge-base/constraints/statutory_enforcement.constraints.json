@@ -11,7 +11,7 @@
       "_authored_severity": "CRITICAL",
       "_authored_blocks_generation": true,
       "description": "Employment contracts must address EPF contributions. Criminal liability for employer under EPF Act S.14 if EPF is not deducted.",
-      "statutory_reference": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952 – S.6",
+      "statutory_reference": "Code on Social Security, 2020, Chapter III – S.6",
       "applies_to_doc_types": [
         "EMPLOYMENT_CONTRACT",
         "EMPLOYMENT_AGREEMENT"
@@ -35,7 +35,7 @@
       "_authored_severity": "CRITICAL",
       "_authored_blocks_generation": true,
       "description": "Salary must not be below applicable minimum wages. Employer faces criminal prosecution for below-minimum wages.",
-      "statutory_reference": "Minimum Wages Act, 1948 – S.3",
+      "statutory_reference": "Code on Wages, 2019 – S.5 – S.3",
       "applies_to_doc_types": [
         "EMPLOYMENT_CONTRACT",
         "EMPLOYMENT_AGREEMENT"
@@ -59,7 +59,7 @@
       "_authored_severity": "HIGH",
       "_authored_blocks_generation": false,
       "description": "Employment contracts must include a disciplinary procedure providing opportunity to be heard before adverse action. Violation is grounds for reinstatement.",
-      "statutory_reference": "Industrial Employment (Standing Orders) Act, 1946; Constitution Art.21",
+      "statutory_reference": "Industrial Relations Code, 2020 – S.29; Constitution Art.21",
       "applies_to_doc_types": [
         "EMPLOYMENT_CONTRACT",
         "EMPLOYMENT_AGREEMENT"
@@ -83,7 +83,7 @@
       "_authored_severity": "HIGH",
       "_authored_blocks_generation": false,
       "description": "Employment contracts must address maternity benefits. Denial of maternity leave is a criminal offence under MBA S.21.",
-      "statutory_reference": "Maternity Benefit Act, 1961 – S.5",
+      "statutory_reference": "Code on Social Security, 2020 – S.60 – S.5",
       "applies_to_doc_types": [
         "EMPLOYMENT_CONTRACT",
         "EMPLOYMENT_AGREEMENT"

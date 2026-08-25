@@ -14,17 +14,17 @@
       "note": "Agency — principal-agent relationship"
     },
     {
-      "act": "Industrial Disputes Act, 1947",
-      "section": "2(s)",
-      "note": "Definition of workman — avoids employment characterisation"
+      "act": "Industrial Relations Code, 2020",
+      "section": "2",
+      "note": "Definition of 'worker' — avoids employment characterisation"
     },
     {
-      "act": "Employees Provident Funds Act, 1952",
-      "section": "2(f)",
-      "note": "Definition of employee — contractor exclusion"
+      "act": "Code on Social Security, 2020",
+      "section": "2",
+      "note": "Definition of 'employee' — contractor exclusion"
     },
     {
-      "act": "Goods and Services Tax Act, 2017",
+      "act": "Central Goods and Services Tax Act, 2017",
       "section": "2(17)",
       "note": "Business definition — independent contractor GST obligation"
     }
@@ -35,7 +35,7 @@
   "invalid_if": [
     "The actual conduct of the parties, notwithstanding the contractual terms, establishes a different legal relationship in substance."
   ],
-  "source": "Industrial Disputes Act, 1947; EPF Act, 1952",
+  "source": "Industrial Relations Code, 2020; Code on Social Security, 2020; Indian Contract Act, 1872",
   "version": "3.0",
   "title": "Relationship of Parties",
   "depends_on": [
@@ -61,5 +61,9 @@
   ],
   "tds_applicable": true,
   "gst_applicable": true,
-  "msme_sensitive": true
+  "msme_sensitive": true,
+  "authoring_note": "LABOUR CODES, 21 NOVEMBER 2025. The four labour Codes were brought into force on 21 November 2025, repealing the 29 central labour statutes this clause previously cited. The repealed Industrial Disputes Act s.2(s) 'workman' and EPF Act s.2(f) 'employee' definitions are replaced here by the Code definitions at IRC s.2 and CSS s.2. The exact defining sub-clause numbers in each Code should be confirmed and pinned before this clause is signed off.",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "statute_currency": "repointed-to-labour-codes-2025-11-21"
 }
