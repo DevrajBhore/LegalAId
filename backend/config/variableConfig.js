@@ -1120,7 +1120,7 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
       description:
-        "The full legal name of the employing company, exactly as registered with the Registrar of Companies.",
+        "The employer's registered office address, as filed with the Registrar of Companies. This is where statutory notices to the employer are served.",
     },
     // Without this, the engine could not tell whether the employer was a company,
     // an LLP or a natural person. The party descriptor branches entirely on the
@@ -1187,7 +1187,7 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
       description:
-        "The employee's 10-character PAN, for example ABCDE1234F. Needed for TDS on salary under the Income Tax Act, 1961.",
+        "The role the employee is appointed to, for example \"Senior Software Engineer\" or \"Accounts Manager\". Use the designation that will appear on the appointment letter.",
     },
     role_responsibilities: {
       label: "Role & Responsibilities",
@@ -1220,7 +1220,7 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: false,
       description:
-        "The employee's first working day. This is the date from which service, notice and probation are counted.",
+        "How long the employee is on probation before confirmation, for example \"3 months\" or \"6 months\". Notice during probation is usually shorter than after it. Enter NA if there is no probation.",
     },
     working_hours: {
       label: "Weekly Working Hours",
@@ -1819,7 +1819,7 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
       description:
-        "The company's full registered name, exactly as on the certificate of incorporation.",
+        "The company's 21-character Corporate Identity Number from the certificate of incorporation, for example U74999MH2015PTC123456.",
     },
     company_address: {
       label: "Registered Office Address",
@@ -2282,7 +2282,7 @@ export const VARIABLE_CONFIG = {
       required: false,
       group: "Commercial & Tax",
       description:
-        "When and how payment is made. For example: \"monthly in arrears within 30 days of a valid tax invoice\" or \"50% advance, balance on delivery\". If the supplier is an MSME, the MSMED Act, 2006 requires payment within 45 days.",
+        "How many units the distributor must buy in each period to keep the appointment, for example \"5,000 units per quarter\". Enter NA if the commitment is stated in rupees instead, or if there is none.",
     },
     minimum_purchase_unit: {
       label: "Minimum Purchase Measurement",
@@ -2370,7 +2370,7 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: true,
       description:
-        "The unit price or total price in rupees, excluding GST unless you state otherwise.",
+        "The GST rate applicable to these goods, as a percentage, for example 18. Check the HSN code for the correct slab — the wrong rate creates an input-credit problem for the buyer.",
     },
     payment_terms: { label: "Payment Terms", type: "text", required: true, description: "When and how payment is made. For example: \"monthly in arrears within 30 days of a valid tax invoice\" or \"50% advance, balance on delivery\". If the supplier is an MSME, the MSMED Act, 2006 requires payment within 45 days.",},
     delivery_date: { label: "Delivery Date", type: "date", required: true, description: "The date by which delivery must be made. If there are several deliveries, use the milestone field to set them out.",},
@@ -2379,7 +2379,7 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
       description:
-        "When and how payment is made. For example: \"monthly in arrears within 30 days of a valid tax invoice\" or \"50% advance, balance on delivery\". If the supplier is an MSME, the MSMED Act, 2006 requires payment within 45 days.",
+        "Where the seller must deliver the goods. Give the full address. This matters for risk transfer and for the place of supply under GST.",
     },
     inspection_acceptance_terms: {
       label: "Inspection & Acceptance Terms",
@@ -2610,7 +2610,7 @@ export const VARIABLE_CONFIG = {
       type: "text",
       required: true,
       description:
-        "The only purpose for which the receiving party may use the confidential information. For example: \"solely to evaluate a possible acquisition of the disclosing party\".",
+        "What the tenant may use the premises for, for example \"a software development office\" or \"retail sale of apparel\". Be specific — a use outside this is a breach, and the wrong use can also breach local zoning or the building's own rules.",
     },
     rent_amount: {
       label: "Monthly Rent (₹)",
@@ -2665,7 +2665,7 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
       description:
-        "The full legal name of the first party, exactly as it appears on its incorporation certificate, PAN or Aadhaar. Do not use a trading name or abbreviation.",
+        "The licensor's address for notices — their registered office if a company or LLP, their residential address if an individual. This is not the address of the premises being licensed.",
     },
     party_2_name: {
       label: "Licensee Full Name / Company",
@@ -2695,13 +2695,13 @@ export const VARIABLE_CONFIG = {
       description:
         "What is being let, described precisely — carpet area in square feet, floor, number of rooms, parking, and any fittings or furniture included.",
     },
-    permitted_use: { label: "Permitted Use", type: "text", required: true, description: "The only purpose for which the receiving party may use the confidential information. For example: \"solely to evaluate a possible acquisition of the disclosing party\".",},
+    permitted_use: { label: "Permitted Use", type: "text", required: true, description: "What the licensee may use the premises for, for example \"residential use by the licensee and immediate family\". A leave and licence gives permission to use, not possession, so stating the use precisely matters.",},
     license_fee: {
       label: "Monthly License Fee (₹)",
       type: "number",
       required: true,
       description:
-        "The only purpose for which the receiving party may use the confidential information. For example: \"solely to evaluate a possible acquisition of the disclosing party\".",
+        "The monthly licence fee in rupees, excluding deposit and maintenance. In Maharashtra this figure also drives the stamp duty calculation.",
     },
     security_deposit: {
       label: "Security Deposit (₹)",
@@ -2795,7 +2795,7 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: true,
       description:
-        "Why the parties are entering this agreement, in one or two sentences. Be specific — a vague purpose weakens the contract, because the object of an agreement must be certain.",
+        "The annual rate of interest on the principal, as a percentage, for example 12. Enter 0 for an interest-free loan. A rate that is unconscionably high can be reopened by a court.",
     },
     repayment_schedule: {
       label: "Repayment Schedule (e.g. 12 monthly instalments)",
@@ -3291,7 +3291,7 @@ export const VARIABLE_CONFIG = {
       required: true,
       example: "Flat 4B, Sunshine Apartments, MG Road, Pune, Maharashtra 411001",
       description:
-        "The full legal name of the first party, exactly as it appears on its incorporation certificate, PAN or Aadhaar. Do not use a trading name or abbreviation.",
+        "The full address of the property being rented, including flat or door number, building, street, locality, city and PIN code. This is the property description the agreement rests on.",
     },
     permitted_use: {
       label: "Permitted Use",
@@ -3299,7 +3299,7 @@ export const VARIABLE_CONFIG = {
       required: true,
       example: "Residential use by the tenant and immediate family",
       description:
-        "The only purpose for which the receiving party may use the confidential information. For example: \"solely to evaluate a possible acquisition of the disclosing party\".",
+        "What the tenant may use the property for, for example \"residential use only\". Using it for anything else — running a business from a residential let, for instance — is a breach.",
     },
     occupancy_fee: {
       label: "Monthly Rent (INR)",
@@ -3334,7 +3334,7 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
       description:
-        "The company's full registered name, exactly as on the certificate of incorporation.",
+        "The company's registered office address. Under the DPDP Act, 2023 a data fiduciary must publish an address users can write to.",
     },
     website_url: {
       label: "Website / App",
@@ -3384,7 +3384,7 @@ export const VARIABLE_CONFIG = {
       type: "textarea",
       required: true,
       description:
-        "The company's full registered name, exactly as on the certificate of incorporation.",
+        "The company's registered office address. The IT Rules, 2021 require an operator's address to be published in its terms.",
     },
     service_name: {
       label: "Service / Product Name",

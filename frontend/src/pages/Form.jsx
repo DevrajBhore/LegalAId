@@ -718,10 +718,13 @@ function FieldGroup({
 
         {assistantOpen && (
           <div className="field-assistant__panel">
+            {/* The definition is already shown in .field-help directly above this
+                panel. Repeating it here put the same paragraph on screen twice
+                the moment the user opened AI help. The field name stays as a
+                heading so the panel is anchored to the right question. */}
             <div className="field-assistant__context">
               <strong>{field.label}</strong>
-              <span>{definitionText}</span>
-            </div>    
+            </div>
             <textarea
               className="field-assistant__input"
               rows={2}
