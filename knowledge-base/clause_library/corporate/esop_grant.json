@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The scheme has not been approved by the shareholders as the Act and rules require",
+    "The letter grants an option to a person who is not an eligible employee under Rule 12"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ESOP_GRANT_001",
+  "name": "Grant of Options",
+  "title": "Grant of Options",
+  "category": "PURPOSE",
+  "document_types": [
+    "ESOP_GRANT_LETTER"
+  ],
+  "text": "{{company_name}} (the \"Company\") grants to {{party_2_name}} (the \"Optionee\") options under the Company's Employee Stock Option Scheme (the \"Scheme\"), on the following terms.\n(a) The number of options granted is {{options_granted}}, each carrying the right to subscribe to one equity share of the Company.\n(b) The exercise price per share is {{exercise_price}} rupees.\n(c) The date of grant is {{effective_date}}.\n(d) The grant is made under Section 62(1)(b) of the Companies Act, 2013 and Rule 12 of the Companies (Share Capital and Debentures) Rules, 2014, pursuant to the Scheme approved by the shareholders of the Company.\n(e) This letter is subject to the Scheme. Where this letter and the Scheme differ, the Scheme prevails, save that nothing in the Scheme may reduce the number of options granted by this letter or increase the exercise price stated in it.\n(f) An option confers no right to a dividend, no voting right, and no right of a shareholder until shares are allotted on exercise.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(b)",
+      "note": "A company may offer shares to employees under a scheme of employees stock option, subject to a special resolution and the prescribed conditions"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12",
+      "note": "Issue of employee stock options by a company other than a listed company"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "2(37)",
+      "note": "Definition of employees stock option"
+    }
+  ],
+  "source": "Companies Act, 2013; Companies (Share Capital and Debentures) Rules, 2014",
+  "statutory_reference": "Companies Act, 2013 - S.62(1)(b); Companies (Share Capital and Debentures) Rules, 2014 - R.12",
+  "authoring_note": "Limb (e) resolves the letter-versus-scheme conflict in the Scheme's favour but carves out the two terms an optionee actually relies on. Without that carve-out a scheme amendable by the board could reduce a grant already made. Rule 12 requires shareholder approval by SPECIAL resolution; a Ministry of Corporate Affairs notification of 5 June 2015 exempting private companies is commonly relied on to permit an ordinary resolution, and the advocate should confirm its current terms and whether this company qualifies before the scheme is put to shareholders. Rule 12 also restricts who is an eligible employee, and in particular the position of promoters and of directors holding more than ten per cent of the equity should be checked."
+}

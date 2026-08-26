@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A cancellation charge is imposed on the consumer that the entity would not itself bear",
+    "A non-cancellable category is not disclosed before the order is placed"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_CANCELLATION_001",
+  "name": "Cancellation of an Order",
+  "title": "Cancellation",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY"
+  ],
+  "text": "A consumer may cancel an order as follows.\n(a) An order may be cancelled at any time before it is dispatched, by the means stated on the platform, and the amount paid shall be refunded in full.\n(b) No cancellation charge shall be imposed on a consumer who cancels after confirming a purchase, unless {{company_name}} bears a similar charge if it cancels the order unilaterally.\n(c) Where {{company_name}} cancels an order, it shall inform the consumer of the reason and refund the whole amount paid.\n(d) An order for goods made to the consumer's specification, or for perishable goods, may not be cancelled after it has entered production or dispatch, and this is stated on the product page before the order is placed.\n(e) Cancellation of an order for services is governed by the terms stated at the time of booking.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "No e-commerce entity shall impose a cancellation charge on a consumer cancelling after confirming a purchase unless similar charges are also borne by the e-commerce entity"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(47)",
+      "note": "Unfair trade practice"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Consumer Protection Act, 2019",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4",
+  "authoring_note": "The symmetry requirement in limb (b) is taken from the E-Commerce Rules and is the provision most often breached in practice. The precise sub-rule number was not verified against the bare Rules and should be pinned by the advocate; the rule-level citation is accurate. Limb (d) requires disclosure BEFORE the order, because a non-cancellable category revealed only afterwards is itself an unfair trade practice."
+}

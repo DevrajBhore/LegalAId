@@ -1,0 +1,36 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The agreement purports to assign or waive the author's special rights under Section 57"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "IPA_MORAL_RIGHTS_001",
+  "name": "Author's Special Rights",
+  "title": "Author's Special Rights",
+  "category": "IP",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "text": "The Parties record the following about the author's special rights.\n(a) Section 57 of the Copyright Act, 1957 confers on the author of a work the right to claim authorship of it, and the right to restrain or claim damages for a distortion, mutilation, modification, or other act in relation to the work that would be prejudicial to the author's honour or reputation.\n(b) Those rights are independent of the copyright and remain with the author notwithstanding this assignment. Nothing in this Agreement assigns, waives, or purports to waive them.\n(c) The Assignee shall, where it is reasonable in the medium used, identify the author as the author of the work.\n(d) The Assignee may edit, adapt, translate, and format the work as the exercise of the assigned rights requires, and the Assignor confirms that ordinary editorial and technical adaptation of that kind is not of itself prejudicial to the author's honour or reputation.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "57",
+      "note": "Author's special rights: to claim authorship, and to restrain or claim damages in respect of a distortion, mutilation, modification or other act prejudicial to honour or reputation. These rights are exercisable independently of the copyright and even after its assignment."
+    }
+  ],
+  "source": "Copyright Act, 1957",
+  "statutory_reference": "Copyright Act, 1957 - S.57",
+  "authoring_note": "Moral rights under Section 57 cannot be assigned, and a clause purporting to do so is not merely ineffective as to that term: it suggests the drafter did not know the rule. This clause therefore acknowledges the rights rather than attempting to acquire them, and limb (d) achieves the commercially necessary result by narrowing what counts as prejudicial, which is the defensible route. Whether a waiver is possible at all is contested; the advocate should take a view."
+}

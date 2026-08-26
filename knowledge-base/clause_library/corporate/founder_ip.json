@@ -1,0 +1,57 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Intellectual property created before incorporation is not expressly assigned, leaving it with the founder personally",
+    "The assignment is silent on duration or territory, attracting the statutory defaults"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "FOUNDER_IP_ASSIGNMENT_001",
+  "name": "Assignment of Intellectual Property to the Company",
+  "title": "Intellectual Property",
+  "category": "IP",
+  "document_types": [
+    "FOUNDERS_AGREEMENT"
+  ],
+  "text": "Each Founder assigns to the Company every right in the intellectual property described below, and shall do whatever is necessary to give effect to the assignment.\n(a) Every invention, work, design, mark, database, and item of source code made by a Founder in connection with the business of the Company, whether before or after the date of this Agreement, vests in the Company.\n(b) Where any such intellectual property was created before the Company was incorporated, each Founder assigns it to the Company with effect from incorporation, and this Agreement is the writing signed by the assignor that Section 19(1) of the Copyright Act, 1957 requires.\n(c) The assignment is for the whole term of the rights and is worldwide. This is stated expressly because an assignment of copyright silent on duration is deemed to be for five years under Section 19(5), and one silent on territory is presumed to extend only within India under Section 19(6).\n(d) Each Founder shall procure that every employee, contractor, consultant, and adviser engaged in the business assigns their intellectual property to the Company in writing, and shall not engage any such person without that assignment.\n(e) Each Founder warrants that they have not assigned or licensed to any other person any intellectual property required for the business of the Company.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(1)",
+      "note": "An assignment of copyright is valid only if in writing signed by the assignor"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(5)",
+      "note": "If the period of assignment is not stated it is deemed to be five years"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(6)",
+      "note": "If the territorial extent is not specified it is presumed to extend within India"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17",
+      "note": "First ownership of copyright; a contractor retains copyright absent a written assignment"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "68",
+      "note": "An assignment of a patent must be in writing and embodied in a document containing all the terms"
+    }
+  ],
+  "source": "Copyright Act, 1957; Patents Act, 1970",
+  "statutory_reference": "Copyright Act, 1957 - S.17, S.19",
+  "authoring_note": "Limbs (b) and (d) are the two that decide whether a company actually owns what an acquirer or investor will diligence. Pre-incorporation intellectual property stays with the founder personally unless assigned, and a contractor retains copyright in their work unless there is a written assignment -- Section 17(c) vests work in an employer only under a contract OF service. Companies routinely discover both problems during due diligence, years later, when the contributor is gone and has no reason to cooperate."
+}

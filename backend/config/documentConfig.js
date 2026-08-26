@@ -45,6 +45,318 @@ export const DOCUMENT_CONFIG = {
     ],
   },
 
+  FOUNDERS_AGREEMENT: {
+    requiredFields: [
+      "operating_state", "company_name", "business_purpose",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "founder_roles", "founder_equity_split", "vesting_period", "vesting_cliff",
+      "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "The Company", fields: ["company_name", "business_purpose"] },
+      { title: "First Founder", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Second Founder", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "Equity and Roles", fields: ["founder_roles", "founder_equity_split", "vesting_period", "vesting_cliff", "include_drag_along", "effective_date"] },
+    ],
+  },
+
+  TERM_SHEET: {
+    requiredFields: [
+      "operating_state", "company_name",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "investment_amount", "pre_money_valuation", "security_type",
+      "esop_pool_percentage", "liquidation_preference_multiple",
+      "exclusivity_period", "board_structure", "reserved_matters", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Company", fields: ["company_name", "party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Investor", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Round", fields: ["investment_amount", "pre_money_valuation", "security_type", "esop_pool_percentage", "liquidation_preference_multiple"] },
+      { title: "Governance", fields: ["board_structure", "reserved_matters"] },
+      { title: "Process", fields: ["exclusivity_period", "effective_date"] },
+    ],
+  },
+
+  ESOP_GRANT_LETTER: {
+    requiredFields: [
+      "operating_state", "company_name",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "options_granted", "exercise_price", "vesting_period", "vesting_cliff",
+      "exercise_window", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Company", fields: ["company_name", "party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Optionee", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Grant", fields: ["options_granted", "exercise_price", "vesting_period", "vesting_cliff", "exercise_window", "effective_date"] },
+    ],
+  },
+
+  SHARE_SUBSCRIPTION_AGREEMENT: {
+    requiredFields: [
+      "operating_state", "company_name",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "securities_subscribed", "investment_amount", "use_of_proceeds",
+      "board_structure", "reserved_matters", "long_stop_date", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Company", fields: ["company_name", "party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Investor", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Subscription", fields: ["securities_subscribed", "investment_amount", "use_of_proceeds", "long_stop_date", "effective_date"] },
+      { title: "Governance", fields: ["board_structure", "reserved_matters"] },
+    ],
+  },
+
+  PROMISSORY_NOTE: {
+    requiredFields: [
+      "operating_state", "execution_city",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "principal_amount", "repayment_terms", "interest_rate",
+      "interest_payment_frequency", "cure_period_days", "effective_date",
+    ],
+    signatureType: "UNILATERAL",
+    sections: [
+      { title: "Maker", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Payee", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Debt", fields: ["principal_amount", "repayment_terms", "interest_rate", "interest_payment_frequency", "cure_period_days", "execution_city", "effective_date"] },
+    ],
+  },
+
+  IP_ASSIGNMENT_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "assigned_work_description", "contract_value", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Assignor", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Assignee", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Assignment", fields: ["assigned_work_description", "contract_value", "effective_date"] },
+    ],
+  },
+
+  POWER_OF_ATTORNEY: {
+    requiredFields: [
+      "operating_state", "execution_city",
+      "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "powers_granted", "effective_date",
+    ],
+    signatureType: "UNILATERAL",
+    sections: [
+      { title: "Principal", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Attorney", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Powers", fields: ["powers_granted", "execution_city", "effective_date"] },
+    ],
+  },
+
+  DATA_PROCESSING_AGREEMENT: {
+    requiredFields: [
+      "operating_state", "party_1_name", "party_1_address", "party_1_type",
+      "party_2_name", "party_2_address", "party_2_type",
+      "data_categories", "processing_purpose", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Data Fiduciary", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Data Processor", fields: ["party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The Processing", fields: ["data_categories", "processing_purpose", "effective_date"] },
+    ],
+  },
+
+  REFUND_AND_CANCELLATION_POLICY: {
+    requiredFields: [
+      "operating_state", "company_name", "company_address", "website_url",
+      "goods_or_services_description", "return_window_days", "refund_window_days",
+      "grievance_officer", "grievance_officer_email", "effective_date",
+    ],
+    signatureType: "UNILATERAL",
+    sections: [
+      { title: "Business", fields: ["company_name", "company_address", "website_url"] },
+      { title: "Refund Terms", fields: ["goods_or_services_description", "return_window_days", "refund_window_days"] },
+      { title: "Grievance Redressal", fields: ["grievance_officer", "grievance_officer_email", "effective_date"] },
+    ],
+  },
+
+  SHIPPING_AND_DELIVERY_POLICY: {
+    requiredFields: [
+      "operating_state", "company_name", "company_address", "website_url",
+      "goods_or_services_description", "dispatch_window_days", "delivery_attempts",
+      "shortage_report_days", "grievance_officer", "grievance_officer_email", "effective_date",
+    ],
+    signatureType: "UNILATERAL",
+    sections: [
+      { title: "Business", fields: ["company_name", "company_address", "website_url"] },
+      { title: "Delivery Terms", fields: ["goods_or_services_description", "dispatch_window_days", "delivery_attempts", "shortage_report_days"] },
+      { title: "Grievance Redressal", fields: ["grievance_officer", "grievance_officer_email", "effective_date"] },
+    ],
+  },
+
+  APPOINTMENT_LETTER: {
+    requiredFields: [
+      "operating_state",
+      "employer_name",
+      "employer_address",
+      "employee_name",
+      "employee_address",
+      "job_title",
+      "reporting_to",
+      "work_location",
+      "salary",
+      "start_date",
+      "effective_date",
+      "notice_period_days",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Employer Details",
+        fields: ["employer_name", "employer_address", "employer_cin", "employer_pan"],
+      },
+      {
+        title: "Employee Details",
+        fields: ["employee_name", "employee_address", "employee_pan"],
+      },
+      {
+        title: "The Appointment",
+        fields: [
+          "job_title",
+          "department",
+          "reporting_to",
+          "work_location",
+          "start_date",
+          "effective_date",
+        ],
+      },
+      {
+        title: "Remuneration and Terms",
+        fields: [
+          "salary",
+          "salary_components",
+          "probation_period",
+          "working_hours",
+          "notice_period_days",
+        ],
+      },
+    ],
+  },
+
+  INTERNSHIP_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "employer_name",
+      "employer_address",
+      "employee_name",
+      "employee_address",
+      "learning_objectives",
+      "internship_duration",
+      "stipend_amount",
+      "start_date",
+      "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Organisation",
+        fields: ["employer_name", "employer_address", "employer_cin"],
+      },
+      {
+        title: "Intern",
+        fields: ["employee_name", "employee_address", "employee_pan"],
+      },
+      {
+        title: "The Internship",
+        fields: [
+          "learning_objectives",
+          "internship_duration",
+          "stipend_amount",
+          "work_location",
+          "start_date",
+          "effective_date",
+        ],
+      },
+    ],
+  },
+
+  SEPARATION_AGREEMENT: {
+    requiredFields: [
+      "operating_state",
+      "employer_name",
+      "employer_address",
+      "employee_name",
+      "employee_address",
+      "job_title",
+      "separation_reason",
+      "last_working_day",
+      "settlement_amount",
+      "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      {
+        title: "Employer Details",
+        fields: ["employer_name", "employer_address", "employer_cin", "employer_pan"],
+      },
+      {
+        title: "Employee Details",
+        fields: ["employee_name", "employee_address", "employee_pan", "job_title"],
+      },
+      {
+        title: "Separation and Settlement",
+        fields: [
+          "separation_reason",
+          "last_working_day",
+          "settlement_amount",
+          "non_solicit_period",
+          "effective_date",
+        ],
+      },
+    ],
+  },
+
+  POSH_POLICY: {
+    requiredFields: [
+      "operating_state",
+      "company_name",
+      "company_address",
+      "posh_presiding_officer",
+      "posh_external_member",
+      "posh_committee_contact",
+      "posh_district",
+      "effective_date",
+    ],
+    signatureType: "UNILATERAL",
+    sections: [
+      {
+        title: "Organisation",
+        fields: ["company_name", "company_address"],
+      },
+      {
+        title: "Internal Committee",
+        fields: [
+          "posh_presiding_officer",
+          "posh_external_member",
+          "posh_committee_contact",
+          "posh_district",
+        ],
+      },
+      {
+        title: "Adoption",
+        fields: ["effective_date"],
+      },
+    ],
+  },
+
   EMPLOYMENT_CONTRACT: {
     requiredFields: [
       "operating_state",
@@ -1002,7 +1314,7 @@ export const DOCUMENT_CONFIG = {
       "grievance_officer_email",
       "effective_date",
     ],
-    signatureType: "BILATERAL",
+    signatureType: "UNILATERAL",
     sections: [
       {
         title: "Business",
@@ -1035,7 +1347,7 @@ export const DOCUMENT_CONFIG = {
       "grievance_officer_email",
       "effective_date",
     ],
-    signatureType: "BILATERAL",
+    signatureType: "UNILATERAL",
     sections: [
       {
         title: "Business",

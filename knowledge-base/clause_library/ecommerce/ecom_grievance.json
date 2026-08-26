@@ -1,0 +1,48 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "No grievance officer is named, or no contact is given",
+    "The policy purports to make its own process the consumer's only remedy"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_GRIEVANCE_REDRESSAL_001",
+  "name": "Grievance Redressal",
+  "title": "Grievance Redressal",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY",
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "text": "{{company_name}} has appointed a Grievance Officer under Rule 4 of the Consumer Protection (E-Commerce) Rules, 2020.\n(a) The Grievance Officer is {{grievance_officer}}, who may be contacted at {{grievance_officer_email}}.\n(b) The Grievance Officer shall acknowledge the receipt of a consumer complaint within forty-eight hours of receiving it, and shall redress the complaint within one month of receipt.\n(c) Where a complaint cannot be redressed within one month, the consumer shall be told the reason and the expected time for resolution before that month expires.\n(d) Nothing in this Policy affects the consumer's right to approach a District, State, or National Consumer Disputes Redressal Commission under the Consumer Protection Act, 2019, or any other remedy available in law.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4(4)",
+      "note": "Every e-commerce entity shall appoint a Grievance Officer and display the officer's name, contact details and designation"
+    },
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4(5)",
+      "note": "The Grievance Officer shall acknowledge receipt of a consumer complaint within forty-eight hours and redress it within one month"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "35",
+      "note": "A consumer's right to file a complaint before a Consumer Disputes Redressal Commission"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Consumer Protection Act, 2019",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4(4), R.4(5)",
+  "authoring_note": "Limb (d) is an express saving of statutory remedies. Section 3 of the Consumer Protection Act, 2019 makes the Act's remedies additional to others, and a policy that reads as though its internal process is exhaustive is an unfair term. The advocate should confirm the Section 35 citation for the right to complain."
+}

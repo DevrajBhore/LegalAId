@@ -1,0 +1,21 @@
+{
+  "document_type": "SHIPPING_AND_DELIVERY_POLICY",
+  "family": "data_protection",
+  "version": "1.0",
+  "clauses": [
+    "ECOM_SHIPPING_SCOPE_001",
+    "ECOM_DELIVERY_TIMELINES_001",
+    "ECOM_SHIPPING_CHARGES_001",
+    "ECOM_DELIVERY_FAILURE_001",
+    "ECOM_GRIEVANCE_REDRESSAL_001",
+    "CORE_GOVERNING_LAW_001",
+    "ECOM_POLICY_ADOPTION_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "E-Commerce Rules 2020 R.4 — total price must be broken down, showing delivery and handling charges, before purchase",
+    "E-Commerce Rules 2020 R.4(4) and R.4(5) — grievance officer; 48 hours to acknowledge, one month to redress",
+    "Sale of Goods Act 1930 S.26 — risk passes with property unless otherwise agreed; placing carriage risk on a consumer is hard to defend",
+    "CGST Act 2017 S.31 — tax invoice requirements for the shipping charge"
+  ]
+}

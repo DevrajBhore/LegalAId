@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A post-employment restraint is imposed that goes beyond the protection of confidential information or goodwill, contrary to Section 27 of the Indian Contract Act, 1872",
+    "The non-disparagement obligation is drafted so as to prevent a statutory complaint or truthful evidence"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+  "name": "Obligations Surviving Separation",
+  "title": "Continuing Obligations",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "SEPARATION_AGREEMENT"
+  ],
+  "text": "The following obligations continue after the last working day.\n(a) The Employee shall keep confidential, and shall not use or disclose, any confidential information of the Employer that came to the Employee's knowledge in the course of the employment, other than information that is or becomes public without breach by the Employee.\n(b) Every right in any work, invention, design, or other intellectual property made by the Employee in the course of the employment remains vested in the Employer, and the Employee shall do whatever is reasonably necessary to give effect to that.\n(c) On or before the last working day, the Employee shall return all property of the Employer, including documents, records, equipment, devices, keys, and access cards, and shall surrender every credential giving access to the Employer's systems.\n(d) The Employee shall not, for the period stated in this Agreement, solicit any employee of the Employer with whom the Employee dealt in the twelve months before the last working day.\n(e) Neither Party shall make, publish, or cause to be made, any statement about the other that is disparaging, save that nothing in this sub-clause prevents either Party from giving truthful evidence, from making a disclosure required by law, or from making a complaint to a statutory authority.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "An agreement in restraint of trade is void; a post-employment restraint survives only where it protects confidential information or goodwill and is reasonable"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17(c)",
+      "note": "Work made in the course of employment under a contract of service — the employer is the first owner, absent agreement to the contrary"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Copyright Act, 1957",
+  "statutory_reference": "Indian Contract Act, 1872 - S.27; Copyright Act, 1957 - S.17(c)",
+  "authoring_note": "Limb (d) is a non-solicitation of employees, not a non-compete, and is confined to people the departing employee actually dealt with. Section 27 of the Contract Act voids restraints of trade, and a bare post-employment non-compete would not survive; a narrow non-solicit protective of goodwill is the defensible form. Limb (e) carries an express carve-out for statutory complaints and truthful evidence because a non-disparagement clause without one shades into an agreement to stifle a complaint. The advocate should set the non-solicit period; the clause takes it from a variable rather than fixing one."
+}

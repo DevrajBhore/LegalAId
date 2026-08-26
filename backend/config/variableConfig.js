@@ -13,6 +13,250 @@
  *   required — whether the field must be filled before generation
  */
 
+// Employment field definitions, shared by every document in the employment
+// family. They were defined inside EMPLOYMENT_CONTRACT until the appointment
+// letter, internship agreement and separation agreement needed the same
+// employer and employee fields; copying them per type is how field
+// descriptions drift apart, which this file has already suffered once.
+const EMPLOYMENT_FIELDS = {
+    employer_name: { label: "Company Name", type: "text", required: true, description: "The full legal name of the employing company, exactly as registered with the Registrar of Companies.",},
+    employer_address: {
+      label: "Registered Office Address",
+      type: "textarea",
+      required: true,
+      description:
+        "The employer's registered office address, as filed with the Registrar of Companies. This is where statutory notices to the employer are served.",
+    },
+    // Without this, the engine could not tell whether the employer was a company,
+    // an LLP or a natural person. The party descriptor branches entirely on the
+    // participant type, so every employer was rendered as a bare name -- no
+    // incorporation recital, no CIN, and the natural-person successor wording
+    // ("legal heirs, executors, administrators") applied to body corporates.
+    employer_type: {
+      label: "Employer Type",
+      type: "select",
+      required: false,
+      group: "Party Details",
+      options: [
+        "Private Limited Company",
+        "Public Limited Company",
+        "LLP",
+        "Partnership Firm",
+        "Sole Proprietorship",
+        "Trust",
+        "Government Body",
+        "Individual",
+      ],
+      description:
+        "The legal form of the employer. This decides the incorporation recital and whether the CIN or LLPIN is recited in the agreement.",
+    },
+
+    employer_cin: {
+      label: "CIN / Registration Number",
+      type: "text",
+      required: true,
+      description:
+        "The 21-character Corporate Identity Number from the certificate of incorporation, for example U74999MH2015PTC123456. For an LLP use the LLPIN instead.",
+    },
+    employer_pan: {
+      label: "Employer PAN",
+      type: "text",
+      required: true,
+      description: "PAN of the employer company or organization.",
+      example: "ABCDE1234F",
+    },
+    employer_gstin: {
+      label: "Employer GSTIN",
+      type: "text",
+      required: true,
+      description: "GSTIN of the employer entity where applicable for identity and tax records.",
+      example: "27ABCDE1234F1Z5",
+    },
+    employee_name: {
+      label: "Employee Full Name",
+      type: "text",
+      required: true,
+      description:
+        "The employee's full name exactly as it appears on their PAN card or Aadhaar.",
+    },
+    employee_address: {
+      label: "Residential Address",
+      type: "textarea",
+      required: true,
+      description:
+        "The employee's residential address, including city, state and PIN code.",
+    },
+    employee_pan: { label: "PAN Number", type: "text", required: true, description: "The employee's 10-character PAN, for example ABCDE1234F. Needed for TDS on salary under the Income Tax Act, 1961.",},
+    job_title: {
+      label: "Job Title / Designation",
+      type: "text",
+      required: true,
+      description:
+        "The role the employee is appointed to, for example \"Senior Software Engineer\" or \"Accounts Manager\". Use the designation that will appear on the appointment letter.",
+    },
+    role_responsibilities: {
+      label: "Role & Responsibilities",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+      description:
+        "What the employee will actually do day to day. List the main duties — this is what the employer can later hold them to.",
+    },
+    department: { label: "Department", type: "text", required: false, description: "The team or function the employee sits in, for example Engineering, Finance, Operations.",},
+    work_location: { label: "Work Location", type: "text", required: true, description: "Where the employee is based. Name the city and office, or state \"remote\" or \"hybrid\" if that is the arrangement.",},
+    salary: {
+      label: "Gross Annual CTC (₹)",
+      type: "number",
+      required: true,
+      description: "Enter the annual compensation figure as a number only.",
+      example: "1200000",
+      aiGuidance: "Use the full annual amount without commas. LegalAId will format it as an Indian Rupee amount in the draft.",
+    },
+    salary_components: {
+      label: "Salary Breakdown (e.g. Basic 40%, HRA 20%)",
+      type: "textarea",
+      required: false,
+      description:
+        "How the salary splits into basic, HRA, allowances and employer contributions. For example: \"Basic 40%, HRA 20%, special allowance 30%, employer PF 10%\". Keeping basic at around 40 to 50 percent affects PF and gratuity.",
+    },
+    start_date: { label: "Start Date", type: "date", required: true, description: "The employee's first working day. This is the date from which service, notice and probation are counted.",},
+    probation_period: {
+      label: "Probation Period (e.g. 6 months)",
+      type: "text",
+      required: false,
+      description:
+        "How long the employee is on probation before confirmation, for example \"3 months\" or \"6 months\". Notice during probation is usually shorter than after it. Enter NA if there is no probation.",
+    },
+    working_hours: {
+      label: "Weekly Working Hours",
+      type: "number",
+      required: false,
+      description:
+        "Normal weekly working hours. Most states cap this at 48 hours a week under the Shops and Establishments Act. Section 25(1)(a) of the Occupational Safety, Health and Working Conditions Code, 2020 caps the working day at eight hours.",
+    },
+    notice_period_days: {
+      label: "Notice Period (days)",
+      type: "number",
+      required: true,
+      description:
+        "How many days' notice either side must give to end the employment after confirmation. 30, 60 or 90 days are typical by seniority.",
+    },
+    bonus_terms: {
+      label: "Bonus / Incentive Terms",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+      description:
+        "How any bonus or incentive is calculated and when it is paid. Note that Section 26(1) of the Code on Wages, 2019 sets a statutory minimum bonus of 8.33 per cent of wages for employees below a wage threshold, separate from any discretionary bonus.",
+    },
+    leave_policy: {
+      label: "Leave Policy",
+      type: "textarea",
+      required: false,
+      group: "Employment Terms",
+      description:
+        "The employee's leave entitlement — earned, casual, sick and public holidays — and whether unused leave carries forward or is encashed.",
+    },
+    statutory_benefits: {
+      label: "Statutory Benefits",
+      type: "select",
+      required: false,
+      group: "Employment Terms",
+      options: [
+        "PF and ESI applicable",
+        "PF applicable",
+        "ESI applicable",
+        "Not applicable / as per law"
+      ],
+      description:
+        "Which statutory schemes apply: Provident Fund, ESIC, gratuity and professional tax. These depend on headcount and salary, not on what the contract says.",
+    },
+    employee_confidentiality_scope: {
+      label: "Employee Confidentiality Obligations",
+      type: "textarea",
+      required: true,
+      group: "Employment Terms",
+      description:
+        "What specifically the employee must keep confidential, for example \"source code, customer lists, pricing models and unreleased product plans\".",
+    },
+    ip_ownership: {
+      label: "IP Ownership",
+      type: "select",
+      required: true,
+      group: "Employment Terms",
+      options: [
+        "Employer owns work product IP",
+        "Employee retains pre-existing IP only",
+        "Custom / shared arrangement",
+      ],
+      description:
+        "Who owns what is created during the engagement. For employees and commissioned work the employer usually owns it; a contractor may retain ownership and grant a licence instead.",
+    },
+    employment_termination_type: {
+      label: "Employment Termination Structure",
+      type: "select",
+      required: true,
+      group: "Employment Terms",
+      options: [
+        "Notice-based termination",
+        "Termination for cause and notice",
+        "Fixed-term with early termination rights",
+      ],
+      description:
+        "How the employment can be brought to an end — on notice, for cause, or as a fixed term with early exit rights.",
+    },
+    seniority_level: {
+      label: "Seniority Level",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      description:
+        "Senior / leadership roles add garden-leave rights during the notice period and an exclusivity (anti-moonlighting) obligation.",
+      options: ["Junior", "Mid", "Senior / Leadership"],
+    },
+    involves_source_code: {
+      label: "Does the role involve source code or sensitive IP?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      description:
+        "If yes, LegalAId adds an exclusivity / anti-moonlighting obligation to protect the employer's code and know-how.",
+      options: ["No", "Yes"],
+    },
+    involves_trade_secrets: {
+      label: "Will the employee handle trade secrets?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      description:
+        "If yes, exclusivity of service is tightened to protect the employer's trade secrets.",
+      options: ["No", "Yes"],
+    },
+    include_non_compete: {
+      label: "Add a post-employment non-compete & non-solicitation?",
+      type: "select",
+      required: false,
+      group: "Context & Risk Profile",
+      description:
+        "Optional. Post-employment non-competes are enforceable in India only when narrowly tied to confidential information (ICA S.27). Added only if you opt in.",
+      options: ["No", "Yes"],
+    },
+  };
+
+// Explicit rather than a spread, so each document type declares exactly which
+// employment fields it asks for. An unknown key throws at import rather than
+// silently producing a form with a missing field.
+function employmentFields(...keys) {
+  const picked = {};
+  for (const key of keys) {
+    if (!EMPLOYMENT_FIELDS[key]) {
+      throw new Error(`employmentFields: no such employment field "${key}"`);
+    }
+    picked[key] = EMPLOYMENT_FIELDS[key];
+  }
+  return picked;
+}
+
 export const VARIABLE_CONFIG = {
   // ─── Common fields shared by all document types ───────────────────────────
   // `showIf` marks a field that is only meaningful once another answer is given:
@@ -21,6 +265,415 @@ export const VARIABLE_CONFIG = {
   // a hidden field is simply left blank, which every clause builder already
   // handles -- so honouring it is purely a form-rendering concern.
   COMMON: {
+    board_structure: {
+      label: "Board Composition",
+      type: "textarea",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["TERM_SHEET", "SHARE_SUBSCRIPTION_AGREEMENT"],
+      description:
+        "How many directors each side appoints, for example \"three directors: two nominated by the founders and one by the investor, with an independent chair appointed by agreement\".",
+    },
+    reserved_matters: {
+      label: "Reserved Matters",
+      type: "textarea",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["TERM_SHEET", "SHARE_SUBSCRIPTION_AGREEMENT"],
+      description:
+        "Decisions needing the investor's consent, for example issuing new shares, borrowing above a limit, changing the business, or selling the company. Check this list against Section 179 of the Companies Act, 2013: some Board powers cannot be fettered.",
+    },
+
+    founder_roles: {
+      label: "Founder Roles",
+      type: "textarea",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["FOUNDERS_AGREEMENT"],
+      description:
+        "Who does what, named. For example: \"A as Chief Executive, responsible for fundraising and sales; B as Chief Technology Officer, responsible for product and engineering.\"",
+    },
+    founder_equity_split: {
+      label: "Equity Split",
+      type: "textarea",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["FOUNDERS_AGREEMENT"],
+      description:
+        "Each founder's shareholding, as a percentage or a number of shares. These must also be reflected in the company's register of members.",
+    },
+    vesting_period: {
+      label: "Vesting Period",
+      type: "text",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["FOUNDERS_AGREEMENT", "ESOP_GRANT_LETTER"],
+      description: "How long until fully vested, for example \"four years\".",
+    },
+    vesting_cliff: {
+      label: "Vesting Cliff",
+      type: "text",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["FOUNDERS_AGREEMENT", "ESOP_GRANT_LETTER"],
+      description:
+        "How long before anything vests, for example \"one year\". For employee options Rule 12(6)(a) of the Companies (Share Capital and Debentures) Rules, 2014 sets a statutory minimum of one year, which a scheme cannot shorten.",
+    },
+    include_drag_along: {
+      label: "Include drag-along rights?",
+      type: "select",
+      required: false,
+      group: "Governance & Control",
+      applicableDocuments: ["FOUNDERS_AGREEMENT"],
+      options: ["No", "Yes"],
+      description:
+        "A drag-along lets a selling majority compel the minority to sell on the same terms. It makes an exit easier and reduces a minority founder's leverage.",
+    },
+    investment_amount: {
+      label: "Investment Amount (Rs.)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET", "SHARE_SUBSCRIPTION_AGREEMENT"],
+      description: "How much the investor is putting in.",
+    },
+    pre_money_valuation: {
+      label: "Pre-Money Valuation (Rs.)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET"],
+      description:
+        "The valuation before the investment. Post-money is this plus the investment amount, and the investor's percentage is the investment divided by post-money.",
+    },
+    security_type: {
+      label: "Type of Security",
+      type: "select",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET"],
+      options: [
+        "Compulsorily Convertible Preference Shares (CCPS)",
+        "Equity Shares",
+        "Compulsorily Convertible Debentures (CCD)",
+      ],
+      description:
+        "CCPS is the usual instrument for an Indian venture round: it carries the liquidation preference while converting to equity on exit.",
+    },
+    esop_pool_percentage: {
+      label: "ESOP Pool (% of post-issue capital)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET"],
+      description:
+        "The option pool as a percentage of fully diluted capital. If it sits in the PRE-money capitalisation it dilutes the founders alone; if created after the round it dilutes everyone.",
+    },
+    liquidation_preference_multiple: {
+      label: "Liquidation Preference (multiple)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET"],
+      description:
+        "How many times the investment the investor takes out first on an exit. 1x is standard; anything above it materially reduces founder proceeds in a modest exit.",
+    },
+    exclusivity_period: {
+      label: "Exclusivity Period",
+      type: "text",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["TERM_SHEET"],
+      description:
+        "How long you agree not to talk to other investors, for example \"forty-five days\". Keep it short and definite; an open-ended period is commercially unreasonable and harder to enforce.",
+    },
+    options_granted: {
+      label: "Number of Options Granted",
+      type: "number",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["ESOP_GRANT_LETTER"],
+      description: "How many options this letter grants, each convertible into one equity share.",
+    },
+    exercise_price: {
+      label: "Exercise Price per Share (Rs.)",
+      type: "number",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["ESOP_GRANT_LETTER"],
+      description:
+        "What the employee pays per share on exercise. The gap between this and fair market value at exercise is taxed as salary under Section 17(2)(vi) of the Income-tax Act, 1961.",
+    },
+    exercise_window: {
+      label: "Exercise Window",
+      type: "text",
+      required: true,
+      group: "Governance & Control",
+      applicableDocuments: ["ESOP_GRANT_LETTER"],
+      description:
+        "How long after vesting an option may be exercised, for example \"five years\". A short window forces the employee to fund the price and the tax at once.",
+    },
+    securities_subscribed: {
+      label: "Securities Being Subscribed",
+      type: "text",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["SHARE_SUBSCRIPTION_AGREEMENT"],
+      description:
+        "For example \"1,00,000 Compulsorily Convertible Preference Shares of Rs. 10 each\". Number, class and face value.",
+    },
+    use_of_proceeds: {
+      label: "Use of Proceeds",
+      type: "textarea",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["SHARE_SUBSCRIPTION_AGREEMENT"],
+      description:
+        "What the money is for, for example \"engineering hiring, product development and working capital\". Section 42 of the Companies Act, 2013 also forbids using subscription money before allotment.",
+    },
+    long_stop_date: {
+      label: "Long Stop Date",
+      type: "date",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["SHARE_SUBSCRIPTION_AGREEMENT"],
+      description: "The date by which the conditions must be met, after which either side may walk away.",
+    },
+
+    principal_amount: {
+      label: "Principal Sum (Rs.)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["PROMISSORY_NOTE"],
+      description:
+        "The sum promised. Section 4 of the Negotiable Instruments Act, 1881 requires the sum to be certain, so this cannot be left open or expressed as a maximum.",
+    },
+    repayment_terms: {
+      label: "When is it repayable?",
+      type: "text",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["PROMISSORY_NOTE"],
+      description:
+        "For example \"on demand\", or \"in twelve equal monthly instalments beginning 1 January 2027\". This also fixes when limitation starts running.",
+    },
+    interest_rate: {
+      label: "Interest Rate (% per annum)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["PROMISSORY_NOTE"],
+      description:
+        "Enter 18 to adopt the statutory default in Section 80 of the Negotiable Instruments Act, 1881, which applies where a note is silent. Enter 0 for an interest-free note. A rate a court would hold excessive is unenforceable whatever the note says.",
+    },
+    interest_payment_frequency: {
+      label: "Interest Payable",
+      type: "select",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["PROMISSORY_NOTE"],
+      options: ["Monthly", "Quarterly", "Annually", "With the principal"],
+      description: "How often interest falls due.",
+    },
+    cure_period_days: {
+      label: "Cure Period (days)",
+      type: "number",
+      required: true,
+      group: "Finance & Security",
+      applicableDocuments: ["PROMISSORY_NOTE"],
+      description: "How long the maker has to remedy a missed payment before the whole sum becomes due.",
+    },
+    assigned_work_description: {
+      label: "What is being assigned?",
+      type: "textarea",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["IP_ASSIGNMENT_AGREEMENT"],
+      description:
+        "Identify the work, invention, mark or design precisely. Section 19(2) of the Copyright Act, 1957 requires an assignment to identify the work; a vague description risks the assignment failing.",
+    },
+    powers_granted: {
+      label: "What may the attorney do?",
+      type: "textarea",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["POWER_OF_ATTORNEY"],
+      description:
+        "List each act the attorney may perform. A power of attorney is read strictly against the attorney, so anything not clearly granted is not granted. Avoid general wording such as \"manage all my affairs\".",
+    },
+
+    goods_or_services_description: {
+      label: "What do you sell?",
+      type: "textarea",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: [
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+      ],
+      description:
+        "The goods or services this policy covers. Be specific: a policy that covers perishable or made-to-order items needs different cancellation terms from one that does not.",
+    },
+    return_window_days: {
+      label: "Return Window (days)",
+      type: "number",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["REFUND_AND_CANCELLATION_POLICY"],
+      description:
+        "How many days after delivery a consumer may ask to return goods. Seven to thirty days is usual. This does not cut down the consumer's rights for defective goods under the Sale of Goods Act, 1930.",
+    },
+    refund_window_days: {
+      label: "Refund Window (days)",
+      type: "number",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["REFUND_AND_CANCELLATION_POLICY"],
+      description:
+        "How many days after accepting a refund request you will pay it. The E-Commerce Rules require a reasonable period; RBI directions impose their own timelines where a payment instrument is involved.",
+    },
+    dispatch_window_days: {
+      label: "Dispatch Window (days)",
+      type: "number",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["SHIPPING_AND_DELIVERY_POLICY"],
+      description: "How many days after an order is confirmed you ordinarily dispatch it.",
+    },
+    delivery_attempts: {
+      label: "Delivery Attempts",
+      type: "number",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["SHIPPING_AND_DELIVERY_POLICY"],
+      description: "How many times delivery is attempted before the order is returned to you.",
+    },
+    shortage_report_days: {
+      label: "Shortage Reporting Window (days)",
+      type: "number",
+      required: true,
+      group: "Agreement Basics",
+      applicableDocuments: ["SHIPPING_AND_DELIVERY_POLICY"],
+      description:
+        "How long a consumer has to report goods delivered short, damaged, or tampered with. A short window does not extinguish the consumer's statutory rights.",
+    },
+
+    reporting_to: {
+      label: "Reports To",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["APPOINTMENT_LETTER"],
+      description:
+        "The role or person the employee reports to, for example \"the Head of Engineering\". Section 6(1)(f) of the OSH Code, 2020 requires the appointment letter to record the terms of engagement.",
+    },
+    internship_duration: {
+      label: "Internship Duration",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["INTERNSHIP_AGREEMENT"],
+      description:
+        "How long the internship runs, for example \"three months\" or \"12 weeks\". A long internship doing ordinary work is the pattern most likely to be reclassified as employment.",
+    },
+    stipend_amount: {
+      label: "Monthly Stipend (Rs.)",
+      type: "number",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["INTERNSHIP_AGREEMENT"],
+      description:
+        "The monthly stipend paid to the intern. A stipend supports training and is not wages, though that characterisation depends on the substance of the engagement rather than the label.",
+    },
+    learning_objectives: {
+      label: "Learning Objectives",
+      type: "textarea",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["INTERNSHIP_AGREEMENT"],
+      description:
+        "What the intern will learn and work on. This is what distinguishes an internship from ordinary employment, so state it specifically rather than describing a job.",
+    },
+    last_working_day: {
+      label: "Last Working Day",
+      type: "date",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["SEPARATION_AGREEMENT"],
+      description:
+        "The final day of employment. Section 17(2) of the Code on Wages, 2019 requires the full and final settlement to be paid within two working days of this date.",
+    },
+    settlement_amount: {
+      label: "Full and Final Settlement Amount (Rs.)",
+      type: "number",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["SEPARATION_AGREEMENT"],
+      description:
+        "The net amount payable to the employee after adding salary to the last working day, leave encashment, gratuity and any accrued dues, and deducting authorised amounts and tax.",
+    },
+    separation_reason: {
+      label: "How is the employment ending?",
+      type: "select",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["SEPARATION_AGREEMENT"],
+      description:
+        "Resignation, retirement, end of a fixed term, or separation by mutual agreement. This affects gratuity and notice, and whether the ending is a retrenchment under the Industrial Relations Code, 2020.",
+      options: [
+        "Resignation by the employee",
+        "Separation by mutual agreement",
+        "End of a fixed term",
+        "Retirement",
+      ],
+    },
+    non_solicit_period: {
+      label: "Non-Solicitation Period",
+      type: "text",
+      required: false,
+      group: "Employment Terms",
+      applicableDocuments: ["SEPARATION_AGREEMENT"],
+      description:
+        "How long after leaving the employee must not solicit colleagues, for example \"twelve months\". Section 27 of the Indian Contract Act, 1872 voids restraints of trade, so keep this narrow and tied to people the employee actually worked with.",
+    },
+    posh_presiding_officer: {
+      label: "Presiding Officer of the Internal Committee",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["POSH_POLICY"],
+      description:
+        "Section 4 of the PoSH Act, 2013 requires the Presiding Officer to be a woman employed at a senior level at the workplace.",
+    },
+    posh_external_member: {
+      label: "External Member of the Internal Committee",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["POSH_POLICY"],
+      description:
+        "Section 4 requires one member from an NGO or association committed to the cause of women, or a person familiar with issues relating to sexual harassment. An internal appointment does not satisfy this.",
+    },
+    posh_committee_contact: {
+      label: "Internal Committee Contact",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["POSH_POLICY"],
+      description:
+        "The email address or office where a complaint may be sent. Section 19 requires the Committee's details to be displayed at a conspicuous place at the workplace.",
+    },
+    posh_district: {
+      label: "District for the Local Committee",
+      type: "text",
+      required: true,
+      group: "Employment Terms",
+      applicableDocuments: ["POSH_POLICY"],
+      description:
+        "The district whose Local Committee hears complaints where the workplace has fewer than ten employees, or where the complaint is against the employer. Without this a complainant in either situation has nowhere to go.",
+    },
+
     operating_state: {
       label: "Operating State",
       type: "select",
@@ -1113,230 +1766,231 @@ export const VARIABLE_CONFIG = {
   },
 
   // ─── Employment Contract ──────────────────────────────────────────────────
-  EMPLOYMENT_CONTRACT: {
-    employer_name: { label: "Company Name", type: "text", required: true, description: "The full legal name of the employing company, exactly as registered with the Registrar of Companies.",},
-    employer_address: {
-      label: "Registered Office Address",
-      type: "textarea",
-      required: true,
-      description:
-        "The employer's registered office address, as filed with the Registrar of Companies. This is where statutory notices to the employer are served.",
-    },
-    // Without this, the engine could not tell whether the employer was a company,
-    // an LLP or a natural person. The party descriptor branches entirely on the
-    // participant type, so every employer was rendered as a bare name -- no
-    // incorporation recital, no CIN, and the natural-person successor wording
-    // ("legal heirs, executors, administrators") applied to body corporates.
-    employer_type: {
-      label: "Employer Type",
-      type: "select",
-      required: false,
-      group: "Party Details",
-      options: [
-        "Private Limited Company",
-        "Public Limited Company",
-        "LLP",
-        "Partnership Firm",
-        "Sole Proprietorship",
-        "Trust",
-        "Government Body",
-        "Individual",
-      ],
-      description:
-        "The legal form of the employer. This decides the incorporation recital and whether the CIN or LLPIN is recited in the agreement.",
-    },
+  APPOINTMENT_LETTER: employmentFields(
+    "employer_name", "employer_address", "employer_type", "employer_cin", "employer_pan",
+    "employee_name", "employee_address", "employee_pan",
+    "job_title", "department", "work_location",
+    "salary", "salary_components",
+    "start_date", "probation_period", "working_hours", "notice_period_days",
+    "bonus_terms", "leave_policy", "statutory_benefits",
+    "seniority_level", "include_non_compete"
+  ),
 
-    employer_cin: {
-      label: "CIN / Registration Number",
+  INTERNSHIP_AGREEMENT: employmentFields(
+    "employer_name", "employer_address", "employer_type", "employer_cin",
+    "employee_name", "employee_address", "employee_pan",
+    "work_location", "start_date"
+  ),
+
+  SEPARATION_AGREEMENT: employmentFields(
+    "employer_name", "employer_address", "employer_type", "employer_cin", "employer_pan",
+    "employee_name", "employee_address", "employee_pan",
+    "job_title", "seniority_level"
+  ),
+
+  DATA_PROCESSING_AGREEMENT: {
+    party_1_name: {
+      label: "Data Fiduciary Name",
+      type: "text",
+      required: true,
+      description: "Your organisation — the one that decides why and how the personal data is processed.",
+    },
+    party_1_address: {
+      label: "Data Fiduciary Address",
+      type: "text",
+      required: true,
+      description: "Your registered address.",
+    },
+    party_2_name: {
+      label: "Data Processor Name",
       type: "text",
       required: true,
       description:
-        "The 21-character Corporate Identity Number from the certificate of incorporation, for example U74999MH2015PTC123456. For an LLP use the LLPIN instead.",
+        "The vendor that will process personal data on your behalf. Section 8(2) of the DPDP Act, 2023 lets you engage one only under a valid contract, which is what this document is.",
     },
-    employer_pan: {
-      label: "Employer PAN",
+    party_2_address: {
+      label: "Data Processor Address",
       type: "text",
       required: true,
-      description: "PAN of the employer company or organization.",
-      example: "ABCDE1234F",
+      description: "The processor's registered address.",
     },
-    employer_gstin: {
-      label: "Employer GSTIN",
-      type: "text",
-      required: true,
-      description: "GSTIN of the employer entity where applicable for identity and tax records.",
-      example: "27ABCDE1234F1Z5",
-    },
-    employee_name: {
-      label: "Employee Full Name",
-      type: "text",
-      required: true,
-      description:
-        "The employee's full name exactly as it appears on their PAN card or Aadhaar.",
-    },
-    employee_address: {
-      label: "Residential Address",
+    data_categories: {
+      label: "Categories of Personal Data",
       type: "textarea",
       required: true,
       description:
-        "The employee's residential address, including city, state and PIN code.",
+        "What personal data the processor will handle, for example \"name, email address, phone number and delivery address of customers\". Section 8(2) requires the contract to fix the scope of the engagement.",
     },
-    employee_pan: { label: "PAN Number", type: "text", required: true, description: "The employee's 10-character PAN, for example ABCDE1234F. Needed for TDS on salary under the Income Tax Act, 1961.",},
-    job_title: {
-      label: "Job Title / Designation",
-      type: "text",
-      required: true,
-      description:
-        "The role the employee is appointed to, for example \"Senior Software Engineer\" or \"Accounts Manager\". Use the designation that will appear on the appointment letter.",
-    },
-    role_responsibilities: {
-      label: "Role & Responsibilities",
-      type: "textarea",
-      required: false,
-      group: "Employment Terms",
-      description:
-        "What the employee will actually do day to day. List the main duties — this is what the employer can later hold them to.",
-    },
-    department: { label: "Department", type: "text", required: false, description: "The team or function the employee sits in, for example Engineering, Finance, Operations.",},
-    work_location: { label: "Work Location", type: "text", required: true, description: "Where the employee is based. Name the city and office, or state \"remote\" or \"hybrid\" if that is the arrangement.",},
-    salary: {
-      label: "Gross Annual CTC (₹)",
-      type: "number",
-      required: true,
-      description: "Enter the annual compensation figure as a number only.",
-      example: "1200000",
-      aiGuidance: "Use the full annual amount without commas. LegalAId will format it as an Indian Rupee amount in the draft.",
-    },
-    salary_components: {
-      label: "Salary Breakdown (e.g. Basic 40%, HRA 20%)",
-      type: "textarea",
-      required: false,
-      description:
-        "How the salary splits into basic, HRA, allowances and employer contributions. For example: \"Basic 40%, HRA 20%, special allowance 30%, employer PF 10%\". Keeping basic at around 40 to 50 percent affects PF and gratuity.",
-    },
-    start_date: { label: "Start Date", type: "date", required: true, description: "The employee's first working day. This is the date from which service, notice and probation are counted.",},
-    probation_period: {
-      label: "Probation Period (e.g. 6 months)",
-      type: "text",
-      required: false,
-      description:
-        "How long the employee is on probation before confirmation, for example \"3 months\" or \"6 months\". Notice during probation is usually shorter than after it. Enter NA if there is no probation.",
-    },
-    working_hours: {
-      label: "Weekly Working Hours",
-      type: "number",
-      required: false,
-      description:
-        "Normal weekly working hours. Most states cap this at 48 hours a week under the Shops and Establishments Act. Section 25(1)(a) of the Occupational Safety, Health and Working Conditions Code, 2020 caps the working day at eight hours.",
-    },
-    notice_period_days: {
-      label: "Notice Period (days)",
-      type: "number",
-      required: true,
-      description:
-        "How many days' notice either side must give to end the employment after confirmation. 30, 60 or 90 days are typical by seniority.",
-    },
-    bonus_terms: {
-      label: "Bonus / Incentive Terms",
-      type: "textarea",
-      required: false,
-      group: "Employment Terms",
-      description:
-        "How any bonus or incentive is calculated and when it is paid. Note that Section 26(1) of the Code on Wages, 2019 sets a statutory minimum bonus of 8.33 per cent of wages for employees below a wage threshold, separate from any discretionary bonus.",
-    },
-    leave_policy: {
-      label: "Leave Policy",
-      type: "textarea",
-      required: false,
-      group: "Employment Terms",
-      description:
-        "The employee's leave entitlement — earned, casual, sick and public holidays — and whether unused leave carries forward or is encashed.",
-    },
-    statutory_benefits: {
-      label: "Statutory Benefits",
-      type: "select",
-      required: false,
-      group: "Employment Terms",
-      options: [
-        "PF and ESI applicable",
-        "PF applicable",
-        "ESI applicable",
-        "Not applicable / as per law"
-      ],
-      description:
-        "Which statutory schemes apply: Provident Fund, ESIC, gratuity and professional tax. These depend on headcount and salary, not on what the contract says.",
-    },
-    employee_confidentiality_scope: {
-      label: "Employee Confidentiality Obligations",
+    processing_purpose: {
+      label: "Purpose of Processing",
       type: "textarea",
       required: true,
-      group: "Employment Terms",
       description:
-        "What specifically the employee must keep confidential, for example \"source code, customer lists, pricing models and unreleased product plans\".",
-    },
-    ip_ownership: {
-      label: "IP Ownership",
-      type: "select",
-      required: true,
-      group: "Employment Terms",
-      options: [
-        "Employer owns work product IP",
-        "Employee retains pre-existing IP only",
-        "Custom / shared arrangement",
-      ],
-      description:
-        "Who owns what is created during the engagement. For employees and commissioned work the employer usually owns it; a contractor may retain ownership and grant a licence instead.",
-    },
-    employment_termination_type: {
-      label: "Employment Termination Structure",
-      type: "select",
-      required: true,
-      group: "Employment Terms",
-      options: [
-        "Notice-based termination",
-        "Termination for cause and notice",
-        "Fixed-term with early termination rights",
-      ],
-      description:
-        "How the employment can be brought to an end — on notice, for cause, or as a fixed term with early exit rights.",
-    },
-    seniority_level: {
-      label: "Seniority Level",
-      type: "select",
-      required: false,
-      group: "Context & Risk Profile",
-      description:
-        "Senior / leadership roles add garden-leave rights during the notice period and an exclusivity (anti-moonlighting) obligation.",
-      options: ["Junior", "Mid", "Senior / Leadership"],
-    },
-    involves_source_code: {
-      label: "Does the role involve source code or sensitive IP?",
-      type: "select",
-      required: false,
-      group: "Context & Risk Profile",
-      description:
-        "If yes, LegalAId adds an exclusivity / anti-moonlighting obligation to protect the employer's code and know-how.",
-      options: ["No", "Yes"],
-    },
-    involves_trade_secrets: {
-      label: "Will the employee handle trade secrets?",
-      type: "select",
-      required: false,
-      group: "Context & Risk Profile",
-      description:
-        "If yes, exclusivity of service is tightened to protect the employer's trade secrets.",
-      options: ["No", "Yes"],
-    },
-    include_non_compete: {
-      label: "Add a post-employment non-compete & non-solicitation?",
-      type: "select",
-      required: false,
-      group: "Context & Risk Profile",
-      description:
-        "Optional. Post-employment non-competes are enforceable in India only when narrowly tied to confidential information (ICA S.27). Added only if you opt in.",
-      options: ["No", "Yes"],
+        "Why the processor handles this data, for example \"sending transactional email on our behalf\". The processor may not process it for any other purpose.",
     },
   },
+
+  REFUND_AND_CANCELLATION_POLICY: {
+    company_name: {
+      label: "Business Name",
+      type: "text",
+      required: true,
+      description: "The name of the e-commerce entity publishing this policy.",
+    },
+    company_address: {
+      label: "Registered Address",
+      type: "text",
+      required: true,
+      description: "The registered address of the business.",
+    },
+    website_url: {
+      label: "Website or App",
+      type: "text",
+      required: true,
+      description: "Where the policy is published and where orders are placed.",
+    },
+    grievance_officer: {
+      label: "Grievance Officer Name",
+      type: "text",
+      required: true,
+      description:
+        "Rule 4 of the Consumer Protection (E-Commerce) Rules, 2020 requires every e-commerce entity to appoint one and display their details.",
+    },
+    grievance_officer_email: {
+      label: "Grievance Officer Email",
+      type: "text",
+      required: true,
+      description:
+        "Where consumers send complaints. Complaints must be acknowledged within 48 hours and redressed within one month.",
+    },
+  },
+
+  SHIPPING_AND_DELIVERY_POLICY: {
+    company_name: {
+      label: "Business Name",
+      type: "text",
+      required: true,
+      description: "The name of the e-commerce entity publishing this policy.",
+    },
+    company_address: {
+      label: "Registered Address",
+      type: "text",
+      required: true,
+      description: "The registered address of the business.",
+    },
+    website_url: {
+      label: "Website or App",
+      type: "text",
+      required: true,
+      description: "Where the policy is published and where orders are placed.",
+    },
+    grievance_officer: {
+      label: "Grievance Officer Name",
+      type: "text",
+      required: true,
+      description:
+        "Rule 4 of the Consumer Protection (E-Commerce) Rules, 2020 requires every e-commerce entity to appoint one and display their details.",
+    },
+    grievance_officer_email: {
+      label: "Grievance Officer Email",
+      type: "text",
+      required: true,
+      description:
+        "Where consumers send complaints. Complaints must be acknowledged within 48 hours and redressed within one month.",
+    },
+  },
+
+  FOUNDERS_AGREEMENT: {
+    company_name: { label: "Company Name", type: "text", required: true, description: "The company, as registered with the Registrar of Companies." },
+    business_purpose: { label: "What does the business do?", type: "textarea", required: true, description: "The business the founders are building. This becomes the object recited in the agreement." },
+    party_1_name: { label: "First Founder Name", type: "text", required: true, description: "The first founder. Additional founders can be added in the editor." },
+    party_1_address: { label: "First Founder Address", type: "text", required: true, description: "Full registered address." },
+    party_1_type: { label: "First Founder Type", type: "select", required: true, options: ["Private Limited Company", "Individual", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the first founder." },
+    party_2_name: { label: "Second Founder Name", type: "text", required: true, description: "The second founder." },
+    party_2_address: { label: "Second Founder Address", type: "text", required: true, description: "Full registered address." },
+    party_2_type: { label: "Second Founder Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the second founder." },
+  },
+
+  TERM_SHEET: {
+    company_name: { label: "Company Name", type: "text", required: true, description: "The company receiving the investment." },
+    party_1_name: { label: "Company Name", type: "text", required: true, description: "The company receiving the investment, as registered." },
+    party_1_address: { label: "Company Address", type: "text", required: true, description: "Full registered address." },
+    party_1_type: { label: "Company Type", type: "select", required: true, options: ["Private Limited Company", "Individual", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the company." },
+    party_2_name: { label: "Investor Name", type: "text", required: true, description: "The investor, fund or individual proposing to invest." },
+    party_2_address: { label: "Investor Address", type: "text", required: true, description: "Full registered address." },
+    party_2_type: { label: "Investor Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the investor." },
+  },
+
+  ESOP_GRANT_LETTER: {
+    company_name: { label: "Company Name", type: "text", required: true, description: "The company granting the options." },
+    party_1_name: { label: "Company Name", type: "text", required: true, description: "The company granting the options." },
+    party_1_address: { label: "Company Address", type: "text", required: true, description: "Full registered address." },
+    party_1_type: { label: "Company Type", type: "select", required: true, options: ["Private Limited Company", "Individual", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the company." },
+    party_2_name: { label: "Optionee Name", type: "text", required: true, description: "The employee receiving the options. Rule 12 restricts eligibility, notably for promoters and for directors holding more than 10 per cent." },
+    party_2_address: { label: "Optionee Address", type: "text", required: true, description: "Full registered address." },
+    party_2_type: { label: "Optionee Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the optionee." },
+  },
+
+  SHARE_SUBSCRIPTION_AGREEMENT: {
+    company_name: { label: "Company Name", type: "text", required: true, description: "The company issuing the securities." },
+    party_1_name: { label: "Company Name", type: "text", required: true, description: "The company issuing the securities." },
+    party_1_address: { label: "Company Address", type: "text", required: true, description: "Full registered address." },
+    party_1_type: { label: "Company Type", type: "select", required: true, options: ["Private Limited Company", "Individual", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the company." },
+    party_2_name: { label: "Investor Name", type: "text", required: true, description: "The subscriber. If resident outside India, FEMA pricing and reporting rules apply." },
+    party_2_address: { label: "Investor Address", type: "text", required: true, description: "Full registered address." },
+    party_2_type: { label: "Investor Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the investor." },
+  },
+
+  PROMISSORY_NOTE: {
+    party_1_name: { label: "Maker Name", type: "text", required: true, description: "The person who promises to pay. The maker signs the note." },
+    party_1_address: { label: "Maker Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_1_type: { label: "Maker Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the maker." },
+    party_2_name: { label: "Payee Name", type: "text", required: true, description: "The person to whom the sum is payable, or to whose order it is payable." },
+    party_2_address: { label: "Payee Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_2_type: { label: "Payee Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the payee." },
+  },
+
+  IP_ASSIGNMENT_AGREEMENT: {
+    contract_value: {
+      label: "Assignment Consideration (Rs.)",
+      type: "number",
+      required: true,
+      description:
+        "What the assignee pays. Section 19(3) of the Copyright Act, 1957 requires an assignment to specify the amount of royalty or other consideration payable to the author, so this cannot be left as a nominal or unstated sum.",
+    },
+    party_1_name: { label: "Assignor Name", type: "text", required: true, description: "The current owner of the intellectual property, who is giving it up. Section 19(1) of the Copyright Act, 1957 requires the assignor to sign." },
+    party_1_address: { label: "Assignor Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_1_type: { label: "Assignor Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the assignor." },
+    party_2_name: { label: "Assignee Name", type: "text", required: true, description: "The person acquiring the intellectual property." },
+    party_2_address: { label: "Assignee Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_2_type: { label: "Assignee Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the assignee." },
+  },
+
+  POWER_OF_ATTORNEY: {
+    party_1_name: { label: "Principal Name", type: "text", required: true, description: "The person granting the power. Also called the donor." },
+    party_1_address: { label: "Principal Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_1_type: { label: "Principal Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the principal." },
+    party_2_name: { label: "Attorney Name", type: "text", required: true, description: "The person who will act on the principal's behalf. Also called the donee." },
+    party_2_address: { label: "Attorney Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
+    party_2_type: { label: "Attorney Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the attorney." },
+  },
+
+  POSH_POLICY: {
+    company_name: {
+      label: "Organisation Name",
+      type: "text",
+      required: true,
+      description: "The name of the organisation adopting this policy, as it appears on its registration.",
+    },
+    company_address: {
+      label: "Registered Address",
+      type: "text",
+      required: true,
+      description: "The registered address of the organisation. Where it has more than one workplace, the policy applies at each of them.",
+    },
+  },
+
+  EMPLOYMENT_CONTRACT: { ...EMPLOYMENT_FIELDS },
 
   // ─── Service Agreement ────────────────────────────────────────────────────
   SERVICE_AGREEMENT: {

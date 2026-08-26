@@ -617,6 +617,468 @@
           "CORE_WAIVER_001"
         ]
       }
+    },
+    "APPOINTMENT_LETTER": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Employer",
+            "aliases": [
+              "Employer",
+              "Company",
+              "Organisation"
+            ]
+          },
+          "second": {
+            "canonical": "Employee",
+            "aliases": [
+              "Employee",
+              "Appointee"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "EMP_CONFIDENTIALITY_001",
+          "EMP_IP_ASSIGNMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "second",
+        "reviewer": "first"
+      },
+      "rendering": {
+        "purposeMode": "employment_engagement"
+      }
+    },
+    "INTERNSHIP_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Organisation",
+            "aliases": [
+              "Organisation",
+              "Company",
+              "Host Organisation"
+            ]
+          },
+          "second": {
+            "canonical": "Intern",
+            "aliases": [
+              "Intern",
+              "Trainee"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "EMP_CONFIDENTIALITY_001",
+          "EMP_IP_ASSIGNMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "second",
+        "reviewer": "first"
+      },
+      "rendering": {
+        "purposeMode": "employment_engagement"
+      }
+    },
+    "SEPARATION_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Employer",
+            "aliases": [
+              "Employer",
+              "Company",
+              "Organisation"
+            ]
+          },
+          "second": {
+            "canonical": "Employee",
+            "aliases": [
+              "Employee",
+              "Departing Employee"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_NOTICE_001"
+        ]
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "employment_engagement"
+      }
+    },
+    "POSH_POLICY": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Organisation",
+            "aliases": [
+              "Organisation",
+              "Company",
+              "Employer"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "rendering": {
+        "purposeMode": "policy_statement"
+      },
+      "//": "A policy is unilateral: no second participant, and the general-provisions baseline is suppressed because notice, assignment, counterparts and force majeure have no meaning in an instrument with no counterparty."
+    },
+    "DATA_PROCESSING_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Fiduciary",
+            "aliases": [
+              "Fiduciary",
+              "Data Fiduciary",
+              "Controller",
+              "Company"
+            ]
+          },
+          "second": {
+            "canonical": "Processor",
+            "aliases": [
+              "Processor",
+              "Data Processor",
+              "Vendor"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_NOTICE_001",
+          "CORE_ENTIRE_AGREEMENT_001"
+        ]
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "second",
+        "reviewer": "first"
+      },
+      "rendering": {
+        "purposeMode": "data_processing"
+      }
+    },
+    "REFUND_AND_CANCELLATION_POLICY": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Business",
+            "aliases": [
+              "Business",
+              "Company",
+              "Seller",
+              "Platform"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "rendering": {
+        "purposeMode": "policy_statement"
+      },
+      "//": "Published to consumers, not agreed with them. The general-provisions baseline is suppressed: assignment, counterparts and force majeure have no meaning in a policy, and a force-majeure clause in a consumer refund policy reads as an attempt to excuse non-performance."
+    },
+    "SHIPPING_AND_DELIVERY_POLICY": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Business",
+            "aliases": [
+              "Business",
+              "Company",
+              "Seller",
+              "Platform"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "rendering": {
+        "purposeMode": "policy_statement"
+      },
+      "//": "Published to consumers, not agreed with them. The general-provisions baseline is suppressed: assignment, counterparts and force majeure have no meaning in a policy, and a force-majeure clause in a consumer refund policy reads as an attempt to excuse non-performance."
+    },
+    "PROMISSORY_NOTE": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Maker",
+            "aliases": [
+              "Maker",
+              "Promisor",
+              "Borrower"
+            ]
+          },
+          "second": {
+            "canonical": "Payee",
+            "aliases": [
+              "Payee",
+              "Holder",
+              "Lender"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "debt_acknowledgment"
+      },
+      "//": "A promissory note is a short unilateral instrument. The general-provisions baseline is suppressed: force majeure, counterparts and assignment clauses would destroy its character as a negotiable instrument, and Section 4 requires the promise to be UNCONDITIONAL."
+    },
+    "IP_ASSIGNMENT_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Assignor",
+            "aliases": [
+              "Assignor",
+              "Owner",
+              "Author"
+            ]
+          },
+          "second": {
+            "canonical": "Assignee",
+            "aliases": [
+              "Assignee",
+              "Acquirer"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_NOTICE_001",
+          "CORE_ENTIRE_AGREEMENT_001"
+        ]
+      },
+      "roles": {
+        "payer": "second",
+        "payee": "first",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "ip_assignment"
+      }
+    },
+    "POWER_OF_ATTORNEY": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Principal",
+            "aliases": [
+              "Principal",
+              "Donor",
+              "Executant"
+            ]
+          },
+          "second": {
+            "canonical": "Attorney",
+            "aliases": [
+              "Attorney",
+              "Donee",
+              "Agent"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "second",
+        "reviewer": "first"
+      },
+      "rendering": {
+        "purposeMode": "authority_grant"
+      },
+      "//": "A power of attorney is a unilateral deed executed by the Principal alone. The general-provisions baseline is suppressed: a deed of authority has no counterparty to give notice to, nothing to assign, and no counterparts."
+    },
+    "FOUNDERS_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "First Founder",
+            "aliases": [
+              "First Founder",
+              "Founder 1"
+            ]
+          },
+          "second": {
+            "canonical": "Second Founder",
+            "aliases": [
+              "Second Founder",
+              "Founder 2"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_NOTICE_001",
+          "CORE_ENTIRE_AGREEMENT_001"
+        ]
+      },
+      "roles": {
+        "payer": "first",
+        "payee": "second",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "founders_venture"
+      }
+    },
+    "TERM_SHEET": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Company",
+            "aliases": [
+              "Company",
+              "Issuer"
+            ]
+          },
+          "second": {
+            "canonical": "Investor",
+            "aliases": [
+              "Investor",
+              "Subscriber",
+              "Fund"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": []
+      },
+      "roles": {
+        "payer": "second",
+        "payee": "first",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "investment_intent"
+      },
+      "//": "The general-provisions baseline is suppressed. A term sheet is expressly non-binding except for a short list; bolting on notice, assignment, counterparts and force majeure clauses would contradict that and hand a party an argument that the document was meant to bind after all."
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Company",
+            "aliases": [
+              "Company",
+              "Issuer"
+            ]
+          },
+          "second": {
+            "canonical": "Investor",
+            "aliases": [
+              "Investor",
+              "Subscriber",
+              "Fund"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "requiredClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_NOTICE_001",
+          "CORE_ENTIRE_AGREEMENT_001"
+        ]
+      },
+      "roles": {
+        "payer": "second",
+        "payee": "first",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "share_subscription"
+      }
+    },
+    "ESOP_GRANT_LETTER": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Company",
+            "aliases": [
+              "Company",
+              "Employer"
+            ]
+          },
+          "second": {
+            "canonical": "Optionee",
+            "aliases": [
+              "Optionee",
+              "Employee",
+              "Grantee"
+            ]
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": []
+      },
+      "roles": {
+        "payer": "second",
+        "payee": "first",
+        "performer": "first",
+        "reviewer": "second"
+      },
+      "rendering": {
+        "purposeMode": "option_grant"
+      },
+      "//": "A grant letter is a short instrument issued under a scheme that carries the general terms. The baseline is suppressed so the letter does not restate them and drift out of step with the scheme it is subject to."
     }
   }
 }

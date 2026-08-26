@@ -1,0 +1,43 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A shorter limitation period than the Act allows is imposed",
+    "Conciliation is made a precondition to an inquiry",
+    "A monetary settlement is used as the basis of conciliation"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_COMPLAINT_PROCEDURE_001",
+  "name": "Making a Complaint",
+  "title": "Making a Complaint",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "An aggrieved woman may make a complaint of sexual harassment to the Internal Committee as follows.\n(a) The complaint shall be made in writing, and shall be made within three months of the date of the incident, or within three months of the date of the last incident where there is a series of incidents.\n(b) The Committee may extend that period by a further period not exceeding three months, where it is satisfied that circumstances prevented the complaint being made in time, and shall record its reasons in writing for doing so.\n(c) Where the aggrieved woman is unable to make a complaint in writing, the Presiding Officer or any member of the Committee shall render all reasonable assistance to enable her to do so.\n(d) Where the aggrieved woman is unable to make a complaint by reason of physical or mental incapacity, or death, a complaint may be made by such person as the Act permits.\n(e) Before initiating an inquiry, and at the request of the aggrieved woman, the Committee may take steps to settle the matter by conciliation. No monetary settlement shall be made as a basis of conciliation. Where a settlement is arrived at, no further inquiry shall be conducted.\n(f) The Organisation shall not require the aggrieved woman to attempt conciliation, and her declining it shall not count against her in any way.",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "9",
+      "note": "Complaint within three months of the incident, extendable by a further three months for reasons recorded in writing"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "10",
+      "note": "Conciliation at the request of the aggrieved woman; no monetary settlement as a basis of conciliation"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.9, S.10",
+  "authoring_note": "Limb (f) is not in the Act in those words; it is drawn from Section 10, which makes conciliation available only at the aggrieved woman's request. It is stated expressly because in practice conciliation is often presented to a complainant as the expected first step. The advocate should confirm they are content for the policy to say this plainly."
+}

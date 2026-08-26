@@ -1,0 +1,58 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The inquiry exceeds ninety days without lawful reason",
+    "Interim leave is deducted from the aggrieved woman's own leave entitlement",
+    "The inquiry report is withheld from either party"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_INQUIRY_RELIEF_001",
+  "name": "Inquiry, Interim Relief and Confidentiality",
+  "title": "Inquiry and Interim Relief",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "Where the matter is not settled by conciliation, the Internal Committee shall inquire into the complaint.\n(a) The inquiry shall be conducted in accordance with the principles of natural justice, and shall be completed within ninety days.\n(b) During the pendency of the inquiry, the Committee may, on the written request of the aggrieved woman, recommend that she be transferred to another workplace, that the respondent be transferred, that she be granted leave of up to three months in addition to her entitled leave, or that the respondent be restrained from reporting on her work performance.\n(c) Leave granted as interim relief is paid leave, and shall not be deducted from the aggrieved woman's leave entitlement.\n(d) The Committee shall submit its report to the Organisation within ten days of completing the inquiry, and the report shall be made available to both parties.\n(e) The identity and address of the aggrieved woman, the respondent, and the witnesses, the contents of the complaint, the inquiry proceedings, and the recommendations of the Committee shall not be published or made known to the public, the press, or the media in any manner. A person who breaches this obligation is liable to the penalty under Section 17 of the Act.\n(f) The Organisation shall not victimise, and shall not permit the victimisation of, any person for making a complaint, for giving evidence, or for assisting in an inquiry.",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "11",
+      "note": "Inquiry into the complaint, to be completed within ninety days"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "12",
+      "note": "Action during the pendency of the inquiry, including transfer and leave of up to three months"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "13",
+      "note": "Inquiry report within ten days, and to be made available to the parties"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "16",
+      "note": "Prohibition of publication or making known the contents of the complaint and the inquiry proceedings"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "17",
+      "note": "Penalty for publication or making known the contents of the complaint and the inquiry proceedings"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.11, S.12, S.13, S.16",
+  "authoring_note": "Limb (c) states expressly that interim leave is in addition to entitled leave, because Section 12 says so and because deducting it is a common and serious error. Limb (f) on victimisation is a policy commitment rather than a direct restatement of a section; the advocate should decide whether to tie it to the Organisation's disciplinary rules so that victimisation is expressly misconduct."
+}

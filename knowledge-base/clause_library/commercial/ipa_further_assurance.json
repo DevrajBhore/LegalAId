@@ -1,0 +1,51 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A patent assignment is relied on that has not been reduced to a document embodying all the terms, contrary to Section 68 of the Patents Act, 1970"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+  "name": "Registration and Further Assurance",
+  "title": "Registration and Further Assurance",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "text": "The Assignor shall do whatever is necessary to perfect the Assignee's title.\n(a) The Assignor shall execute every document, and do every act, that the Assignee reasonably requires to vest the assigned intellectual property in the Assignee and to record the Assignee as its proprietor.\n(b) In respect of a patent or patent application, the Parties shall apply to the Controller of Patents to register the assignment, and the Parties acknowledge that under Section 68 of the Patents Act, 1970 an assignment is not valid unless it is in writing and the agreement between the parties concerned is reduced to the form of a document embodying all the terms and conditions governing their rights and obligations.\n(c) In respect of a trade mark, the Parties shall apply to the Registrar under Section 45 of the Trade Marks Act, 1999.\n(d) In respect of a design, the Parties shall apply to the Controller under Section 30 of the Designs Act, 2000.\n(e) The Assignee shall bear the official fees of recordal, and each Party shall bear its own costs of giving effect to this clause.\n(f) The Assignor irrevocably appoints the Assignee as its attorney to execute any document under this clause that the Assignor fails to execute within fifteen days of being asked to.",
+  "legal_basis": [
+    {
+      "act": "Patents Act, 1970",
+      "section": "68",
+      "note": "An assignment of a patent is not valid unless it is in writing and the agreement is reduced to the form of a document embodying all the terms and conditions"
+    },
+    {
+      "act": "Patents Act, 1970",
+      "section": "69",
+      "note": "Registration of assignments and other documents with the Controller"
+    },
+    {
+      "act": "Trade Marks Act, 1999",
+      "section": "45",
+      "note": "Registration of assignments and transmissions"
+    },
+    {
+      "act": "Designs Act, 2000",
+      "section": "30",
+      "note": "Registration of assignments and transmissions of a registered design"
+    }
+  ],
+  "source": "Patents Act, 1970; Trade Marks Act, 1999; Designs Act, 2000",
+  "statutory_reference": "Patents Act, 1970 - S.68, S.69; Trade Marks Act, 1999 - S.45",
+  "authoring_note": "Section 68 of the Patents Act, 1970 is stricter than the copyright and trade mark equivalents: the assignment must not merely be in writing but must embody all the terms and conditions in a single document. A short-form assignment referring out to a separate agreement risks being held invalid. Limb (f) is a power of attorney granted inside this agreement; the advocate should confirm it is acceptable and whether it needs separate stamping."
+}

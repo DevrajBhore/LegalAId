@@ -1,0 +1,63 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The assignment is not in writing signed by the assignor, in which case it is invalid under Section 19(1)",
+    "The work is not identified, or the rights, duration or territorial extent are left unstated",
+    "The assignment purports to cover a future work otherwise than as the proviso to Section 18 permits"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "IPA_COPYRIGHT_ASSIGNMENT_001",
+  "name": "Assignment of Copyright",
+  "title": "Assignment of Copyright",
+  "category": "PURPOSE",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "text": "The Assignor assigns to the Assignee the copyright in the work described below, on the following terms, which are stated because Section 19 of the Copyright Act, 1957 requires an assignment to state them.\n(a) The work assigned is {{assigned_work_description}}.\n(b) The rights assigned are all rights comprised in the copyright in the work, including the rights of reproduction, adaptation, translation, communication to the public, and commercial exploitation in every medium, whether now known or later devised.\n(c) The duration of the assignment is the whole remaining term of copyright in the work. This is stated expressly because, under Section 19(5), an assignment that does not state its period is deemed to be for five years only.\n(d) The territorial extent of the assignment is worldwide. This is stated expressly because, under Section 19(6), an assignment that does not specify its territorial extent is presumed to extend only within India.\n(e) The assignment does not lapse if the Assignee does not exercise the rights within one year of the date of this Agreement, and this clause is the express provision to the contrary that Section 19(4) contemplates.\n(f) This assignment is in writing and signed by the Assignor, as Section 19(1) requires for the assignment to be valid.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "18",
+      "note": "The owner of the copyright in an existing work may assign the copyright to any person"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(1)",
+      "note": "No assignment of copyright is valid unless it is in writing signed by the assignor or by a duly authorised agent"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(2)",
+      "note": "The assignment shall identify the work and specify the rights assigned and the duration and territorial extent of the assignment"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(4)",
+      "note": "Where the assignee does not exercise the rights within one year the assignment is deemed to have lapsed, unless otherwise specified in the assignment"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(5)",
+      "note": "If the period of assignment is not stated, it shall be deemed to be five years from the date of assignment"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(6)",
+      "note": "If the territorial extent is not specified, it shall be presumed to extend within India"
+    }
+  ],
+  "source": "Copyright Act, 1957",
+  "statutory_reference": "Copyright Act, 1957 - S.18, S.19",
+  "authoring_note": "Limbs (c), (d) and (e) exist solely to displace the statutory defaults, and each says so. This is the most frequently botched assignment in Indian practice: a clause reading 'the Assignor hereby assigns all right, title and interest' without stating duration and territory gives the assignee five years within India, which is almost never what either party intended. Section 19(4)'s one-year lapse is displaced by limb (e); the advocate should confirm that is intended, since a party acquiring rights defensively may prefer the lapse."
+}

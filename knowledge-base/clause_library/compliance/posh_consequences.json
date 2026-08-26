@@ -1,0 +1,67 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Action is taken against a complainant merely because the complaint could not be substantiated",
+    "The employer fails to act on the Committee's recommendation within sixty days"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_CONSEQUENCES_REPORTING_001",
+  "name": "Action, False Complaints, Reporting and Penalty",
+  "title": "Action and Reporting",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "The Organisation shall act on the recommendations of the Internal Committee as follows.\n(a) Where the allegation is proved, the Organisation shall act on the Committee's recommendation within sixty days of receiving it. Sexual harassment is misconduct under the Organisation's service rules, and action may include a written warning, withholding of a promotion or increment, suspension, or termination of service.\n(b) The Committee may recommend that a sum be deducted from the respondent's salary and paid to the aggrieved woman, or to her legal heirs, as compensation determined on the basis set out in the Act.\n(c) Where the Committee concludes that a complaint was malicious, or that the complainant knowingly made a false allegation or produced a forged or misleading document, it may recommend action against her. The mere inability to substantiate a complaint, or to provide adequate proof, does not attract action under this sub-clause.\n(d) The Organisation shall assist the aggrieved woman, if she so wishes, in making a complaint under the Bharatiya Nyaya Sanhita, 2023, Section 75 of which makes sexual harassment a criminal offence, and shall initiate action against a respondent who is not an employee.\n(e) The Internal Committee shall prepare an annual report and submit it to the Organisation and to the District Officer, and the Organisation shall include in its annual report the number of cases filed and disposed of.\n(f) The Organisation shall organise awareness programmes for employees and orientation programmes for members of the Internal Committee, and shall display at a conspicuous place the penal consequences of sexual harassment and the constitution of the Committee.\n(g) Failure by the Organisation to comply with the Act is punishable with a fine which may extend to fifty thousand rupees, and on a repetition may attract twice that punishment and cancellation of its registration or licence.",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "13",
+      "note": "Action on the Committee's recommendation within sixty days"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "14",
+      "note": "Punishment for a false or malicious complaint; inability to substantiate is not enough"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "19",
+      "note": "Duties of the employer, including awareness programmes, display, and assistance in filing a criminal complaint"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "21",
+      "note": "Committee's annual report to the employer and the District Officer"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "22",
+      "note": "Employer to include the number of cases in its annual report"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "26",
+      "note": "Penalty for non-compliance — fine up to fifty thousand rupees, and enhanced consequences on repetition"
+    },
+    {
+      "act": "Bharatiya Nyaya Sanhita, 2023",
+      "section": "75",
+      "note": "Sexual harassment as a criminal offence, replacing Section 354A of the Indian Penal Code, 1860"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013; Bharatiya Nyaya Sanhita, 2023",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.13, S.14, S.19, S.26",
+  "authoring_note": "The second sentence of limb (c) is the important one and is taken almost verbatim from Section 14: an inability to substantiate is expressly not a false complaint. Without it, a false-complaint provision reads as a deterrent to complaining at all. Limb (d) cites the Bharatiya Nyaya Sanhita, 2023 s.75, which replaced Section 354A of the Indian Penal Code, 1860 when the Sanhita commenced on 1 July 2024; the advocate should confirm the section number against the bare text. Limb (g) states the penalty on the Organisation deliberately, so that the policy is read by those who must operate it as carrying consequences."
+}

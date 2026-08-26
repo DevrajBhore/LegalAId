@@ -1,0 +1,30 @@
+{
+  "document_type": "SEPARATION_AGREEMENT",
+  "family": "employment",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "EMP_SEPARATION_PURPOSE_001",
+    "EMP_FNF_SETTLEMENT_001",
+    "EMP_FNF_RELEASE_001",
+    "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "EMP_GARDEN_LEAVE_001",
+      "include_if": "is_senior_employee == true",
+      "note": "A senior departure is often served out on garden leave rather than at the desk."
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Code on Wages 2019 S.17(2) — wages on resignation, removal, dismissal or retrenchment payable within TWO WORKING DAYS",
+    "Code on Social Security 2020 S.53 — gratuity after five years, or one year for fixed term employment (IR Code S.2(o))",
+    "Gratuity transitional — service before 21 November 2025 remains under the Payment of Gratuity Act 1972, so the calculation may split",
+    "Contract Act 1872 S.23 — a release cannot waive an accrued statutory entitlement",
+    "PoSH Act 2013 — a release cannot bar a complaint under the Act",
+    "Contract Act 1872 S.27 — any post-employment restraint must be confined to confidentiality or goodwill"
+  ]
+}

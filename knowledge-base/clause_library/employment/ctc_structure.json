@@ -1,0 +1,59 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The structure is arranged so that excluded allowances exceed one-half of the whole remuneration without the proviso to Section 2(y) of the Code on Wages, 2019 being applied",
+    "Deductions are made that Section 18 of the Code on Wages, 2019 does not authorise"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_CTC_STRUCTURE_001",
+  "name": "Cost to Company and Salary Structure",
+  "title": "Remuneration",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "APPOINTMENT_LETTER",
+    "OFFER_LETTER",
+    "EMPLOYMENT_CONTRACT"
+  ],
+  "text": "The Employee shall be paid the annual cost to company stated in this letter, which is the Employer's total cost of employing the Employee and is not the Employee's take-home pay. It is made up as follows.\n(a) Basic salary, together with any dearness allowance and retaining allowance, constitutes 'wages' for statutory purposes. Where the total of the allowances excluded from wages exceeds one-half of the whole remuneration, the excess is added back to wages, as required by the proviso to Section 2(y) of the Code on Wages, 2019.\n(b) House rent allowance, conveyance, and any other allowance, are paid in accordance with the Employer's policy as amended from time to time.\n(c) The Employer's contribution to the provident fund, and to any gratuity provision, is part of the cost to company and is not paid to the Employee as monthly salary.\n(d) Salary is paid monthly in arrears, by credit to the Employee's designated bank account, on or before the seventh day of the following month, in accordance with Section 17 of the Code on Wages, 2019.\n(e) The Employer shall deduct tax at source under Section 192 of the Income-tax Act, 1961, and such other deductions as are authorised by Section 18 of the Code on Wages, 2019. No other deduction shall be made from the Employee's wages.\n(f) The Employer shall issue a pay slip for each wage period recording gross salary, each deduction, and net pay.",
+  "legal_basis": [
+    {
+      "act": "Code on Wages, 2019",
+      "section": "2(y)",
+      "note": "Definition of wages, and the proviso adding back excluded allowances above one-half of the whole remuneration"
+    },
+    {
+      "act": "Code on Wages, 2019",
+      "section": "17",
+      "note": "Time limit for payment of wages"
+    },
+    {
+      "act": "Code on Wages, 2019",
+      "section": "18",
+      "note": "No deductions except those authorised by the Code"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "192",
+      "note": "Deduction of tax at source on salary"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "Chapter III (ss. 14-23)",
+      "note": "Provident fund contributions"
+    }
+  ],
+  "source": "Code on Wages, 2019; Code on Social Security, 2020; Income-tax Act, 1961",
+  "statutory_reference": "Code on Wages, 2019 - S.2(y), S.17, S.18",
+  "authoring_note": "Limb (a) is the commercially significant one and is the reason this clause exists. The proviso to CoW s.2(y) adds back to 'wages' any excluded allowances exceeding one-half of the whole remuneration, which raises the provident fund, gratuity and bonus base. A great many Indian CTC structures are built the other way round, with basic held low and allowances high. The advocate should decide whether the clause should state the fifty per cent floor as plainly as it does here, or leave it to the payroll policy. Stating it plainly is the honest position but removes a structuring option the employer may believe it has."
+}

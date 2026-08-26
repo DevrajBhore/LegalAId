@@ -34,16 +34,43 @@ def main():
 
     index = {c["clause_id"]: c["file"] for c in json.load(open("reviewpack.json", encoding="utf-8"))}
 
+    # Locate the columns by their HEADER TEXT rather than by position. They were
+    # read by fixed index until a column was inserted ahead of them, at which
+    # point the importer silently read the wrong three columns and reported every
+    # clause as skipped. A header lookup cannot fail that way.
+    header_row = 5
+    headers = {}
+    for cell in rv[header_row]:
+        if cell.value:
+            headers[str(cell.value).strip().upper()] = cell.column - 1
+
+    def column_for(*candidates):
+        for want in candidates:
+            for name, idx in headers.items():
+                if name.startswith(want):
+                    return idx
+        sys.exit(
+            f"Could not find the '{candidates[0]}' column in row {header_row} of the "
+            f"'Reviewed clauses' tab. Found: {sorted(headers)}. The sheet was probably "
+            "produced by a different version of scripts/buildReviewPack.py."
+        )
+
+    COL_ID = column_for("CLAUSE ID")
+    COL_DECISION = column_for("DECISION")
+    COL_REVISED = column_for("REVISED TEXT")
+    COL_NOTE = column_for("NOTE")
+
     approved, amended, rejected, discuss, skipped, missing = [], [], [], [], [], []
     edits = {}
 
     for row in rv.iter_rows(min_row=6, values_only=True):
-        if not row or not row[1]:
+        if not row or len(row) <= COL_ID or not row[COL_ID]:
             continue
-        clause_id = str(row[1]).strip()
-        decision = str(row[10] or "").strip().lower()
-        revised = (row[11] or "")
-        note = str(row[12] or "").strip()
+        cell = lambda i: row[i] if i < len(row) else None
+        clause_id = str(row[COL_ID]).strip()
+        decision = str(cell(COL_DECISION) or "").strip().lower()
+        revised = cell(COL_REVISED) or ""
+        note = str(cell(COL_NOTE) or "").strip()
 
         if not decision:
             skipped.append(clause_id); continue

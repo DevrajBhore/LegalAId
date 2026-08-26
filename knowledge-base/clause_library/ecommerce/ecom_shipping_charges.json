@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A charge is added after the consumer has placed the order",
+    "The total price is not broken down before purchase"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": true,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_SHIPPING_CHARGES_001",
+  "name": "Shipping Charges",
+  "title": "Shipping Charges",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "text": "Shipping charges are applied as follows.\n(a) The shipping charge payable on an order is shown to the consumer before the order is placed, and no charge is added afterwards.\n(b) Where a shipping charge is waived above an order value, that value is stated on the platform.\n(c) Applicable taxes on the shipping charge are shown separately, and the invoice issued to the consumer complies with Section 31 of the Central Goods and Services Tax Act, 2017.\n(d) Where cash on delivery is offered, any additional charge for it is shown before the order is placed.\n(e) Where an order is cancelled or returned in the circumstances set out in the Refund and Cancellation Policy, the treatment of the shipping charge is as stated in that Policy.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "The total price of goods or services must be broken down, showing all compulsory and voluntary charges such as delivery, postage, handling and conveyance"
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "31",
+      "note": "Tax invoice requirements"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(47)",
+      "note": "Unfair trade practice, including a charge not disclosed before purchase"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; CGST Act, 2017; Consumer Protection Act, 2019",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4",
+  "authoring_note": "Limb (a) reflects the price-breakdown duty in the E-Commerce Rules. Undisclosed charges added at checkout are the single most frequently complained-of practice under these Rules."
+}

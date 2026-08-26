@@ -1,4 +1,92 @@
 export const DOCUMENT_TYPE_REGISTRY = {
+  FOUNDERS_AGREEMENT: {
+    displayName: "Founders' Agreement",
+    family: "Startup & Fundraising",
+    ireType: "FOUNDERS_AGREEMENT",
+    blueprintName: "founders_agreement",
+  },
+  TERM_SHEET: {
+    displayName: "Term Sheet",
+    family: "Startup & Fundraising",
+    ireType: "TERM_SHEET",
+    blueprintName: "term_sheet",
+  },
+  ESOP_GRANT_LETTER: {
+    displayName: "ESOP Grant Letter",
+    family: "Startup & Fundraising",
+    ireType: "ESOP_GRANT_LETTER",
+    blueprintName: "esop_grant_letter",
+  },
+  SHARE_SUBSCRIPTION_AGREEMENT: {
+    displayName: "Share Subscription Agreement",
+    family: "Startup & Fundraising",
+    ireType: "SHARE_SUBSCRIPTION_AGREEMENT",
+    blueprintName: "share_subscription_agreement",
+  },
+
+  PROMISSORY_NOTE: {
+    displayName: "Promissory Note",
+    family: "Finance",
+    ireType: "PROMISSORY_NOTE",
+    blueprintName: "promissory_note",
+  },
+  IP_ASSIGNMENT_AGREEMENT: {
+    displayName: "IP Assignment Agreement",
+    family: "Intellectual Property",
+    ireType: "IP_ASSIGNMENT_AGREEMENT",
+    blueprintName: "ip_assignment_agreement",
+  },
+  POWER_OF_ATTORNEY: {
+    displayName: "Power of Attorney",
+    family: "Instruments",
+    ireType: "POWER_OF_ATTORNEY",
+    blueprintName: "power_of_attorney",
+  },
+
+  DATA_PROCESSING_AGREEMENT: {
+    displayName: "Data Processing Agreement",
+    family: "Data & Compliance",
+    ireType: "DATA_PROCESSING_AGREEMENT",
+    blueprintName: "data_processing_agreement",
+  },
+  REFUND_AND_CANCELLATION_POLICY: {
+    displayName: "Refund & Cancellation Policy",
+    family: "Data & Compliance",
+    ireType: "REFUND_AND_CANCELLATION_POLICY",
+    blueprintName: "refund_and_cancellation_policy",
+  },
+  SHIPPING_AND_DELIVERY_POLICY: {
+    displayName: "Shipping & Delivery Policy",
+    family: "Data & Compliance",
+    ireType: "SHIPPING_AND_DELIVERY_POLICY",
+    blueprintName: "shipping_and_delivery_policy",
+  },
+
+  APPOINTMENT_LETTER: {
+    displayName: "Appointment Letter",
+    family: "Employment",
+    ireType: "APPOINTMENT_LETTER",
+    blueprintName: "appointment_letter",
+  },
+  INTERNSHIP_AGREEMENT: {
+    displayName: "Internship Agreement",
+    family: "Employment",
+    ireType: "INTERNSHIP_AGREEMENT",
+    blueprintName: "internship_agreement",
+  },
+  SEPARATION_AGREEMENT: {
+    displayName: "Separation & Full and Final Settlement",
+    family: "Employment",
+    ireType: "SEPARATION_AGREEMENT",
+    blueprintName: "separation_agreement",
+  },
+  POSH_POLICY: {
+    displayName: "PoSH Policy",
+    family: "Employment",
+    ireType: "POSH_POLICY",
+    blueprintName: "posh_policy",
+  },
+
   NDA: {
     displayName: "Non-Disclosure Agreement",
     family: "Contracts & Commercial",

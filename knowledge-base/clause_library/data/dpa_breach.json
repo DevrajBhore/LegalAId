@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The processor's notification period leaves the fiduciary unable to meet the seventy-two hour deadline in Rule 7",
+    "The processor is permitted to notify Data Principals or the Board directly without the fiduciary's knowledge, where the fiduciary carries that duty"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_BREACH_NOTIFICATION_001",
+  "name": "Personal Data Breach",
+  "title": "Personal Data Breach",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "On becoming aware of a personal data breach affecting personal data processed under this Agreement, the Processor shall act as follows.\n(a) The Processor shall notify the Fiduciary without undue delay, and in any event within twenty-four hours of becoming aware of the breach.\n(b) The notification shall describe the nature and extent of the breach, the personal data and the Data Principals affected so far as known, the likely consequences, the measures taken or proposed to mitigate it, and the person from whom further information may be obtained.\n(c) The Processor shall provide the Fiduciary with such further information and assistance as the Fiduciary reasonably requires to discharge its own obligations, which under Rule 7 of the Digital Personal Data Protection Rules, 2025 are to intimate every affected Data Principal, to give the Data Protection Board a preliminary intimation without delay, and to furnish the Board with detailed particulars within seventy-two hours.\n(d) The Processor shall not communicate with any affected Data Principal, regulator, or the media about the breach without the Fiduciary's prior written consent, unless it is required by law to do so.\n(e) The Processor shall preserve all evidence relating to the breach and shall bear its own costs of investigation and remediation.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(6)",
+      "note": "In the event of a personal data breach the Data Fiduciary shall give intimation to the Board and to each affected Data Principal"
+    },
+    {
+      "act": "Digital Personal Data Protection Rules, 2025",
+      "section": "7",
+      "note": "Intimation of personal data breach: without delay to affected Data Principals and preliminary intimation to the Board, with detailed particulars to the Board within seventy-two hours"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023; Digital Personal Data Protection Rules, 2025",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.8(6); Digital Personal Data Protection Rules, 2025 - R.7",
+  "authoring_note": "The twenty-four hour processor deadline in limb (a) is a contractual figure, not a statutory one. It is set inside the Fiduciary's own seventy-two hour deadline to the Board under Rule 7, since a processor notifying at seventy-two hours would leave the Fiduciary with no time at all. The advocate should decide whether twenty-four hours is the right margin. The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself."
+}

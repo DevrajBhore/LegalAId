@@ -1,0 +1,27 @@
+{
+  "document_type": "ESOP_GRANT_LETTER",
+  "family": "employment",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "ESOP_GRANT_001",
+    "ESOP_VESTING_001",
+    "ESOP_EXERCISE_001",
+    "ESOP_TAXATION_001",
+    "ESOP_LEAVER_AND_LAPSE_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Companies Act 2013 S.62(1)(b) and SCD Rules R.12 — scheme must be approved by shareholders; check the MCA private-company exemption of 5 June 2015 before relying on an ordinary resolution",
+    "SCD Rules R.12(6)(a) — MINIMUM one year between grant and vesting; no vesting date may fall inside the first year",
+    "SCD Rules R.12(8)(a)-(b) — options are non-transferable and cannot be pledged or encumbered",
+    "SCD Rules R.12(8)(d) — on death, unvested options VEST in the legal heirs; they do not lapse",
+    "SCD Rules R.12(8)(e) — on permanent incapacity, unvested options vest that day",
+    "SCD Rules R.12(8)(f) — on resignation or termination, unvested options expire; vested options remain exercisable",
+    "Income-tax Act S.17(2)(vi) — tax arises on EXERCISE, not on sale; the employee may owe tax on a gain they cannot realise",
+    "Income-tax Act S.192(1C) — deferral available only to an eligible start-up under S.80-IAC; confirm eligibility before promising it",
+    "SCD Rules R.12 — eligibility restrictions on promoters and on directors holding more than 10 per cent"
+  ]
+}

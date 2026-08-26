@@ -1,0 +1,52 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A buy-back is effected without complying with Sections 68 to 70 of the Companies Act, 2013",
+    "The vesting arrangement is not reflected in the Company's articles, leaving it unenforceable against a transferee"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "FOUNDER_EQUITY_AND_VESTING_001",
+  "name": "Founder Equity and Vesting",
+  "title": "Equity and Vesting",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "FOUNDERS_AGREEMENT"
+  ],
+  "text": "The Founders hold equity in the Company in the proportions stated in this Agreement, subject to vesting as follows.\n(a) The shareholding of each Founder is: {{founder_equity_split}}.\n(b) The shares held by each Founder vest over {{vesting_period}} from the Vesting Commencement Date, subject to a cliff of {{vesting_cliff}}. No shares vest before the cliff is reached; on the cliff being reached, the proportion attributable to the period served vests at once, and the balance vests in equal monthly instalments over the remainder of the period.\n(c) Vesting is by way of reverse vesting: the Founder holds the shares from the outset, and the Company or the other Founders may buy back the unvested portion if the Founder ceases to be engaged in the business, at the price stated in the leaver provisions of this Agreement.\n(d) A buy-back by the Company shall be effected only in accordance with Sections 68 to 70 of the Companies Act, 2013 and the rules made under them; where those requirements cannot be met, the unvested shares shall instead be transferred to the continuing Founders, or to a person the Board nominates, at the same price.\n(e) Vesting accelerates in full on a Liquidity Event, unless this Agreement provides otherwise.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "68",
+      "note": "Power of a company to purchase its own securities, subject to the conditions and limits prescribed"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "70",
+      "note": "Circumstances in which a company shall not purchase its own shares"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "2(68)",
+      "note": "A private company restricts the right to transfer its shares, which makes a contractual transfer restriction enforceable"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Restraint of trade; a buy-back on cessation is a share arrangement rather than a restraint, but the surrounding covenants must be tested against this section"
+    }
+  ],
+  "source": "Companies Act, 2013; Indian Contract Act, 1872",
+  "statutory_reference": "Companies Act, 2013 - S.68, S.2(68)",
+  "authoring_note": "Limb (d) is the practical difficulty and the reason this clause is longer than founders expect. A company buy-back under Section 68 is hedged with conditions -- free reserves, a 25 per cent limit, a one-year gap between buy-backs -- which an early-stage company frequently cannot satisfy. The fallback transfer to continuing founders avoids the arrangement failing when it is most needed. The advocate should also confirm that the transfer restrictions are written into the articles: a shareholders' agreement not reflected in the articles binds the signatories but not the company or a transferee."
+}

@@ -24,6 +24,77 @@ export const ESSENTIAL_FIELDS = {
     "party_2_name", "party_2_type",
     "purpose", "effective_date",
   ],
+  FOUNDERS_AGREEMENT: [
+    "operating_state", "company_name", "business_purpose",
+    "party_1_name", "party_1_type", "party_2_name", "party_2_type",
+    "founder_equity_split", "effective_date",
+  ],
+  TERM_SHEET: [
+    "operating_state", "company_name",
+    "party_1_name", "party_1_type", "party_2_name", "party_2_type",
+    "investment_amount", "pre_money_valuation", "effective_date",
+  ],
+  ESOP_GRANT_LETTER: [
+    "operating_state", "company_name",
+    "party_1_name", "party_1_type", "party_2_name", "party_2_type",
+    "options_granted", "exercise_price", "effective_date",
+  ],
+  SHARE_SUBSCRIPTION_AGREEMENT: [
+    "operating_state", "company_name",
+    "party_1_name", "party_1_type", "party_2_name", "party_2_type",
+    "securities_subscribed", "investment_amount", "effective_date",
+  ],
+  PROMISSORY_NOTE: [
+    "operating_state", "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "principal_amount", "repayment_terms", "effective_date",
+  ],
+  IP_ASSIGNMENT_AGREEMENT: [
+    "operating_state", "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "assigned_work_description", "effective_date",
+  ],
+  POWER_OF_ATTORNEY: [
+    "operating_state", "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "powers_granted", "effective_date",
+  ],
+  DATA_PROCESSING_AGREEMENT: [
+    "operating_state", "party_1_name", "party_1_type",
+    "party_2_name", "party_2_type",
+    "data_categories", "processing_purpose", "effective_date",
+  ],
+  REFUND_AND_CANCELLATION_POLICY: [
+    "operating_state", "company_name", "website_url",
+    "goods_or_services_description", "grievance_officer", "effective_date",
+  ],
+  SHIPPING_AND_DELIVERY_POLICY: [
+    "operating_state", "company_name", "website_url",
+    "goods_or_services_description", "grievance_officer", "effective_date",
+  ],
+  APPOINTMENT_LETTER: [
+    "operating_state",
+    "employer_name", "employee_name",
+    "job_title", "salary",
+    "start_date", "effective_date",
+  ],
+  INTERNSHIP_AGREEMENT: [
+    "operating_state",
+    "employer_name", "employee_name",
+    "learning_objectives", "stipend_amount",
+    "internship_duration", "effective_date",
+  ],
+  SEPARATION_AGREEMENT: [
+    "operating_state",
+    "employer_name", "employee_name",
+    "last_working_day", "settlement_amount", "effective_date",
+  ],
+  POSH_POLICY: [
+    "operating_state",
+    "company_name",
+    "posh_presiding_officer", "posh_external_member",
+    "posh_committee_contact", "effective_date",
+  ],
   EMPLOYMENT_CONTRACT: [
     "operating_state",
     "employer_name", "employee_name",

@@ -6,11 +6,11 @@
 
 ## 1. What you are being asked to do, and why
 
-LegalAId generates 22 types of Indian commercial document. It does not write them
-from scratch each time — it assembles them from a **library of 191 clauses**,
+LegalAId generates 36 types of Indian commercial document. It does not write them
+from scratch each time — it assembles them from a **library of 250 clauses**,
 selecting and adapting clauses based on what the user typed into the form.
 
-Those 191 clauses are the product. Every document a user receives is built out of
+Those 250 clauses are the product. Every document a user receives is built out of
 them.
 
 **None of them has been reviewed by a lawyer.** They were drafted by engineers and
@@ -39,8 +39,18 @@ Everything below lives on that one page. The page has three panels, top to botto
 
 ### Panel 1 — **Clause library review**  ← this is your job
 
-The 191 clauses that are already going out in real documents. This is where you
+The 250 clauses that are already going out in real documents. This is where you
 spend your time.
+
+**Start with the 19 clauses flagged about the labour Codes.** India's four labour
+Codes came into force on **21 November 2025**, repealing 29 central statutes this
+library had been citing — the Payment of Wages Act, the Payment of Gratuity Act,
+the Maternity Benefit Act, the Factories Act, the Industrial Disputes Act and
+others. Those clauses have been repointed to the Codes, but the **substance moved,
+not just the section numbers**: gratuity at one year for fixed-term staff, the
+50 per cent wage-definition rule, the factory working day cut from nine hours to
+eight, and wages on exit payable within two working days. Several successor
+sections could not be verified and say so in the clause's question.
 
 ### Panel 2 — **AI gap analysis**
 
@@ -66,7 +76,8 @@ currently reaching a user.
 
 | Badge | Meaning |
 |---|---|
-| `22 docs` | **Reach** — how many of the 22 document types use this clause. A clause with reach 25 appears in nearly everything. |
+| `36 docs` | **Reach** — how many of the 36 document types use this clause, counting both the ones that list it and the ones it is injected into. A clause with reach 30 appears in nearly everything. |
+| *question* | Where the drafter could not settle a point, the row carries a **question written for you**: the section it turns on, the choice taken, and anything cited but not verified. 90 clauses carry one. Read it before the clause text — it is quicker to decide than bare wording. |
 | `HIGH` / `MEDIUM` / `LOW` | The risk level recorded against the clause. |
 | `mandatory` | The document blueprint requires this clause; it cannot be omitted. |
 | `unmarked` / `signed <name>` | Whether it has been reviewed yet. |
@@ -108,13 +119,14 @@ it a sub-sub-clause.
 The list is **not alphabetical**. It is ordered by how much of the product each
 clause touches, so that a partial review still covers most of what users receive.
 
-Actual figures for the current library:
+Actual figures for the current library (250 clauses, 970 placements across
+36 document types):
 
 ```
-first  10 clauses  →  38% of all clause usage
-first  20 clauses  →  51%
-first  50 clauses  →  66%
-first 100 clauses  →  77%
+first  10 clauses  →  30% of all clause usage
+first  20 clauses  →  52%
+first  50 clauses  →  67%
+first 100 clauses  →  76%
 ```
 
 **Stopping after 20 is a legitimate first pass.** Half of everything the product
@@ -122,22 +134,25 @@ emits would then be lawyer-approved, and the system would say so accurately.
 
 The first eight rows are the ones in nearly every document:
 
-1. `CORE_IDENTITY_001` — Parties and Recitals *(22 docs, mandatory)*
-2. `CORE_SIGNATURE_BLOCK_001` — Execution and Signatures *(23 docs, mandatory)*
-3. `CORE_ENTIRE_AGREEMENT_001` — Entire Agreement *(25 docs)*
-4. `CORE_GOVERNING_LAW_001` — Governing Law *(25 docs)*
-5. `CORE_DATA_PROCESSING_001` — Data Processing *(19 docs, mandatory)*
-6. `CORE_DISPUTE_RESOLUTION_001` — Dispute Resolution *(24 docs)*
-7. `CORE_PURPOSE_001` — Purpose *(18 docs, mandatory)*
-8. `CORE_TERM_001` — Term *(16 docs, mandatory)*
+1. `CORE_IDENTITY_001` — Parties and Recitals *(28 docs, mandatory)*
+2. `CORE_STAMP_AND_COSTS_001` — Stamp Duty, Registration and Costs *(28 docs)*
+3. `CORE_GOVERNING_LAW_001` — Governing Law *(36 docs)*
+4. `CORE_SIGNATURE_BLOCK_001` — Execution and Signatures *(31 docs, mandatory)*
+5. `CORE_DEFINITIONS_001` — Definitions *(30 docs, mandatory)*
+6. `CORE_ENTIRE_AGREEMENT_001` — Entire Agreement *(30 docs)*
+7. `CORE_INDEMNITY_001` — Indemnity *(15 docs)*
+8. `CORE_INTERPRETATION_001` — Interpretation *(30 docs)*
 
-Separately, **28 clauses are marked HIGH risk** — IP ownership, property
+Separately, **71 clauses are marked HIGH risk** — IP ownership, property
 registration, guarantee obligations, board composition, share transfer, employee
-confidentiality, disciplinary action. Use the search box to find them if you would
+confidentiality, disciplinary action, and the newer data-protection, promissory
+note and founder-vesting clauses. Use the search box to find them if you would
 rather work by risk than by reach.
 
-**17 clauses appear in no document at all.** They need a keep-or-delete decision,
-not a legal review. Leave them till last.
+**Every clause in the library now reaches at least one document.** Some appear only
+when a user answers a particular question — a clause conditional on the workplace
+being a factory, say — so they may not show up in a sample draft, but they are
+live and do need review.
 
 ---
 

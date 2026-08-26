@@ -1,0 +1,51 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "An irrevocable power is asserted where the attorney has no interest in the subject matter of the agency"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POA_REVOCATION_001",
+  "name": "Duration and Revocation",
+  "title": "Duration and Revocation",
+  "category": "TERMINATION",
+  "document_types": [
+    "POWER_OF_ATTORNEY"
+  ],
+  "text": "This deed continues in force until it is terminated as follows.\n(a) The Principal may revoke this deed at any time by written notice to the Attorney, and shall give notice of the revocation to every person known to the Principal to be dealing with the Attorney under it.\n(b) The Attorney may renounce this authority by written notice to the Principal.\n(c) This deed terminates automatically on the death of the Principal or of the Attorney, on the Principal or the Attorney being adjudicated insolvent, or on the Principal becoming of unsound mind.\n(d) A revocation does not affect anything lawfully done by the Attorney under this deed before the Attorney had notice of the revocation, and a third party who deals with the Attorney in good faith and without notice of the revocation is protected.\n(e) Where this deed is stated to be irrevocable and the Attorney has an interest in the subject matter of the authority, it may not be revoked to the prejudice of that interest without the Attorney's consent.\n(f) Where this deed has been registered, a revocation of it should also be registered.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "201",
+      "note": "Termination of agency by revocation, renunciation, completion of the business, death or unsoundness of mind of the principal, or insolvency"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "202",
+      "note": "Where the agent has an interest in the property which forms the subject matter of the agency, the agency cannot be terminated to the prejudice of that interest"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "208",
+      "note": "The termination of the authority of an agent does not take effect as regards the agent before it becomes known to the agent, or as regards third persons before it becomes known to them"
+    },
+    {
+      "act": "Powers-of-Attorney Act, 1882",
+      "section": "2",
+      "note": "Protection of acts done under a power of attorney"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Powers-of-Attorney Act, 1882",
+  "statutory_reference": "Indian Contract Act, 1872 - S.201, S.202, S.208",
+  "authoring_note": "Limb (e) reflects Section 202: a power of attorney is irrevocable only where it is coupled with an interest, and simply writing the word 'irrevocable' in a deed does not make it so. Limb (d) reflects Section 208 and is the protection third parties rely on, which is why limb (a) requires the Principal to give notice of revocation rather than merely to make it."
+}

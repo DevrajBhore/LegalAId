@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A vesting date falls earlier than one year from the date of grant, contrary to Rule 12(6)(a)",
+    "The options are made transferable or capable of being encumbered"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ESOP_VESTING_001",
+  "name": "Vesting of Options",
+  "title": "Vesting",
+  "category": "TERM",
+  "document_types": [
+    "ESOP_GRANT_LETTER"
+  ],
+  "text": "The options vest as follows.\n(a) The options vest over {{vesting_period}} from {{effective_date}}, being the date of grant, subject to a cliff of {{vesting_cliff}}.\n(b) No option vests before the expiry of one year from the date of grant. This is a statutory minimum under Rule 12(6)(a) of the Companies (Share Capital and Debentures) Rules, 2014, and the Scheme cannot shorten it.\n(c) On the cliff being reached, the proportion of the options attributable to the period served vests at once, and the balance vests in equal instalments over the remainder of the vesting period.\n(d) Vesting is conditional on the Optionee remaining in the continuous employment of the Company on each vesting date, and on any performance condition the Scheme states.\n(e) The Company shall have the freedom to specify a lock-in period for shares issued on exercise, as Rule 12(6)(b) permits, and any lock-in applying to these options is stated in the Scheme.\n(f) An option is personal to the Optionee. It shall not be transferred to any other person, and shall not be pledged, hypothecated, mortgaged, or otherwise encumbered, as Rule 12(8) provides.",
+  "legal_basis": [
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(6)(a)",
+      "note": "There shall be a minimum period of one year between the grant of options and the vesting of options"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(6)(b)",
+      "note": "The company shall have the freedom to specify the lock-in period for the shares issued pursuant to exercise of option"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(8)",
+      "note": "An option granted to an employee shall not be transferable to any other person, and shall not be pledged, hypothecated, mortgaged or otherwise encumbered"
+    }
+  ],
+  "source": "Companies (Share Capital and Debentures) Rules, 2014",
+  "statutory_reference": "Companies (Share Capital and Debentures) Rules, 2014 - R.12(6), R.12(8)",
+  "authoring_note": "The one-year minimum in limb (b) is statutory and not a matter of scheme design; a monthly vesting schedule beginning at month one, which start-ups sometimes copy from other jurisdictions, is not permissible for an Indian unlisted company. The advocate should confirm the vesting inputs produce no vesting date inside the first year."
+}

@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A refund is made as store credit without the consumer choosing it",
+    "No period for effecting a refund is stated"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_REFUND_TIMELINE_001",
+  "name": "How and When a Refund is Made",
+  "title": "Refund Timeline",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY"
+  ],
+  "text": "A refund is made as follows.\n(a) {{company_name}} shall effect payment of an accepted refund within {{refund_window_days}} days of accepting the request, and in any event within the period prescribed under applicable law.\n(b) A refund is made to the payment instrument used for the original payment. Where that is not possible, it is made by another means agreed with the consumer, and never as store credit unless the consumer has chosen store credit.\n(c) The refund shall include the amount paid for the goods or services and any delivery charge paid, save where only part of an order is returned, in which case the delivery charge is refunded in proportion.\n(d) {{company_name}} shall inform the consumer when the refund has been initiated, and shall give a reference by which it may be traced.\n(e) Where a refund request is rejected, {{company_name}} shall inform the consumer of the reason in writing, and the consumer may raise the matter with the Grievance Officer.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "Every e-commerce entity shall effect all payments towards accepted refund requests within a reasonable period, or as prescribed under applicable law"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(47)",
+      "note": "Unfair trade practice, including refusing to refund consideration for a deficient service"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Consumer Protection Act, 2019",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4",
+  "authoring_note": "Limb (b) forbids a default to store credit. Converting a refund into credit without the consumer's choice is a refusal to refund the consideration and falls within the unfair trade practice definition. The advocate should set the refund window; seven days is common and the RBI's directions on failed transactions impose their own timelines where a payment instrument is involved."
+}

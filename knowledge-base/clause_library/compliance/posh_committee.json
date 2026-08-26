@@ -1,0 +1,49 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The Presiding Officer is not a woman employed at a senior level",
+    "Fewer than one half of the members are women",
+    "There is no external member from a non-governmental organisation or a person familiar with the issues",
+    "A term exceeding three years is fixed"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_INTERNAL_COMMITTEE_001",
+  "name": "Internal Committee",
+  "title": "Internal Committee",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "The Organisation has constituted an Internal Committee under Section 4 of the Act at each workplace employing ten or more employees.\n(a) The Presiding Officer is {{posh_presiding_officer}}, a woman employed at a senior level at the workplace.\n(b) Not fewer than two members are drawn from among the employees, preferably committed to the cause of women, or having experience in social work, or having legal knowledge.\n(c) The external member is {{posh_external_member}}, drawn from a non-governmental organisation or association committed to the cause of women, or being a person familiar with issues relating to sexual harassment.\n(d) Not fewer than one half of the total members of the Committee are women.\n(e) Members hold office for a term not exceeding three years from the date of nomination.\n(f) The names and contact details of the members are displayed at a conspicuous place at the workplace, and a complaint may be sent to {{posh_committee_contact}}.\n(g) Where the workplace employs fewer than ten employees, or where the complaint is against the employer, a complaint may be made to the Local Committee constituted by the District Officer for {{posh_district}} under Section 6 of the Act.",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "4",
+      "note": "Constitution of the Internal Committee, its composition, and the three-year term"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "6",
+      "note": "Local Committee, for establishments with fewer than ten workers and for complaints against the employer"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "19",
+      "note": "Duty of the employer to provide the Committee with facilities and to display information"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.4, S.6",
+  "authoring_note": "Limb (g) matters more than it looks. A complaint against the employer personally cannot be heard by a committee the employer constitutes, and small workplaces have no Internal Committee at all; in both cases the Local Committee is the route, and a policy that omits it leaves the complainant with nowhere to go. The advocate should confirm the district in which the Local Committee sits is identified for the Organisation's workplaces, and decide whether the external member's fee arrangement should be recorded."
+}

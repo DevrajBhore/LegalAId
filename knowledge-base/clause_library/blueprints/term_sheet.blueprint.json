@@ -1,0 +1,28 @@
+{
+  "document_type": "TERM_SHEET",
+  "family": "corporate",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "TS_BINDING_EFFECT_001",
+    "TS_INVESTMENT_TERMS_001",
+    "TS_LIQUIDATION_PREFERENCE_001",
+    "CORP_ANTI_DILUTION_001",
+    "CORP_BOARD_INVESTOR_CONTROL_001",
+    "CORP_SHARE_TRANSFER_001",
+    "CORP_TAG_ALONG_001",
+    "CORP_DRAG_ALONG_001",
+    "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Contract Act 1872 S.10 — whether a term sheet binds is decided on its terms; the binding/non-binding split must be explicit and consistent",
+    "Companies Act 2013 S.42 and S.62(1)(c) — the issue requires the prescribed resolutions and a registered valuer's report",
+    "Income-tax Act S.56(2)(viib) — angel tax ABOLISHED from 1 April 2025 for all investors including non-residents",
+    "Income-tax Act S.56(2)(x) — unaffected by that abolition; charges the RECIPIENT of shares issued below fair value",
+    "IBC 2016 S.53 — a liquidation preference ranks only among shareholders and cannot displace creditors",
+    "Option pool in the PRE-money capitalisation dilutes founders alone; state which is intended"
+  ]
+}

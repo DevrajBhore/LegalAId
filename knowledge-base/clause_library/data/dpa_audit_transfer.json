@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Personal data is transferred to a country restricted by notification under Section 16",
+    "The fiduciary has no means of verifying the processor's compliance"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_AUDIT_AND_TRANSFER_001",
+  "name": "Audit, Records and Transfer Outside India",
+  "title": "Audit and Transfer",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall be able to demonstrate its compliance with this Agreement.\n(a) The Processor shall maintain records of the processing it carries out for the Fiduciary, and shall make them available to the Fiduciary on reasonable request.\n(b) The Fiduciary, or an independent auditor it appoints who is not a competitor of the Processor, may audit the Processor's compliance with this Agreement not more than once in any twelve-month period on thirty days' written notice, and at any time following a personal data breach. The audit shall be conducted during business hours and so as not to disrupt the Processor's operations unreasonably.\n(c) The Processor shall inform the Fiduciary of every country in which personal data processed under this Agreement is stored or accessed, and shall not transfer personal data outside India, or permit access to it from outside India, without the Fiduciary's prior written consent.\n(d) The Processor shall not transfer personal data to any country that the Central Government has restricted by notification under Section 16 of the Digital Personal Data Protection Act, 2023, and shall cease any such transfer on the Fiduciary's notice that a restriction applies.\n(e) Where any other law applying to the Fiduciary restricts the transfer or storage of particular categories of data outside India, the Processor shall comply with that restriction on being informed of it.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "16",
+      "note": "The Central Government may, by notification, restrict the transfer of personal data to such country or territory outside India as it may so notify"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(4)",
+      "note": "Appropriate technical and organisational measures to ensure effective observance of the Act"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.16",
+  "authoring_note": "Section 16 operates by negative list: transfer is permitted except to countries the Central Government notifies. Limb (e) is included because sectoral rules, notably the Reserve Bank of India's directions on payment system data, impose localisation independently of the DPDP Act. The advocate should confirm which sectoral rules apply to this Fiduciary."
+}

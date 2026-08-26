@@ -1,0 +1,47 @@
+{
+  "document_type": "APPOINTMENT_LETTER",
+  "family": "employment",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "EMP_APPOINTMENT_TERMS_001",
+    "EMP_CTC_STRUCTURE_001",
+    "EMP_JOINING_CONDITIONS_001",
+    "CORE_TERM_001",
+    "EMP_PROBATION_001",
+    "EMP_WORKING_HOURS_001",
+    "EMP_LEAVE_POLICY_001",
+    "EMP_CONFIDENTIALITY_001",
+    "EMP_IP_ASSIGNMENT_001",
+    "EMP_NOTICE_PERIOD_001",
+    "EMP_TERMINATION_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "EMP_POSH_POLICY_001",
+      "include_if": "employer_headcount_ge_10 == true",
+      "note": "The PoSH Act, 2013 requires an Internal Committee at any workplace with ten or more employees."
+    },
+    {
+      "clause": "EMP_MOONLIGHTING_001",
+      "include_if": "restrict_moonlighting == true",
+      "note": "An exclusivity obligation operating during the employment, which Section 27 of the Contract Act permits."
+    },
+    {
+      "clause": "EMP_ESOP_001",
+      "include_if": "has_esop_or_variable_pay == true",
+      "note": "Stock options or variable pay form part of the package and need their own terms."
+    }
+  ],
+  "mandatory_legal_checks": [
+    "OSH Code 2020 S.6(1)(f) — the employer MUST issue a letter of appointment to every employee",
+    "Code on Wages 2019 S.2(y) — allowances excluded from wages above one-half of total remuneration are added back",
+    "Code on Wages 2019 S.17 — monthly wages payable before the seventh day of the following month",
+    "PoSH Act 2013 S.4 — Internal Committee mandatory at ten or more employees",
+    "Contract Act 1872 S.27 — a post-employment restraint is void unless it protects confidentiality or goodwill"
+  ],
+  "_authoring_note": "CORE_DISPUTE_RESOLUTION_001 is required rather than conditional: it was first written as conditional on `include_arbitration`, which nothing derives, so the clause could never have appeared. Dead conditions are the failure mode this library has been audited for."
+}

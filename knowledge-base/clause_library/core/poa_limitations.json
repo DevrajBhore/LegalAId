@@ -1,0 +1,57 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The deed is used as, or represented to be, an instrument transferring title to immovable property",
+    "The attorney deals with the principal's property for the attorney's own benefit without express authority"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POA_LIMITATIONS_001",
+  "name": "Limitations on the Attorney",
+  "title": "Limitations",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "POWER_OF_ATTORNEY"
+  ],
+  "text": "The Attorney's authority is subject to the following limitations.\n(a) The Attorney shall act in good faith, in the interests of the Principal, and within the authority expressly conferred by this deed.\n(b) The Attorney shall not delegate this authority to any other person, and shall not appoint a substitute attorney.\n(c) The Attorney shall not make any gift of the Principal's property, and shall not deal with the Principal's property for the Attorney's own benefit or the benefit of a person connected with the Attorney, unless this deed expressly says so.\n(d) This deed does not transfer, and shall not be construed as transferring, any right, title, or interest in immovable property to the Attorney. A transfer of immovable property is effected only by a registered instrument of conveyance, and a power of attorney is not such an instrument.\n(e) The Attorney shall keep proper accounts of everything done under this deed and of all money received and paid, and shall render them to the Principal on demand.\n(f) The Attorney shall keep the Principal's money separate from the Attorney's own.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "211",
+      "note": "An agent is bound to conduct the business of the principal according to the directions given by the principal"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "213",
+      "note": "An agent is bound to render proper accounts to the principal on demand"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "215",
+      "note": "Where an agent deals on his own account without the principal's consent, the principal may repudiate the transaction"
+    },
+    {
+      "act": "Transfer of Property Act, 1882",
+      "section": "54",
+      "note": "A sale of immovable property of the value of one hundred rupees and upwards can be made only by a registered instrument"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17",
+      "note": "Documents of which registration is compulsory, including instruments purporting to create or transfer an interest in immovable property"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Transfer of Property Act, 1882; Registration Act, 1908",
+  "statutory_reference": "Indian Contract Act, 1872 - S.211, S.213, S.215; Transfer of Property Act, 1882 - S.54",
+  "authoring_note": "Limb (d) states the rule in Suraj Lamp and Industries Private Limited v State of Haryana, in which the Supreme Court held that a transfer by way of sale agreement, general power of attorney and will does not convey title, and that immovable property can be transferred only by a registered deed of conveyance. The practice of using a general power of attorney as a substitute for a sale deed remains widespread notwithstanding that decision, and stating the position in the instrument itself is the clearest protection available to a principal who does not intend a transfer. The advocate should confirm the citation and consider whether a stronger recital is warranted where the powers granted relate to immovable property."
+}

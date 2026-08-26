@@ -1,0 +1,63 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The deed is executed before being stamped",
+    "A power intended for presenting documents for registration is not authenticated as Section 33 of the Registration Act, 1908 requires",
+    "A deed executed abroad is not adjudicated and stamped within three months of receipt in India"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POA_EXECUTION_FORMALITIES_001",
+  "name": "Execution, Stamping, Notarisation and Registration",
+  "title": "Execution and Formalities",
+  "category": "EXECUTION_FORMALITIES",
+  "document_types": [
+    "POWER_OF_ATTORNEY"
+  ],
+  "text": "This deed is executed subject to the following formalities.\n(a) This deed is chargeable with stamp duty under Article 48 of Schedule I to the Indian Stamp Act, 1899, read with the stamp law of the State in which it is executed, and must be stamped before or at the time of execution.\n(b) This deed shall be signed by the Principal in the presence of two witnesses, who shall attest it.\n(c) This deed shall be notarised by a Notary appointed under the Notaries Act, 1952. A notarised power of attorney carries a presumption under Section 85 of the Indian Evidence Act as to its due execution and authentication.\n(d) Where this deed empowers the Attorney to present a document for registration, it must be executed and authenticated in the manner Section 33 of the Registration Act, 1908 requires, failing which the Sub-Registrar will not recognise the Attorney.\n(e) Where this deed relates to immovable property and creates or transfers an interest in it, registration is compulsory under Section 17 of the Registration Act, 1908.\n(f) Where the Principal is outside India, this deed shall be executed before, and authenticated by, a Notary Public, an Indian Consular Officer, or such other authority as Section 33 of the Registration Act, 1908 recognises, and shall be adjudicated and stamped in India within three months of being received in India, as Section 18 of the Indian Stamp Act, 1899 requires.",
+  "legal_basis": [
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "17",
+      "note": "Instruments executed in India shall be stamped before or at the time of execution"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "18",
+      "note": "Instruments executed out of India shall be stamped within three months after they have been first received in India"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "Schedule I, Article 48",
+      "note": "Stamp duty chargeable on a power of attorney"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "17",
+      "note": "Documents of which registration is compulsory"
+    },
+    {
+      "act": "Registration Act, 1908",
+      "section": "33",
+      "note": "Powers of attorney recognisable for the purposes of presenting a document for registration, including the manner of their execution and authentication"
+    },
+    {
+      "act": "Notaries Act, 1952",
+      "section": "8",
+      "note": "Functions of a notary, including verifying, authenticating and attesting the execution of an instrument"
+    }
+  ],
+  "source": "Indian Stamp Act, 1899; Registration Act, 1908; Notaries Act, 1952",
+  "statutory_reference": "Indian Stamp Act, 1899 - S.17, S.18, Sch.I Art.48; Registration Act, 1908 - S.33",
+  "authoring_note": "Limb (f) covers the non-resident case, which is the commonest use of this instrument in Indian practice and the one most often executed defectively. Section 18 of the Indian Stamp Act, 1899 gives three months from receipt in India, and a deed that misses it is not duly stamped. The Section 85 presumption in limb (c) should be confirmed by the advocate against the current evidence statute, since the Indian Evidence Act, 1872 has been replaced by the Bharatiya Sakshya Adhiniyam, 2023 and the corresponding section number may differ."
+}

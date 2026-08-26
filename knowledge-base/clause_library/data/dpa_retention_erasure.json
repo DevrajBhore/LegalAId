@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Personal data is retained after the purpose is served without a legal requirement to retain it",
+    "Erasure excludes backups without the fiduciary being told"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_RETENTION_AND_ERASURE_001",
+  "name": "Retention, Return and Erasure",
+  "title": "Retention and Erasure",
+  "category": "TERMINATION",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall retain personal data only for as long as this Agreement requires.\n(a) On the Fiduciary's instruction, and in any event on the expiry or termination of this Agreement, the Processor shall at the Fiduciary's option return all personal data to the Fiduciary in a commonly used machine-readable format, or erase it.\n(b) The Processor shall erase personal data, and shall cause every sub-processor to erase it, within thirty days of the Fiduciary's instruction, and shall certify the erasure in writing.\n(c) Where the Fiduciary instructs erasure because a Data Principal has withdrawn consent, or because the purpose is no longer being served, the Processor shall give effect to it so as to enable the Fiduciary to comply with Section 8(7) of the Digital Personal Data Protection Act, 2023.\n(d) The Processor may retain personal data only to the extent, and for the period, that a law requires it to, and shall inform the Fiduciary of what it retains and under what authority. Personal data so retained remains subject to this Agreement.\n(e) Erasure includes erasure from backups, on the Processor's ordinary backup cycle, and the Processor shall not restore erased personal data from a backup.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(7)",
+      "note": "The Data Fiduciary shall erase personal data on withdrawal of consent or as soon as it is reasonable to assume the specified purpose is no longer being served, unless retention is necessary for compliance with any law"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(8)",
+      "note": "Erasure obligations extend to processors engaged on the Data Fiduciary's behalf"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.8(7)",
+  "authoring_note": "Limb (e) addresses backups expressly because 'erased' commonly means erased from live systems only, and a restore then reinstates data the Data Principal asked to have removed. The thirty-day period in limb (b) is contractual, not statutory. The section number cited for the extension of erasure duties to processors should be confirmed by the advocate against the bare Act."
+}

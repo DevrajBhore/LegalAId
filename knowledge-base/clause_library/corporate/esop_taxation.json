@@ -1,0 +1,57 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The letter states the tax position as advice rather than as information",
+    "The company represents that a deferral under Section 192(1C) applies without confirming its eligibility under Section 80-IAC"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ESOP_TAXATION_001",
+  "name": "Taxation of the Options",
+  "title": "Taxation",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "ESOP_GRANT_LETTER"
+  ],
+  "text": "The Optionee is responsible for the tax consequences of the options, and the following is recorded for information and is not tax advice.\n(a) On exercise, the difference between the fair market value of the shares on the date of exercise and the exercise price paid is a perquisite chargeable to tax as salary under Section 17(2)(vi) of the Income-tax Act, 1961.\n(b) The Company shall deduct tax at source on that perquisite under Section 192 of the Income-tax Act, 1961, and the Optionee shall put the Company in funds for it if the Optionee's salary is insufficient.\n(c) Where the Company is an eligible start-up referred to in Section 80-IAC of the Income-tax Act, 1961, the deduction and payment of tax on the perquisite may be deferred as Section 192(1C) of that Act permits, and the Company shall inform the Optionee whether the deferral applies to this grant.\n(d) On a subsequent sale of the shares, the difference between the sale consideration and the fair market value taken into account under sub-clause (a) is chargeable as capital gains.\n(e) The fair market value for the purposes of sub-clause (a) is determined in the manner prescribed under the Income-tax Rules, 1962.\n(f) The Optionee should take independent tax advice before exercising.",
+  "legal_basis": [
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "17(2)(vi)",
+      "note": "The value of a specified security or sweat equity share allotted to an employee is a perquisite, being the fair market value on the date of exercise less the amount recovered from the employee"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "192",
+      "note": "Deduction of tax at source on salary, including a perquisite"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "192(1C)",
+      "note": "Deferred deduction and payment of tax on a perquisite arising from specified securities allotted by an eligible start-up referred to in Section 80-IAC"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "80-IAC",
+      "note": "Deduction available to an eligible start-up; defines which companies qualify for the ESOP tax deferral"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "49(2AA)",
+      "note": "Cost of acquisition for computing capital gains on a subsequent sale is the fair market value taken into account as a perquisite"
+    }
+  ],
+  "source": "Income-tax Act, 1961",
+  "statutory_reference": "Income-tax Act, 1961 - S.17(2)(vi), S.192, S.192(1C)",
+  "authoring_note": "Tax on exercise, not on sale, is the feature of the Indian regime that most damages employees: the charge arises when the option is exercised even though the shares cannot be sold, so an employee can owe tax on a gain they cannot realise. Sub-clause (c) records the Section 192(1C) deferral available to eligible start-ups, which is the principal relief. The advocate should confirm whether this company is an eligible start-up under Section 80-IAC before the letter is issued, and should confirm the Section 49(2AA) citation for the capital gains cost base."
+}

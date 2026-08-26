@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Shares are allotted without the return of allotment being filed within thirty days",
+    "The exercise window is so short that a vested option is illusory"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ESOP_EXERCISE_001",
+  "name": "Exercise of Options",
+  "title": "Exercise",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "ESOP_GRANT_LETTER"
+  ],
+  "text": "Vested options may be exercised as follows.\n(a) A vested option may be exercised at any time within {{exercise_window}} of vesting, or such longer period as the Scheme allows, by written notice to the Company together with payment of the exercise price for the options exercised.\n(b) On exercise and payment, the Company shall allot the corresponding equity shares, shall enter the Optionee in the register of members, and shall deliver the share certificates within two months of allotment as Section 56(4) of the Companies Act, 2013 requires.\n(c) The Company shall file the return of allotment in Form PAS-3 within thirty days of allotment, as Section 39(4) of the Companies Act, 2013 requires.\n(d) An option not exercised within the period allowed lapses, and confers no further right.\n(e) The shares issued on exercise rank equally with the existing equity shares of the Company, save as to any dividend declared before the date of allotment.\n(f) The shares issued on exercise are subject to the transfer restrictions in the Company's articles and in any shareholders' agreement to which the Company is a party, and the Optionee shall execute a deed of adherence to that agreement if required.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "56(4)",
+      "note": "Delivery of share certificates within two months from the date of allotment"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "39(4)",
+      "note": "Return of allotment to be filed with the Registrar in the prescribed manner"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "2(68)",
+      "note": "A private company restricts the right to transfer its shares"
+    }
+  ],
+  "source": "Companies Act, 2013",
+  "statutory_reference": "Companies Act, 2013 - S.39(4), S.56(4)",
+  "authoring_note": "Limb (f) is the one optionees are most often surprised by: shares acquired on exercise in a private company are not freely saleable, and are usually subject to the same transfer restrictions and drag rights as the founders' shares. Saying so in the grant letter is fairer than leaving it to be discovered. The advocate should set the exercise window and consider whether a longer window should apply on a good-leaver exit, since a short window forces an employee to fund the exercise price and the resulting tax at the worst moment."
+}

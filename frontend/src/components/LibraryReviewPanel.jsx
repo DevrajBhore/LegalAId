@@ -242,6 +242,21 @@ export default function LibraryReviewPanel() {
                     </p>
                   )}
 
+                  {clause.statute_currency && (
+                    <p className="lib-statute-alert">
+                      Repointed after the four labour Codes came into force on 21
+                      November 2025. The substance changed, not only the section
+                      numbers &mdash; read the question below before the clause.
+                    </p>
+                  )}
+
+                  {clause.authoring_note && (
+                    <div className="lib-question">
+                      <p className="lib-question-head">The drafter could not settle this:</p>
+                      <p className="lib-question-body">{clause.authoring_note}</p>
+                    </div>
+                  )}
+
                   <pre className="lib-text">{clause.text}</pre>
 
                   {clause.review_note && (

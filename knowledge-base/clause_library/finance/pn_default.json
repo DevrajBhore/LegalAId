@@ -1,0 +1,46 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Acceleration is exercised without the notice and cure period the clause provides for"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "PN_DEFAULT_001",
+  "name": "Default and Acceleration",
+  "title": "Default",
+  "category": "TERMINATION",
+  "document_types": [
+    "PROMISSORY_NOTE"
+  ],
+  "text": "The following are events of default under this Note.\n(a) The Maker fails to pay any sum due under this Note on its due date, and the failure continues for {{cure_period_days}} days after the Payee gives written notice of it.\n(b) The Maker becomes unable to pay its debts, or a proceeding for insolvency, bankruptcy, or winding up is commenced against the Maker and is not withdrawn or dismissed within sixty days.\n(c) Any statement the Maker has made to the Payee in connection with this Note proves to have been untrue in a material respect when made.\nOn an event of default, the whole of the principal sum then outstanding, together with accrued interest, becomes immediately due and payable without further notice or demand, and the Payee may recover it together with the costs reasonably incurred in doing so, including legal costs.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss or damage caused by breach of contract"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "22",
+      "note": "Maturity of a promissory note, and days of grace"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "Schedule, Article 35",
+      "note": "Three years to sue on a promissory note payable at a fixed time, running from when the sum becomes payable"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Negotiable Instruments Act, 1881; Limitation Act, 1963",
+  "statutory_reference": "Indian Contract Act, 1872 - S.73",
+  "authoring_note": "The limitation position is included because it is the commonest way a promissory note becomes unenforceable in practice: the period runs from when the sum becomes payable, and a note left unenforced quietly expires. The precise Article of the Schedule to the Limitation Act, 1963 depends on whether the note is payable on demand or at a fixed time, and the advocate should pin the correct Article. Note also that a fresh acknowledgment of the debt in writing before expiry starts time afresh under Section 18 of that Act."
+}

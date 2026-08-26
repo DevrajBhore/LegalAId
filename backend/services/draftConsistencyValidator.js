@@ -414,6 +414,19 @@ export function validateDraftConsistency(
         "EMPLOYMENT_TERMINATION_001",
         "EMP_TERMINATION_001",
         "EMP_IP_ASSIGNMENT_001",
+        // Appointment letter, internship and separation clauses. Without these
+        // the scan reads an empty string for those document types and reports
+        // every supplied field as unreflected, even though it is in the document.
+        "EMP_APPOINTMENT_TERMS_001",
+        "EMP_CTC_STRUCTURE_001",
+        "EMP_JOINING_CONDITIONS_001",
+        "EMP_INTERNSHIP_ENGAGEMENT_001",
+        "EMP_INTERNSHIP_STIPEND_001",
+        "EMP_INTERNSHIP_COMPLETION_001",
+        "EMP_SEPARATION_PURPOSE_001",
+        "EMP_FNF_SETTLEMENT_001",
+        "EMP_FNF_RELEASE_001",
+        "EMP_FNF_SURVIVING_OBLIGATIONS_001",
       ].includes(clause.clause_id)
     )
     .map((clause) => clause.text || "")

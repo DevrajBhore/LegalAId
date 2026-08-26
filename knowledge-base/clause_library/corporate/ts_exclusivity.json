@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The exclusivity period is open-ended or unreasonably long",
+    "The company is made liable for the investor's costs whether or not the investment completes"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+  "name": "Exclusivity, Confidentiality and Costs",
+  "title": "Exclusivity and Confidentiality",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "The following provisions are binding on the Parties.\n(a) For {{exclusivity_period}} from the date of this Term Sheet, the Company and the Founders shall not solicit, entertain, or negotiate any offer of investment in, or acquisition of, the Company from any other person, and shall inform the Investor of any approach received.\n(b) Each Party shall keep confidential the existence and the terms of this Term Sheet, and any information disclosed in connection with it, and shall not disclose it except to its professional advisers, or as required by law or by a regulator.\n(c) The exclusivity in sub-clause (a) ends if the Investor notifies the Company that it will not proceed, or on the expiry of the period, whichever is earlier.\n(d) Each Party bears its own costs of negotiating and documenting the proposed investment. Where the definitive agreements provide for the Company to bear the Investor's costs, that obligation arises only on completion and is capped at the amount the definitive agreements state.\n(e) A breach of sub-clause (a) or (b) may be restrained by injunction, damages alone being an inadequate remedy.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Agreements in restraint of trade are void; a time-limited exclusivity in a transaction negotiation is a restraint on dealing rather than on trade and is generally upheld, but the period must be reasonable"
+    },
+    {
+      "act": "Specific Relief Act, 1963",
+      "section": "41",
+      "note": "Injunctions, and the circumstances in which they will not be granted"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Specific Relief Act, 1963",
+  "statutory_reference": "Indian Contract Act, 1872 - S.27",
+  "authoring_note": "Sub-clause (d) is drafted to protect the company. A term sheet that obliges the company to pay the investor's legal costs regardless of completion leaves a start-up paying for a deal that never happened, and is a term founders accept without noticing. The advocate should set the exclusivity period; thirty to sixty days is usual, and an open-ended period is both commercially unreasonable and more vulnerable under Section 27."
+}

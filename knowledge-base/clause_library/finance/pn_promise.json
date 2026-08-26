@@ -1,0 +1,52 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A condition is attached to the promise to pay, which takes the instrument outside Section 4",
+    "The principal sum is left uncertain"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "PN_PROMISE_TO_PAY_001",
+  "name": "Unconditional Promise to Pay",
+  "title": "Promise to Pay",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "PROMISSORY_NOTE"
+  ],
+  "text": "FOR VALUE RECEIVED, the Maker unconditionally promises to pay to the Payee, or to the Payee's order, the principal sum of {{principal_amount}} rupees.\n(a) The principal sum shall be paid {{repayment_terms}}.\n(b) Payment shall be made in Indian rupees, by bank transfer to an account the Payee nominates in writing, or by such other means as the Payee accepts in writing.\n(c) The Maker shall not be entitled to set off against any sum due under this Note any claim the Maker has or may have against the Payee.\n(d) The Maker waives presentment for payment, notice of dishonour, and protest.\n(e) Payment shall be made in full, save that the Maker shall deduct tax at source where the Income-tax Act, 1961 requires it, and shall furnish the Payee with the certificate for any tax so deducted.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "4",
+      "note": "The undertaking to pay must be unconditional and the sum certain"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "64",
+      "note": "Presentment for payment"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "98",
+      "note": "Cases in which notice of dishonour is not necessary, including where it is waived"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194A",
+      "note": "Deduction of tax at source on interest other than interest on securities"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881; Income-tax Act, 1961",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.4",
+  "authoring_note": "Limbs (c) and (d) favour the Payee, which is the conventional position for this instrument, but the advocate should confirm the waiver of presentment and notice of dishonour is intended: it removes procedural protections the Maker would otherwise have. Note that Section 138, which makes dishonour a criminal offence, applies to CHEQUES and not to promissory notes; a Payee expecting that remedy here would be mistaken."
+}

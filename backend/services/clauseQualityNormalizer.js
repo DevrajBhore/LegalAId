@@ -74,7 +74,27 @@ function normalizeGrammar(text = "") {
     .replace(/\b([A-Za-z]+)\s+\1\b/gi, "$1");
 }
 
-function findForbiddenRoleTerm(text = "", documentType = "") {
+// Some statutory defined terms contain a word that is elsewhere a party role.
+// "Data Principal" is the Digital Personal Data Protection Act, 2023 term for the
+// individual whose data is processed; it is not the agency role "Principal", and
+// the individual is not a party to the agreement at all. Left unmasked, the
+// role-consistency check reads "the Data Principal has withdrawn consent" as a
+// stray "Principal" and refuses the draft as CRITICAL.
+const STATUTORY_COMPOUND_TERMS = [
+  /\bData\s+Principals?\b/gi,
+  /\bPrincipal\s+Debtors?\b/gi,
+  /\bPrincipal\s+Amounts?\b/gi,
+  /\bPrincipal\s+Place\s+of\s+Business\b/gi,
+];
+
+function maskStatutoryCompoundTerms(text = "") {
+  let value = String(text);
+  for (const rx of STATUTORY_COMPOUND_TERMS) value = value.replace(rx, "\u0000defined-term\u0000");
+  return value;
+}
+
+function findForbiddenRoleTerm(rawText = "", documentType = "") {
+  const text = maskStatutoryCompoundTerms(rawText);
   const terms = getForbiddenPartyTerms(documentType);
   for (const term of terms) {
     const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

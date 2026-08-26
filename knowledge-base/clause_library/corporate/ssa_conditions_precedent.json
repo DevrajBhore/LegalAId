@@ -1,0 +1,57 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Rights conferred by the agreement are not written into the articles, leaving them unenforceable against the company and any transferee",
+    "Completion occurs before the resolutions required by the Act are passed"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SSA_CONDITIONS_PRECEDENT_001",
+  "name": "Conditions Precedent to Completion",
+  "title": "Conditions Precedent",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "SHARE_SUBSCRIPTION_AGREEMENT"
+  ],
+  "text": "Completion is conditional on the following having been satisfied or waived by the Investor in writing.\n(a) The shareholders of the Company having passed the resolutions required under Sections 42 and 62 of the Companies Act, 2013 to authorise the issue.\n(b) The Board having approved the issue, the allotment, and the entry into this Agreement.\n(c) The articles of association of the Company having been amended to reflect the rights conferred by this Agreement, so that they bind the Company and any transferee.\n(d) A valuation report of a registered valuer supporting the issue price having been obtained where the Act or the rules require one.\n(e) The Investor having completed legal, financial, and tax due diligence to its satisfaction.\n(f) There having been no material adverse change in the business, assets, or prospects of the Company since the date of this Agreement.\n(g) Every founder having executed an assignment of intellectual property and an employment or engagement agreement in the form the Investor requires.\nIf a condition is not satisfied or waived by {{long_stop_date}}, either Party may terminate this Agreement by written notice, and neither shall have any claim against the other except in respect of a prior breach.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "42",
+      "note": "Private placement procedure, including the offer and the resolutions required"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(c)",
+      "note": "Special resolution for a further issue to persons other than existing shareholders"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "14",
+      "note": "Alteration of articles of association by special resolution"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "6",
+      "note": "The Act overrides the memorandum, articles and any agreement to the extent they are repugnant to it"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "32",
+      "note": "Enforcement of contracts contingent on an event happening"
+    }
+  ],
+  "source": "Companies Act, 2013; Indian Contract Act, 1872",
+  "statutory_reference": "Companies Act, 2013 - S.42, S.62(1)(c), S.14",
+  "authoring_note": "Sub-clause (c) is the condition that matters most and is the one most often deferred to after completion and then forgotten. A shareholders' agreement binds its signatories, but rights such as transfer restrictions, pre-emption and reserved matters are enforceable against the company and against a transferee only if they appear in the articles. Section 6 of the Act also means that neither the articles nor this Agreement can override the Act itself, and the advocate should check the reserved matters list against the Board's non-delegable powers under Section 179."
+}

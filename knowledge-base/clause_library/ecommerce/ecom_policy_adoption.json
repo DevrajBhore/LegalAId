@@ -1,0 +1,37 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "An amendment is applied retrospectively to an order already placed"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_POLICY_ADOPTION_001",
+  "name": "Publication of the Policy",
+  "title": "Publication",
+  "category": "SIGNATURE_BLOCK",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY",
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "text": "This Policy is published by {{company_name}} and takes effect from {{effective_date}} (the \"Effective Date\").\nIt is displayed in a clear and accessible manner on the platform, as Rule 4 of the Consumer Protection (E-Commerce) Rules, 2020 requires. {{company_name}} may amend this Policy, and any amendment takes effect when it is published; an order placed before an amendment is governed by the Policy in force when the order was placed.\nPublished for and on behalf of {{company_name}}:",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "Duties of e-commerce entities, including display of the required information in a clear and accessible manner"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4",
+  "authoring_note": "The rule that an order is governed by the policy in force when it was placed is stated because a policy amendable at will and applied retrospectively is an unfair contract term under Section 2(46) of the Consumer Protection Act, 2019. Registered with signatureType UNILATERAL so this text is not overwritten with a bilateral testimonium."
+}

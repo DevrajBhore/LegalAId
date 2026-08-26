@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The document is silent on whether it binds, leaving the question to be decided on its language as a whole",
+    "A provision listed as non-binding is drafted in obligatory language elsewhere in the document"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_BINDING_EFFECT_001",
+  "name": "Binding and Non-Binding Effect",
+  "title": "Binding Effect",
+  "category": "PURPOSE",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "This Term Sheet records the terms on which {{party_2_name}} (the \"Investor\") proposes to invest in {{company_name}} (the \"Company\"). Its effect is as follows.\n(a) Except for the provisions listed in sub-clause (b), this Term Sheet is NOT legally binding on either Party. It is a statement of intent, and neither Party is obliged to proceed with the investment. No obligation to invest, to issue securities, or to complete arises unless and until definitive agreements are executed.\n(b) The following provisions ARE legally binding and are intended to create legal relations: the provisions on confidentiality, on exclusivity, on costs, and on governing law and dispute resolution.\n(c) Neither Party is liable to the other for any cost, loss, or expense incurred in connection with the proposed investment if it does not proceed, except under a provision listed in sub-clause (b).\n(d) This Term Sheet does not create a partnership, a joint venture, or an agency between the Parties.\n(e) The terms recorded here are subject to the Investor completing due diligence to its satisfaction, to the approvals listed in this Term Sheet, and to the execution of definitive agreements.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "What agreements are contracts: an intention to create legal relations is required"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "2(h)",
+      "note": "An agreement enforceable by law is a contract"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "29",
+      "note": "Agreements void for uncertainty; a term sheet leaving essential terms to later agreement is not itself enforceable as the investment contract"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.10, S.29",
+  "authoring_note": "This is the most important clause in a term sheet and is drafted with deliberate emphasis. Whether a term sheet binds is decided on its terms as a whole, and Indian courts have enforced documents the parties believed were mere statements of intent. Separating the binding provisions into an express list is the clearest available protection. The advocate should check the rest of the document for obligatory language in provisions listed as non-binding, since inconsistency is what the argument turns on."
+}

@@ -1,0 +1,41 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Personnel access personal data without a binding confidentiality obligation"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+  "name": "Personnel and Confidentiality",
+  "title": "Personnel and Confidentiality",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall ensure that personal data is accessible only to those of its personnel who need it to perform this Agreement.\n(a) Every person authorised to process personal data shall be bound by an obligation of confidentiality, whether by contract of employment or by a separate written undertaking, which survives the end of that person's engagement.\n(b) The Processor shall maintain a record of the persons authorised to access personal data, and shall withdraw access when a person no longer requires it.\n(c) The Processor shall ensure that its personnel are trained in the handling of personal data appropriately to their role.\n(d) The Processor shall not disclose personal data to any third party except as this Agreement permits, or as it is required to do by law, in which case it shall inform the Fiduciary before disclosing unless the law forbids it from doing so.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(4)",
+      "note": "The Data Fiduciary shall implement appropriate technical and organisational measures to ensure effective observance of the Act"
+    },
+    {
+      "act": "Digital Personal Data Protection Rules, 2025",
+      "section": "6",
+      "note": "Reasonable security safeguards, including controls on access to computer resources"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023; Digital Personal Data Protection Rules, 2025",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.8(4); Digital Personal Data Protection Rules, 2025 - R.6",
+  "authoring_note": "Limb (d) requires notice before a compelled disclosure except where the law forbids notice. The advocate should confirm this is workable for the processor's jurisdictional exposure. The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself."
+}

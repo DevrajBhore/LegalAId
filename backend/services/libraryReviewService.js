@@ -25,6 +25,7 @@ import { clearClauseCache } from "./clauseAssembler.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLAUSE_LIB = path.resolve(__dirname, "../../knowledge-base/clause_library");
 const BLUEPRINT_DIR = path.join(CLAUSE_LIB, "blueprints");
+const KB_ROOT = path.resolve(__dirname, "../../knowledge-base");
 
 const PLACEHOLDER_REVIEWERS = new Set(["", "pending", "tbd", "todo", "none", "n/a", "unknown"]);
 const DECISIONS = new Set(["approve", "amend", "reject", "discuss", "reset"]);
@@ -37,11 +38,65 @@ function httpError(message, statusCode) {
 }
 
 /**
- * How many document types list each clause. Read from the blueprints rather
- * than by generating 22 documents, so the admin list stays cheap to load.
+ * How many document types can reach each clause. Read from configuration rather
+ * than by generating every document, so the admin list stays cheap to load.
+ *
+ * There are TWO ways a clause reaches a document, and reading only the first
+ * gets the ordering badly wrong. A clause can be listed in a blueprint, or it
+ * can be injected by drafting_policies.json -- either from the general-provisions
+ * baseline that applies to every instrument, or from a per-document
+ * requiredClauseIds list. Before this counted the second path,
+ * CORE_STAMP_AND_COSTS_001 showed a reach of 0 despite appearing in 25
+ * documents, and the admin page told the reviewing advocate it was unused.
  */
 function buildReachIndex() {
   const reach = new Map();
+  const add = (id, docType) => {
+    if (!id) return;
+    const entry = reach.get(id) || new Set();
+    entry.add(docType);
+    reach.set(id, entry);
+  };
+
+  // Injected clauses: the baseline applies to every document type the product
+  // offers, so it needs the list of types before it can be attributed.
+  const policyPath = path.join(
+    KB_ROOT, "metadata", "drafting_policies.json"
+  );
+  let policies = null;
+  try {
+    policies = JSON.parse(fs.readFileSync(policyPath, "utf8"));
+  } catch {
+    policies = null;
+  }
+
+  const blueprintTypes = [];
+  if (fs.existsSync(BLUEPRINT_DIR)) {
+    for (const file of fs.readdirSync(BLUEPRINT_DIR)) {
+      if (!file.endsWith(".json")) continue;
+      try {
+        const bp = JSON.parse(fs.readFileSync(path.join(BLUEPRINT_DIR, file), "utf8"));
+        if (bp?.deprecated || bp?._unreachable) continue;
+        blueprintTypes.push(bp.document_type || file.replace(/\.blueprint\.json$/, ""));
+      } catch { /* counted below when the blueprint itself is read */ }
+    }
+  }
+
+  if (policies) {
+    const perDocument = policies.documents || {};
+    const defaultBaseline = policies?.defaults?.hardening?.baselineClauseIds || [];
+    for (const docType of blueprintTypes) {
+      const cfg = perDocument[docType] || {};
+      // A per-document baselineClauseIds list REPLACES the default, including
+      // when it is deliberately empty for a unilateral instrument.
+      const baseline = Array.isArray(cfg?.hardening?.baselineClauseIds)
+        ? cfg.hardening.baselineClauseIds
+        : defaultBaseline;
+      for (const id of baseline) add(id, docType);
+      for (const id of cfg?.hardening?.requiredClauseIds || []) add(id, docType);
+    }
+  }
+
   if (!fs.existsSync(BLUEPRINT_DIR)) return reach;
 
   for (const file of fs.readdirSync(BLUEPRINT_DIR)) {
@@ -52,7 +107,10 @@ function buildReachIndex() {
     } catch {
       continue;
     }
-    if (blueprint?.deprecated) continue;
+    // A blueprint marked _unreachable describes a document type the product
+    // does not offer. Counting it inflates reach above the number of types that
+    // exist, which is how CORE_GOVERNING_LAW_001 came to report 38 of 36.
+    if (blueprint?.deprecated || blueprint?._unreachable) continue;
 
     const docType = blueprint.document_type || file.replace(/\.blueprint\.json$/, "");
     const ids = new Set([
@@ -65,11 +123,7 @@ function buildReachIndex() {
       ]),
     ].filter(Boolean));
 
-    for (const id of ids) {
-      const entry = reach.get(id) || new Set();
-      entry.add(docType);
-      reach.set(id, entry);
-    }
+    for (const id of ids) add(id, docType);
   }
   return reach;
 }
@@ -96,7 +150,16 @@ function readClauseFile(file) {
 
 function priorityOf(clause, reachCount) {
   const risk = RISK_WEIGHT[String(clause.risk_level || "").toUpperCase()] || 1;
-  return reachCount * risk + (clause.mandatory === true ? 5 : 0);
+  return (
+    reachCount * risk +
+    (clause.mandatory === true ? 5 : 0) +
+    // A clause carrying a framed question is cheaper for the reviewer to decide
+    // than one presented as bare text, so it should not sink below untouched
+    // boilerplate that merely appears in a lot of documents.
+    (clause.authoring_note ? 8 : 0) +
+    // Repointed to the labour Codes: substance changed, review first.
+    (clause.statute_currency ? 12 : 0)
+  );
 }
 
 /**
@@ -129,6 +192,11 @@ export function listLibraryClauses({ state = null, search = null, documentType =
         continue;
       }
 
+      // A deprecated clause is superseded and is not loaded by the engine. It
+      // can never reach a document, so asking the advocate to sign it off spends
+      // the only scarce resource here on text the product cannot emit.
+      if (clause.deprecated === true) continue;
+
       rows.push({
         clause_id: clause.clause_id,
         title: clause.title || clause.name || clause.clause_id,
@@ -146,6 +214,15 @@ export function listLibraryClauses({ state = null, search = null, documentType =
         reviewed_by: provenance.reviewed_by,
         reviewed_on: provenance.reviewed_on,
         review_note: clause.review_note || "",
+        // The specific judgement the drafter could not make, written for the
+        // reviewer: the section it turns on, the choice taken, and anything
+        // cited but not verified. This is the field that turns "review this
+        // text" into a question already framed.
+        authoring_note: clause.authoring_note || "",
+        // Set where a clause was repointed after the four labour Codes came into
+        // force on 21 November 2025. The substance moved, not just the section
+        // numbers, so these want looking at before anything else.
+        statute_currency: clause.statute_currency || "",
         priority: priorityOf(clause, docTypes.length),
       });
     }

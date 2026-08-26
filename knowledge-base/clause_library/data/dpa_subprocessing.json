@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A sub-processor is engaged without the fiduciary's authorisation",
+    "A sub-processor is engaged on terms less protective than this Agreement"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_SUBPROCESSING_001",
+  "name": "Sub-processing",
+  "title": "Sub-processing",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall not engage any other person to process personal data under this Agreement except in accordance with this clause.\n(a) The Processor shall obtain the Fiduciary's prior written authorisation before engaging any sub-processor, and shall give the Fiduciary the sub-processor's identity, location, and the processing it is to perform.\n(b) The Processor shall impose on every sub-processor, by written contract, obligations no less protective than those in this Agreement, including the security safeguards required by Rule 6 of the Digital Personal Data Protection Rules, 2025.\n(c) The Processor remains fully liable to the Fiduciary for the acts and omissions of every sub-processor as if they were its own.\n(d) The Fiduciary may object to a proposed sub-processor on reasonable grounds relating to the protection of personal data, and where the objection cannot be resolved the Fiduciary may terminate this Agreement without liability for the termination.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(2)",
+      "note": "Processing on behalf of a Data Fiduciary is permitted only under a valid contract, which applies down the chain"
+    },
+    {
+      "act": "Digital Personal Data Protection Rules, 2025",
+      "section": "6",
+      "note": "The Data Fiduciary's contractual arrangements must require the same safeguards of persons engaged to process on its behalf"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023; Digital Personal Data Protection Rules, 2025",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.8(2); Digital Personal Data Protection Rules, 2025 - R.6",
+  "authoring_note": "Drafted as prior authorisation per sub-processor rather than a general standing consent with a right to object. The advocate should decide which model suits the Fiduciary: a standing list is commercially easier but weakens limb (d). The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself."
+}

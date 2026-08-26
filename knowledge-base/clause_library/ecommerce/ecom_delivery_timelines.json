@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A delay is not communicated and no cancellation is offered",
+    "Risk is stated to pass to the consumer before delivery"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_DELIVERY_TIMELINES_001",
+  "name": "Dispatch and Delivery Timelines",
+  "title": "Dispatch and Delivery",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "text": "Orders are dispatched and delivered as follows.\n(a) An order is ordinarily dispatched within {{dispatch_window_days}} days of being confirmed, and the expected delivery date is shown to the consumer before the order is placed.\n(b) {{company_name}} shall give the consumer a means of tracking the shipment once it is dispatched.\n(c) Where {{company_name}} becomes aware that an order will not be delivered by the expected date, it shall inform the consumer, give a revised date, and allow the consumer to cancel the order and receive a full refund if the revised date is not acceptable.\n(d) Delivery timelines are estimates and may be affected by matters beyond {{company_name}}'s reasonable control, but this does not relieve {{company_name}} of its obligation under sub-clause (c) to inform the consumer and offer cancellation.\n(e) Risk in the goods passes to the consumer on delivery.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "Accurate information relating to delivery and shipment must be displayed"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "26",
+      "note": "Risk prima facie passes with property, subject to agreement between the parties"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(11)",
+      "note": "Deficiency in service, including delay in delivery"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Sale of Goods Act, 1930; Consumer Protection Act, 2019",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4; Sale of Goods Act, 1930 - S.26",
+  "authoring_note": "Limb (d) is drafted so that a force-majeure style qualification does not swallow the notification duty in limb (c), which is the usual drafting failure here. Limb (e) fixes the passing of risk at delivery rather than at dispatch; Section 26 of the Sale of Goods Act, 1930 allows the parties to agree otherwise, but placing risk on a consumer during carriage the seller arranged is difficult to defend. The advocate should confirm."
+}

@@ -1,0 +1,58 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Payment is made later than two working days after the last working day without a lawful reason",
+    "A deduction is made that Section 18 of the Code on Wages, 2019 does not authorise",
+    "Gratuity is withheld from an employee who has completed the qualifying period, otherwise than as the Code permits"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_FNF_SETTLEMENT_001",
+  "name": "Full and Final Settlement",
+  "title": "Full and Final Settlement",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SEPARATION_AGREEMENT"
+  ],
+  "text": "The Employer shall pay the Employee the full and final settlement amount stated in this Agreement, calculated as follows.\n(a) Salary for the period up to and including the last working day, together with any allowance payable for that period.\n(b) Encashment of accrued and unused earned leave, computed in accordance with the Employer's leave policy and the applicable law.\n(c) Gratuity, where the Employee has completed the qualifying period under Section 53 of the Code on Social Security, 2020, or one year of service where the Employee was engaged on fixed term employment within the meaning of Section 2(o) of the Industrial Relations Code, 2020.\n(d) Any bonus, incentive, or reimbursement that has accrued and remains unpaid.\n(e) Less any amount the Employee owes the Employer, being a deduction authorised by Section 18 of the Code on Wages, 2019, and less tax deducted at source.\nThe settlement amount shall be paid within two working days of the last working day, as required by Section 17(2) of the Code on Wages, 2019. The Employer shall furnish the Employee with a statement showing how the amount was arrived at, and shall issue Form 16 and the relevant service and provident fund records within the time the law prescribes.",
+  "legal_basis": [
+    {
+      "act": "Code on Wages, 2019",
+      "section": "17(2)",
+      "note": "Where an employee is removed, dismissed, retrenched, or resigns, wages payable shall be paid within two working days"
+    },
+    {
+      "act": "Code on Wages, 2019",
+      "section": "18",
+      "note": "No deduction except as authorised by the Code"
+    },
+    {
+      "act": "Code on Social Security, 2020",
+      "section": "53",
+      "note": "Payment of gratuity on termination after the qualifying period of continuous service"
+    },
+    {
+      "act": "Industrial Relations Code, 2020",
+      "section": "2(o)",
+      "note": "Fixed term employment — gratuity on completion of one year"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "192",
+      "note": "Deduction of tax at source"
+    }
+  ],
+  "source": "Code on Wages, 2019; Code on Social Security, 2020; Industrial Relations Code, 2020; Income-tax Act, 1961",
+  "statutory_reference": "Code on Wages, 2019 - S.17(2), S.18; Code on Social Security, 2020 - S.53",
+  "authoring_note": "The two working day deadline in Section 17(2) of the Code on Wages, 2019 is materially shorter than the practice most Indian employers follow, which is commonly thirty to forty-five days. The clause states the statutory position rather than the practice. The advocate must decide whether to keep it, since an employer who cannot in fact settle within two working days is better served by knowing that than by a clause that quietly restates the old habit. Note also the transitional gratuity position: per the Labour Ministry FAQs, service rendered before 21 November 2025 remains governed by the Payment of Gratuity Act, 1972, so a long-serving employee's gratuity is a split calculation. The clause does not attempt that split and the advocate should decide whether it must."
+}

@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Unvested options are stated to survive a resignation, contrary to Rule 12(8)(f)",
+    "Options are stated to lapse on death rather than to vest in the legal heirs, contrary to Rule 12(8)(d)"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ESOP_LEAVER_AND_LAPSE_001",
+  "name": "Cessation of Employment",
+  "title": "Cessation of Employment",
+  "category": "TERMINATION",
+  "document_types": [
+    "ESOP_GRANT_LETTER"
+  ],
+  "text": "Where the Optionee ceases to be employed by the Company, the following applies.\n(a) On the death of the Optionee, all options granted and not yet vested vest in the Optionee's legal heirs or nominees on the date of death, as Rule 12(8)(d) of the Companies (Share Capital and Debentures) Rules, 2014 provides.\n(b) Where the Optionee suffers permanent incapacity while in employment, all options granted and not yet vested vest in the Optionee on that day, as Rule 12(8)(e) provides.\n(c) On resignation or termination of employment, options not yet vested lapse on the date of cessation, and options already vested may be exercised within the period the Scheme allows, as Rule 12(8)(f) provides.\n(d) Where employment is terminated for cause, the Board may determine that vested options also lapse, and shall record its reasons.\n(e) Nothing in this letter confers a right to continued employment, and the grant of options does not form part of the Optionee's salary for the purpose of any statutory entitlement.",
+  "legal_basis": [
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(8)(d)",
+      "note": "In the event of the death of an employee, all options granted to him till such date shall vest in the legal heirs or nominees"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(8)(e)",
+      "note": "Where an employee suffers a permanent incapacity while in employment, all options granted as on the date of incapacitation shall vest in him on that day"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12(8)(f)",
+      "note": "In the event of resignation or termination, all options not vested as on that day shall expire; a vested option may be exercised in accordance with the terms of the scheme"
+    }
+  ],
+  "source": "Companies (Share Capital and Debentures) Rules, 2014",
+  "statutory_reference": "Companies (Share Capital and Debentures) Rules, 2014 - R.12(8)",
+  "authoring_note": "Limbs (a) to (c) are not scheme design choices, they are what Rule 12(8) provides, and schemes copied from other jurisdictions frequently get the death case backwards by providing for lapse. Limb (d), the forfeiture of VESTED options for cause, is a design choice and is the harshest term in the letter; the advocate should decide whether it is intended and whether cause needs defining here as it is in the founders' agreement."
+}

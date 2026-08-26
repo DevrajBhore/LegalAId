@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Safeguards fall below the minimum set out in Rule 6 of the DPDP Rules, 2025",
+    "Logs are retained for less than one year without a lawful basis"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_SECURITY_SAFEGUARDS_001",
+  "name": "Reasonable Security Safeguards",
+  "title": "Security Safeguards",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall take reasonable security safeguards to prevent a personal data breach, which shall include, at a minimum, the measures set out in Rule 6 of the Digital Personal Data Protection Rules, 2025.\n(a) Appropriate protection of personal data by encryption, obfuscation, masking, or the use of virtual tokens.\n(b) Control over access to the computer resources on which personal data is processed.\n(c) Visibility over who accesses personal data, through logs, monitoring, and review, so that an unauthorised access can be detected, investigated, and remedied.\n(d) Retention of those logs and of the personal data for a period of one year, unless a longer period is required by law, so that an unauthorised access may be traced.\n(e) Measures for the continued processing of personal data in the event of loss of access, including reasonable backups.\n(f) Appropriate provision in every contract the Processor enters into with any person it engages, requiring that person to take the same safeguards.\nThe Processor shall keep these safeguards under review and shall not reduce them during the term of this Agreement.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(5)",
+      "note": "A Data Fiduciary shall protect personal data in its possession or under its control by taking reasonable security safeguards"
+    },
+    {
+      "act": "Digital Personal Data Protection Rules, 2025",
+      "section": "6",
+      "note": "Reasonable security safeguards: encryption or masking or tokens, access control, logs and monitoring, retention of logs for one year, backups, and contractual flow-down"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023; Digital Personal Data Protection Rules, 2025",
+  "statutory_reference": "Digital Personal Data Protection Rules, 2025 - R.6",
+  "authoring_note": "The limbs track Rule 6 rather than paraphrasing it, because the penalty for failing to take reasonable security safeguards is the largest in the Act's Schedule and a general 'industry standard measures' formula gives the Fiduciary nothing to audit against. The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself."
+}

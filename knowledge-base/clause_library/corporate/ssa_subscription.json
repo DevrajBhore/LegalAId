@@ -1,0 +1,58 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Subscription money is utilised before allotment, contrary to Section 42",
+    "An issue to a non-resident is made below the price the FEMA pricing guidelines require",
+    "The return of allotment is not filed within thirty days"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SSA_SUBSCRIPTION_001",
+  "name": "Subscription and Allotment",
+  "title": "Subscription",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SHARE_SUBSCRIPTION_AGREEMENT"
+  ],
+  "text": "The Investor shall subscribe to, and the Company shall allot, the securities described below.\n(a) The Investor shall subscribe to {{securities_subscribed}} of the Company for an aggregate subscription amount of {{investment_amount}} rupees.\n(b) The subscription amount shall be paid on completion, by remittance to the bank account of the Company notified in writing, and shall be applied only as this Agreement permits.\n(c) The Company shall allot the securities within the period Section 42 of the Companies Act, 2013 allows, shall enter the Investor in the register of members, and shall deliver the certificates within two months of allotment as Section 56(4) of that Act requires.\n(d) The Company shall file the return of allotment in Form PAS-3 within thirty days of allotment as Section 39(4) of that Act requires.\n(e) The securities are allotted free of every encumbrance and rank equally with the existing securities of the same class, save as this Agreement or the Company's articles provide.\n(f) Where the Investor is a person resident outside India, the Company shall report the issue in Form FC-GPR within thirty days of allotment, and the issue price shall be not less than the price the pricing guidelines under the Foreign Exchange Management (Non-debt Instruments) Rules, 2019 require.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "42",
+      "note": "Private placement, including the requirement to allot within the prescribed period and the restriction on using subscription money before allotment"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "39(4)",
+      "note": "Return of allotment"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "56(4)",
+      "note": "Delivery of certificates within two months of allotment"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(c)",
+      "note": "Further issue of share capital to persons other than existing shareholders"
+    },
+    {
+      "act": "Foreign Exchange Management (Non-debt Instruments) Rules, 2019",
+      "section": "Schedule I",
+      "note": "Issue of equity instruments to a person resident outside India, including pricing guidelines and reporting in Form FC-GPR"
+    }
+  ],
+  "source": "Companies Act, 2013; Foreign Exchange Management (Non-debt Instruments) Rules, 2019",
+  "statutory_reference": "Companies Act, 2013 - S.42, S.39(4), S.56(4)",
+  "authoring_note": "Section 42 forbids the company using subscription money before allotment, which is routinely breached by start-ups treating the receipt as working capital while the paperwork catches up. Limb (f) covers the non-resident case; the advocate should confirm the current FC-GPR deadline and the applicable pricing methodology, and should check sectoral caps and whether the investor's jurisdiction attracts the prior-approval requirement for investors from countries sharing a land border with India."
+}

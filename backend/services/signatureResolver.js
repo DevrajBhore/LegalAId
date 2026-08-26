@@ -55,6 +55,27 @@ export function resolveSignatures(draft, input = {}) {
       return c;
     }
 
+    // A policy is promulgated by one organisation, not agreed between parties.
+    // It has no counterparty and no witnesses, so the bilateral testimonium is
+    // simply untrue of it: a privacy policy that ends "the Parties have executed
+    // this Agreement" over two witness blocks tells the reader the document is
+    // something it is not.
+    if (signType === "UNILATERAL") {
+      const issuer =
+        variables.company_name ||
+        variables.employer_name ||
+        variables.party_1_name ||
+        "the Organisation";
+      c.text = `Issued and adopted for and on behalf of ${issuer}:
+
+_____________________________
+Name:
+Designation:
+Date:
+Place:`;
+      return c;
+    }
+
     if (signType === "PARTNERSHIP") {
       const p1 =
         variables.partner_1_name || variables.party_1_name || "Partner 1";
@@ -211,6 +232,27 @@ Date:`;
 
     const designations = {
       EMPLOYMENT_CONTRACT: ["Authorised Signatory", "Employee"],
+      APPOINTMENT_LETTER: ["Authorised Signatory", "Employee"],
+      TERM_SHEET: [
+        "Authorised Signatory (Company)",
+        "Authorised Signatory (Investor)",
+      ],
+      ESOP_GRANT_LETTER: ["Authorised Signatory", "Optionee"],
+      SHARE_SUBSCRIPTION_AGREEMENT: [
+        "Authorised Signatory (Company)",
+        "Authorised Signatory (Investor)",
+      ],
+      IP_ASSIGNMENT_AGREEMENT: [
+        "Authorised Signatory (Assignor)",
+        "Authorised Signatory (Assignee)",
+      ],
+      DATA_PROCESSING_AGREEMENT: [
+        "Authorised Signatory (Data Fiduciary)",
+        "Authorised Signatory (Data Processor)",
+      ],
+      INTERNSHIP_AGREEMENT: ["Authorised Signatory", "Intern"],
+      SEPARATION_AGREEMENT: ["Authorised Signatory (Employer)", "Employee"],
+      POSH_POLICY: ["Authorised Signatory", "Authorised Signatory"],
       LOAN_AGREEMENT: [
         "Authorised Signatory (Lender)",
         "Authorised Signatory (Borrower)",

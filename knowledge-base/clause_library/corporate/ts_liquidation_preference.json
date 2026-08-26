@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The preference is expressed so as to rank ahead of creditors on a winding up",
+    "A participating preference is described as non-participating, or the conversion election is omitted"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_LIQUIDATION_PREFERENCE_001",
+  "name": "Liquidation Preference",
+  "title": "Liquidation Preference",
+  "category": "CORPORATE",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "On a Liquidity Event, the proceeds available for distribution shall be applied as follows.\n(a) Liquidity Event means a winding up of the Company, a sale of all or substantially all of its assets, or a sale or transfer of shares resulting in a change of control of the Company.\n(b) The Investor shall receive, in priority to the holders of equity shares, an amount equal to {{liquidation_preference_multiple}} times the amount invested, together with any declared but unpaid dividend.\n(c) The preference is non-participating: after receiving the amount in sub-clause (b), the Investor does not share further in the remaining proceeds, but may instead elect to convert into equity shares and take its pro rata share of the whole, whichever produces the greater amount.\n(d) The balance of the proceeds is distributed among the holders of equity shares in proportion to their shareholding.\n(e) A distribution on a winding up is subject to Section 53 of the Insolvency and Bankruptcy Code, 2016 where that Code applies, and the priority in this clause operates only among shareholders and does not affect the rights of creditors.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "43",
+      "note": "Kinds of share capital, including preference shares"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "47",
+      "note": "Voting rights, including the restricted voting rights attaching to preference shares"
+    },
+    {
+      "act": "Insolvency and Bankruptcy Code, 2016",
+      "section": "53",
+      "note": "Distribution of assets in liquidation; equity shareholders rank last and a contractual preference among shareholders cannot displace creditors"
+    }
+  ],
+  "source": "Companies Act, 2013; Insolvency and Bankruptcy Code, 2016",
+  "statutory_reference": "Companies Act, 2013 - S.43; IBC 2016 - S.53",
+  "authoring_note": "Sub-clause (e) exists because a liquidation preference is often written as though it ranked ahead of everything. It does not: on a winding up Section 53 of the Insolvency and Bankruptcy Code, 2016 places equity holders last, and the preference operates only in the distribution among shareholders. The advocate should decide whether a participating preference is intended, since the difference between participating and non-participating is the single largest economic term in the document and is frequently misunderstood by founders."
+}

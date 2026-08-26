@@ -1,0 +1,48 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Background verification is carried out without the employee's consent, or extends beyond what is necessary for the stated purpose",
+    "The condition is used to withdraw an accepted appointment for a reason unconnected with the matters listed"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_JOINING_CONDITIONS_001",
+  "name": "Conditions of Joining",
+  "title": "Conditions of Joining",
+  "category": "EMPLOYMENT",
+  "document_types": [
+    "APPOINTMENT_LETTER",
+    "OFFER_LETTER"
+  ],
+  "text": "This appointment is conditional upon the following, and the Employer may withdraw it, or terminate the employment, if any of them is not satisfied.\n(a) The Employee producing, on or before the date of joining, proof of identity, proof of address, evidence of the educational and professional qualifications relied on, and the documents relating to previous employment that the Employer reasonably requires.\n(b) The information given by the Employee in the application and at interview being true and complete in all material respects.\n(c) Verification of the Employee's antecedents, previous employment, and qualifications proving satisfactory, such verification being carried out with the Employee's written consent and confined to what is necessary for the purpose.\n(d) The Employee being free of any subsisting obligation to a former employer, whether as to notice, exclusivity, or restraint, that would prevent or restrict the performance of this appointment.\n(e) The Employee being medically fit for the role, where the role requires it and the Employer has said so in writing before the date of joining.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "17",
+      "note": "Fraud, including active concealment of a material fact by one with knowledge of it"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "19",
+      "note": "An agreement caused by misrepresentation is voidable at the option of the misled party"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "6",
+      "note": "Consent must be free, specific, informed, unconditional and unambiguous, and limited to the personal data necessary for the specified purpose"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Digital Personal Data Protection Act, 2023",
+  "statutory_reference": "Indian Contract Act, 1872 - S.17, S.19; DPDP Act, 2023 - S.6",
+  "authoring_note": "Limb (c) is written narrowly on purpose. Background verification collects personal data, and after the DPDP Act, 2023 an open-ended verification right is not defensible: consent must be specific and the collection limited to the purpose. The advocate should confirm whether the employer's actual verification vendor operates within those limits. Limb (e) is conditioned on advance notice because a medical condition imposed after acceptance is liable to be struck down."
+}

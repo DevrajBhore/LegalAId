@@ -1,0 +1,46 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The bad-leaver price is set so far below value that it operates as a penalty rather than a genuine pre-estimate"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "FOUNDER_LEAVER_001",
+  "name": "Departing Founders",
+  "title": "Departing Founders",
+  "category": "TERMINATION",
+  "document_types": [
+    "FOUNDERS_AGREEMENT"
+  ],
+  "text": "Where a Founder ceases to be engaged in the business of the Company, the following applies.\n(a) A Founder is a Good Leaver where the Founder ceases to be engaged by reason of death, permanent incapacity, or a resignation the other Founders agree in writing to treat as such, or where the Founder is removed otherwise than for cause.\n(b) A Founder is a Bad Leaver in every other case, including resignation before the end of the vesting period and removal for cause. Cause means a material breach of this Agreement, a breach of the duty of good faith, fraud, or conviction of an offence involving moral turpitude.\n(c) A Good Leaver retains their vested shares. Their unvested shares may be acquired at fair market value, determined by a registered valuer appointed under Section 247 of the Companies Act, 2013.\n(d) A Bad Leaver retains their vested shares. Their unvested shares may be acquired at the lower of the price the Founder paid for them and their fair market value.\n(e) A departing Founder shall resign from the Board and from every office held in the Company with effect from the date of cessation, and shall return all property and confidential information of the Company.\n(f) The obligations of a departing Founder as to confidentiality, and as to the assignment of intellectual property, continue after cessation.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "247",
+      "note": "Valuation by a registered valuer where a valuation is required under the Act"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "2(68)",
+      "note": "Restriction on the transfer of shares in a private company"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "74",
+      "note": "Compensation for breach where a penalty is stipulated; a bad-leaver price materially below value may be attacked under this section"
+    }
+  ],
+  "source": "Companies Act, 2013; Indian Contract Act, 1872",
+  "statutory_reference": "Companies Act, 2013 - S.247; Indian Contract Act, 1872 - S.74",
+  "authoring_note": "Limb (d) prices bad-leaver shares at the LOWER of cost and fair value, and does not forfeit them outright. Outright forfeiture, or a nominal price, is vulnerable under Section 74 of the Contract Act as a penalty. The advocate should take a view on whether the definition of cause in limb (b) is tight enough, since it is the pivot on which a founder's entire holding turns and is the most litigated term in this kind of agreement."
+}

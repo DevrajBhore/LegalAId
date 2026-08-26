@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "A reporting window is used to defeat a statutory consumer right",
+    "A consumer refusing defective goods is charged for delivery"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_DELIVERY_FAILURE_001",
+  "name": "Failed and Refused Delivery",
+  "title": "Failed Delivery",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "text": "Where a delivery cannot be completed, the following applies.\n(a) {{company_name}} shall attempt delivery at least {{delivery_attempts}} times, and shall inform the consumer before each attempt by the contact details given with the order.\n(b) Where delivery cannot be completed after those attempts, the order is returned to {{company_name}} and the amount paid is refunded in accordance with the Refund and Cancellation Policy.\n(c) A consumer who refuses delivery of goods that are damaged, defective, or not as described shall receive a full refund, including any delivery charge paid.\n(d) Where goods are delivered short, damaged, or in a tampered package, the consumer should report it through the platform within {{shortage_report_days}} days of delivery, and {{company_name}} shall investigate and, where the report is made out, replace the goods or refund the amount paid.\n(e) Failure to report within that period does not by itself extinguish a right the consumer has under the Consumer Protection Act, 2019.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "Duties of e-commerce entities in relation to delivery and shipment"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(11)",
+      "note": "Deficiency in service"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "37",
+      "note": "Delivery of the wrong quantity"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Consumer Protection Act, 2019; Sale of Goods Act, 1930",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4; Consumer Protection Act, 2019 - S.2(11)",
+  "authoring_note": "Limb (e) exists because a short reporting window is often drafted as a condition precedent to any remedy. It is not: the statutory rights subsist, and a clause purporting to extinguish them by the passage of a few days is an unfair contract term. The advocate should set the reporting window."
+}

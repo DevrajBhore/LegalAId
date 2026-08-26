@@ -1,0 +1,34 @@
+{
+  "document_type": "DATA_PROCESSING_AGREEMENT",
+  "family": "data_protection",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "DPA_ROLES_AND_SCOPE_001",
+    "CORE_DEFINITIONS_001",
+    "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+    "DPA_SECURITY_SAFEGUARDS_001",
+    "DPA_BREACH_NOTIFICATION_001",
+    "DPA_SUBPROCESSING_001",
+    "DPA_DATA_PRINCIPAL_RIGHTS_001",
+    "DPA_AUDIT_AND_TRANSFER_001",
+    "CORE_TERM_001",
+    "DPA_RETENTION_AND_ERASURE_001",
+    "CORE_INDEMNITY_001",
+    "CORE_LIABILITY_CAP_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "DPDP Act 2023 S.8(2) — a Data Fiduciary may engage a Data Processor ONLY under a valid contract",
+    "DPDP Rules 2025 R.1 — phased commencement: R.1, 2, 17-21 from 14 Nov 2025; R.4 from 14 Nov 2026; R.3, 5-16, 22, 23 from 14 May 2027",
+    "DPDP Rules 2025 R.6 — minimum security safeguards, including retention of logs for one year and contractual flow-down",
+    "DPDP Rules 2025 R.7 — breach: intimate affected Data Principals without delay; preliminary intimation to the Board, detailed particulars within 72 hours",
+    "DPDP Act 2023 S.8(7) — erasure on withdrawal of consent or once the purpose is served",
+    "DPDP Act 2023 S.16 — the Central Government may restrict transfer to notified countries",
+    "Sectoral localisation (e.g. RBI payment system data) applies independently of the DPDP Act"
+  ]
+}

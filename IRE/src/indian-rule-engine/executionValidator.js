@@ -45,6 +45,13 @@ export function executionValidate(draft) {
     /\d{1,2}(st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{4}/i.test(allText) ||
     /(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{4}/i.test(allText) ||
     /\b\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}\b/.test(allText) ||
+    // ISO form. Clause text interpolates {{effective_date}} verbatim, and only
+    // the document types with a hardening builder get it reformatted into
+    // "1st day of September, 2026". Without this, a document carrying a
+    // perfectly good date in 2026-09-01 form was reported as having none --
+    // which happened to four separate document types before it was fixed here
+    // rather than by adding the words "Effective Date" to each clause.
+    /\b\d{4}-\d{2}-\d{2}\b/.test(allText) ||
     /entered\s+into\s+(as\s+of|on)\s+\d/i.test(allText) ||
     /executed\s+on\s+\d/i.test(allText) ||
     /commenc(e|ing)\s+\w+\s+\d{1,2}/i.test(allText);

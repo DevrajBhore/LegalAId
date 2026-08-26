@@ -1,0 +1,57 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The option pool is described as included in the pre-money capitalisation while the price is computed as though it were not",
+    "Securities are issued on a preferential basis without the valuation report the rules require"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_INVESTMENT_TERMS_001",
+  "name": "Investment Terms",
+  "title": "Investment Terms",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "The proposed investment is on the following terms.\n(a) The Investor proposes to invest {{investment_amount}} rupees in the Company.\n(b) The pre-money valuation of the Company is {{pre_money_valuation}} rupees, and the post-money valuation is the pre-money valuation together with the investment amount.\n(c) The investment is by way of subscription to {{security_type}} of the Company, issued at a price determined by reference to the pre-money valuation on a fully diluted basis.\n(d) Fully diluted basis means the issued equity share capital of the Company assuming the conversion of every convertible security and the exercise of every option granted or reserved, including the whole of the option pool referred to in sub-clause (e).\n(e) An employee stock option pool of {{esop_pool_percentage}} per cent of the post-issue fully diluted share capital shall be created or maintained, and shall be included in the pre-money capitalisation.\n(f) The securities shall be issued in accordance with Section 42 and Section 62 of the Companies Act, 2013, and the price shall be supported by a valuation report of a registered valuer where the Act or the rules require one.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "42",
+      "note": "Private placement of securities, and the procedure and restrictions applying to it"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(c)",
+      "note": "Further issue of shares to persons other than existing shareholders, requiring a special resolution and a registered valuer's report"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 13",
+      "note": "Issue of shares on a preferential basis, including the requirement for a valuation report"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "247",
+      "note": "Valuation by a registered valuer"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "56(2)(viib)",
+      "note": "The share premium charge known as angel tax. Abolished by the Finance (No.2) Act, 2024 with effect from 1 April 2025, for all categories of investor including non-residents."
+    }
+  ],
+  "source": "Companies Act, 2013; Companies (Share Capital and Debentures) Rules, 2014; Income-tax Act, 1961",
+  "statutory_reference": "Companies Act, 2013 - S.42, S.62(1)(c)",
+  "authoring_note": "Sub-clause (e) is where founders most often lose value without noticing: an option pool included in the PRE-money capitalisation dilutes the founders alone, whereas one created after the round dilutes everyone. The clause states which is intended rather than leaving it to the spreadsheet. On tax, angel tax under Section 56(2)(viib) was abolished by the Finance (No.2) Act, 2024 from 1 April 2025, so a premium above fair value is no longer charged to the company; the citation is retained so the position is recorded rather than assumed. Section 56(2)(x), which charges the RECIPIENT of shares issued below fair value, is unaffected and the advocate should consider it."
+}

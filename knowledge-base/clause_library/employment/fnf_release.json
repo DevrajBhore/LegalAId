@@ -1,0 +1,53 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The release purports to waive an accrued statutory entitlement, such as gratuity or provident fund",
+    "The release purports to bar a complaint under the POSH Act, 2013",
+    "The release is given without the settlement amount actually being paid"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_FNF_RELEASE_001",
+  "name": "Release and Discharge",
+  "title": "Release and Discharge",
+  "category": "RELEASE",
+  "document_types": [
+    "SEPARATION_AGREEMENT"
+  ],
+  "text": "On receipt of the full and final settlement amount, and subject to the following, each Party releases and discharges the other from every claim arising out of the employment or its ending.\n(a) The Employee confirms that the settlement amount represents everything due to the Employee in respect of salary, allowances, leave, bonus, gratuity, reimbursement, and every other head arising out of the employment.\n(b) The Employer releases the Employee from every claim arising out of the employment, other than a claim founded on fraud, on wilful misconduct, or on a breach of the surviving obligations recorded in this Agreement.\n(c) This release does not extend to, and nothing in this Agreement shall be read as waiving, any right or remedy that the law does not permit to be waived, including any accrued statutory entitlement and any right under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013.\n(d) This release does not affect the Employee's right to a provident fund or pension benefit held by a statutory authority rather than by the Employer.\n(e) The release takes effect only when the settlement amount is received in cleared funds.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "A promisee may remit or dispense with performance"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "23",
+      "note": "An agreement is void where its object or consideration is unlawful or opposed to public policy"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "28",
+      "note": "An agreement in restraint of legal proceedings is void, subject to the exceptions"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "2(f)",
+      "note": "The Act's protections operate independently of any contract between the parties"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; POSH Act, 2013",
+  "statutory_reference": "Indian Contract Act, 1872 - S.63, S.23, S.28",
+  "authoring_note": "Sub-clauses (c) and (d) are carve-outs from the release and are the reason this clause is drafted at length rather than as a single sentence. A release that purports to extinguish accrued statutory dues, or to bar a POSH complaint, is not merely unenforceable as to that part: it invites a finding that the whole settlement was obtained improperly. Limb (e) makes the release conditional on actual receipt, so an employee who signs and is not paid is not left having given up their claims for nothing. The advocate should confirm the list of non-waivable rights in limb (c) is complete for the employer's sector."
+}

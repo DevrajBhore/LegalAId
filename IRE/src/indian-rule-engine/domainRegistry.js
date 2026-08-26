@@ -289,6 +289,110 @@ export const DOCUMENT_TYPE_REGISTRY = {
     registration: false,
   },
 
+  DATA_PROCESSING_AGREEMENT: {
+    displayName: "Data Processing Agreement",
+    family: "IP",
+    domains: ["contract", "privacy"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "TERM",
+      "TERMINATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: true,
+    registration: false,
+  },
+
+  // Published by one entity to its customers, not agreed with them, so no
+  // IDENTITY or CONSIDERATION requirement -- the PRIVACY_POLICY shape.
+  REFUND_AND_CANCELLATION_POLICY: {
+    displayName: "Refund & Cancellation Policy",
+    family: "IP",
+    domains: ["tos"],
+    categories: ["PURPOSE"],
+    stampDuty: false,
+    registration: false,
+  },
+
+  SHIPPING_AND_DELIVERY_POLICY: {
+    displayName: "Shipping & Delivery Policy",
+    family: "IP",
+    domains: ["tos"],
+    categories: ["PURPOSE"],
+    stampDuty: false,
+    registration: false,
+  },
+
+  // A term sheet is a statement of intent. It carries no CONSIDERATION or
+  // TERMINATION requirement because, save for a short list of binding
+  // provisions, it creates no obligations at all.
+  TERM_SHEET: {
+    displayName: "Term Sheet",
+    family: "CORPORATE",
+    domains: ["contract", "corporate"],
+    categories: ["IDENTITY", "PURPOSE", "GOVERNING_LAW", "SIGNATURE_BLOCK"],
+    stampDuty: false,
+    registration: false,
+  },
+
+  // A grant letter is issued by the company to one employee. It is unilateral,
+  // so it carries no CONSIDERATION requirement -- the option is granted, not
+  // bargained for.
+  ESOP_GRANT_LETTER: {
+    displayName: "ESOP Grant Letter",
+    family: "EMPLOYMENT",
+    domains: ["contract", "employment", "corporate"],
+    categories: ["IDENTITY", "PURPOSE", "TERM", "TERMINATION", "SIGNATURE_BLOCK"],
+    stampDuty: false,
+    registration: false,
+  },
+
+  SHARE_SUBSCRIPTION_AGREEMENT: {
+    displayName: "Share Subscription Agreement",
+    family: "CORPORATE",
+    domains: ["contract", "corporate"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "CONSIDERATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: true,
+    registration: false,
+  },
+
+  INTERNSHIP_AGREEMENT: {
+    displayName: "Internship Agreement",
+    family: "EMPLOYMENT",
+    domains: ["contract", "employment"],
+    categories: [
+      "IDENTITY",
+      "PURPOSE",
+      "CONSIDERATION",
+      "TERM",
+      "TERMINATION",
+      "GOVERNING_LAW",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: false,
+    registration: false,
+  },
+
+  // A policy is a unilateral instrument with no counterparty, so it carries no
+  // IDENTITY or CONSIDERATION requirement -- the same shape as PRIVACY_POLICY
+  // and TERMS_OF_SERVICE, which are also promulgated rather than agreed.
+  POSH_POLICY: {
+    displayName: "PoSH Policy",
+    family: "EMPLOYMENT",
+    domains: ["employment", "compliance"],
+    categories: ["PURPOSE"],
+    stampDuty: false,
+    registration: false,
+  },
+
   APPOINTMENT_LETTER: {
     displayName: "Appointment Letter",
     family: "EMPLOYMENT",

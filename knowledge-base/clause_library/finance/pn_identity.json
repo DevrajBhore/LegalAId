@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The undertaking to pay is conditional, in which case the instrument is not a promissory note",
+    "The sum is not certain, or the payee is not a certain person"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "PN_IDENTITY_001",
+  "name": "Identity of Maker and Payee",
+  "title": "Parties",
+  "category": "IDENTITY",
+  "document_types": [
+    "PROMISSORY_NOTE"
+  ],
+  "text": "PROMISSORY NOTE\nPlace: {{execution_city}}\nDate: {{effective_date}} (the \"Effective Date\")\nThis Promissory Note is made by {{party_1_descriptor}} (the \"Maker\"), in favour of {{party_2_descriptor}} (the \"Payee\").\nThe subject matter of this instrument is the Maker's unconditional promise to pay the principal sum stated below to the Payee, together with interest on it.\nThis instrument is a promissory note within the meaning of Section 4 of the Negotiable Instruments Act, 1881, being an instrument in writing containing an unconditional undertaking, signed by the Maker, to pay a certain sum of money to the Payee or to the Payee's order.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "4",
+      "note": "Definition of a promissory note: an instrument in writing containing an unconditional undertaking, signed by the maker, to pay a certain sum of money only to, or to the order of, a certain person"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "5",
+      "note": "Distinguishes a bill of exchange from a promissory note"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.4",
+  "authoring_note": "A promissory note is a unilateral instrument, not an agreement between parties, which is why it opens with place and date and names a Maker and a Payee rather than reciting a testatum. The conditions in invalid_if are the definitional ones in Section 4: an undertaking that is conditional, or a sum that is not certain, produces something that is simply not a promissory note and loses the presumptions the Act attaches to one.\n\nThe parties are rendered through {{party_N_descriptor}} rather than name-plus-address. The descriptor carries the entity type as well ('an individual residing at', 'a private limited company incorporated under the Companies Act, 2013'), and the consistency validator checks that the stated party type actually appears in the identity clause.\n\nThe subject-matter sentence is stated expressly. A promissory note carries no purpose or scope clause in the ordinary sense, and the completeness validator looks for a PURPOSE clause or an identity clause that recites the subject matter; without it a perfectly good note is reported as having undefined scope."
+}

@@ -118,9 +118,17 @@ export function semanticValidate(draft) {
   // window is bounded by a sentence BOUNDARY (a stop followed by a capital)
   // rather than by any full stop at all.
   const near = (n) => `(?:(?!\\.\\s+[A-Z])[\\s\\S]){0,${n}}`;
+  // A penalty IMPOSED BY STATUTE is not a s.74 stipulated sum. Section 74 governs
+  // a sum the parties themselves name for breach; a fine the legislature attaches
+  // to non-compliance is not theirs to negotiate. The `penalty under Section N of
+  // the Act` limb was added because a PoSH policy reciting the Act's own penalties
+  // was being flagged as an unenforceable contractual penalty.
   const STATUTORY_PENALTY = new RegExp(
     `(?:stamp|duty|tax|gst|tds|statutory|registration|regulator|authority|late\\s+filing|non.?compliance)${near(90)}penalt` +
-      `|penalt${near(90)}(?:stamp|duty|tax|gst|tds|statute|statutory)`,
+      `|penalt${near(90)}(?:stamp|duty|tax|gst|tds|statute|statutory)` +
+      `|penalt${near(60)}under\\s+(?:section|s\\.|sec\\.)\\s*\\d` +
+      `|(?:punishable|liable)\\s+(?:with|to)${near(60)}(?:fine|penalt)` +
+      `|penalt${near(40)}(?:prescribed|imposed)\\s+(?:by|under)\\s+(?:the\\s+)?(?:Act|Code|Rules|law)`,
     "i"
   );
 

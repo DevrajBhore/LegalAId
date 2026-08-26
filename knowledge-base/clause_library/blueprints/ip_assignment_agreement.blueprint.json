@@ -1,0 +1,34 @@
+{
+  "document_type": "IP_ASSIGNMENT_AGREEMENT",
+  "family": "ip",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "IPA_COPYRIGHT_ASSIGNMENT_001",
+    "CORE_DEFINITIONS_001",
+    "IP_PATENT_RIGHTS_001",
+    "IPA_TRADEMARK_ASSIGNMENT_001",
+    "IPA_MORAL_RIGHTS_001",
+    "IPA_CONSIDERATION_001",
+    "IPA_ASSIGNOR_WARRANTIES_001",
+    "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+    "CORE_INDEMNITY_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Copyright Act 1957 S.19(1) — assignment INVALID unless in writing signed by the assignor",
+    "Copyright Act 1957 S.19(5) — no stated period means FIVE YEARS only",
+    "Copyright Act 1957 S.19(6) — no stated territory means INDIA only",
+    "Copyright Act 1957 S.19(4) — lapses after one year if the assignee does not exercise the rights, unless stated otherwise",
+    "Copyright Act 1957 S.57 — moral rights CANNOT be assigned and survive the assignment",
+    "Copyright Act 1957 S.17 — a contractor retains copyright absent a written assignment; only an employee's work vests in the employer",
+    "Patents Act 1970 S.68 — assignment must be a single document embodying ALL terms and conditions",
+    "Trade Marks Act 1999 S.45 — record the assignment with the Registrar or it is ineffective against third parties"
+  ],
+  "_authoring_note": "IP_PATENT_RIGHTS_001 speaks in Assignor/Assignee and assigns the Subject Technology. It was written for this document type and was unreachable while the type did not exist; it was deliberately NOT forced into the software development agreement earlier, because those roles do not exist there."
+}

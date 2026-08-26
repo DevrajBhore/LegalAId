@@ -1,0 +1,52 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The processor responds to a Data Principal directly where the fiduciary carries the duty",
+    "Assistance is conditioned on a charge that prevents the fiduciary meeting its statutory time limit"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_DATA_PRINCIPAL_RIGHTS_001",
+  "name": "Assistance with Data Principal Rights",
+  "title": "Data Principal Rights",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "The Processor shall assist the Fiduciary in giving effect to the rights of Data Principals under Chapter III of the Digital Personal Data Protection Act, 2023.\n(a) Where the Processor receives a request from a Data Principal relating to personal data processed under this Agreement, it shall not respond to it directly, and shall forward it to the Fiduciary without undue delay and in any event within three working days.\n(b) The Processor shall provide the Fiduciary with such information, and shall take such steps, as the Fiduciary reasonably requires to answer a request for access under Section 11, to correct, complete, update, or erase personal data under Section 12, or to deal with a grievance under Section 13.\n(c) The Processor shall provide that assistance within the time the Fiduciary specifies, being a time that allows the Fiduciary to meet the period prescribed under the Act and the Rules.\n(d) The Processor shall not charge the Fiduciary for assistance under this clause, except where the request is manifestly excessive and the Fiduciary has agreed a charge in advance.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "11",
+      "note": "Right of the Data Principal to obtain a summary of personal data being processed and the processing activities undertaken"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "12",
+      "note": "Right to correction, completion, updating and erasure of personal data"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "13",
+      "note": "Right of grievance redressal"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "14",
+      "note": "Right to nominate another individual to exercise rights in the event of death or incapacity"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.11, S.12, S.13",
+  "authoring_note": "Limb (c) deliberately does not state a number of days for the Fiduciary's own response, because that period is prescribed by the Rules rather than the Act and Rules 5 to 16 do not commence until 14 May 2027. The advocate should pin the figure once the operative rule is in force. The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself."
+}

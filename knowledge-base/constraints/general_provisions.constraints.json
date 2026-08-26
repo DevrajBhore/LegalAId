@@ -20,7 +20,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -41,7 +48,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -62,7 +76,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -83,7 +104,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -104,7 +132,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -125,7 +160,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -146,7 +188,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -167,7 +216,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -188,7 +244,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -220,7 +283,14 @@
       "_note": "Loan and Guarantee disallow force majeure by policy (drafting_policies.json -> hardening.disallowedProtections); this rule stands down for them.",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -241,7 +311,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -264,7 +341,14 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     },
     {
@@ -285,8 +369,18 @@
       "review_status": "draft-needs-legal-review",
       "excludes_doc_types": [
         "TERMS_OF_SERVICE",
-        "PRIVACY_POLICY"
+        "PRIVACY_POLICY",
+        "POSH_POLICY",
+        "REFUND_AND_CANCELLATION_POLICY",
+        "SHIPPING_AND_DELIVERY_POLICY",
+        "PROMISSORY_NOTE",
+        "POWER_OF_ATTORNEY",
+        "TERM_SHEET",
+        "ESOP_GRANT_LETTER"
       ]
     }
+  ],
+  "//": [
+    "These rules state a floor for a BILATERAL COMMERCIAL INSTRUMENT. A unilateral instrument is excluded because the floor is not merely unnecessary for it but wrong: a force majeure or counterparts clause in a promissory note would defeat Section 4 of the Negotiable Instruments Act, 1881, which requires the promise to be UNCONDITIONAL, and a notice clause in a power of attorney or a published policy has no counterparty to address."
   ]
 }

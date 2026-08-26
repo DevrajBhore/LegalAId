@@ -1,0 +1,36 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The policy is adopted but not disseminated to employees"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_POLICY_ADOPTION_001",
+  "name": "Adoption of the Policy",
+  "title": "Adoption",
+  "category": "SIGNATURE_BLOCK",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "This Policy is adopted by {{company_name}} with effect from {{effective_date}} (the \"Effective Date\"), and supersedes any previous policy of the Organisation on the prevention of sexual harassment at the workplace.\nThe Policy shall be reviewed at least once a year, and shall be amended as required to remain consistent with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 and the rules made under it. No amendment shall reduce a protection conferred by the Act.\nAdopted for and on behalf of {{company_name}}:",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "19",
+      "note": "Duty of the employer to formulate and widely disseminate an internal policy"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.19",
+  "authoring_note": "A policy is a unilateral instrument, so this stands in place of an execution block between parties. Section 19 requires the policy to be formulated AND widely disseminated; adoption alone does not discharge the duty, which is why dissemination appears in invalid_if.\n\nThe document type is registered with signatureType UNILATERAL, which leaves this clause's text as authored. Under the previous BILATERAL default the signature resolver overwrote it with 'IN WITNESS WHEREOF, the Parties have executed this Agreement' and two witness blocks -- untrue of a policy, and it discarded the review and supersession terms this clause carries."
+}

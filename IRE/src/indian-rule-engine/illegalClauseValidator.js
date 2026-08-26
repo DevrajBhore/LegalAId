@@ -38,6 +38,24 @@ function findRulesFile() {
   return null;
 }
 
+// A rule pattern like "penalty.*entire.*contract.*value" is written to mean
+// "these words, near each other". Compiled literally, `.*` is unbounded and
+// greedy, so the three gaps can span an entire clause and the rule fires on
+// words that have nothing to do with one another. That is not hypothetical:
+// "not.*employ.*women" matched "Not fewer than two members are drawn from among
+// the employees, preferably committed to the cause of women" -- a sentence
+// constituting a PoSH committee -- and, being CRITICAL and blocks_generation,
+// refused to produce the document at all.
+//
+// Each `.*` is therefore compiled to a bounded window that also refuses to cross
+// a sentence boundary, which is what the pattern author meant by "near".
+const NEAR_WINDOW = 80;
+const NEAR = `(?:(?!\\.\\s+[A-Z])[\\s\\S]){0,${NEAR_WINDOW}}`;
+
+export function compilePattern(pattern) {
+  return new RegExp(String(pattern).split(".*").join(NEAR), "i");
+}
+
 function loadRules() {
   const rulesFile = findRulesFile();
   if (!rulesFile) {
@@ -48,10 +66,9 @@ function loadRules() {
   }
   try {
     const data = JSON.parse(fs.readFileSync(rulesFile, "utf8"));
-    // Convert pattern strings → RegExp objects
     return (data.rules || []).map((rule) => ({
       ...rule,
-      patterns: (rule.patterns || []).map((p) => new RegExp(p, "i")),
+      patterns: (rule.patterns || []).map(compilePattern),
     }));
   } catch (err) {
     console.error(
@@ -122,6 +139,26 @@ function isProtectedReference(ruleId, text = "") {
       /\bnot\b[^.]{0,80}\bresale price maintenance\b/.test(lower) ||
       /\bfree to determine its own resale price\b/.test(lower) ||
       /\bappreciable adverse effect on competition\b/.test(lower)
+    );
+  }
+
+  // A clause implementing the PoSH Act, or covenanting against discrimination,
+  // is the OPPOSITE of a discriminatory clause. Its vocabulary is necessarily
+  // the vocabulary the patterns look for -- women, sex, gender, employment --
+  // so without this the product cannot generate the very policy the law
+  // requires employers to adopt.
+  if (ruleId === "DISCRIMINATION_PROHIBITED") {
+    return (
+      /\bsexual harassment of women at workplace\b/.test(lower) ||
+      /\bposh\b/.test(lower) ||
+      /\binternal committee\b/.test(lower) ||
+      /\blocal committee\b/.test(lower) ||
+      /\baggrieved woman\b/.test(lower) ||
+      /\bshall not discriminate\b/.test(lower) ||
+      /\bwithout discrimination\b/.test(lower) ||
+      /\bequal (?:pay|remuneration|opportunit)/.test(lower) ||
+      /\bmaternity benefit\b/.test(lower) ||
+      /\bcause of women\b/.test(lower)
     );
   }
 

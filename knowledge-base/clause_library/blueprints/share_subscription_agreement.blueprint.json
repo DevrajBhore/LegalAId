@@ -1,0 +1,33 @@
+{
+  "document_type": "SHARE_SUBSCRIPTION_AGREEMENT",
+  "family": "corporate",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "CORE_PURPOSE_001",
+    "CORE_DEFINITIONS_001",
+    "SSA_SUBSCRIPTION_001",
+    "SSA_CONDITIONS_PRECEDENT_001",
+    "CORE_REPRESENTATIONS_001",
+    "SSA_USE_OF_PROCEEDS_001",
+    "CORP_BOARD_INVESTOR_CONTROL_001",
+    "CORP_ANTI_DILUTION_001",
+    "CORP_SHARE_TRANSFER_001",
+    "CORE_INDEMNITY_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Companies Act 2013 S.42 — subscription money may NOT be utilised before allotment",
+    "Companies Act 2013 S.39(4) — return of allotment in Form PAS-3 within 30 days",
+    "Companies Act 2013 S.56(4) — share certificates within two months of allotment",
+    "Companies Act 2013 S.14 — investor rights must be written into the ARTICLES to bind the company and any transferee",
+    "Companies Act 2013 S.6 — neither the articles nor this agreement can override the Act",
+    "Companies Act 2013 S.179 — check the reserved matters list against the Board's non-delegable powers",
+    "FEMA NDI Rules 2019 — for a non-resident investor: pricing guidelines, sectoral caps, Form FC-GPR, and prior approval for investors from land-border countries"
+  ]
+}

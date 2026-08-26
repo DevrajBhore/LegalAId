@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The consumer is required to bear return shipping for goods that are defective or not as described",
+    "No return window is stated"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ECOM_RETURN_ELIGIBILITY_001",
+  "name": "Returns and Replacement",
+  "title": "Returns",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY"
+  ],
+  "text": "A consumer may return goods as follows.\n(a) A request to return goods shall be made within {{return_window_days}} days of delivery, by the means stated on the platform.\n(b) Goods that are damaged, defective, not as described, or not fit for the purpose for which they were sold, may be returned within that period, and {{company_name}} shall at the consumer's option replace them or refund the amount paid.\n(c) Where goods are returned because they are damaged, defective, or not as described, the cost of return shipping shall be borne by {{company_name}}.\n(d) Where goods are returned for any other reason permitted by this Policy, the cost of return shipping shall be borne by the consumer, and that cost is stated on the platform before the return is requested.\n(e) Goods must be returned in the condition in which they were delivered, with their original packaging and any accessory or free item supplied with them, save where they are being returned because they are damaged or defective.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4",
+      "note": "Accurate information relating to return, refund, exchange, warranty and guarantee, delivery and shipment, and cost of return shipping must be displayed"
+    },
+    {
+      "act": "Sale of Goods Act, 1930",
+      "section": "16",
+      "note": "Implied conditions as to quality or fitness for purpose"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(9)",
+      "note": "Rights of consumers, including the right to be informed and the right to seek redressal"
+    }
+  ],
+  "source": "Consumer Protection (E-Commerce) Rules, 2020; Consumer Protection Act, 2019; Sale of Goods Act, 1930",
+  "statutory_reference": "Consumer Protection (E-Commerce) Rules, 2020 - R.4",
+  "authoring_note": "Limb (c) allocates return shipping to the seller where the fault is the seller's. Charging the consumer to return a defective item is a common practice and is difficult to defend against the implied conditions in Section 16 of the Sale of Goods Act, 1930. The advocate should confirm the position for goods sold by third-party sellers on a marketplace, where Rule 6 places duties on the seller rather than the platform."
+}

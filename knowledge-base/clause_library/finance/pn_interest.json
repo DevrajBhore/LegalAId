@@ -1,0 +1,46 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The rate is such that a court would hold it excessive, whether under the Contract Act or a State money-lending or usurious loans enactment"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "PN_INTEREST_001",
+  "name": "Interest",
+  "title": "Interest",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "PROMISSORY_NOTE"
+  ],
+  "text": "Interest is payable on the principal sum as follows.\n(a) The principal sum shall carry interest at {{interest_rate}} per cent per annum, calculated on the outstanding principal from the date of this Note until payment in full.\n(b) Interest shall be paid {{interest_payment_frequency}}, and any interest not paid when due shall itself carry interest at the same rate.\n(c) Where this Note states no rate of interest, interest is payable at eighteen per cent per annum from the date the sum becomes payable, as Section 80 of the Negotiable Instruments Act, 1881 provides.\n(d) The Payee shall deduct tax at source on interest where Section 194A of the Income-tax Act, 1961 requires it.\n(e) Nothing in this clause entitles the Payee to interest at a rate a court would hold excessive or unconscionable.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "80",
+      "note": "Where no rate of interest is specified, interest on the amount due shall be calculated at the rate of eighteen per centum per annum"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194A",
+      "note": "TDS on interest"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "16(3)",
+      "note": "Where a party is in a position to dominate the will of another and the transaction appears unconscionable, the burden of proving it was not induced by undue influence lies on that party"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881; Income-tax Act, 1961; Indian Contract Act, 1872",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.80",
+  "authoring_note": "Limb (c) restates the Section 80 default so the instrument is not silent on what happens if the rate field is left blank. Limb (b) compounds unpaid interest; the advocate should decide whether that is intended, since compounding is more readily attacked as unconscionable. Limb (e) is a deliberate self-limitation: State money-lending and usurious loans enactments vary, and a rate lawful in one State may not be in another.\n\nThe rate, frequency and cure period are REQUIRED fields even though Section 80 supplies a default where a note is silent. They are interpolated into this clause, and an optional field inside required clause text leaves a raw {{placeholder}} in the document whenever the user skips it -- which the sweep caught. The field description tells the user that entering 18 adopts the statutory default and 0 makes the note interest-free, so the Section 80 choice is still available, just made explicitly."
+}

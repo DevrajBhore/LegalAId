@@ -1,0 +1,26 @@
+{
+  "document_type": "PROMISSORY_NOTE",
+  "family": "finance",
+  "version": "1.0",
+  "clauses": [
+    "PN_IDENTITY_001",
+    "PN_PROMISE_TO_PAY_001",
+    "PROMISSORY_NOTE_PAYMENT_001",
+    "PN_INTEREST_001",
+    "PN_DEFAULT_001",
+    "PN_STAMP_AND_EXECUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Stamp Act 1899 S.17 — a promissory note MUST be stamped BEFORE or AT execution",
+    "Stamp Act 1899 S.35 proviso (a) — an unstamped promissory note CANNOT be cured by paying duty and penalty; it is permanently inadmissible",
+    "Stamp Act 1899 Sch.I Art.49 — promissory note duty is levied centrally, not under a State stamp Act",
+    "NI Act 1881 S.4 — the promise must be UNCONDITIONAL and the sum CERTAIN, or it is not a promissory note",
+    "NI Act 1881 S.80 — 18% per annum applies where no rate is stated",
+    "NI Act S.138 (dishonour as an offence) applies to CHEQUES, not to promissory notes",
+    "Limitation Act 1963 — three years; a written acknowledgment before expiry restarts time under S.18"
+  ],
+  "_authoring_note": "PROMISSORY_NOTE_PAYMENT_001 was written for this document type and sat unreachable in the library because the type did not exist. It is now placed."
+}

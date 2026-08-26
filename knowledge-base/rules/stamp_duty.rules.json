@@ -22,7 +22,14 @@
     "CONSULTANCY_AGREEMENT",
     "SERVICE_AGREEMENT",
     "SALES_OF_GOODS_AGREEMENT",
-    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SEPARATION_AGREEMENT",
+    "DATA_PROCESSING_AGREEMENT",
+    "PROMISSORY_NOTE",
+    "POWER_OF_ATTORNEY",
+    "IP_ASSIGNMENT_AGREEMENT",
+    "FOUNDERS_AGREEMENT",
+    "SHARE_SUBSCRIPTION_AGREEMENT"
   ],
   "high_severity_doctypes": [
     "Rental",
@@ -335,6 +342,75 @@
       "default": {
         "basis": "fixed",
         "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SEPARATION_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "DATA_PROCESSING_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "PROMISSORY_NOTE": {
+      "default": {
+        "basis": "fixed",
+        "amount": null,
+        "note": "Levied centrally under Schedule I Article 49 of the Indian Stamp Act, 1899, NOT under a State stamp Act. The rate is ad valorem on the amount and must be confirmed against the current Article 49 before any figure is asserted, which is why no amount is held here."
+      }
+    },
+    "POWER_OF_ATTORNEY": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500,
+        "note": "A power of attorney granting authority to sell immovable property attracts conveyance-rate duty in several States. The advocate must confirm before relying on a fixed figure."
+      }
+    },
+    "IP_ASSIGNMENT_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "FOUNDERS_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100
+      },
+      "Maharashtra": {
+        "basis": "fixed",
+        "amount": 500
+      }
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT": {
+      "default": {
+        "basis": "fixed",
+        "amount": 100,
+        "note": "The AGREEMENT attracts agreement-rate duty. Duty on the ISSUE of securities is separate: Article 27 of Schedule I to the Indian Stamp Act, 1899 charges the share certificate or the allotment, and since the 2020 amendments that duty is collected through the depository or registrar. The advocate should confirm both legs."
       },
       "Maharashtra": {
         "basis": "fixed",

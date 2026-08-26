@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The assignment is not recorded with the Registrar, leaving the assignee unable to rely on it as against third parties",
+    "An assignment results in the existence of exclusive rights in more than one person that would be likely to deceive or cause confusion"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "IPA_TRADEMARK_ASSIGNMENT_001",
+  "name": "Assignment of Trade Marks",
+  "title": "Assignment of Trade Marks",
+  "category": "IP",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "text": "Where this Agreement assigns a trade mark, the following applies.\n(a) The Assignor assigns to the Assignee the trade marks and applications described in this Agreement, together with the goodwill of the business in the goods or services for which they are registered or applied for.\n(b) The Parties shall apply jointly to the Registrar of Trade Marks to register the Assignee as the subsequent proprietor, and the Assignor shall provide every document and signature the Registrar requires.\n(c) The Assignor shall not, after this Agreement, use or apply to register any mark identical with or deceptively similar to an assigned mark, in respect of the same or similar goods or services.\n(d) Where an assigned mark is unregistered, it is assigned together with the goodwill of the business concerned in the relevant goods or services.\n(e) Until the Assignee is recorded as proprietor, the Assignor holds the assigned marks on trust for the Assignee and shall exercise no right in them except on the Assignee's instructions.",
+  "legal_basis": [
+    {
+      "act": "Trade Marks Act, 1999",
+      "section": "37",
+      "note": "Power of a registered proprietor to assign and to give effectual receipts"
+    },
+    {
+      "act": "Trade Marks Act, 1999",
+      "section": "39",
+      "note": "Assignment of an unregistered trade mark"
+    },
+    {
+      "act": "Trade Marks Act, 1999",
+      "section": "45",
+      "note": "Registration of assignments and transmissions: the person entitled shall apply to the Registrar to register title"
+    }
+  ],
+  "source": "Trade Marks Act, 1999",
+  "statutory_reference": "Trade Marks Act, 1999 - S.37, S.45",
+  "authoring_note": "Limb (e) creates a bare trust for the period between execution and recordal, which is when a trade mark assignment is at its most vulnerable. Section 45 registration is what makes the assignment effective against third parties, and the gap is often months. The advocate should confirm whether Section 40, on assignment without goodwill, is relevant to this transaction, since it carries its own conditions."
+}

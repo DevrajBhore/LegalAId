@@ -1,0 +1,51 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The policy narrows the definition of employee, workplace, or sexual harassment below the statutory definition"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POSH_SCOPE_DEFINITIONS_001",
+  "name": "Scope, Application and Definitions",
+  "title": "Scope and Definitions",
+  "category": "PURPOSE",
+  "document_types": [
+    "POSH_POLICY"
+  ],
+  "text": "This Policy is adopted by {{company_name}}, of {{company_address}}, in discharge of its obligations under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013, with effect from {{effective_date}} (the \"Effective Date\"). It applies at every workplace of the Organisation.\n(a) The Policy applies to every employee, and 'employee' is used in the sense given by Section 2(f) of the Act: it includes a person engaged on a regular, temporary, ad hoc, or daily wage basis, whether directly or through an agent, whether for remuneration or not, and includes a co-worker, a contract worker, a probationer, a trainee, an apprentice, and an intern.\n(b) 'Workplace' is used in the sense given by Section 2(o) of the Act, and includes any place visited by the employee arising out of or during the course of employment, including transport provided by the Organisation for the journey.\n(c) 'Sexual harassment' is used in the sense given by Section 2(n) of the Act, and includes any one or more of the following unwelcome acts or behaviour, whether directly or by implication: physical contact and advances; a demand or request for sexual favours; sexually coloured remarks; showing pornography; and any other unwelcome physical, verbal, or non-verbal conduct of a sexual nature.\n(d) The circumstances set out in Section 3(2) of the Act, if they occur in relation to any act of sexual harassment, may amount to sexual harassment: an implied or explicit promise of preferential treatment; an implied or explicit threat of detrimental treatment; an implied or explicit threat about present or future employment status; interference with work, or the creation of an intimidating, offensive, or hostile working environment; and humiliating treatment likely to affect health or safety.\n(e) No woman shall be subjected to sexual harassment at any workplace of the Organisation.",
+  "legal_basis": [
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "2(f)",
+      "note": "Definition of employee, expressly including trainees, apprentices and interns"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "2(n)",
+      "note": "Definition of sexual harassment"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "2(o)",
+      "note": "Definition of workplace, including places visited during the course of employment"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "3",
+      "note": "Prevention of sexual harassment, and the circumstances that may amount to it"
+    }
+  ],
+  "source": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+  "statutory_reference": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 - S.2, S.3",
+  "authoring_note": "The definitions are taken from the Act rather than paraphrased, because a policy that narrows any of them is worse than no policy: it misleads the reader about the scope of their protection and does not bind the committee, which must apply the statutory definition regardless. The advocate should confirm the reproduction is accurate against the bare Act text before sign-off."
+}

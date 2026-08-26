@@ -1,0 +1,52 @@
+{
+  "clause_id": "IPA_CONSIDERATION_001",
+  "name": "Consideration and Royalty",
+  "title": "Consideration",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "In consideration of the assignment, the Assignee shall pay the Assignor {{contract_value}} rupees, on the following terms.\n(a) The consideration is payable within thirty days of the date of this Agreement, against a valid invoice, by bank transfer to an account the Assignor nominates in writing.\n(b) The consideration stated above is the whole amount payable for the assignment, and no royalty or further sum is payable to the Assignor, except as sub-clause (c) provides.\n(c) Where the assigned work is a literary or musical work incorporated in a cinematograph film or a sound recording, the Assignor's right to receive an equal share of royalties for its utilisation in any form other than as part of that film or sound recording is not assigned, is not waived, and is unaffected by this Agreement, as the provisos to Section 18 of the Copyright Act, 1957 require.\n(d) The Assignee shall deduct tax at source where the law requires it and shall furnish the Assignor with the corresponding certificate.\n(e) Goods and Services Tax, where chargeable on the assignment, is payable by the Assignee in addition to the consideration.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19(3)",
+      "note": "The assignment shall specify the amount of royalty and any other consideration payable to the author or his legal heirs during the currency of the assignment"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "18",
+      "note": "Provisos protecting an author's right to receive royalties for utilisation of a work in a medium other than the one assigned; an agreement contrary to those provisos is void to that extent"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194J",
+      "note": "Deduction of tax at source on royalty and on fees for professional or technical services"
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "9",
+      "note": "Levy of GST on the supply of services, which includes a temporary or permanent transfer of intellectual property rights"
+    }
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "No consideration is stated, contrary to Section 19(3) of the Copyright Act, 1957",
+    "The agreement purports to assign or waive an author's royalty share protected by the provisos to Section 18"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "source": "Copyright Act, 1957; Income-tax Act, 1961; CGST Act, 2017",
+  "statutory_reference": "Copyright Act, 1957 - S.18, S.19(3)",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": true,
+  "msme_sensitive": false,
+  "authoring_note": "Written because no generic consideration clause existed in the library and Section 19(3) requires an assignment to specify the consideration; an assignment for a nominal or unstated sum is vulnerable. Sub-clause (c) is the one that matters and is the reason this is not a boilerplate payment clause: the provisos to Section 18, inserted by the Copyright (Amendment) Act, 2012, protect an author's equal share of royalties for utilisation of a literary or musical work outside the film or sound recording it was made for, and an agreement contrary to them is void to that extent. A blanket 'full and final consideration' recital would purport to override a right that cannot be overridden. The advocate should confirm whether the clause should be conditioned on the work actually being of that kind, rather than stated in every assignment."
+}

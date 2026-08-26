@@ -1,0 +1,52 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Proceeds are applied to repay a founder loan without the disclosure and consent this clause requires",
+    "A related party transaction is entered into without the approvals Section 188 requires"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SSA_USE_OF_PROCEEDS_001",
+  "name": "Use of Proceeds and Information Rights",
+  "title": "Use of Proceeds",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "SHARE_SUBSCRIPTION_AGREEMENT"
+  ],
+  "text": "The Company shall apply the subscription amount, and shall report to the Investor, as follows.\n(a) The subscription amount shall be applied only towards {{use_of_proceeds}}, and shall not be applied towards repaying a loan from a founder or a related party, towards a dividend, or towards acquiring an asset outside the ordinary course, without the Investor's prior written consent.\n(b) The Company shall not, without the Investor's prior written consent, enter into a transaction with a related party otherwise than on arm's length terms and in compliance with Section 188 of the Companies Act, 2013.\n(c) The Company shall provide the Investor with unaudited management accounts within thirty days of the end of each quarter, and audited financial statements within one hundred and eighty days of the end of each financial year.\n(d) The Company shall provide the Investor with an annual budget before the start of each financial year, and shall inform the Investor promptly of any material adverse development.\n(e) The Investor shall keep information received under this clause confidential, and shall use it only for monitoring its investment.\n(f) The Company shall maintain its books and records in accordance with the Companies Act, 2013, and shall permit the Investor to inspect them on reasonable notice.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "188",
+      "note": "Related party transactions, and the approvals required for them"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "128",
+      "note": "Books of account to be kept by a company"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "129",
+      "note": "Financial statements to give a true and fair view"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "42",
+      "note": "Restriction on the utilisation of money received on a private placement"
+    }
+  ],
+  "source": "Companies Act, 2013",
+  "statutory_reference": "Companies Act, 2013 - S.188, S.128",
+  "authoring_note": "The bar in sub-clause (a) on repaying founder loans out of investment proceeds is included because it is a common and contentious use of funds, and one an investor rarely intends to finance. The advocate should decide whether the information rights should fall away below a shareholding threshold, since perpetual rights for a small holder become burdensome as the company grows."
+}

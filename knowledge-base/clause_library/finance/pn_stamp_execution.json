@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The note is executed before being stamped",
+    "State stamp rates are applied to a promissory note instead of the rates under the Indian Stamp Act, 1899"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "PN_STAMP_AND_EXECUTION_001",
+  "name": "Stamping and Execution",
+  "title": "Stamping and Execution",
+  "category": "EXECUTION_FORMALITIES",
+  "document_types": [
+    "PROMISSORY_NOTE"
+  ],
+  "text": "This Note is chargeable with stamp duty under Article 49 of Schedule I to the Indian Stamp Act, 1899, and the following applies to it.\n(a) This Note must be stamped before or at the time of execution, as Section 17 of the Indian Stamp Act, 1899 requires. Stamp duty on a promissory note is levied under the Indian Stamp Act as a Union subject, and not under a State stamp enactment.\n(b) An unstamped or insufficiently stamped promissory note CANNOT be admitted in evidence, and the defect cannot be cured afterwards by paying the duty and a penalty. Proviso (a) to Section 35 of the Indian Stamp Act, 1899 permits that cure for instruments generally, but expressly excludes a bill of exchange and a promissory note from it.\n(c) The Maker is responsible for ensuring this Note is duly stamped before signing it.\n(d) This Note is signed by the Maker in the presence of the witnesses whose signatures appear below.",
+  "legal_basis": [
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "17",
+      "note": "All instruments chargeable with duty and executed by any person in India shall be stamped before or at the time of execution"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "35",
+      "note": "An instrument not duly stamped is inadmissible in evidence; proviso (a) allows admission on payment of duty and penalty but excludes a bill of exchange and a promissory note from that cure"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "Schedule I, Article 49",
+      "note": "Stamp duty chargeable on a promissory note"
+    }
+  ],
+  "source": "Indian Stamp Act, 1899",
+  "statutory_reference": "Indian Stamp Act, 1899 - S.17, S.35, Sch.I Art.49",
+  "authoring_note": "This clause carries the single most consequential rule about this instrument and is written in plain terms for that reason. For most documents an unstamped instrument is a fixable problem: pay the duty and a penalty and it becomes admissible. For a promissory note it is NOT. Proviso (a) to Section 35 opens with the words 'not being an instrument chargeable with a duty of one anna or half an anna only, or a bill of exchange or promissory note', which puts this instrument outside the cure. An unstamped note is therefore worthless as evidence of the debt, permanently. Confirmed against the Punjab and Haryana High Court Rules and Orders, Volume IV, Chapter 4, Part D. The advocate should confirm the current Article 49 rate and whether it is ad valorem or fixed for the amount in question."
+}

@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The principal lacks capacity to contract at the time of granting the power",
+    "The attorney is not identified with certainty"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POA_APPOINTMENT_001",
+  "name": "Appointment of Attorney",
+  "title": "Appointment",
+  "category": "IDENTITY",
+  "document_types": [
+    "POWER_OF_ATTORNEY"
+  ],
+  "text": "POWER OF ATTORNEY\nPlace: {{execution_city}}\nDate: {{effective_date}} (the \"Effective Date\")\nKNOW ALL MEN BY THESE PRESENTS that I/We, {{party_1_descriptor}} (the \"Principal\"), do hereby nominate, constitute, and appoint {{party_2_descriptor}} (the \"Attorney\"), to be my/our true and lawful attorney, to do and execute the acts set out in this deed in my/our name and on my/our behalf.\nThis deed is granted under the Powers-of-Attorney Act, 1882, and every act lawfully done by the Attorney within the authority conferred by it shall have the same effect as if done by the Principal.",
+  "legal_basis": [
+    {
+      "act": "Powers-of-Attorney Act, 1882",
+      "section": "2",
+      "note": "The donee of a power of attorney may execute an instrument or do a thing in and with the donee's own name and signature, and every such instrument or thing is as effectual in law as if done in the name of the donor"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "182",
+      "note": "Definition of agent and principal"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "186",
+      "note": "The authority of an agent may be express or implied"
+    }
+  ],
+  "source": "Powers-of-Attorney Act, 1882; Indian Contract Act, 1872",
+  "statutory_reference": "Powers-of-Attorney Act, 1882 - S.2",
+  "authoring_note": "A power of attorney is a unilateral deed, so it opens in the traditional form and is executed by the Principal alone. The archaic opening is retained deliberately: sub-registrars, banks and government offices in India expect it, and a document that does not look like a power of attorney is refused at the counter regardless of its legal sufficiency.\n\nThe parties are rendered through {{party_N_descriptor}} rather than name-plus-address. The descriptor carries the entity type as well ('an individual residing at', 'a private limited company incorporated under the Companies Act, 2013'), and the consistency validator checks that the stated party type actually appears in the identity clause."
+}

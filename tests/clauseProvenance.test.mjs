@@ -55,14 +55,34 @@ const summary = summariseProvenance(clauses);
 // review_status: draft-needs-legal-review / reviewed_by: PENDING like the rest.
 // This ceiling only ever moves up for a deliberately added clause; it should
 // come down as the supervising advocate signs clauses off.
-// Lowered to 184: eight superseded clauses have been deprecated and are no
-// longer loaded, so they left the queue -- five duplicated general provisions,
-// and three older rental clauses replaced by the templated RENTAL_* set. Previously raised to 192 because
+// Raised to 250: sixteen clauses were added for four startup and fundraising
+// document types -- a Founders' Agreement (4), a Term Sheet (4), an ESOP Grant
+// Letter (5) and a Share Subscription Agreement (3). This family reused more
+// than expected: anti-dilution, drag, tag, pre-emption, board control and
+// deadlock clauses were already in the library. Previously 234 after sixteen
+// clauses were added for three standalone instruments --
+// a Promissory Note (5), an IP Assignment Agreement (6), and a Power of
+// Attorney (5). Two clauses already in the library, PROMISSORY_NOTE_PAYMENT_001
+// and IP_PATENT_RIGHTS_001, were written for those types and had been
+// unreachable while the types did not exist; they are now placed, which takes
+// the library to zero orphaned clauses. Previously 218 after eighteen
+// clauses were added for three data and e-commerce
+// document types -- a DPDP-compliant Data Processing Agreement (8), a Refund
+// and Cancellation Policy (4), a Shipping and Delivery Policy (4), and two
+// clauses shared between the two policies. Previously 200 after sixteen
+// clauses were added for four new employment document
+// types -- appointment letter (3), internship agreement (3), separation and
+// full-and-final settlement (4), and a standalone PoSH policy (6). Every one
+// carries an authoring_note naming the specific judgement the advocate must
+// make, so the queue grew by sixteen decisions, not sixteen blank pages.
+// Previously 184, after eight superseded clauses were deprecated and left the
+// queue -- five duplicated general provisions, and three older rental clauses
+// replaced by the templated RENTAL_* set. Previously raised to 192 because
 // CORE_REPRESENTATIONS_001 was added, since the
 // Events of Default clause in the guarantee and loan agreements defaulted on
 // "breach of any representation" in documents that contained none. It carries
 // review_status draft-needs-legal-review like the rest of the library.
-const MAX_UNREVIEWED = 184;
+const MAX_UNREVIEWED = 250;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

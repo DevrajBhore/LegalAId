@@ -1,0 +1,43 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "The letter states no date of joining, so the appointment has no commencement",
+    "The letter states no place of work, which Section 6(1)(f) of the OSH Code requires to be recorded"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_APPOINTMENT_TERMS_001",
+  "name": "Appointment and Terms",
+  "title": "Appointment",
+  "category": "PURPOSE",
+  "document_types": [
+    "APPOINTMENT_LETTER",
+    "OFFER_LETTER"
+  ],
+  "text": "The Employer is pleased to appoint the Employee to the position of {{job_title}}, on the terms set out below. The appointment takes effect from {{start_date}}, being the date of joining, and the Employee shall report to {{reporting_to}}.\n(a) The Employee shall be based at {{work_location}}, and may be required to work at, or be transferred to, any other office, site, or establishment of the Employer or of any group entity, whether in the same city or elsewhere in India.\n(b) The appointment is on a full-time basis, and the Employee shall devote their whole working time, attention, and ability to the Employer's business.\n(c) The Employee shall not, during the appointment, engage in any other trade, business, profession, or employment, whether for reward or otherwise, without the Employer's prior written consent.\n(d) This letter is issued in discharge of the Employer's obligation under Section 6(1)(f) of the Occupational Safety, Health and Working Conditions Code, 2020 to issue a letter of appointment to every employee on appointment.\n(e) If the Employee does not join on the stated date of joining, or within such extended period as the Employer may allow in writing, this appointment shall lapse without further notice.",
+  "legal_basis": [
+    {
+      "act": "Occupational Safety, Health and Working Conditions Code, 2020",
+      "section": "6(1)(f)",
+      "note": "Employer must issue a letter of appointment to every employee on appointment"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Agreements are contracts if made by free consent of parties competent to contract"
+    }
+  ],
+  "source": "Occupational Safety, Health and Working Conditions Code, 2020 s.6(1)(f); Indian Contract Act, 1872",
+  "statutory_reference": "Occupational Safety, Health and Working Conditions Code, 2020 - S.6(1)(f)",
+  "authoring_note": "Written because the OSH Code, 2020 s.6(1)(f) makes the appointment letter a statutory obligation, not a courtesy: every employee must be issued one, in the prescribed form. Limb (a) is a mobility clause and is drafted broadly; the advocate should decide whether transfer outside the city of hire should require the employee's consent, since a wholly unrestricted transfer right is often read down. Limb (e) treats a failure to join as lapse rather than breach, which is the kinder and the more usual position.\n\n`reporting_to` is a REQUIRED field, not optional. It is interpolated into the opening sentence of this clause, and an optional field inside required clause text leaves a raw {{placeholder}} in the document whenever the user skips it -- which the sweep caught. Requiring it is also the right answer substantively: the reporting line is one of the terms of engagement Section 6(1)(f) of the OSH Code, 2020 expects the letter to record."
+}

@@ -1,0 +1,28 @@
+{
+  "document_type": "POSH_POLICY",
+  "family": "employment",
+  "version": "1.0",
+  "clauses": [
+    "POSH_SCOPE_DEFINITIONS_001",
+    "POSH_INTERNAL_COMMITTEE_001",
+    "POSH_COMPLAINT_PROCEDURE_001",
+    "POSH_INQUIRY_RELIEF_001",
+    "POSH_CONSEQUENCES_REPORTING_001",
+    "CORE_GOVERNING_LAW_001",
+    "POSH_POLICY_ADOPTION_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "PoSH Act 2013 S.4 — Presiding Officer must be a senior woman; at least half the members women; one external member",
+    "PoSH Act 2013 S.6 — Local Committee route where fewer than ten employees, or where the complaint is against the employer",
+    "PoSH Act 2013 S.9 — complaint within three months, extendable by three more for reasons recorded in writing",
+    "PoSH Act 2013 S.10 — conciliation only at the aggrieved woman's request; no monetary settlement as its basis",
+    "PoSH Act 2013 S.11 — inquiry to be completed within ninety days; S.13 action within sixty days",
+    "PoSH Act 2013 S.12 — interim leave up to three months is IN ADDITION to entitled leave",
+    "PoSH Act 2013 S.14 — inability to substantiate a complaint is NOT a false complaint",
+    "PoSH Act 2013 S.16 — identities and proceedings must not be published",
+    "PoSH Act 2013 S.19 — the policy must be formulated AND widely disseminated",
+    "PoSH Act 2013 S.26 — non-compliance attracts a fine up to fifty thousand rupees",
+    "Bharatiya Nyaya Sanhita 2023 S.75 — sexual harassment is also a criminal offence"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "invalid_if": [
+    "A certificate is withheld for a period actually served, as a means of enforcing some other obligation"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_INTERNSHIP_COMPLETION_001",
+  "name": "Completion, Certificate and Early Termination",
+  "title": "Completion and Termination",
+  "category": "TERMINATION",
+  "document_types": [
+    "INTERNSHIP_AGREEMENT"
+  ],
+  "text": "The internship ends on the completion date stated in this Agreement, unless ended earlier under this clause.\n(a) On completion of the internship, the Organisation shall issue the Intern a certificate recording the period of the internship, the area of work, and the mentor's assessment.\n(b) Either Party may end the internship before the completion date by giving the other seven days' written notice, without assigning a reason.\n(c) The Organisation may end the internship immediately, by written notice, if the Intern commits a material breach of this Agreement, breaches confidentiality, or engages in conduct that would be misconduct in an employee.\n(d) Where the internship is ended early under sub-clause (b), the Organisation shall issue a certificate recording the period actually served.\n(e) On the internship ending for any reason, the Intern shall return all property, documents, data, and access credentials of the Organisation, and shall delete any of its confidential information held on the Intern's own devices.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach of contract"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.73",
+  "authoring_note": "Limb (d) exists because withholding the certificate is the commonest way an internship goes wrong for the intern, and the certificate is usually the only thing of value they take away. Sub-clause (c) deliberately withholds the certificate right in the misconduct case only by omission, not by express forfeiture; the advocate should decide whether that is the intended position or whether even a misconduct exit should carry a bare record of dates served."
+}

@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The intern in substance performs the work of an employee under the Organisation's control, in which case the label 'intern' will not prevent an employment finding",
+    "The engagement is in truth an apprenticeship within the Apprentices Act, 1961 but is documented as an internship to avoid that Act"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_INTERNSHIP_ENGAGEMENT_001",
+  "name": "Nature of the Internship",
+  "title": "Nature of the Internship",
+  "category": "PURPOSE",
+  "document_types": [
+    "INTERNSHIP_AGREEMENT"
+  ],
+  "text": "The Organisation offers, and the Intern accepts, an internship of {{internship_duration}} commencing on {{start_date}}, on the following basis.\n(a) The internship is a training and learning engagement. It is not employment, and nothing in this Agreement creates a relationship of employer and employee, master and servant, or principal and agent between the Parties.\n(b) The Intern is not entitled to the wages, benefits, or protections that this Organisation provides to its employees, save where a statute applies of its own force to interns.\n(c) The Intern shall work at {{work_location}}, under the supervision of a mentor designated by the Organisation, on the following learning objectives: {{learning_objectives}}.\n(d) The internship carries no offer, promise, or expectation of employment at its conclusion, and the Organisation is under no obligation to make one.\n(e) The Intern shall observe the Organisation's policies on conduct, confidentiality, information security, and prevention of sexual harassment, as if the Intern were an employee.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Freedom of contract between competent parties"
+    },
+    {
+      "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "section": "2(f)",
+      "note": "'Employee' includes a person engaged as an apprentice, trainee or intern, whether for remuneration or not; the Act applies to interns of its own force"
+    },
+    {
+      "act": "Apprentices Act, 1961",
+      "section": "2(aa)",
+      "note": "Distinguishes a contract of apprenticeship from a contract of employment. Relevant where the engagement is in truth an apprenticeship."
+    }
+  ],
+  "source": "Indian Contract Act, 1872; POSH Act, 2013; Apprentices Act, 1961",
+  "statutory_reference": "POSH Act, 2013 - S.2(f)",
+  "authoring_note": "The risk in this clause is misclassification, and it is rated HIGH for that reason. A label does not decide the relationship; control, integration into the business, and the substance of the work do. Limb (b) is drafted with the carve-out 'save where a statute applies of its own force' precisely because the POSH Act, 2013 s.2(f) expressly includes interns, so an internship agreement cannot contract out of it. The advocate should decide whether a maximum duration should be stated, since a long 'internship' doing ordinary work is the fact pattern that most often produces an employment finding."
+}

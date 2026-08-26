@@ -1,0 +1,41 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The employee signs under coercion or undue influence, in which case the agreement is voidable under Sections 15 and 16 of the Indian Contract Act, 1872"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_SEPARATION_PURPOSE_001",
+  "name": "Purpose of the Separation Agreement",
+  "title": "Purpose",
+  "category": "PURPOSE",
+  "document_types": [
+    "SEPARATION_AGREEMENT"
+  ],
+  "text": "The Employee, who holds the position of {{job_title}}, ceases to be employed by the Employer with effect from the close of business on {{last_working_day}}, being the last working day. The Parties enter into this Agreement to record the terms on which the employment ends, to settle in full every amount payable between them arising out of the employment or its ending, and to record the obligations that continue after that date.\n(a) Nothing in this Agreement is, or shall be treated as, an admission by either Party of any wrongdoing, liability, or breach.\n(b) This Agreement supersedes every prior discussion, correspondence, and understanding between the Parties about the ending of the employment.\n(c) The Employee confirms that they have had the opportunity to take independent legal advice on this Agreement before signing it.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "A promisee may dispense with or remit performance, wholly or in part"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Free consent is a condition of a valid agreement"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.63",
+  "authoring_note": "Limb (c) is not decoration. A separation agreement containing a release is signed by a party who has just lost their income, and free consent under Section 10 is the whole basis of its enforceability. The advocate should decide whether an express period for consideration of the terms, before signature, should also be stated."
+}

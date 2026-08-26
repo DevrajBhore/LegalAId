@@ -150,6 +150,41 @@
 .lib-basis { display: flex; align-items: center; gap: 6px; }
 .lib-prior-note { color: #e8c98a; }
 .lib-caveat { color: rgba(255, 255, 255, 0.3); font-style: italic; }
+
+/* The drafter's open question. Given more weight than the clause text on
+   purpose: it is the decision the reviewer is actually being asked for, and it
+   is faster to act on than re-reading wording that may be fine as it stands. */
+.lib-question {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 3px solid #e8c98a;
+  background: rgba(232, 201, 138, 0.07);
+  border-radius: 0 6px 6px 0;
+}
+.lib-question-head {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e8c98a;
+}
+.lib-question-body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: pre-wrap;
+}
+.lib-statute-alert {
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #ffd7c2;
+  border-left: 3px solid #d4693f;
+  background: rgba(212, 105, 63, 0.1);
+  border-radius: 0 6px 6px 0;
+}
 .lib-text {
   margin: 0;
   padding: 12px 14px;

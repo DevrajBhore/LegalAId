@@ -112,24 +112,20 @@
     {
       "rule_id": "DISCRIMINATION_PROHIBITED",
       "severity": "CRITICAL",
-      "message": "Discriminatory clause detected — violates Constitution Art.15 and Equal Remuneration Act 1976.",
-      "reference": "Constitution of India – Art.15; Equal Remuneration Act 1976 – S.4",
+      "message": "Discriminatory clause detected - violates Article 15 of the Constitution and Section 3 of the Code on Wages, 2019.",
+      "reference": "Constitution of India - Art.15; Code on Wages, 2019 - S.3",
       "suggestion": "Remove any clause that discriminates on the basis of caste, religion, sex, or gender.",
       "patterns": [
-        "caste.*restriction",
-        "religion.*based.*prohibition",
-        "women shall not.*employ",
-        "no female.*employee",
-        "lower.*caste.*shall",
-        "discriminat.*based.*on.*religion",
-        "discriminat.*based.*on.*caste",
-        "discriminat.*based.*on.*sex",
-        "discriminat.*based.*on.*gender",
-        "not.*employ.*women",
-        "only.*men.*shall.*be.*hired"
+        "(?:shall|will|must|may)\\s+not\\s+(?:be\\s+)?(?:employ|hire|engage|recruit|appoint)\\w*\\s+(?:any\\s+|only\\s+)?(?:\\w+\\s+){0,2}?wom[ae]n",
+        "no\\s+(?:female|woman|women)\\s+(?:\\w+\\s+){0,2}(?:shall|will|may|is|are)\\s+(?:be\\s+)?(?:employ|hire|engage|recruit|appoint)",
+        "only\\s+(?:men|males?)\\s+(?:shall|will|may)\\s+be\\s+(?:hired|employed|appointed|engaged)",
+        "(?:restrict|reserv|bar|exclud|prohibit)\\w*\\s+(?:to|from|for)\\s+(?:candidates?\\s+|persons?\\s+|employees?\\s+)?of\\s+(?:a\\s+)?(?:particular\\s+)?(?:caste|religion|community)",
+        "(?:lower|scheduled|backward)\\s+caste\\s+\\w+\\s+shall\\s+not",
+        "preference\\s+shall\\s+be\\s+given\\s+to\\s+(?:candidates?\\s+of\\s+)?(?:a\\s+)?(?:particular\\s+)?(?:caste|religion)"
       ],
       "blocks_generation": true,
-      "context": "PRESENCE"
+      "context": "PRESENCE",
+      "_authoring_note": "Patterns rewritten to express the prohibited ACT rather than list its vocabulary. The previous set included 'not.*employ.*women' and 'discriminat.*based.*on.*sex', which fired on any clause MENTIONING these subjects -- including a non-discrimination covenant and a PoSH policy, the two documents most clearly on the right side of the law. The rule blocks generation, so a false positive here refuses the document outright. The Equal Remuneration Act, 1976 citation was also repealed on 21 November 2025 and is replaced by Section 3 of the Code on Wages, 2019."
     },
     {
       "rule_id": "WAIVER_OF_FUNDAMENTAL_RIGHTS",

@@ -1,0 +1,24 @@
+{
+  "document_type": "POWER_OF_ATTORNEY",
+  "family": "instruments",
+  "version": "1.0",
+  "clauses": [
+    "POA_APPOINTMENT_001",
+    "POA_POWERS_GRANTED_001",
+    "POA_LIMITATIONS_001",
+    "POA_REVOCATION_001",
+    "POA_EXECUTION_FORMALITIES_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [],
+  "mandatory_legal_checks": [
+    "Suraj Lamp & Industries v State of Haryana — a power of attorney does NOT convey title to immovable property",
+    "TP Act 1882 S.54 — immovable property is transferred only by a registered instrument of conveyance",
+    "Registration Act 1908 S.33 — a power used to present documents for registration must be authenticated in the prescribed manner",
+    "Contract Act 1872 S.202 — 'irrevocable' is effective only where the attorney has an interest in the subject matter",
+    "Contract Act 1872 S.208 — revocation does not bind a third party until they know of it",
+    "Stamp Act 1899 S.18 — a deed executed abroad must be stamped within three months of receipt in India",
+    "Notaries Act 1952 — notarisation; the evidentiary presumption now sits in the Bharatiya Sakshya Adhiniyam, 2023"
+  ]
+}

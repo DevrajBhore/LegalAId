@@ -1,0 +1,43 @@
+{
+  "document_type": "FOUNDERS_AGREEMENT",
+  "family": "corporate",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "FOUNDER_ROLES_AND_COMMITMENT_001",
+    "CORE_DEFINITIONS_001",
+    "FOUNDER_EQUITY_AND_VESTING_001",
+    "FOUNDER_IP_ASSIGNMENT_001",
+    "CORP_SHARE_TRANSFER_001",
+    "CORP_TAG_ALONG_001",
+    "CORP_BOARD_COMPOSITION_001",
+    "CORP_DEADLOCK_001",
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_TERM_001",
+    "FOUNDER_LEAVER_001",
+    "CORE_NOTICE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "EMP_NON_COMPETE_001",
+      "include_if": "include_non_compete == true",
+      "note": "A post-exit restraint, which Section 27 of the Contract Act permits only so far as it protects confidentiality or goodwill."
+    },
+    {
+      "clause": "CORP_DRAG_ALONG_001",
+      "include_if": "include_drag_along == true",
+      "note": "Allows a majority to compel a minority to sell on the same terms."
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Companies Act 2013 S.2(68) — a private company must restrict share transfers; the restrictions must be in the ARTICLES, not only in this agreement",
+    "Companies Act 2013 S.68-70 — a buy-back of unvested shares is hedged with conditions an early-stage company often cannot meet",
+    "Companies Act 2013 S.247 — fair value on a good-leaver exit requires a registered valuer",
+    "Contract Act 1872 S.74 — a bad-leaver price far below value may be struck down as a penalty",
+    "Copyright Act 1957 S.17 and S.19 — pre-incorporation IP and contractor IP do NOT vest in the company without a written assignment",
+    "A pre-incorporation contract does not bind the company until it adopts it after incorporation"
+  ]
+}

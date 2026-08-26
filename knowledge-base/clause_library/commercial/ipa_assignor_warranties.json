@@ -1,0 +1,46 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Warranty (e) is given where no written assignment from the contributor exists, since copyright in a contractor's work does not vest in the commissioning party by default"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "IPA_ASSIGNOR_WARRANTIES_001",
+  "name": "Assignor's Warranties",
+  "title": "Assignor's Warranties",
+  "category": "REPRESENTATIONS",
+  "document_types": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "text": "The Assignor represents and warrants to the Assignee that, as at the date of this Agreement:\n(a) the Assignor is the sole and lawful owner of the intellectual property assigned, and is entitled to assign it;\n(b) the intellectual property assigned is free of every mortgage, charge, lien, licence, and other encumbrance, and no person has any option or right of first refusal over it;\n(c) the intellectual property assigned is original to the Assignor and does not, so far as the Assignor is aware, infringe the rights of any other person;\n(d) no claim, proceeding, or opposition is pending or, so far as the Assignor is aware, threatened, in respect of the intellectual property assigned;\n(e) where any of the intellectual property was made by an employee or a contractor of the Assignor, the Assignor has obtained a written assignment from that person sufficient to vest the rights in the Assignor;\n(f) the Assignor has not previously assigned or exclusively licensed the intellectual property to any other person.\nThe Assignor shall indemnify the Assignee against loss arising from a breach of these warranties.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Competence to contract, which for an assignment includes title to the subject matter"
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17",
+      "note": "First ownership of copyright, including work made in the course of employment under a contract of service"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "Contract of indemnity"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Copyright Act, 1957",
+  "statutory_reference": "Copyright Act, 1957 - S.17; Indian Contract Act, 1872 - S.124",
+  "authoring_note": "Limb (e) is the one that matters in practice and is the reason this clause exists. Section 17(c) vests copyright in an employer for work made under a contract OF SERVICE, but a CONTRACTOR works under a contract FOR services and retains copyright unless there is a written assignment. An assignor who used freelancers and never took assignments cannot give good title, and frequently does not know it. The advocate should decide whether this warranty should be qualified by awareness, as limb (c) is."
+}

@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The processor is permitted to process personal data for its own purposes",
+    "The agreement purports to transfer the Data Fiduciary's statutory responsibility to the Processor"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "DPA_ROLES_AND_SCOPE_001",
+  "name": "Roles, Scope and Instructions",
+  "title": "Roles and Scope",
+  "category": "PURPOSE",
+  "document_types": [
+    "DATA_PROCESSING_AGREEMENT"
+  ],
+  "text": "This Agreement governs the processing of personal data by the Processor for the Fiduciary, and is entered into in discharge of the Fiduciary's obligation under Section 8(2) of the Digital Personal Data Protection Act, 2023, under which a Data Fiduciary may engage a Data Processor to process personal data on its behalf only under a valid contract.\n(a) {{party_1_name}} is the Data Fiduciary, and determines the purpose and means of the processing. The Processor is the Data Processor, and processes personal data only on the Fiduciary's behalf.\n(b) The subject matter of the processing is {{processing_purpose}}, and the categories of personal data processed are {{data_categories}}.\n(c) The Processor shall process personal data only on the documented instructions of the Fiduciary, and shall not process it for any purpose of its own, including any purpose of developing, training, or improving a product or service, unless the Fiduciary has instructed it in writing.\n(d) If the Processor considers that an instruction of the Fiduciary would breach the Act or the Rules made under it, the Processor shall inform the Fiduciary without undue delay and may suspend performance of that instruction until the Fiduciary confirms it in writing.\n(e) The Fiduciary remains responsible to the Data Principal for compliance with the Act, and nothing in this Agreement transfers that responsibility to the Processor.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(2)",
+      "note": "A Data Fiduciary may engage a Data Processor to process personal data on its behalf only under a valid contract"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "2",
+      "note": "Definitions of Data Fiduciary, Data Processor and Data Principal"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(1)",
+      "note": "The Data Fiduciary remains responsible for compliance, including for processing undertaken on its behalf by a Processor"
+    }
+  ],
+  "source": "Digital Personal Data Protection Act, 2023; Digital Personal Data Protection Rules, 2025",
+  "statutory_reference": "Digital Personal Data Protection Act, 2023 - S.8(2)",
+  "authoring_note": "Section 8(2) is what makes this document necessary rather than merely prudent: without a contract the engagement of the processor is itself non-compliant. Limb (c) names model training expressly because a processor reusing client data to improve its own service is the commonest way an instruction-limited mandate is exceeded in practice, and a general 'own purposes' bar is often argued not to reach it. The DPDP Rules, 2025 were notified on 14 November 2025 with a phased commencement (Rule 1): Rules 1, 2 and 17 to 21 on publication; Rule 4 on 14 November 2026; and Rules 3, 5 to 16, 22 and 23 on 14 May 2027. This clause is drafted to the Rules as notified, so the contract is compliant ahead of the date rather than needing renegotiation on it. The advocate should decide whether to state the commencement dates in the document itself.\n\nThe parties are captured as party_1/party_2 rather than bespoke fiduciary/processor fields. The participant resolver derives role labels from the documentConfig section titles keyed to those fields; bespoke names bypassed it, which left the identity clause naming a \"Party 2\" and applying the label \"Fiduciary\" to the processor."
+}

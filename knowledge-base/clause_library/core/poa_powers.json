@@ -1,0 +1,41 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The powers granted are not stated with sufficient certainty for a third party to know their limits"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "POA_POWERS_GRANTED_001",
+  "name": "Powers Granted",
+  "title": "Powers Granted",
+  "category": "PURPOSE",
+  "document_types": [
+    "POWER_OF_ATTORNEY"
+  ],
+  "text": "The Attorney is authorised to do the following in the name of and on behalf of the Principal:\n{{powers_granted}}\nand, in connection with and only so far as is necessary for those acts:\n(a) to sign, execute, and deliver any document, application, form, declaration, or acknowledgment;\n(b) to appear before, and to make representations to, any public authority, office, court, or tribunal, and to sign and file any paper required by it;\n(c) to receive and give valid receipts for any sum payable to the Principal;\n(d) to correspond with any bank, authority, or person, and to obtain and give information;\n(e) generally to do everything that is necessary and incidental to the acts expressly authorised above.\nThe authority in sub-clauses (a) to (e) is ancillary. It does not enlarge the acts expressly authorised, and shall be construed strictly by reference to them.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "188",
+      "note": "An agent having authority to do an act has authority to do every lawful thing which is necessary in order to do such act"
+    },
+    {
+      "act": "Powers-of-Attorney Act, 1882",
+      "section": "2",
+      "note": "Effect of acts done by the donee of a power"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Powers-of-Attorney Act, 1882",
+  "statutory_reference": "Indian Contract Act, 1872 - S.188",
+  "authoring_note": "The closing sentence is the most important in the clause. A power of attorney is construed strictly against the donee, and an ancillary sweep-up limb drafted without that express limitation invites an argument that general words enlarge the specific grant. Stating the rule in the instrument makes the position plain to a third party relying on it."
+}

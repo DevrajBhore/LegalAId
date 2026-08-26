@@ -1,0 +1,31 @@
+{
+  "document_type": "INTERNSHIP_AGREEMENT",
+  "family": "employment",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "EMP_INTERNSHIP_ENGAGEMENT_001",
+    "EMP_INTERNSHIP_STIPEND_001",
+    "CORE_TERM_001",
+    "EMP_CONFIDENTIALITY_001",
+    "EMP_IP_ASSIGNMENT_001",
+    "EMP_POSH_POLICY_001",
+    "EMP_INTERNSHIP_COMPLETION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "CORE_DATA_PROCESSING_001",
+      "include_if": "involves_personal_data == true",
+      "note": "Where the intern will handle personal data, the DPDP Act obligations must be stated."
+    }
+  ],
+  "mandatory_legal_checks": [
+    "PoSH Act 2013 S.2(f) — 'employee' expressly includes an intern; the Act applies of its own force and cannot be contracted out of",
+    "Misclassification risk — control, integration and the substance of the work decide the relationship, not the label 'intern'",
+    "Apprentices Act 1961 — where the engagement is in truth an apprenticeship, that Act applies instead",
+    "Income-tax Act 1961 S.10(16) — whether a stipend is exempt depends on its nature, not its name"
+  ]
+}

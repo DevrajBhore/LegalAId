@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The stipend is described as not being wages while the intern in substance performs employee work, in which case the characterisation will not hold",
+    "No stipend figure is stated"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": true,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "EMP_INTERNSHIP_STIPEND_001",
+  "name": "Stipend",
+  "title": "Stipend",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "INTERNSHIP_AGREEMENT"
+  ],
+  "text": "The Organisation shall pay the Intern the monthly stipend stated in this Agreement, on the following terms.\n(a) The stipend is paid in support of the Intern's training. It is not wages, and is not consideration for services rendered in the course of employment.\n(b) The stipend is payable monthly in arrears, by credit to the Intern's bank account, within seven days of the end of each month of the internship.\n(c) The Organisation shall deduct tax at source where the law requires it, and shall furnish the Intern with the corresponding certificate.\n(d) Where the internship ends before the end of a month, the stipend for that month shall be paid in the proportion that the days completed bear to the days in that month.\n(e) The Intern shall be reimbursed any expense properly incurred at the Organisation's request in the course of the internship, against supporting documents.",
+  "legal_basis": [
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "192",
+      "note": "Deduction of tax at source on salary, where the stipend is taxable as such"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Consideration and terms freely agreed between competent parties"
+    }
+  ],
+  "source": "Income-tax Act, 1961; Indian Contract Act, 1872",
+  "statutory_reference": "Income-tax Act, 1961 - S.192",
+  "authoring_note": "Limb (a) states the intended characterisation but cannot guarantee it, and the clause says so in invalid_if rather than pretending otherwise. The tax treatment of a stipend depends on its nature and is not settled by the label either: a stipend that is in substance salary is taxable as salary, while a pure scholarship may fall within Section 10(16) of the Income-tax Act, 1961. Limb (c) is therefore written as 'where the law requires it'. The advocate should decide whether to state a position on Section 10(16)."
+}

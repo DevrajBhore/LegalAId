@@ -1,0 +1,46 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The agreement purports to bind the Company before it is incorporated, without the Company later adopting it"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "FOUNDER_ROLES_AND_COMMITMENT_001",
+  "name": "Founder Roles and Commitment",
+  "title": "Roles and Commitment",
+  "category": "PURPOSE",
+  "document_types": [
+    "FOUNDERS_AGREEMENT"
+  ],
+  "text": "The Founders have incorporated, or shall incorporate, {{company_name}} (the \"Company\") to carry on the business of {{business_purpose}}, and agree as follows.\n(a) The roles and responsibilities of each Founder are as follows: {{founder_roles}}.\n(b) Each Founder shall devote their full working time and attention to the business of the Company, and shall not engage in any other business, employment, or venture without the prior written consent of the other Founders.\n(c) Each Founder shall act in good faith towards the Company and the other Founders, and shall disclose any interest that conflicts, or may conflict, with the interests of the Company.\n(d) A decision on a matter listed in this Agreement as a reserved matter requires the unanimous agreement of the Founders; every other decision is taken by the Board.\n(e) No Founder has authority to bind the Company otherwise than as the Board resolves or the Company's articles permit.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "166",
+      "note": "Duties of a director, including to act in good faith, in the best interests of the company, and to avoid a conflict of interest"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "179",
+      "note": "Powers of the Board, exercisable by means of resolutions passed at meetings"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "10",
+      "note": "Agreements are contracts if made by free consent of parties competent to contract"
+    }
+  ],
+  "source": "Companies Act, 2013; Indian Contract Act, 1872",
+  "statutory_reference": "Companies Act, 2013 - S.166, S.179",
+  "authoring_note": "A founders' agreement is frequently signed before the company exists. A pre-incorporation contract does not bind the company automatically; the company must adopt or ratify it after incorporation, and until it does the signatories are personally bound. The advocate should decide whether an express adoption mechanism belongs here."
+}
