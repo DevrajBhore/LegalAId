@@ -130,7 +130,7 @@ export function runIRE(registry, documentType, draftedClauses = []) {
   issues.push(...completenessValidate({ clauses: draftedClauses }));
 
   // 4️⃣ Execution validation
-  issues.push(...executionValidate({ clauses: draftedClauses }));
+  issues.push(...executionValidate({ clauses: draftedClauses }, documentType));
 
   // 5️⃣ Semantic validation
   issues.push(...semanticValidate({ clauses: draftedClauses }));

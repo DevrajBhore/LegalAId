@@ -63,6 +63,12 @@
           "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
           "CORE_FORCE_MAJEURE_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. A mutual non-disclosure agreement carries no payment obligation. The clause was firing on the word 'payment' appearing anywhere in the text."
         ]
       },
       "rendering": {
@@ -76,6 +82,12 @@
           "EMP_IP_ASSIGNMENT_001",
           "CORE_ENTIRE_AGREEMENT_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. Wages are not a commercial debt. Late payment of wages is governed by Section 17 of the Code on Wages, 2019, not by a contractual interest rate the employer sets for itself."
         ]
       },
       "rendering": {
@@ -201,6 +213,12 @@
           "CORE_CONFIDENTIALITY_001",
           "CORE_ENTIRE_AGREEMENT_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. Capital contributions between partners are not invoiced trade debt."
         ]
       },
       "rendering": {
@@ -215,6 +233,12 @@
           "CORE_ENTIRE_AGREEMENT_001",
           "CORE_NOTICE_001",
           "CORE_COUNTERPARTS_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. Subscription and capital obligations are governed by the agreement's own terms, not by trade-credit interest."
         ]
       },
       "rendering": {
@@ -248,6 +272,12 @@
           "CORE_LIABILITY_CAP_001",
           "CORE_ENTIRE_AGREEMENT_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. Contributions between venturers are not invoiced trade debt."
         ]
       },
       "rendering": {
@@ -407,6 +437,12 @@
           "RENT_PROPERTY_USE_001",
           "RENT_UTILITIES_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. CONFLICT: the rent clause already states its own late-payment rate of 15 per cent. The injected clause added a second, different rate of 18 per cent to the same document."
         ]
       }
     },
@@ -430,6 +466,12 @@
           "RENT_PROPERTY_USE_001",
           "RENT_UTILITIES_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. CONFLICT: the licence fee clause already states 15 per cent. The injected clause added 18 per cent alongside it."
         ]
       }
     },
@@ -594,6 +636,14 @@
             ]
           }
         }
+      },
+      "hardening": {
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. The rent clause states its own rate; a second injected rate would contradict it."
+        ]
       }
     },
     "TERMS_OF_SERVICE": {
@@ -643,6 +693,12 @@
           "EMP_CONFIDENTIALITY_001",
           "EMP_IP_ASSIGNMENT_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. Same as the employment contract: the Code on Wages governs late payment of wages."
         ]
       },
       "roles": {
@@ -716,6 +772,12 @@
         "requiredClauseIds": [
           "CORE_ENTIRE_AGREEMENT_001",
           "CORE_NOTICE_001"
+        ],
+        "disallowedProtections": [
+          "LATE_PAYMENT_INTEREST"
+        ],
+        "//": [
+          "LATE_PAYMENT_INTEREST disallowed. The full and final settlement deadline is the statutory two working days under Section 17(2) of the Code on Wages, 2019."
         ]
       },
       "roles": {

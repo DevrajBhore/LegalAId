@@ -3,8 +3,29 @@
  * Validates execution formalities for all Indian legal document types.
  */
 
-export function executionValidate(draft) {
+/**
+ * A unilateral instrument is promulgated by one organisation, not agreed between
+ * parties. Requiring it to identify "contracting parties" is not a check it can
+ * pass, and the check was only passing by accident: the PoSH policy satisfied
+ * the party regex through a commercial dispute-resolution clause that had been
+ * pulled in by a dependency and should never have been in a statutory policy at
+ * all. Removing that clause exposed the real defect in this check.
+ *
+ * The issuer still has to be named -- a policy that does not say whose it is is
+ * useless -- so the requirement is replaced rather than dropped.
+ */
+const UNILATERAL_INSTRUMENTS = new Set([
+  "POSH_POLICY",
+  "PRIVACY_POLICY",
+  "TERMS_OF_SERVICE",
+  "REFUND_AND_CANCELLATION_POLICY",
+  "SHIPPING_AND_DELIVERY_POLICY",
+]);
+
+export function executionValidate(draft, documentType = "") {
   if (!draft?.clauses) return [];
+  const docType = String(documentType || draft.document_type || "").toUpperCase();
+  const isPolicyInstrument = UNILATERAL_INSTRUMENTS.has(docType);
 
   const issues = [];
   const allText = draft.clauses.map(c => c.text || "").join(" ");
@@ -71,7 +92,11 @@ export function executionValidate(draft) {
     /terminat/i.test(allText);
   const hasNotice = /\d+\s*(days?|months?)\s*(prior\s+)?notice|written\s+notice|notice\s+period/i.test(allText);
 
-  if (hasTermination && !hasNotice && !isUnilateral) {
+  // A statutory policy has no termination clause. The word "terminat" appears in
+  // the PoSH policy only because dismissal is one of the penalties the Internal
+  // Committee may recommend under Section 13, which is not a contractual
+  // termination right and carries no notice period.
+  if (hasTermination && !hasNotice && !isUnilateral && !isPolicyInstrument) {
     issues.push({
       rule_id: "TERMINATION_NOTICE_MISSING",
       severity: "MEDIUM",
@@ -86,7 +111,7 @@ export function executionValidate(draft) {
     clausesByCategory["DISPUTE_RESOLUTION"]?.length > 0 ||
     /arbitration|mediation|dispute.*resolution|in the event of.*dispute/i.test(allText);
 
-  if (!hasDisputeResolution && !isUnilateral) {
+  if (!hasDisputeResolution && !isUnilateral && !isPolicyInstrument) {
     issues.push({
       rule_id: "NO_DISPUTE_MECHANISM",
       severity: "HIGH",
@@ -101,7 +126,7 @@ export function executionValidate(draft) {
     clausesByCategory["GOVERNING_LAW"]?.length > 0 ||
     /governing\s+law|laws\s+of\s+india|indian\s+law|construed.*india/i.test(allText);
 
-  if (!hasGoverningLaw && !isUnilateral) {
+  if (!hasGoverningLaw && !isUnilateral && !isPolicyInstrument) {
     issues.push({
       rule_id: "NO_GOVERNING_LAW_REFERENCE",
       severity: "CRITICAL",
@@ -112,18 +137,35 @@ export function executionValidate(draft) {
   }
 
   // ── 6. Parties identified ───────────────────────────────────────────────────
-  const hasParties =
-    clausesByCategory["IDENTITY"]?.length > 0 ||
-    /hereinafter\s+referred\s+to|between.*and.*\(|party\s+means/i.test(allText);
+  if (isPolicyInstrument) {
+    // What matters for a policy is that the reader can tell whose it is.
+    const namesIssuer =
+      /\b(?:is\s+)?(?:adopted|issued|published)\s+by\b/i.test(allText) ||
+      /\bthis\s+Policy\s+is\s+(?:that|the\s+policy)\s+of\b/i.test(allText) ||
+      /\bon\s+behalf\s+of\b/i.test(allText);
+    if (!namesIssuer) {
+      issues.push({
+        rule_id: "NO_ISSUER_IDENTIFICATION",
+        severity: "CRITICAL",
+        message: "The policy does not say which organisation adopts or publishes it.",
+        statutory_reference: "Indian Contract Act 1872 – S.10",
+        suggestion: "State the adopting organisation, e.g. 'This Policy is adopted by <name>'.",
+      });
+    }
+  } else {
+    const hasParties =
+      clausesByCategory["IDENTITY"]?.length > 0 ||
+      /hereinafter\s+referred\s+to|between.*and.*\(|party\s+means/i.test(allText);
 
-  if (!hasParties) {
-    issues.push({
-      rule_id: "NO_PARTY_IDENTIFICATION",
-      severity: "CRITICAL",
-      message: "No clear identification of contracting parties found.",
-      statutory_reference: "Indian Contract Act 1872 – S.10",
-      suggestion: "Add an identification section naming all parties.",
-    });
+    if (!hasParties) {
+      issues.push({
+        rule_id: "NO_PARTY_IDENTIFICATION",
+        severity: "CRITICAL",
+        message: "No clear identification of contracting parties found.",
+        statutory_reference: "Indian Contract Act 1872 – S.10",
+        suggestion: "Add an identification section naming all parties.",
+      });
+    }
   }
 
   return issues;

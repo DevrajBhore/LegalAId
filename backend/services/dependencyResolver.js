@@ -120,6 +120,26 @@ function isClauseCompatibleWithDocument(clause, documentType = "") {
 // wrong (generic) clause, dropping the blueprint-required one.
 const SINGLETON_ROLE_CATEGORIES = new Set(["IDENTITY", "SIGNATURE_BLOCK"]);
 
+/**
+ * A dependency a document type must NOT have, whatever the clause metadata says.
+ *
+ * CORE_GOVERNING_LAW_001 declares required_with: CORE_DISPUTE_RESOLUTION_001,
+ * which is right for a commercial contract and wrong for a statutory policy. It
+ * put a commercial arbitration clause into the PoSH policy, alongside the
+ * Internal Committee procedure the Act lays down. A policy that appears to route
+ * a sexual harassment complaint into contractual arbitration is not merely
+ * untidy: the statutory mechanism under Sections 9 to 13 of the Sexual
+ * Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act,
+ * 2013, and the appeal under Section 18, cannot be displaced by contract.
+ */
+const SUPPRESSED_DEPENDENCIES = {
+  POSH_POLICY: new Set(["CORE_DISPUTE_RESOLUTION_001", "CORE_ARBITRATION_001"]),
+};
+
+function isSuppressedDependency(documentType, clauseId) {
+  return Boolean(SUPPRESSED_DEPENDENCIES[String(documentType || "").toUpperCase()]?.has(clauseId));
+}
+
 function resolveExplicitKbDependencies(
   clauses = [],
   variables = {},
@@ -154,6 +174,10 @@ function resolveExplicitKbDependencies(
         // Don't re-inject a clause that a variant slot deliberately swapped out
         // (its replacement is already present and covers the role).
         if (replacedClauseIds.has(requiredClauseId)) {
+          continue;
+        }
+
+        if (isSuppressedDependency(documentType, requiredClauseId)) {
           continue;
         }
 

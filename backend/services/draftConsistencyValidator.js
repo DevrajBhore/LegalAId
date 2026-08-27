@@ -608,8 +608,14 @@ export function validateDraftConsistency(
     }
   }
 
+  // A document that carries no dispute-resolution clause cannot be faulted for
+  // failing to name the arbitration seat in one. A statutory policy is the case
+  // in point: the PoSH Act supplies its own mechanism, and the seat the user
+  // gave for their commercial contracts has nothing to bind to here.
   if (
     variables.arbitration_city &&
+    disputeText &&
+    disputeText.trim().length > 0 &&
     !includesNormalized(disputeText, variables.arbitration_city)
   ) {
     issues.push(

@@ -113,9 +113,51 @@ function findForbiddenRoleTerm(rawText = "", documentType = "") {
   return null;
 }
 
+/**
+ * A URL or an email address is not prose, and the normalisation rules below
+ * mangle it: the punctuation-spacing rule opens "https:" into "https: " and
+ * splits "alpha.example" into "alpha. example", and the sentence-capitalisation
+ * rule then turns that into "Example". The result shipped in every privacy
+ * policy, terms of service, refund policy and data processing agreement --
+ * "https: //alpha. Example", "contact@alpha. Example" -- so the one contact
+ * route a consumer is entitled to use was broken in the document.
+ *
+ * Guarding each rule with another lookahead does not hold: the next rule added
+ * to this pipeline would break it again. The addresses are masked out of the
+ * text before any rule runs and restored afterwards, so no rule can see them.
+ */
+const WEB_ADDRESS = new RegExp(
+  [
+    "https?://[^\\s<>\"')\\]]+",                 // scheme-qualified URL
+    "www\\.[^\\s<>\"')\\]]+",                   // bare www host
+    "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}", // email address
+  ].join("|"),
+  "g"
+);
+
+function maskWebAddresses(text) {
+  const held = [];
+  const masked = String(text).replace(WEB_ADDRESS, (match) => {
+    // A trailing stop belongs to the sentence, not to the address.
+    const trailing = match.match(/[.,;:!?)\]]+$/);
+    const core = trailing ? match.slice(0, -trailing[0].length) : match;
+    held.push(core);
+    return `\u0000W${held.length - 1}\u0000${trailing ? trailing[0] : ""}`;
+  });
+  return { masked, held };
+}
+
+function restoreWebAddresses(text, held) {
+  return String(text).replace(/\u0000W(\d+)\u0000/g, (_, i) => held[Number(i)] ?? "");
+}
+
 export function normalizeClauseBody(text = "", { documentType } = {}) {
   let value = String(text || "");
   const roleRule = getPartyNamingRule(documentType);
+
+  // Hold every URL and email aside for the duration of this function.
+  const { masked, held } = maskWebAddresses(value);
+  value = masked;
 
   value = value
     .replace(/[“”]/g, '"')
@@ -161,7 +203,7 @@ export function normalizeClauseBody(text = "", { documentType } = {}) {
   value = value.replace(/(^|[.!?]\s+|\n)([a-z])(?![.)]\s)/g, (match, prefix, letter) => {
     return `${prefix}${letter.toUpperCase()}`;
   });
-  return value.trim();
+  return restoreWebAddresses(value, held).trim();
 }
 
 export function normalizeClauseTitle(title = "", { documentType } = {}) {

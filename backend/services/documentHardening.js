@@ -652,7 +652,11 @@ function splitStructuredItems(value = "", options = {}) {
 }
 
 function formatStructuredSubparts(items = []) {
+  // Callers pass a conditional limb as null when it does not apply. Without this
+  // filter the limb renders as "(b) null" and, worse, the lettering of every
+  // limb after it is thrown out by one.
   return items
+    .filter((item) => typeof item === "string" && item.trim().length > 0)
     .map((item, index) => {
       const marker = String.fromCharCode(97 + (index % 26));
       return `(${marker}) ${item}`;
@@ -2610,7 +2614,14 @@ function renderHardClause(
               : state
                 ? `subject to the dispute resolution provisions of this Agreement, the competent courts having territorial jurisdiction in the State of ${state} shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction`
                 : "subject to the dispute resolution provisions of this Agreement, the competent courts of India shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction",
-            "where this Agreement provides for arbitration, the jurisdiction conferred above is the supervisory jurisdiction over the arbitration, and nothing in this clause shall be read as permitting either Party to commence substantive proceedings in court in place of arbitration",
+            // Only where the instrument actually provides for arbitration. In a
+            // statutory policy it provides for none, and a paragraph about
+            // arbitral supervisory jurisdiction sitting beside the PoSH Act's
+            // Internal Committee procedure reads as though a sexual harassment
+            // complaint could be routed into contractual arbitration. It cannot.
+            present?.dispute_resolution
+              ? "where this Agreement provides for arbitration, the jurisdiction conferred above is the supervisory jurisdiction over the arbitration, and nothing in this clause shall be read as permitting either Party to commence substantive proceedings in court in place of arbitration"
+              : null,
             "each Party waives any objection to that forum on the ground of inconvenient forum or that proceedings have been brought in an inappropriate court",
             "the rules of private international law shall not apply to the extent they would result in the application of the law of any jurisdiction other than India",
             "nothing in this clause shall prevent either Party from applying to any court of competent jurisdiction for interim or protective relief, including injunctive relief, to preserve its rights pending resolution of the dispute",

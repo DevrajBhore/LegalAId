@@ -71,7 +71,7 @@ export async function validateDocument(
 
   // ── Layer 1c: Completeness, execution, semantic 
   const completenessIssues = completenessValidate({ clauses: draftedClauses });
-  const executionIssues = executionValidate({ clauses: draftedClauses });
+  const executionIssues = executionValidate({ clauses: draftedClauses }, documentType);
   const semanticIssues = semanticValidate({ clauses: draftedClauses });
 
   const layer1Issues = [

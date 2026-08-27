@@ -21,6 +21,9 @@ const CANONICAL_ORDER = [
   "REJECTION",
   "SHORTAGE",
   "CHANGE",
+  // A release of claims discharges what the consideration has just bought,
+  // so it follows the settlement and precedes the obligations that survive it.
+  "RELEASE",
   "OBLIGATIONS",
   "CONFIDENTIALITY",
   "EXCLUSIONS",
