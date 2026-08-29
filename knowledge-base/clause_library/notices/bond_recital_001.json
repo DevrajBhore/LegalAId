@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "BOND_RECITAL_001",
+  "name": "Recital",
+  "title": "Recital",
+  "category": "RECITALS",
+  "document_types": [
+    "INDEMNITY_BOND"
+  ],
+  "text": "WHEREAS:\n(a) {{bond_occasion}}\n(b) The Beneficiary has agreed to act as aforesaid only on the Obligor furnishing this indemnity, and the Obligor executes this Deed in consideration of the Beneficiary so acting.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "2(d)",
+      "note": "Consideration: an act done at the desire of the promisor"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "25",
+      "note": "An agreement without consideration is void, subject to the exceptions"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.2(d), S.25",
+  "authoring_note": "The recital must show why the indemnity was given, because that is the consideration for it. A bond that recites no occasion and no reliance by the Beneficiary invites the argument that it is a bare promise without consideration and void under Section 25."
+}

@@ -1,0 +1,19 @@
+{
+  "document_type": "INDEMNITY_BOND",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "BOND_IDENTITY_001",
+    "BOND_RECITAL_001",
+    "BOND_COVENANT_001",
+    "BOND_EXTENT_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "Contract Act 1872 S.124 — contract of indemnity; S.125 — the rights of the indemnity-holder when sued",
+    "The indemnified risk must be described precisely; an indemnity against everything indemnifies against nothing",
+    "Indian Stamp Act 1899 Schedule I Article 34 — stamp duty on an indemnity bond is a STATE subject and the rate varies; confirm the rate and whether registration is required",
+    "Contract Act 1872 S.25 — the recital must show the consideration, or the bond risks being a bare promise",
+    "Check the expiry outlasts the risk — an indemnity that expires before the liability can crystallise is worthless"
+  ]
+}

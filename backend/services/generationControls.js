@@ -1,5 +1,6 @@
 import { getPartyNamingLabels } from "./draftingPolicy.js";
 import { riskProfileControls } from "./riskProfile.js";
+import { deadlineVariables } from "./statutoryDeadlines.js";
 
 function normalizeText(value = "") {
   return String(value || "")
@@ -500,6 +501,12 @@ export function deriveGenerationControls(documentType, variables = {}) {
       derived.involves_source_code === true ||
       derived.involves_trade_secrets === true;
   }
+
+  // Statutory deadlines, computed rather than typed. These go on TOP of the
+  // user's own values, not underneath them: they are arithmetic on dates the
+  // user gave, and a user who overrides the fifteen-day period in a Section 138
+  // notice has not customised the notice, they have destroyed it.
+  Object.assign(derived, deadlineVariables(documentType, derived));
 
   return derived;
 }

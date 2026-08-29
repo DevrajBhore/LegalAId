@@ -1,0 +1,35 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_SUBJECT_001",
+  "name": "Subject",
+  "title": "Subject",
+  "category": "NOTICE_HEADING",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "SUBJECT: NOTICE INVOKING ARBITRATION UNDER SECTION 21 OF THE ARBITRATION AND CONCILIATION ACT, 1996, IN RESPECT OF DISPUTES ARISING OUT OF {{underlying_agreement_description}} DATED {{underlying_agreement_date}}.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "21",
+      "note": "Unless otherwise agreed, arbitral proceedings commence on the date on which a request for that dispute to be referred to arbitration is received by the respondent"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.21",
+  "authoring_note": "The notice must be unambiguous that arbitration is being invoked. A letter that merely complains of a breach and mentions the arbitration clause in passing has been held not to be a Section 21 request, with the result that the proceedings never commenced and the claim ran out of time.",
+  "blocks_generation_if_absent": true
+}

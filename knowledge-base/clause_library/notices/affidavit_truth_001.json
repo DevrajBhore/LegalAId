@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "AFFIDAVIT_TRUTH_001",
+  "name": "Statement of Truth",
+  "title": "Statement of Truth",
+  "category": "STATEMENT_OF_TRUTH",
+  "document_types": [
+    "AFFIDAVIT"
+  ],
+  "text": "I state that the contents of the paragraphs above are true to my own knowledge, save as to those matters stated on information received, which I believe to be true, and the source of which I have given. No part of this affidavit is false and nothing material has been concealed from it.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order VI Rule 15",
+      "note": "Verification distinguishing knowledge from belief"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XIX Rule 3",
+      "note": "Affidavits confined to facts provable of the deponent's own knowledge"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order VI Rule 15, Order XIX Rule 3",
+  "authoring_note": "An affidavit without a statement of truth in this form is a letter. The distinction between knowledge and belief is not a formality: it decides what weight the affidavit carries, and a blanket assertion that everything is true to knowledge, where plainly some of it cannot be, damages the deponent's credibility on all of it.",
+  "blocks_generation_if_absent": true
+}

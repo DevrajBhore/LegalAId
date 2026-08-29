@@ -23,9 +23,18 @@
     "note": "Anything the reviewer wants recorded — a pending amendment, a repeal, a state variation",
     "repealed_on": "ISO date the Act ceased to have effect. A clause may not cite an Act that carries this field.",
     "superseded_by": "The Act or Code to cite instead.",
-    "in_force_from": "ISO date the Act commenced, where that matters for transitional questions."
+    "in_force_from": "ISO date the Act commenced, where that matters for transitional questions.",
+    "provisions": "Per-provision commencement, where an Act or set of Rules commences in phases. Keys are section or rule references as cited; each carries in_force_from and a note. A provision absent from this map takes the Act's own in_force_from."
   },
   "acts": {
+    "Advocates Act, 1961": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": null,
+      "source": null,
+      "verified": false,
+      "note": null
+    },
     "Arbitration and Conciliation Act, 1996": {
       "citations": 4,
       "sections_cited": [
@@ -33,10 +42,37 @@
         "42",
         "7"
       ],
-      "amended_upto": null,
-      "source": null,
+      "amended_upto": "2021-11-04",
+      "source": "Arbitration and Conciliation (Amendment) Act, 2021",
       "verified": false,
-      "note": null
+      "note": "The Arbitration and Conciliation (Amendment) Bill, 2024 was published by the Department of Legal Affairs as a consultation draft and has NOT been introduced in Parliament. The governing text remains the 1996 Act as amended to 2021."
+    },
+    "Bharatiya Nagarik Suraksha Sanhita, 2023": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": "2024-07-01",
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "In force 1 July 2024. A document taking effect BEFORE that date is governed by the Act this Sanhita replaced.",
+      "in_force_from": "2024-07-01"
+    },
+    "Bharatiya Nyaya Sanhita, 2023": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": "2024-07-01",
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "In force 1 July 2024. A document taking effect BEFORE that date is governed by the Act this Sanhita replaced.",
+      "in_force_from": "2024-07-01"
+    },
+    "Bharatiya Sakshya Adhiniyam, 2023": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": "2024-07-01",
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "In force 1 July 2024. A document taking effect BEFORE that date is governed by the Act this Sanhita replaced.",
+      "in_force_from": "2024-07-01"
     },
     "Bureau of Indian Standards Act, 2016": {
       "citations": 3,
@@ -70,7 +106,17 @@
       "amended_upto": null,
       "source": null,
       "verified": false,
-      "note": null
+      "note": "Not repealed by the 2023 criminal-law Sanhitas; the Civil Procedure Code remains in force."
+    },
+    "Code of Criminal Procedure, 1973": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": null,
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "Repealed with effect from 1 July 2024 by the Bharatiya Nagarik Suraksha Sanhita, 2023 (S.531). Renumbered throughout.",
+      "repealed_on": "2024-07-01",
+      "superseded_by": "Bharatiya Nagarik Suraksha Sanhita, 2023"
     },
     "Code on Social Security, 2020": {
       "citations": 18,
@@ -86,7 +132,7 @@
       "amended_upto": "2025-11-21",
       "source": "https://www.indiacode.nic.in/handle/123456789/16823 (India Code)",
       "verified": true,
-      "note": "In force 21 November 2025. Repeals the Employees' Compensation Act 1923, ESI Act 1948, EPF Act 1952, Maternity Benefit Act 1961, Payment of Gratuity Act 1972 and others. Verified: s.53 gratuity (five years continuous service, fifteen days wages per completed year, death and disablement exceptions); s.60 maternity benefit (twenty-six weeks); s.67 creche; Chapter III (ss.14-23) EPF; Chapter IV (ss.24-52) ESI. TRANSITIONAL: per the Labour Ministry FAQs, gratuity for service before 21 November 2025 remains governed by the Payment of Gratuity Act, 1972.",
+      "note": "In force 21 November 2025. A document taking effect BEFORE that date is governed by the Acts this Code repealed, and must cite those instead.",
       "in_force_from": "2025-11-21"
     },
     "Code on Wages, 2019": {
@@ -102,7 +148,7 @@
       "amended_upto": "2025-11-21",
       "source": "https://www.indiacode.nic.in/bitstream/123456789/15793/1/aA2019-29.pdf (India Code, text as on 21 November 2025)",
       "verified": true,
-      "note": "In force 21 November 2025. Repeals the Payment of Wages Act 1936, Minimum Wages Act 1948, Payment of Bonus Act 1965 and Equal Remuneration Act 1976. Verified sections: 2(y) wages definition with the one-half proviso; 5 minimum rate of wages; 17(2) wages payable within two working days of removal, dismissal, retrenchment or resignation; 18 deductions; 26(1) minimum bonus 8.33 per cent or one hundred rupees.",
+      "note": "In force 21 November 2025. A document taking effect BEFORE that date is governed by the Acts this Code repealed, and must cite those instead.",
       "in_force_from": "2025-11-21"
     },
     "Companies (Share Capital and Debentures) Rules, 2014": {
@@ -195,6 +241,16 @@
       "verified": false,
       "note": null
     },
+    "Criminal Procedure Code, 1973": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": null,
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "Alternate spelling of the same repealed Act. See 'Code of Criminal Procedure, 1973'.",
+      "repealed_on": "2024-07-01",
+      "superseded_by": "Bharatiya Nagarik Suraksha Sanhita, 2023"
+    },
     "Delhi Shops and Establishments Act, 1954": {
       "citations": 1,
       "sections_cited": [
@@ -222,6 +278,95 @@
       "source": null,
       "verified": false,
       "note": null
+    },
+    "Digital Personal Data Protection Rules, 2025": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": "2025-11-14",
+      "source": "Gazette of India, notified 14 November 2025",
+      "verified": false,
+      "in_force_from": "2025-11-14",
+      "note": "Notified 14 November 2025 but commencing IN PHASES. Rules 1, 2 and 17 to 21 took effect on publication; Rule 4 takes effect 14 November 2026; Rules 3, 5 to 16, 22 and 23 take effect 14 May 2027. A clause that states any of the deferred Rules as presently operative is wrong for any document taking effect before that date.",
+      "provisions": {
+        "1": {
+          "in_force_from": "2025-11-14",
+          "note": "Short title and commencement."
+        },
+        "2": {
+          "in_force_from": "2025-11-14",
+          "note": "Definitions."
+        },
+        "3": {
+          "in_force_from": "2027-05-14",
+          "note": "Notice by the Data Fiduciary."
+        },
+        "4": {
+          "in_force_from": "2026-11-14",
+          "note": "Consent manager registration and obligations."
+        },
+        "5": {
+          "in_force_from": "2027-05-14"
+        },
+        "6": {
+          "in_force_from": "2027-05-14",
+          "note": "Reasonable security safeguards."
+        },
+        "7": {
+          "in_force_from": "2027-05-14",
+          "note": "Intimation of a personal data breach."
+        },
+        "8": {
+          "in_force_from": "2027-05-14",
+          "note": "Retention and erasure."
+        },
+        "9": {
+          "in_force_from": "2027-05-14"
+        },
+        "10": {
+          "in_force_from": "2027-05-14"
+        },
+        "11": {
+          "in_force_from": "2027-05-14"
+        },
+        "12": {
+          "in_force_from": "2027-05-14",
+          "note": "Additional obligations of a Significant Data Fiduciary."
+        },
+        "13": {
+          "in_force_from": "2027-05-14",
+          "note": "Rights of Data Principals."
+        },
+        "14": {
+          "in_force_from": "2027-05-14"
+        },
+        "15": {
+          "in_force_from": "2027-05-14"
+        },
+        "16": {
+          "in_force_from": "2027-05-14"
+        },
+        "17": {
+          "in_force_from": "2025-11-14"
+        },
+        "18": {
+          "in_force_from": "2025-11-14"
+        },
+        "19": {
+          "in_force_from": "2025-11-14"
+        },
+        "20": {
+          "in_force_from": "2025-11-14"
+        },
+        "21": {
+          "in_force_from": "2025-11-14"
+        },
+        "22": {
+          "in_force_from": "2027-05-14"
+        },
+        "23": {
+          "in_force_from": "2027-05-14"
+        }
+      }
     },
     "Electricity Act, 2003": {
       "citations": 1,
@@ -412,9 +557,11 @@
         "92"
       ],
       "amended_upto": null,
-      "source": null,
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
       "verified": false,
-      "note": null
+      "note": "Repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023 (S.170). Section numbering does NOT carry across: the Adhiniyam renumbered throughout and dropped some sections. Each citation must be re-mapped individually against the Adhiniyam text - published correspondence tables circulating online disagree with one another and must not be relied on without checking the bare Act.",
+      "repealed_on": "2024-07-01",
+      "superseded_by": "Bharatiya Sakshya Adhiniyam, 2023"
     },
     "Indian Partnership Act, 1932": {
       "citations": 3,
@@ -426,6 +573,16 @@
       "source": null,
       "verified": false,
       "note": null
+    },
+    "Indian Penal Code, 1860": {
+      "citations": 0,
+      "sections_cited": [],
+      "amended_upto": null,
+      "source": "Gazette notifications S.O. 850(E), 851(E) and 852(E) dated 24 February 2024, bringing all three Sanhitas into force on 1 July 2024",
+      "verified": false,
+      "note": "Repealed with effect from 1 July 2024 by the Bharatiya Nyaya Sanhita, 2023 (S.358). Renumbered throughout.",
+      "repealed_on": "2024-07-01",
+      "superseded_by": "Bharatiya Nyaya Sanhita, 2023"
     },
     "Indian Stamp Act, 1899": {
       "citations": 7,
@@ -485,7 +642,7 @@
       "amended_upto": "2025-11-21",
       "source": "https://www.indiacode.nic.in/bitstream/123456789/22040/1/A2020-35.pdf (India Code)",
       "verified": true,
-      "note": "In force 21 November 2025. Repeals the Trade Unions Act 1926, Industrial Employment (Standing Orders) Act 1946 and Industrial Disputes Act 1947. Verified sections: 2(o) fixed term employment (parity of wages and benefits, gratuity on one year); 4(1) Grievance Redressal Committee at 20 or more workers; 28(1) standing orders apply at 300 or more workers; 70 conditions precedent to retrenchment.",
+      "note": "In force 21 November 2025. A document taking effect BEFORE that date is governed by the Acts this Code repealed, and must cite those instead.",
       "in_force_from": "2025-11-21"
     },
     "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021": {
@@ -648,10 +805,10 @@
       "sections_cited": [
         "4"
       ],
-      "amended_upto": null,
-      "source": null,
+      "amended_upto": "2018-09-01",
+      "source": "Negotiable Instruments (Amendment) Act, 2018 (Act 20 of 2018); Negotiable Instruments (Amendment) Act, 2015",
       "verified": false,
-      "note": null
+      "note": "Sections 143A and 148 inserted by Act 20 of 2018. Section 142(2), fixing territorial jurisdiction by reference to the payee's bank branch, inserted by the 2015 amendment."
     },
     "Occupational Safety, Health and Working Conditions Code, 2020": {
       "citations": 8,
@@ -664,7 +821,7 @@
       "amended_upto": "2025-11-21",
       "source": "https://www.indiacode.nic.in/bitstream/123456789/22041/1/a2020-37.pdf (India Code)",
       "verified": true,
-      "note": "In force 21 November 2025. Repeals the Factories Act 1948, Contract Labour (Regulation and Abolition) Act 1970, Mines Act 1952 and others. Verified sections: 6(1)(f) employer MUST issue a letter of appointment to every employee; 25(1)(a) not more than eight hours in a day; 26(1) not more than six days in a week; 27 overtime at twice the rate of wages; 32 annual leave with wages. NOT verified and still to be pinned: the equivalents of the repealed Factories Act ss.55 (rest interval), 56 (spread-over) and 66 (employment of women), and the precise leave accrual rate under s.32.",
+      "note": "In force 21 November 2025. A document taking effect BEFORE that date is governed by the Acts this Code repealed, and must cite those instead.",
       "in_force_from": "2025-11-21"
     },
     "Patents Act, 1970": {

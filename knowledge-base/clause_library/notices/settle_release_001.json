@@ -1,0 +1,45 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_RELEASE_001",
+  "name": "Mutual Release",
+  "title": "Mutual Release",
+  "category": "RELEASE",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "(a) Subject to payment in full of the said sum, each Party releases and discharges the other from all claims, demands and causes of action arising out of or in connection with the said disputes, whether presently known or not.\n(b) This release does not extend to a claim arising out of a breach of this Agreement itself.\n(c) This release does not extend to, and nothing in this Agreement shall be read as waiving, any right or remedy that the law does not permit to be waived.\n(d) This release does not extend to any claim founded on fraud or on wilful concealment by the Party seeking to rely on it.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "A promisee may remit or dispense with performance"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "23",
+      "note": "An agreement is void where its object or consideration is unlawful or opposed to public policy"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "28",
+      "note": "An agreement in restraint of legal proceedings is void, subject to the exceptions"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.63, S.23, S.28",
+  "authoring_note": "Limbs (b), (c) and (d) are the carve-outs that keep the release enforceable. A release drawn wide enough to cover a claim for breach of the settlement itself is self-defeating; one that purports to release a statutory right the law does not allow to be given up is void as to that part and casts doubt on the rest; and a release procured by fraud should not protect the person who committed it.",
+  "blocks_generation_if_absent": true
+}

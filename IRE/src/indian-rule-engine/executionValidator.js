@@ -1,31 +1,32 @@
+import {
+  isPolicy,
+  isNotice,
+  isSworn,
+  isDemandNotice,
+  expectsAgreementBoilerplate,
+} from "../../../shared/documentShape.js";
+
 /**
  * executionValidator.js
  * Validates execution formalities for all Indian legal document types.
  */
 
 /**
- * A unilateral instrument is promulgated by one organisation, not agreed between
- * parties. Requiring it to identify "contracting parties" is not a check it can
- * pass, and the check was only passing by accident: the PoSH policy satisfied
- * the party regex through a commercial dispute-resolution clause that had been
- * pulled in by a dependency and should never have been in a statutory policy at
- * all. Removing that clause exposed the real defect in this check.
- *
- * The issuer still has to be named -- a policy that does not say whose it is is
- * useless -- so the requirement is replaced rather than dropped.
+ * Which checks apply depends on the shape of the document, and the shapes are
+ * classified once in shared/documentShape.js rather than by a set of exceptions
+ * kept here. A policy, a notice and an affidavit each fail the agreement checks
+ * for different reasons, and each needs a different question asked instead.
  */
-const UNILATERAL_INSTRUMENTS = new Set([
-  "POSH_POLICY",
-  "PRIVACY_POLICY",
-  "TERMS_OF_SERVICE",
-  "REFUND_AND_CANCELLATION_POLICY",
-  "SHIPPING_AND_DELIVERY_POLICY",
-]);
-
 export function executionValidate(draft, documentType = "") {
   if (!draft?.clauses) return [];
   const docType = String(documentType || draft.document_type || "").toUpperCase();
-  const isPolicyInstrument = UNILATERAL_INSTRUMENTS.has(docType);
+  const isPolicyInstrument = isPolicy(docType);
+  const isNoticeInstrument = isNotice(docType);
+  const isSwornInstrument = isSworn(docType);
+  // Everything that is not a bargain between two parties. Grouped once here so
+  // a new instrument type is exempted from all five agreement checks together
+  // rather than from four of them.
+  const isNotAnAgreement = !expectsAgreementBoilerplate(docType);
 
   const issues = [];
   const allText = draft.clauses.map(c => c.text || "").join(" ");
@@ -96,7 +97,7 @@ export function executionValidate(draft, documentType = "") {
   // the PoSH policy only because dismissal is one of the penalties the Internal
   // Committee may recommend under Section 13, which is not a contractual
   // termination right and carries no notice period.
-  if (hasTermination && !hasNotice && !isUnilateral && !isPolicyInstrument) {
+  if (hasTermination && !hasNotice && !isUnilateral && !isNotAnAgreement) {
     issues.push({
       rule_id: "TERMINATION_NOTICE_MISSING",
       severity: "MEDIUM",
@@ -111,7 +112,7 @@ export function executionValidate(draft, documentType = "") {
     clausesByCategory["DISPUTE_RESOLUTION"]?.length > 0 ||
     /arbitration|mediation|dispute.*resolution|in the event of.*dispute/i.test(allText);
 
-  if (!hasDisputeResolution && !isUnilateral && !isPolicyInstrument) {
+  if (!hasDisputeResolution && !isUnilateral && !isNotAnAgreement) {
     issues.push({
       rule_id: "NO_DISPUTE_MECHANISM",
       severity: "HIGH",
@@ -126,7 +127,7 @@ export function executionValidate(draft, documentType = "") {
     clausesByCategory["GOVERNING_LAW"]?.length > 0 ||
     /governing\s+law|laws\s+of\s+india|indian\s+law|construed.*india/i.test(allText);
 
-  if (!hasGoverningLaw && !isUnilateral && !isPolicyInstrument) {
+  if (!hasGoverningLaw && !isUnilateral && !isNotAnAgreement) {
     issues.push({
       rule_id: "NO_GOVERNING_LAW_REFERENCE",
       severity: "CRITICAL",
@@ -137,7 +138,91 @@ export function executionValidate(draft, documentType = "") {
   }
 
   // ── 6. Parties identified ───────────────────────────────────────────────────
-  if (isPolicyInstrument) {
+  if (isNoticeInstrument) {
+    // A notice must say who sends it and to whom. Everything else about it is
+    // negotiable; these two are not, because a notice that cannot be traced to a
+    // sender or tied to an addressee cannot be proved to have been served.
+    const namesAddressee = /\bTo[,:]?\s|\baddressed?\s+to\b|\bDear\b|\bthe\s+Addressee\b|\bthe\s+Noticee\b/i.test(allText);
+    const namesSender =
+      /\bon\s+(?:the\s+)?(?:behalf|instructions)\s+of\b/i.test(allText) ||
+      /\bmy\s+client\b/i.test(allText) ||
+      /\byours\s+faithfully\b/i.test(allText) ||
+      /\bunder\s+instructions\s+from\b/i.test(allText);
+
+    if (!namesAddressee) {
+      issues.push({
+        rule_id: "NOTICE_HAS_NO_ADDRESSEE",
+        severity: "CRITICAL",
+        message: "The notice does not identify the person it is addressed to.",
+        statutory_reference: "Negotiable Instruments Act 1881 – S.138 proviso (b) / Civil Procedure Code 1908 – S.80",
+        suggestion: "Name the addressee and give the address at which the notice is served. Service is proved against that address.",
+      });
+    }
+    if (!namesSender) {
+      issues.push({
+        rule_id: "NOTICE_HAS_NO_SENDER",
+        severity: "CRITICAL",
+        message: "The notice does not identify who sends it or on whose instructions.",
+        statutory_reference: "Indian Contract Act 1872 – S.10",
+        suggestion: "State the sender, and where an advocate sends it, that it is sent on the client's instructions and on the client's behalf.",
+      });
+    }
+
+    // The operative content of a demand notice.
+    if (isDemandNotice(docType)) {
+      const statesDeadline =
+        /\bwithin\s+(?:a\s+period\s+of\s+)?(?:\d+|one|two|three|five|seven|ten|fifteen|thirty|sixty|ninety)\s+(?:clear\s+)?(?:days?|weeks?|months?)\b/i.test(allText) ||
+        /\bon\s+or\s+before\b/i.test(allText) ||
+        /\bfailing\s+which,?\s+within\b/i.test(allText);
+      const statesConsequence =
+        /\bfailing\s+which\b/i.test(allText) ||
+        // "Should you fail to concur ... my client shall apply for the
+        // appointment of an arbitrator" states a consequence perfectly well.
+        /\bshould\s+you\s+fail\b/i.test(allText) ||
+        /\bin\s+the\s+event\s+of\s+(?:your\s+)?(?:failure|default)\b/i.test(allText) ||
+        /\bin\s+default\s+(?:where)?of\b/i.test(allText) ||
+        /\bshall\s+be\s+constrained\s+to\b/i.test(allText) ||
+        /\bwithout\s+further\s+(?:notice|reference)\s+to\s+you\b/i.test(allText) ||
+        /\blegal\s+proceedings\b/i.test(allText);
+
+      if (!statesDeadline) {
+        issues.push({
+          rule_id: "NOTICE_STATES_NO_DEADLINE",
+          severity: "CRITICAL",
+          message: "The notice makes a demand but does not say by when it must be met.",
+          statutory_reference: "Negotiable Instruments Act 1881 – S.138 proviso (c)",
+          suggestion: "State the period for compliance. Under S.138 the drawer must be given fifteen days from receipt, and a notice that omits the period will not support a complaint.",
+        });
+      }
+      if (!statesConsequence) {
+        issues.push({
+          rule_id: "NOTICE_STATES_NO_CONSEQUENCE",
+          severity: "HIGH",
+          message: "The notice does not say what follows if the demand is not met.",
+          statutory_reference: "Civil Procedure Code 1908 – S.80(1)",
+          suggestion: "State the proceedings that will be taken on non-compliance, so the addressee is on notice of what is intended.",
+        });
+      }
+    }
+  } else if (isSwornInstrument) {
+    // A sworn or unilateral instrument names one person: the deponent, the
+    // obligor, or the executant. There is nobody on the other side.
+    const namesExecutant =
+      /\b(deponent|obligor|executant|donor|principal|declarant|testator)\b/i.test(allText) ||
+      /\bI,\s/.test(allText) ||
+      /\bsolemnly\s+(affirm|declare)\b/i.test(allText) ||
+      /\bdo\s+hereby\s+(state|declare|bind)\b/i.test(allText);
+
+    if (!namesExecutant) {
+      issues.push({
+        rule_id: "NO_EXECUTANT_IDENTIFICATION",
+        severity: "CRITICAL",
+        message: "The instrument does not identify the person executing or swearing it.",
+        statutory_reference: "Civil Procedure Code 1908 – Order XIX / Indian Contract Act 1872 – S.10",
+        suggestion: "Name the deponent, obligor or executant and state the capacity in which they act.",
+      });
+    }
+  } else if (isPolicyInstrument) {
     // What matters for a policy is that the reader can tell whose it is.
     const namesIssuer =
       /\b(?:is\s+)?(?:adopted|issued|published)\s+by\b/i.test(allText) ||

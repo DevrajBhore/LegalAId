@@ -1,0 +1,27 @@
+{
+  "document_type": "LEGAL_NOTICE",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "NOTICE_ADDRESSEE_001",
+    "LEGAL_NOTICE_SUBJECT_001",
+    "NOTICE_INSTRUCTIONS_001",
+    "LEGAL_NOTICE_FACTS_001",
+    "LEGAL_NOTICE_BREACH_001",
+    "LEGAL_NOTICE_DEMAND_001",
+    "LEGAL_NOTICE_DEADLINE_001",
+    "LEGAL_NOTICE_CONSEQUENCE_001",
+    "NOTICE_RESERVATION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "Civil Procedure Code 1908 S.80(1) — where the addressee is the Government or a public officer sued for an official act, NO SUIT for two months after notice; the compliance period must be at least that",
+    "Civil Procedure Code 1908 S.80(3) — the notice must state the sender's name, description and residence, the cause of action and the relief claimed",
+    "Limitation Act 1963 Articles 19 and 55 — three years; a notice does not stop limitation running",
+    "Limitation Act 1963 S.18 — a written acknowledgement signed before expiry starts a fresh period; do not inadvertently make one for the other side",
+    "General Clauses Act 1897 S.27 — service by registered post is presumed; send by that route to keep the presumption",
+    "A threat of criminal proceedings where the dispute is purely civil is improper — delete unless the facts disclose an offence"
+  ],
+  "_unreachable": true,
+  "_held_note": "Deliberately not offered. Deferred as a product decision, not a quality one - this blueprint generates and passes its checks. Restore the entry in shared/documentRegistry.js and remove _unreachable to bring it back."
+}

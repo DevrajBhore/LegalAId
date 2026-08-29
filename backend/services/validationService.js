@@ -6,6 +6,10 @@ import { summariseProvenance } from "../../shared/clauseProvenance.js";
 import { buildStatutoryChecklistNotices } from "./statutoryChecklist.js";
 import { commercialValidate } from "../ire/commercialValidator.js";
 import { validateDraftConsistency } from "./draftConsistencyValidator.js";
+import { validateNumericPlausibility } from "./numericPlausibilityValidator.js";
+import { validatePartyIdentity } from "./partyIdentityValidator.js";
+import { resolveStatutoryCitations } from "./statutoryCitationResolver.js";
+import { computeDeadlines } from "./statutoryDeadlines.js";
 import { validateDocumentHardening } from "./documentHardening.js";
 import { validateClauseQuality } from "./clauseQualityNormalizer.js";
 import { validateDocumentQuality } from "./documentQualityControl.js";
@@ -138,6 +142,62 @@ export async function runDocumentValidation(
       ? "the submitted form values were not available to compare against"
       : "document type unknown"
   );
+  // Figures, checked as figures. This runs off the submitted form values rather
+  // than the assembled prose: a wrong number is cheap to fix at intake and
+  // expensive once it has been repeated across three clauses and a schedule.
+  const plausibilityIssues = runLayer(
+    "input_plausibility",
+    Boolean(resolvedDocumentType && resolvedSourceVariables),
+    () =>
+      validateNumericPlausibility({
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables,
+      }),
+    resolvedDocumentType
+      ? "the submitted form values were not available to check"
+      : "document type unknown"
+  );
+  // Who the parties are, checked as identities: the shape of each statutory
+  // number, whether two parties are secretly the same person, and whether the
+  // declared entity type agrees with the name and the PAN holder code.
+  const identityIssues = runLayer(
+    "party_identity",
+    Boolean(resolvedDocumentType && resolvedSourceVariables),
+    () =>
+      validatePartyIdentity({
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables,
+      }),
+    resolvedDocumentType
+      ? "the submitted form values were not available to check"
+      : "document type unknown"
+  );
+  // Citations, read against the date the document takes effect. The library
+  // cites the law as it stands; whether that is the right law for THIS document
+  // depends on its effective date, and no clause can answer that for itself.
+  const citationIssues = runLayer(
+    "statutory_currency",
+    Boolean(resolvedDocumentType),
+    () =>
+      resolveStatutoryCitations(draft, {
+        effectiveDate:
+          resolvedSourceVariables?.effective_date ||
+          resolvedSourceVariables?.start_date ||
+          resolvedSourceVariables?.agreement_date,
+      }),
+    "document type unknown"
+  );
+  // Dates, checked as dates. A notice sent on the thirty-first day after the
+  // return memo is not a late notice - it is no notice at all, and nothing in
+  // the prose will tell the reader that.
+  const deadlineIssues = runLayer(
+    "statutory_deadlines",
+    Boolean(resolvedDocumentType && resolvedSourceVariables),
+    () => computeDeadlines(resolvedDocumentType, resolvedSourceVariables).issues,
+    resolvedDocumentType
+      ? "the submitted form values were not available to check"
+      : "document type unknown"
+  );
   const hardeningIssues = runLayer(
     "hardening",
     Boolean(resolvedDocumentType),
@@ -182,6 +242,10 @@ export async function runDocumentValidation(
       ...(coreValidation.issues || []),
       ...commercialIssues,
       ...consistencyIssues,
+      ...plausibilityIssues,
+      ...identityIssues,
+      ...citationIssues,
+      ...deadlineIssues,
       ...hardeningIssues,
       ...clauseQualityIssues,
       ...graphIssues,

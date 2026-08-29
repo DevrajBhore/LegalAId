@@ -1,0 +1,35 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_PAYMENT_PERIOD_001",
+  "name": "Fifteen Days for Payment",
+  "title": "Fifteen Days for Payment",
+  "category": "NOTICE_DEADLINE",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "7. You are required to make the said payment within FIFTEEN DAYS of the receipt of this notice.\n8. Payment must be made in full and in cleared funds. A part payment will not discharge the demand.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "Proviso (c): the drawer fails to make the payment within fifteen days of the receipt of the said notice"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138 proviso (c)",
+  "authoring_note": "The fifteen days run from RECEIPT, not from the date of the notice, and the offence is complete on the sixteenth day. This period is jurisdictional and cannot be shortened: a notice demanding payment in seven days does not comply with proviso (c), and the complaint founded on it is liable to be quashed.\n\nThis clause deliberately states NO calendar date. An earlier draft computed one and printed it, which was wrong twice over. The notice is drafted before it is served, so any date printed in it rests on an assumed service date; and if the notice is in fact served later than assumed, the printed date falls BEFORE the fifteen days from receipt expire. The addressee would then be told to pay by a date earlier than the statute allows, which is exactly the defect that defeats a Section 138 complaint. The computed dates are still produced by the system, but they belong in the file note to the advocate, not in the notice served on the drawer.",
+  "blocks_generation_if_absent": true
+}

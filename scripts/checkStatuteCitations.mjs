@@ -104,6 +104,9 @@ const report = {
   unresolvable: [],
   unparseable: [],
   repealed: [],
+  // Recorded as stale by the author, waiting on the supervising advocate to
+  // re-map the provision. Not a failure: a known gap with a named owner.
+  awaiting_currency_review: [],
 };
 
 // An Act that carries `repealed_on` in the registry has ceased to have effect.
@@ -145,11 +148,45 @@ for (const { clause, file, unparseable } of readClauses()) {
   // the serialised clause catches all of them, including fields added later.
   // authoring_note is excluded: those deliberately name repealed Acts to record
   // what was changed and why.
-  const { authoring_note, deprecation_note, ...citable } = clause;
+  // statute_currency is excluded for the same reason: it exists to RECORD that a
+  // citation has gone stale, so its naming the repealed Act is the system
+  // working, not failing. A clause carrying one is reported separately as
+  // awaiting the advocate rather than as an unnoticed defect - those are
+  // different states, and conflating them makes the report unreadable.
+  const { authoring_note, deprecation_note, statute_currency, ...citable } = clause;
   const haystack = JSON.stringify(citable);
+  const acknowledged = String(statute_currency || "");
+  const isAcknowledged = (actKey) =>
+    acknowledged.toLowerCase().includes(actKey) || /CITATION OUT OF DATE/i.test(acknowledged);
+
+  // A repealed Act named in a sentence that says it was replaced is scholarship,
+  // not a stale citation: "Bharatiya Nyaya Sanhita, 2023 S.75, replacing Section
+  // 354A of the Indian Penal Code, 1860" is entirely up to date.
+  const HISTORICAL_FRAME =
+    /(replac(?:ing|ed|es)|formerly|erstwhile|repeal(?:ed|ing|s)|superseded|previously|corresponding to|which was|before its repeal|as it stood)/i;
+  const namedOnlyHistorically = (actKey) => {
+    const lower = haystack.toLowerCase();
+    let from = 0;
+    for (;;) {
+      const at = lower.indexOf(actKey, from);
+      if (at === -1) return true;
+      const window = haystack.slice(Math.max(0, at - 160), at + actKey.length + 60);
+      if (!HISTORICAL_FRAME.test(window)) return false;
+      from = at + actKey.length;
+    }
+  };
+
   for (const [actKey, repeal] of repealRegistry) {
     if (!haystack.toLowerCase().includes(actKey)) continue;
     if (report.repealed.some((r) => r.clause_id === clause.clause_id && r.act === actKey)) continue;
+    if (namedOnlyHistorically(actKey)) continue;
+    if (isAcknowledged(actKey)) {
+      report.awaiting_currency_review.push({
+        clause_id: clause.clause_id, file, act: actKey,
+        repealed_on: repeal.on, cite_instead: repeal.by,
+      });
+      continue;
+    }
     report.repealed.push({
       clause_id: clause.clause_id, file, act: actKey,
       citation: `${actKey} (named in the clause body, not in legal_basis)`,
@@ -186,7 +223,10 @@ for (const { clause, file, unparseable } of readClauses()) {
 
     const repeal = repealOf(entry.act);
     if (repeal) {
-      report.repealed.push({
+      const bucket = isAcknowledged(String(entry.act).toLowerCase())
+        ? report.awaiting_currency_review
+        : report.repealed;
+      bucket.push({
         clause_id: clause.clause_id, file,
         citation: `${entry.act} - ${entry.section || entry.article}`,
         repealed_on: repeal.on, cite_instead: repeal.by,
@@ -215,6 +255,7 @@ if (asJson) {
   console.log(`  Acts version-verified   ${report.acts_verified} of ${report.acts_cited}`);
   console.log(`  malformed               ${report.malformed.length}`);
   console.log(`  citing a REPEALED Act   ${report.repealed.length}`);
+  console.log(`  stale, awaiting review  ${report.awaiting_currency_review.length}`);
   console.log(`  unparseable files       ${report.unparseable.length}`);
   console.log(
     `  Acts corpus             ${actsAvailable ? "available" : "NOT PRESENT — citations could not be resolved"}`

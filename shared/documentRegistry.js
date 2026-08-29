@@ -87,6 +87,38 @@ export const DOCUMENT_TYPE_REGISTRY = {
     blueprintName: "posh_policy",
   },
 
+  // ─── Notices and dispute instruments ──────────────────────────────────────
+  // LEGAL_NOTICE, REPLY_TO_LEGAL_NOTICE and CHEQUE_BOUNCE_NOTICE are built and
+  // tested but deliberately NOT offered yet. Their clauses, blueprints, intake
+  // fields and the Section 138 deadline arithmetic all remain in place; only
+  // these registry entries were removed, which is what the product reads. To
+  // bring one back, restore its entry here and drop the _unreachable flag from
+  // its blueprint.
+  ARBITRATION_NOTICE: {
+    displayName: "Arbitration Notice (S.21)",
+    family: "Notices & Disputes",
+    ireType: "ARBITRATION_NOTICE",
+    blueprintName: "arbitration_notice",
+  },
+  SETTLEMENT_AGREEMENT: {
+    displayName: "Settlement Agreement",
+    family: "Notices & Disputes",
+    ireType: "SETTLEMENT_AGREEMENT",
+    blueprintName: "settlement_agreement",
+  },
+  AFFIDAVIT: {
+    displayName: "Affidavit",
+    family: "Notices & Disputes",
+    ireType: "AFFIDAVIT",
+    blueprintName: "affidavit",
+  },
+  INDEMNITY_BOND: {
+    displayName: "Indemnity Bond",
+    family: "Notices & Disputes",
+    ireType: "INDEMNITY_BOND",
+    blueprintName: "indemnity_bond",
+  },
+
   NDA: {
     displayName: "Non-Disclosure Agreement",
     family: "Contracts & Commercial",

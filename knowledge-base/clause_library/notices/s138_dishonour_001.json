@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_DISHONOUR_001",
+  "name": "Dishonour",
+  "title": "Dishonour",
+  "category": "NOTICE_BREACH",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "3. The said cheque was returned unpaid by {{drawee_bank}} with the endorsement \"{{return_reason}}\", and my client received the bank's return memo dated {{return_memo_date}}.\n4. The cheque was therefore dishonoured for want of sufficient funds in, or because it exceeded the arrangement made with, the account maintained by you with the said bank.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "The cheque must be returned unpaid because of insufficiency of funds or because it exceeds the arrangement made"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "146",
+      "note": "The court shall presume the fact of dishonour on production of the bank's slip or memo bearing the official mark"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138, S.146",
+  "authoring_note": "The return reason matters. Section 138 is engaged where the cheque is returned for insufficiency of funds or because it exceeds the arrangement; returns marked 'account closed', 'payment stopped' and 'signature differs' have been held to fall within the section on the reasoning that the drawer's own act caused the dishonour, but the position is not uniform and the advocate should check the current position for the endorsement actually used. The date my client RECEIVED the memo, not the date the memo bears, starts the thirty days under proviso (b) - the two are often different and the difference has decided cases."
+}

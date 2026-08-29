@@ -1,4 +1,10 @@
-export function evaluateConsideration(facts, documentText = "") {
+import { expectsAgreementBoilerplate } from "../../../../shared/documentShape.js";
+
+// A notice, an affidavit and a bond are not bargains, so asking them to show
+// consideration asks for something they cannot have. The text sniff below is
+// kept because it catches instruments that are unilateral in substance whatever
+// their registered type; the shape check is the reliable one.
+export function evaluateConsideration(facts, documentText = "", documentType = "") {
   const issues = [];
   const text = documentText.toLowerCase();
 
@@ -21,7 +27,7 @@ export function evaluateConsideration(facts, documentText = "") {
     text.includes("gift deed")
   );
 
-  if (!facts.hasConsideration && !isUnilateralDoc) {
+  if (!facts.hasConsideration && !isUnilateralDoc && expectsAgreementBoilerplate(documentType)) {
     issues.push({
       rule_id: "CONSIDERATION_NOT_DEFINED",
       severity: "HIGH",

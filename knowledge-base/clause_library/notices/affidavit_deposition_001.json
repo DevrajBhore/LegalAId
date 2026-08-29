@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "AFFIDAVIT_DEPOSITION_001",
+  "name": "Statements",
+  "title": "Statements",
+  "category": "DEPOSITION",
+  "document_types": [
+    "AFFIDAVIT"
+  ],
+  "text": "{{affidavit_statements}}",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XIX Rule 3",
+      "note": "Affidavits shall be confined to facts the deponent can of his own knowledge prove, except on interlocutory applications where belief may be stated with the grounds"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order VI Rule 15",
+      "note": "A pleading verified by affidavit must distinguish what is true to knowledge from what is on information and belief"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order XIX Rule 3, Order VI Rule 15",
+  "authoring_note": "Each statement should be a separate numbered paragraph confined to one fact. Order XIX Rule 3 limits an affidavit to facts within the deponent's own knowledge, except on an interlocutory application, where a statement of belief is allowed provided the grounds are given. A deponent who swears to matters they cannot know exposes themselves, and the affidavit is liable to be rejected.",
+  "blocks_generation_if_absent": true
+}

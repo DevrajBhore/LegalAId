@@ -127,7 +127,7 @@ export function runIRE(registry, documentType, draftedClauses = []) {
   issues.push(...(structural.violations || []));
 
   // 3️⃣ Draft completeness validation
-  issues.push(...completenessValidate({ clauses: draftedClauses }));
+  issues.push(...completenessValidate({ clauses: draftedClauses }, documentType));
 
   // 4️⃣ Execution validation
   issues.push(...executionValidate({ clauses: draftedClauses }, documentType));

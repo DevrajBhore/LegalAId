@@ -9,9 +9,9 @@
   "text": "In the event of any conflict or inconsistency between the terms of this Agreement and the terms of any Statement of Work, the terms of this Agreement shall prevail, except where the Statement of Work expressly identifies the specific clause of this Agreement that it intends to vary and states that it takes precedence, in which case the variation shall apply solely to that Statement of Work. In the event of any conflict between a Statement of Work and any purchase order, invoice, or other administrative document, the Statement of Work shall prevail. Pre-printed or standard terms appearing on either Party's purchase orders, acknowledgements, or invoices shall have no legal effect.",
   "legal_basis": [
     {
-      "act": "Indian Contract Act, 1872",
-      "section": "91-92 (Indian Evidence Act, 1872)",
-      "note": "Written contract terms exclude inconsistent extrinsic terms"
+      "act": "Bharatiya Sakshya Adhiniyam, 2023",
+      "section": "TO BE CONFIRMED",
+      "note": "The parol evidence rule: written contract terms exclude inconsistent extrinsic terms. Formerly SS.91 and 92 of the Indian Evidence Act, 1872, repealed with effect from 1 July 2024; the corresponding sections of the Adhiniyam must be confirmed against the bare Act."
     }
   ],
   "mandatory": true,
@@ -39,5 +39,6 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "statute_currency": "CITATION OUT OF DATE. The entry read act: 'Indian Contract Act, 1872' with section '91-92 (Indian Evidence Act, 1872)' - the section belonged to a different Act from the one named, which is why no currency check caught it. The Indian Evidence Act, 1872 was repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023. The principle survives; the section numbers do not carry across and must be mapped against the bare Act."
 }

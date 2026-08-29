@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "NOTICE_RESERVATION_001",
+  "name": "Reservation of Rights",
+  "title": "Reservation of Rights",
+  "category": "NOTICE_RESERVATION",
+  "document_types": [
+    "LEGAL_NOTICE",
+    "CHEQUE_BOUNCE_NOTICE",
+    "REPLY_TO_LEGAL_NOTICE",
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "This notice is issued without prejudice to, and does not waive, limit or exhaust, any other right, remedy, claim or defence available to my client, whether under the said agreement, in contract, in tort, under any statute or otherwise, all of which are expressly reserved. Nothing stated or omitted in this notice, and no forbearance, indulgence or time granted, shall operate as a waiver, an admission, an acquiescence or an accord.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "A promisee may dispense with or remit performance; a reservation makes clear that no such remission is intended"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "18",
+      "note": "An acknowledgement in writing signed by the party liable starts a fresh period; a notice must not inadvertently make one"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Limitation Act, 1963",
+  "statutory_reference": "Indian Contract Act, 1872 - S.63; Limitation Act, 1963 - S.18",
+  "authoring_note": "Two distinct dangers are addressed here. The first is waiver: a demand for one remedy can be read as an election against another, particularly where the notice offers time. The second is that an over-generous recital of the other side's position can amount to an acknowledgement under Section 18 of the Limitation Act, which helps the addressee rather than the sender. The advocate should read the factual narration against this clause and confirm nothing in it concedes a defence."
+}

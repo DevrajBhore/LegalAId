@@ -1,0 +1,624 @@
+{
+  "_comment": "Plausibility bounds for every numeric intake field. Three tiers: 'impossible' is a value the field cannot lawfully or arithmetically take and blocks generation; 'statutory' is a value that contradicts a named provision; 'implausible' is a value that is lawful but almost certainly a typo or a unit error, and is raised as a notice for the drafter. Bounds are deliberately generous - the purpose is to catch 500000 delivery attempts, not to second-guess a commercial bargain.",
+  "version": "1.0",
+  "fields": {
+    "investment_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      },
+      "implausible": {
+        "min": 10000
+      },
+      "note": "A subscription for less than ten thousand rupees is usually a unit error."
+    },
+    "pre_money_valuation": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 100000000000000
+      },
+      "implausible": {
+        "min": 100000
+      }
+    },
+    "esop_pool_percentage": {
+      "unit": "percent",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      },
+      "implausible": {
+        "max": 30
+      },
+      "note": "A pool above 30 per cent of post-issue capital is unusual and dilutes the round materially."
+    },
+    "liquidation_preference_multiple": {
+      "unit": "multiple",
+      "impossible": {
+        "min": 0.1,
+        "max": 20
+      },
+      "implausible": {
+        "max": 3
+      },
+      "note": "A preference above 3x is rare outside a distressed round."
+    },
+    "options_granted": {
+      "unit": "count",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000,
+        "integer": true
+      }
+    },
+    "exercise_price": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0.01,
+        "max": 10000000
+      },
+      "implausible": {
+        "min": 1
+      },
+      "statutory": {
+        "min": 1,
+        "severity": "HIGH",
+        "citation": "Companies Act 2013 S.53",
+        "message": "An exercise price below the face value of the share is an issue at a discount, which S.53 declares void except for sweat equity under S.54. Confirm the face value before proceeding."
+      }
+    },
+    "principal_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "interest_rate": {
+      "unit": "percent per annum",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      },
+      "implausible": {
+        "max": 24
+      },
+      "note": "Rates above 24 per cent per annum have been reopened by courts as excessive under the Usurious Loans Act 1918 and the state money-lending Acts. It is not unlawful in itself, but it is examinable."
+    },
+    "default_interest_rate": {
+      "unit": "percent per annum",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      },
+      "implausible": {
+        "max": 24
+      },
+      "note": "A default rate is a stipulated sum and is examinable as a penalty under Contract Act 1872 S.74; only reasonable compensation is recoverable."
+    },
+    "cure_period_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "implausible": {
+        "max": 90
+      }
+    },
+    "return_window_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "implausible": {
+        "max": 90
+      }
+    },
+    "refund_window_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "implausible": {
+        "max": 30
+      },
+      "note": "E-Commerce Rules 2020 R.4(5) requires a grievance to be redressed within one month; a refund window longer than that reads badly against the same standard."
+    },
+    "dispatch_window_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "implausible": {
+        "max": 30
+      }
+    },
+    "delivery_attempts": {
+      "unit": "count",
+      "impossible": {
+        "min": 1,
+        "max": 10,
+        "integer": true
+      },
+      "implausible": {
+        "max": 5
+      },
+      "note": "Carriers ordinarily make two or three attempts before returning to origin."
+    },
+    "shortage_report_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 180,
+        "integer": true
+      },
+      "implausible": {
+        "max": 30
+      }
+    },
+    "inspection_timeline_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 180,
+        "integer": true
+      },
+      "implausible": {
+        "max": 45
+      }
+    },
+    "rofr_period": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "implausible": {
+        "max": 90
+      }
+    },
+    "drag_threshold": {
+      "unit": "percent",
+      "impossible": {
+        "min": 1,
+        "max": 100
+      },
+      "implausible": {
+        "min": 50
+      },
+      "note": "A drag-along threshold below a simple majority lets a minority force a sale on the majority; confirm this is intended."
+    },
+    "shareholding_percentage_1": {
+      "unit": "percent",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    "shareholding_percentage_2": {
+      "unit": "percent",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    "stipend_amount": {
+      "unit": "INR per month",
+      "impossible": {
+        "min": 0,
+        "max": 10000000
+      },
+      "implausible": {
+        "max": 500000
+      }
+    },
+    "settlement_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0,
+        "max": 1000000000000
+      }
+    },
+    "termination_notice_period": {
+      "unit": "days",
+      "impossible": {
+        "min": 0,
+        "max": 730,
+        "integer": true
+      },
+      "implausible": {
+        "max": 180
+      }
+    },
+    "notice_period_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 0,
+        "max": 730,
+        "integer": true
+      },
+      "implausible": {
+        "max": 180
+      }
+    },
+    "liability_cap_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "salary": {
+      "unit": "INR per annum",
+      "impossible": {
+        "min": 1,
+        "max": 10000000000
+      },
+      "implausible": {
+        "min": 120000
+      },
+      "note": "This field is annual cost to company. A figure below Rs. 1,20,000 is usually a monthly salary entered in an annual field."
+    },
+    "working_hours": {
+      "unit": "hours per week",
+      "impossible": {
+        "min": 1,
+        "max": 168
+      },
+      "statutory": {
+        "max": 48,
+        "severity": "HIGH",
+        "citation": "OSH Code 2020 S.25",
+        "message": "Ordinary working hours may not exceed forty-eight in a week. Work beyond that is overtime and attracts twice the ordinary rate of wages under S.26 - it cannot be written into the normal hours."
+      }
+    },
+    "contract_value": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "consulting_fee": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "total_fee": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "price": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0.01,
+        "max": 1000000000000
+      }
+    },
+    "capital_contribution_1": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0,
+        "max": 1000000000000
+      }
+    },
+    "capital_contribution_2": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0,
+        "max": 1000000000000
+      }
+    },
+    "drawing_limit": {
+      "unit": "INR per month",
+      "impossible": {
+        "min": 0,
+        "max": 1000000000
+      }
+    },
+    "minimum_purchase_quantity": {
+      "unit": "count",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000,
+        "integer": true
+      }
+    },
+    "gst_rate": {
+      "unit": "percent",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      },
+      "allowed": [
+        0,
+        0.25,
+        1,
+        1.5,
+        3,
+        5,
+        6,
+        12,
+        18,
+        28
+      ],
+      "allowed_severity": "MEDIUM",
+      "note": "The notified GST rates. A figure outside this set is either a cess-inclusive composite or a typing error - confirm the HSN or SAC classification."
+    },
+    "rent_amount": {
+      "unit": "INR per month",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000
+      },
+      "implausible": {
+        "max": 10000000
+      }
+    },
+    "occupancy_fee": {
+      "unit": "INR per month",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000
+      },
+      "implausible": {
+        "max": 10000000
+      }
+    },
+    "license_fee": {
+      "unit": "INR per month",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000
+      },
+      "implausible": {
+        "max": 10000000
+      }
+    },
+    "security_deposit": {
+      "unit": "INR",
+      "impossible": {
+        "min": 0,
+        "max": 10000000000
+      }
+    },
+    "rent_escalation": {
+      "unit": "percent per annum",
+      "impossible": {
+        "min": 0,
+        "max": 100
+      },
+      "implausible": {
+        "max": 15
+      }
+    },
+    "lease_term": {
+      "unit": "months",
+      "impossible": {
+        "min": 1,
+        "max": 1188,
+        "integer": true
+      },
+      "note": "A lease from year to year, or for a term exceeding one year, is compulsorily registrable - TP Act 1882 S.107 and Registration Act 1908 S.17(1)(d). An unregistered instrument is inadmissible under Registration Act S.49."
+    },
+    "license_term": {
+      "unit": "months",
+      "impossible": {
+        "min": 1,
+        "max": 600,
+        "integer": true
+      },
+      "implausible": {
+        "max": 60
+      }
+    },
+    "lock_in_period": {
+      "unit": "months",
+      "impossible": {
+        "min": 0,
+        "max": 600,
+        "integer": true
+      },
+      "implausible": {
+        "max": 60
+      }
+    },
+    "loan_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "guaranteed_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "repayment_tenure_months": {
+      "unit": "months",
+      "impossible": {
+        "min": 1,
+        "max": 600,
+        "integer": true
+      },
+      "implausible": {
+        "max": 360
+      }
+    },
+    "instalment_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      }
+    },
+    "compliance_period_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 365,
+        "integer": true
+      },
+      "statutory": {
+        "min": 60,
+        "severity": "HIGH",
+        "citation": "Civil Procedure Code 1908 - S.80(1)",
+        "message": "Where the addressee is the Government or a public officer sued for an official act, no suit may be instituted until two months after the notice. A shorter compliance period will not shorten that bar."
+      },
+      "implausible": {
+        "max": 90
+      },
+      "note": "Fifteen days is the ordinary period for a private demand. Where the contract prescribes a cure period, that period governs and a shorter one in the notice is itself a breach."
+    },
+    "settlement_default_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 180,
+        "integer": true
+      },
+      "implausible": {
+        "max": 60
+      }
+    },
+    "settlement_withdrawal_days": {
+      "unit": "days",
+      "impossible": {
+        "min": 1,
+        "max": 180,
+        "integer": true
+      },
+      "implausible": {
+        "max": 60
+      }
+    },
+    "deponent_age": {
+      "unit": "years",
+      "impossible": {
+        "min": 18,
+        "max": 120,
+        "integer": true
+      },
+      "note": "A person under eighteen cannot ordinarily swear an affidavit in their own right; a minor deposes through a guardian."
+    },
+    "cheque_amount": {
+      "unit": "INR",
+      "impossible": {
+        "min": 1,
+        "max": 1000000000000
+      },
+      "note": "The statutory demand under Section 138 must be for this sum and nothing more. Interest and costs must not be added to the figure demanded."
+    }
+  },
+  "cross_field": [
+    {
+      "id": "SHAREHOLDING_EXCEEDS_WHOLE",
+      "kind": "sum_at_most",
+      "fields": [
+        "shareholding_percentage_1",
+        "shareholding_percentage_2"
+      ],
+      "limit": 100,
+      "severity": "CRITICAL",
+      "message": "The stated shareholdings add up to more than the whole of the issued capital.",
+      "suggestion": "Correct the percentages so they total no more than 100. Where other holders exist, the balance is theirs and need not be stated here."
+    },
+    {
+      "id": "PARTNER_CAPITAL_BOTH_ZERO",
+      "kind": "not_all_zero",
+      "fields": [
+        "capital_contribution_1",
+        "capital_contribution_2"
+      ],
+      "severity": "MEDIUM",
+      "message": "Neither partner is recorded as contributing capital.",
+      "suggestion": "A partnership needs some contribution of capital, skill or labour to be shown. If the contribution is in kind or in service, record that in the deed rather than leaving both figures at zero."
+    },
+    {
+      "id": "INSTALMENT_EXCEEDS_PRINCIPAL",
+      "kind": "at_most_field",
+      "field": "instalment_amount",
+      "reference": "loan_amount",
+      "severity": "HIGH",
+      "message": "The instalment is larger than the whole loan.",
+      "suggestion": "Check whether the instalment figure is a monthly amount and the loan figure the total advanced."
+    },
+    {
+      "id": "LOCK_IN_EXCEEDS_TERM",
+      "kind": "at_most_field",
+      "field": "lock_in_period",
+      "reference": "lease_term",
+      "severity": "HIGH",
+      "message": "The lock-in runs longer than the lease itself, so the tenant can never lawfully exit.",
+      "suggestion": "Set the lock-in to a period within the lease term."
+    },
+    {
+      "id": "DEPOSIT_DISPROPORTIONATE_TO_RENT",
+      "kind": "ratio_at_most",
+      "field": "security_deposit",
+      "reference": "rent_amount",
+      "limit": 6,
+      "severity": "MEDIUM",
+      "message": "The security deposit exceeds six months of rent.",
+      "suggestion": "Where the Model Tenancy Act 2021 has been adopted in the state, S.11(1) caps the deposit at two months' rent for a residential letting and six months' for a non-residential one. Confirm the state position before proceeding.",
+      "citation": "Model Tenancy Act 2021 S.11(1), as adopted by the state"
+    },
+    {
+      "id": "INVESTMENT_EXCEEDS_PRE_MONEY",
+      "kind": "at_most_field",
+      "field": "investment_amount",
+      "reference": "pre_money_valuation",
+      "severity": "MEDIUM",
+      "message": "The investment is larger than the pre-money valuation, which puts the incoming investor above fifty per cent on this round alone.",
+      "suggestion": "Confirm the valuation is pre-money and not post-money."
+    },
+    {
+      "id": "LOCK_IN_EXCEEDS_LICENCE_TERM",
+      "kind": "at_most_field",
+      "field": "lock_in_period",
+      "reference": "license_term",
+      "severity": "HIGH",
+      "message": "The lock-in runs longer than the licence itself, so the licensee can never lawfully exit.",
+      "suggestion": "Set the lock-in to a period within the licence term."
+    },
+    {
+      "id": "DEPOSIT_DISPROPORTIONATE_TO_LICENCE_FEE",
+      "kind": "ratio_at_most",
+      "field": "security_deposit",
+      "reference": "license_fee",
+      "limit": 6,
+      "severity": "MEDIUM",
+      "message": "The security deposit exceeds six months of licence fee.",
+      "suggestion": "Where the Model Tenancy Act 2021 has been adopted in the state, S.11(1) caps the deposit at two months for a residential letting and six for a non-residential one. Confirm the state position before proceeding.",
+      "citation": "Model Tenancy Act 2021 S.11(1), as adopted by the state"
+    },
+    {
+      "id": "REPEATED_NUMERIC_VALUE",
+      "kind": "repeated_value",
+      "min_distinct_fields": 3,
+      "ignore_below": 1000,
+      "severity": "MEDIUM",
+      "message": "The same figure has been entered into several unrelated numeric fields.",
+      "suggestion": "Check each figure separately. Identical values across unrelated fields usually mean a form was filled from a template or a test fixture rather than from the transaction."
+    }
+  ]
+}

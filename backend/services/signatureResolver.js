@@ -76,6 +76,96 @@ Place:`;
       return c;
     }
 
+    // A notice is sent, not executed. There is no counterparty signing opposite,
+    // no witnesses and no testimonium: it closes the way a letter closes, over
+    // the signature of whoever sends it. Where an advocate sends it, the
+    // subscription must say so and name the client, because the notice is the
+    // client's act and the advocate signs in a representative capacity.
+    if (signType === "NOTICE") {
+      const sender =
+        variables.sender_name ||
+        variables.party_1_name ||
+        variables.company_name ||
+        "the Sender";
+      const advocate = variables.advocate_name;
+      const enrolment = variables.advocate_enrolment_number;
+
+      c.text = advocate
+        ? `Yours faithfully,
+
+_____________________________
+${advocate}
+Advocate${enrolment ? `\nEnrolment No.: ${enrolment}` : ""}
+Counsel for ${sender}
+Date:
+Place:
+
+Encl.: Copies of the documents referred to above.
+
+A copy of this notice is retained in my office for record.`
+        : `Yours faithfully,
+
+_____________________________
+For ${sender}
+Name:
+Designation:
+Date:
+Place:
+
+Encl.: Copies of the documents referred to above.`;
+      return c;
+    }
+
+    // An affidavit is sworn, not signed. It closes with the deponent's
+    // signature, the verification that the Civil Procedure Code Order XIX and
+    // Order VI Rule 15 require, and the attestation of the officer before whom
+    // it was affirmed. Without the verification the affidavit is worthless.
+    if (signType === "AFFIDAVIT") {
+      const deponent = variables.deponent_name || variables.party_1_name || "the Deponent";
+      const place = variables.verification_place || variables.city || "____________";
+
+      c.text = `_____________________________
+DEPONENT
+${deponent}
+
+VERIFICATION
+
+Verified at ${place} on this ______ day of ______________, 20____ that the contents of the foregoing affidavit are true and correct to my knowledge, that no part of it is false and that nothing material has been concealed therefrom.
+
+_____________________________
+DEPONENT
+${deponent}
+
+Solemnly affirmed and signed before me by the deponent, who is identified to my satisfaction, on the date and at the place stated above.
+
+_____________________________
+Oath Commissioner / Notary Public
+Registration No.:`;
+      return c;
+    }
+
+    // A bond is a unilateral instrument: the obligor binds himself, and the
+    // person protected by it does not sign. It is attested, because a bond
+    // proved by attesting witnesses is far easier to enforce.
+    if (signType === "BOND") {
+      const obligor = variables.obligor_name || variables.party_1_name || "the Obligor";
+
+      c.text = `IN WITNESS WHEREOF the Obligor has signed this Bond on the date first written above.
+
+${buildExecutionBlock(obligor, "", variables.party_1_type || "")}
+
+WITNESS 1:
+_____________________________
+Name:
+Address:
+
+WITNESS 2:
+_____________________________
+Name:
+Address:`;
+      return c;
+    }
+
     if (signType === "PARTNERSHIP") {
       const p1 =
         variables.partner_1_name || variables.party_1_name || "Partner 1";

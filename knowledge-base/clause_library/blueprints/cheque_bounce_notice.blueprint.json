@@ -1,0 +1,29 @@
+{
+  "document_type": "CHEQUE_BOUNCE_NOTICE",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "NOTICE_ADDRESSEE_001",
+    "S138_SUBJECT_001",
+    "NOTICE_INSTRUCTIONS_001",
+    "S138_CHEQUE_PARTICULARS_001",
+    "S138_DISHONOUR_001",
+    "S138_STATUTORY_DEMAND_001",
+    "S138_PAYMENT_PERIOD_001",
+    "S138_CONSEQUENCE_001",
+    "NOTICE_RESERVATION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "NI Act 1881 S.138 proviso (a) — the cheque must have been presented within three months of its date or its validity",
+    "NI Act 1881 S.138 proviso (b) — the demand must be made within THIRTY DAYS of receiving the bank's return memo; this is jurisdictional",
+    "NI Act 1881 S.138 proviso (c) — the drawer gets FIFTEEN DAYS from RECEIPT; the notice must not shorten it or state a calendar date computed from an assumed service date",
+    "NI Act 1881 S.138 — the demand must be for the cheque amount ALONE; adding interest or costs to the demanded figure defeats the complaint",
+    "NI Act 1881 S.142(1)(b) — the complaint must be filed within ONE MONTH of the cause of action, which arises on the SIXTEENTH day after service",
+    "NI Act 1881 S.142(2) — jurisdiction lies where the payee's bank branch is situated",
+    "NI Act 1881 S.139 — the presumption that the cheque was for a debt is rebuttable; the underlying liability must be pleaded",
+    "The return endorsement matters — 'account closed' and 'payment stopped' have been treated as within S.138, but confirm the current position for the endorsement actually used"
+  ],
+  "_unreachable": true,
+  "_held_note": "Deliberately not offered. Deferred as a product decision, not a quality one - this blueprint generates and passes its checks. Restore the entry in shared/documentRegistry.js and remove _unreachable to bring it back."
+}

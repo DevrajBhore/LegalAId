@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "LEGAL_NOTICE_FACTS_001",
+  "name": "Statement of Facts",
+  "title": "Statement of Facts",
+  "category": "NOTICE_FACTS",
+  "document_types": [
+    "LEGAL_NOTICE"
+  ],
+  "text": "1. My client states the following facts, each of which is within your knowledge.\n{{notice_facts}}\n2. The above facts are stated on my client's instructions and are supported by the documents referred to, copies of which are enclosed. My client reserves the right to produce further material at the appropriate stage.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "80(3)",
+      "note": "The cause of action must be substantially indicated"
+    },
+    {
+      "act": "Bharatiya Sakshya Adhiniyam, 2023",
+      "section": "TO BE CONFIRMED",
+      "note": "An admission is a statement suggesting an inference as to a fact in issue, and is evidence against the party who makes it. This restates the principle formerly in S.17 of the Indian Evidence Act, 1872; the corresponding section of the Adhiniyam must be confirmed against the bare Act."
+    }
+  ],
+  "source": "Bharatiya Sakshya Adhiniyam, 2023; Civil Procedure Code, 1908",
+  "statutory_reference": "Bharatiya Sakshya Adhiniyam, 2023 - section to be confirmed; Civil Procedure Code, 1908 - S.80(3)",
+  "authoring_note": "The facts in a notice are pleaded facts in all but name. They will be put to the sender in cross-examination and a departure from them at trial is damaging, so the notice should state only what the client can prove and should not overstate. Dates, amounts and document references belong here; characterisation and adjectives do not.",
+  "statute_currency": "CITATION OUT OF DATE. The Indian Evidence Act, 1872 was repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023. The principle relied on here survives the repeal, but the SECTION NUMBER does not carry across - the Adhiniyam renumbered throughout. Published correspondence tables circulating online disagree with one another, so the advocate must map this citation against the bare Adhiniyam text rather than a table, and record the confirmed section here."
+}

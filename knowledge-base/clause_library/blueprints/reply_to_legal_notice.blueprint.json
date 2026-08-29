@@ -1,0 +1,29 @@
+{
+  "document_type": "REPLY_TO_LEGAL_NOTICE",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "NOTICE_ADDRESSEE_001",
+    "REPLY_SUBJECT_001",
+    "NOTICE_INSTRUCTIONS_001",
+    "REPLY_TRAVERSE_001",
+    "REPLY_VERSION_001",
+    "NOTICE_RESERVATION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "conditional_clauses": [
+    {
+      "clause": "REPLY_COUNTER_DEMAND_001",
+      "include_if": "counter_claim_description",
+      "note": "Only where the client actually has a counter-claim. An empty counter-demand is worse than none."
+    }
+  ],
+  "mandatory_legal_checks": [
+    "Civil Procedure Code 1908 Order VIII Rule 5 — an allegation not specifically denied is taken as admitted in a pleading; a court will ask why a now-disputed allegation went unanswered",
+    "Take every limitation, jurisdiction and arbitration objection NOW — a defence taken late reads as an afterthought",
+    "The reply commits the client to a version of events they will be cross-examined on; confine it to what the documents support",
+    "Limitation Act 1963 S.18 — do not acknowledge the other side's claim inadvertently"
+  ],
+  "_unreachable": true,
+  "_held_note": "Deliberately not offered. Deferred as a product decision, not a quality one - this blueprint generates and passes its checks. Restore the entry in shared/documentRegistry.js and remove _unreachable to bring it back."
+}

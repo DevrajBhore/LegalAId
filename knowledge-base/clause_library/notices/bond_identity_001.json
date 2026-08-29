@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "BOND_IDENTITY_001",
+  "name": "Parties and Date",
+  "title": "Parties and Date",
+  "category": "IDENTITY",
+  "document_types": [
+    "INDEMNITY_BOND"
+  ],
+  "text": "THIS DEED OF INDEMNITY is made on {{effective_date}} at {{execution_city}}\n\nBY: {{obligor_name}}, {{obligor_description}}, residing at / having its office at {{obligor_address}} (\"the Obligor\", which expression includes the Obligor's heirs, executors, administrators, successors and assigns)\n\nIN FAVOUR OF: {{beneficiary_name}}, {{beneficiary_description}}, of {{beneficiary_address}} (\"the Beneficiary\", which expression includes the Beneficiary's successors and assigns).",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "A contract of indemnity is one by which one party promises to save the other from loss caused to him by the conduct of the promisor himself or of any other person"
+    },
+    {
+      "act": "Indian Stamp Act, 1899",
+      "section": "Schedule I Article 34",
+      "note": "An indemnity bond is chargeable with stamp duty at the rate prescribed by the State"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Indian Stamp Act, 1899",
+  "statutory_reference": "Indian Contract Act, 1872 - S.124; Indian Stamp Act, 1899 - Schedule I Article 34",
+  "authoring_note": "A bond is unilateral: the Obligor binds himself and the Beneficiary does not sign. The successors wording matters because an indemnity that dies with the Obligor is often not what was intended. Stamp duty on an indemnity bond is a State subject and the rate varies considerably; the advocate should confirm the rate and whether the instrument requires registration in the State of execution.",
+  "blocks_generation_if_absent": true
+}

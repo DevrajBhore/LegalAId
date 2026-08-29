@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_PROCEEDINGS_001",
+  "name": "Disposal of Proceedings",
+  "title": "Disposal of Proceedings",
+  "category": "PROCEDURAL",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "(a) Within {{settlement_withdrawal_days}} days of payment in full, the Parties shall jointly apply to have {{proceedings_description}} disposed of in terms of this Agreement.\n(b) Each Party shall sign every document and do every act reasonably required to give effect to limb (a).\n(c) Each Party shall bear its own costs of the said proceedings.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XXIII Rule 3",
+      "note": "A lawful compromise shall be recorded and a decree passed accordingly"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "89",
+      "note": "Settlement of disputes outside the court"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order XXIII Rule 3, S.89",
+  "authoring_note": "The order of events matters. Applying to dispose of the proceedings BEFORE payment leaves the receiving party with no proceedings and no money if payment fails. Limb (a) therefore ties the application to payment in full, and should be read together with the acceleration clause in the payment provision."
+}

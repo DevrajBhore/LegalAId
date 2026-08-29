@@ -403,8 +403,21 @@ function findCrossReferenceIssues(draft) {
       .filter(Boolean)
   );
 
+  // A reference to a clause of ANOTHER instrument is not a broken internal
+  // reference. An arbitration notice says "Clause 18.2 of the said Agreement",
+  // meaning the contract the notice is about - there is no clause 18 in the
+  // notice and there should not be. Only references pointing at this document
+  // are checked.
+  const EXTERNAL_REFERENCE =
+    /^\s*of\s+(?:the\s+)?(?:said|aforesaid|principal|underlying|original)?\s*(?:Agreement|Contract|Deed|Lease|Policy|Scheme|Act|Rules)\b/i;
+
   const issues = [];
   for (const match of text.matchAll(/\bClause\s+(\d{1,2})(?:\.\d+)?\b/gi)) {
+    const following = text.slice(
+      match.index + match[0].length,
+      match.index + match[0].length + 60
+    );
+    if (EXTERNAL_REFERENCE.test(following)) continue;
     if (!headings.has(match[1])) {
       issues.push(
         buildIssue(

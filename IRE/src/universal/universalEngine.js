@@ -22,7 +22,7 @@ export function runUniversalValidation(document) {
 
   // 🔹 Always run core doctrine checks
   issues.push(...evaluateCapacity(extractedFacts, clauseTexts));
-  issues.push(...evaluateConsideration(extractedFacts, clauseTexts));
+  issues.push(...evaluateConsideration(extractedFacts, clauseTexts, document?.document_type));
   issues.push(...evaluateEnforceability(extractedFacts, clauseTexts));
   issues.push(...evaluateFreeConsent(extractedFacts, clauseTexts));
 

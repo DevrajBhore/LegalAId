@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "REPLY_VERSION_001",
+  "name": "My Client's Case",
+  "title": "My Client's Case",
+  "category": "NOTICE_FACTS",
+  "document_types": [
+    "REPLY_TO_LEGAL_NOTICE"
+  ],
+  "text": "4. The true facts, which your client has suppressed, are as follows.\n{{reply_facts}}\n5. In the premises the said notice is misconceived, and the demand made in it is not one my client is liable to meet.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform their respective promises"
+    },
+    {
+      "act": "Bharatiya Sakshya Adhiniyam, 2023",
+      "section": "TO BE CONFIRMED",
+      "note": "An admission is a statement suggesting an inference as to a fact in issue, and is evidence against the party who makes it. This restates the principle formerly in S.17 of the Indian Evidence Act, 1872; the corresponding section of the Adhiniyam must be confirmed against the bare Act."
+    }
+  ],
+  "source": "Bharatiya Sakshya Adhiniyam, 2023; Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.37; Bharatiya Sakshya Adhiniyam, 2023 - section to be confirmed",
+  "authoring_note": "The reply commits the client to a version of events. Anything asserted here will be put to the client in cross-examination and a departure from it is more damaging than a silence would have been, so the narration should be confined to what the client can prove from documents. Where a limitation, jurisdiction or arbitration objection is available, it should be taken in this reply rather than saved: a defence taken late invites the suggestion that it was an afterthought.",
+  "statute_currency": "CITATION OUT OF DATE. The Indian Evidence Act, 1872 was repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023. The principle relied on here survives the repeal, but the SECTION NUMBER does not carry across - the Adhiniyam renumbered throughout. Published correspondence tables circulating online disagree with one another, so the advocate must map this citation against the bare Adhiniyam text rather than a table, and record the confirmed section here."
+}

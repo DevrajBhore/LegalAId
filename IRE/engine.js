@@ -70,7 +70,7 @@ export async function validateDocument(
   const structuralIssues = structuralResult.violations || [];
 
   // ── Layer 1c: Completeness, execution, semantic 
-  const completenessIssues = completenessValidate({ clauses: draftedClauses });
+  const completenessIssues = completenessValidate({ clauses: draftedClauses }, documentType);
   const executionIssues = executionValidate({ clauses: draftedClauses }, documentType);
   const semanticIssues = semanticValidate({ clauses: draftedClauses });
 

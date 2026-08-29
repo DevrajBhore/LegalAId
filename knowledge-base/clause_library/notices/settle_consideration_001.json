@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_CONSIDERATION_001",
+  "name": "Settlement Sum",
+  "title": "Settlement Sum",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "(a) In full and final settlement of all claims described above, {{paying_party_label}} shall pay {{receiving_party_label}} the sum of Rs. {{settlement_amount}}/- ({{settlement_amount_words}} only).\n(b) The said sum is inclusive of interest, costs and all other claims, and no further sum is payable by either Party to the other in respect of the said disputes.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "A promisee may dispense with or remit, wholly or in part, the performance of the promise made to him"
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "194",
+      "note": "Deduction of tax at source may arise on the character of the payment; the character of a settlement receipt must be determined before payment"
+    }
+  ],
+  "source": "Income-tax Act, 1961; Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.63",
+  "authoring_note": "Whether tax must be deducted at source depends on what the payment is FOR, not on what the document calls it: a payment that is in substance interest, rent, professional fees or salary attracts deduction even when it is labelled a settlement. The advocate should determine the character of the payment before it is made, because getting it wrong exposes the payer to the tax and to interest on it.",
+  "blocks_generation_if_absent": true
+}

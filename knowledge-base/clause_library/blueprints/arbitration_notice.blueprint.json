@@ -1,0 +1,25 @@
+{
+  "document_type": "ARBITRATION_NOTICE",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "NOTICE_ADDRESSEE_001",
+    "ARB_NOTICE_SUBJECT_001",
+    "NOTICE_INSTRUCTIONS_001",
+    "ARB_NOTICE_AGREEMENT_001",
+    "ARB_NOTICE_DISPUTES_001",
+    "ARB_NOTICE_INVOCATION_001",
+    "ARB_NOTICE_DEADLINE_001",
+    "ARB_NOTICE_CONSEQUENCE_001",
+    "NOTICE_RESERVATION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "A&C Act 1996 S.21 — proceedings commence when the request is RECEIVED; the notice must unambiguously invoke arbitration, not merely mention the clause",
+    "A&C Act 1996 S.43(2) — commencement under S.21 is what stops limitation running; preserve proof of service",
+    "A&C Act 1996 S.7 — the arbitration agreement must be in writing; where incorporated by reference, the reference must be specific enough to carry the clause",
+    "A&C Act 1996 S.12 and the Seventh Schedule — a person falling within the Schedule is INELIGIBLE; a clause naming a party's own officer as arbitrator will not survive",
+    "A&C Act 1996 S.11(4) and (5) — thirty days from the request before a court appointment may be sought",
+    "The Arbitration and Conciliation (Amendment) Bill 2024 is a consultation draft only and is NOT law; the 1996 Act as amended to 2021 governs"
+  ]
+}

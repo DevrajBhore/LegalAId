@@ -1141,6 +1141,113 @@
         "purposeMode": "option_grant"
       },
       "//": "A grant letter is a short instrument issued under a scheme that carries the general terms. The baseline is suppressed so the letter does not restate them and drift out of step with the scheme it is subject to."
+    },
+    "LEGAL_NOTICE": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Sender"
+          },
+          "second": {
+            "canonical": "Addressee"
+          }
+        },
+        "//": "A notice is written in the second person: \"my client\" and \"you\", not \"the Sender\" and \"the Addressee\". Those two words were listed as aliases here, and the role-normalising pass duly rewrote them into the canonical labels - turning \"Should you fail to concur\" into \"Should Addressee fail to concur\", which reads like a bad translation and also defeated the check that a notice must state a consequence. Canonical labels only; the pronouns are left alone."
+      },
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A notice is a letter, not a deed. It has no severability clause, no force majeure clause and no counterparts clause, because it is not a bargain whose terms could be severed, excused or signed in parts. The thirteen general provisions that every agreement carries are therefore switched off here rather than being carried and then apologised for."
+      }
+    },
+    "CHEQUE_BOUNCE_NOTICE": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Sender"
+          },
+          "second": {
+            "canonical": "Addressee"
+          }
+        },
+        "//": "A notice is written in the second person: \"my client\" and \"you\", not \"the Sender\" and \"the Addressee\". Those two words were listed as aliases here, and the role-normalising pass duly rewrote them into the canonical labels - turning \"Should you fail to concur\" into \"Should Addressee fail to concur\", which reads like a bad translation and also defeated the check that a notice must state a consequence. Canonical labels only; the pronouns are left alone."
+      },
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A notice is a letter, not a deed. It has no severability clause, no force majeure clause and no counterparts clause, because it is not a bargain whose terms could be severed, excused or signed in parts. The thirteen general provisions that every agreement carries are therefore switched off here rather than being carried and then apologised for."
+      }
+    },
+    "REPLY_TO_LEGAL_NOTICE": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Sender"
+          },
+          "second": {
+            "canonical": "Addressee"
+          }
+        },
+        "//": "A notice is written in the second person: \"my client\" and \"you\", not \"the Sender\" and \"the Addressee\". Those two words were listed as aliases here, and the role-normalising pass duly rewrote them into the canonical labels - turning \"Should you fail to concur\" into \"Should Addressee fail to concur\", which reads like a bad translation and also defeated the check that a notice must state a consequence. Canonical labels only; the pronouns are left alone."
+      },
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A notice is a letter, not a deed. It has no severability clause, no force majeure clause and no counterparts clause, because it is not a bargain whose terms could be severed, excused or signed in parts. The thirteen general provisions that every agreement carries are therefore switched off here rather than being carried and then apologised for."
+      }
+    },
+    "ARBITRATION_NOTICE": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Sender"
+          },
+          "second": {
+            "canonical": "Addressee"
+          }
+        },
+        "//": "A notice is written in the second person: \"my client\" and \"you\", not \"the Sender\" and \"the Addressee\". Those two words were listed as aliases here, and the role-normalising pass duly rewrote them into the canonical labels - turning \"Should you fail to concur\" into \"Should Addressee fail to concur\", which reads like a bad translation and also defeated the check that a notice must state a consequence. Canonical labels only; the pronouns are left alone."
+      },
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A notice is a letter, not a deed. It has no severability clause, no force majeure clause and no counterparts clause, because it is not a bargain whose terms could be severed, excused or signed in parts. The thirteen general provisions that every agreement carries are therefore switched off here rather than being carried and then apologised for."
+      }
+    },
+    "INDEMNITY_BOND": {
+      "naming": {
+        "participants": {
+          "first": {
+            "canonical": "Obligor"
+          },
+          "second": {
+            "canonical": "Beneficiary"
+          }
+        }
+      },
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A sworn or unilateral instrument carries none of the general provisions of an agreement: there is no counterparty to sever terms against, to serve notice on, or to sign a counterpart."
+      }
+    },
+    "AFFIDAVIT": {
+      "hardening": {
+        "baselineClauseIds": [],
+        "//": "A sworn or unilateral instrument carries none of the general provisions of an agreement: there is no counterparty to sever terms against, to serve notice on, or to sign a counterpart."
+      }
+    },
+    "SETTLEMENT_AGREEMENT": {
+      "hardening": {
+        "baselineClauseIds": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_NOTICE_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_WAIVER_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_FURTHER_ASSURANCE_001"
+        ],
+        "//": "A settlement is an agreement and keeps the general provisions, less three. Assignment is dropped because a released claim is not assignable; force majeure because the obligation is to pay a sum, which nothing excuses; and survival because the whole instrument is intended to survive."
+      }
     }
   }
 }

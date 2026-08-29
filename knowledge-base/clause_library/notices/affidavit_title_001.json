@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "AFFIDAVIT_TITLE_001",
+  "name": "Title",
+  "title": "Title",
+  "category": "NOTICE_HEADING",
+  "document_types": [
+    "AFFIDAVIT"
+  ],
+  "text": "AFFIDAVIT\n\nDated: {{effective_date}}\n\n(To be sworn before an Oath Commissioner or a Notary Public, on stamp paper of the value prescribed by the State in which it is sworn)\n\nIn the matter of: {{affidavit_purpose}}",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XIX Rule 3",
+      "note": "Affidavits shall be confined to such facts as the deponent is able of his own knowledge to prove"
+    },
+    {
+      "act": "Notaries Act, 1952",
+      "section": "8",
+      "note": "A notary may administer oath to, and take affidavit from, any person"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908; Notaries Act, 1952",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order XIX Rule 3; Notaries Act, 1952 - S.8",
+  "authoring_note": "The stamp value and the officer before whom an affidavit may be sworn are matters of State law and vary. The advocate should confirm both for the State of swearing, and confirm whether the purpose requires a particular form - many authorities prescribe their own.",
+  "blocks_generation_if_absent": true
+}

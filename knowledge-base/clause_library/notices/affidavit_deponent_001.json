@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "AFFIDAVIT_DEPONENT_001",
+  "name": "The Deponent",
+  "title": "The Deponent",
+  "category": "IDENTITY",
+  "document_types": [
+    "AFFIDAVIT"
+  ],
+  "text": "I, {{deponent_name}}, aged about {{deponent_age}} years, {{deponent_relation}} of {{deponent_parent_name}}, resident of {{deponent_address}}, holding {{deponent_id_type}} bearing number {{deponent_id_number}}, do hereby solemnly affirm and state on oath as follows:",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XIX Rule 3",
+      "note": "The affidavit must state the deponent's means of knowledge"
+    },
+    {
+      "act": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+      "section": "TO BE CONFIRMED",
+      "note": "False evidence on affidavit is punishable; the corresponding provision must be confirmed against the bare Sanhita"
+    }
+  ],
+  "source": "Bharatiya Nagarik Suraksha Sanhita, 2023; Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order XIX Rule 3",
+  "authoring_note": "The deponent must be identified well enough that the affidavit can be tied to a person - name alone is not enough, which is why age, parentage, address and an identity document are all taken. The officer administering the oath is required to satisfy themselves of identity, and an affidavit that does not record how that was done is easily attacked.",
+  "blocks_generation_if_absent": true
+}

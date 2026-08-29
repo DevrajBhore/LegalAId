@@ -1,0 +1,43 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "NOTICE_ADDRESSEE_001",
+  "name": "Addressee and Date",
+  "title": "Addressee and Date",
+  "category": "IDENTITY",
+  "document_types": [
+    "LEGAL_NOTICE",
+    "CHEQUE_BOUNCE_NOTICE",
+    "REPLY_TO_LEGAL_NOTICE",
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "Dated: {{notice_date}}\n\nTo,\n{{addressee_name}}\n{{addressee_address}}\n\nBY REGISTERED POST WITH ACKNOWLEDGEMENT DUE AND BY EMAIL\n\nDear Sir/Madam,",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "80(3)",
+      "note": "A notice is saved from a defect where the plaintiff is identifiable and the cause of action is substantially indicated"
+    },
+    {
+      "act": "General Clauses Act, 1897",
+      "section": "27",
+      "note": "Service by registered post is presumed effected at the time the letter would be delivered in the ordinary course of post"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908; General Clauses Act, 1897",
+  "statutory_reference": "Civil Procedure Code, 1908 - S.80(3); General Clauses Act, 1897 - S.27",
+  "authoring_note": "The mode of despatch is part of the notice, not a formality. Section 27 of the General Clauses Act raises a presumption of service where a notice is properly addressed, prepaid and posted by registered post, and that presumption is what a sender relies on when the addressee refuses the envelope or avoids it. Sending only by email or courier gives up the presumption. The advocate should confirm the address is the one on the record the parties dealt on - the registered office for a company, the address in the contract for an individual - because service at any other address will be contested.",
+  "blocks_generation_if_absent": true
+}

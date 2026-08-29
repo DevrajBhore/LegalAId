@@ -1,0 +1,19 @@
+{
+  "document_type": "AFFIDAVIT",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "AFFIDAVIT_TITLE_001",
+    "AFFIDAVIT_DEPONENT_001",
+    "AFFIDAVIT_DEPOSITION_001",
+    "AFFIDAVIT_TRUTH_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "Civil Procedure Code 1908 Order XIX Rule 3 — confined to facts within the deponent's own knowledge, except on an interlocutory application where belief may be stated WITH THE GROUNDS",
+    "Civil Procedure Code 1908 Order VI Rule 15 — the verification must distinguish knowledge from information and belief",
+    "Stamp value and the officer before whom an affidavit may be sworn are STATE subjects and vary — confirm both for the State of swearing",
+    "Notaries Act 1952 S.8 — a notary may administer the oath",
+    "False evidence on affidavit is an offence under the Bharatiya Nyaya Sanhita 2023 — the deponent should be told so before swearing"
+  ]
+}

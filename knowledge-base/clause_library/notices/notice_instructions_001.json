@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "NOTICE_INSTRUCTIONS_001",
+  "name": "Authority to Send",
+  "title": "Authority to Send",
+  "category": "NOTICE_HEADING",
+  "document_types": [
+    "LEGAL_NOTICE",
+    "CHEQUE_BOUNCE_NOTICE",
+    "REPLY_TO_LEGAL_NOTICE",
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "Under instructions from and on behalf of my client, {{sender_name}}, resident of / having its office at {{sender_address}} (hereinafter \"my client\"), I address you as follows.",
+  "legal_basis": [
+    {
+      "act": "Advocates Act, 1961",
+      "section": "30",
+      "note": "An advocate is entitled to practise and to act on a client's instructions"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "182",
+      "note": "An agent acts for and represents the principal in dealings with third persons"
+    }
+  ],
+  "source": "Advocates Act, 1961; Indian Contract Act, 1872",
+  "statutory_reference": "Advocates Act, 1961 - S.30; Indian Contract Act, 1872 - S.182",
+  "authoring_note": "A notice sent by an advocate must say it is sent on instructions and name the client, because the notice is the client's act. Where the client sends it directly the wording changes and this clause is replaced by the sender's own statement. The advocate should confirm they hold written instructions before the notice goes out: a notice sent without them is not the client's notice, and the addressee is entitled to say so."
+}

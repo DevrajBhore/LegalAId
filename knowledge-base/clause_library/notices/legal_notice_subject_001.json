@@ -1,0 +1,34 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "LEGAL_NOTICE_SUBJECT_001",
+  "name": "Subject",
+  "title": "Subject",
+  "category": "NOTICE_HEADING",
+  "document_types": [
+    "LEGAL_NOTICE"
+  ],
+  "text": "SUBJECT: LEGAL NOTICE CALLING UPON YOU TO {{notice_demand_summary}}, FAILING WHICH LEGAL PROCEEDINGS WILL FOLLOW.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "80(3)",
+      "note": "The notice must substantially indicate the cause of action and the relief claimed"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - S.80(3)",
+  "authoring_note": "The subject line does real work: it fixes what the notice is about, and where the addressee is the Government it is part of what Section 80(3) requires the notice to indicate. It should name the demand, not the dispute in the abstract."
+}

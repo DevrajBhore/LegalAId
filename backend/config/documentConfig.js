@@ -324,6 +324,122 @@ export const DOCUMENT_CONFIG = {
     ],
   },
 
+  // ─── Notices and dispute instruments ──────────────────────────────────────
+  LEGAL_NOTICE: {
+    requiredFields: [
+      "sender_name", "sender_address", "addressee_name", "addressee_address",
+      "notice_date", "notice_facts", "breached_obligation", "loss_description",
+      "notice_demand", "notice_demand_summary", "compliance_period_days",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "NOTICE",
+    sections: [
+      { title: "Who is sending it", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
+      { title: "Who it goes to", fields: ["addressee_name", "addressee_address", "addressee_is_government"] },
+      { title: "What happened", fields: ["notice_facts", "breached_obligation", "loss_description", "cause_of_action_date", "acknowledgement_date"] },
+      { title: "What you want", fields: ["notice_demand", "notice_demand_summary", "compliance_period_days"] },
+      { title: "Dates and place", fields: ["notice_date", "effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  CHEQUE_BOUNCE_NOTICE: {
+    requiredFields: [
+      "sender_name", "sender_address", "addressee_name", "addressee_address",
+      "notice_date", "cheque_number", "cheque_date", "cheque_amount", "cheque_amount_words",
+      "drawee_bank", "drawee_branch", "payee_bank", "payee_branch",
+      "return_memo_date", "return_reason", "underlying_liability",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "NOTICE",
+    sections: [
+      { title: "Who is sending it", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
+      { title: "Who it goes to", fields: ["addressee_name", "addressee_address"] },
+      { title: "The cheque", fields: ["cheque_number", "cheque_date", "cheque_amount", "cheque_amount_words", "drawee_bank", "drawee_branch", "underlying_liability"] },
+      { title: "The dishonour", fields: ["payee_bank", "payee_branch", "return_memo_date", "return_reason"] },
+      { title: "Dates and place", fields: ["notice_date", "notice_service_date", "effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  REPLY_TO_LEGAL_NOTICE: {
+    requiredFields: [
+      "sender_name", "sender_address", "addressee_name", "addressee_address",
+      "notice_date", "original_notice_date", "original_notice_received_date",
+      "admitted_facts", "denied_facts", "reply_facts",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "NOTICE",
+    sections: [
+      { title: "Who is replying", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
+      { title: "Who it goes to", fields: ["addressee_name", "addressee_address"] },
+      { title: "The notice being answered", fields: ["original_notice_date", "original_notice_received_date", "original_notice_reference"] },
+      { title: "Your answer", fields: ["admitted_facts", "denied_facts", "reply_facts"] },
+      { title: "Counter-claim, if any", fields: ["counter_claim_description", "counter_demand"] },
+      { title: "Dates and place", fields: ["notice_date", "effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  ARBITRATION_NOTICE: {
+    requiredFields: [
+      "sender_name", "sender_address", "addressee_name", "addressee_address",
+      "notice_date", "underlying_agreement_description", "underlying_agreement_date",
+      "arbitration_clause_number", "arbitration_city", "disputes_description",
+      "claims_description", "nominated_arbitrator",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "NOTICE",
+    sections: [
+      { title: "Who is invoking", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
+      { title: "Who it goes to", fields: ["addressee_name", "addressee_address"] },
+      { title: "The arbitration agreement", fields: ["underlying_agreement_description", "underlying_agreement_date", "arbitration_clause_number", "arbitration_city"] },
+      { title: "The disputes", fields: ["disputes_description", "claims_description", "cause_of_action_date", "acknowledgement_date"] },
+      { title: "The arbitrator", fields: ["nominated_arbitrator"] },
+      { title: "Dates and place", fields: ["notice_date", "notice_service_date", "effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  SETTLEMENT_AGREEMENT: {
+    requiredFields: [
+      "party_1_name", "party_1_address", "party_2_name", "party_2_address",
+      "dispute_description", "proceedings_description",
+      "settlement_amount", "settlement_amount_words", "settlement_payment_schedule",
+      "settlement_default_days", "paying_party_label", "receiving_party_label",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "BILATERAL",
+    sections: [
+      { title: "Parties", fields: ["party_1_name", "party_1_address", "party_1_type", "party_2_name", "party_2_address", "party_2_type"] },
+      { title: "The dispute", fields: ["dispute_description", "proceedings_description"] },
+      { title: "The settlement", fields: ["settlement_amount", "settlement_amount_words", "paying_party_label", "receiving_party_label", "settlement_payment_schedule", "settlement_default_days", "settlement_withdrawal_days"] },
+      { title: "Dates and place", fields: ["effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  AFFIDAVIT: {
+    requiredFields: [
+      "deponent_name", "deponent_age", "deponent_relation", "deponent_parent_name",
+      "deponent_address", "deponent_id_type", "deponent_id_number",
+      "affidavit_purpose", "affidavit_statements",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "AFFIDAVIT",
+    sections: [
+      { title: "The deponent", fields: ["deponent_name", "deponent_age", "deponent_relation", "deponent_parent_name", "deponent_address", "deponent_id_type", "deponent_id_number"] },
+      { title: "What it is for", fields: ["affidavit_purpose"] },
+      { title: "What you are swearing to", fields: ["affidavit_statements"] },
+      { title: "Where and when", fields: ["verification_place", "effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+  INDEMNITY_BOND: {
+    requiredFields: [
+      "obligor_name", "obligor_description", "obligor_address",
+      "beneficiary_name", "beneficiary_description", "beneficiary_address",
+      "bond_occasion", "indemnified_risk", "guaranteed_amount", "bond_duration",
+      "operating_state", "execution_city", "effective_date",
+    ],
+    signatureType: "BOND",
+    sections: [
+      { title: "Who gives the indemnity", fields: ["obligor_name", "obligor_description", "obligor_address"] },
+      { title: "Who is protected", fields: ["beneficiary_name", "beneficiary_description", "beneficiary_address"] },
+      { title: "What it covers", fields: ["bond_occasion", "indemnified_risk", "guaranteed_amount", "bond_duration"] },
+      { title: "Dates and place", fields: ["effective_date", "operating_state", "execution_city"] },
+    ],
+  },
+
   POSH_POLICY: {
     requiredFields: [
       "operating_state",

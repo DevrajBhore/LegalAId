@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_CONFIDENTIALITY_001",
+  "name": "Confidentiality and No Admission",
+  "title": "Confidentiality and No Admission",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "(a) The terms of this Agreement are confidential and shall not be disclosed by either Party except to its professional advisers, to a court or tribunal, or where disclosure is required by law or by a regulator.\n(b) Nothing in this Agreement, and no negotiation leading to it, is an admission of liability by either Party.\n(c) Neither Party shall make any statement disparaging the other in relation to the said disputes.",
+  "legal_basis": [
+    {
+      "act": "Indian Evidence Act, 1872",
+      "section": "TO BE CONFIRMED",
+      "note": "Admissions made upon an express condition that evidence of them is not to be given were not relevant; the corresponding provision of the Bharatiya Sakshya Adhiniyam, 2023 must be confirmed"
+    },
+    {
+      "act": "Constitution of India",
+      "section": "19(1)(a)",
+      "note": "Freedom of speech and expression; a non-disparagement covenant must be confined to the dispute and not operate as a general gag"
+    }
+  ],
+  "source": "Constitution of India; Indian Evidence Act, 1872",
+  "statutory_reference": "Constitution of India - Article 19(1)(a)",
+  "authoring_note": "The non-admission wording in limb (b) works with the without-prejudice rule rather than replacing it. Limb (c) should be kept narrow: a non-disparagement covenant confined to the dispute is ordinarily enforceable, but one drawn as a general prohibition on ever criticising the other party engages Article 19(1)(a) and is far more vulnerable.",
+  "statute_currency": "CITATION OUT OF DATE. The Indian Evidence Act, 1872 was repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023. The without-prejudice principle survives the repeal, but the section number does not carry across and must be mapped against the bare Adhiniyam."
+}

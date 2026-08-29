@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "REPLY_TRAVERSE_001",
+  "name": "Denial",
+  "title": "Denial",
+  "category": "NOTICE_BREACH",
+  "document_types": [
+    "REPLY_TO_LEGAL_NOTICE"
+  ],
+  "text": "1. My client denies each and every allegation, averment and contention in the said notice, save such of them as are expressly and specifically admitted below. Nothing in the said notice is admitted by reason of not having been separately traversed.\n2. My client specifically admits only the following: {{admitted_facts}}.\n3. My client specifically denies the following: {{denied_facts}}.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order VIII Rule 5",
+      "note": "Every allegation of fact not denied specifically or by necessary implication is taken to be admitted"
+    },
+    {
+      "act": "Bharatiya Sakshya Adhiniyam, 2023",
+      "section": "TO BE CONFIRMED",
+      "note": "An admission is a statement suggesting an inference as to a fact in issue, and is evidence against the party who makes it. This restates the principle formerly in S.17 of the Indian Evidence Act, 1872; the corresponding section of the Adhiniyam must be confirmed against the bare Act."
+    }
+  ],
+  "source": "Bharatiya Sakshya Adhiniyam, 2023; Civil Procedure Code, 1908",
+  "statutory_reference": "Civil Procedure Code, 1908 - Order VIII Rule 5; Bharatiya Sakshya Adhiniyam, 2023 - section to be confirmed",
+  "authoring_note": "A general denial is worth little and a silence is worth less: Order VIII Rule 5 treats an unanswered allegation in a pleading as admitted, and although a reply to a notice is not a pleading, a court will ask why an allegation now disputed went unanswered when it was made. The specific admissions and denials should therefore be drawn narrowly and checked line by line against the notice. The advocate must satisfy themselves that every denial is one the client can maintain on oath.",
+  "statute_currency": "CITATION OUT OF DATE. The Indian Evidence Act, 1872 was repealed with effect from 1 July 2024 by the Bharatiya Sakshya Adhiniyam, 2023. The principle relied on here survives the repeal, but the SECTION NUMBER does not carry across - the Adhiniyam renumbered throughout. Published correspondence tables circulating online disagree with one another, so the advocate must map this citation against the bare Adhiniyam text rather than a table, and record the confirmed section here."
+}

@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_PAYMENT_001",
+  "name": "Payment",
+  "title": "Payment",
+  "category": "PAYMENT",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "(a) The said sum shall be paid {{settlement_payment_schedule}}, by electronic transfer to the account notified in writing by {{receiving_party_label}}.\n(b) Time is of the essence in respect of payment.\n(c) If any instalment remains unpaid for {{settlement_default_days}} days after it falls due, the whole of the unpaid balance shall become immediately due and payable, and the releases in this Agreement shall not take effect, or shall cease to have effect, in respect of the claims of the Party not paid.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "55",
+      "note": "Effect of failure to perform at a fixed time, where time is essential"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "Remission of performance"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.55, S.63",
+  "authoring_note": "Limb (c) is the clause that makes a settlement safe to sign. A release given in exchange for a promise to pay, which then goes unpaid, leaves the releasing party having given up their claims for nothing. Making the release conditional on payment, and accelerating the balance on default, restores the position. The advocate should check this against the release clause so the two do not contradict each other.",
+  "blocks_generation_if_absent": true
+}

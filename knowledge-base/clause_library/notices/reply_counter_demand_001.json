@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "REPLY_COUNTER_DEMAND_001",
+  "name": "My Client's Position and Demand",
+  "title": "My Client's Position and Demand",
+  "category": "NOTICE_DEMAND",
+  "document_types": [
+    "REPLY_TO_LEGAL_NOTICE"
+  ],
+  "text": "6. Far from my client being liable to your client, it is your client who is liable to my client in respect of {{counter_claim_description}}.\n7. My client calls upon your client to withdraw the said notice and to {{counter_demand}}, failing which my client will take such proceedings as it is advised, at your client's risk as to costs.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss or damage caused by breach of contract"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order VIII Rule 6A",
+      "note": "A defendant may set up a counter-claim against the claim of the plaintiff"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908; Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.73; Civil Procedure Code, 1908 - Order VIII Rule 6A",
+  "authoring_note": "Whether to make a counter-demand at all is a judgment call. It signals that the client will not settle quietly and can improve a negotiating position, but it also commits the client to a claim they must then be prepared to bring, and an empty counter-demand is worse than none. Where the client has no counter-claim, this clause should be dropped rather than filled in weakly."
+}

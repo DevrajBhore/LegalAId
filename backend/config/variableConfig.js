@@ -13,6 +13,8 @@
  *   required — whether the field must be filled before generation
  */
 
+import { documentShape } from "../../shared/documentShape.js";
+
 // Employment field definitions, shared by every document in the employment
 // family. They were defined inside EMPLOYMENT_CONTRACT until the appointment
 // letter, internship agreement and separation agreement needed the same
@@ -265,6 +267,556 @@ export const VARIABLE_CONFIG = {
   // a hidden field is simply left blank, which every clause builder already
   // handles -- so honouring it is purely a form-rendering concern.
   COMMON: {
+    // ─── Notices, sworn instruments and settlements ────────────────────────
+    sender_name: {
+      label: "Your Name / Company",
+      type: "text",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The client on whose behalf the notice is sent, named exactly as in the contract or on the record.",
+    },
+    sender_address: {
+      label: "Your Address",
+      type: "text",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The address at which the client may be replied to.",
+    },
+    addressee_name: {
+      label: "Send To - Name",
+      type: "text",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The person or company the notice is addressed to. Where it is a company, use the registered name.",
+    },
+    addressee_address: {
+      label: "Send To - Address",
+      type: "text",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The address at which the notice will be served. Service is proved against this address, so use the registered office or the address in the contract.",
+    },
+    notice_date: {
+      label: "Date of the Notice",
+      type: "date",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The date the notice bears. For a cheque bounce notice this must be within thirty days of the bank's return memo.",
+    },
+    advocate_name: {
+      label: "Advocate's Name",
+      type: "text",
+      required: false,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "Leave blank if you are sending the notice yourself rather than through an advocate.",
+    },
+    advocate_enrolment_number: {
+      label: "Advocate's Enrolment Number",
+      type: "text",
+      required: false,
+      applicableDocuments: ["LEGAL_NOTICE", "CHEQUE_BOUNCE_NOTICE", "REPLY_TO_LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "The Bar Council enrolment number, if an advocate is sending the notice.",
+    },
+    notice_service_date: {
+      label: "Date the Notice Was Served",
+      type: "date",
+      required: false,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "Fill this in once you have the delivery record. It is used to compute the statutory deadlines; it does not appear in the notice itself.",
+    },
+    cause_of_action_date: {
+      label: "Date the Claim Arose",
+      type: "date",
+      required: false,
+      applicableDocuments: ["LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "When the breach happened or the money fell due. Used to check the three-year limitation period.",
+    },
+    acknowledgement_date: {
+      label: "Date of Any Written Acknowledgement",
+      type: "date",
+      required: false,
+      applicableDocuments: ["LEGAL_NOTICE", "ARBITRATION_NOTICE"],
+      description:
+        "If the other side acknowledged the debt in writing before the three years ran out, a fresh three years runs from that date.",
+    },
+    notice_facts: {
+      label: "What Happened",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "The facts, in order, with dates and amounts. State only what you can prove from documents.",
+    },
+    breached_obligation: {
+      label: "What They Failed To Do",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "The obligation breached, identified by clause number where there is a contract.",
+    },
+    loss_description: {
+      label: "What It Cost You",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "The loss caused by the breach, quantified where you can.",
+    },
+    notice_demand: {
+      label: "What You Want Them To Do",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "The demand, stated so it can actually be complied with. Where money is claimed, give the figure and how it is computed.",
+    },
+    notice_demand_summary: {
+      label: "Demand in One Line",
+      type: "text",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "A short version for the subject line, e.g. \"PAY Rs. 4,50,000 DUE UNDER INVOICE 44/2026\".",
+    },
+    compliance_period_days: {
+      label: "Days To Comply",
+      type: "number",
+      required: true,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      description:
+        "Fifteen days is usual. Where the addressee is the Government or a public officer, Civil Procedure Code S.80 requires at least sixty.",
+    },
+    addressee_is_government: {
+      label: "Is the addressee the Government or a public officer?",
+      type: "select",
+      required: false,
+      applicableDocuments: ["LEGAL_NOTICE"],
+      options: ["No", "Yes"],
+      description:
+        "Civil Procedure Code S.80 bars a suit until two months after notice where it is.",
+    },
+    cheque_number: {
+      label: "Cheque Number",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The number printed on the cheque.",
+    },
+    cheque_date: {
+      label: "Date on the Cheque",
+      type: "date",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "A cheque is valid for three months from this date.",
+    },
+    cheque_amount: {
+      label: "Cheque Amount (Rs.)",
+      type: "number",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The amount of the cheque. The statutory demand must be for this sum and nothing more - do not add interest or costs.",
+    },
+    cheque_amount_words: {
+      label: "Cheque Amount in Words",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "e.g. Rupees Four Lakh Fifty Thousand.",
+    },
+    drawee_bank: {
+      label: "Drawer's Bank",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The bank the cheque is drawn on.",
+    },
+    drawee_branch: {
+      label: "Drawer's Bank Branch",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The branch shown on the cheque.",
+    },
+    payee_bank: {
+      label: "Your Bank",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The bank you presented the cheque through. Its branch location fixes which court has jurisdiction.",
+    },
+    payee_branch: {
+      label: "Your Bank Branch",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The branch where you presented the cheque.",
+    },
+    return_memo_date: {
+      label: "Date You Received the Return Memo",
+      type: "date",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The date YOU received the bank's memo, not the date printed on it. The thirty days run from this date.",
+    },
+    return_reason: {
+      label: "Reason for Return",
+      type: "text",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The endorsement on the memo, e.g. \"Funds Insufficient\".",
+    },
+    underlying_liability: {
+      label: "What the Cheque Was For",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["CHEQUE_BOUNCE_NOTICE"],
+      description:
+        "The debt or liability the cheque was issued to discharge. A cheque given as security or for a time-barred debt is outside Section 138.",
+    },
+    original_notice_date: {
+      label: "Date of Their Notice",
+      type: "date",
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "The date their notice bears.",
+    },
+    original_notice_received_date: {
+      label: "Date You Received It",
+      type: "date",
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "The date you actually received it, which is often different and can matter.",
+    },
+    original_notice_reference: {
+      label: "Their Reference",
+      type: "text",
+      // Interpolated by REPLY_SUBJECT_001, which is a required clause. An
+      // optional field inside required clause text renders as a raw
+      // {{placeholder}} on the page - the fourth time this class of bug has
+      // appeared, so the rule is now explicit: if a required clause reads it,
+      // it is required.
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "Any reference number on their notice.",
+    },
+    admitted_facts: {
+      label: "What You Admit",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "Only what you accept. Draw it narrowly.",
+    },
+    denied_facts: {
+      label: "What You Deny",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "The specific allegations you dispute. A general denial is worth little.",
+    },
+    reply_facts: {
+      label: "Your Version",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "What actually happened. You will be held to this, so confine it to what the documents support.",
+    },
+    counter_claim_description: {
+      label: "Your Counter-Claim",
+      type: "textarea",
+      required: false,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "Leave blank if you have none. An empty counter-demand is worse than none.",
+    },
+    counter_demand: {
+      label: "What You Want From Them",
+      type: "textarea",
+      required: false,
+      applicableDocuments: ["REPLY_TO_LEGAL_NOTICE"],
+      description:
+        "Leave blank if you are not making a counter-demand.",
+    },
+    underlying_agreement_description: {
+      label: "The Agreement",
+      type: "text",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "The contract containing the arbitration clause, described so it is unmistakable.",
+    },
+    underlying_agreement_date: {
+      label: "Date of the Agreement",
+      type: "date",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "The date the contract bears.",
+    },
+    arbitration_clause_number: {
+      label: "Arbitration Clause Number",
+      type: "text",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "The clause of that contract that provides for arbitration.",
+    },
+    disputes_description: {
+      label: "The Disputes",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "What is in dispute. A claim not described here may later be said never to have been referred.",
+    },
+    claims_description: {
+      label: "What You Are Claiming",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "The relief sought in the arbitration.",
+    },
+    nominated_arbitrator: {
+      label: "Your Nominee as Arbitrator",
+      type: "text",
+      required: true,
+      applicableDocuments: ["ARBITRATION_NOTICE"],
+      description:
+        "Check the nominee against the Seventh Schedule to the Arbitration and Conciliation Act - a person falling within it cannot be appointed.",
+    },
+    dispute_description: {
+      label: "What the Dispute Is About",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "The disputes being settled, described widely enough that the release covers them.",
+    },
+    proceedings_description: {
+      label: "Pending Proceedings",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "Any suit, complaint or arbitration on foot, with the case number and the court. Write \"No proceedings have been commenced\" if there are none.",
+    },
+    settlement_amount_words: {
+      label: "Settlement Amount in Words",
+      type: "text",
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "e.g. Rupees Twelve Lakh.",
+    },
+    settlement_payment_schedule: {
+      label: "How It Will Be Paid",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "e.g. \"in a single payment within thirty days of this Agreement\", or the instalment dates.",
+    },
+    settlement_default_days: {
+      label: "Grace Period Before Acceleration (days)",
+      type: "number",
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "How long an unpaid instalment may run before the whole balance falls due and the release lapses.",
+    },
+    settlement_withdrawal_days: {
+      label: "Days To Withdraw Proceedings",
+      type: "number",
+      // Interpolated by SETTLE_PROCEEDINGS_001. Fifth occurrence of this bug
+      // class, so it is now a rule rather than a judgement: a field read by a
+      // clause that reaches the page must be required, or the page shows a raw
+      // {{placeholder}}. tests/requiredFieldCoverage.test.mjs enforces it.
+      required: true,
+      applicableDocuments: ["SETTLEMENT_AGREEMENT"],
+      description:
+        "How long after payment the parties have to apply to dispose of the proceedings.",
+    },
+    deponent_name: {
+      label: "Your Full Name",
+      type: "text",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "As it appears on the identity document you will produce to the officer.",
+    },
+    deponent_age: {
+      label: "Your Age (years)",
+      type: "number",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "Your age in completed years.",
+    },
+    deponent_relation: {
+      label: "Son / Daughter / Wife of",
+      type: "select",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      options: ["son", "daughter", "wife", "husband"],
+      description:
+        "How you are described in relation to the person named next.",
+    },
+    deponent_parent_name: {
+      label: "Father's / Husband's Name",
+      type: "text",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "As it appears on your identity document.",
+    },
+    deponent_address: {
+      label: "Your Address",
+      type: "text",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "Your residential address.",
+    },
+    deponent_id_type: {
+      label: "Identity Document",
+      type: "select",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      options: ["Aadhaar", "PAN", "Passport", "Driving Licence", "Voter ID"],
+      description:
+        "What you will produce to the officer administering the oath.",
+    },
+    deponent_id_number: {
+      label: "Identity Document Number",
+      type: "text",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "The number on that document.",
+    },
+    affidavit_purpose: {
+      label: "What the Affidavit Is For",
+      type: "text",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "The matter it will be filed in or the purpose it is required for.",
+    },
+    affidavit_statements: {
+      label: "What You Are Swearing To",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "One fact per numbered paragraph, confined to what you know yourself. Say so where a statement rests on information, and give the source.",
+    },
+    verification_place: {
+      label: "Place of Swearing",
+      type: "text",
+      required: false,
+      applicableDocuments: ["AFFIDAVIT"],
+      description:
+        "The city where you will swear the affidavit.",
+    },
+    obligor_name: {
+      label: "Who Gives the Indemnity",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "The person or company binding themselves.",
+    },
+    obligor_description: {
+      label: "Their Description",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "e.g. \"a company incorporated under the Companies Act, 2013\", or \"son of Ramesh Kulkarni, aged 42 years\".",
+    },
+    obligor_address: {
+      label: "Their Address",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "Residence or registered office.",
+    },
+    beneficiary_name: {
+      label: "Who Is Protected",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "The person or company the indemnity is given to.",
+    },
+    beneficiary_description: {
+      label: "Their Description",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "How the protected party is described.",
+    },
+    beneficiary_address: {
+      label: "Their Address",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "Residence or registered office.",
+    },
+    bond_occasion: {
+      label: "Why the Indemnity Is Being Given",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "What the protected party is being asked to do in reliance on it. This is the consideration for the bond.",
+    },
+    indemnified_risk: {
+      label: "What Is Being Indemnified Against",
+      type: "textarea",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "The risk covered, described precisely. An indemnity against everything indemnifies against nothing.",
+    },
+    bond_duration: {
+      label: "How Long It Lasts",
+      type: "text",
+      required: true,
+      applicableDocuments: ["INDEMNITY_BOND"],
+      description:
+        "e.g. \"31 March 2029\" or \"three years from the date of this Deed\". Make sure it outlasts the risk.",
+    },
+
     board_structure: {
       label: "Board Composition",
       type: "textarea",
@@ -477,6 +1029,7 @@ export const VARIABLE_CONFIG = {
       description: "How often interest falls due.",
     },
     cure_period_days: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Cure Period (days)",
       type: "number",
       required: true,
@@ -729,6 +1282,7 @@ export const VARIABLE_CONFIG = {
     // should show on its face that the signatory was authorised. Excluded from
     // unilateral published instruments, which have no counterparty execution.
     party_1_signatory_name: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 1 — Authorised Signatory Name",
       type: "text",
       required: false,
@@ -739,6 +1293,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Trust", "Government Body"] },
     },
     party_1_signatory_designation: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 1 — Signatory Designation",
       type: "text",
       required: false,
@@ -748,6 +1303,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Trust", "Government Body"] },
     },
     party_1_authority_reference: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 1 — Authority (Board Resolution / POA)",
       type: "text",
       required: false,
@@ -758,6 +1314,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Trust", "Government Body"] },
     },
     party_2_signatory_name: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 2 — Authorised Signatory Name",
       type: "text",
       required: false,
@@ -768,6 +1325,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Trust", "Government Body"] },
     },
     party_2_signatory_designation: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 2 — Signatory Designation",
       type: "text",
       required: false,
@@ -777,6 +1335,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Trust", "Government Body"] },
     },
     party_2_authority_reference: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Party 2 — Authority (Board Resolution / POA)",
       type: "text",
       required: false,
@@ -795,6 +1354,7 @@ export const VARIABLE_CONFIG = {
         "The date the agreement starts operating. This can differ from the date it is signed; if the parties began earlier, put the earlier date here.",
     },
     involves_personal_data: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Will personal data be shared or processed?",
       type: "select",
       required: false,
@@ -969,6 +1529,7 @@ export const VARIABLE_CONFIG = {
       ],
     },
     include_entire_agreement: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Add an entire-agreement (no oral terms) clause?",
       type: "select",
       required: false,
@@ -979,6 +1540,7 @@ export const VARIABLE_CONFIG = {
       options: ["No", "Yes"],
     },
     governing_law_state: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Governing Law State",
       type: "select",
       required: false,
@@ -1012,6 +1574,7 @@ export const VARIABLE_CONFIG = {
         "The state whose law governs the contract, if different from the operating state. Leave blank to use the operating state.",
     },
     dispute_resolution_method: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Dispute Resolution Method",
       type: "select",
       required: false,
@@ -1026,6 +1589,7 @@ export const VARIABLE_CONFIG = {
         "How disputes will be resolved. Arbitration keeps the matter private and is the usual choice for commercial contracts; courts-only means either party may sue directly.",
     },
     renewal_option: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Renewal Option",
       type: "select",
       required: false,
@@ -1045,6 +1609,7 @@ export const VARIABLE_CONFIG = {
       ],
     },
     renewal_terms: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Renewal Terms",
       type: "textarea",
       required: false,
@@ -1064,6 +1629,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "renewal_option", equals: ["Automatic renewal", "Renewable by mutual agreement"] },
     },
     termination_notice_period: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Termination Notice Period (days)",
       type: "number",
       required: false,
@@ -1075,6 +1641,7 @@ export const VARIABLE_CONFIG = {
       ],
     },
     termination_for_convenience: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Allow Termination for Convenience?",
       type: "select",
       required: false,
@@ -1088,6 +1655,7 @@ export const VARIABLE_CONFIG = {
         "Whether either party may walk away without giving a reason, simply by serving notice. Say No if you want the agreement to end only on breach or expiry.",
     },
     termination_for_cause: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Allow Termination for Cause?",
       type: "select",
       required: false,
@@ -1292,6 +1860,7 @@ export const VARIABLE_CONFIG = {
       aiGuidance: "Give LegalAId 2 to 5 important terms in plain English and it will turn them into a formal definitions / nomenclature clause.",
     },
     include_non_compete: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Include Non-Compete Clause?",
       type: "select",
       required: false,
@@ -1301,6 +1870,7 @@ export const VARIABLE_CONFIG = {
       description:
         "Whether to restrict the other party from competing with you. Note that under section 27 of the Indian Contract Act, 1872 a restraint of trade operating after the agreement ends is generally void, so this is safest limited to the term itself.",},
     include_non_solicit: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Include Non-Solicitation Clause?",
       type: "select",
       required: false,
@@ -1310,6 +1880,7 @@ export const VARIABLE_CONFIG = {
       description:
         "Whether to stop the other party poaching your staff or customers. Non-solicitation is more readily enforced in India than a full non-compete.",},
     include_sla: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Include SLA / Service Levels Clause?",
       type: "select",
       required: false,
@@ -1334,6 +1905,7 @@ export const VARIABLE_CONFIG = {
       ],
     },
     include_reporting: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Include Reporting Obligation?",
       type: "select",
       required: false,
@@ -1449,6 +2021,7 @@ export const VARIABLE_CONFIG = {
       example: "Quarterly compliance certificate, prior approval for subcontracting, and written breach escalation report.",
     },
     party_1_type: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "First Party Type",
       type: "select",
       required: true,
@@ -1467,6 +2040,7 @@ export const VARIABLE_CONFIG = {
         "The legal form of the first party. This decides how the party is described in the deed, which registration numbers are recited, and the correct successor wording.",
     },
     party_2_type: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Second Party Type",
       type: "select",
       required: true,
@@ -1485,6 +2059,7 @@ export const VARIABLE_CONFIG = {
         "The legal form of the second party. This decides how the party is described in the deed, which registration numbers are recited, and the correct successor wording.",
     },
     party_1_pan: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "First Party PAN",
       type: "text",
       required: false,
@@ -1495,6 +2070,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Individual", "Sole Proprietorship", "Partnership Firm", "Trust", "Private Limited Company", "Public Limited Company", "LLP"] },
     },
     party_1_gstin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "First Party GSTIN",
       type: "text",
       required: false,
@@ -1504,6 +2080,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship"] },
     },
     party_1_cin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "First Party CIN",
       type: "text",
       required: false,
@@ -1513,6 +2090,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company"] },
     },
     party_1_llpin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "First Party LLPIN",
       type: "text",
       required: false,
@@ -1522,6 +2100,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["LLP"] },
     },
     party_2_pan: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Second Party PAN",
       type: "text",
       required: false,
@@ -1531,6 +2110,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Individual", "Sole Proprietorship", "Partnership Firm", "Trust", "Private Limited Company", "Public Limited Company", "LLP"] },
     },
     party_2_gstin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Second Party GSTIN",
       type: "text",
       required: false,
@@ -1540,6 +2120,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship"] },
     },
     party_2_cin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Second Party CIN",
       type: "text",
       required: false,
@@ -1549,6 +2130,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company"] },
     },
     party_2_llpin: {
+      excludeShapes: ["NOTICE", "SWORN"],
       label: "Second Party LLPIN",
       type: "text",
       required: false,
@@ -1942,6 +2524,17 @@ export const VARIABLE_CONFIG = {
   },
 
   PROMISSORY_NOTE: {
+    cure_period_days: {
+      label: "Cure Period for Remediable Breach (days)",
+      type: "number",
+      // Read by PN_DEFAULT_001, which every promissory note carries. Optional in
+      // COMMON, which meant a maker who left it blank got a note reading
+      // "within {{cure_period_days}} days". Required here, where the clause
+      // that needs it lives.
+      required: true,
+      description:
+        "How long the maker has to cure a default after written demand before the whole sum falls due.",
+    },
     party_1_name: { label: "Maker Name", type: "text", required: true, description: "The person who promises to pay. The maker signs the note." },
     party_1_address: { label: "Maker Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
     party_1_type: { label: "Maker Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the maker." },
@@ -1973,6 +2566,81 @@ export const VARIABLE_CONFIG = {
     party_2_name: { label: "Attorney Name", type: "text", required: true, description: "The person who will act on the principal's behalf. Also called the donee." },
     party_2_address: { label: "Attorney Address", type: "text", required: true, description: "Full address, as it should appear on the instrument." },
     party_2_type: { label: "Attorney Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship", "Trust", "Society", "HUF"], description: "The legal form of the attorney." },
+  },
+
+  // ─── Notices and dispute instruments: per-type fields ──────────────────────
+  // Declared here rather than in COMMON where a field of the same name already
+  // means something else. settlement_amount in COMMON is an employment full and
+  // final figure; here it is the sum settling a dispute, and the two must not
+  // share a label or a description.
+  ARBITRATION_NOTICE: {
+    arbitration_city: {
+      label: "Seat of Arbitration",
+      type: "text",
+      required: true,
+      description:
+        "The place the arbitration clause fixes as the seat. The seat decides which court supervises the arbitration, and it is not the same thing as the venue where hearings happen.",
+    },
+  },
+
+  SETTLEMENT_AGREEMENT: {
+    party_1_name: {
+      label: "First Party Name",
+      type: "text",
+      required: true,
+      description:
+        "The full legal name of the first party to the settlement, exactly as it appears on its incorporation certificate, PAN or Aadhaar.",
+    },
+    party_1_address: {
+      label: "First Party Address",
+      type: "text",
+      required: true,
+      description: "Registered office or residential address.",
+    },
+    party_2_name: {
+      label: "Second Party Name",
+      type: "text",
+      required: true,
+      description:
+        "The full legal name of the second party to the settlement, exactly as it appears on its incorporation certificate, PAN or Aadhaar.",
+    },
+    party_2_address: {
+      label: "Second Party Address",
+      type: "text",
+      required: true,
+      description: "Registered office or residential address.",
+    },
+    settlement_amount: {
+      label: "Settlement Sum (Rs.)",
+      type: "number",
+      required: true,
+      description:
+        "The sum being paid to settle the disputes, inclusive of interest and costs. Whether tax must be deducted depends on what the payment is for, not on the label - determine the character of the payment before paying it.",
+    },
+    paying_party_label: {
+      label: "Who Pays",
+      type: "select",
+      required: true,
+      options: ["the First Party", "the Second Party"],
+      description: "Which party pays the settlement sum.",
+    },
+    receiving_party_label: {
+      label: "Who Receives",
+      type: "select",
+      required: true,
+      options: ["the Second Party", "the First Party"],
+      description: "Which party receives the settlement sum.",
+    },
+  },
+
+  INDEMNITY_BOND: {
+    guaranteed_amount: {
+      label: "Maximum Liability Under the Bond (Rs.)",
+      type: "number",
+      required: true,
+      description:
+        "The ceiling on the Obligor's liability. An unlimited indemnity is rarely what either side intends and is hard to price.",
+    },
   },
 
   POSH_POLICY: {
@@ -4125,6 +4793,23 @@ function isFieldApplicable(documentType, definition = {}) {
   }
 
   if (excludedDocuments.includes(normalizedDocumentType)) {
+    return false;
+  }
+
+  // Shape-level applicability. A renewal option, a termination notice period and
+  // a governing-law state are questions about a bargain; a legal notice and an
+  // affidavit have none of them. Excluding by shape rather than by name means a
+  // new notice type inherits the right form automatically, instead of needing to
+  // be added to twenty-five separate excludeDocuments lists - which is the kind
+  // of edit that gets half-done.
+  const shape = documentShape(normalizedDocumentType);
+  const applicableShapes = definition.applicableShapes || null;
+  const excludedShapes = definition.excludeShapes || null;
+
+  if (applicableShapes && !applicableShapes.includes(shape)) {
+    return false;
+  }
+  if (excludedShapes && excludedShapes.includes(shape)) {
     return false;
   }
 

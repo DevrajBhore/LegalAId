@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "SETTLE_RECITALS_001",
+  "name": "Recitals",
+  "title": "Recitals",
+  "category": "RECITALS",
+  "document_types": [
+    "SETTLEMENT_AGREEMENT"
+  ],
+  "text": "WHEREAS:\n(a) Disputes and differences arose between the Parties in respect of {{dispute_description}}.\n(b) {{proceedings_description}}\n(c) The Parties, without admitting any liability and solely to avoid the cost, delay and uncertainty of litigation, have agreed to settle all such disputes on the terms recorded below.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62",
+      "note": "Effect of novation, rescission and alteration of contract"
+    },
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "Order XXIII Rule 3",
+      "note": "Where a suit is adjusted by a lawful agreement or compromise, the court shall record it and pass a decree accordingly"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908; Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.62; Civil Procedure Code, 1908 - Order XXIII Rule 3",
+  "authoring_note": "Recital (c) is the no-admission recital and it does real work: without it the settlement sum can be led as evidence of liability if the settlement later unravels. Where proceedings are pending, the advocate should decide whether the settlement is to be recorded as a consent decree under Order XXIII Rule 3 - a decree is executable, a bare agreement must be sued on afresh, and that difference is usually worth more than anything else in the document."
+}

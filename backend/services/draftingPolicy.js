@@ -99,6 +99,16 @@ const EXCLUDED_FALLBACK_BASES = new Set([
   // labelled "Business" from the intake section title, and then validated the
   // product name as if it were a party to the instrument.
   "service",
+  // An advocate who sends a notice is not a party to it. They act on the
+  // client's instructions and in a representative capacity, and treating them
+  // as a participant made the addressee the THIRD party on a two-party notice -
+  // so the naming overrides for "second" landed on the advocate instead.
+  "advocate",
+  // The nominated arbitrator, the notary and the witnesses are named in the
+  // instrument without being bound by it.
+  "arbitrator",
+  "notary",
+  "witness",
 ]);
 
 let draftingPolicyCache = null;

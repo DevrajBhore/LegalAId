@@ -1,0 +1,35 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_SUBJECT_001",
+  "name": "Subject",
+  "title": "Subject",
+  "category": "NOTICE_HEADING",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "SUBJECT: STATUTORY NOTICE UNDER SECTION 138 OF THE NEGOTIABLE INSTRUMENTS ACT, 1881, DEMANDING PAYMENT OF Rs. {{cheque_amount}}/- BEING THE AMOUNT OF THE DISHONOURED CHEQUE BEARING NUMBER {{cheque_number}}.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "The proviso requires a demand in writing for payment of the said amount of money"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138 proviso (b)",
+  "authoring_note": "The Supreme Court has repeatedly held that the notice must make a specific demand for the cheque amount, and that an omnibus or vague demand invalidates the complaint founded on it. Naming the sum and the cheque number in the subject removes any argument that the demand was unclear.",
+  "blocks_generation_if_absent": true
+}

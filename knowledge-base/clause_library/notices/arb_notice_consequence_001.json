@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_CONSEQUENCE_001",
+  "name": "Consequence of Non-Concurrence",
+  "title": "Consequence of Non-Concurrence",
+  "category": "NOTICE_CONSEQUENCE",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "8. Should you fail to concur in the said nomination or to make your own within the said period of thirty days, my client shall apply for the appointment of an arbitrator in accordance with Section 11 of the Arbitration and Conciliation Act, 1996, at your risk as to costs.\n9. My client's rights to apply for interim measures under Section 9 of the said Act are reserved and are not affected by this notice.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "11",
+      "note": "Appointment of arbitrators on the failure of the agreed procedure"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "9",
+      "note": "A party may apply to a court for interim measures before or during arbitral proceedings, or after the award but before enforcement"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.11, S.9",
+  "authoring_note": "Reserving Section 9 matters where assets are at risk: an application may be made before the tribunal is even constituted, and a client who waits for the appointment may find there is nothing left to preserve.",
+  "statute_currency": "The Arbitration and Conciliation (Amendment) Bill, 2024 was published by the Department of Legal Affairs as a consultation draft and has not been introduced in Parliament. As at the date of this note the governing text remains the 1996 Act as amended to 2021. It proposes a defined appointment timeline and other changes; confirm the position before relying on the present Section 11 procedure in a long-running matter."
+}

@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "LEGAL_NOTICE_BREACH_001",
+  "name": "The Breach and Its Consequence",
+  "title": "The Breach and Its Consequence",
+  "category": "NOTICE_BREACH",
+  "document_types": [
+    "LEGAL_NOTICE"
+  ],
+  "text": "3. By reason of the above, you are in breach of {{breached_obligation}}. That breach is not a technical one: it has caused my client {{loss_description}}.\n4. My client has, notwithstanding the breach, acted throughout in accordance with the said agreement and remains ready and willing to perform such of its obligations as remain to be performed.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach of contract, being loss that naturally arose in the usual course or that the parties knew was likely"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform their respective promises"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.73, S.37",
+  "authoring_note": "The averment of readiness and willingness in paragraph 4 is not decoration. In a suit for specific performance it is a pleading the plaintiff must make and prove, and a notice that omits it, or that reads as though the client had walked away, is used against the client later. Where the client is claiming damages rather than performance, the advocate should consider whether the loss described satisfies Section 73 - remoteness is decided on what the parties knew at the time of contracting, not on what the claimant has since suffered."
+}

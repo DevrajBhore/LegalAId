@@ -1,0 +1,35 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_STATUTORY_DEMAND_001",
+  "name": "Statutory Demand",
+  "title": "Statutory Demand",
+  "category": "NOTICE_DEMAND",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "5. I am instructed to call upon you, and I hereby call upon you, to pay to my client the sum of Rs. {{cheque_amount}}/- ({{cheque_amount_words}} only), being the amount of the said cheque.\n6. This demand is made within thirty days of my client's receipt of the bank's return memo, as proviso (b) to Section 138 of the Negotiable Instruments Act, 1881 requires. That period expires on {{s138_notice_deadline}}.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "Proviso (b): the payee must make a demand for the payment of the said amount of money by giving a notice in writing within thirty days of receipt of information from the bank regarding the return of the cheque as unpaid"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138 proviso (b)",
+  "authoring_note": "The demand must be for the cheque amount and for nothing else. Adding interest, costs or damages to the figure demanded is the single most common way a Section 138 notice is defeated: the drawer says they could not tell what to pay to avoid prosecution, and the complaint fails. Any claim for interest or costs belongs in a separate paragraph, expressly not part of the statutory demand.",
+  "blocks_generation_if_absent": true
+}

@@ -2,6 +2,7 @@ import { hasMeaningfulValue } from "./generationControls.js";
 import { getParticipantExpectations } from "./draftingPolicy.js";
 import { getVariables } from "../config/variableConfig.js";
 import { partyNameAppears } from "./partyNameMatcher.js";
+import { isAgreement } from "../../shared/documentShape.js";
 
 function normalizeText(value = "") {
   return String(value)
@@ -330,9 +331,16 @@ export function validateDraftConsistency(
     .map((clause) => `${clause.title || ""}\n${clause.text || ""}`)
     .join("\n");
 
-  const identityText =
-    clauses.find((clause) => clause.category === "IDENTITY")?.text ||
-    partyContextText;
+  // A notice has no single identity clause. The addressee sits in the opening
+  // block and the sender in the clause that records whose instructions the
+  // notice is sent on - two different clauses, by design, because that is the
+  // shape of a letter. Narrowing the search to the IDENTITY clause therefore
+  // failed every notice on the sender's name, whatever the user typed. The
+  // narrow check is kept for agreements, where a real identity clause exists
+  // and naming a party outside it is itself a defect.
+  const identityText = isAgreement(documentType)
+    ? clauses.find((clause) => clause.category === "IDENTITY")?.text || partyContextText
+    : partyContextText;
   const disputeText =
     clauses.find(
       (clause) =>

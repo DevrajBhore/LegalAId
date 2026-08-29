@@ -1,0 +1,34 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_DEADLINE_001",
+  "name": "Thirty Days to Concur",
+  "title": "Thirty Days to Concur",
+  "category": "NOTICE_DEADLINE",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "7. You are called upon to respond to this notice within THIRTY DAYS of its receipt.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "11",
+      "note": "Sub-sections (4) and (5): where a party fails to act within thirty days of a request, the appointment may be made on an application to the court or the designated arbitral institution"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.11(4) and (5)",
+  "authoring_note": "Thirty days is the period after which the right to apply for a court appointment arises under Section 11(4) and (5). It is not a period the sender may shorten, and a notice giving fewer days will simply mean the application is premature.\n\nAs with the Section 138 notice, no calendar date is printed. The period runs from receipt, the notice is drafted before it is served, and a date computed from an assumed service date would understate the period the addressee actually has."
+}

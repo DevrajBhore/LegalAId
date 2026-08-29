@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_DISPUTES_001",
+  "name": "The Disputes Referred",
+  "title": "The Disputes Referred",
+  "category": "NOTICE_BREACH",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "3. Disputes and differences have arisen between my client and you under the said Agreement, namely:\n{{disputes_description}}\n4. My client's claims in the said disputes are {{claims_description}}.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "21",
+      "note": "The request must identify the dispute sought to be referred"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "16",
+      "note": "The tribunal may rule on its own jurisdiction, including on objections as to the existence or validity of the arbitration agreement"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.21, S.16",
+  "authoring_note": "The disputes described here mark out the reference. A claim not raised in the Section 21 notice can be met with the objection that it was never referred, and although the position is not absolute, the safer course is to describe the disputes broadly enough to cover what may later be claimed while still being specific about what is presently in issue."
+}

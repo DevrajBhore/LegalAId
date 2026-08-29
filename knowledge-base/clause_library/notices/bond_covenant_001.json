@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "BOND_COVENANT_001",
+  "name": "Indemnity",
+  "title": "Indemnity",
+  "category": "INDEMNITY_COVENANT",
+  "document_types": [
+    "INDEMNITY_BOND"
+  ],
+  "text": "NOW THIS DEED WITNESSES that the Obligor hereby undertakes to indemnify and keep indemnified the Beneficiary against the following.\n(a) All loss, damage, cost, charge and expense which the Beneficiary may suffer or incur by reason of {{indemnified_risk}}.\n(b) All claims, demands, actions and proceedings which may be brought against the Beneficiary in respect of the same, together with all legal costs reasonably incurred in defending them.\n(c) The Obligor shall pay the Beneficiary on demand, and shall not require the Beneficiary first to suffer the loss or to exhaust any other remedy.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "Contract of indemnity defined"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "125",
+      "note": "Rights of the indemnity-holder when sued: damages, costs and sums paid under a compromise"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.124, S.125",
+  "authoring_note": "Limb (c) is the commercially important one. Section 124 speaks of loss CAUSED, and there is long-standing authority that an indemnity-holder need not wait until the loss is actually suffered before enforcing - but the point has been litigated, and an express 'pay on demand' obligation puts it beyond argument. The advocate should confirm the indemnified risk in limb (a) is described with enough precision to be enforceable: an indemnity against everything indemnifies against nothing.",
+  "blocks_generation_if_absent": true
+}

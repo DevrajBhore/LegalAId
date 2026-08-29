@@ -23,6 +23,54 @@ export const DOCUMENT_TYPE_REGISTRY = {
   // FAMILY 1: CONTRACTS & COMMERCIAL AGREEMENTS
   // ══════════════════════════════════════════════════════════════════════════
 
+  // ─── Notices and dispute instruments ──────────────────────────────────────
+  CHEQUE_BOUNCE_NOTICE: {
+    displayName: "Cheque Bounce Notice (S.138)",
+    family: "LITIGATION",
+    domains: ["contract"],
+    categories: [
+      "IDENTITY",
+      "NOTICE_HEADING",
+      "NOTICE_FACTS",
+      "NOTICE_BREACH",
+      "NOTICE_DEMAND",
+      "NOTICE_DEADLINE",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: false,
+    registration: false,
+  },
+
+  REPLY_TO_LEGAL_NOTICE: {
+    displayName: "Reply to Legal Notice",
+    family: "LITIGATION",
+    domains: ["contract"],
+    categories: [
+      "IDENTITY",
+      "NOTICE_HEADING",
+      "NOTICE_FACTS",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: false,
+    registration: false,
+  },
+
+  ARBITRATION_NOTICE: {
+    displayName: "Arbitration Notice (S.21)",
+    family: "LITIGATION",
+    domains: ["contract"],
+    categories: [
+      "IDENTITY",
+      "NOTICE_HEADING",
+      "NOTICE_FACTS",
+      "NOTICE_DEMAND",
+      "NOTICE_DEADLINE",
+      "SIGNATURE_BLOCK",
+    ],
+    stampDuty: false,
+    registration: false,
+  },
+
   NDA: {
     displayName: "Non-Disclosure Agreement",
     family: "CONTRACTS",
@@ -220,12 +268,13 @@ export const DOCUMENT_TYPE_REGISTRY = {
 
   SETTLEMENT_AGREEMENT: {
     displayName: "Settlement Agreement",
-    family: "CONTRACTS",
+    family: "LITIGATION",
     domains: ["contract"],
     categories: [
       "IDENTITY",
-      "PURPOSE",
+      "RECITALS",
       "CONSIDERATION",
+      "RELEASE",
       "GOVERNING_LAW",
       "SIGNATURE_BLOCK",
     ],
@@ -951,17 +1000,29 @@ export const DOCUMENT_TYPE_REGISTRY = {
     displayName: "Affidavit",
     family: "LITIGATION",
     domains: ["contract"],
-    categories: ["IDENTITY", "PURPOSE", "SIGNATURE_BLOCK"],
+    categories: [
+      "NOTICE_HEADING",
+      "IDENTITY",
+      "DEPOSITION",
+      "STATEMENT_OF_TRUTH",
+      "SIGNATURE_BLOCK",
+    ],
     stampDuty: true,
     registration: false,
-    notarisation: true,
   },
 
   LEGAL_NOTICE: {
     displayName: "Legal Notice",
     family: "LITIGATION",
     domains: ["contract"],
-    categories: ["IDENTITY", "PURPOSE", "SIGNATURE_BLOCK"],
+    categories: [
+      "IDENTITY",
+      "NOTICE_HEADING",
+      "NOTICE_FACTS",
+      "NOTICE_DEMAND",
+      "NOTICE_DEADLINE",
+      "SIGNATURE_BLOCK",
+    ],
     stampDuty: false,
     registration: false,
   },
@@ -981,9 +1042,8 @@ export const DOCUMENT_TYPE_REGISTRY = {
     domains: ["contract"],
     categories: [
       "IDENTITY",
-      "PURPOSE",
-      "CONSIDERATION",
-      "GOVERNING_LAW",
+      "RECITALS",
+      "INDEMNITY_COVENANT",
       "SIGNATURE_BLOCK",
     ],
     stampDuty: true,

@@ -1,0 +1,34 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "LEGAL_NOTICE_DEMAND_001",
+  "name": "Demand",
+  "title": "Demand",
+  "category": "NOTICE_DEMAND",
+  "document_types": [
+    "LEGAL_NOTICE"
+  ],
+  "text": "5. In the circumstances, I am instructed to call upon you, and I hereby call upon you, to {{notice_demand}}.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss or damage caused by breach of contract"
+    }
+  ],
+  "source": "Indian Contract Act, 1872",
+  "statutory_reference": "Indian Contract Act, 1872 - S.73",
+  "authoring_note": "The demand must be capable of being complied with. A demand that is vague, or that bundles a liquidated sum with an unquantified claim, gives the addressee an answer: that they did not know what to pay. Where a sum is claimed it should be stated as a figure with its computation, and any interest claimed should state the rate and the period."
+}

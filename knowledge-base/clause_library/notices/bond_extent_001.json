@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "BOND_EXTENT_001",
+  "name": "Extent and Duration",
+  "title": "Extent and Duration",
+  "category": "INDEMNITY_COVENANT",
+  "document_types": [
+    "INDEMNITY_BOND"
+  ],
+  "text": "(a) This indemnity is a continuing one and is not discharged by any intermediate payment or settlement.\n(b) The liability of the Obligor under this Deed is limited to Rs. {{guaranteed_amount}}/-.\n(c) This indemnity remains in force until {{bond_duration}}, and expires in respect of any claim not made in writing on the Obligor before that date.\n(d) The Beneficiary's rights under this Deed are in addition to, and not in substitution for, any other right or security the Beneficiary holds.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "Contract of indemnity"
+    },
+    {
+      "act": "Limitation Act, 1963",
+      "section": "Article 55",
+      "note": "Three years for compensation for breach of a contract, from when the contract is broken"
+    }
+  ],
+  "source": "Indian Contract Act, 1872; Limitation Act, 1963",
+  "statutory_reference": "Indian Contract Act, 1872 - S.124; Limitation Act, 1963 - Article 55",
+  "authoring_note": "An unlimited and perpetual indemnity is rarely what either side intends and is hard to price. Limbs (b) and (c) put a ceiling and an end date on it. The advocate should check that the expiry in limb (c) leaves the Beneficiary enough time: an indemnity that expires before the underlying liability can crystallise is worthless, which is the usual defect in a short-dated bond."
+}

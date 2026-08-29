@@ -1,3 +1,5 @@
+import { documentShape } from "../../../shared/documentShape.js";
+
 /**
  * constraintEngine.js
  *
@@ -215,6 +217,19 @@ function ruleAppliesToDocType(rule, docType) {
       (entry) => String(entry || "").toUpperCase() === normalized
     );
     if (excluded) return false;
+  }
+
+  // Shape-level deny-list. The general-provisions floor is a rule about
+  // bargains: a notice, an affidavit and a published policy each fail it for
+  // reasons that have nothing to do with drafting quality. Excluding by shape
+  // scopes a new instrument out of all thirteen rules at once, instead of
+  // needing its name pasted into thirteen separate lists - which is how the
+  // existing deny-lists came to disagree with one another.
+  if (Array.isArray(rule.excludes_shapes)) {
+    const shape = documentShape(normalized);
+    if (rule.excludes_shapes.some((entry) => String(entry || "").toUpperCase() === shape)) {
+      return false;
+    }
   }
 
   if (!Array.isArray(rule.applies_to_doc_types)) return true;

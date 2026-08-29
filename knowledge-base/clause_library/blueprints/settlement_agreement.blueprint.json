@@ -1,0 +1,25 @@
+{
+  "document_type": "SETTLEMENT_AGREEMENT",
+  "family": "notices",
+  "version": "1.0",
+  "clauses": [
+    "CORE_IDENTITY_001",
+    "SETTLE_RECITALS_001",
+    "SETTLE_CONSIDERATION_001",
+    "SETTLE_PAYMENT_001",
+    "SETTLE_RELEASE_001",
+    "SETTLE_PROCEEDINGS_001",
+    "SETTLE_CONFIDENTIALITY_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "mandatory_legal_checks": [
+    "Civil Procedure Code 1908 Order XXIII Rule 3 — where proceedings are pending, consider recording the settlement as a CONSENT DECREE; a decree is executable, a bare agreement must be sued on afresh",
+    "Contract Act 1872 S.63 — remission; the release must be conditional on actual payment or the releasing party gives up its claims for nothing",
+    "Contract Act 1872 S.23 — a release cannot waive a right the law does not permit to be waived",
+    "Income-tax Act 1961 — deduction at source depends on the CHARACTER of the payment, not on the label 'settlement'; determine it before paying",
+    "Indian Stamp Act 1899 — a settlement may attract duty; confirm the State position",
+    "Do not apply to dispose of the proceedings before payment is received in full"
+  ]
+}

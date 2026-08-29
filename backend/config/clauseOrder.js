@@ -2,6 +2,22 @@ const CANONICAL_ORDER = [
   "IDENTITY",
   "RECITALS",
   "PURPOSE",
+  // A notice runs in its own order and shares none of the agreement categories,
+  // so these sit together near the top where a notice's identity block leaves
+  // off. An agreement never carries one of them, and a notice never carries the
+  // agreement categories below.
+  "NOTICE_HEADING",
+  "NOTICE_FACTS",
+  "NOTICE_BREACH",
+  "NOTICE_DEMAND",
+  "NOTICE_DEADLINE",
+  "NOTICE_CONSEQUENCE",
+  "NOTICE_RESERVATION",
+  // A sworn or unilateral instrument: the statement of facts, then the
+  // statement of truth that makes it an affidavit rather than a letter.
+  "DEPOSITION",
+  "STATEMENT_OF_TRUTH",
+  "INDEMNITY_COVENANT",
   "DEFINITIONS",
   "INTERPRETATION",
   "RELATIONSHIP",

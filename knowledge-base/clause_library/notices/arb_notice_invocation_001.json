@@ -1,0 +1,45 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_INVOCATION_001",
+  "name": "Invocation and Nomination",
+  "title": "Invocation and Nomination",
+  "category": "NOTICE_DEMAND",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "5. My client hereby invokes the said arbitration agreement and requests that the said disputes be referred to arbitration. Arbitral proceedings shall be taken to have commenced on the date this notice is received by you, as Section 21 of the Arbitration and Conciliation Act, 1996 provides.\n6. My client nominates {{nominated_arbitrator}} as arbitrator, and calls upon you to signify your concurrence, or to make your own nomination in accordance with the said clause.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "21",
+      "note": "Arbitral proceedings commence on the date the request for reference is received by the respondent"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "43",
+      "note": "The Limitation Act 1963 applies to arbitrations as it applies to court proceedings, and an arbitration is deemed to commence under Section 21"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "12",
+      "note": "Grounds for challenge; the Fifth and Seventh Schedules govern independence and ineligibility"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.21, S.43, S.12",
+  "authoring_note": "The date of receipt does double duty: it commences the proceedings and, through Section 43(2), stops limitation running. That is often the real reason for sending the notice when it is sent, and proof of service should be preserved accordingly. On the nomination, the advocate must check the proposed arbitrator against the Seventh Schedule - a person falling within it is ineligible to be appointed, and an appointment made by a party interested in the outcome has been held bad. A clause naming the employer's own officer as arbitrator will not survive.",
+  "blocks_generation_if_absent": true
+}

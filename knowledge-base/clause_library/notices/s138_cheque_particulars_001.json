@@ -1,0 +1,44 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_CHEQUE_PARTICULARS_001",
+  "name": "Particulars of the Cheque",
+  "title": "Particulars of the Cheque",
+  "category": "NOTICE_FACTS",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "1. In discharge of a legally enforceable debt or other liability, namely {{underlying_liability}}, you issued to my client cheque bearing number {{cheque_number}} dated {{cheque_date}} for Rs. {{cheque_amount}}/- ({{cheque_amount_words}} only), drawn on {{drawee_bank}}, {{drawee_branch}}.\n2. My client presented the said cheque for encashment through {{payee_bank}}, {{payee_branch}}, within its period of validity.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "The section applies where the cheque was drawn for the discharge, in whole or in part, of any debt or other liability"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "Proviso (a): the cheque must be presented within its period of validity"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "139",
+      "note": "The court shall presume that the holder received the cheque in discharge of a debt or liability, until the contrary is proved"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138 proviso (a), S.139",
+  "authoring_note": "Three things are being established here and each is contested in practice. First, that the cheque was issued for a legally enforceable debt: Section 139 raises a presumption in the holder's favour, but the notice must still describe the underlying liability, because a cheque issued as security or for a time-barred debt is outside the section. Second, that the cheque was presented within validity - three months from its date. Third, the payee's bank branch, which since the 2015 amendment fixes territorial jurisdiction under Section 142(2). The advocate should confirm the underlying liability is not itself time-barred."
+}

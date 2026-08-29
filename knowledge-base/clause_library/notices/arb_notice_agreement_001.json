@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "ARB_NOTICE_AGREEMENT_001",
+  "name": "The Arbitration Agreement",
+  "title": "The Arbitration Agreement",
+  "category": "NOTICE_FACTS",
+  "document_types": [
+    "ARBITRATION_NOTICE"
+  ],
+  "text": "1. My client and you are parties to {{underlying_agreement_description}} dated {{underlying_agreement_date}} (\"the said Agreement\").\n2. Clause {{arbitration_clause_number}} of the said Agreement is an arbitration agreement within the meaning of Section 7 of the Arbitration and Conciliation Act, 1996, and provides for the reference of disputes to arbitration seated at {{arbitration_city}}.",
+  "legal_basis": [
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "7",
+      "note": "An arbitration agreement must be in writing and may be in a document signed by the parties or in an exchange of communications"
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "20",
+      "note": "The parties are free to agree on the place of arbitration"
+    }
+  ],
+  "source": "Arbitration and Conciliation Act, 1996",
+  "statutory_reference": "Arbitration and Conciliation Act, 1996 - S.7, S.20",
+  "authoring_note": "The arbitration agreement must be identified precisely, because the tribunal's jurisdiction comes from it and nothing else. Where the clause is in a document incorporated by reference rather than signed, the advocate should satisfy themselves that the incorporation is specific enough to carry the arbitration clause across - a general reference to another contract's terms has been held insufficient."
+}

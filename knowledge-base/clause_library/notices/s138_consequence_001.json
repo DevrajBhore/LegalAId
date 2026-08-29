@@ -1,0 +1,45 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "S138_CONSEQUENCE_001",
+  "name": "Consequence of Non-Payment",
+  "title": "Consequence of Non-Payment",
+  "category": "NOTICE_CONSEQUENCE",
+  "document_types": [
+    "CHEQUE_BOUNCE_NOTICE"
+  ],
+  "text": "9. Should you fail to make the said payment within the said period of fifteen days, my client shall be constrained to institute a complaint against you under Section 138 of the Negotiable Instruments Act, 1881, before the competent Magistrate having jurisdiction, the offence being punishable with imprisonment for a term which may extend to two years, or with fine which may extend to twice the amount of the cheque, or with both.\n10. My client will additionally seek interim compensation under Section 143A of the said Act, which the court may direct to be paid at up to twenty per cent of the amount of the cheque.\n11. My client's civil remedies for recovery of the said sum, with interest and costs, are separately reserved and are not affected by the said complaint.",
+  "legal_basis": [
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "138",
+      "note": "Punishable with imprisonment for a term which may extend to two years, or with fine which may extend to twice the amount of the cheque, or with both"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "142",
+      "note": "Cognizance only on a complaint in writing made within one month of the date on which the cause of action arises under clause (c) of the proviso to Section 138"
+    },
+    {
+      "act": "Negotiable Instruments Act, 1881",
+      "section": "143A",
+      "note": "The court may order the drawer to pay interim compensation not exceeding twenty per cent of the amount of the cheque, within sixty days of the order"
+    }
+  ],
+  "source": "Negotiable Instruments Act, 1881",
+  "statutory_reference": "Negotiable Instruments Act, 1881 - S.138, S.142, S.143A",
+  "authoring_note": "The one-month window in Section 142(1)(b) runs from the date the cause of action arises under proviso (c), which is the sixteenth day after service, not from the date of the notice. Missing it is fatal, subject to the proviso allowing the court to take cognizance later if the complainant satisfies it there was sufficient cause. Section 143A was inserted by the Negotiable Instruments (Amendment) Act 2018 and the twenty per cent is a ceiling on a discretionary power, not an entitlement - the notice should not promise the client will get it.",
+  "statute_currency": "Sections 143A and 148 were inserted by the Negotiable Instruments (Amendment) Act, 2018 (Act 20 of 2018). The twenty per cent figures in both are ceilings on judicial discretion. Confirm no later amendment before relying on the figures."
+}

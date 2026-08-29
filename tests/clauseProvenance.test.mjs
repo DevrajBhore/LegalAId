@@ -82,7 +82,15 @@ const summary = summariseProvenance(clauses);
 // Events of Default clause in the guarantee and loan agreements defaulted on
 // "breach of any representation" in documents that contained none. It carries
 // review_status draft-needs-legal-review like the rest of the library.
-const MAX_UNREVIEWED = 250;
+// Previously 250. Raised to 289 for the notices and dispute-instruments family:
+// thirty-nine clauses across a legal notice, a Section 138 cheque bounce notice,
+// a reply, a Section 21 arbitration notice, a settlement agreement, an affidavit
+// and an indemnity bond. These carry more review weight per clause than the
+// average, not less - a Section 138 notice that is wrong is not a bad document,
+// it is a destroyed prosecution - so the queue should be worked in that order.
+// Every one carries an authoring_note naming the judgement the advocate must
+// make, and two carry statute_currency flags as well.
+const MAX_UNREVIEWED = 289;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

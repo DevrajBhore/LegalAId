@@ -28,6 +28,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -56,6 +61,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -84,6 +94,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -112,6 +127,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -140,6 +160,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -168,6 +193,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -196,6 +226,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -223,7 +258,13 @@
         "PROMISSORY_NOTE",
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
-        "ESOP_GRANT_LETTER"
+        "ESOP_GRANT_LETTER",
+        "SETTLEMENT_AGREEMENT"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -252,6 +293,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -290,7 +336,13 @@
         "PROMISSORY_NOTE",
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
-        "ESOP_GRANT_LETTER"
+        "ESOP_GRANT_LETTER",
+        "SETTLEMENT_AGREEMENT"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -318,7 +370,13 @@
         "PROMISSORY_NOTE",
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
-        "ESOP_GRANT_LETTER"
+        "ESOP_GRANT_LETTER",
+        "SETTLEMENT_AGREEMENT"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -349,6 +407,11 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     },
     {
@@ -377,10 +440,16 @@
         "POWER_OF_ATTORNEY",
         "TERM_SHEET",
         "ESOP_GRANT_LETTER"
+      ],
+      "excludes_shapes": [
+        "NOTICE",
+        "SWORN",
+        "POLICY"
       ]
     }
   ],
   "//": [
-    "These rules state a floor for a BILATERAL COMMERCIAL INSTRUMENT. A unilateral instrument is excluded because the floor is not merely unnecessary for it but wrong: a force majeure or counterparts clause in a promissory note would defeat Section 4 of the Negotiable Instruments Act, 1881, which requires the promise to be UNCONDITIONAL, and a notice clause in a power of attorney or a published policy has no counterparty to address."
+    "These rules state a floor for a BILATERAL COMMERCIAL INSTRUMENT. A unilateral instrument is excluded because the floor is not merely unnecessary for it but wrong: a force majeure or counterparts clause in a promissory note would defeat Section 4 of the Negotiable Instruments Act, 1881, which requires the promise to be UNCONDITIONAL, and a notice clause in a power of attorney or a published policy has no counterparty to address.",
+    "These rules state the general-provisions floor for a BARGAIN. They are excluded by shape rather than by name: a notice, a sworn instrument and a published policy are not agreements and carry none of these clauses. The per-rule excludes_doc_types lists are retained for the individual agreements that legitimately omit one, such as a promissory note."
   ]
 }

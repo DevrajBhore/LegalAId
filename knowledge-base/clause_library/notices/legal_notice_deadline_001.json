@@ -1,0 +1,39 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "LEGAL_NOTICE_DEADLINE_001",
+  "name": "Period for Compliance",
+  "title": "Period for Compliance",
+  "category": "NOTICE_DEADLINE",
+  "document_types": [
+    "LEGAL_NOTICE"
+  ],
+  "text": "6. You are called upon to comply within {{compliance_period_days}} days of receipt of this notice.",
+  "legal_basis": [
+    {
+      "act": "Civil Procedure Code, 1908",
+      "section": "80(1)",
+      "note": "No suit against the Government or a public officer until the expiration of two months next after notice in writing"
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "63",
+      "note": "Time granted for performance is at the promisee's election"
+    }
+  ],
+  "source": "Civil Procedure Code, 1908; Indian Contract Act, 1872",
+  "statutory_reference": "Civil Procedure Code, 1908 - S.80(1); Indian Contract Act, 1872 - S.63",
+  "authoring_note": "There is no general statutory period for a private demand, and fifteen days is the ordinary practice. Two situations change that. Where the addressee is the Government or a public officer sued for an official act, Section 80(1) bars the suit for two months and the period here must be at least that. Where the contract itself prescribes a cure period, that period governs and a shorter one in the notice is a breach by the sender. The advocate should check the contract before settling this figure."
+}

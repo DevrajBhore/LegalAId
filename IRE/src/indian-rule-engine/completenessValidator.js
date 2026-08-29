@@ -1,3 +1,5 @@
+import { expectsAgreementBoilerplate } from "../../../shared/documentShape.js";
+
 /**
  * completenessValidator.js
  *
@@ -9,7 +11,13 @@
  *  5. Date consistency
  */
 
-export function completenessValidate(draft) {
+// Completeness of WHAT is the question. A notice with no consideration clause is
+// not incomplete - it is a notice. Threading the document type through lets the
+// agreement checks be asked only of agreements, the same way the execution
+// validator does it.
+export function completenessValidate(draft, documentType = "") {
+  const docType = String(documentType || draft?.document_type || "").toUpperCase();
+  const isAgreementShaped = expectsAgreementBoilerplate(docType);
 
   if (!draft?.clauses) return [];
 
@@ -74,7 +82,14 @@ export function completenessValidate(draft) {
   const confidentialityAsScope = draft.clauses.find(
     c => c.category === "CONFIDENTIALITY" || c.category === "NDA"
   );
-  const scopeClause = purposeClause || identityWithScope || confidentialityAsScope;
+  // A notice states its subject in the SUBJECT line and an affidavit in its
+  // title. Neither carries a PURPOSE clause, and requiring one of them to was
+  // asking for a clause the instrument does not have.
+  const headingAsScope = draft.clauses.find(
+    (c) => c.category === "NOTICE_HEADING" || c.category === "RECITALS"
+  );
+  const scopeClause =
+    purposeClause || identityWithScope || confidentialityAsScope || headingAsScope;
 
   if (!scopeClause || !scopeClause.text) {
     issues.push({
@@ -91,7 +106,12 @@ export function completenessValidate(draft) {
       "as agreed", "as mutually decided", "as applicable"
     ];
 
-    const isVague = vagueIndicators.some(v => purposeText.includes(v));
+    // Word-anchored. Unanchored, "as agreed" matched "the Beneficiary h[as
+    // agreed] to act", flagging a perfectly certain recital as deferred - the
+    // same substring hazard that made "pa[rent]_name" look like a money field.
+    const isVague = vagueIndicators.some((v) =>
+      new RegExp(`\\b${v.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(purposeText)
+    );
     if (isVague) {
       issues.push({
         rule_id: "UNDEFINED_SCOPE",
@@ -151,8 +171,11 @@ export function completenessValidate(draft) {
   );
 
   // Only flag missing term for bilateral agreements — not for unilateral instruments
+  // The text sniff below predates the shape classification and is kept because
+  // it catches instruments that are unilateral in substance whatever their
+  // registered type. The shape check is the reliable one.
   const isUnilateralDoc = /affidavit|power of attorney|will and testament|legal notice|vakalatnama|undertaking|i hereby|i solemnly|testator|deponent/i.test(fullTextLower);
-  if (!hasTerm && clauseCount > 3 && !isUnilateralDoc) {
+  if (!hasTerm && clauseCount > 3 && !isUnilateralDoc && isAgreementShaped) {
     const isTimebound =
       fullTextLower.includes("months") ||
       fullTextLower.includes("years") ||
