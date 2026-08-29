@@ -325,56 +325,12 @@ export const DOCUMENT_CONFIG = {
   },
 
   // ─── Notices and dispute instruments ──────────────────────────────────────
-  LEGAL_NOTICE: {
-    requiredFields: [
-      "sender_name", "sender_address", "addressee_name", "addressee_address",
-      "notice_date", "notice_facts", "breached_obligation", "loss_description",
-      "notice_demand", "notice_demand_summary", "compliance_period_days",
-      "operating_state", "execution_city", "effective_date",
-    ],
-    signatureType: "NOTICE",
-    sections: [
-      { title: "Who is sending it", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
-      { title: "Who it goes to", fields: ["addressee_name", "addressee_address", "addressee_is_government"] },
-      { title: "What happened", fields: ["notice_facts", "breached_obligation", "loss_description", "cause_of_action_date", "acknowledgement_date"] },
-      { title: "What you want", fields: ["notice_demand", "notice_demand_summary", "compliance_period_days"] },
-      { title: "Dates and place", fields: ["notice_date", "effective_date", "operating_state", "execution_city"] },
-    ],
-  },
-  CHEQUE_BOUNCE_NOTICE: {
-    requiredFields: [
-      "sender_name", "sender_address", "addressee_name", "addressee_address",
-      "notice_date", "cheque_number", "cheque_date", "cheque_amount", "cheque_amount_words",
-      "drawee_bank", "drawee_branch", "payee_bank", "payee_branch",
-      "return_memo_date", "return_reason", "underlying_liability",
-      "operating_state", "execution_city", "effective_date",
-    ],
-    signatureType: "NOTICE",
-    sections: [
-      { title: "Who is sending it", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
-      { title: "Who it goes to", fields: ["addressee_name", "addressee_address"] },
-      { title: "The cheque", fields: ["cheque_number", "cheque_date", "cheque_amount", "cheque_amount_words", "drawee_bank", "drawee_branch", "underlying_liability"] },
-      { title: "The dishonour", fields: ["payee_bank", "payee_branch", "return_memo_date", "return_reason"] },
-      { title: "Dates and place", fields: ["notice_date", "notice_service_date", "effective_date", "operating_state", "execution_city"] },
-    ],
-  },
-  REPLY_TO_LEGAL_NOTICE: {
-    requiredFields: [
-      "sender_name", "sender_address", "addressee_name", "addressee_address",
-      "notice_date", "original_notice_date", "original_notice_received_date",
-      "admitted_facts", "denied_facts", "reply_facts",
-      "operating_state", "execution_city", "effective_date",
-    ],
-    signatureType: "NOTICE",
-    sections: [
-      { title: "Who is replying", fields: ["sender_name", "sender_address", "advocate_name", "advocate_enrolment_number"] },
-      { title: "Who it goes to", fields: ["addressee_name", "addressee_address"] },
-      { title: "The notice being answered", fields: ["original_notice_date", "original_notice_received_date", "original_notice_reference"] },
-      { title: "Your answer", fields: ["admitted_facts", "denied_facts", "reply_facts"] },
-      { title: "Counter-claim, if any", fields: ["counter_claim_description", "counter_demand"] },
-      { title: "Dates and place", fields: ["notice_date", "effective_date", "operating_state", "execution_city"] },
-    ],
-  },
+  // LEGAL_NOTICE, CHEQUE_BOUNCE_NOTICE and REPLY_TO_LEGAL_NOTICE are withheld.
+  // They must be removed from BOTH this file and shared/documentRegistry.js, in
+  // that order: backend/index.js enforces DOCUMENT_CONFIG ⊆ DOCUMENT_TYPE_REGISTRY
+  // and exits 1 if config names a type the registry does not. The registry is
+  // allowed to run ahead of config, never behind it. Restoring a type means
+  // adding the registry entry FIRST, then this one.
   ARBITRATION_NOTICE: {
     requiredFields: [
       "sender_name", "sender_address", "addressee_name", "addressee_address",

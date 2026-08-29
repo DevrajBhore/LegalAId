@@ -97,9 +97,16 @@ const KNOWN_ORPHAN_BLUEPRINTS = new Set([
   "IP_ASSIGNMENT_AGREEMENT",
 ]);
 
+// A blueprint flagged `_unreachable` is deliberately not offered: it is either
+// superseded, or a finished type held back as a product decision. The loader,
+// the library review tools and the required-field coverage test all skip these,
+// and so does this check — otherwise withdrawing a type would mean either
+// deleting work that is finished, or leaving a test permanently red.
 const orphans = fsMod.readdirSync(bpDir)
   .filter((f) => f.endsWith(".blueprint.json"))
-  .map((f) => JSON.parse(fsMod.readFileSync(new URL(f, bpDir), "utf8")).document_type)
+  .map((f) => JSON.parse(fsMod.readFileSync(new URL(f, bpDir), "utf8")))
+  .filter((bp) => bp._unreachable !== true)
+  .map((bp) => bp.document_type)
   .filter((dt) => !DOCUMENT_CONFIG[dt]);
 
 const unexpected = orphans.filter((dt) => !KNOWN_ORPHAN_BLUEPRINTS.has(dt));
