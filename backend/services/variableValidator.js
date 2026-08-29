@@ -3,8 +3,38 @@ import { getRequiredFieldsForMode } from "../config/essentialFields.js";
 
 const COMPANY_MARKERS =
   /\b(private limited|public limited|pvt\.?\s*ltd|limited|llp|partnership|trust|government body|sole proprietorship)\b/i;
-const EXTERNAL_REFERENCE_PATTERN =
-  /\b(schedule|annexure|appendix|appendices|exhibit)\b/i;
+// The point of this check is to stop a term being deferred to another document:
+// "the fee is as set out in Schedule A" leaves the contract uncertain. It is NOT
+// meant to catch the ordinary English word - "the delivery schedule", "the
+// schedule agreed a week in advance", "we will schedule a call" are all timetables,
+// not cross-references, and blocking them told the user to rewrite a sentence
+// that was perfectly certain. Only a reference that POINTS somewhere counts:
+// preceded by in/at/per/under/as-set-out-in, or followed by a letter or number.
+const EXTERNAL_REFERENCE_PATTERN = new RegExp(
+  [
+    // "in Schedule A", "as set out in the Annexure", "per Appendix 2"
+    "\\b(?:in|at|per|under|vide|see|to)\\s+(?:the\\s+)?(?:schedule|annexure|annex|appendix|appendices|exhibit)\\b",
+    "\\bas\\s+(?:set\\s+out|specified|described|provided|listed|detailed)\\s+in\\b",
+    // "Annexure-1", "Exhibit 3". The lettered form ("Schedule A") is checked
+    // separately and case-sensitively below: under the /i flag [A-Z] also
+    // matches a lowercase letter, so this branch read "schedule a kickoff call"
+    // as a reference to Schedule A.
+    "\\b(?:schedule|annexure|annex|appendix|exhibit)\\s*[-–—]?\\s*\\d",
+    // "attached schedule", "the annexure hereto"
+    "\\b(?:attached|annexed|enclosed)\\s+(?:schedule|annexure|annex|appendix|exhibit)\\b",
+    "\\b(?:schedule|annexure|annex|appendix|exhibit)\\s+(?:hereto|attached|annexed|hereof)\\b",
+  ].join("|"),
+  "i"
+);
+
+// "Schedule A", "Annexure B" - a single CAPITAL letter, which is what makes it a
+// label rather than an article. Case-sensitive by design.
+const LETTERED_REFERENCE_PATTERN =
+  /\b(?:Schedule|Annexure|Annex|Appendix|Exhibit)\s*[-–—]?\s*[A-Z]\b/;
+
+function refersToAnotherDocument(text) {
+  return EXTERNAL_REFERENCE_PATTERN.test(text) || LETTERED_REFERENCE_PATTERN.test(text);
+}
 
 const TEXT_RULES = {
   purpose: { minChars: 12, minWords: 3 },
@@ -294,7 +324,7 @@ function validateInlineDetailsOnly(errors, key, value, definition = {}) {
     return;
   }
 
-  if (EXTERNAL_REFERENCE_PATTERN.test(normalizeText(value))) {
+  if (refersToAnotherDocument(String(value || ""))) {
     addError(
       errors,
       `${key} must state the operative details directly and must not refer to schedules, annexures, or appendices.`

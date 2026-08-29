@@ -1029,7 +1029,7 @@ export const VARIABLE_CONFIG = {
       description: "How often interest falls due.",
     },
     cure_period_days: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Cure Period (days)",
       type: "number",
       required: true,
@@ -1529,7 +1529,7 @@ export const VARIABLE_CONFIG = {
       ],
     },
     include_entire_agreement: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Add an entire-agreement (no oral terms) clause?",
       type: "select",
       required: false,
@@ -1574,7 +1574,7 @@ export const VARIABLE_CONFIG = {
         "The state whose law governs the contract, if different from the operating state. Leave blank to use the operating state.",
     },
     dispute_resolution_method: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Dispute Resolution Method",
       type: "select",
       required: false,
@@ -1588,8 +1588,12 @@ export const VARIABLE_CONFIG = {
       description:
         "How disputes will be resolved. Arbitration keeps the matter private and is the usual choice for commercial contracts; courts-only means either party may sue directly.",
     },
+    // A published policy has no term to renew, and neither does a one-off
+    // instrument: a promissory note, an assignment, a settlement or a share
+    // subscription is performed, not extended. Asking anyway produced a field
+    // the user could fill and then be blocked for filling.
     renewal_option: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Renewal Option",
       type: "select",
       required: false,
@@ -1606,10 +1610,22 @@ export const VARIABLE_CONFIG = {
         "SALES_OF_GOODS_AGREEMENT",
         "SHAREHOLDERS_AGREEMENT",
         "TERMS_OF_SERVICE",
+      
+        "PROMISSORY_NOTE",
+        "SEPARATION_AGREEMENT",
+        "TERM_SHEET",
+        "IP_ASSIGNMENT_AGREEMENT",
+        "SETTLEMENT_AGREEMENT",
+        "SHARE_SUBSCRIPTION_AGREEMENT",
+        "ESOP_GRANT_LETTER",
+        "FOUNDERS_AGREEMENT",
+        "APPOINTMENT_LETTER",
+        "INTERNSHIP_AGREEMENT",
+        "MOU",
       ],
     },
     renewal_terms: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Renewal Terms",
       type: "textarea",
       required: false,
@@ -1625,6 +1641,18 @@ export const VARIABLE_CONFIG = {
         "SALES_OF_GOODS_AGREEMENT",
         "SHAREHOLDERS_AGREEMENT",
         "TERMS_OF_SERVICE",
+      
+        "PROMISSORY_NOTE",
+        "SEPARATION_AGREEMENT",
+        "TERM_SHEET",
+        "IP_ASSIGNMENT_AGREEMENT",
+        "SETTLEMENT_AGREEMENT",
+        "SHARE_SUBSCRIPTION_AGREEMENT",
+        "ESOP_GRANT_LETTER",
+        "FOUNDERS_AGREEMENT",
+        "APPOINTMENT_LETTER",
+        "INTERNSHIP_AGREEMENT",
+        "MOU",
       ],
       showIf: { field: "renewal_option", equals: ["Automatic renewal", "Renewable by mutual agreement"] },
     },
@@ -2040,7 +2068,7 @@ export const VARIABLE_CONFIG = {
         "The legal form of the first party. This decides how the party is described in the deed, which registration numbers are recited, and the correct successor wording.",
     },
     party_2_type: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Second Party Type",
       type: "select",
       required: true,
@@ -2059,7 +2087,7 @@ export const VARIABLE_CONFIG = {
         "The legal form of the second party. This decides how the party is described in the deed, which registration numbers are recited, and the correct successor wording.",
     },
     party_1_pan: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "First Party PAN",
       type: "text",
       required: false,
@@ -2070,7 +2098,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Individual", "Sole Proprietorship", "Partnership Firm", "Trust", "Private Limited Company", "Public Limited Company", "LLP"] },
     },
     party_1_gstin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "First Party GSTIN",
       type: "text",
       required: false,
@@ -2080,7 +2108,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship"] },
     },
     party_1_cin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "First Party CIN",
       type: "text",
       required: false,
@@ -2090,7 +2118,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["Private Limited Company", "Public Limited Company"] },
     },
     party_1_llpin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "First Party LLPIN",
       type: "text",
       required: false,
@@ -2100,7 +2128,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_1_type", equals: ["LLP"] },
     },
     party_2_pan: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Second Party PAN",
       type: "text",
       required: false,
@@ -2110,7 +2138,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Individual", "Sole Proprietorship", "Partnership Firm", "Trust", "Private Limited Company", "Public Limited Company", "LLP"] },
     },
     party_2_gstin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Second Party GSTIN",
       type: "text",
       required: false,
@@ -2120,7 +2148,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company", "LLP", "Partnership Firm", "Sole Proprietorship"] },
     },
     party_2_cin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Second Party CIN",
       type: "text",
       required: false,
@@ -2130,7 +2158,7 @@ export const VARIABLE_CONFIG = {
       showIf: { field: "party_2_type", equals: ["Private Limited Company", "Public Limited Company"] },
     },
     party_2_llpin: {
-      excludeShapes: ["NOTICE", "SWORN"],
+      excludeShapes: ["NOTICE", "SWORN", "POLICY"],
       label: "Second Party LLPIN",
       type: "text",
       required: false,

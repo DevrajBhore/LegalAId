@@ -432,92 +432,99 @@ function variablesFor(docType, { requiredOnly } = {}) {
   return vars;
 }
 
-const MODE = process.argv[2] || "required";
-const types = Object.keys(DOCUMENT_TYPE_REGISTRY);
-console.log(`mode: ${MODE === "required" ? "REQUIRED FIELDS ONLY (what a user must answer)" : "EVERY FIELD FILLED (stress test)"}`);
-console.log(`${types.length} registered document types\n`);
-const rows = [];
-const UNDECLARED = new Map();
+// Importable as a library. Without this guard, importing the sampler to bisect
+// a failing document ran the whole 40-type sweep as a side effect.
+const IS_MAIN = import.meta.url === `file://${process.argv[1]}`;
+if (IS_MAIN) {
+  const MODE = process.argv[2] || "required";
+  const types = Object.keys(DOCUMENT_TYPE_REGISTRY);
+  console.log(`mode: ${MODE === "required" ? "REQUIRED FIELDS ONLY (what a user must answer)" : "EVERY FIELD FILLED (stress test)"}`);
+  console.log(`${types.length} registered document types\n`);
+  const rows = [];
+  const UNDECLARED = new Map();
 
-for (const docType of types) {
-  const vars = variablesFor(docType, { requiredOnly: MODE === "required" });
-  const allDefs = { ...(VARIABLE_CONFIG.COMMON || {}), ...(VARIABLE_CONFIG[docType] || {}) };
-  const undeclared = [];
+  for (const docType of types) {
+    const vars = variablesFor(docType, { requiredOnly: MODE === "required" });
+    const allDefs = { ...(VARIABLE_CONFIG.COMMON || {}), ...(VARIABLE_CONFIG[docType] || {}) };
+    const undeclared = [];
 
-  let r;
-  // The form config marks a field required or not; the generation validator has
-  // its own view. Where the validator demands a field the config says is
-  // optional, supply it and record the mismatch -- that gap is itself a finding.
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    try {
-      r = await generateDocument({ document_type: docType, variables: vars });
-    } catch (err) {
-      r = null;
-      rows.push({ docType, status: "THREW", detail: err.message.slice(0, 240) });
-      break;
+    let r;
+    // The form config marks a field required or not; the generation validator has
+    // its own view. Where the validator demands a field the config says is
+    // optional, supply it and record the mismatch -- that gap is itself a finding.
+    for (let attempt = 0; attempt < 12; attempt += 1) {
+      try {
+        r = await generateDocument({ document_type: docType, variables: vars });
+      } catch (err) {
+        r = null;
+        rows.push({ docType, status: "THREW", detail: err.message.slice(0, 240) });
+        break;
+      }
+      if (r?.draft) break;
+      const missing = String(r?.error || "").match(/Missing required field: (\w+)/);
+      if (!missing) break;
+      const key = missing[1];
+      if (vars[key] !== undefined) break;
+      if (MODE === "required" && !allDefs[key]?.required) undeclared.push(key);
+      vars[key] = sampleFor(key, allDefs[key] || { type: "text" });
     }
-    if (r?.draft) break;
-    const missing = String(r?.error || "").match(/Missing required field: (\w+)/);
-    if (!missing) break;
-    const key = missing[1];
-    if (vars[key] !== undefined) break;
-    if (MODE === "required" && !allDefs[key]?.required) undeclared.push(key);
-    vars[key] = sampleFor(key, allDefs[key] || { type: "text" });
+    if (r === null) continue;
+    if (!r?.draft) {
+      rows.push({ docType, status: "BLOCKED", detail: String(r?.error || "").slice(0, 240) });
+      continue;
+    }
+    if (undeclared.length) UNDECLARED.set(docType, undeclared);
+    const clauses = r.draft.clauses || [];
+    const words = clauses.reduce((n, c) => n + String(c.text || "").split(/\s+/).filter(Boolean).length, 0);
+    const subs = clauses.reduce(
+      (n, c) => n + String(c.text || "").split("\n").filter((l) => /^\s*\(?[a-z0-9ivx]{1,4}[).]\s+/i.test(l)).length,
+      0
+    );
+    const stubs = clauses.filter((c) => String(c.text || "").split(/\s+/).filter(Boolean).length < 40).length;
+    rows.push({
+      docType, status: "OK", score: r.validation?.score,
+      clauses: clauses.length, words, subs, stubs,
+      issues: (r.validation?.score_breakdown?.deductions || []).map(
+        (i) => `-${i.points} ${i.severity} ${i.rule_id}: ${String(i.message || "").slice(0, 120)}`
+      ),
+    });
   }
-  if (r === null) continue;
-  if (!r?.draft) {
-    rows.push({ docType, status: "BLOCKED", detail: String(r?.error || "").slice(0, 240) });
-    continue;
+
+  const ok = rows.filter((x) => x.status === "OK");
+  const bad = rows.filter((x) => x.status !== "OK");
+  console.log("TYPE                                  SCORE  CLAUSES  WORDS  SUBS  STUBS");
+  for (const x of ok.sort((a, b) => a.words - b.words)) {
+    console.log(
+      `${x.docType.padEnd(36)} ${String(x.score).padStart(5)} ${String(x.clauses).padStart(8)} ${String(x.words).padStart(6)} ${String(x.subs).padStart(5)} ${String(x.stubs).padStart(6)}`
+    );
   }
-  if (undeclared.length) UNDECLARED.set(docType, undeclared);
-  const clauses = r.draft.clauses || [];
-  const words = clauses.reduce((n, c) => n + String(c.text || "").split(/\s+/).filter(Boolean).length, 0);
-  const subs = clauses.reduce(
-    (n, c) => n + String(c.text || "").split("\n").filter((l) => /^\s*\(?[a-z0-9ivx]{1,4}[).]\s+/i.test(l)).length,
-    0
-  );
-  const stubs = clauses.filter((c) => String(c.text || "").split(/\s+/).filter(Boolean).length < 40).length;
-  rows.push({
-    docType, status: "OK", score: r.validation?.score,
-    clauses: clauses.length, words, subs, stubs,
-    issues: (r.validation?.score_breakdown?.deductions || []).map(
-      (i) => `-${i.points} ${i.severity} ${i.rule_id}: ${String(i.message || "").slice(0, 120)}`
-    ),
-  });
+  if (bad.length) {
+    console.log(`\n${bad.length} NOT GENERATED:`);
+    for (const x of bad) console.log(`  ${x.status.padEnd(8)} ${x.docType.padEnd(36)} ${x.detail}`);
+  }
+  if (UNDECLARED.size) {
+    console.log("\nfields the validator demanded but the form config marks optional:");
+    for (const [t, keys] of UNDECLARED) console.log(`  ${t.padEnd(36)} ${[...new Set(keys)].join(", ")}`);
+  }
+  const imperfect = ok.filter((x) => (x.score ?? 100) < 100);
+  if (imperfect.length) {
+    console.log(`\n${imperfect.length} types scoring below 100:`);
+    for (const x of imperfect) {
+      console.log(`\n  ${x.docType} — ${x.score}`);
+      for (const i of x.issues) console.log(`      ${i}`);
+    }
+  }
+  if (UNCOVERED_FREE_TEXT.size) {
+    console.log(
+      `\n${UNCOVERED_FREE_TEXT.size} free-text fields answered by the generic fallback (give each its own sample in FIELD_SAMPLES):`
+    );
+    console.log(`  ${[...UNCOVERED_FREE_TEXT].sort().join(", ")}`);
+  }
+  console.log(`\ngenerated ${ok.length}/${types.length}`);
+  if (ok.length) {
+    console.log(`  median words: ${ok.map(x=>x.words).sort((a,b)=>a-b)[Math.floor(ok.length/2)]}`);
+    console.log(`  total stub clauses (<40w) across all types: ${ok.reduce((n,x)=>n+x.stubs,0)}`);
+  }
 }
 
-const ok = rows.filter((x) => x.status === "OK");
-const bad = rows.filter((x) => x.status !== "OK");
-console.log("TYPE                                  SCORE  CLAUSES  WORDS  SUBS  STUBS");
-for (const x of ok.sort((a, b) => a.words - b.words)) {
-  console.log(
-    `${x.docType.padEnd(36)} ${String(x.score).padStart(5)} ${String(x.clauses).padStart(8)} ${String(x.words).padStart(6)} ${String(x.subs).padStart(5)} ${String(x.stubs).padStart(6)}`
-  );
-}
-if (bad.length) {
-  console.log(`\n${bad.length} NOT GENERATED:`);
-  for (const x of bad) console.log(`  ${x.status.padEnd(8)} ${x.docType.padEnd(36)} ${x.detail}`);
-}
-if (UNDECLARED.size) {
-  console.log("\nfields the validator demanded but the form config marks optional:");
-  for (const [t, keys] of UNDECLARED) console.log(`  ${t.padEnd(36)} ${[...new Set(keys)].join(", ")}`);
-}
-const imperfect = ok.filter((x) => (x.score ?? 100) < 100);
-if (imperfect.length) {
-  console.log(`\n${imperfect.length} types scoring below 100:`);
-  for (const x of imperfect) {
-    console.log(`\n  ${x.docType} — ${x.score}`);
-    for (const i of x.issues) console.log(`      ${i}`);
-  }
-}
-if (UNCOVERED_FREE_TEXT.size) {
-  console.log(
-    `\n${UNCOVERED_FREE_TEXT.size} free-text fields answered by the generic fallback (give each its own sample in FIELD_SAMPLES):`
-  );
-  console.log(`  ${[...UNCOVERED_FREE_TEXT].sort().join(", ")}`);
-}
-console.log(`\ngenerated ${ok.length}/${types.length}`);
-if (ok.length) {
-  console.log(`  median words: ${ok.map(x=>x.words).sort((a,b)=>a-b)[Math.floor(ok.length/2)]}`);
-  console.log(`  total stub clauses (<40w) across all types: ${ok.reduce((n,x)=>n+x.stubs,0)}`);
-}
+export { sampleFor, variablesFor };

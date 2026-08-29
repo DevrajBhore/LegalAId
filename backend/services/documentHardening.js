@@ -805,7 +805,15 @@ function resolveLiabilityCapText(variables = {}) {
   const basis = normalizeWhitespace(variables.liability_cap_basis).toLowerCase();
   const amount = parseNumberish(variables.liability_cap_amount);
 
-  if (basis.includes("specific amount") && amount !== null) {
+  // A user who types a cap figure has, by doing so, elected a specific cap --
+  // even if the separate basis select was left untouched. Previously the amount
+  // was discarded unless the basis ALSO said "specific amount", and the
+  // consistency validator then correctly observed that the risk clauses did not
+  // reflect the supplied figure and blocked the whole document. Answering an
+  // optional question produced no draft at all, and an error the user had no way
+  // to act on. This is the same defect, and the same fix, as resolveRenewalSentence.
+  const basisWasChosen = Boolean(basis);
+  if (amount !== null && (basis.includes("specific amount") || !basisWasChosen)) {
     return `shall not exceed ${formatCurrency(amount)} in the aggregate`;
   }
 
@@ -3034,7 +3042,12 @@ function cloneClauseForDraft(clauseId, variables = {}) {
 // had the clause correctly withheld and was then penalised 20 points for
 // "Required hardening clause CORE_FORCE_MAJEURE_001 is missing" -- the same
 // module both forbidding and requiring the clause.
-const PROTECTION_CLAUSE_IDS = {
+// Exported for the same reason it is declared once: the consistency validator
+// kept its own shorter list of which clauses carry the liability cap, and when a
+// document used CORE_LIMITATION_LIABILITY_001 instead of CORE_LIABILITY_CAP_001
+// the validator read a text that did not contain the cap and reported the user's
+// own figure as unreflected - blocking the document over a cap that was in it.
+export const PROTECTION_CLAUSE_IDS = {
   LIABILITY_CAP: ["AUTO-LIAB-001", "CORE_LIABILITY_CAP_001", "CORE_LIMITATION_LIABILITY_001"],
   INDEMNITY: ["AUTO-INDEM-001", "CORE_INDEMNITY_001"],
   FORCE_MAJEURE: ["AUTO-FM-001", "CORE_FORCE_MAJEURE_001"],

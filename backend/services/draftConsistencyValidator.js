@@ -1,6 +1,7 @@
 import { hasMeaningfulValue } from "./generationControls.js";
 import { getParticipantExpectations } from "./draftingPolicy.js";
 import { getVariables } from "../config/variableConfig.js";
+import { PROTECTION_CLAUSE_IDS } from "./documentHardening.js";
 import { partyNameAppears } from "./partyNameMatcher.js";
 import { isAgreement } from "../../shared/documentShape.js";
 
@@ -443,14 +444,21 @@ export function validateDraftConsistency(
     clauses.find((clause) => clause.clause_id === "CORE_RELATIONSHIP_OF_PARTIES_001")?.text || "",
     paymentText,
   ].join("\n");
+  // Which clauses actually carry the cap and the indemnity is declared once, in
+  // documentHardening. This list used to be hardcoded here and had drifted: it
+  // named CORE_LIABILITY_CAP_001 but not CORE_LIMITATION_LIABILITY_001, so any
+  // document assembled with the latter had its liability text read as empty and
+  // the user's own cap figure reported as missing from it.
+  const RISK_CLAUSE_IDS = new Set([
+    ...(PROTECTION_CLAUSE_IDS.LIABILITY_CAP || []),
+    ...(PROTECTION_CLAUSE_IDS.INDEMNITY || []),
+    "CORE_LIABILITY_CAP_001",
+    "CORE_INDEMNITY_001",
+    "GUARANTEE_INDEMNITY_001",
+  ]);
+
   const riskAllocationText = clauses
-    .filter((clause) =>
-      [
-        "CORE_LIABILITY_CAP_001",
-        "CORE_INDEMNITY_001",
-        "GUARANTEE_INDEMNITY_001",
-      ].includes(clause.clause_id)
-    )
+    .filter((clause) => RISK_CLAUSE_IDS.has(clause.clause_id))
     .map((clause) => clause.text || "")
     .join("\n");
   const governanceText = clauses
@@ -868,7 +876,29 @@ export function validateDraftConsistency(
     ["indemnity_scope", "INPUT_MISMATCH_INDEMNITY_SCOPE", "indemnity scope"],
   ];
 
+  // Where the basis explicitly says the cap is something other than a figure -
+  // uncapped, or twelve months' fees - a figure typed into the amount box is not
+  // reflected in the clause, and correctly so. That is a contradiction between
+  // two answers, not a drafting defect, and it is reported as such below rather
+  // than blocking the document with an error the user cannot act on.
+  const capBasis = String(variables.liability_cap_basis || "").toLowerCase();
+  const basisExcludesAFigure =
+    capBasis.length > 0 && !capBasis.includes("specific amount");
+
+  if (basisExcludesAFigure && hasMeaningfulValue(variables.liability_cap_amount)) {
+    issues.push({
+      rule_id: "LIABILITY_CAP_ANSWERS_CONFLICT",
+      severity: "MEDIUM",
+      message: `The liability cap is set to "${variables.liability_cap_basis}", but a specific cap amount was also entered. The clause follows the basis, so the figure has not been used.`,
+      suggestion:
+        'Either clear the amount, or change the basis to "Specific amount" so the figure is the cap.',
+      blocks_generation: false,
+      auto_fixable: false,
+    });
+  }
+
   for (const [fieldName, ruleId, label] of riskMappedFields) {
+    if (fieldName === "liability_cap_amount" && basisExcludesAFigure) continue;
     if (
       supportedFields.has(fieldName) &&
       hasMeaningfulValue(variables[fieldName]) &&
