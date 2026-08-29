@@ -1,4 +1,16 @@
-.layout { display: flex; flex-direction: column; min-height: 100vh; }
-.layout-content { flex: 1; }
+/* Layout shell. The workspace route (the editor) runs full-bleed without the
+   marketing chrome; every other route gets the header, a flexible main, and a
+   footer pinned to the bottom of short pages. */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  /* svh, not vh: on mobile Safari, 100vh is the height with the URL bar
+     hidden, so a vh-based shell overflows by the height of that bar. */
+  min-height: 100svh;
+}
+
+.layout-content { flex: 1 1 auto; min-width: 0; }
+
 .layout--workspace { background: var(--ink); }
-.layout-content--workspace { min-height: 100vh; }
+.layout-content--workspace { min-height: 100svh; }

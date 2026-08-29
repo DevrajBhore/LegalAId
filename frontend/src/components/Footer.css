@@ -1,172 +1,140 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Footer
+
+   The link columns now use an auto-fit grid rather than a hard three-column
+   track. Before, they went 3 → 1 at 700px, which produced a very tall stack on
+   a phone: three headed lists end to end, pushing the legal line far below the
+   fold. Auto-fit gives 3 → 2 → 1 naturally, so the tablet width keeps two
+   columns and the phone stack is roughly half as long.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .footer {
-  margin-top: 56px;
+  margin-top: var(--sp-section);
   background:
-    radial-gradient(circle at top left, rgba(184, 147, 58, 0.1), transparent 28%),
+    radial-gradient(ellipse 60% 80% at top left, var(--gold-pale), transparent 60%),
     #08090b;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--line);
 }
 
 .footer-shell {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 56px 32px 40px;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--sp-block) var(--sp-gutter) var(--sp-10);
   display: grid;
-  grid-template-columns: minmax(280px, 1.2fr) minmax(0, 2fr);
-  gap: 56px;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.6fr);
+  gap: clamp(var(--sp-8), 5vw, var(--sp-16));
 }
 
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 360px;
+  gap: var(--sp-4);
+  max-width: 40ch;
 }
 
-.footer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.footer-logo-mark {
-  display: inline-flex;
-  align-items: center;
-  color: var(--gold);
-}
-
-.footer-logo-mark svg {
-  width: 18px;
-  height: 18px;
-}
+.footer-logo { display: inline-flex; align-items: center; gap: var(--sp-3); width: fit-content; }
+.footer-logo-mark { display: inline-flex; align-items: center; color: var(--gold); }
+.footer-logo-mark svg { width: 18px; height: 18px; }
 
 .footer-logo-text {
   font-family: var(--font-display);
-  font-size: 20px;
-  color: #fff;
+  font-size: var(--fs-md);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
 }
-
-.footer-logo-text em {
-  color: var(--gold);
-  font-style: italic;
-}
+.footer-logo-text em { color: var(--gold); font-style: italic; }
 
 .footer-desc {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 14px;
-  line-height: 1.7;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
 }
 
 .footer-trust {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-2);
   width: fit-content;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-full);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
 }
 
 .footer-trust-dot {
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--gold-pale);
 }
 
+/* 3 → 2 → 1 with no breakpoint of its own. */
 .footer-nav {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: var(--sp-8) var(--sp-6);
 }
 
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.footer-col { display: flex; flex-direction: column; gap: var(--sp-3); min-width: 0; }
 
 .footer-col-title {
-  margin-bottom: 4px;
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  margin-bottom: var(--sp-1);
+  color: var(--text-faint);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
-  text-decoration: none;
-  transition: color 0.14s ease;
+  display: inline-flex;
+  align-items: center;
+  /* A comfortable row height so adjacent links are not one blurred target. */
+  min-height: 32px;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  width: fit-content;
+  transition: color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
 }
+.footer-link:hover { color: var(--gold); transform: translateX(2px); }
 
-.footer-link:hover {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
+.footer-bottom { border-top: 1px solid var(--line); }
 
 .footer-bottom-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 18px 32px 26px;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--sp-5) var(--sp-gutter) calc(var(--sp-6) + env(safe-area-inset-bottom, 0px));
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: var(--sp-4);
   flex-wrap: wrap;
 }
 
-.footer-copy {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 12px;
-}
+.footer-copy { color: var(--text-faint); font-size: var(--fs-xs); }
 
-.footer-legal {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
+.footer-legal { display: flex; align-items: center; flex-wrap: wrap; gap: var(--sp-5); }
 .footer-legal a {
-  color: rgba(255, 255, 255, 0.34);
-  font-size: 12px;
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--text-faint);
+  font-size: var(--fs-xs);
+}
+.footer-legal a:hover { color: var(--text-secondary); }
+
+/* Brand column sits above the links once they no longer fit side by side. */
+@media (max-width: 900px) {
+  .footer-shell { grid-template-columns: 1fr; gap: var(--sp-10); }
+  .footer-brand { max-width: none; }
 }
 
-.footer-legal a:hover {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-@media (max-width: 980px) {
-  .footer-shell {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-}
-
-@media (max-width: 700px) {
-  .footer-shell {
-    padding: 42px 20px 32px;
-  }
-
-  .footer-nav {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .footer-bottom-inner {
-    padding: 16px 20px 24px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+@media (max-width: 560px) {
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
 }

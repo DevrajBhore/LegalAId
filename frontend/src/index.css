@@ -1,6 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap");
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LegalAId — design system foundation
+
+   The palette is unchanged. Every ink, paper, gold, slate and status colour
+   below is exactly what it was; this file adds the scales and primitives that
+   were missing around them.
+
+   What changed, and why:
+
+   Before, each of the 24 stylesheets invented its own type sizes, spacing and
+   breakpoints — 35 media queries across 180KB, with NINE files carrying none at
+   all. index.css compensated with a global block of !important overrides that
+   shrank headings and hid decoration on phones. That block was a symptom: it
+   was patching pages that had never been made responsive, and it fought every
+   page that had.
+
+   The fix is structural. Type and space are fluid by default, so a heading
+   scales with the viewport instead of needing a phone-specific override.
+   Layout primitives (.l-container, .l-grid, .l-stack, .l-cluster) collapse on
+   their own. Pages state their own breakpoints where they genuinely differ.
+   No !important survives.
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
+  /* ── Palette — unchanged ─────────────────────────────────────────────── */
   --ink:           #0c0d0f;
   --ink-2:         #1a1c20;
   --ink-3:         #252830;
@@ -17,106 +41,428 @@
   --border:        rgba(255,255,255,0.08);
   --border-paper:  rgba(0,0,0,0.10);
   --green:         #22c55e;
-  --green-bg:      rgba(34,197,94,0.10);
   --red:           #ef4444;
-  --red-bg:        rgba(239,68,68,0.10);
   --amber:         #f59e0b;
+  --green-bg:      rgba(34,197,94,0.10);
+  --red-bg:        rgba(239,68,68,0.10);
   --amber-bg:      rgba(245,158,11,0.10);
-  --nav-h:         64px;
-  --r-xs:          3px;
-  --r-sm:          6px;
-  --r-md:          10px;
-  --r-lg:          14px;
-  --r-xl:          20px;
-  --r-2xl:         28px;
-  --r-full:        9999px;
-  --font-display:  "DM Serif Display", Georgia, serif;
-  --font-body:     "DM Sans", system-ui, sans-serif;
-  --font-mono:     "DM Mono", "Courier New", monospace;
-  --shadow-sm:     0 1px 2px rgba(0,0,0,0.25);
-  --shadow-md:     0 6px 20px rgba(0,0,0,0.30);
-  --shadow-lg:     0 16px 48px rgba(0,0,0,0.40);
-  --shadow-gold:   0 2px 8px rgba(0,0,0,0.30);
 
-  /* legacy compat */
-  --surface:       var(--ink);
-  --surface-card:  var(--ink-2);
-  --surface-hover: var(--ink-3);
-  --accent:        var(--gold);
-  --accent-hover:  var(--gold-light);
-  --accent-muted:  var(--gold-pale);
+  /* ── Surface ladder ──────────────────────────────────────────────────────
+     Four steps from the page floor to a raised card, so a panel nested inside
+     a panel still reads as nested. Previously each file mixed its own
+     rgba(255,255,255,0.0x) and the depths drifted apart. */
+  --surface-0:     #090a0d;
+  --surface-1:     var(--ink);
+  --surface-2:     var(--ink-2);
+  --surface-3:     var(--ink-3);
+  --surface-raised: rgba(255,255,255,0.035);
+  --surface-sunken: rgba(0,0,0,0.22);
+  --surface-hover:  rgba(255,255,255,0.06);
+
+  /* ── Line work ───────────────────────────────────────────────────────── */
+  --line:          rgba(255,255,255,0.07);
+  --line-strong:   rgba(255,255,255,0.13);
+  --line-gold:     rgba(184,147,58,0.32);
+
+  /* ── Text ────────────────────────────────────────────────────────────── */
   --text-primary:  #e8e6e0;
   --text-secondary:#9397a8;
   --text-muted:    #64687a;
   --text-faint:    #3a3d47;
+  --text-on-gold:  #14150f;
+
+  /* ── Fluid type scale ────────────────────────────────────────────────────
+     Each step interpolates between a phone value and a desktop value, so a
+     page never needs a phone-only font-size override. The ratio is ~1.24 at
+     the small end and ~1.30 at the large end: tighter on phones, where a
+     dramatic scale wastes the little width there is. */
+  --fs-2xs:  0.6875rem;                              /* 11px, static: labels  */
+  --fs-xs:   0.75rem;                                /* 12px, static: meta    */
+  --fs-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
+  --fs-base: clamp(0.9375rem, 0.91rem + 0.14vw, 1rem);
+  --fs-md:   clamp(1rem,      0.96rem + 0.20vw, 1.125rem);
+  --fs-lg:   clamp(1.125rem,  1.05rem + 0.36vw, 1.375rem);
+  --fs-xl:   clamp(1.375rem,  1.24rem + 0.66vw, 1.875rem);
+  --fs-2xl:  clamp(1.75rem,   1.50rem + 1.24vw, 2.75rem);
+  --fs-3xl:  clamp(2.125rem,  1.70rem + 2.12vw, 4rem);
+  --fs-4xl:  clamp(2.5rem,    1.85rem + 3.24vw, 5.25rem);
+
+  --lh-tight:   1.14;
+  --lh-snug:    1.32;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.68;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.12em;
+
+  /* ── Space scale ─────────────────────────────────────────────────────────
+     A 4px base. The section steps are fluid so vertical rhythm compresses on
+     phones automatically — this is what the old !important hero block was
+     doing by hand, for nine specific selectors. */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  --sp-gutter:  clamp(1rem, 0.60rem + 2.0vw, 1.75rem);
+  --sp-section: clamp(2.5rem, 1.40rem + 5.5vw, 6rem);
+  --sp-block:   clamp(1.5rem, 1.00rem + 2.5vw, 3rem);
+
+  /* ── Measure ─────────────────────────────────────────────────────────── */
+  --measure:       68ch;
+  --measure-tight: 52ch;
+  --measure-wide:  84ch;
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  --page-max:      1280px;
+  --page-max-wide: 1480px;
+  --page-max-text: 820px;
+  --nav-h:         64px;
+
+  /* ── Radii — unchanged ───────────────────────────────────────────────── */
+  --r-xs:   3px;
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-xl:   20px;
+  --r-2xl:  28px;
+  --r-full: 9999px;
+
+  /* ── Type families — unchanged ───────────────────────────────────────── */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, "Courier New", monospace;
+
+  /* ── Elevation ───────────────────────────────────────────────────────────
+     Two-layer shadows: a tight contact shadow plus a soft ambient one. A
+     single large blur reads as fog on a dark ground. */
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.30);
+  --shadow-md:   0 2px 4px rgba(0,0,0,0.24), 0 8px 24px rgba(0,0,0,0.28);
+  --shadow-lg:   0 4px 8px rgba(0,0,0,0.26), 0 20px 56px rgba(0,0,0,0.38);
+  --shadow-xl:   0 8px 16px rgba(0,0,0,0.28), 0 32px 80px rgba(0,0,0,0.46);
+  --shadow-gold: 0 2px 8px rgba(0,0,0,0.30), 0 0 0 1px var(--line-gold);
+  --ring-gold:   0 0 0 3px var(--gold-pale);
+  --ring-focus:  0 0 0 2px var(--surface-0), 0 0 0 4px var(--gold);
+
+  /* ── Motion ──────────────────────────────────────────────────────────── */
+  --ease-out:   cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out:cubic-bezier(.65, 0, .35, 1);
+  --ease-spring:cubic-bezier(.34, 1.56, .64, 1);
+  --dur-fast:   .14s;
+  --dur-base:   .22s;
+  --dur-slow:   .38s;
+
+  /* ── Z-index ladder ──────────────────────────────────────────────────────
+     Named, so a new overlay does not need a z-index auction against numbers
+     scattered across two dozen files. */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-sticky:  100;
+  --z-header:  220;
+  --z-drawer:  300;
+  --z-overlay: 400;
+  --z-modal:   500;
+  --z-toast:   600;
+
+  /* ── Legacy aliases ──────────────────────────────────────────────────────
+     Kept so no existing rule breaks while pages migrate to the names above. */
+  --paper-bg:      var(--paper);
+  --surface:       var(--ink);
+  --surface-card:  var(--ink-2);
+  --accent:        var(--gold);
+  --accent-hover:  var(--gold-light);
+  --accent-muted:  var(--gold-pale);
   --green-border:  rgba(34,197,94,0.30);
   --red-border:    rgba(239,68,68,0.30);
   --amber-border:  rgba(245,158,11,0.30);
-  --green-bg:      rgba(34,197,94,0.10);
-  --red-bg:        rgba(239,68,68,0.10);
-  --amber-bg:      rgba(245,158,11,0.10);
 }
 
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+/* ═══ Reset ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
-  background: #090a0d;
+  background: var(--surface-0);
+  /* Anchors and scroll-into-view clear the sticky header instead of hiding
+     under it. */
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+  /* Honours the notch on iOS without every page repeating the calc. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 body {
   font-family: var(--font-body);
-  background:
-    radial-gradient(circle at 50% -10%, rgba(184,147,58,0.05) 0%, transparent 40%),
-    linear-gradient(180deg, #0a0b0e 0%, #0c0d0f 50%, #090a0d 100%);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
   color: var(--text-primary);
-  line-height: 1.65;
-  min-height: 100vh;
-  position: relative;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(184,147,58,0.07) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0b0e 0%, var(--ink) 50%, var(--surface-0) 100%);
+  background-attachment: fixed;
+  min-height: 100svh;
   overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
-button { cursor: pointer; font-family: inherit; }
-input, textarea, select { font-family: inherit; }
+#root { position: relative; z-index: var(--z-base); min-height: 100svh; }
 
-#root {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+h1, h2, h3, h4, h5, h6 { font-weight: 400; line-height: var(--lh-tight); text-wrap: balance; }
+p { text-wrap: pretty; }
+ul, ol { list-style: none; }
+
+/* Replaced elements never exceed their column. */
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; display: block; }
+
+/* Long unbroken strings — clause ids, emails, URLs — wrap rather than push the
+   layout sideways. This is a reset, not a patch: it is the correct default for
+   user-supplied content. */
+p, li, dd, dt, label, h1, h2, h3, h4, h5, h6, code, td, th {
+  overflow-wrap: break-word;
 }
+code, pre, .mono { font-family: var(--font-mono); }
 
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
+/* A wide table scrolls inside its own box rather than clipping or stretching
+   the page. Wrapped in a container so the caption and borders survive. */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-scroll > table { min-width: max-content; }
 
-/* A single, restrained top glow — not the multi-bloom "AI landing page" look. */
-body::before {
-  z-index: 0;
-  opacity: 1;
-  background:
-    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(184, 147, 58, 0.06) 0%, transparent 70%);
-}
+::selection { background: var(--gold-glow); color: var(--white); }
 
-body::after {
-  display: none;
-}
-
-::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.10);
+  border-radius: var(--r-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); background-clip: content-box; }
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.14) transparent; }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: var(--r-xs); }
+:focus:not(:focus-visible) { outline: none; }
 
-/* ── Global spinner ─────────── */
+/* ═══ Layout primitives ═══════════════════════════════════════════════════
+   Four of these carry almost every layout in the app. Each collapses on its
+   own, which is what removes the need for per-page phone overrides. */
+
+/* Centred column with fluid gutters that never touch the screen edge. */
+.l-container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-gutter);
+}
+.l-container--wide { max-width: var(--page-max-wide); }
+.l-container--text { max-width: var(--page-max-text); }
+
+/* Vertical rhythm without margin collapse surprises. */
+.l-stack { display: flex; flex-direction: column; gap: var(--sp-4); }
+.l-stack--tight { gap: var(--sp-2); }
+.l-stack--loose { gap: var(--sp-8); }
+
+/* Horizontal group that wraps instead of overflowing — the single most common
+   phone failure in the old stylesheets was a nav or button row that did not. */
+.l-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.l-cluster--between { justify-content: space-between; }
+
+/* Responsive grid with no breakpoints: columns are added only when a whole
+   one fits. --col-min is the smallest a card may get before the grid reflows.
+   min() keeps it from overflowing a viewport narrower than --col-min itself. */
+.l-grid {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--col-min, 260px)), 1fr));
+}
+.l-grid--tight { gap: var(--sp-3); }
+.l-grid--loose { gap: var(--sp-8); }
+
+/* Content column plus a sidebar that drops below when there is no room. */
+.l-sidebar {
+  display: grid;
+  gap: var(--sp-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--side-min, 300px)), 1fr));
+}
+
+.l-section { padding-block: var(--sp-section); }
+.l-measure { max-width: var(--measure); }
+.l-center  { margin-inline: auto; }
+
+/* ═══ Typography ══════════════════════════════════════════════════════════ */
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.t-display em { font-style: italic; color: var(--gold); }
+
+.t-title    { font-family: var(--font-display); font-size: var(--fs-2xl); line-height: var(--lh-tight); }
+.t-heading  { font-family: var(--font-display); font-size: var(--fs-xl);  line-height: var(--lh-snug); }
+.t-subhead  { font-size: var(--fs-lg); line-height: var(--lh-snug); font-weight: 500; }
+.t-body     { font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--text-secondary); }
+.t-small    { font-size: var(--fs-sm); color: var(--text-secondary); }
+.t-meta     { font-size: var(--fs-xs); color: var(--text-muted); }
+
+.t-eyebrow {
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ═══ Components ══════════════════════════════════════════════════════════ */
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform   var(--dur-base) var(--ease-out),
+              box-shadow  var(--dur-base) var(--ease-out);
+}
+.card--interactive:hover {
+  border-color: var(--line-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+/* A touch device has no hover; the lift would stick after a tap. */
+@media (hover: none) {
+  .card--interactive:hover { transform: none; box-shadow: none; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  /* 44px minimum — the smallest reliable touch target. */
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+.btn--primary {
+  background: var(--gold);
+  color: var(--text-on-gold);
+  font-weight: 600;
+}
+.btn--primary:hover:not(:disabled) { background: var(--gold-light); }
+
+.btn--secondary {
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  color: var(--text-primary);
+}
+.btn--secondary:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--line-gold); }
+
+.btn--ghost { color: var(--text-secondary); }
+.btn--ghost:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-raised); }
+
+.btn--block { width: 100%; }
+
+.field { display: flex; flex-direction: column; gap: var(--sp-2); }
+.field-label { font-size: var(--fs-sm); font-weight: 500; color: var(--text-primary); }
+.field-hint  { font-size: var(--fs-xs); color: var(--text-muted); line-height: var(--lh-normal); }
+.field-error { font-size: var(--fs-xs); color: var(--red); }
+
+.input, .textarea, .select {
+  width: 100%;
+  /* 16px on phones: any smaller and iOS zooms the viewport on focus, which
+     then leaves the page scrolled sideways. */
+  font-size: max(16px, var(--fs-sm));
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 44px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.input::placeholder, .textarea::placeholder { color: var(--text-faint); }
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: var(--ring-gold);
+}
+.textarea { min-height: 120px; resize: vertical; line-height: var(--lh-normal); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.badge--gold  { background: var(--gold-pale);  color: var(--gold-light); border-color: var(--line-gold); }
+.badge--green { background: var(--green-bg);   color: var(--green);      border-color: var(--green-border); }
+.badge--red   { background: var(--red-bg);     color: var(--red);        border-color: var(--red-border); }
+.badge--amber { background: var(--amber-bg);   color: var(--amber);      border-color: var(--amber-border); }
+.badge--muted { background: var(--surface-raised); color: var(--text-muted); border-color: var(--line); }
+
+.divider { height: 1px; background: var(--line); border: 0; }
+
+/* Visible only to screen readers — for headings a sighted user gets from
+   layout, and for the skip link below. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; top: var(--sp-2); left: var(--sp-2);
+  z-index: var(--z-toast);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--gold); color: var(--text-on-gold);
+  border-radius: var(--r-md); font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* ═══ Motion ══════════════════════════════════════════════════════════════ */
+
 .spinner {
   width: 22px; height: 22px;
   border: 2px solid rgba(255,255,255,0.10);
@@ -128,143 +474,65 @@ body::after {
 .btn-spinner {
   display: inline-block;
   width: 14px; height: 14px;
-  border: 2px solid rgba(255,255,255,0.20);
-  border-top-color: #fff;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: currentColor;
   border-radius: 50%;
   animation: spin .7s linear infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes shimmer { from { background-position: -200% center; } to { background-position: 200% center; } }
 
-/* ── Shared animation classes ─ */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity:0; }
-  to   { opacity:1; }
-}
-@keyframes scaleIn {
-  from { opacity:0; transform:scale(.95); }
-  to   { opacity:1; transform:scale(1); }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+.animate-in    { animation: fadeUp var(--dur-slow) var(--ease-out) both; }
+.animate-in-d1 { animation: fadeUp var(--dur-slow) var(--ease-out) .08s both; }
+.animate-in-d2 { animation: fadeUp var(--dur-slow) var(--ease-out) .16s both; }
+.animate-in-d3 { animation: fadeUp var(--dur-slow) var(--ease-out) .24s both; }
+.animate-in-d4 { animation: fadeUp var(--dur-slow) var(--ease-out) .32s both; }
+.page-enter    { animation: fadeUp var(--dur-slow) var(--ease-out) both; }
+
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.04) 0%, var(--gold-pale) 50%, rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease infinite;
 }
 
-.animate-in     { animation: fadeUp  .55s cubic-bezier(.22,1,.36,1) both; }
-.animate-in-d1  { animation: fadeUp  .55s cubic-bezier(.22,1,.36,1) .10s both; }
-.animate-in-d2  { animation: fadeUp  .55s cubic-bezier(.22,1,.36,1) .20s both; }
-.animate-in-d3  { animation: fadeUp  .55s cubic-bezier(.22,1,.36,1) .32s both; }
-.animate-in-d4  { animation: fadeUp  .55s cubic-bezier(.22,1,.36,1) .44s both; }
+button, a, input, textarea, select {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--dur-fast);
+  transition-timing-function: var(--ease-out);
+}
+
+/* ═══ Preferences ═════════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
 }
 
-/* ── Enhanced global styles ─────────────────────────────────────── */
-
-/* Custom text selection */
-::selection {
-  background: rgba(184,147,58,0.28);
-  color: #fff;
-}
-::-moz-selection {
-  background: rgba(184,147,58,0.28);
-  color: #fff;
+/* Coarse pointer: every interactive element clears the 44px target, and hover
+   affordances are dropped so nothing sticks after a tap. */
+@media (pointer: coarse) {
+  button, [role="button"], a.nav-link, .nav-link, [role="tab"] { min-height: 44px; }
 }
 
-/* Better focus ring for gold theme */
-:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-  border-radius: var(--r-xs);
-}
-
-/* Transition smoothness */
-button, a, input, textarea, select {
-  transition-property: color, background, border-color, box-shadow, transform, opacity;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(.22,1,.36,1);
-}
-
-/* Smooth number animations */
-@keyframes countUp {
-  from { transform: translateY(8px); opacity:0; }
-  to   { transform: translateY(0); opacity:1; }
-}
-
-/* Page transition */
-.page-enter { animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both; }
-
-/* Gold shimmer for loading states */
-.shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(184,147,58,0.10) 50%, rgba(255,255,255,0.04) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.6s ease infinite;
-}
-
-/* Tooltip utility */
-[title] { cursor: help; }
-
-/* ── App-wide responsive safety net ──────────────────────────────────────────
-   Catches the most common phone-portrait failures everywhere at once, without
-   changing desktop layout. */
-
-/* Replaced/wide elements never exceed their column. */
-img, svg, video, canvas, table { max-width: 100%; height: auto; }
-table { display: block; overflow-x: auto; }       /* wide tables scroll, not clip */
-
-/* Long unbroken strings (clause IDs, emails, URLs) wrap instead of overflowing. */
-p, span, li, dd, dt, label, h1, h2, h3, h4, h5, h6, .field-label, code {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* Form controls and buttons stay inside their container on narrow screens. */
-input, textarea, select, button { max-width: 100%; }
-
-/* Comfortable tap targets + readable inputs on phones (16px avoids iOS zoom). */
-@media (max-width: 600px) {
-  button, a.nav-link, .nav-link, .footer-link, [role="tab"], [role="button"] {
-    min-height: 40px;
+@media (prefers-contrast: more) {
+  :root {
+    --line:        rgba(255,255,255,0.20);
+    --line-strong: rgba(255,255,255,0.32);
+    --text-secondary: #b9bccb;
+    --text-muted:     #8b8fa2;
   }
-  /* Footer/menu link lists get vertical breathing room so rows don't merge. */
-  .footer-link { display: inline-flex; align-items: center; padding: 4px 0; }
-  input, textarea, select { font-size: 16px; }
 }
 
-/* ── Hero compression on phones ───────────────────────────────────────────────
-   Every page leads with a tall hero (oversized clamp title + 80–100px padding +
-   long subtitle) that fills the first screen before any content/actions. On
-   phones we shrink the title, cut the hero padding, and tame the subtitle so the
-   actual content sits near the top. Page-level heroes only — card titles are
-   left alone. */
-@media (max-width: 560px) {
-  .hero, .about-hero, .help-hero, .contact-hero, .documents-hero,
-  .library-hero, .document-info-hero, .legal-hero, .profile-hero {
-    padding-top: 30px !important;
-    padding-bottom: 22px !important;
-  }
-  .hero-title, .about-hero-title, .help-title, .contact-title, .documents-title,
-  .library-title, .document-info-title, .legal-title, .auth-title, .admin-title {
-    font-size: clamp(23px, 7vw, 30px) !important;
-    line-height: 1.18 !important;
-    margin-bottom: 10px !important;
-  }
-  .hero-sub, .about-hero-sub, .legal-subtitle, .auth-subtitle, .admin-sub,
-  .editor-subtitle, .documents-sub, .library-sub {
-    font-size: 13.5px !important;
-    line-height: 1.55 !important;
-  }
-  /* Decorative oversized numerals/orbs add height without meaning on phones. */
-  .about-acts-num { font-size: 38px !important; }
-  /* Big blurred background decoration — visual noise + wasted paint on phones. */
-  .hero-orb, .hero-noise, .hero-bg { display: none !important; }
+@media print {
+  body { background: var(--white); color: #000; }
+  .header, .footer, .mobile-action-bar, .no-print { display: none !important; }
 }

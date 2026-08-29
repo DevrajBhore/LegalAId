@@ -1,334 +1,243 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Document info — the explainer page for a single document type.
+
+   The sticky CTA rail is the important fix. It was `position: sticky` with no
+   height bound, so on a short laptop window a tall rail could not scroll to
+   its own bottom — the "Create this document" button sat below the fold and
+   stayed there. It now caps at the viewport height and scrolls internally, and
+   the sticky behaviour is switched off entirely once the rail drops below the
+   content, where sticking makes no sense.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .document-info-page {
-  padding: 28px 0 72px;
-}
-
-.document-info-hero,
-.document-info-main {
-  width: min(1120px, calc(100% - 48px));
-  margin: 0 auto;
-}
-
-.document-info-hero {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 28px 0 34px;
+  padding-block: var(--sp-block) var(--sp-section);
+  padding-inline: var(--sp-gutter);
+  max-width: var(--page-max);
+  margin-inline: auto;
 }
 
 .document-info-back {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 28px;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 13px;
-  font-weight: 600;
+  gap: var(--sp-2);
+  min-height: 40px;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  transition: color var(--dur-fast) var(--ease-out), gap var(--dur-fast) var(--ease-out);
 }
+.document-info-back:hover { color: var(--gold); gap: var(--sp-3); }
 
-.document-info-back:hover {
-  color: var(--white);
-}
+.document-info-hero { padding-block: var(--sp-6) 0; }
 
-.document-info-eyebrow,
-.document-info-section-kicker {
+.document-info-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-2);
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .document-info-title {
-  max-width: 860px;
-  margin: 14px 0 12px;
+  margin-block: var(--sp-4) var(--sp-3);
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 58px);
-  font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
   color: var(--white);
 }
 
 .document-info-tagline {
-  max-width: 760px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 17px;
-  line-height: 1.7;
+  max-width: 62ch;
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
 }
 
 .document-info-quick {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
 }
-
-.document-info-quick div {
-  min-width: 180px;
-  padding: 10px 12px;
-  border-radius: var(--r-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.document-info-quick span {
-  display: block;
-  margin-bottom: 3px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.34);
-}
-
-.document-info-quick strong {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.document-info-main {
-  margin-top: 34px;
-}
-
-.document-info-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 310px;
-  gap: 36px;
-  align-items: start;
-}
-
-.document-info-reader {
+.document-info-quick > * {
+  /* Was min-width:180px, which forced a horizontal overflow on a 360px screen
+     once two chips sat side by side with a gap. */
+  flex: 1 1 min(100%, 180px);
   min-width: 0;
 }
 
+.document-info-main { margin-top: var(--sp-8); }
+
+.document-info-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(min(100%, 300px), 330px);
+  gap: clamp(var(--sp-6), 3vw, var(--sp-10));
+  align-items: start;
+}
+
+.document-info-reader { min-width: 0; }
+
 .document-info-section {
-  padding: 0 0 30px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: var(--sp-8);
+  margin-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--line);
+}
+.document-info-section:last-child { border-bottom: 0; }
+
+.document-info-section-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
 .document-info-section h2,
 .document-info-side h2 {
-  margin: 9px 0 12px;
+  margin-block: var(--sp-3) var(--sp-4);
   font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 400;
-  line-height: 1.16;
-  letter-spacing: -0.03em;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
   color: var(--white);
 }
 
 .document-info-section p,
 .document-info-side p {
-  max-width: 780px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.56);
-  font-size: 15px;
+  max-width: var(--measure);
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
   line-height: 1.78;
 }
 
 .document-info-list {
   display: grid;
-  gap: 9px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+  max-width: var(--measure);
 }
-
 .document-info-list li {
   position: relative;
-  padding-left: 24px;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 14.5px;
-  line-height: 1.65;
+  padding-left: var(--sp-6);
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
 }
-
 .document-info-list li::before {
   content: "";
   position: absolute;
-  top: 10px;
-  left: 2px;
-  width: 7px;
-  height: 7px;
-  border-radius: var(--r-full);
+  left: var(--sp-2);
+  top: 0.65em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
   background: var(--gold);
 }
 
-.document-info-list--ordered {
-  counter-reset: document-step;
-}
-
-.document-info-list--ordered li {
-  counter-increment: document-step;
-  padding-left: 38px;
-}
-
+.document-info-list--ordered { counter-reset: step; }
+.document-info-list--ordered li { counter-increment: step; }
 .document-info-list--ordered li::before {
-  content: counter(document-step);
-  top: 1px;
+  content: counter(step);
+  top: 0;
   left: 0;
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink);
+  width: auto; height: auto;
+  border-radius: 0;
+  background: none;
+  color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  background: var(--gold);
+  font-size: var(--fs-xs);
+  font-weight: 500;
 }
 
-.document-info-faq-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 16px;
-}
+.document-info-faq-list { display: grid; gap: var(--sp-4); margin-top: var(--sp-4); }
 
 .document-info-faq-item {
-  border-radius: var(--r-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.025);
+  padding: var(--sp-5);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
 }
-
-.document-info-faq-item summary {
-  padding: 14px 16px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 14px;
+.document-info-faq-item h3 {
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-base);
   font-weight: 600;
-  cursor: pointer;
-}
-
-.document-info-faq-item summary::marker {
-  color: var(--gold);
-}
-
-.document-info-faq-item p {
-  margin: 0;
-  padding: 0 16px 16px;
-  color: rgba(255, 255, 255, 0.54);
-  font-size: 14px;
-  line-height: 1.7;
+  color: var(--text-primary);
 }
 
 .document-info-disclaimer {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
-  margin-bottom: 0;
-  border-radius: var(--r-md);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  background: rgba(245, 158, 11, 0.06);
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--amber-border);
+  background: var(--amber-bg);
+  margin-top: var(--sp-6);
 }
+.document-info-disclaimer-icon { color: var(--amber); flex-shrink: 0; display: flex; }
+.document-info-disclaimer p { color: var(--text-secondary); font-size: var(--fs-sm); line-height: var(--lh-relaxed); }
 
-.document-info-disclaimer-icon {
-  display: inline-flex;
-  flex: 0 0 auto;
-  color: var(--amber);
-  margin-top: 2px;
-}
-
-.document-info-disclaimer p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 13px;
-  line-height: 1.65;
-}
+/* ── Sticky CTA rail ─────────────────────────────────────────────────────── */
 
 .document-info-side {
   position: sticky;
-  top: calc(var(--nav-h) + 24px);
+  top: calc(var(--nav-h) + var(--sp-6));
+  /* Bounded, and scrollable if the rail is taller than the window — otherwise
+     the button at its foot is unreachable on a short screen. */
+  max-height: calc(100svh - var(--nav-h) - var(--sp-10));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .document-info-side-box {
   display: grid;
-  gap: 14px;
-  padding: 20px;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
   border-radius: var(--r-lg);
-  border: 1px solid rgba(184, 147, 58, 0.22);
-  background: rgba(184, 147, 58, 0.07);
+  border: 1px solid var(--line-gold);
+  background: rgba(184,147,58,0.07);
 }
 
-.document-info-side h2 {
-  margin-bottom: 0;
-  font-size: 26px;
-}
-
-.document-info-side p {
-  font-size: 14px;
-  line-height: 1.6;
-}
+.document-info-side h2 { margin-bottom: 0; font-size: var(--fs-lg); }
+.document-info-side p  { font-size: var(--fs-sm); line-height: var(--lh-relaxed); }
 
 .document-info-primary,
 .document-info-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  gap: var(--sp-2);
+  min-height: 46px;
+  padding: var(--sp-3) var(--sp-4);
   border-radius: var(--r-md);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: 600;
   text-align: center;
+  transition: background var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
 }
 
 .document-info-primary {
-  gap: 8px;
-  padding: 12px 16px;
   border: 0;
-  color: var(--ink);
+  color: var(--text-on-gold);
   background: var(--gold);
   box-shadow: var(--shadow-gold);
 }
-
-.document-info-primary:hover {
-  background: var(--gold-light);
-  transform: translateY(-1px);
-}
+.document-info-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
 
 .document-info-secondary {
-  padding: 11px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--line-strong);
+  color: var(--text-secondary);
   background: transparent;
+  font-weight: 500;
 }
+.document-info-secondary:hover { color: var(--white); border-color: var(--line-gold); }
 
-.document-info-secondary:hover {
-  color: var(--white);
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
-@media (max-width: 920px) {
-  .document-info-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .document-info-side {
-    position: static;
-    order: -1;
-  }
-
-  .document-info-side-box {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .document-info-page {
-    padding: 16px 0 56px;
-  }
-
-  .document-info-hero,
-  .document-info-main {
-    width: min(100% - 28px, 1120px);
-  }
-
-  /* Decorative metadata strip — noise on a phone; the CTA box (moved to the top)
-     and the sticky Generate bar carry the action. */
-  .document-info-quick { display: none; }
-  /* Tighten the side CTA box that now sits at the top of the stack. */
-  .document-info-side-box { padding: 18px; }
+@media (max-width: 940px) {
+  .document-info-layout { grid-template-columns: 1fr; }
+  /* Below the content it is just a block — sticking it would pin a panel over
+     the footer as the user scrolls past. */
+  .document-info-side { position: static; max-height: none; overflow: visible; }
 }

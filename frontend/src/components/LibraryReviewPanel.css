@@ -5,12 +5,12 @@
 .lib-coverage-bar {
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--surface-hover);
   overflow: hidden;
 }
 .lib-coverage-fill {
   height: 100%;
-  background: var(--gold, #c8a24a);
+  background: var(--gold, var(--gold));
   transition: width 240ms ease;
 }
 .lib-coverage-stats {
@@ -18,16 +18,16 @@
   align-items: baseline;
   gap: 10px;
   margin-top: 8px;
-  font-size: 13px;
+  font-size:var(--fs-sm);
   color: rgba(255, 255, 255, 0.75);
   flex-wrap: wrap;
 }
-.lib-coverage-stats strong { font-size: 18px; color: var(--white, #fff); }
-.lib-coverage-stats span { color: rgba(255, 255, 255, 0.4); }
+.lib-coverage-stats strong { font-size:var(--fs-md); color: var(--white, var(--white)); }
+.lib-coverage-stats span { color: var(--text-muted); }
 .lib-hint {
   margin: 8px 0 0;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.34);
+  font-size:var(--fs-xs);
+  color: var(--text-faint);
   font-family: var(--font-mono);
 }
 
@@ -37,8 +37,8 @@
   gap: 5px;
   flex: 1;
   min-width: 220px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size:var(--fs-xs);
+  color: var(--text-secondary);
 }
 .lib-optional {
   color: rgba(255, 255, 255, 0.28);
@@ -48,13 +48,13 @@
 .lib-field input,
 .lib-field textarea,
 .lib-search input {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface-raised);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--r-md, 8px);
-  color: var(--text-primary, #fff);
+  color: var(--text-primary, var(--white));
   padding: 9px 11px;
   font: inherit;
-  font-size: 13px;
+  font-size:var(--fs-sm);
   width: 100%;
 }
 .lib-field textarea { resize: vertical; line-height: 1.6; }
@@ -73,12 +73,12 @@
   gap: 7px;
   flex: 1;
   min-width: 220px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-faint);
 }
 
 .lib-list { list-style: none; margin: 0; padding: 0; }
 .lib-row {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: var(--r-md, 8px);
   margin-bottom: 8px;
   background: rgba(255, 255, 255, 0.015);
@@ -97,18 +97,18 @@
   color: inherit;
   flex-wrap: wrap;
 }
-.lib-row-head:hover { background: rgba(255, 255, 255, 0.03); }
+.lib-row-head:hover { background: var(--surface-raised); }
 .lib-row-title {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+  font-size:var(--fs-sm);
+  color: var(--text-primary);
 }
 .lib-row-title code {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.3);
+  font-size:var(--fs-2xs);
+  color: var(--text-faint);
 }
 .lib-row-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .lib-reach,
@@ -116,24 +116,24 @@
 .lib-mandatory,
 .lib-state {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.3px;
   text-transform: uppercase;
   padding: 3px 7px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line-strong);
+  color: var(--text-secondary);
   white-space: nowrap;
 }
-.lib-risk--high { color: #f2a3a3; border-color: rgba(242, 163, 163, 0.35); }
-.lib-risk--medium { color: #e8c98a; border-color: rgba(232, 201, 138, 0.32); }
+.lib-risk--high { color: var(--red); border-color: rgba(242, 163, 163, 0.35); }
+.lib-risk--medium { color: var(--gold-light); border-color: rgba(232, 201, 138, 0.32); }
 .lib-mandatory { color: rgba(255, 255, 255, 0.75); }
-.lib-state--ok { color: #93d3a2; border-color: rgba(147, 211, 162, 0.35); }
-.lib-state--open { color: rgba(255, 255, 255, 0.4); }
+.lib-state--ok { color: var(--green); border-color: rgba(147, 211, 162, 0.35); }
+.lib-state--open { color: var(--text-muted); }
 
 .lib-row-body {
   padding: 4px 14px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--surface-hover);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -143,13 +143,13 @@
 .lib-prior-note,
 .lib-caveat {
   margin: 0;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.38);
+  font-size:var(--fs-xs);
+  color: var(--text-faint);
   line-height: 1.6;
 }
 .lib-basis { display: flex; align-items: center; gap: 6px; }
-.lib-prior-note { color: #e8c98a; }
-.lib-caveat { color: rgba(255, 255, 255, 0.3); font-style: italic; }
+.lib-prior-note { color: var(--gold-light); }
+.lib-caveat { color: var(--text-faint); font-style: italic; }
 
 /* The drafter's open question. Given more weight than the clause text on
    purpose: it is the decision the reviewer is actually being asked for, and it
@@ -157,20 +157,20 @@
 .lib-question {
   margin: 0;
   padding: 12px 14px;
-  border-left: 3px solid #e8c98a;
+  border-left: 3px solid var(--gold-light);
   background: rgba(232, 201, 138, 0.07);
   border-radius: 0 6px 6px 0;
 }
 .lib-question-head {
   margin: 0 0 6px;
-  font-size: 11px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #e8c98a;
+  color: var(--gold-light);
 }
 .lib-question-body {
   margin: 0;
-  font-size: 13px;
+  font-size:var(--fs-sm);
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.78);
   white-space: pre-wrap;
@@ -178,10 +178,10 @@
 .lib-statute-alert {
   margin: 0;
   padding: 10px 14px;
-  font-size: 12.5px;
+  font-size:var(--fs-xs);
   line-height: 1.6;
-  color: #ffd7c2;
-  border-left: 3px solid #d4693f;
+  color: var(--amber-bg);
+  border-left: 3px solid var(--amber);
   background: rgba(212, 105, 63, 0.1);
   border-radius: 0 6px 6px 0;
 }
@@ -189,10 +189,10 @@
   margin: 0;
   padding: 12px 14px;
   background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--surface-hover);
   border-radius: var(--r-md, 8px);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size:var(--fs-xs);
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.72);
   white-space: pre-wrap;
@@ -201,8 +201,30 @@
 }
 
 .lib-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.lib-btn--approve { border-color: rgba(147, 211, 162, 0.4); color: #93d3a2; }
-.lib-btn--amend { border-color: rgba(232, 201, 138, 0.4); color: #e8c98a; }
-.lib-btn--reject { border-color: rgba(242, 163, 163, 0.4); color: #f2a3a3; }
-.lib-btn--discuss { color: rgba(255, 255, 255, 0.6); }
-.lib-btn--reset { color: rgba(255, 255, 255, 0.4); margin-left: auto; }
+.lib-btn--approve { border-color: rgba(147, 211, 162, 0.4); color: var(--green); }
+.lib-btn--amend { border-color: rgba(232, 201, 138, 0.4); color: var(--gold-light); }
+.lib-btn--reject { border-color: rgba(242, 163, 163, 0.4); color: var(--red); }
+.lib-btn--discuss { color: var(--text-secondary); }
+.lib-btn--reset { color: var(--text-muted); margin-left: auto; }
+
+
+/* ═══ Responsive ═══════════════════════════════════════════════════════════
+   This file had no breakpoints. It is the advocate's review queue, worked on
+   whatever device is to hand, so the controls row and the four review actions
+   need to survive a narrow screen. */
+
+@media (max-width: 720px) {
+  .lib-controls { flex-wrap: wrap; gap: var(--sp-3); }
+  /* Was min-width:220px, which forced a horizontal overflow at 360px. */
+  .lib-controls > * { flex: 1 1 min(100%, 220px); min-width: 0; }
+
+  .lib-actions { flex-wrap: wrap; gap: var(--sp-2); }
+  .lib-btn--approve,
+  .lib-btn--amend,
+  .lib-btn--discuss,
+  .lib-btn--reject,
+  .lib-btn--reset { flex: 1 1 130px; min-height: 44px; justify-content: center; }
+
+  .lib-coverage-stats { flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); }
+  .lib-docs { overflow-wrap: anywhere; }
+}

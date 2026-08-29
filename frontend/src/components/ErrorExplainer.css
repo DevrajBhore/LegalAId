@@ -1,6 +1,6 @@
 .error-explainer {
-  border: 1px solid #f0c0c0;
-  background: #fff6f6;
+  border: 1px solid var(--red);
+  background: var(--red-bg);
   border-radius: 12px;
   padding: 16px 18px;
   margin: 16px 0;
@@ -8,13 +8,13 @@
 }
 
 .error-explainer--blocked {
-  border-color: #f3c98b;
-  background: #fffaf0;
+  border-color: var(--amber);
+  background: var(--paper);
 }
 
 .error-explainer--warning {
-  border-color: #f3e08b;
-  background: #fffdf0;
+  border-color: var(--gold-light);
+  background: var(--paper);
 }
 
 .error-explainer__head {
@@ -28,11 +28,11 @@
   display: inline-flex;
   width: 24px;
   height: 24px;
-  color: #c0392b;
+  color: var(--red);
 }
 
 .error-explainer--blocked .error-explainer__icon {
-  color: #c97a1a;
+  color: var(--amber);
 }
 
 .error-explainer__headtext {
@@ -44,13 +44,13 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #1f2430;
+  color: var(--ink-3);
 }
 
 .error-explainer__message {
   margin: 4px 0 0;
   font-size: 0.92rem;
-  color: #45505f;
+  color: var(--text-faint);
   line-height: 1.45;
 }
 
@@ -61,12 +61,12 @@
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  color: #8a93a2;
+  color: var(--slate-light);
   padding: 0 4px;
 }
 
 .error-explainer__close:hover {
-  color: #1f2430;
+  color: var(--ink-3);
 }
 
 .error-explainer__body {
@@ -87,12 +87,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #8a93a2;
+  color: var(--slate-light);
 }
 
 .error-explainer__value {
   font-size: 0.9rem;
-  color: #2b3340;
+  color: var(--ink-3);
   line-height: 1.45;
 }
 
@@ -126,34 +126,34 @@
 .error-explainer__item-title {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #1f2430;
+  color: var(--ink-3);
 }
 
 .error-explainer__item-detail {
   font-size: 0.84rem;
-  color: #45505f;
+  color: var(--text-faint);
   line-height: 1.4;
 }
 
 .error-explainer__item-suggestion {
   font-size: 0.82rem;
-  color: #2f7a44;
+  color: var(--green);
 }
 
 .error-explainer__item-action {
   flex: 0 0 auto;
-  border: 1px solid #cfd6df;
-  background: #fff;
+  border: 1px solid var(--text-secondary);
+  background: var(--white);
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 0.8rem;
   cursor: pointer;
-  color: #2b3340;
+  color: var(--ink-3);
   white-space: nowrap;
 }
 
 .error-explainer__item-action:hover {
-  border-color: #9aa4b2;
+  border-color: var(--slate-light);
 }
 
 .error-explainer__technical {
@@ -165,7 +165,7 @@
   background: transparent;
   padding: 0;
   font-size: 0.8rem;
-  color: #6b7480;
+  color: var(--slate);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -173,12 +173,30 @@
 .error-explainer__technical-body {
   margin: 8px 0 0;
   padding: 10px;
-  background: #2b3340;
-  color: #e7ebf0;
+  background: var(--ink-3);
+  color: var(--text-primary);
   border-radius: 6px;
   font-size: 0.78rem;
   white-space: pre-wrap;
   word-break: break-word;
   max-height: 180px;
   overflow: auto;
+}
+
+
+/* ═══ Responsive ═══════════════════════════════════════════════════════════
+   This file had no breakpoints. Each row is a title/detail block beside an
+   action button; on a phone the button was squeezed to a sliver. */
+
+@media (max-width: 560px) {
+  .error-explainer__item { flex-wrap: wrap; }
+  .error-explainer__item-main { flex: 1 1 100%; min-width: 0; }
+  .error-explainer__item-action {
+    flex: 1 1 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .error-explainer__head { flex-wrap: wrap; }
+  /* The close control keeps its own corner while the heading wraps. */
+  .error-explainer__close { margin-left: auto; }
 }

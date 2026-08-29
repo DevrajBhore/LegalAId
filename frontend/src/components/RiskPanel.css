@@ -12,71 +12,71 @@
 .risk-panel-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 2px; }
 .risk-panel-title {
   margin: 0; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,0.32);
+  text-transform: uppercase; letter-spacing: .14em; color: var(--text-faint);
 }
 .risk-panel-subtitle {
-  margin: 0; font-size: 12px; color: rgba(255,255,255,0.40); line-height: 1.55;
+  margin: 0; font-size:var(--fs-xs); color: var(--text-muted); line-height: 1.55;
 }
 
 /* ── EMPTY STATE ── */
 .risk-empty {
   padding: 36px 14px; text-align: center;
   border-radius: var(--r-lg);
-  background: rgba(255,255,255,0.03);
-  border: 1px dashed rgba(255,255,255,0.07);
-  color: rgba(255,255,255,0.38);
+  background: var(--surface-raised);
+  border: 1px dashed var(--surface-hover);
+  color: var(--text-faint);
 }
 .risk-empty-icon { display: inline-flex; margin-bottom: 12px; opacity: .4; }
-.risk-empty p { font-size: 13px; }
+.risk-empty p { font-size:var(--fs-sm); }
 
 /* ── CERTIFICATION BADGE ── */
 .certified-badge {
   display: flex; align-items: center; gap: 10px;
   padding: 11px 14px; border-radius: var(--r-lg);
-  font-size: 13px; font-weight: 600; letter-spacing: -.1px;
+  font-size:var(--fs-sm); font-weight: 600; letter-spacing: -.1px;
 }
 .certified-yes {
-  background: rgba(34,197,94,0.09); border: 1px solid rgba(34,197,94,0.18); color: #6dd49a;
+  background: rgba(34,197,94,0.09); border: 1px solid rgba(34,197,94,0.18); color: var(--green);
 }
 .certified-no {
-  background: rgba(239,68,68,0.09); border: 1px solid rgba(239,68,68,0.16); color: #e87878;
+  background: rgba(239,68,68,0.09); border: 1px solid rgba(239,68,68,0.16); color: var(--red);
 }
 
 /* ── RISK LEVEL BADGE ── */
 .risk-badge {
   display: flex; align-items: center; gap: 8px;
   padding: 10px 13px; border-radius: var(--r-lg);
-  font-size: 12.5px; font-weight: 600;
+  font-size:var(--fs-xs); font-weight: 600;
 }
 .risk-icon, .certified-icon, .no-issues-icon, .download-btn-icon, .issue-fix-icon {
   display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .risk-icon svg, .certified-icon svg { width: 15px; height: 15px; }
 
-.risk-low     { background: rgba(34,197,94,0.08);   border: 1px solid rgba(34,197,94,0.15);   color: #75d99a; }
-.risk-medium  { background: rgba(245,158,11,0.10);  border: 1px solid rgba(245,158,11,0.18);  color: #e5b963; }
-.risk-high    { background: rgba(220,100,40,0.10);  border: 1px solid rgba(220,100,40,0.16);  color: #df8060; }
-.risk-blocked { background: rgba(239,68,68,0.09);   border: 1px solid rgba(239,68,68,0.16);   color: #e87878; }
-.risk-unknown { border: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.55); }
+.risk-low     { background: rgba(34,197,94,0.08);   border: 1px solid rgba(34,197,94,0.15);   color: var(--green); }
+.risk-medium  { background: rgba(245,158,11,0.10);  border: 1px solid rgba(245,158,11,0.18);  color: var(--gold-light); }
+.risk-high    { background: rgba(220,100,40,0.10);  border: 1px solid rgba(220,100,40,0.16);  color: var(--amber); }
+.risk-blocked { background: rgba(239,68,68,0.09);   border: 1px solid rgba(239,68,68,0.16);   color: var(--red); }
+.risk-unknown { border: 1px solid var(--surface-hover); color: var(--text-secondary); }
 
 /* ── BREAKDOWN TABLE ── */
 .risk-breakdown {
   border-radius: var(--r-lg); overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--surface-hover);
   background: rgba(255,255,255,0.025);
 }
 .risk-row {
   display: flex; align-items: center; justify-content: space-between;
   padding: 9px 13px; gap: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid var(--surface-raised);
 }
 .risk-row:last-child { border-bottom: none; }
-.risk-row-label { font-size: 12px; color: rgba(255,255,255,0.45); }
+.risk-row-label { font-size:var(--fs-xs); color: var(--text-muted); }
 .risk-row-val {
   display: inline-flex; align-items: center;
   padding: 2px 8px; border-radius: 99px;
-  font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase;
-  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.82);
+  font-family: var(--font-mono); font-size:var(--fs-2xs); font-weight: 700; text-transform: uppercase;
+  background: var(--surface-hover); color: var(--text-primary);
 }
 
 /* ── NO ISSUES ── */
@@ -85,9 +85,9 @@
   padding: 14px; border-radius: var(--r-lg);
   background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.14);
 }
-.no-issues-icon svg { width: 20px; height: 20px; color: #75d99a; }
-.no-issues-title { font-size: 13.5px; font-weight: 700; color: #75d99a; margin-bottom: 4px; }
-.no-issues-text { font-size: 12px; line-height: 1.55; color: rgba(117,217,154,0.70); margin: 0; }
+.no-issues-icon svg { width: 20px; height: 20px; color: var(--green); }
+.no-issues-title { font-size:var(--fs-sm); font-weight: 700; color: var(--green); margin-bottom: 4px; }
+.no-issues-text { font-size:var(--fs-xs); line-height: 1.55; color: rgba(117,217,154,0.70); margin: 0; }
 
 /* ── ISSUES LIST ── */
 .issues-list { display: flex; flex-direction: column; gap: 9px; }
@@ -96,28 +96,28 @@
 }
 .issues-title {
   margin: 0; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,0.32);
+  text-transform: uppercase; letter-spacing: .12em; color: var(--text-faint);
 }
 .issues-count {
   display: inline-flex; padding: 2px 8px; border-radius: 99px;
   font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.75);
+  background: var(--surface-hover); color: rgba(255,255,255,0.75);
 }
 
 /* Issue cards */
 .issue-item {
   padding: 12px 13px; border-radius: var(--r-lg);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--surface-raised);
+  border: 1px solid var(--surface-hover);
   border-left-width: 3px;
   transition: background .15s;
 }
-.issue-item:hover { background: rgba(255,255,255,0.05); }
+.issue-item:hover { background: var(--surface-raised); }
 
-.sev-critical { border-left-color: #de5e5e; }
-.sev-high     { border-left-color: #d87848; }
-.sev-medium   { border-left-color: #c89a22; }
-.sev-low      { border-left-color: #3aac66; }
+.sev-critical { border-left-color: var(--red); }
+.sev-high     { border-left-color: var(--amber); }
+.sev-medium   { border-left-color: var(--amber); }
+.sev-low      { border-left-color: var(--green); }
 
 .issue-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-bottom: 6px; }
 
@@ -127,34 +127,34 @@
   font-family: var(--font-mono); font-size: 8.5px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .06em;
 }
-.issue-badge.sev-critical { background: rgba(239,68,68,0.14);  color: #e87878; }
-.issue-badge.sev-high     { background: rgba(220,100,40,0.14); color: #df8060; }
-.issue-badge.sev-medium   { background: rgba(245,158,11,0.12); color: #e5b963; }
-.issue-badge.sev-low      { background: rgba(34,197,94,0.12);  color: #75d99a; }
+.issue-badge.sev-critical { background: rgba(239,68,68,0.14);  color: var(--red); }
+.issue-badge.sev-high     { background: rgba(220,100,40,0.14); color: var(--amber); }
+.issue-badge.sev-medium   { background: rgba(245,158,11,0.12); color: var(--gold-light); }
+.issue-badge.sev-low      { background: rgba(34,197,94,0.12);  color: var(--green); }
 
-.issue-rule { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.30); }
+.issue-rule { font-family: var(--font-mono); font-size: 9px; color: var(--text-faint); }
 .issue-message {
-  margin: 0 0 4px; font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.75);
+  margin: 0 0 4px; font-size:var(--fs-xs); line-height: 1.55; color: rgba(255,255,255,0.75);
 }
-.issue-suggestion { margin: 0; font-size: 11.5px; line-height: 1.55; color: rgba(255,255,255,0.45); }
+.issue-suggestion { margin: 0; font-size:var(--fs-2xs); line-height: 1.55; color: var(--text-muted); }
 
 /* AI Fix button */
 .issue-fix-btn {
   display: inline-flex; align-items: center; gap: 7px;
   margin-top: 10px; padding: 7px 12px;
-  border: 1px solid rgba(184,147,58,0.22);
+  border: 1px solid var(--line-gold);
   border-radius: var(--r-full);
-  background: rgba(184,147,58,0.10); color: var(--gold);
-  font-size: 11.5px; font-weight: 700; transition: all .15s;
+  background: var(--gold-pale); color: var(--gold);
+  font-size:var(--fs-2xs); font-weight: 700; transition: all .15s;
 }
 .issue-fix-btn:hover:not(:disabled) {
-  background: rgba(184,147,58,0.18); border-color: rgba(184,147,58,0.35);
+  background: var(--gold-pale); border-color: rgba(184,147,58,0.35);
 }
 .issue-fix-btn:disabled, .issue-fix-btn.fixing { opacity: .50; cursor: not-allowed; }
 .issue-fix-icon svg { width: 12px; height: 12px; }
 .fix-spinner {
   display: inline-block; width: 11px; height: 11px;
-  border: 1.5px solid rgba(184,147,58,0.24); border-top-color: var(--gold);
+  border: 1.5px solid var(--line-gold); border-top-color: var(--gold);
   border-radius: 50%; animation: spin .6s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -162,28 +162,28 @@
 /* ── ADVISORY NOTES ── */
 .advisory-section {
   border-radius: var(--r-lg); overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--surface-hover);
+  background: var(--surface-raised);
 }
 .advisory-title {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   padding: 11px 13px; cursor: pointer; list-style: none;
   font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,0.36);
+  text-transform: uppercase; letter-spacing: .12em; color: var(--text-faint);
 }
 .advisory-title::-webkit-details-marker { display: none; }
 .advisory-count {
   display: inline-flex; padding: 2px 7px; border-radius: 99px;
   font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.60);
+  background: var(--surface-raised); color: var(--text-secondary);
 }
 .advisory-rule { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.28); }
 .advisory-item {
   padding: 11px 13px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid var(--surface-raised);
 }
 .advisory-message {
-  margin: 5px 0 0; font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.52);
+  margin: 5px 0 0; font-size:var(--fs-xs); line-height: 1.55; color: var(--text-secondary);
 }
 
 /* ── DOWNLOAD BUTTON ── */
@@ -191,7 +191,7 @@
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%; padding: 12px 16px; border: none; border-radius: var(--r-full);
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  color: var(--ink); font-size: 13px; font-weight: 700;
+  color: var(--ink); font-size:var(--fs-sm); font-weight: 700;
   box-shadow: var(--shadow-gold);
   transition: all .18s;
 }
@@ -202,7 +202,7 @@
 .download-blocked-notice {
   padding: 12px 14px; border-radius: var(--r-lg);
   background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.16);
-  color: rgba(232,120,120,0.90); font-size: 12px; text-align: center; line-height: 1.5;
+  color: rgba(232,120,120,0.90); font-size:var(--fs-xs); text-align: center; line-height: 1.5;
 }
 
 /* Document health score */
@@ -213,11 +213,11 @@
   color: var(--white);
   line-height: 1;
 }
-.risk-score-num span { font-size: 14px; color: rgba(255,255,255,0.4); margin-left: 2px; }
+.risk-score-num span { font-size:var(--fs-sm); color: var(--text-muted); margin-left: 2px; }
 .risk-score-bar {
   margin-top: 8px;
   height: 6px;
-  background: rgba(255,255,255,0.08);
+  background: var(--line);
   border-radius: 99px;
   overflow: hidden;
 }
@@ -234,37 +234,64 @@
 .risk-score-label {
   margin-top: 6px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--text-faint);
 }
 
 /* Recommended additions (gap analysis) */
 .gaps-section {
   margin-top: 18px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid var(--surface-hover);
 }
 .gaps-title-row { display: flex; align-items: center; justify-content: space-between; }
-.gaps-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0; }
+.gaps-title { font-size:var(--fs-sm); font-weight: 600; color: var(--text-primary); margin: 0; }
 .gaps-count {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size:var(--fs-2xs);
   color: var(--gold);
   background: var(--gold-pale);
-  border: 1px solid rgba(184,147,58,0.22);
+  border: 1px solid var(--line-gold);
   border-radius: 99px;
   padding: 2px 9px;
 }
-.gaps-subtitle { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; margin: 6px 0 12px; }
+.gaps-subtitle { font-size:var(--fs-xs); color: var(--text-muted); line-height: 1.5; margin: 6px 0 12px; }
 .gap-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
   border-left: 2px solid var(--gold);
   border-radius: var(--r-md);
   padding: 10px 12px;
   margin-bottom: 8px;
 }
-.gap-item-name { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.85); }
-.gap-item-why { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; margin: 4px 0 0; }
+.gap-item-name { font-size:var(--fs-xs); font-weight: 600; color: var(--text-primary); }
+.gap-item-why { font-size:var(--fs-xs); color: var(--text-secondary); line-height: 1.5; margin: 4px 0 0; }
+
+
+/* ═══ Responsive ═══════════════════════════════════════════════════════════
+   This file had no breakpoints. The panel sits in a 380px rail on desktop and
+   goes full-bleed on a phone, where its head rows (label on the left, score or
+   action on the right) run out of room and squash the score against the title. */
+
+@media (max-width: 560px) {
+  /* Head rows stack rather than compress. */
+  .risk-panel-head,
+  .advisory-section > .advisory-title,
+  .gap-item,
+  .issue-item {
+    flex-wrap: wrap;
+  }
+
+  /* The download button is the panel's primary action; give it the full width
+     so it is not a small target beside a wrapped label. */
+  .download-btn { width: 100%; justify-content: center; min-height: 48px; }
+
+  /* Rule ids are long unbroken tokens and were widening the panel. */
+  .advisory-rule,
+  .issue-rule { overflow-wrap: anywhere; }
+
+  .advisory-message,
+  .issue-message { font-size: var(--fs-sm); }
+}

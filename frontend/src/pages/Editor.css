@@ -1,14 +1,14 @@
 .editor-page {
-  min-height: 100vh;
+  min-height: 100svh;
   background:
-    radial-gradient(circle at top center, rgba(184, 147, 58, 0.12), transparent 28%),
+    radial-gradient(circle at top center, var(--gold-pale), transparent 28%),
     radial-gradient(circle at 88% 14%, rgba(95, 99, 116, 0.14), transparent 24%),
-    #090b0f;
-  color: rgba(255, 255, 255, 0.88);
+    var(--surface-0);
+  color: var(--text-primary);
 }
 
 .editor-empty {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,7 @@
   z-index: 140;
   background: rgba(9, 11, 15, 0.84);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--surface-hover);
 }
 
 .editor-topbar-inner {
@@ -68,20 +68,20 @@
 }
 
 .export-format-label {
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
+  color: var(--text-faint);
 }
 
 .export-format-select {
   min-width: 84px;
   padding: 9px 12px;
   border-radius: var(--r-md);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 12px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-size:var(--fs-xs);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -93,7 +93,7 @@
 }
 
 .export-format-select option {
-  color: #111318;
+  color: var(--ink-2);
 }
 
 .back-btn {
@@ -103,21 +103,21 @@
   padding: 8px 12px;
   border-radius: var(--r-md);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface-raised);
   color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
+  font-size:var(--fs-xs);
   font-weight: 600;
 }
 
 .back-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: var(--line);
+  color: var(--white);
 }
 
 .topbar-divider {
   width: 1px;
   height: 28px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--line);
 }
 
 .editor-doc-info {
@@ -127,9 +127,9 @@
 .editor-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size:var(--fs-lg);
   font-weight: 400;
-  color: #fff;
+  color: var(--white);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -141,8 +141,8 @@
   flex-wrap: wrap;
   gap: 10px;
   margin: 4px 0 0;
-  color: rgba(255, 255, 255, 0.42);
-  font-size: 11px;
+  color: var(--text-muted);
+  font-size:var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -158,20 +158,17 @@
   opacity: 0.4;
 }
 
-.edited-dot {
-  color: var(--gold-light) !important;
+/* These two were fighting the `span + span::before` bullet rule above with four
+   !important declarations. Matching that rule's specificity instead states the
+   exception plainly: these spans are status dots, not list items. */
+.editor-subtitle span + span.edited-dot,
+.editor-subtitle span + span.validating-dot {
+  color: var(--gold-light);
 }
 
-.edited-dot::before {
-  content: none !important;
-}
-
-.validating-dot {
-  color: var(--gold-light) !important;
-}
-
-.validating-dot::before {
-  content: none !important;
+.editor-subtitle span + span.edited-dot::before,
+.editor-subtitle span + span.validating-dot::before {
+  content: none;
 }
 
 .editor-workspace-links {
@@ -183,16 +180,16 @@
 .editor-workspace-link {
   padding: 8px 11px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 11.5px;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size:var(--fs-2xs);
   font-weight: 600;
 }
 
 .editor-workspace-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
+  background: var(--line);
+  color: var(--text-primary);
 }
 
 .risk-pill {
@@ -202,7 +199,7 @@
   min-width: 72px;
   padding: 6px 11px;
   border-radius: 999px;
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -210,22 +207,22 @@
 
 .risk-pill--low {
   background: rgba(34, 197, 94, 0.12);
-  color: #96e2b5;
+  color: var(--green);
 }
 
 .risk-pill--medium {
   background: rgba(245, 158, 11, 0.14);
-  color: #f2d48a;
+  color: var(--gold-light);
 }
 
 .risk-pill--high {
   background: rgba(220, 108, 44, 0.14);
-  color: #efbb96;
+  color: var(--amber);
 }
 
 .risk-pill--blocked {
   background: rgba(239, 68, 68, 0.14);
-  color: #f5a7a7;
+  color: var(--red);
 }
 
 .download-btn-top,
@@ -235,7 +232,7 @@
   gap: 8px;
   padding: 10px 16px;
   border-radius: var(--r-md);
-  font-size: 13px;
+  font-size:var(--fs-sm);
   font-weight: 700;
 }
 
@@ -247,9 +244,9 @@
 }
 
 .validate-download-btn {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--text-primary);
 }
 
 .download-btn-top:disabled,
@@ -268,7 +265,7 @@
   width: 14px;
   height: 14px;
   border: 2px solid rgba(255, 255, 255, 0.24);
-  border-top-color: #fff;
+  border-top-color: var(--white);
   border-radius: 50%;
   animation: editor-spin 0.7s linear infinite;
 }
@@ -287,7 +284,7 @@
 
 .editor-status-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
   gap: 14px;
   margin-bottom: 20px;
 }
@@ -297,13 +294,13 @@
   padding: 16px 18px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(184, 147, 58, 0.09), rgba(110, 86, 30, 0.06));
-  border: 1px solid rgba(184, 147, 58, 0.18);
+  border: 1px solid var(--gold-pale);
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
 }
 
 .editor-disclaimer__label {
   margin-bottom: 8px;
-  font-size: 11px;
+  font-size:var(--fs-2xs);
   font-family: var(--font-mono);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -312,8 +309,8 @@
 
 .editor-disclaimer p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size:var(--fs-sm);
   line-height: 1.75;
 }
 
@@ -324,7 +321,7 @@
   padding: 14px 16px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(26, 28, 34, 0.96), rgba(14, 16, 21, 0.96));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
 }
 
@@ -335,28 +332,28 @@
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  background: rgba(184, 147, 58, 0.12);
+  background: var(--gold-pale);
   color: var(--gold);
   flex-shrink: 0;
 }
 
 .editor-status-lbl {
   margin-bottom: 4px;
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.34);
+  color: var(--text-faint);
 }
 
 .editor-status-val {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 15px;
+  color: var(--text-primary);
+  font-size:var(--fs-base);
   font-weight: 700;
 }
 
 .editor-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) minmax(min(100%, 320px), 380px);
   gap: 20px;
   align-items: start;
 }
@@ -369,7 +366,7 @@
   border-radius: 26px;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(24, 26, 32, 0.98), rgba(12, 14, 19, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
 }
 
@@ -379,12 +376,12 @@
   justify-content: space-between;
   gap: 12px;
   padding: 14px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--surface-hover);
 }
 
 .editor-doc-shell-label {
   color: var(--gold);
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -401,10 +398,10 @@
   justify-content: center;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 10px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size:var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -413,10 +410,10 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 42px 54px 72px;
-  background: #fcfbf8;
+  background: var(--paper);
   border-radius: 0 0 24px 24px;
   font-family: "Times New Roman", Georgia, serif;
-  color: #231c14;
+  color: var(--ink-2);
   line-height: 1.85;
 }
 
@@ -428,8 +425,8 @@
   border-radius: 14px;
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.18);
-  color: #8b6407;
-  font-size: 13px;
+  color: var(--gold);
+  font-size:var(--fs-sm);
   line-height: 1.6;
 }
 
@@ -449,7 +446,7 @@
 .doc-type-label {
   margin-bottom: 10px;
   color: rgba(94, 72, 40, 0.58);
-  font-size: 10px;
+  font-size:var(--fs-2xs);
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -460,12 +457,12 @@
   font-size: 38px;
   font-weight: 700;
   letter-spacing: 0;
-  color: #231c14;
+  color: var(--ink-2);
 }
 
 .doc-jurisdiction {
   color: rgba(94, 72, 40, 0.6);
-  font-size: 12px;
+  font-size:var(--fs-xs);
   letter-spacing: 0.06em;
 }
 
@@ -474,13 +471,13 @@
   top: 96px;
   align-self: start;
   min-height: 0;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100svh - 120px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 24px;
   background: linear-gradient(180deg, rgba(24, 26, 32, 0.98), rgba(12, 14, 19, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.26);
 }
 
@@ -488,7 +485,7 @@
   display: flex;
   gap: 6px;
   padding: 10px 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--surface-hover);
 }
 
 .sidebar-tab {
@@ -497,8 +494,8 @@
   border: none;
   border-bottom: 2px solid transparent;
   background: transparent;
-  color: rgba(255, 255, 255, 0.38);
-  font-size: 10px;
+  color: var(--text-faint);
+  font-size:var(--fs-2xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -516,10 +513,14 @@
   padding: 16px;
 }
 
+/* The chat pane manages its own internal padding on the header, log and
+   composer, so the panel's default padding has to be off. Stated by matching
+   the panel rule's specificity rather than by shouting over it. */
+.editor-panel.ai-chat,
 .ai-chat {
   display: flex;
   flex-direction: column;
-  padding: 0 !important;
+  padding: 0;
 }
 
 .ai-chat-header {
@@ -527,7 +528,7 @@
   align-items: center;
   gap: 8px;
   padding: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--surface-hover);
 }
 
 .ai-chat-dot {
@@ -538,8 +539,8 @@
 }
 
 .ai-chat-title {
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 10px;
+  color: var(--text-muted);
+  font-size:var(--fs-2xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -572,14 +573,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(184, 147, 58, 0.14);
+  background: var(--gold-pale);
   color: var(--gold);
   font-size: 9px;
   font-weight: 700;
 }
 
 .chat-msg--user .chat-avatar {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--line);
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -593,18 +594,18 @@
 .chat-text {
   padding: 10px 12px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-raised);
+  border: 1px solid var(--surface-hover);
   color: rgba(255, 255, 255, 0.74);
-  font-size: 12.5px;
+  font-size:var(--fs-xs);
   line-height: 1.65;
   white-space: pre-wrap;
 }
 
 .chat-msg--user .chat-text {
-  background: rgba(184, 147, 58, 0.14);
-  border-color: rgba(184, 147, 58, 0.22);
-  color: rgba(255, 255, 255, 0.92);
+  background: var(--gold-pale);
+  border-color: var(--line-gold);
+  color: var(--text-primary);
 }
 
 .chat-edit-badge {
@@ -615,8 +616,8 @@
   border-radius: 999px;
   background: rgba(34, 197, 94, 0.12);
   border: 1px solid rgba(34, 197, 94, 0.18);
-  color: #85e2ab;
-  font-size: 10px;
+  color: var(--green);
+  font-size:var(--fs-2xs);
   font-weight: 700;
 }
 
@@ -626,8 +627,8 @@
   gap: 4px;
   padding: 10px 12px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-raised);
+  border: 1px solid var(--surface-hover);
 }
 
 .chat-typing span {
@@ -664,18 +665,18 @@
   align-items: flex-end;
   gap: 8px;
   padding: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--surface-hover);
 }
 
 .ai-chat-input {
   flex: 1;
   min-height: 40px;
   padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 12.5px;
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-size:var(--fs-xs);
   line-height: 1.55;
   resize: none;
   outline: none;
@@ -705,7 +706,7 @@
   padding: 10px 14px;
   background: rgba(12, 13, 15, 0.92);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--surface-hover);
   overflow-x: auto;
 }
 .editor-mobile-switch__tab {
@@ -714,9 +715,9 @@
   padding: 7px 12px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12.5px;
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size:var(--fs-xs);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -775,7 +776,7 @@
   .validate-download-btn { display: none; }
 
   .editor-shell {
-    padding: 14px 14px 40px;
+    padding: var(--sp-4) var(--sp-gutter) var(--sp-10);
   }
 
   /* Status facts: a compact 2-up strip instead of a tall 1-column stack, so the
@@ -811,13 +812,13 @@
 }
 
 /* Version history panel */
-.version-empty { color: #6b7480; font-size: 0.88rem; padding: 8px 4px; }
+.version-empty { color: var(--slate); font-size: 0.88rem; padding: 8px 4px; }
 .version-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.version-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid #e4e8ee; border-radius: 8px; padding: 8px 10px; }
+.version-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--text-primary); border-radius: 8px; padding: 8px 10px; }
 .version-item__main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.version-item__num { font-weight: 700; font-size: 0.85rem; color: #1f2430; }
-.version-item__type { font-size: 0.8rem; color: #45505f; text-transform: capitalize; }
-.version-item__date { font-size: 0.74rem; color: #8a93a2; }
-.version-item__restore { border: 1px solid #cfd6df; background: #fff; border-radius: 6px; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; white-space: nowrap; }
-.version-item__restore:hover:not(:disabled) { border-color: #9aa4b2; }
+.version-item__num { font-weight: 700; font-size: 0.85rem; color: var(--ink-3); }
+.version-item__type { font-size: 0.8rem; color: var(--text-faint); text-transform: capitalize; }
+.version-item__date { font-size: 0.74rem; color: var(--slate-light); }
+.version-item__restore { border: 1px solid var(--text-secondary); background: var(--white); border-radius: 6px; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; white-space: nowrap; }
+.version-item__restore:hover:not(:disabled) { border-color: var(--slate-light); }
 .version-item__restore:disabled { opacity: 0.6; cursor: default; }

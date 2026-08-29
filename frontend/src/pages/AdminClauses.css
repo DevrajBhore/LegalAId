@@ -1,146 +1,265 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Admin — clause review queue.
+
+   This file had no breakpoints at all. It is an internal tool, but it is the
+   screen the supervising advocate works the 289-clause review queue on, and
+   that reviewing happens on whatever device is to hand. Long clause previews
+   now wrap and cap their height, action rows wrap, and the whole page uses the
+   fluid gutter.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .admin-clauses {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 32px 20px 80px;
+  max-width: 1020px;
+  margin-inline: auto;
+  padding: var(--sp-block) var(--sp-gutter) var(--sp-section);
 }
-.admin-head { margin-bottom: 24px; }
+
+.admin-head { margin-bottom: var(--sp-6); }
+
 .admin-kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   color: var(--gold);
 }
+
 .admin-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(26px, 3.5vw, 34px);
+  font-size: var(--fs-2xl);
   color: var(--white);
-  margin: 6px 0 8px;
+  margin-block: var(--sp-2);
+  letter-spacing: var(--tracking-tight);
 }
-.admin-sub { color: rgba(255, 255, 255, 0.4); font-size: 14px; line-height: 1.6; max-width: 640px; }
+
+.admin-sub {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  max-width: var(--measure);
+}
 
 .admin-panel {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
   border-radius: var(--r-xl);
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: clamp(var(--sp-4), 2.5vw, var(--sp-6));
+  margin-bottom: var(--sp-5);
 }
-.admin-panel-head h2 { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin: 0; }
-.admin-panel-head p { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin: 4px 0 0; }
-.admin-panel-head--row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 
-.admin-propose-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.admin-panel-head h2 { font-size: var(--fs-md); color: var(--text-primary); }
+.admin-panel-head p  { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: var(--sp-1); }
+
+.admin-panel-head--row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.admin-propose-row { display: flex; gap: var(--sp-3); margin-top: var(--sp-4); flex-wrap: wrap; }
+
 .admin-select {
-  flex: 1;
-  min-width: 200px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1 1 220px;
+  min-width: 0;
+  background: var(--surface-sunken);
+  border: 1px solid var(--line-strong);
   border-radius: var(--r-md);
   color: var(--text-primary);
-  padding: 10px 12px;
-  font: inherit;
-  font-size: 14px;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 44px;
+  font-size: max(16px, var(--fs-sm));
 }
+.admin-select:focus { outline: none; border-color: var(--gold); box-shadow: var(--ring-gold); }
 
 .admin-btn {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--text-primary);
   border-radius: var(--r-md);
-  padding: 9px 16px;
-  font-size: 13.5px;
+  min-height: 42px;
+  padding: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-sm);
   font-weight: 600;
-  cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
-.admin-btn:hover:not(:disabled) { border-color: rgba(184, 147, 58, 0.45); color: var(--gold); }
-.admin-btn:disabled { opacity: 0.5; cursor: default; }
-.admin-btn--primary { background: var(--gold); color: var(--ink); border: none; box-shadow: var(--shadow-gold); }
-.admin-btn--primary:hover:not(:disabled) { background: var(--gold-light); color: var(--ink); }
-.admin-btn--ok { border-color: var(--green-border); color: var(--green); }
-.admin-btn--no { border-color: var(--red-border); color: var(--red); }
+.admin-btn:hover:not(:disabled) { border-color: var(--line-gold); background: var(--surface-hover); }
+.admin-btn:disabled { opacity: .5; cursor: not-allowed; }
 
-.admin-note { margin: 12px 0 0; font-size: 13px; color: rgba(255, 255, 255, 0.55); }
+.admin-btn--primary { background: var(--gold); color: var(--text-on-gold); border-color: transparent; }
+.admin-btn--primary:hover:not(:disabled) { background: var(--gold-light); }
+.admin-btn--ok { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+.admin-btn--no { background: var(--red-bg);   border-color: var(--red-border);   color: var(--red); }
 
-.admin-proposals, .admin-reviews { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.admin-proposal, .admin-review {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--r-lg);
-  padding: 12px 14px;
+/* ── Filters ─────────────────────────────────────────────────────────────── */
+
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
 }
-.admin-proposal-top, .admin-review-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.admin-proposal-name { font-weight: 600; color: rgba(255, 255, 255, 0.9); font-size: 13.5px; }
-.admin-kind { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 99px; border: 1px solid transparent; }
-/* Mined from a reviewed template */
-.admin-kind--mined { color: var(--green); background: var(--green-bg); border-color: var(--green); }
-/* Authored by the AI, awaiting human sign-off */
-.admin-kind--ai { color: var(--gold); background: var(--gold-pale); border-color: var(--gold); }
-.admin-proposal-why { font-size: 12.5px; color: rgba(255, 255, 255, 0.55); line-height: 1.5; margin: 6px 0; }
-.admin-proposal-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11.5px; color: rgba(255, 255, 255, 0.4); }
 
-.admin-filters { display: flex; gap: 8px; margin: 16px 0 12px; flex-wrap: wrap; }
 .admin-chip {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.55);
-  border-radius: 99px;
-  padding: 5px 14px;
-  font-size: 12.5px;
-  cursor: pointer;
-  text-transform: capitalize;
+  min-height: 36px;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-full);
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  white-space: nowrap;
 }
-.admin-chip--active { color: var(--gold); border-color: rgba(184, 147, 58, 0.45); background: var(--gold-pale); }
+.admin-chip:hover { color: var(--text-primary); border-color: var(--line-strong); }
+.admin-chip--active { background: var(--gold-pale); border-color: var(--line-gold); color: var(--gold); font-weight: 600; }
 
-.admin-review { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.admin-review-main { min-width: 0; }
-.admin-review-cat { font-family: var(--font-mono); font-size: 11px; color: var(--gold); }
-.admin-review-name { font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.85); }
-.admin-status { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
-.admin-status--pending { color: var(--amber); background: var(--amber-bg); }
-.admin-status--approved { color: var(--green); background: var(--green-bg); }
-.admin-status--rejected { color: var(--red); background: var(--red-bg); }
-.admin-status--promoted { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
-.admin-review-preview { font-size: 12.5px; color: rgba(255, 255, 255, 0.5); line-height: 1.5; margin: 6px 0 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.admin-review-src { font-size: 11px; color: rgba(255, 255, 255, 0.32); }
-.admin-review-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 2px; font-size: 11.5px; color: rgba(255, 255, 255, 0.5); }
-.admin-review-meta code { font-family: var(--font-mono); font-size: 11px; color: var(--gold); background: var(--gold-pale); padding: 1px 5px; border-radius: 4px; }
-.admin-review-why { font-size: 12px; color: rgba(255, 255, 255, 0.5); line-height: 1.45; margin: 4px 0; font-style: italic; }
-.admin-review-actions { display: flex; gap: 8px; flex-shrink: 0; }
-.admin-promoted { font-family: var(--font-mono); font-size: 12px; color: var(--green); }
+/* ── Review rows ─────────────────────────────────────────────────────────── */
 
-.admin-empty { color: rgba(255, 255, 255, 0.4); font-size: 14px; padding: 16px 4px; }
-.admin-error { color: #ffb4b4; font-size: 13.5px; padding: 10px 0; }
-
-/* Inline-icon alignment */
-.admin-meta-item { display: inline-flex; align-items: center; gap: 5px; }
-.admin-promoted { display: inline-flex; align-items: center; gap: 5px; }
-.admin-kicker { display: inline-flex; align-items: center; gap: 6px; }
-
-/* Full clause view */
-.admin-review { align-items: flex-start; }
-.admin-review-preview--full {
-  display: block;
-  -webkit-line-clamp: unset;
-  white-space: pre-wrap;
-  color: rgba(255, 255, 255, 0.78);
-  max-height: 360px;
-  overflow: auto;
-  padding-right: 6px;
+.admin-review,
+.admin-proposal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  margin-bottom: var(--sp-3);
 }
-.admin-readmore {
-  border: none;
-  background: transparent;
-  color: var(--gold);
+
+.admin-review-main { flex: 1 1 320px; min-width: 0; }
+
+.admin-review-name,
+.admin-proposal-name {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  /* Clause ids are long unbroken tokens; without this they widen the row. */
+  overflow-wrap: anywhere;
+}
+
+.admin-review-cat,
+.admin-review-src {
   font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  cursor: pointer;
-  padding: 0;
-  margin: 2px 0 6px;
+  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-wide);
 }
-.admin-readmore:hover { color: var(--gold-light); }
+
+.admin-review-meta,
+.admin-proposal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  margin-top: var(--sp-2);
+}
+.admin-meta-item { font-size: var(--fs-xs); color: var(--text-muted); }
+
+.admin-review-why,
+.admin-proposal-why,
+.admin-note {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  max-width: var(--measure);
+}
+
+/* Clause text can run to several hundred words. Capped and scrollable so one
+   long clause does not bury the rest of the queue. */
+.admin-review-preview {
+  margin-top: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+  max-height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.admin-review-preview--full { max-height: none; }
+
+.admin-readmore {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--gold);
+  font-weight: 600;
+  min-height: 32px;
+}
+.admin-readmore:hover { text-decoration: underline; }
+
+.admin-review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-content: flex-start;
+  flex: 0 1 auto;
+}
+
+.admin-proposal-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+}
+
+.admin-kind {
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+}
+.admin-kind--ai    { background: var(--gold-pale); border-color: var(--line-gold); color: var(--gold); }
+.admin-kind--mined { background: var(--surface-hover); color: var(--text-secondary); }
+
+.admin-status {
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border: 1px solid transparent;
+}
+.admin-status--pending  { background: var(--amber-bg); color: var(--amber); border-color: var(--amber-border); }
+.admin-status--approved { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
+.admin-status--rejected { background: var(--red-bg);   color: var(--red);   border-color: var(--red-border); }
+.admin-status--promoted { background: var(--gold-pale); color: var(--gold); border-color: var(--line-gold); }
+
+.admin-promoted { font-size: var(--fs-xs); color: var(--green); }
+
+.admin-error {
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  color: var(--red);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-4);
+}
+
+.admin-empty {
+  padding: var(--sp-12) var(--sp-5);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 640px) {
+  /* Full-width action buttons once the row has stacked — a 42px pill floating
+     beside a wrapped clause title is easy to miss and easy to mis-tap. */
+  .admin-review-actions { width: 100%; }
+  .admin-review-actions .admin-btn { flex: 1 1 100px; }
+}
