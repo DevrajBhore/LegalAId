@@ -139,15 +139,28 @@ function buildParticipantDescriptor(participant = {}, variables = {}) {
     segments.push(`${article} ${explicitType.toLowerCase()}`);
   }
 
-  if (participant.id === "employer" && hasMeaningfulValue(variables.employer_cin)) {
-    segments.push(
-      `bearing Corporate Identification Number ${normalizeText(variables.employer_cin)}`
-    );
-  }
+  // Statutory identifiers, for whichever slot this participant occupies. These
+  // used to be hardcoded to `employer_cin` and `employee_pan`, so a CIN, PAN,
+  // GSTIN or LLPIN typed into a party_1 / party_2 slot was collected by the
+  // form, validated for checksum -- and then silently dropped from the draft.
+  // Every document without a bespoke identity builder lost them, which is what
+  // FORM_VALUE_NOT_REFLECTED_PARTY_N_GSTIN was reporting. Read them off the
+  // participant's own id, the same way documentHardening does.
+  const identifier = (suffix) => {
+    if (hasMeaningfulValue(participant[suffix])) return normalizeText(participant[suffix]);
+    const key = participant.id ? `${participant.id}_${suffix}` : "";
+    return key && hasMeaningfulValue(variables[key]) ? normalizeText(variables[key]) : "";
+  };
 
-  if (participant.id === "employee" && hasMeaningfulValue(variables.employee_pan)) {
-    segments.push(`holding PAN ${normalizeText(variables.employee_pan)}`);
-  }
+  const cin = identifier("cin");
+  const llpin = identifier("llpin");
+  const pan = identifier("pan");
+  const gstin = identifier("gstin");
+
+  if (cin) segments.push(`bearing Corporate Identification Number ${cin}`);
+  if (llpin) segments.push(`bearing LLP Identification Number ${llpin}`);
+  if (pan) segments.push(`holding PAN ${pan}`);
+  if (gstin) segments.push(`registered under GST with GSTIN ${gstin}`);
 
   let descriptor = segments.join(", ");
   if (address) {

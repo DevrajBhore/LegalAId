@@ -350,8 +350,21 @@ export function getDocumentStyleProfile(documentType = "") {
 }
 
 export function getParticipantExpectations(documentType = "", variables = {}) {
+  // A participant's slot id and the form field that collects its identifiers are
+  // not always the same word. A partnership deed's participants are `partner_1`
+  // and `partner_2`, but the intake form asks for `party_1_pan` and
+  // `party_1_gstin` -- so reading only `${id}_pan` dropped every identifier the
+  // user had typed, and the reflection check reported it as
+  // FORM_VALUE_NOT_REFLECTED_PARTY_1_GSTIN. Fall back to the generic party slot
+  // at the same ordinal position, which is where the form actually puts them.
+  const detail = (participant, index, suffix) => {
+    const own = variables?.[`${participant.id}_${suffix}`];
+    if (own !== undefined && String(own).trim() !== "") return own;
+    return variables?.[`party_${index + 1}_${suffix}`];
+  };
+
   return getParticipantDefinitions(documentType)
-    .map((participant) => ({
+    .map((participant, index) => ({
       id: participant.id,
       label: participant.canonical,
       name: variables?.[participant.nameField],
@@ -360,11 +373,11 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
       // Optional, and the notices clause simply omits the line when it is
       // absent -- but a notice clause that can only work by post is a notice
       // clause nobody will use.
-      email: variables?.[`${participant.id}_email`],
-      pan: variables?.[`${participant.id}_pan`],
-      gstin: variables?.[`${participant.id}_gstin`],
-      cin: variables?.[`${participant.id}_cin`],
-      llpin: variables?.[`${participant.id}_llpin`],
+      email: detail(participant, index, "email"),
+      pan: detail(participant, index, "pan"),
+      gstin: detail(participant, index, "gstin"),
+      cin: detail(participant, index, "cin"),
+      llpin: detail(participant, index, "llpin"),
     }))
     .filter((participant) => participant.name || participant.address);
 }

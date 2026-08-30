@@ -38,6 +38,12 @@
 .certified-yes {
   background: rgba(34,197,94,0.09); border: 1px solid rgba(34,197,94,0.18); color: var(--green);
 }
+/* Advisory findings are not failures. Painting them in the same red as a
+   blocking defect is what made every draft read as broken. */
+.certified-review {
+  background: rgba(245,158,11,0.09); border: 1px solid rgba(245,158,11,0.18); color: var(--amber);
+}
+.certified-blocked,
 .certified-no {
   background: rgba(239,68,68,0.09); border: 1px solid rgba(239,68,68,0.16); color: var(--red);
 }
@@ -184,6 +190,10 @@
 }
 .advisory-message {
   margin: 5px 0 0; font-size:var(--fs-xs); line-height: 1.55; color: var(--text-secondary);
+}
+.notices-intro {
+  margin: 0; padding: 0 13px 10px; font-size:var(--fs-xs);
+  line-height: 1.55; color: var(--text-faint);
 }
 
 /* ── DOWNLOAD BUTTON ── */

@@ -176,7 +176,7 @@ function namedOnlyHistorically(text, actName, index) {
   return HISTORICAL_FRAME.test(sentence);
 }
 
-function buildIssue(ruleId, severity, message, suggestion) {
+function buildIssue(ruleId, severity, message, suggestion, extra = {}) {
   return {
     rule_id: ruleId,
     severity,
@@ -184,6 +184,7 @@ function buildIssue(ruleId, severity, message, suggestion) {
     suggestion,
     blocks_generation: false,
     auto_fixable: false,
+    ...extra,
   };
 }
 
@@ -281,7 +282,18 @@ export function resolveStatutoryCitations(draft, { effectiveDate, asOf } = {}) {
               `${label} was repealed on ${formatDate(repealedOn)}. The clause records this and is awaiting the supervising advocate's re-mapping${where}.`,
               entry.superseded_by
                 ? `Map the provision to ${entry.superseded_by} against the bare Act - section numbering does not carry across - and replace the citation.`
-                : `Replace the citation with the provision now in force.`
+                : `Replace the citation with the provision now in force.`,
+              // A citation the clause library has already tombstoned and queued
+              // for the supervising advocate is a fact about OUR clause text,
+              // not a defect in the user's document. The user cannot act on it,
+              // and it rides on the general-provisions baseline, so it appears
+              // in every document by construction. Scoring it as a defect put a
+              // permanent -10 and a MEDIUM risk band on the entire catalogue --
+              // which is why every draft displayed 73-76 no matter how it was
+              // filled in. It stays visible as a note; it no longer costs the
+              // document points. CITES_REPEALED_STATUTE below -- an unrecorded
+              // repealed citation -- is a real defect and still scores.
+              { notice_only: true }
             ));
             continue;
           }

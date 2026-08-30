@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd backend && npm start",
-    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs",
+    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs && node tests/documentHealthScore.test.mjs",
     "test:golden": "node tests/goldenCorpus.test.mjs",
     "check:citations": "node scripts/checkStatuteCitations.mjs"
   },

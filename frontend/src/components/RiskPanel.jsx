@@ -23,9 +23,12 @@ const SEVERITY_META = {
   LOW: { cls: "sev-low", label: "Low" },
 };
 
+// Fallback only. The engine computes the real score and itemises every
+// deduction behind it (validation.score_breakdown); this band-based estimate is
+// used only for an older payload that carries no score at all.
 const RISK_BASE_SCORE = { LOW: 92, MEDIUM: 76, HIGH: 52, BLOCKED: 32, UNKNOWN: 70 };
 
-function computeRiskScore({ overall, certified, blocking, advisory }) {
+function estimateRiskScore({ overall, certified, blocking, advisory }) {
   let score = RISK_BASE_SCORE[overall] ?? 70;
   score -= blocking * 6 + advisory * 1.5;
   if (certified && blocking === 0) score = Math.max(score, 85);
@@ -72,19 +75,41 @@ export default function RiskPanel({
     validation.summary?.advisory ??
     validation.advisoryIssueCount ??
     advisoryIssues.length;
-  const totalCount =
-    validation.summary?.total ??
-    validation.issueCount ??
-    validation.issue_count ??
-    blockingCount + advisoryCount;
+  // Informational notes -- stamp duty, registration, statutory checklists, and
+  // citations the clause library has already queued for the supervising
+  // advocate. The engine deliberately excludes them from the score because they
+  // are not defects in this document. They were being carried into the panel
+  // but never rendered, while the "Open Notes" row showed the actionable total
+  // instead -- so the panel printed the advisory count twice under two labels.
+  const notices = validation.notices || [];
+  const noticeCount = validation.noticeCount ?? notices.length;
 
   const meta = RISK_META[overall] || RISK_META.UNKNOWN;
-  const riskScore = computeRiskScore({
-    overall,
-    certified,
-    blocking: blockingCount,
-    advisory: advisoryCount,
-  });
+  // Show the number the engine actually computed. Re-deriving it here from the
+  // coarse risk band meant the panel displayed a figure nobody had calculated on
+  // the merits: a draft the engine scored 100 showed as 92, and one it scored 90
+  // showed as 75, because the band -- not the findings -- set the base. A single
+  // MEDIUM note therefore pinned every document in the catalogue to 73-76.
+  const riskScore =
+    typeof validation.score === "number"
+      ? Math.max(0, Math.min(100, Math.round(validation.score)))
+      : estimateRiskScore({
+          overall,
+          certified,
+          blocking: blockingCount,
+          advisory: advisoryCount,
+        });
+
+  // The engine's own wording. "Document Certified" was an overclaim the engine
+  // explicitly avoids -- passing means the checks that ran found nothing, which
+  // is narrower than compliance -- and "Needs Review" was shown for any finding
+  // at all, so a clean draft with two informational notes screamed "Needs
+  // Review" directly above the words "No blocking issues".
+  const certification =
+    validation.certification ||
+    (blockingCount > 0 ? "Blocked" : certified ? "No issues detected" : "Review required");
+  const certificationClass =
+    blockingCount > 0 ? "certified-blocked" : certified ? "certified-yes" : "certified-review";
   const sortedBlockingIssues = [...blockingIssues].sort(
     (a, b) =>
       (SEVERITY_ORDER[a?.severity] ?? 99) - (SEVERITY_ORDER[b?.severity] ?? 99)
@@ -99,15 +124,15 @@ export default function RiskPanel({
         </p>
       </div>
 
-      <div
-        className={`certified-badge ${
-          certified ? "certified-yes" : "certified-no"
-        }`}
-      >
+      <div className={`certified-badge ${certificationClass}`}>
         <span className="certified-icon">
-          {certified ? Icons.checkCircle : Icons.warning}
+          {blockingCount > 0
+            ? Icons.x
+            : certified
+              ? Icons.checkCircle
+              : Icons.info}
         </span>
-        <span>{certified ? "Document Certified" : "Needs Review"}</span>
+        <span>{certification}</span>
       </div>
 
       <div className={`risk-badge ${meta.cls}`}>
@@ -135,10 +160,12 @@ export default function RiskPanel({
           <span className="risk-row-label">Advisory Notes</span>
           <span className="risk-row-val issue-count">{advisoryCount}</span>
         </div>
-        <div className="risk-row">
-          <span className="risk-row-label">Open Notes</span>
-          <span className="risk-row-val issue-count">{totalCount}</span>
-        </div>
+        {noticeCount > 0 && (
+          <div className="risk-row">
+            <span className="risk-row-label">Information Notes</span>
+            <span className="risk-row-val issue-count">{noticeCount}</span>
+          </div>
+        )}
         {validation.mode && (
           <div className="risk-row">
             <span className="risk-row-label">Mode</span>
@@ -234,6 +261,31 @@ export default function RiskPanel({
         </details>
       )}
 
+      {noticeCount > 0 && (
+        <details className="advisory-section notices-section">
+          <summary className="advisory-title">
+            <span>Information Notes</span>
+            <span className="advisory-count">{noticeCount}</span>
+          </summary>
+
+          <p className="notices-intro">
+            Context for this document type. These do not affect the health score
+            and there is nothing to fix in the draft.
+          </p>
+
+          <div className="advisory-list">
+            {notices.map((issue, index) => (
+              <div key={`${issue.rule_id}-${index}`} className="advisory-item">
+                <span className="advisory-rule">{issue.rule_id}</span>
+                <p className="advisory-message">
+                  {issue.message || issue.suggestion}
+                </p>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+
       {gaps.length > 0 && (
         <div className="gaps-section">
           <div className="gaps-title-row">
@@ -253,8 +305,11 @@ export default function RiskPanel({
         </div>
       )}
 
+      {/* Gated on blocking issues, not on a spotless review. Gating on `certified`
+          meant a draft with nothing blocking it was told to "resolve blocking
+          issues" it did not have. */}
       {!hideDownload &&
-        (certified ? (
+        (blockingCount === 0 ? (
           <button
             className={`download-btn${downloading ? " downloading" : ""}`}
             onClick={onDownload}

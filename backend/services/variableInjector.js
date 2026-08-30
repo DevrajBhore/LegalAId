@@ -35,20 +35,59 @@ function normalizePartyType(name = "", explicitType) {
   return "Individual";
 }
 
-function buildPartyDescriptor(name, type, address) {
+// A party's statutory identifiers, as one phrase. The form collects CIN, LLPIN,
+// PAN and GSTIN and partyIdentityValidator checks their checksums -- but this
+// descriptor, the one clause templates interpolate as {{party_1_descriptor}},
+// took only name, type and address. Every identifier a user typed was validated
+// and then dropped before it reached the page, which is what the
+// FORM_VALUE_NOT_REFLECTED_PARTY_N_GSTIN findings were reporting.
+function identifierPhrase({ cin, llpin, pan, gstin } = {}) {
+  const parts = [];
+  if (firstNonEmpty(cin)) parts.push(`CIN ${cin}`);
+  if (firstNonEmpty(llpin)) parts.push(`LLPIN ${llpin}`);
+  if (firstNonEmpty(pan)) parts.push(`PAN ${pan}`);
+  if (firstNonEmpty(gstin)) parts.push(`GSTIN ${gstin}`);
+  if (!parts.length) return "";
+
+  const list =
+    parts.length === 1
+      ? parts[0]
+      : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+  return ` bearing ${list}`;
+}
+
+// "a LLP" reads wrong: the article follows the sound, and an acronym read letter
+// by letter starts with a vowel sound whenever its first letter does.
+const VOWEL_SOUNDING_INITIALS = new Set(["A", "E", "F", "H", "I", "L", "M", "N", "O", "R", "S", "X"]);
+
+function indefiniteArticle(word = "") {
+  const text = String(word).trim();
+  if (!text) return "a";
+  if (/^[A-Z]{2,}\b/.test(text)) {
+    return VOWEL_SOUNDING_INITIALS.has(text[0]) ? "an" : "a";
+  }
+  return /^[aeiou]/i.test(text) ? "an" : "a";
+}
+
+function buildPartyDescriptor(name, type, address, identifiers = {}) {
   const resolvedName = firstNonEmpty(name, "Party");
   const resolvedType = normalizePartyType(resolvedName, type);
   const resolvedAddress = firstNonEmpty(address);
+  const ids = identifierPhrase(identifiers);
+
+  const article = indefiniteArticle(resolvedType);
 
   if (!resolvedAddress) {
-    return `${resolvedName}, a ${resolvedType}`;
+    return `${resolvedName}, ${article} ${resolvedType}${ids}`;
   }
 
+  // The comma before "residing"/"having" appears only when identifiers sit in
+  // between, so a descriptor with no identifiers reads exactly as it did.
   if (resolvedType.toLowerCase() === "individual") {
-    return `${resolvedName}, an Individual residing at ${resolvedAddress}`;
+    return `${resolvedName}, an Individual${ids ? `${ids},` : ""} residing at ${resolvedAddress}`;
   }
 
-  return `${resolvedName}, a ${resolvedType} having its address at ${resolvedAddress}`;
+  return `${resolvedName}, ${article} ${resolvedType}${ids ? `${ids},` : ""} having its address at ${resolvedAddress}`;
 }
 
 function derivePurpose(variables = {}) {
@@ -115,6 +154,30 @@ function buildDerivedVariables(variables = {}) {
     variables.partner_2_address,
     variables.guarantor_address
   );
+  // Identifiers follow the same slot-aliasing as the names above: a document
+  // that calls its first party "employer" or "partner_1" keeps its CIN.
+  const identifiersFor = (prefixes) => ({
+    cin: firstNonEmpty(...prefixes.map((prefix) => variables[`${prefix}_cin`])),
+    llpin: firstNonEmpty(...prefixes.map((prefix) => variables[`${prefix}_llpin`])),
+    pan: firstNonEmpty(...prefixes.map((prefix) => variables[`${prefix}_pan`])),
+    gstin: firstNonEmpty(...prefixes.map((prefix) => variables[`${prefix}_gstin`])),
+  });
+  const party1Identifiers = identifiersFor([
+    "party_1",
+    "employer",
+    "shareholder_1",
+    "partner_1",
+    "company",
+  ]);
+  const party2Identifiers = identifiersFor([
+    "party_2",
+    "employee",
+    "shareholder_2",
+    "partner_2",
+    "guarantor",
+  ]);
+  const guarantorIdentifiers = identifiersFor(["guarantor"]);
+
   const party1Type = normalizePartyType(party1Name, variables.party_1_type);
   const party2Type = normalizePartyType(party2Name, variables.party_2_type);
   const guarantorName = firstNonEmpty(variables.guarantor_name);
@@ -131,15 +194,26 @@ function buildDerivedVariables(variables = {}) {
     party_2_address: party2Address,
     party_1_type: party1Type,
     party_2_type: party2Type,
-    party_1_descriptor: buildPartyDescriptor(party1Name, party1Type, party1Address),
-    party_2_descriptor: buildPartyDescriptor(party2Name, party2Type, party2Address),
+    party_1_descriptor: buildPartyDescriptor(
+      party1Name,
+      party1Type,
+      party1Address,
+      party1Identifiers
+    ),
+    party_2_descriptor: buildPartyDescriptor(
+      party2Name,
+      party2Type,
+      party2Address,
+      party2Identifiers
+    ),
     guarantor_name: guarantorName,
     guarantor_address: guarantorAddress,
     guarantor_type: guarantorType,
     guarantor_descriptor: buildPartyDescriptor(
       guarantorName,
       guarantorType,
-      guarantorAddress
+      guarantorAddress,
+      guarantorIdentifiers
     ),
     purpose: derivePurpose(variables),
     confidentiality_period: firstNonEmpty(
