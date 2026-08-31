@@ -110,23 +110,20 @@ export default function Home() {
               How it works
             </Link>
           </div>
-          {/* Brought back out of comments and given real figures. It is doing
-              structural work now: on a wide screen it is the right-hand column
-              of the hero, which is what stops the band being half empty. */}
-          <div className="hero-stats animate-in-d4">
+          {/* <div className="hero-stats animate-in-d4">
             <div className="hero-stat">
-              <span className="hero-stat-num">{docTypes.length || 40}</span>
+              <span className="hero-stat-num">{docTypes.length || 17}+</span>
               <span className="hero-stat-label">Document types</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-num">289</span>
-              <span className="hero-stat-label">Clauses in library</span>
+              <span className="hero-stat-num">100%</span>
+              <span className="hero-stat-label">India-focused drafting</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-num">DOCX<span className="hero-stat-sep">/</span>PDF</span>
-              <span className="hero-stat-label">Export formats</span>
+              <span className="hero-stat-num">LIVE</span>
+              <span className="hero-stat-label">Browser workspace</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

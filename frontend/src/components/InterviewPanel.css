@@ -90,6 +90,7 @@
 }
 .interview-analyze:hover:not(:disabled) {
   background: var(--gold-light);
+  transform: translateY(-1px);
 }
 .interview-analyze:disabled {
   opacity: 0.55;
@@ -286,6 +287,7 @@
 }
 .interview-continue:hover {
   background: var(--gold-light);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-gold);
 }
 
@@ -301,7 +303,7 @@
   color: var(--gold);
   background: var(--gold-pale);
   border: 1px solid var(--line-gold);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   padding: 5px 13px;
   margin-bottom: 18px;
 }
@@ -349,7 +351,7 @@
   background: var(--surface-raised);
   border: 1px solid var(--line);
   color: var(--text-secondary);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   padding: 7px 14px;
   font-size:var(--fs-xs);
   cursor: pointer;

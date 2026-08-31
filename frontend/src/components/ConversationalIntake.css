@@ -6,10 +6,9 @@
 .conv-intake__head { text-align: center; }
 .conv-intake__badge {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 12px; border-radius: var(--r-lg); margin-bottom: 12px;
+  padding: 4px 12px; border-radius: 99px; margin-bottom: 12px;
   background: rgba(212,169,67,0.12); border: 1px solid rgba(212,169,67,0.4);
   color: rgba(212,169,67,0.95); font-size:var(--fs-2xs); font-weight: 600;
-  font-family: var(--font-mono);
   text-transform: uppercase; letter-spacing: 0.05em;
 }
 .conv-intake__title {
@@ -24,7 +23,7 @@
 .conv-intake__thread {
   display: flex; flex-direction: column; gap: 12px;
   max-height: 420px; overflow-y: auto;
-  padding: 18px; border-radius: var(--r-lg);
+  padding: 18px; border-radius: 14px;
   background: var(--surface-raised); border: 1px solid var(--line);
   min-height: 160px;
 }
@@ -33,7 +32,7 @@
 .conv-msg--bot { justify-content: flex-start; }
 .conv-msg--user { justify-content: flex-end; }
 .conv-msg__bubble {
-  max-width: 78%; padding: 11px 15px; border-radius: var(--r-lg);
+  max-width: 78%; padding: 11px 15px; border-radius: 14px;
   font-size:var(--fs-sm); line-height: 1.55; white-space: pre-wrap;
 }
 .conv-msg--bot .conv-msg__bubble {
@@ -59,14 +58,14 @@
 /* phase 1 — the single free-form prompt */
 .conv-prompt__input {
   width: 100%; resize: vertical; min-height: 110px;
-  padding: 14px 16px; border-radius: var(--r-lg); font-family: inherit;
+  padding: 14px 16px; border-radius: 14px; font-family: inherit;
   background: var(--surface-raised); border: 1px solid var(--line-strong);
   color: var(--text-primary); font-size:var(--fs-sm); line-height: 1.6;
 }
 .conv-prompt__input:focus { outline: none; border-color: rgba(212,169,67,0.55); }
 .conv-prompt__examples { display: flex; flex-direction: column; gap: 8px; }
 .conv-prompt__example {
-  text-align: left; cursor: pointer; padding: 10px 14px; border-radius: var(--r-lg);
+  text-align: left; cursor: pointer; padding: 10px 14px; border-radius: 12px;
   background: var(--surface-raised); border: 1px solid var(--line);
   color: var(--text-secondary); font-size:var(--fs-xs); line-height: 1.45;
   transition: border-color .15s ease, color .15s ease;
@@ -82,14 +81,14 @@
 
 .conv-intake__inputrow { display: flex; gap: 10px; align-items: flex-end; }
 .conv-intake__input {
-  flex: 1; resize: none; padding: 12px 14px; border-radius: var(--r-lg);
+  flex: 1; resize: none; padding: 12px 14px; border-radius: 12px;
   background: var(--surface-raised); border: 1px solid var(--line-strong);
   color: var(--text-primary); font-size:var(--fs-sm); font-family: inherit; line-height: 1.5;
 }
 .conv-intake__input:focus { outline: none; border-color: rgba(212,169,67,0.6); }
 .conv-intake__send,
 .conv-intake__continue {
-  padding: 12px 22px; border-radius: var(--r-lg); cursor: pointer;
+  padding: 12px 22px; border-radius: 12px; cursor: pointer;
   background: rgba(212,169,67,0.9); border: none; color: var(--text-on-gold);
   font-size:var(--fs-sm); font-weight: 600;
 }
@@ -98,7 +97,7 @@
 
 /* mapping confirmation — structured echo before handoff */
 .conv-confirm {
-  padding: 18px; border-radius: var(--r-lg);
+  padding: 18px; border-radius: 14px;
   background: var(--surface-raised); border: 1px solid rgba(212,169,67,0.3);
 }
 .conv-confirm__title {

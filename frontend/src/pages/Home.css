@@ -1,25 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    Home
 
-   Reworked against the instrument/artifact split in index.css. The page is
-   chrome from top to bottom — there is no document on it — so all of it goes
-   dense, square and ruled, and none of it gets the generous air that clause
-   text gets.
-
    Four things changed structurally:
 
-   1. The hero was a full-bleed lit stage: three blurred gold orbs, a noise
-      plate, centred type at --fs-4xl, and ~130px of vertical padding. It is
-      now a masthead — left-aligned, roughly a third the height, closed with a
-      rule, with the stat row ruled into it rather than floating under it.
-   2. Every group of equal cells (features, showcase, steps) is the same
-      object: a ruled grid — 1px gap over a --line background, opaque cells.
-      Three near-identical card treatments collapse into one house pattern.
-   3. Labels, stat captions, step numbers, button text and card subtitles are
-      mono/uppercase/tracked. The serif is now only on the two page titles and
-      the section titles.
-   4. Gradients, radial blooms and lift-on-hover are gone. Separation is line
-      work; hover is a background and a border colour, nothing that moves.
+   1. Every section used to repeat `max-width:1100px; margin:0 auto;
+      padding:0 32px`, then override that padding again at 640px. They now
+      share one fluid container rule, so the gutter is correct at every width
+      without a breakpoint.
+   2. The button rows (.hero-cta, .cta-banner-actions) were flex with no wrap,
+      so on a narrow phone the second button ran off the side of the screen.
+      They wrap, and go full-width below 420px where side-by-side stops being
+      readable.
+   3. The feature and step grids were fixed 4-column tracks stepped down at two
+      breakpoints. They are auto-fit now: 4 → 3 → 2 → 1 as the width allows,
+      including the in-between sizes the old two steps skipped.
+   4. Type comes from the fluid scale, so the hero headline no longer needs the
+      global !important override that used to shrink it on phones.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .home { display: flex; flex-direction: column; }
@@ -34,6 +30,7 @@
   margin-inline: auto;
   padding-inline: var(--sp-gutter);
 }
+.hero-inner { max-width: 820px; }
 
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 
@@ -41,199 +38,178 @@
   position: relative;
   overflow: hidden;
   background: var(--ink);
-  border-bottom: 1px solid var(--line);
-  padding-block: var(--sp-6) 0;
-  text-align: left;
+  padding-block: clamp(var(--sp-10), 6vw, var(--sp-16)) clamp(var(--sp-12), 7vw, 5rem);
+  text-align: center;
 }
 
-/* Kept because the markup renders it; it no longer paints anything. The orbs
-   and the noise plate below are the gold bloom index.css deleted from body —
-   an instrument panel does not glow, and leaving them here just reintroduced
-   it one page at a time. */
 .hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.hero-orb,
-.hero-orb-1,
-.hero-orb-2,
-.hero-orb-3,
-.hero-noise { display: none; }
 
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  gap: var(--sp-5) var(--sp-10);
-  align-items: start;
-  padding-bottom: var(--sp-6);
+.hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .5; }
+
+.hero-orb-1 {
+  width: min(600px, 120vw); height: min(600px, 120vw);
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  top: -200px; left: 50%; transform: translateX(-50%);
+  animation: drift1 12s ease-in-out infinite alternate;
 }
-/* The ledger is taken out of the row flow and pinned to the band's top-right.
-   Spanning it across the grid's rows looked right but sized row 1 to the
-   ledger's full height, which left 180px of dead air between the tag and the
-   headline. Pinning it is deterministic and lets the left column set its own
-   rhythm. */
-@media (min-width: 62rem) {
-  .hero-inner { padding-right: 300px; }
-  .hero-inner .hero-stats {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 268px;
-    grid-template-columns: 1fr;
-    border: 1px solid var(--line);
-    border-top: 1px solid var(--line);
-  }
-  .hero-stat:first-child { padding-left: var(--sp-4); }
+.hero-orb-2 {
+  width: min(400px, 90vw); height: min(400px, 90vw);
+  background: radial-gradient(circle, rgba(100,104,122,0.18) 0%, transparent 70%);
+  bottom: -100px; right: -80px;
+  animation: drift2 9s ease-in-out infinite alternate;
+}
+.hero-orb-3 {
+  width: min(520px, 110vw); height: min(520px, 110vw);
+  background: radial-gradient(circle, rgba(255,222,145,0.18) 0%, rgba(184,147,58,0.08) 38%, transparent 72%);
+  top: 10px; left: 12%;
+  filter: blur(96px);
+  opacity: .54;
 }
 
-/* Was a gold pill. Square tag, same treatment as every other status chip. */
+@keyframes drift1 { to { transform: translateX(-45%) translateY(-20px); } }
+@keyframes drift2 { to { transform: translateX(-20px) translateY(-30px); } }
+
+.hero-noise {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: .4;
+}
+
+.hero-inner { position: relative; z-index: 2; }
+
 .hero-eyebrow {
   display: inline-flex;
-  justify-self: start;
   align-items: center;
   gap: var(--sp-2);
-  padding: 2px var(--sp-2);
-  border-radius: var(--r-sm);
+  padding: var(--sp-1) var(--sp-4);
+  border-radius: var(--r-full);
   background: var(--gold-pale);
   border: 1px solid var(--line-gold);
   font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
-  font-weight: 500;
+  font-size: var(--fs-2xs);
   color: var(--gold);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  line-height: 1.5;
-  margin-bottom: var(--sp-5);
-  animation: fadeUp var(--dur-slow) var(--ease-out) .06s both;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--sp-8);
+  animation: fadeUp var(--dur-slow) var(--ease-out) .1s both;
 }
-/* Square, not round: --r-full is for avatars and spinners only. */
-.hero-eyebrow-dot { width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+.hero-eyebrow-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: var(--fs-2xl);
-  line-height: var(--lh-tight);
+  font-size: var(--fs-4xl);
+  line-height: 1.06;
   letter-spacing: var(--tracking-tight);
   color: var(--white);
-  max-width: 22ch;
-  margin-bottom: var(--sp-4);
-  animation: fadeUp var(--dur-slow) var(--ease-out) .10s both;
+  margin-bottom: var(--sp-6);
+  animation: fadeUp var(--dur-slow) var(--ease-out) .18s both;
   text-wrap: balance;
 }
 .hero-title em { font-style: italic; color: var(--gold); }
 .hero-title-line2 { display: block; }
 
 .hero-sub {
-  font-size: var(--fs-base);
+  font-size: var(--fs-md);
   line-height: var(--lh-relaxed);
   color: var(--text-secondary);
-  max-width: var(--measure-tight);
-  margin-bottom: var(--sp-6);
-  animation: fadeUp var(--dur-slow) var(--ease-out) .14s both;
+  max-width: 56ch;
+  margin: 0 auto var(--sp-10);
+  font-weight: 300;
+  animation: fadeUp var(--dur-slow) var(--ease-out) .26s both;
 }
 
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
-  gap: var(--sp-2);
-  margin-bottom: clamp(var(--sp-8), 4vw, var(--sp-10));
-  animation: fadeUp var(--dur-slow) var(--ease-out) .18s both;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-16);
+  animation: fadeUp var(--dur-slow) var(--ease-out) .34s both;
 }
 
-/* Local twins of .btn — same mono/uppercase/square label, no lift. */
 .hero-btn-primary,
 .hero-btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--sp-2);
-  min-height: 38px;
-  padding: var(--sp-2) var(--sp-5);
-  border-radius: var(--r-sm);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  min-height: 46px;
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  font-weight: 600;
   white-space: nowrap;
-  transition: background var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
 }
 
 .hero-btn-primary {
   background: var(--gold);
   color: var(--text-on-gold);
-  border: 1px solid var(--gold);
+  border: none;
+  box-shadow: var(--shadow-gold);
 }
-.hero-btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.hero-btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.hero-btn-primary:active { transform: translateY(0); }
 
 .hero-btn-ghost {
-  background: var(--surface-raised);
+  background: transparent;
   color: var(--text-secondary);
+  font-weight: 500;
   border: 1px solid var(--line-strong);
 }
-.hero-btn-ghost:hover { color: var(--white); border-color: var(--line-gold); background: var(--surface-hover); }
+.hero-btn-ghost:hover { color: var(--white); border-color: var(--line-gold); background: var(--surface-raised); }
 
 /* ── Hero stats ──────────────────────────────────────────────────────────────
-   The house ruled grid, flush to the bottom of the masthead: 1px gap over a
-   --line ground draws the separators, so a wrap at any count looks deliberate
-   and there is no nth-child border surgery to maintain. */
+   A wrapping grid rather than a flex row with nth-child border surgery. The
+   old rule set 50% widths and toggled borders per position, which broke at
+   three items and at any wrap the designer had not anticipated. */
 .hero-stats {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  align-content: start;
-  animation: fadeUp var(--dur-slow) var(--ease-out) .22s both;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+  align-items: center;
+  justify-content: center;
+  max-width: 620px;
+  margin-inline: auto;
+  animation: fadeUp var(--dur-slow) var(--ease-out) .42s both;
 }
 
 .hero-stat {
-  background: var(--ink);
-  padding: var(--sp-3) var(--sp-4);
-  text-align: left;
+  padding: var(--sp-3) var(--sp-5);
+  text-align: center;
+  /* Separators drawn as insets, so any wrap looks deliberate. */
+  box-shadow: inset -1px 0 0 var(--line);
 }
-/* First cell sits on the container's own left edge, so the numbers line up
-   with the headline above rather than starting one padding step in. */
-.hero-stat:first-child { padding-left: 0; }
+.hero-stat:last-child { box-shadow: none; }
 
 .hero-stat-num {
   display: block;
-  font-family: var(--font-mono);
-  font-size: var(--fs-lg);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
   color: var(--white);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: var(--tracking-mono);
-  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
 }
 
 .hero-stat-label {
   display: block;
   margin-top: var(--sp-1);
   font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--fs-2xs);
+  color: var(--text-faint);
+  letter-spacing: var(--tracking-wide);
 }
 
 /* ── Section headers ─────────────────────────────────────────────────────── */
 
-.section-head {
-  margin-bottom: var(--sp-6);
-  padding-bottom: var(--sp-3);
-  border-bottom: 1px solid var(--line-hair);
-}
+.section-head { margin-bottom: var(--sp-10); }
 
 .section-eyebrow {
   display: block;
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-3);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  font-weight: 500;
   color: var(--gold);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
@@ -241,15 +217,15 @@
 
 .section-title {
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   color: var(--white);
   letter-spacing: var(--tracking-tight);
   line-height: var(--lh-tight);
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-3);
 }
 
 .section-body {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   max-width: var(--measure-tight);
   line-height: var(--lh-relaxed);
@@ -259,48 +235,47 @@
 
 .features-strip {
   border-block: 1px solid var(--line);
-  padding-block: var(--sp-block);
-  background: var(--surface-raised);
+  padding-block: var(--sp-section);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015) 0%, transparent 100%);
 }
 
 /* The 1px gap plus a background is what draws the hairline rules between
-   cells — no per-cell borders to double up at the seams. */
+   cards — no per-card borders to double up at the seams. */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 214px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-xl);
   overflow: hidden;
 }
 
 .feature-card {
   background: var(--ink);
-  padding: var(--sp-5) var(--sp-4);
-  transition: background var(--dur-fast) var(--ease-out);
+  padding: var(--sp-8) var(--sp-6);
+  transition: background var(--dur-base) var(--ease-out);
 }
-.feature-card:hover { background: var(--surface-hover); }
-@media (hover: none) { .feature-card:hover { background: var(--ink); } }
+.feature-card:hover { background: rgba(255,255,255,0.025); }
 
 .feature-icon {
-  width: 32px; height: 32px;
-  border-radius: var(--r-sm);
+  width: 40px; height: 40px;
+  border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   background: var(--gold-pale);
-  border: 1px solid var(--line-gold);
   color: var(--gold);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
 }
 
-.feature-title { font-size: var(--fs-sm); font-weight: 600; color: var(--white); margin-bottom: var(--sp-2); }
-.feature-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-normal); }
+.feature-title { font-size: var(--fs-base); font-weight: 500; color: var(--white); margin-bottom: var(--sp-2); }
+.feature-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-relaxed); }
 
 /* ── Showcase ────────────────────────────────────────────────────────────── */
 
 .home-showcase {
-  padding-block: var(--sp-block);
+  padding-block: var(--sp-section);
   border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01) 0%, transparent 100%);
 }
 
 .home-showcase-head {
@@ -308,69 +283,56 @@
   flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
-  gap: var(--sp-4);
-  margin-bottom: var(--sp-5);
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-8);
 }
-/* The head carries its own rule, so the shared one would double it. */
-.home-showcase-head .section-head { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
 
 .home-showcase-link {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  min-height: 34px;
-  padding-inline: var(--sp-3);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
+  min-height: 40px;
   color: var(--gold);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  transition: border-color var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: gap var(--dur-fast) var(--ease-out);
 }
-.home-showcase-link:hover { border-color: var(--line-gold); background: var(--gold-pale); }
+.home-showcase-link:hover { gap: var(--sp-3); }
 
-/* Same ruled grid as the features band — these were floating cards with their
-   own borders and a lift on hover, which put three different card shapes on
-   one page. */
 .home-showcase-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 268px), 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: var(--sp-4);
 }
 
 .home-showcase-card {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  min-height: 56px;
-  border: 0;
-  border-radius: 0;
-  background: var(--ink);
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
   text-align: left;
   color: inherit;
   min-width: 0;
-  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out);
 }
-.home-showcase-card:hover { background: var(--surface-hover); }
-.home-showcase-card:hover .home-showcase-card-arrow { color: var(--gold); }
-@media (hover: none) { .home-showcase-card:hover { background: var(--ink); } }
+.home-showcase-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-gold);
+  background: rgba(184,147,58,0.05);
+}
+@media (hover: none) { .home-showcase-card:hover { transform: none; } }
 
 .home-showcase-card-icon {
-  width: 30px; height: 30px;
+  width: 42px; height: 42px;
   flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  border-radius: var(--r-sm);
-  background: var(--surface-raised);
-  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface-hover);
   color: var(--gold);
 }
 
@@ -386,118 +348,98 @@
 
 .home-showcase-card-subtitle {
   display: block;
-  margin-top: 2px;
-  color: var(--text-muted);
-  font-size: var(--fs-3xs);
+  margin-top: var(--sp-1);
+  color: var(--text-faint);
+  font-size: var(--fs-2xs);
   font-family: var(--font-mono);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
 }
 
-.home-showcase-card-arrow {
-  display: flex; align-items: center;
-  color: var(--text-faint);
-  flex-shrink: 0;
-  transition: color var(--dur-fast) var(--ease-out);
-}
+.home-showcase-card-arrow { display: flex; align-items: center; color: var(--text-faint); flex-shrink: 0; }
 
 .home-showcase-state {
-  min-height: 148px;
+  min-height: 220px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: var(--sp-3);
-  padding: var(--sp-6) var(--sp-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--surface-raised);
   color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
   text-align: center;
 }
-.home-showcase-state--error { color: var(--red); border-color: var(--red-border); background: var(--red-bg); }
+.home-showcase-state--error { color: var(--red); }
 .home-showcase-state-icon { display: inline-flex; align-items: center; justify-content: center; }
 
 /* ── How it works ────────────────────────────────────────────────────────── */
 
-.how-section { padding-block: var(--sp-block); }
+.how-section { padding-block: var(--sp-section); }
 
 .how-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 224px), 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  overflow: hidden;
-  margin-top: var(--sp-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--sp-6);
+  margin-top: var(--sp-12);
 }
 
 .how-card {
   position: relative;
   overflow: hidden;
-  padding: var(--sp-5) var(--sp-4);
-  border: 0;
-  border-radius: 0;
-  background: var(--ink);
-  transition: background var(--dur-fast) var(--ease-out);
+  padding: var(--sp-8) var(--sp-6);
+  border-radius: var(--r-xl);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  transition: border-color var(--dur-base) var(--ease-out),
+              background var(--dur-base) var(--ease-out);
 }
-.how-card:hover { background: var(--surface-hover); }
-@media (hover: none) { .how-card:hover { background: var(--ink); } }
+.how-card:hover { border-color: var(--line-gold); background: rgba(184,147,58,0.03); }
 
-/* A step index, not a watermark: mono, tabular, sitting on the grid with the
-   rest of the figures on the page instead of ghosting behind the copy. */
 .how-num {
   position: absolute;
-  top: var(--sp-4); right: var(--sp-4);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  color: var(--text-faint);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: var(--tracking-caps);
+  top: var(--sp-4); right: var(--sp-5);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: rgba(255,255,255,0.05);
   line-height: 1;
+  letter-spacing: var(--tracking-tight);
   pointer-events: none;
 }
 
-.how-icon  { display: flex; align-items: center; color: var(--gold); margin-bottom: var(--sp-4); }
-.how-title { font-size: var(--fs-sm); font-weight: 600; color: var(--text-primary); margin-bottom: var(--sp-2); }
-.how-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-normal); }
+.how-icon  { display: flex; align-items: center; color: var(--gold); margin-bottom: var(--sp-5); }
+.how-title { font-size: var(--fs-base); font-weight: 500; color: var(--text-primary); margin-bottom: var(--sp-2); }
+.how-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-relaxed); }
 
 /* ── Closing CTA ─────────────────────────────────────────────────────────── */
 
-/* Was a gradient panel with a radial bloom on a pseudo-element. Flat gold-pale
-   ground inside a gold rule reads as the same emphasis without the depth. */
 .cta-banner {
   position: relative;
   overflow: hidden;
   margin: 0 var(--sp-gutter) var(--sp-section);
-  border-radius: var(--r-sm);
-  background: var(--gold-pale);
+  border-radius: var(--r-2xl);
+  background: linear-gradient(135deg, rgba(184,147,58,0.15) 0%, rgba(184,147,58,0.04) 100%);
   border: 1px solid var(--line-gold);
-  padding: clamp(var(--sp-8), 4vw, var(--sp-12)) var(--sp-gutter);
+  padding: clamp(var(--sp-10), 6vw, 3.75rem) var(--sp-gutter);
   text-align: center;
+}
+
+.cta-banner::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,147,58,0.18) 0%, transparent 65%);
+  pointer-events: none;
 }
 
 .cta-banner-title {
   position: relative;
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   color: var(--white);
   letter-spacing: var(--tracking-tight);
-  line-height: var(--lh-tight);
-  margin-bottom: var(--sp-3);
+  margin-bottom: var(--sp-4);
 }
 
 .cta-banner-sub {
   position: relative;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--text-secondary);
-  line-height: var(--lh-relaxed);
-  margin: 0 auto var(--sp-5);
+  margin: 0 auto var(--sp-8);
   max-width: 52ch;
 }
 
@@ -506,19 +448,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 
 /* ── Breakpoints ─────────────────────────────────────────────────────────────
-   The ruled grids need none — they reflow on their own from 360px up. This
-   handles the one thing that genuinely stops fitting: side-by-side buttons. */
+   The grids above need none. These two handle what genuinely differs on a
+   small phone: side-by-side buttons stop fitting, and the stat separators
+   read better as a boxed 2-up. */
 
 @media (max-width: 420px) {
   .hero-cta,
   .cta-banner-actions { flex-direction: column; align-items: stretch; }
   .hero-cta > *,
   .cta-banner-actions > * { width: 100%; }
-}
 
-/* The slash between the two export formats is structure, not a word. */
-.hero-stat-sep { color: var(--text-faint); margin-inline: 1px; }
+  .hero-stat { box-shadow: inset -1px 0 0 var(--line), inset 0 -1px 0 var(--line); }
+  .hero-stat:nth-child(even) { box-shadow: inset 0 -1px 0 var(--line); }
+}

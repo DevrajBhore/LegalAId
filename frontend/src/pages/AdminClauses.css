@@ -105,7 +105,7 @@
 .admin-chip {
   min-height: 36px;
   padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   border: 1px solid var(--line);
   background: var(--surface-raised);
   color: var(--text-secondary);
@@ -213,9 +213,8 @@
 
 .admin-kind {
   padding: var(--sp-1) var(--sp-3);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   font-size: var(--fs-2xs);
-  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   border: 1px solid var(--line);
@@ -227,10 +226,9 @@
 
 .admin-status {
   padding: var(--sp-1) var(--sp-3);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   font-size: var(--fs-2xs);
   font-weight: 600;
-  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   border: 1px solid transparent;

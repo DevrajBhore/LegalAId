@@ -1,206 +1,159 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   Documents — the saved-drafts register.
+   Documents — the saved-drafts list.
 
-   Was a grid of large rounded cards: two columns of ~250px-tall boxes, so a
-   laptop window showed four or six drafts. A saved-draft list is a register,
-   not a gallery — you come here to find one row out of forty, not to admire
-   six. So the grid is now a single ruled table: one hairline-separated row per
-   draft, laid out on four columns (identity · timestamps · figures · actions)
-   that collapse to a stacked block below 1040px. Same information, roughly
-   twice to three times as many drafts on screen.
+   This file carried eleven near-miss colours: #c8a64d and #d4a93d beside the
+   real --gold, #f6efde and rgba(244,237,222,…) beside --text-primary, and two
+   pinks for the danger state. They are mapped onto the tokens here. The palette
+   is unchanged — these were drift away from it, and the cards now match the
+   rest of the app exactly.
 
-   Everything else follows index.css: square corners, rules instead of the dead
-   --shadow-lg, mono uppercase for every badge, label, count and timestamp, and
-   tabular figures so the summary numbers line up down the column.
+   The card grid was a hard 2-column track dropping to 1 at 980px, so a tablet
+   showed two cramped cards and a large phone one very wide one. Auto-fill with
+   a 340px floor gives the right count at every width.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .documents-page { display: flex; flex-direction: column; }
 
-/* ── Header band ─────────────────────────────────────────────────────────────
-   A ruled band rather than a hero: the title strip is chrome, and its job is
-   to end quickly so the register starts high on the page. */
-
-.documents-hero {
-  padding-block: var(--sp-6) var(--sp-5);
-  padding-inline: var(--sp-gutter);
-  border-bottom: 1px solid var(--line);
-}
+.documents-hero { padding-block: var(--sp-section) 0; padding-inline: var(--sp-gutter); }
 
 .documents-hero-copy {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--sp-4);
+  gap: var(--sp-5);
   max-width: var(--page-max);
   margin-inline: auto;
 }
 
 .documents-eyebrow {
   display: block;
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-3);
   color: var(--gold);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  font-weight: 500;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
 }
 
 .documents-title {
   font-family: var(--font-display);
-  /* Down a step from --fs-3xl: a page title on a working screen, not a hero. */
-  font-size: var(--fs-2xl);
-  color: var(--text-primary);
+  font-size: var(--fs-3xl);
+  color: var(--white);
   letter-spacing: var(--tracking-tight);
   line-height: var(--lh-tight);
 }
 
 .documents-sub {
-  margin-top: var(--sp-2);
+  margin-top: var(--sp-3);
   color: var(--text-secondary);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-normal);
-  max-width: 62ch;
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  max-width: 56ch;
 }
 
 .documents-library-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  min-height: 34px;
-  padding: var(--sp-2) var(--sp-4);
-  border: 1px solid var(--gold);
-  border-radius: var(--r-sm);
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-md);
   background: var(--gold);
   color: var(--text-on-gold);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-gold);
   white-space: nowrap;
 }
-.documents-library-btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.documents-library-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
 
 .documents-shell {
   max-width: var(--page-max);
   margin-inline: auto;
-  padding: var(--sp-5) var(--sp-gutter) var(--sp-section);
+  padding: var(--sp-block) var(--sp-gutter) var(--sp-section);
   width: 100%;
 }
 
-/* ── Empty / loading / error ─────────────────────────────────────────────── */
-
 .documents-state {
-  min-height: 180px;
+  min-height: 260px;
   border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--surface-2);
+  border-radius: var(--r-2xl);
+  background: linear-gradient(180deg, var(--ink-2), var(--ink));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--sp-3);
-  padding: var(--sp-6) var(--sp-5);
+  gap: var(--sp-4);
+  padding: var(--sp-8);
   text-align: center;
   color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  letter-spacing: var(--tracking-mono);
 }
-.documents-state--error { color: var(--red); border-color: var(--red-border); background: var(--red-bg); }
-.documents-state-icon { font-size: var(--fs-lg); color: var(--text-muted); }
-.documents-state--error .documents-state-icon { color: var(--red); }
-
-/* ── The register ────────────────────────────────────────────────────────────
-   One bordered container, hairlines between rows, no per-row border and no
-   gaps — a gap between two bordered cards reads as two objects; a hairline
-   between two rows reads as one table. */
+.documents-state--error { color: var(--red); }
+.documents-state-icon { font-size: var(--fs-xl); }
 
 .documents-grid {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--surface-1);
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--sp-5);
 }
-.documents-grid > * + * { border-top: 1px solid var(--line-hair); }
 
 .documents-card {
-  display: grid;
-  gap: var(--sp-2) var(--sp-5);
-  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  background: linear-gradient(180deg, var(--ink-2), var(--ink));
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
   min-width: 0;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
 }
-.documents-card:hover { background: var(--surface-hover); }
-@media (hover: none) { .documents-card:hover { background: transparent; } }
-
-/* Wide: identity | timestamps | figures | actions, all on one baseline.
-   The four DOM children map straight onto the four tracks, so no wrapper
-   markup is needed to get a table out of the existing JSX. */
-@media (min-width: 1040px) {
-  .documents-card {
-    grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.2fr) minmax(0, 1.5fr) auto;
-    align-items: center;
-    gap: var(--sp-4);
-  }
-}
+.documents-card:hover { border-color: var(--line-gold); transform: translateY(-2px); }
+@media (hover: none) { .documents-card:hover { transform: none; } }
 
 .documents-card-top {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--sp-2) var(--sp-3);
-  min-width: 0;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  align-items: flex-start;
 }
 
 .documents-card-kicker {
-  display: block;
-  margin-bottom: var(--sp-1);
+  margin-bottom: var(--sp-2);
   color: var(--gold);
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
-  font-weight: 500;
+  font-size: var(--fs-2xs);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
 }
 
-/* The draft's name is the one piece of document text on this screen, so it
-   keeps DM Sans while everything around it goes mono. */
 .documents-card-title {
   color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
+  font-family: var(--font-display);
+  /* Was a flat 28px, which wrapped badly beside the badges on a phone. */
+  font-size: var(--fs-lg);
   line-height: var(--lh-snug);
-  letter-spacing: -0.01em;
   min-width: 0;
-  overflow-wrap: anywhere;
 }
 
-.documents-card-badges { display: flex; flex-wrap: wrap; gap: var(--sp-1); }
+.documents-card-badges { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 
 .documents-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-1);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   border: 1px solid var(--line);
-  padding: 1px var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
+  padding: var(--sp-1) var(--sp-3);
+  font-size: var(--fs-2xs);
   font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   white-space: nowrap;
   background: var(--surface-raised);
   color: var(--text-secondary);
 }
-.documents-badge--draft      { background: var(--surface-raised); color: var(--text-muted); }
+.documents-badge--draft      { background: var(--surface-raised); color: var(--text-secondary); }
 .documents-badge--validated  { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
 .documents-badge--exported   { background: var(--gold-pale); color: var(--gold-light); border-color: var(--line-gold); }
 .documents-badge--risk-low   { background: var(--green-bg); color: var(--green); border-color: var(--green-border); }
@@ -209,130 +162,77 @@
 .documents-badge--risk-blocked {
   background: var(--red-bg);
   color: var(--red);
-  border-color: var(--red);
+  border-color: var(--red-border);
+  font-weight: 600;
 }
 
-/* Dates and ids: mono, tabular, on one line where there is room. */
 .documents-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-1) var(--sp-3);
+  gap: var(--sp-2) var(--sp-5);
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: var(--tracking-mono);
-  font-variant-numeric: tabular-nums;
-  min-width: 0;
+  font-size: var(--fs-sm);
 }
 
-/* The three figures were three padded boxes inside a padded card — three
-   frames around one number each. They are now a plain ruled strip: label
-   above figure, hairline between, nothing else. */
 .documents-card-summary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-1) var(--sp-4);
-  min-width: 0;
+  display: grid;
+  /* 3 → 2 → 1 by available width rather than by viewport, so the same card
+     reflows correctly whether the grid is showing one column or three. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 96px), 1fr));
+  gap: var(--sp-3);
 }
 
 .documents-summary-item {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
+  padding: var(--sp-4);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
   min-width: 0;
-  flex: 0 1 auto;
-}
-.documents-summary-item + .documents-summary-item {
-  padding-left: var(--sp-4);
-  border-left: 1px solid var(--line-hair);
 }
 
 .documents-summary-label {
   display: block;
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
-  font-weight: 500;
+  margin-bottom: var(--sp-1);
+  font-size: var(--fs-2xs);
   text-transform: uppercase;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-wide);
   color: var(--text-muted);
-  line-height: var(--lh-snug);
 }
-.documents-summary-value {
-  display: block;
-  color: var(--text-primary);
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  line-height: var(--lh-snug);
-}
+.documents-summary-value { color: var(--text-primary); font-size: var(--fs-base); font-weight: 600; }
 
-/* ── Row actions ─────────────────────────────────────────────────────────── */
-
-.documents-card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-1);
-  margin-top: 0;
-  align-items: center;
-  justify-content: flex-start;
-}
+.documents-card-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: auto; }
 
 .documents-btn {
-  flex: 0 0 auto;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
-  min-height: 30px;
-  padding: var(--sp-1) var(--sp-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: background var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+  flex: 1 1 130px;
+  border: 0;
+  border-radius: var(--r-lg);
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: transform var(--dur-fast) var(--ease-out),
+              opacity var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
 }
-.documents-btn:disabled { opacity: .45; cursor: not-allowed; }
-.documents-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.documents-btn:hover { transform: translateY(-1px); }
+.documents-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
 .documents-btn--primary {
-  background: var(--gold);
-  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: var(--text-on-gold);
 }
-.documents-btn--primary:hover:not(:disabled) { background: var(--gold-light); border-color: var(--gold-light); }
-
 .documents-btn--secondary {
-  background: var(--surface-raised);
+  background: var(--surface-hover);
   color: var(--text-primary);
-  border-color: var(--line-strong);
+  border: 1px solid var(--line-strong);
 }
-.documents-btn--secondary:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--line-gold); }
-
 .documents-btn--danger {
   background: var(--red-bg);
   color: var(--red);
-  border-color: var(--red-border);
+  border: 1px solid var(--red-border);
 }
-.documents-btn--danger:hover:not(:disabled) { border-color: var(--red); }
-
-/* ── Narrow ──────────────────────────────────────────────────────────────────
-   Below the four-column threshold the row restacks into a labelled block. It
-   never scrolls sideways: every track is minmax(0,·) and the long tokens
-   (titles, ids) break rather than widen the row. */
-
-@media (max-width: 1039px) {
-  .documents-card-summary { gap: var(--sp-1) var(--sp-3); }
-  .documents-summary-item + .documents-summary-item { padding-left: var(--sp-3); }
-}
+.documents-btn--danger:hover { background: rgba(239,68,68,0.18); }
 
 @media (max-width: 560px) {
-  .documents-card { padding: var(--sp-3); gap: var(--sp-2); }
-  .documents-card-summary { width: 100%; }
-  .documents-card-actions .documents-btn { flex: 1 1 auto; justify-content: center; }
-  .documents-library-btn { width: 100%; justify-content: center; }
-  .documents-hero-copy { align-items: flex-start; }
+  .documents-card-actions .documents-btn { flex: 1 1 100%; }
 }

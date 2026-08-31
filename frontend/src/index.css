@@ -1,41 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap");
 
 /* ═══════════════════════════════════════════════════════════════════════════
    LegalAId — design system foundation
 
-   The palette is unchanged. Every ink, paper, gold, slate and status value
-   below is byte-for-byte what it has always been.
+   The palette is unchanged. Every ink, paper, gold, slate and status colour
+   below is exactly what it was; this file adds the scales and primitives that
+   were missing around them.
 
-   What changed is the CHARACTER built around those colours.
+   What changed, and why:
 
-   The premise of this revision: LegalAId is an instrument that produces a
-   document. Those are two different things and they were being styled as one.
-   The chrome — panels, toolbars, tabs, metadata, status, counts, clause ids —
-   is machinery, and machinery reads best dense, square, ruled and monospaced,
-   with every figure on a grid you can scan down. The document is the artifact,
-   and it is the ONE place in the product that earns generous measure, generous
-   leading and a serif. Air spent anywhere else is air taken from the work.
+   Before, each of the 24 stylesheets invented its own type sizes, spacing and
+   breakpoints — 35 media queries across 180KB, with NINE files carrying none at
+   all. index.css compensated with a global block of !important overrides that
+   shrank headings and hid decoration on phones. That block was a symptom: it
+   was patching pages that had never been made responsive, and it fought every
+   page that had.
 
-   So, concretely, against the previous revision:
-
-     · Radii collapse to 0-3px. A 14px corner on a data panel is upholstery.
-     · Elevation becomes line work. Shadows survive only where something
-       genuinely floats above the page — menus, modals, toasts.
-     · The space scale tightens by roughly a quarter, and the fluid section
-       steps tighten more, so a workspace shows more of itself at once.
-     · Labels, metadata, status, counts, ids, table headers and buttons move
-       to DM Mono, uppercase, tracked. The serif is reserved for page titles.
-     · The body gradient and its gold bloom are gone. An instrument panel does
-       not glow. A flat ground with a faint 8px grid replaces it.
-     · New primitives for the shapes a dense UI is actually made of: ruled
-       rows, key/value pairs, square status tags, data tables, meters, and a
-       toolbar — because none of those are cards, and everything here was a
-       card.
-
-   What did NOT change: the palette, the token names (so every stylesheet that
-   consumed them keeps working), the fluid type approach, the layout
-   primitives, and the accessibility floors — 44px touch targets on coarse
-   pointers, 16px inputs to stop iOS zoom, reduced-motion, high-contrast.
+   The fix is structural. Type and space are fluid by default, so a heading
+   scales with the viewport instead of needing a phone-specific override.
+   Layout primitives (.l-container, .l-grid, .l-stack, .l-cluster) collapse on
+   their own. Pages state their own breakpoints where they genuinely differ.
+   No !important survives.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -63,25 +48,20 @@
   --amber-bg:      rgba(245,158,11,0.10);
 
   /* ── Surface ladder ──────────────────────────────────────────────────────
-     Flatter than before. A dense interface separates regions with rules, not
-     with depth, so the steps between these are deliberately small — they mark
-     nesting, they do not simulate height. */
+     Four steps from the page floor to a raised card, so a panel nested inside
+     a panel still reads as nested. Previously each file mixed its own
+     rgba(255,255,255,0.0x) and the depths drifted apart. */
   --surface-0:     #090a0d;
   --surface-1:     var(--ink);
   --surface-2:     var(--ink-2);
   --surface-3:     var(--ink-3);
-  --surface-raised: rgba(255,255,255,0.028);
-  --surface-sunken: rgba(0,0,0,0.26);
-  --surface-hover:  rgba(255,255,255,0.055);
-  --surface-active: rgba(255,255,255,0.085);
+  --surface-raised: rgba(255,255,255,0.035);
+  --surface-sunken: rgba(0,0,0,0.22);
+  --surface-hover:  rgba(255,255,255,0.06);
 
-  /* ── Line work ───────────────────────────────────────────────────────────
-     This is the primary structural device now. Three weights: a hairline for
-     rows inside a panel, a line for panel edges, a strong line for the few
-     divisions that carry real hierarchy. */
-  --line-hair:     rgba(255,255,255,0.045);
-  --line:          rgba(255,255,255,0.09);
-  --line-strong:   rgba(255,255,255,0.16);
+  /* ── Line work ───────────────────────────────────────────────────────── */
+  --line:          rgba(255,255,255,0.07);
+  --line-strong:   rgba(255,255,255,0.13);
   --line-gold:     rgba(184,147,58,0.32);
 
   /* ── Text ────────────────────────────────────────────────────────────── */
@@ -91,77 +71,69 @@
   --text-faint:    #3a3d47;
   --text-on-gold:  #14150f;
 
-  /* ── Type scale ──────────────────────────────────────────────────────────
-     Tightened at the top. A dense interface has no use for a 5rem heading —
-     the old --fs-4xl existed for one marketing hero and distorted the ratio
-     for everything below it. The small end is unchanged, because that is
-     where a working screen actually lives. */
-  --fs-3xs:  0.625rem;                               /* 10px, static: tags    */
+  /* ── Fluid type scale ────────────────────────────────────────────────────
+     Each step interpolates between a phone value and a desktop value, so a
+     page never needs a phone-only font-size override. The ratio is ~1.24 at
+     the small end and ~1.30 at the large end: tighter on phones, where a
+     dramatic scale wastes the little width there is. */
   --fs-2xs:  0.6875rem;                              /* 11px, static: labels  */
   --fs-xs:   0.75rem;                                /* 12px, static: meta    */
   --fs-sm:   clamp(0.8125rem, 0.79rem + 0.11vw, 0.875rem);
   --fs-base: clamp(0.9375rem, 0.91rem + 0.14vw, 1rem);
-  --fs-md:   clamp(1rem,      0.96rem + 0.20vw, 1.0625rem);
-  --fs-lg:   clamp(1.0625rem, 1.01rem + 0.28vw, 1.25rem);
-  --fs-xl:   clamp(1.25rem,   1.14rem + 0.55vw, 1.625rem);
-  --fs-2xl:  clamp(1.5rem,    1.30rem + 1.00vw, 2.25rem);
-  --fs-3xl:  clamp(1.875rem,  1.55rem + 1.60vw, 3rem);
-  --fs-4xl:  clamp(2.25rem,   1.80rem + 2.25vw, 3.75rem);
+  --fs-md:   clamp(1rem,      0.96rem + 0.20vw, 1.125rem);
+  --fs-lg:   clamp(1.125rem,  1.05rem + 0.36vw, 1.375rem);
+  --fs-xl:   clamp(1.375rem,  1.24rem + 0.66vw, 1.875rem);
+  --fs-2xl:  clamp(1.75rem,   1.50rem + 1.24vw, 2.75rem);
+  --fs-3xl:  clamp(2.125rem,  1.70rem + 2.12vw, 4rem);
+  --fs-4xl:  clamp(2.5rem,    1.85rem + 3.24vw, 5.25rem);
 
-  --lh-tight:   1.12;
-  --lh-snug:    1.30;
-  --lh-normal:  1.50;
-  --lh-relaxed: 1.62;
-  --lh-read:    1.72;                                /* document body only    */
+  --lh-tight:   1.14;
+  --lh-snug:    1.32;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.68;
 
-  --tracking-tight:  -0.022em;
+  --tracking-tight:  -0.02em;
   --tracking-normal: 0;
-  --tracking-wide:   0.06em;
-  --tracking-caps:   0.14em;
-  --tracking-mono:   0.02em;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.12em;
 
   /* ── Space scale ─────────────────────────────────────────────────────────
-     Still a 4px base, but the working steps are tighter and the fluid section
-     steps are much tighter. The old --sp-section topped out at 6rem, which on
-     a 1440px screen pushed the second row of any page below the fold. */
-  --grid-unit: 8px;
-
+     A 4px base. The section steps are fluid so vertical rhythm compresses on
+     phones automatically — this is what the old !important hero block was
+     doing by hand, for nine specific selectors. */
   --sp-1:  0.25rem;
   --sp-2:  0.5rem;
-  --sp-3:  0.6875rem;
-  --sp-4:  0.875rem;
-  --sp-5:  1.125rem;
-  --sp-6:  1.375rem;
-  --sp-8:  1.75rem;
-  --sp-10: 2.25rem;
-  --sp-12: 2.75rem;
-  --sp-16: 3.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
 
-  --sp-gutter:  clamp(0.875rem, 0.55rem + 1.6vw, 1.5rem);
-  --sp-section: clamp(2rem, 1.30rem + 3.4vw, 4rem);
-  --sp-block:   clamp(1.25rem, 0.90rem + 1.7vw, 2.25rem);
+  --sp-gutter:  clamp(1rem, 0.60rem + 2.0vw, 1.75rem);
+  --sp-section: clamp(2.5rem, 1.40rem + 5.5vw, 6rem);
+  --sp-block:   clamp(1.5rem, 1.00rem + 2.5vw, 3rem);
 
   /* ── Measure ─────────────────────────────────────────────────────────── */
-  --measure:       66ch;
-  --measure-tight: 50ch;
-  --measure-wide:  80ch;
-  --measure-doc:   74ch;                             /* the document itself   */
+  --measure:       68ch;
+  --measure-tight: 52ch;
+  --measure-wide:  84ch;
 
   /* ── Layout ──────────────────────────────────────────────────────────── */
-  --page-max:      1320px;
-  --page-max-wide: 1560px;
-  --page-max-text: 780px;
-  --nav-h:         56px;
+  --page-max:      1280px;
+  --page-max-wide: 1480px;
+  --page-max-text: 820px;
+  --nav-h:         64px;
 
-  /* ── Radii ───────────────────────────────────────────────────────────────
-     Near-square. --r-full survives for the two things that are genuinely
-     circular — avatars and spinners — and for nothing else. */
-  --r-xs:   0;
-  --r-sm:   2px;
-  --r-md:   2px;
-  --r-lg:   3px;
-  --r-xl:   3px;
-  --r-2xl:  4px;
+  /* ── Radii — unchanged ───────────────────────────────────────────────── */
+  --r-xs:   3px;
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-xl:   20px;
+  --r-2xl:  28px;
   --r-full: 9999px;
 
   /* ── Type families — unchanged ───────────────────────────────────────── */
@@ -170,27 +142,27 @@
   --font-mono:    "DM Mono", ui-monospace, "Courier New", monospace;
 
   /* ── Elevation ───────────────────────────────────────────────────────────
-     Reserved for things that genuinely float. Panels, cards and toolbars use
-     --line instead; a dense layout with shadows on every box turns to mud. */
-  --shadow-sm:   none;
-  --shadow-md:   none;
-  --shadow-pop:  0 1px 2px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.5);
-  --shadow-lg:   var(--shadow-pop);
-  --shadow-xl:   0 2px 4px rgba(0,0,0,0.44), 0 24px 64px rgba(0,0,0,0.6);
-  --shadow-gold: inset 0 0 0 1px var(--line-gold);
-  --ring-gold:   0 0 0 1px var(--gold);
-  --ring-focus:  0 0 0 1px var(--surface-0), 0 0 0 3px var(--gold);
+     Two-layer shadows: a tight contact shadow plus a soft ambient one. A
+     single large blur reads as fog on a dark ground. */
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.30);
+  --shadow-md:   0 2px 4px rgba(0,0,0,0.24), 0 8px 24px rgba(0,0,0,0.28);
+  --shadow-lg:   0 4px 8px rgba(0,0,0,0.26), 0 20px 56px rgba(0,0,0,0.38);
+  --shadow-xl:   0 8px 16px rgba(0,0,0,0.28), 0 32px 80px rgba(0,0,0,0.46);
+  --shadow-gold: 0 2px 8px rgba(0,0,0,0.30), 0 0 0 1px var(--line-gold);
+  --ring-gold:   0 0 0 3px var(--gold-pale);
+  --ring-focus:  0 0 0 2px var(--surface-0), 0 0 0 4px var(--gold);
 
-  /* ── Motion ──────────────────────────────────────────────────────────────
-     Faster and flatter. Instruments respond; they do not ease in gracefully. */
-  --ease-out:   cubic-bezier(.2, .8, .3, 1);
+  /* ── Motion ──────────────────────────────────────────────────────────── */
+  --ease-out:   cubic-bezier(.22, 1, .36, 1);
   --ease-in-out:cubic-bezier(.65, 0, .35, 1);
-  --ease-spring:cubic-bezier(.34, 1.4, .64, 1);
-  --dur-fast:   .10s;
-  --dur-base:   .16s;
-  --dur-slow:   .26s;
+  --ease-spring:cubic-bezier(.34, 1.56, .64, 1);
+  --dur-fast:   .14s;
+  --dur-base:   .22s;
+  --dur-slow:   .38s;
 
-  /* ── Z-index ladder ──────────────────────────────────────────────────── */
+  /* ── Z-index ladder ──────────────────────────────────────────────────────
+     Named, so a new overlay does not need a z-index auction against numbers
+     scattered across two dozen files. */
   --z-base:    1;
   --z-raised:  10;
   --z-sticky:  100;
@@ -200,16 +172,17 @@
   --z-modal:   500;
   --z-toast:   600;
 
-  /* ── Legacy aliases ──────────────────────────────────────────────────── */
+  /* ── Legacy aliases ──────────────────────────────────────────────────────
+     Kept so no existing rule breaks while pages migrate to the names above. */
   --paper-bg:      var(--paper);
   --surface:       var(--ink);
   --surface-card:  var(--ink-2);
   --accent:        var(--gold);
   --accent-hover:  var(--gold-light);
   --accent-muted:  var(--gold-pale);
-  --green-border:  rgba(34,197,94,0.32);
-  --red-border:    rgba(239,68,68,0.32);
-  --amber-border:  rgba(245,158,11,0.32);
+  --green-border:  rgba(34,197,94,0.30);
+  --red-border:    rgba(239,68,68,0.30);
+  --amber-border:  rgba(245,158,11,0.30);
 }
 
 /* ═══ Reset ═══════════════════════════════════════════════════════════════ */
@@ -223,7 +196,10 @@ html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   background: var(--surface-0);
+  /* Anchors and scroll-into-view clear the sticky header instead of hiding
+     under it. */
   scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+  /* Honours the notch on iOS without every page repeating the calc. */
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
            env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
@@ -233,16 +209,9 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
   color: var(--text-primary);
-  /* Flat ground with an 8px rule grid at the threshold of visibility. It is
-     not decoration — it is the grid every panel edge in the app lands on, made
-     faintly legible so the alignment reads as intentional rather than
-     accidental. The old radial gold bloom went the other way: it implied depth
-     the interface does not have. */
-  background-color: var(--surface-0);
-  background-image:
-    linear-gradient(to right,  rgba(255,255,255,0.014) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.014) 1px, transparent 1px);
-  background-size: var(--grid-unit) var(--grid-unit);
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(184,147,58,0.07) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0b0e 0%, var(--ink) 50%, var(--surface-0) 100%);
   background-attachment: fixed;
   min-height: 100svh;
   overflow-x: hidden;
@@ -257,35 +226,43 @@ h1, h2, h3, h4, h5, h6 { font-weight: 400; line-height: var(--lh-tight); text-wr
 p { text-wrap: pretty; }
 ul, ol { list-style: none; }
 
+/* Replaced elements never exceed their column. */
 img, svg, video, canvas, iframe { max-width: 100%; height: auto; display: block; }
 
+/* Long unbroken strings — clause ids, emails, URLs — wrap rather than push the
+   layout sideways. This is a reset, not a patch: it is the correct default for
+   user-supplied content. */
 p, li, dd, dt, label, h1, h2, h3, h4, h5, h6, code, td, th {
   overflow-wrap: break-word;
 }
 code, pre, .mono { font-family: var(--font-mono); }
 
-/* Figures line up in a column wherever they are compared. In a dense layout
-   this is the difference between a table you can scan and a table you read. */
-.numeric, td.numeric, .fig, [data-numeric] { font-variant-numeric: tabular-nums; }
-
+/* A wide table scrolls inside its own box rather than clipping or stretching
+   the page. Wrapped in a container so the caption and borders survive. */
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .table-scroll > table { min-width: max-content; }
 
 ::selection { background: var(--gold-glow); color: var(--white); }
 
-/* Thinner, squarer, and it does not reserve a rounded track it never fills. */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.13); border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.24); }
-::-webkit-scrollbar-corner { background: transparent; }
-* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.16) rgba(0,0,0,0.2); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.10);
+  border-radius: var(--r-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); background-clip: content-box; }
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.14) transparent; }
 
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-radius: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: var(--r-xs); }
 :focus:not(:focus-visible) { outline: none; }
 
-/* ═══ Layout primitives ═══════════════════════════════════════════════════ */
+/* ═══ Layout primitives ═══════════════════════════════════════════════════
+   Four of these carry almost every layout in the app. Each collapses on its
+   own, which is what removes the need for per-page phone overrides. */
 
+/* Centred column with fluid gutters that never touch the screen edge. */
 .l-container {
   width: 100%;
   max-width: var(--page-max);
@@ -294,43 +271,37 @@ code, pre, .mono { font-family: var(--font-mono); }
 }
 .l-container--wide { max-width: var(--page-max-wide); }
 .l-container--text { max-width: var(--page-max-text); }
-.l-container--full { max-width: none; }
 
+/* Vertical rhythm without margin collapse surprises. */
 .l-stack { display: flex; flex-direction: column; gap: var(--sp-4); }
 .l-stack--tight { gap: var(--sp-2); }
 .l-stack--loose { gap: var(--sp-8); }
 
+/* Horizontal group that wraps instead of overflowing — the single most common
+   phone failure in the old stylesheets was a nav or button row that did not. */
 .l-cluster {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 .l-cluster--between { justify-content: space-between; }
-.l-cluster--tight { gap: var(--sp-1); }
 
+/* Responsive grid with no breakpoints: columns are added only when a whole
+   one fits. --col-min is the smallest a card may get before the grid reflows.
+   min() keeps it from overflowing a viewport narrower than --col-min itself. */
 .l-grid {
   display: grid;
-  gap: var(--sp-4);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--col-min, 240px)), 1fr));
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--col-min, 260px)), 1fr));
 }
-.l-grid--tight { gap: 1px; }
-.l-grid--loose { gap: var(--sp-6); }
+.l-grid--tight { gap: var(--sp-3); }
+.l-grid--loose { gap: var(--sp-8); }
 
-/* A grid whose cells are separated by rules rather than gaps. This is the
-   dense-layout workhorse: the 1px gap plus a background on the container
-   produces hairlines between cells with no per-cell border bookkeeping and no
-   doubled edges. */
-.l-grid--ruled {
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.l-grid--ruled > * { background: var(--surface-1); }
-
+/* Content column plus a sidebar that drops below when there is no room. */
 .l-sidebar {
   display: grid;
-  gap: var(--sp-5);
+  gap: var(--sp-6);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--side-min, 300px)), 1fr));
 }
 
@@ -350,29 +321,12 @@ code, pre, .mono { font-family: var(--font-mono); }
 
 .t-title    { font-family: var(--font-display); font-size: var(--fs-2xl); line-height: var(--lh-tight); }
 .t-heading  { font-family: var(--font-display); font-size: var(--fs-xl);  line-height: var(--lh-snug); }
-.t-subhead  { font-size: var(--fs-md); line-height: var(--lh-snug); font-weight: 600; letter-spacing: -0.01em; }
+.t-subhead  { font-size: var(--fs-lg); line-height: var(--lh-snug); font-weight: 500; }
 .t-body     { font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--text-secondary); }
 .t-small    { font-size: var(--fs-sm); color: var(--text-secondary); }
-.t-meta     { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-muted); }
-
-/* The label is the signature of this revision. Every piece of chrome text
-   that names a thing rather than saying it — section headings inside panels,
-   column heads, field labels, status captions — takes this treatment, and the
-   consistency is what makes the interface read as instrumentation. */
-.t-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--text-muted);
-  line-height: var(--lh-snug);
-}
-.t-label--gold { color: var(--gold); }
-.t-label--bright { color: var(--text-secondary); }
+.t-meta     { font-size: var(--fs-xs); color: var(--text-muted); }
 
 .t-eyebrow {
-  font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: var(--tracking-caps);
@@ -380,139 +334,54 @@ code, pre, .mono { font-family: var(--font-mono); }
   color: var(--gold);
 }
 
-/* The one place that is deliberately NOT dense. Clause text, generated
-   documents, long-form legal prose: full measure, open leading, no monospace
-   anywhere near it. */
-.t-read {
-  font-size: var(--fs-base);
-  line-height: var(--lh-read);
-  color: var(--text-primary);
-  max-width: var(--measure-doc);
-}
-
 /* ═══ Components ══════════════════════════════════════════════════════════ */
 
-/* A panel, not a card. Square, ruled, no lift, no shadow. */
-.card, .panel {
+.card {
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-lg);
   padding: var(--sp-5);
-  transition: border-color var(--dur-fast) var(--ease-out),
-              background   var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform   var(--dur-base) var(--ease-out),
+              box-shadow  var(--dur-base) var(--ease-out);
 }
-.card--interactive:hover, .panel--interactive:hover {
+.card--interactive:hover {
   border-color: var(--line-gold);
-  background: var(--surface-3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
+/* A touch device has no hover; the lift would stick after a tap. */
 @media (hover: none) {
-  .card--interactive:hover, .panel--interactive:hover { background: var(--surface-2); }
+  .card--interactive:hover { transform: none; box-shadow: none; }
 }
-
-/* Panel with a ruled header strip — the standard container for anything with
-   a name and a count. */
-.panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface-raised);
-}
-.panel-head > .t-label { margin: 0; }
-.panel-body { padding: var(--sp-4); }
-
-/* Rows separated by hairlines. Most lists in a dense UI are this, not cards. */
-.rows { display: flex; flex-direction: column; }
-.rows > * + * { border-top: 1px solid var(--line-hair); }
-.row {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  min-height: 40px;
-}
-.row--interactive { cursor: pointer; transition: background var(--dur-fast) var(--ease-out); }
-.row--interactive:hover { background: var(--surface-hover); }
-
-/* Key/value pairs on a shared column. The key is mono so every key in a stack
-   occupies the same rhythm and the values align without a table. */
-.kv { display: grid; grid-template-columns: minmax(6rem, auto) minmax(0, 1fr); gap: var(--sp-2) var(--sp-4); align-items: baseline; }
-.kv dt {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.kv dd { font-size: var(--fs-sm); color: var(--text-primary); font-variant-numeric: tabular-nums; }
-
-/* Data table. Mono heads, hairline rows, tabular figures. */
-.datagrid { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
-.datagrid th {
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding: var(--sp-2) var(--sp-3);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface-raised);
-  white-space: nowrap;
-}
-.datagrid td {
-  padding: var(--sp-3);
-  border-bottom: 1px solid var(--line-hair);
-  color: var(--text-secondary);
-  vertical-align: top;
-  font-variant-numeric: tabular-nums;
-}
-.datagrid tbody tr:last-child td { border-bottom: 0; }
-.datagrid tbody tr:hover td { background: var(--surface-hover); }
-
-/* Dense control strip. Buttons and selects sit flush inside it, divided by
-   rules rather than floating with gaps. */
-.toolbar {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  overflow: hidden;
-}
-.toolbar > * { background: var(--surface-2); border-radius: 0; border: 0; }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--sp-2);
-  min-height: 34px;
-  padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--r-sm);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
+  /* 44px minimum — the smallest reliable touch target. */
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   transition: background var(--dur-fast) var(--ease-out),
               border-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
 }
-.btn:disabled { opacity: .40; cursor: not-allowed; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 
 .btn--primary {
   background: var(--gold);
   color: var(--text-on-gold);
-  font-weight: 500;
-  border: 1px solid var(--gold);
+  font-weight: 600;
 }
-.btn--primary:hover:not(:disabled) { background: var(--gold-light); border-color: var(--gold-light); }
+.btn--primary:hover:not(:disabled) { background: var(--gold-light); }
 
 .btn--secondary {
   background: var(--surface-raised);
@@ -521,45 +390,26 @@ code, pre, .mono { font-family: var(--font-mono); }
 }
 .btn--secondary:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--line-gold); }
 
-.btn--ghost { color: var(--text-secondary); border: 1px solid transparent; }
+.btn--ghost { color: var(--text-secondary); }
 .btn--ghost:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-raised); }
 
 .btn--block { width: 100%; }
-.btn--lg { min-height: 42px; padding: var(--sp-3) var(--sp-6); font-size: var(--fs-xs); }
-
-/* Text that is a sentence, not a command — "Learn more", inline links inside
-   prose. Sentence case, body face, no tracking. */
-.btn--text {
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  text-transform: none;
-  letter-spacing: 0;
-  min-height: 0;
-  padding: 0;
-  color: var(--gold);
-}
-.btn--text:hover:not(:disabled) { color: var(--gold-light); }
 
 .field { display: flex; flex-direction: column; gap: var(--sp-2); }
-.field-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
+.field-label { font-size: var(--fs-sm); font-weight: 500; color: var(--text-primary); }
 .field-hint  { font-size: var(--fs-xs); color: var(--text-muted); line-height: var(--lh-normal); }
-.field-error { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--red); }
+.field-error { font-size: var(--fs-xs); color: var(--red); }
 
 .input, .textarea, .select {
   width: 100%;
+  /* 16px on phones: any smaller and iOS zooms the viewport on focus, which
+     then leaves the page scrolled sideways. */
   font-size: max(16px, var(--fs-sm));
-  padding: var(--sp-2) var(--sp-3);
-  min-height: 36px;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 44px;
   background: var(--surface-sunken);
   border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-md);
   color: var(--text-primary);
   transition: border-color var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
@@ -570,50 +420,31 @@ code, pre, .mono { font-family: var(--font-mono); }
   border-color: var(--gold);
   box-shadow: var(--ring-gold);
 }
-.textarea { min-height: 108px; resize: vertical; line-height: var(--lh-normal); padding: var(--sp-3); }
+.textarea { min-height: 120px; resize: vertical; line-height: var(--lh-normal); }
 
-/* Square status tag. Replaces the pill badge everywhere — a pill is a shape
-   for a marketing chip, not for a document state. */
-.badge, .tag {
+.badge {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-1);
-  padding: 2px var(--sp-2);
-  border-radius: var(--r-sm);
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-2xs);
   font-weight: 500;
-  letter-spacing: var(--tracking-caps);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   border: 1px solid transparent;
   white-space: nowrap;
-  line-height: 1.5;
 }
-.badge--gold,  .tag--gold  { background: var(--gold-pale);  color: var(--gold-light); border-color: var(--line-gold); }
-.badge--green, .tag--green { background: var(--green-bg);   color: var(--green);      border-color: var(--green-border); }
-.badge--red,   .tag--red   { background: var(--red-bg);     color: var(--red);        border-color: var(--red-border); }
-.badge--amber, .tag--amber { background: var(--amber-bg);   color: var(--amber);      border-color: var(--amber-border); }
-.badge--muted, .tag--muted { background: var(--surface-raised); color: var(--text-muted); border-color: var(--line); }
-
-/* A count sitting beside a label — tab badges, issue counts, clause totals. */
-.count {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  font-variant-numeric: tabular-nums;
-  color: var(--text-muted);
-  letter-spacing: var(--tracking-mono);
-}
-
-/* Inline proportion bar. Square, one line, no animation on load. */
-.meter { height: 3px; background: var(--surface-sunken); border-radius: 0; overflow: hidden; }
-.meter > i { display: block; height: 100%; background: var(--gold); transition: width var(--dur-slow) var(--ease-out); }
-.meter--green > i { background: var(--green); }
-.meter--amber > i { background: var(--amber); }
-.meter--red   > i { background: var(--red); }
+.badge--gold  { background: var(--gold-pale);  color: var(--gold-light); border-color: var(--line-gold); }
+.badge--green { background: var(--green-bg);   color: var(--green);      border-color: var(--green-border); }
+.badge--red   { background: var(--red-bg);     color: var(--red);        border-color: var(--red-border); }
+.badge--amber { background: var(--amber-bg);   color: var(--amber);      border-color: var(--amber-border); }
+.badge--muted { background: var(--surface-raised); color: var(--text-muted); border-color: var(--line); }
 
 .divider { height: 1px; background: var(--line); border: 0; }
-.divider--hair { background: var(--line-hair); }
 
+/* Visible only to screen readers — for headings a sighted user gets from
+   layout, and for the skip link below. */
 .sr-only {
   position: absolute; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
@@ -622,11 +453,9 @@ code, pre, .mono { font-family: var(--font-mono); }
 .skip-link {
   position: absolute; top: var(--sp-2); left: var(--sp-2);
   z-index: var(--z-toast);
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
   background: var(--gold); color: var(--text-on-gold);
-  border-radius: var(--r-sm);
-  font-family: var(--font-mono); font-size: var(--fs-2xs);
-  letter-spacing: var(--tracking-caps); text-transform: uppercase;
+  border-radius: var(--r-md); font-weight: 600;
   transform: translateY(-200%);
   transition: transform var(--dur-base) var(--ease-out);
 }
@@ -635,7 +464,7 @@ code, pre, .mono { font-family: var(--font-mono); }
 /* ═══ Motion ══════════════════════════════════════════════════════════════ */
 
 .spinner {
-  width: 18px; height: 18px;
+  width: 22px; height: 22px;
   border: 2px solid rgba(255,255,255,0.10);
   border-top-color: var(--gold);
   border-radius: 50%;
@@ -644,7 +473,7 @@ code, pre, .mono { font-family: var(--font-mono); }
 }
 .btn-spinner {
   display: inline-block;
-  width: 12px; height: 12px;
+  width: 14px; height: 14px;
   border: 2px solid rgba(255,255,255,0.25);
   border-top-color: currentColor;
   border-radius: 50%;
@@ -652,19 +481,17 @@ code, pre, .mono { font-family: var(--font-mono); }
 }
 
 @keyframes spin    { to { transform: rotate(360deg); } }
-/* Shorter travel than before — 16px of rise on every element reads as a page
-   assembling itself, which is wrong for a tool you open forty times a day. */
-@keyframes fadeUp  { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
-@keyframes scaleIn { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
 @keyframes shimmer { from { background-position: -200% center; } to { background-position: 200% center; } }
 
 .animate-in    { animation: fadeUp var(--dur-slow) var(--ease-out) both; }
-.animate-in-d1 { animation: fadeUp var(--dur-slow) var(--ease-out) .04s both; }
-.animate-in-d2 { animation: fadeUp var(--dur-slow) var(--ease-out) .08s both; }
-.animate-in-d3 { animation: fadeUp var(--dur-slow) var(--ease-out) .12s both; }
-.animate-in-d4 { animation: fadeUp var(--dur-slow) var(--ease-out) .16s both; }
-.page-enter    { animation: fadeIn var(--dur-base) var(--ease-out) both; }
+.animate-in-d1 { animation: fadeUp var(--dur-slow) var(--ease-out) .08s both; }
+.animate-in-d2 { animation: fadeUp var(--dur-slow) var(--ease-out) .16s both; }
+.animate-in-d3 { animation: fadeUp var(--dur-slow) var(--ease-out) .24s both; }
+.animate-in-d4 { animation: fadeUp var(--dur-slow) var(--ease-out) .32s both; }
+.page-enter    { animation: fadeUp var(--dur-slow) var(--ease-out) both; }
 
 .shimmer {
   background: linear-gradient(90deg,
@@ -674,7 +501,7 @@ code, pre, .mono { font-family: var(--font-mono); }
 }
 
 button, a, input, textarea, select {
-  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--dur-fast);
   transition-timing-function: var(--ease-out);
 }
@@ -690,27 +517,22 @@ button, a, input, textarea, select {
   }
 }
 
-/* Density is a mouse affordance. On a touch device every control returns to a
-   44px target and the padding grows to match — the layout stays dense, the
-   things you tap do not. */
+/* Coarse pointer: every interactive element clears the 44px target, and hover
+   affordances are dropped so nothing sticks after a tap. */
 @media (pointer: coarse) {
   button, [role="button"], a.nav-link, .nav-link, [role="tab"] { min-height: 44px; }
-  .btn { min-height: 44px; padding-inline: var(--sp-5); }
-  .input, .textarea, .select { min-height: 44px; padding: var(--sp-3); }
-  .row { min-height: 48px; }
 }
 
 @media (prefers-contrast: more) {
   :root {
-    --line-hair:   rgba(255,255,255,0.14);
-    --line:        rgba(255,255,255,0.24);
-    --line-strong: rgba(255,255,255,0.38);
-    --text-secondary: #bcbfcd;
-    --text-muted:     #8f93a6;
+    --line:        rgba(255,255,255,0.20);
+    --line-strong: rgba(255,255,255,0.32);
+    --text-secondary: #b9bccb;
+    --text-muted:     #8b8fa2;
   }
 }
 
 @media print {
-  body { background: var(--white); background-image: none; color: #000; }
+  body { background: var(--white); color: #000; }
   .header, .footer, .mobile-action-bar, .no-print { display: none !important; }
 }

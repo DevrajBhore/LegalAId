@@ -31,7 +31,7 @@
 .di-pill {
   font-family: var(--font-mono); font-size:var(--fs-2xs); font-style: normal;
   text-transform: uppercase; letter-spacing: 0.3px;
-  padding: 2px 7px; border-radius: var(--r-lg);
+  padding: 2px 7px; border-radius: 99px;
   color: var(--text-secondary); background: var(--surface-hover);
 }
 .di-pill--ok { color: var(--green); background: var(--green-bg); }

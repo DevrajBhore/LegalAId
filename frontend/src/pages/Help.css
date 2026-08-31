@@ -1,29 +1,16 @@
-/* Help — search plus an accordion FAQ.
-
-   The accordion was a stack of individually-bordered rounded boxes with a gap
-   between them; it is now one ruled panel per category, with the category
-   label as the panel head and each question a hairline-ruled row. Same object
-   as every other list in the product. The search field lost its pill radius
-   and keeps the 16px font floor so focusing it does not zoom the page on iOS;
-   the rows keep a real whole-row touch target. */
+/* Help — search plus an accordion FAQ. The file previously had no breakpoints
+   at all; the accordion rows now have real touch targets and the search field
+   uses the 16px floor so focusing it does not zoom the page on iOS. */
 
 .help-page { display: flex; flex-direction: column; }
 
-.help-hero {
-  padding-block: clamp(var(--sp-8), 4vw, var(--sp-12));
-  text-align: left;
-  padding-inline: var(--sp-gutter);
-  border-bottom: 1px solid var(--line);
-}
-/* Masthead copy rides the same measure as the FAQ column below it. */
-.help-hero > * { max-width: 780px; margin-inline: auto; }
+.help-hero { padding-block: var(--sp-section) 0; text-align: center; padding-inline: var(--sp-gutter); }
 
 .help-eyebrow {
   display: block;
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-4);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  font-weight: 500;
   color: var(--gold);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
@@ -31,37 +18,36 @@
 
 .help-title {
   font-family: var(--font-display);
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-3xl);
   color: var(--white);
   letter-spacing: var(--tracking-tight);
   line-height: var(--lh-tight);
-  margin-bottom: var(--sp-3);
+  margin-bottom: var(--sp-4);
 }
 
 .help-sub {
-  font-size: var(--fs-base);
+  font-size: var(--fs-md);
   color: var(--text-secondary);
-  max-width: 56ch;
-  margin-bottom: var(--sp-5);
+  max-width: 48ch;
+  margin: 0 auto var(--sp-8);
   line-height: var(--lh-relaxed);
 }
 
-.help-search-wrap { position: relative; }
+.help-search-wrap { position: relative; max-width: 460px; margin-inline: auto; }
 
 .help-search {
   width: 100%;
-  min-height: 38px;
+  min-height: 48px;
   font-size: max(16px, var(--fs-sm));
-  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-10);
+  padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-10);
   background: var(--surface-sunken);
   border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   color: var(--text-primary);
   transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 .help-search::placeholder { color: var(--text-faint); }
 .help-search:focus { outline: none; border-color: var(--gold); box-shadow: var(--ring-gold); }
-@media (pointer: coarse) { .help-search { min-height: 44px; } }
 
 .help-search-icon {
   position: absolute;
@@ -79,62 +65,40 @@
   padding: var(--sp-block) var(--sp-gutter) var(--sp-section);
 }
 
-.help-body { display: flex; flex-direction: column; gap: var(--sp-6); }
+.help-body { display: flex; flex-direction: column; gap: var(--sp-10); }
 
-/* One panel per category. Zero gap — the rules do the separating. */
-.faq-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--surface-2);
-  overflow: hidden;
-}
+.faq-group { display: flex; flex-direction: column; gap: var(--sp-2); }
 
-/* Reads as a panel head whether the markup puts it inside the group or
-   directly above it. */
 .faq-cat {
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  font-weight: 500;
   color: var(--gold);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-  padding: var(--sp-2) var(--sp-4);
-  background: var(--surface-raised);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 0;
+  margin-bottom: var(--sp-3);
 }
 
 .faq-item {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: rgba(255,255,255,0.02);
   overflow: hidden;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
 }
-.faq-item + .faq-item { border-top: 1px solid var(--line-hair); }
-.faq-item:hover { background: var(--surface-hover); }
-@media (hover: none) { .faq-item:hover { background: transparent; } }
-/* The open row carries a gold bar on its leading edge instead of a tinted
-   box — one marker, and it survives being adjacent to a closed row. */
-.faq-item--open {
-  background: var(--gold-pale);
-  box-shadow: inset 2px 0 0 var(--gold);
-}
+.faq-item:hover { border-color: var(--line-strong); }
+.faq-item--open { border-color: var(--line-gold); background: rgba(184,147,58,0.03); }
 
 .faq-q {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sp-3);
+  gap: var(--sp-4);
   width: 100%;
   /* A whole-row target rather than a text-sized one. */
-  min-height: 44px;
-  padding: var(--sp-3) var(--sp-4);
+  min-height: 56px;
+  padding: var(--sp-4) var(--sp-5);
   text-align: left;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--text-primary);
   background: none;
@@ -149,10 +113,8 @@
 }
 .faq-item--open .faq-chevron { transform: rotate(180deg); color: var(--gold); }
 
-/* The answer is the one piece of prose on this page, so it keeps open leading
-   and a real measure while the chrome around it tightens. */
 .faq-a {
-  padding: 0 var(--sp-4) var(--sp-4);
+  padding: 0 var(--sp-5) var(--sp-5);
   font-size: var(--fs-sm);
   color: var(--text-secondary);
   line-height: var(--lh-relaxed);
@@ -164,16 +126,9 @@
   flex-direction: column;
   align-items: center;
   gap: var(--sp-3);
-  padding: var(--sp-8) var(--sp-4);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--surface-raised);
+  padding: var(--sp-12) var(--sp-5);
   text-align: center;
   color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
 }
 .help-empty-icon { color: var(--text-faint); }
 
@@ -181,9 +136,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-4);
-  border-radius: var(--r-sm);
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  border-radius: var(--r-xl);
   background: var(--gold-pale);
   border: 1px solid var(--line-gold);
   color: var(--text-secondary);
@@ -191,5 +146,4 @@
   line-height: var(--lh-relaxed);
 }
 .help-still-stuck a { color: var(--gold); font-weight: 600; }
-.help-still-stuck a:hover { color: var(--gold-light); }
 .help-stuck-icon { color: var(--gold); display: flex; flex-shrink: 0; }

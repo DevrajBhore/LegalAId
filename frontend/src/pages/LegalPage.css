@@ -13,7 +13,7 @@
   padding-block: var(--sp-section) var(--sp-block);
   text-align: center;
   border-bottom: 1px solid var(--line);
-  background: var(--surface-2);
+  background: linear-gradient(180deg, rgba(184,147,58,0.04) 0%, transparent 60%);
 }
 .legal-hero::before {
   content: "";
@@ -63,7 +63,6 @@
   color: var(--text-faint);
   font-size: var(--fs-xs);
   letter-spacing: var(--tracking-caps);
-  font-family: var(--font-mono);
   text-transform: uppercase;
 }
 
@@ -145,7 +144,7 @@
               border-color var(--dur-base) var(--ease-out);
 }
 .legal-btn--primary { background: var(--gold); color: var(--text-on-gold); box-shadow: var(--shadow-gold); }
-.legal-btn--primary:hover { background: var(--gold-light); }
+.legal-btn--primary:hover { background: var(--gold-light); transform: translateY(-1px); }
 .legal-btn--ghost {
   border: 1px solid var(--line-strong);
   background: var(--surface-raised);

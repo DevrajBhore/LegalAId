@@ -79,7 +79,7 @@
   align-items: center;
   gap: var(--sp-1);
   padding: var(--sp-1) var(--sp-3);
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   font-size: var(--fs-2xs);
   background: var(--surface-hover);
   border: 1px solid var(--line);

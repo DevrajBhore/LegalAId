@@ -22,7 +22,7 @@
     gap: var(--sp-3);
     padding: var(--sp-3) var(--sp-gutter)
              calc(var(--sp-3) + env(safe-area-inset-bottom, 0px));
-    background: var(--surface-2);
+    background: linear-gradient(180deg, transparent 0%, var(--ink) 30%);
     border-top: 1px solid var(--line);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
