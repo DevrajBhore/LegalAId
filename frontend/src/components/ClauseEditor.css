@@ -17,7 +17,7 @@
 .clause-block--editing {
   margin: 0 -20px 28px;
   padding: 20px 20px 28px;
-  border-radius: 14px;
+  border-radius: var(--r-lg);
   border: 1.5px solid var(--line-gold);
   background: linear-gradient(135deg, rgba(184,147,58,0.04) 0%, rgba(255,253,245,0.95) 100%);
 }
@@ -27,7 +27,7 @@
 .clause-block--edited {
   margin: 0 -14px 28px;
   padding: 16px 14px 28px;
-  border-radius: 12px;
+  border-radius: var(--r-lg);
   background: rgba(34,197,94,0.04);
   border: 1px solid rgba(34,197,94,0.12);
   animation: clauseGlow .8s ease both;
@@ -38,7 +38,7 @@
 }
 
 /* Signature block styling */
-.clause-block--sig { background: rgba(43,32,18,0.015); border-radius: 8px; }
+.clause-block--sig { background: rgba(43,32,18,0.015); border-radius: var(--r-sm); }
 
 /* ── CLAUSE HEAD ──────────────────────────────────────────────────── */
 .clause-head {
@@ -62,7 +62,7 @@
 }
 .clause-cat-pill {
   display: inline-flex; align-items: center;
-  padding: 2px 8px; border-radius: 99px;
+  padding: 2px 8px; border-radius: var(--r-lg);
   font-family: var(--font-mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase;
   background: rgba(184,147,58,0.07); border: 1px solid var(--gold-pale);
   color: rgba(118,84,13,0.72);
@@ -71,7 +71,7 @@
 /* Statutory reference */
 .clause-stat-ref {
   display: inline-flex; align-items: center;
-  padding: 2px 8px; border-radius: 99px;
+  padding: 2px 8px; border-radius: var(--r-lg);
   font-family: var(--font-mono); font-size: 9px; color: rgba(80,60,38,0.55);
   background: rgba(43,32,18,0.04); border: 1px solid rgba(43,32,18,0.08);
   max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -81,13 +81,13 @@
 .clause-word-count {
   font-family: var(--font-mono); font-size: 9px; color: rgba(120,87,30,0.60);
   background: rgba(184,147,58,0.06); border: 1px solid var(--gold-pale);
-  padding: 2px 8px; border-radius: 99px;
+  padding: 2px 8px; border-radius: var(--r-lg);
 }
 
 /* Edit / Done buttons */
 .clause-edit-btn, .clause-done-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 5px 12px; border-radius: 99px;
+  padding: 5px 12px; border-radius: var(--r-lg);
   font-size:var(--fs-2xs); font-weight: 600; letter-spacing: .02em;
   transition: all .16s; cursor: pointer;
 }
@@ -101,7 +101,7 @@
 }
 .clause-done-btn {
   background: var(--ink-2); color: rgba(255,250,235,0.90); border: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.20);
+  box-shadow: none;
 }
 .clause-done-btn:hover { background: var(--ink); }
 
@@ -132,7 +132,7 @@
 .clause-textarea {
   width: 100%; min-height: 110px;
   padding: 16px 18px;
-  border-radius: 12px;
+  border-radius: var(--r-lg);
   border: 1.5px solid var(--line-gold);
   background: var(--paper);
   color: var(--ink-2);

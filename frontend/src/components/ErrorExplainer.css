@@ -1,10 +1,10 @@
 .error-explainer {
   border: 1px solid var(--red);
   background: var(--red-bg);
-  border-radius: 12px;
+  border-radius: var(--r-lg);
   padding: 16px 18px;
   margin: 16px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .error-explainer--blocked {
@@ -85,6 +85,7 @@
 .error-explainer__label {
   font-size: 0.72rem;
   font-weight: 700;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--slate-light);
@@ -112,7 +113,7 @@
   gap: 12px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 10px 12px;
 }
 
@@ -144,7 +145,7 @@
   flex: 0 0 auto;
   border: 1px solid var(--text-secondary);
   background: var(--white);
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   padding: 6px 10px;
   font-size: 0.8rem;
   cursor: pointer;
@@ -175,7 +176,7 @@
   padding: 10px;
   background: var(--ink-3);
   color: var(--text-primary);
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   font-size: 0.78rem;
   white-space: pre-wrap;
   word-break: break-word;

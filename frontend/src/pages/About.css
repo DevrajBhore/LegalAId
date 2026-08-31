@@ -1,6 +1,11 @@
-/* About — shares the hero / section / CTA anatomy of the other content pages.
-   Fixed 2- and 3-column tracks became auto-fit, so the tablet widths between
-   the old 880px step and desktop are no longer a single stretched column. */
+/* About — shares the masthead / ruled-grid / CTA anatomy of the other content
+   pages, so the three read as one product rather than three brochures.
+
+   Structurally: the centred hero becomes a left-aligned masthead closed with a
+   rule; the pillar, act and value cards were three separate floating-card
+   treatments and are now one ruled grid each; the act tags were pills and are
+   now square tags; the CTA's gradient and radial bloom are flat gold-pale
+   inside a gold rule. */
 
 .about-page { display: flex; flex-direction: column; }
 
@@ -10,17 +15,23 @@
   margin-inline: auto;
   padding-inline: var(--sp-gutter);
 }
-.about-hero-inner { max-width: 800px; position: relative; }
+.about-hero-inner { max-width: 1120px; position: relative; }
 .about-inner { max-width: 1120px; }
 
-.about-hero { padding-block: var(--sp-section); text-align: center; position: relative; }
+.about-hero {
+  padding-block: clamp(var(--sp-8), 4vw, var(--sp-12));
+  text-align: left;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
 
 .about-eyebrow,
 .about-section-eyebrow {
   display: block;
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-2);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
+  font-weight: 500;
   color: var(--gold);
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
@@ -28,35 +39,35 @@
 
 .about-hero-title {
   font-family: var(--font-display);
-  font-size: var(--fs-3xl);
-  color: var(--white);
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--lh-tight);
-  margin-bottom: var(--sp-5);
-}
-
-.about-hero-sub {
-  font-size: var(--fs-md);
-  color: var(--text-secondary);
-  line-height: var(--lh-relaxed);
-  max-width: 58ch;
-  margin-inline: auto;
-}
-
-.about-section-title {
-  font-family: var(--font-display);
   font-size: var(--fs-2xl);
   color: var(--white);
   letter-spacing: var(--tracking-tight);
   line-height: var(--lh-tight);
+  max-width: 24ch;
   margin-bottom: var(--sp-4);
 }
 
-.about-section-body {
+.about-hero-sub {
   font-size: var(--fs-base);
   color: var(--text-secondary);
   line-height: var(--lh-relaxed);
-  margin-bottom: var(--sp-8);
+  max-width: var(--measure);
+}
+
+.about-section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--white);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--sp-3);
+}
+
+.about-section-body {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--sp-6);
   max-width: var(--measure);
 }
 
@@ -64,31 +75,39 @@
 
 .about-pillars { padding-block: var(--sp-section); border-bottom: 1px solid var(--line); }
 
+/* Ruled grid: 1px gap over a --line ground draws the separators, so the cells
+   share edges instead of each carrying its own border and gutter. */
 .about-pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 268px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
 }
 
 .about-pillar {
-  padding: var(--sp-8);
-  border-radius: var(--r-xl);
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  transition: border-color var(--dur-base) var(--ease-out),
-              background var(--dur-base) var(--ease-out);
+  padding: var(--sp-5) var(--sp-4);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-1);
+  transition: background var(--dur-fast) var(--ease-out);
 }
-.about-pillar:hover { border-color: var(--line-gold); background: rgba(184,147,58,0.03); }
+.about-pillar:hover { background: var(--surface-hover); }
+@media (hover: none) { .about-pillar:hover { background: var(--surface-1); } }
 
 .about-pillar-icon {
-  width: 40px; height: 40px;
-  border-radius: var(--r-md);
+  width: 32px; height: 32px;
+  border-radius: var(--r-sm);
   display: flex; align-items: center; justify-content: center;
-  background: var(--gold-pale); color: var(--gold);
-  margin-bottom: var(--sp-5);
+  background: var(--gold-pale);
+  border: 1px solid var(--line-gold);
+  color: var(--gold);
+  margin-bottom: var(--sp-4);
 }
-.about-pillar-title { font-size: var(--fs-md); font-weight: 600; color: var(--white); margin-bottom: var(--sp-3); }
-.about-pillar-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-relaxed); }
+.about-pillar-title { font-size: var(--fs-sm); font-weight: 600; color: var(--white); margin-bottom: var(--sp-2); }
+.about-pillar-body  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-normal); }
 
 /* ── Acts ────────────────────────────────────────────────────────────────── */
 
@@ -96,34 +115,61 @@
 
 .about-acts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: clamp(var(--sp-8), 5vw, var(--sp-16));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(var(--sp-6), 3vw, var(--sp-10));
   align-items: center;
 }
 
-.about-acts-stat { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--sp-3); }
+.about-acts-stat {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding-block: var(--sp-3);
+  border-block: 1px solid var(--line);
+}
 
+/* This is a figure, not a heading — mono and tabular so it sits in the same
+   column rhythm as every other number in the product. */
 .about-acts-num {
-  font-family: var(--font-display);
-  /* Was a flat 56px, which the global !important rule then cut to 38px on
-     phones. Fluid instead, so no override is needed. */
-  font-size: clamp(2.25rem, 1.4rem + 4vw, 3.5rem);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xl);
+  font-weight: 500;
   color: var(--gold);
-  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-mono);
   line-height: 1;
 }
 
-.about-acts-label { font-size: var(--fs-sm); color: var(--text-secondary); max-width: 20ch; line-height: var(--lh-snug); }
+.about-acts-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  max-width: 24ch;
+  line-height: var(--lh-snug);
+}
 
-.about-acts-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.about-acts-tags { display: flex; flex-wrap: wrap; gap: var(--sp-1); }
 
+/* Was a pill. Square tag, matching .tag in index.css. */
 .about-act-tag {
-  padding: var(--sp-1) var(--sp-3);
-  border-radius: var(--r-full);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-sm);
   background: var(--surface-raised);
   border: 1px solid var(--line);
-  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
   color: var(--text-secondary);
+  white-space: nowrap;
+  line-height: 1.5;
 }
 .about-act-more { background: var(--gold-pale); border-color: var(--line-gold); color: var(--gold); }
 
@@ -133,20 +179,24 @@
 
 .about-values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: var(--sp-5);
-  margin-top: var(--sp-10);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 232px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-top: var(--sp-6);
 }
 
 .about-value-card {
-  padding: var(--sp-8);
-  border-radius: var(--r-xl);
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
+  padding: var(--sp-5) var(--sp-4);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-1);
 }
-.about-value-check { color: var(--green); display: flex; align-items: center; margin-bottom: var(--sp-4); }
-.about-value-card h4 { font-size: var(--fs-base); font-weight: 600; color: var(--white); margin-bottom: var(--sp-2); }
-.about-value-card p  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-relaxed); }
+.about-value-check { color: var(--green); display: flex; align-items: center; margin-bottom: var(--sp-3); }
+.about-value-card h4 { font-size: var(--fs-sm); font-weight: 600; color: var(--white); margin-bottom: var(--sp-2); }
+.about-value-card p  { font-size: var(--fs-sm); color: var(--text-secondary); line-height: var(--lh-normal); }
 
 /* ── CTA ─────────────────────────────────────────────────────────────────── */
 
@@ -155,34 +205,38 @@
 .about-cta-box {
   position: relative;
   overflow: hidden;
-  padding: clamp(var(--sp-10), 6vw, 4rem) var(--sp-gutter);
+  padding: clamp(var(--sp-8), 4vw, var(--sp-12)) var(--sp-gutter);
   text-align: center;
-  border-radius: var(--r-2xl);
-  background: linear-gradient(135deg, rgba(184,147,58,0.12), rgba(184,147,58,0.04));
+  border-radius: var(--r-sm);
+  background: var(--gold-pale);
   border: 1px solid var(--line-gold);
-}
-.about-cta-box::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(184,147,58,0.15) 0%, transparent 65%);
-  pointer-events: none;
 }
 
 .about-cta-title {
   position: relative;
   font-family: var(--font-display);
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-xl);
   color: var(--white);
   letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
   margin-bottom: var(--sp-3);
 }
-.about-cta-sub { position: relative; font-size: var(--fs-base); color: var(--text-secondary); margin-bottom: var(--sp-8); max-width: 52ch; margin-inline: auto; }
+.about-cta-sub {
+  position: relative;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--sp-5);
+  max-width: 52ch;
+  margin-inline: auto;
+}
 
 .about-cta-actions {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
 }
 
 .about-cta-btn-primary,
@@ -191,19 +245,27 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-2);
-  min-height: 46px;
-  padding: var(--sp-3) var(--sp-6);
-  border-radius: var(--r-md);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  transition: background var(--dur-base) var(--ease-out),
-              transform var(--dur-base) var(--ease-out),
-              border-color var(--dur-base) var(--ease-out);
+  min-height: 38px;
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
 }
-.about-cta-btn-primary { background: var(--gold); color: var(--text-on-gold); box-shadow: var(--shadow-gold); }
-.about-cta-btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-.about-cta-btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--line-strong); font-weight: 500; }
-.about-cta-btn-ghost:hover { color: var(--white); border-color: var(--line-gold); }
+.about-cta-btn-primary { background: var(--gold); color: var(--text-on-gold); border: 1px solid var(--gold); }
+.about-cta-btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.about-cta-btn-ghost {
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  border: 1px solid var(--line-strong);
+}
+.about-cta-btn-ghost:hover { color: var(--white); border-color: var(--line-gold); background: var(--surface-hover); }
 
 @media (max-width: 420px) {
   .about-cta-actions { flex-direction: column; align-items: stretch; }

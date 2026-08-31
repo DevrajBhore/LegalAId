@@ -10,9 +10,7 @@
 
 .footer {
   margin-top: var(--sp-section);
-  background:
-    radial-gradient(ellipse 60% 80% at top left, var(--gold-pale), transparent 60%),
-    #08090b;
+  background: var(--surface-0);
   border-top: 1px solid var(--line);
 }
 
@@ -56,12 +54,13 @@
   gap: var(--sp-2);
   width: fit-content;
   padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--r-full);
+  border-radius: var(--r-sm);
   background: var(--surface-raised);
   border: 1px solid var(--line);
   color: var(--text-secondary);
   font-size: var(--fs-2xs);
   letter-spacing: var(--tracking-caps);
+  font-family: var(--font-mono);
   text-transform: uppercase;
 }
 
@@ -70,7 +69,7 @@
   border-radius: 50%;
   background: var(--gold);
   flex-shrink: 0;
-  box-shadow: 0 0 0 3px var(--gold-pale);
+  box-shadow: var(--ring-gold);
 }
 
 /* 3 → 2 → 1 with no breakpoint of its own. */
@@ -87,6 +86,7 @@
   color: var(--text-faint);
   font-size: var(--fs-2xs);
   letter-spacing: var(--tracking-caps);
+  font-family: var(--font-mono);
   text-transform: uppercase;
   font-weight: 500;
 }

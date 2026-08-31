@@ -225,7 +225,7 @@
   background: var(--gold);
   box-shadow: var(--shadow-gold);
 }
-.document-info-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.document-info-primary:hover { background: var(--gold-light); }
 
 .document-info-secondary {
   border: 1px solid var(--line-strong);

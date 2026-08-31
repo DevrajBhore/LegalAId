@@ -1,58 +1,71 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    Library — the document-type browser.
 
-   `width: min(1220px, calc(100% - 48px))` fixed the gutter at 24px a side at
-   every width, which is too tight on a small phone and too loose on a large
-   one. It uses the fluid gutter now. The hero's 1.35fr / 0.9fr split collapsed
-   at 1080px; it is an auto-fit pair, so the panel drops under the copy exactly
-   when it stops fitting.
+   The old page was three floating boxes (hero copy, hero panel, browser), each
+   with a radial gold wash, a 4px radius and a shadow, wrapped around a grid of
+   260px cards with 11px gaps. That is a marketing layout carrying a catalogue.
+
+   It is now a catalogue: the hero is one ruled pair, the browser is a ruled
+   panel, and the type cards are a ruled grid — 1px rules instead of gaps, a
+   220px column floor instead of 260, and a two-line row instead of a padded
+   card. On a 1280px window that takes a group from four cards a row at ~72px
+   tall to five at ~44px, so the whole library reads in about half the scroll.
+   Filters became a segmented mono strip that scrolls horizontally rather than
+   wrapping into three rows of pills.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .library-page {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-8);
-  padding-block: var(--sp-block) var(--sp-section);
+  gap: var(--sp-5);
+  padding-block: var(--sp-5) var(--sp-section);
 }
 
 .library-hero,
 .library-browser {
   width: 100%;
-  max-width: 1240px;
+  max-width: var(--page-max);
   margin-inline: auto;
   padding-inline: var(--sp-gutter);
 }
 
+/* ── Hero ────────────────────────────────────────────────────────────────────
+   A ruled pair: copy and the count panel share one frame divided by a single
+   1px rule, so they read as two fields of one instrument rather than two
+   floating cards. */
+
 .library-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(min(100%, 300px), 0.9fr);
-  gap: var(--sp-6);
+  grid-template-columns: minmax(0, 1.9fr) minmax(min(100%, 260px), 0.8fr);
+  gap: 1px;
   align-items: stretch;
-  padding-inline: var(--sp-gutter);
 }
 
 .library-hero-copy,
 .library-hero-panel {
-  border-radius: var(--r-2xl);
+  border-radius: 0;
   border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at top left, var(--gold-pale), transparent 40%),
-    rgba(255,255,255,0.03);
-  box-shadow: var(--shadow-lg);
-  padding: clamp(var(--sp-6), 3.5vw, var(--sp-10));
+  background: var(--surface-2);
+  padding: var(--sp-5);
   min-width: 0;
+}
+/* One shared rule down the middle instead of two adjacent borders. */
+@media (min-width: 861px) {
+  .library-hero-copy { border-right: 0; }
 }
 
 .library-browser {
-  border-radius: var(--r-2xl);
+  border-radius: var(--r-sm);
   border: 1px solid var(--line);
-  background:
-    radial-gradient(circle at top left, var(--gold-pale), transparent 40%),
-    rgba(255,255,255,0.03);
-  box-shadow: var(--shadow-lg);
-  padding: clamp(var(--sp-6), 3.5vw, var(--sp-10));
-  /* The container padding above would otherwise double with the card's own. */
+  background: var(--surface-2);
+  /* Padding is applied per-region below so the head, the filter strip and the
+     groups can each carry their own full-bleed rule. */
+  padding: 0;
   margin-inline: auto;
+  /* The fluid gutter has to live outside the frame now that the frame is a
+     panel rather than a section. */
+  max-width: calc(var(--page-max) - (2 * var(--sp-gutter)));
+  padding-inline: 0;
 }
 
 .library-eyebrow,
@@ -63,58 +76,75 @@
   gap: var(--sp-2);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
+  font-weight: 500;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .library-title {
-  margin-block: var(--sp-5) var(--sp-4);
+  margin-block: var(--sp-3) var(--sp-3);
   font-family: var(--font-display);
-  font-size: var(--fs-3xl);
+  font-size: var(--fs-2xl);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--white);
+  color: var(--text-primary);
 }
 
 .library-sub {
   max-width: 62ch;
   color: var(--text-secondary);
-  font-size: var(--fs-md);
-  line-height: var(--lh-relaxed);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
 }
 
-.library-hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-6); }
+.library-hero-actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-4); }
 
 .library-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--sp-2);
-  min-height: 46px;
-  padding: var(--sp-3) var(--sp-5);
-  border-radius: var(--r-md);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  transition: background var(--dur-base) var(--ease-out),
-              transform var(--dur-base) var(--ease-out),
-              border-color var(--dur-base) var(--ease-out);
+  min-height: 34px;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
 }
-.library-btn--primary { background: var(--gold); color: var(--text-on-gold); box-shadow: var(--shadow-gold); }
-.library-btn--primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.library-btn--primary {
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: var(--text-on-gold);
+}
+.library-btn--primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
 .library-btn--ghost {
   background: var(--surface-raised);
   color: var(--text-secondary);
   border: 1px solid var(--line-strong);
-  font-weight: 500;
 }
-.library-btn--ghost:hover { color: var(--white); border-color: var(--line-gold); }
+.library-btn--ghost:hover { color: var(--text-primary); border-color: var(--line-gold); }
 
-.library-hero-panel { display: flex; flex-direction: column; justify-content: center; gap: var(--sp-5); }
+.library-hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-1);
+}
 
+/* The count is a reading on an instrument, so it is mono and tabular, not a
+   display-serif number. */
 .library-hero-stat {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: var(--fs-2xl);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   color: var(--gold);
   line-height: 1;
   letter-spacing: var(--tracking-tight);
@@ -122,10 +152,12 @@
 .library-hero-stat-label {
   display: block;
   margin-top: var(--sp-2);
-  font-size: var(--fs-xs);
-  color: var(--text-muted);
   font-family: var(--font-mono);
-  letter-spacing: var(--tracking-wide);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
 }
 
 /* ── Search and filters ──────────────────────────────────────────────────── */
@@ -135,27 +167,31 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--sp-5);
-  margin-bottom: var(--sp-6);
+  gap: var(--sp-3) var(--sp-5);
+  margin-bottom: 0;
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-raised);
 }
 
 .library-browser-title {
-  margin-top: var(--sp-3);
+  margin-top: var(--sp-2);
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
-  color: var(--white);
+  font-size: var(--fs-lg);
+  color: var(--text-primary);
+  line-height: var(--lh-snug);
 }
 
-.library-search-wrap { position: relative; flex: 1 1 260px; max-width: 420px; }
+.library-search-wrap { position: relative; flex: 1 1 240px; max-width: 380px; min-width: 0; }
 
 .library-search {
   width: 100%;
-  min-height: 46px;
+  min-height: 34px;
   font-size: max(16px, var(--fs-sm));
-  padding: var(--sp-3) var(--sp-4) var(--sp-3) var(--sp-10);
+  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-8);
   background: var(--surface-sunken);
   border: 1px solid var(--line-strong);
-  border-radius: var(--r-full);
+  border-radius: var(--r-sm);
   color: var(--text-primary);
 }
 .library-search::placeholder { color: var(--text-faint); }
@@ -163,7 +199,7 @@
 
 .library-search-icon {
   position: absolute;
-  left: var(--sp-4);
+  left: var(--sp-3);
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -171,98 +207,133 @@
   pointer-events: none;
 }
 
-.library-search-note { margin-top: var(--sp-2); font-size: var(--fs-xs); color: var(--text-muted); }
+.library-search-note {
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
 
-/* A scrollable row on narrow screens instead of a wrapping block that pushes
-   the grid far down the page. */
+/* A segmented strip, not a wrapping bag of pills: 1px rules on a line-coloured
+   ground give the divisions, and the strip scrolls sideways inside itself so a
+   long filter set never wraps and never pushes the grid down the page. */
 .library-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  margin-bottom: var(--sp-6);
+  flex-wrap: nowrap;
+  gap: 1px;
+  margin-bottom: 0;
+  padding: 0;
+  background: var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.library-filters::-webkit-scrollbar { display: none; }
 
 .library-filter {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  min-height: 38px;
+  flex: 0 0 auto;
+  min-height: 32px;
   padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--r-full);
-  border: 1px solid var(--line);
-  background: var(--surface-raised);
+  border-radius: 0;
+  border: 0;
+  background: var(--surface-2);
   color: var(--text-secondary);
-  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
   white-space: nowrap;
   transition: color var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out);
+              background var(--dur-fast) var(--ease-out);
 }
-.library-filter:hover { color: var(--text-primary); border-color: var(--line-strong); }
-.library-filter--active {
-  color: var(--gold);
-  background: var(--gold-pale);
-  border-color: var(--line-gold);
-  font-weight: 600;
-}
+.library-filter:hover { color: var(--text-primary); background: var(--surface-3); }
+.library-filter--active { color: var(--gold); background: var(--gold-pale); }
+/* Inset so the ring is not clipped by the scrolling strip. */
+.library-filter:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 .library-filter-icon { display: inline-flex; align-items: center; }
 
 /* ── Groups and cards ────────────────────────────────────────────────────── */
 
-.library-groups { display: flex; flex-direction: column; gap: var(--sp-10); }
-.library-group  { display: flex; flex-direction: column; gap: var(--sp-4); }
+.library-groups { display: flex; flex-direction: column; }
+.library-group  { display: flex; flex-direction: column; }
+.library-group + .library-group { border-top: 1px solid var(--line); }
 
+/* A panel head, not a heading with an icon tile: mono label, ruled underside,
+   the same strip every other section of the app uses. */
 .library-group-head {
   display: flex;
   align-items: center;
-  gap: var(--sp-4);
-  margin-bottom: var(--sp-4);
+  gap: var(--sp-3);
+  margin-bottom: 0;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--line-hair);
 }
 
 .library-group-icon {
-  width: 44px; height: 44px;
+  width: 24px; height: 24px;
   flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: var(--r-lg);
+  border-radius: var(--r-sm);
   color: var(--gold);
   background: var(--gold-pale);
   border: 1px solid var(--line-gold);
 }
 
-.library-group-title { font-size: var(--fs-lg); font-weight: 500; color: var(--text-primary); }
+.library-group-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
 
+/* Ruled grid: the 1px gap over a line-coloured ground draws the hairlines, so
+   no cell carries a border and no two borders ever double up. */
 .library-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1px;
+  background: var(--line-hair);
+  padding: 1px 0 0;
 }
 
 .library-card {
   display: flex;
   align-items: center;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
   width: 100%;
-  padding: var(--sp-4);
-  border-radius: var(--r-xl);
-  border: 1px solid var(--line);
-  background: var(--surface-raised);
+  padding: var(--sp-2) var(--sp-4);
+  min-height: 44px;
+  border-radius: 0;
+  border: 0;
+  background: var(--surface-2);
   text-align: left;
   color: inherit;
   min-width: 0;
-  transition: transform var(--dur-base) var(--ease-out),
-              border-color var(--dur-base) var(--ease-out),
-              background var(--dur-base) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
 }
-.library-card:hover { transform: translateY(-2px); border-color: var(--line-gold); background: rgba(184,147,58,0.05); }
-@media (hover: none) { .library-card:hover { transform: none; } }
+.library-card:hover { background: var(--surface-3); }
+.library-card:hover .library-card-title { color: var(--gold-light); }
+.library-card:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+@media (hover: none) { .library-card:hover { background: var(--surface-2); } }
 
 .library-card-icon {
-  width: 40px; height: 40px;
+  width: 22px; height: 22px;
   flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: var(--r-md);
-  background: var(--surface-hover);
-  color: var(--text-secondary);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-muted);
 }
 .library-card:hover .library-card-icon { color: var(--gold); }
 
@@ -272,30 +343,56 @@
   display: block;
   color: var(--text-primary);
   font-size: var(--fs-sm);
-  font-weight: 600;
+  font-weight: 500;
   line-height: var(--lh-snug);
+  overflow-wrap: anywhere;
 }
 .library-card-subtitle {
   display: block;
-  margin-top: var(--sp-1);
-  color: var(--text-faint);
-  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+  font-size: var(--fs-3xs);
   font-family: var(--font-mono);
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  line-height: var(--lh-snug);
 }
 .library-card-arrow { display: flex; align-items: center; color: var(--text-faint); flex-shrink: 0; }
+.library-card:hover .library-card-arrow { color: var(--gold); }
 
 .library-state {
-  min-height: 200px;
+  min-height: 140px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
+  padding: var(--sp-6) var(--sp-4);
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-mono);
 }
 .library-state--error { color: var(--red); }
 .library-state-icon { display: inline-flex; }
 
-@media (max-width: 1000px) {
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  /* The count panel drops under the copy and the shared rule becomes the
+     horizontal one between them. */
   .library-hero { grid-template-columns: 1fr; }
+  .library-hero-panel { border-top: 0; }
+  .library-hero-copy { border-bottom: 0; }
+  .library-hero-panel { flex-direction: row; align-items: baseline; gap: var(--sp-3); }
+  .library-hero-stat-label { margin-top: 0; }
+}
+
+@media (max-width: 560px) {
+  .library-hero-copy,
+  .library-hero-panel { padding: var(--sp-4); }
+  .library-browser-head { padding: var(--sp-3); }
+  .library-search-wrap { flex: 1 1 100%; max-width: none; }
+  .library-card { padding-inline: var(--sp-3); }
+  .library-group-head { padding-inline: var(--sp-3); }
+  .library-hero-actions .library-btn { flex: 1 1 auto; }
 }
