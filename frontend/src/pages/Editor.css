@@ -102,7 +102,7 @@
   gap: 8px;
   padding: 8px 12px;
   border-radius: var(--r-md);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212,170,85,0.1);
   background: var(--surface-raised);
   color: rgba(255, 255, 255, 0.72);
   font-size:var(--fs-xs);
@@ -635,7 +635,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(212,170,85,0.28);
   animation: chat-typing 1.2s ease infinite;
 }
 
@@ -714,7 +714,7 @@
   min-height: 38px;
   padding: 7px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212,170,85,0.1);
   background: var(--surface-raised);
   color: var(--text-secondary);
   font-size:var(--fs-xs);

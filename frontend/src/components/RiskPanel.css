@@ -69,7 +69,7 @@
 .risk-breakdown {
   border-radius: var(--r-lg); overflow: hidden;
   border: 1px solid var(--surface-hover);
-  background: rgba(255,255,255,0.025);
+  background: rgba(212,170,85,0.025);
 }
 .risk-row {
   display: flex; align-items: center; justify-content: space-between;

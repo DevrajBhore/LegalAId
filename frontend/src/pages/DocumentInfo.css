@@ -157,7 +157,7 @@
   padding: var(--sp-5);
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.02);
+  background: rgba(212,170,85,0.02);
 }
 .document-info-faq-item h3 {
   margin-bottom: var(--sp-2);

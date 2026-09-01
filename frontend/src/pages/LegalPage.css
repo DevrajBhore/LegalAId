@@ -73,7 +73,7 @@
 .legal-card {
   border-radius: var(--r-2xl);
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.025);
+  background: rgba(212,170,85,0.025);
   padding: clamp(var(--sp-5), 3vw, var(--sp-8));
 }
 

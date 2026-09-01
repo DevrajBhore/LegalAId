@@ -29,7 +29,7 @@
   margin-bottom: var(--sp-8);
   padding: clamp(var(--sp-5), 3vw, var(--sp-8));
   border-radius: var(--r-2xl);
-  background: rgba(255,255,255,0.02);
+  background: rgba(212,170,85,0.02);
   border: 1px solid var(--line);
 }
 
@@ -149,7 +149,7 @@
 .profile-card {
   padding: clamp(var(--sp-5), 3vw, var(--sp-8));
   border-radius: var(--r-xl);
-  background: rgba(255,255,255,0.02);
+  background: rgba(212,170,85,0.02);
   border: 1px solid var(--line);
   min-width: 0;
 }
@@ -183,7 +183,7 @@
   gap: var(--sp-3);
   padding: var(--sp-3);
   border-radius: var(--r-md);
-  background: rgba(255,255,255,0.03);
+  background: rgba(212,170,85,0.03);
 }
 .profile-feature-icon  { color: var(--gold); display: flex; flex-shrink: 0; }
 .profile-feature-label { flex: 1; font-size: var(--fs-sm); color: var(--text-secondary); min-width: 0; }
@@ -220,7 +220,7 @@
   gap: var(--sp-3);
   padding: var(--sp-4);
   border-radius: var(--r-md);
-  background: rgba(255,255,255,0.03);
+  background: rgba(212,170,85,0.03);
   border: 1px solid var(--line);
 }
 .profile-session-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }

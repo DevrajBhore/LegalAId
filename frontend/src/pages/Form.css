@@ -375,7 +375,7 @@
 }
 .field-help__definition {
   color:var(--text-secondary);
-  background:rgba(255,255,255,0.025);
+  background:rgba(212,170,85,0.025);
   border:1px solid var(--surface-hover);
   border-radius:10px;
   padding:8px 10px;
@@ -594,7 +594,7 @@
   padding:10px 12px;
   border-radius:12px;
   border:1px solid rgba(239,68,68,0.20);
-  background:rgba(255,255,255,0.035);
+  background:rgba(212,170,85,0.035);
   color:rgba(255,220,220,0.88);
   line-height:1.55;
 }
@@ -989,7 +989,7 @@
   margin-bottom:24px;
   padding:24px 28px;
   border-radius:var(--r-xl);
-  background:rgba(255,255,255,0.025);
+  background:rgba(212,170,85,0.025);
   border:1px solid var(--line);
 }
 
@@ -1001,7 +1001,7 @@
 .form-review-group {
   padding:14px;
   border-radius:var(--r-lg);
-  background:rgba(255,255,255,0.025);
+  background:rgba(212,170,85,0.025);
   border:1px solid var(--surface-hover);
 }
 

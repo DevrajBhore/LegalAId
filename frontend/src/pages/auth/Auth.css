@@ -30,7 +30,7 @@
   padding: clamp(var(--sp-8), 5vw, 3.5rem) clamp(var(--sp-6), 5vw, 4rem);
   position: relative;
   overflow: hidden;
-  background: linear-gradient(155deg, #0e0f14 0%, #14110f 60%, #0c0d10 100%);
+  background: linear-gradient(155deg, #171310 0%, #100d0a 60%, #0b0907 100%);
   border-right: 1px solid var(--line);
 }
 

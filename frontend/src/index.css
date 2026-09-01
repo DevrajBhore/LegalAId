@@ -49,26 +49,40 @@
 
   /* ── Surface ladder ──────────────────────────────────────────────────────
      Four steps from the page floor to a raised card, so a panel nested inside
-     a panel still reads as nested. Previously each file mixed its own
-     rgba(255,255,255,0.0x) and the depths drifted apart. */
-  --surface-0:     #090a0d;
-  --surface-1:     var(--ink);
-  --surface-2:     var(--ink-2);
-  --surface-3:     var(--ink-3);
-  --surface-raised: rgba(255,255,255,0.035);
-  --surface-sunken: rgba(0,0,0,0.22);
-  --surface-hover:  rgba(255,255,255,0.06);
+     a panel still reads as nested.
 
-  /* ── Line work ───────────────────────────────────────────────────────── */
-  --line:          rgba(255,255,255,0.07);
-  --line-strong:   rgba(255,255,255,0.13);
-  --line-gold:     rgba(184,147,58,0.32);
+     These now run WARM. The named palette above is untouched -- every ink,
+     gold, paper, slate and status value is byte-identical -- but the ladder no
+     longer points at the blue-leaning inks. A blue-black ground fights gold:
+     they sit on opposite sides of the wheel, so the gold reads as a stain on
+     the page rather than as the page's own colour. Shifting the ladder a few
+     degrees toward the gold's hue is what lets the accent look native, and it
+     costs nothing in contrast -- these are all darker than the inks they
+     replace. --ink / --ink-2 / --ink-3 stay available for anything that wants
+     the neutral tone deliberately. */
+  --surface-0:     #0b0907;
+  --surface-1:     #100d0a;
+  --surface-2:     #17130f;
+  --surface-3:     #221c16;
+  /* Raised and hover states tint with the accent rather than with plain white,
+     so a hovered row warms instead of greying. */
+  --surface-raised: rgba(212,170,85,0.045);
+  --surface-sunken: rgba(0,0,0,0.26);
+  --surface-hover:  rgba(212,170,85,0.09);
+
+  /* ── Line work ────────────────────────────────────────────────────────────
+     Borders carry a trace of the accent instead of neutral white. At 14%
+     nobody reads it as "a gold border" -- it just stops every edge in the
+     product from being a slightly colder grey than the surface it encloses. */
+  --line:          rgba(212,170,85,0.14);
+  --line-strong:   rgba(212,170,85,0.26);
+  --line-gold:     rgba(184,147,58,0.42);
 
   /* ── Text ────────────────────────────────────────────────────────────── */
-  --text-primary:  #e8e6e0;
-  --text-secondary:#9397a8;
-  --text-muted:    #64687a;
-  --text-faint:    #3a3d47;
+  --text-primary:  #f5f0e6;
+  --text-secondary:#b8ae9c;
+  --text-muted:    #8a8172;
+  --text-faint:    #4a443b;
   --text-on-gold:  #14150f;
 
   /* ── Fluid type scale ────────────────────────────────────────────────────
@@ -128,12 +142,12 @@
   --nav-h:         64px;
 
   /* ── Radii — unchanged ───────────────────────────────────────────────── */
-  --r-xs:   3px;
-  --r-sm:   6px;
-  --r-md:   10px;
-  --r-lg:   14px;
-  --r-xl:   20px;
-  --r-2xl:  28px;
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   18px;
+  --r-2xl:  22px;
   --r-full: 9999px;
 
   /* ── Type families — unchanged ───────────────────────────────────────── */
@@ -144,10 +158,13 @@
   /* ── Elevation ───────────────────────────────────────────────────────────
      Two-layer shadows: a tight contact shadow plus a soft ambient one. A
      single large blur reads as fog on a dark ground. */
-  --shadow-sm:   0 1px 2px rgba(0,0,0,0.30);
-  --shadow-md:   0 2px 4px rgba(0,0,0,0.24), 0 8px 24px rgba(0,0,0,0.28);
-  --shadow-lg:   0 4px 8px rgba(0,0,0,0.26), 0 20px 56px rgba(0,0,0,0.38);
-  --shadow-xl:   0 8px 16px rgba(0,0,0,0.28), 0 32px 80px rgba(0,0,0,0.46);
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.38);
+  --shadow-md:   0 2px 6px rgba(0,0,0,0.40), 0 14px 40px rgba(0,0,0,0.42);
+  --shadow-lg:   0 4px 10px rgba(0,0,0,0.42), 0 26px 64px rgba(0,0,0,0.48);
+  --shadow-xl:   0 8px 18px rgba(0,0,0,0.44), 0 40px 96px rgba(0,0,0,0.56);
+  /* The inner highlight that makes a warm card look lit from above rather than
+     merely filled. Paired with --shadow-md on every raised surface. */
+  --lip:         inset 0 1px 0 rgba(255,241,214,0.055);
   --shadow-gold: 0 2px 8px rgba(0,0,0,0.30), 0 0 0 1px var(--line-gold);
   --ring-gold:   0 0 0 3px var(--gold-pale);
   --ring-focus:  0 0 0 2px var(--surface-0), 0 0 0 4px var(--gold);
@@ -210,8 +227,8 @@ body {
   line-height: var(--lh-normal);
   color: var(--text-primary);
   background:
-    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(184,147,58,0.07) 0%, transparent 70%),
-    linear-gradient(180deg, #0a0b0e 0%, var(--ink) 50%, var(--surface-0) 100%);
+    radial-gradient(ellipse 70% 50% at 50% -8%, rgba(184,147,58,0.20) 0%, transparent 72%),
+    linear-gradient(180deg, #100d0a 0%, #0b0907 60%, #080605 100%);
   background-attachment: fixed;
   min-height: 100svh;
   overflow-x: hidden;

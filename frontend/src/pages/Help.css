@@ -81,7 +81,7 @@
 .faq-item {
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
-  background: rgba(255,255,255,0.02);
+  background: rgba(212,170,85,0.02);
   overflow: hidden;
   transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
 }

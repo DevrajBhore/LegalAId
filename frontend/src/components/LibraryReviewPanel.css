@@ -49,7 +49,7 @@
 .lib-field textarea,
 .lib-search input {
   background: var(--surface-raised);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212,170,85,0.1);
   border-radius: var(--r-md, 8px);
   color: var(--text-primary, var(--white));
   padding: 9px 11px;
@@ -81,7 +81,7 @@
   border: 1px solid var(--line);
   border-radius: var(--r-md, 8px);
   margin-bottom: 8px;
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(212,170,85,0.015);
 }
 .lib-row-head {
   width: 100%;
