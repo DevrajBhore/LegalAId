@@ -45,7 +45,17 @@ function buildDisputeResolutionClause(method = "", disputeVenue = "", governingL
   // what fixes supervisory jurisdiction, and a clause that names only a "venue"
   // invites the argument that no court was chosen at all.
   // True only when we have an actual city; a bare state is not a seat.
-  const seatIsPlace = Boolean(normalizeWhitespace(executionCity || disputeVenue));
+  // A venue equal to the governing-law state IS the state: injectJurisdictionRules
+  // falls disputeVenue back to `governingLawState || operatingState` before this
+  // function ever sees it, so a bare-state venue arrives looking like a city.
+  // Testing `executionCity || disputeVenue` for truthiness therefore passed on a
+  // state and kept emitting "the seat of arbitration shall be Maharashtra" -- the
+  // exact defect this was written to prevent. Compare against the state instead.
+  const venueText = normalizeWhitespace(disputeVenue);
+  const stateText = normalizeWhitespace(governingLawState);
+  const seatIsPlace =
+    Boolean(normalizeWhitespace(executionCity)) ||
+    (Boolean(venueText) && venueText.toLowerCase() !== stateText.toLowerCase());
 
   const seatSentence = (place) =>
     seatIsPlace
@@ -75,7 +85,7 @@ function buildDisputeResolutionClause(method = "", disputeVenue = "", governingL
       .join("\n");
 
   if (normalizedMethod === "courts") {
-    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, ${seatIsPlace ? `the competent courts at ${venue}` : `the competent courts having jurisdiction in ${venue}`} shall have exclusive jurisdiction, subject to applicable law.`;
+    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, ${seatIsPlace ? `the competent courts at ${venue}` : `the competent courts having jurisdiction in the State of ${venue}`} shall have exclusive jurisdiction, subject to applicable law.`;
   }
 
   if (normalizedMethod === "negotiation, then arbitration") {

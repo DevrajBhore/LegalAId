@@ -349,6 +349,52 @@ export function getDocumentStyleProfile(documentType = "") {
   return getDocumentDraftingPolicy(documentType)?.style || {};
 }
 
+// A legal instrument names its parties the way their identification documents
+// do. A user typing "rajiv gandhi" into a form gets "Rajiv gandhi" on the face
+// of the agreement and in the signature block, which reads as a defect to
+// anyone reviewing it -- and it is the first thing on page one.
+//
+// The rule is deliberately narrow: only a word that is ENTIRELY lowercase is
+// touched. Anything the user capitalised on purpose survives untouched, so
+// "McDonald", "van der Berg", "ABC PVT LTD", "d/b/a" and every deliberate
+// spelling are all safe. That asymmetry is the point -- the cost of wrongly
+// rewriting a real name is far higher than the cost of leaving one alone.
+const NAME_PARTICLES = new Set([
+  "van", "von", "der", "den", "de", "di", "da", "del", "della",
+  "la", "le", "bin", "binti", "ibn", "al", "e", "y",
+]);
+
+function toProperName(value = "") {
+  const text = String(value).trim();
+  if (!text) return text;
+
+  return text
+    .split(/(\s+)/)
+    .map((token, index) => {
+      if (!token.trim()) return token;
+      // Leave anything the user capitalised, and anything with a digit, alone.
+      if (/[A-Z]/.test(token) || /\d/.test(token)) return token;
+
+      const bare = token.toLowerCase();
+      // Particles stay lowercase unless they open the name.
+      if (index > 0 && NAME_PARTICLES.has(bare.replace(/[^a-z]/g, ""))) return token;
+
+      // "mcdonald" and "o'brien" carry a second capital.
+      const mc = bare.match(/^(ma?c)([a-z]{2,})$/);
+      if (mc) return cap(mc[1]) + cap(mc[2]);
+      const irish = bare.match(/^o'([a-z]+)$/);
+      if (irish) return "O'" + cap(irish[1]);
+
+      // Hyphenated and apostrophed surnames capitalise each part.
+      return bare.split(/([-'])/).map((part) => (/[-']/.test(part) ? part : cap(part))).join("");
+    })
+    .join("");
+}
+
+function cap(word = "") {
+  return word ? word.charAt(0).toUpperCase() + word.slice(1) : word;
+}
+
 export function getParticipantExpectations(documentType = "", variables = {}) {
   // A participant's slot id and the form field that collects its identifiers are
   // not always the same word. A partnership deed's participants are `partner_1`
@@ -367,7 +413,7 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
     .map((participant, index) => ({
       id: participant.id,
       label: participant.canonical,
-      name: variables?.[participant.nameField],
+      name: toProperName(variables?.[participant.nameField]),
       address: participant.addressField ? variables?.[participant.addressField] : undefined,
       type: participant.typeField ? variables?.[participant.typeField] : undefined,
       // Optional, and the notices clause simply omits the line when it is

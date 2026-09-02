@@ -130,5 +130,91 @@ await test("the definition list is lettered without gaps", async () => {
     `pruning left a gap in the lettering: ${letters.join("")}`);
 });
 
+// ── Second review round ────────────────────────────────────────────────────
+// A reviewing advocate read a document generated AFTER the fixes above and found
+// four more. Three of them shared one upstream cause: a variable named
+// `arbitration_city` was being filled with a State.
+
+const NO_CITY = {
+  party_1_name: "rajiv gandhi", party_2_name: "Rahul mandhi",
+  party_1_address: "", party_2_address: "",
+  operating_state: "Maharashtra", city: "", execution_city: "", arbitration_city: "",
+  contract_duration: "12 months",
+  delivery_location: "Plot 21, MIDC Bhosari, Pune 411026",
+};
+
+const STATES = "Maharashtra|Karnataka|Delhi|Gujarat|Kerala|Rajasthan|Tamil Nadu|Uttar Pradesh|Telangana|West Bengal|Punjab|Haryana|Bihar|Odisha|Assam";
+
+await test("no clause names a bare State as a forum", async () => {
+  // "the seat of arbitration shall be Maharashtra" and "the competent courts at
+  // Maharashtra" both name somewhere nobody can file. The first fix for this
+  // failed silently because injectJurisdictionRules had already replaced the
+  // missing city with the State before the guard ran.
+  const offenders = [];
+  const { DOCUMENT_TYPE_REGISTRY } = await import("../shared/documentRegistry.js");
+  for (const type of Object.keys(DOCUMENT_TYPE_REGISTRY)) {
+    let text;
+    try { text = await draft(type, NO_CITY); } catch { continue; }
+    const bad = new RegExp(`(?:seat of arbitration shall be|competent courts at|courts at) (?:${STATES})\\b`);
+    const m = text.match(bad);
+    if (m) offenders.push(`${type}: "${m[0]}"`);
+  }
+  assert.deepStrictEqual(offenders, [], `\n  ${offenders.join("\n  ")}`);
+});
+
+await test("a field named _city never holds a State", async () => {
+  const { buildInjectedVariables } = await import("../backend/services/variableInjector.js")
+    .then((m) => ({ buildInjectedVariables: m.buildInjectedVariables || m.default }))
+    .catch(() => ({}));
+  // The public surface varies; assert through a generated document instead.
+  const text = await draft("VENDOR_AGREEMENT", NO_CITY);
+  assert.ok(!/seat of arbitration shall be Maharashtra[,.]/.test(text),
+    "the seat is still being set to a State");
+});
+
+await test("the notices clause never promises an address block it omits", async () => {
+  // Clause 18 said notices go to "the address set out in this clause" and then
+  // set none out, leaving no valid way to serve notice at all.
+  const text = await draft("VENDOR_AGREEMENT", NO_CITY);
+  if (/set out in this clause/.test(text)) {
+    assert.ok(/The addresses for notices are/.test(text),
+      "the clause points at an address block that was never emitted");
+  }
+});
+
+await test("party names are rendered as proper names", async () => {
+  const text = await draft("VENDOR_AGREEMENT", NO_CITY);
+  assert.ok(!/rajiv gandhi/.test(text), 'a party is still named "rajiv gandhi"');
+  assert.ok(!/Rahul mandhi/.test(text), 'a party is still named "Rahul mandhi"');
+  assert.ok(/Rajiv Gandhi/.test(text) && /Rahul Mandhi/.test(text),
+    "the normalised names are not on the page");
+});
+
+await test("normalising names leaves deliberate capitals alone", async () => {
+  const { getParticipantExpectations } = await import("../backend/services/draftingPolicy.js");
+  const name = (value) =>
+    getParticipantExpectations("NDA", { party_1_name: value, party_1_address: "x" })[0]?.name;
+  // Rewriting a real name wrongly costs far more than leaving one alone, so the
+  // rule only ever touches an entirely-lowercase word.
+  assert.strictEqual(name("McDonald Foods"), "McDonald Foods");
+  assert.strictEqual(name("ABC PVT LTD"), "ABC PVT LTD");
+  assert.strictEqual(name("johannes van der berg"), "Johannes van der Berg");
+  assert.strictEqual(name("o'brien"), "O'Brien");
+  assert.strictEqual(name("smith-jones"), "Smith-Jones");
+});
+
+await test("unit spacing is normalised without touching statutory citations", async () => {
+  // The unit list must exclude single letters: a case-insensitive rule including
+  // "a" rewrites "Section 143A" as "Section 143 A", and s.143A of the
+  // Arbitration and Conciliation Act is a provision this product cites.
+  const text = await draft("VENDOR_AGREEMENT", {
+    ...NO_CITY,
+    goods_description: "Stainless steel bolts, 10mm diameter, 5kg net",
+  });
+  assert.ok(!/\d(?:mm|kg)\b/.test(text), "a measurement is still run together with its unit");
+  assert.ok(!/Section 143 A|Section 12 A|s\. ?143 A/.test(text),
+    "a statutory citation was split by the unit-spacing rule");
+});
+
 console.log(failures ? `\n${failures} FAILED` : "\nall passed");
 process.exit(failures ? 1 : 0);

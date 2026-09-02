@@ -158,11 +158,25 @@
 }
 .issue-fix-btn:disabled, .issue-fix-btn.fixing { opacity: .50; cursor: not-allowed; }
 .issue-fix-icon svg { width: 12px; height: 12px; }
+/* 11px is well below the size at which a rotating ring is legible. Same three
+   dots as every other in-button loading state. */
 .fix-spinner {
-  display: inline-block; width: 11px; height: 11px;
-  border: 1.5px solid var(--line-gold); border-top-color: var(--gold);
-  border-radius: 50%; animation: spin .6s linear infinite;
+  position: relative;
+  display: inline-block;
+  width: 3px; height: 3px; margin: 0 7px;
+  border: 0; border-radius: 50%;
+  background: currentColor;
+  animation: dot-rise 1.05s ease-in-out .14s infinite;
 }
+.fix-spinner::before,
+.fix-spinner::after {
+  content: ""; position: absolute; top: 0;
+  width: 3px; height: 3px; border-radius: 50%;
+  background: currentColor;
+  animation: dot-rise 1.05s ease-in-out infinite;
+}
+.fix-spinner::before { left: -5px; animation-delay: 0s; }
+.fix-spinner::after  { left:  5px; animation-delay: .28s; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── ADVISORY NOTES ── */

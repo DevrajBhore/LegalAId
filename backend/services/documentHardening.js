@@ -2079,7 +2079,9 @@ function renderHardClause(
       return {
       title: "Notices",
       text: [
-        "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this clause, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:",
+        noticeParties.length
+          ? "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this clause, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:"
+          : "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address, or the electronic mail address, last notified in writing by the recipient Party for the purpose of receiving notices under this Agreement. A communication shall be deemed to have been received as follows:",
         formatStructuredSubparts([
           "if delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. local time, and otherwise on the next Business Day",
           "if sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier",
@@ -2626,9 +2628,12 @@ function renderHardClause(
       const city = normalizeWhitespace(
         variables.execution_city || variables.arbitration_city
       );
-      const forum = city && state && city.toLowerCase() !== state.toLowerCase()
-        ? `${city}, ${state}`
-        : city;
+      // A "city" equal to the state is the state. Returning it as the forum
+      // produced "the competent courts at Maharashtra"; falling through to the
+      // state branch below produces "the competent courts having territorial
+      // jurisdiction in the State of Maharashtra", which is a real forum.
+      const cityIsPlace = Boolean(city) && city.toLowerCase() !== String(state).toLowerCase();
+      const forum = cityIsPlace && state ? `${city}, ${state}` : cityIsPlace ? city : "";
 
       return {
         title: "Governing Law and Jurisdiction",

@@ -260,15 +260,9 @@
   align-items: center;
 }
 
-.btn-spinner {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.24);
-  border-top-color: var(--white);
-  border-radius: 50%;
-  animation: editor-spin 0.7s linear infinite;
-}
+/* The ring here overrode the global .btn-spinner, so the editor's buttons kept
+   a 14px spinning ring -- which at that size reads as a smudge rather than as
+   motion. The shared three-dot treatment in index.css applies now. */
 
 @keyframes editor-spin {
   to {

@@ -1106,17 +1106,81 @@
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
   animation:fadeIn .25s ease;
 }
-.gen-ring {
-  width:64px; height:64px; border-radius:50%;
-  border:2px solid var(--line);
-  border-top-color:var(--gold);
-  animation:spin .8s linear infinite;
+/* A sheet that writes itself, then is sealed. A spinning ring says only "a
+   computer is busy"; this says what the computer is busy doing, which on a
+   twenty-second wait is the difference between watching a loader and watching
+   your document being made. */
+.gen-sheet {
+  position:relative;
+  width:112px; height:142px;
+  padding:14px 13px 0;
+  border-radius:var(--r-xs);
+  background:linear-gradient(178deg, var(--paper), var(--paper-3));
+  box-shadow:0 2px 5px rgba(0,0,0,.5), 0 16px 34px rgba(0,0,0,.45);
+  overflow:hidden;
 }
+.gen-sheet i {
+  display:block; height:4px; width:0;
+  margin-bottom:7px; border-radius:2px;
+  background:#b9b0a0;
+  animation:gen-draw 4.4s cubic-bezier(.5,0,.2,1) infinite;
+}
+/* The first line is the heading, so it is heavier and gold. */
+.gen-sheet i:nth-child(1) { height:6px; background:#8d6b1f; --gen-w:54%; animation-delay:0s; }
+.gen-sheet i:nth-child(2) { --gen-w:92%; animation-delay:.34s; }
+.gen-sheet i:nth-child(3) { --gen-w:78%; animation-delay:.60s; }
+.gen-sheet i:nth-child(4) { --gen-w:96%; animation-delay:.86s; }
+.gen-sheet i:nth-child(5) { --gen-w:64%; animation-delay:1.12s; }
+.gen-sheet i:nth-child(6) { --gen-w:88%; animation-delay:1.38s; }
+.gen-sheet i:nth-child(7) { --gen-w:72%; animation-delay:1.64s; }
+.gen-sheet i:nth-child(8) { --gen-w:45%; animation-delay:1.90s; }
+
+@keyframes gen-draw {
+  0%        { width:0; opacity:1; }
+  16%       { width:var(--gen-w,100%); opacity:1; }
+  76%       { width:var(--gen-w,100%); opacity:1; }
+  92%, 100% { width:var(--gen-w,100%); opacity:0; }
+}
+
+.gen-seal {
+  position:absolute; right:11px; bottom:13px;
+  width:28px; height:28px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--gold-light), #8d6b1f);
+  box-shadow:0 1px 3px rgba(0,0,0,.45);
+  transform:scale(0); opacity:0;
+  animation:gen-press 4.4s cubic-bezier(.34,1.4,.64,1) infinite;
+}
+@keyframes gen-press {
+  0%, 44%   { transform:scale(0) rotate(-25deg); opacity:0; }
+  54%       { transform:scale(1.18) rotate(0); opacity:1; }
+  60%, 76%  { transform:scale(1) rotate(0); opacity:1; }
+  92%, 100% { transform:scale(1) rotate(0); opacity:0; }
+}
+
 .gen-title { font-family:var(--font-display); font-size:var(--fs-lg); color:var(--white); letter-spacing:-.4px; }
-.gen-message { font-size:var(--fs-sm); color:var(--text-muted); font-family:var(--font-mono); animation:fadeIn .3s ease; }
-.gen-dots span { animation:pulse 1.4s ease infinite; display:inline-block; }
-.gen-dots span:nth-child(2) { animation-delay:.2s; }
-.gen-dots span:nth-child(3) { animation-delay:.4s; }
+
+/* The stages the engine really runs, in order. It only moves forward and holds
+   on the last one -- the old caption looped, so it claimed to be assembling
+   again after it had said it was validating. */
+.gen-stages { display:grid; gap:var(--sp-2); margin:0; padding:0; list-style:none; }
+.gen-stage {
+  display:grid; grid-template-columns:14px minmax(0,1fr); gap:var(--sp-3);
+  align-items:center;
+  font-family:var(--font-mono); font-size:var(--fs-2xs);
+  letter-spacing:.02em; color:var(--text-faint);
+  transition:color var(--dur-base) var(--ease-out);
+}
+.gen-tick {
+  width:12px; height:12px; border-radius:50%;
+  border:1px solid var(--line-strong);
+  transition:background var(--dur-base) var(--ease-out),
+             border-color var(--dur-base) var(--ease-out),
+             box-shadow var(--dur-base) var(--ease-out);
+}
+.gen-stage--done { color:var(--text-secondary); }
+.gen-stage--done .gen-tick { background:var(--green); border-color:var(--green); }
+.gen-stage--live { color:var(--gold-light); }
+.gen-stage--live .gen-tick { border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-pale); }
 
 @media (max-width:820px) {
   .form-layout {

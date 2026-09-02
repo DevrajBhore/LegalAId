@@ -53,10 +53,11 @@ const SELECT_DEFAULTS = {
   employment_termination_type: "Notice-based termination",
 };
 const GEN_MESSAGES = [
-  "Assembling legal knowledge...",
-  "Translating your inputs into legal drafting language...",
-  "Running legal validation...",
-  "Preparing your workspace...",
+  "Assembling clauses",
+  "Resolving clause dependencies",
+  "Tailoring to your answers",
+  "Applying drafting guardrails",
+  "Running legal validation",
 ];
 const LEGAL_DISCLAIMER =
   "LegalAId generates contracts based on established Indian legal principles and standard drafting practices. The documents are designed to be enforceable and commercially usable. Like any legal document, final enforceability depends on execution and specific circumstances, so review is recommended for complex or high-value cases.";
@@ -718,13 +719,10 @@ function FieldGroup({
 
         {assistantOpen && (
           <div className="field-assistant__panel">
-            {/* The definition is already shown in .field-help directly above this
-                panel. Repeating it here put the same paragraph on screen twice
-                the moment the user opened AI help. The field name stays as a
-                heading so the panel is anchored to the right question. */}
             <div className="field-assistant__context">
               <strong>{field.label}</strong>
-            </div>
+              <span>{definitionText}</span>
+            </div>    
             <textarea
               className="field-assistant__input"
               rows={2}
@@ -1012,8 +1010,8 @@ export default function Form() {
     }
 
     const id = setInterval(
-      () => setGenStep((count) => (count + 1) % GEN_MESSAGES.length),
-      2400
+      () => setGenStep((count) => Math.min(count + 1, GEN_MESSAGES.length - 1)),
+      1900
     );
     return () => clearInterval(id);
   }, [generating]);
@@ -1427,22 +1425,29 @@ export default function Form() {
       </div>
 
       {generating && (
-        <div className="generating-overlay">
-          <div className="gen-ring" />
-          <div className="gen-title">Generating your document</div>
-          <div className="gen-message">{GEN_MESSAGES[genStep]}</div>
-          <div
-            className="gen-dots"
-            style={{
-              color: "rgba(255,255,255,0.25)",
-              fontSize: 20,
-              letterSpacing: 4,
-            }}
-          >
-            <span>.</span>
-            <span>.</span>
-            <span>.</span>
+        <div className="generating-overlay" role="status" aria-live="polite">
+          <div className="gen-sheet" aria-hidden="true">
+            <i /><i /><i /><i /><i /><i /><i /><i />
+            <span className="gen-seal" />
           </div>
+          <div className="gen-title">Drafting your document</div>
+          <ol className="gen-stages">
+            {GEN_MESSAGES.map((message, index) => (
+              <li
+                key={message}
+                className={
+                  index < genStep
+                    ? "gen-stage gen-stage--done"
+                    : index === genStep
+                      ? "gen-stage gen-stage--live"
+                      : "gen-stage"
+                }
+              >
+                <span className="gen-tick" aria-hidden="true" />
+                {message}
+              </li>
+            ))}
+          </ol>
         </div>
       )}
 

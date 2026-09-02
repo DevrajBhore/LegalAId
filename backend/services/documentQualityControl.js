@@ -106,10 +106,35 @@ function applyConditionalClauseResolution(clauses = [], documentType, variables 
   });
 }
 
+// A measurement is a number and a unit with a space between them. The document
+// carried "10 mm diameter" in one clause and "10mm thread" in another, because
+// the user typed it both ways in the goods description and it was echoed
+// verbatim into several clauses. Normalising here means one spelling reaches the
+// page however it was typed.
+//
+// The unit list is deliberately restricted to multi-character units that cannot
+// collide with anything else in a legal document. Single letters are excluded
+// for a specific reason: a case-insensitive rule including "a" rewrites
+// "Section 143A" as "Section 143 A", and s.143A of the Arbitration and
+// Conciliation Act is a provision this product cites. Percent and currency are
+// excluded too -- "18%" and "INR 500" are already correct.
+const UNIT_TOKENS = ["mm", "cm", "km", "kg", "mg", "ml", "kW", "kVA", "sqft"];
+
+const UNIT_SPACING_PATTERN = new RegExp(
+  `(\\d)(${UNIT_TOKENS.join("|")})\\b`,
+  "g"
+);
+
+function normalizeUnitSpacing(text = "") {
+  return String(text).replace(UNIT_SPACING_PATTERN, "$1 $2");
+}
+
 function normalizeClauseText(clause, variables = {}) {
-  const text = normalizeCurrencyText(
-    normalizeEffectiveDateDefinitions(stripInternalNotes(clause.text || ""), variables),
-    { includeWords: true }
+  const text = normalizeUnitSpacing(
+    normalizeCurrencyText(
+      normalizeEffectiveDateDefinitions(stripInternalNotes(clause.text || ""), variables),
+      { includeWords: true }
+    )
   );
 
   return {

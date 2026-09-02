@@ -243,11 +243,19 @@ function buildDerivedVariables(variables = {}) {
     ),
     // Previously defaulted to a hardcoded "Mumbai", which silently seated every
     // arbitration there regardless of where the parties actually were.
+    // A field named `_city` must hold a city. Falling back to the governing-law
+    // state filled it with "Maharashtra", and every consumer downstream then
+    // treated that as a place: the arbitration clause seated the reference at a
+    // State, and the governing-law clause named "the competent courts at
+    // Maharashtra" -- neither of which is a forum anyone can file in. That was
+    // an over-correction of an earlier bug where this hardcoded "Mumbai" and
+    // silently seated every arbitration there.
+    //
+    // Empty is the honest value. Each consumer already has a correct no-city
+    // branch; leaving this blank is what lets those branches run.
     arbitration_city: firstNonEmpty(
       variables.arbitration_city,
-      variables.execution_city,
-      variables.governing_law_state,
-      variables.operating_state
+      variables.execution_city
     ),
   };
 }
