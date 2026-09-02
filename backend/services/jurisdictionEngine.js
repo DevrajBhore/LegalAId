@@ -44,10 +44,28 @@ function buildDisputeResolutionClause(method = "", disputeVenue = "", governingL
   // Seat is stated separately from venue because under the 1996 Act the seat is
   // what fixes supervisory jurisdiction, and a clause that names only a "venue"
   // invites the argument that no court was chosen at all.
+  // True only when we have an actual city; a bare state is not a seat.
+  const seatIsPlace = Boolean(normalizeWhitespace(executionCity || disputeVenue));
+
+  const seatSentence = (place) =>
+    seatIsPlace
+      ? `The seat of arbitration shall be ${place}, and the courts at ${place} shall have exclusive supervisory jurisdiction over the arbitration.`
+      // No city was captured. Naming the state would fix no court at all, so the
+      // clause states a rule that resolves to one: the Parties pick a place, and
+      // failing that the place of execution governs. Both are identifiable
+      // forums; neither puts a city into the Parties' mouths that they did not
+      // choose.
+      : `The seat of arbitration shall be such place within ${place} as the Parties agree in writing before the arbitration commences and, failing such agreement, the place at which this Agreement was executed; and the courts at the seat so determined shall have exclusive supervisory jurisdiction over the arbitration.`;
+
+  const hearingSentence = (place) =>
+    seatIsPlace
+      ? `Hearings may be held at ${place} or, where the arbitrator so directs or the Parties agree, by video conference.`
+      : `Hearings may be held at the seat or, where the arbitrator so directs or the Parties agree, by video conference.`;
+
   const arbitrationTerms = (place) =>
     [
-      `The seat of arbitration shall be ${place}, and the courts at ${place} shall have exclusive supervisory jurisdiction over the arbitration.`,
-      `Hearings may be held at ${place} or, where the arbitrator so directs or the Parties agree, by video conference.`,
+      seatSentence(place),
+      hearingSentence(place),
       "The arbitral tribunal shall consist of a sole arbitrator, and the proceedings and the award shall be in the English language.",
       "The award shall be in writing, shall state the reasons on which it is based, and shall be final and binding on the Parties.",
       "The arbitrator shall determine the costs of the arbitration, including the fees and expenses of the arbitrator and the reasonable legal costs of the Parties, in accordance with Section 31A of the Arbitration and Conciliation Act, 1996.",
@@ -57,7 +75,7 @@ function buildDisputeResolutionClause(method = "", disputeVenue = "", governingL
       .join("\n");
 
   if (normalizedMethod === "courts") {
-    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, the competent courts at ${venue} shall have exclusive jurisdiction, subject to applicable law.`;
+    return `The Parties shall attempt in good faith to resolve any dispute, controversy, or claim arising out of or in connection with this Agreement through amicable discussions. If the dispute remains unresolved within fifteen (15) days of written notice, ${seatIsPlace ? `the competent courts at ${venue}` : `the competent courts having jurisdiction in ${venue}`} shall have exclusive jurisdiction, subject to applicable law.`;
   }
 
   if (normalizedMethod === "negotiation, then arbitration") {

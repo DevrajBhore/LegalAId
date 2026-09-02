@@ -142,27 +142,37 @@ function resolveRenewalSentence(variables = {}) {
   // that the term clause did not reflect the supplied renewal terms and blocked
   // the whole document, so answering an optional question produced no draft at
   // all and an error the user had no way to act on.
+  // "the initial term" only means something if the document states one. Where a
+  // duration was supplied, name it; otherwise refer to the Agreement's expiry,
+  // which the term clause does define.
+  const statedTerm = normalizeWhitespace(
+    variables.contract_duration || variables.agreement_term || variables.term_duration
+  );
+  const expiryPhrase = statedTerm
+    ? `Upon expiry of the initial term of ${statedTerm}`
+    : "Upon expiry of this Agreement";
+
   if ((!renewalOption || renewalOption === "no") && renewalTerms) {
-    return `Upon expiry of the initial term, this Agreement may be renewed or extended only in accordance with the following renewal arrangement: ${renewalTerms}.`;
+    return `${expiryPhrase}, this Agreement may be renewed or extended only on the following basis: ${renewalTerms}.`;
   }
 
   if (!renewalOption || renewalOption === "no") {
-    return "Upon expiry of the initial term, this Agreement shall automatically expire unless the Parties expressly agree in writing to renew or extend it.";
+    return `${expiryPhrase}, this Agreement shall expire unless the Parties expressly agree in writing to renew or extend it.`;
   }
 
   if (renewalOption.includes("automatic")) {
     if (renewalTerms) {
-      return `Upon expiry of the initial term, this Agreement shall automatically renew in accordance with the following renewal arrangement: ${renewalTerms}.`;
+      return `${expiryPhrase}, this Agreement shall automatically renew on the following basis: ${renewalTerms}.`;
     }
 
-    return "Upon expiry of the initial term, this Agreement shall automatically renew for successive periods on the same terms unless either Party gives prior written notice of non-renewal.";
+    return `${expiryPhrase}, this Agreement shall automatically renew for successive periods on the same terms unless either Party gives prior written notice of non-renewal.`;
   }
 
   if (renewalTerms) {
-    return `Upon expiry of the initial term, this Agreement may be renewed or extended only in accordance with the following renewal arrangement: ${renewalTerms}.`;
+    return `${expiryPhrase}, this Agreement may be renewed or extended only in accordance with the following renewal arrangement: ${renewalTerms}.`;
   }
 
-  return "Upon expiry of the initial term, this Agreement may be renewed or extended only by mutual written agreement of the Parties.";
+  return `${expiryPhrase}, this Agreement may be renewed or extended only by mutual written agreement of the Parties.`;
 }
 
 function resolveTerminationNoticeDays(variables = {}) {
@@ -250,18 +260,28 @@ function resolveRestrictionPeriod(variables = {}) {
   return isNotApplicable(period) ? "twelve (12) months" : period;
 }
 
-function buildInvoiceComplianceSentence(payeeLabel, variables = {}) {
+function buildInvoiceComplianceSentence(payeeLabel, variables = {}, documentType = "") {
+  // A goods document invoices for goods. The old wording came from the services
+  // templates and was reused unchanged, so a sale-of-goods agreement asked for
+  // "a description of the relevant services or deliverables".
+  const suppliesGoods = Boolean(
+    variables?.goods_description || variables?.product_description ||
+    /GOODS|SUPPLY|VENDOR|DISTRIBUTION|SALES/.test(String(documentType || ""))
+  );
+  const subject = suppliesGoods
+    ? "description, quantity, and unit price of the goods supplied"
+    : "description of the relevant services or deliverables";
   const gstApplicable = normalizeWhitespace(variables.gst_applicable).toLowerCase();
   const payeeGstin = normalizeWhitespace(variables.party_2_gstin);
   const payerGstin = normalizeWhitespace(variables.party_1_gstin);
 
   if (gstApplicable === "no") {
-    return "All invoices shall be raised in Indian Rupees and shall describe the relevant services or deliverables, the amount payable, and the due date. If GST or any similar indirect tax becomes applicable under law, the Parties shall update the invoicing mechanics accordingly.";
+    return `All invoices shall be raised in Indian Rupees and shall state the ${subject}, the amount payable, and the due date. If GST or any similar indirect tax becomes applicable under law, the Parties shall update the invoicing mechanics accordingly.`;
   }
 
   const details = [
     "invoice date",
-    "description of the relevant services or deliverables",
+    subject,
     "taxable value",
     "applicable GST amount",
     "place of supply",
@@ -1759,7 +1779,7 @@ function renderHardClause(
           variables.min_purchase
         )}.` : ""} Payment shall be made in accordance with the following payment terms: ${normalizeWhitespace(
           variables.payment_terms || "within thirty (30) days of receipt of a valid tax invoice"
-        )}. ${buildInvoiceComplianceSentence(serviceLabels.payee, variables)}${resolveGstRateSentence(
+        )}. ${buildInvoiceComplianceSentence(serviceLabels.payee, variables, documentType)}${resolveGstRateSentence(
           variables
         )} In the event of delayed payment beyond the agreed due date, ${serviceLabels.payee} shall be entitled to charge simple interest at the rate of eighteen percent (18%) per annum on the outstanding amount from the due date until the date of actual payment. All payments shall be made by electronic transfer to the bank account designated by ${serviceLabels.payee} in writing.`;
       }
@@ -1768,7 +1788,7 @@ function renderHardClause(
         resolveServiceFee(variables)
       )}. Payment shall be made in accordance with the following payment terms: ${normalizeWhitespace(
         variables.payment_terms || "within thirty (30) days of receipt of a valid tax invoice"
-      )}. ${buildInvoiceComplianceSentence(serviceLabels.payee, variables)}${resolveGstRateSentence(
+      )}. ${buildInvoiceComplianceSentence(serviceLabels.payee, variables, documentType)}${resolveGstRateSentence(
         variables
       )}${hasMeaningfulValue(variables.tax_responsibility) ? ` The Parties further agree that tax responsibility shall operate as follows: ${stripExternalReferencePhrases(
         variables.tax_responsibility,
@@ -2169,7 +2189,7 @@ function renderHardClause(
         variables.price
       )} in accordance with the following payment terms: ${normalizeWhitespace(
         variables.payment_terms || "within thirty (30) days of receipt of a valid invoice"
-      )}. ${buildInvoiceComplianceSentence("the Supplier", variables)}${resolveGstRateSentence(
+      )}. ${buildInvoiceComplianceSentence("the Supplier", variables, documentType)}${resolveGstRateSentence(
         variables
       )} All payments shall be made by electronic transfer to the Supplier's designated bank account. In the event of delayed payment, the Supplier shall be entitled to charge simple interest at the rate of eighteen percent (18%) per annum on the overdue amount from the due date until actual payment. All amounts are exclusive of GST and other applicable taxes which shall be borne by the Buyer. The Buyer shall not withhold payment on account of any disputed claim without the Supplier's written consent.`,
 
@@ -2649,22 +2669,26 @@ function renderHardClause(
       );
       const quantity = stripExternalReferencePhrases(variables.quantity, "");
 
+      // Whatever this document actually calls its two sides.
+      const seller = namedParties.first;
+      const buyer = namedParties.second;
+
       const opening = goods
-        ? `The Seller shall supply to the Purchaser the following goods${
+        ? `The ${seller} shall supply to the ${buyer} the following goods${
             quantity ? `, in the quantity of ${quantity}` : ""
           }: ${goods}.`
-        : "The Seller shall supply to the Purchaser the goods described in the Schedule to this Agreement, in the quantities stated there.";
+        : `The ${seller} shall supply to the ${buyer} the goods described in the Schedule to this Agreement, in the quantities stated there.`;
 
       return {
         title: "Description of Goods",
         text: [
           opening,
           formatStructuredSubparts([
-            "the goods shall correspond with that description, and where the sale is by description the Purchaser is entitled to reject goods that do not so correspond, in accordance with Section 15 of the Sale of Goods Act, 1930",
-            "the goods shall be of merchantable quality and, where the Purchaser has made known the particular purpose for which they are required so as to show reliance on the Seller's skill or judgement, shall be reasonably fit for that purpose, in accordance with Section 16 of that Act",
+            `the goods shall correspond with that description, and where the sale is by description the ${buyer} is entitled to reject goods that do not so correspond, in accordance with Section 15 of the Sale of Goods Act, 1930`,
+            `the goods shall be of merchantable quality and, where the ${buyer} has made known the particular purpose for which they are required so as to show reliance on the ${seller}'s skill or judgement, shall be reasonably fit for that purpose, in accordance with Section 16 of that Act`,
             "where the sale is by sample as well as by description, the bulk shall correspond with both the sample and the description",
             "the goods shall be packed and marked so as to withstand the agreed mode of carriage, and shall be accompanied by the test certificates, manuals, and statutory documentation applicable to goods of that kind",
-            "any variation in specification, model, grade, or quantity requires the Purchaser's prior written agreement, and goods delivered outside the agreed specification are delivered at the Seller's risk",
+            `any variation in specification, model, grade, or quantity requires the ${buyer}'s prior written agreement, and goods delivered outside the agreed specification are delivered at the ${seller}'s risk`,
           ]),
         ].join("\n"),
       };

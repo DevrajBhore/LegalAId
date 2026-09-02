@@ -18,9 +18,16 @@ import PDFDocument from "pdfkit";
 import { parseIdentityClause } from "./documentStructure.js";
 import { getDocumentDisplayName } from "../../shared/documentRegistry.js";
 import {
+
   normalizeClauseCategory,
   sortClausesByOrder,
 } from "../config/clauseOrder.js";
+
+// Statutory references are internal provenance, not contract text. See the note
+// at each call site: they stay on the clause object and in the review panel, and
+// are simply not rendered into the signed document.
+const PRINT_STATUTORY_ANNOTATIONS = false;
+
 
 // ── Typography (Indian transactional-drafting convention) ───────────────────
 // Body 11-12 pt, section headings 12-14 pt, title 14-16 pt, all Times New
@@ -918,7 +925,7 @@ function renderBodyClause(children, clause, clauseNumber, options = {}) {
     );
   }
 
-  if (clause.statutory_reference) {
+  if (PRINT_STATUTORY_ANNOTATIONS && clause.statutory_reference) {
     children.push(
       new Paragraph({
         style: STYLE_ID.body,
@@ -1314,7 +1321,7 @@ function renderPdfBodyClause(doc, clause, clauseNumber, options = {}) {
     pdfParagraph(doc, block.text, { left: PDF_L1 });
   }
 
-  if (clause.statutory_reference) {
+  if (PRINT_STATUTORY_ANNOTATIONS && clause.statutory_reference) {
     // A citation to external material is set single-spaced, per the convention
     // for quoted or referenced statutory text.
     pdfParagraph(
@@ -1608,7 +1615,7 @@ export function draftToText(draft) {
       const pad = block.depth >= 2 ? "      " : "    ";
       lines.push(block.label ? `${pad}${block.label}  ${block.body}` : block.text);
     }
-    if (clause.statutory_reference) {
+    if (PRINT_STATUTORY_ANNOTATIONS && clause.statutory_reference) {
       lines.push(`[Ref: ${clause.statutory_reference}]`);
     }
   });
@@ -1625,7 +1632,7 @@ export function draftToText(draft) {
       `\n${scheduleHeadingPrefix(index + 1)}${heading.toUpperCase()}\n${"-".repeat(40)}`
     );
     lines.push(String(clause.text || "").trim());
-    if (clause.statutory_reference) {
+    if (PRINT_STATUTORY_ANNOTATIONS && clause.statutory_reference) {
       lines.push(`[Ref: ${clause.statutory_reference}]`);
     }
   });

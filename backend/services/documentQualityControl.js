@@ -200,6 +200,71 @@ function normalizeLiabilityCap(clauses = [], variables = {}) {
   });
 }
 
+// A defined term that appears nowhere else in the document is not a definition,
+// it is a leftover. The definitions clause is built before the final clause set
+// is known, so it offers the terms a document of this TYPE might need; only
+// after assembly can we see which ones the document actually went on to use.
+//
+// A reviewing advocate flagged exactly this: the vendor agreement defined
+// "Confidential Information" and "Intellectual Property Rights" while carrying
+// no confidentiality clause and no IP clause -- the blueprint has neither. A
+// definition with no operative provision behind it invites the reader to look
+// for an obligation that was never drafted.
+//
+// Terms load-bearing for the instrument's own structure are never pruned: they
+// are referred to constantly in ways that are not literal repetitions of the
+// defined word.
+const STRUCTURAL_TERMS = new Set([
+  "Agreement",
+  "Effective Date",
+  "Party",
+  "Parties",
+  "Term",
+  "Business Day",
+  "Applicable Law",
+]);
+
+function pruneUnusedDefinitions(clauses = []) {
+  const definitionsIndex = clauses.findIndex(
+    (clause) => String(clause?.clause_id || "").includes("DEFINITIONS")
+  );
+  if (definitionsIndex === -1) return clauses;
+
+  const definitionsClause = clauses[definitionsIndex];
+  const text = String(definitionsClause?.text || "");
+  if (!text) return clauses;
+
+  // Everything the document says apart from the definitions clause itself.
+  const elsewhere = clauses
+    .filter((_, index) => index !== definitionsIndex)
+    .map((clause) => String(clause?.text || ""))
+    .join("\n");
+
+  const lines = text.split("\n");
+  const kept = lines.filter((line) => {
+    const match = line.match(/^\s*\([a-z]\)\s*"([^"]+)"\s+means\b/);
+    if (!match) return true;                       // not a definition entry
+    const term = match[1];
+    if (STRUCTURAL_TERMS.has(term)) return true;
+    return elsewhere.includes(term);
+  });
+
+  if (kept.length === lines.length) return clauses;
+
+  // Re-letter the survivors so the list does not read (a) (b) (e) (f).
+  let ordinal = 0;
+  const relettered = kept.map((line) =>
+    /^\s*\([a-z]\)\s*"/.test(line)
+      ? line.replace(/^(\s*)\([a-z]\)/, (_, indent) =>
+          `${indent}(${String.fromCharCode(97 + ordinal++)})`)
+      : line
+  );
+
+  const next = clauses.slice();
+  next[definitionsIndex] = { ...definitionsClause, text: relettered.join("\n") };
+  return next;
+}
+
 export function applyDocumentQualityControls(draft, input = {}) {
   if (!draft || !Array.isArray(draft.clauses)) return draft;
   const documentType = input.document_type || draft.document_type;
@@ -208,6 +273,8 @@ export function applyDocumentQualityControls(draft, input = {}) {
     .map((clause) => normalizeClauseText(clause, variables));
   clauses = normalizeLiabilityCap(clauses, variables);
   clauses = dedupeClauses(clauses);
+  // Runs last: it needs the final clause set to know what the document uses.
+  clauses = pruneUnusedDefinitions(clauses);
 
   return {
     ...draft,
