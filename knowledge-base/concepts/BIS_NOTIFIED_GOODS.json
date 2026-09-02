@@ -1,0 +1,62 @@
+{
+  "concept_id": "BIS_NOTIFIED_GOODS",
+  "label": "The goods are under a mandatory Indian Standard",
+  "definition": "The goods fall under a Quality Control Order, so they may not lawfully be manufactured, imported, sold or stocked without the Standard Mark. The specification clause must name the Indian Standard, the warranty must be a warranty of conformity to it, and the right to reject must survive.",
+  "authority": [
+    { "act": "Bureau of Indian Standards Act, 2016", "section": "17", "note": "Compulsory use of the Standard Mark for goods notified under a Quality Control Order.", "verified": false },
+    { "act": "Bureau of Indian Standards Act, 2016", "section": "29", "note": "Penalties for contravention.", "verified": false },
+    { "act": "Sale of Goods Act, 1930", "section": "15", "note": "Sale by description — goods must correspond to the description.", "verified": false },
+    { "act": "Sale of Goods Act, 1930", "section": "16", "note": "Implied condition of fitness for purpose and merchantable quality.", "verified": false },
+    { "act": "Legal Metrology Act, 2009", "section": "18", "note": "Mandatory declarations on packages.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "role": ["seller", "supplier", "manufacturer", "distributor", "importer"],
+    "event": ["sale", "supply", "manufacture", "distribute", "package"]
+  },
+  "attributes": {
+    "standard_number": { "type": "string", "optional": true, "note": "e.g. IS 14534:2023" },
+    "qco_reference": { "type": "string", "optional": true },
+    "requires_bis_licence": { "type": "boolean", "optional": true }
+  },
+  "detection": {
+    "b_lexicon": [
+      {
+        "list": "bis_quality_control_orders",
+        "source_of_truth": "BIS / DPIIT notified Quality Control Orders, published product-category list",
+        "reads_fields": ["product_description", "goods_description", "goods_or_services_description"],
+        "note": "LIST NOT YET IMPORTED. This is the archetype of an imported enumeration: the government publishes the QCO list, so the concept is populated rather than invented. Detection is a lexicon match against the goods description, not an LLM judgement."
+      }
+    ],
+    "d_classifier": {
+      "enabled": true,
+      "reads_fields": ["product_description", "goods_description"],
+      "note": "Used only to raise AMBIGUOUS when the description is too vague to match the lexicon — 'industrial components' — so the user is asked rather than the concept being silently dropped."
+    }
+  },
+  "attaches": {
+    "clauses": [
+      "SUPPLY_GOODS_DESCRIPTION_001",
+      "SUPPLY_QUALITY_001",
+      "SUPPLY_WARRANTY_001",
+      "SUPPLY_INSPECTION_001",
+      "SUPPLY_REJECTION_001"
+    ],
+    "rules": [],
+    "disclosures": ["BIS_STANDARD_MARK_REQUIRED"]
+  },
+  "confirmation": {
+    "question": "Do these goods need a BIS Standard Mark (ISI mark) to be sold in India?",
+    "why": "If they do, selling them without it is an offence, and the agreement should require conformity to the specific Indian Standard rather than to a general description.",
+    "options": ["Yes", "No", "I don't know"]
+  },
+  "unresolved_behaviour": {
+    "assume": "none",
+    "rationale": "Neither direction is safe. Asserting a standard that does not apply writes a false obligation into the contract; denying one that does apply hides an offence. Where the lexicon does not match and the user cannot answer, the correct output is an OUTSIDE_KNOWN_SET disclosure naming the goods.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "SUPPLY_GOODS_DESCRIPTION_001 already cites the BIS Act s.17 in its legal_basis, so the legal link is already recognised in the library — it simply is not conditional on anything."
+}

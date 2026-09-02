@@ -1,0 +1,74 @@
+{
+  "concept_id": "GST_TAXABLE_SUPPLY",
+  "label": "The consideration is a taxable supply of goods or services",
+  "definition": "Consideration flowing under this instrument is a supply within the meaning of the CGST Act, so the invoice must carry the particulars the Invoice Rules require, the price must state whether it is inclusive or exclusive of tax, and the place of supply determines whether the levy is CGST plus SGST or IGST.",
+  "authority": [
+    { "act": "Central Goods and Services Tax Act, 2017", "section": "7", "note": "Scope of supply.", "verified": false },
+    { "act": "Central Goods and Services Tax Act, 2017", "section": "31", "note": "Tax invoice; timing and particulars.", "verified": false },
+    { "act": "Central Goods and Services Tax Rules, 2017", "rule": "46", "note": "Particulars a tax invoice must contain, including the recipient GSTIN.", "verified": false },
+    { "act": "Integrated Goods and Services Tax Act, 2017", "section": "12", "note": "Place of supply of services — determines CGST+SGST versus IGST.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "event": ["sale", "supply", "provide_services", "distribute", "lease", "license", "develop_software"]
+  },
+  "attributes": {
+    "supply_type": { "type": "enum", "values": ["goods", "services", "mixed"] },
+    "supplier_gstin": { "type": "string", "optional": true },
+    "recipient_gstin": { "type": "string", "optional": true },
+    "is_interstate": { "type": "boolean", "optional": true, "note": "Derived by comparing the two parties' state codes; drives IGST versus CGST+SGST." },
+    "price_is_inclusive": { "type": "boolean", "optional": true }
+  },
+  "detection": {
+    "a_structured": [
+      {
+        "source": "field:gst_applicable",
+        "provenance": "declared",
+        "when": [{ "var": "gst_applicable", "op": "eq", "value": "true" }],
+        "note": "Existing intake field."
+      },
+      {
+        "source": "field:party_1_gstin",
+        "provenance": "declared",
+        "when": [{ "var": ["party_1_gstin", "party_2_gstin", "employer_gstin"], "op": "present" }],
+        "note": "A party that supplied a GSTIN is registered, which is strong evidence the supply is taxable."
+      }
+    ],
+    "c_threshold": [
+      {
+        "when": [{ "var": "party_1_gstin", "op": "matches", "value": "^[0-9]{2}" }],
+        "sets": { "is_interstate": "$compare_state_codes" },
+        "note": "The first two digits of a GSTIN are the state code. Comparing the two parties' codes yields the interstate flag without asking a further question."
+      }
+    ]
+  },
+  "attaches": {
+    "clauses": [
+      "SERVICE_PAYMENT_001",
+      "SUPPLY_PAYMENT_001",
+      "SUPPLY_DELIVERY_001",
+      "SUPPLY_GOODS_DESCRIPTION_001",
+      "SERVICE_EXPENSES_001",
+      "MSA_SOW_MECHANISM_001",
+      "IPA_CONSIDERATION_001",
+      "ECOM_SHIPPING_CHARGES_001",
+      "CORE_RELATIONSHIP_OF_PARTIES_001"
+    ],
+    "rules": ["ENFC_SERVICE_GST_INVOICE"],
+    "disclosures": []
+  },
+  "confirmation": {
+    "question": "Will the supplier raise a GST invoice for the amounts under this agreement?",
+    "why": "It decides whether the payment clause has to state the invoice particulars the GST rules require, and whether the price is quoted inclusive or exclusive of tax.",
+    "options": ["Yes", "No — supplier is unregistered or exempt", "I don't know"]
+  },
+  "unresolved_behaviour": {
+    "assume": "present",
+    "rationale": "A commercial instrument between registered entities is a taxable supply in the ordinary case, and the cost of the clause when it is not needed is a redundant sentence rather than an unenforceable term.",
+    "disclose": false
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The 14 clauses tagged gst_applicable:true in the library were the starting point; CORE_RELATIONSHIP_OF_PARTIES_001 is included because the supply characterisation depends on whether the arrangement is principal-to-principal or agency."
+}

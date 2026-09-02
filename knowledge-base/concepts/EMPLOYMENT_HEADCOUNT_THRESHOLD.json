@@ -1,0 +1,62 @@
+{
+  "concept_id": "EMPLOYMENT_HEADCOUNT_THRESHOLD",
+  "label": "The workforce crosses a statutory threshold",
+  "definition": "The employer's headcount crosses a threshold that triggers a compliance obligation which does not exist below it — an Internal Committee, provident fund coverage, or maternity creche facilities. The instrument must record the obligation rather than leaving it to the employer to discover.",
+  "authority": [
+    { "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013", "section": "4", "note": "Internal Committee mandatory at a workplace with ten or more workers.", "verified": false },
+    { "act": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013", "section": "19", "note": "Employer duties, including organising awareness and displaying the penal consequences.", "verified": false },
+    { "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952", "section": "1(3)(b)", "note": "Applies to every establishment employing twenty or more persons.", "verified": false },
+    { "act": "Maternity Benefit Act, 1961", "section": "11A", "note": "Creche facility where fifty or more employees.", "verified": false },
+    { "act": "Maternity Benefit Act, 1961", "section": "5", "note": "Twenty-six weeks paid maternity leave.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "role": ["employer"],
+    "event": ["employ"]
+  },
+  "attributes": {
+    "headcount_band": { "type": "enum", "values": ["under_10", "10_to_19", "20_to_49", "50_plus"] },
+    "posh_applies": { "type": "boolean", "optional": true },
+    "epf_applies": { "type": "boolean", "optional": true },
+    "creche_applies": { "type": "boolean", "optional": true }
+  },
+  "detection": {
+    "a_structured": [
+      { "source": "field:workplace_headcount", "provenance": "declared", "when": [{ "var": "workplace_headcount", "op": "present" }], "sets": { "headcount_band": "$workplace_headcount" } },
+      { "source": "control:employer_headcount_ge_10", "provenance": "derived", "sets": { "posh_applies": true }, "note": "generationControls already derives this from the headcount select. The adapter reads it and the evidence names the control." }
+    ],
+    "c_threshold": [
+      { "when": [{ "var": "workplace_headcount", "op": "contains", "value": "10 or more" }], "sets": { "posh_applies": true } }
+    ]
+  },
+  "attaches": {
+    "clauses": [
+      "EMP_POSH_POLICY_001",
+      "POSH_POLICY_ADOPTION_001",
+      "POSH_INTERNAL_COMMITTEE_001",
+      "POSH_COMPLAINT_PROCEDURE_001",
+      "POSH_INQUIRY_RELIEF_001",
+      "POSH_CONSEQUENCES_REPORTING_001",
+      "POSH_SCOPE_DEFINITIONS_001",
+      "EMP_BENEFITS_001",
+      "EMP_MATERNITY_BENEFITS_001"
+    ],
+    "rules": ["ENFC_EMPLOYMENT_EPF", "ENFC_EMPLOYMENT_MATERNITY"],
+    "disclosures": ["POSH_COMMITTEE_REQUIRED", "EPF_REGISTRATION_REQUIRED"]
+  },
+  "confirmation": {
+    "question": "How many people work at this workplace, including contract and part-time staff?",
+    "why": "Crossing ten triggers a mandatory Internal Committee under the POSH Act; crossing twenty triggers provident fund registration. Both are the employer's obligation regardless of what the contract says.",
+    "options": ["Fewer than 10", "10 to 19", "20 to 49", "50 or more"]
+  },
+  "unresolved_behaviour": {
+    "assume": "safe_default",
+    "safe_default_note": "Assume the ten-or-more band, so the POSH obligations are stated. Do not assume the twenty or fifty bands, which carry registration costs.",
+    "rationale": "POSH obligations are cheap to state and serious to omit, whereas asserting EPF coverage on a five-person firm would send them to register for a scheme that does not apply to them. The safe default therefore differs per threshold rather than per concept.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The clearest illustration that a concept is not a boolean: one concept carries three separate thresholds with different consequences and different safe defaults. Flattening it into posh_applies would lose the other two."
+}

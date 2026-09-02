@@ -1,0 +1,131 @@
+{
+  "concept_id": "AAEC_RISK_ARRANGEMENT",
+  "label": "The arrangement carries competition-law risk",
+  "definition": "The agreement contains a vertical restraint — exclusive supply or distribution, tie-in, refusal to deal, or resale price maintenance — which is void under the Competition Act if it causes an appreciable adverse effect on competition. The instrument must state the restraint's business justification and preserve the distributor's pricing freedom.",
+  "authority": [
+    {
+      "act": "Competition Act, 2002",
+      "section": "3(4)",
+      "note": "Vertical agreements: tie-in, exclusive supply, exclusive distribution, refusal to deal, resale price maintenance — void if they cause an appreciable adverse effect on competition.",
+      "verified": false
+    },
+    {
+      "act": "Competition Act, 2002",
+      "section": "19(3)",
+      "note": "The factors by which appreciable adverse effect is assessed.",
+      "verified": false
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Agreements in restraint of trade are void, subject to the sale-of-goodwill exception.",
+      "verified": false
+    }
+  ],
+  "requires_dimensions": {
+    "role": [
+      "manufacturer",
+      "distributor",
+      "supplier",
+      "seller"
+    ],
+    "event": [
+      "distribute",
+      "supply",
+      "sale"
+    ]
+  },
+  "attributes": {
+    "restraint_type": {
+      "type": "enum",
+      "values": [
+        "exclusive_distribution",
+        "sole_distribution",
+        "exclusive_supply",
+        "tie_in",
+        "rpm",
+        "refusal_to_deal"
+      ]
+    },
+    "territory": {
+      "type": "string",
+      "optional": true
+    },
+    "sets_resale_price": {
+      "type": "boolean",
+      "optional": true,
+      "note": "Resale price maintenance is the highest-risk restraint of the set and should never be drafted as a fixed price without a justification."
+    }
+  },
+  "detection": {
+    "a_structured": [
+      {
+        "source": "field:exclusivity",
+        "provenance": "declared",
+        "when": [
+          {
+            "var": "exclusivity",
+            "op": "in",
+            "value": [
+              "Exclusive",
+              "Semi-Exclusive"
+            ]
+          }
+        ],
+        "sets": {
+          "restraint_type": "exclusive_distribution"
+        }
+      },
+      {
+        "source": "control:is_exclusive_distribution",
+        "provenance": "derived",
+        "note": "generationControls derives is_exclusive_distribution and is_sole_distribution; the adapter reads both."
+      },
+      {
+        "source": "control:include_competition_compliance",
+        "provenance": "derived",
+        "note": "Already computed and already gates DIST_COMPETITION_COMPLIANCE_001 via include_if. The concept records what the flag concluded."
+      },
+      {
+        "source": "control:exclusive_territory",
+        "provenance": "derived",
+        "sets": {
+          "restraint_type": "exclusive_distribution"
+        },
+        "note": "generationControls reads variables.exclusive_territory and re-exports it, but variableConfig never declares it as an intake field -- no form asks for it. Recording it as a control rather than a field keeps the evidence chain truthful."
+      }
+    ]
+  },
+  "attaches": {
+    "clauses": [
+      "DIST_COMPETITION_COMPLIANCE_001",
+      "DIST_APPOINTMENT_EXCLUSIVE_001",
+      "DIST_APPOINTMENT_SOLE_001"
+    ],
+    "rules": [],
+    "disclosures": [
+      "AAEC_REVIEW_RECOMMENDED"
+    ]
+  },
+  "confirmation": {
+    "question": "Will the distributor be the only one allowed to sell in this territory?",
+    "why": "Exclusive arrangements are lawful but can be struck down if they shut competitors out of the market, so the agreement should record why the exclusivity is commercially justified.",
+    "options": [
+      "Yes — fully exclusive",
+      "Only the manufacturer may also sell",
+      "No",
+      "Not yet decided"
+    ]
+  },
+  "unresolved_behaviour": {
+    "assume": "safe_default",
+    "safe_default_note": "Draft the non-exclusive appointment. Exclusivity is the restraint; its absence carries no competition risk.",
+    "rationale": "The asymmetry is clear: a non-exclusive appointment where the parties intended exclusivity is a commercial gap the parties will notice and correct, whereas an exclusivity term they did not intend is a void restraint they will not notice until it is litigated.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "This concept exists today entirely inside generationControls as include_competition_compliance, with no statutory citation attached to it anywhere. Making it a concept is what gives that determination an authority list."
+}

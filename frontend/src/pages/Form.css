@@ -1322,3 +1322,23 @@
   font-weight: 500;
 }
 .form-stillneeded__check { display: inline-flex; }
+
+
+/* Under reduced motion the sheet's draw animation was killed mid-flight, and
+   because each line's resting width is 0 the overlay rendered a completely
+   BLANK page for the whole generation -- strictly worse than the spinner it
+   replaced. The page is therefore shown already drafted and sealed, and the
+   stage rail carries the progress instead: it advances by JS class changes, not
+   by CSS animation, so it keeps working when animation does not. */
+@media (prefers-reduced-motion: reduce) {
+  .gen-sheet i {
+    width: var(--gen-w, 100%) !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .gen-seal {
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

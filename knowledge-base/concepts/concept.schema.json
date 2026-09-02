@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LegalAId concept definition",
+  "description": "A legal characterisation that attracts legal treatment. NOT a semantic dimension: entities, roles, events and facts describe the world and need no sign-off, whereas every concept record is a legal opinion an advocate must sign. A candidate is a concept only if it attaches a treatment, that treatment is distinct from every existing concept, and an advocate must be accountable for asserting it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "concept_id",
+    "label",
+    "definition",
+    "authority",
+    "requires_dimensions",
+    "attributes",
+    "detection",
+    "attaches",
+    "confirmation",
+    "unresolved_behaviour",
+    "review_status",
+    "version"
+  ],
+  "properties": {
+    "concept_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 8,
+      "description": "One line a non-lawyer can read."
+    },
+    "definition": {
+      "type": "string",
+      "minLength": 40,
+      "description": "Defined by the TREATMENT DEMANDED, never by the thing described. If two candidates demand identical treatment they are one concept."
+    },
+    "authority": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Concepts are imported, not invented: the legislature has already published the enumeration. A concept with no authority is an opinion, not a concept.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["act"],
+        "anyOf": [{ "required": ["section"] }, { "required": ["rule"] }],
+        "properties": {
+          "act": { "type": "string" },
+          "section": { "type": "string" },
+          "rule": { "type": "string" },
+          "note": { "type": "string" },
+          "amended_upto": { "type": ["string", "null"] },
+          "verified": { "type": "boolean" }
+        }
+      }
+    },
+    "requires_dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The (thing x event x role) gate. A resolver must not fire on a noun alone; at least one dimension constraint is mandatory so that polypropylene in transport and polypropylene in packaging supply cannot resolve identically.",
+      "minProperties": 1,
+      "properties": {
+        "role": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "event": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "entity_type": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "note": {
+          "type": "string",
+          "description": "Why the gate matters for this concept. Reviewers need to see the reasoning, so it is a first-class field rather than a stray comment key."
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "A concept is not a flag. Attributes are the facts it carries into the rules.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type"],
+        "properties": {
+          "type": { "enum": ["enum", "string", "number", "boolean", "duration"] },
+          "values": { "type": "array", "items": { "type": "string" } },
+          "unit": { "type": "string" },
+          "optional": { "type": "boolean" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "detection": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Ordered layers. The first that resolves wins, and its layer fixes the provenance. Layer D may only choose from this concept list; it may never invent a concept_id.",
+      "properties": {
+        "a_structured": {
+          "type": "array",
+          "description": "Intake fields or existing generationControls flags read directly. Provenance: declared (a field the user answered) or derived (a flag existing code computed).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source", "provenance"],
+            "properties": {
+              "source": { "type": "string", "pattern": "^(field|control):[a-z0-9_]+$" },
+              "provenance": { "enum": ["declared", "derived"] },
+              "when": { "type": "array", "description": "constraintEngine predicates" },
+              "sets": { "type": "object" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "b_lexicon": {
+          "type": "array",
+          "description": "Published enumerations matched against free text. Provenance: derived. Each entry must name where the list comes from.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["list", "source_of_truth"],
+            "properties": {
+              "list": { "type": "string" },
+              "source_of_truth": { "type": "string" },
+              "reads_fields": { "type": "array", "items": { "type": "string" } },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "c_threshold": {
+          "type": "array",
+          "description": "Numeric or duration thresholds published in statute. Provenance: derived.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["when"],
+            "properties": {
+              "when": { "type": "array" },
+              "sets": { "type": "object" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "d_classifier": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Constrained LLM classification. Provenance: inferred, therefore ADVISORY ONLY until confirmed. Must quote the span it read.",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "reads_fields": { "type": "array", "items": { "type": "string" } },
+            "note": { "type": "string" }
+          }
+        }
+      }
+    },
+    "attaches": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "What changes when CONFIRMED. Every id is checked against the clause library and constraint files by tests/conceptRecords.test.mjs.",
+      "properties": {
+        "clauses": { "type": "array", "items": { "type": "string" } },
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "disclosures": { "type": "array", "items": { "type": "string" } },
+        "clauses_to_author": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Clauses this concept NEEDS but which do not exist yet. Honest about cost: a concept with entries here cannot do its job until they are written."
+        }
+      }
+    },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "why", "options"],
+      "description": "Asked only when the resolution is UNRESOLVED. One question, answerable by a non-lawyer, that changes the document.",
+      "properties": {
+        "question": { "type": "string", "minLength": 10 },
+        "why": { "type": "string", "minLength": 20 },
+        "options": { "type": "array", "items": { "type": "string" }, "minItems": 2 }
+      }
+    },
+    "unresolved_behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assume", "rationale"],
+      "description": "What to do when the user cannot answer. Never silently default to the permissive reading.",
+      "properties": {
+        "assume": { "enum": ["present", "absent", "safe_default", "none"] },
+        "safe_default_note": { "type": "string" },
+        "rationale": { "type": "string", "minLength": 20 },
+        "disclose": { "type": "boolean" }
+      }
+    },
+    "review_status": {
+      "enum": ["draft-needs-legal-review", "reviewed", "rejected"]
+    },
+    "reviewed_by": { "type": ["string", "null"] },
+    "reviewed_on": { "type": ["string", "null"] },
+    "version": { "type": "string" },
+    "authoring_note": { "type": "string" }
+  }
+}

@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "cd backend && npm start",
-    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs && node tests/documentHealthScore.test.mjs && node tests/advocateReviewFindings.test.mjs",
+    "test": "node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/goldenCorpus.test.mjs && node tests/documentHealthScore.test.mjs && node tests/advocateReviewFindings.test.mjs && node tests/conceptRecords.test.mjs && node scripts/freezeClauseBaseline.mjs",
     "test:golden": "node tests/goldenCorpus.test.mjs",
-    "check:citations": "node scripts/checkStatuteCitations.mjs"
+    "check:citations": "node scripts/checkStatuteCitations.mjs",
+    "baseline": "node scripts/freezeClauseBaseline.mjs",
+    "baseline:write": "node scripts/freezeClauseBaseline.mjs --write",
+    "test:concepts": "node tests/conceptRecords.test.mjs"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +24,7 @@
     "second, different copy (root had express 5 / mongoose 9 / bcryptjs 3 while",
     "the backend runs express 4 / mongoose 8 / bcryptjs 2), and a root script that",
     "imports 'mongoose' then gets a different instance from the one the backend",
-    "models are registered on — connect() succeeds while every query buffers and",
+    "models are registered on \u2014 connect() succeeds while every query buffers and",
     "times out. scripts/makeAdmin.mjs hit exactly that."
   ],
   "dependencies": {

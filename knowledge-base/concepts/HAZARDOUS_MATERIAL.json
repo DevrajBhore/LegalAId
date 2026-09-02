@@ -1,0 +1,155 @@
+{
+  "concept_id": "HAZARDOUS_MATERIAL",
+  "label": "The goods are a listed hazardous substance",
+  "definition": "The goods appear in a statutory schedule of hazardous chemicals or wastes, so handling them attracts licensing, packaging, labelling, transport-document and emergency-response obligations that do not attach to ordinary goods, and liability for escape is strict rather than fault-based.",
+  "authority": [
+    {
+      "act": "Manufacture, Storage and Import of Hazardous Chemical Rules, 1989",
+      "rule": "Schedule 1",
+      "note": "The list of hazardous chemicals. This is the enumeration to import.",
+      "verified": false
+    },
+    {
+      "act": "Manufacture, Storage and Import of Hazardous Chemical Rules, 1989",
+      "rule": "4-5",
+      "note": "Duties of the occupier; on-site emergency plan above threshold quantities.",
+      "verified": false
+    },
+    {
+      "act": "Hazardous and Other Wastes (Management and Transboundary Movement) Rules, 2016",
+      "rule": "Schedules I-III",
+      "note": "Hazardous waste categories, and the manifest system for movement.",
+      "verified": false
+    },
+    {
+      "act": "Central Motor Vehicles Rules, 1989",
+      "rule": "129-137",
+      "note": "Transport of dangerous or hazardous goods: driver training, emergency information panel, class labels, licensing of the vehicle.",
+      "verified": false
+    },
+    {
+      "act": "Environment (Protection) Act, 1986",
+      "section": "7",
+      "note": "No person shall discharge or emit any pollutant in excess of prescribed standards.",
+      "verified": false
+    },
+    {
+      "act": "Public Liability Insurance Act, 1991",
+      "section": "4",
+      "note": "Compulsory insurance for handling hazardous substances.",
+      "verified": false
+    }
+  ],
+  "requires_dimensions": {
+    "role": [
+      "seller",
+      "supplier",
+      "manufacturer",
+      "distributor",
+      "carrier",
+      "occupier",
+      "importer"
+    ],
+    "event": [
+      "transport",
+      "store",
+      "supply",
+      "sale",
+      "manufacture",
+      "distribute"
+    ],
+    "note": "The dimension gate is doing real work here. Polypropylene granules in transport attract NOTHING under this concept; toluene in transport attracts all of it. Keying on the goods description alone gets this wrong in both directions."
+  },
+  "attributes": {
+    "schedule_reference": {
+      "type": "string",
+      "optional": true
+    },
+    "un_number": {
+      "type": "string",
+      "optional": true
+    },
+    "regime": {
+      "type": "enum",
+      "values": [
+        "msihc_chemical",
+        "hazardous_waste",
+        "cmvr_transport",
+        "multiple"
+      ],
+      "optional": true
+    },
+    "above_threshold_quantity": {
+      "type": "boolean",
+      "optional": true,
+      "note": "MSIHC threshold quantities decide whether an on-site emergency plan and a Major Accident Hazard classification apply."
+    }
+  },
+  "detection": {
+    "b_lexicon": [
+      {
+        "list": "msihc_schedule_1_chemicals",
+        "source_of_truth": "MSIHC Rules 1989, Schedule 1 — published list of hazardous chemicals",
+        "reads_fields": [
+          "product_description",
+          "goods_description",
+          "goods_or_services_description"
+        ],
+        "note": "LIST NOT YET IMPORTED."
+      },
+      {
+        "list": "hazardous_waste_schedules",
+        "source_of_truth": "Hazardous and Other Wastes Rules 2016, Schedules I-III",
+        "reads_fields": [
+          "product_description",
+          "goods_description"
+        ],
+        "note": "LIST NOT YET IMPORTED."
+      }
+    ],
+    "d_classifier": {
+      "enabled": true,
+      "reads_fields": [
+        "product_description",
+        "goods_description",
+        "business_purpose"
+      ],
+      "note": "May only return HAZARDOUS_MATERIAL, AMBIGUOUS, or OUTSIDE_KNOWN_SET, and must quote the span it read. It may not name a chemical that is absent from the imported schedules."
+    }
+  },
+  "attaches": {
+    "clauses": [],
+    "rules": [],
+    "disclosures": [
+      "HAZARDOUS_GOODS_NOT_ADDRESSED"
+    ],
+    "clauses_to_author": [
+      "HAZMAT_CLASSIFICATION_AND_DISCLOSURE_001",
+      "HAZMAT_PACKAGING_AND_LABELLING_001",
+      "HAZMAT_TRANSPORT_COMPLIANCE_001",
+      "HAZMAT_EMERGENCY_RESPONSE_001",
+      "HAZMAT_STATUTORY_INSURANCE_001",
+      "HAZMAT_STRICT_LIABILITY_ALLOCATION_001",
+      "HAZMAT_STORAGE_AND_OCCUPIER_DUTIES_001"
+    ]
+  },
+  "confirmation": {
+    "question": "Are any of the goods flammable, corrosive, toxic, explosive, or otherwise classified as hazardous or dangerous?",
+    "why": "Hazardous goods carry licensing, labelling and transport rules, and liability for a spill does not depend on anyone being at fault. The agreement needs to say who carries that risk.",
+    "options": [
+      "Yes",
+      "No",
+      "I don't know"
+    ]
+  },
+  "unresolved_behaviour": {
+    "assume": "none",
+    "rationale": "This concept currently attaches no clauses, so 'present' would change nothing while implying it had. The only honest output while clauses_to_author is non-empty is the OUTSIDE_KNOWN_SET disclosure: tell the user plainly that the document does not address hazardous-goods regulation and that an advocate should review it before signing.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "There is not one clause in the 297-clause library matching HAZARD, SAFETY or ENVIRON. Detection for this concept is the easy half; the seven clauses listed in clauses_to_author are the real cost, and until they exist this concept can only disclose its own ignorance."
+}

@@ -1,0 +1,67 @@
+{
+  "concept_id": "TDS_DEDUCTIBLE_PAYMENT",
+  "label": "The payment attracts deduction of tax at source",
+  "definition": "A payment under this instrument falls within a TDS head of the Income-tax Act, so the payer must deduct at the prescribed rate before remitting, the payment clause must say the amounts are subject to deduction, and the payee is entitled to a deduction certificate.",
+  "authority": [
+    { "act": "Income-tax Act, 1961", "section": "194C", "note": "Payments to contractors and sub-contractors.", "verified": false },
+    { "act": "Income-tax Act, 1961", "section": "194J", "note": "Fees for professional or technical services.", "verified": false },
+    { "act": "Income-tax Act, 1961", "section": "194I", "note": "Rent of land, building, plant or machinery.", "verified": false },
+    { "act": "Income-tax Act, 1961", "section": "194A", "note": "Interest other than interest on securities.", "verified": false },
+    { "act": "Income-tax Act, 1961", "section": "192", "note": "Salary.", "verified": false },
+    { "act": "Income-tax Act, 1961", "section": "203", "note": "Certificate of deduction to be furnished to the payee.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "event": ["provide_services", "supply", "lease", "occupy", "employ", "engage_contractor", "lend", "repay", "develop_software"]
+  },
+  "attributes": {
+    "head": {
+      "type": "enum",
+      "values": ["194C", "194J", "194I", "194A", "192", "194Q"],
+      "note": "Which head applies is a function of the EVENT, not of the document type. A lease pays rent (194I); a consultancy pays professional fees (194J)."
+    },
+    "payee_has_pan": { "type": "boolean", "optional": true, "note": "Absence of PAN raises the rate under s.206AA." }
+  },
+  "detection": {
+    "c_threshold": [
+      { "when": [{ "var": "document_type", "op": "in", "value": ["CONSULTANCY_AGREEMENT", "SERVICE_AGREEMENT", "MASTER_SERVICE_AGREEMENT"] }], "sets": { "head": "194J" }, "note": "Provisional. Replace with an EVENT test once the event dimension exists — the head follows what is being done, not what the document is called." },
+      { "when": [{ "var": "document_type", "op": "in", "value": ["RENTAL_AGREEMENT", "COMMERCIAL_LEASE_AGREEMENT", "LEAVE_AND_LICENSE_AGREEMENT"] }], "sets": { "head": "194I" } },
+      { "when": [{ "var": "document_type", "op": "in", "value": ["LOAN_AGREEMENT", "PROMISSORY_NOTE"] }], "sets": { "head": "194A" } },
+      { "when": [{ "var": "document_type", "op": "in", "value": ["EMPLOYMENT_CONTRACT", "APPOINTMENT_LETTER"] }], "sets": { "head": "192" } },
+      { "when": [{ "var": "document_type", "op": "in", "value": ["INDEPENDENT_CONTRACTOR_AGREEMENT", "VENDOR_AGREEMENT", "SUPPLY_AGREEMENT"] }], "sets": { "head": "194C" } }
+    ],
+    "a_structured": [
+      { "source": "field:party_2_pan", "provenance": "declared", "when": [{ "var": ["party_2_pan", "party_1_pan"], "op": "present" }], "sets": { "payee_has_pan": true } }
+    ]
+  },
+  "attaches": {
+    "clauses": [
+      "SERVICE_PAYMENT_001",
+      "SUPPLY_PAYMENT_001",
+      "SERVICE_EXPENSES_001",
+      "RENT_RENT_PAYMENT_001",
+      "RENTAL_RENT_PAYMENT_001",
+      "LOAN_INTEREST_001",
+      "PN_INTEREST_001",
+      "EMPLOYMENT_COMPENSATION_001",
+      "EMP_CTC_STRUCTURE_001",
+      "IPA_CONSIDERATION_001"
+    ],
+    "rules": ["ENFC_SERVICE_TDS", "ENFC_LOAN_TDS_194A", "ENFC_RENTAL_TDS_194I"],
+    "disclosures": []
+  },
+  "confirmation": {
+    "question": "Will the payer deduct tax at source before paying?",
+    "why": "The payment clause needs to say so, otherwise the payee can argue the stated amount is payable in full and the payer is left short.",
+    "options": ["Yes", "No", "I don't know"]
+  },
+  "unresolved_behaviour": {
+    "assume": "present",
+    "rationale": "Where a head applies, deduction is a statutory obligation on the payer rather than a choice, so a clause acknowledging it is correct even where the parties have not discussed it.",
+    "disclose": false
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The detection layer here is deliberately marked provisional: it keys on document_type, which is the coupling this whole layer exists to break. It is written this way so the concept can ship before the EVENT dimension exists, and the note records the debt."
+}

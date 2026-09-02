@@ -11,13 +11,11 @@ export default function ProtectedRoute({ children }) {
         display: "flex", alignItems: "center", justifyContent: "center",
         minHeight: "100vh", background: "var(--surface)"
       }}>
-        <div style={{
-          width: 32, height: 32,
-          border: "3px solid var(--border)",
-          borderTopColor: "var(--accent)",
-          borderRadius: "50%",
-          animation: "spin 0.75s linear infinite"
-        }} />
+        {/* The design system's spinner rather than a hand-rolled copy of it.
+            The inline animation here could not be reached by the reduced-motion
+            rules, so this was the one loader in the product that froze with no
+            way to style it back to life. */}
+        <div className="spinner" style={{ width: 32, height: 32 }} />
       </div>
     );
   }

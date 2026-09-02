@@ -601,7 +601,44 @@ button, a, input, textarea, select {
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* A loading indicator is feedback, not decoration. The blanket rule above
+     froze every spinner in the product solid: with "reduce motion" switched on
+     in Windows or macOS, the only signal that the app was working stopped
+     moving, and a user watching a twenty-second generation had no way to tell
+     it from a hang. What reduced-motion asks us to remove is large, sweeping,
+     vestibular-triggering movement -- not the evidence that something is
+     happening. So these keep animating, without rotating. */
+  .spinner,
+  .auth-spinner {
+    border-color: var(--gold) !important;
+    animation: reduced-pulse 1.6s ease-in-out infinite !important;
+  }
+  /* The counter-rotating inner arc is pure decoration; it goes. */
+  .spinner::after { animation: none !important; opacity: 0 !important; }
+
+  .btn-spinner,
+  .btn-spinner::before,
+  .btn-spinner::after,
+  .fix-spinner,
+  .fix-spinner::before,
+  .fix-spinner::after,
+  .save-dot,
+  .skeleton > i,
+  .shimmer {
+    animation-duration: 1.8s !important;
+    animation-iteration-count: infinite !important;
+  }
+  /* Dots fade in place rather than rising, so nothing translates. */
+  .btn-spinner,
+  .btn-spinner::before,
+  .btn-spinner::after,
+  .fix-spinner,
+  .fix-spinner::before,
+  .fix-spinner::after { animation-name: reduced-pulse !important; }
 }
+
+@keyframes reduced-pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
 
 /* Coarse pointer: every interactive element clears the 44px target, and hover
    affordances are dropped so nothing sticks after a tap. */

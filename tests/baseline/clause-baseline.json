@@ -1,0 +1,2980 @@
+{
+  "note": "Continuity baseline, not a correctness assertion. Records which clauses each document type emits so clause-selection changes are visible as a diff. Regenerate deliberately with `node scripts/freezeClauseBaseline.mjs --write` and review the diff before committing it.",
+  "generator": "scripts/freezeClauseBaseline.mjs",
+  "types": {
+    "AFFIDAVIT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "AFFIDAVIT_DEPONENT_001",
+          "AFFIDAVIT_TITLE_001",
+          "AFFIDAVIT_DEPOSITION_001",
+          "AFFIDAVIT_TRUTH_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "AFFIDAVIT_DEPONENT_001",
+          "AFFIDAVIT_TITLE_001",
+          "AFFIDAVIT_DEPOSITION_001",
+          "AFFIDAVIT_TRUTH_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "APPOINTMENT_LETTER": {
+      "minimal": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_EMPLOYEE_PAN"
+        ],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "FORM_VALUE_NOT_REFLECTED_EMPLOYEE_PAN"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_BONUS_TERMS",
+          "INPUT_MISMATCH_DEPARTMENT",
+          "INPUT_MISMATCH_STATUTORY_BENEFITS"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "ARBITRATION_NOTICE": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "NOTICE_ADDRESSEE_001",
+          "ARB_NOTICE_SUBJECT_001",
+          "NOTICE_INSTRUCTIONS_001",
+          "ARB_NOTICE_AGREEMENT_001",
+          "ARB_NOTICE_DISPUTES_001",
+          "ARB_NOTICE_INVOCATION_001",
+          "ARB_NOTICE_DEADLINE_001",
+          "ARB_NOTICE_CONSEQUENCE_001",
+          "NOTICE_RESERVATION_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "NOTICE_ADDRESSEE_001",
+          "ARB_NOTICE_SUBJECT_001",
+          "NOTICE_INSTRUCTIONS_001",
+          "ARB_NOTICE_AGREEMENT_001",
+          "ARB_NOTICE_DISPUTES_001",
+          "ARB_NOTICE_INVOCATION_001",
+          "ARB_NOTICE_DEADLINE_001",
+          "ARB_NOTICE_CONSEQUENCE_001",
+          "NOTICE_RESERVATION_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "COMMERCIAL_LEASE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "RENTAL_PROPERTY_DESCRIPTION_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "RENTAL_RENT_PAYMENT_001",
+          "RENTAL_SECURITY_DEPOSIT_001",
+          "PROP_REGISTRATION_001",
+          "RENT_PROPERTY_USE_001",
+          "RENT_MAINTENANCE_001",
+          "RENT_UTILITIES_001",
+          "RENT_SUBLEASE_001",
+          "RENT_LOCKIN_PERIOD_001",
+          "RENT_RENT_INCREASE_001",
+          "RENT_POSSESSION_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "RENTAL_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "RENTAL_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "REGISTRATION_NOT_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_RENEWAL_TERMS"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "IMPLAUSIBLE_RENT_ESCALATION_UNUSUALLY_HIGH",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "REGISTRATION_NOT_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "CONSULTANCY_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_OWNERSHIP_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "EMP_NON_SOLICITATION_001",
+          "SERVICE_PAYMENT_RETAINER_001",
+          "AUTO-LPI-001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_SLA_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_OWNERSHIP_001",
+          "SERVICE_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "DANGLING_ACCEPTANCE_CRITERIA",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "ENFC_SERVICE_GST_INVOICE",
+          "ENFC_SERVICE_TDS",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "DATA_PROCESSING_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "DPA_ROLES_AND_SCOPE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "DPA_SUBPROCESSING_001",
+          "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+          "DPA_SECURITY_SAFEGUARDS_001",
+          "DPA_BREACH_NOTIFICATION_001",
+          "DPA_DATA_PRINCIPAL_RIGHTS_001",
+          "DPA_AUDIT_AND_TRANSFER_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "DPA_RETENTION_AND_ERASURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "INDEFINITE_RESTRAINT",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "DPA_ROLES_AND_SCOPE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "DPA_SUBPROCESSING_001",
+          "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+          "DPA_SECURITY_SAFEGUARDS_001",
+          "DPA_BREACH_NOTIFICATION_001",
+          "DPA_DATA_PRINCIPAL_RIGHTS_001",
+          "DPA_AUDIT_AND_TRANSFER_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "DPA_RETENTION_AND_ERASURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INDEFINITE_RESTRAINT",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "DISTRIBUTION_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SERVICE_SCOPE_001",
+          "DIST_APPOINTMENT_EXCLUSIVE_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "DIST_COMPETITION_COMPLIANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_TRADEMARK_USAGE_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SERVICE_REPORTING_001",
+          "SERVICE_SCOPE_001",
+          "DIST_APPOINTMENT_EXCLUSIVE_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "DIST_COMPETITION_COMPLIANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_TRADEMARK_USAGE_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "EMPLOYMENT_CONTRACT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "EMPLOYMENT_ROLE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "EMP_PROBATION_001",
+          "EMP_DUTIES_001",
+          "EMP_WORKING_HOURS_001",
+          "EMP_LEAVE_POLICY_001",
+          "EMP_BENEFITS_001",
+          "EMP_RETIREMENT_001",
+          "EMP_NOTICE_PERIOD_001",
+          "EMP_DISCIPLINARY_ACTION_001",
+          "EMP_GRIEVANCE_PROCEDURE_001",
+          "EMP_TERMINATION_001",
+          "EMPLOYMENT_COMPENSATION_001",
+          "EMP_WAGES_001",
+          "EMP_CONFIDENTIALITY_001",
+          "EMP_IP_ASSIGNMENT_001",
+          "CORE_COMPLIANCE_WITH_LAW_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "EMPLOYMENT_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "INVALID_EMPLOYER_GSTIN"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_EMPLOYEE_CONFIDENTIALITY_SCOPE"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_EMPLOYER_GSTIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "ESOP_GRANT_LETTER": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "ESOP_GRANT_001",
+          "ESOP_EXERCISE_001",
+          "ESOP_TAXATION_001",
+          "ESOP_VESTING_001",
+          "ESOP_LEAVER_AND_LAPSE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "ESOP_GRANT_001",
+          "ESOP_EXERCISE_001",
+          "ESOP_TAXATION_001",
+          "ESOP_VESTING_001",
+          "ESOP_LEAVER_AND_LAPSE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "FOUNDERS_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "FOUNDER_ROLES_AND_COMMITMENT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "FOUNDER_EQUITY_AND_VESTING_001",
+          "CORE_CONFIDENTIALITY_001",
+          "FOUNDER_IP_ASSIGNMENT_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "FOUNDER_LEAVER_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "FOUNDER_ROLES_AND_COMMITMENT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "EMP_NON_COMPETE_001",
+          "FOUNDER_EQUITY_AND_VESTING_001",
+          "CORE_CONFIDENTIALITY_001",
+          "FOUNDER_IP_ASSIGNMENT_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "CORP_DRAG_ALONG_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "FOUNDER_LEAVER_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "GUARANTEE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "GUARANTEE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "GUARANTEE_OBLIGATION_001",
+          "GUARANTEE_CONTINUING_001",
+          "LOAN_DEFAULT_001",
+          "CORE_REPRESENTATIONS_001",
+          "GUARANTEE_INDEMNITY_001",
+          "CORE_TERM_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_GUARANTOR",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "GUARANTEE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "GUARANTEE_OBLIGATION_001",
+          "GUARANTEE_CONTINUING_001",
+          "LOAN_DEFAULT_001",
+          "CORE_DATA_PROCESSING_001",
+          "CORE_REPRESENTATIONS_001",
+          "GUARANTEE_INDEMNITY_001",
+          "CORE_TERM_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_GUARANTOR_GSTIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "INDEMNITY_BOND": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "BOND_IDENTITY_001",
+          "BOND_RECITAL_001",
+          "BOND_COVENANT_001",
+          "BOND_EXTENT_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "BOND_IDENTITY_001",
+          "BOND_RECITAL_001",
+          "BOND_COVENANT_001",
+          "BOND_EXTENT_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_ASSIGNMENT_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "EMP_NON_COMPETE_001",
+          "EMP_NON_SOLICITATION_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_ASSIGNMENT_001",
+          "SERVICE_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "DANGLING_ACCEPTANCE_CRITERIA",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "INTERNSHIP_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_EMPLOYEE_PAN"
+        ],
+        "advisory": [
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "FORM_VALUE_NOT_REFLECTED_EMPLOYEE_PAN"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "EMP_INTERNSHIP_ENGAGEMENT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "EMP_INTERNSHIP_STIPEND_001",
+          "EMP_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "EMP_IP_ASSIGNMENT_001",
+          "EMP_POSH_POLICY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "EMP_INTERNSHIP_COMPLETION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "IP_ASSIGNMENT_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "IPA_COPYRIGHT_ASSIGNMENT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "IPA_CONSIDERATION_001",
+          "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_PATENT_RIGHTS_001",
+          "IPA_TRADEMARK_ASSIGNMENT_001",
+          "IPA_MORAL_RIGHTS_001",
+          "IPA_ASSIGNOR_WARRANTIES_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "IPA_COPYRIGHT_ASSIGNMENT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "IPA_CONSIDERATION_001",
+          "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_PATENT_RIGHTS_001",
+          "IPA_TRADEMARK_ASSIGNMENT_001",
+          "IPA_MORAL_RIGHTS_001",
+          "IPA_ASSIGNOR_WARRANTIES_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "JOINT_VENTURE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "JV_CONTRIBUTION_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_OWNERSHIP_001",
+          "JV_GOVERNANCE_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "JV_EXIT_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "JV_CONTRIBUTION_EQUITY_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_OWNERSHIP_001",
+          "JV_GOVERNANCE_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "JV_EXIT_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "RENTAL_PROPERTY_DESCRIPTION_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "RENTAL_RENT_PAYMENT_001",
+          "RENTAL_SECURITY_DEPOSIT_001",
+          "PROP_REGISTRATION_001",
+          "RENT_PROPERTY_USE_001",
+          "RENT_UTILITIES_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "RENTAL_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "RENTAL_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "REGISTRATION_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_RENEWAL_TERMS",
+          "INPUT_MISMATCH_RENT_ESCALATION"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "IMPLAUSIBLE_RENT_ESCALATION_UNUSUALLY_HIGH",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "REGISTRATION_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE"
+        ]
+      }
+    },
+    "LOAN_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "LOAN_AMOUNT_001",
+          "LOAN_INTEREST_001",
+          "LOAN_REPAYMENT_001",
+          "LOAN_PREPAYMENT_001",
+          "LOAN_COVENANTS_001",
+          "LOAN_DEFAULT_001",
+          "LOAN_ACCELERATION_001",
+          "LOAN_SECURITY_001",
+          "CORE_REPRESENTATIONS_001",
+          "CORE_TERM_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "LOAN_AMOUNT_001",
+          "LOAN_INTEREST_001",
+          "LOAN_REPAYMENT_001",
+          "LOAN_PREPAYMENT_001",
+          "LOAN_COVENANTS_001",
+          "LOAN_DEFAULT_001",
+          "LOAN_ACCELERATION_001",
+          "LOAN_SECURITY_001",
+          "CORE_REPRESENTATIONS_001",
+          "LOAN_SARFAESI_ENFORCEMENT_001",
+          "CORE_TERM_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "MASTER_SERVICE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "MSA_SOW_MECHANISM_001",
+          "MSA_ORDER_OF_PRECEDENCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_OWNERSHIP_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_EXPENSES_POLICY",
+          "INPUT_MISMATCH_WARRANTY_PERIOD"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "MOU": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "MOU_BINDING_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "MOU_BINDING_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "NDA": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "NDA_THIRD_PARTY_DISCLOSURE_001",
+          "NDA_DATA_SECURITY_001",
+          "NDA_RETURN_OF_INFORMATION_001",
+          "NDA_EXCLUSIONS_001",
+          "NDA_DISCLOSURE_PERMITTED_001",
+          "NDA_BREACH_REMEDIES_001",
+          "AUTO-INDEM-001",
+          "AUTO-LIAB-001",
+          "NDA_DURATION_001",
+          "NDA_TERM_SURVIVAL_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "ENFC_NDA_SEBI_UPSI",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+          "NDA_THIRD_PARTY_DISCLOSURE_001",
+          "NDA_DATA_SECURITY_001",
+          "NDA_RETURN_OF_INFORMATION_001",
+          "NDA_TRADE_SECRET_PROTECTION_001",
+          "NDA_NON_SOLICITATION_001",
+          "NDA_EXCLUSIONS_001",
+          "NDA_DISCLOSURE_PERMITTED_001",
+          "CORE_DATA_PROCESSING_001",
+          "NDA_SOURCE_CODE_PROTECTION_001",
+          "NDA_NON_COMPETE_001",
+          "NDA_BREACH_REMEDIES_001",
+          "AUTO-LIAB-001",
+          "NDA_DURATION_001",
+          "NDA_TERM_SURVIVAL_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "ENFC_NDA_SEBI_UPSI",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "PARTNERSHIP_DEED": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "PARTNERSHIP_CAPITAL_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "AUTHORITY_UNCLEAR"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "PARTNERSHIP_CAPITAL_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "AUTHORITY_UNCLEAR",
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_1_CIN",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_1_GSTIN",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_GSTIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "POSH_POLICY": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "POSH_SCOPE_DEFINITIONS_001",
+          "POSH_INTERNAL_COMMITTEE_001",
+          "POSH_COMPLAINT_PROCEDURE_001",
+          "POSH_INQUIRY_RELIEF_001",
+          "POSH_CONSEQUENCES_REPORTING_001",
+          "CORE_GOVERNING_LAW_001",
+          "POSH_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "POSH_SCOPE_DEFINITIONS_001",
+          "POSH_INTERNAL_COMMITTEE_001",
+          "POSH_COMPLAINT_PROCEDURE_001",
+          "POSH_INQUIRY_RELIEF_001",
+          "POSH_CONSEQUENCES_REPORTING_001",
+          "CORE_GOVERNING_LAW_001",
+          "POSH_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "POWER_OF_ATTORNEY": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "POA_APPOINTMENT_001",
+          "POA_POWERS_GRANTED_001",
+          "POA_LIMITATIONS_001",
+          "POA_REVOCATION_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "POA_EXECUTION_FORMALITIES_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "POA_APPOINTMENT_001",
+          "POA_POWERS_GRANTED_001",
+          "POA_LIMITATIONS_001",
+          "POA_REVOCATION_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "POA_EXECUTION_FORMALITIES_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "PRIVACY_POLICY": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "PRIVACY_PURPOSE_SCOPE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_DATA_PROCESSING_001",
+          "PRIVACY_DATA_SUBJECT_RIGHTS_001",
+          "PRIVACY_DATA_RETENTION_001",
+          "PRIVACY_COOKIES_001",
+          "PRIVACY_GRIEVANCE_OFFICER_001",
+          "CORE_COMPLIANCE_WITH_LAW_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "PRIVACY_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "PRIVACY_PURPOSE_SCOPE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_DATA_PROCESSING_001",
+          "PRIVACY_DATA_SUBJECT_RIGHTS_001",
+          "PRIVACY_DATA_RETENTION_001",
+          "PRIVACY_COOKIES_001",
+          "PRIVACY_GRIEVANCE_OFFICER_001",
+          "CORE_COMPLIANCE_WITH_LAW_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "PRIVACY_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "PROMISSORY_NOTE": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "PN_IDENTITY_001",
+          "PN_PROMISE_TO_PAY_001",
+          "PN_INTEREST_001",
+          "PROMISSORY_NOTE_PAYMENT_001",
+          "PN_DEFAULT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "PN_STAMP_AND_EXECUTION_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "PN_IDENTITY_001",
+          "PN_PROMISE_TO_PAY_001",
+          "PN_INTEREST_001",
+          "PROMISSORY_NOTE_PAYMENT_001",
+          "PN_DEFAULT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "PN_STAMP_AND_EXECUTION_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "REFUND_AND_CANCELLATION_POLICY": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "ECOM_REFUND_SCOPE_001",
+          "ECOM_CANCELLATION_001",
+          "ECOM_RETURN_ELIGIBILITY_001",
+          "ECOM_REFUND_TIMELINE_001",
+          "ECOM_GRIEVANCE_REDRESSAL_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "ECOM_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "ECOM_REFUND_SCOPE_001",
+          "ECOM_CANCELLATION_001",
+          "ECOM_RETURN_ELIGIBILITY_001",
+          "ECOM_REFUND_TIMELINE_001",
+          "ECOM_GRIEVANCE_REDRESSAL_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "ECOM_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "RENTAL_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "RENTAL_PROPERTY_DESCRIPTION_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "RENTAL_RENT_PAYMENT_001",
+          "RENTAL_SECURITY_DEPOSIT_001",
+          "PROP_REGISTRATION_001",
+          "RENT_UTILITIES_001",
+          "RENT_SUBLEASE_001",
+          "RENTAL_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "RENTAL_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "REGISTRATION_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_RENEWAL_TERMS"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "REGISTRATION_REQUIRED_NOTICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SALES_OF_GOODS_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "SERVICE_PAYMENT_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SERVICE_SCOPE_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "SUPPLY_RETURN_POLICY_001",
+          "SUPPLY_SHORTAGE_001",
+          "SUPPLY_REJECTION_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_QUALITY_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "AUTO-LIAB-001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_LIABILITY_CAP_BASIS"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SEPARATION_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_EMPLOYEE_PAN"
+        ],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "FORM_VALUE_NOT_REFLECTED_EMPLOYEE_PAN"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "EMP_SEPARATION_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "EMP_FNF_SETTLEMENT_001",
+          "EMP_FNF_RELEASE_001",
+          "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_EMPLOYEE",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SERVICE_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_TIMELINES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_OWNERSHIP_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "EMP_NON_SOLICITATION_001",
+          "SERVICE_PAYMENT_FIXED_FEE_001",
+          "AUTO-LPI-001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_SLA_001",
+          "SERVICE_REPORTING_001",
+          "SERVICE_TIMELINES_001",
+          "SERVICE_ACCEPTANCE_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_OWNERSHIP_001",
+          "SERVICE_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "SERVICE_EXPENSES_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "SERVICE_TERMINATION_CAUSE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_TERMINATION_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "DANGLING_ACCEPTANCE_CRITERIA",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "ENFC_SERVICE_GST_INVOICE",
+          "ENFC_SERVICE_TDS",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE"
+        ]
+      }
+    },
+    "SETTLEMENT_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "SETTLE_RECITALS_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "SETTLE_CONSIDERATION_001",
+          "SETTLE_PAYMENT_001",
+          "SETTLE_RELEASE_001",
+          "SETTLE_CONFIDENTIALITY_001",
+          "SETTLE_PROCEEDINGS_001",
+          "CORE_NOTICE_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_RECIPIENT_GSTIN",
+          "INPUT_MISMATCH_SUPPLIER_GSTIN"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "CORP_SHARE_SUBSCRIPTION_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_DRAG_ALONG_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "ENFC_SHA_COMPANIES_ACT",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "CORP_SHARE_SUBSCRIPTION_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_OWNERSHIP_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_DRAG_ALONG_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_BOARD_COMPOSITION_001",
+          "CORP_DEADLOCK_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "IMPLAUSIBLE_DRAG_THRESHOLD_UNUSUALLY_LOW",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "ENFC_SHA_COMPANIES_ACT",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "SSA_SUBSCRIPTION_001",
+          "SSA_CONDITIONS_PRECEDENT_001",
+          "SSA_USE_OF_PROCEEDS_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_REPRESENTATIONS_001",
+          "CORP_BOARD_INVESTOR_CONTROL_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "SSA_SUBSCRIPTION_001",
+          "SSA_CONDITIONS_PRECEDENT_001",
+          "SSA_USE_OF_PROCEEDS_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_REPRESENTATIONS_001",
+          "CORP_BOARD_INVESTOR_CONTROL_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SHIPPING_AND_DELIVERY_POLICY": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "ECOM_SHIPPING_SCOPE_001",
+          "ECOM_SHIPPING_CHARGES_001",
+          "ECOM_DELIVERY_TIMELINES_001",
+          "ECOM_DELIVERY_FAILURE_001",
+          "ECOM_GRIEVANCE_REDRESSAL_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "ECOM_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "ECOM_SHIPPING_SCOPE_001",
+          "ECOM_SHIPPING_CHARGES_001",
+          "ECOM_DELIVERY_TIMELINES_001",
+          "ECOM_DELIVERY_FAILURE_001",
+          "ECOM_GRIEVANCE_REDRESSAL_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "ECOM_POLICY_ADOPTION_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_TIMELINES_001",
+          "TECH_ACCEPTANCE_001",
+          "SERVICE_CHANGE_REQUEST_001",
+          "CORE_CONFIDENTIALITY_001",
+          "IP_OWNERSHIP_001",
+          "IP_LICENSE_001",
+          "IP_LICENSE_RESTRICTIONS_001",
+          "IP_COPYRIGHT_001",
+          "IP_INFRINGEMENT_001",
+          "IP_OPEN_SOURCE_001",
+          "IP_FEEDBACK_001",
+          "TECH_SOURCE_CODE_001",
+          "TECH_WARRANTY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SERVICE_PAYMENT_001",
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001",
+          "SERVICE_TIMELINES_001",
+          "TECH_ACCEPTANCE_001",
+          "SERVICE_CHANGE_REQUEST_001",
+          "CORE_CONFIDENTIALITY_001",
+          "CORE_DATA_PROCESSING_001",
+          "IP_OWNERSHIP_001",
+          "IP_LICENSE_001",
+          "IP_LICENSE_RESTRICTIONS_001",
+          "IP_COPYRIGHT_001",
+          "IP_INFRINGEMENT_001",
+          "IP_OPEN_SOURCE_001",
+          "IP_FEEDBACK_001",
+          "TECH_SOURCE_CODE_001",
+          "TECH_WARRANTY_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW"
+        ]
+      }
+    },
+    "SUPPLY_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "SUPPLY_REJECTION_001",
+          "SUPPLY_SHORTAGE_001",
+          "SUPPLY_RETURN_POLICY_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_QUALITY_001",
+          "CORE_CONFIDENTIALITY_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_INDEMNITY_001",
+          "AUTO-LIAB-001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "ENFC_SERVICE_GST_INVOICE",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [],
+        "blocking": [
+          "INPUT_MISMATCH_LIABILITY_CAP_BASIS"
+        ],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "LIABILITY_CAP_ANSWERS_CONFLICT"
+        ],
+        "notices": [
+          "ENFC_SERVICE_GST_INVOICE",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STAMP_ACT_S17_NOTICE",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "TERMS_OF_SERVICE": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "TOS_ACCEPTANCE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "TOS_ELIGIBILITY_ACCOUNT_001",
+          "TOS_ACCEPTABLE_USE_001",
+          "PRIVACY_GRIEVANCE_OFFICER_001",
+          "TOS_LICENSE_TO_USE_001",
+          "TOS_USER_CONTENT_001",
+          "IP_OWNERSHIP_001",
+          "TOS_CHANGES_TO_TERMS_001",
+          "TOS_DISCLAIMER_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "TOS_SUSPENSION_TERMINATION_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "TOS_ACKNOWLEDGEMENT_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "TOS_ACCEPTANCE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "TOS_ELIGIBILITY_ACCOUNT_001",
+          "TOS_ACCEPTABLE_USE_001",
+          "PRIVACY_GRIEVANCE_OFFICER_001",
+          "CORE_DATA_PROCESSING_001",
+          "TOS_LICENSE_TO_USE_001",
+          "TOS_USER_CONTENT_001",
+          "IP_OWNERSHIP_001",
+          "TOS_CHANGES_TO_TERMS_001",
+          "TOS_DISCLAIMER_001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_INDEMNITY_001",
+          "TOS_SUSPENSION_TERMINATION_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "TOS_ACKNOWLEDGEMENT_001"
+        ],
+        "blocking": [],
+        "advisory": [],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "TERM_SHEET": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "TS_BINDING_EFFECT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "TS_INVESTMENT_TERMS_001",
+          "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+          "TS_LIQUIDATION_PREFERENCE_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_BOARD_INVESTOR_CONTROL_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_DRAG_ALONG_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "TS_BINDING_EFFECT_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "TS_INVESTMENT_TERMS_001",
+          "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+          "TS_LIQUIDATION_PREFERENCE_001",
+          "CORP_ANTI_DILUTION_001",
+          "CORP_BOARD_INVESTOR_CONTROL_001",
+          "CORP_SHARE_TRANSFER_001",
+          "CORP_TAG_ALONG_001",
+          "CORP_DRAG_ALONG_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW",
+          "STATUTORY_CHECKLIST"
+        ]
+      }
+    },
+    "VENDOR_AGREEMENT": {
+      "minimal": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "SUPPLY_REJECTION_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_QUALITY_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CITES_UNCOMMENCED_PROVISION",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN",
+          "MISSING_CIN_PARTY_1"
+        ],
+        "notices": [
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
+          "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
+          "STALE_CITATION_AWAITING_REVIEW"
+        ]
+      },
+      "full": {
+        "generated": true,
+        "clauses": [
+          "CORE_IDENTITY_001",
+          "CORE_PURPOSE_001",
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_RELATIONSHIP_OF_PARTIES_001",
+          "CORE_CONTRACT_FORMATION_001",
+          "SUPPLY_PAYMENT_001",
+          "SUPPLY_DELIVERY_001",
+          "SUPPLY_GOODS_DESCRIPTION_001",
+          "SUPPLY_RISK_TRANSFER_001",
+          "SUPPLY_REJECTION_001",
+          "SUPPLY_INSPECTION_001",
+          "SUPPLY_QUALITY_001",
+          "SUPPLY_WARRANTY_001",
+          "CORE_TERM_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_TERMINATION_001",
+          "CORE_SURVIVAL_001",
+          "CORE_NOTICE_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_WAIVER_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_DISPUTE_RESOLUTION_001",
+          "CORE_GOVERNING_LAW_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_SIGNATURE_BLOCK_001"
+        ],
+        "blocking": [],
+        "advisory": [
+          "CIN_ON_LLP_PARTY_2",
+          "CITES_UNCOMMENCED_PROVISION",
+          "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
+          "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
+          "INVALID_PARTY_1_GSTIN",
+          "INVALID_PARTY_2_GSTIN"
+        ],
+        "notices": [
+          "STALE_CITATION_AWAITING_REVIEW"
+        ]
+      }
+    }
+  }
+}

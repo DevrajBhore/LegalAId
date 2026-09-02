@@ -1,0 +1,96 @@
+{
+  "concept_id": "MSME_SUPPLIER",
+  "label": "The counterparty is a micro or small enterprise",
+  "definition": "A supplier registered under the MSMED Act as a micro or small enterprise, whose invoices attract a statutory maximum payment period, statutory compound interest on delay that cannot be contracted away, and deferral of the buyer's income-tax deduction until payment is actually made.",
+  "authority": [
+    {
+      "act": "Micro, Small and Medium Enterprises Development Act, 2006",
+      "section": "15",
+      "note": "Payment by the agreed date or 45 days from the day of acceptance, whichever is earlier. Where no date is agreed, 15 days. An agreement fixing a longer period is void to that extent.",
+      "verified": false
+    },
+    {
+      "act": "Micro, Small and Medium Enterprises Development Act, 2006",
+      "section": "16",
+      "note": "Compound interest with monthly rests at three times the RBI notified bank rate. Not contractible away.",
+      "verified": false
+    },
+    {
+      "act": "Income-tax Act, 1961",
+      "section": "43B(h)",
+      "note": "The buyer's deduction is deferred until the sum is actually paid. Applies to MICRO AND SMALL ONLY, not medium. Traders are excluded: wholesale and retail traders were admitted to MSME classification in 2021 for priority-sector lending only, and the delayed-payment protections were not extended to them.",
+      "verified": false
+    }
+  ],
+  "requires_dimensions": {
+    "role": ["supplier", "seller", "service_provider"],
+    "event": ["supply", "sale", "provide_services", "distribute"]
+  },
+  "attributes": {
+    "enterprise_class": {
+      "type": "enum",
+      "values": ["micro", "small"],
+      "note": "Medium is deliberately absent. s.43B(h) does not reach medium enterprises."
+    },
+    "udyam_number": { "type": "string", "optional": true },
+    "registered_on_supply_date": {
+      "type": "boolean",
+      "optional": true,
+      "note": "Registration must exist on the DATE OF SUPPLY, not merely today."
+    },
+    "agreed_payment_days": {
+      "type": "number",
+      "unit": "days",
+      "optional": true,
+      "note": "Read from intake so the builder can detect a period longer than 45 days and clamp it."
+    }
+  },
+  "detection": {
+    "a_structured": [
+      {
+        "source": "field:counterparty_msme_class",
+        "provenance": "declared",
+        "when": [{ "var": "counterparty_msme_class", "op": "in", "value": ["micro", "small"] }],
+        "sets": { "enterprise_class": "$counterparty_msme_class" },
+        "note": "FIELD DOES NOT EXIST YET. The intake has no MSME or Udyam question anywhere in its 244 fields. This concept cannot resolve until it is added."
+      },
+      {
+        "source": "field:counterparty_udyam_number",
+        "provenance": "declared",
+        "when": [{ "var": "counterparty_udyam_number", "op": "present" }],
+        "sets": { "registered_on_supply_date": true },
+        "note": "FIELD DOES NOT EXIST YET."
+      }
+    ],
+    "d_classifier": {
+      "enabled": false,
+      "note": "Deliberately disabled. A buyer's counterparty's Udyam status is not discoverable from any free text in the intake, and inferring it from a company name would be a fabrication with a tax consequence. This concept is declared or it is nothing."
+    }
+  },
+  "attaches": {
+    "clauses": [
+      "SUPPLY_PAYMENT_001",
+      "SERVICE_PAYMENT_001",
+      "MSA_SOW_MECHANISM_001",
+      "CORE_RELATIONSHIP_OF_PARTIES_001"
+    ],
+    "rules": [],
+    "disclosures": ["MSME_PAYMENT_PERIOD_CAPPED", "MSME_STATUTORY_INTEREST_APPLIES"]
+  },
+  "confirmation": {
+    "question": "Is the supplier registered on Udyam as a micro or small enterprise?",
+    "why": "If it is, the law caps your payment period at 45 days, fixes the interest rate on any delay, and denies you the income-tax deduction until you have actually paid.",
+    "options": ["Yes — micro", "Yes — small", "No", "I don't know"]
+  },
+  "unresolved_behaviour": {
+    "assume": "safe_default",
+    "safe_default_note": "Draft the 45-day version. A shorter payment period is always lawful, so assuming the cap is the safe direction; assuming its absence is not.",
+    "rationale": "The buyer frequently does not know the supplier's Udyam status, so 'I don't know' is a common and legitimate answer rather than an edge case. Drafting 90 days silently would be the failure mode this design exists to prevent.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "Chosen as the worked example in the specification because it looks like a boolean and is not: four qualifications (micro/small only, traders excluded, registration must exist on the supply date, day-of-acceptance runs from delivery unless objected to within 15 days) each break a flat flag."
+}

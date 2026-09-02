@@ -1,0 +1,64 @@
+{
+  "concept_id": "COMPULSORILY_REGISTRABLE",
+  "label": "The instrument must be registered to be valid",
+  "definition": "The instrument falls within section 17 of the Registration Act, so it must be presented for registration within the prescribed time. An unregistered instrument of this kind does not affect the immovable property it deals with and cannot be received as evidence of the transaction.",
+  "authority": [
+    { "act": "Registration Act, 1908", "section": "17(1)(d)", "note": "Leases of immovable property from year to year, or for a term exceeding one year, or reserving a yearly rent.", "verified": false },
+    { "act": "Registration Act, 1908", "section": "49", "note": "Effect of non-registration: the document does not affect the property and is inadmissible as evidence of the transaction.", "verified": false },
+    { "act": "Registration Act, 1908", "section": "23", "note": "Presentation within four months of execution.", "verified": false },
+    { "act": "Indian Stamp Act, 1899", "section": "35", "note": "An insufficiently stamped instrument is inadmissible in evidence — distinct from registration but always co-occurring in practice.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "event": ["lease", "occupy", "license", "transfer_ip", "assign_rights"]
+  },
+  "attributes": {
+    "term_months": { "type": "duration", "unit": "months" },
+    "trigger": { "type": "enum", "values": ["lease_over_12_months", "sale_of_immovable_property", "assignment_of_registered_ip"], "optional": true },
+    "state": { "type": "string", "optional": true, "note": "Stamp duty and registration fees are state subjects; the rate is not uniform." }
+  },
+  "detection": {
+    "c_threshold": [
+      {
+        "when": [{ "var": ["lease_term", "occupancy_term", "rental_term", "agreement_term"], "op": "months_gte", "value": 12 }],
+        "sets": { "trigger": "lease_over_12_months" },
+        "note": "This exact predicate already exists and runs today, as RENTAL_REGISTRATION_MANDATORY_OVER_12M. The concept records what that rule concluded rather than re-deriving it."
+      }
+    ],
+    "a_structured": [
+      { "source": "control:is_registrable", "provenance": "derived", "note": "generationControls already computes is_registrable. The adapter reads it." },
+      { "source": "field:governing_law_state", "provenance": "declared", "sets": { "state": "$governing_law_state" } }
+    ]
+  },
+  "attaches": {
+    "clauses": [
+      "PROP_REGISTRATION_MANDATORY_001",
+      "PROP_REGISTRATION_001",
+      "CORE_STAMP_AND_COSTS_001",
+      "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001"
+    ],
+    "rules": [
+      "RENTAL_REGISTRATION_MANDATORY_OVER_12M",
+      "RENTAL_SHORT_TERM_REGISTRATION_NOT_REQUIRED",
+      "ENFC_RENTAL_REGISTRATION",
+      "ENFC_RENTAL_STAMP_DUTY",
+      "ENFC_CONTRACT_STAMP_DUTY",
+      "PROP_REQUIRES_PROPERTY_DESCRIPTION"
+    ],
+    "disclosures": ["REGISTRATION_REQUIRED_BEFORE_ENFORCEABLE"]
+  },
+  "confirmation": {
+    "question": "Is the term of this arrangement twelve months or longer?",
+    "why": "A lease of twelve months or more must be registered. An unregistered one cannot be used in court to prove the tenancy.",
+    "options": ["Yes", "No", "Not yet decided"]
+  },
+  "unresolved_behaviour": {
+    "assume": "present",
+    "rationale": "Registration is procedural rather than substantive: telling a user to register when they need not costs them a trip, whereas failing to tell them costs them the instrument's enforceability.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The cheapest of the ten to wire. Its predicate, its clauses and its rules all already exist and already run; the concept adds the traceability chain and the name, not new behaviour."
+}

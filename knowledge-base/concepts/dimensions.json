@@ -1,0 +1,78 @@
+{
+  "//": [
+    "SEMANTIC DIMENSIONS — typed, open, UNSIGNED.",
+    "",
+    "These describe the world. They are not legal concepts and no advocate signs",
+    "them. Keeping them in a separate file from concepts/*.json is the whole",
+    "point: if ENTITY, ROLE and EVENT were stored as concept records, every noun",
+    "would become a concept and the vocabulary would grow without bound.",
+    "",
+    "The test for which file something belongs in: does an advocate have to sign",
+    "it? Nobody signs 'this party is the seller'. Someone must be accountable for",
+    "'this counterparty is an MSME supplier', because that asserts a statutory",
+    "payment regime attaches."
+  ],
+  "schema": "dimensions/v1",
+  "version": "1.0",
+
+  "role": {
+    "//": "Closed, small. How an entity participates. Changes are an engineering change, not a legal one. Sourced today from getPartyNamingLabels() and blueprint party labels.",
+    "vocabulary": [
+      "disclosing_party", "receiving_party",
+      "seller", "buyer",
+      "supplier", "purchaser",
+      "manufacturer", "distributor",
+      "service_provider", "customer",
+      "employer", "employee", "intern",
+      "landlord", "tenant", "licensor", "licensee",
+      "lender", "borrower", "guarantor",
+      "assignor", "assignee",
+      "principal", "agent",
+      "data_fiduciary", "data_processor",
+      "brand_owner", "importer", "carrier", "occupier",
+      "shareholder", "partner", "founder", "investor"
+    ]
+  },
+
+  "event": {
+    "//": [
+      "Closed, moderate. What is being DONE. This dimension does not exist in the",
+      "codebase today — it is implied by document_type, which is exactly the",
+      "coupling the concept layer breaks. One distribution agreement can involve",
+      "sale, transport, storage and licensing at once, and each attracts",
+      "different concepts."
+    ],
+    "vocabulary": [
+      "sale", "supply", "distribute", "manufacture", "package",
+      "transport", "store",
+      "provide_services", "develop_software",
+      "lease", "license", "occupy",
+      "employ", "engage_contractor",
+      "lend", "guarantee", "repay",
+      "transfer_ip", "assign_rights",
+      "process_data", "publish_terms",
+      "transfer_shares", "delegate_authority",
+      "settle_dispute", "give_notice", "swear_affidavit"
+    ]
+  },
+
+  "entity_type": {
+    "//": "Open in practice but constrained by the intake selects on party_N_type.",
+    "vocabulary": [
+      "Individual", "Sole Proprietorship", "Partnership Firm", "LLP",
+      "Private Limited Company", "Public Limited Company",
+      "Trust", "Society", "HUF", "Government Body", "Foreign Entity"
+    ]
+  },
+
+  "fact": {
+    "//": [
+      "Open. Measured or stated values. These are the 244 intake fields already",
+      "catalogued in fields.json plus anything extracted from free text. No",
+      "vocabulary is enumerated here on purpose — facts are infinite, which is",
+      "the premise of the whole design. Treatments are not."
+    ],
+    "vocabulary": null,
+    "source": "fields.json + free-text extraction"
+  }
+}

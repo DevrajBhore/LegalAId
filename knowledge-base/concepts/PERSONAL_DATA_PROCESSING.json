@@ -1,0 +1,82 @@
+{
+  "concept_id": "PERSONAL_DATA_PROCESSING",
+  "label": "Personal data is processed under this arrangement",
+  "definition": "One party processes digital personal data on behalf of or alongside the other, so the instrument must fix the roles of Data Fiduciary and Data Processor, state the purpose, bind the processor by contract, address breach notification, retention and erasure, and name a route for the Data Principal to exercise rights.",
+  "authority": [
+    { "act": "Digital Personal Data Protection Act, 2023", "section": "8(2)", "note": "A Data Fiduciary may engage a Processor only under a valid contract.", "verified": false },
+    { "act": "Digital Personal Data Protection Act, 2023", "section": "8(5)", "note": "Reasonable security safeguards.", "verified": false },
+    { "act": "Digital Personal Data Protection Act, 2023", "section": "8(6)", "note": "Breach notification to the Board and to affected Data Principals.", "verified": false },
+    { "act": "Digital Personal Data Protection Act, 2023", "section": "8(7)", "note": "Erasure on withdrawal of consent or when the purpose is served.", "verified": false },
+    { "act": "Digital Personal Data Protection Rules, 2025", "rule": "commencement", "note": "Rules commenced 14 November 2025. Consent Manager registration obligations 14 November 2026; core obligations 14 May 2027.", "verified": false }
+  ],
+  "requires_dimensions": {
+    "event": ["process_data", "provide_services", "develop_software", "publish_terms", "distribute", "employ"]
+  },
+  "attributes": {
+    "party_role": { "type": "enum", "values": ["fiduciary", "processor", "joint", "unclear"] },
+    "data_categories": { "type": "string", "optional": true },
+    "involves_children": { "type": "boolean", "optional": true, "note": "s.9 imposes verifiable parental consent and bars tracking and targeted advertising directed at children." },
+    "cross_border": { "type": "boolean", "optional": true }
+  },
+  "detection": {
+    "a_structured": [
+      {
+        "source": "field:involves_personal_data",
+        "provenance": "declared",
+        "when": [{ "var": "involves_personal_data", "op": "eq", "value": "true" }],
+        "note": "Existing intake field, and already literally a concept boolean — this is the concept the system is closest to having."
+      },
+      {
+        "source": "control:involves_personal_data",
+        "provenance": "derived",
+        "note": "generationControls also derives this and bridges it onto firm_/company_/jv_processes_personal_data. The adapter reads the derived value, not the raw field, so the evidence entry names the control."
+      },
+      {
+        "source": "field:data_categories",
+        "provenance": "declared",
+        "when": [{ "var": "data_categories", "op": "present" }],
+        "sets": { "data_categories": "$data_categories" }
+      }
+    ],
+    "d_classifier": {
+      "enabled": true,
+      "reads_fields": ["services_description", "deliverables", "consulting_services", "business_purpose"],
+      "note": "A services description mentioning customer records, KYC, payroll or user accounts is evidence of processing. Provenance is INFERRED, so it is advisory and triggers the confirmation question rather than silently attaching the DPA clause set."
+    }
+  },
+  "attaches": {
+    "clauses": [
+      "CORE_DATA_PROCESSING_001",
+      "DPA_ROLES_AND_SCOPE_001",
+      "DPA_SECURITY_SAFEGUARDS_001",
+      "DPA_BREACH_NOTIFICATION_001",
+      "DPA_RETENTION_AND_ERASURE_001",
+      "DPA_DATA_PRINCIPAL_RIGHTS_001",
+      "DPA_SUBPROCESSING_001",
+      "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+      "DPA_AUDIT_AND_TRANSFER_001",
+      "NDA_DATA_SECURITY_001",
+      "PRIVACY_GRIEVANCE_OFFICER_001",
+      "PRIVACY_DATA_RETENTION_001",
+      "PRIVACY_DATA_SUBJECT_RIGHTS_001",
+      "PRIVACY_PURPOSE_SCOPE_001"
+    ],
+    "rules": [],
+    "disclosures": ["DPDP_OBLIGATIONS_PHASED"]
+  },
+  "confirmation": {
+    "question": "Will either party handle personal information about identifiable people — customers, employees or users?",
+    "why": "If so, the agreement has to fix who is responsible for that data, how long it is kept, and what happens if it leaks.",
+    "options": ["Yes", "No", "I don't know"]
+  },
+  "unresolved_behaviour": {
+    "assume": "absent",
+    "rationale": "Attaching ten data-processing clauses to an agreement that handles no personal data produces an obviously wrong document that trains users to distrust the output. Unlike the MSME cap, the safe direction here is not the permissive one — it is the one that does not fabricate obligations. The confirmation question is asked prominently instead.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The only concept of the ten whose unresolved_behaviour is 'absent'. Worth noting explicitly during review: the safe default is not always the protective one, and pretending otherwise produces bloated documents."
+}

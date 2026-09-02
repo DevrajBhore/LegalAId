@@ -1,0 +1,141 @@
+{
+  "concept_id": "EPR_OBLIGATED_PRODUCT",
+  "label": "The product carries extended producer responsibility",
+  "definition": "The product or its packaging falls under an Extended Producer Responsibility regime, so a registered obligation to collect, recycle and meet recycled-content targets attaches to a specific party — producer, importer or brand owner — and the agreement must fix which of them carries it and who furnishes the certificates.",
+  "authority": [
+    {
+      "act": "Plastic Waste Management Rules, 2016",
+      "rule": "9 and Schedule II",
+      "note": "EPR obligations of producers, importers and brand owners; category-wise recycled content and reuse targets.",
+      "verified": false
+    },
+    {
+      "act": "Plastic Waste Management (Amendment) Rules, 2026",
+      "rule": "G.S.R. 237(E)",
+      "note": "Notified 31 March 2026. Redefined end-of-life disposal; introduced a Seller of plastic raw materials; Category I recycled content rising to 60% by 2028-29; conformity to IS 14534:2023; importers may not count recycled content in imported goods toward targets and must buy certificates through the CPCB portal.",
+      "amended_upto": "2026-03-31",
+      "verified": false
+    },
+    {
+      "act": "E-Waste (Management) Rules, 2022",
+      "rule": "EPR schedule",
+      "note": "EPR targets for notified electrical and electronic equipment.",
+      "verified": false
+    },
+    {
+      "act": "Battery Waste Management Rules, 2022",
+      "rule": "EPR schedule",
+      "note": "EPR for all battery chemistries.",
+      "verified": false
+    }
+  ],
+  "requires_dimensions": {
+    "role": [
+      "brand_owner",
+      "manufacturer",
+      "importer",
+      "distributor",
+      "seller"
+    ],
+    "event": [
+      "package",
+      "sale",
+      "supply",
+      "distribute",
+      "manufacture"
+    ],
+    "note": "Role is decisive here in a way it is not for most concepts. The SAME polypropylene attracts no obligation for a carrier, a Seller obligation for someone selling resins, and the full EPR obligation for the brand owner whose name is on the pack."
+  },
+  "attributes": {
+    "regime": {
+      "type": "enum",
+      "values": [
+        "plastic_packaging",
+        "e_waste",
+        "battery_waste",
+        "tyre_waste"
+      ],
+      "optional": true
+    },
+    "obligated_role": {
+      "type": "enum",
+      "values": [
+        "producer",
+        "importer",
+        "brand_owner",
+        "seller"
+      ],
+      "optional": true
+    },
+    "packaging_category": {
+      "type": "enum",
+      "values": [
+        "I_rigid",
+        "II_flexible",
+        "III_multilayered",
+        "IV_compostable"
+      ],
+      "optional": true
+    },
+    "epr_registration_number": {
+      "type": "string",
+      "optional": true
+    }
+  },
+  "detection": {
+    "b_lexicon": [
+      {
+        "list": "epr_covered_products",
+        "source_of_truth": "CPCB EPR registration categories under the Plastic Waste, E-Waste and Battery Waste Rules",
+        "reads_fields": [
+          "product_description",
+          "goods_description",
+          "goods_or_services_description"
+        ],
+        "note": "LIST NOT YET IMPORTED."
+      }
+    ],
+    "d_classifier": {
+      "enabled": true,
+      "reads_fields": [
+        "product_description",
+        "goods_description",
+        "business_purpose"
+      ],
+      "note": "Advisory only. Must quote the span it read."
+    }
+  },
+  "attaches": {
+    "clauses": [],
+    "rules": [],
+    "disclosures": [
+      "EPR_OBLIGATION_NOT_ALLOCATED"
+    ],
+    "clauses_to_author": [
+      "EPR_OBLIGATION_ALLOCATION_001",
+      "EPR_REGISTRATION_WARRANTY_001",
+      "EPR_CERTIFICATE_FURNISHING_001",
+      "EPR_RECYCLED_CONTENT_COMPLIANCE_001",
+      "EPR_LABELLING_AND_MARKING_001"
+    ]
+  },
+  "confirmation": {
+    "question": "Does this product or its packaging carry an EPR obligation — plastic packaging, electronics, or batteries?",
+    "why": "Someone in the chain has to be registered and meet recycling targets. If the agreement does not say who, both sides may assume it is the other.",
+    "options": [
+      "Yes",
+      "No",
+      "I don't know"
+    ]
+  },
+  "unresolved_behaviour": {
+    "assume": "none",
+    "rationale": "As with HAZARDOUS_MATERIAL, no clauses exist to attach, so asserting the concept would change nothing while implying otherwise. Disclose instead.",
+    "disclose": true
+  },
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "version": "1.0",
+  "authoring_note": "The clearest evidence for why the concept layer earns its keep. The Plastic Waste Rules were amended on 31 March 2026, changing definitions, targets and the certificate mechanism. The CONCEPT did not change — only its authority list and its clause attachments did. Under the current architecture that churn would have to be chased through documentHardening.js's 108 runtime builders instead."
+}
