@@ -159,8 +159,10 @@ export default function Home() {
 
           {loading ? (
             <div className="home-showcase-state">
-              <div className="spinner" />
-              <span>Loading featured documents...</span>
+              <div className="loading-panel">
+                <div className="skeleton" aria-hidden="true"><i /><i /><i /><i /></div>
+                <span className="loading-panel-label">Loading featured documents…</span>
+              </div>
             </div>
           ) : error ? (
             <div className="home-showcase-state home-showcase-state--error">

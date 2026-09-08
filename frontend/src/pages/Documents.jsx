@@ -113,8 +113,10 @@ export default function Documents() {
       <section className="documents-shell">
         {loading ? (
           <div className="documents-state">
-            <div className="spinner" />
-            <span>Loading saved drafts...</span>
+            <div className="loading-panel">
+              <div className="skeleton" aria-hidden="true"><i /><i /><i /><i /></div>
+              <span className="loading-panel-label">Loading saved drafts…</span>
+            </div>
           </div>
         ) : error ? (
           <ErrorExplainer

@@ -665,21 +665,10 @@ export default function Editor() {
         : history?.draftId
           ? "Saved"
           : "Saving soon";
-  // "Certified" still means what it says: every check ran and found nothing.
-  // Whether the document can be EXPORTED is a different question, and answering
-  // both with one flag meant a single advisory finding -- a formatting nit, a
-  // missing nice-to-have clause -- left the user with a finished document they
-  // could not download. Blocking issues stop an export; advisories are shown in
-  // the Validation panel and exported past.
   const isCertified =
     validation?.certified === true &&
     riskLevel !== "BLOCKED" &&
     issueCount === 0 &&
-    !needsValidation;
-  const canExport =
-    Boolean(validation) &&
-    riskLevel !== "BLOCKED" &&
-    blockingIssues.length === 0 &&
     !needsValidation;
   const isExporting = Boolean(downloadingFormat);
   const workspaceLinks = [
@@ -696,7 +685,7 @@ export default function Editor() {
       label: "Open items",
       value: `${issueCount} item${issueCount === 1 ? "" : "s"}`,
     },
-    { icon: Icons.scroll, label: "History", value: saveLabel },
+    { icon: Icons.scroll, label: "History", value: saveLabel, state: saveState },
   ];
 
   return (
@@ -750,7 +739,7 @@ export default function Editor() {
               </span>
             )}
 
-            {canExport ? (
+            {isCertified ? (
               <div className="export-controls">
                 <label className="export-format-label" htmlFor="editor-export-format">
                   Export as
@@ -826,7 +815,17 @@ export default function Editor() {
               <div className="editor-status-icon">{item.icon}</div>
               <div>
                 <div className="editor-status-lbl">{item.label}</div>
-                <div className="editor-status-val">{item.value}</div>
+                <div className="editor-status-val">
+                  {/* An autosave used to change only the words, which is easy
+                      to miss while typing. The dot gives the save a moment of
+                      motion; "Saved" holds a steady green. */}
+                  {item.state === "saving" ? (
+                    <span className="save-dot save-dot--working" aria-hidden="true" />
+                  ) : item.state === "error" ? null : item.label === "History" ? (
+                    <span className="save-dot" aria-hidden="true" />
+                  ) : null}
+                  {item.value}
+                </div>
               </div>
             </div>
           ))}
@@ -1107,7 +1106,7 @@ export default function Editor() {
         </div>
       </div>
 
-      {canExport ? (
+      {isCertified ? (
         <MobileActionBar
           label={isExporting ? `Preparing ${formatExportLabel(downloadingFormat)}…` : `Export ${formatExportLabel(exportFormat)}`}
           onClick={() => handleDownload(exportFormat)}

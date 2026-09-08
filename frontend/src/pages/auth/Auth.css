@@ -368,12 +368,30 @@
 /* Specific enough to win on its own — this used to carry two !important. */
 .auth-success .auth-success-sub { color: var(--text-faint); font-size: var(--fs-xs); }
 
+/* The seal, at the size the verify-email panel needs. Inherits the shape from
+   index.css and only changes the scale -- the old rule redeclared the whole
+   ring at rgba(255,255,255,.10), which on this ground was very nearly
+   invisible: a faint empty circle with a gold tick at the top. */
 .auth-spinner {
+  position: relative;
   width: 38px; height: 38px;
-  border: 2.5px solid rgba(255,255,255,0.10);
-  border-top-color: var(--gold);
+  border: 0;
+}
+.auth-spinner::before {
+  content: "";
+  position: absolute; inset: 0;
   border-radius: 50%;
-  animation: spin .8s linear infinite;
+  border: 2.5px solid rgba(212, 170, 85, 0.22);
+}
+.auth-spinner::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from -90deg,
+    var(--gold) 0turn, var(--gold-light) .5turn, transparent .5turn);
+  -webkit-mask: radial-gradient(circle, transparent calc(50% - 2.5px), #000 calc(50% - 2px));
+  mask: radial-gradient(circle, transparent calc(50% - 2.5px), #000 calc(50% - 2px));
+  animation: seal-turn 1.5s cubic-bezier(.65, 0, .35, 1) infinite;
 }
 
 /* ── Breakpoints ─────────────────────────────────────────────────────────────

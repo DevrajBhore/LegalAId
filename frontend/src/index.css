@@ -480,61 +480,119 @@ code, pre, .mono { font-family: var(--font-mono); }
 
 /* ═══ Motion ══════════════════════════════════════════════════════════════ */
 
-/* A ring at 22px reads as a ring. At 14px, inside a button, it reads as a
-   smudge -- there is not enough arc left to see it turn. The two sizes get
-   different treatments for that reason.
+/* ═══ Loading: Seal & Ink ═════════════════════════════════════════════════
+   One family, three sizes. The product makes documents, so waiting looks like
+   a document being made: a nib laying ink, and a seal closing.
 
-   The large one keeps a ring but gains a second, counter-rotating arc so the
-   motion is legible without spinning fast enough to look frantic. */
+   The previous set failed for three specific reasons, all visible the moment
+   they were rendered side by side rather than read as code:
+     1. a 2px arc at 14% gold on a near-black ground is not motion, it is a
+        smudge -- there was not enough contrast left to see anything turn;
+     2. the button dots sat 7px from the label and collided with it, so
+        "Signing in..." rendered as two competing ellipses;
+     3. the skeleton shimmer ran at .05 -> .20 alpha, which reads as three dead
+        bars rather than as loading.
+   Everything below is built to be legible first and decorative second. */
+
+/* ── The seal. Full-page and panel waits. ─────────────────────────────────
+   A ring closes around a core that breathes. The ring is a conic gradient
+   rather than a border arc, so the stroke keeps its weight the whole way
+   round instead of thinning at the corners of the box. */
 .spinner {
   position: relative;
-  width: 22px; height: 22px;
+  width: 30px; height: 30px;
   flex-shrink: 0;
-  border: 2px solid var(--line);
-  border-top-color: var(--gold);
+  border: 0;
+}
+.spinner::before {
+  content: "";
+  position: absolute; inset: 0;
   border-radius: 50%;
-  animation: spin .9s cubic-bezier(.6,.1,.4,.9) infinite;
+  border: 2px solid rgba(212, 170, 85, 0.22);
 }
 .spinner::after {
   content: "";
-  position: absolute; inset: 3px;
-  border: 2px solid transparent;
-  border-bottom-color: var(--gold-light);
+  position: absolute; inset: 0;
   border-radius: 50%;
-  opacity: .7;
-  animation: spin 1.4s linear reverse infinite;
+  background: conic-gradient(from -90deg,
+    var(--gold) 0turn, var(--gold-light) .5turn, transparent .5turn);
+  -webkit-mask: radial-gradient(circle, transparent calc(50% - 2px), #000 calc(50% - 1.5px));
+  mask: radial-gradient(circle, transparent calc(50% - 2px), #000 calc(50% - 1.5px));
+  animation: seal-turn 1.5s cubic-bezier(.65, 0, .35, 1) infinite;
+}
+/* The pressed core. Rendered by a child so the two pseudo-elements above stay
+   free for the ring -- call sites that want it write <div class="spinner"><i/></div>,
+   and the ones that do not still get a correct ring. */
+.spinner > i {
+  position: absolute; inset: 30%;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: seal-core 1.5s ease-in-out infinite;
+}
+@keyframes seal-turn { to { transform: rotate(1turn); } }
+@keyframes seal-core {
+  0%, 100% { transform: scale(.62); opacity: .5; }
+  50%      { transform: scale(1);   opacity: 1; }
 }
 
-/* In a button, three dots rising in sequence. They read at any size, take the
-   button's own ink colour, and do not fight the label beside them. The span is
-   the middle dot and its two pseudo-elements are the outer pair, so none of the
-   dozen `<span className="btn-spinner" />` call sites need to change. */
+/* ── The nib. Inside a button, beside a label. ────────────────────────────
+   A stroke of ink is drawn left to right with the nib riding its tip.
+
+   The element itself is a faint track and the ink is drawn ON it, which is the
+   fix for the fault the first build had: with no track, the loader was at or
+   near zero width for the first fifth of every cycle and vanished again as it
+   faded, so roughly 400ms in every 1500ms showed nothing at all. Rendered, it
+   read as a single dot blinking. The track means there is always something on
+   screen, and the ink is the part that moves.
+
+   Everything takes `currentColor`, so it is dark ink on the gold primary
+   button and gold on the ghost button with no extra rule for either. */
 .btn-spinner {
   position: relative;
   display: inline-block;
-  width: 4px; height: 4px;
-  margin: 0 9px;
-  border: 0;
-  border-radius: 50%;
-  background: currentColor;
-  animation: dot-rise 1.05s ease-in-out .14s infinite;
+  width: 22px; height: 2px;
+  margin: 0 2px 0 0;
+  border: 0; border-radius: 1px;
+  background: color-mix(in srgb, currentColor 24%, transparent);
+  vertical-align: middle;
+  flex-shrink: 0;
 }
-.btn-spinner::before,
+.btn-spinner::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0;
+  border-radius: 1px;
+  background: currentColor;
+  animation: nib-draw 1.5s cubic-bezier(.55, 0, .2, 1) infinite;
+}
+/* The nib itself, riding the end of the stroke. */
 .btn-spinner::after {
   content: "";
-  position: absolute; top: 0;
-  width: 4px; height: 4px;
+  position: absolute; top: 50%; left: 0;
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: currentColor;
-  animation: dot-rise 1.05s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  animation: nib-travel 1.5s cubic-bezier(.55, 0, .2, 1) infinite;
 }
-.btn-spinner::before { left: -7px; animation-delay: 0s; }
-.btn-spinner::after  { left:  7px; animation-delay: .28s; }
+@keyframes nib-draw {
+  0%       { width: 0;    opacity: 1; }
+  62%      { width: 22px; opacity: 1; }
+  88%      { width: 22px; opacity: 1; }
+  100%     { width: 22px; opacity: 0; }
+}
+@keyframes nib-travel {
+  0%       { left: 0;    opacity: 1; }
+  62%      { left: 22px; opacity: 1; }
+  88%      { left: 22px; opacity: 1; }
+  100%     { left: 22px; opacity: 0; }
+}
 
-@keyframes dot-rise {
-  0%, 100% { transform: translateY(0);    opacity: .4; }
-  45%      { transform: translateY(-4px); opacity: 1; }
-}
+/* A button whose label is replaced by a loader needs the gap; one that keeps
+   its label needs the nib not to crowd it. 10px is the same gap the icon
+   buttons use, so a loading button is the same width as an idle one. */
+button .btn-spinner,
+a .btn-spinner { margin-right: 10px; }
 
 @keyframes spin    { to { transform: rotate(360deg); } }
 @keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
@@ -556,34 +614,63 @@ code, pre, .mono { font-family: var(--font-mono); }
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-/* Placeholder lines shaped like the paragraph that is loading, rather than a
-   spinner centred in an empty panel. Three lines of decreasing width is what
-   almost every loading region in this product is waiting for. */
-.skeleton { display: grid; gap: 6px; }
+/* ── Drawn lines. Panels waiting on a list or a document. ─────────────────
+   Lines are DRAWN left to right in sequence, like the nib writing them, then
+   the set fades and redraws. The old version shimmered a highlight across
+   static bars at .05 -> .20 alpha, which at this contrast read as three dead
+   grey bars rather than as anything loading. */
+.skeleton { display: grid; gap: 7px; width: 100%; }
 .skeleton > i {
-  display: block; height: 9px; border-radius: 3px;
+  display: block; height: 8px; border-radius: 2px;
+  transform-origin: left;
   background: linear-gradient(90deg,
-    rgba(212,170,85,0.05) 0%, rgba(212,170,85,0.20) 45%, rgba(212,170,85,0.05) 90%);
-  background-size: 220% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
+    rgba(212,170,85,0.55) 0%, rgba(212,170,85,0.22) 100%);
+  animation: ink-draw 2.3s cubic-bezier(.5, 0, .2, 1) infinite;
 }
-.skeleton > i:nth-child(2) { width: 82%; animation-delay: .10s; }
-.skeleton > i:nth-child(3) { width: 64%; animation-delay: .20s; }
+.skeleton > i:nth-child(2) { width: 82%; animation-delay: .26s; }
+.skeleton > i:nth-child(3) { width: 64%; animation-delay: .52s; }
+.skeleton > i:nth-child(4) { width: 88%; animation-delay: .78s; }
+@keyframes ink-draw {
+  0%   { transform: scaleX(0); opacity: 1; }
+  38%  { transform: scaleX(1); opacity: 1; }
+  84%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
 
-/* A status that is working, without anything spinning: the badge breathes. */
-.is-working { animation: breathe 2.4s ease-in-out infinite; }
-@keyframes breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+/* The panel loader that replaces a bare centred spinner: lines where the
+   content will be, and the caption underneath saying what is being fetched. */
+.loading-panel {
+  display: grid; gap: var(--sp-4);
+  justify-items: start;
+  width: 100%; max-width: 440px;
+  padding: var(--sp-5) 0;
+}
+.loading-panel .skeleton { max-width: 100%; }
+.loading-panel-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  letter-spacing: .02em;
+}
 
-/* Autosave. One outward ring per save, then still -- currently the "Saved"
-   text changes with no motion at all, so a save is easy to miss. */
+/* Autosave. Steady when saved; one outward ring per second while saving. The
+   status row used to change only its wording, which is easy to miss while you
+   are typing in the document beside it. */
 .save-dot {
+  display: inline-block;
   width: 6px; height: 6px; border-radius: 50%;
+  margin-right: 7px;
   background: var(--green); flex-shrink: 0;
-  animation: save-blip 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+.save-dot--working {
+  background: var(--gold);
+  animation: save-blip 1.4s ease-out infinite;
 }
 @keyframes save-blip {
-  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(34,197,94,.45); }
-  50%      { transform: scale(1.25); box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(184,147,58,.55); }
+  70%  { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(184,147,58,0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(184,147,58,0); }
 }
 
 button, a, input, textarea, select {
@@ -603,39 +690,70 @@ button, a, input, textarea, select {
   }
 
   /* A loading indicator is feedback, not decoration. The blanket rule above
-     froze every spinner in the product solid: with "reduce motion" switched on
+     froze every loader in the product solid: with "reduce motion" switched on
      in Windows or macOS, the only signal that the app was working stopped
      moving, and a user watching a twenty-second generation had no way to tell
-     it from a hang. What reduced-motion asks us to remove is large, sweeping,
-     vestibular-triggering movement -- not the evidence that something is
-     happening. So these keep animating, without rotating. */
-  .spinner,
-  .auth-spinner {
-    border-color: var(--gold) !important;
+     it from a hang. Worse, the drawn elements below rest at zero width or zero
+     scale, so freezing them did not just still them -- it rendered them
+     INVISIBLE, and the generation overlay came out as a blank page.
+
+     What reduced-motion asks us to remove is large, sweeping, vestibular
+     movement. Not the evidence that something is happening. So every loader
+     here is given a non-moving animation that still changes over time, and
+     -- critically -- a resting state that is visible. */
+
+  /* The seal stops turning and breathes instead. */
+  .spinner::after,
+  .auth-spinner::after {
+    animation: reduced-pulse 1.6s ease-in-out infinite !important;
+    transform: none !important;
+  }
+  .spinner > i {
+    animation: reduced-pulse 1.6s ease-in-out .3s infinite !important;
+    transform: none !important;
+  }
+
+  /* The nib stops travelling. The stroke stays at FULL width and fades in and
+     out in place -- if it were left at its 0% keyframe there would be nothing
+     on screen at all. */
+  .btn-spinner::before,
+  .fix-spinner::before,
+  .chat-typing::before {
+    width: 22px !important;
+    transform: translateY(-50%) scaleX(1) !important;
     animation: reduced-pulse 1.6s ease-in-out infinite !important;
   }
-  /* The counter-rotating inner arc is pure decoration; it goes. */
-  .spinner::after { animation: none !important; opacity: 0 !important; }
-
-  .btn-spinner,
-  .btn-spinner::before,
+  .fix-spinner::before { width: 16px !important; }
+  .chat-typing::before { width: 26px !important; transform: none !important; }
+  /* The travelling nib head is the moving part, so it goes entirely. */
   .btn-spinner::after,
-  .fix-spinner,
-  .fix-spinner::before,
-  .fix-spinner::after,
-  .save-dot,
+  .fix-spinner::after { animation: none !important; opacity: 0 !important; }
+
+  /* Drawn lines rest at full width and pulse together. */
   .skeleton > i,
+  .gen-sheet i {
+    transform: scaleX(1) !important;
+    width: var(--gen-w, 100%) !important;
+    animation: reduced-pulse 1.8s ease-in-out infinite !important;
+  }
+  .skeleton > i { width: auto !important; }
+  .skeleton > i:nth-child(2) { width: 82% !important; }
+  .skeleton > i:nth-child(3) { width: 64% !important; }
+  .skeleton > i:nth-child(4) { width: 88% !important; }
+
+  /* The seal on the generation overlay is pressed, not pressing. */
+  .gen-seal {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .save-dot--working,
   .shimmer {
     animation-duration: 1.8s !important;
     animation-iteration-count: infinite !important;
+    animation-name: reduced-pulse !important;
   }
-  /* Dots fade in place rather than rising, so nothing translates. */
-  .btn-spinner,
-  .btn-spinner::before,
-  .btn-spinner::after,
-  .fix-spinner,
-  .fix-spinner::before,
-  .fix-spinner::after { animation-name: reduced-pulse !important; }
 }
 
 @keyframes reduced-pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }

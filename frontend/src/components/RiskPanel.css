@@ -160,23 +160,45 @@
 .issue-fix-icon svg { width: 12px; height: 12px; }
 /* 11px is well below the size at which a rotating ring is legible. Same three
    dots as every other in-button loading state. */
+/* The nib, at the smaller size an inline "Fixing..." control needs. The old
+   rule was a copy of the three-dot button spinner at 3px, which at that size
+   was indistinguishable from a stray ellipsis. */
 .fix-spinner {
   position: relative;
   display: inline-block;
-  width: 3px; height: 3px; margin: 0 7px;
-  border: 0; border-radius: 50%;
-  background: currentColor;
-  animation: dot-rise 1.05s ease-in-out .14s infinite;
+  width: 16px; height: 2px;
+  margin: 0 8px 0 0;
+  border: 0; border-radius: 1px;
+  background: color-mix(in srgb, currentColor 24%, transparent);
+  vertical-align: middle;
 }
-.fix-spinner::before,
+.fix-spinner::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0; border-radius: 1px;
+  background: currentColor;
+  animation: nib-draw-sm 1.5s cubic-bezier(.55, 0, .2, 1) infinite;
+}
 .fix-spinner::after {
-  content: ""; position: absolute; top: 0;
-  width: 3px; height: 3px; border-radius: 50%;
+  content: "";
+  position: absolute; top: 50%; left: 0;
+  width: 4px; height: 4px; border-radius: 50%;
   background: currentColor;
-  animation: dot-rise 1.05s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  animation: nib-travel-sm 1.5s cubic-bezier(.55, 0, .2, 1) infinite;
 }
-.fix-spinner::before { left: -5px; animation-delay: 0s; }
-.fix-spinner::after  { left:  5px; animation-delay: .28s; }
+@keyframes nib-draw-sm {
+  0% { width: 0; opacity: 1; }
+  62% { width: 16px; opacity: 1; }
+  88% { width: 16px; opacity: 1; }
+  100% { width: 16px; opacity: 0; }
+}
+@keyframes nib-travel-sm {
+  0% { left: 0; opacity: 1; }
+  62% { left: 16px; opacity: 1; }
+  88% { left: 16px; opacity: 1; }
+  100% { left: 16px; opacity: 0; }
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── ADVISORY NOTES ── */

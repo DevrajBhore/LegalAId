@@ -15,7 +15,9 @@ export default function ProtectedRoute({ children }) {
             The inline animation here could not be reached by the reduced-motion
             rules, so this was the one loader in the product that froze with no
             way to style it back to life. */}
-        <div className="spinner" style={{ width: 32, height: 32 }} />
+        <div className="spinner" style={{ width: 34, height: 34 }} aria-hidden="true">
+          <i />
+        </div>
       </div>
     );
   }

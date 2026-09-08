@@ -1618,8 +1618,10 @@ export default function Form() {
 
           {loading ? (
             <div className="form-loading">
-              <div className="spinner" />
-              <span>Loading form...</span>
+              <div className="loading-panel">
+                <div className="skeleton" aria-hidden="true"><i /><i /><i /><i /></div>
+                <span className="loading-panel-label">Loading form…</span>
+              </div>
             </div>
           ) : showInterview ? (
             <ConversationalIntake

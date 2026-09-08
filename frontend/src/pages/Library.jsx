@@ -125,8 +125,10 @@ export default function Library() {
 
         {loading ? (
           <div className="library-state">
-            <div className="spinner" />
-            <span>Loading document library...</span>
+            <div className="loading-panel">
+              <div className="skeleton" aria-hidden="true"><i /><i /><i /><i /></div>
+              <span className="loading-panel-label">Loading document library…</span>
+            </div>
           </div>
         ) : error ? (
           <div className="library-state library-state--error">
