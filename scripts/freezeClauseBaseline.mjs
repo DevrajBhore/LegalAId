@@ -103,6 +103,10 @@ const SPECIMEN_ENTITIES = [
   },
 ];
 
+// Natural-person PANs: fourth character P, as the Income-tax PAN structure
+// requires for an individual holder.
+const PERSON_PANS = ["ABCPS1234K", "ABCPI5678L", "ABCPK9012M", "ABCPN3456N"];
+
 const SPECIMEN_PEOPLE = [
   "Priya Sharma",
   "Vikram Iyer",
@@ -208,8 +212,14 @@ function syntheticValue(field, definition = {}) {
   const slot = roleSlot(name);
   if (slot !== null) {
     const entity = SPECIMEN_ENTITIES[slot % SPECIMEN_ENTITIES.length];
-    if (/_gstin$/.test(name)) return entity.gstin;
-    if (/_pan$/.test(name)) return entity.pan;
+    // The fourth character of a PAN encodes the holder type -- P for an
+    // individual, C for a company, F for a firm -- and partyIdentityValidator
+    // reads it. Giving an employee a company PAN raised a correct
+    // ENTITY_TYPE_CONTRADICTS_PAN advisory on every APPOINTMENT_LETTER run, so
+    // the baseline recorded a defect the harness had invented.
+    const isPerson = /(employee|intern|deponent|witness|founder|partner_|attorney|individual)/.test(name);
+    if (/_gstin$/.test(name)) return isPerson ? "" : entity.gstin;
+    if (/_pan$/.test(name)) return isPerson ? PERSON_PANS[slot % PERSON_PANS.length] : entity.pan;
     if (/_cin$/.test(name)) return entity.cin;
     if (/_llpin$/.test(name)) return entity.llpin;
     if (/_din$/.test(name)) return `0012345${slot}`;

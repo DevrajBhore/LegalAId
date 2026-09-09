@@ -299,13 +299,80 @@ function hasRepresentativeExecutionBlock(signatureText = "", name = "") {
   );
 }
 
+/**
+ * Which input mismatches WITHHOLD the document, and which ship with it.
+ *
+ * Every check in this file compares a value the user typed against the text the
+ * engine produced, and until now every one of them blocked generation. That is
+ * wrong in a specific and damaging way: the checks are VERBATIM substring tests,
+ * but the hardening builders legitimately rewrite input into contract prose. A
+ * user who types "renewable for 2 more years by mutual consent" gets a clause
+ * reading "may be renewed for a further two (2) years upon mutual written
+ * agreement" -- correct drafting, failed substring test, no document.
+ *
+ * Measured across all 40 document types: 9 of them refused to generate on a
+ * fully-completed intake, and every one of the 14 blocking issues was one of
+ * these mismatches. Eight of the nine generated perfectly on a MINIMAL intake.
+ * The product was punishing users for filling in the form.
+ *
+ * The line drawn here: a mismatch blocks only when it changes WHO IS BOUND,
+ * WHAT LAW APPLIES, WHEN THE INSTRUMENT STARTS, or HOW LONG IT LASTS. Those are
+ * defects that make the document the wrong document. Everything else -- a
+ * renewal arrangement, a bonus scheme, a warranty period not echoed word for
+ * word -- is reported at full severity and shipped, because the user can read
+ * the clause, compare it to what they typed, and edit it. Withholding the whole
+ * instrument leaves them with nothing and an instruction ("rewrite the term
+ * clause") they cannot act on, since they did not write it.
+ *
+ * This is the same reasoning already applied to LIABILITY_CAP_ANSWERS_CONFLICT
+ * further down the file; it simply never reached the rest of the family.
+ */
+const BLOCKING_MISMATCHES = new Set([
+  // Which law governs, and which court supervises. Under the Arbitration and
+  // Conciliation Act 1996 the seat fixes supervisory jurisdiction, so getting it
+  // wrong sends a dispute to the wrong High Court.
+  "INPUT_MISMATCH_ARBITRATION_CITY",
+  "INPUT_MISMATCH_GOVERNING_LAW_STATE",
+  // When it starts and how long it runs. A lease of 12 months or more is
+  // compulsorily registrable; the duration is not a descriptive detail.
+  "INPUT_MISMATCH_EFFECTIVE_DATE_TERM",
+  "INPUT_MISMATCH_CONTRACT_DURATION",
+]);
+
+// `INPUT_MISMATCH_${participant.id}_TYPE` identifies a party as an individual or
+// a body corporate, which decides how the instrument is validly executed. The
+// NDA's own "type" field is mutual-versus-unilateral -- a drafting choice, not
+// an identity -- so it must not be caught by the same suffix.
+const NON_PARTICIPANT_TYPE_RULES = new Set(["INPUT_MISMATCH_NDA_TYPE"]);
+
+const IDENTITY_SUFFIXES = ["_NAME", "_ADDRESS", "_SIGNATURE_NAME", "_EXECUTION_STYLE", "_TYPE"];
+
+function mismatchBlocksGeneration(ruleId = "") {
+  const id = String(ruleId);
+  if (!id.startsWith("INPUT_MISMATCH_")) return true;
+  if (BLOCKING_MISMATCHES.has(id)) return true;
+  // Which forum hears a dispute is structural for the same reason the seat is.
+  if (id.startsWith("INPUT_MISMATCH_DISPUTE_METHOD_")) return true;
+  if (NON_PARTICIPANT_TYPE_RULES.has(id)) return false;
+  return IDENTITY_SUFFIXES.some((suffix) => id.endsWith(suffix));
+}
+
+// An advisory is read by the person who filled in the form, not by the engineer
+// who wrote the builder. "Rewrite the term clause so it incorporates the stated
+// renewal arrangement" is addressed to the wrong reader and describes work they
+// cannot do. This one names the thing they can actually do.
+const ADVISORY_SUGGESTION =
+  "Read the clause and compare it with what you entered. If it does not say what " +
+  "you intended, edit it in the editor before exporting.";
+
 function buildIssue(ruleId, severity, message, suggestion) {
+  const blocks = mismatchBlocksGeneration(ruleId);
   return {
     rule_id: ruleId,
     severity,
     message,
-    suggestion,
-    blocks_generation: true,
+    suggestion: blocks ? suggestion : ADVISORY_SUGGESTION,
+    blocks_generation: blocks,
     auto_fixable: false,
   };
 }
