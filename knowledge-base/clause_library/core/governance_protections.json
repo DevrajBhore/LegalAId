@@ -1,0 +1,51 @@
+{
+  "clause_id": "CORE_GOVERNANCE_PROTECTIONS_001",
+  "name": "Audit, Information and Escalation Rights",
+  "title": "Audit, Information and Escalation",
+  "category": "GOVERNANCE",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party shall keep true and complete records of its performance under this Agreement, and shall preserve them for the period a law in force requires or for three (3) years from the end of the financial year to which they relate, whichever is longer. Where this Agreement confers a right of audit, of information, or an escalation route, that right is exercised on reasonable prior written notice, during normal business hours, and without unreasonable disruption to the other Party's business. A Party exercising such a right shall treat what it learns as confidential information under this Agreement, and shall bear its own costs unless the audit discloses a material discrepancy, in which case the audited Party shall bear the reasonable cost of the audit and shall correct the discrepancy within thirty (30) days.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform their respective promises; audit and information rights are the machinery by which performance is verified."
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "128",
+      "note": "Books of account to be kept and preserved for eight financial years, where the party is a company."
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "36",
+      "note": "Records to be retained for seventy-two months from the due date of the annual return."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "An audit right is drafted so broadly that it permits access to the other Party's records unrelated to this Agreement.",
+    "An escalation mechanism is drafted as a condition precedent to approaching a court or tribunal in a way that ousts jurisdiction.",
+    "The clause requires disclosure of information the disclosing Party is barred by law or by a third-party obligation from disclosing."
+  ],
+  "depends_on": ["CORE_CONFIDENTIALITY_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["CORE_DISPUTE_RESOLUTION_001"],
+  "authoring_note": "The four intake fields behind this clause -- audit rights, information rights, escalation mechanism and additional protections -- were collected on seven document types and rendered on none of them unless the document happened to include a reporting or JV-governance clause. This clause gives them a home. Confirm the default three-year retention is right, and whether an escalation route should be expressed as a precondition to formal remedies or merely as a commercial preference.",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

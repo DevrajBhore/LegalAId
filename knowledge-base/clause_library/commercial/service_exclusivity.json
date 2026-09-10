@@ -1,0 +1,52 @@
+{
+  "clause_id": "SERVICE_EXCLUSIVITY_001",
+  "name": "Exclusivity and Conflicting Engagements",
+  "title": "Exclusivity and Conflicting Engagements",
+  "category": "RESTRAINT",
+  "document_types": [
+    "CONSULTANCY_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "During the term of this Agreement the Consultant shall not accept any engagement that competes with the business of the Client in the field in which the Consultant is engaged under this Agreement, and shall not use the Client's Confidential Information for the benefit of any other person. Before accepting any engagement that may give rise to a conflict, the Consultant shall disclose it in writing to the Client and shall not proceed with it without the Client's written consent, which shall not be unreasonably withheld. This Clause does not prevent the Consultant from carrying on any engagement that is unrelated to the Client's field of business, nor from continuing an engagement disclosed in writing before the Effective Date. This Clause operates only during the term of this Agreement; after it ends, the Consultant's obligations are limited to confidentiality, to the ownership of work product, and to non-solicitation where this Agreement provides for it.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "Every agreement in restraint of a lawful profession, trade or business is void to that extent. A restraint operating only during the subsistence of the contract is treated as a term of service rather than a restraint of trade, which is why this clause is expressly confined to the term."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "16",
+      "note": "Undue influence; a restraint that leaves the consultant no lawful means of earning during the term risks being set aside on unconscionability as well as on section 27."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "MEDIUM",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The restraint is drafted to continue after the term of this Agreement, in which case it is void under section 27 of the Indian Contract Act, 1872, no matter how narrow it is.",
+    "The restraint extends beyond the Client's actual field of business, so that it bars the Consultant from work the Client does not carry on.",
+    "The consent requirement is drafted so that the Client may withhold consent for any reason, which makes the restraint absolute in substance."
+  ],
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "conflicts_with": [
+    "NDA_NON_COMPETE_001",
+    "EMP_NON_COMPETE_001"
+  ],
+  "required_with": [],
+  "suggested_with": [
+    "EMP_NON_SOLICITATION_001"
+  ],
+  "authoring_note": "Selected when the user says they are protecting against the consultant working for a competitor. Written in place of NDA_NON_COMPETE_001, which carries Disclosing/Receiving Party roles that do not belong in a consultancy agreement, and in place of EMP_NON_COMPETE_001, which is post-employment and would be void here. Confirm the during-term framing is the furthest a consultancy agreement should go under section 27.",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "materiality": "LEGAL",
+  "materiality_note": "A restraint on the consultant's ability to trade, live under section 27."
+}

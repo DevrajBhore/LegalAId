@@ -151,8 +151,10 @@
         "requiredClauseIds": [
           "CORE_DEFINITIONS_001",
           "CORE_INTERPRETATION_001",
+          "SERVICE_EXPENSES_001",
           "IP_OWNERSHIP_001",
           "CORE_CONFIDENTIALITY_001",
+          "SERVICE_WARRANTY_001",
           "SERVICE_TERMINATION_001",
           "CORE_INDEMNITY_001",
           "CORE_LIABILITY_CAP_001",
@@ -309,6 +311,7 @@
           "SUPPLY_RETURN_POLICY_001",
           "CORE_CONFIDENTIALITY_001",
           "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
           "CORE_FORCE_MAJEURE_001",
           "CORE_NOTICE_001",
           "CORE_RELATIONSHIP_OF_PARTIES_001"
@@ -378,6 +381,7 @@
           "SUPPLY_REJECTION_001",
           "SUPPLY_RISK_TRANSFER_001",
           "CORE_INDEMNITY_001",
+          "CORE_LIMITATION_LIABILITY_001",
           "CORE_FORCE_MAJEURE_001",
           "CORE_NOTICE_001"
         ]

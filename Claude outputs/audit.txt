@@ -1,0 +1,97 @@
+PER-DOCUMENT AUDIT — ranked by how much work each type needs
+
+type                              cls  dom  orph  static  selfref  domVar
+------------------------------------------------------------------------------
+EMPLOYMENT_CONTRACT                43   22     5       6        0     40%  ~
+TERMS_OF_SERVICE                   22   12     4       6        0     64%  ~
+DISTRIBUTION_AGREEMENT             35   10     5       2        0     43%  ~
+NDA                                35   15     2       5        0     60%  ~
+SUPPLY_AGREEMENT                   36   10     3       3        0     40%  ~
+JOINT_VENTURE_AGREEMENT            33    7     4       1        0     40%  ~
+SEPARATION_AGREEMENT               21    4     2       1        1     50%
+SOFTWARE_DEVELOPMENT_AGREEMENT     41   15     3       2        0     43%  ~
+DATA_PROCESSING_AGREEMENT          29    8     2       3        0     38%
+SHAREHOLDERS_AGREEMENT             33    8     4       1        0      0%  ~
+SALES_OF_GOODS_AGREEMENT           35   12     2       3        0     45%  ~
+IP_ASSIGNMENT_AGREEMENT            25    5     1       3        0     75%
+POWER_OF_ATTORNEY                   8    5     0       3        1     60%
+CONSULTANCY_AGREEMENT              36   11     4       0        0     25%  ~
+ARBITRATION_NOTICE                 10    9     1       3        0     56%
+LOAN_AGREEMENT                     29    9     2       2        0     38%  ~
+POSH_POLICY                         7    6     0       3        0     83%
+SETTLEMENT_AGREEMENT               20    6     1       2        0     33%
+SERVICE_AGREEMENT                  39   13     2       1        0     25%  ~
+PARTNERSHIP_DEED                   26    1     3       0        0      0%  ~
+INDEPENDENT_CONTRACTOR_AGREEMENT   35   10     3       0        0      0%  ~
+GUARANTEE_AGREEMENT                25    5     3       0        0      0%  ~
+PRIVACY_POLICY                     17    6     0       3        0     50%
+FOUNDERS_AGREEMENT                 32   12     0       2        1      0%  ~
+APPOINTMENT_LETTER                 29   10     1       1        0     50%
+COMMERCIAL_LEASE_AGREEMENT         31   14     0       3        0     31%
+SHIPPING_AND_DELIVERY_POLICY        8    6     1       1        0     33%
+MOU                                23    1     0       1        0    100%  ~
+AFFIDAVIT                           5    4     1       1        0     25%
+VENDOR_AGREEMENT                   30    8     1       1        0     25%
+PROMISSORY_NOTE                     9    6     0       2        0     17%
+REFUND_AND_CANCELLATION_POLICY      8    6     1       0        0     33%
+INTERNSHIP_AGREEMENT               26    6     0       1        0     50%  ~
+ESOP_GRANT_LETTER                   9    5     0       2        0      0%  ~
+RENTAL_AGREEMENT                   24    8     0       1        0     38%
+MASTER_SERVICE_AGREEMENT           34   10     0       1        0     25%  ~
+TERM_SHEET                         26    9     0       1        0      0%  ~
+SHARE_SUBSCRIPTION_AGREEMENT       28    6     0       1        0      0%  ~
+LEAVE_AND_LICENSE_AGREEMENT        26    9     0       0        0     13%
+INDEMNITY_BOND                      5    4     0       0        0      0%
+
+
+DETAIL — top 12
+
+━━ EMPLOYMENT_CONTRACT
+   fields ignored: employment_termination_type, employee_gender, workplace_headcount, workplace_type, seniority_level
+   static domain clauses: EMP_RETIREMENT_001, EMP_DISCIPLINARY_ACTION_001, EMP_GRIEVANCE_PROCEDURE_001, EMP_ESOP_001, EMP_MOONLIGHTING_001, EMP_MATERNITY_BENEFITS_001
+
+━━ TERMS_OF_SERVICE
+   fields ignored: website_url, requires_account, is_paid_service, minimum_age
+   static domain clauses: TOS_FEES_AND_BILLING_001, TOS_LICENSE_TO_USE_001, TOS_USER_CONTENT_001, TOS_CHANGES_TO_TERMS_001, TOS_DISCLAIMER_001, TOS_SUSPENSION_TERMINATION_001
+
+━━ DISTRIBUTION_AGREEMENT
+   fields ignored: min_purchase, pricing_model, liability_cap_basis, liability_cap_amount, indemnity_scope
+   static domain clauses: DIST_APPOINTMENT_EXCLUSIVE_001, DIST_COMPETITION_COMPLIANCE_001
+
+━━ NDA
+   fields ignored: residual_knowledge_treatment, counterparty_type
+   static domain clauses: NDA_CONFIDENTIALITY_TRADE_SECRET_001, NDA_THIRD_PARTY_DISCLOSURE_001, NDA_TRADE_SECRET_PROTECTION_001, NDA_SOURCE_CODE_PROTECTION_001, NDA_TERM_SURVIVAL_001
+
+━━ SUPPLY_AGREEMENT
+   fields ignored: risk_transfer_stage, liability_cap_basis, indemnity_scope
+   static domain clauses: SUPPLY_REJECTION_001, SUPPLY_SHORTAGE_001, SUPPLY_RETURN_POLICY_001
+
+━━ JOINT_VENTURE_AGREEMENT
+   fields ignored: ip_ownership, liability_cap_basis, liability_cap_amount, indemnity_scope
+   static domain clauses: CORP_ANTI_DILUTION_001
+
+━━ SEPARATION_AGREEMENT
+   fields ignored: separation_reason, seniority_level
+   points at unstated values: EMP_FNF_RELEASE_001
+   static domain clauses: EMP_FNF_RELEASE_001
+
+━━ SOFTWARE_DEVELOPMENT_AGREEMENT
+   fields ignored: ip_ownership, liability_cap_basis, indemnity_scope
+   static domain clauses: IP_INFRINGEMENT_001, IP_OPEN_SOURCE_001
+
+━━ DATA_PROCESSING_AGREEMENT
+   fields ignored: sub_processing_permitted, cross_border_transfer
+   static domain clauses: DPA_PERSONNEL_AND_CONFIDENTIALITY_001, DPA_SECURITY_SAFEGUARDS_001, DPA_DATA_PRINCIPAL_RIGHTS_001
+
+━━ SHAREHOLDERS_AGREEMENT
+   fields ignored: governance_control, liability_cap_basis, liability_cap_amount, indemnity_scope
+   static domain clauses: CORP_ANTI_DILUTION_001
+
+━━ SALES_OF_GOODS_AGREEMENT
+   fields ignored: liability_cap_basis, indemnity_scope
+   static domain clauses: SUPPLY_RETURN_POLICY_001, SUPPLY_SHORTAGE_001, SUPPLY_REJECTION_001
+
+━━ IP_ASSIGNMENT_AGREEMENT
+   fields ignored: ip_types
+   static domain clauses: IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001, IPA_MORAL_RIGHTS_001, IPA_ASSIGNOR_WARRANTIES_001
+

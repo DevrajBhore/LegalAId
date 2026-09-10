@@ -1,0 +1,58 @@
+{
+  "clause_id": "CORE_TRANSITION_ASSISTANCE_001",
+  "name": "Transition Assistance on Exit",
+  "title": "Transition Assistance and Handover",
+  "category": "TERMINATION",
+  "document_types": [
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "MASTER_SERVICE_AGREEMENT",
+    "VENDOR_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "On expiry or termination of this Agreement for any reason, and for a period of thirty (30) days thereafter (the \"Transition Period\"), the exiting Party shall provide the other Party with reasonable assistance to transfer the work, the services or the supply to the other Party or to a replacement it nominates. That assistance includes delivering up all deliverables completed or in progress, all documents, data, records, credentials, keys and materials belonging to the other Party or created for it under this Agreement, in the form in which they are ordinarily held, together with a written summary of the work in progress and of anything the other Party must do to continue it. The exiting Party shall not withhold any such item as security for a disputed amount. Assistance during the Transition Period is provided at the rates stated in this Agreement or, where none are stated, at the exiting Party's usual rates; nothing in this Clause obliges a Party to perform the substantive obligations of this Agreement after it has ended.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform their promises; an express transition obligation states what performance means once the term has ended."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "160",
+      "note": "A bailee must return the goods bailed once the purpose is accomplished; the handover obligation over the other Party's property rests on the same principle."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach; failure to hand over work in progress is the loss this clause is drafted to prevent."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause requires the exiting Party to continue performing the substantive obligations of the Agreement indefinitely after termination, which converts termination into a term the parties did not agree.",
+    "The transition obligation is drafted as unpaid where the assistance sought is substantial, so that the exiting Party is required to work without consideration.",
+    "The clause purports to defeat a lien or right of retention that a statute confers on the exiting Party, rather than a contractual one it has given up."
+  ],
+  "depends_on": [
+    "CORE_TERMINATION_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "CORE_CONFIDENTIALITY_001",
+    "CORE_SURVIVAL_001"
+  ],
+  "authoring_note": "Selected when the user says they are protecting against the other side walking away or leaving mid-project. Confirm the thirty-day default and whether the no-withholding sentence should be qualified where the exiting Party has an unpaid invoice.",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "materiality": "LEGAL",
+  "materiality_note": "Creates post-termination obligations and bars withholding deliverables as security."
+}

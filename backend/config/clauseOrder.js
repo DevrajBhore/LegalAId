@@ -51,6 +51,10 @@ const CANONICAL_ORDER = [
   "REPRESENTATIONS",
   "REGULATORY",
   "COMPLIANCE",
+  // Audit, information and escalation rights. They sit after the compliance
+  // obligations they verify and before the corporate and property provisions,
+  // which is where a reader looks for the machinery that checks performance.
+  "GOVERNANCE",
   "CORPORATE",
   "PROPERTY",
   "PROCEDURAL",

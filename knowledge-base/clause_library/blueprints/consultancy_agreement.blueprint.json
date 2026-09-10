@@ -68,6 +68,51 @@
       "clause": "CORE_INSURANCE_001",
       "include_if": "include_insurance == true",
       "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
+    },
+    {
+      "clause": "CORE_GOVERNANCE_PROTECTIONS_001",
+      "include_if": "include_governance_protections == true",
+      "note": "Audit, information and escalation rights, included when the user supplied any of them."
+    },
+    {
+      "clause": "SERVICE_TIMELINES_001",
+      "include_if": "include_timelines == true",
+      "note": "Dated milestones. Included when the user's stated risk is missed deadlines."
+    },
+    {
+      "clause": "SERVICE_REPORTING_001",
+      "include_if": "include_reporting == true",
+      "note": "Progress reporting, the mechanism by which a missed deadline is seen before it is missed."
+    },
+    {
+      "clause": "SERVICE_ACCEPTANCE_001",
+      "include_if": "include_inspection_rights == true",
+      "note": "Acceptance criteria and rejection. Included when the user's stated risk is work below the agreed standard."
+    },
+    {
+      "clause": "IP_INFRINGEMENT_001",
+      "include_if": "include_ip_assignment == true",
+      "note": "IP_OWNERSHIP_001 is already forced in by the hardening policy and vests the deliverables in the Client, so an assignment clause would only repeat it. What a user worried about ownership does not otherwise get is the warranty that the work does not infringe someone else's rights, which is what this adds."
+    },
+    {
+      "clause": "SERVICE_EXCLUSIVITY_001",
+      "include_if": "include_non_compete == true",
+      "note": "Exclusivity during the term only. NDA_NON_COMPETE_001 was tried first and pulled in the NDA confidential-information scope clause with Disclosing/Receiving Party roles, which do not belong in a consultancy agreement."
+    },
+    {
+      "clause": "CORE_TRANSITION_ASSISTANCE_001",
+      "include_if": "include_transition_assistance == true",
+      "note": "Handover on exit, included when the user's stated risk is the consultant leaving mid-project."
+    },
+    {
+      "clause": "SERVICE_EXPENSES_001",
+      "include_if": "include_expenses == true",
+      "note": "What is reimbursable and what is not. Included when the user's stated risk is unexpected costs."
+    },
+    {
+      "clause": "SERVICE_CHANGE_REQUEST_001",
+      "include_if": "include_change_control == true",
+      "note": "Change control, so scope growth is priced rather than absorbed."
     }
   ],
   "mandatory_legal_checks": [

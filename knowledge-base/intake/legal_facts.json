@@ -1,0 +1,407 @@
+{
+  "$comment": [
+    "Phase 4. Facts the interview may establish, and the treatment each fact attracts.",
+    "",
+    "TWO BOUNDARIES ARE ENFORCED HERE, both by tests/factQuestions.test.mjs.",
+    "",
+    "1. A question never names a mechanism. The user should not have to know that",
+    "   the protection they want is called an indemnity in order to ask for it.",
+    "   No `question` string may contain a term from the mechanism lexicon.",
+    "",
+    "2. A fact never selects a clause. Each option establishes a FACT and nothing",
+    "   else; the `treatments` table below is what turns a fact into a position on",
+    "   a mechanism. The interview is strictly upstream of clause selection, which",
+    "   the deterministic engine owns. No option may write an include_* directly.",
+    "",
+    "This is the adapter shape the frozen concept layer calls for: `establishes`",
+    "is a dimension assertion, `treatments` is the consequence table, and when the",
+    "concept resolver is built it replaces `treatments` without touching a question.",
+    "",
+    "A QUESTION IS THE LAST RESORT, NOT THE FIRST. An open mechanism is evidence",
+    "that some fact is unresolved -- it is not itself an interview topic. Before a",
+    "question is put to anyone, `established_by` is checked against the intake",
+    "already given. An engagement whose scope reads 'monthly strategy reports and",
+    "quarterly workshops' has already answered the reporting question in prose, and",
+    "asking it again is the clause checklist returning in better clothes.",
+    "Questions carry a {counterparty} token rather than a hardcoded role. The vendor agreement was being asked what 'the consultant' would have access to, which is the wrong party and reads as a template leaking between document types."
+  ],
+  "facts": [
+    {
+      "id": "WORK_PRODUCT_CREATED",
+      "question": "Will {counterparty} produce material specifically for you — reports, research, analysis, designs, software, drawings or documents?",
+      "why": "Whether anything is created for the client decides who may own it, whether there is an output to accept or reject, and whether a standard can be set for it.",
+      "type": "select",
+      "established_by": {
+        "fields": [
+          "deliverables",
+          "work_product_description"
+        ],
+        "text_fields": [
+          "services_description",
+          "consulting_services",
+          "scope_of_work"
+        ],
+        "text_pattern": "\\b(report|deliverable|design|software|drawing|document|analysis|research|specification|artwork|code)\\b"
+      },
+      "options": [
+        {
+          "label": "Yes",
+          "establishes": {
+            "WORK_PRODUCT_CREATED": true
+          },
+          "opens": [
+            "WORK_PRODUCT_OWNERSHIP",
+            "PERFORMANCE_STANDARD"
+          ]
+        },
+        {
+          "label": "No — the work is advice and discussion only",
+          "establishes": {
+            "WORK_PRODUCT_CREATED": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "WORK_PRODUCT_OWNERSHIP",
+      "question": "Do you need to own what {counterparty} produces, or is the right to use it enough?",
+      "why": "Ownership and permission are different bargains at different prices. Section 19 of the Copyright Act, 1957 requires an assignment of copyright to be in writing, so it cannot be inferred after the fact, and neither answer can be adopted as a default without misrepresenting what the client paid for.",
+      "type": "select",
+      "requires": "WORK_PRODUCT_CREATED",
+      "options": [
+        {
+          "label": "I need to own it",
+          "establishes": {
+            "WORK_PRODUCT_OWNERSHIP": "CLIENT_OWNS"
+          }
+        },
+        {
+          "label": "The right to use it is enough",
+          "establishes": {
+            "WORK_PRODUCT_OWNERSHIP": "CLIENT_LICENSED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "PERFORMANCE_STANDARD",
+      "question": "Does the work have to meet particular standards, accuracy requirements or agreed outcomes?",
+      "why": "An assurance about quality is only meaningful where there is a standard to measure it against. Promising an unstated standard drafts a dispute rather than a protection.",
+      "type": "select",
+      "requires": "WORK_PRODUCT_CREATED",
+      "established_by": {
+        "fields": [
+          "acceptance_criteria",
+          "service_levels",
+          "quality_standards"
+        ]
+      },
+      "options": [
+        {
+          "label": "Yes",
+          "establishes": {
+            "PERFORMANCE_STANDARD": true
+          }
+        },
+        {
+          "label": "No — I will judge the work as it comes",
+          "establishes": {
+            "PERFORMANCE_STANDARD": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "ACCESS",
+      "question": "What will {counterparty} have access to during this arrangement?",
+      "why": "The most productive question in the interview. What someone is given access to decides what has to be protected: information about identifiable people brings the DPDP Act, 2023 into play; direct contact with staff and customers is what a restriction after the engagement addresses; commercially sensitive information is what a restriction during it addresses; being on site is what creates physical risk. One circumstance, four separate treatments.",
+      "type": "multiselect",
+      "options": [
+        {
+          "label": "Information about identifiable people — staff, customers, patients, applicants",
+          "establishes": {
+            "PERSONAL_DATA_ACCESS": true
+          }
+        },
+        {
+          "label": "My staff, customers or suppliers, directly",
+          "establishes": {
+            "RELATIONSHIP_ACCESS": true
+          }
+        },
+        {
+          "label": "Commercially sensitive information — pricing, strategy, client lists, methods",
+          "establishes": {
+            "SENSITIVE_INFORMATION_ACCESS": true
+          }
+        },
+        {
+          "label": "My premises, equipment or physical property",
+          "establishes": {
+            "PHYSICAL_ACCESS": true
+          }
+        },
+        {
+          "label": "None of these",
+          "exclusive": true,
+          "establishes": {
+            "PERSONAL_DATA_ACCESS": false,
+            "RELATIONSHIP_ACCESS": false,
+            "SENSITIVE_INFORMATION_ACCESS": false,
+            "PHYSICAL_ACCESS": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "MARKET_OVERLAP",
+      "question": "Does {counterparty} work with other businesses in your market, or is that likely during this arrangement?",
+      "why": "Establishes the circumstance behind a restriction on competing work. Note that establishing the circumstance is not the same as promising that any restriction the client wants will hold: section 27 of the Indian Contract Act, 1872 voids a restraint that outlives the engagement, whatever the parties write.",
+      "type": "select",
+      "requires": "SENSITIVE_INFORMATION_ACCESS",
+      "options": [
+        {
+          "label": "Yes, or it is likely",
+          "establishes": {
+            "MARKET_OVERLAP": true
+          }
+        },
+        {
+          "label": "No",
+          "establishes": {
+            "MARKET_OVERLAP": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "THIRD_PARTY_EXPOSURE",
+      "question": "Could their work or conduct cause a loss to someone outside this agreement — a regulator, one of your customers, or the owner of rights the work might touch?",
+      "why": "Who carries a loss caused to a third party is the question behind both the promise to make it good and the requirement to be covered against it. The client does not need to know the name of either to say whether the exposure exists.",
+      "type": "select",
+      "options": [
+        {
+          "label": "Yes, that is a real possibility",
+          "establishes": {
+            "THIRD_PARTY_EXPOSURE": true
+          }
+        },
+        {
+          "label": "Unlikely — the work stays between us",
+          "establishes": {
+            "THIRD_PARTY_EXPOSURE": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "CONTINUITY_DEPENDENCE",
+      "question": "If this arrangement ended tomorrow, would you need their help to pick the work up — files, access, an explanation of what was in progress?",
+      "why": "Whether the client can carry on unaided decides whether obligations should survive the end of the engagement. A question about the client's operational position, not about what the provision is called.",
+      "type": "select",
+      "options": [
+        {
+          "label": "Yes",
+          "establishes": {
+            "CONTINUITY_DEPENDENCE": true
+          }
+        },
+        {
+          "label": "No — I could carry on without them",
+          "establishes": {
+            "CONTINUITY_DEPENDENCE": false
+          }
+        }
+      ]
+    }
+  ],
+  "$treatments_comment": [
+    "Facts in, positions out. This is the only place a mechanism is named, and it",
+    "is knowledge-base data rather than interview script -- which is the point.",
+    "When the concept resolver from docs/CONCEPT_LAYER.md is built, it replaces",
+    "this table and no question changes."
+  ],
+  "treatments": [
+    {
+      "fact": "WORK_PRODUCT_CREATED",
+      "value": true,
+      "positions": {
+        "include_deliverables": true,
+        "include_inspection_rights": true
+      },
+      "basis": "Where something is produced there is an output to identify and to accept or reject."
+    },
+    {
+      "fact": "WORK_PRODUCT_CREATED",
+      "value": false,
+      "positions": {
+        "include_deliverables": false,
+        "include_ip_assignment": false,
+        "include_inspection_rights": false
+      },
+      "basis": "Advice that produces no material leaves nothing to own or to accept."
+    },
+    {
+      "fact": "WORK_PRODUCT_OWNERSHIP",
+      "value": "CLIENT_OWNS",
+      "positions": {
+        "include_ip_assignment": true
+      },
+      "basis": "Copyright Act, 1957 s.19 — an assignment must be in writing and signed."
+    },
+    {
+      "fact": "WORK_PRODUCT_OWNERSHIP",
+      "value": "CLIENT_LICENSED",
+      "positions": {
+        "include_ip_assignment": false
+      },
+      "basis": "A licence leaves title with the author and is the narrower bargain."
+    },
+    {
+      "fact": "PERFORMANCE_STANDARD",
+      "value": true,
+      "positions": {
+        "include_warranty_clause": true
+      },
+      "basis": "A stated standard is what an assurance about quality can be measured against."
+    },
+    {
+      "fact": "PERFORMANCE_STANDARD",
+      "value": false,
+      "positions": {
+        "include_warranty_clause": false
+      },
+      "basis": "Contract Act, 1872 s.37 — performance with reasonable skill and care remains owed regardless."
+    },
+    {
+      "fact": "PERSONAL_DATA_ACCESS",
+      "value": true,
+      "positions": {
+        "processes_personal_data": true
+      },
+      "basis": "DPDP Act, 2023 s.8 — a data fiduciary's obligations attach on processing, and a processor must be engaged under contract."
+    },
+    {
+      "fact": "PERSONAL_DATA_ACCESS",
+      "value": false,
+      "positions": {
+        "processes_personal_data": false
+      },
+      "basis": "No processing, no DPDP obligations to pass through."
+    },
+    {
+      "fact": "RELATIONSHIP_ACCESS",
+      "value": true,
+      "positions": {
+        "include_non_solicit": true
+      },
+      "basis": "Contact with staff and customers is the exposure a restriction after the engagement addresses."
+    },
+    {
+      "fact": "RELATIONSHIP_ACCESS",
+      "value": false,
+      "positions": {
+        "include_non_solicit": false
+      },
+      "basis": "No access to the relationships, nothing to protect after the engagement."
+    },
+    {
+      "fact": "SENSITIVE_INFORMATION_ACCESS",
+      "value": true,
+      "positions": {
+        "include_confidentiality": true
+      },
+      "basis": "Contract Act, 1872 s.27 permits protection of confidential information; it is the lawful route where a restraint is not."
+    },
+    {
+      "fact": "MARKET_OVERLAP",
+      "value": true,
+      "positions": {
+        "include_non_compete": true
+      },
+      "basis": "Contract Act, 1872 s.27 — a restriction confined to the term of the engagement is a term of service, not a restraint of trade."
+    },
+    {
+      "fact": "MARKET_OVERLAP",
+      "value": false,
+      "positions": {
+        "include_non_compete": false
+      },
+      "basis": "No overlap, no competing-engagement exposure to address."
+    },
+    {
+      "fact": "PHYSICAL_ACCESS",
+      "value": true,
+      "positions": {
+        "include_insurance": true
+      },
+      "basis": "Presence on the premises and handling of property create the loss that cover answers."
+    },
+    {
+      "fact": "THIRD_PARTY_EXPOSURE",
+      "value": true,
+      "positions": {
+        "include_indemnity_clause": true,
+        "include_insurance": true
+      },
+      "basis": "Contract Act, 1872 s.124 — a contract of indemnity is a promise to save the other from loss caused by the promisor or by a third party."
+    },
+    {
+      "fact": "THIRD_PARTY_EXPOSURE",
+      "value": false,
+      "positions": {
+        "include_indemnity_clause": false
+      },
+      "basis": "Where no third party can be harmed there is no third-party loss to allocate."
+    },
+    {
+      "fact": "CONTINUITY_DEPENDENCE",
+      "value": true,
+      "positions": {
+        "include_transition_assistance": true
+      },
+      "basis": "Contract Act, 1872 s.37 and s.160 — an express handover states what performance means once the term has ended."
+    },
+    {
+      "fact": "CONTINUITY_DEPENDENCE",
+      "value": false,
+      "positions": {
+        "include_transition_assistance": false
+      },
+      "basis": "A client who can carry on unaided needs no obligations to survive."
+    }
+  ],
+  "$defaults_comment": [
+    "Where a position stays open and the document must carry a mechanism anyway,",
+    "the draft adopts the position below and SAYS SO. The wording matters:",
+    "'no revision mechanism was requested' is an honest drafting default;",
+    "'the parties agreed the price is fixed' is fabricated consent. Every sentence",
+    "here is written in the first form and none of them claims the user chose."
+  ],
+  "defaults": {
+    "include_price_revision": {
+      "position": false,
+      "disclosure": "No price-revision mechanism was requested, so the prices in this agreement are drafted as firm for its term. If either party expects prices to move, a revision mechanism should be added before signing."
+    },
+    "include_transition_assistance": {
+      "position": false,
+      "disclosure": "No handover obligations were requested, so this agreement does not require either party to assist the other after it ends."
+    },
+    "include_reporting": {
+      "position": false,
+      "disclosure": "No reporting rhythm was specified, so this agreement does not fix one. Progress reporting can be added with a stated frequency."
+    },
+    "include_sla": {
+      "position": false,
+      "disclosure": "No response times or service levels were specified, so none are stated. The obligation is to perform with reasonable skill and care."
+    },
+    "include_deliverables": {
+      "position": false,
+      "disclosure": "No itemised list of outputs was supplied, so the scope provision governs what is to be produced."
+    },
+    "include_entire_agreement": {
+      "position": true,
+      "disclosure": "This agreement is drafted as the whole of what was agreed, so earlier emails and conversations do not form part of it. If something discussed elsewhere was meant to be binding, write it in."
+    }
+  }
+}

@@ -432,6 +432,10 @@ export function validateDraftConsistency(
         "CORE_CONFIDENTIALITY_001",
         "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
         "EMP_CONFIDENTIALITY_001",
+        // EMPLOYMENT_CONTRACT uses the trade-secret clause rather than the
+        // generic one, so the employee confidentiality scope was drafted into a
+        // clause this scan could not see.
+        "EMP_CONFIDENTIALITY_TRADE_SECRET_001",
       ].includes(clause.clause_id)
     )
     .map((clause) => clause.text || "")
@@ -575,6 +579,14 @@ export function validateDraftConsistency(
         "RENT_TERMINATION_001",
         "RENTAL_TERMINATION_001",
         "PROP_REGISTRATION_001",
+        // The rent clauses themselves. Rent escalation is drafted here, and
+        // leaving them out of the scan reported the escalation as unreflected
+        // while it sat in the document two clauses above. Same defect the
+        // employment list below already carries a note about.
+        "RENT_RENT_PAYMENT_001",
+        "RENTAL_RENT_PAYMENT_001",
+        "RENTAL_PROPERTY_DESCRIPTION_001",
+        "RENTAL_TERM_001",
       ].includes(clause.clause_id)
     )
     .map((clause) => clause.text || "")

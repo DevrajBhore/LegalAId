@@ -1,4 +1,5 @@
 import { getPartyNamingLabels } from "./draftingPolicy.js";
+import { amountToIndianWords } from "./formattingEngine.js";
 import { riskProfileControls } from "./riskProfile.js";
 import { deadlineVariables } from "./statutoryDeadlines.js";
 
@@ -31,6 +32,51 @@ export function isAffirmative(value) {
 
 export function isNegative(value) {
   return normalizeBooleanLike(value) === false;
+}
+
+// ── Tri-state positions ─────────────────────────────────────────────────────
+// A flag is not a boolean. It records where the user stands on a mechanism, and
+// there are three places they can stand:
+//
+//   TRUE     the user has affirmatively selected or required this
+//   FALSE    the user has affirmatively rejected this
+//   UNKNOWN  the user has not expressed a position
+//
+// UNKNOWN is not FALSE. Silence is not rejection, and the drafting engine is
+// free to conclude that a mechanism is legally appropriate even though nobody
+// asked for it. Reading UNKNOWN as FALSE converts the absence of information
+// into an affirmative contractual position, which is the defect this replaces:
+// a Quick Form draft used to arrive at the generator as thirteen deliberate
+// refusals by a user who had never been asked a single one of the questions.
+//
+// REQUIRED_BY_LAW is deliberately NOT one of these states. Whether a provision
+// may lawfully be omitted is a property of the document and the governing
+// statute, not of the user's preference, so it is decided by the constraint
+// engine over the position rather than stored alongside it. A user may reject a
+// mechanism the law still requires; both facts have to remain visible.
+export const POSITION = { TRUE: "TRUE", FALSE: "FALSE", UNKNOWN: "UNKNOWN" };
+
+export function positionOf(value) {
+  const normalized = normalizeBooleanLike(value);
+  if (normalized === true) return POSITION.TRUE;
+  if (normalized === false) return POSITION.FALSE;
+  return POSITION.UNKNOWN;
+}
+
+// The rule that fixes the whole class at once.
+//
+// A position the user STATED is authoritative in both directions: yes is yes and
+// no is no. An INFERENCE drawn from the rest of the intake can only ever
+// establish a position, never reject one. If the facts point at the mechanism
+// -- a warranty period was given, the scope mentions reporting -- that is good
+// evidence the user wants it. If the facts are silent, the only thing that has
+// been established is that nobody asked, and the answer is UNKNOWN.
+//
+// Every call site below used to end `: false`, which is what manufactured the
+// refusals.
+function statedOrInferred(stated, inferred) {
+  if (stated !== null && stated !== undefined) return stated;
+  return inferred ? true : null;
 }
 
 export function hasMeaningfulValue(value) {
@@ -110,6 +156,98 @@ export function deriveGenerationControls(documentType, variables = {}) {
     if (hasMeaningfulValue(seat)) derived.arbitration_city = normalizeText(seat);
   }
 
+  // Amount in words, derived rather than typed.
+  //
+  // The intake asks separately for an amount and for that amount IN WORDS, and
+  // a notice under Section 138 of the Negotiable Instruments Act turns on the
+  // sum demanded. Asking a person to retype a figure as words is asking them to
+  // introduce a discrepancy the machine can neither see nor defend -- and a
+  // cheque notice whose numeral and words disagree is exactly the kind of defect
+  // an opposing advocate looks for. amountToIndianWords already exists; the
+  // words are now computed from the figure unless the user overrode them.
+  for (const [amountField, wordsField] of [
+    ["settlement_amount", "settlement_amount_words"],
+    ["cheque_amount", "cheque_amount_words"],
+  ]) {
+    const words = derived[wordsField];
+    const looksTyped = hasMeaningfulValue(words) && /[a-z]{3}/i.test(String(words));
+    if (looksTyped) continue;
+
+    const numeric = Number(String(derived[amountField] ?? "").replace(/[^0-9.]/g, ""));
+    if (Number.isFinite(numeric) && numeric > 0) {
+      derived[wordsField] = `Rupees ${amountToIndianWords(Math.round(numeric))}`;
+    }
+  }
+
+  // Audit, information, escalation and additional-protection terms were
+  // collected on seven document types and rendered on none of them unless the
+  // document happened to carry a reporting or JV-governance clause.
+  derived.include_governance_protections = statedOrInferred(
+    null,
+    ["audit_rights", "information_rights", "escalation_mechanism", "additional_protection_clauses"]
+      .some((field) => hasMeaningfulValue(variables[field]))
+  );
+
+  // What shape of service the terms govern. All four were previously invisible
+  // to the document, which is why a free read-only site and a paid marketplace
+  // received identical terms.
+  // Unanswered defaults to TRUE, and the asymmetry is the reason. A service that
+  // does host user content and has no licence to display it has no right to show
+  // what its own users post -- a substantive exposure. A read-only site that
+  // carries the clause anyway has a paragraph it does not need, which is
+  // cosmetic. The golden corpus caught this: the marketplace fixture does not
+  // answer the question, and defaulting to false silently stripped its
+  // user-content licence.
+  const ugc = normalizeBooleanLike(variables.hosts_user_content);
+  derived.hosts_user_content = ugc === null ? true : ugc;
+
+  // deriveGenerationControls runs TWICE on the same object -- once in
+  // prepareGenerationInput and again inside assembleDocument -- so every
+  // derivation here has to be idempotent. The first version read
+  // `normalizeText(value).startsWith("yes")`, which on the second pass saw the
+  // boolean `true` it had just written, stringified it to "true", and flipped
+  // the flag back to false. The fees clause never appeared for a paid service
+  // and the account provisions never appeared for a service with accounts.
+  // Anything already reduced to a boolean is left alone.
+  const asFlag = (value, test) => {
+    if (typeof value === "boolean") return value;
+    const text = normalizeText(value).toLowerCase();
+    return text ? test(text) : null;
+  };
+
+  const account = asFlag(variables.requires_account, (t) => t.startsWith("yes"));
+  if (account !== null) derived.requires_account = account;
+
+  const paid = asFlag(variables.is_paid_service, (t) => t.startsWith("yes"));
+  if (paid !== null) derived.is_paid_service = paid;
+  const subscription = asFlag(variables.is_paid_service, (t) => t.includes("subscription"));
+  if (subscription !== null && typeof variables.is_paid_service !== "boolean") {
+    derived.is_subscription = subscription;
+  }
+
+  const minors = asFlag(variables.minimum_age, (t) => t.includes("under 18"));
+  if (minors !== null) derived.minors_permitted = minors;
+
+  // Which assignment clauses an IP deed carries. Copyright, patents and trade
+  // marks assign under different statutes and different formalities, and the
+  // blueprint previously included all three in every deed.
+  const ipTypes = typeof variables.ip_types === "string"
+    ? normalizeText(variables.ip_types).toLowerCase()
+    : "";
+  if (ipTypes) {
+    const mixed = ipTypes.includes("mix");
+    derived.assigns_copyright = mixed || ipTypes.includes("copyright");
+    derived.assigns_patents = mixed || ipTypes.includes("patent");
+    derived.assigns_trademarks = mixed || ipTypes.includes("trade mark") || ipTypes.includes("trademark");
+  } else {
+    // No answer: assign copyright only. It is the commonest case and the one
+    // the assigned-work description almost always describes, and drafting a
+    // trade mark assignment nobody asked for is worse than omitting one.
+    derived.assigns_copyright = true;
+    derived.assigns_patents = false;
+    derived.assigns_trademarks = false;
+  }
+
   const namingLabels = getPartyNamingLabels(documentType);
   if (namingLabels) {
     if (!hasMeaningfulValue(derived.party_1_label)) derived.party_1_label = namingLabels.first;
@@ -135,31 +273,24 @@ export function deriveGenerationControls(documentType, variables = {}) {
     derived.include_non_solicit = hasRestrictionPeriod;
   }
 
-  if (explicitNonCompete !== null) {
-    derived.include_non_compete = explicitNonCompete;
-  } else if (explicitExclusiveTerritory === true) {
-    derived.include_non_compete = explicitExclusiveTerritory === true;
-  } else {
-    derived.include_non_compete = false;
-  }
+  derived.include_non_compete = statedOrInferred(
+    explicitNonCompete,
+    explicitExclusiveTerritory === true
+  );
 
-  if (explicitSla !== null) {
-    derived.include_sla = explicitSla;
-  } else {
-    derived.include_sla = hasMeaningfulValue(variables.service_levels);
-  }
+  derived.include_sla = statedOrInferred(
+    explicitSla,
+    hasMeaningfulValue(variables.service_levels)
+  );
 
-  if (explicitReporting !== null) {
-    derived.include_reporting = explicitReporting;
-    derived.reporting_required = explicitReporting;
-  } else {
-    const inferredReporting =
-      mentionsReporting(variables.deliverables) ||
+  const reportingPosition = statedOrInferred(
+    explicitReporting,
+    mentionsReporting(variables.deliverables) ||
       mentionsReporting(variables.services_description) ||
-      mentionsReporting(variables.consulting_services);
-    derived.include_reporting = inferredReporting;
-    derived.reporting_required = inferredReporting;
-  }
+      mentionsReporting(variables.consulting_services)
+  );
+  derived.include_reporting = reportingPosition;
+  derived.reporting_required = reportingPosition;
 
   if (explicitPersonalData !== null) {
     derived.processes_personal_data = explicitPersonalData;
@@ -169,33 +300,30 @@ export function deriveGenerationControls(documentType, variables = {}) {
     derived.exclusive_territory = explicitExclusiveTerritory;
   }
 
-  if (explicitIndemnity !== null) {
-    derived.include_indemnity_clause = explicitIndemnity;
-  } else {
-    derived.include_indemnity_clause =
-      hasMeaningfulValue(variables.indemnity_scope) ||
+  derived.include_indemnity_clause = statedOrInferred(
+    explicitIndemnity,
+    hasMeaningfulValue(variables.indemnity_scope) ||
       hasMeaningfulValue(variables.ip_ownership) ||
-      hasMeaningfulValue(variables.tax_responsibility);
-  }
+      hasMeaningfulValue(variables.tax_responsibility)
+  );
 
-  if (explicitWarranty !== null) {
-    derived.include_warranty_clause = explicitWarranty;
-  } else {
-    derived.include_warranty_clause =
-      hasMeaningfulValue(variables.warranty_period) ||
+  derived.include_warranty_clause = statedOrInferred(
+    explicitWarranty,
+    hasMeaningfulValue(variables.warranty_period) ||
       hasMeaningfulValue(variables.support_maintenance) ||
-      hasMeaningfulValue(variables.acceptance_criteria);
-  }
+      hasMeaningfulValue(variables.acceptance_criteria)
+  );
 
-  if (explicitNomenclature !== null) {
-    derived.include_nomenclature_clause = explicitNomenclature;
-  } else {
-    derived.include_nomenclature_clause =
-      hasMeaningfulValue(variables.nomenclature_terms) ||
-      hasMeaningfulValue(variables.acceptance_criteria);
-  }
+  derived.include_nomenclature_clause = statedOrInferred(
+    explicitNomenclature,
+    hasMeaningfulValue(variables.nomenclature_terms) ||
+      hasMeaningfulValue(variables.acceptance_criteria)
+  );
 
-  derived.include_deliverables = hasMeaningfulValue(variables.deliverables);
+  derived.include_deliverables = statedOrInferred(
+    null,
+    hasMeaningfulValue(variables.deliverables)
+  );
 
   // ── Context & risk-profile flags ──────────────────────────────────────────
   // These map intake "context questions" onto the boolean / token flags that
@@ -328,10 +456,10 @@ export function deriveGenerationControls(documentType, variables = {}) {
   const explicitSecured = normalizeBooleanLike(
     variables.loan_is_secured ?? variables.is_secured
   );
-  derived.is_secured =
-    explicitSecured !== null
-      ? explicitSecured
-      : hasMeaningfulValue(variables.security_collateral);
+  derived.is_secured = statedOrInferred(
+    explicitSecured,
+    hasMeaningfulValue(variables.security_collateral)
+  );
 
   // Lender-type regulatory triggers (finance ruleset feature class).
   const lender = normalizeText(variables.lender_type).toLowerCase();
@@ -507,6 +635,83 @@ export function deriveGenerationControls(documentType, variables = {}) {
   // user gave, and a user who overrides the fifteen-day period in a Section 138
   // notice has not customised the notice, they have destroyed it.
   Object.assign(derived, deadlineVariables(documentType, derived));
+
+  // ── Objectives → clause selection ────────────────────────────────────────
+  // Placed LAST deliberately. The include_* defaults above infer intent from
+  // whether a field happens to be filled in; an objective the user actually
+  // ticked is a stronger signal than that inference and must win. Running this
+  // block earlier meant every flag it set was quietly overwritten further down.
+  // The intent layer. Everything else in this function derives a flag from a
+  // FACT the user stated; this derives flags from what the user said they are
+  // trying to avoid. It is the input the clause library was always missing:
+  // 224 domain clauses average 1.5 appearances across the product because
+  // nothing in the intake ever selected them.
+  //
+  // Each objective maps to the clauses that actually deal with it. An objective
+  // the user did not pick adds nothing, which is how the document stays shorter
+  // for someone with simpler needs.
+  const objectives = normalizeText(variables.protect_against).toLowerCase();
+  if (objectives) {
+    const wants = (...phrases) => phrases.some((phrase) => objectives.includes(phrase));
+
+    // Late delivery -> delivery timelines, and the remedies for missing them.
+    if (wants("late or missed delivery", "missed deadlines")) {
+      derived.include_delivery_terms = true;
+      derived.include_sla = true;
+      derived.include_timelines = true;
+      derived.include_reporting = true;
+    }
+    // Quality -> inspection, rejection, warranty, replacement.
+    if (wants("defective", "poor-quality", "not meeting the agreed standard")) {
+      derived.include_inspection_rights = true;
+      derived.include_warranty_clause = true;
+      derived.return_policy_required = true;
+    }
+    // Price movement -> a price-revision mechanism rather than silence.
+    if (wants("price increases")) derived.include_price_revision = true;
+    // Confidentiality -> the confidentiality family, and data terms with it.
+    if (wants("confidentiality breaches")) {
+      derived.include_confidentiality = true;
+      derived.involves_trade_secrets = true;
+    }
+    // Third-party and regulatory exposure -> indemnity, insurance, compliance.
+    if (wants("third-party", "regulatory claims")) {
+      derived.include_indemnity_clause = true;
+      derived.include_insurance = true;
+    }
+    // Counterparty leaving -> notice, transition and handover obligations.
+    if (wants("walking away early", "leaving mid-project")) {
+      derived.include_transition_assistance = true;
+      derived.termination_for_convenience = "No";
+    }
+    // Ownership of paid-for work -> IP assignment, not a licence.
+    if (wants("losing ownership")) {
+      derived.is_developer_ip = false;
+      derived.include_ip_assignment = true;
+    }
+    // Competitor work -> restraint, within what s.27 of the Contract Act allows.
+    if (wants("working for a competitor")) {
+      derived.include_non_compete = true;
+      derived.include_non_solicit = true;
+    }
+    // Cost overrun -> expenses and change-control.
+    if (wants("unexpected costs", "costs creeping")) {
+      derived.include_expenses = true;
+      derived.include_change_control = true;
+    }
+    // Disputes about scope -> deliverables and acceptance criteria.
+    if (wants("disputes over what was ordered")) {
+      derived.include_deliverables = true;
+      derived.include_inspection_rights = true;
+    }
+  }
+
+  // Free-text special terms are recorded verbatim as a term of the agreement.
+  // They are NOT interpreted into clause selection: turning a sentence into a
+  // clause choice is the concept resolver's job, and doing it here with string
+  // matching would be guessing at law.
+  derived.has_special_terms = hasMeaningfulValue(variables.special_terms);
+
 
   return derived;
 }

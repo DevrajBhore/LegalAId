@@ -90,7 +90,31 @@ const summary = summariseProvenance(clauses);
 // it is a destroyed prosecution - so the queue should be worked in that order.
 // Every one carries an authoring_note naming the judgement the advocate must
 // make, and two carry statute_currency flags as well.
-const MAX_UNREVIEWED = 289;
+// Raised to 290 for TOS_FEES_AND_BILLING_001. A terms-of-service document for a
+// paid service previously carried no fee, billing or cancellation terms at all,
+// so the clause closes a real gap rather than adding depth to a covered area.
+// It anchors on the Consumer Protection (E-Commerce) Rules 2020 r.4(3) price
+// display duty and CGST s.31 invoicing, and its authoring_note asks the
+// reviewing advocate one specific question: whether the document should also
+// describe the RBI e-mandate mechanics for a recurring card subscription, which
+// sit with the payment aggregator rather than the merchant's terms.
+// Raised to 291 for CORE_GOVERNANCE_PROTECTIONS_001. Four intake fields --
+// audit rights, information rights, escalation mechanism and additional
+// protections -- were collected on seven document types and could reach the
+// page on none of them unless the document happened to carry a reporting or
+// JV-governance clause. The clause gives them a home. Its authoring_note asks
+// the reviewer two questions: whether three years is the right default
+// retention, and whether an escalation route should be a precondition to formal
+// remedies or only a commercial preference.
+// Raised to 294 for the intent layer: CORE_TRANSITION_ASSISTANCE_001,
+// SUPPLY_PRICE_REVISION_001 and SERVICE_EXCLUSIVITY_001. These are the three
+// clauses the objectives checklist selects that the library did not already
+// hold. Each carries an authoring_note naming what the reviewer must settle:
+// the thirty-day transition default and whether the no-withholding sentence
+// survives an unpaid invoice; whether WPI is the right index and whether falls
+// as well as rises should pass through; and whether a during-term exclusivity
+// is the furthest a consultancy agreement can go under section 27.
+const MAX_UNREVIEWED = 294;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

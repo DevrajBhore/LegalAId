@@ -172,7 +172,11 @@ export function riskProfileControls(documentType, variables = {}) {
     // An insurance covenant is conventional once an engagement is large enough
     // or long enough for an uninsured loss to matter. There is no insurance
     // clause anywhere in the library today, at any deal size.
-    include_insurance: profile.exposure === "elevated" || profile.exposure === "high",
+    // Elevated exposure INDICATES insurance. Ordinary exposure does not indicate
+    // it, which is a different thing from the user having declined it: nobody
+    // asked. null keeps the position open so the gap check can raise it.
+    include_insurance:
+      profile.exposure === "elevated" || profile.exposure === "high" ? true : null,
     default_termination_notice_days: profile.default_termination_notice_days,
     warrants_risk_review: profile.warrants_risk_review,
   };

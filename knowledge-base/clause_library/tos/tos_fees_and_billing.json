@@ -1,0 +1,47 @@
+{
+  "clause_id": "TOS_FEES_AND_BILLING_001",
+  "name": "Fees and Billing",
+  "title": "Fees, Billing and Cancellation",
+  "category": "CONSIDERATION",
+  "document_types": ["TERMS_OF_SERVICE"],
+  "jurisdiction": "India",
+  "text": "Where the Services are provided for a charge, the following applies. The Company shall display the total price payable, inclusive of all taxes and any delivery or convenience charge, before you confirm the transaction. Payment is collected through a payment service provider, and the Company does not store your full card or bank credentials. Where the Services are provided on a recurring subscription, the subscription renews for successive periods until you cancel it, and you may cancel at any time with effect from the end of the period you have already paid for. Taxes are charged in addition where the law requires, and a tax invoice is issued for each payment.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "4(3)",
+      "note": "Total price with a breakdown of all charges to be displayed, and no cancellation charge where the seller cancels."
+    },
+    {
+      "act": "Consumer Protection (E-Commerce) Rules, 2020",
+      "section": "5(3)",
+      "note": "Sellers must not refuse to take back or refund goods and services that are defective, deficient or not as advertised."
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(47)",
+      "note": "Unfair trade practice, including misleading price representation."
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "31",
+      "note": "Tax invoice to be issued for a taxable supply."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The total price payable is not displayed before the transaction is confirmed.",
+    "A recurring charge is taken without a cancellation route that is as easy to use as the sign-up route.",
+    "The clause purports to make all payments non-refundable irrespective of deficiency in service."
+  ],
+  "depends_on": ["TOS_ACCEPTANCE_001"],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": ["PRIVACY_GRIEVANCE_OFFICER_001"],
+  "authoring_note": "A recurring card subscription in India additionally requires an e-mandate with pre-debit notification under the RBI framework for recurring transactions. The clause states the cancellation right but does not describe the e-mandate mechanics, because those sit with the payment aggregator rather than with the merchant's terms. Confirm whether this document should say more about that.",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

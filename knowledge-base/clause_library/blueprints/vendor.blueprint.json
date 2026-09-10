@@ -29,6 +29,36 @@
       "clause": "CORE_INSURANCE_001",
       "include_if": "include_insurance == true",
       "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
+    },
+    {
+      "clause": "CORE_CONFIDENTIALITY_001",
+      "include_if": "include_confidentiality == true",
+      "note": "The vendor agreement carried no confidentiality clause at all. Included when the user says they are protecting commercial information."
+    },
+    {
+      "clause": "SUPPLY_SHORTAGE_001",
+      "include_if": "include_delivery_terms == true",
+      "note": "Shortage and short-delivery claims. Included when the user's stated risk is late or missed delivery."
+    },
+    {
+      "clause": "SUPPLY_RETURN_POLICY_001",
+      "include_if": "return_policy_required == true",
+      "note": "Return mechanics, included when the user's stated risk is defective or non-conforming goods."
+    },
+    {
+      "clause": "SUPPLY_PRICE_REVISION_001",
+      "include_if": "include_price_revision == true",
+      "note": "Indexed price-revision mechanism, included when the user's stated risk is price increases."
+    },
+    {
+      "clause": "CORE_INDEMNITY_001",
+      "include_if": "include_indemnity_clause == true",
+      "note": "Included when the user's stated risk is third-party or regulatory claims."
+    },
+    {
+      "clause": "CORE_TRANSITION_ASSISTANCE_001",
+      "include_if": "include_transition_assistance == true",
+      "note": "Handover on exit, included when the user's stated risk is the vendor walking away."
     }
   ]
 }

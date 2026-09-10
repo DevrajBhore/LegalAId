@@ -4,10 +4,7 @@
   "version": "1.0",
   "clauses": [
     "CORE_IDENTITY_001",
-    "IPA_COPYRIGHT_ASSIGNMENT_001",
     "CORE_DEFINITIONS_001",
-    "IP_PATENT_RIGHTS_001",
-    "IPA_TRADEMARK_ASSIGNMENT_001",
     "IPA_MORAL_RIGHTS_001",
     "IPA_CONSIDERATION_001",
     "IPA_ASSIGNOR_WARRANTIES_001",
@@ -19,7 +16,23 @@
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
-  "conditional_clauses": [],
+  "conditional_clauses": [
+    {
+      "clause": "IPA_COPYRIGHT_ASSIGNMENT_001",
+      "include_if": "assigns_copyright == true",
+      "note": "Copyright assignment — Copyright Act 1957 s.19. Defaults on where the user has not said what is being assigned, so the deed is never left with nothing to assign."
+    },
+    {
+      "clause": "IP_PATENT_RIGHTS_001",
+      "include_if": "assigns_patents == true",
+      "note": "Patent assignment — only where patents or applications are being assigned."
+    },
+    {
+      "clause": "IPA_TRADEMARK_ASSIGNMENT_001",
+      "include_if": "assigns_trademarks == true",
+      "note": "Trade mark assignment with goodwill — Trade Marks Act 1999 s.45 recordal."
+    }
+  ],
   "mandatory_legal_checks": [
     "Copyright Act 1957 S.19(1) — assignment INVALID unless in writing signed by the assignor",
     "Copyright Act 1957 S.19(5) — no stated period means FIVE YEARS only",

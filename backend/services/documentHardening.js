@@ -118,14 +118,19 @@ function resolveAgreementDuration(documentType, variables = {}) {
     return duration;
   }
 
-  const numericLeaseTerm = parseNumberish(variables.lease_term);
-  if (numericLeaseTerm !== null) {
-    return `${numericLeaseTerm} months`;
-  }
+  // Tenancy fields are collected as a NUMBER OF MONTHS, so rendering them raw
+  // produced "shall continue for a period of 10" -- a term clause stating a
+  // duration with no unit, which is not a duration at all. Every one of these
+  // is normalised to months before it reaches the prose.
+  for (const field of ["lease_term", "license_term", "occupancy_term", "rental_term"]) {
+    const raw = variables[field];
+    if (raw === undefined || raw === null || String(raw).trim() === "") continue;
 
-  const numericLicenseTerm = parseNumberish(variables.license_term);
-  if (numericLicenseTerm !== null) {
-    return `${numericLicenseTerm} months`;
+    // A value that already names its own unit is the user's wording; keep it.
+    if (/[a-z]/i.test(String(raw))) return normalizeWhitespace(raw);
+
+    const months = parseNumberish(raw);
+    if (months !== null) return `${months} ${months === 1 ? "month" : "months"}`;
   }
 
   return "";
@@ -146,10 +151,27 @@ function resolveRenewalSentence(variables = {}) {
   // duration was supplied, name it; otherwise refer to the Agreement's expiry,
   // which the term clause does define.
   const statedTerm = normalizeWhitespace(
-    variables.contract_duration || variables.agreement_term || variables.term_duration
+    variables.contract_duration ||
+      variables.agreement_term ||
+      variables.term_duration ||
+      // A tenancy states its term in one of these instead, and without them the
+      // sentence fell back to "Upon expiry of this Agreement" in exactly the
+      // documents whose whole subject is a fixed term.
+      variables.occupancy_term ||
+      variables.lease_term ||
+      variables.rental_term ||
+      variables.license_term
   );
-  const expiryPhrase = statedTerm
-    ? `Upon expiry of the initial term of ${statedTerm}`
+  // The tenancy fields above hold a bare month count, so naming one directly
+  // gives "the initial term of 10". Same defect as the term clause itself had.
+  const statedTermMonths = /^[0-9.]+$/.test(statedTerm) ? parseNumberish(statedTerm) : null;
+  const statedTermPhrase =
+    statedTermMonths !== null
+      ? `${statedTermMonths} ${statedTermMonths === 1 ? "month" : "months"}`
+      : statedTerm;
+
+  const expiryPhrase = statedTermPhrase
+    ? `Upon expiry of the initial term of ${statedTermPhrase}`
     : "Upon expiry of this Agreement";
 
   if ((!renewalOption || renewalOption === "no") && renewalTerms) {
@@ -1691,6 +1713,475 @@ function renderHardClause(
         ? resolveGuaranteeTermText(variables)
         : resolveServiceTermClause(documentType, namedParties, variables),
 
+// Audit, information, escalation and additional protections. The helper that
+    // renders these existed and was wired into exactly two clauses -- the service
+    // reporting clause and the JV management committee -- neither of which is
+    // always present. On seven document types the form asked for all four and
+    // the document could carry none of them.
+    CORE_GOVERNANCE_PROTECTIONS_001: () => {
+      const supplied = resolveGovernanceProtectionSentences(variables).trim();
+
+      const base =
+        "Each Party shall keep true and complete records of its performance under this Agreement, and shall preserve them for the period a law in force requires or for three (3) years from the end of the financial year to which they relate, whichever is longer.";
+      const conduct =
+        "Where this Agreement confers a right of audit, of information, or an escalation route, that right is exercised on reasonable prior written notice, during normal business hours, and without unreasonable disruption to the other Party's business. A Party exercising such a right shall treat what it learns as confidential information under this Agreement, and shall bear its own costs unless the audit discloses a material discrepancy, in which case the audited Party shall bear the reasonable cost of the audit and shall correct the discrepancy within thirty (30) days.";
+
+      return supplied ? `${base} ${supplied} ${conduct}` : `${base} ${conduct}`;
+    },
+
+    // ── Values the clause pointed at but never stated ────────────────────
+    // Twenty-two clauses in the library said a figure or period was "stated in
+    // this Agreement" while nothing stated it. Each of the six below has a form
+    // field sitting unused behind it.
+    SERVICE_PAYMENT_FIXED_FEE_001: () => {
+      const fee = formatAmountOrText(
+        variables.contract_value || variables.consulting_fee || variables.total_fee
+      );
+      const terms = stripExternalReferencePhrases(variables.payment_terms, "");
+      const lead = /^[₹0-9]/.test(String(fee))
+        ? `In consideration of the Services, the Client shall pay the Service Provider a fixed fee of ${fee}, exclusive of applicable Goods and Services Tax (GST), which shall be charged additionally at the prevailing rate.`
+        : "In consideration of the Services, the Client shall pay the Service Provider the fixed fee agreed between the Parties in writing, exclusive of applicable Goods and Services Tax (GST), which shall be charged additionally at the prevailing rate.";
+      const schedule = terms
+        ? ` The fee is payable on the following terms: ${terms}, in each case against a valid tax invoice.`
+        : " The fixed fee shall be payable against a valid tax invoice within thirty (30) days of receipt.";
+      return `${lead}${schedule} The Client shall deduct tax at source where applicable under the Income-tax Act, 1961, and shall furnish the corresponding certificate. No additional amount is payable unless agreed in writing.`;
+    },
+
+    SERVICE_PAYMENT_MILESTONE_001: () => {
+      const total = formatAmountOrText(variables.contract_value || variables.total_fee);
+      const terms = stripExternalReferencePhrases(variables.payment_terms, "");
+      const totalPhrase = /^[₹0-9]/.test(String(total))
+        ? ` The aggregate of all milestone payments is ${total}, exclusive of tax.`
+        : "";
+      const milestones = terms ? ` The milestones and the amount attributable to each are: ${terms}.` : "";
+      return (
+        "The Client shall pay the Service Provider against completion and acceptance of defined milestones." +
+        totalPhrase +
+        milestones +
+        " Each milestone payment becomes due only upon the Client's written acceptance of the corresponding deliverable, against a valid tax invoice, and shall be paid within thirty (30) days of that acceptance. Applicable GST shall be charged additionally, and the Client shall deduct tax at source where required under the Income-tax Act, 1961. Where only part of a deliverable is disputed, the undisputed amount shall be paid when due."
+      );
+    },
+
+    SERVICE_PAYMENT_RETAINER_001: () => {
+      const retainer = formatAmountOrText(variables.contract_value || variables.consulting_fee);
+      const lead = /^[₹0-9]/.test(String(retainer))
+        ? `The Client shall pay the Service Provider a recurring monthly retainer of ${retainer}, in advance, on or before the fifth (5th) day of each calendar month, against a valid tax invoice.`
+        : "The Client shall pay the Service Provider the recurring monthly retainer agreed between the Parties, in advance, on or before the fifth (5th) day of each calendar month, against a valid tax invoice.";
+      return `${lead} The retainer covers the agreed scope of Services for the relevant month; work materially beyond that scope is charged separately on terms agreed in writing. Applicable GST shall be charged additionally, and the Client shall deduct tax at source where required under the Income-tax Act, 1961. Either Party may revise the retainer prospectively on not less than thirty (30) days' written notice.`;
+    },
+
+    GUARANTEE_OBLIGATION_LIMITED_001: () => {
+      const cap = formatAmountOrText(
+        variables.guaranteed_amount || variables.loan_amount || variables.principal_amount
+      );
+      const capPhrase = /^[₹0-9]/.test(String(cap))
+        ? `shall not exceed ${cap}`
+        : "shall not exceed the Guaranteed Amount agreed between the Parties in writing";
+      return (
+        "In consideration of the Lender agreeing to extend financial accommodation to the Principal Debtor, and for good and valuable consideration the receipt and sufficiency of which are acknowledged, the Guarantor unconditionally and irrevocably guarantees to the Lender the due and punctual payment of the amounts payable by the Principal Debtor, subject to the following limit on liability. " +
+        `The aggregate liability of the Guarantor under this Guarantee ${capPhrase}, together with interest accrued on that capped amount and reasonable enforcement costs. ` +
+        "Within that cap the liability of the Guarantor is co-extensive with that of the Principal Debtor. This Guarantee is given with free consent, for lawful consideration and a lawful object within the meaning of the Indian Contract Act, 1872."
+      );
+    },
+
+    EMP_PROBATION_SENIOR_001: () => {
+      const period = normalizeWhitespace(variables.probation_period);
+      const opening = period
+        ? `Given the seniority of the role, the Employee shall be subject only to a confirmation period of ${period}.`
+        : "Given the seniority of the role, the Employee shall not be subject to probation, and the employment is confirmed with effect from the date of joining.";
+      return [
+        opening,
+        formatStructuredSubparts([
+          period
+            ? "during the confirmation period either Party may terminate the employment on the notice this Agreement states, and on expiry the Employee is deemed confirmed without the need for any further communication"
+            : "no confirmation formality is required, and the Employee is treated as a confirmed employee from the date of joining",
+          "confirmation shall not be unreasonably withheld, and any decision not to confirm shall be communicated in writing with reasons",
+          "nothing in this clause reduces the statutory protections available to the Employee, and any confirmation period counts towards continuous service for the purpose of statutory benefits",
+        ]),
+      ].join("\n");
+    },
+
+    JV_CONTRIBUTION_EQUITY_001: () => {
+      const ratio = stripExternalReferencePhrases(
+        variables.profit_sharing_ratio || variables.jv_equity_split,
+        ""
+      );
+      const proportion = ratio
+        ? `in the proportion ${ratio}`
+        : "in the proportion the Parties agree in writing";
+      return [
+        "This is an equity (incorporated) joint venture. The Parties shall incorporate, or cause to be incorporated, a joint venture company under the Companies Act, 2013 (the 'JV Company') to carry on the business of the joint venture, and shall make their contributions as follows.",
+        formatStructuredSubparts([
+          `each Party shall subscribe to and pay for equity shares in the JV Company ${proportion}, and shall execute a shareholders' agreement and adopt Articles of Association consistent with this Agreement`,
+          "contributions may be made in cash or, where agreed, in kind (including assets, intellectual property, or business undertakings) at a value determined by an independent valuer in accordance with applicable law, and any contribution in kind shall be made by valid transfer or assignment to the JV Company",
+          "the Parties shall procure that the JV Company issues share certificates and files the requisite returns with the Registrar of Companies, and, where any Party is a non-resident, the subscription shall comply with the Foreign Exchange Management Act, 1999 and the applicable RBI pricing and reporting requirements",
+          "no Party is obliged to provide funding beyond its agreed subscription except as expressly agreed in writing, and any further funding shall be made pro rata or as the Parties may agree",
+        ]),
+      ].join("\n");
+    },
+
+    // ── Separation ───────────────────────────────────────────────────────
+    // "the full and final settlement amount stated in this Agreement" -- and the
+    // Agreement never stated it. Same defect as the internship stipend: the form
+    // collects the figure and nothing rendered it, so an employee signing a
+    // release could not see what they were being released for.
+    EMP_FNF_SETTLEMENT_001: () => {
+      const amount = parseNumberish(variables.settlement_amount);
+      const opening =
+        amount !== null && amount > 0
+          ? `The Employer shall pay the Employee a full and final settlement of ${formatCurrency(
+              amount
+            )}, calculated as follows.`
+          : "The Employer shall pay the Employee the full and final settlement amount agreed between the Parties, calculated as follows.";
+
+      return [
+        opening,
+        formatStructuredSubparts([
+          "salary for the period up to and including the last working day, together with any allowance payable for that period",
+          "encashment of accrued and unused earned leave, computed in accordance with the Employer's leave policy and the applicable law",
+          "gratuity, where the Employee has completed the qualifying period under Section 53 of the Code on Social Security, 2020, or one year of service where the Employee was engaged on fixed term employment within the meaning of Section 2(o) of the Industrial Relations Code, 2020",
+          "any bonus, incentive, or reimbursement that has accrued and remains unpaid",
+          "less any amount the Employee owes the Employer, being a deduction authorised by Section 18 of the Code on Wages, 2019, and less tax deducted at source",
+        ]),
+        "The settlement amount shall be paid within two working days of the last working day, as required by Section 17(2) of the Code on Wages, 2019. The Employer shall furnish the Employee with a statement showing how the amount was arrived at, and shall issue Form 16 and the relevant service and provident fund records within the time the law prescribes.",
+      ].join("\n");
+    },
+
+    EMP_FNF_SURVIVING_OBLIGATIONS_001: () => {
+      const period = normalizeWhitespace(variables.non_solicit_period);
+      const solicit = period
+        ? `the Employee shall not, for ${period} after the last working day, solicit any employee of the Employer with whom the Employee dealt in the twelve months before that day`
+        : "the Employee shall not, for twelve (12) months after the last working day, solicit any employee of the Employer with whom the Employee dealt in the twelve months before that day";
+
+      return [
+        "The following obligations continue after the last working day.",
+        formatStructuredSubparts([
+          "the Employee shall keep confidential, and shall not use or disclose, any confidential information of the Employer that came to the Employee's knowledge in the course of the employment, other than information that is or becomes public without breach by the Employee",
+          "every right in any work, invention, design, or other intellectual property made by the Employee in the course of the employment remains vested in the Employer, and the Employee shall do whatever is reasonably necessary to give effect to that",
+          "on or before the last working day, the Employee shall return all property of the Employer, including documents, records, equipment, devices, keys, and access cards, and shall surrender every credential giving access to the Employer's systems",
+          solicit,
+          "neither Party shall make, publish, or cause to be made, any statement about the other that is disparaging, save that nothing in this sub-clause prevents either Party from giving truthful evidence, from making a disclosure required by law, or from making a complaint to a statutory authority",
+        ]),
+      ].join("\n");
+    },
+
+    // ── Privacy ──────────────────────────────────────────────────────────
+    PRIVACY_DATA_RETENTION_001: () => {
+      const period = stripExternalReferencePhrases(variables.retention_period, "");
+      const purpose = stripExternalReferencePhrases(variables.processing_purpose, "");
+
+      const first = period
+        ? `Personal data is retained for no longer than ${period}, and in any event only for as long as the purpose for which it was collected requires.`
+        : "Personal data is retained only for as long as the purpose for which it was collected requires, or as a law in force requires.";
+
+      const second = purpose
+        ? `That purpose is ${purpose}. Once it is served, or once you withdraw your consent, the personal data is erased or irreversibly anonymised, as Section 8(7) of the Digital Personal Data Protection Act, 2023 requires.`
+        : "Once that purpose is served, or once you withdraw your consent, the personal data is erased or irreversibly anonymised, as Section 8(7) of the Digital Personal Data Protection Act, 2023 requires.";
+
+      return `${first} ${second} We retain personal data beyond that point only to the extent a law in force requires it, and we apply technical and organisational measures designed to ensure deletion happens on time.`;
+    },
+
+    // ── Terms of service ─────────────────────────────────────────────────
+    // Both clauses were static. Eligibility asserted 18-and-over whatever the
+    // service had answered, and acceptable use said nothing about the
+    // intermediary duties a service that hosts user content actually carries.
+    TOS_ELIGIBILITY_ACCOUNT_001: () => {
+      const minorsAllowed = normalizeBooleanChoice(variables.minors_permitted, false);
+      const needsAccount = normalizeBooleanChoice(variables.requires_account, false);
+
+      const age = minorsAllowed
+        ? "A person under 18 (eighteen) years of age may use the Services only with the consent of a parent or lawful guardian, who accepts these Terms on their behalf and is responsible for their use of the Services. A contract entered into by a minor is void under Section 11 of the Indian Contract Act, 1872, so the consenting adult is the contracting party. Where the Company processes the personal data of a child it shall obtain verifiable consent from the parent or lawful guardian, and shall not track a child, serve advertising directed at a child, or otherwise process a child's data in a way likely to cause a detrimental effect on their well-being, as Section 9 of the Digital Personal Data Protection Act, 2023 requires."
+        : "You must be at least 18 (eighteen) years of age and competent to contract under Section 11 of the Indian Contract Act, 1872 to use the Services. The Company does not knowingly permit a person under that age to use the Services, and shall close any account it learns belongs to one.";
+
+      const organisation =
+        " Where you use the Services on behalf of an organisation, you represent that you are authorised to bind that organisation, and these Terms bind it.";
+
+      const account = needsAccount
+        ? "\\n" +
+          formatStructuredSubparts([
+            "you shall provide accurate registration information and keep it current",
+            "you are responsible for everything done through your account and for keeping your credentials confidential, and shall tell the Company promptly if you learn of unauthorised use",
+            "you may close your account at any time, and closure does not relieve you of an obligation accrued before it",
+          ])
+        : "";
+
+      return `${age}${organisation}${account}`;
+    },
+
+    TOS_ACCEPTABLE_USE_001: () => {
+      const hostsContent = normalizeBooleanChoice(variables.hosts_user_content, false);
+
+      const base =
+        "You agree to use the Services only for lawful purposes and in compliance with these Terms and all applicable laws, including the Information Technology Act, 2000 and the rules made under it.";
+
+      const items = [
+        "you shall not use the Services to host, display, upload, publish, or share anything that is unlawful, defamatory, obscene, invasive of another's privacy, infringing of an intellectual property right, or harmful to a child",
+        "you shall not impersonate another person, misrepresent your affiliation, or attempt to gain unauthorised access to the Services or to another user's account",
+        "you shall not interfere with the operation of the Services, including by introducing malicious code, scraping at a scale that degrades the Services, or circumventing a technical restriction",
+      ];
+
+      if (hostsContent) {
+        // The IT Rules 2021 duties bite on a service that carries what other
+        // people post. A service with no user content carries none of this, and
+        // asserting it there would be drafting an obligation nobody owes.
+        items.push(
+          "the Company is an intermediary in respect of content you post, does not initiate or select that content, and does not endorse it",
+          "the Company shall publish these Terms and its privacy policy and shall inform users at least once a year of the consequences of non-compliance, as Rule 3(1) of the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 requires",
+          "on receiving a complaint the Grievance Officer shall acknowledge it within twenty-four (24) hours and dispose of it within fifteen (15) days, and shall remove content the Rules require to be removed within the time the Rules allow",
+          "the Company may remove or disable access to content that breaches these Terms or that it is required by law or by a court or government order to remove"
+        );
+      }
+
+      return [base, formatStructuredSubparts(items)].join("\n");
+    },
+
+    // ── Internship ───────────────────────────────────────────────────────
+    // The stipend clause said "the monthly stipend stated in this Agreement"
+    // and the Agreement never stated it. The form collects the figure; nothing
+    // rendered it. An intern reading this had no idea what they were being paid.
+    EMP_INTERNSHIP_STIPEND_001: () => {
+      const stipend = parseNumberish(variables.stipend_amount);
+      const opening =
+        stipend !== null && stipend > 0
+          ? `The Organisation shall pay the Intern a monthly stipend of ${formatCurrency(
+              stipend
+            )}, on the following terms.`
+          : "The Organisation shall pay the Intern the monthly stipend agreed between the Parties in writing, on the following terms.";
+
+      return [
+        opening,
+        formatStructuredSubparts([
+          "the stipend is paid in support of the Intern's training; it is not wages, and is not consideration for services rendered in the course of employment",
+          "the stipend is payable monthly in arrears, by credit to the Intern's bank account, within seven (7) days of the end of each month of the internship",
+          "the Organisation shall deduct tax at source only where the law requires it, and shall furnish the Intern with the particulars of any deduction made",
+          "the stipend is not varied by the number of hours worked in a given month, and no overtime, bonus, or incentive is payable in respect of the internship",
+        ]),
+      ].join("\n");
+    },
+
+    EMP_INTERNSHIP_COMPLETION_001: () => {
+      const duration = stripExternalReferencePhrases(variables.internship_duration, "");
+      const objectives = stripExternalReferencePhrases(variables.learning_objectives, "");
+      const opening = duration
+        ? `The internship runs for ${duration} from the start date and ends on completion of that period, unless ended earlier under this clause.`
+        : "The internship ends on the completion date stated in this Agreement, unless ended earlier under this clause.";
+
+      return [
+        opening,
+        formatStructuredSubparts([
+          objectives
+            ? `on completion of the internship, the Organisation shall issue the Intern a certificate recording the period of the internship, the area of work, and the mentor's assessment against the agreed learning objectives, being ${objectives}`
+            : "on completion of the internship, the Organisation shall issue the Intern a certificate recording the period of the internship, the area of work, and the mentor's assessment",
+          "either Party may end the internship before the completion date by giving the other seven (7) days' written notice, and the Organisation shall pay the stipend accrued to the date it ends",
+          "the internship creates no expectation or offer of employment, and neither Party is obliged to offer or accept one",
+        ]),
+      ].join("\n");
+    },
+
+    // ── Data processing ──────────────────────────────────────────────────
+    // Seven of the eight DPA clauses were fully static text with no placeholder
+    // at all, so two organisations processing entirely different data under
+    // entirely different arrangements received byte-identical obligations. The
+    // four below are the ones a DPA actually turns on: how long the data is
+    // kept, whether it may be passed on, whether it leaves India, and how fast
+    // a breach must be reported.
+    DPA_RETENTION_AND_ERASURE_001: () => {
+      const period = stripExternalReferencePhrases(variables.retention_period, "");
+      const purpose = stripExternalReferencePhrases(variables.processing_purpose, "");
+
+      const opening = period
+        ? `The Processor shall retain personal data for no longer than ${period}, and in any event only for as long as the purpose of the processing requires.`
+        : "The Processor shall retain personal data only for as long as the purpose of the processing requires.";
+
+      return [
+        opening,
+        formatStructuredSubparts([
+          "on the Fiduciary's instruction, and in any event on the expiry or termination of this Agreement, the Processor shall at the Fiduciary's option return all personal data to the Fiduciary in a commonly used machine-readable format, or erase it",
+          purpose
+            ? `the Processor shall erase personal data, and shall cause every sub-processor to erase it, once it is no longer needed for ${purpose}, as Section 8(7) of the Digital Personal Data Protection Act, 2023 requires`
+            : "the Processor shall erase personal data, and shall cause every sub-processor to erase it, once it is no longer needed for the purpose for which it was processed, as Section 8(7) of the Digital Personal Data Protection Act, 2023 requires",
+          "the Processor may retain personal data after that point only to the extent, and for the period, that a law in force requires it to, and shall tell the Fiduciary in writing which law it relies on",
+          "the Processor shall certify erasure in writing within thirty (30) days of completing it, and the certification shall cover backups and archived copies",
+        ]),
+      ].join("\n");
+    },
+
+    DPA_SUBPROCESSING_001: () => {
+      const choice = normalizeWhitespace(variables.sub_processing_permitted).toLowerCase();
+      const forbidden = choice.startsWith("no");
+      const general = choice.includes("general authorisation");
+
+      const opening = forbidden
+        ? "The Processor shall not engage any other person to process personal data under this Agreement without the Fiduciary's prior written consent."
+        : general
+          ? "The Processor may engage sub-processors to process personal data under this Agreement, subject to this clause."
+          : "The Processor shall not engage any other person to process personal data under this Agreement except in accordance with this clause.";
+
+      const authorisation = forbidden
+        ? "the Processor shall obtain the Fiduciary's prior written consent before engaging any sub-processor, and consent for one engagement is not consent for another"
+        : general
+          ? "the Processor has the Fiduciary's general authorisation to engage sub-processors, and shall maintain an up-to-date list of them which it shall make available to the Fiduciary on request"
+          : "the Processor shall give the Fiduciary prior written notice of any proposed sub-processor, including its identity, location, and the processing it is to perform, and the Fiduciary may object within fifteen (15) days, in which case the Processor shall not engage it";
+
+      return [
+        opening,
+        formatStructuredSubparts([
+          authorisation,
+          "the Processor shall impose on every sub-processor, by written contract, obligations no less protective than those in this Agreement",
+          "the Processor remains fully liable to the Fiduciary for the acts and omissions of every sub-processor as if they were its own, and Section 8(2) of the Digital Personal Data Protection Act, 2023 does not permit that liability to be passed on",
+        ]),
+      ].join("\n");
+    },
+
+    DPA_BREACH_NOTIFICATION_001: () => {
+      const hours = parseNumberish(variables.breach_notification_hours);
+      const window =
+        hours !== null && hours > 0
+          ? `within ${hours} ${hours === 1 ? "hour" : "hours"}`
+          : "within twenty-four (24) hours";
+
+      return [
+        "On becoming aware of a personal data breach affecting personal data processed under this Agreement, the Processor shall act as follows.",
+        formatStructuredSubparts([
+          `the Processor shall notify the Fiduciary without undue delay, and in any event ${window} of becoming aware of the breach`,
+          "the notification shall describe the nature and extent of the breach, the personal data and the Data Principals affected, the likely consequences, and the measures taken or proposed to address it",
+          "the Processor shall not notify the Data Protection Board of India or any Data Principal directly unless the Fiduciary instructs it to in writing, the obligation under Section 8(6) of the Digital Personal Data Protection Act, 2023 being the Fiduciary's",
+          "the Processor shall give the Fiduciary all cooperation and information the Fiduciary reasonably needs to make its own notification within the time the law allows",
+        ]),
+      ].join("\n");
+    },
+
+    DPA_AUDIT_AND_TRANSFER_001: () => {
+      const transfer = normalizeWhitespace(variables.cross_border_transfer).toLowerCase();
+      const transferSentence = transfer.startsWith("no")
+        ? "the Processor shall process and store personal data only within India, and shall not transfer it outside India without the Fiduciary's prior written consent"
+        : transfer.startsWith("yes")
+          ? "the Processor may transfer personal data outside India only to a country that the Central Government has not restricted by notification under Section 16 of the Digital Personal Data Protection Act, 2023, and shall tell the Fiduciary in writing where the data is processed and stored"
+          : "the Processor shall not transfer personal data outside India until the Parties have agreed the destination in writing, and any transfer is subject to Section 16 of the Digital Personal Data Protection Act, 2023";
+
+      return [
+        "The Processor shall be able to demonstrate its compliance with this Agreement.",
+        formatStructuredSubparts([
+          "the Processor shall maintain records of the processing it carries out for the Fiduciary, and shall make them available to the Fiduciary on reasonable request",
+          "the Fiduciary, or an independent auditor it appoints who is not a competitor of the Processor, may audit the Processor's compliance with this Agreement on reasonable prior notice and no more than once in any twelve-month period, save where a breach has occurred",
+          transferSentence,
+        ]),
+      ].join("\n");
+    },
+
+    // A settlement carried no tax position at all. That is a real gap, not just an
+    // unreflected field: whether a settlement sum is compensation or consideration
+    // for a taxable supply decides whether GST is chargeable on it, and the parties
+    // routinely record which they intend. The clause now states one or the other.
+    SETTLE_PAYMENT_001: () => {
+      const payee = normalizeWhitespace(variables.party_2_label) || namedParties.second;
+      const schedule = stripExternalReferencePhrases(
+        variables.settlement_payment_schedule,
+        "in a single payment within thirty (30) days of the date of this Agreement"
+      );
+      const defaultDays = parseNumberish(variables.settlement_default_days);
+      const graceDays = defaultDays !== null && defaultDays > 0 ? defaultDays : 30;
+
+      const gstApplicable = normalizeWhitespace(variables.gst_applicable).toLowerCase();
+      const payeeGstin = normalizeWhitespace(variables.party_2_gstin).toUpperCase();
+      const payerGstin = normalizeWhitespace(variables.party_1_gstin).toUpperCase();
+      const treatAsSupply = gstApplicable === "yes" || gstApplicable === "true";
+
+      const taxPosition = treatAsSupply
+        ? `the Parties treat the said sum as consideration for a taxable supply, and the ${payee} shall raise a tax invoice complying with Section 31 of the Central Goods and Services Tax Act, 2017${
+            payeeGstin ? ` stating its GSTIN ${payeeGstin}` : ""
+          }${payerGstin ? ` and the recipient GSTIN ${payerGstin}` : ""}`
+        : `the said sum is paid as compensation in settlement of disputed claims and not as consideration for any supply of goods or services, and accordingly no tax invoice shall be raised in respect of it${
+            payeeGstin || payerGstin
+              ? `; the Parties' registration particulars are recorded for identification only${
+                  payeeGstin ? `, being GSTIN ${payeeGstin} for the ${payee}` : ""
+                }${payerGstin ? ` and GSTIN ${payerGstin} for the paying Party` : ""}`
+              : ""
+          }`;
+
+      return formatStructuredSubparts([
+        `the said sum shall be paid ${schedule}, by electronic transfer to the account notified in writing by the ${payee}`,
+        "time is of the essence in respect of payment",
+        taxPosition,
+        `if any instalment remains unpaid for ${graceDays} days after it falls due, the whole of the unpaid balance shall become immediately due and payable, and the releases in this Agreement shall not take effect, or shall cease to have effect, in respect of the claims of the Party not paid`,
+        "each Party shall bear its own tax liability arising from this settlement, and nothing in this Agreement shifts a statutory liability that the law places on a particular Party",
+      ]);
+    },
+
+    // The rent clause stated the monthly figure and stopped. A tenancy that has
+    // agreed an escalation has agreed one of its most consequential terms -- a
+    // 10 per cent annual step on a 36-month lease is a third more rent by the
+    // end -- and the form collects it. It was going nowhere.
+    RENTAL_RENT_PAYMENT_001: () => {
+      const payer = normalizeWhitespace(variables.party_2_label) || namedParties.second;
+      const payee = normalizeWhitespace(variables.party_1_label) || namedParties.first;
+      const rent = formatCurrency(
+        variables.occupancy_fee || variables.monthly_rent || variables.rent_amount || variables.license_fee
+      );
+
+      const escalationPct = parseNumberish(variables.rent_escalation);
+      const escalationSentence =
+        escalationPct !== null && escalationPct > 0
+          ? ` The rent shall be increased by ${escalationPct} per cent (${escalationPct}%) on each anniversary of the commencement date, and the increased rent shall be payable from the first rental cycle following that anniversary.`
+          : hasMeaningfulValue(variables.rent_escalation)
+            ? ` Rent escalation shall apply as follows: ${stripExternalReferencePhrases(
+                variables.rent_escalation,
+                ""
+              )}.`
+            : "";
+
+      return (
+        `The ${payer} shall pay to the ${payee} a monthly licence fee or rent of ${rent}, payable on or before the fifth (5th) day of each calendar month.` +
+        escalationSentence +
+        ` Payment shall be made by bank transfer (NEFT, RTGS, or UPI) or such other mode as the Parties agree in writing, and the ${payee} shall issue a written receipt for each payment received.`
+      );
+    },
+
+    // The employer told us what the employee will actually have access to. The
+    // trade-secret clause listed a generic catalogue and ignored it.
+    EMP_CONFIDENTIALITY_TRADE_SECRET_001: () => {
+      const scope = hasMeaningfulValue(variables.employee_confidentiality_scope)
+        ? ` In this engagement that information includes, in particular, ${stripExternalReferencePhrases(
+            variables.employee_confidentiality_scope,
+            ""
+          )}.`
+        : "";
+
+      return (
+        `The Employee acknowledges that, in the course of employment, they will have access to trade secrets and highly sensitive proprietary information of the Employer, including source code, algorithms, formulae, processes, designs, customer and pricing data, and business strategies (collectively, "Trade Secrets").${scope}` +
+        ` The Employee shall not, during employment or at any time after it ends, use or disclose any Trade Secret except as strictly required to perform their duties. This obligation is not limited in time and survives termination of employment for as long as the information retains the character of a trade secret.`
+      );
+    },
+
+    // A tenancy's term clause was library text with no builder, so it stated
+    // flatly that the agreement "shall not be automatically renewed" -- even
+    // where the user had described a renewal arrangement in the form. That is
+    // worse than an unreflected field: the document contradicted the user.
+    //
+    // resolveRenewalSentence already reads renewal_option and renewal_terms and
+    // says the right thing in each case. It was simply never wired to this
+    // clause, because CORE_TERM_001 and RENTAL_TERM_001 are different clauses
+    // and only the first had a renderer.
+    RENTAL_TERM_001: () => {
+      const occupier = normalizeWhitespace(variables.party_2_label) || namedParties.second;
+      const owner = normalizeWhitespace(variables.party_1_label) || namedParties.first;
+      const duration = resolveAgreementDuration(documentType, variables);
+      const commencement = duration
+        ? `This Agreement shall commence on ${formatDate(
+            variables.effective_date
+          )} and shall continue for a period of ${duration} unless earlier terminated in accordance with the provisions hereof.`
+        : `This Agreement shall commence on ${formatDate(
+            variables.effective_date
+          )} and shall continue until terminated in accordance with the provisions hereof.`;
+
+      return [
+        commencement,
+        resolveRenewalSentence(variables),
+        `On expiry or termination of the term, the ${occupier} shall vacate the Premises and hand over peaceful possession to the ${owner}.`,
+        `Any holding over by the ${occupier} after expiry of the term without the written consent of the ${owner} shall be on a month-to-month basis at the same terms and conditions and terminable by either Party on fifteen (15) days' written notice.`,
+      ].join(" ");
+    },
+
     CORE_TERMINATION_001: () => {
       // A guarantee has its own exit: revocation as to future transactions under
       // Section 130, and discharge when the guaranteed obligations are paid. A
@@ -1711,6 +2202,82 @@ function renderHardClause(
             ? resolveJointVentureTerminationText(variables)
             : resolveGenericTerminationText(namedParties, variables, present),
       };
+    },
+
+// APPOINTMENT_LETTER and OFFER_LETTER use the EMP_* clause family, not the
+    // EMPLOYMENT_* one. EMPLOYMENT_ROLE_001 already renders the department and
+    // EMPLOYMENT_COMPENSATION_001 already renders bonus and statutory benefits;
+    // their EMP_* counterparts were static library text with no renderer, so an
+    // appointment letter silently dropped all three fields the form had asked
+    // for. These two builders bring the second family up to the first.
+    EMP_APPOINTMENT_TERMS_001: () => {
+      const departmentPhrase = hasMeaningfulValue(variables.department)
+        ? ` in the ${stripExternalReferencePhrases(variables.department, "")} department`
+        : "";
+      const reportsTo = normalizeWhitespace(variables.reporting_to);
+      const reportingSentence = reportsTo
+        ? `, and the Employee shall report to ${reportsTo}`
+        : "";
+
+      return [
+        `The Employer is pleased to appoint the Employee to the position of ${normalizeWhitespace(
+          variables.job_title || "the agreed role"
+        )}${departmentPhrase}, on the terms set out below. The appointment takes effect from ${formatDate(
+          variables.start_date || variables.effective_date
+        )}, being the date of joining${reportingSentence}.`,
+        formatStructuredSubparts([
+          `the Employee shall be based at ${normalizeWhitespace(
+            variables.work_location || "the Employer's registered office"
+          )}, and may be required to work at, or be transferred to, any other office, site, or establishment of the Employer or of any group entity, whether in the same city or elsewhere in India`,
+          "the appointment is on a full-time basis, and the Employee shall devote their whole working time, attention, and ability to the Employer's business",
+          "the Employee shall not, during the appointment, engage in any other trade, business, profession, or employment, whether for reward or otherwise, without the Employer's prior written consent",
+          "this letter is issued in discharge of the Employer's obligation under Section 6(1)(f) of the Occupational Safety, Health and Working Conditions Code, 2020 to issue a letter of appointment to every employee on appointment",
+          "if the Employee does not join on the stated date of joining, or within such extended period as the Employer may allow in writing, this appointment shall lapse without further notice",
+        ]),
+      ].join("\n");
+    },
+
+    EMP_CTC_STRUCTURE_001: () => {
+      const ctc = hasMeaningfulValue(variables.salary || variables.ctc)
+        ? `an annual cost to company of ${formatCurrency(variables.salary || variables.ctc)}`
+        : "the annual cost to company stated in this letter";
+
+      const extras = [];
+      if (hasMeaningfulValue(variables.bonus_terms)) {
+        extras.push(
+          `the following bonus, variable-pay, or incentive arrangement shall also apply: ${stripExternalReferencePhrases(
+            variables.bonus_terms,
+            ""
+          )}`
+        );
+      }
+      if (hasMeaningfulValue(variables.statutory_benefits)) {
+        extras.push(
+          `the Employee shall additionally receive the following statutory or policy-linked benefits: ${stripExternalReferencePhrases(
+            variables.statutory_benefits,
+            ""
+          )}`
+        );
+      }
+
+      return [
+        `The Employee shall be paid ${ctc}, which is the Employer's total cost of employing the Employee and is not the Employee's take-home pay. It is made up as follows.`,
+        formatStructuredSubparts([
+          "basic salary, together with any dearness allowance and retaining allowance, constitutes 'wages' for statutory purposes; where the total of the allowances excluded from wages exceeds one-half of the whole remuneration, the excess is added back to wages, as required by the proviso to Section 2(y) of the Code on Wages, 2019",
+          "house rent allowance, conveyance, and any other allowance, are paid in accordance with the Employer's policy as amended from time to time",
+          "the Employer's contribution to the provident fund, and to any gratuity provision, is part of the cost to company and is not paid to the Employee as monthly salary",
+          "salary is paid monthly in arrears, by credit to the Employee's designated bank account, on or before the seventh day of the following month, in accordance with Section 17 of the Code on Wages, 2019",
+          hasMeaningfulValue(variables.employee_pan)
+            ? `the Employer shall deduct tax at source under Section 192 of the Income-tax Act, 1961 against the Employee's Permanent Account Number ${normalizeWhitespace(
+                variables.employee_pan
+              ).toUpperCase()}, and such other deductions as are authorised by Section 18 of the Code on Wages, 2019; no other deduction shall be made from the Employee's wages`
+            // Section 206AA raises the deduction rate where the deductee has
+            // furnished no PAN, so the letter says which position applies.
+            : "the Employer shall deduct tax at source under Section 192 of the Income-tax Act, 1961, at the rate applicable under Section 206AA until the Employee furnishes a Permanent Account Number, and such other deductions as are authorised by Section 18 of the Code on Wages, 2019; no other deduction shall be made from the Employee's wages",
+          "the Employer shall issue a pay slip for each wage period recording gross salary, each deduction, and net pay",
+          ...extras,
+        ]),
+      ].join("\n");
     },
 
     EMPLOYMENT_ROLE_001: () =>

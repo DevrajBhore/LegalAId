@@ -7,7 +7,6 @@
     "TOS_ELIGIBILITY_ACCOUNT_001",
     "TOS_LICENSE_TO_USE_001",
     "TOS_ACCEPTABLE_USE_001",
-    "TOS_USER_CONTENT_001",
     "IP_OWNERSHIP_001",
     "TOS_DISCLAIMER_001",
     "CORE_LIMITATION_LIABILITY_001",
@@ -51,6 +50,16 @@
       "clause": "CORE_ENTIRE_AGREEMENT_001",
       "include_if": "include_entire_agreement == true",
       "note": "Optional entire-agreement clause."
+    },
+    {
+      "clause": "TOS_USER_CONTENT_001",
+      "include_if": "hosts_user_content == true",
+      "note": "Licence to display what users post, plus intermediary due diligence under the IT Rules, 2021. Omitted where the service hosts no user content."
+    },
+    {
+      "clause": "TOS_FEES_AND_BILLING_001",
+      "include_if": "is_paid_service == true",
+      "note": "Fee, billing and cancellation terms. Consumer Protection (E-Commerce) Rules 2020 r.4(3) price display."
     }
   ]
 }

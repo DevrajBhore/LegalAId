@@ -5,7 +5,7 @@ import Ajv from "ajv";
 
 import { toBlueprintName } from "./documentTypeNormalizer.js";
 import { normalizeClauseCategory } from "../config/clauseOrder.js";
-import { deriveGenerationControls, isAffirmative } from "./generationControls.js";
+import { deriveGenerationControls, isAffirmative, positionOf } from "./generationControls.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -202,8 +202,21 @@ function evaluateConditionalExpression(expression, variables = {}) {
     const expected = rawExpected.trim().replace(/^['"]|['"]$/g, "");
 
     let result;
-    if (/^(true|false)$/i.test(expected)) {
-      result = isAffirmative(actual) === /^true$/i.test(expected);
+    // Three positions, not two. `isAffirmative` collapsed UNKNOWN into FALSE,
+    // so a gate could not tell a user who declined a mechanism from a user who
+    // was never asked about it, and every blueprint condition silently read
+    // silence as refusal. The grammar a blueprint can now express:
+    //
+    //   x == true      the user affirmatively wants it
+    //   x == false     the user affirmatively declined it
+    //   x == unknown   the user has not been asked -- the gap check's hook
+    //   x != false     include unless declined: the position to use for a
+    //                  mechanism the document needs on legal grounds, where
+    //                  the user's silence must not defeat it
+    //
+    // Note this changes `== false`: it now means "declined", not "not affirmed".
+    if (/^(true|false|unknown)$/i.test(expected)) {
+      result = positionOf(actual) === expected.toUpperCase();
     } else {
       result = String(actual ?? "").trim().toLowerCase() === expected.toLowerCase();
     }

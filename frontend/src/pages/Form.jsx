@@ -553,6 +553,44 @@ function FormField({ field, value, onChange, hasError, errorId }) {
     );
   }
 
+  // A question like "what do you want this agreement to protect you from" has
+  // several true answers at once, and forcing it into a single-choice select
+  // makes the user pick their biggest worry and discard the rest. Stored as a
+  // comma-separated string so nothing downstream has to learn a new shape.
+  if (field.type === "multiselect" && field.options?.length) {
+    const chosen = String(value || "")
+      .split(",")
+      .map((entry) => entry.trim())
+      .filter(Boolean);
+
+    const toggle = (option) => {
+      const next = chosen.includes(option)
+        ? chosen.filter((entry) => entry !== option)
+        : [...chosen, option];
+      onChange({ target: { name: field.name, value: next.join(", ") } });
+    };
+
+    return (
+      <div
+        className={`field-multiselect${hasError ? " field-multiselect--error" : ""}`}
+        role="group"
+        aria-label={field.label}
+        aria-describedby={hasError ? errorId : undefined}
+      >
+        {field.options.map((option) => (
+          <label key={option} className="field-check">
+            <input
+              type="checkbox"
+              checked={chosen.includes(option)}
+              onChange={() => toggle(option)}
+            />
+            <span>{option}</span>
+          </label>
+        ))}
+      </div>
+    );
+  }
+
   if (field.type === "select" && field.options?.length) {
     return (
       <select

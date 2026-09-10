@@ -1,0 +1,54 @@
+{
+  "clause_id": "SUPPLY_PRICE_REVISION_001",
+  "name": "Price Revision",
+  "title": "Price Revision",
+  "category": "CONSIDERATION",
+  "document_types": [
+    "SUPPLY_AGREEMENT",
+    "VENDOR_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "SALES_OF_GOODS_AGREEMENT",
+    "MANUFACTURING_AGREEMENT"
+  ],
+  "jurisdiction": "India",
+  "text": "The prices stated in this Agreement are firm for the first twelve (12) months from the Effective Date. Thereafter the Supplier may propose a revision in price only once in any twelve (12) month period, by written notice given not less than sixty (60) days before the revision is to take effect, and the notice shall state the reason for the revision and the workings that support it. A revision shall not exceed the movement in the Wholesale Price Index for the relevant commodity published by the Office of the Economic Adviser, Government of India, between the date the current price took effect and the date of the notice. Orders accepted before the notice takes effect are supplied at the price in force when they were accepted. If the Buyer does not accept a proposed revision within thirty (30) days of the notice, either Party may terminate this Agreement on thirty (30) days' written notice, and the existing prices continue to apply until termination takes effect. A change in the rate of any tax, duty or cess payable on the goods is passed through at cost and is not a price revision for the purposes of this Clause.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "29",
+      "note": "Agreements void for uncertainty; a price-variation mechanism must be capable of being made certain, which is why the revision is tied to a published index rather than to the Supplier's discretion."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "62",
+      "note": "Effect of novation, rescission and alteration of contract; a revision outside the agreed mechanism requires the consent of both Parties."
+    },
+    {
+      "act": "Central Goods and Services Tax Act, 2017",
+      "section": "15",
+      "note": "Value of a taxable supply; taxes are charged on the transaction value in force at the time of supply, so a change in rate is a pass-through and not a change in price."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause permits one Party to revise the price at its sole discretion without any ascertainable standard, which risks the price term being void for uncertainty.",
+    "A price revision is applied to orders already accepted, which alters a concluded contract without consent.",
+    "The clause is used to pass on a tax the Supplier is not liable to collect, or to recover an input tax credit the Supplier has in fact claimed."
+  ],
+  "depends_on": [
+    "SUPPLY_PAYMENT_001"
+  ],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [
+    "SUPPLY_GOODS_DESCRIPTION_001"
+  ],
+  "authoring_note": "Selected when the user says they are protecting against price increases. Confirm the WPI reference is the right index for the goods in question, and whether a floor as well as a ceiling should be stated so that falls in the index are also passed on.",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "materiality": "LEGAL",
+  "materiality_note": "Governs whether the price can move and gives a termination right if it does."
+}

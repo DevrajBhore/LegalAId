@@ -1342,3 +1342,50 @@
     animation: none !important;
   }
 }
+
+/* ── Multi-choice question ─────────────────────────────────────────────────
+   Used by the objectives step, where several answers are true at once. */
+.field-multiselect {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: var(--sp-2) var(--sp-4);
+  padding: var(--sp-3) 0 var(--sp-1);
+}
+.field-check {
+  display: flex; align-items: flex-start; gap: var(--sp-3);
+  font-size: var(--fs-sm); line-height: 1.45;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 7px 9px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.field-check:hover { background: var(--surface-2); border-color: var(--line); }
+.field-check input {
+  appearance: none;
+  width: 15px; height: 15px; margin: 2px 0 0;
+  flex-shrink: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--surface-1);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.field-check input:checked {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+/* The tick is drawn rather than typed, so it keeps its weight at any zoom. */
+.field-check input:checked::after {
+  content: "";
+  position: absolute; left: 4px; top: 1px;
+  width: 4px; height: 8px;
+  border: solid #1b1408;
+  border-width: 0 2px 2px 0;
+  transform: rotate(43deg);
+}
+.field-check input:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.field-check:has(input:checked) { color: var(--text-primary); }
+.field-multiselect--error { outline: 1px solid var(--red); border-radius: var(--r-sm); }
