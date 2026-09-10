@@ -1,4 +1,6 @@
-export const DOCUMENT_TYPE_REGISTRY = {
+import { knowledgeRegistryEntries } from "./knowledgeDocuments.js";
+
+const CODE_DEFINED_REGISTRY = {
   FOUNDERS_AGREEMENT: {
     displayName: "Founders' Agreement",
     family: "Startup & Fundraising",
@@ -322,3 +324,11 @@ export function buildDocumentTypeMeta(type) {
     blueprintName: toBlueprintName(canonicalType),
   };
 }
+
+// Families defined in the knowledge base are discovered, not registered. The
+// engine asks what definitions exist; it is never told. The block above is the
+// forty families still defined in code -- debt to be migrated, not the design.
+export const DOCUMENT_TYPE_REGISTRY = {
+  ...CODE_DEFINED_REGISTRY,
+  ...knowledgeRegistryEntries(),
+};

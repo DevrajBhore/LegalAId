@@ -60,7 +60,12 @@
             "WORK_PRODUCT_CREATED": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether anything is created for the client, which decides whether there is property to own, an output to accept, and a standard to measure.",
+      "jurisdiction": "India",
+      "scope": "Any engagement where one party performs for the other.",
+      "unknown_behaviour": "Leave every dependent position open and disclose them. Nothing about ownership or acceptance may be assumed from silence.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "WORK_PRODUCT_OWNERSHIP",
@@ -81,7 +86,12 @@
             "WORK_PRODUCT_OWNERSHIP": "CLIENT_LICENSED"
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether the client takes title to work product or only a right to use it.",
+      "jurisdiction": "India",
+      "scope": "Engagements that produce copyrightable or otherwise ownable material.",
+      "unknown_behaviour": "No default. Section 19 of the Copyright Act, 1957 requires an assignment in writing, so neither answer may be adopted on the client's behalf.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "PERFORMANCE_STANDARD",
@@ -109,7 +119,12 @@
             "PERFORMANCE_STANDARD": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether an ascertainable standard exists against which the work can be measured.",
+      "jurisdiction": "India",
+      "scope": "Engagements producing deliverables.",
+      "unknown_behaviour": "No assurance is drafted. Performance with reasonable skill and care remains owed under section 37 of the Indian Contract Act, 1872 regardless.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "ACCESS",
@@ -151,7 +166,12 @@
             "PHYSICAL_ACCESS": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "What the counterparty is given access to, which determines which protective regimes attach — data protection, confidentiality, restraint, and physical risk.",
+      "jurisdiction": "India",
+      "scope": "Any engagement involving access to information, people or premises.",
+      "unknown_behaviour": "Every dependent position stays open and is disclosed. Access is never inferred from the absence of an answer.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "MARKET_OVERLAP",
@@ -172,7 +192,12 @@
             "MARKET_OVERLAP": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether the counterparty operates in the client's market, which is the circumstance a restriction on competing work addresses.",
+      "jurisdiction": "India",
+      "scope": "Engagements where the counterparty trades on its own account.",
+      "unknown_behaviour": "No restraint is drafted. Establishing the circumstance is not a promise that any restraint the client wants will hold under section 27.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "THIRD_PARTY_EXPOSURE",
@@ -192,7 +217,12 @@
             "THIRD_PARTY_EXPOSURE": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether performance can cause loss to someone outside the agreement, which is the circumstance behind both the promise to make good and the requirement to be covered.",
+      "jurisdiction": "India",
+      "scope": "Any agreement whose performance touches third parties or regulated activity.",
+      "unknown_behaviour": "No allocation is drafted; the position is disclosed as unsettled.",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "id": "CONTINUITY_DEPENDENCE",
@@ -212,7 +242,12 @@
             "CONTINUITY_DEPENDENCE": false
           }
         }
-      ]
+      ],
+      "legal_proposition": "Whether the client can continue unaided if the engagement ends, which decides whether obligations should survive it.",
+      "jurisdiction": "India",
+      "scope": "Ongoing engagements with work in progress.",
+      "unknown_behaviour": "The declared drafting default applies and is disclosed as a default, never as the client's choice.",
+      "review_status": "draft-needs-legal-review"
     }
   ],
   "$treatments_comment": [
@@ -229,7 +264,9 @@
         "include_deliverables": true,
         "include_inspection_rights": true
       },
-      "basis": "Where something is produced there is an output to identify and to accept or reject."
+      "basis": "Where something is produced there is an output to identify and to accept or reject.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "WORK_PRODUCT_CREATED",
@@ -239,7 +276,9 @@
         "include_ip_assignment": false,
         "include_inspection_rights": false
       },
-      "basis": "Advice that produces no material leaves nothing to own or to accept."
+      "basis": "Advice that produces no material leaves nothing to own or to accept.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "WORK_PRODUCT_OWNERSHIP",
@@ -247,7 +286,14 @@
       "positions": {
         "include_ip_assignment": true
       },
-      "basis": "Copyright Act, 1957 s.19 — an assignment must be in writing and signed."
+      "basis": "Copyright Act, 1957 s.19 — an assignment must be in writing and signed.",
+      "authority": [
+        {
+          "act": "Copyright Act, 1957",
+          "section": "19"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "WORK_PRODUCT_OWNERSHIP",
@@ -255,7 +301,14 @@
       "positions": {
         "include_ip_assignment": false
       },
-      "basis": "A licence leaves title with the author and is the narrower bargain."
+      "basis": "A licence leaves title with the author and is the narrower bargain.",
+      "authority": [
+        {
+          "act": "Copyright Act, 1957",
+          "section": "30"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "PERFORMANCE_STANDARD",
@@ -263,7 +316,9 @@
       "positions": {
         "include_warranty_clause": true
       },
-      "basis": "A stated standard is what an assurance about quality can be measured against."
+      "basis": "A stated standard is what an assurance about quality can be measured against.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "PERFORMANCE_STANDARD",
@@ -271,23 +326,47 @@
       "positions": {
         "include_warranty_clause": false
       },
-      "basis": "Contract Act, 1872 s.37 — performance with reasonable skill and care remains owed regardless."
+      "basis": "Contract Act, 1872 s.37 — performance with reasonable skill and care remains owed regardless.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "37"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "PERSONAL_DATA_ACCESS",
       "value": true,
       "positions": {
-        "processes_personal_data": true
+        "processes_personal_data": true,
+        "involves_personal_data": true,
+        "company_processes_personal_data": true,
+        "firm_processes_personal_data": true,
+        "jv_processes_personal_data": true
       },
-      "basis": "DPDP Act, 2023 s.8 — a data fiduciary's obligations attach on processing, and a processor must be engaged under contract."
+      "basis": "DPDP Act, 2023 s.8 — a data fiduciary's obligations attach on processing, and a processor must be engaged under contract.",
+      "authority": [
+        {
+          "act": "Digital Personal Data Protection Act, 2023",
+          "section": "8"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "PERSONAL_DATA_ACCESS",
       "value": false,
       "positions": {
-        "processes_personal_data": false
+        "processes_personal_data": false,
+        "involves_personal_data": false,
+        "company_processes_personal_data": false,
+        "firm_processes_personal_data": false,
+        "jv_processes_personal_data": false
       },
-      "basis": "No processing, no DPDP obligations to pass through."
+      "basis": "No processing, no DPDP obligations to pass through.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "RELATIONSHIP_ACCESS",
@@ -295,7 +374,9 @@
       "positions": {
         "include_non_solicit": true
       },
-      "basis": "Contact with staff and customers is the exposure a restriction after the engagement addresses."
+      "basis": "Contact with staff and customers is the exposure a restriction after the engagement addresses.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "RELATIONSHIP_ACCESS",
@@ -303,15 +384,25 @@
       "positions": {
         "include_non_solicit": false
       },
-      "basis": "No access to the relationships, nothing to protect after the engagement."
+      "basis": "No access to the relationships, nothing to protect after the engagement.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "SENSITIVE_INFORMATION_ACCESS",
       "value": true,
       "positions": {
-        "include_confidentiality": true
+        "include_confidentiality": true,
+        "involves_trade_secrets": true
       },
-      "basis": "Contract Act, 1872 s.27 permits protection of confidential information; it is the lawful route where a restraint is not."
+      "basis": "Contract Act, 1872 s.27 permits protection of confidential information; it is the lawful route where a restraint is not.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "27"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "MARKET_OVERLAP",
@@ -319,7 +410,14 @@
       "positions": {
         "include_non_compete": true
       },
-      "basis": "Contract Act, 1872 s.27 — a restriction confined to the term of the engagement is a term of service, not a restraint of trade."
+      "basis": "Contract Act, 1872 s.27 — a restriction confined to the term of the engagement is a term of service, not a restraint of trade.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "27"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "MARKET_OVERLAP",
@@ -327,7 +425,9 @@
       "positions": {
         "include_non_compete": false
       },
-      "basis": "No overlap, no competing-engagement exposure to address."
+      "basis": "No overlap, no competing-engagement exposure to address.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "PHYSICAL_ACCESS",
@@ -335,7 +435,9 @@
       "positions": {
         "include_insurance": true
       },
-      "basis": "Presence on the premises and handling of property create the loss that cover answers."
+      "basis": "Presence on the premises and handling of property create the loss that cover answers.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "THIRD_PARTY_EXPOSURE",
@@ -344,7 +446,14 @@
         "include_indemnity_clause": true,
         "include_insurance": true
       },
-      "basis": "Contract Act, 1872 s.124 — a contract of indemnity is a promise to save the other from loss caused by the promisor or by a third party."
+      "basis": "Contract Act, 1872 s.124 — a contract of indemnity is a promise to save the other from loss caused by the promisor or by a third party.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "124"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "THIRD_PARTY_EXPOSURE",
@@ -352,7 +461,9 @@
       "positions": {
         "include_indemnity_clause": false
       },
-      "basis": "Where no third party can be harmed there is no third-party loss to allocate."
+      "basis": "Where no third party can be harmed there is no third-party loss to allocate.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "CONTINUITY_DEPENDENCE",
@@ -360,7 +471,18 @@
       "positions": {
         "include_transition_assistance": true
       },
-      "basis": "Contract Act, 1872 s.37 and s.160 — an express handover states what performance means once the term has ended."
+      "basis": "Contract Act, 1872 s.37 and s.160 — an express handover states what performance means once the term has ended.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "37"
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "160"
+        }
+      ],
+      "review_status": "draft-needs-legal-review"
     },
     {
       "fact": "CONTINUITY_DEPENDENCE",
@@ -368,7 +490,20 @@
       "positions": {
         "include_transition_assistance": false
       },
-      "basis": "A client who can carry on unaided needs no obligations to survive."
+      "basis": "A client who can carry on unaided needs no obligations to survive.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "fact": "SENSITIVE_INFORMATION_ACCESS",
+      "value": false,
+      "positions": {
+        "include_confidentiality": false,
+        "involves_trade_secrets": false
+      },
+      "basis": "Where no commercially sensitive information changes hands there is nothing for a protection of it to bite on.",
+      "authority": "commercial",
+      "review_status": "draft-needs-legal-review"
     }
   ],
   "$defaults_comment": [

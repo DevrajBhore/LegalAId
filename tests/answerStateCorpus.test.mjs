@@ -74,7 +74,16 @@ for (const [factId, states] of Object.entries(current)) {
   assert.deepStrictEqual(malformed.disclosureKinds, unanswered.disclosureKinds,
     `${factId}: an unreadable answer produced a different disclosure. A fabricated ` +
     `disclosure is indistinguishable from a real one to the person signing.`);
-  checks += 3;
+  // The strongest form, and the one the corpus caught a violation of: an answer
+  // the engine could not read must leave the legal state exactly as it found
+  // it. A malformed answer to a checklist was being read as "saw the list,
+  // ticked nothing" and negating every fact on it -- five positions
+  // manufactured from unparseable input, with the clause set unchanged so
+  // nothing else noticed.
+  assert.deepStrictEqual(malformed.positions, unanswered.positions,
+    `${factId}: an unreadable answer created positions that silence did not. ` +
+    `Invalid input may produce a diagnostic; it may not produce a legal fact.`);
+  checks += 4;
 }
 console.log("PASS  malformed answers are diagnostics, not drafting facts");
 

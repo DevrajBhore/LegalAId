@@ -27,20 +27,11 @@
  * for confirmation where it is legally material. Prose is good enough to decide
  * a reporting rhythm; it is not good enough to decide that the DPDP Act applies.
  */
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { loadFactRegistry } from "./factRegistry.js";
 import { analyseOpenPositions, CLASSIFICATION } from "./materialityAnalysis.js";
 import { getPartyNamingLabels } from "./draftingPolicy.js";
 
-const HERE = path.dirname(fileURLToPath(import.meta.url));
-const FACTS_PATH = path.resolve(HERE, "../../knowledge-base/intake/legal_facts.json");
-
-let cache = null;
-function registry() {
-  if (!cache) cache = JSON.parse(fs.readFileSync(FACTS_PATH, "utf8"));
-  return cache;
-}
+const registry = loadFactRegistry;
 
 export const PROVENANCE = {
   DECLARED: "declared",   // the user answered this question
@@ -203,6 +194,14 @@ export function planGapQuestions({ documentType, variables = {} }) {
     // the fact they depend on.
     .sort((a, b) => (a.requires ? 1 : 0) - (b.requires ? 1 : 0) || b.resolves.length - a.resolves.length);
 
+  // A drafting-material position that nobody asked about is still a position
+  // the document takes. `ASK_IF_NEEDED` was a third disposition that reached
+  // neither the questions nor the disclosures: include_entire_agreement sits in
+  // this state across twenty-two families, silently excluded because nothing
+  // set it. Surfacing them here lets resolution account for them against the
+  // declared defaults instead of leaving them to fall off the edge.
+  const advisory = analysis.positions.filter((p) => p.disposition === "ASK_IF_NEEDED");
+
   const disclosures = defaulted
     .map((p) => {
       const spec = registry().defaults?.[p.flag];
@@ -217,6 +216,7 @@ export function planGapQuestions({ documentType, variables = {} }) {
     counterparty: counterparty.name,
     counterpartyAssumed: counterparty.assumed,
     openMechanisms: open.map((p) => p.flag),
+    advisoryMechanisms: advisory.map((p) => p.flag),
     questions,
     settled,
     disclosures,

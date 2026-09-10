@@ -2,14 +2,22 @@
   "WORK_PRODUCT_CREATED": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -48,6 +56,9 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -60,15 +71,22 @@
     "answered_yes": {
       "positions": {
         "include_deliverables": "true/user_answer",
+        "include_entire_agreement": "true/drafting_default",
         "include_inspection_rights": "true/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "RESOLVED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -107,6 +125,9 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -119,16 +140,23 @@
     "answered_no": {
       "positions": {
         "include_deliverables": "false/user_answer",
+        "include_entire_agreement": "true/drafting_default",
         "include_inspection_rights": "false/user_answer",
         "include_ip_assignment": "false/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "RESOLVED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "RESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -168,6 +196,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -177,14 +208,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -224,6 +263,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -235,15 +277,19 @@
     "derived_from_field": {
       "positions": {
         "include_deliverables": "true/derived_fact",
+        "include_entire_agreement": "true/drafting_default",
         "include_inspection_rights": "true/derived_fact",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -284,6 +330,8 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -294,14 +342,20 @@
     },
     "inferred_from_prose": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -340,6 +394,8 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -353,14 +409,22 @@
   "WORK_PRODUCT_OWNERSHIP": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -400,6 +464,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -410,15 +477,23 @@
     },
     "answered_yes": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_ip_assignment": "true/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "RESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -459,6 +534,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -468,15 +546,23 @@
     },
     "answered_no": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_ip_assignment": "false/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "RESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -516,6 +602,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -525,14 +614,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -571,6 +668,9 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -584,14 +684,22 @@
   "PERFORMANCE_STANDARD": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -631,6 +739,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -641,15 +752,23 @@
     },
     "answered_yes": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default",
         "include_warranty_clause": "true/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "RESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -690,6 +809,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -699,15 +821,23 @@
     },
     "answered_no": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default",
         "include_warranty_clause": "false/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "RESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -747,6 +877,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -756,14 +889,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -803,6 +944,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -813,14 +957,22 @@
     },
     "derived_from_field": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "processes_personal_data": "UNRESOLVED"
       },
@@ -860,6 +1012,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -871,14 +1026,22 @@
   "ACCESS": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -918,6 +1081,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -928,16 +1094,30 @@
     },
     "answered_yes": {
       "positions": {
+        "company_processes_personal_data": "true/user_answer",
+        "firm_processes_personal_data": "true/user_answer",
+        "include_confidentiality": "false/user_answer",
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_non_solicit": "false/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default",
+        "involves_personal_data": "true/user_answer",
+        "involves_trade_secrets": "false/user_answer",
+        "jv_processes_personal_data": "true/user_answer",
         "processes_personal_data": "true/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "RESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "RESOLVED"
@@ -978,6 +1158,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -988,16 +1171,30 @@
     },
     "answered_no": {
       "positions": {
+        "company_processes_personal_data": "false/user_answer",
+        "firm_processes_personal_data": "false/user_answer",
+        "include_confidentiality": "false/user_answer",
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_non_solicit": "true/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default",
+        "involves_personal_data": "false/user_answer",
+        "involves_trade_secrets": "false/user_answer",
+        "jv_processes_personal_data": "false/user_answer",
         "processes_personal_data": "false/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "RESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "RESOLVED"
@@ -1038,6 +1235,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1048,19 +1248,25 @@
     },
     "malformed_answer": {
       "positions": {
-        "include_non_solicit": "false/user_answer",
-        "include_transition_assistance": "false/drafting_default",
-        "processes_personal_data": "false/user_answer"
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
+        "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
-        "include_non_solicit": "RESOLVED",
+        "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
-        "processes_personal_data": "RESOLVED"
+        "processes_personal_data": "UNRESOLVED"
       },
       "unmatched": 1,
       "clauses": [
@@ -1097,6 +1303,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1109,14 +1318,22 @@
   "MARKET_OVERLAP": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1156,6 +1373,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1166,15 +1386,23 @@
     },
     "answered_yes": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_non_compete": "true/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "RESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1215,6 +1443,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1224,15 +1455,23 @@
     },
     "answered_no": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_non_compete": "false/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "RESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1272,6 +1511,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1281,14 +1523,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1328,6 +1578,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1340,14 +1593,22 @@
   "THIRD_PARTY_EXPOSURE": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1387,6 +1648,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1397,16 +1661,24 @@
     },
     "answered_yes": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_indemnity_clause": "true/user_answer",
         "include_insurance": "true/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "RESOLVED",
         "include_insurance": "RESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1447,6 +1719,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1456,15 +1731,23 @@
     },
     "answered_no": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
         "include_indemnity_clause": "false/user_answer",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "RESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1504,6 +1787,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1513,14 +1799,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1560,6 +1854,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1572,14 +1869,22 @@
   "CONTINUITY_DEPENDENCE": {
     "unanswered": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1619,6 +1924,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1629,14 +1937,22 @@
     },
     "answered_yes": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "true/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "RESOLVED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1676,6 +1992,9 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1686,14 +2005,22 @@
     },
     "answered_no": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/user_answer"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "RESOLVED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1732,6 +2059,9 @@
         "SERVICE_TERMINATION_001"
       ],
       "disclosureKinds": [
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1742,14 +2072,22 @@
     },
     "malformed_answer": {
       "positions": {
+        "include_deliverables": "false/drafting_default",
+        "include_entire_agreement": "true/drafting_default",
+        "include_reporting": "false/drafting_default",
+        "include_sla": "false/drafting_default",
         "include_transition_assistance": "false/drafting_default"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "UNRESOLVED",
         "include_insurance": "UNRESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1789,6 +2127,9 @@
       ],
       "disclosureKinds": [
         "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",
         "OPEN_POINT",
@@ -1801,16 +2142,24 @@
   "__assumed_side": {
     "no_drafting_for": {
       "positions": {
+        "include_deliverables": "false/drafting_default/assumed-side",
+        "include_entire_agreement": "true/drafting_default/assumed-side",
         "include_indemnity_clause": "true/user_answer/assumed-side",
         "include_insurance": "true/user_answer/assumed-side",
+        "include_reporting": "false/drafting_default/assumed-side",
+        "include_sla": "false/drafting_default/assumed-side",
         "include_transition_assistance": "false/drafting_default/assumed-side"
       },
       "outcomes": {
+        "include_deliverables": "DEFAULTED",
+        "include_entire_agreement": "DEFAULTED",
         "include_indemnity_clause": "RESOLVED",
         "include_insurance": "RESOLVED",
         "include_ip_assignment": "UNRESOLVED",
         "include_non_compete": "UNRESOLVED",
         "include_non_solicit": "UNRESOLVED",
+        "include_reporting": "DEFAULTED",
+        "include_sla": "DEFAULTED",
         "include_transition_assistance": "DEFAULTED",
         "include_warranty_clause": "UNRESOLVED",
         "processes_personal_data": "UNRESOLVED"
@@ -1851,6 +2200,9 @@
       ],
       "disclosureKinds": [
         "ASSUMED",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
+        "DRAFTING_DEFAULT",
         "DRAFTING_DEFAULT",
         "OPEN_POINT",
         "OPEN_POINT",

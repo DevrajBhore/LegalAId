@@ -30,6 +30,7 @@
 import { positionOf, POSITION, deriveGenerationControls, isAffirmative } from "./generationControls.js";
 import { getBlueprintForDocumentType, getClauseById } from "./clauseAssembler.js";
 import { buildDocumentSections } from "./documentIntakeConfig.js";
+import { loadFactRegistry } from "./factRegistry.js";
 
 export const CLASSIFICATION = {
   BENIGN: "BENIGN",
@@ -266,6 +267,18 @@ export function analyseOpenPositions({ documentType, variables = {} }) {
   const unconditional = new Set(blueprint.clauses || []);
 
   const reachable = reachableFlags(documentType, variables, collectableFields);
+
+  // A position is also reachable when a TREATMENT can set it. Probing
+  // deriveGenerationControls alone measures only what JavaScript can decide,
+  // which is fine for the families whose flags are derived in code and exactly
+  // wrong for one defined entirely in the knowledge base: its positions come
+  // from the fact registry, so every one of them read as unreachable and the
+  // gap check had nothing to ask about.
+  for (const treatment of loadFactRegistry().treatments) {
+    for (const mechanism of Object.keys(treatment.positions || {})) {
+      reachable.add(mechanism);
+    }
+  }
 
   const positions = [];
   for (const [flag, clauseIdSet] of gates) {

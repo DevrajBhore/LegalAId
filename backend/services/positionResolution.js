@@ -20,16 +20,10 @@
  *    A planner that gets cleverer while the document loses that information has
  *    made things worse.
  */
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { loadFactRegistry } from "./factRegistry.js";
 import { planGapQuestions } from "./factQuestionPlanner.js";
 
-const HERE = path.dirname(fileURLToPath(import.meta.url));
-const FACTS_PATH = path.resolve(HERE, "../../knowledge-base/intake/legal_facts.json");
-
-let cache = null;
-const registry = () => (cache ??= JSON.parse(fs.readFileSync(FACTS_PATH, "utf8")));
+const registry = loadFactRegistry;
 
 export const OUTCOME = {
   RESOLVED: "RESOLVED",       // an answer or a stated fact settled it
@@ -90,8 +84,15 @@ export function resolvePositions({ documentType, variables = {}, answers = {} })
     // question about their staff is still unsettled -- when they just answered
     // it. Only two-valued facts are negated; a fact whose options carry distinct
     // values (ownership: owns / licensed) has no negation to infer.
-    if (fact.type === "multiselect" && chosen.length) {
-      const ticked = new Set(chosen);
+    // ...but only where at least one selection was READABLE. An answer of
+    // "Probably, I think" to a checklist matches no option, and treating it as
+    // "read the list and ticked nothing" would negate every fact on it -- five
+    // legal facts manufactured out of input the engine could not parse, which is
+    // exactly what invariant 4 forbids. The answer-state corpus caught this: the
+    // malformed case was recording positions the unanswered case did not.
+    const valid = chosen.filter((label) => (fact.options || []).some((o) => o.label === label));
+    if (fact.type === "multiselect" && valid.length) {
+      const ticked = new Set(valid);
       for (const option of fact.options || []) {
         if (ticked.has(option.label) || option.exclusive) continue;
         for (const [name, value] of Object.entries(option.establishes || {})) {
@@ -153,10 +154,16 @@ export function resolvePositions({ documentType, variables = {}, answers = {} })
   // which is precisely the outcome this phase exists to prevent. The test
   // caught it: with no answers at all, not one position was recorded as a
   // drafting default.
+  const seen = new Set();
   const accountable = [
     ...plan.openMechanisms,
-    ...plan.disclosures.map((d) => d.mechanism).filter((m) => !plan.openMechanisms.includes(m)),
-  ];
+    ...plan.disclosures.map((d) => d.mechanism),
+    // Drafting-material positions nobody was asked about. They are dispositioned
+    // and therefore accountable: where the knowledge base declares a default for
+    // one it is adopted and disclosed, and where it does not the position simply
+    // stays open and says so. Either way it no longer vanishes.
+    ...plan.advisoryMechanisms.filter((m) => defaults?.[m]),
+  ].filter((m) => m && !seen.has(m) && seen.add(m));
   const stillOpen = new Set(accountable);
 
   for (const mechanism of accountable) {

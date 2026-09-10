@@ -1,3 +1,4 @@
+import { knowledgeDocumentConfigs } from "../../shared/knowledgeDocuments.js";
 /**
  * documentConfig.js
  *
@@ -7,7 +8,7 @@
  * Variable definitions (labels, types, options) live in variableConfig.js.
  */
 
-export const DOCUMENT_CONFIG = {
+const CODE_DEFINED_CONFIG = {
   NDA: {
     requiredFields: [
       "operating_state",
@@ -1468,6 +1469,18 @@ export const DOCUMENT_CONFIG = {
 const DEFERRED_IDENTITY_PATTERN = /(_address|_pan|_cin|_gstin|_llpin)$/;
 const DEFERRED_EXCEPTIONS = new Set(["property_address"]);
 
+// Intake structure for knowledge-defined families, discovered alongside the
+// code-defined ones. A new family declares its sections in its own definition
+// file; nothing here learns its name.
+export const DOCUMENT_CONFIG = {
+  ...CODE_DEFINED_CONFIG,
+  ...knowledgeDocumentConfigs(),
+};
+
+// Applied after the merge so a knowledge-defined family gets the same treatment
+// as a code-defined one. Running it over CODE_DEFINED_CONFIG alone would have
+// left new families demanding identity fields at the generation gate that the
+// forty existing ones defer to the editor.
 for (const config of Object.values(DOCUMENT_CONFIG)) {
   config.requiredFields = (config.requiredFields || []).filter(
     (field) =>

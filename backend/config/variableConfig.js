@@ -1,3 +1,4 @@
+import { knowledgeVariables } from "../../shared/knowledgeDocuments.js";
 /**
  * variableConfig.js
  *
@@ -5064,9 +5065,11 @@ function filterVariablesForDocument(documentType, variables = {}) {
 
 export function getVariables(documentType) {
   const common = filterVariablesForDocument(documentType, VARIABLE_CONFIG.COMMON || {});
+  // A family defined in the knowledge base brings its own intake. Discovered,
+  // not registered: nothing in this file knows the family exists.
   const specific = filterVariablesForDocument(
     documentType,
-    VARIABLE_CONFIG[documentType] || {}
+    VARIABLE_CONFIG[documentType] || knowledgeVariables(documentType) || {}
   );
   return { ...common, ...specific };
 }

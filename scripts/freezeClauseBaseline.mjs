@@ -325,7 +325,10 @@ function fieldsFor(docType) {
   return { required, all, schema };
 }
 
-function buildVariables(docType, level) {
+// Exported so the coverage analysis can build the same minimal intake this
+// baseline uses, instead of inventing a second synthetic fixture that drifts
+// away from it.
+export function buildVariables(docType, level) {
   const { required, all, schema } = fieldsFor(docType);
   const wanted = level === "minimal" ? required : all;
 
@@ -434,6 +437,12 @@ function diffEntry(label, before, after) {
 
 // ── Main ────────────────────────────────────────────────────────────────────
 
+// Guarded, because buildVariables is now imported by the coverage analysis and
+// a bare import of this file used to run the whole forty-type baseline as a
+// side effect of asking for one function.
+const RUN_AS_SCRIPT = String(process.argv[1] || "").endsWith("freezeClauseBaseline.mjs");
+
+if (RUN_AS_SCRIPT) {
 const types = Object.keys(DOCUMENT_TYPE_REGISTRY)
   .filter((t) => !ONLY || ONLY.has(t))
   .sort();
@@ -539,3 +548,5 @@ console.log(
     "If intended, re-record with: node scripts/freezeClauseBaseline.mjs --write"
 );
 process.exit(1);
+
+}
