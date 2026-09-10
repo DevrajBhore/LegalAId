@@ -1,3 +1,4 @@
+import { buildDisclosureBlock, renderDisclosureText } from "./disclosureRenderer.js";
 import {
   AlignmentType,
   BorderStyle,
@@ -1417,6 +1418,26 @@ export async function draftToDocx(draft) {
     renderBodyClause(children, clause, index + 1, { scheduleMode: true });
   });
 
+  const disclosure = buildDisclosureBlock(draft);
+  if (disclosure) {
+    children.push(
+      new Paragraph({ style: STYLE_ID.body, pageBreakBefore: true, spacing: { after: 0 }, children: [] }),
+      new Paragraph({ style: STYLE_ID.sectionHeading, text: disclosure.heading }),
+      new Paragraph({ style: STYLE_ID.body, text: disclosure.preamble })
+    );
+    disclosure.entries.forEach((entry, index) => {
+      children.push(
+        new Paragraph({
+          style: STYLE_ID.item,
+          children: [
+            new TextRun({ text: `${index + 1}. [${entry.kind}] `, bold: true }),
+            new TextRun({ text: entry.text }),
+          ],
+        })
+      );
+    });
+  }
+
   const doc = new Document({
     creator: "LegalAId",
     title,
@@ -1591,6 +1612,24 @@ export async function draftToPdf(draft) {
       doc.addPage();
       renderPdfBodyClause(doc, clause, index + 1, { scheduleMode: true });
     });
+
+    const disclosure = buildDisclosureBlock(draft);
+    if (disclosure) {
+      doc.addPage();
+      doc.font("Times-Bold").fontSize(PDF_HEADING_SIZE)
+        .text(pdfSafeText(disclosure.heading), PDF_MARGIN, doc.y, { width: PDF_CONTENT_WIDTH });
+      doc.y += PDF_BLOCK_GAP;
+      doc.font("Times-Italic").fontSize(PDF_BODY_SIZE)
+        .text(pdfSafeText(disclosure.preamble), PDF_MARGIN, doc.y, { width: PDF_CONTENT_WIDTH });
+      doc.y += PDF_BLOCK_GAP;
+      disclosure.entries.forEach((entry, index) => {
+        doc.font("Times-Roman").fontSize(PDF_BODY_SIZE)
+          .text(pdfSafeText(`${index + 1}. [${entry.kind}] ${entry.text}`), PDF_MARGIN, doc.y, {
+            width: PDF_CONTENT_WIDTH,
+          });
+        doc.y += PDF_BLOCK_GAP * 0.6;
+      });
+    }
   });
 }
 
@@ -1636,6 +1675,11 @@ export function draftToText(draft) {
       lines.push(`[Ref: ${clause.statutory_reference}]`);
     }
   });
+
+  // The disclosure follows the schedules: last in the document, so nothing
+  // substantive is displaced, and unmissable rather than buried.
+  const disclosure = renderDisclosureText(draft);
+  if (disclosure) lines.push(disclosure);
 
   return lines.join("\n");
 }

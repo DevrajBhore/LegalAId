@@ -32,18 +32,52 @@ import { callAI } from "../ai/aiClient.js";
 import { deriveGenerationControls } from "./generationControls.js";
 import { buildSemanticContext } from "./inputSemantics.js";
 import { buildDocumentIntelligence } from "./documentIntelligence.js";
+import { resolvePositions } from "./positionResolution.js";
+import { getVariables } from "../config/variableConfig.js";
 import { buildObligations } from "./obligationTracker.js";
 import { resolveStampFinancials } from "./stampDutyBasis.js";
 
 // Attach the advisory risk-&-explainability report + lifecycle obligations to a
 // successful generation.
-function buildSuccess(draft, validation) {
+// A position is a boolean; the intake schema speaks in the words its own select
+// offers. Writing `true` into a field whose options are "AI Recommended / Yes /
+// No" fails validation and blocks the draft, so a resolved position is spoken
+// back in the field's own vocabulary where the field exists, and left as a
+// boolean where it is a pure derivation with no field behind it.
+function serialisePositions(documentType, positions = {}) {
+  let schema = {};
+  try {
+    schema = getVariables(documentType) || {};
+  } catch {
+    schema = {};
+  }
+  const out = {};
+  for (const [flag, position] of Object.entries(positions)) {
+    const options = schema[flag]?.options;
+    if (typeof position.value === "boolean" && Array.isArray(options)) {
+      const wanted = position.value ? "yes" : "no";
+      const match = options.find((option) => String(option).trim().toLowerCase() === wanted);
+      out[flag] = match ?? position.value;
+      continue;
+    }
+    out[flag] = position.value;
+  }
+  return out;
+}
+
+function buildSuccess(draft, validation, resolution = null) {
   const variables = draft?.metadata?.source_variables || {};
   const markedDraft = {
     ...draft,
     metadata: {
       ...(draft?.metadata || {}),
       generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
+      // Carried on the draft itself, not only on the API response, so whatever
+      // renders the document can put these in front of the reader. NOTE: the
+      // DOCX, PDF and text exporters do not yet print them -- a disclosure that
+      // appears in the app but not in the file the user signs is worth less than
+      // none, so that is a deliberate next step rather than a half-done one.
+      assumptions: resolution?.assumptions || [],
     },
   };
 
@@ -52,6 +86,11 @@ function buildSuccess(draft, validation) {
     validation,
     intelligence: buildDocumentIntelligence(markedDraft, validation),
     obligations: buildObligations(draft, variables),
+    // What this document assumes, and what it still does not settle. Written so
+    // a reader can act on it: every entry says what was not decided and who did
+    // not decide it, and none of them claims the user chose.
+    assumptions: resolution?.assumptions || [],
+    position_outcomes: resolution?.outcomes || [],
   };
 }
 
@@ -542,6 +581,45 @@ function buildPriorClauseMap(priorDraft) {
 
 export async function generateDocument(input, options = {}) {
   await loadIREModules();
+
+  // Phase 5. Answers to the gap-check questions arrive here, are turned into
+  // positions through the treatments table, and are merged into the intake
+  // BEFORE anything is selected. The interview never says "add clause Y": it
+  // establishes a fact, the knowledge base decides the treatment, and the
+  // deterministic engine still owns the clause set exactly as before.
+  //
+  // The assumptions this produces travel with the result whether or not any
+  // answers were given, because a document drafted on unstated defaults is the
+  // case where the reader most needs to be told.
+  let resolution = null;
+  if (input.document_type) {
+    try {
+      resolution = resolvePositions({
+        documentType: input.document_type,
+        variables: input.variables || {},
+        answers: input.answers || {},
+      });
+      if (Object.keys(resolution.positions).length) {
+        input = {
+          ...input,
+          variables: {
+            ...(input.variables || {}),
+            // Carried under a reserved key rather than merged into the intake.
+            // These are not form fields -- no form asks for
+            // "processes_personal_data" -- so merging them as variables meant
+            // sanitisation stripped them before they reached clause selection.
+            __resolved_positions: serialisePositions(input.document_type, resolution.positions),
+          },
+        };
+      }
+    } catch (error) {
+      // A failure to plan questions must never block a draft that would
+      // otherwise generate. The document is produced without the layer and the
+      // reason is recorded.
+      resolution = { assumptions: [], error: String(error?.message || error) };
+    }
+  }
+  options = { ...options, resolution };
   const mode = options.mode === "generation" ? "generation" : "final";
   const priorClausesById = options.priorDraft
     ? buildPriorClauseMap(options.priorDraft)
@@ -586,7 +664,7 @@ export async function generateDocument(input, options = {}) {
       let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
       if (isGenerationReady(validation)) {
-        return buildSuccess(draft, validation);
+        return buildSuccess(draft, validation, options.resolution);
       }
 
       const repairedDraft = applyDeterministicRepairRound(
@@ -601,7 +679,7 @@ export async function generateDocument(input, options = {}) {
         validation = await runGenerationStageValidation(draft, generationInput, mode);
 
         if (isGenerationReady(validation)) {
-          return buildSuccess(draft, validation);
+          return buildSuccess(draft, validation, options.resolution);
         }
       }
 
@@ -609,7 +687,7 @@ export async function generateDocument(input, options = {}) {
       // Return it with those attached rather than discarding the tailoring and
       // falling back to boilerplate.
       if (!hasBlockingIssues(validation)) {
-        return buildSuccess(draft, validation);
+        return buildSuccess(draft, validation, options.resolution);
       }
     }
   }
@@ -627,7 +705,7 @@ export async function generateDocument(input, options = {}) {
   let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
   if (isGenerationReady(validation)) {
-    return buildSuccess(draft, validation);
+    return buildSuccess(draft, validation, options.resolution);
   }
 
   const repairedDraft = applyDeterministicRepairRound(
@@ -643,13 +721,13 @@ export async function generateDocument(input, options = {}) {
     validation = await runGenerationStageValidation(draft, generationInput, mode);
 
     if (isGenerationReady(validation)) {
-      return buildSuccess(draft, validation);
+      return buildSuccess(draft, validation, options.resolution);
     }
   }
 
   // Only a blocking issue withholds the draft.
   if (!hasBlockingIssues(validation)) {
-    return buildSuccess(draft, validation);
+    return buildSuccess(draft, validation, options.resolution);
   }
 
   return buildGenerationFailureResult(validation);

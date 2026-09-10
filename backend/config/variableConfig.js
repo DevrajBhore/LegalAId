@@ -5074,6 +5074,14 @@ export function getVariables(documentType) {
 export function sanitizeVariablesForDocument(documentType, variables = {}) {
   const allowedFields = new Set(Object.keys(getVariables(documentType)));
   return Object.fromEntries(
-    Object.entries(variables || {}).filter(([fieldName]) => allowedFields.has(fieldName))
+    Object.entries(variables || {}).filter(
+      // A double-underscore key is not intake and is not sanitised away. There
+      // is one: __resolved_positions, which carries the answers to the gap-check
+      // questions. Those answers are derivation input rather than form fields --
+      // no form collects "processes_personal_data" -- so filtering variables to
+      // the document's own schema was silently dropping four positions out of
+      // six on the way to clause selection, and the answers changed nothing.
+      ([fieldName]) => allowedFields.has(fieldName) || fieldName.startsWith("__")
+    )
   );
 }

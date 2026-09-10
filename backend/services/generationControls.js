@@ -712,6 +712,19 @@ export function deriveGenerationControls(documentType, variables = {}) {
   // matching would be guessing at law.
   derived.has_special_terms = hasMeaningfulValue(variables.special_terms);
 
+  // ── Resolved positions ───────────────────────────────────────────────────
+  // Last, and above everything else in this function, because these are answers
+  // the user gave to a question that was put to them directly. Everything above
+  // infers a position from a fact or a default; this IS the position. An
+  // explicit answer must not be overridden by an inference drawn from something
+  // else the user happened to write.
+  const resolved = variables.__resolved_positions;
+  if (resolved && typeof resolved === "object") {
+    for (const [flag, value] of Object.entries(resolved)) {
+      if (value === null || value === undefined) continue;
+      derived[flag] = value;
+    }
+  }
 
   return derived;
 }
