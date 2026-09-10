@@ -1,0 +1,51 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "MSA_GOVERNANCE_BODY_001",
+  "name": "Governance of the Relationship",
+  "title": "Governance and Escalation",
+  "category": "GOVERNANCE",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT",
+    "OUTSOURCING_AGREEMENT"
+  ],
+  "materiality": "LEGAL",
+  "text": "Each Party shall appoint a representative who is the principal point of contact for the Services and who has authority to take day-to-day decisions on that Party's behalf, and shall notify the other in writing of any change. The representatives shall meet at least once a quarter to review performance, changes and any matter either Party raises. A matter the representatives cannot resolve within fifteen (15) days shall be referred to a senior officer of each Party, who shall meet within a further fifteen (15) days. Decisions of the representatives bind the Parties only where recorded in writing and signed by both; nothing said at a meeting varies this Agreement unless it is recorded as an amendment. This Clause does not prevent either Party from seeking urgent interim relief, from referring a dispute to arbitration once the escalation periods have expired, or from exercising a right of termination that has accrued.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform; a governance structure is the machinery by which performance is monitored and adjusted."
+    },
+    {
+      "act": "Arbitration and Conciliation Act, 1996",
+      "section": "8",
+      "note": "Where a multi-tier clause makes escalation a condition precedent, a court may decline reference until it is exhausted, so the carve-outs for urgent relief and accrued termination rights are what keep the tier from becoming a trap."
+    }
+  ],
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Escalation is drafted as an absolute condition precedent to any remedy, so that a Party in breach can delay relief by declining to meet.",
+    "The clause purports to let a governance body amend the Agreement without the formalities the amendment clause requires.",
+    "Time limits are left unstated, which makes the escalation tier incapable of being exhausted and therefore incapable of being a condition precedent at all."
+  ],
+  "depends_on": [
+    "CORE_DISPUTE_RESOLUTION_001"
+  ],
+  "suggested_with": [
+    "CORE_GOVERNANCE_PROTECTIONS_001",
+    "CORE_AMENDMENT_001"
+  ],
+  "authoring_note": "Distinct from CORE_GOVERNANCE_PROTECTIONS_001, which confers audit, information and escalation RIGHTS; this constitutes the standing body that exercises them. Confirm the 15+15 day tiers and whether a quarterly cadence suits engagements of this size."
+}

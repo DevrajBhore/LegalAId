@@ -114,7 +114,23 @@ const summary = summariseProvenance(clauses);
 // survives an unpaid invoice; whether WPI is the right index and whether falls
 // as well as rises should pass through; and whether a during-term exclusivity
 // is the furthest a consultancy agreement can go under section 27.
-const MAX_UNREVIEWED = 294;
+// Raised to 301 for the seven MSA clauses. A Master Service Agreement checklist
+// was reviewed against what the blueprint actually emits, and these were the
+// headings the library could not serve at all: MSA_SUBCONTRACTING_001,
+// SERVICE_IMPLIED_SERVICES_001, MSA_GOVERNANCE_BODY_001,
+// SERVICE_CUSTOMER_DEPENDENCIES_001, SERVICE_KEY_PERSONNEL_001,
+// CORE_RESIDUAL_KNOWLEDGE_001 and CORE_INDEMNITY_PROCEDURE_001.
+//
+// Two of them carry more reviewer risk than the rest and should be read first.
+// CORE_RESIDUAL_KNOWLEDGE_001 is the provision most commonly over-drafted in a
+// services agreement: too wide and it hollows out the confidentiality
+// obligation beside it, too narrow and section 27 of the Contract Act makes the
+// confidentiality obligation itself a restraint. CORE_INDEMNITY_PROCEDURE_001
+// exists because CORE_INDEMNITY_001 grants an indemnity and says nothing about
+// how a claim is run, which is where an indemnity usually fails -- section 125
+// makes recovery conditional on the indemnity-holder's prudence and on not
+// contravening the indemnifier's orders, so the machinery is not decoration.
+const MAX_UNREVIEWED = 301;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +

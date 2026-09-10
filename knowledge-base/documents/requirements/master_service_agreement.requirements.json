@@ -1,0 +1,275 @@
+{
+  "$comment": [
+    "What makes a Master Service Agreement an MSA, as distinct from what makes it look",
+    "like a contract.",
+    "",
+    "A requirement is NOT a clause. It is a legal thing the document has to accomplish,",
+    "and it may be met by one clause, by a choice between several, or by a combination.",
+    "Writing it as 'required_clauses' would freeze the answer into the question and turn",
+    "the knowledge base into 'every MSA has exactly these 45 clauses' -- which is false.",
+    "",
+    "Every entry must carry an identity_test in the form 'remove it and ...'. If nobody",
+    "can complete that sentence, the provision is supporting infrastructure, not identity,",
+    "and it does not belong here. Definitions, notices, severability and waiver are all",
+    "good clauses and none of them is an MSA requirement."
+  ],
+  "document_type": "MASTER_SERVICE_AGREEMENT",
+  "requirements": [
+    {
+      "id": "SOW_GOVERNED_ORDERING",
+      "statement": "Services can be ordered and scoped from time to time under Statements of Work that take their terms from this Agreement.",
+      "identity_test": "Remove it and this stops being a framework at all: it becomes a single-engagement services contract that cannot govern the next order.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "MSA_SOW_MECHANISM_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "PRECEDENCE_OF_DOCUMENTS",
+      "statement": "Where the Agreement and a Statement of Work conflict, the order of precedence is settled.",
+      "identity_test": "Remove it and every SOW creates an unresolved conflict of terms that only litigation settles.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "MSA_ORDER_OF_PRECEDENCE_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "SERVICE_SCOPE_DEFINED",
+      "statement": "What the Service Provider is engaged to do is identified.",
+      "identity_test": "Remove it and there is no ascertainable subject matter; the agreement risks being void for uncertainty under section 29 of the Indian Contract Act, 1872.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONSIDERATION_SETTLED",
+      "statement": "What is payable, and when, is settled either in the Agreement or by reference to each Statement of Work.",
+      "identity_test": "Remove it and there is no consideration and therefore no enforceable contract under section 25.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_PAYMENT_001",
+          "SERVICE_PAYMENT_FIXED_FEE_001",
+          "SERVICE_PAYMENT_MILESTONE_001",
+          "SERVICE_PAYMENT_RETAINER_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "SCOPE_CAN_CHANGE",
+      "statement": "A defined route exists by which the scope, charges or service levels can be varied.",
+      "identity_test": "Remove it and every change is either an unpriced concession or a fresh negotiation; a multi-year framework without change control is one that will be breached rather than amended.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_CHANGE_REQUEST_001",
+          "SERVICE_IMPLIED_SERVICES_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "DELEGATION_CONTROLLED",
+      "statement": "Whether the Service Provider may put someone else in its place, and on what terms, is settled.",
+      "identity_test": "Remove it and section 40 of the Indian Contract Act, 1872 decides by construction whether performance was personal, and the Client may find it has no contractual relationship with whoever actually performs.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "MSA_SUBCONTRACTING_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "RELATIONSHIP_IS_GOVERNED",
+      "statement": "Someone on each side is answerable for the relationship, and there is a route for matters they cannot settle.",
+      "identity_test": "Remove it and a multi-year engagement has no mechanism short of dispute resolution for the disagreements that arise monthly.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "MSA_GOVERNANCE_BODY_001",
+          "CORE_GOVERNANCE_PROTECTIONS_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CLIENT_SIDE_OBLIGATIONS",
+      "statement": "What the Client must supply for performance to be possible, and what follows if it does not.",
+      "identity_test": "Remove it and the Service Provider bears the consequences of the Client's own failures; section 67 gives relief but leaves its scope to be argued after the fact.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_CUSTOMER_DEPENDENCIES_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "OWNERSHIP_OF_WORK_PRODUCT",
+      "statement": "Who owns what is created, and what each side may do with what it learns.",
+      "identity_test": "Remove it and the parties discover at the end of the engagement that they disagree about the thing the Client paid for.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "IP_OWNERSHIP_001",
+          "IP_ASSIGNMENT_001",
+          "IP_CONTRACTOR_RETAINS_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONFIDENTIALITY_BOUNDED",
+      "statement": "Confidential information is protected, and the protection is bounded so it does not operate as a restraint.",
+      "identity_test": "Remove the bound and section 27 of the Indian Contract Act, 1872 may render the protection itself void as against the individuals who hold the knowledge.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "CORE_CONFIDENTIALITY_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "EXIT_IS_POSSIBLE",
+      "statement": "Each side knows how the relationship ends and what survives.",
+      "identity_test": "Remove it and a framework agreement with no stated term binds indefinitely, or ends only on repudiation.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_TERMINATION_001",
+          "CORE_TERMINATION_001",
+          "SERVICE_TERMINATION_CONVENIENCE_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "RISK_IS_ALLOCATED",
+      "statement": "Loss caused to one party or to a third party is allocated, and the allocation is capable of being enforced.",
+      "identity_test": "Remove the machinery and the indemnity is a promise with no way of being called on: section 125 makes recovery conditional on the indemnity-holder's prudence and on not contravening the indemnifier's orders, neither of which can be shown without a procedure.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "CORE_INDEMNITY_001",
+          "CORE_INDEMNITY_PROCEDURE_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "LIABILITY_IS_BOUNDED",
+      "statement": "The outer limit of each party's exposure is stated.",
+      "identity_test": "Remove it and a fixed-fee engagement carries unlimited liability, which is a bargain neither side priced.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_LIABILITY_CAP_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "SERVICE_LEVELS_MEASURED",
+      "statement": "Where performance standards are promised, they are measurable and the consequence of missing them is stated.",
+      "identity_test": "Remove it and a service level is an aspiration; there is nothing to measure and nothing follows from failure.",
+      "applicability": {
+        "position": "include_sla",
+        "value": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_SLA_001",
+          "SERVICE_TIMELINES_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "PERSONNEL_CONTINUITY",
+      "statement": "Where the engagement depends on particular people, their assignment and replacement is settled.",
+      "identity_test": "Remove it and the Client's named team can be reassigned the day after signature.",
+      "applicability": {
+        "position": "include_sla",
+        "value": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_KEY_PERSONNEL_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "PERSONAL_DATA_HANDLED",
+      "statement": "Where personal data is processed, the processor's obligations are passed through in writing.",
+      "identity_test": "Remove it and the Client remains the data fiduciary under section 8(2) of the DPDP Act, 2023 with no contractual means of discharging that responsibility.",
+      "applicability": {
+        "position": "processes_personal_data",
+        "value": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_DATA_PROCESSING_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

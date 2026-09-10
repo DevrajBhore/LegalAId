@@ -1,0 +1,50 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "SERVICE_CUSTOMER_DEPENDENCIES_001",
+  "name": "Client Dependencies and Relief",
+  "title": "Client Dependencies",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "materiality": "LEGAL",
+  "text": "The Client shall provide, in good time, the access, information, decisions, facilities, systems and personnel that this Agreement or a Statement of Work identifies as the Client's responsibility, and any other cooperation the Service Provider reasonably requires and requests in writing in order to perform. A failure by the Client to do so is not of itself a breach of this Agreement; but to the extent and for so long as it actually prevents or impairs performance, the Service Provider is relieved from the affected obligation, from any service level measured against it and from liability for the resulting delay, provided the Service Provider (a) notifies the Client in writing promptly on becoming aware, (b) continues to perform everything unaffected, and (c) takes reasonable steps to mitigate. Anything not identified as the Client's responsibility is the Service Provider's.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "67",
+      "note": "Where a promisee neglects or refuses to afford the promisor reasonable facilities for performance, the promisor is excused by that neglect as to any non-performance caused by it. This clause states what those facilities are and how relief is claimed."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "51",
+      "note": "Where a contract consists of reciprocal promises to be simultaneously performed, no promisor need perform unless the other is ready and willing to perform his."
+    }
+  ],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Relief is claimed for a failure the Service Provider never notified, so the Client had no opportunity to cure it.",
+    "The clause relieves the Service Provider of obligations the Client's failure did not actually affect.",
+    "The Client's dependencies are left unlisted, which makes the relief trigger unascertainable and the clause a general excuse.",
+    "It is drafted so that the Client's failure is itself a breach entitling the Service Provider to terminate, which converts a relief mechanism into a termination right the Client did not negotiate."
+  ],
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_SLA_001",
+    "SERVICE_TIMELINES_001"
+  ],
+  "authoring_note": "Section 67 is the statutory backbone and is squarely on point. Confirm whether prolonged relief should convert into a right to terminate, and if so after what period."
+}

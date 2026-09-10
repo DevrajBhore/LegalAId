@@ -5,7 +5,43 @@ hold whatever else changes, each was established because its absence produced a
 real defect, and each is pinned by a named test. Breaking one should fail the
 build, not surprise a user.
 
+They fall into three groups, and **the groups must not be read as one list**:
+
+| Part | What it contains | How to read it |
+| --- | --- | --- |
+| **I. Architecture** | properties that hold regardless of legal content | requirements — never relax one |
+| **II. Knowledge admission** | what every new legal artifact must satisfy | a gate — enforced by the loader, not by memory |
+| **III. Current-state limitations** | what is deliberately unfinished | **debt, not design** — never mistake an entry here for a requirement |
+
+The third part exists because six months from now someone will read "forty
+families are defined in JavaScript" and conclude that is how it is meant to work.
+It is not. It is what has not been migrated yet.
+
 ---
+
+## The distinction that governs everything in Part II
+
+```
+STRUCTURALLY ADMISSIBLE   ≠   LEGALLY REVIEWED
+```
+
+The admission gate proves that a knowledge artifact has a legal proposition, a
+scope, a jurisdiction, a stated authority, a behaviour when unanswered, and
+treatments in both directions. **It proves none of them are correct.**
+
+A fact can clear every check in Part II and still be wrong about Indian law.
+Admission is a structural test performed by a program; review is a legal
+judgment performed by an advocate. Nothing in this system may present the first
+as though it were the second, and `review_status` exists precisely so the
+difference stays visible on every artifact.
+
+---
+
+# Part I — Architecture invariants
+
+*True regardless of what legal content the system carries. No document-specific
+branches, knowledge discovered rather than registered, and the properties below.*
+
 
 ## 1. Authority
 
@@ -211,27 +247,6 @@ been drafted for the wrong side of the table.
 
 ---
 
-## Adding to the fact registry
-
-Do not add a fact because it is common. Add it when its presence or absence
-creates a materially different treatment that **no existing fact can carry**.
-Otherwise the registry becomes a second `generationControls.js` with better
-manners.
-
-`scripts/clusterOpenMechanisms.mjs` supplies the evidence: it reports, across all
-document families, which mechanisms are open, which are asked about, and which no
-fact can resolve. Leverage is the number of families a missing circumstance
-blocks — not the number of mechanisms it touches in one.
-
-Its first run found five variable names for one legal question —
-`involves_personal_data`, `processes_personal_data`, and three family-specific
-spellings — nineteen families asking whether the DPDP Act, 2023 applies through
-variables that could not reach one another. The right answer was one fact with
-five aliases, not five facts. Registry coverage went from 29% to 40% of open
-positions with no new question authored and no new concept invented.
-
----
-
 ## 12. Universality
 
 > **Adding legal knowledge changes the system's behaviour.
@@ -314,6 +329,177 @@ forty existing families have been migrated. They have not.
 
 ---
 
+
+---
+
+## 14. Document-specific substance cannot be satisfied by generic nomenclature
+
+Three separate quality dimensions, and the first must never be allowed to create
+the illusion that the other two are satisfied:
+
+| Dimension | The question |
+| --- | --- |
+| **Boilerplate** | does it carry the normal legal infrastructure? |
+| **Identity** | does it do what this KIND of document must do? |
+| **Intent** | does it address what THIS user needs? |
+
+LegalAId historically overperformed on the first and underperformed on the other
+two. A draft can carry definitions, interpretation, notices, confidentiality,
+representations, a generic indemnity, governing law, dispute resolution,
+boilerplate and signatures — and still be a bad document, because the provisions
+that define the transaction are missing or weak.
+
+**A requirement is not a clause.** It is something the document has to
+accomplish, and may be met by one clause, by a choice among several, or by a
+combination:
+
+```
+Requirement  ->  Treatment  ->  Clause(s)
+```
+
+Modelling it as `required_clauses` freezes the answer into the question and ends
+at "every MSA has exactly these 45 clauses", which is false.
+
+**The admission test for a requirement** is the counterfactual, and it is
+enforced: every entry must complete the sentence *"Remove it and …"* with the
+legal function that is lost. If nobody can complete it, the provision is
+supporting infrastructure rather than identity. Definitions, notices,
+severability and waiver are all good clauses and none of them is a document
+requirement.
+
+Every requirement terminates in a stated coverage — `RESOLVED`, `DEFAULTED`,
+`UNRESOLVED`, `ESCALATED`, `NOT_APPLICABLE` or `APPLICABILITY_UNKNOWN` —
+mirroring position conservation, because the principle is identical: nothing
+silently disappears.
+
+**`APPLICABILITY_UNKNOWN` is not `NOT_APPLICABLE`,** and conflating them is
+invariant 3 in a sixth disguise. A requirement whose applicability rests on a
+fact nobody established has not been assessed; it has been skipped. Authoring the
+employment registry exposed this: `POSH_DUTY_REFLECTED` applies where the
+employer has ten or more employees, nobody had been asked the headcount, and the
+requirement was quietly reported as inapplicable. The same defect was then found
+in the MSA, where the DPDP requirement disappeared because nobody had said
+whether personal data is processed. Both now report as undetermined and keep the
+escalation they were authored with.
+
+*Pinned by* `tests/documentRequirements.test.mjs`. Its central check is a façade:
+**twenty well-drafted general provisions satisfy 1 of the 13 applicable MSA
+identity requirements, and 7 of the failures are blocking.** Twenty general
+provisions are not a Master Service Agreement, and the assessment has to say so.
+
+**The registry must never become a second clause-selection engine.** It answers
+*what must this document accomplish*; the deterministic machinery answers *given
+the facts, concepts, authority and applicable treatment, what mechanism
+accomplishes it*. The assessment reads the emitted clause set and never
+contributes to it.
+
+### A formality is never reported as done
+
+A **CONTENT** requirement is satisfied when the document says the thing. A
+**FORMALITY** requirement can only ever be *provided for*: stamping and
+registration are acts performed on the instrument, not statements made in it.
+
+A tenancy exposed the conflation. `INSTRUMENT_IS_REGISTERED` was reporting
+`RESOLVED` because a registration clause was present — which would tell a user
+their lease is complete when section 49 of the Registration Act, 1908 bars it
+from being received in evidence, and section 107 of the Transfer of Property Act,
+1882 makes a lease exceeding one year void without it. For content requirements
+"addressed" and "done" coincide; for formalities they do not.
+
+`PROVIDED_FOR` is the ceiling for a formality, counted **apart** from resolved —
+folding it in restores the conflation the state exists to prevent — and a
+FORMALITY requirement is refused admission unless it says what act lies outside
+the document.
+
+### Falsification: timing, and the most dangerous green
+
+The fourth family was chosen to **break** the model rather than confirm it, and
+it did. A notice under section 138 of the Negotiable Instruments Act, 1881 has
+almost none of its legal effect in the words: thirty days from the bank's return
+memo to give it, fifteen for the drawer to pay, a month to complain. Authored as
+CONTENT requirements, the assessment reported **7 of 7 RESOLVED for a notice the
+system had no idea when was sent.** A flawlessly drafted notice served on day
+thirty-one is worth nothing, and the report said it was complete.
+
+`TIMING` is the fourth kind. Where the window is computable from the intake it is
+computed — a notice on day 31 reports `OUT_OF_TIME` with the arithmetic shown —
+and where it is not, it reports `UNVERIFIABLE`. The complaint has not been filed
+and cannot be observed; **unverifiable is the honest answer and must never drift
+to resolved.** A TIMING requirement is refused admission unless it names the
+external event the clock runs from, because without that it cannot be
+distinguished from a clause that merely mentions a period.
+
+### No state but RESOLVED and DEFAULTED counts as success
+
+`PROVIDED_FOR`, `UNVERIFIABLE`, `APPLICABILITY_UNKNOWN` and `OUT_OF_TIME` must
+never be folded into an "n of n satisfied" summary. That number is what a user
+reads, and a summary that counts *"the document contains a registration clause"*
+as *"registration: complete"* is the most dangerous output this system can
+produce. Pinned across every family's assessment.
+
+### The model holds outside the family it was designed for
+
+The MSA's identity comes from commercial architecture — how work is ordered,
+priced, governed and exited. The **employment contract's comes from statute**:
+the Code on Wages fixes when and how much is paid, the POSH Act imposes a duty
+that does not depend on the contract at all, provident fund and gratuity attach
+on thresholds nobody negotiates. Fourteen requirements, eight of them naming the
+statute whose operation makes them identity-defining, and the test refuses a
+statute-driven registry whose requirements read like commercial preferences.
+
+The **tenancy** is a third source again — partly formality, where the document's
+legal effect depends on acts performed outside it. Three families, three
+different places identity comes from, one model:
+
+| Family | Identity comes from | What it exposed |
+| --- | --- | --- |
+| Master Service Agreement | commercial architecture | boilerplate masquerading as substance |
+| Employment contract | statute | unknown applicability masquerading as inapplicability |
+| Tenancy | formality | a clause about an act masquerading as the act |
+| Cheque-bounce notice | timing | a stated period masquerading as a met deadline |
+
+Each defect was corrected at the level it belonged to, not patched per family.
+
+Four kinds of legal completion have been **discovered by failure**, never designed
+speculatively: `CONTENT` (the document says it), `FORMALITY` (the document
+provides for an act performed on it), `TIMING` (an act within a window measured
+from an external event), and applicability that is *unknown* rather than absent.
+Further kinds — consent or approval by a third party, evidence of service,
+performance after execution — are **not** to be created until a family forces
+them. The ontology is strongest when a real failure discovers it.
+That is the difference between an architecture and three good implementations.
+
+A statutory entitlement is **not** a requirement merely because it exists. It is
+a requirement where the contract's silence causes a legal defect — which is what
+the counterfactual test is for. An employee's right to gratuity does not depend
+on the contract mentioning it; a contract that misstates the wage structure does
+cause harm, because section 2(y) of the Code on Wages, 2019 decides gratuity,
+provident fund and retrenchment compensation off that split for the whole of the
+employment.
+
+### The methodology this came from
+
+For each important document family, take authoritative source material and ask,
+in order: what are the identity-defining provisions — *not* "what clauses are
+common" but "if I remove this, does the document cease to perform its legal
+function"? Which already exist, and are they actually **reachable**? Which exist
+but are unwired — an engineering defect. Which do not exist — a knowledge defect.
+Which are conditional, and therefore need facts and treatments? Which are
+user-specific, and must come from the interview rather than the template?
+
+**The standing test:** could a lawyer receive the generated document and
+immediately identify what transaction it governs, what the parties agreed, what
+material risks and obligations were addressed, and which material questions
+remain open? If not, fifty beautifully written boilerplate clauses do not matter.
+
+---
+
+# Part II — Knowledge admission invariants
+
+*What every new legal artifact must satisfy before the loader will admit it.
+Structural validity only — see the distinction above.*
+
+
 ## 13. Fact admission
 
 **"A fact exists" and "a fact has legal significance" are separate claims,** and
@@ -369,3 +555,131 @@ existing semantic vocabulary?**
 
 That is how 11/11 stays 11/11 rather than becoming 11/11 plus a thousand special
 cases.
+
+## Adding to the fact registry
+
+Do not add a fact because it is common. Add it when its presence or absence
+creates a materially different treatment that **no existing fact can carry**.
+Otherwise the registry becomes a second `generationControls.js` with better
+manners.
+
+`scripts/clusterOpenMechanisms.mjs` supplies the evidence: it reports, across all
+document families, which mechanisms are open, which are asked about, and which no
+fact can resolve. Leverage is the number of families a missing circumstance
+blocks — not the number of mechanisms it touches in one.
+
+Its first run found five variable names for one legal question —
+`involves_personal_data`, `processes_personal_data`, and three family-specific
+spellings — nineteen families asking whether the DPDP Act, 2023 applies through
+variables that could not reach one another. The right answer was one fact with
+five aliases, not five facts. Registry coverage went from 29% to 40% of open
+positions with no new question authored and no new concept invented.
+
+---
+
+
+---
+
+# Part III — Current-state limitations
+
+**Everything in this part is debt, not design.** None of it is an architectural
+requirement, and none of it should be preserved for its own sake. Each entry says
+what is unfinished and what finishing it would mean.
+
+## L1. Forty families are still defined in JavaScript
+
+The architecture is proven — a genuinely new family needs no code (Part I, §12).
+The existing forty have not been migrated and still live in
+`shared/documentRegistry.js`, `backend/config/documentConfig.js` and
+`backend/config/variableConfig.js`.
+
+Migration is mechanical and the baseline is the safety net, one family at a time:
+
+```
+existing JS family -> extract definition -> validate -> move to registry
+                   -> prove identical baseline -> delete legacy definition
+                   -> canary still green
+```
+
+## L2. No clause in the library has advocate sign-off
+
+294 clauses: 152 marked awaiting review, 142 unmarked, **0 reviewed**. The
+ceiling is pinned in `tests/clauseProvenance.test.mjs` and raising it requires
+writing down the reason.
+
+`LEGALAID_REQUIRE_REVIEWED_CLAUSES=1` makes the bootstrap refuse them, which is
+the setting a production deployment should eventually run with.
+
+## L3. 68 of 85 Acts are unverified
+
+The statutory citations throughout the clause library and the treatments table
+were authored against sources that have not been checked against the current text
+of the Act. Structural admission (Part II) does not check them either — it checks
+that an authority is *stated*, not that it is *right*.
+
+## L4. Every draft is the deterministic floor
+
+Both the Gemini and Groq keys return 403, so the AI wording layer has never run
+against any of this. That is currently a healthy state: **the deterministic floor
+is the controlled reference implementation.**
+
+When a key works, the wording layer changes expression and nothing else. The test
+is already implied by the existing guardrails:
+
+```
+deterministic seed -> AI wording -> merge
+    -> same clause identity
+    -> same applicability
+    -> same ordering
+    -> same legal coverage
+```
+
+The AI improves expression. It does not decide law. Until then, do not weaken any
+Part I invariant to accommodate a wording layer that has not run.
+
+## L5. Materiality is declared on four clauses and inferred for ~290
+
+The rest inherit materiality from their ordering category, which was assigned to
+sequence a document rather than to describe what a provision does. The `materiality`
+field exists on the clause record; it has been authored four times.
+
+## L6. The MSA carries 45 clauses and none of them is reviewed
+
+A client-supplied Master Service Agreement checklist of seventeen headings was
+measured against what `msa.blueprint.json` actually emitted. Four were already
+served, three existed in the library but were wired to no blueprint, and seven
+were absent entirely. All seventeen are now served: **31 clauses → 45**.
+
+**"100% heading coverage" is not "the MSA is legally complete."** It means the
+mechanisms identified in that source are represented. It says nothing about
+whether the 45 clauses are sufficient, correctly drafted, commercially
+appropriate, or applicable to any particular engagement — the same
+structural/legal boundary this document draws for fact admission.
+
+Every extracted clause carries `source_provenance` naming the heading it came
+from and recording that the source was **not** copied. That source mixed three
+kinds of material a reviewer needs to know about:
+
+- **US regulatory provisions** — HIPAA, the False Claims Act, 42 U.S.C. § 1320a-7a,
+  the Red Flag Rules. These cannot apply to an Indian agreement and none of them
+  entered the library.
+- **India Post Payments Bank provisions** under the RBI outsourcing regime — real
+  Indian law, but a much heavier regime than a generic MSA should carry. Held back
+  as a variant rather than made generic.
+- **Unresolved `*` placeholders in economically material terms**, notably the
+  termination-for-convenience fee formula. Those were left visibly incomplete.
+  `SERVICE_TERMINATION_CONVENIENCE_001` pays for work satisfactorily rendered plus
+  non-cancellable costs — it does not invent the source's missing numbers, and a
+  reviewer should confirm that is the right commercial position rather than assume
+  a formula was considered and rejected.
+
+Two clauses warrant reading first. `CORE_INDEMNITY_PROCEDURE_001` exists because
+`CORE_INDEMNITY_001` grants an indemnity and says nothing about how a claim is
+run; section 125 of the Indian Contract Act, 1872 makes recovery conditional on
+the indemnity-holder's prudence and on not contravening the indemnifier's orders,
+so the machinery is what lets those conditions be satisfied. The two are kept as
+separate clauses because they are separate machinery that happens to operate
+together. `CORE_RESIDUAL_KNOWLEDGE_001` is the provision most commonly
+over-drafted in a services agreement: too wide and it hollows out the
+confidentiality obligation beside it, too narrow and section 27 makes that
+obligation itself a restraint.

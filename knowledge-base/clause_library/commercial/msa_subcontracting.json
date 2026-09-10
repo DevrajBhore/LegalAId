@@ -1,0 +1,58 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "MSA_SUBCONTRACTING_001",
+  "name": "Subcontracting",
+  "title": "Subcontracting",
+  "category": "OBLIGATIONS",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "VENDOR_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT"
+  ],
+  "materiality": "LEGAL",
+  "text": "The Service Provider shall not subcontract the whole or any part of the Services without the Client's prior written consent, which shall not be unreasonably withheld where the proposed subcontractor is competent and willing to be bound by terms no less protective than these. Consent is not required for the use of the Service Provider's own affiliates, of which the Service Provider shall give the Client not less than thirty (30) days' written notice. The Service Provider shall satisfy itself of the suitability of every subcontractor before engaging it, and shall procure that each is bound in writing to the obligations of confidentiality, data protection and compliance with law set out in this Agreement. Subcontracting does not transfer any obligation: the Service Provider remains liable to the Client for the acts and omissions of every subcontractor as though they were its own, and nothing in a subcontract creates any contractual relationship between the Client and the subcontractor or any obligation on the Client to pay it.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "40",
+      "note": "Where the parties intended the promisor to perform personally, the promise must be performed by him; otherwise a representative may perform. An express subcontracting clause settles which of those the parties intended rather than leaving it to construction."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform their promises; delegating performance does not discharge the promisor."
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(2)",
+      "note": "A data fiduciary remains responsible for compliance including in respect of processing by a data processor engaged on its behalf, so back-to-back obligations are a statutory necessity where personal data is involved."
+    }
+  ],
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause permits subcontracting of the whole of the Services, which may amount to an assignment of the contract and requires the Client's consent as such.",
+    "Consent is drafted as absolute where the engagement is one the law treats as delegable, so that the restriction operates as a penalty rather than a protection.",
+    "The Service Provider is released from liability for a subcontractor's acts, which defeats the purpose of the clause and leaves the Client without a counterparty.",
+    "The clause omits back-to-back confidentiality or data-protection obligations where the subcontractor will handle the Client's confidential information or personal data."
+  ],
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "CORE_ASSIGNMENT_001",
+    "CORE_COMPLIANCE_WITH_LAW_001"
+  ],
+  "authoring_note": "Authored because the library had no subcontracting clause at all; CORE_ASSIGNMENT_001 governs assignment, which is a different act with different consequences. Confirm the thirty-day affiliate notice and whether consent should be capable of being withheld at the Client's sole discretion in a regulated engagement."
+}

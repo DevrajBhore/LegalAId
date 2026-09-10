@@ -1,0 +1,61 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "CORE_RESIDUAL_KNOWLEDGE_001",
+  "name": "Residual Knowledge",
+  "title": "Residual Knowledge",
+  "category": "CONFIDENTIALITY",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "NDA",
+    "TECHNOLOGY_LICENSE_AGREEMENT"
+  ],
+  "materiality": "LEGAL",
+  "text": "Nothing in this Agreement prevents an individual who has had access to the other Party's Confidential Information from using, in the ordinary course of that individual's work, the skill, experience and general knowledge unaided memory has retained. This Clause does not permit the use or disclosure of the other Party's Confidential Information itself, does not permit the deliberate memorisation of it for later use, does not license any intellectual property right in it, and does not apply to trade secrets, to personal data, or to anything recorded in tangible or electronic form. The confidentiality obligations in this Agreement continue to apply in full to everything outside the narrow scope of this Clause.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "27",
+      "note": "A confidentiality obligation drafted so widely that it prevents a person from practising the skill they have acquired operates as a restraint of trade and is void to that extent; a bounded residual-knowledge carve-out is how the obligation stays enforceable."
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "14",
+      "note": "No licence of any copyright is granted by this Clause; the exclusion is express because general knowledge and a protected work are easily conflated in practice."
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(4)",
+      "note": "Personal data is excluded from the carve-out because a data fiduciary's security obligations cannot be waived by describing recollection as general knowledge."
+    }
+  ],
+  "enforceability": "MEDIUM",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The carve-out extends to information recorded in any form, which makes the confidentiality obligation illusory.",
+    "It covers trade secrets or personal data, which cannot be released by describing them as remembered rather than recorded.",
+    "It is drafted so as to license the underlying intellectual property rather than merely to permit the exercise of acquired skill.",
+    "It permits deliberate memorisation for the purpose of later use, which is disclosure by another route."
+  ],
+  "depends_on": [
+    "CORE_CONFIDENTIALITY_001"
+  ],
+  "suggested_with": [
+    "CORE_SURVIVAL_001"
+  ],
+  "authoring_note": "Deliberately narrow: unaided memory only, express exclusions for trade secrets, personal data and anything recorded. A residual-rights clause is the most commonly over-drafted provision in a services agreement and the one most likely to hollow out the confidentiality obligation it sits beside. Confirm the exclusions are complete.",
+  "source_provenance": {
+    "origin": "client-supplied MSA clause checklist, September 2026",
+    "heading": "Heading 13 (Proprietary Rights), sub-clause 13.4 Residual Rights.",
+    "extraction_note": "Extracted as a legal PROPOSITION from a client-supplied Master Service Agreement checklist, then drafted afresh against Indian law. The source was not copied: it mixed US regulatory material (HIPAA, the False Claims Act, 42 U.S.C. s.1320a-7a, the Red Flag Rules) that cannot apply here, India Post Payments Bank provisions tied to the RBI outsourcing regime that must not be made generic, and unresolved '*' placeholders in economically material terms. None of that entered this clause; the statutory basis was researched independently."
+  }
+}

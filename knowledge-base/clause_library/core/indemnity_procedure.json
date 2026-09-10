@@ -1,0 +1,64 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "CORE_INDEMNITY_PROCEDURE_001",
+  "name": "Conduct of Indemnified Claims",
+  "title": "Conduct of Indemnified Claims",
+  "category": "INDEMNITY",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT",
+    "SUPPLY_AGREEMENT",
+    "VENDOR_AGREEMENT",
+    "DISTRIBUTION_AGREEMENT",
+    "JOINT_VENTURE_AGREEMENT"
+  ],
+  "materiality": "LEGAL",
+  "text": "Where a Party entitled to be indemnified under this Agreement becomes aware of a claim for which it may seek indemnity, it shall notify the indemnifying Party in writing as soon as reasonably practicable, giving the particulars then known to it, and shall give the indemnifying Party such assistance in the defence as it reasonably requests, at the indemnifying Party's cost. The indemnifying Party may take over the conduct of the defence by written notice, and shall then conduct it diligently and keep the indemnified Party informed; the indemnified Party may participate at its own cost through advisers of its own choosing. If the indemnifying Party does not take over the defence within a reasonable time, the indemnified Party may defend the claim as it thinks fit and recover the cost of doing so. Neither Party shall admit liability, settle or compromise a claim without the other's written consent, which shall not be unreasonably withheld, and no settlement shall be made that does not release the indemnified Party unconditionally. The indemnified Party shall take the steps the indemnifying Party reasonably requires to mitigate the loss, and shall account to the indemnifying Party for any recovery it makes in respect of the same loss. A delay in notification does not defeat the indemnity except to the extent the indemnifying Party is actually prejudiced by it.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "A contract of indemnity is a promise to save the other from loss caused by the conduct of the promisor or of any other person."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "125",
+      "note": "The indemnity-holder may recover damages, costs and sums paid under a compromise, provided he did not contravene the indemnifier's orders and acted as it would have been prudent to act absent any contract of indemnity, or the indemnifier authorised the compromise. This clause is the machinery that makes those conditions capable of being satisfied."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Compensation for loss caused by breach, and the duty to mitigate that runs alongside it."
+    }
+  ],
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "Notification is drafted as a condition precedent so that any delay, however harmless, extinguishes the indemnity.",
+    "The indemnifying Party may settle on terms that leave the indemnified Party exposed to the same claimant.",
+    "The indemnified Party may settle without consent and still recover, which removes the protection section 125 makes conditional on prudence and authority.",
+    "Conduct of the defence is given to the indemnifying Party without any obligation to conduct it diligently or to keep the indemnified Party informed."
+  ],
+  "depends_on": [
+    "CORE_INDEMNITY_001"
+  ],
+  "suggested_with": [
+    "CORE_LIMITATION_LIABILITY_001",
+    "CORE_NOTICE_001"
+  ],
+  "authoring_note": "Authored because CORE_INDEMNITY_001 grants an indemnity and says nothing about how a claim is run, which is the point at which an indemnity usually fails. Section 125 makes recovery conditional on the indemnity-holder's prudence and on not contravening the indemnifier's orders, so the machinery is not optional decoration. Confirm the 'actually prejudiced' proviso and whether consent to settle should be deemed given after a stated period of silence.",
+  "source_provenance": {
+    "origin": "client-supplied MSA clause checklist, September 2026",
+    "heading": "Heading 14 (Indemnities and Other Provisions) — the conditions in limb B.",
+    "extraction_note": "Extracted as a legal PROPOSITION from a client-supplied Master Service Agreement checklist, then drafted afresh against Indian law. The source was not copied: it mixed US regulatory material (HIPAA, the False Claims Act, 42 U.S.C. s.1320a-7a, the Red Flag Rules) that cannot apply here, India Post Payments Bank provisions tied to the RBI outsourcing regime that must not be made generic, and unresolved '*' placeholders in economically material terms. None of that entered this clause; the statutory basis was researched independently."
+  }
+}

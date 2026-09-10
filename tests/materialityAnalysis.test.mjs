@@ -30,6 +30,14 @@ const CASES = [
     party_1_name: "Ashwin Traders Private Limited", party_2_name: "Kesari Components LLP",
     goods_description: "Precision-machined brass fittings.", contract_value: "4500000",
   }],
+  // Added after the MSA was found gating two clauses on governance flags no MSA
+  // field could set. The unreachable-gate check only covers the types listed
+  // here, so a type absent from this list can carry the defect indefinitely.
+  ["MASTER_SERVICE_AGREEMENT", {
+    party_1_name: "Ashwin Traders Private Limited", party_2_name: "Kesari Systems LLP",
+    services_description: "Application support and managed operations across statements of work.",
+    payment_terms: "Charges per Statement of Work, net 30 days.", contract_duration: "36 months",
+  }],
 ];
 
 let checks = 0;

@@ -5,13 +5,18 @@
     "CORE_IDENTITY_001",
     "CORE_PURPOSE_001",
     "CORE_DEFINITIONS_001",
+    "CORE_REPRESENTATIONS_001",
     "MSA_SOW_MECHANISM_001",
     "MSA_ORDER_OF_PRECEDENCE_001",
+    "SERVICE_IMPLIED_SERVICES_001",
+    "MSA_SUBCONTRACTING_001",
     "SERVICE_PAYMENT_001",
     "CORE_TERM_001",
     "SERVICE_TERMINATION_001",
     "CORE_CONFIDENTIALITY_001",
+    "CORE_COMPLIANCE_WITH_LAW_001",
     "CORE_INDEMNITY_001",
+    "CORE_INDEMNITY_PROCEDURE_001",
     "CORE_LIMITATION_LIABILITY_001",
     "CORE_RELATIONSHIP_OF_PARTIES_001",
     "CORE_DISPUTE_RESOLUTION_001",
@@ -57,6 +62,36 @@
       "clause": "CORE_INSURANCE_001",
       "include_if": "include_insurance == true",
       "note": "Insurance covenant, added once the engagement's value or term reaches elevated exposure"
+    },
+    {
+      "clause": "CORE_GOVERNANCE_PROTECTIONS_001",
+      "include_if": "include_governance_protections == true",
+      "note": "Audit, information and escalation rights, included when the user supplied any of them."
+    },
+    {
+      "clause": "SERVICE_TERMINATION_CONVENIENCE_001",
+      "include_if": "termination_for_convenience == true",
+      "note": "Exit without cause, on notice and against a stated fee. Present in the library and reachable by no blueprint until now."
+    },
+    {
+      "clause": "MSA_GOVERNANCE_BODY_001",
+      "include_if": "include_governance_protections == true",
+      "note": "A standing body to run the relationship, as distinct from the audit and escalation rights in CORE_GOVERNANCE_PROTECTIONS_001."
+    },
+    {
+      "clause": "SERVICE_CUSTOMER_DEPENDENCIES_001",
+      "include_if": "include_deliverables == true",
+      "note": "Relief where the client's own failure prevents performance — Contract Act s.67."
+    },
+    {
+      "clause": "SERVICE_KEY_PERSONNEL_001",
+      "include_if": "include_sla == true",
+      "note": "Named roles and continuity, included where service levels are promised."
+    },
+    {
+      "clause": "CORE_RESIDUAL_KNOWLEDGE_001",
+      "include_if": "include_confidentiality == true",
+      "note": "What people carry in their heads, bounded so it does not become a restraint under s.27."
     }
   ],
   "mandatory_legal_checks": [

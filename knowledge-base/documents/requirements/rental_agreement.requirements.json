@@ -1,0 +1,171 @@
+{
+  "$comment": [
+    "A tenancy, chosen because its identity comes from a third place again.",
+    "The MSA's comes from commercial architecture, the employment contract's largely",
+    "from statute, and this one's partly from FORMALITY: a lease can say everything",
+    "correctly and still be legally ineffective because of something done, or not done,",
+    "outside the four corners of the document.",
+    "Two of these are not CONTENT requirements at all. A clause reading 'the parties shall register this Agreement' does not make the instrument registered, and reporting such a requirement RESOLVED because the clause is present would tell a user their lease is complete when section 49 of the Registration Act, 1908 bars it from being received in evidence. The best a document can achieve is PROVIDED_FOR."
+  ],
+  "document_type": "RENTAL_AGREEMENT",
+  "requirements": [
+    {
+      "id": "PREMISES_IDENTIFIED",
+      "statement": "The property let is identified.",
+      "identity_test": "Remove it and there is no demise: section 105 of the Transfer of Property Act, 1882 requires a transfer of a right to enjoy identified immoveable property.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_PREMISES_001",
+          "RENTAL_PROPERTY_DESCRIPTION_001",
+          "RENT_PROPERTY_USE_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "RENT_AND_TERM_CERTAIN",
+      "statement": "The rent and the period of the tenancy are stated.",
+      "identity_test": "Remove either and there is no lease under section 105, which requires a price paid or promised and a certain time, express or implied.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_RENT_PAYMENT_001",
+          "RENTAL_RENT_PAYMENT_001",
+          "RENTAL_TERM_001",
+          "RENT_TERM_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "POSSESSION_DELT_WITH",
+      "statement": "Delivery of possession and its return are dealt with.",
+      "identity_test": "Remove it and section 108(b) of the Transfer of Property Act, 1882 implies the obligation, but neither party has a stated date, condition or inventory to hold the other to.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_POSSESSION_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "DEPOSIT_AND_RETURN",
+      "statement": "Any security deposit, and the terms on which it is returned, are stated.",
+      "identity_test": "Remove it and the largest sum the tenant hands over is governed by nothing.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_SECURITY_DEPOSIT_001",
+          "RENTAL_SECURITY_DEPOSIT_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "OUTGOINGS_ALLOCATED",
+      "statement": "Who bears utilities, taxes and maintenance is stated.",
+      "identity_test": "Remove it and a running cost of the tenancy is allocated by implication, which is how a tenant comes to be told after the fact that the electricity was always theirs.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_UTILITIES_001",
+          "RENT_MAINTENANCE_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "REPAIR_OBLIGATIONS",
+      "statement": "Responsibility for repair is allocated.",
+      "identity_test": "Remove it and section 108 supplies defaults that few landlords and no tenants have read.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_MAINTENANCE_001",
+          "RENT_ALTERATIONS_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "EXIT_AND_NOTICE",
+      "statement": "How the tenancy ends, and on what notice.",
+      "identity_test": "Remove it and section 106 of the Transfer of Property Act, 1882 supplies the notice period by implication from the purpose of the letting.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_TERMINATION_001",
+          "RENTAL_TERM_001",
+          "CORE_TERMINATION_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "kind": "CONTENT"
+    },
+    {
+      "id": "INSTRUMENT_IS_STAMPED",
+      "statement": "The instrument bears the stamp duty the applicable State law requires.",
+      "identity_test": "Remove it and section 35 of the Indian Stamp Act, 1899 makes the document inadmissible in evidence for any purpose — the tenancy may be perfectly drafted and unenforceable in the only forum that matters.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "PROP_REGISTRATION_001",
+          "CORE_STAMP_AND_COSTS_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "FORMALITY",
+      "outside_the_document": "Stamping and registration are acts performed on the instrument, not statements made in it. The most a clause can do is provide for them."
+    },
+    {
+      "id": "INSTRUMENT_IS_REGISTERED",
+      "statement": "The instrument is registered where the law requires registration.",
+      "identity_test": "Remove it and a lease from year to year, or for a term exceeding one year, is void as a lease under section 107 of the Transfer of Property Act, 1882, and section 49 of the Registration Act, 1908 bars it from being received as evidence of the transaction.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "PROP_REGISTRATION_001",
+          "CORE_STAMP_AND_COSTS_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "kind": "FORMALITY",
+      "outside_the_document": "Stamping and registration are acts performed on the instrument, not statements made in it. The most a clause can do is provide for them."
+    }
+  ]
+}

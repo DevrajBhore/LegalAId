@@ -1990,6 +1990,9 @@ export const VARIABLE_CONFIG = {
         "DISTRIBUTION_AGREEMENT",
         "INDEPENDENT_CONTRACTOR_AGREEMENT",
         "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        // The MSA gates CORE_GOVERNANCE_PROTECTIONS_001 and MSA_GOVERNANCE_BODY_001
+        // on these and offered none of them, so both were decided by silence.
+        "MASTER_SERVICE_AGREEMENT",
       ],
       description: "State whether one party may inspect records, reports, deliverables, invoices, security controls, stock, or compliance evidence.",
       example: "Client may audit service records and invoice backup once per quarter with five business days' notice.",
@@ -2018,6 +2021,7 @@ export const VARIABLE_CONFIG = {
         "DISTRIBUTION_AGREEMENT",
         "INDEPENDENT_CONTRACTOR_AGREEMENT",
         "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "MASTER_SERVICE_AGREEMENT",
       ],
       description: "Describe periodic information, financial, operational, technical, or compliance updates expected from the other party.",
       example: "Monthly MIS, milestone tracker, compliance exception log, and material-risk updates.",
@@ -2045,6 +2049,7 @@ export const VARIABLE_CONFIG = {
         "DISTRIBUTION_AGREEMENT",
         "INDEPENDENT_CONTRACTOR_AGREEMENT",
         "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "MASTER_SERVICE_AGREEMENT",
       ],
       description: "Set out business escalation steps before legal remedies or formal disputes.",
       example: "Project manager escalation within 3 business days, senior management meeting within 7 business days, then formal dispute process.",
@@ -2067,6 +2072,7 @@ export const VARIABLE_CONFIG = {
         "DISTRIBUTION_AGREEMENT",
         "INDEPENDENT_CONTRACTOR_AGREEMENT",
         "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "MASTER_SERVICE_AGREEMENT",
       ],
       description: "Any extra lawful controls, reporting duties, approvals, safeguards, or operational protections you want added.",
       example: "Quarterly compliance certificate, prior approval for subcontracting, and written breach escalation report.",

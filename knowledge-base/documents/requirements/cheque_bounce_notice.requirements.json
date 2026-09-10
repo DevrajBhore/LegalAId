@@ -1,0 +1,142 @@
+{
+  "$comment": [
+    "FALSIFICATION EXERCISE. Chosen to break the model, not to confirm it.",
+    "",
+    "A notice under section 138 of the Negotiable Instruments Act, 1881 is the hardest case",
+    "so far, because almost nothing about its legal effect is in the words. It must be given",
+    "within thirty days of receipt of the bank's return memo; the cause of action arises only",
+    "on failure to pay within fifteen days of ITS receipt; and the complaint must follow",
+    "within a month of that. A flawlessly drafted notice served on day thirty-one is worth",
+    "nothing at all.",
+    "",
+    "The two timing requirements below are deliberately authored as CONTENT to see whether",
+    "the model reports them green. It does. That is the finding."
+  ],
+  "document_type": "CHEQUE_BOUNCE_NOTICE",
+  "requirements": [
+    {
+      "id": "DEMAND_IS_UNAMBIGUOUS",
+      "kind": "CONTENT",
+      "statement": "The notice demands payment of the cheque amount in terms capable of being complied with.",
+      "identity_test": "Remove it and there is no demand, and proviso (b) to section 138 of the Negotiable Instruments Act, 1881 is not satisfied however clearly the dishonour is described.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_STATUTORY_DEMAND_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "DISHONOUR_PARTICULARISED",
+      "kind": "CONTENT",
+      "statement": "The cheque, its dishonour and the bank's reason are particularised.",
+      "identity_test": "Remove it and the drawer cannot identify which instrument is complained of, and the notice fails for uncertainty.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "S138_CHEQUE_PARTICULARS_001",
+          "S138_DISHONOUR_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "LIABILITY_STATED",
+      "kind": "CONTENT",
+      "statement": "The debt or liability the cheque was issued to discharge is stated.",
+      "identity_test": "Remove it and section 138 does not apply at all: it reaches only a cheque drawn for the discharge of a legally enforceable debt or other liability.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_CHEQUE_PARTICULARS_001",
+          "S138_SUBJECT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "FIFTEEN_DAY_PERIOD_STATED",
+      "kind": "CONTENT",
+      "statement": "The fifteen-day period for payment is stated.",
+      "identity_test": "Remove it and the drawer is not told the period proviso (c) gives him, and the notice may be read as demanding immediate payment.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_PAYMENT_PERIOD_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONSEQUENCE_OF_DEFAULT",
+      "kind": "CONTENT",
+      "statement": "The consequence of non-payment is stated.",
+      "identity_test": "Remove it and the notice reads as a request rather than a statutory demand.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_CONSEQUENCE_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "NOTICE_GIVEN_IN_TIME",
+      "kind": "TIMING",
+      "statement": "The notice is given within thirty days of receipt of the bank's return memo.",
+      "identity_test": "Remove it and there is no offence to complain of: proviso (b) to section 138 makes the thirty-day window a condition of the cause of action, and it cannot be extended by anything the notice says.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_DISHONOUR_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "window": "Thirty days from receipt of the bank's return memo.",
+      "depends_on_event": "the drawer's receipt of the bank's memo returning the cheque unpaid",
+      "computable_from": {
+        "event": "return_memo_date",
+        "act": "notice_date",
+        "within_days": 30
+      }
+    },
+    {
+      "id": "COMPLAINT_FILED_IN_TIME",
+      "kind": "TIMING",
+      "statement": "A complaint is filed within one month of the cause of action arising.",
+      "identity_test": "Remove it and section 142(1)(b) bars the court from taking cognizance, whatever the merits.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_CONSEQUENCE_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "window": "One month from the cause of action, which arises fifteen days after the drawer receives this notice.",
+      "depends_on_event": "the expiry of the fifteen-day payment period, itself running from service of this notice",
+      "$note": "Deliberately left with no computable_from: the complaint has not been filed and the system cannot know when it will be. UNVERIFIABLE is the honest answer."
+    }
+  ]
+}

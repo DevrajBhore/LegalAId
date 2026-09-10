@@ -33,6 +33,7 @@ import { deriveGenerationControls } from "./generationControls.js";
 import { buildSemanticContext } from "./inputSemantics.js";
 import { buildDocumentIntelligence } from "./documentIntelligence.js";
 import { resolvePositions } from "./positionResolution.js";
+import { assessRequirements } from "./documentRequirements.js";
 import { getVariables } from "../config/variableConfig.js";
 import { buildObligations } from "./obligationTracker.js";
 import { resolveStampFinancials } from "./stampDutyBasis.js";
@@ -91,6 +92,16 @@ function buildSuccess(draft, validation, resolution = null) {
     // not decide it, and none of them claims the user chose.
     assumptions: resolution?.assumptions || [],
     position_outcomes: resolution?.outcomes || [],
+    // Does this document do what this KIND of document has to do? Reported
+    // separately from the clause count, because a draft can carry forty
+    // well-drafted boilerplate clauses and still fail to be the instrument it
+    // claims to be. Boilerplate coverage must never stand in for identity.
+    requirements: assessRequirements(
+      draft?.document_type,
+      (draft?.clauses || []).map((clause) => clause.clause_id),
+      resolution?.positions || {},
+      variables
+    ),
   };
 }
 

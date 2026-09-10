@@ -1,0 +1,48 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "SERVICE_IMPLIED_SERVICES_001",
+  "name": "Implied Services",
+  "title": "Services Not Expressly Described",
+  "category": "SERVICE",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "materiality": "DRAFTING",
+  "text": "Where a service, function or responsibility is not expressly described in this Agreement or in a Statement of Work but is reasonably necessary for the proper performance of the Services, it shall be treated as included within the Services and shall be performed at no additional charge, to the same extent and in the same manner as if it had been expressly described. This Clause does not oblige the Service Provider to absorb a material increase in its costs: where the Service Provider considers that performing such a service would materially increase its costs, it shall notify the Client in writing before incurring them and the Parties shall deal with the matter under the change procedure. A failure to give that notice before incurring the costs waives any claim to be paid for them.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "9",
+      "note": "A promise made otherwise than in words is an implied promise; this clause states expressly what would otherwise be left to construction."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "The obligation is to perform the promise, and a promise to supply a service carries what is reasonably necessary to supply it."
+    }
+  ],
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause is drafted so that anything the Client later asks for becomes part of the Services regardless of cost, which makes the consideration uncertain.",
+    "The notice requirement is drafted so that the Service Provider forfeits payment for work the Client instructed it to perform urgently and in writing.",
+    "It is used in place of a scope description, leaving the Services themselves undefined."
+  ],
+  "depends_on": [
+    "SERVICE_SCOPE_001"
+  ],
+  "suggested_with": [
+    "SERVICE_CHANGE_REQUEST_001"
+  ],
+  "authoring_note": "Confirm whether the cost-notice proviso should have a materiality threshold expressed as a percentage of the charges rather than the word 'materially'."
+}
