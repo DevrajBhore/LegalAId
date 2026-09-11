@@ -16,7 +16,7 @@
 import assert from "node:assert";
 import { generateDocument } from "../backend/services/documentService.js";
 import {
-  assessRequirements, loadDocumentRequirements, COVERAGE,
+  assessRequirements, loadDocumentRequirements, COVERAGE, FINDING, findingFor,
 } from "../backend/services/documentRequirements.js";
 
 let checks = 0;
@@ -274,5 +274,81 @@ console.log(
   "PASS  timing is computed where it can be, reported unverifiable where it cannot, " +
   "and never counted as satisfaction"
 );
+
+// ── 10. A document cannot assert a legal character its content defeats ─────
+// The fifth falsification, aimed at a boundary the first four never touched.
+// Those were all about the world OUTSIDE the document. This one is internal: an
+// MOU declaring itself non-binding while carrying dispute resolution, survival,
+// governing law and termination is not incomplete, it is incoherent — and Indian
+// courts gather intention from the whole instrument, not the label on it.
+//
+// It also breaks an assumption the model held silently until now: satisfaction
+// was MONOTONE in clause presence. Adding a clause could only ever help. Here
+// adding one defeats the requirement.
+const MOU_AS_GENERATED = [
+  "CORE_IDENTITY_001", "CORE_PURPOSE_001", "MOU_NON_BINDING_001", "CORE_CONFIDENTIALITY_001",
+  "CORE_TERM_001", "CORE_SURVIVAL_001", "CORE_TERMINATION_001",
+  "CORE_DISPUTE_RESOLUTION_001", "CORE_GOVERNING_LAW_001",
+];
+const incoherent = assessRequirements("MOU", MOU_AS_GENERATED, {}, {});
+const character = incoherent.results.find((r) => r.id === "NON_BINDING_CHARACTER");
+assert.strictEqual(character.coverage, COVERAGE.CONTRADICTED,
+  "an MOU that declares itself non-binding while carrying the machinery of a binding contract " +
+  "must not report its non-binding character as satisfied merely because the declaring clause " +
+  "is present");
+assert.ok(character.contradicted_by.length >= 3, "the defeating clauses must be named");
+assert.strictEqual(findingFor(character.coverage), FINDING.ESTABLISHED_NEGATIVE,
+  "a contradiction is a determined negative, not incomplete work");
+
+// Remove the machinery and the same declaration stands.
+const coherent = assessRequirements("MOU",
+  ["CORE_IDENTITY_001", "CORE_PURPOSE_001", "MOU_NON_BINDING_001", "CORE_CONFIDENTIALITY_001", "CORE_TERM_001"],
+  {}, {});
+assert.strictEqual(
+  coherent.results.find((r) => r.id === "NON_BINDING_CHARACTER").coverage, COVERAGE.RESOLVED,
+  "without the contradicting clauses the declaration is sound — confidentiality alone must not " +
+  "defeat it, or every workable MOU becomes incoherent"
+);
+checks += 4;
+console.log("PASS  a declared legal character is defeated by content that contradicts it");
+
+// ── 11. Two dimensions, kept apart ─────────────────────────────────────────
+// KIND says what sort of thing is evaluated; FINDING says what was established.
+// Collapsing them is how a status vocabulary silts up with special cases.
+for (const assessment of [incoherent, inTime, lateByOne, tenancy]) {
+  for (const result of assessment.results) {
+    assert.ok(["CONTENT", "FORMALITY", "TIMING", "CHARACTER"].includes(result.kind),
+      `${result.id} has no kind`);
+    assert.ok(Object.values(FINDING).includes(result.finding),
+      `${result.id} coverage "${result.coverage}" maps to no finding`);
+    // The rule the whole vocabulary rests on.
+    const isSuccess = result.finding === FINDING.ESTABLISHED_POSITIVE;
+    const countsAsResolved = result.coverage === COVERAGE.RESOLVED || result.coverage === COVERAGE.DEFAULTED;
+    assert.strictEqual(isSuccess, countsAsResolved,
+      `${result.id}: "${result.coverage}" and its finding disagree about whether it is success`);
+    checks += 3;
+  }
+}
+console.log("PASS  kind and finding are separate, and only ESTABLISHED_POSITIVE is success");
+
+// ── 12. The semantic regression corpus ─────────────────────────────────────
+// Five families, each of which once produced a green report for a legally
+// unfinished document. Every future change to this layer must survive all five.
+const CORPUS = {
+  MASTER_SERVICE_AGREEMENT: "boilerplate masquerading as substance",
+  EMPLOYMENT_CONTRACT: "unknown applicability masquerading as inapplicability",
+  RENTAL_AGREEMENT: "a clause about an act masquerading as the act",
+  CHEQUE_BOUNCE_NOTICE: "a stated period masquerading as a met deadline",
+  MOU: "a declared character its own content defeats",
+};
+const registered = loadDocumentRequirements();
+for (const [documentType, falseGreen] of Object.entries(CORPUS)) {
+  assert.ok(registered.has(documentType),
+    `${documentType} has left the semantic regression corpus. It is there because it once ` +
+    `reported green for a legally unfinished document — ${falseGreen} — and removing it removes ` +
+    `the evidence that the defect is fixed.`);
+  checks += 1;
+}
+console.log(`PASS  semantic regression corpus intact (${Object.keys(CORPUS).length} families)`);
 
 console.log(`\nALL GREEN (${checks} checks)`);

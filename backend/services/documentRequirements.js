@@ -69,7 +69,55 @@ export const COVERAGE = {
   UNVERIFIABLE: "UNVERIFIABLE",
   // The window was computed and missed. This is a real failure, not a gap.
   OUT_OF_TIME: "OUT_OF_TIME",
+  // The document asserts a legal character its own content defeats.
+  //
+  // An MOU forced this, and it is unlike the first four findings: every one of
+  // those concerned the world OUTSIDE the document. This one is internal. A
+  // memorandum declaring itself non-binding while carrying confidentiality,
+  // dispute resolution, survival and termination is not incomplete, it is
+  // incoherent, and under Indian law intention is gathered from the whole
+  // instrument rather than from the label on it.
+  //
+  // It also breaks an assumption the model had held silently until now:
+  // satisfaction was MONOTONE in clause presence -- adding a clause could only
+  // ever help. Here adding one defeats the requirement.
+  CONTRADICTED: "CONTRADICTED",
 };
+
+// The second dimension, kept apart from the first on purpose.
+//
+//   KIND    what sort of thing is being evaluated   (CONTENT/FORMALITY/TIMING/CHARACTER)
+//   FINDING what the system managed to establish about it
+//
+// Without the separation the coverage vocabulary silts up with special cases and
+// nobody can say whether a new state is a new kind of legal thing or a new kind
+// of knowledge. OUT_OF_TIME is not a weaker UNRESOLVED -- it is a DETERMINED
+// NEGATIVE. PROVIDED_FOR is not a weaker RESOLVED -- it is the ceiling for a
+// formality. Only ESTABLISHED_POSITIVE is success.
+export const FINDING = {
+  ESTABLISHED_POSITIVE: "ESTABLISHED_POSITIVE",
+  ESTABLISHED_NEGATIVE: "ESTABLISHED_NEGATIVE",
+  CEILING_FOR_KIND: "CEILING_FOR_KIND",
+  NOT_ESTABLISHED: "NOT_ESTABLISHED",
+  WORK_INCOMPLETE: "WORK_INCOMPLETE",
+};
+
+const FINDING_OF = {
+  RESOLVED: FINDING.ESTABLISHED_POSITIVE,
+  DEFAULTED: FINDING.ESTABLISHED_POSITIVE,
+  NOT_APPLICABLE: FINDING.ESTABLISHED_NEGATIVE,
+  OUT_OF_TIME: FINDING.ESTABLISHED_NEGATIVE,
+  CONTRADICTED: FINDING.ESTABLISHED_NEGATIVE,
+  PROVIDED_FOR: FINDING.CEILING_FOR_KIND,
+  UNVERIFIABLE: FINDING.NOT_ESTABLISHED,
+  APPLICABILITY_UNKNOWN: FINDING.NOT_ESTABLISHED,
+  UNRESOLVED: FINDING.WORK_INCOMPLETE,
+  ESCALATED: FINDING.WORK_INCOMPLETE,
+};
+
+export function findingFor(coverage) {
+  return FINDING_OF[coverage] || null;
+}
 
 let cache = null;
 
@@ -95,8 +143,21 @@ function admit(doc, source) {
     if (!(Array.isArray(by.any_of) && by.any_of.length) && !(Array.isArray(by.all_of) && by.all_of.length)) {
       problems.push(`${id}: satisfied_by needs any_of or all_of`);
     }
-    if (requirement.kind && !["CONTENT", "FORMALITY", "TIMING"].includes(requirement.kind)) {
-      problems.push(`${id}: kind must be CONTENT, FORMALITY or TIMING`);
+    if (requirement.kind && !["CONTENT", "FORMALITY", "TIMING", "CHARACTER"].includes(requirement.kind)) {
+      problems.push(`${id}: kind must be CONTENT, FORMALITY, TIMING or CHARACTER`);
+    }
+    if (requirement.kind === "CHARACTER") {
+      if (!Array.isArray(requirement.contradicted_by) || !requirement.contradicted_by.length) {
+        problems.push(
+          `${id}: a CHARACTER requirement must list what defeats it. A declaration about the ` +
+          `instrument's own legal character is worth nothing if the content beside it says ` +
+          `otherwise, and listing nothing makes it an ordinary content requirement wearing a ` +
+          `stronger name.`
+        );
+      }
+      if (!String(requirement.coherence_note || "").trim()) {
+        problems.push(`${id}: coherence_note — say why the listed clauses defeat the declaration`);
+      }
     }
     if (requirement.kind === "TIMING") {
       if (!String(requirement.window || "").trim()) {
@@ -226,6 +287,15 @@ export function assessRequirements(documentType, clauseIds = [], positions = {},
           (p) => p?.provenance === "drafting_default" && p?.clause === id
         )
       );
+      if (requirement.kind === "CHARACTER") {
+        const defeating = (requirement.contradicted_by || []).filter((id) => present.has(id));
+        return defeating.length
+          ? { id: requirement.id, kind: requirement.kind, coverage: COVERAGE.CONTRADICTED,
+              statement: requirement.statement, satisfied_by: satisfyingClauses,
+              contradicted_by: defeating, coherence_note: requirement.coherence_note }
+          : { id: requirement.id, kind: requirement.kind, coverage: COVERAGE.RESOLVED,
+              statement: requirement.statement, satisfied_by: satisfyingClauses };
+      }
       if (requirement.kind === "TIMING") {
         const timing = assessTiming(requirement, variables);
         return {
@@ -260,6 +330,13 @@ export function assessRequirements(documentType, clauseIds = [], positions = {},
     };
   });
 
+  // Both dimensions on every result, always.
+  for (const result of results) {
+    const requirement = requirements.find((r) => r.id === result.id);
+    result.kind = result.kind || requirement?.kind || "CONTENT";
+    result.finding = findingFor(result.coverage);
+  }
+
   const counted = (kind) => results.filter((r) => r.coverage === kind).length;
   return {
     documentType,
@@ -276,6 +353,7 @@ export function assessRequirements(documentType, clauseIds = [], positions = {},
       provided_for: counted(COVERAGE.PROVIDED_FOR),
       unverifiable: counted(COVERAGE.UNVERIFIABLE),
       out_of_time: counted(COVERAGE.OUT_OF_TIME),
+      contradicted: counted(COVERAGE.CONTRADICTED),
       unresolved: counted(COVERAGE.UNRESOLVED),
       escalated: counted(COVERAGE.ESCALATED),
       not_applicable: counted(COVERAGE.NOT_APPLICABLE),

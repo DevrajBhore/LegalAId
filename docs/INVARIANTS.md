@@ -429,6 +429,132 @@ to resolved.** A TIMING requirement is refused admission unless it names the
 external event the clock runs from, because without that it cannot be
 distinguished from a clause that merely mentions a period.
 
+### Falsification: a document cannot assert a character its content defeats
+
+The fifth family was aimed at a boundary the first four never touched. All of
+those concerned the world **outside** the document — substance behind
+boilerplate, an unasked fact, an unperformed act, an unmet deadline. This one is
+**internal**.
+
+An MOU that declares itself non-binding while carrying dispute resolution,
+survival, governing law and termination is not incomplete; it is **incoherent**,
+and Indian courts gather intention from the whole instrument rather than from the
+label on it. Authored as a CONTENT requirement it reported **6 of 6 RESOLVED** —
+for the MOU the system generates today.
+
+`CHARACTER` is the fourth kind, and it broke an assumption the model had held
+silently since the beginning: **satisfaction was monotone in clause presence.**
+Adding a clause could only ever help. Here adding one defeats the requirement. A
+CHARACTER requirement is refused admission unless it lists what defeats it and
+says why — without that it is an ordinary content requirement wearing a stronger
+name. Confidentiality is deliberately **not** listed as defeating: it is an
+obligation parties may intend to bind even where the commercial understanding
+does not, and treating it as a contradiction would make every workable MOU
+incoherent.
+
+### Two dimensions, kept apart
+
+```
+KIND     what sort of thing is evaluated     CONTENT | FORMALITY | TIMING | CHARACTER
+FINDING  what the system established          ESTABLISHED_POSITIVE
+                                              ESTABLISHED_NEGATIVE
+                                              CEILING_FOR_KIND
+                                              NOT_ESTABLISHED
+                                              WORK_INCOMPLETE
+```
+
+Collapsing them is how a status vocabulary silts up with special cases and nobody
+can say whether a new state is a new kind of legal thing or a new kind of
+knowledge. `OUT_OF_TIME` is **not** a weaker `UNRESOLVED` — it is a determined
+negative. `PROVIDED_FOR` is **not** a weaker `RESOLVED` — it is the ceiling for a
+formality. `CONTRADICTED` is a determined negative too, not incomplete work.
+
+Only `ESTABLISHED_POSITIVE` is success, and the test asserts that the coverage
+state and its finding never disagree about that.
+
+### Satisfaction is not monotone in clause presence
+
+The MOU broke an assumption the model had held silently from the beginning:
+**more applicable clauses meant at least as much satisfaction.** A clause can be
+positive evidence for one requirement and negative evidence for another, which
+means `satisfied_by` alone was never sufficient for every kind of requirement.
+
+Contradiction must be **evidence-based, never similarity-based**. The registry
+must not become "an LLM thought these clauses looked inconsistent, therefore
+CONTRADICTED". A CHARACTER requirement names what defeats it and why, the
+assessment is deterministic, and the same boundary holds as everywhere else:
+knowledge authors the legal proposition, deterministic machinery evaluates it,
+the model does not invent the legal relationship.
+
+---
+
+## 15. Certification: what a family has actually been through
+
+The dangerous claim:
+
+```
+40 document types  ·  40 generators that run  ·  40 documents called "supported"
+```
+
+when five have been substantively tested. *It generates* and *it has been shown
+to do the legal work it claims* are different sentences.
+
+```
+NOT_ASSESSED  ->  IDENTITY_AUTHORED  ->  REQUIREMENTS_ADMITTED
+   ->  GENERATION_COVERAGE_TESTED  ->  FALSIFICATION_PASSED
+   ->  ADVOCATE_REVIEW  ->  APPROVED
+```
+
+**Status is derived, never declared.** No family is promoted by writing a better
+word in a file; every rung is computed from evidence that exists independently of
+the claim, and the test proves the ladder *falls* when evidence is withheld. The
+one rung with an authored component — falsification — requires naming the
+specific attack and the false green it produced, because "we tested it" is not
+evidence and *"we fed it a boilerplate façade and it reported 1 of 13"* is.
+
+**Today: 0 approved, 4 falsification-passed, 36 not assessed.** The only number
+that may ever be put in front of a user as *supported* is the first one.
+
+The goal is not 40/40. Twelve families fully assessed, falsification-tested and
+advocate-reviewed is worth more than forty with requirements superficially
+authored and nothing reviewed.
+
+### The working method, for every family
+
+```
+01 select family              09 map requirements -> treatments
+02 gather authoritative source 10 map treatments -> clauses
+03 define legal identity      11 verify every clause is reachable
+04 apply the counterfactual   12 generate adversarial fixtures
+05 separate identity from     13 falsify the assessment
+   boilerplate                14 fix the ABSTRACTION, not the fixture
+06 author requirements        15 re-run the whole corpus
+07 identify applicability     16 advocate review
+08 identify external acts     17 only then mark the family assessed
+```
+
+Step 14 and step 15 are the ones that matter. A defect found while working on a
+sale agreement is not fixed in the sale agreement — it is fixed at the level it
+belongs to, and then every earlier family has to survive the change.
+
+The question to ask of each family is not *does this generate?* but **how can
+this document falsely appear complete?** Five ways are known. For every new
+family, actively hunt a sixth.
+
+### The semantic regression corpus
+
+Five families, each of which once produced a **green report for a legally
+unfinished document**. Every future change to this layer must survive all five,
+and the test names the false green each one exists to prevent:
+
+| Family | Identity from | False green |
+| --- | --- | --- |
+| Master Service Agreement | commercial architecture | boilerplate as substance |
+| Employment contract | statute | unknown applicability as inapplicability |
+| Tenancy | formality | a clause about an act as the act |
+| Cheque-bounce notice | timing | a stated period as a met deadline |
+| Memorandum of understanding | self-declared character | a declaration its own content defeats |
+
 ### No state but RESOLVED and DEFAULTED counts as success
 
 `PROVIDED_FOR`, `UNVERIFIABLE`, `APPLICABILITY_UNKNOWN` and `OUT_OF_TIME` must

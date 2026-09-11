@@ -1,0 +1,127 @@
+{
+  "$comment": [
+    "FALSIFICATION, fifth family. Aimed at a boundary none of the first four touched:",
+    "a document that makes a claim about its OWN legal character which its own content",
+    "may defeat.",
+    "",
+    "The first four false greens were all about the world outside the document -- substance",
+    "behind boilerplate, an unasked fact, an unperformed act, an unmet deadline. This one is",
+    "internal. An MOU that declares itself non-binding while carrying enforceable",
+    "obligations is not incomplete; it is incoherent, and under Indian law intention is",
+    "gathered from the whole instrument rather than from the label on it.",
+    "",
+    "NON_BINDING_CHARACTER is authored as CONTENT first, to see whether the model reports it",
+    "green. It does."
+  ],
+  "document_type": "MOU",
+  "requirements": [
+    {
+      "id": "PURPOSE_STATED",
+      "kind": "CONTENT",
+      "statement": "The subject the parties intend to explore is stated.",
+      "identity_test": "Remove it and the instrument records nothing: an MOU whose purpose is unstated has no content at all.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_PURPOSE_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Assessed the MOU the product generates today, which declares itself non-binding while carrying dispute resolution, survival, governing law and termination.",
+        "false_green": "6 of 6 reported RESOLVED including NON_BINDING_CHARACTER, because clause evidence was assumed additive and nothing could defeat a requirement.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
+    },
+    {
+      "id": "PARTIES_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The parties are identified.",
+      "identity_test": "Remove it and there is no record of who is understood to have agreed anything.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_IDENTITY_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "DURATION_OR_REVIEW",
+      "kind": "CONTENT",
+      "statement": "A period, or a point at which the understanding is revisited, is stated.",
+      "identity_test": "Remove it and an instrument the parties intended as preliminary has no end, and stale understandings are later relied on.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_TERM_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "EXIT_IS_FREE",
+      "kind": "CONTENT",
+      "statement": "Either party may walk away.",
+      "identity_test": "Remove it and a preliminary understanding starts to look like a commitment neither party intended to give.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_TERMINATION_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "NON_BINDING_CHARACTER",
+      "kind": "CHARACTER",
+      "statement": "The instrument states that it does not create legally binding obligations.",
+      "identity_test": "Remove it and a memorandum recording terms with sufficient certainty may be held to be a concluded contract under section 10 of the Indian Contract Act, 1872, which is the opposite of what the parties set out to record.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "MOU_NON_BINDING_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "contradicted_by": [
+        "CORE_DISPUTE_RESOLUTION_001",
+        "CORE_SURVIVAL_001",
+        "CORE_GOVERNING_LAW_001",
+        "CORE_TERMINATION_001"
+      ],
+      "coherence_note": "A dispute-resolution clause presupposes disputes capable of being resolved between the parties; a survival clause presupposes obligations that survive; a governing-law clause chooses the law that will govern something. Each is evidence of an intention to create legal relations, and Indian courts gather that intention from the whole instrument rather than from the label on it. Confidentiality is deliberately NOT listed: it is an obligation the parties may intend to be binding even where the commercial understanding is not, and treating it as a contradiction would make every sound MOU incoherent."
+    },
+    {
+      "id": "CONFIDENCE_PRESERVED",
+      "kind": "CONTENT",
+      "statement": "Information exchanged while exploring is protected.",
+      "identity_test": "Remove it and the exploration itself becomes the risk, since the parties will have disclosed in order to decide.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_CONFIDENTIALITY_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}
