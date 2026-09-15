@@ -27,6 +27,7 @@
  * clauses a flag actually gates in this document's blueprint, using the
  * category, risk level and statutory basis those clauses already declare.
  */
+import { loadConcepts } from "./conceptResolver.js";
 import { positionOf, POSITION, deriveGenerationControls, isAffirmative } from "./generationControls.js";
 import { getBlueprintForDocumentType, getClauseById } from "./clauseAssembler.js";
 import { buildDocumentSections } from "./documentIntakeConfig.js";
@@ -143,12 +144,49 @@ function reachableFlags(documentType, variables, collectableFields) {
 // analysed tomorrow without anyone remembering to register it.
 function gatesFromBlueprint(blueprint) {
   const gates = new Map();
-  const record = (expression, clauseId) => {
-    const match = String(expression || "").trim().match(/^([A-Za-z0-9_]+)\s*(?:==|!=)/);
-    const flag = match ? match[1] : String(expression || "").trim();
+  const add = (flag, clauseId) => {
     if (!flag || !/^[A-Za-z0-9_]+$/.test(flag)) return;
     if (!gates.has(flag)) gates.set(flag, new Set());
     gates.get(flag).add(clauseId);
+  };
+  const record = (expression, clauseId) => {
+    const raw = String(expression || "").trim();
+
+    /*
+     * A concept gate expands to the intake fields the concept reads.
+     *
+     * Without this the question vanishes from every downstream accounting that
+     * keys on gate names — materiality, the fact-question plan, the answer-state
+     * corpus — because `concept:PERSONAL_DATA_PROCESSING` contains no `==` and
+     * is not a bare identifier. The corpus caught exactly that: switching
+     * nineteen blueprints to the concept silently dropped
+     * `processes_personal_data` from the outcomes, so the user was still asked
+     * the question and the system no longer tracked what the answer did.
+     *
+     * Expanding rather than special-casing keeps one question under one concept
+     * while leaving every existing consumer keyed on the field names it already
+     * understands.
+     */
+    if (raw.startsWith("concept:")) {
+      const concept = loadConcepts().get(raw.slice("concept:".length).trim());
+      /*
+       * Only sources that can ESTABLISH the concept become gates. A source that
+       * merely `sets` an attribute describes the concept once it is established
+       * and cannot decide whether it applies: `data_categories` says WHICH data,
+       * never THAT data is processed. Recording it as a gate made the
+       * reachability check report a defect that was an artefact of this
+       * expansion — the check was right and the expansion was too broad.
+       */
+      for (const source of concept?.detection?.a_structured || []) {
+        if (!Array.isArray(source.when) || !source.when.length) continue;
+        if (source.sets && Object.keys(source.sets).length) continue;
+        add(String(source.source || "").replace(/^(field|control):/, ""), clauseId);
+      }
+      return;
+    }
+
+    const match = raw.match(/^([A-Za-z0-9_]+)\s*(?:==|!=)/);
+    add(match ? match[1] : raw, clauseId);
   };
   for (const entry of blueprint?.conditional_clauses || []) {
     record(entry.include_if ?? entry.when, entry.clause);

@@ -1,0 +1,101 @@
+{
+  "$comment": [
+    "SEMANTIC CLASSIFICATION OF THE UNCLASSIFIED BUILDER DRIVERS (D4.9).",
+    "",
+    "D4.8 found 35 sentence-level changes whose drivers resolve to no layer of the knowledge base.",
+    "Five drivers account for all 35. D4.9 extracted the exact sentences each one moves, and this",
+    "file records what they appear to represent.",
+    "",
+    "EVERY CLASSIFICATION HERE IS A READING THAT NEEDS AN ADVOCATE. The evidence — which sentences",
+    "move, what force they carry, what the affected clause already cites — is mechanical and is in",
+    "docs/audit/DRIVER_SEMANTICS.md. The legal character of each driver is not.",
+    "",
+    "NOTHING IS MIGRATED. Recording that a driver looks like a legal proposition is not the same as",
+    "authoring one, and the whole point of the UNCLASSIFIED verdict was to stop the second from",
+    "happening automatically after the first.",
+    "",
+    "categories:",
+    "  LEGAL_PROPOSITION   a rule of law applies or does not, independently of what the parties want",
+    "  PARTY_AGREEMENT     the parties choose whether to create the right or duty; law permits either",
+    "  DRAFTING_DEFAULT    the text articulates a position that obtains anyway; removing it changes",
+    "                      the document's clarity or evidential weight, not the legal position",
+    "  DOCUMENT_DEPENDENCY one clause's text depending on another clause's presence",
+    "  FACT_VALUE_RENDERING  an interpolated value, no change of assertion",
+    "  UNKNOWN             the evidence does not settle it"
+  ],
+  "findings": [
+    {
+      "finding": "ONE DRIVER CAN HAVE DIFFERENT LEGAL CHARACTER IN DIFFERENT FAMILIES",
+      "detail": "`termination_for_convenience` removes the same sentence in 16 families, differing only in party labels. In a Master Service Agreement the parties are free to create or withhold a convenience-termination right, which makes it a PARTY_AGREEMENT. In APPOINTMENT_LETTER and INTERNSHIP_AGREEMENT the same words operate against a statutory backdrop that constrains termination of employment. A single global classification for this driver would be wrong in at least one direction, and the uniformity of the text delta actively conceals that."
+    },
+    {
+      "finding": "TWO ADJACENT DRIVERS THE BUILDER TREATS IDENTICALLY HAVE DIFFERENT LEGAL CHARACTER",
+      "detail": "`termination_for_convenience` and `termination_for_cause` sit in the same builder and move sentences of the same shape. They are not the same kind of thing. A convenience right exists only because the contract creates it. A right to terminate for repudiatory breach arises under the Indian Contract Act 1872 s.39 whether or not the clause says so — and CORE_TERMINATION_001 already cites s.39. Removing the for-cause limb removes the ARTICULATION of a right, not the right."
+    },
+    {
+      "finding": "THE FIRST DRIVER THAT NEEDS THE JURISDICTION LAYER",
+      "detail": "`police_verification_required` removes an obligation to cooperate in filing tenant police-verification forms. Whether that obligation exists is a question of STATE law and local police orders, not of what the parties prefer. The repository has concepts, propositions, authority and requirements — and no jurisdiction dimension that could express 'mandatory in these states'. This is the first measured case where the missing knowledge is jurisdictional rather than substantive."
+    }
+  ],
+  "drivers": [
+    {
+      "driver": "termination_for_convenience",
+      "changes": 16,
+      "families": "16, identical text delta apart from party labels",
+      "removes": "The right of either party to terminate without cause on notice.",
+      "force": "RIGHT",
+      "clause_cites": ["Indian Contract Act, 1872 s.39", "Indian Contract Act, 1872 s.55", "Specific Relief Act, 1963 s.14"],
+      "classification": "PARTY_AGREEMENT_IN_COMMERCIAL_FAMILIES__UNKNOWN_IN_EMPLOYMENT",
+      "reasoning": "No statute requires or forbids a convenience-termination right in a commercial contract, so its presence is the parties' choice. The same sentence in an appointment letter or internship agreement operates where termination of employment is separately regulated, and whether it is enforceable there is a question this layer may not answer.",
+      "missing_knowledge": "No fact, concept, proposition or requirement represents the existence of a convenience-termination right. The intake asks the question; nothing records what the answer means.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "driver": "termination_for_cause",
+      "changes": 16,
+      "removes": "The articulation of a right to terminate on uncured material breach.",
+      "force": "STATEMENT",
+      "clause_cites": ["Indian Contract Act, 1872 s.39", "Indian Contract Act, 1872 s.55"],
+      "classification": "DRAFTING_DEFAULT",
+      "reasoning": "A promisee may put an end to the contract where the other party refuses or disables itself from performing — Indian Contract Act 1872 s.39, which the clause already cites. The limb states a cure period and a notice route, which are genuine drafting choices, but the underlying right does not depend on the sentence being present. Removing it reduces certainty rather than removing a right.",
+      "missing_knowledge": "If the cure period and notice mechanics are themselves material, they are a drafting parameter nobody has represented. The right itself needs no new representation.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "driver": "police_verification_required",
+      "changes": 1,
+      "removes": "An obligation on both parties to cooperate in filing prescribed police-verification or tenant-information forms.",
+      "force": "OBLIGATION",
+      "clause_cites": ["Registration Act, 1908 s.17", "Transfer of Property Act, 1882 s.107", "Indian Stamp Act, 1899 s.General"],
+      "classification": "LEGAL_PROPOSITION__JURISDICTIONAL",
+      "reasoning": "Tenant police verification is imposed by state police legislation and local orders in several states rather than by the parties' agreement. Its applicability turns on where the premises are, which is exactly the dimension the knowledge base does not model. The clause it sits in cites registration and stamp authorities that have nothing to do with police verification, which is itself a sign the obligation was attached where it fitted rather than where it belonged.",
+      "missing_knowledge": "No concept, no authority, no requirement — and no jurisdiction layer to carry the applicability even if one were authored.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "driver": "escrow_required",
+      "changes": 1,
+      "removes": "An obligation to establish and maintain source-code escrow with release events tied to insolvency, maintenance default or cessation of business.",
+      "adds": "A statement that no escrow applies unless separately agreed.",
+      "force": "OBLIGATION",
+      "clause_cites": ["Insolvency and Bankruptcy Code, 2016 s.14"],
+      "classification": "PARTY_AGREEMENT",
+      "reasoning": "Escrow is a commercial arrangement the parties elect. The IBC s.14 citation is doing real work — a moratorium can frustrate a release event triggered by the developer's insolvency — but that is a consequence of choosing escrow, not a rule requiring it.",
+      "note": "The ADDED sentence is a negation of the removed obligation rather than its absence. This is the polarity phenomenon of invariant 49 occurring in a second place, and it means an `implements` annotation on TECH_SOURCE_CODE_001 would be false in one of the two worlds.",
+      "missing_knowledge": "Nothing represents the escrow election. The IBC interaction is recorded only as a clause citation.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "driver": "no_employment_ack",
+      "changes": 1,
+      "removes": "An acknowledgement that no employment, labour or service relationship is created, and that neither party will represent otherwise.",
+      "force": "OBLIGATION",
+      "clause_cites": ["Indian Contract Act, 1872 s.182", "Industrial Relations Code, 2020 s.2", "Code on Social Security, 2020 s.2", "Central Goods and Services Tax Act, 2017 s.2(17)"],
+      "classification": "DRAFTING_DEFAULT",
+      "reasoning": "Whether a relationship is one of employment is determined by its substance — the degree of control, integration and economic dependence — and not by the parties' label for it. The acknowledgement is evidential: it does not create the characterisation it asserts. Its removal weakens the document's position in a misclassification dispute without changing the legal test.",
+      "caveat": "This is the classification most likely to be wrong, and it is the one an advocate should read first. If the acknowledgement is treated as materially probative in practice, it behaves closer to a PARTY_AGREEMENT than to a recital.",
+      "missing_knowledge": "The characterisation question is live in several families and is represented nowhere.",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

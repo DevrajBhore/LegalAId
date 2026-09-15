@@ -1,0 +1,462 @@
+{
+  "$comment": [
+    "Conditional clauses that are the sole citation of a statute in the documents they appear in.",
+    "Answering the gate 'no' removes that statute from the document entirely.",
+    "",
+    "disposition is an AUTHORING decision, never derived:",
+    "  INTENDED      the loss is correct — the statute does not apply when the gate is closed",
+    "  BLOCKED       the loss is NOT correct; the clause carries an obligation unrelated to its gate",
+    "  NOT_REVIEWED  nobody has decided yet. The honest default.",
+    "",
+    "Regenerate the inventory with: node tests/statutoryCustody.test.mjs --write"
+  ],
+  "entries": {
+    "COMMERCIAL_LEASE_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_DEFINITIONS_001": {
+      "acts": [
+        "Goods and Services Tax Act, 2017 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_INDEMNITY_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.124",
+        "Indian Contract Act, 1872 s.125"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_LIMITATION_LIABILITY_001": {
+      "acts": [
+        "Consumer Protection Act, 2019 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_EXCLUSIVITY_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.16"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DATA_PROCESSING_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DISTRIBUTION_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DISTRIBUTION_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DISTRIBUTION_AGREEMENT/DIST_COMPETITION_COMPLIANCE_001": {
+      "acts": [
+        "Competition Act, 2002 s.27",
+        "Competition Act, 2002 s.3(3)"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "EMPLOYMENT_CONTRACT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "EMPLOYMENT_CONTRACT/EMP_MATERNITY_BENEFITS_001": {
+      "acts": [
+        "Code on Social Security, 2020 s.67",
+        "Code on Social Security, 2020 s.Chapter VI"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "FOUNDERS_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "FOUNDERS_AGREEMENT/CORP_DRAG_ALONG_001": {
+      "acts": [
+        "Companies Act, 2013 s.230",
+        "SEBI Takeover Code s.4"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "GUARANTEE_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_DEFINITIONS_001": {
+      "acts": [
+        "Goods and Services Tax Act, 2017 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_INDEMNITY_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.124",
+        "Indian Contract Act, 1872 s.125"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_LIMITATION_LIABILITY_001": {
+      "acts": [
+        "Consumer Protection Act, 2019 s.2",
+        "Indian Contract Act, 1872 s.74"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INTERNSHIP_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "IP_ASSIGNMENT_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "IP_ASSIGNMENT_AGREEMENT/IPA_COPYRIGHT_ASSIGNMENT_001": {
+      "acts": [
+        "Copyright Act, 1957 s.19(1)",
+        "Copyright Act, 1957 s.19(2)",
+        "Copyright Act, 1957 s.19(4)",
+        "Copyright Act, 1957 s.19(5)",
+        "Copyright Act, 1957 s.19(6)"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "JOINT_VENTURE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT/CORE_FORCE_MAJEURE_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.32",
+        "Indian Contract Act, 1872 s.56",
+        "Sale of Goods Act, 1930 s.8"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "LOAN_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "LOAN_AGREEMENT/LOAN_SECURITY_001": {
+      "acts": [
+        "Companies Act, 2013 s.77"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/MSA_GOVERNANCE_BODY_001": {
+      "acts": [
+        "Arbitration and Conciliation Act, 1996 s.8"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/SERVICE_CUSTOMER_DEPENDENCIES_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.51",
+        "Indian Contract Act, 1872 s.67"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/SERVICE_TERMINATION_CONVENIENCE_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.11"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MOU/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "NDA/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "PRIVACY_POLICY/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17",
+        "Indian Evidence Act, 1872 s.92"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SALES_OF_GOODS_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SALES_OF_GOODS_AGREEMENT/CORE_FORCE_MAJEURE_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.32",
+        "Indian Contract Act, 1872 s.56",
+        "Sale of Goods Act, 1930 s.8"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SEPARATION_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_DEFINITIONS_001": {
+      "acts": [
+        "Goods and Services Tax Act, 2017 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_INDEMNITY_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.124",
+        "Indian Contract Act, 1872 s.125"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_LIMITATION_LIABILITY_001": {
+      "acts": [
+        "Consumer Protection Act, 2019 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SETTLEMENT_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_DEFINITIONS_001": {
+      "acts": [
+        "Goods and Services Tax Act, 2017 s.2"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_INDEMNITY_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.124",
+        "Indian Contract Act, 1872 s.125"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_ASSIGNMENT_001": {
+      "acts": [
+        "Transfer of Property Act, 1882 s.37"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "acts": [
+        "Central Goods and Services Tax Act, 2017 s.36",
+        "Companies Act, 2013 s.128"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/SUPPLY_RETURN_POLICY_001": {
+      "acts": [
+        "Sale of Goods Act, 1930 s.59"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/SUPPLY_SHORTAGE_001": {
+      "acts": [
+        "Sale of Goods Act, 1930 s.37"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "TERMS_OF_SERVICE/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17",
+        "Indian Evidence Act, 1872 s.92"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "TERM_SHEET/CORE_ENTIRE_AGREEMENT_001": {
+      "acts": [
+        "Indian Contract Act, 1872 s.17"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/SUPPLY_RETURN_POLICY_001": {
+      "acts": [
+        "Sale of Goods Act, 1930 s.59"
+      ],
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    }
+  }
+}

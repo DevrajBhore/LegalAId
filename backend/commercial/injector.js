@@ -1,6 +1,7 @@
 // backend/commercial/injector.js
 
-import { PROTECTION_CLAUSE_IDS, LEGACY_AUTO_IDS } from "./protectionLibrary.js";
+import { PROTECTION_CLAUSE_IDS, LEGACY_AUTO_IDS, PROTECTION_ROLE_CLAUSE_IDS }
+  from "./protectionLibrary.js";
 import { getClauseById } from "../services/clauseAssembler.js";
 
 /**
@@ -15,6 +16,17 @@ export function injectProtection(draft, type) {
   const clauseId = PROTECTION_CLAUSE_IDS[type];
   if (!clauseId) {
     console.warn(`Protection type "${type}" has no clause mapped to it.`);
+    return draft;
+  }
+
+  // A protection the user DECLINED is not a protection the document is missing.
+  //
+  // The applicability gate excluded a clause that provides this protection, and
+  // injecting a role-equivalent under a different id would defeat the decline
+  // while passing every id-for-id check. Declining force majeure used to yield
+  // CORE_FORCE_MAJEURE_FALLBACK_001 in place of CORE_FORCE_MAJEURE_001.
+  const excluded = new Set(draft?.metadata?.applicability_excluded_clause_ids || []);
+  if ((PROTECTION_ROLE_CLAUSE_IDS[type] || []).some((id) => excluded.has(id))) {
     return draft;
   }
 

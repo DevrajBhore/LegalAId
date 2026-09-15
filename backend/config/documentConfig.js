@@ -1081,7 +1081,11 @@ const CODE_DEFINED_CONFIG = {
       "interest_rate",
       "repayment_schedule",
       "repayment_start_date",
-      "security_collateral",
+      // security_collateral is NOT here, deliberately. It is required only
+      // when loan_is_secured is "Yes" — enforced in variableValidator, the
+      // way liability_cap_amount is. Listing it here made the honest
+      // unsecured loan (secured = No, collateral blank) impossible to
+      // generate: the form demanded collateral for a loan that has none.
       "prepayment_terms",
       "default_interest_rate",
       "effective_date",

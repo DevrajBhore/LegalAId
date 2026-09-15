@@ -1,0 +1,53 @@
+{
+  "jurisdiction": "India",
+  "mandatory": false,
+  "conflicts_with": [],
+  "required_with": [],
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0",
+  "clause_id": "SERVICE_PERSONNEL_STATUS_001",
+  "name": "Personnel Resourcing and Employment Status",
+  "title": "Personnel Resourcing and Employment Status",
+  "category": "SERVICE",
+  "document_types": [
+    "MASTER_SERVICE_AGREEMENT",
+    "SERVICE_AGREEMENT",
+    "CONSULTANCY_AGREEMENT",
+    "SOFTWARE_DEVELOPMENT_AGREEMENT",
+    "INDEPENDENT_CONTRACTOR_AGREEMENT"
+  ],
+  "materiality": "DRAFTING",
+  "text": "The Service Provider shall at all times deploy sufficient personnel of suitable training and experience to perform the Services, and shall provide the facilities and equipment necessary to do so unless a Statement of Work places that responsibility on the Client. Personnel deployed by the Service Provider remain its employees or contractors for all purposes, and it alone is responsible for their wages, statutory contributions and supervision.",
+  "legal_basis": [
+    {
+      "act": "Code on Wages, 2019",
+      "section": "43",
+      "note": "Responsibility for payment of wages rests with the employer, which is why the clause states plainly whose employees these are."
+    },
+    {
+      "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+      "section": "8A",
+      "note": "Recovery from a principal employer in respect of contract labour, which is the exposure the last sentence is drafted to keep with the Service Provider."
+    }
+  ],
+  "enforceability": "MEDIUM",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "It gives the Client a power of direction and control over the personnel such that they may be treated as the Client's employees notwithstanding the last sentence."
+  ],
+  "depends_on": [],
+  "suggested_with": [],
+  "authoring_note": "The last sentence carries the misclassification risk and should be read together with CORE_RELATIONSHIP_OF_PARTIES_001. Confirm whether a minimum notice period for planned replacements should be stated.",
+  "source_provenance": {
+    "origin": "client-supplied MSA clause checklist, September 2026",
+    "heading": "Headings 12 and 16 (Personnel, Facilities and Equipment).",
+    "extraction_note": "Extracted as a legal PROPOSITION from a client-supplied Master Service Agreement checklist, then drafted afresh against Indian law. The source was not copied: it mixed US regulatory material (HIPAA, the False Claims Act, 42 U.S.C. s.1320a-7a, the Red Flag Rules) that cannot apply here, India Post Payments Bank provisions tied to the RBI outsourcing regime that must not be made generic, and unresolved '*' placeholders in economically material terms. None of that entered this clause; the statutory basis was researched independently."
+  },
+  "implements": [
+    "PRINCIPAL_EMPLOYER_EXPOSURE_ALLOCATED"
+  ],
+  "implements_review_status": "draft-needs-legal-review",
+  "_unannotated_note": "The first sentence (adequate resourcing and facilities) carries an obligation that has NOT been given a proposition id. Its source is the parties' own bargain rather than a statute, and the proposition vocabulary currently requires statutory authority. Recording the gap rather than citing ICA s.37 for it: s.37 is the general duty to perform and is background to almost every obligation in the library, so using it here would be the very conflation invariant 42 was written to stop.",
+  "_split_note": "Severed verbatim from SERVICE_KEY_PERSONNEL_001 v3 in D4.5-C. No new legal wording."
+}

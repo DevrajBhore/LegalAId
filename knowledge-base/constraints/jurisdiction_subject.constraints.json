@@ -1,0 +1,82 @@
+{
+  "domain": "property",
+  "_note": [
+    "TWO RULES THAT DEMONSTRATE THE SUBJECT VOCABULARY, AND ARE MEANT TO BE READ AS A PAIR.",
+    "",
+    "They ask about the same document, on the same day, from the same answers — and they must",
+    "move in opposite directions, because one follows the situs of the property and the other",
+    "follows the law the parties chose. Before D4.11 no rule could express that difference:",
+    "`state_in` read governing_law_state first, so a situs question would have been answered",
+    "with a party choice.",
+    "",
+    "Both are LOW severity and notice_only. They exist to prove the mechanism carries a real",
+    "legal distinction, not to impose a drafting requirement on anybody — and the pair is a",
+    "control for each other, which a single rule could not be.",
+    "DOMAIN. Set to `property` because constraint sets run only for document types that declare that domain (documentValidator.js: `typeInfo.domains || [\"contract\"]`). The first draft of this file used `jurisdiction_subject` as its domain — a name no document type subscribes to — so it loaded, reported as one of the constraint sets, and never executed. A constraint file whose domain nobody subscribes to is silently inert, which is the same failure shape as a gate on a frozen control."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "rules": [
+    {
+      "rule_id": "MAHARASHTRA_SITUS_STAMP_NOTICE",
+      "severity": "LOW",
+      "notice_only": true,
+      "description": "The property is situated in Maharashtra, where stamp duty on a lease is charged under the Maharashtra Stamp Act 1958 rather than the Indian Stamp Act 1899, and the instrument does not say so.",
+      "statutory_reference": "Maharashtra Stamp Act, 1958 - Schedule I Article 36; Indian Stamp Act, 1899 - S.3",
+      "_subject_note": "PROPERTY_SITUS, not CHOSEN_GOVERNING_LAW. Stamp duty on an instrument relating to immovable property follows where the property is and where the instrument is executed. Parties cannot move it by choosing another state's law, and a rule that read the chosen law would give the wrong answer for exactly the transactions that matter most.",
+      "when": [
+        {
+          "doc_type_in": [
+            "RENTAL_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT"
+          ]
+        },
+        {
+          "state_in": [
+            "Maharashtra"
+          ],
+          "of": "PROPERTY_SITUS"
+        }
+      ],
+      "assert": [
+        {
+          "var": "__never_present_sentinel",
+          "op": "present"
+        }
+      ],
+      "remedy": "State that stamp duty is payable under the Maharashtra Stamp Act, 1958."
+    },
+    {
+      "rule_id": "MAHARASHTRA_CHOSEN_LAW_NOTICE",
+      "severity": "LOW",
+      "notice_only": true,
+      "description": "The parties have chosen Maharashtra law to govern the agreement and the instrument does not name the courts that will hear disputes.",
+      "statutory_reference": "Code of Civil Procedure, 1908 - S.20",
+      "_subject_note": "CHOSEN_GOVERNING_LAW, not PROPERTY_SITUS. Which law governs the contract is precisely the thing the parties elect, so this rule must follow their election and must NOT move when the property sits elsewhere. It is the control for the rule above.",
+      "when": [
+        {
+          "doc_type_in": [
+            "RENTAL_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT"
+          ]
+        },
+        {
+          "state_in": [
+            "Maharashtra"
+          ],
+          "of": "CHOSEN_GOVERNING_LAW"
+        }
+      ],
+      "assert": [
+        {
+          "var": "__never_present_sentinel",
+          "op": "present"
+        }
+      ],
+      "remedy": "Name the courts having jurisdiction over disputes under this Agreement."
+    }
+  ]
+}

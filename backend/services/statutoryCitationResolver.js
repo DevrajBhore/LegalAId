@@ -147,12 +147,37 @@ function commencementIsDisclosed(text, inForceFrom) {
 
 // The other side of that: a clause that talks about commencement but names a
 // date the registry does not carry is worse than one that says nothing.
-function commencementIsMisstated(text, inForceFrom) {
-  if (!inForceFrom || !COMMENCEMENT_LANGUAGE.test(text)) return false;
+/**
+ * Read the sentence the Act is named in, not the whole clause.
+ *
+ * COMMENCEMENT_LANGUAGE includes "takes effect", and a great many clauses say
+ * when something OTHER than the statute takes effect: an appointment letter
+ * opens "The appointment takes effect from 1 January 2025" and then cites the
+ * Occupational Safety, Health and Working Conditions Code, 2020 four sub-clauses
+ * later. Scanning the whole clause read those two facts as one sentence and
+ * reported the Code as commencing on the employee's joining date.
+ *
+ * namedOnlyHistorically already scopes to the sentence for exactly this reason;
+ * this does the same.
+ */
+function sentenceAround(text, index, length) {
+  const before = text.lastIndexOf(".", index);
+  const after = text.indexOf(".", index + length);
+  return text.slice(before === -1 ? 0 : before + 1, after === -1 ? text.length : after);
+}
+
+function commencementIsMisstated(text, inForceFrom, actName = "", index = -1) {
+  if (!inForceFrom) return false;
+
+  // Where we know where the Act was named, judge only the sentence it sits in.
+  const scope =
+    actName && index >= 0 ? sentenceAround(text, index, actName.length) : text;
+
+  if (!COMMENCEMENT_LANGUAGE.test(scope)) return false;
   if (commencementIsDisclosed(text, inForceFrom)) return false;
-  // Only call it misstated where the clause actually names some date.
+  // Only call it misstated where that sentence actually names some date.
   return /\b\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December),?\s+\d{4}\b/.test(
-    text
+    scope
   );
 }
 
@@ -328,7 +353,10 @@ export function resolveStatutoryCitations(draft, { effectiveDate, asOf } = {}) {
         if (inForceFrom) {
           const provisionWasNamed = Boolean(entry.provisions?.[provision]);
           const instrumentIsPhased = Boolean(entry.provisions);
-          if ((provisionWasNamed || !instrumentIsPhased) && commencementIsMisstated(text, inForceFrom)) {
+          if (
+            (provisionWasNamed || !instrumentIsPhased) &&
+            commencementIsMisstated(text, inForceFrom, match[0], match.index)
+          ) {
             record(`misstated:${name}:${provision || "-"}`, buildIssue(
               "COMMENCEMENT_MISSTATED",
               "HIGH",

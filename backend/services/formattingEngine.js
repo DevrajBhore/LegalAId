@@ -110,13 +110,19 @@ export function formatFormalDate(value) {
 
 export function normalizeCurrencyText(text = "", { includeWords = false } = {}) {
   return String(text || "").replace(
-    /(?:\u20b9|\u00b9|â‚¹)\s*(-?\d[\d,\s]*(?:\.\d+)?)/g,
+    /(?:\u20b9|\u00b9|â‚¹)\s*(-?\d(?:[\d\s]|,(?=\d))*(?:\.\d+)?)/g,
     (_match, amount, offset, source) => {
       const numeric = parseNumberish(amount);
       if (numeric === null) return _match;
       // The amount class consumes any trailing whitespace before the next token;
       // preserve it so we don't fuse the amount with the following word
       // (e.g. "₹5,00,000(Rupees…" or "…Only)prior").
+      //
+      // The class used to be [\d,\s]*, which also swallowed a comma that merely
+      // FOLLOWED the amount: "₹5,00,000, which is the total" captured
+      // "5,00,000, " and the rewritten sentence came back without its comma. In
+      // Indian digit grouping a comma is only part of a number when digits come
+      // after it, so the comma now has to be followed by one to be consumed.
       const trailingWs = (amount.match(/\s+$/) || [""])[0];
       const tail = source.slice(offset + _match.length, offset + _match.length + 24);
       const formatted = formatIndianAmount(numeric, {

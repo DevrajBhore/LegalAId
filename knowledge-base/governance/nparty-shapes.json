@@ -1,0 +1,167 @@
+{
+  "$comment": [
+    "DO THE 23 BINARY-PARTY CLAUSES COLLAPSE INTO A SMALL NUMBER OF REUSABLE SHAPES?",
+    "",
+    "D4.15 established that N-party language cannot be a mechanical pluralisation, because",
+    "CORE_LIMITATION_LIABILITY_001 bears three readings that differ in money. That left the",
+    "question of whether the problem is ONE abstraction or several independently governed",
+    "relationship semantics — which decides whether a schema is feasible at all.",
+    "",
+    "It collapses. Six shapes cover all 23, and — the part that matters — only two of the six",
+    "require a per-clause legal decision. The other four are determined by the binary form: the",
+    "N-party wording follows from the two-party wording without anybody choosing anything.",
+    "",
+    "So the decision burden is SIX CLAUSES, not twenty-three. That is the difference between a",
+    "tractable advocate review and an open-ended one.",
+    "",
+    "EVERY ASSIGNMENT HERE IS A READING AND NEEDS AN ADVOCATE. The sentences are in",
+    "docs/audit/NPARTY_SEMANTICS.md. The shapes are my classification of them, not a finding."
+  ],
+  "shapes": [
+    {
+      "shape": "ALREADY_N_SAFE",
+      "form": "Where either Party does X, that Party shall Y",
+      "generalises": "no change needed",
+      "decision_required": false,
+      "note": "Distributive already: the obligation attaches to whichever party does the thing, for any number of parties. Worth naming because it is the one class that must NOT be rewritten — touching it would be churn with drafting risk and no gain.",
+      "clauses": [
+        "CORE_DATA_PROCESSING_001",
+        "CORE_INSURANCE_001"
+      ]
+    },
+    {
+      "shape": "UNIFORM_PROHIBITION",
+      "form": "Neither Party shall X",
+      "generalises": "No Party shall X",
+      "decision_required": false,
+      "note": "A prohibition binding every party equally. The N-party form is determined: nothing turns on how many there are, because the restraint is on each of them identically.",
+      "clauses": [
+        "CORE_ASSIGNMENT_001",
+        "CORE_COMPLIANCE_WITH_LAW_001",
+        "CORE_RELATIONSHIP_OF_PARTIES_001",
+        "CORE_FORCE_MAJEURE_FALLBACK_001",
+        "CORE_AMENDMENT_001",
+        "CORE_GOVERNING_LAW_001"
+      ]
+    },
+    {
+      "shape": "RECIPROCAL_SEVERAL",
+      "form": "Each Party shall X to the other Party",
+      "generalises": "Each Party shall X to each other Party",
+      "decision_required": false,
+      "note": "An obligation owed severally, party to party. Under three partners A owes it to B and to C separately, which is what the two-party wording already says once 'the other' is read distributively. The per-pair content does not change with N.",
+      "clauses": [
+        "CORE_CONFIDENTIALITY_001",
+        "CORE_REPRESENTATIONS_001",
+        "CORE_INDEMNITY_001",
+        "CORE_RESIDUAL_KNOWLEDGE_001",
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+      "form": "without the consent of / on notice to the other Party",
+      "generalises": "of / to all other Parties",
+      "decision_required": false,
+      "note": "Reading this as 'any one other party' would let two partners in a firm of three act over the third's objection, which no ordinary construction supports. 'All others' is the only reading consistent with the two-party text, where the single other party's consent was always required.",
+      "clauses": [
+        "CORE_NOTICE_001",
+        "CORE_FORCE_MAJEURE_001",
+        "CORE_GOVERNANCE_PROTECTIONS_001",
+        "CORE_INDEMNITY_PROCEDURE_001"
+      ]
+    },
+    {
+      "shape": "APPORTIONED_QUANTITY",
+      "form": "the aggregate liability of either Party shall not exceed X",
+      "generalises": "UNDETERMINED",
+      "decision_required": true,
+      "note": "Per-party (N caps), shared (one cap), or inter se only (no effect on third-party joint and several exposure under Partnership Act s.25). The three readings produce identical words at two parties and different amounts of money at three. Nothing in the repository records which is intended, and a mechanical rewrite would silently choose.",
+      "clauses": [
+        "CORE_LIMITATION_LIABILITY_001",
+        "CORE_LIABILITY_CAP_001",
+        "CORE_LIABILITY_LIMIT_FALLBACK_001",
+        "CORE_INDEMNITY_FULL_001"
+      ]
+    },
+    {
+      "shape": "PAIRWISE_RIGHT",
+      "form": "by either Party if the other Party commits a material breach",
+      "generalises": "UNDETERMINED",
+      "decision_required": true,
+      "note": "A right arising from one party's default. With three, does the innocent party end the whole instrument, or only its relationship with the defaulter? For a partnership that is the difference between dissolving the firm and expelling a partner, which the Partnership Act 1932 treats quite differently. The two-party text cannot distinguish them because ending the relationship and ending the instrument are the same act. D4.20 ADDED CORE_DISPUTE_RESOLUTION_001 WITHOUT ADDING A SHAPE. The default framing above is the instance this shape was drawn from, not its essence. Stripped to semantics it is: a right exercised with respect to one other party, where more than two parties force a choice between bilateral and multilateral effect. Referring a dispute to arbitration against one of three parties is that question exactly — bilateral reference leaving the third out, or one reference binding everybody. A new shape would have read more neatly and would have been an abstraction built because the architecture seemed to want one.",
+      "clauses": [
+        "CORE_TERMINATION_001",
+        "CORE_TRANSITION_ASSISTANCE_001",
+        "CORE_DISPUTE_RESOLUTION_001"
+      ],
+      "multi_component_clauses": {
+        "CORE_DISPUTE_RESOLUTION_001": [
+          "This clause carries TWO N-party components with different verdicts, and the shape index records only the",
+          "demanding one. The appointment sentence — 'a sole arbitrator jointly appointed by the Parties' — is",
+          "CONSENT_OR_NOTICE_TO_OTHERS and determined: all principals, because reading it as 'any two' would let two",
+          "parties impose an arbitrator on a third, which Section 18 of the Arbitration and Conciliation Act, 1996 does",
+          "not permit. The reference scope is PAIRWISE_RIGHT and undecided.",
+          "",
+          "A clause is classified by its most demanding component: any open decision makes it",
+          "AUTHORED_DECISION_PENDING however many of its sentences are settled. Listing it under two shapes would have",
+          "silently overwritten one — shapeOf.set(id, s), last entry wins, no error — so the settled component is",
+          "recorded here and the overwrite is asserted against in tests/npartyClassification.test.mjs."
+        ]
+      }
+    },
+    {
+      "shape": "ROSTER_DRIVEN",
+      "form": "the clause is BUILT from the list of principals rather than written about two of them",
+      "generalises": "by construction",
+      "decision_required": false,
+      "note": "Added in D4.19, and the only shape here backed by a generation test rather than by reading the sentence. These clauses do not contain binary party language to pluralise: they are assembled from getParticipantExpectations, which resolves the authoritative roster. Proved at two, three and four principals in tests/rosterConservation.test.mjs — every principal named in the testatum, every principal in the signature block, and nobody present who is not in the roster. There is no legal choice in listing the people who signed, which is why decision_required is false and why this shape can be settled by evidence rather than by an advocate's reading.",
+      "evidence": [
+        "tests/rosterConservation.test.mjs: 'A — three principals travel from intake to signature'",
+        "tests/rosterConservation.test.mjs: 'E — four principals, all four bound'",
+        "tests/rosterConservation.test.mjs: 'A — every named party is bound, and nobody else is' (the converse)",
+        "tests/economicAllocation.test.mjs: \"the deed states every partner's contribution, or says it has none\"",
+        "80 documents across 40 types byte-for-byte unchanged at two principals"
+      ],
+      "caveat": [
+        "PARTNERSHIP_CAPITAL_001 is N-safe as to CARDINALITY only. It states each principal's capital",
+        "contribution because capital_contribution_N carries the principal's ordinal in its field name.",
+        "The profit ratio in the same clause is NOT attributable and is governed by",
+        "allocation-semantics.json, not by this file — a clause can be settled on one axis and open on",
+        "another, and collapsing the two would report it as safe when the money is still unassigned."
+      ],
+      "clauses": [
+        "CORE_IDENTITY_001",
+        "CORE_SIGNATURE_BLOCK_001",
+        "PARTNERSHIP_CAPITAL_001"
+      ]
+    }
+  ],
+  "summary": {
+    "clauses_classified": 27,
+    "shapes": 7,
+    "shapes_requiring_a_legal_decision": 2,
+    "clauses_requiring_a_legal_decision": 7,
+    "clauses_needing_no_rewrite": 5,
+    "reading": [
+      "The answer to 'is N-party support one abstraction or several?' is: one shape vocabulary,",
+      "with a decision slot that is required for two of the six shapes.",
+      "",
+      "That is what a schema has to carry — not a list of parties, and not a single apportionment",
+      "field either. A collection whose members have a role, plus a per-clause shape, plus an",
+      "authored decision on the two ambiguous shapes.",
+      "",
+      "The 17 clauses in the four determined shapes can be rewritten from their binary form",
+      "without anybody deciding anything, which is the part that makes the work finite.",
+      "",
+      "D4.19 ADDED A SEVENTH SHAPE AND A PORTFOLIO MEASUREMENT. ROSTER_DRIVEN covers the clauses",
+      "that are assembled from the roster rather than written about two parties, and it is the only",
+      "shape established by a generation test instead of by reading a sentence.",
+      "",
+      "The measurement matters more than the shape. Across the 28 document types that can admit a",
+      "third principal, 184 distinct clauses are reachable and 22 of them are classified. The",
+      "twenty-three of invariant 60 were the clauses one MSA fixture reached, never the portfolio."
+    ]
+  },
+  "review_status": "draft-needs-legal-review"
+}

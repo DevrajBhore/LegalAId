@@ -42,5 +42,6 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "_implements_withheld": "An `implements` annotation was authored here in D4.13 and withdrawn. The clause states the escrow obligation when escrow_required is yes and states its ABSENCE when no, under one id — so any annotation is false in one of the two worlds. The repair is to author the two positions as two clauses behind a variant slot, as MOU_BINDING_001 / MOU_NON_BINDING_001 already do. That is new legal text and needs an advocate."
 }

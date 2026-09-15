@@ -1,0 +1,376 @@
+{
+  "$comment": [
+    "FROZEN GATES — a clause is offered behind a control that no intake answer can move.",
+    "",
+    "The blueprint reads as a choice and the document is a constant. Nothing in any clause,",
+    "requirement or baseline is wrong, which is why every earlier check was blind to it.",
+    "",
+    "A frozen control that is TRUE means the user cannot decline the clause. A frozen control",
+    "that is NULL/UNDEFINED/FALSE means the user can never obtain it: the clause is authored,",
+    "cited, reviewed and unreachable.",
+    "",
+    "disposition is an AUTHORING decision, never derived:",
+    "  WIRE      the control should be answerable — add or connect the intake question",
+    "  DELETE    the family always needs the clause — remove the gate, it is decoration",
+    "  INTENDED  the control is correctly constant for this family and the gate is harmless",
+    "  NOT_REVIEWED  nobody has decided yet. The honest default.",
+    "",
+    "This inventory covers ALL families. An earlier version of the guard checked three, and",
+    "reported 7 of these 50 — the engine/knowledge separation exists to prevent exactly that:",
+    "gate reachability is an engine property and must be checked wherever gates exist.",
+    "",
+    "Regenerate with: node tests/gateReachability.test.mjs --write"
+  ],
+  "entries": {
+    "APPOINTMENT_LETTER/EMP_ESOP_001": {
+      "control": "has_esop_or_variable_pay",
+      "include_if": "has_esop_or_variable_pay == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "APPOINTMENT_LETTER/EMP_POSH_POLICY_001": {
+      "control": "employer_headcount_ge_10",
+      "include_if": "employer_headcount_ge_10 == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "COMMERCIAL_LEASE_AGREEMENT/CORE_FORCE_MAJEURE_001": {
+      "control": "long_term_lease",
+      "include_if": "long_term_lease != false",
+      "value": false,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "COMMERCIAL_LEASE_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/CORE_TRANSITION_ASSISTANCE_001": {
+      "control": "include_transition_assistance",
+      "include_if": "include_transition_assistance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/IP_INFRINGEMENT_001": {
+      "control": "include_ip_assignment",
+      "include_if": "include_ip_assignment == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_ACCEPTANCE_001": {
+      "control": "include_inspection_rights",
+      "include_if": "include_inspection_rights == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_CHANGE_REQUEST_001": {
+      "control": "include_change_control",
+      "include_if": "include_change_control == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_DELIVERABLES_001": {
+      "control": "include_deliverables",
+      "include_if": "include_deliverables == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_EXPENSES_001": {
+      "control": "include_expenses",
+      "include_if": "include_expenses == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "CONSULTANCY_AGREEMENT/SERVICE_TIMELINES_001": {
+      "control": "include_timelines",
+      "include_if": "include_timelines == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DISTRIBUTION_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "DISTRIBUTION_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT/SERVICE_DELIVERABLES_001": {
+      "control": "include_deliverables",
+      "include_if": "include_deliverables == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "JOINT_VENTURE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "JOINT_VENTURE_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "LOAN_AGREEMENT/GUARANTEE_OBLIGATION_001": {
+      "control": "personal_guarantee_required",
+      "include_if": "personal_guarantee_required == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/CORE_RESIDUAL_KNOWLEDGE_001": {
+      "control": "include_confidentiality",
+      "include_if": "include_confidentiality == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/MSA_GOVERNANCE_BODY_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "MASTER_SERVICE_AGREEMENT/SERVICE_CUSTOMER_DEPENDENCIES_001": {
+      "control": "include_deliverables",
+      "include_if": "include_deliverables == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "PRIVACY_POLICY/CORE_ENTIRE_AGREEMENT_001": {
+      "control": "include_entire_agreement",
+      "include_if": "include_entire_agreement != false",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/RENT_LOCKIN_PERIOD_001": {
+      "control": "lock_in_period_months",
+      "include_if": "lock_in_period_months > 0",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/RENT_MAINTENANCE_001": {
+      "control": "is_commercial_lease",
+      "include_if": "is_commercial_lease == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/RENT_PROPERTY_USE_001": {
+      "control": "is_commercial_lease",
+      "include_if": "is_commercial_lease == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/RENT_RENT_INCREASE_001": {
+      "control": "rent_escalation",
+      "include_if": "rent_escalation > 0",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "RENTAL_AGREEMENT/RENT_SUBLEASE_001": {
+      "control": "subletting_addressed",
+      "include_if": "subletting_addressed == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SERVICE_AGREEMENT/SERVICE_DELIVERABLES_001": {
+      "control": "include_deliverables",
+      "include_if": "include_deliverables == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_ASSIGNMENT_001": {
+      "control": "assignment_addressed",
+      "include_if": "assignment_addressed != false",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_GOVERNANCE_PROTECTIONS_001": {
+      "control": "include_governance_protections",
+      "include_if": "include_governance_protections == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/SUPPLY_RETURN_POLICY_001": {
+      "control": "return_policy_required",
+      "include_if": "return_policy_required == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "SUPPLY_AGREEMENT/SUPPLY_SHORTAGE_001": {
+      "control": "shortage_risk",
+      "include_if": "shortage_risk == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "TERMS_OF_SERVICE/CORE_ENTIRE_AGREEMENT_001": {
+      "control": "include_entire_agreement",
+      "include_if": "include_entire_agreement != false",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/CORE_CONFIDENTIALITY_001": {
+      "control": "include_confidentiality",
+      "include_if": "include_confidentiality == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/CORE_INDEMNITY_001": {
+      "control": "include_indemnity_clause",
+      "include_if": "include_indemnity_clause == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/CORE_INSURANCE_001": {
+      "control": "include_insurance",
+      "include_if": "include_insurance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/CORE_TRANSITION_ASSISTANCE_001": {
+      "control": "include_transition_assistance",
+      "include_if": "include_transition_assistance == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/SUPPLY_PRICE_REVISION_001": {
+      "control": "include_price_revision",
+      "include_if": "include_price_revision == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/SUPPLY_RETURN_POLICY_001": {
+      "control": "return_policy_required",
+      "include_if": "return_policy_required == true",
+      "value": true,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    },
+    "VENDOR_AGREEMENT/SUPPLY_SHORTAGE_001": {
+      "control": "include_delivery_terms",
+      "include_if": "include_delivery_terms == true",
+      "value": null,
+      "disposition": "NOT_REVIEWED",
+      "note": null
+    }
+  }
+}

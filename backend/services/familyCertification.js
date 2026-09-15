@@ -34,6 +34,59 @@
 import { loadDocumentRequirements } from "./documentRequirements.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../../shared/documentRegistry.js";
 
+/**
+ * THREE DIMENSIONS, DELIBERATELY INDEPENDENT.
+ *
+ * The single ladder conflated two things that the D4.3 trace proved are not the
+ * same: what a family has been PUT THROUGH as an implementation, and whether the
+ * legal knowledge underneath it has been validated. 3 of 17 facts reach the
+ * document, 10 carry statutory authority, and NONE does both — so a family can
+ * survive every falsification attack ever written for it while no fact reaching
+ * its clauses is tied to a statute.
+ *
+ * Folding "rule validated -> applicability validated -> consequence validated"
+ * into FALSIFICATION_PASSED would therefore have rewritten the meaning of ten
+ * existing results retroactively, turning a true statement ("this family
+ * survived the falsification corpus applicable to the current implementation")
+ * into a false one ("the legal reasoning underneath this family is validated").
+ *
+ * So the axes are kept apart. FALSIFICATION_PASSED keeps exactly the meaning it
+ * had when it was earned. LEGAL_KNOWLEDGE_STATUS starts at NOT_ASSESSED for
+ * every family, which is the honest reading of the trace, and APPROVED comes to
+ * require all three axes rather than one.
+ */
+export const LEGAL_KNOWLEDGE_STATUS = [
+  "NOT_ASSESSED",            // nothing said about the law underneath this family
+  "SOURCE_AUTHORED",         // a concept names Acts and sections for its facts
+  "RULE_VALIDATED",          // the representation has been checked against the authority
+  "APPLICABILITY_VALIDATED", // the rule fires for the right facts and not others
+  "CONSEQUENCE_VALIDATED",   // the legal consequence reaches the document
+];
+
+export const GENERATION_STATUS = [
+  "NOT_ASSESSED",
+  "IDENTITY_AUTHORED",
+  "REQUIREMENTS_ADMITTED",
+  "GENERATION_COVERAGE_TESTED",
+  "FALSIFICATION_PASSED",
+];
+
+export const HUMAN_STATUS = ["NOT_REVIEWED", "ADVOCATE_REVIEW", "APPROVED"];
+
+/**
+ * SPECIFICITY IS TRACKED BESIDE THE GENERATION LADDER, NOT INSIDE IT.
+ *
+ * The obvious placement is a rung between coverage and falsification. It is
+ * wrong, and D4.2 is the proof: requirement outcomes moved ZERO between opposite
+ * worlds for NDA and Distribution, so those families pass falsification and fail
+ * specificity. Ordering one beneath the other asserts a prerequisite that does
+ * not exist, and would demote the ten families this split was created to
+ * protect.
+ *
+ * Independent evidence gets an independent axis. APPROVED requires it; the
+ * ladder does not order it.
+ */
+
 export const RUNG = [
   "NOT_ASSESSED",
   "IDENTITY_AUTHORED",
@@ -81,12 +134,63 @@ export const REVIEW_EVIDENCE = [
  * @param {Map<string,string[]>} evidence.defects type -> coherence relationships its own
  *        generated document breaks. NOT a rung input: see the approval bar below.
  */
+/**
+ * Project the evidence onto the three axes.
+ *
+ * The generation axis is the existing ladder, truncated at FALSIFICATION_PASSED
+ * so that the review rungs no longer live on it. Nothing about how a family
+ * earned its generation status changes here — that is the point of the split.
+ */
+function dimensions(documentType, rung, evidence, broken, legalKnowledge, specificity) {
+  const generation = GENERATION_STATUS.includes(rung)
+    ? rung
+    : "FALSIFICATION_PASSED"; // ADVOCATE_REVIEW / APPROVED imply it was reached
+
+  const human = evidence.approval && !broken.length ? "APPROVED"
+    : (evidence.family_review || evidence.artifact_review) ? "ADVOCATE_REVIEW"
+      : "NOT_REVIEWED";
+
+  const legal = legalKnowledge.get(documentType) || "NOT_ASSESSED";
+
+  /*
+   * APPROVED on the combined reading needs all three axes at their top AND the
+   * specificity evidence, because none of the three implies it: a family can be
+   * legally validated, adversarially attacked and advocate-signed while still
+   * emitting the same clause set for two unlike transactions.
+   *
+   * Every family fails this today. That is the correct reading of the trace and
+   * is reported, not smoothed.
+   */
+  const fully = legal === "CONSEQUENCE_VALIDATED"
+    && generation === "FALSIFICATION_PASSED"
+    && human === "APPROVED"
+    && specificity.has(documentType);
+
+  return {
+    legal_knowledge_status: legal,
+    generation_status: generation,
+    human_status: human,
+    specificity_tested: specificity.has(documentType),
+    fully_certified: fully,
+  };
+}
+
 export function certify({
   generates = new Set(),
   emits = new Map(),
   reviewedClauses = new Set(),
   signOff = new Map(),
   defects = new Map(),
+  /**
+   * type -> LEGAL_KNOWLEDGE_STATUS. Supplied by the caller from concept-layer
+   * evidence rather than computed here, because this module must not become the
+   * place where a family is promoted by adding a field to it. Absent means
+   * NOT_ASSESSED, which is the honest default while the concept resolver reaches
+   * one concept.
+   */
+  legalKnowledge = new Map(),
+  /** Types with a recorded differential-specificity result. */
+  specificity = new Set(),
   // The families to assess. Defaults to every registered type, which is what
   // the product asks for. A caller may name a subset — a probe testing what the
   // ladder does with a particular shape of evidence needs to name the type it
@@ -105,7 +209,8 @@ export function certify({
 
     if (!list || !list.length) {
       reasons.push("no identity requirements authored");
-      families[documentType] = { status: rung, reasons, evidence, requirements: 0 };
+      families[documentType] = { status: rung, reasons, evidence, requirements: 0,
+        ...dimensions(documentType, rung, evidence, [], legalKnowledge, specificity) };
       continue;
     }
     // Reaching here means the admission gate passed: loadDocumentRequirements
@@ -115,7 +220,8 @@ export function certify({
 
     if (!generates.has(documentType)) {
       reasons.push("no recorded generation baseline, so coverage has never been measured");
-      families[documentType] = { status: rung, reasons, evidence, requirements: list.length };
+      families[documentType] = { status: rung, reasons, evidence, requirements: list.length,
+        ...dimensions(documentType, rung, evidence, [], legalKnowledge, specificity) };
       continue;
     }
     rung = "GENERATION_COVERAGE_TESTED";
@@ -129,7 +235,8 @@ export function certify({
         "no named falsification — nobody has recorded an attempt to make this family report " +
         "green while legally unfinished"
       );
-      families[documentType] = { status: rung, reasons, evidence, requirements: list.length };
+      families[documentType] = { status: rung, reasons, evidence, requirements: list.length,
+        ...dimensions(documentType, rung, evidence, [], legalKnowledge, specificity) };
       continue;
     }
     rung = "FALSIFICATION_PASSED";
@@ -197,6 +304,7 @@ export function certify({
       status: rung, reasons, evidence, requirements: list.length,
       // Reported beside the rung, never inside it.
       ships_defects: broken,
+      ...dimensions(documentType, rung, evidence, broken, legalKnowledge, specificity),
     };
   }
 
@@ -204,9 +312,22 @@ export function certify({
   for (const rung of RUNG) counts[rung] = 0;
   for (const family of Object.values(families)) counts[family.status] += 1;
 
+  const byDimension = {
+    legal_knowledge: Object.fromEntries(LEGAL_KNOWLEDGE_STATUS.map((k) => [k, 0])),
+    generation: Object.fromEntries(GENERATION_STATUS.map((k) => [k, 0])),
+    human: Object.fromEntries(HUMAN_STATUS.map((k) => [k, 0])),
+  };
+  for (const f of Object.values(families)) {
+    byDimension.legal_knowledge[f.legal_knowledge_status] += 1;
+    byDimension.generation[f.generation_status] += 1;
+    byDimension.human[f.human_status] += 1;
+  }
+
   return {
     families,
     counts,
+    byDimension,
+    fully_certified: Object.values(families).filter((f) => f.fully_certified).length,
     // The only number that should ever be put in front of a user as "supported".
     approved: counts.APPROVED,
     total: Object.keys(families).length,

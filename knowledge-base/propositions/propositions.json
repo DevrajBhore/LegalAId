@@ -1,0 +1,261 @@
+{
+  "$comment": [
+    "LEGAL PROPOSITIONS — what a clause exists to implement, as distinct from the law it cites.",
+    "",
+    "D4.5 established that 198 of 315 clauses declare no primary authority, and that citation",
+    "counts cannot stand in for one: Indian Contract Act 1872 s.73 is cited by 26 clauses across",
+    "13 categories as background ('damages for breach'), not because 26 clauses implement one",
+    "damages treatment. Without a declared proposition there is no way to tell a clause's own",
+    "rule from its supporting law — which is how a principal-employer liability allocation under",
+    "EPF s.8A came to live inside a clause about key personnel with nothing marking it separate.",
+    "",
+    "A PROPOSITION IS NOT A STATUTE. The authority says where the rule comes from; the",
+    "proposition says what rule the clause implements. Several propositions can derive from one",
+    "section, and one proposition can rest on several. Collapsing the two would rebuild the",
+    "statute->clause shortcut this layer exists to replace.",
+    "",
+    "THIS IS A SAMPLE, DELIBERATELY BIASED TOWARD FINDING REUSE. It covers variant-slot groups",
+    "(clauses the library already calls alternatives), a suspected overlapping pair, the known",
+    "composite clause, and a CONTROL SET of clauses that should share nothing. The control set is",
+    "load-bearing: a method that assigns the same proposition to everything would score high on",
+    "reuse while measuring nothing, so the falsification only means something if the controls stay",
+    "distinct.",
+    "",
+    "Every record is unreviewed. An advocate must confirm that the statement is what the cited",
+    "authority actually establishes before any of this is relied on.",
+    "applicability says WHEN the rule applies, independently of which clause happens to implement it. That independence is the whole point: a clause may be selected on a narrower condition than a proposition it carries, and the proposition is then lost whenever the clause is not selected."
+  ],
+  "propositions": [
+    {
+      "proposition_id": "CONFIDENTIALITY_OBLIGATION",
+      "statement": "A recipient of information identified as confidential is bound not to disclose or use it outside the permitted purpose.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "27",
+          "note": "A confidentiality restraint is not a restraint of trade where it protects information rather than the right to compete."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "TRADE_SECRET_HEIGHTENED_PROTECTION",
+      "statement": "Where the information includes trade secrets, the obligation is of a higher order and does not lapse with time.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "27",
+          "note": "Indian law protects trade secrets through contract; there is no separate trade secrets statute."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "position": "involves_trade_secrets",
+        "value": true
+      },
+      "applicability_note": "Applicable only where the information includes trade secrets.",
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "SECURITY_DEPOSIT_CAPPED_AND_RETURNABLE",
+      "statement": "A security deposit is limited in amount and must be returned on vacancy subject only to stated deductions.",
+      "authority": [
+        {
+          "act": "Model Tenancy Act, 2021",
+          "section": "11",
+          "note": "Caps the deposit and fixes the period for its refund."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "74",
+          "note": "A deduction that is a penalty rather than compensation for actual loss is not recoverable in full."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "RENT_PAYABLE_ON_STATED_TERMS",
+      "statement": "Rent is payable in a stated amount at a stated interval, with the tax treatment of the payment identified.",
+      "authority": [
+        {
+          "act": "Transfer of Property Act, 1882",
+          "section": "105",
+          "note": "Rent is an essential term of a lease."
+        },
+        {
+          "act": "Income Tax Act, 1961",
+          "section": "194I",
+          "note": "Deduction of tax at source on rent."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "PERSONAL_PERFORMANCE_INTENDED",
+      "statement": "Where the parties intended performance by particular individuals, the promisor may not substitute freely; absent that intention the statutory default permits substitution by a competent person.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "40",
+          "note": "Sets the default: the promisor or his representatives MAY employ a competent person, unless the nature of the case shows personal performance was intended. A key-person clause displaces the default; it does not create a restriction from nothing."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "position": "key_person_dependency",
+        "value": true
+      },
+      "applicability_note": "Applicable only where the parties intended performance by particular individuals. Absent that intention ICA s.40's default permits substitution, and the clause has nothing to displace.",
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "PRINCIPAL_EMPLOYER_EXPOSURE_ALLOCATED",
+      "statement": "Personnel deployed under a services engagement remain the service provider's own workers, and responsibility for their wages and statutory contributions rests with it rather than with the client.",
+      "authority": [
+        {
+          "act": "Code on Wages, 2019",
+          "section": "43",
+          "note": "Responsibility for payment of wages rests with the employer."
+        },
+        {
+          "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+          "section": "8A",
+          "note": "Recovery from a principal employer in respect of contract labour — the exposure this allocation is drafted to keep with the service provider."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "applicability_note": "Always applicable to a services engagement: the client's exposure as principal employer does not depend on whether particular individuals matter, nor on whether service levels were agreed.",
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "REPAYMENT_SCHEDULE_FIXED",
+      "statement": "The borrower's obligation to repay is fixed as to amount and timing.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "37",
+          "note": "The parties must perform their promises; a repayment promise must be certain enough to perform."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "GOVERNING_LAW_AND_FORUM_CHOSEN",
+      "statement": "The parties choose the law governing the agreement and the courts that will hear disputes under it.",
+      "authority": [
+        {
+          "act": "Code of Civil Procedure, 1908",
+          "section": "20",
+          "note": "Where more than one court has jurisdiction, the parties may agree to confine disputes to one of them."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "NOTICE_METHOD_AND_DEEMED_RECEIPT",
+      "statement": "Communications under the agreement take effect only if given by a stated method, and are deemed received at a stated time.",
+      "authority": [
+        {
+          "act": "Information Technology Act, 2000",
+          "section": "13",
+          "note": "Time and place of despatch and receipt of an electronic record."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "always": true
+      },
+      "satisfaction": "IN_THE_DOCUMENT"
+    },
+    {
+      "proposition_id": "INSTRUMENT_REGISTERED",
+      "statement": "A lease for a term exceeding one year takes effect only if made by a registered instrument; an unregistered one is inadmissible to prove the lease.",
+      "authority": [
+        {
+          "act": "Registration Act, 1908",
+          "section": "17(1)(d)",
+          "note": "A lease of immovable property from year to year, or for a term exceeding one year, is compulsorily registrable."
+        },
+        {
+          "act": "Registration Act, 1908",
+          "section": "49",
+          "note": "An unregistered instrument that the Act requires to be registered cannot be received as evidence of the transaction."
+        },
+        {
+          "act": "Transfer of Property Act, 1882",
+          "section": "107",
+          "note": "Such a lease can be made only by a registered instrument."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "position": "is_registrable",
+        "value": true
+      },
+      "applicability_note": "Registration Act s.17(1)(d) bites on a lease from year to year or for a term exceeding one year. `is_registrable` is derived from the actual term and is already correct — true for a 24-month rental, false for a 3-month lease. Two earlier authorings of this field were wrong and each was caught: `always: true` made a 3-month lease report the proposition satisfied by a clause whose rendered text says registration is NOT compulsory, and a guessed control name made the annotation inert. The fact existed the whole time.",
+      "satisfaction": "OUTSIDE_THE_DOCUMENT",
+      "outside_the_document": "Registration is an act performed on the instrument before the Sub-Registrar after execution. A clause can require it, allocate its cost and record the consequence of failing to do it. Nothing a document says can accomplish it, so the highest finding available is PROVIDED_FOR."
+    },
+    {
+      "proposition_id": "SOURCE_CODE_ESCROW_ESTABLISHED",
+      "statement": "Source code is placed with an escrow agent and released to the customer on defined events such as the developer's insolvency or prolonged maintenance default.",
+      "authority": [
+        {
+          "act": "Insolvency and Bankruptcy Code, 2016",
+          "section": "14",
+          "note": "A moratorium can suspend enforcement against the corporate debtor, which is what an escrow release event triggered by insolvency has to survive."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "position": "escrow_required",
+        "value": true
+      },
+      "applicability_note": "Applicable only where the parties elected escrow.",
+      "satisfaction": "IN_THE_DOCUMENT",
+      "_polarity_note": "Authored to test whether the model can tell an asserted proposition from a negated one. TECH_SOURCE_CODE_001 states the obligation in one world and states its absence in the other, under the same clause id."
+    },
+    {
+      "proposition_id": "LEGAL_RELATIONS_INTENDED",
+      "statement": "The parties intend their arrangement to create legal relations and to be enforceable between them.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "10",
+          "note": "An agreement is a contract when made with free consent, for consideration, with a lawful object, and by parties competent to contract — intention to create legal relations is what distinguishes an enforceable bargain from a record of understanding."
+        }
+      ],
+      "review_status": "draft-needs-legal-review",
+      "applicability": {
+        "position": "is_binding_mou",
+        "value": true
+      },
+      "applicability_note": "Applicable where the parties intend a binding instrument. Where they do not, the proposition is not applicable and the document correctly says so in its own words.",
+      "satisfaction": "IN_THE_DOCUMENT",
+      "_polarity_note": "The CONTROL for the escrow case. The same driver selects between two clause ids asserting opposite positions, so `implements` on a clause id is world-correct without any new mechanism."
+    }
+  ]
+}

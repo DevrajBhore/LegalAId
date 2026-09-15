@@ -1,3 +1,4 @@
+import { conceptAttaches, resolveConcepts, explainClause } from "./conceptResolver.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -195,6 +196,25 @@ function evaluateConditionalExpression(expression, variables = {}) {
   const raw = String(expression || "").trim();
   if (!raw) return false;
 
+  /*
+   * `concept:PERSONAL_DATA_PROCESSING` — the clause is governed by a legal
+   * concept rather than by a raw intake boolean.
+   *
+   * The resolutions are computed upstream and passed in under a reserved key, so
+   * this evaluator stays a pure function of its inputs and no module has to
+   * reach into the knowledge base mid-selection.
+   *
+   * Reading a concept gate when no resolutions were supplied returns false
+   * rather than falling through to `isAffirmative("concept:...")`, which would
+   * be false anyway but for the wrong reason and would hide the wiring error.
+   */
+  if (raw.startsWith("concept:")) {
+    const conceptId = raw.slice("concept:".length).trim();
+    const resolutions = variables?.__concept_resolutions;
+    if (!resolutions || typeof resolutions.get !== "function") return false;
+    return conceptAttaches(resolutions.get(conceptId));
+  }
+
   const equalityMatch = raw.match(/^([A-Za-z0-9_]+)\s*(==|!=)\s*(.+)$/);
   if (equalityMatch) {
     const [, variableName, operator, rawExpected] = equalityMatch;
@@ -238,7 +258,16 @@ function resolveClauseSelection(blueprint, documentType, variables = {}) {
   const requiredClauseIds = extractClauseIds(blueprint, documentType);
   const conditionals = blueprint.conditional_clauses || [];
   const variants = blueprint.variant_clauses || [];
-  const resolvedVariables = deriveGenerationControls(documentType, variables);
+  const derived = deriveGenerationControls(documentType, variables);
+  /*
+   * Concepts resolve against the intake answers AND the derived controls,
+   * because one legal question is asked under five different names across the
+   * portfolio — `involves_personal_data`, `processes_personal_data`, and the
+   * `company_`/`firm_`/`jv_` variants — and the derivation is what bridges them.
+   * The concept is the single place that question now gets one answer.
+   */
+  const conceptResolutions = resolveConcepts(variables, derived);
+  const resolvedVariables = { ...derived, __concept_resolutions: conceptResolutions };
 
   const reasons = new Map();
   for (const id of requiredClauseIds) {
@@ -272,18 +301,50 @@ function resolveClauseSelection(blueprint, documentType, variables = {}) {
   const conditionalClauseIds = conditionals
     .filter((entry) => evaluateConditionalExpression(entry.include_if, resolvedVariables))
     .map((entry) => {
+      /*
+       * A concept-governed clause explains itself from the law, not from a
+       * blueprint note. "Added based on the details you provided" and "personal
+       * data is processed, so DPDP Act 2023 s.8(5) applies" are different
+       * sentences, and only the second is a reason.
+       */
+      const explanation = explainClause(entry.clause, conceptResolutions);
       reasons.set(
         entry.clause,
-        entry.note ? capitalize(entry.note) : "Added based on the details you provided."
+        explanation?.included ? explanation.because
+          : entry.note ? capitalize(entry.note) : "Added based on the details you provided."
       );
       return entry.clause;
     });
 
-  return {
-    ids: [...new Set([...clauseIds, ...conditionalClauseIds])],
-    reasons,
-    replacedClauseIds,
-  };
+  const ids = [...new Set([...clauseIds, ...conditionalClauseIds])];
+
+  // CONSIDERED AND EXCLUDED — as distinct from never in play.
+  //
+  // The dependency resolver could not honour an applicability gate because the
+  // gate is not in its scope: it lives in the blueprint, and the resolver
+  // receives an assembled clause list. So a clause named in `required_with`
+  // was injected whatever the gate had decided, and an unsecured loan carried a
+  // security clause.
+  //
+  // This is the missing information, and ONLY this: a clause whose own
+  // `include_if` was evaluated and came out false. It deliberately does NOT
+  // include a clause that was variant-replaced (that has its own record), one
+  // suppressed by document type, or one that was never a candidate — folding
+  // those together would recreate the same ambiguity one layer down, where the
+  // resolver could no longer tell "the user declined this" from "this was never
+  // on the table".
+  //
+  // A clause listed BOTH conditionally and unconditionally in one blueprint is
+  // not excluded: it survived, so the gate was decorative. Those are a separate
+  // defect (27 of them, 20 being CORE_ENTIRE_AGREEMENT_001) and are not this.
+  const applicabilityExcludedClauseIds = new Set(
+    conditionals
+      .filter((entry) => !evaluateConditionalExpression(entry.include_if, resolvedVariables))
+      .map((entry) => entry.clause)
+      .filter((id) => id && !ids.includes(id))
+  );
+
+  return { ids, reasons, replacedClauseIds, applicabilityExcludedClauseIds, conceptResolutions };
 }
 
 function getClauseSchemaValidator() {
@@ -480,7 +541,8 @@ export function assembleDocument(documentType, variables = {}) {
     );
   }
 
-  const { ids: clauseIds, reasons, replacedClauseIds } = resolveClauseSelection(
+  const { ids: clauseIds, reasons, replacedClauseIds, applicabilityExcludedClauseIds,
+    conceptResolutions } = resolveClauseSelection(
     blueprint,
     documentType,
     variables
@@ -497,8 +559,20 @@ export function assembleDocument(documentType, variables = {}) {
     // Per-clause provenance so the editor can explain "why this clause" and
     // "which Indian law backs it". Stored in metadata so it survives the
     // generation/AI pipeline even if clause text is rewritten.
+    const explanation = explainClause(id, conceptResolutions);
     clauseProvenance[id] = {
       reason,
+      /*
+       * The concept's authority, kept SEPARATE from the clause's own
+       * legal_basis. They answer different questions: legal_basis is what this
+       * clause is drafted under, concept_authority is why this transaction
+       * needed a clause of this kind at all. Merging them would let a clause
+       * that cites a statute look as though its APPLICABILITY had been
+       * established, which is the conflation the trace was built to expose.
+       */
+      concept: explanation?.concept || null,
+      concept_authority: explanation?.included ? explanation.authority : null,
+      concept_provenance: explanation?.included ? explanation.provenance : null,
       legal_basis: clause.legal_basis || [],
       name: clause.title || clause.name || id,
       category: normalizeClauseCategory(clause.category),
@@ -522,7 +596,25 @@ export function assembleDocument(documentType, variables = {}) {
       missing_clauses: [],
       clause_provenance: clauseProvenance,
       resolved_generation_controls: deriveGenerationControls(documentType, variables),
+      /*
+       * Every concept the repository holds, resolved for this document —
+       * including the ones that came out ABSENT. "Why isn't this clause here?"
+       * needs the negative resolutions as much as the positive ones, and an
+       * absent concept that went unrecorded is indistinguishable from a concept
+       * nobody considered.
+       */
+      concept_resolutions: [...conceptResolutions.values()].map((r) => ({
+        concept_id: r.concept_id, state: r.state, provenance: r.provenance,
+        assumed: r.assumed, disclose: r.disclose,
+        authority: r.authority, attaches: r.attaches,
+        evidence: r.evidence, review_status: r.review_status,
+      })),
       variant_replaced_clause_ids: [...replacedClauseIds],
+      // Always written when selection runs, so that ABSENT and EMPTY are
+      // different facts downstream: empty means the gates excluded nothing,
+      // absent means nobody evaluated any gate. A conditional dependency may
+      // not read the second as the first.
+      applicability_excluded_clause_ids: [...applicabilityExcludedClauseIds],
     },
   };
 }

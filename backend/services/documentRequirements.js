@@ -30,6 +30,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { positionOf, POSITION } from "./generationControls.js";
+import { isSemanticFact } from "./canonicalFacts.js";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIR = path.resolve(HERE, "../../knowledge-base/documents/requirements");
@@ -168,7 +169,40 @@ function admit(doc, source) {
       problems.push(`${id}: satisfied_by needs any_of or all_of`);
     }
     const KINDS = ["CONTENT", "FORMALITY", "TIMING", "CHARACTER", "EXTERNAL_COHERENCE"];
-    if (requirement.kind && !KINDS.includes(requirement.kind)) {
+    // KIND IS MANDATORY, and the reason is the claim it makes about what the
+    // requirement is ABOUT.
+    //
+    // It was optional, and 31 of 94 authored requirements declared none. An
+    // undeclared kind silently became CONTENT at assessment time — which is the
+    // assumption "a requirement's subject is the document", applied by default
+    // to a third of the corpus without anyone deciding it.
+    //
+    // Declaring it forces the author past the decision point. CONTENT says the
+    // document settles this. FORMALITY says an act outside the document does,
+    // and must then say WHICH act in `outside_the_document`, capping the
+    // requirement at PROVIDED_FOR. TIMING says a window decides it.
+    // EXTERNAL_COHERENCE says a record elsewhere does.
+    //
+    // WHAT THIS DOES NOT CATCH, stated so nobody reads more into it. A
+    // Terms of Service requirement asserting "the user has accepted these
+    // Terms", authored as CONTENT and satisfied by the clause that says so,
+    // declares a kind and passes. Admission cannot tell that the STATEMENT is
+    // about a person while the KIND says it is about the document: the
+    // alternative rules were measured and rejected — requiring the identity_test
+    // to name the instrument would refuse 46 legitimate requirements, and
+    // load-bearingness passes the bad one (docs/audit/IDENTITY_TEST_PROBE.md).
+    // That residue is an authoring error a human reviewer sees at the point of
+    // declaring the kind, which is the most this gate can honestly do.
+    if (!requirement.kind) {
+      problems.push(
+        `${id}: kind is required — one of ${KINDS.join(", ")}. It says what settles this ` +
+        `requirement: the document's own words (CONTENT), an act performed outside it ` +
+        `(FORMALITY), a window (TIMING), a record elsewhere (EXTERNAL_COHERENCE), or what the ` +
+        `instrument must NOT assert (CHARACTER). Left undeclared it became CONTENT silently, ` +
+        `which assumes the requirement is about the document — and that assumption is exactly ` +
+        `what let a requirement about a person be satisfied by a clause mentioning them.`
+      );
+    } else if (!KINDS.includes(requirement.kind)) {
       problems.push(`${id}: kind must be one of ${KINDS.join(", ")}`);
     }
     if (requirement.kind === "EXTERNAL_COHERENCE") {
@@ -211,6 +245,20 @@ function admit(doc, source) {
       problems.push(
         `${id}: a FORMALITY requirement must say what act lies outside the document, so nobody ` +
         `later reads its coverage as proof the act was performed`
+      );
+    }
+    // A requirement may only rest on a DECLARED semantic fact. Otherwise the 87
+    // controls deriveGenerationControls produces become the system's universal
+    // semantic model by accident, and nobody decided that: most of them are
+    // plumbing, and a requirement gated on one would be gated on a
+    // presentation detail wearing a legal name.
+    const restsOn = requirement.applicability?.position;
+    if (restsOn && !isSemanticFact(restsOn)) {
+      problems.push(
+        `${id}: applicability rests on "${restsOn}", which is not a declared semantic fact. ` +
+        `Declare it in knowledge-base/intake/semantic_facts.json — saying what it is, whether it ` +
+        `is answered or derived, what establishes it, and what happens when nobody does — or ` +
+        `rest the requirement on a fact that is.`
       );
     }
     if (!["DISCLOSE", "BLOCK", "ESCALATE"].includes(requirement.when_unsatisfied)) {

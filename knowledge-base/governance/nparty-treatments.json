@@ -1,0 +1,328 @@
+{
+  "$comment": [
+    "THE SIX LEGAL DECISIONS N-PARTY SUPPORT CANNOT MAKE FOR ITSELF.",
+    "",
+    "Invariant 60 reduced 23 binary clauses to six shapes, of which four generalise without",
+    "anybody choosing anything. These are the other two, and the six clauses that carry them.",
+    "",
+    "EVERY DECISION HERE IS `UNDECIDED`, AND THAT IS A RESULT, NOT A PLACEHOLDER. The engine",
+    "must not select a legal interpretation by default. A document with three parties and an",
+    "unresolved apportionment must say the point is open rather than quietly adopt one reading —",
+    "which is the same discipline the requirement layer already applies with UNRESOLVED and",
+    "PROVIDED_FOR.",
+    "",
+    "THE COUNTERFACTUALS ARE THE POINT. Each decision shows its consequence at two, three and",
+    "four parties. At two, the candidate treatments produce identical words, which is exactly why",
+    "the ambiguity survived this long unnoticed. At three they diverge, and for the liability cap",
+    "they diverge in money.",
+    "",
+    "Candidate treatments are named so an advocate has something to choose between. Naming them",
+    "is not proposing them, and the order they appear in is not a recommendation."
+  ],
+  "decisions": [
+    {
+      "decision_id": "LIABILITY_CAP_APPORTIONMENT",
+      "shape": "APPORTIONED_QUANTITY",
+      "clauses": [
+        "CORE_LIMITATION_LIABILITY_001",
+        "CORE_LIABILITY_CAP_001",
+        "CORE_LIABILITY_LIMIT_FALLBACK_001"
+      ],
+      "binary_text": "the aggregate liability of either Party under or in connection with this Agreement shall not exceed the aggregate fees paid or payable under this Agreement",
+      "legal_question": "Where there are more than two parties, is the cap a separate ceiling for each party, one ceiling shared between them all, or a limit that operates only between the parties and leaves third-party exposure untouched?",
+      "authority_basis": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "73",
+          "note": "Compensation for loss caused by breach — what the cap limits."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "74",
+          "note": "A sum named in the contract is recoverable as reasonable compensation, not automatically in full."
+        },
+        {
+          "act": "Indian Partnership Act, 1932",
+          "section": "25",
+          "note": "Every partner is liable jointly with all the others and severally to third parties. A cap agreed between partners cannot bind someone who is not a party to it."
+        }
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "PER_PARTY",
+          "reading": "Each party has its own ceiling of X.",
+          "consequence_2": "total exposure 2X",
+          "consequence_3": "total exposure 3X",
+          "consequence_4": "total exposure 4X"
+        },
+        {
+          "treatment": "SHARED",
+          "reading": "One ceiling of X across all parties together.",
+          "consequence_2": "total exposure X",
+          "consequence_3": "total exposure X",
+          "consequence_4": "total exposure X"
+        },
+        {
+          "treatment": "INTER_SE_ONLY",
+          "reading": "The ceiling governs claims between the parties and does not limit what a third party may recover.",
+          "consequence_2": "2X between them, unlimited to strangers",
+          "consequence_3": "3X between them, unlimited to strangers",
+          "consequence_4": "4X between them, unlimited to strangers"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "At two parties PER_PARTY and INTER_SE_ONLY produce the same words and the same arithmetic against each other; only a third-party claim separates them, and the instrument never mentions one. SHARED differs even at two but the difference is invisible without a second concurrent claim.",
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "decision_id": "INDEMNITY_APPORTIONMENT",
+      "shape": "APPORTIONED_QUANTITY",
+      "clauses": [
+        "CORE_INDEMNITY_FULL_001"
+      ],
+      "binary_text": "Each Party shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised representatives",
+      "legal_question": "Where there are more than two parties, does each party indemnify each other party severally for the whole loss, or do the indemnifying parties share one liability between them?",
+      "authority_basis": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "124",
+          "note": "Contract of indemnity — one party promises to save the other from loss."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "125",
+          "note": "The indemnity-holder's rights, which is where the quantum of a multi-party indemnity actually bites."
+        }
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "SEVERAL_TO_EACH",
+          "reading": "Every party indemnifies every other party in full.",
+          "consequence_2": "1 indemnity relationship",
+          "consequence_3": "6 relationships (3 x 2)",
+          "consequence_4": "12 relationships (4 x 3)"
+        },
+        {
+          "treatment": "JOINT_AND_SEVERAL",
+          "reading": "The indemnifying parties are liable together and individually for the whole.",
+          "consequence_2": "indistinguishable from SEVERAL_TO_EACH",
+          "consequence_3": "claimant may recover the whole from any one of the other two",
+          "consequence_4": "claimant may recover the whole from any one of the other three"
+        },
+        {
+          "treatment": "PROPORTIONATE",
+          "reading": "Each indemnifier is liable for its share, measured by contribution or profit ratio.",
+          "consequence_2": "shares must be stated or implied",
+          "consequence_3": "requires a share per party — which the instrument does not currently carry",
+          "consequence_4": "same, and the shares must still total the whole"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "With one indemnifier and one indemnitee, several, joint-and-several and proportionate all mean the same thing: that one party pays. The distinction only exists once there is more than one person who might be asked.",
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "decision_id": "TERMINATION_FOR_DEFAULT_SCOPE",
+      "shape": "PAIRWISE_RIGHT",
+      "clauses": [
+        "CORE_TERMINATION_001"
+      ],
+      "binary_text": "by either Party with immediate effect if the other Party commits a material breach of this Agreement and fails to cure it",
+      "legal_question": "Where there are more than two parties, does the innocent party end the whole instrument, or only its own relationship with the defaulting party, leaving the instrument on foot between the rest?",
+      "authority_basis": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "39",
+          "note": "Where a party refuses or disables itself from performing, the promisee may put an end to the contract."
+        },
+        {
+          "act": "Indian Partnership Act, 1932",
+          "section": "39",
+          "note": "Dissolution of a firm — the dissolution of the partnership between ALL the partners."
+        },
+        {
+          "act": "Indian Partnership Act, 1932",
+          "section": "33",
+          "note": "Expulsion of a partner, which is the other thing this right might mean and is subject to express agreement and good faith."
+        }
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "ENDS_THE_INSTRUMENT",
+          "reading": "One default terminates the agreement as to everybody.",
+          "consequence_2": "the agreement ends",
+          "consequence_3": "two innocent parties lose the arrangement because of a third's default",
+          "consequence_4": "three innocent parties do"
+        },
+        {
+          "treatment": "ENDS_THAT_RELATIONSHIP",
+          "reading": "The defaulter ceases to be a party; the instrument continues between the others.",
+          "consequence_2": "indistinguishable from ENDS_THE_INSTRUMENT",
+          "consequence_3": "the firm continues between the remaining two — expulsion, not dissolution",
+          "consequence_4": "continues between the remaining three"
+        },
+        {
+          "treatment": "REQUIRES_ALL_INNOCENT_PARTIES",
+          "reading": "The right is exercisable only by the innocent parties acting together.",
+          "consequence_2": "indistinguishable from ENDS_THE_INSTRUMENT",
+          "consequence_3": "one innocent party alone cannot terminate",
+          "consequence_4": "same, and deadlock becomes possible"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "With two parties, ending the relationship and ending the instrument are the same act, and there is no such thing as 'the remaining parties'. All three treatments collapse into one sentence. For a partnership the difference is dissolution under s.39 versus expulsion under s.33, which are not close.",
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "decision_id": "TRANSITION_ASSISTANCE_SCOPE",
+      "shape": "PAIRWISE_RIGHT",
+      "clauses": [
+        "CORE_TRANSITION_ASSISTANCE_001"
+      ],
+      "binary_text": "the exiting Party shall provide the other Party with reasonable assistance",
+      "legal_question": "Where there are more than two parties, is the exiting party's assistance owed to each remaining party separately, to them collectively, or to the continuing entity?",
+      "authority_basis": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "37",
+          "note": "The obligation of parties to perform, which survives to the extent the contract provides."
+        }
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "TO_EACH_REMAINING",
+          "reading": "Assistance owed separately to every remaining party.",
+          "consequence_2": "one recipient",
+          "consequence_3": "two recipients, potentially duplicative",
+          "consequence_4": "three recipients"
+        },
+        {
+          "treatment": "TO_THE_CONTINUING_ENTITY",
+          "reading": "Assistance owed to the firm or venture rather than to its members.",
+          "consequence_2": "no entity distinct from the counterparty",
+          "consequence_3": "one recipient — the firm",
+          "consequence_4": "one recipient"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "With two parties there is no continuing entity distinct from the remaining party, so the two treatments name the same recipient.",
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "decision_id": "ARBITRATION_REFERENCE_SCOPE",
+      "shape": "PAIRWISE_RIGHT",
+      "clauses": [
+        "CORE_DISPUTE_RESOLUTION_001"
+      ],
+      "binary_text": "Any dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996.",
+      "legal_question": "Where there are more than two parties, may one party refer a dispute against one other party alone and leave the rest out, or must every party be joined to a single arbitration?",
+      "authority_basis": [
+        {
+          "act": "Arbitration and Conciliation Act, 1996",
+          "section": "7",
+          "note": "An arbitration agreement is an agreement to submit to arbitration disputes between the parties to it. Where three parties sign one agreement, all three are parties to the arbitration agreement — which is what makes the scope question live rather than academic."
+        },
+        {
+          "act": "Arbitration and Conciliation Act, 1996",
+          "section": "11(5)",
+          "note": "Where the parties fail to agree on a sole arbitrator, the appointment is made by the arbitral institution designated under Section 11(3A). This fallback is count-independent and is the reason the APPOINTMENT half of this clause needs no decision."
+        },
+        {
+          "act": "Arbitration and Conciliation Act, 1996",
+          "section": "18",
+          "note": "The parties shall be treated with equality. This is why 'jointly appointed by the Parties' must mean all of them, and why a clause giving each side its own nominee arbitrator would raise a problem this clause does not — it specifies a sole arbitrator."
+        },
+        {
+          "act": "Arbitration and Conciliation Act, 1996",
+          "section": "35",
+          "note": "An arbitral award is final and binding on the parties and persons claiming under them. A party who was never joined is neither, so a bilateral award settles nothing as against the third."
+        },
+        {
+          "act": "Code of Civil Procedure, 1908",
+          "section": "11",
+          "note": "Res judicata. A third party not bound by the award is free to litigate the same facts, which is where the inconsistent-outcome exposure actually lands."
+        }
+      ],
+      "statutory_gap": [
+        "THE ACT DOES NOT ANSWER THIS. The Arbitration and Conciliation Act, 1996 as amended through 2021 contains no",
+        "provision for joinder of parties or consolidation of arbitral proceedings. The Supreme Court permitted",
+        "consolidation in PR Shah v B.H.H. Securities and the Delhi High Court in Gammon India v NHAI, but as judicial",
+        "practice rather than as an entitlement a party can insist on, and an ad hoc reference has no institutional",
+        "rules to fall back on. The draft Arbitration and Conciliation (Amendment) Bill, 2024 does not address it and",
+        "is not law.",
+        "",
+        "So the instrument is the only place this could have been settled, and it does not settle it. That is what",
+        "makes this UNDECIDED rather than merely unstated: there is no default to fall back on."
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "BILATERAL_REFERENCE",
+          "reading": "A party may refer its dispute against one other party alone; the others are not joined.",
+          "consequence_2": "the only possible reading",
+          "consequence_3": "an award between two of three binds neither the third nor anyone claiming under them, and the third may litigate the same facts to a different result on the same instrument",
+          "consequence_4": "same, with three strangers to each award and correspondingly more ways for the instrument to be construed two ways at once"
+        },
+        {
+          "treatment": "ALL_PARTIES_JOINED",
+          "reading": "Any reference must join every party to the instrument.",
+          "consequence_2": "indistinguishable from BILATERAL_REFERENCE",
+          "consequence_3": "one award binds all three and inconsistency is impossible, at the cost of dragging an uninvolved party into every dispute and its costs",
+          "consequence_4": "same, and the cost of the uninvolved grows with each party"
+        },
+        {
+          "treatment": "BILATERAL_WITH_RIGHT_TO_JOIN",
+          "reading": "A reference may begin bilaterally, and any other party may elect to be joined, or be joined on the application of a party, before the tribunal is constituted.",
+          "consequence_2": "nobody to join; indistinguishable",
+          "consequence_3": "the third chooses whether to be bound, which requires the clause to state a joinder window and who decides — none of which the current text contains",
+          "consequence_4": "same, and the window has to accommodate several electing parties"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "With two parties, referring 'the dispute' and referring it 'against the other party' are the same act, and there is no such person as a party who might be left out. All three treatments collapse into one sentence. The clause is not ambiguous at two parties — it is complete, and it stops being complete the moment a third signature appears.",
+      "components": {
+        "settled": [
+          {
+            "component": "Amicable resolution step",
+            "shape": "collective",
+            "why": "A good-faith discussion among three is the same obligation as between two; no right is gained or lost by either reading."
+          },
+          {
+            "component": "Appointment of the sole arbitrator",
+            "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+            "why": "All principals must agree, and on failure Section 11(5) appoints regardless of how many there are. Because the clause specifies a SOLE arbitrator, the multi-party appointment problem — three parties unable each to have a nominee without unequal treatment under Section 18 — does not arise."
+          },
+          {
+            "component": "Interim measures under Section 9",
+            "shape": "ALREADY_N_SAFE",
+            "why": "'Nothing in this clause prevents a Party from applying to a competent court' is distributive already."
+          }
+        ],
+        "open": [
+          {
+            "component": "Scope of the reference",
+            "shape": "PAIRWISE_RIGHT",
+            "why": "Bilateral or multilateral, with no statutory default."
+          }
+        ]
+      },
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
+    }
+  ],
+  "summary": {
+    "decisions": 5,
+    "clauses_covered": 7,
+    "all_undecided": true,
+    "note": [
+      "Five decisions cover seven clauses because three liability-cap clauses raise one question.",
+      "",
+      "ARBITRATION_REFERENCE_SCOPE was added in D4.20 and is the first decision found by the portfolio sweep rather",
+      "than by one MSA fixture. It is also the first found in a sentence that names no party at all: 'it shall be",
+      "referred to arbitration'. The lexical scan that found the original twenty-three — looking for 'either Party'",
+      "and 'the other Party' — passes straight over it and flags the harmless amicable-discussion sentence instead.",
+      "",
+      "Until each is authored, a document with more than two parties must report the point as open rather than adopt",
+      "a reading. An engine that picked a default here would be choosing a legal position on the user's behalf and",
+      "calling it a rendering detail."
+    ]
+  }
+}

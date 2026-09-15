@@ -1,5 +1,6 @@
 import { DOCUMENT_CONFIG } from "../config/documentConfig.js";
 import { getRequiredFieldsForMode } from "../config/essentialFields.js";
+import { positionOf, POSITION, isNegative } from "./generationControls.js";
 
 const COMPANY_MARKERS =
   /\b(private limited|public limited|pvt\.?\s*ltd|limited|llp|partnership|trust|government body|sole proprietorship)\b/i;
@@ -621,14 +622,44 @@ function addEntityIdentifierChecks(errors, schema, input) {
 }
 
 function addDocumentSpecificChecks(errors, input, documentType) {
-  if (
-    documentType === "LOAN_AGREEMENT" &&
-    normalizeText(input.security_collateral).toLowerCase() === "na"
-  ) {
-    addError(
-      errors,
-      "security_collateral must clearly state the collateral or explicitly say \"Unsecured\"."
-    );
+  // SECURED VS UNSECURED, enforced against the answer rather than the prose.
+  //
+  // This check used to read: if the collateral text is "NA", demand that it
+  // "clearly state the collateral or explicitly say Unsecured". Two things were
+  // wrong with it. It made a free-text description carry the position — the
+  // defect that split loan_is_secured out in the first place — and the escape
+  // hatch it offered, writing "Unsecured", was one of the phrasings that used to
+  // produce a SECURED loan. The product instructed the user into the trap and
+  // then validated that they had taken it.
+  //
+  // Now the answer is the authority and the text is only ever a description of
+  // it, so there are exactly two things worth saying.
+  if (documentType === "LOAN_AGREEMENT") {
+    const secured = positionOf(input.loan_is_secured);
+    const collateral = normalizeText(input.security_collateral);
+
+    // Secured, with nothing describing what secures it. The security clause and
+    // any enforcement provisions would be drafted over a blank.
+    if (secured === POSITION.TRUE && isBlank(collateral)) {
+      addError(
+        errors,
+        "security_collateral must be provided when the loan is secured. Describe what stands " +
+        "behind the loan — property, shares, a guarantee, or a charge over assets."
+      );
+    }
+
+    // Unsecured, with collateral described anyway. Not an error of form: the
+    // intake now says two different things about the same loan, and the answer
+    // is what the document will be built from, so the description would be
+    // silently discarded. Said out loud rather than dropped.
+    if (secured === POSITION.FALSE && !isBlank(collateral) && !isNegative(collateral)) {
+      addError(
+        errors,
+        "security_collateral describes collateral, but this loan is answered as unsecured. " +
+        "Either answer \"Yes\" to the security question or clear this field — nothing written " +
+        "here can make an unsecured loan secured, so it would be left out of the agreement."
+      );
+    }
   }
 
   if (

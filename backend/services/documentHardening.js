@@ -1,7 +1,7 @@
 import { getClauseById } from "./clauseAssembler.js";
 import { injectVariables } from "./variableInjector.js";
 import { normalizeClauseCategory, sortClausesByOrder } from "../config/clauseOrder.js";
-import { hasMeaningfulValue } from "./generationControls.js";
+import { hasMeaningfulValue, positionOf, POSITION } from "./generationControls.js";
 import { deriveRiskProfile } from "./riskProfile.js";
 import {
   getDocumentDraftingPolicy,
@@ -759,6 +759,79 @@ function renderStructuredDetailText(prefix, value, options = {}) {
   if (items.length === 1) return `${prefix} ${items[0]}.${excluded}`;
 
   return `${prefix}\n${formatStructuredSubparts(items)}${excluded}`;
+}
+
+// Ordinal labels for the Parts of a deed. Indian instruments say "of the First
+// Part", "of the Second Part", "of the Third Part" -- the ordinal is the
+// position, and it is not the same thing as the party's own number once a slot
+// has been left empty.
+const ORDINAL_PART_LABELS = [
+  "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth",
+  "Ninth", "Tenth", "Eleventh", "Twelfth",
+];
+
+// "The Partner 1 and the Partner 2" for two; "The Partner 1, the Partner 2 and
+// the Partner 3" for three. No Oxford comma, per the drafting convention the
+// rest of the library follows.
+function formatPartyLabelList(labels = []) {
+  const parts = labels.filter(Boolean).map((label) => `the ${label}`);
+  if (!parts.length) return "The Parties";
+  const joined =
+    parts.length === 1
+      ? parts[0]
+      : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+  return joined.charAt(0).toUpperCase() + joined.slice(1);
+}
+
+/**
+ * "Partner 1 shall contribute X and Partner 2 shall contribute Y" — for however
+ * many principals there are, and honest about the ones with no figure.
+ *
+ * This is the ONE allocation in the deed that is mechanically attributable: the
+ * field name carries the principal's ordinal and the label the user typed under
+ * said whose number it was, which allocation-semantics.json records as
+ * ESTABLISHED. So the sentence may name each principal's amount. The profit
+ * ratio in the same clause may not, and does not.
+ *
+ * A PRINCIPAL WITH NO RECORDED AMOUNT IS NOT GIVEN ONE. The clause says no
+ * contribution is recorded for them, which is a statement about this Deed rather
+ * than an inference about what the partners agreed, and it is true. Before this,
+ * a deed for three partners recited two contributions and said nothing at all
+ * about the third — the D4.14 silence, surviving in the one clause the roster
+ * wiring did not reach.
+ */
+function renderPerPrincipalAmounts(base, term, variables = {}, participants = []) {
+  const entries = participants.map((participant, i) => {
+    const ordinal = rosterOrdinalOf(participant.id, i + 1);
+    const raw = variables[`${base}_${ordinal}`];
+    return { ordinal, recorded: hasMeaningfulValue(raw), value: raw };
+  });
+
+  const stated = entries
+    .filter((entry) => entry.recorded)
+    .map((entry) => `${term} ${entry.ordinal} shall contribute ${formatCurrency(entry.value)}`);
+  const missing = entries.filter((entry) => !entry.recorded).map((entry) => entry.ordinal);
+
+  // Two principals, both recorded: exactly the sentence this clause has always
+  // carried, down to the "and".
+  const list =
+    stated.length === 0
+      ? "the amounts the Partners agree in writing"
+      : stated.length === 1
+      ? stated[0]
+      : `${stated.slice(0, -1).join(", ")} and ${stated[stated.length - 1]}`;
+
+  if (!missing.length) return list;
+
+  const who = missing.map((ordinal) => `${term} ${ordinal}`);
+  const whoList =
+    who.length === 1 ? who[0] : `${who.slice(0, -1).join(", ")} and ${who[who.length - 1]}`;
+  return `${list}. No capital contribution is recorded in this Deed for ${whoList}`;
+}
+
+function rosterOrdinalOf(id = "", fallback = 1) {
+  const match = /_(\d+)$/.exec(String(id));
+  return match ? Number(match[1]) : fallback;
 }
 
 function resolveNamedPartyLabels(documentType) {
@@ -1596,34 +1669,67 @@ function renderHardClause(
         "the lawful commercial relationship and obligations contemplated by the Parties"
       );
 
+      /*
+       * THE TESTATUM, FOR HOWEVER MANY PRINCIPALS THERE ARE.
+       *
+       * Two is the overwhelmingly common case and its wording is untouched:
+       * "BY AND BETWEEN", one standalone "AND", First Part and Second Part,
+       * the two-name collective sentence. A two-party deed generated after this
+       * change is byte-for-byte the deed generated before it.
+       *
+       * Above two, the same sentences are built by the same rules from the same
+       * roster the signature block uses, which is the whole point. D4.14's
+       * defect was not that the identity clause lacked a third partner; it was
+       * that the capital clause had one and the identity clause did not. Both
+       * halves reading one list is what makes that impossible rather than
+       * unlikely.
+       */
+      const roll = participants.map((participant, i) => ({
+        participant,
+        label:
+          i === 0 ? namedParties.first
+            : i === 1 ? namedParties.second
+            : participant?.label || `Party ${i + 1}`,
+        descriptor:
+          i === 0 ? firstDescriptor
+            : i === 1 ? secondDescriptor
+            : buildParticipantDescriptor(participant, variables) ||
+              semanticDescriptors[i] ||
+              participant?.label ||
+              `Party ${i + 1}`,
+      }));
+
+      const introductions = [];
+      roll.forEach((entry, i) => {
+        const last = i === roll.length - 1;
+        // The standalone "AND" sits before the final party, which for two
+        // principals is exactly where it has always sat.
+        if (last && roll.length > 1) introductions.push("", "AND", "");
+        else if (i > 0) introductions.push("");
+        introductions.push(
+          buildFormalPartyIntroduction(
+            entry.descriptor,
+            entry.label,
+            ORDINAL_PART_LABELS[i] || `${i + 1}th`,
+            entry.participant,
+            last ? "." : ";",
+            variables
+          )
+        );
+      });
+
       return [
         `THIS AGREEMENT ("Agreement") is made and executed${
           executionVenue ? ` at ${executionVenue}` : ""
         } on ${formatFormalExecutionDate(variables.effective_date)}.`,
         "",
-        "BY AND BETWEEN",
+        roll.length > 2 ? "BY AND AMONG" : "BY AND BETWEEN",
         "",
-        buildFormalPartyIntroduction(
-          firstDescriptor,
-          namedParties.first,
-          "First",
-          participants[0],
-          ";",
-          variables
-        ),
+        ...introductions,
         "",
-        "AND",
-        "",
-        buildFormalPartyIntroduction(
-          secondDescriptor,
-          namedParties.second,
-          "Second",
-          participants[1],
-          ".",
-          variables
-        ),
-        "",
-        `The ${namedParties.first} and the ${namedParties.second} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
+        `${formatPartyLabelList(
+          roll.map((entry) => entry.label)
+        )} are hereinafter collectively referred to as the "Parties" and individually as a "Party".`,
         "",
         // Indian drafting convention letters the recitals and uses AND WHEREAS
         // from the second onward, so they can be cross-referred as Recital a/b/c.
@@ -2987,10 +3093,11 @@ function renderHardClause(
       )}.` : ""}`,
 
     PARTNERSHIP_CAPITAL_001: () =>
-      `Each Partner shall contribute capital to the partnership in the following amounts: Partner 1 shall contribute ${formatCurrency(
-        variables.capital_contribution_1
-      )} and Partner 2 shall contribute ${formatCurrency(
-        variables.capital_contribution_2
+      `Each Partner shall contribute capital to the partnership in the following amounts: ${renderPerPrincipalAmounts(
+        "capital_contribution",
+        "Partner",
+        variables,
+        getParticipantExpectations(documentType, variables)
       )}. The capital contributions shall be held in the name of the partnership${hasMeaningfulValue(
         variables.partnership_name
       ) ? `, namely ${normalizeWhitespace(variables.partnership_name)}` : ""}${hasMeaningfulValue(
@@ -3528,7 +3635,20 @@ function renderHardClause(
         "cross-default under any other material financing agreement of the Borrower",
       ];
 
-      if (present.has("security")) {
+      // THE CANONICAL FACT, not the presence of a security clause.
+      //
+      // This used to read `present.has("security")`, and it was circular.
+      // LOAN_DEFAULT_001 named LOAN_SECURITY_001 in required_with, so the
+      // dependency resolver injected a security clause into loans the borrower
+      // had answered as UNSECURED; that clause's presence then satisfied this
+      // condition; and the limb was added. The document agreed with itself and
+      // was false: an event of default predicated on "any security created
+      // under this Agreement" in an agreement that creates none.
+      //
+      // `is_secured` is resolved once, upstream of generation, from the
+      // borrower's own answer (Phase B). A clause that arrived by any route
+      // cannot make the loan secured.
+      if (positionOf(variables.is_secured) === POSITION.TRUE) {
         events.push(
           "any security created under or in connection with this Agreement ceasing to be valid, enforceable, or perfected"
         );
@@ -3685,6 +3805,20 @@ export function applyDocumentHardening(draft, input = {}) {
   // Clauses a variant slot deliberately swapped out must not be re-injected as a
   // "missing required" clause (its replacement already covers the role).
   const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
+  // A FOURTH INJECTION PATH, with the same blind spot the dependency resolver had.
+  //
+  // This module keeps its own baseline of clauses a document type must contain
+  // and adds any that are missing. It filters out clauses that were
+  // variant-replaced, that conflict, and that the type disallows — but not ones
+  // an applicability gate excluded. So a user could decline a mechanism, the
+  // gate could exclude it, the dependency resolver could correctly refuse to
+  // reinstate it, and this baseline would add it straight back.
+  //
+  // Found while testing the C3 repair: CORE_INDEMNITY_001 was refused by both
+  // of its required_with edges, with diagnostics recorded, and shipped anyway.
+  const applicabilityExcludedClauseIds = new Set(
+    draft.metadata?.applicability_excluded_clause_ids || []
+  );
 
   // Honour the clause library's own `conflicts_with` declarations, so a general
   // provision is not injected on top of a document-specific clause covering the
@@ -3712,6 +3846,11 @@ export function applyDocumentHardening(draft, input = {}) {
         !existingClauseIds.has(clauseId) &&
         !replacedClauseIds.has(clauseId) &&
         !genericClausesToRemove.has(clauseId) &&
+        // Considered by the blueprint and excluded. The baseline says this
+        // document TYPE usually carries the clause; the gate says THIS document
+        // does not. The gate was evaluated against this user's answers and the
+        // baseline was not, so the gate wins.
+        !applicabilityExcludedClauseIds.has(clauseId) &&
         !conflictsWithDraft(clauseId)
     )
     .map((clauseId) => cloneClauseForDraft(clauseId, variables));
@@ -3778,6 +3917,21 @@ function findMissingRequiredClauseIssues(draft, documentType) {
   // replacement is present and covers the role.
   const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
 
+  // NOR IS A CLAUSE THE USER DECLINED.
+  //
+  // The injector above now honours applicability, so a gate-excluded clause is
+  // correctly absent. Without the same rule here, this module withholds the
+  // clause and then charges the document HIGH for its absence — the same
+  // contradiction already recorded for disallowed protections, arriving through
+  // a different door. It showed up as 23 of 40 document types dropping out of a
+  // clean score the moment declined clauses stopped being reinstated.
+  //
+  // "Missing" means the document ought to have it and does not. A clause whose
+  // own gate excluded it ought not to have it.
+  const applicabilityExcludedClauseIds = new Set(
+    draft.metadata?.applicability_excluded_clause_ids || []
+  );
+
   // Nor is a clause that stood down for a conflicting one already in the
   // draft. This mirrors the injection rule in applyDocumentHardening; without
   // it, the validator demands the very clause the injector correctly withheld
@@ -3804,6 +3958,7 @@ function findMissingRequiredClauseIssues(draft, documentType) {
         !existingClauseIds.has(clauseId) &&
         !replacedClauseIds.has(clauseId) &&
         !suppressed.has(clauseId) &&
+        !applicabilityExcludedClauseIds.has(clauseId) &&
         !supersededByPresentClause(clauseId)
     )
     .map((clauseId) =>

@@ -1384,6 +1384,15 @@ every conditional clause would satisfy the first assertions.
 
 ## 26. One fact, one resolution — generation and assessment must read the same one
 
+> **REPAIRED in Phase B.** Resolution now happens once, in
+> `prepareGenerationInput`, upstream of the derivation and of clause selection,
+> and is carried to assessment rather than recomputed. Guarded by
+> `tests/factSourceParity.test.mjs` (four axes, seven mutations) and
+> `tests/applicabilityFactSource.test.mjs` (the original nine, now determinate).
+> See `docs/audit/PHASE_B_CANONICAL_FACTS.md`. The record of the defect below is
+> kept because the repair is only legible against it.
+
+
 The system has two fact planes:
 
 ```
@@ -1747,3 +1756,1565 @@ as structural admission never standing for legal review.
 A twelfth apparent hit was a false positive: `143A` of the Negotiable Instruments
 Act matching as `43A`. The same token-boundary class as the money regex that once
 read `parent_name` as a rent field. The count reported is 11, not 12.
+
+
+## 29. A fact has one canonical value before any consumer sees it
+
+Normalising in each consumer is not one value. It is several values that are
+currently equal.
+
+`key_person_dependency` is a select whose options are "Yes" and "No". Clause
+selection received `"Yes"`; assessment received `true`. **Both were right**,
+because `evaluateConditionalExpression` and `canonicalFacts` each call
+`positionOf`. Two call sites of the same function is not one value — it is an
+agreement that survives only as long as nobody writes a third consumer, a gate
+against the raw cell, or a normaliser that handles `"Y"` differently. The defect
+this whole phase exists to remove is exactly that kind of agreement, one
+refactor later.
+
+So the canonical value is resolved **before** the derivation runs and overlaid
+onto the variables everything downstream reads. Generation now carries
+`key_person_dependency: true`, a boolean, and there is nothing left to normalise
+downstream of the resolver.
+
+The same rule decides classification, not only value. **A fact's `kind` is
+declared, and the declaration is authoritative.** A `DECLARED` fact reads the
+intake field named in `established_by` and never passes through
+`deriveGenerationControls`; a `DERIVED` fact does, and stays derived after it
+crosses into assessment even where the value is identical to a declared one and
+the field behind it was answered directly. Letting the runtime decide which it
+was — by observing what the generation pipeline happened to produce — moves the
+two-fact-plane problem into the resolver meant to end it.
+
+## 30. Every answer a question offers must have a document behind it
+
+`loan_is_secured` offers "Yes" and "No". `security_collateral` was declared
+`required: false` in `variableConfig` and listed in
+`DOCUMENT_CONFIG.requiredFields`, and `buildFieldDefinition` resolves that
+disagreement as `inRequiredFields || definition.required` — either source makes a
+field required. So the state
+
+```
+loan_is_secured = No,  security_collateral = (blank)
+```
+
+was **rejected**. The product asked a question, offered an answer, and refused to
+produce the document that answer describes. The only route to an unsecured loan
+was to write collateral text into a field whose own description says nothing
+written there can make a loan secured — the intake asserting security while the
+agreement denied it.
+
+This is not a validation annoyance. It is a **state-space contradiction**: a
+declared fact claimed to represent a state the application could not represent.
+Three test fixtures had independently baked the contradictory state in as their
+only way to express an unsecured loan, which is how load-bearing it had become.
+
+`required` is a boolean and cannot say *when*, and that absence is what let the
+two declarations disagree. The schema now says it: `requiredWhenShown`, paired
+with the `showIf` that already names the condition, enforced in
+`variableValidator` the way `liability_cap_amount` is.
+
+**The check to run on any conditional field: for each answer the question
+offers, does a valid document exist?** Not "is the validation rule reasonable" —
+a rule can be individually reasonable and still make a declared state
+unreachable.
+
+## 31. Static reachability predicts; runtime decides
+
+A static inventory of clause dependencies found **12** edges where an
+unconditionally-included clause names a gated clause in `required_with` or
+`depends_on` — 46 across the portfolio before filtering to same-blueprint
+same-document pairs. Three looked substantively serious.
+
+At runtime, **one** fires. `EMP_CONFIDENTIALITY_001 -> EMP_NON_COMPETE_001` never
+fires because that confidentiality clause is not in the employment document at
+all; `CORP_TAG_ALONG_001 -> CORP_DRAG_ALONG_001` never fires because the target is
+suppressed elsewhere. Repairing all three "confirmed" defects would have changed
+two things that were not happening, and the commit would have claimed three fixes.
+
+The inventory is still worth having — it is the architectural shape, and it says
+where the next such defect can appear. It is not a finding. **A parity or
+correctness claim is made against runtime behaviour; a static sweep proposes
+candidates for it.**
+
+An earlier version of the same sweep matched `invalid_if` truthiness and reported
+192 edges. `invalid_if` is prose carried on 250 of 315 clauses for advocate
+review. The filter matched almost everything, which is the same shape as the
+`legal_basis` deadline classifier that called all 15 windows statutory, and the
+boilerplate stamp clause that made "formal act" read as 24 families.
+
+
+## 32. A declined protection ROLE must stay empty, whatever the clause is called
+
+The obvious invariant — *a declined clause id must not appear* — is too weak, and
+the loophole was live in production. A user declining `CORE_FORCE_MAJEURE_001`
+received `CORE_FORCE_MAJEURE_FALLBACK_001`: a different identifier, the same
+substantive protection, every id-for-id assertion satisfied, the decline
+defeated.
+
+> A declined protection role must not be satisfied by ANY clause unless an
+> authored substitution explicitly permits it.
+
+Six independent stages could reintroduce an excluded clause, and each was found
+only when the previous repair failed to hold:
+
+1. the dependency resolver, via `required_with`
+2. `documentHardening`'s own baseline clause set
+3. that module's missing-clause reporting, which then charged the document for
+   the absence it had just stopped curing
+4. the general-provisions constraints, reporting a declined default as missing
+5. the protection injector, substituting a role-equivalent under another id
+6. blueprint gating — four floor clauses gated `== true` in 33 places, so silence
+   removed them, invisible while stage 2 put them back
+
+A role-level assertion would have caught all six at once. An id-level one caught
+them one at a time, over four rounds. Pinned by
+`tests/declinedProtections.test.mjs`, which asserts both directions: declined
+roles empty AND accepted roles occupied, because a bug dropping every conditional
+clause would satisfy the first half perfectly.
+
+## 33. A fixture must say which situation it represents
+
+`variablesFor` answered every select with `options[0]`. For the optional
+protections `options[0]` is `"No"`, so one fixture played two incompatible roles:
+the health tests asked whether **a well-filled document** carries its general
+provisions while the fixture was quietly declining every one of them.
+
+Invisible until applicability became load-bearing. Before that the hardening
+baseline reinstated whatever the fixture declined, so the answer changed nothing
+and the premise could not be caught being wrong.
+
+Two profiles now, named: `MINIMAL_DECLINED` and `WELL_FILLED`. They differ in
+exactly one dimension — optional `include_*` drafting choices — and nothing else.
+A first attempt keyed on shape alone (any optional yes/no select) also flipped
+`addressee_is_government`, `involves_source_code` and `company_has_ip_assets`.
+Those are facts about the world: answering them "Yes" does not make a document
+better filled in, it makes it **a different document**, and the health tests would
+then have been comparing two unlike things and calling the difference
+completeness.
+
+**`options[0]` must never carry meaning.** A fixture's intent is declared, not
+inferred from option order.
+
+## 34. Offering a question the knowledge cannot honour is a defect in the question
+
+`include_entire_agreement` was asked on ESOP grant letters and promissory notes.
+Both are named in the general-provisions constraint's `excludes_doc_types` and
+both carry their own hardening baseline that omits the clause — two authored
+artifacts agreeing the clause does not belong. Answering "Yes" changed nothing.
+
+The repair is to withdraw the question, not to honour it: honouring it would put
+a clause into two families whose own knowledge says it does not belong, on the
+strength of an intake field nobody scoped to them.
+
+This is the mirror of invariant 30. There, a question offered an answer the
+product could not produce a document for. Here, a question offered an answer the
+knowledge would not act on. Both are the same failure — **the intake and the
+knowledge disagreeing about what is decidable** — and both are invisible while
+some later stage quietly overrides the answer either way.
+
+
+## 35. A gate must read a control some answer can move
+
+`CORE_INSURANCE_001` is offered in Distribution and MSA behind
+`include_insurance == true`. `include_insurance` is `null` for both families and
+no intake answer moves it. The clause is authored, cited, reviewed, dependency-
+clean and **unreachable**: no user can obtain it.
+
+The mirror is commoner and worse. `include_governance_protections` is `true` for
+MSA and Distribution whatever the user answers, so `CORE_GOVERNANCE_PROTECTIONS_001`
+and `MSA_GOVERNANCE_BODY_001` always ship. The blueprint reads as a choice, the
+document is a constant, and **no artifact is wrong** — the clause is fine, the
+gate is fine, the matrix is consistent, the baseline is stable. Seven such gates
+exist across three families.
+
+This is invisible to every earlier check by construction. The clause baseline
+sees no drift because nothing drifts. Falsification sees no false green because
+the requirement really is satisfied. The differential (D4.2) counts the clause as
+unconditional but cannot say whether that is by design. Only perturbing every
+intake answer and watching the control reveals it.
+
+**A gate on a constant is not a gate; it is decoration with the shape of a
+choice.** The repair is never "add another gate": either wire the control to a
+question, or delete the gate because the family always needs the clause. Which
+one is an authoring decision, and `tests/gateReachability.test.mjs` refuses to
+let it go unmade rather than pretending to make it.
+
+## 36. "Unconditional" is not a defect count until someone says what the core is
+
+80/91/86% of NDA, Distribution and MSA clauses ship regardless of any material
+answer. That number is not 80% defective. Governing law, definitions, notices and
+severability legitimately do not move because a deal involves personal data.
+
+The defect is that **nobody has written down which clauses belong in the fixed
+core**, so there is no way to tell a legitimately universal clause from one whose
+gate was never authored. Classifying the 98 against the evidence the repository
+already holds, 83 are UNRESOLVED — not because the measurement is weak but
+because the repository is silent about them.
+
+The two halves of that silence need different work and must not be summed: 17
+have a concrete candidate defeating fact named somewhere in the portfolio and
+await a decision for this family; 66 have nothing at all.
+
+**A gate authored in another family is a question, not an answer.** That
+`VENDOR_AGREEMENT` makes confidentiality optional does not mean a distribution
+agreement should. Copying it across would repeat the invariant-34 error in the
+opposite direction, adding clauses to families whose own knowledge excludes them.
+
+## 37. Nothing that carries the law reaches the document
+
+Seventeen facts exist across two planes. Three reach the document. Ten carry
+statutory authority. **Zero do both.**
+
+`semantic_facts.json` holds 7 facts with declared/derived provenance, canonical
+resolution and requirement applicability — and no statute, no section, no
+`attaches` list. `knowledge-base/concepts` holds 10 concepts with 45 section-deep
+citations, role/event dimensions, detection with provenance, drafted confirmation
+questions and open-world `unresolved_behaviour` — and no resolver, so nothing
+reads them at runtime.
+
+Neither plane is wrong. Both are sound. They are not connected to each other, and
+that disconnection is the exact line where the system stops reasoning legally and
+starts selecting from a template. `key_person_dependency` stopping at
+REQUIREMENT_MOVES is one symptom; the general case is that legal authority and
+document effect live in different places and have never been joined.
+
+**A concept cannot be credited with an effect it did not cause.** Perturb
+`involves_personal_data` and a clause appears — because a human wrote
+`include_if: involves_personal_data == true` into a blueprint, not because
+`PERSONAL_DATA_PROCESSING` resolved, and not through its `attaches` list. Scoring
+that as the concept reaching the document would make the concept layer look
+connected on the one axis where it is severed. The field's independent effect is
+recorded in its own column, and it is the useful one: where a field already moves
+the document a resolver adds traceable REASONS, and where it does not a resolver
+adds reach the system has never had.
+
+## 38. A blocked generation is not a measurement
+
+The first run of the D4.4 trace reported `is_secured` — the whole subject of Phase
+B — as reaching nothing. It reaches the document.
+
+The WELL_FILLED loan fixture describes collateral. Answering `loan_is_secured`
+"No" makes the pair impossible, and the system correctly BLOCKED rather than
+drafting an unsecured loan that recites security. The probe read the block as a
+fact that fails to travel. **The system was right and the perturbation was
+invalid** — a single-field flip built a world that cannot exist.
+
+The repair is not to suppress the guard or to hand-maintain a dependency map. The
+validator's own message names the offending field; clear what the system
+identified, retry once, and report the reason if it is still blocked. Clearing
+what the system named is not guessing. Inventing the map would be.
+
+This is the eighth occurrence of one failure shape — **a filter matching more than
+it meant** — and the first committed twice in a single session, in a probe whose
+own docstring warned against it. Every occurrence produced a number that was
+larger, or a verdict that was worse, than the truth.
+
+## 39. Certification axes must not be allowed to stand in for each other
+
+Ten families earned FALSIFICATION_PASSED under a claim that was true when made:
+*this family survived the falsification corpus applicable to the current
+implementation*. Folding legal-knowledge validation into that rung would have
+converted it into a claim nobody has evidence for — *the legal reasoning
+underneath this family is validated* — without anyone editing a single
+falsification record. Retroactive redefinition is the quietest way to
+manufacture an assurance.
+
+So the ladder is split into three independent axes:
+`LEGAL_KNOWLEDGE_STATUS`, `GENERATION_STATUS`, `HUMAN_STATUS`. Full certification
+requires all three plus specificity evidence; no one of them implies another.
+
+**Specificity is tracked beside the generation ladder, not inside it.** The
+obvious placement is a rung between coverage and falsification, and D4.2 is the
+proof it is wrong: requirement outcomes moved ZERO between opposite worlds for
+NDA and Distribution, so those families pass falsification and fail specificity.
+Ordering one beneath the other asserts a prerequisite that does not exist — and
+would demote the ten families the split exists to protect.
+
+## 40. A concept must cause the clause, not merely coincide with it
+
+`PERSONAL_DATA_PROCESSING` is the first fact in the system to carry statutory
+authority AND reach the document. Nineteen blueprints asked one legal question
+under five different gate names — `involves_personal_data`,
+`processes_personal_data`, and the `company_`/`firm_`/`jv_` variants. All
+nineteen now read `concept:PERSONAL_DATA_PROCESSING`, and the clause states why
+it is there: *Personal data is processed under this arrangement. Established
+declared from field:involves_personal_data. Authority: DPDP Act 2023 ss.8(2),
+8(5), 8(6), 8(7).*
+
+**Zero baseline drift across 40 document types is the proof, not a
+disappointment.** Had one document changed, either the concept or one of the
+nineteen gates was wrong and we could not say which. Identical output is what
+establishes that the concept faithfully reproduces every decision it replaced.
+
+Three rules the wiring must keep:
+
+- **Provenance is load-bearing.** An INFERRED resolution never attaches clauses;
+  it raises the concept's confirmation question. Attaching ten data-processing
+  obligations because a classifier read "customer records" in a free-text field
+  would fabricate a legal duty.
+- **The absent resolution is recorded.** "Why isn't this clause here?" needs the
+  negative as much as the positive; an absent concept that went unrecorded is
+  indistinguishable from one nobody considered.
+- **Concept authority is kept separate from clause `legal_basis`.** They answer
+  different questions — what this clause is drafted under, versus why this
+  transaction needed a clause of this kind. Merging them lets a clause that cites
+  a statute look as though its APPLICABILITY had been established.
+
+**Measuring this required deleting an assumption from the measurement.** The
+trace probe hardcoded "no concept resolver exists" as a ceiling. The moment the
+resolver landed, the probe was asserting a false statement about the system it
+was measuring. A probe may cap what the evidence supports; it may not cap what it
+last believed.
+
+## 41. A specificity repair can be a legal regression
+
+D4.3 found `SERVICE_KEY_PERSONNEL_001` gated on `include_sla` while the
+requirement it satisfies, PERSONNEL_CONTINUITY, is applicable on
+`key_person_dependency`. The obvious repair is to move the gate onto the legal
+fact. It would have deleted principal-employer exposure from every MSA that does
+not depend on named individuals.
+
+The clause does two jobs under one id:
+
+- its first limb records that the parties intended performance by particular
+  individuals — **Indian Contract Act 1872 s.40**, whose default is that a
+  promisor *may employ a competent person to perform*. The clause displaces a
+  statutory default; it does not invent a restriction. This limb is properly
+  conditional on `key_person_dependency`.
+- its last sentence allocates principal-employer exposure under **Code on Wages
+  2019 s.43** and **EPF Act 1952 s.8A**. That is true of any services engagement
+  whatever, and no other clause in a generated MSA states it —
+  `CORE_RELATIONSHIP_OF_PARTIES_001` addresses the relationship between the
+  PARTIES, not who employs the deployed personnel.
+
+**Every existing check would have stayed green.** The clause baseline would
+record an intended diff. The requirement would correctly report NOT_APPLICABLE.
+Coherence would hold; falsification would pass. The document would simply stop
+allocating a statutory liability, and nothing would say so.
+
+So: **before a clause moves behind a legal fact, ask what law the document stops
+citing when that fact is false.** Sixty-one conditional clauses across
+twenty-eight document types are the sole citation of some statute. Most are
+correct — `EMP_MATERNITY_BENEFITS_001` gated on `is_female_employee` SHOULD be
+the only source of maternity provisions, and a male employee's contract should
+stop citing them. The defect is narrower: when the Act that leaves is about a
+subject the gate does not ask about. That distinction is a legal judgement, so
+the inventory is recorded with an authored disposition and `NOT_REVIEWED` is the
+honest default for the other sixty.
+
+**Treatment granularity is not clause granularity.** A requirement binds to
+clause ids, so a requirement that should move one proposition can only move a
+whole clause — and a clause may carry several propositions under different
+statutes. That is the layer the chain FACT → CONCEPT → AUTHORITY → APPLICABILITY
+→ REQUIREMENT → TREATMENT → CLAUSE breaks at, and it is why the key-person slice
+stops here rather than shipping a gate change. The repair is to split the clause
+so the continuity limb can move and the employment-status limb cannot; ICA s.40
+is also cited by `MSA_SUBCONTRACTING_001`, so the continuity limb can move
+without losing that authority. Splitting is new legal text and needs advocate
+review before it ships.
+
+## 42. Citing the same section is not implementing the same proposition
+
+D4.4-B showed `requirement -> clause` is too coarse, which argues for a TREATMENT
+layer between them. Before building one, the question was measured: **is a
+treatment a reusable unit, or just a name for part of a clause?**
+
+The obvious measurement says reusable. 146 of 370 authorities are cited by more
+than one clause, 114 across more than one category. **It says nothing of the
+kind.** Indian Contract Act 1872 s.73 is cited by 26 clauses in 13 categories,
+and the authoring notes say what it is doing there — *"Compensation for loss
+caused by breach"*, *"Damages for breach"*, *"Damages for breach of employment
+obligation"*. Those 26 clauses are not implementing one damages treatment; each
+imposes its own obligation and cites the general law of damages as BACKGROUND.
+The same holds for s.37 (obligation to perform) and s.10 (formation).
+
+Reporting those counts as reusable treatments would have argued for a whole
+architectural layer on evidence that does not exist — the eighth instance of a
+filter matching more than it meant, and by far the most expensive.
+
+**On current evidence the smallest independently selectable legal unit is still
+the clause**, and the repair for a composite clause is to split it, not to
+introduce treatment objects that would be one-to-one with clauses nearly
+everywhere. The known failure population is ONE clause, not the 182 that cite
+multiple Acts.
+
+## 43. A clause that does not say what it is for cannot be decomposed by anyone
+
+What is missing is not a treatment layer. It is a declaration of which authority
+each clause EXISTS TO IMPLEMENT, as distinct from the background law it cites.
+
+198 of 315 clauses carry no `statutory_reference` at all, and 47 of the 117 that
+do name more than one. So for most of the library there is no way to separate a
+clause's own proposition from its supporting citations — which is precisely how a
+principal-employer liability allocation under EPF s.8A came to live inside a
+clause about key personnel with nothing marking it as a separate thing.
+
+That declaration is far cheaper than a treatment layer and is the prerequisite
+for one: a clause whose own proposition is unstated cannot be decomposed into
+treatments by anybody, machine or advocate. It is also the missing input to the
+60 `NOT_REVIEWED` statutory-custody pairings, where the question an advocate must
+answer is exactly *is this authority what the clause is for, or background it
+happens to cite?*
+
+## 44. The reuse that exists is already modelled; the gap is concurrency, not alternatives
+
+The falsification for a treatment layer: **do independently authored clauses
+implement the same legal proposition?** Twelve clauses were given an explicit
+`implements` — variant-slot groups, a suspected overlapping pair, the known
+composite, and two controls. The sample was deliberately loaded toward finding
+reuse, because twelve random clauses out of 315 would almost never collide and
+their not colliding would say nothing about the library.
+
+**Four propositions are implemented by more than one clause — and two of the four
+are already modelled.** `CONFIDENTIALITY_OBLIGATION` across three clauses is the
+`confidentiality_strength` variant slot. `REPAYMENT_SCHEDULE_FIXED` across two is
+`repayment_structure`. A variant slot IS the treatment abstraction for
+alternative implementations: a named position with several clause
+implementations selected by condition. It exists, it is used eighteen times, and
+nothing needs building.
+
+The other two — `RENT_PAYABLE_ON_STATED_TERMS` and
+`SECURITY_DEPOSIT_CAPPED_AND_RETURNABLE`, each across a `RENT_*`/`RENTAL_*` pair
+with 6% and 37% text similarity — have no slot saying so. That is either an
+unrecorded alternative or accidental duplication, and the two call for opposite
+repairs. The probe cannot tell them apart; an advocate reading the texts can.
+
+**So the unmet need is not alternative selection.** A variant slot chooses ONE of
+N. `SERVICE_KEY_PERSONNEL_001` needs BOTH of its propositions, with only one of
+them conditional: `PERSONAL_PERFORMANCE_INTENDED` (ICA s.40) moves with
+key-person dependency, `PRINCIPAL_EMPLOYER_EXPOSURE_ALLOCATED` (Code on Wages
+s.43, EPF s.8A) does not. What the model cannot express is **concurrent
+propositions within one clause carrying independent applicability** — a far
+narrower gap than "there is no treatment layer", and one that clause splitting
+resolves without any new abstraction.
+
+**The control set is what makes this result mean anything.**
+`CORE_GOVERNING_LAW_001` and `CORE_NOTICE_001` share no proposition with any
+sampled group. A vocabulary drawn broadly enough to cover everything would have
+reported perfect reuse while measuring nothing, and would then have been used to
+justify the very layer it could not evidence. The test asserts the controls stay
+disjoint, so the vocabulary cannot drift into vagueness unnoticed.
+
+## 45. Composite is not the defect; divergent applicability with no other implementer is
+
+D4.5-B left an open question: which composite clauses must be split? The
+criterion is not "implements more than one proposition" — a clause may carry
+three safely if they are applicable exactly when the clause is selected. It is:
+
+> **A proposition is LOST when there is a world in which it is applicable and no
+> clause in the emitted document implements it.**
+
+That is a runtime question and is asked by generating the worlds and reading the
+documents. Static reasoning over gates gets it wrong, because a proposition
+carried by an unselected clause can still be safe when a variant default or
+another clause implements it instead — which is exactly why
+`NDA_CONFIDENTIALITY_TRADE_SECRET_001`, equally composite, passes. Its broad
+proposition is picked up by `CORE_CONFIDENTIALITY_001` when the variant is not
+chosen. Nothing is lost, so nothing needs splitting.
+
+**Applying it turned one abstract wiring observation into two live legal losses
+with two different repairs**, both in `MASTER_SERVICE_AGREEMENT` and both caused
+by `SERVICE_KEY_PERSONNEL_001` being gated on `include_sla`:
+
+- `PRINCIPAL_EMPLOYER_EXPOSURE_ALLOCATED` (Code on Wages s.43, EPF s.8A) is
+  applicable to every services engagement. An MSA with no agreed service levels
+  **ships today** with nothing allocating principal-employer exposure. Repair:
+  split the clause so this limb is unconditional.
+- `PERSONAL_PERFORMANCE_INTENDED` (ICA s.40) is applicable on
+  `key_person_dependency`. A client who answers YES to depending on particular
+  individuals and NO to service levels receives **no key-person protection at
+  all**, silently. Repair: move the gate onto the fact its own proposition names.
+
+Neither was hypothetical, and the D4.3 finding had described only the wiring. The
+proposition layer is what converted "the gate reads the wrong fact" into "this
+document is missing this rule, under these sections, in this world."
+
+**The two repairs must land together.** Moving the gate while the clause is still
+composite would take the principal-employer allocation with it — the regression
+`statutory-custody.json` records as BLOCKED. That coupling is invisible at clause
+level and obvious at proposition level, which is the argument for the layer.
+
+## 46. A guard scoped to the families that revealed the defect is not a guard
+
+`tests/gateReachability.test.mjs` was written while investigating NDA,
+Distribution and MSA, and was scoped to those three. It reported **7 frozen
+gates**. Run over all forty families it reports **50, of 156 gates checked.**
+
+The other forty-three were never absent — only unexamined. `include_insurance`
+is frozen in **ten** families, so `CORE_INSURANCE_001` is unreachable in ten
+document types at once; `include_governance_protections` in nine.
+
+Gate reachability is an ENGINE property: a gate on a control no answer can move
+is a defect wherever it occurs. Scoping the check to the knowledge that revealed
+it leaves every other family unguarded while the suite reports green. The test
+for any future change is the same one: **am I fixing the engine, or teaching one
+document about its particular problem?** If a capability is engine-shaped, its
+guard must run wherever the engine runs, and the per-family findings belong in
+the knowledge layer — `knowledge-base/governance/frozen-gates.json` now holds all
+fifty with an authored disposition each, defaulting to `NOT_REVIEWED`.
+
+Two other artifacts carried the same flaw and were corrected: the proposition
+conservation test now derives its families from which blueprints can emit an
+annotated clause (11 pairs examined became 90), and the unconditional-clause
+audit states its three-family scope as a deliberate choice with an override,
+because it produces an authoring queue rather than a guard.
+
+## 47. Proposition conservation, and the first repair proved by it
+
+The universal property the proposition layer buys:
+
+> **If proposition P is applicable in a given world, some clause in the emitted
+> document must implement it.**
+
+Two live losses in `MASTER_SERVICE_AGREEMENT` were repaired against it, and the
+count went 2 → 0.
+
+`SERVICE_KEY_PERSONNEL_001` carried two propositions of different applicability
+behind one `include_sla` gate. The clause was severed at **existing sentence
+boundaries** — the employment-status sentences moved verbatim into
+`SERVICE_PERSONNEL_STATUS_001`, which the blueprint lists unconditionally, and
+the continuity limb was re-gated on `key_person_dependency`, the fact its own
+proposition names. **No new legal wording was authored**, which is what makes a
+split safe to perform before advocate review; the boundary between the two
+clauses is itself a legal judgement and still needs signing off.
+
+The verification that matters is the shape of the diff: **one clause added to one
+document type, nothing removed, no other family touched**, and the four-world
+table behaving as the propositions predict — continuity follows
+`key_person_dependency`, `include_sla` no longer touches it, and the
+employment-status allocation is present in all four worlds including the one
+where it used to vanish.
+
+Three of the project's own ratchets fired during this repair and each was right:
+the review-debt ceiling (a split raises the debt by one and an advocate must now
+sign two clauses where one stood), the custody record, and the vocabulary guard
+that had been written to say *re-examine before changing the gate*.
+
+## 48. A clause being present is not the legal consequence being achieved
+
+The conservation invariant of 47 — an applicable proposition must have an emitted
+implementation — is **false as stated** for any proposition the document cannot
+itself satisfy.
+
+Annotating `INSTRUMENT_REGISTERED` (Registration Act 1908 s.17(1)(d) and s.49,
+Transfer of Property Act 1882 s.107: a lease over a year takes effect only if
+made by a registered instrument) produced a clean green. The document had
+registered nothing. A clause can require registration, allocate its cost and
+state the consequence of failing to do it; nothing a document says can accomplish
+it.
+
+**The requirement layer already knew this.** `kind: FORMALITY` with
+`outside_the_document` caps such a requirement at PROVIDED_FOR, and six
+requirements already use it. The proposition layer was new and bypassed it,
+re-introducing one layer down a conflation the system had solved one layer up.
+**A new layer inherits the old layer's distinctions or it re-earns its old bugs.**
+
+So the vocabulary is reused, not reinvented. Every proposition declares
+`satisfaction`, and conservation reports three outcomes:
+
+- **IMPLEMENTED** — the document does the thing.
+- **PROVIDED_FOR** — the document provides for an act performed elsewhere. The
+  ceiling for a formality, and reported *as* a ceiling rather than flattened
+  into a pass.
+- **LOST** — applicable, and nothing even provides for it.
+
+The field is load-bearing: flipping `INSTRUMENT_REGISTERED` to
+`IN_THE_DOCUMENT` reproduces the false green on demand.
+
+**Two authoring errors were caught by the repair, and both are the point.**
+`always: true` made a three-month commercial lease report the proposition
+satisfied by a clause whose rendered text says registration is *not* compulsory.
+A guessed control name then made the annotation inert, which the ceiling
+assertion caught by name — an annotation that never fires is not a safe
+annotation, it is an absent one. The correct fact, `is_registrable`, was already
+derived from the actual term and already right: true at 24 months, false at 3.
+The knowledge existed; only the wiring was missing.
+
+## 49. NEXT FAILURE, EVIDENCED NOT YET REPAIRED: rendered text can contradict the proposition it claims to implement
+
+`implements` is annotated on a clause id, but the emitted text is conditionally
+rendered. `PROP_REGISTRATION_001` renders as *"the term of this Agreement of 24
+months being such as to attract Section 17(1)(d)…"* in one family and *"the term
+of this Agreement of 3 months being within the threshold… registration of this
+Agreement is not compulsory"* in another — **the same clause id, asserting the
+proposition in one document and negating it in the other.**
+
+Correct applicability hides this, because the proposition is not applicable where
+the text negates it. That is exactly what makes it dangerous: it is invisible
+while the annotation happens to be right, and produces a confident false green
+the moment it is not. It is the composite-clause problem one level down — from
+*which propositions does this clause carry* to *which propositions does this
+rendering assert* — and it is a genuinely different failure from the MSA case,
+which was structural rather than textual.
+
+Recorded, not repaired. It needs its own falsification cycle, and the repair is
+not obvious: it may be a rendering-level annotation, or it may be that a clause
+whose text can negate its own proposition should be two clauses.
+
+## 50. The unit that owns a legal assertion is already smaller than the clause
+
+D4.6 asked which unit owns the proposition assertion when a clause id can render
+materially different text. Measured across all 40 families, every world:
+
+| class | pairs | clauses | meaning |
+|---|---|---|---|
+| LIST_MEMBERSHIP | 4 | 1 | a cross-reference list tracking which other clauses are present |
+| SENTENCE_ADDED | 2 | 2 | one rendering contains another's sentences plus more |
+| SENTENCE_REPLACED | 22 | 5 | sentences exchanged as the facts change |
+
+**24 of 28 pairs, across 7 clauses and 18 families, genuinely change which
+sentences are in the text as facts change.** The mechanism is not incidental
+formatting: `documentHardening.js` holds per-clause builders —
+`CORE_TERMINATION_001` composes different text for a guarantee, a joint venture
+and the generic case; `SERVICE_TERMINATION_001` likewise. **The engine has been
+selecting legal content below clause granularity all along, in code, with no
+representation of what it is selecting.**
+
+That answers the question as asked. The variant-slot machinery does NOT cover
+this: a slot swaps whole clauses, and this is composition *within* one. And D4.5
+concluded the model could not express concurrent sub-clause propositions — it
+expresses them routinely and cannot see them.
+
+**LIST_MEMBERSHIP is correct and worth naming separately.** `CORE_SURVIVAL_001`
+drops "indemnity" from its survival list when the indemnity clause is declined.
+Nothing is wrong there, but a clause's rendered text already depends on which
+OTHER clauses were selected, and no annotation records that dependency either.
+
+**Still no design decision.** Whether the assertion should be owned by a
+rendering variant or by separate clauses is not settled by this count, and the
+builders are code rather than knowledge — which is itself the deeper issue, since
+an engine capability expressed as a per-clause switch statement cannot be
+authored by an advocate.
+
+## 51. A predicate that cannot return false is not a classifier
+
+This measurement was wrong twice, in the same direction, and both errors inflated
+the class that would have justified a new architectural layer.
+
+First it stripped digits but not spelled-out numerals, so "three (3) years" and
+"five (5) years" read as structurally different sentences: VALUE_ONLY came back
+as **zero** and all 28 pairs landed in SENTENCE_SET.
+
+Then the nesting test asked whether each rendering's sentence set contained SOME
+other rendering's — which every set satisfies by containing itself. `nested` was
+vacuously true, so everything was still reported as sub-clause conditionality,
+including a clause whose two renderings both have exactly two sentences. **The
+tell was there and I nearly missed it**: a classifier reporting 100% of cases in
+one class is not measuring, and the sentence counts printed beside it contradicted
+the label.
+
+Corrected, the same data splits 4 / 2 / 22 across three classes and discriminates.
+Ninth and tenth occurrences of one shape — *a filter matching more than it meant*
+— and the first where a predicate was not merely too broad but incapable of
+returning false at all.
+
+## 52. documentHardening.js is hiding legal reasoning, and the measurement says how much
+
+D4.7 asked what unit owns a legal assertion and found the engine composing text
+below the clause boundary, procedurally. D4.8 asks what those builders select
+ON. Drivers were found by perturbation — each world flips one intake answer, so a
+changed rendering names its own driver — because reading the builders finds the
+variables they MENTION, a different and larger set.
+
+| class | changes | clauses | |
+|---|---|---|---|
+| LEGAL_PROPOSITION_CHANGE | 3 | 1 | driver carries a concept with authority |
+| CROSS_CLAUSE_DEPENDENCY | 6 | 2 | text depends on which other clauses were selected |
+| OPTIONAL_COMMERCIAL_TERM | 4 | 2 | an `include_*` drafting choice |
+| **UNCLASSIFIED** | **35** | **5** | **the driver resolves to no layer of the knowledge base** |
+
+**3 of 48 sentence-level changes are driven by something carrying statutory
+authority.** The other 45 are driven by inputs that exist as a question and a
+derived flag and nothing else — no semantic fact, no concept, no proposition, no
+requirement applicability. The knowledge base knows how to ASK them and has no
+representation of what they MEAN.
+
+**The UNCLASSIFIED class contains substantive legal content, which is what makes
+the finding serious.** `termination_for_convenience` and `termination_for_cause`
+drive 32 of the 35. Perturbing the first moves limb (a) of
+`SERVICE_TERMINATION_001` in and out — *"by either Client or Service Provider for
+convenience upon N days' prior written notice"* — and renumbers the rest. **A
+right of termination enters or leaves the instrument, decided inside a builder,
+with no proposition, concept, requirement or authority behind it.**
+
+So of the five possibilities the audit was set up to distinguish,
+`documentHardening.js` is not merely a renderer. It is **predominantly hiding
+legal reasoning** (35), with a minority of genuine cross-clause dependency (6)
+and drafting choice (4). An advocate cannot review a switch statement as a
+reusable legal proposition, and here the switch statement decides a termination
+right.
+
+**Nothing is migrated.** UNCLASSIFIED is not a claim that all 35 are legal
+propositions — some may be legitimate commercial options. It is the claim that
+nobody has said which, and that a class containing a termination right cannot be
+assumed to be presentational.
+
+**CROSS_CLAUSE_DEPENDENCY is a distinct kind and should not be migrated with the
+rest.** `CORE_SURVIVAL_001` dropping "indemnity" from its survival list when the
+indemnity clause departs is not a new rule; it is one clause's text depending on
+another clause's presence. That dependency is real, unrepresented, and belongs in
+the dependency graph rather than the proposition vocabulary — the clause
+selection graph is not the only dependency graph the system has.
+
+## 53. The five hidden drivers, classified — and one classification does not fit all families
+
+D4.8 left 35 sentence-level changes with drivers that resolve to no layer of the
+knowledge base. Five drivers account for all 35. D4.9 extracted what each one
+actually moves, and the classification rests on the text rather than the name —
+`escrow_required` sounds commercial whatever it turns out to do.
+
+| driver | changes | what moves | reading |
+|---|---|---|---|
+| `termination_for_convenience` | 16 | the RIGHT to terminate without cause | PARTY_AGREEMENT commercially, **UNKNOWN in employment** |
+| `termination_for_cause` | 16 | the ARTICULATION of a right that exists at law | DRAFTING_DEFAULT |
+| `police_verification_required` | 1 | an obligation to file tenant verification | **LEGAL_PROPOSITION, jurisdictional** |
+| `escrow_required` | 1 | a source-code escrow obligation | PARTY_AGREEMENT |
+| `no_employment_ack` | 1 | an acknowledgement of non-employment | DRAFTING_DEFAULT |
+
+**So the problem is smaller than D4.8's headline suggested, and differently
+shaped.** Most of the 35 are not trapped legal propositions. But three findings
+matter more than the counts:
+
+**One driver has different legal character in different families.**
+`termination_for_convenience` removes the same sentence in all 16, differing only
+in party labels. In an MSA the parties may freely create or withhold that right.
+In an appointment letter or internship agreement the same words operate against a
+statutory backdrop that constrains termination of employment. **A single global
+classification would be wrong in at least one direction, and the uniformity of the
+text delta actively conceals that.** Any migration keyed on the driver alone would
+inherit the error.
+
+**Two adjacent drivers the builder treats identically are not the same kind of
+thing.** A convenience right exists only because the contract creates it. A right
+to terminate for repudiatory breach arises under ICA 1872 s.39 whether the clause
+says so or not — and `CORE_TERMINATION_001` already cites s.39. Removing the
+for-cause limb removes an articulation, not a right. The builder cannot tell these
+apart because nothing tells it.
+
+**The first driver needing a jurisdictional answer.**
+`police_verification_required` turns on state police legislation and local orders
+— on where the premises are. It also sits inside a clause citing registration and
+stamp authorities that have nothing to do with police verification, which suggests
+it was attached where it fitted rather than where it belonged.
+
+> **CORRECTION (D4.10).** This section originally said the repository has "no
+> jurisdiction dimension". That was wrong and was asserted without checking. The
+> constraint engine has carried a `state_in` predicate all along. What is missing
+> is not the reasoning primitive but any knowledge that uses it — see invariant 54.
+
+And the polarity phenomenon of invariant 49 recurs unprompted: `escrow_required`
+does not merely remove the escrow obligation, it ADDS *"No source-code escrow
+arrangement shall apply unless the Parties separately agree otherwise"*. An
+`implements` annotation on that clause would be false in one of the two worlds.
+
+**Nothing is migrated, and every classification is a reading that needs an
+advocate.** `no_employment_ack` is flagged as the one most likely to be wrong:
+whether a relationship is employment turns on substance rather than the parties'
+label, so the acknowledgement reads as evidential — but if it is materially
+probative in practice it behaves closer to a party agreement than a recital.
+
+## 54. Jurisdiction is a value in this system, not a fact — and the primitive it needs already exists
+
+Tested as instructed: identical tenancy facts, identical family, identical
+parties, identical commercial choices, identical driver — only the state changed,
+across Maharashtra, Karnataka, Delhi and Tamil Nadu.
+
+**The clause set was identical in all four. One distinct clause set, four
+distinct texts, and the only differences were the state's own name interpolated
+into governing-law and forum wording.** No clause enters or leaves. Tenancy is a
+State subject and the state Rent Acts, the state Stamp Acts and state police
+verification requirements differ materially between those four — and the system
+emits the same instrument for all of them.
+
+**So jurisdiction is currently a VALUE that gets printed, not a FACT that is
+reasoned from.**
+
+**The primitive is not what is missing.** `IRE/src/indian-rule-engine/constraintEngine.js`
+has carried a `state_in` predicate all along. **Zero knowledge records use it** —
+the one apparent hit is a substring of
+`the_employees_state_insurance_act_1948`. No concept, proposition or requirement
+carries a jurisdiction field that could reach it. This is a knowledge and schema
+gap, and the distinction matters: **a missing data dimension is not a missing
+reasoning primitive**, and the second would have been far more expensive to
+conclude wrongly.
+
+**One finding beyond that, and it is a defect in the primitive's contract.**
+`state_in` resolves its state by reading `governing_law_state`, then
+`operating_state`, then `state`. `governing_law_state` is a PARTY CHOICE. For
+immovable property the applicable tenancy, stamp and registration law follows the
+SITUS, which the parties cannot choose. Generating with situs Karnataka and
+chosen law Maharashtra produces a byte-identical document, and the predicate
+would answer "Maharashtra" — the wrong state for any stamp-duty or rent-control
+question.
+
+The priority order is correct for contract questions and wrong for property
+questions, and the predicate cannot tell which it is being asked. **Jurisdiction
+is not one dimension.** At minimum the chosen law and the situs are different
+facts, and which one governs depends on the subject matter of the rule asking.
+
+No new primitive is justified by this. A correction to the existing one's
+contract may be, and nothing is changed here: the measurement is recorded and the
+repair is an authoring decision that needs an advocate's view on which rules
+follow situs and which follow choice of law.
+
+## 55. Four resolution orders are four authors reaching for a subject they cannot name
+
+D4.10 found `state_in` reading `governing_law_state` first. The contract audit
+found that the same conceptual question is answered four ways across the codebase,
+two of them opposite:
+
+| module | order |
+|---|---|
+| `constraintEngine.js:193` | `governing_law_state` → `operating_state` |
+| `agreementGraphValidator.js:248` | `governing_law_state` → `operating_state` → `jurisdiction_state` |
+| `documentHardening.js:2608` (stamp) | **`operating_state` → `governing_law_state`** |
+| `documentHardening.js:3190` (governing law) | `governing_law_state` → `operating_state` |
+
+**Reading that as sloppiness would produce the wrong repair.** The stamp author
+put `operating_state` first because stamp duty follows where the instrument is
+executed and the property sits, not the law the parties chose. The governing-law
+author put `governing_law_state` first for the opposite and equally correct
+reason. Four authors each reached for the right jurisdictional subject, had no
+vocabulary to name it, and encoded their intent as a fallback order. That is the
+strongest available evidence that the missing thing is **a typed subject, not a
+new evaluator**.
+
+`agreementGraphValidator.js` reads `jurisdiction_state` as a third fallback. It
+appears in **zero of the 40 intake schemas**.
+
+**One of six jurisdictional subjects is carried as a typed fact.** Contractual
+governing law is a `select` in 36 families. Immovable-property situs, place of
+performance, party establishment and workplace location exist only inside
+free-text address blobs; forum survives as `execution_city`, free text.
+`operating_state` is typed in all 40 and **nothing says which subject it means**,
+which is precisely why four modules could each read it with a different subject in
+mind and none of them was obviously wrong.
+
+So the answer to "can the fact model carry these as distinct facts while
+`state_in` stays a closed predicate over an explicitly selected variable" is **not
+today**. The evaluator half of that repair is small and backward-compatible. The
+fact half is not: five of six subjects are not collected as states at all.
+
+**The architectural pressure is real and it lands on the intake and fact layer,
+not the evaluator** — a different conclusion from both "just wire `state_in`" and
+"build a jurisdiction engine", and the reason the contract was worth auditing
+before either.
+
+**What is not concluded: that the five missing facts should be collected.** A
+lease whose premises and governing law are both in Maharashtra needs one answer,
+not six, and asking six questions to serve a rule nobody has authored would be the
+intake equivalent of a premature abstraction. The finding is that the facts are
+not *representable*, not that they must all be represented.
+
+## 56. A rule must say which state it means — the smallest justified repair
+
+D4.11 established that four modules answer the same jurisdictional question with
+four different fallback orders, two of them opposite, because each author was
+reaching for a different subject through a variable that has a value domain and
+no contract. `operating_state` is **syntactically typed and semantically
+untyped**. This is the repair, and it is deliberately small.
+
+**Knowledge, not code.** `knowledge-base/jurisdiction/subjects.json` names six
+subjects and says which fact carries each. A rule writes
+`{ "state_in": ["Maharashtra"], "of": "PROPERTY_SITUS" }`. The evaluator resolves
+the subject through the map; an advocate can correct which fact carries a subject
+without touching the engine.
+
+**Two subjects are representable. Four are not, and say so.** `CHOSEN_GOVERNING_LAW`
+reads `governing_law_state`; `PROPERTY_SITUS` reads `operating_state`, which is
+already what that field means in the property families — **no intake question was
+added**. `WORKPLACE_LOCATION`, `PLACE_OF_PERFORMANCE`, `PARTY_ESTABLISHMENT` and
+`FORUM` are declared with `fact: null` and a record of what is missing. A rule
+naming them **fails rather than falling back**, because falling back would answer
+a workplace question with the parties' choice of law — the exact defect the
+vocabulary exists to end.
+
+**The growth rule: a subject becomes representable when an authored rule needs
+it, never before.** This repository already carries 148 dead intake questions
+from the last time facts were collected ahead of rules.
+
+**The demonstration is a PAIR, and it has to be.** Any single rule can be made to
+pass by picking the fallback that happens to suit it. Two rules reading the same
+two variables and required to move in opposite directions cannot:
+
+| world | situs rule | chosen-law rule |
+|---|---|---|
+| situs MH / law MH | FIRED | FIRED |
+| situs KA / law MH | — | FIRED |
+| situs MH / law KA | FIRED | — |
+| situs KA / law KA | — | — |
+
+Measured through the real generation path, not the resolver alone. The bare
+`state_in` chain is untouched and asserted untouched, because it is correct for
+some existing rules and nothing yet says which. Baseline drift was exactly the
+two new notices in three property families — no clause, no text, no other family.
+
+**A constraint file whose domain nobody subscribes to is silently inert.** The
+first draft of the rule file used `jurisdiction_subject` as its domain. It
+loaded, was counted among the constraint sets at bootstrap, and never executed,
+because `documentValidator.js` runs only the domains a document type declares.
+The resolver test passed the whole time. **Same failure shape as a gate on a
+frozen control**, and it was caught only by insisting on an end-to-end run after
+a green unit test.
+
+**One false alarm, corrected before it was reported.** Seeing `domains` undefined
+on every type in `shared/documentRegistry.js`, I nearly recorded that nine
+authored `rental` and `property` rules were dead. They are not: `getDocumentTypeInfo`
+reads IRE's own `domainRegistry.js`, where all 74 types declare domains. Two
+registries, one name.
+
+## 57. Polarity needs no new abstraction — the model already expresses it, escrow is mis-shaped
+
+Two independent sightings had suggested a gap: `PROP_REGISTRATION_001` asserts
+compulsory registration in one family and denies it in another, and
+`TECH_SOURCE_CODE_001` states an escrow obligation when escrow is elected and
+states its ABSENCE when it is not. A driver does not merely suppress a positive
+clause; it can make the document assert the opposite position.
+
+**The false green is real.** Annotating `TECH_SOURCE_CODE_001` with
+`implements: [SOURCE_CODE_ESCROW_ESTABLISHED]` and asking the question a consumer
+asks — *does this document implement it?* — returns IMPLEMENTED in **both**
+worlds, while the document asserts it in only one. `implements` is attached to a
+clause id and a clause id is world-independent.
+
+**But the model can already express it, and the library already does.** `MOU`
+carries a `mou_binding_nature` variant slot selecting between `MOU_BINDING_001`
+(*"intend this Memorandum to be a legally binding and enforceable agreement"*) and
+`MOU_NON_BINDING_001` (*"not intended to create legally binding obligations"*) —
+opposite legal positions, two clause ids, one slot. Driven through its real
+question:
+
+| `binding_nature` | clause shipped | model says |
+|---|---|---|
+| Non-binding | `MOU_NON_BINDING_001` | not implemented |
+| Binding | `MOU_BINDING_001` | IMPLEMENTED |
+| Partly binding | `MOU_BINDING_001` | IMPLEMENTED |
+
+World-correct in both directions with no new mechanism, because different clause
+ids ship. **So polarity is a knowledge-shape problem, not a model gap** — the
+third time a suspected abstraction has turned out to be something variant slots
+already do (D4.5-B was the first, D4.7 the second).
+
+**The escrow annotation was withdrawn rather than shipped.** An annotation that is
+false in one of two worlds is worse than no annotation, and
+`TECH_SOURCE_CODE_001` now records why it has none: the repair is to author the
+two positions as two clauses behind a slot, which is new legal text and needs an
+advocate.
+
+**One observation, not a defect claim:** `binding_nature` offers three positions
+and the slot collapses them to two — "Partly binding" selects the binding clause.
+That may be right, since a partly-binding MOU does intend legal relations for the
+binding parts, but nothing records the judgement.
+
+**And the first run of this control failed for an instructive reason.** I drove
+`is_binding_mou` — the gate's name — and the slot never moved, because the
+question is called `binding_nature` and `is_binding_mou` is derived from it. Gate
+name is not field name: Phase C measurement error 3, recurring in the probe rather
+than the product, and caught only because a control that cannot distinguish its
+two cases is not a control.
+
+## 58. The instrument binds two people and nothing in the model can represent a third
+
+The 2→3 counterfactual on `PARTNERSHIP_DEED`. A user with three partners has two
+routes and both fail, differently:
+
+1. **Supply `partner_3_name`.** Sanitisation drops unknown keys. The third
+   partner vanishes from the document entirely, silently.
+2. **Describe them in `partner_roles` free text.** The name then appears in the
+   **capital and profit clause** and in **neither the identity clause nor the
+   signature block**.
+
+The second is the dangerous one. The deed recites a person as sharing capital and
+profits while not making them a party, and the capital clause still states a
+two-way 60:40 split. Under the Indian Partnership Act 1932 that misstates the
+firm: s.4 defines partnership as the relation between persons who have agreed to
+share profits, and s.25 makes every partner liable jointly and severally — **a
+person who signs nothing is bound by nothing, whatever the deed recites about
+their share.**
+
+**This is architecture, and the check that says so is the one the previous
+thirteen-plus candidates failed.** Across all 40 families: no party index above
+**2**, and **zero collection-typed fields** — the type vocabulary is date,
+multiselect, number, select, text, textarea. `multiselect` picks from a fixed
+option list and cannot carry correlated per-entity attributes. Free text carries
+a name and no fact. **There is no existing mechanism to express a repeating
+entity**, and five families where more than two principals are legally ordinary
+are all capped at two.
+
+The binary assumption sits in three places, and fields alone would not fix it:
+the intake (no index, no collection), the shared clause language (**15 of 43
+CORE clauses** say "the other Party"), and the builders (`PARTNERSHIP_CAPITAL_001`
+hardcodes "Partner 1 … and Partner 2"). **Fields without language reproduce
+exactly the failure measured above — a name recited, a person not bound.**
+
+**What was built is a guard, not the repair.** A constraint rule fires when the
+intake describes more principals than the instrument can bind, and says plainly
+that a mention in free text does not make someone a party. It is written entirely
+in the existing closed predicate vocabulary — **no engine change** — and it is a
+notice rather than a block because extracting a partner count from prose is
+unreliable and a false block on a correct two-partner deed would be worse than
+the defect. It fires on an explicit ordinal, which is what the counterfactual
+produced and what a user who writes "third partner" means.
+
+**The repair is scoped, not started.** A repeating-entity type in the intake
+model plus N-party language in 15 shared CORE clauses is new legal text across
+every family that uses them, and it needs an advocate before it needs an engineer.
+Turning a silently wrong instrument into a visible warning is the part that could
+be done today without guessing.
+
+## 59. N-party language cannot be a mechanical pluralisation
+
+The hardest shared clause, taken as instructed. `CORE_LIMITATION_LIABILITY_001`
+is emitted in 15 families, exposed in four where more than two principals are
+ordinary, and it is quantitative:
+
+> "the aggregate liability of **either Party** … shall not exceed the aggregate
+> fees paid or payable under this Agreement"
+
+**1. What relationship does it describe?** A bargain about quantum — a cap on what
+one contracting party can recover from another. It cites ICA s.73 (compensatory
+damages) and s.74 (penalty).
+
+**2. What does "either Party" mean with three?** Three readings, and they differ in
+money. **Per-party**: each partner separately capped, total exposure N × cap.
+**Shared**: one pot across all, total exposure = cap. **Inter se only**: in a
+partnership s.25 makes partners jointly and severally liable to third parties,
+and no cap between them touches that. Under two parties all three readings
+produce identical words and cannot be told apart.
+
+**3. Can the existing model express the distinction?** No. There is no
+apportionment concept, no role model separating "party as obligor" from "party as
+member of the firm", and parties are not a collection.
+
+**4. Which reading does each family intend?** Nobody has decided. Fifteen families
+emit it; four are exposed; nothing records an intention anywhere.
+
+**5. Can one formulation serve all without changing meaning? NO — and that is the
+finding.** *"Each Party's aggregate liability shall not exceed X"* and *"The
+Parties' aggregate liability shall not exceed X"* are both grammatically N-safe
+and legally different. A single rewrite would silently pick one.
+
+**So the clause problem is not a general N-party language abstraction.** It is a
+set of per-clause legal decisions, and a collection schema must be able to carry
+their outcome. `parties[]` as a list would be insufficient: what the clauses need
+is **apportionment and role**, not membership. Designing the schema first would
+have produced a list that cannot express the only thing the hard clauses turn on.
+
+**Two measurement errors in one probe, both under-reporting — the first time that
+direction has appeared.**
+
+A `/g` regex is stateful under `.test()`: `lastIndex` advances between calls, so
+alternating calls return false and roughly half the matches vanish. Then, more
+seriously, the probe read LIBRARY text while `documentHardening` builds several
+CORE clauses at generation time — so it measured what is stored rather than what
+ships. Corrected, the count went **17 clauses / 10 exposed → 23 / 14**, and both
+errors had hidden `CORE_LIMITATION_LIABILITY_001`: the single clause the whole
+question turns on. Ten previous errors inflated; **a measurement can be wrong in
+the reassuring direction too, and that is harder to notice.**
+
+## 60. The 23 clauses collapse into six shapes, and only two of them need a decision
+
+The question left open by invariant 59: is "N-party support" one abstraction or
+several independently governed relationship semantics? Classifying every binary
+construction in all 23 shared CORE clauses:
+
+| shape | form | generalises to | decision |
+|---|---|---|---|
+| ALREADY_N_SAFE | *where either Party does X, that Party shall Y* | no change needed | — |
+| UNIFORM_PROHIBITION | *neither Party shall X* | *no Party shall X* | — |
+| RECIPROCAL_SEVERAL | *each Party … to the other Party* | *to each other Party* | — |
+| CONSENT_OR_NOTICE_TO_OTHERS | *consent of / notice to the other* | *all other Parties* | — |
+| **APPORTIONED_QUANTITY** | *aggregate liability of either Party* | **undetermined** | **required** |
+| **PAIRWISE_RIGHT** | *by either Party if the other breaches* | **undetermined** | **required** |
+
+**It collapses. Six shapes, and only two require a per-clause legal decision — so
+the decision burden is six clauses, not twenty-three.** The other seventeen have
+an N-party form determined by their binary form: nobody has to choose anything,
+because nothing about the obligation turns on how many parties there are.
+
+The two that do:
+
+- **APPORTIONED_QUANTITY** — per-party caps, one shared cap, or inter se only
+  (Partnership Act s.25 makes partners jointly and severally liable to third
+  parties whatever they agree between themselves). Identical words at two parties,
+  different amounts of money at three.
+- **PAIRWISE_RIGHT** — with three parties, does the innocent party end the whole
+  instrument or only its relationship with the defaulter? For a partnership that
+  is the difference between dissolving the firm and expelling a partner, which the
+  Partnership Act 1932 treats quite differently. The two-party text cannot
+  distinguish them because ending the relationship and ending the instrument are
+  the same act.
+
+**ALREADY_N_SAFE is worth naming precisely because it is the class that must not
+be touched.** *"Where either Party processes personal data, that Party shall …"*
+is distributive and correct for any number. Rewriting it would be churn with
+drafting risk and no gain, and a bulk pluralisation would have caught it.
+
+**So the schema now has a shape.** Not `parties[]`, and not one apportionment
+field either: a collection whose members carry a role, a per-clause shape drawn
+from this vocabulary, and an authored decision attached only to the two ambiguous
+shapes. That is what the evidence supports, and it is the first point in this
+investigation where designing the schema would not be guessing.
+
+## 61. N-party representation, built with the six questions left open
+
+Invariant 58 proved the representation gap; 59 proved it cannot be repaired by
+pluralisation; 60 reduced 23 clauses to six shapes of which two carry legal
+decisions. This is the build, under one rule:
+
+> **An engine may generalise language. It may not choose a legal position.**
+
+**`partyRoster.js`** resolves an ordered collection of principals from whatever
+the intake supplied — indexed slots to any depth, family prefixes
+(`partner_N_*`, `shareholder_N_*`, `founder_N_*`), or an explicit `parties`
+array. It refuses three things on purpose:
+
+- **It does not invent members from prose.** A name in `partner_roles` is not a
+  party. Believing it would reproduce the D4.14 defect with a confident roster on
+  top: the system would agree someone is a partner while the signature block
+  still did not bind them.
+- **It does not resequence.** Position is identity in a document that says "Party
+  1", and silent renumbering would rewrite cross-references nothing else knows
+  about.
+- **It does not stop at the first empty slot.** Supplying 1 and 3 records a gap
+  and keeps the third; a loop that stopped would lose a principal and report
+  success.
+
+**`npartyTreatment.js`** returns DETERMINED for the four shapes that generalise,
+NOT_APPLICABLE at two principals, and **UNRESOLVED for the six clauses whose
+meaning is a legal question** — naming the question and the candidate readings
+without selecting one. `nparty-treatments.json` records four decisions covering
+those six clauses, every one `UNDECIDED`, each with its consequence at two, three
+and four parties. **At two parties the candidates produce identical words, which
+is exactly why the ambiguity survived unnoticed; at three the liability cap
+differs in money.**
+
+**The design choice that kept the corpus intact: the N-party form is conditional
+on party count.** A two-party document gets the wording it has always had —
+`treatmentFor(id, 2)` is NOT_APPLICABLE for every clause. Rewriting 17 CORE
+clauses portfolio-wide would have churned 38 families that never had the problem,
+with drafting risk and no gain. Zero baseline drift across 40 document types.
+
+**The test that would catch me building this dishonestly** asserts no candidate
+treatment is even spellable in the resolver, by scanning the source. It fired on
+the first run — against the docstring sentence promising there is no
+`|| "PER_PARTY"` fallback. **A guard tripping over its own explanation of
+itself**: the eleventh instance of a filter matching more than it meant, this
+time in the guard rather than the product. Fixed by stripping comments, because
+the property is about values in code and the scan has to be too.
+
+---
+
+## 62. An admitted principal reaches the page, and nobody else does
+
+D4.17 built the representation. This is the wiring, and the property it exists to
+establish is a **conservation law** with two directions that have to hold
+together:
+
+```
+ADMITTED PARTY → partyRoster → generation input
+               → IDENTITY BINDING → SIGNATURE BINDING → ARTIFACT
+```
+
+and its converse, which is the half that actually protects anyone:
+
+> **No signature block may exist for a person who is not in the authoritative
+> roster.**
+
+Losing a partner and inventing one are the same defect seen from two sides.
+Indian Partnership Act 1932 s.4 and s.25 are why: a person who signs nothing is
+bound by nothing whatever the deed recites about their share, and a person made
+to sign who never agreed is bound to strangers jointly and severally. A test
+asserting only the first direction would pass while the engine quietly
+duplicated somebody — and a duplicated partner is *more* dangerous than a missing
+one, because every line of them is plausible.
+
+### The four links, and where each was broken
+
+| Link | Before | Repair |
+|---|---|---|
+| intake → variables | `partner_3_name` dropped by `sanitizeVariablesForDocument`, silently | structural admission rule: index ≥ 3, in a prefix the schema already uses for its first two principals |
+| variables → roster | resolved, but nothing consumed it | — |
+| roster → generation input | `getParticipantExpectations` derived participants from the schema, which declares two | extends from the roster when it carries more |
+| participants → artifact | `CORE_IDENTITY_001` hardcoded first/second, First/Second Part, "BY AND BETWEEN" | built by rule over N, two-party wording preserved exactly |
+
+**The signature block needed no change at all.** It already looped over
+`getParticipantExpectations`. That is the measurement that says the repair landed
+in the right place: one function answers "who are the principals", and the
+identity clause, the signature block, the notices clause, the consistency
+validator and the quality controls all ask it. D4.14's defect was those
+provisions *disagreeing* — a third partner in the capital clause, absent from the
+identity clause, absent from the signature block. Extending the single funnel
+makes them agree **by construction** rather than by five separate repairs that
+happen to match.
+
+### The two-party corpus did not move, and this was proved rather than argued
+
+The D4.17 tarball is the exact pre-change state. Both trees generated **every
+clause of every document, in full text, for all 40 document types at two intake
+levels — 80 documents, byte-for-byte identical.** Not clause ids: the words. The
+mechanism is structural, not incidental: the admission rule starts at index 3, and
+every extension is gated on `roster.count > declared.length`.
+
+### Precedence and deduplication, because two sources can describe one person
+
+A caller may supply `parties[]` **and** indexed slots. Without a stated rule the
+same woman arrives twice and becomes two partners.
+
+1. `parties[]` is **authoritative for membership** when present — and for every
+   position, not only the new ones. Taking only the extras from it would let
+   `partner_1_name` name somebody the collection does not contain and still put
+   them on the page.
+2. An indexed slot describing someone already in the collection is the **same
+   person**. Merged; the declared representation wins on any attribute both
+   supply; the disagreement is recorded.
+3. An indexed slot describing someone **not** in the collection is neither
+   admitted nor discarded. Both are silent decisions — admitting binds a person
+   the caller never listed, discarding repeats D4.14 — so it is recorded as a
+   conflict and the roster reports `reconciled: false`.
+
+**Identity is PAN where both representations carry one**, because a statutory
+identifier settles the question in *both* directions: same PAN is the same person
+whatever the names say, and different PAN is two people whatever the names say.
+Collapsing a woman and her namesake would be the duplication defect with its sign
+reversed, so that case is tested too.
+
+### A sparse roster meets a required field, and the refusal is the right answer
+
+Slots 1 and 3 filled, slot 2 empty: the deed does not generate, because
+`partner_2_name` is required. **That is the system being right.** The D4.14 defect
+was a principal disappearing in silence; a refusal naming the empty field is its
+opposite. The roster still keeps the third at index 3 — the user may go on to fill
+slot 2 and must not find their third partner renamed. The artifact-level version
+of the same property uses slots 1, 2 and 4, where the gap sits above the required
+pair and generation is reachable: the deed says **"Partner 4" of the Third Part**,
+which is the honest reading. The *label* is the slot the user filled; the *Part*
+is the position in the testatum. They are different questions and a resequencing
+would have hidden the difference.
+
+### The notice changed from a fact about the system to a fact about the document
+
+`MORE_PRINCIPALS_THAN_THE_INSTRUMENT_BINDS` asserted `__party_3_unrepresentable`,
+a variable nothing ever set — so it fired whenever the prose matched. Half its
+premise is now false: an indexed third principal *is* representable. The other
+half never will be, because a name in free text is not a party and inferring one
+from prose is the failure the rule exists to report. So the assertion became
+`__roster_count >= 3`. **The notice now fires exactly when the deed describes a
+principal it does not bind, and stays silent when the third partner is a party** —
+both directions asserted, because a guard that cannot stay silent is not a guard.
+
+### Cardinality and interpretation are independent dimensions — demonstrated
+
+A three-party deed generates. Every principal is named, bound and signed for. And
+it arrives carrying **`open_treatments`**: `LIABILITY_CAP_APPORTIONMENT` and
+`TERMINATION_FOR_DEFAULT_SCOPE`, both `UNDECIDED`, each with its legal question
+and its candidate readings, neither chosen. The binary wording is still on the
+page: `either Party` was not pluralised, because pluralising it *is* choosing
+between three caps, one shared cap, and a cap that binds only inter se.
+
+**Two kinds of not-knowing, reported side by side and labelled, because merging
+them hides the smaller one.** `AUTHORED_DECISION_PENDING` is a clause classified
+into a decision-requiring shape with candidates authored and nobody having
+chosen — 2 in this deed, and they are what an advocate reviews.
+`NOT_CLASSIFIED` is a clause never examined for N-party behaviour at all — 15,
+including `PARTNERSHIP_CAPITAL_001`, the very clause D4.14 caught reciting a
+third partner's profit share. Both are unresolved and deliberately so; only one
+is an open question of law. Twenty of the second kind would have buried two of
+the first.
+
+---
+
+## 63. Position is identity. Position is not economic-allocation identity.
+
+Invariant 62 proved that a principal admitted at the intake reaches the page, and
+that position is identity when the document says "Party 1". The obvious next step
+is the wrong one:
+
+> Three partners, three numbers in `40:40:20`, so the first number is the first
+> partner's.
+
+**That is an inference from ARITY, not from meaning**, and acting on it converts a
+deed that is merely AMBIGUOUS into one that is CONFIDENTLY WRONG. The second is
+strictly worse: an ambiguous sentence gets read twice and a confident one does
+not. So economic attribution is proved per field rather than inherited from the
+party-labelling result.
+
+### What the repository actually established — measured before building
+
+| | `capital_contribution_1` | `profit_sharing_ratio` |
+|---|---|---|
+| field name carries the ordinal | yes | no |
+| label names the party | "Partner 1 Capital Contribution (₹)" | "Profit / Loss Sharing Ratio (e.g. 50:50)" |
+| rendered sentence attributes it | "Partner 1 shall contribute X" | "shared among the Partners in the ratio of X" |
+| every example it offers | — | has exactly two elements |
+
+**One deed carries one of each.** Nothing anywhere — no blueprint, constraint,
+requirement or annotation — relates a position in the ratio to a position in the
+roster. So the three-partner deed was never wrong; it was unattributed, and had
+been since long before anyone could type a third partner.
+
+### The states, and the one path that reaches RESOLVED
+
+`ROSTER_ADDRESSED` / `UNATTRIBUTED` / `CONFLICT` / `NOT_APPLICABLE`, with
+`resolved` true only under the first. Attribution is established two ways and
+only two:
+
+- **`SCHEMA_INDEXED_SERIES`** — the field name carries the ordinal *and* the
+  label names that principal. The person typing the number was told whose it was.
+- **`NAMED_IN_VALUE`** — the value names the party: "Meera Iyer 40, Arjun Desai
+  40, Sunita Rao 20". Every name is then checked against the roster, and a name
+  matching nobody is a `CONFLICT` rather than a fourth partner.
+
+**There has to be a path to a resolved allocation or the model is a refusal with
+extra steps.** Naming the parties is that path, which is why the remedy asks for
+names instead of offering to rearrange numbers.
+
+### The seven cases
+
+| case | result |
+|---|---|
+| 3 + `40:40:20` | arity MATCHES, attribution **UNATTRIBUTED** |
+| 3 + `40:40` | FEWER_PARTS_THAN_PRINCIPALS, unattributed |
+| 3 + `40:40:30` | sum reported as 110, **parts never rescaled** |
+| 3 + `1/3, 1/3, 1/3` | parsed as FRACTIONS summing to 1, still unattributed |
+| 4 + `40:40:20` | FEWER_PARTS_THAN_PRINCIPALS |
+| 3 + named, all in roster | **ROSTER_ADDRESSED, resolved** |
+| 3 + named, one stranger | **CONFLICT**, naming the stranger *and* the partner left without a share |
+
+`40:40:30` is the interesting one. Read as percentages it leaves 10 unallocated;
+read as a ratio it is perfectly good and means 40/110, 40/110, 30/110. **The field
+is named for the second reading and every example it gives follows the first**, so
+the instrument cannot tell which was meant. That is reported as the ambiguity it
+is. Rewriting it to 36.36:36.36:27.27 would choose the reading and move money
+between partners, so a test scans the resolver's source and fails on any division
+by a total, any multiplication by 100, and the words "normalise" and "rescale".
+**A resolver that can rescale an allocation can silently move money between
+people.**
+
+### This was never an N-party defect
+
+`60:40` between two partners never said whose 60 it was either. The notice fires
+at **every** party count, and suppressing it below three would assert that the
+existing two-party corpus is fine when it has the identical gap. The roster work
+made this visible; it did not cause it. Measured drift: three document types
+gain one notice at both intake levels. **No clause added, removed or reordered;
+80 documents across 40 types still byte-for-byte identical in text.**
+
+A fixture weakness surfaced on the way: the baseline gave `profit_sharing_ratio`
+the generic specimen string, which parses as narrative prose, so only
+FOUNDERS_AGREEMENT — whose fixture already held "50:50" — exercised the new rules
+at all. **A fixture that cannot reach a behaviour reports that behaviour as
+absent.** Corrected to a real ratio, and the drift went from one family to the
+three that actually collect one.
+
+### The clause that was settled on one axis and open on another
+
+`PARTNERSHIP_CAPITAL_001` now states every principal's contribution, because
+`capital_contribution_N` *is* attributable — and says, in the deed, *"No capital
+contribution is recorded in this Deed for Partner 3"* when one is missing. That is
+a statement about the Deed, verifiable, and not a number somebody invented. Its
+profit ratio remains unattributed and is governed by `allocation-semantics.json`,
+not by the N-party shapes. **A clause can be N-safe as to cardinality and open as
+to economics, and collapsing the two axes would report it safe while the money is
+still unassigned.**
+
+---
+
+## 64. The portfolio ceiling: 12% classified, and the backlog now has two owners
+
+Invariant 60's twenty-three clauses were the ones **one MSA fixture reached** —
+never the portfolio. Swept across every family that can admit a third principal:
+
+| | |
+|---|---|
+| document types in the corpus | 40 |
+| types that can admit a third principal | **28** |
+| distinct clauses those families reach | **184** |
+| SAFE | 17 (9.2%) |
+| AUTHORED_DECISION_PENDING | 5 (2.7%) |
+| NOT_CLASSIFIED | **162 (88.0%)** |
+
+**The number that matters is not how many are unresolved.** It is that 5 are
+unresolved because a legal question was identified and deliberately left open,
+and 162 are unresolved because nobody has looked. Those are different states with
+different owners — an advocate, and whoever runs this sweep next — and before
+this the repository could not tell them apart at portfolio scale. A single
+"unresolved" bucket would be, in practice, a report that says nothing, because
+the second is 32 times the first.
+
+The family set is **derived from the admission rule, not from a list**: a family
+counts as N-party capable exactly when `isRosterExtensionField` would admit its
+third principal. A test asserts the derivation both ways — every included family
+would admit one, every excluded family would not — so the sweep can never measure
+a different portfolio than the engine admits.
+
+**A seventh shape, and the only one established by evidence rather than by
+reading a sentence.** `ROSTER_DRIVEN` covers clauses assembled *from* the roster
+rather than written *about* two parties: `CORE_IDENTITY_001`,
+`CORE_SIGNATURE_BLOCK_001`, `PARTNERSHIP_CAPITAL_001` — which were, before this,
+the first, second and most-exposed unclassified clauses in the portfolio (28 and
+25 families). There is no legal choice in listing the people who signed, so the
+shape needs no decision; it needed a generation test, and cites the checks that
+prove it at two, three and four principals. A test verifies each cited file
+exists and contains the named check, because **evidence that cannot be located is
+an assertion**.
+
+**The classified set only grows.** A floor is recorded and enforced: a clause
+falling silently back to NOT_CLASSIFIED — a renamed shape, a changed id, a
+dropped entry — would return it to the invisible backlog with nobody told.
+
+### What 28 N-party-capable families actually means
+
+The admission rule made `party_3_name` acceptable on 28 document types, including
+some where a third principal is doubtful — a promissory note, a power of attorney.
+**No form exposes it**: `/document-config/:type` builds fields from the schema,
+which still declares two, so the capability is reachable only by an API caller.
+Whether each of those 28 *should* carry a third principal is family knowledge and
+an advocate's question, recorded here as open rather than answered by me.
+
+---
+
+## 65. The next clause by exposure, and the method that would have missed it
+
+`CORE_DISPUTE_RESOLUTION_001` — 36 document types, one rendered structure, the
+highest-exposure unclassified clause in the portfolio. Probed, classified
+**AUTHORED_DECISION_PENDING**, with a new decision and **no new shape**.
+
+### What is settled, and what is not
+
+| component | verdict |
+|---|---|
+| amicable resolution step | determined — a good-faith discussion among three is the same obligation as between two |
+| appointment of the sole arbitrator | determined — CONSENT_OR_NOTICE_TO_OTHERS |
+| interim measures under s.9 | determined — ALREADY_N_SAFE |
+| **scope of the reference** | **UNDECIDED** |
+
+The appointment sentence is worth stating precisely, because it *looks* like the
+classic multi-party problem and is not. Where each side nominates its own
+arbitrator, three parties cannot each have a nominee without unequal treatment
+under **s.18**. This clause specifies a **sole** arbitrator jointly appointed, so
+nobody has a nominee, and the fallback is count-independent: on failure to agree,
+**s.11(5)** sends the appointment to the institution designated under **s.11(3A)**,
+which works identically for two parties or four.
+
+The open question is the reference scope: *may one party refer a dispute against
+one other party alone, or must every party be joined?* At two parties, "refer the
+dispute" and "refer it against the other party" are the same act. At three they
+diverge, and an award between Party 1 and Party 2 binds neither Party 3 nor anyone
+claiming under them (**s.35**), leaving Party 3 free to litigate the same facts on
+the same instrument to a different result.
+
+**No statutory default fills the gap.** The Act as amended through 2021 has no
+provision for joinder or consolidation. The Supreme Court permitted consolidation
+in *PR Shah v B.H.H. Securities* and the Delhi High Court in *Gammon India v NHAI*,
+but as judicial practice rather than an entitlement, and an ad hoc reference has no
+institutional rules to fall back on. The draft Amendment Bill, 2024 does not
+address it and is not law. **The instrument is the only place this could have been
+settled, and it does not settle it** — which is what makes the point UNDECIDED
+rather than merely unstated.
+
+### No new shape, and the test applied
+
+`PAIRWISE_RIGHT` is recorded as a right arising from one party's default. The
+default framing is **the instance it was drawn from, not its essence**. Stripped to
+semantics: *a right exercised with respect to one other party, where more than two
+parties force a choice between bilateral and multilateral effect.* That is the
+reference-scope question exactly. A new shape would have read more neatly and
+would have been an abstraction built because the architecture seemed to want one.
+**Shapes are reusable; a decision is one question about one clause.**
+
+### The result that matters more than the classification
+
+The scan that found invariant 60's twenty-three clauses looks for "either Party"
+and "the other Party". Run over this clause it flags **sentence 1** — the harmless
+amicable-discussion step — and passes straight over **sentence 2**, which carries
+the decision, because *"it shall be referred to arbitration"* names no party at
+all.
+
+> **Lexical party-reference scanning does not find N-party questions. It finds the
+> subset visible in the pronouns.**
+
+So the classified set is biased toward lexically-visible problems, and the 161
+unclassified clauses may hold more of this kind: a question about *structure*
+hiding in a sentence that mentions nobody. **12.5% is a ceiling on what has been
+examined, not a floor on what is wrong.**
+
+### A latent defect the clause exposed
+
+This clause has two N-party components with different verdicts. The shape index is
+`shapeOf.set(clauseId, shape)` — listing a clause under two shapes silently keeps
+whichever entry is read last, no error, and the classification would depend on JSON
+key order. It is listed once under the demanding component (any open decision makes
+a clause PENDING however many of its sentences are settled), the settled components
+are recorded in the decision's own `components` field, and **a test now fails if any
+clause appears under two shapes**.
+
+---
+
+## 66. ROSTER_DRIVEN is proved by generation, or it is not ROSTER_DRIVEN
+
+A shape asserted by citation decays into a shape asserted by appearance. So
+membership is now checked by **differential generation**, every run: a
+ROSTER_DRIVEN clause's shipped text must differ between a two-principal and a
+three-principal deed, must name the third principal at three, and must not name
+one at two. All three current members are proved this way, not merely cited.
+
+**With a control, because a test that cannot fail proves nothing.**
+`CORE_DISPUTE_RESOLUTION_001` is run through the same assertion and must *not*
+satisfy it — its text is byte-identical at two and three principals, because it is
+written *about* the parties rather than assembled *from* them. If that control ever
+starts passing, the test has stopped discriminating and says so.
+
+ROSTER_DRIVEN means: *N-party correctness established by tracing the authoritative
+roster through generation and verifying the artifact.* It does not mean: *this
+clause looks like it uses the roster.*
+
+---
+
+## 67. Admitted ≠ exposed ≠ legally supported
+
+One commit made `party_3_name` acceptable on **28 document types**. That is a fact
+about the engine. It is not a claim that a promissory note may have three makers,
+and it is not permission for a form to start asking for one.
+
+| level | what it is | count |
+|---|---|---|
+| `ADMITTED_BY_ENGINE` | structural — a third principal survives admission and reaches the artifact | **28** |
+| `EXPOSED_BY_INTAKE` | product — the form offers a box for a third principal | **0** |
+| `LEGALLY_SUPPORTED` | legal — an advocate established this family operates correctly above two | **0** |
+
+**The gap between 28 and 0 is the containment, not an oversight.** An API caller
+can build a three-party deed today and get a correct one. No user is *invited* to
+by a form until somebody says the family is ready, because a form field is an
+invitation and inviting a third principal into an unreviewed document is the
+product asserting readiness it does not have.
+
+The failure prevented is a quiet ratchet: somebody notices the backend accepts a
+third principal, concludes the form should offer the field, and a structural
+capability becomes an implied legal claim with no advocate having looked.
+**Exposure follows legal support; it is never derived from admission.** The rule is
+written as an implication — *exposed ⟹ reviewed, with a named reviewer* — so it
+passes vacuously today and stops being vacuous the instant anyone adds a field.
+
+Both levels are **measured, not declared**: admission from the same predicate
+sanitisation uses, exposure from the same builder that serves
+`/document-config/:type`. A record that can drift from the behaviour it describes
+is worse than no record, because it is believed.
+
+### Statutory permissibility is not instrument readiness
+
+The same conflation one level down. The Partnership Act plainly contemplates more
+than two partners; that says nothing about whether this deed's clauses have been
+classified for three. Four families carry a statutory note and **none of them is
+thereby supported**.
+
+### The doubtful families are recorded, not excluded by intuition
+
+`PROMISSORY_NOTE` and `POWER_OF_ATTORNEY` are admitted, and a third principal in
+either is doubtful. The temptation is an exclusion list — which would be guessing
+at the Negotiable Instruments Act, 1881 and the Powers-of-Attorney Act, 1882 in a
+JSON file. Neither has been researched, so both are recorded `NOT_REVIEWED` with
+`statute_permits_more_than_two: NOT_ASSESSED`, and a test fails if a statutory
+position is ever asserted for them without the research behind it. An unreviewed
+family is not exposed, so the containment holds without anybody having to guess.

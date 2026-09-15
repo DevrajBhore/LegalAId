@@ -140,12 +140,36 @@ function isSuppressedDependency(documentType, clauseId) {
   return Boolean(SUPPRESSED_DEPENDENCIES[String(documentType || "").toUpperCase()]?.has(clauseId));
 }
 
+/**
+ * TWO RELATIONSHIPS, NOT ONE.
+ *
+ * `depends_on` and `required_with` were concatenated on one line and were
+ * therefore synonyms in effect — despite 24 edges being declared under both keys
+ * at once, which says an author believed they differed. They do:
+ *
+ *   depends_on     STRUCTURAL. Clause A is incomplete without B. An indemnity
+ *                  procedure with no indemnity to follow refers to nothing.
+ *                  Injected whatever the gate decided.
+ *
+ *   required_with  CONDITIONAL. B is required WHEN B is itself applicable to
+ *                  this document. LOAN_DEFAULT_001 naming LOAN_SECURITY_001
+ *                  asserted that a default provision presupposes collateral. It
+ *                  does not, and the edge put a security clause into every loan
+ *                  the borrower had answered as unsecured.
+ *
+ * `applicabilityExcludedClauseIds` is how the gate's decision reaches here.
+ * `null` means NO GATE WAS EVALUATED — a different fact from an empty set, and
+ * it must never be read as "the target applies". See the diagnostic below.
+ */
 function resolveExplicitKbDependencies(
   clauses = [],
   variables = {},
   documentType = "",
-  replacedClauseIds = new Set()
+  replacedClauseIds = new Set(),
+  applicabilityExcludedClauseIds = null,
+  diagnostics = []
 ) {
+  const applicabilityKnown = applicabilityExcludedClauseIds instanceof Set;
   const resolvedClauses = [...clauses];
   const existingClauseIds = new Set(
     resolvedClauses.map((clause) => String(clause.clause_id || ""))
@@ -162,13 +186,49 @@ function resolveExplicitKbDependencies(
 
     for (const clause of [...resolvedClauses]) {
       const requiredClauseIds = [
-        ...(Array.isArray(clause?.depends_on) ? clause.depends_on : []),
-        ...(Array.isArray(clause?.required_with) ? clause.required_with : []),
+        ...(Array.isArray(clause?.depends_on) ? clause.depends_on : [])
+          .map((id) => ({ id, relationship: "depends_on" })),
+        ...(Array.isArray(clause?.required_with) ? clause.required_with : [])
+          .map((id) => ({ id, relationship: "required_with" })),
       ];
 
-      for (const requiredClauseId of requiredClauseIds) {
+      for (const { id: requiredClauseId, relationship } of requiredClauseIds) {
         if (!requiredClauseId || existingClauseIds.has(requiredClauseId)) {
           continue;
+        }
+
+        // A CONDITIONAL dependency may not obtain its applicability from the
+        // absence of an exclusion record.
+        if (relationship === "required_with") {
+          if (!applicabilityKnown) {
+            // Not thrown: generation must not die because a repair or revision
+            // path handed us a draft without selection metadata. Refused and
+            // recorded, because the alternative — injecting anyway — is exactly
+            // the original defect wearing a new API.
+            diagnostics.push({
+              clause_id: clause.clause_id,
+              required_clause_id: requiredClauseId,
+              relationship,
+              reason:
+                "required_with could not be honoured: no applicability decision reached the " +
+                "dependency resolver, so whether the target applies to this document is " +
+                "unknown. The clause was NOT injected. If this draft did not come from clause " +
+                "selection, that is the gap to close.",
+            });
+            continue;
+          }
+          if (applicabilityExcludedClauseIds.has(requiredClauseId)) {
+            diagnostics.push({
+              clause_id: clause.clause_id,
+              required_clause_id: requiredClauseId,
+              relationship,
+              reason:
+                "required_with not honoured because the target's own applicability gate " +
+                "excluded it from this document. A conditional dependency does not outrank " +
+                "the condition.",
+            });
+            continue;
+          }
         }
 
         // Don't re-inject a clause that a variant slot deliberately swapped out
@@ -266,11 +326,20 @@ export function resolveDependencies(draft, input = {}) {
   const variables = input.variables || draft.metadata?.source_variables || {};
   const documentType = input.document_type || draft.document_type;
   const replacedClauseIds = new Set(draft.metadata?.variant_replaced_clause_ids || []);
+  // ABSENT and EMPTY are different facts. An empty array means the gates ran and
+  // excluded nothing; a missing key means no gate was evaluated at all, and a
+  // conditional dependency must refuse rather than assume.
+  const excluded = Array.isArray(draft.metadata?.applicability_excluded_clause_ids)
+    ? new Set(draft.metadata.applicability_excluded_clause_ids)
+    : null;
+  const diagnostics = [];
   const clausesWithKbDependencies = resolveExplicitKbDependencies(
     draft.clauses,
     variables,
     documentType,
-    replacedClauseIds
+    replacedClauseIds,
+    excluded,
+    diagnostics
   );
   const clausesWithFallbacks = resolveFallbackDependencies(
     { ...draft, clauses: clausesWithKbDependencies },
@@ -281,5 +350,11 @@ export function resolveDependencies(draft, input = {}) {
   return {
     ...draft,
     clauses: clausesWithFallbacks,
+    metadata: {
+      ...(draft.metadata || {}),
+      // Every dependency the resolver declined to honour, and why. A clause that
+      // is silently NOT added is as invisible as one silently added.
+      dependency_diagnostics: diagnostics,
+    },
   };
 }

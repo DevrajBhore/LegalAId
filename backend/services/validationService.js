@@ -59,6 +59,25 @@ function buildCoverage({ documentType, layersRun, layersSkipped, constraintOutco
     rules_passed: counted("pass"),
     rules_failed: counted("fail"),
     rules_not_applicable: counted("not_applicable"),
+    // A DEFAULT THE USER TURNED DOWN — not a rule the document failed.
+    //
+    // The general provisions are a default set: the list lives under
+    // `defaults.hardening`, every rule is MEDIUM and worded "should", and the
+    // intake calls the four gated members optional protection while offering
+    // "No". So declining one is the user exercising a choice the product put in
+    // front of them, and reporting it as a failure would be the system marking
+    // its own offer as a defect.
+    //
+    // Counted and NAMED rather than dropped. A clause the user declined is
+    // exactly the thing a reader of the document should be told about — it is
+    // absent on purpose, and only this line says so.
+    rules_declined: counted("declined"),
+    declined_defaults: outcomes
+      .filter((entry) => entry.outcome === "declined")
+      .map((entry) => ({
+        rule_id: entry.rule_id,
+        clause_ids: entry.declined_clause_ids || [],
+      })),
     not_machine_verified: [
       ...(disclosure.not_machine_verified || []),
       ...((disclosure.by_document_type || {})[documentType] || []),

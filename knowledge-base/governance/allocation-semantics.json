@@ -1,0 +1,140 @@
+{
+  "$comment": [
+    "WHICH SHARE BELONGS TO WHICH PARTY, AND WHAT SAYS SO.",
+    "",
+    "D4.18 made the roster authoritative for WHO the parties are, and established that position",
+    "is identity when a document says 'Party 1'. This file exists because that result DOES NOT",
+    "carry over to economics. 'Position is identity' and 'position is economic-allocation",
+    "identity' are different claims, and the second one has to be proved for each field rather",
+    "than inherited from the first.",
+    "",
+    "THE TEMPTATION THIS FILE REFUSES. A deed with three partners and the ratio '40:40:20' has",
+    "three parties and three numbers. Mapping the first number to the first partner is an",
+    "inference from ARITY, not from meaning. It would turn a document that is merely AMBIGUOUS",
+    "into one that is CONFIDENTLY WRONG — strictly worse, because nobody re-reads a confident",
+    "answer. The engine may only attribute a share where an artifact establishes the mapping.",
+    "",
+    "WHAT COUNTS AS ESTABLISHING IT. Two things do, and they are recorded per field:",
+    "",
+    "  SCHEMA_INDEXED_SERIES  the field name carries the principal's ordinal AND the label the",
+    "                         user reads names that principal. `capital_contribution_1` is",
+    "                         labelled 'Partner 1 Capital Contribution' — the person typing the",
+    "                         number was told whose number it is.",
+    "  NAMED_IN_VALUE         the value itself names the party whose share it is. A user who",
+    "                         writes 'Meera Iyer 40, Arjun Desai 40, Sunita Rao 20' has said",
+    "                         which share is whose, and the engine can check every name against",
+    "                         the roster.",
+    "",
+    "WHAT DOES NOT. Order of appearance, count agreement, alphabetical order, the order the",
+    "partners were entered in, or the fact that a ratio happens to have as many parts as the firm",
+    "has partners.",
+    "",
+    "REVIEW STATUS. The classifications below are mine, read off the schema and the rendered",
+    "clauses. An advocate should confirm the authority attached to each and, in particular,",
+    "whether Partnership Act s.13(b) equal sharing should be ASSERTED by a deed that records no",
+    "ratio or merely left to operate by default."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "allocations": [
+    {
+      "field": "profit_sharing_ratio",
+      "documents": ["PARTNERSHIP_DEED", "JOINT_VENTURE_AGREEMENT"],
+      "distributes": "profits and losses of the firm or venture",
+      "shape": "SINGLE_FREE_TEXT_FIELD",
+      "positional_mapping": "NOT_ESTABLISHED",
+      "evidence_considered": [
+        "The label is 'Profit / Loss Sharing Ratio (e.g. 50:50)'. It names no party.",
+        "The description is 'How profits and losses are divided, for example \"50:50\" or \"60:40\"'. It names no party, and every example it offers has exactly two elements — so the field has never told a user how to express a three-way split, let alone whose share comes first.",
+        "The rendered sentence is 'Profits and losses of the partnership shall be shared among the Partners in the ratio of X'. 'the Partners' is the generic plural; the sentence attributes nothing to anybody.",
+        "No blueprint, constraint, requirement or clause annotation anywhere in the repository relates a position in this value to a position in the roster."
+      ],
+      "attribution_when_named": "NAMED_IN_VALUE",
+      "unattributed_behaviour": "EXPOSE",
+      "authority": [
+        { "act": "Indian Partnership Act, 1932", "section": "13(b)", "note": "Partners are entitled to share equally in the profits, and shall contribute equally to the losses, subject to contract between the partners. A deed that records a division it cannot attribute has not displaced this." },
+        { "act": "Indian Partnership Act, 1932", "section": "4", "note": "Partnership is the relation between persons who have agreed to share the profits of a business. What each agreed to share is therefore constitutive, not incidental." }
+      ],
+      "note": [
+        "The field conflates two representations that behave differently. '50:50' and '60:40' — every example it gives — total 100 and read as percentages. But the field is called a RATIO, and a ratio need not total anything: 40:40:30 is a perfectly good ratio meaning 40/110, 40/110 and 30/110.",
+        "",
+        "So a value like '40:40:30' cannot be classified as valid or invalid without knowing which reading applies, and the field does not say. That is reported as an ambiguity rather than resolved, and NOTHING RESCALES THE PARTS — rewriting 40:40:30 as 36.36:36.36:27.27 would silently choose the percentage reading and change what each partner receives."
+      ]
+    },
+    {
+      "field": "founder_equity_split",
+      "documents": ["FOUNDERS_AGREEMENT"],
+      "distributes": "equity in the company",
+      "shape": "SINGLE_FREE_TEXT_FIELD",
+      "positional_mapping": "NOT_ESTABLISHED",
+      "evidence_considered": [
+        "The label is 'Equity Split'. It names no party and carries no ordinal.",
+        "A textarea, so the value may be prose, a table, or a bare ratio; nothing constrains it."
+      ],
+      "attribution_when_named": "NAMED_IN_VALUE",
+      "unattributed_behaviour": "EXPOSE",
+      "authority": [
+        { "act": "Companies Act, 2013", "section": "10", "note": "The memorandum and articles bind the company and its members; what each founder holds is determined by the register of members rather than by this recital." }
+      ]
+    },
+    {
+      "field": "capital_contribution_N",
+      "documents": ["PARTNERSHIP_DEED", "JOINT_VENTURE_AGREEMENT"],
+      "distributes": "capital contributed to the firm or venture",
+      "shape": "SCHEMA_INDEXED_SERIES",
+      "declared_at": [1, 2],
+      "positional_mapping": "ESTABLISHED",
+      "established_by": "SCHEMA_INDEXED_SERIES",
+      "evidence_considered": [
+        "The field name carries the principal's ordinal: capital_contribution_1, capital_contribution_2.",
+        "The label of capital_contribution_1 is 'Partner 1 Capital Contribution (₹)' — the person typing the number was told whose number it is, in the words next to the box.",
+        "The rendered sentence attributes it by name: 'Partner 1 shall contribute X and Partner 2 shall contribute Y'."
+      ],
+      "extends_beyond_declared": true,
+      "extension_note": [
+        "The schema declares two because the intake declared two principals. The series is per-principal and has no ceiling of its own, so index 3 and above is admitted on the same structural rule that admits partner_3_name: the family has said this is how it names a principal's contribution, and the engine supplies the fact that a principal series does not stop at two.",
+        "",
+        "A principal with no amount recorded is NOT given one. The clause states that no contribution is recorded for them, which is true, visible, and not a number somebody invented."
+      ],
+      "authority": [
+        { "act": "Indian Partnership Act, 1932", "section": "4", "note": "Partnership does not require capital contribution, so an unrecorded contribution does not invalidate the firm — but a deed that states two contributions for three partners misdescribes it." }
+      ]
+    },
+    {
+      "field": "shareholding_percentage_N",
+      "documents": ["SHAREHOLDERS_AGREEMENT"],
+      "distributes": "shareholding in the company",
+      "shape": "SCHEMA_INDEXED_SERIES",
+      "declared_at": [1, 2],
+      "positional_mapping": "ESTABLISHED",
+      "established_by": "SCHEMA_INDEXED_SERIES",
+      "evidence_considered": [
+        "The field name carries the ordinal: shareholding_percentage_1, shareholding_percentage_2.",
+        "The label of shareholding_percentage_1 is 'Shareholder 1 Shareholding (%)'."
+      ],
+      "extends_beyond_declared": true,
+      "authority": [
+        { "act": "Companies Act, 2013", "section": "88", "note": "The register of members is the record of who holds what; the agreement recites it." }
+      ],
+      "note": [
+        "Labelled a percentage rather than a ratio, so unlike profit_sharing_ratio the total IS meaningful: shares stated as percentages that do not total 100 leave part of the company unaccounted for. Reported; never rescaled."
+      ]
+    }
+  ],
+  "summary": {
+    "allocations": 4,
+    "positional_mapping_established": 2,
+    "positional_mapping_not_established": 2,
+    "reading": [
+      "Two of the four allocations can be attributed to the roster mechanically, and they are the",
+      "two whose field names carry the principal's ordinal. The other two are single free-text",
+      "fields that divide a whole among people without saying which person gets which part.",
+      "",
+      "The repair for those two is not arithmetic. It is either naming the parties in the value —",
+      "which the engine can then check against the roster — or per-principal fields of the kind",
+      "capital_contribution_N already is. Until one of those happens the allocation is UNATTRIBUTED",
+      "and the document says so."
+    ]
+  }
+}

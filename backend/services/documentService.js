@@ -34,9 +34,13 @@ import { buildSemanticContext } from "./inputSemantics.js";
 import { buildDocumentIntelligence } from "./documentIntelligence.js";
 import { resolvePositions } from "./positionResolution.js";
 import { assessRequirements } from "./documentRequirements.js";
+import { resolveCanonicalFacts } from "./canonicalFacts.js";
 import { getVariables } from "../config/variableConfig.js";
 import { buildObligations } from "./obligationTracker.js";
 import { resolveStampFinancials } from "./stampDutyBasis.js";
+import { resolveRoster } from "./partyRoster.js";
+import { unresolvedTreatments } from "./npartyTreatment.js";
+import { resolveAllocations } from "./economicAllocation.js";
 
 // Attach the advisory risk-&-explainability report + lifecycle obligations to a
 // successful generation.
@@ -66,7 +70,61 @@ function serialisePositions(documentType, positions = {}) {
   return out;
 }
 
-function buildSuccess(draft, validation, resolution = null) {
+function buildRosterDisclosure(variables = {}) {
+  const roster = resolveRoster(variables);
+  return {
+    count: roster.count,
+    source: roster.source,
+    prefix: roster.prefix,
+    members: (roster.members || []).map((m) => ({ index: m.index, name: m.name })),
+    gaps: roster.gaps || [],
+    duplicates: roster.duplicates || [],
+    merged: roster.merged || [],
+    conflicts: roster.conflicts || [],
+    reconciled: roster.reconciled !== false,
+    multi_party: roster.count > 2,
+  };
+}
+
+// The N-party points this document leaves open, for disclosure to the reader.
+//
+// Read from the clauses AS SHIPPED rather than from the blueprint: a clause the
+// document did not take cannot leave anything open in it, and a clause a builder
+// added at generation time can. D4.15 measured that difference and it was 23
+// clauses against 17.
+function buildOpenTreatments(draft, variables = {}) {
+  const roster = resolveRoster(variables);
+  if (!(roster.count > 2)) return [];
+
+  return unresolvedTreatments(
+    (draft?.clauses || []).map((clause) => clause.clause_id).filter(Boolean),
+    roster.count
+  ).map((treatment) => ({
+    clause_id: treatment.clause_id,
+    // TWO DIFFERENT KINDS OF NOT-KNOWING, AND MERGING THEM HIDES THE SMALLER ONE.
+    //
+    // A clause classified into a decision-requiring shape has an identified
+    // legal question with authored candidate readings and nobody has chosen --
+    // six of these, and they are what an advocate reviews. A clause that was
+    // never examined for N-party behaviour at all is also unresolved, and
+    // deliberately so (an unclassified clause is not thereby safe to
+    // pluralise), but it is a gap in the classification rather than an open
+    // question of law. Reported side by side and labelled, because twenty of
+    // the second kind would otherwise bury two of the first.
+    kind: treatment.shape ? "AUTHORED_DECISION_PENDING" : "NOT_CLASSIFIED",
+    decision_id: treatment.decision_id || null,
+    shape: treatment.shape || null,
+    // UNDECIDED, and the field says so rather than omitting itself. A missing
+    // key reads as "nothing to see"; the word is the finding.
+    decision: treatment.shape ? treatment.decision || "UNDECIDED" : null,
+    legal_question: treatment.legal_question || null,
+    candidate_treatments: treatment.candidates || [],
+    party_count: roster.count,
+    why: treatment.why,
+  }));
+}
+
+function buildSuccess(draft, validation, resolution = null, options = {}) {
   const variables = draft?.metadata?.source_variables || {};
   const markedDraft = {
     ...draft,
@@ -82,6 +140,14 @@ function buildSuccess(draft, validation, resolution = null) {
     },
   };
 
+  // The resolution computed upstream in prepareGenerationInput, carried here
+  // rather than recomputed. Falls back to resolving only where a draft reached
+  // this function without having gone through generation preparation (repair
+  // and revision paths), and that fallback is itself the same function.
+  const canonicalFacts = options?.canonicalFacts || resolveCanonicalFacts(
+    draft?.document_type, variables, resolution?.positions || {}
+  );
+
   return {
     draft: markedDraft,
     validation,
@@ -96,10 +162,48 @@ function buildSuccess(draft, validation, resolution = null) {
     // separately from the clause count, because a draft can carry forty
     // well-drafted boilerplate clauses and still fail to be the instrument it
     // claims to be. Boilerplate coverage must never stand in for identity.
+    // ONE resolution, consumed by both halves. Assessment used to read
+    // resolution.positions while clause selection read the derived controls, so
+    // a requirement conditioned on a derived fact reported
+    // APPLICABILITY_UNKNOWN while the document shipped the clause that fact had
+    // gated. Nine of nine conditional requirements, across three families.
+    canonical_facts: canonicalFacts.outcomes,
+    // ── What this instrument does not settle, because more than two people
+    //    signed it ──────────────────────────────────────────────────────────
+    //
+    // Party cardinality and legal interpretation are independent dimensions,
+    // and this field is where that independence becomes visible. A deed with
+    // three partners generates: every principal is named, bound and signed for.
+    // It also arrives carrying the points its own clauses leave open, because
+    // "the aggregate liability of either Party shall not exceed X" has three
+    // readings at three parties that differ in money, and choosing one of them
+    // is deciding a question of law while calling it a rendering detail.
+    //
+    // Empty for every two-party document, where the readings coincide. Never a
+    // reason to withhold the draft -- the user gets the instrument AND the list
+    // of what an advocate still has to settle in it.
+    open_treatments: buildOpenTreatments(draft, variables),
+    // WHO THIS INSTRUMENT IS ABOUT, AS THE ENGINE RESOLVED IT.
+    //
+    // Reported next to the draft so the answer can be checked against the
+    // document rather than inferred from it. `gaps` says a slot was left empty
+    // and the principals after it were kept where the user put them; `merged`
+    // and `duplicates` say two descriptions turned out to be one person;
+    // `conflicts` says somebody was named that the authoritative collection does
+    // not contain, which is the one state where the roster declines to decide.
+    party_roster: buildRosterDisclosure(variables),
+    // ── Which party gets which share ─────────────────────────────────────
+    //
+    // Reported per allocation, with the state named rather than reduced to a
+    // boolean: ROSTER_ADDRESSED means every share is attached to a party the
+    // instrument binds; UNATTRIBUTED means shares were written and nothing says
+    // whose; CONFLICT means a share is written against somebody who is not a
+    // party. Nothing here is rescaled or reordered on the way out.
+    allocations: resolveAllocations(draft?.document_type, variables),
     requirements: assessRequirements(
       draft?.document_type,
       (draft?.clauses || []).map((clause) => clause.clause_id),
-      resolution?.positions || {},
+      canonicalFacts.facts,
       variables,
       [],
       // The clauses AS RENDERED, not as they sit in the library. A relationship
@@ -152,11 +256,38 @@ function prepareGenerationInput(input = {}) {
     input.document_type,
     input.variables || {}
   );
-  const variables = deriveGenerationControls(input.document_type, sanitizedVariables);
+
+  // ONE CANONICAL VALUE, BEFORE ANY CONSUMER.
+  //
+  // Resolved here — upstream of the derivation, upstream of clause selection,
+  // upstream of assessment — and overlaid onto the variables everything
+  // downstream reads. Both halves of the system therefore consume the same
+  // object rather than two normalisations that happen to agree.
+  //
+  // They did happen to agree: a select's own word reached clause selection as
+  // "Yes" and assessment as true, and both were right because both called
+  // positionOf. Two call sites of the same function is not one value; it is two
+  // values that are currently equal. The next gate written against the raw cell
+  // — or the next normaliser that handles "Y" differently — makes them differ,
+  // silently, in the direction where the document acts and the report does not.
+  const canonical = resolveCanonicalFacts(
+    input.document_type,
+    sanitizedVariables,
+    sanitizedVariables.__resolved_positions || {}
+  );
+  const variables = deriveGenerationControls(input.document_type, {
+    ...sanitizedVariables,
+    ...canonical.values,
+  });
 
   return {
     ...input,
     variables,
+    // Carried, not recomputed downstream. buildSuccess used to resolve the facts
+    // a second time from the draft's source_variables; equal inputs made equal
+    // answers, but "resolved twice and compared" is the shape of the defect this
+    // whole phase exists to remove.
+    canonicalFacts: canonical,
     semanticContext: buildSemanticContext(input.document_type, variables),
   };
 }
@@ -684,7 +815,7 @@ export async function generateDocument(input, options = {}) {
       let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
       if (isGenerationReady(validation)) {
-        return buildSuccess(draft, validation, options.resolution);
+        return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
       }
 
       const repairedDraft = applyDeterministicRepairRound(
@@ -699,7 +830,7 @@ export async function generateDocument(input, options = {}) {
         validation = await runGenerationStageValidation(draft, generationInput, mode);
 
         if (isGenerationReady(validation)) {
-          return buildSuccess(draft, validation, options.resolution);
+          return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
         }
       }
 
@@ -707,7 +838,7 @@ export async function generateDocument(input, options = {}) {
       // Return it with those attached rather than discarding the tailoring and
       // falling back to boilerplate.
       if (!hasBlockingIssues(validation)) {
-        return buildSuccess(draft, validation, options.resolution);
+        return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
       }
     }
   }
@@ -725,7 +856,7 @@ export async function generateDocument(input, options = {}) {
   let validation = await runGenerationStageValidation(draft, generationInput, mode);
 
   if (isGenerationReady(validation)) {
-    return buildSuccess(draft, validation, options.resolution);
+    return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
   }
 
   const repairedDraft = applyDeterministicRepairRound(
@@ -741,13 +872,13 @@ export async function generateDocument(input, options = {}) {
     validation = await runGenerationStageValidation(draft, generationInput, mode);
 
     if (isGenerationReady(validation)) {
-      return buildSuccess(draft, validation, options.resolution);
+      return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
     }
   }
 
   // Only a blocking issue withholds the draft.
   if (!hasBlockingIssues(validation)) {
-    return buildSuccess(draft, validation, options.resolution);
+    return buildSuccess(draft, validation, options.resolution, { canonicalFacts: generationInput.canonicalFacts });
   }
 
   return buildGenerationFailureResult(validation);

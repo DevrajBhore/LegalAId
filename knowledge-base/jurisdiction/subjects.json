@@ -1,0 +1,71 @@
+{
+  "$comment": [
+    "JURISDICTIONAL SUBJECTS — which state a rule is asking about.",
+    "",
+    "D4.11 found the same question answered four ways across the codebase, two of them",
+    "opposite: the stamp author read operating_state first because stamp duty follows where",
+    "the instrument is executed and the property sits; the governing-law author read",
+    "governing_law_state first for the opposite and equally correct reason. Four authors each",
+    "reached for the right subject, had no vocabulary to name it, and encoded their intent as a",
+    "fallback order.",
+    "",
+    "`operating_state` is SYNTACTICALLY typed and SEMANTICALLY untyped: it has a value domain",
+    "and no contract saying which subject it represents. This file gives the subjects names so",
+    "a rule can say which one it means instead of guessing through a chain.",
+    "",
+    "THE GROWTH RULE. A subject becomes REPRESENTABLE when an authored rule actually needs it —",
+    "never before. Adding six intake questions to serve rules nobody has written would be the",
+    "intake equivalent of a premature abstraction, and this repository already carries 148 dead",
+    "questions from the last time that happened. A subject with `fact: null` is declared and",
+    "deliberately unresolvable: a rule naming it fails loudly rather than falling back to a",
+    "state that means something else.",
+    "",
+    "NOTHING HERE ADDS AN INTAKE QUESTION. PROPERTY_SITUS resolves to `operating_state` because",
+    "for the property families that is already what the field means — the repair makes an",
+    "existing implicit meaning explicit rather than asking the user anything new."
+  ],
+  "subjects": [
+    {
+      "subject": "CHOSEN_GOVERNING_LAW",
+      "statement": "The law the parties selected to govern the agreement.",
+      "fact": "governing_law_state",
+      "note": "A party choice. Correct for contractual questions and wrong for anything that follows the situs of immovable property, which the parties cannot choose.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "subject": "PROPERTY_SITUS",
+      "statement": "The state in which the immovable property is situated.",
+      "fact": "operating_state",
+      "note": "Stamp duty, registration and rent control follow the situs regardless of the parties' choice of law. `operating_state` is used because in the property families it already carries this meaning — see documentHardening.js:2608, which reads it first for exactly this reason. If a family is ever authored where operating_state means something else, this mapping must become per-family rather than portfolio-wide.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "subject": "WORKPLACE_LOCATION",
+      "statement": "The state in which the work is performed.",
+      "fact": null,
+      "unrepresentable": "No typed fact carries it. `work_location` is free text in 3 families and holds an address, not a state. Shops and Establishments legislation, professional tax and several labour thresholds are state-specific and would need this.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "subject": "PLACE_OF_PERFORMANCE",
+      "statement": "The state in which the contractual obligation is to be performed.",
+      "fact": null,
+      "unrepresentable": "`delivery_location` is free text in 3 families and holds an address.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "subject": "PARTY_ESTABLISHMENT",
+      "statement": "The state in which a party is resident or established.",
+      "fact": null,
+      "unrepresentable": "Party addresses are free text in 26 families. Extracting a state from them is possible and would carry an INFERRED provenance, which is a different question from whether the fact exists.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "subject": "FORUM",
+      "statement": "The place whose courts or tribunals the parties have submitted to.",
+      "fact": null,
+      "unrepresentable": "`execution_city` and `arbitration_city` are free text and hold cities, not states. A forum is also often a city rather than a state, so this subject may need a different value domain entirely.",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

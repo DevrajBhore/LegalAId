@@ -6,6 +6,7 @@ import {
   getCanonicalDocumentType,
   getDocumentFamily,
 } from "../../shared/documentRegistry.js";
+import { resolveRoster } from "./partyRoster.js";
 
 const POLICY_FILE = new URL(
   "../../knowledge-base/metadata/drafting_policies.json",
@@ -409,7 +410,7 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
     return variables?.[`party_${index + 1}_${suffix}`];
   };
 
-  return getParticipantDefinitions(documentType)
+  const declared = getParticipantDefinitions(documentType)
     .map((participant, index) => ({
       id: participant.id,
       label: participant.canonical,
@@ -426,6 +427,116 @@ export function getParticipantExpectations(documentType = "", variables = {}) {
       llpin: detail(participant, index, "llpin"),
     }))
     .filter((participant) => participant.name || participant.address);
+
+  return withRosterPrincipals(declared, variables);
+}
+
+// A label that ends in an ordinal extends by its ordinal: "Partner 1" and
+// "Partner 2" make "Partner 3". Anything else falls back to the universal form
+// rather than inventing a name for a role nobody defined.
+function extendParticipantLabel(sample = "", index = 0) {
+  const match = /^(.*?)(\d+)$/.exec(String(sample).trim());
+  if (match && match[1].trim()) return `${match[1]}${index}`;
+  return `Party ${index}`;
+}
+
+/**
+ * THE ONE PLACE THAT ANSWERS "WHO ARE THE PRINCIPALS".
+ *
+ * The identity clause, the signature block, the notices clause, the consistency
+ * validator and the quality controls all ask this function, and they are exactly
+ * the provisions D4.14 found disagreeing with each other: a third partner in the
+ * capital clause, absent from the identity clause, absent from the signature
+ * block. Extending HERE is what makes them agree by construction, rather than
+ * teaching each one separately about a third person.
+ *
+ * The extension is bounded in three ways, and each is load-bearing:
+ *
+ *   - it fires only when the roster carries more principals than the schema
+ *     declares, so every two-party document is byte-identical to before;
+ *   - it fires only when the roster's prefix is the one the declared
+ *     participants are named by, so a roster resolved from `party_N_*` cannot
+ *     silently supply the principals of a deed that names `partner_N_*`;
+ *   - it preserves each member's own index, so "Party 3" in the deed means the
+ *     third slot the user filled and not the third row that survived.
+ *
+ * It does NOT decide what an N-party clause should SAY. That question belongs to
+ * npartyTreatment.js, where six clauses report UNRESOLVED because the answer is
+ * a matter of law and nobody has authored it.
+ */
+function withRosterPrincipals(declared = [], variables = {}) {
+  const roster = resolveRoster(variables);
+  if (!declared.length) return declared;
+  if (roster.count <= declared.length && roster.source !== "parties[]") return declared;
+
+  /*
+   * An explicit collection has no prefix of its own, so it borrows the one the
+   * schema's principals are already named by. Without this, a caller who passed
+   * `parties[]` got a roster of four and a document about two, which is the
+   * disappearance this whole change exists to stop, arriving by a different
+   * road.
+   */
+  const prefix = roster.prefix || prefixOf(declared[0]?.id);
+  if (!prefix) return declared;
+  if (!declared.every((p) => String(p.id).startsWith(`${prefix}_`))) return declared;
+
+  const buildFromMember = (member, fallbackFrom) => {
+    const id = `${prefix}_${member.index}`;
+    const at = (suffix) =>
+      member[suffix] ??
+      fallbackFrom?.[suffix] ??
+      variables?.[`${id}_${suffix}`] ??
+      variables?.[`party_${member.index}_${suffix}`];
+    return {
+      id,
+      label:
+        fallbackFrom?.label || extendParticipantLabel(declared[0]?.label, member.index),
+      name: toProperName(member.name),
+      address: member.address ?? fallbackFrom?.address ?? undefined,
+      type: member.type ?? fallbackFrom?.type ?? undefined,
+      email: at("email"),
+      pan: at("pan"),
+      gstin: at("gstin"),
+      cin: at("cin"),
+      llpin: at("llpin"),
+      // Marked, so a consumer that must treat a schema-declared principal
+      // differently from a roster-supplied one can tell them apart. Nothing
+      // currently does, and that is the point: they are principals either way.
+      from_roster: true,
+    };
+  };
+
+  /*
+   * A DECLARED COLLECTION IS AUTHORITATIVE FOR EVERY POSITION, NOT JUST THE NEW
+   * ONES. Taking only the extras from it would let `partner_1_name` name
+   * somebody the collection does not contain and still put them on the page —
+   * precisely the outcome resolveRoster refuses to reach by recording a conflict
+   * instead. The two halves have to agree about who the first party is, not only
+   * about how many there are.
+   */
+  if (roster.source === "parties[]") {
+    return roster.members
+      .map((member, i) => buildFromMember(member, declared[i]))
+      .filter((participant) => participant.name || participant.address);
+  }
+
+  const known = new Set(declared.map((p) => p.id));
+  const extra = roster.members
+    .filter((member) => !known.has(`${prefix}_${member.index}`))
+    .map((member) => buildFromMember(member, null))
+    .filter((participant) => participant.name || participant.address);
+
+  return [...declared, ...extra].sort((a, b) => rosterOrdinal(a) - rosterOrdinal(b));
+}
+
+function prefixOf(id = "") {
+  const match = /^([a-z]+)_\d+$/.exec(String(id));
+  return match ? match[1] : null;
+}
+
+function rosterOrdinal(participant = {}) {
+  const match = /_(\d+)$/.exec(String(participant.id || ""));
+  return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
 export function getPartyNamingRule(documentType = "") {

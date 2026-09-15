@@ -32,3 +32,24 @@ export const LEGACY_AUTO_IDS = {
   LATE_PAYMENT_INTEREST: "AUTO-LPI-001",
   TERMINATION_NOTICE: "AUTO-TN-001",
 };
+
+// EVERY CLAUSE THAT PROVIDES A PROTECTION, so a decline can be recognised
+// whichever of them the blueprint gated.
+//
+// The excluded-set carries clause IDS, and the protection injector adds a
+// DIFFERENT id that fills the same role: a user who declines
+// CORE_FORCE_MAJEURE_001 was handed CORE_FORCE_MAJEURE_FALLBACK_001 instead, so
+// an id-for-id check saw no violation while the document carried the very
+// provision the user turned down. Routing, like the map above — which clause
+// ids answer to which protection — and not legal knowledge.
+export const PROTECTION_ROLE_CLAUSE_IDS = {
+  LIABILITY_CAP: [
+    "CORE_LIABILITY_LIMIT_FALLBACK_001", "CORE_LIABILITY_CAP_001",
+    "CORE_LIMITATION_LIABILITY_001", "AUTO-LIAB-001",
+  ],
+  INDEMNITY: ["CORE_INDEMNITY_FULL_001", "CORE_INDEMNITY_001", "AUTO-INDEM-001"],
+  FORCE_MAJEURE: ["CORE_FORCE_MAJEURE_FALLBACK_001", "CORE_FORCE_MAJEURE_001", "AUTO-FM-001"],
+  IP_OWNERSHIP: ["CORE_IP_OWNERSHIP_FALLBACK_001", "IP_OWNERSHIP_001", "AUTO-IP-001"],
+  LATE_PAYMENT_INTEREST: ["CORE_LATE_PAYMENT_INTEREST_001", "AUTO-LPI-001"],
+  TERMINATION_NOTICE: ["CORE_TERMINATION_NOTICE_001", "AUTO-TN-001"],
+};

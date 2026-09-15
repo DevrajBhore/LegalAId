@@ -1,0 +1,157 @@
+{
+  "domain": "corporate",
+  "_note": [
+    "A DIVISION OF MONEY THAT DOES NOT SAY WHOSE SHARE IS WHOSE.",
+    "",
+    "`profit_sharing_ratio` is a single free-text field whose value the deed repeats verbatim:",
+    "'Profits and losses of the partnership shall be shared among the Partners in the ratio of",
+    "40:40:20.' The sentence names no partner. Nothing in the repository relates a position in",
+    "that value to a position in the roster — the label names no party, the description names no",
+    "party, and every example it offers has exactly two elements.",
+    "",
+    "WHY NOT SIMPLY MAP THEM IN ORDER. Three partners and three numbers is agreement in COUNT,",
+    "not in meaning. Reading them positionally would turn a deed that is ambiguous into one that",
+    "is confidently wrong, and the second is worse: an ambiguous sentence gets read twice.",
+    "",
+    "WHY THIS FIRES AT TWO PARTIES TOO. '60:40' between two partners never said whose 60 it was",
+    "either. The N-party work made the defect visible; it did not create it, and suppressing the",
+    "notice below three would assert that the two-party deed is fine when it has the same gap.",
+    "",
+    "THE REMEDY IS INPUT, NOT PROSE. A user who writes 'Meera Iyer 40, Arjun Desai 40, Sunita Rao",
+    "20' has said which share is whose, and the engine checks every name against the roster. That",
+    "is why the remedy asks for names rather than offering to rearrange numbers."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "rules": [
+    {
+      "rule_id": "ALLOCATION_NOT_ATTRIBUTABLE_TO_A_PARTY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "description": "This instrument divides a quantity among the parties without saying which party receives which share.",
+      "statutory_reference": "Indian Partnership Act, 1932 - S.13(b); Indian Partnership Act, 1932 - S.4",
+      "when": [
+        {
+          "doc_type_in": [
+            "PARTNERSHIP_DEED",
+            "JOINT_VENTURE_AGREEMENT",
+            "FOUNDERS_AGREEMENT"
+          ]
+        },
+        {
+          "var": "__allocation_unattributed",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "assert": [
+        {
+          "var": "__allocation_unattributed",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "remedy": "State the division with the parties named — for example \"Meera Iyer 40, Arjun Desai 40, Sunita Rao 20\" — rather than as bare numbers. Written that way each share is attached to a person and can be checked against the parties this instrument actually binds. Until then the division is recorded as the parties wrote it and attributed to nobody, and under Section 13(b) of the Indian Partnership Act, 1932 partners share equally unless the contract between them provides otherwise."
+    },
+    {
+      "rule_id": "ALLOCATION_NAMES_A_PERSON_WHO_IS_NOT_A_PARTY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "description": "A share is written against a person this instrument does not bind.",
+      "statutory_reference": "Indian Partnership Act, 1932 - S.4; Indian Partnership Act, 1932 - S.25",
+      "when": [
+        {
+          "doc_type_in": [
+            "PARTNERSHIP_DEED",
+            "JOINT_VENTURE_AGREEMENT",
+            "FOUNDERS_AGREEMENT"
+          ]
+        },
+        {
+          "var": "__allocation_conflict",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "assert": [
+        {
+          "var": "__allocation_conflict",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "remedy": "Either add that person as a party in their own right — with their own name, address, identification and signature — or correct the spelling to match a party already named. A person who signs nothing is bound by nothing, whatever share the deed writes against their name."
+    },
+    {
+      "rule_id": "ALLOCATION_DOES_NOT_COVER_EVERY_PARTY",
+      "severity": "HIGH",
+      "notice_only": true,
+      "description": "The division has a different number of shares than the instrument has principals.",
+      "statutory_reference": "Indian Partnership Act, 1932 - S.13(b)",
+      "when": [
+        {
+          "doc_type_in": [
+            "PARTNERSHIP_DEED",
+            "JOINT_VENTURE_AGREEMENT",
+            "FOUNDERS_AGREEMENT"
+          ]
+        },
+        {
+          "var": "__allocation_arity_mismatch",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "assert": [
+        {
+          "var": "__allocation_arity_mismatch",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "remedy": "Give one share for each party, or record why a party takes none. Nothing has been rescaled: the numbers stay exactly as they were written, because changing them would change what each party receives."
+    },
+    {
+      "rule_id": "ALLOCATION_TOTAL_DEPENDS_ON_THE_READING",
+      "severity": "MEDIUM",
+      "notice_only": true,
+      "description": "The shares do not total 100, and whether that is a defect depends on whether the field means percentages or a ratio.",
+      "statutory_reference": "Indian Partnership Act, 1932 - S.13(b)",
+      "when": [
+        {
+          "doc_type_in": [
+            "PARTNERSHIP_DEED",
+            "JOINT_VENTURE_AGREEMENT",
+            "FOUNDERS_AGREEMENT"
+          ]
+        },
+        {
+          "var": "__allocation_total_ambiguous",
+          "op": "gte",
+          "value": 1
+        }
+      ],
+      "assert": [
+        {
+          "var": "__allocation_total_ambiguous",
+          "op": "eq",
+          "value": 0
+        }
+      ],
+      "remedy": "Read as percentages, these shares leave part of the whole unallocated. Read as a ratio, they are valid and mean each share over their total. The field is named for the second reading and every example it offers follows the first, so the instrument cannot tell which you meant. State the shares as percentages that total 100, or say expressly that they are a ratio. Nothing has been rescaled: rescaling would choose the reading for you and change what each party receives."
+    }
+  ],
+  "summary": {
+    "rules": 4,
+    "note": [
+      "Four states, reported separately because they have different remedies: nobody is named;",
+      "somebody named is not a party; the count of shares does not match the count of parties; and",
+      "the total is only meaningful once you know which reading the field intends.",
+      "",
+      "All four are notices. None blocks. A division the parties wrote is still the division they",
+      "wrote, and refusing to produce the deed would leave them with nothing while telling them",
+      "something they can fix in the form."
+    ]
+  }
+}

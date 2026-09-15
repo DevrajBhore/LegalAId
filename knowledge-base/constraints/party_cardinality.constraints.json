@@ -1,0 +1,78 @@
+{
+  "domain": "corporate",
+  "_note": [
+    "THE INSTRUMENT BINDS TWO PEOPLE AND THE INTAKE CANNOT REPRESENT A THIRD.",
+    "",
+    "D4.14 ran the 2->3 counterfactual on PARTNERSHIP_DEED. A user with three partners has two",
+    "routes and both fail, differently:",
+    "",
+    "  1. Supply partner_3_name. Sanitisation drops unknown keys and the third partner vanishes",
+    "     from the document entirely, silently.",
+    "  2. Describe the third partner in partner_roles free text. The name then appears in the",
+    "     CAPITAL AND PROFIT clause and in NEITHER the identity clause NOR the signature block.",
+    "",
+    "The second is the dangerous one. The deed recites a person as sharing capital and profits",
+    "while not making them a party to the instrument, and the capital clause still states a",
+    "two-way 60:40 split. Under the Indian Partnership Act 1932 that misstates the firm: s.4",
+    "defines partnership as the relation between persons who have agreed to share profits, and",
+    "s.25 makes every partner liable jointly and severally — a person who signs nothing is bound",
+    "by nothing the deed says, whatever the deed recites about their share.",
+    "",
+    "WHY A NOTICE AND NOT A BLOCK. Extracting a partner count from free prose is unreliable, and",
+    "a false block on a correct two-partner deed would be worse than the defect. The rule fires",
+    "on an explicit ordinal — 'third partner', 'Partner 3', 'three partners' — which is a lexical",
+    "signal with a low false-positive rate and it is exactly the shape the counterfactual",
+    "produced. A user who wrote those words means them.",
+    "",
+    "WHY THIS IS NOT THE REPAIR. It is a guard against shipping a wrong instrument while the real",
+    "repair is scoped. Representing N partners needs a repeating-entity type the intake model",
+    "does not have (zero collection-typed fields across all 40 families, no party index above 2",
+    "anywhere), AND N-party language in the 15 of 43 shared CORE clauses that say 'the other",
+    "Party'. Fields without language reproduce exactly the failure measured above: a name",
+    "recited, a person not bound.",
+    "",
+    "Written entirely in the existing closed predicate vocabulary. No engine change.",
+    "",
+    "AMENDED AFTER THE ROSTER LANDED. Route 1 above is now repaired: an indexed third principal",
+    "survives admission, reaches the identity clause and is signed for. Route 2 is not, and",
+    "cannot be — a name in prose is not a party, and inferring one from prose is the failure this",
+    "rule exists to report. So the assertion is no longer 'a third is unrepresentable' (a fact",
+    "about the system, which has changed) but 'the roster actually carries three' (a fact about",
+    "this document, which is what the reader needs). The notice now fires exactly when the deed",
+    "describes a principal it does not bind, and stays silent when the third partner is a party."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "rules": [
+    {
+      "rule_id": "MORE_PRINCIPALS_THAN_THE_INSTRUMENT_BINDS",
+      "severity": "HIGH",
+      "notice_only": true,
+      "description": "The intake describes more principals than this instrument can make parties. The document names and is signed by two; anyone else mentioned in free text is recited without being bound.",
+      "statutory_reference": "Indian Partnership Act, 1932 - S.4; Indian Partnership Act, 1932 - S.25",
+      "when": [
+        {
+          "doc_type_in": [
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "FOUNDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SHARE_SUBSCRIPTION_AGREEMENT"
+          ]
+        },
+        {
+          "any_of": [
+            { "var": "partner_roles", "op": "matches", "value": "third (partner|founder|member)|partner 3|3 partners|three partners|fourth partner" },
+            { "var": "partner_exit_mechanism", "op": "matches", "value": "third (partner|founder|member)|partner 3|3 partners|three partners" },
+            { "var": "partner_dispute_resolution", "op": "matches", "value": "third (partner|founder|member)|partner 3|3 partners|three partners" }
+          ]
+        }
+      ],
+      "assert": [
+        { "var": "__roster_count", "op": "gte", "value": 3 }
+      ],
+      "remedy": "This instrument can name and bind two principals. A third must be added as a party in their own right — with their own name, address, identification and signature — which this intake cannot currently collect. Do not rely on a mention in free text: a person who signs nothing is bound by nothing, whatever the deed recites about their share."
+    }
+  ]
+}

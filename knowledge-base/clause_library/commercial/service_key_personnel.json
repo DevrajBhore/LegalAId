@@ -5,7 +5,7 @@
   "required_with": [],
   "review_status": "draft-needs-legal-review",
   "source": "LegalAId Clause Library",
-  "version": "1.0",
+  "version": "4.0",
   "clause_id": "SERVICE_KEY_PERSONNEL_001",
   "name": "Key Personnel",
   "title": "Key Personnel and Resources",
@@ -18,30 +18,18 @@
     "INDEPENDENT_CONTRACTOR_AGREEMENT"
   ],
   "materiality": "DRAFTING",
-  "text": "The individuals identified as key personnel in a Statement of Work shall be assigned to the Services for the period it states, and the Service Provider shall not remove or reassign any of them except on death, illness, resignation, dismissal or the Client's written consent. Where a key person must be replaced, the Service Provider shall propose a replacement of at least equivalent skill and experience, shall give the Client a reasonable opportunity to object on reasonable grounds, and shall bear the cost of familiarising the replacement. The Service Provider shall at all times deploy sufficient personnel of suitable training and experience to perform the Services, and shall provide the facilities and equipment necessary to do so unless a Statement of Work places that responsibility on the Client. Personnel deployed by the Service Provider remain its employees or contractors for all purposes, and it alone is responsible for their wages, statutory contributions and supervision.",
+  "text": "The individuals identified as key personnel in a Statement of Work shall be assigned to the Services for the period it states, and the Service Provider shall not remove or reassign any of them except on death, illness, resignation, dismissal or the Client's written consent. Where a key person must be replaced, the Service Provider shall propose a replacement of at least equivalent skill and experience, shall give the Client a reasonable opportunity to object on reasonable grounds, and shall bear the cost of familiarising the replacement.",
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
       "section": "40",
       "note": "Where the parties intended performance by a particular person, that intention governs; naming key personnel is how that intention is recorded."
-    },
-    {
-      "act": "Code on Wages, 2019",
-      "section": "43",
-      "note": "Responsibility for payment of wages rests with the employer, which is why the clause states plainly whose employees these are."
-    },
-    {
-      "act": "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
-      "section": "8A",
-      "note": "Recovery from a principal employer in respect of contract labour, which is the exposure the last sentence is drafted to keep with the Service Provider."
     }
   ],
   "enforceability": "MEDIUM",
   "risk_level": "MEDIUM",
   "invalid_if": [
-    "The clause restrains a named individual from leaving the Service Provider's employment, which is void under section 27 of the Indian Contract Act, 1872 as against that individual.",
-    "It gives the Client a power of direction and control over the personnel such that they may be treated as the Client's employees notwithstanding the last sentence.",
-    "Replacement is permitted without any equivalence requirement, which makes the naming of key personnel meaningless."
+    "The clause restrains a named individual from leaving the Service Provider's employment, which is void under section 27 of the Indian Contract Act, 1872 as against that individual."
   ],
   "depends_on": [
     "SERVICE_SCOPE_001"
@@ -50,5 +38,15 @@
     "EMP_NON_SOLICITATION_001",
     "CORE_RELATIONSHIP_OF_PARTIES_001"
   ],
-  "authoring_note": "The last sentence carries the misclassification risk and should be read together with CORE_RELATIONSHIP_OF_PARTIES_001. Confirm whether a minimum notice period for planned replacements should be stated."
+  "authoring_note": "The last sentence carries the misclassification risk and should be read together with CORE_RELATIONSHIP_OF_PARTIES_001. Confirm whether a minimum notice period for planned replacements should be stated.",
+  "source_provenance": {
+    "origin": "client-supplied MSA clause checklist, September 2026",
+    "heading": "Headings 12 and 16 (Personnel, Facilities and Equipment).",
+    "extraction_note": "Extracted as a legal PROPOSITION from a client-supplied Master Service Agreement checklist, then drafted afresh against Indian law. The source was not copied: it mixed US regulatory material (HIPAA, the False Claims Act, 42 U.S.C. s.1320a-7a, the Red Flag Rules) that cannot apply here, India Post Payments Bank provisions tied to the RBI outsourcing regime that must not be made generic, and unresolved '*' placeholders in economically material terms. None of that entered this clause; the statutory basis was researched independently."
+  },
+  "implements": [
+    "PERSONAL_PERFORMANCE_INTENDED"
+  ],
+  "implements_review_status": "draft-needs-legal-review",
+  "_split_note": "D4.5-C. This clause previously carried two propositions with different applicability: personal performance intended (ICA s.40, conditional on key_person_dependency) and the principal-employer allocation (Code on Wages s.43 / EPF s.8A, applicable to every services engagement). Gated on include_sla, BOTH were lost whenever service levels were not agreed. The text was severed at existing sentence boundaries so no new legal wording was authored; the employment-status sentences moved verbatim to SERVICE_PERSONNEL_STATUS_001."
 }

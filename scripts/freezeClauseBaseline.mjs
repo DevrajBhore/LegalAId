@@ -163,6 +163,13 @@ function syntheticValue(field, definition = {}) {
     shareholding_percentage_1: "50",
     shareholding_percentage_2: "50",
     founder_equity_split: "50:50",
+    // A RATIO FIELD MUST HOLD A RATIO. The per-field synthesiser gave this the
+    // generic specimen string, which parses as narrative prose rather than as a
+    // division — so the allocation rules added in D4.19 were exercised on
+    // FOUNDERS_AGREEMENT (whose fixture already held "50:50") and on neither of
+    // the other two families that collect the same kind of value. A fixture that
+    // cannot reach a behaviour reports that behaviour as absent.
+    profit_sharing_ratio: "60:40",
     // Declared as a number of months, so "6 months" fails the type check.
     lock_in_period: "6",
     lockin_period: "6",
@@ -343,6 +350,25 @@ export function buildVariables(docType, level) {
     if (variables[field] === undefined && (level === "full" || all.has(field))) {
       variables[field] = value;
     }
+  }
+
+  // A field that becomes REQUIRED because of an answer already given.
+  //
+  // The fixture fills by the `required` flag, which cannot express "required
+  // when". So when security_collateral stopped being unconditionally required,
+  // the minimal loan kept answering "secured: Yes" and stopped describing what
+  // secured it — an incoherent loan, and the baseline recorded it collapsing.
+  //
+  // Only `requiredWhenShown` fields, NOT every field carrying a `showIf`. The
+  // first attempt filled all of them and moved advisories on eight families —
+  // party CIN, PAN and GSTIN are shown conditionally but their absence is
+  // advisory, not blocking, and supplying them silently rewrote what the
+  // baseline was measuring.
+  for (const [field, definition] of Object.entries(schema)) {
+    if (!definition?.requiredWhenShown || variables[field] !== undefined) continue;
+    const condition = definition.showIf;
+    if (!condition || !(condition.equals || []).includes(variables[condition.field])) continue;
+    variables[field] = syntheticValue(field, definition);
   }
   return variables;
 }

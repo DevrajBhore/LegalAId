@@ -1,4 +1,6 @@
 import { knowledgeVariables } from "../../shared/knowledgeDocuments.js";
+import { isRosterExtensionField } from "../services/partyRoster.js";
+import { isAllocationSeriesField } from "../services/economicAllocation.js";
 /**
  * variableConfig.js
  *
@@ -1553,6 +1555,20 @@ export const VARIABLE_CONFIG = {
     },
     include_entire_agreement: {
       excludeShapes: ["NOTICE", "SWORN", "POLICY"],
+      // Not offered where the answer could not be honoured.
+      //
+      // Both of these are named in the general-provisions constraint's
+      // `excludes_doc_types` AND carry their own hardening baseline that omits
+      // the clause: two authored artifacts agreeing an entire-agreement clause
+      // does not belong in an ESOP grant letter or a promissory note. The
+      // question was still put to the user on both, and answering "Yes" changed
+      // nothing — a question that changes nothing, which is the defect this
+      // codebase already has an invariant about.
+      //
+      // Withdrawn rather than honoured: honouring it would put a clause into two
+      // families whose own knowledge says it does not belong, on the strength of
+      // an intake field nobody scoped to them.
+      excludeDocuments: ["ESOP_GRANT_LETTER", "PROMISSORY_NOTE"],
       label: "Add an entire-agreement (no oral terms) clause?",
       type: "select",
       required: false,
@@ -4367,7 +4383,30 @@ export const VARIABLE_CONFIG = {
     security_collateral: {
       label: "Security / Collateral",
       type: "textarea",
+      // Required WHEN the loan is secured, and meaningless otherwise, so it is
+      // not required here — an unconditional `required` cannot express "when".
+      // The condition is enforced in variableValidator's cross-field checks,
+      // the same way liability_cap_amount is required only when the cap basis
+      // is a specific amount.
+      //
+      // Until this was split out, the field was required UNCONDITIONALLY (via
+      // DOCUMENT_CONFIG.requiredFields), which made the state
+      //
+      //     loan_is_secured = No,  security_collateral = (blank)
+      //
+      // unreachable: the honest unsecured loan could not be generated at all.
+      // The only way to obtain one was to write collateral text into a field
+      // whose own description says not to — so the intake said "here is the
+      // security" while the agreement said there is none.
       required: false,
+      showIf: { field: "loan_is_secured", equals: ["Yes"] },
+      // Required exactly when shown. `required` is a boolean and cannot say
+      // "when", which is what let the two declarations of this field disagree
+      // and made the honest unsecured loan impossible to generate. The rule is
+      // enforced in variableValidator; this flag is how the schema STATES it, so
+      // that anything building an intake (the baseline fixture, the interview)
+      // can see the pairing instead of rediscovering it.
+      requiredWhenShown: true,
       description:
         "What secures the loan — property, shares, a personal guarantee, or a charge over assets. Answer only where the loan is secured; nothing written here can make an unsecured loan secured.",
     },
@@ -5148,7 +5187,26 @@ export function sanitizeVariablesForDocument(documentType, variables = {}) {
       // no form collects "processes_personal_data" -- so filtering variables to
       // the document's own schema was silently dropping four positions out of
       // six on the way to clause selection, and the answers changed nothing.
-      ([fieldName]) => allowedFields.has(fieldName) || fieldName.startsWith("__")
+      // A THIRD PRINCIPAL IS NOT AN UNKNOWN FIELD.
+      //
+      // D4.14 measured a partner_3_name typed by a user and dropped here without
+      // a word, because the schema declares two principals and this filter knows
+      // nothing about principal series. The admission rule is structural and
+      // lives in partyRoster.js: index 3 and above, in a prefix the schema
+      // already uses for its first two principals. Slots 1 and 2 are untouched,
+      // so no two-party document can change behaviour through this line.
+      ([fieldName]) =>
+        allowedFields.has(fieldName) ||
+        fieldName.startsWith("__") ||
+        isRosterExtensionField(fieldName, allowedFields) ||
+        // A PER-PRINCIPAL QUANTITY IS NOT AN UNKNOWN FIELD EITHER.
+        //
+        // `capital_contribution_3` is admitted on the same structural rule and
+        // the same index floor, but on different evidence: an advocate recorded
+        // in allocation-semantics.json that this series is per-principal and
+        // that its ordinal means the principal's ordinal. The engine reads the
+        // record, not the label.
+        isAllocationSeriesField(fieldName, allowedFields)
     )
   );
 }

@@ -1,4 +1,6 @@
 import { getPartyNamingLabels } from "./draftingPolicy.js";
+import { resolveRoster } from "./partyRoster.js";
+import { resolveAllocations, ATTRIBUTION, ARITY, BASIS } from "./economicAllocation.js";
 import { amountToIndianWords } from "./formattingEngine.js";
 import { riskProfileControls } from "./riskProfile.js";
 import { deadlineVariables } from "./statutoryDeadlines.js";
@@ -724,6 +726,47 @@ export function deriveGenerationControls(documentType, variables = {}) {
       derived.include_inspection_rights = true;
     }
   }
+
+  // ── How many principals ──────────────────────────────────────────────────
+  // Exposed as ordinary variables so a knowledge-base rule can ask the question
+  // in the existing closed predicate vocabulary rather than needing an engine
+  // change. MORE_PRINCIPALS_THAN_THE_INSTRUMENT_BINDS uses it: the notice fires
+  // when free text describes a third principal AND the roster does not carry
+  // one, which is the case where the deed recites a person it does not bind.
+  // Where the roster does carry them, the notice would now be false.
+  const roster = resolveRoster(derived);
+  derived.__roster_count = roster.count;
+  derived.__roster_prefix = roster.prefix;
+  // An unreconciled roster is not a count anybody should rely on, so it is
+  // carried separately rather than folded into the number.
+  derived.__roster_reconciled = roster.reconciled;
+
+  // ── Economic allocation state ────────────────────────────────────────────
+  // Exposed as counts so a knowledge-base rule can ask about them in the closed
+  // predicate vocabulary. UNATTRIBUTED is deliberately reported at EVERY party
+  // count, not only above two: "60:40" between two partners never said whose 60
+  // it was either. The roster work made the defect visible; it did not cause it.
+  const allocations = resolveAllocations(documentType, derived);
+  derived.__allocation_unattributed = allocations.filter(
+    (a) => a.attribution === ATTRIBUTION.UNATTRIBUTED
+  ).length;
+  derived.__allocation_conflict = allocations.filter(
+    (a) => a.attribution === ATTRIBUTION.CONFLICT
+  ).length;
+  derived.__allocation_arity_mismatch = allocations.filter(
+    (a) => a.arity === ARITY.FEWER_PARTS_THAN_PRINCIPALS ||
+           a.arity === ARITY.MORE_PARTS_THAN_PRINCIPALS
+  ).length;
+  derived.__allocation_attributable = allocations.filter((a) => a.resolved).length;
+  // A colon series whose parts do not total 100. Under a PERCENTAGE reading that
+  // leaves part of the firm unallocated; under a RATIO reading 40:40:30 is
+  // perfectly good and means 40/110, 40/110 and 30/110. The field is called a
+  // ratio and every example it gives totals 100, so it teaches one reading and
+  // is named for the other. Reported as the ambiguity it is — and never
+  // rescaled, because rescaling picks the reading and moves money.
+  derived.__allocation_total_ambiguous = allocations.filter(
+    (a) => a.basis === BASIS.COLON_SERIES && a.sum !== null && a.totals_100 === false
+  ).length;
 
   // Free-text special terms are recorded verbatim as a term of the agreement.
   // They are NOT interpreted into clause selection: turning a sentence into a

@@ -172,6 +172,10 @@ export function validateDocument(
   const { violations, evaluated } = runConstraints(clauseIds, constraintRules, docType, {
     variables: draft?.metadata?.source_variables || draft?.source_variables || {},
     clauses: draft.clauses,
+    // What the user declined. A rule asserting the presence of a clause whose
+    // own gate the user closed is not reporting a defect in the document; it is
+    // reporting that the user exercised a choice the intake offered them.
+    applicabilityExcludedClauseIds: draft?.metadata?.applicability_excluded_clause_ids || [],
   });
 
   return {

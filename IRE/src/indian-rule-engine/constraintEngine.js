@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { documentShape } from "../../../shared/documentShape.js";
 
 /**
@@ -35,6 +38,9 @@ import { documentShape } from "../../../shared/documentShape.js";
  *   { "clause_absent":  ["ID", ...] }   none of these clause_ids present
  *   { "category_present": ["IDENTITY"] } at least one clause in that category
  *   { "state_in": ["Maharashtra", ...] } operating/governing state matches
+ *   { "state_in": [...], "of": "PROPERTY_SITUS" }  ...of a NAMED jurisdictional
+ *                               subject, resolved through
+ *                               knowledge-base/jurisdiction/subjects.json
  *   { "var": "field" | ["field","alt"], "op": "...", "value": X }
  *   { "not": <predicate> }
  *   { "any_of": [<predicate>, ...] }
@@ -49,6 +55,47 @@ import { documentShape } from "../../../shared/documentShape.js";
  *   months_gte | months_lt      duration compare -- "24 months", "2 years", "18"
  *                               all normalise to a month count
  */
+
+// ── Jurisdictional subjects ──────────────────────────────────────────────────
+//
+// Loaded from knowledge, not declared here, so an advocate can correct which
+// fact carries a subject without touching the evaluator. The map is read once;
+// a missing file leaves every subject unrepresentable, which fails rules loudly
+// rather than silently reverting to the ambiguous fallback chain.
+
+let jurisdictionSubjects = null;
+
+function loadJurisdictionSubjects() {
+  if (jurisdictionSubjects) return jurisdictionSubjects;
+  jurisdictionSubjects = new Map();
+  try {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    const file = path.resolve(here, "../../../knowledge-base/jurisdiction/subjects.json");
+    const doc = JSON.parse(fs.readFileSync(file, "utf8"));
+    for (const entry of doc.subjects || []) jurisdictionSubjects.set(entry.subject, entry);
+  } catch { /* leave empty: every subject unrepresentable */ }
+  return jurisdictionSubjects;
+}
+
+/** Exposed so a probe can report what is representable without re-reading the file. */
+export function jurisdictionalSubjects() {
+  return [...loadJurisdictionSubjects().values()];
+}
+
+export function resolveJurisdictionalSubject(subject, variables) {
+  const entry = loadJurisdictionSubjects().get(String(subject || ""));
+  if (!entry) {
+    return { representable: false, why: `unknown jurisdictional subject "${subject}"` };
+  }
+  if (!entry.fact) {
+    return { representable: false, why: entry.unrepresentable || `${subject} has no fact` };
+  }
+  const value = readVar([entry.fact], variables);
+  if (!hasMeaningfulValue(value)) {
+    return { representable: false, why: `${subject} reads ${entry.fact}, which is unanswered` };
+  }
+  return { representable: true, value, fact: entry.fact };
+}
 
 // ── Value helpers ────────────────────────────────────────────────────────────
 
@@ -189,6 +236,33 @@ function evaluatePredicate(predicate, context) {
     );
   }
   if (Array.isArray(predicate.state_in)) {
+    /*
+     * WHICH STATE IS THE RULE ASKING ABOUT?
+     *
+     * The bare form reads `governing_law_state` then `operating_state` then
+     * `state`. That chain is correct for contractual questions and wrong for
+     * anything following the situs of immovable property, which the parties
+     * cannot choose — and the same question is answered by four different
+     * fallback orders elsewhere in this codebase, two of them opposite. Those
+     * were not careless: each author was reaching for a different jurisdictional
+     * subject with no way to name it.
+     *
+     * `of` lets a rule name the subject. The bare form is untouched, so every
+     * existing rule behaves exactly as before — which matters because the chain
+     * is right for some of them and nothing yet says which.
+     */
+    if (predicate.of !== undefined) {
+      const resolved = resolveJurisdictionalSubject(predicate.of, context.variables);
+      /*
+       * A subject that is declared but not representable FAILS rather than
+       * falling back. Falling back would answer a workplace question with the
+       * parties' choice of law, silently — which is the exact defect the subject
+       * vocabulary exists to end.
+       */
+      if (!resolved.representable) return false;
+      const state = normalizeText(resolved.value);
+      return predicate.state_in.some((entry) => normalizeText(entry) === state);
+    }
     const state = normalizeText(
       readVar(["governing_law_state", "operating_state", "state"], context.variables)
     );
@@ -260,6 +334,7 @@ function describeUnmetAssertion(rule) {
 export function runConstraints(presentClauseIds = [], rules = [], docType = "", context = {}) {
   const evaluationContext = {
     clauseIds: new Set(presentClauseIds || []),
+    applicabilityExcluded: new Set(context.applicabilityExcludedClauseIds || []),
     categories: new Set(
       (context.clauses || []).map((clause) =>
         String(clause?.category || "").toUpperCase()
@@ -299,6 +374,35 @@ export function runConstraints(presentClauseIds = [], rules = [], docType = "", 
 
     if (evaluateAll(assertions, evaluationContext)) {
       evaluated.push({ rule_id: rule.rule_id, outcome: "pass" });
+      continue;
+    }
+
+    // DECLINED, not missing.
+    //
+    // The general-provisions rules are a DEFAULT set, not a mandatory floor —
+    // the artifacts say so in three places: the list lives under
+    // `defaults.hardening`, it is tuned per family (empty for policies and
+    // notices), every rule is MEDIUM and worded "should", and the intake calls
+    // the four gated members "optional protection" while offering "No".
+    //
+    // So where the ONLY unmet clause is one whose own gate the user closed,
+    // this rule is not describing a defect in the document. It is describing a
+    // choice the product offered and the user made. Reported as `declined` so
+    // it stays visible — a default the user turned off is worth seeing — but it
+    // is not a violation and it does not cost the document points.
+    //
+    // Before Phase C made applicability load-bearing, the question could not
+    // arise: the hardening baseline reinstated every declined clause, so the
+    // rule always passed and the user's "No" did nothing at all.
+    const unmet = assertions
+      .flatMap((a) => (Array.isArray(a?.clause_present) ? a.clause_present : []))
+      .filter((id) => !evaluationContext.clauseIds.has(id));
+    if (unmet.length && unmet.every((id) => evaluationContext.applicabilityExcluded.has(id))) {
+      evaluated.push({
+        rule_id: rule.rule_id,
+        outcome: "declined",
+        declined_clause_ids: unmet,
+      });
       continue;
     }
 
