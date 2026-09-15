@@ -100,7 +100,16 @@ function buildSuccess(draft, validation, resolution = null) {
       draft?.document_type,
       (draft?.clauses || []).map((clause) => clause.clause_id),
       resolution?.positions || {},
-      variables
+      variables,
+      [],
+      // The clauses AS RENDERED, not as they sit in the library. A relationship
+      // between two clauses is a question about the words the reader will
+      // actually see, and those words carry this document's own substitutions.
+      // Assessing library text would answer the question about a document
+      // nobody received.
+      Object.fromEntries(
+        (draft?.clauses || []).map((clause) => [clause.clause_id, clause.text || ""])
+      )
     ),
   };
 }

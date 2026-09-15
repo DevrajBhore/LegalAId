@@ -1,0 +1,73 @@
+====================================================================================================
+SHIPPED CLAIMS WITH NO AUTHORITATIVE FACT BEHIND THEM
+====================================================================================================
+party fact                        5 assertions    4 clauses    5 families
+user-facing capability            5 assertions    4 clauses    2 families
+external-world condition          2 assertions    1 clauses    1 families
+regulatory status                 1 assertions    1 clauses    1 families
+service practice                  1 assertions    1 clauses    1 families
+----------------------------------------------------------------------------------------------------
+  14 assertions total, in 10 clauses, reaching 8 of 45 families.
+  12 assertions DO rest on something: a governed gate or a field the user supplied.
+
+The screen is a FLOOR. It fires only on an enumerated list of real-world subjects and
+vetoes every sentence in deontic mood, so a claim phrased with a subject it does not know
+is invisible to it. Treat these as the assertions found, never as the assertions present.
+
+By family (families shipping the most unfounded assertions first):
+  PRIVACY_POLICY                           3 clauses
+  ESOP_GRANT_LETTER                        2 clauses
+  APPOINTMENT_LETTER                       1 clauses
+  COMMERCIAL_LEASE_AGREEMENT               1 clauses
+  INTERNSHIP_AGREEMENT                     1 clauses
+  POWER_OF_ATTORNEY                        1 clauses
+  SALES_OF_GOODS_AGREEMENT                 1 clauses
+  TERMS_OF_SERVICE                         1 clauses
+
+====================================================================================================
+THE GATING CENSUS — deterministic, no screen involved
+====================================================================================================
+1054 clause slots ship across 45 families. 114 (11%) are conditional on anything at all.
+20 of 45 families ship a document in which NO clause is conditional: every user receives byte-identical text but for field substitution.
+  gate rests on position (user answer)        74
+  gate rests on deterministic fact            35
+  gate rests on no source at all               5
+
+14 distinct propositions gate a clause and have no source:
+  include_transition_assistance       2 families
+  include_confidentiality             2 families
+  include_entire_agreement            2 families
+  employer_headcount_ge_10            1 families
+  has_esop_or_variable_pay            1 families
+  include_inspection_rights           1 families
+  include_ip_assignment               1 families
+  include_expenses                    1 families
+  include_change_control              1 families
+  personal_guarantee_required         1 families
+  lock_in_period_months               1 families
+  rent_escalation                     1 families
+  assignment_addressed                1 families
+  include_price_revision              1 families
+
+====================================================================================================
+APPLICABILITY SOURCES ACROSS EVERY AUTHORED REQUIREMENT
+====================================================================================================
+
+Applicability source (85 requirements, 9 families)
+  unconditional                             74
+  deterministic fact                         7
+  position (user answer)                     2
+  external evidence (an instrument)          2
+
+Evidence availability
+  not required                              74
+  deterministically derived                  7
+  explicitly collected                       2
+  supplied as an instrument                  2
+
+Failure behaviour when unsatisfied
+  DISCLOSE                                  39
+  BLOCK                                     34
+  ESCALATE                                  12
+
+world-sourced applicability                 0   <- cannot be expressed today

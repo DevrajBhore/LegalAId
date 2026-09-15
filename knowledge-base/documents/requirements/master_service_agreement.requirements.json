@@ -28,7 +28,12 @@
         ]
       },
       "when_unsatisfied": "BLOCK",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Generated a façade of twenty respectable general provisions — identity, definitions, interpretation, notices, confidentiality, representations, generic indemnity, governing law, dispute resolution, boilerplate, signatures — with none of the document's own machinery.",
+        "false_green": "It satisfied 1 of 13 identity requirements while looking like a complete contract.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
     },
     {
       "id": "PRECEDENCE_OF_DOCUMENTS",
@@ -244,7 +249,7 @@
       "statement": "Where the engagement depends on particular people, their assignment and replacement is settled.",
       "identity_test": "Remove it and the Client's named team can be reassigned the day after signature.",
       "applicability": {
-        "position": "include_sla",
+        "position": "key_person_dependency",
         "value": true
       },
       "satisfied_by": {
@@ -253,15 +258,23 @@
         ]
       },
       "when_unsatisfied": "DISCLOSE",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$repaired": [
+        "Was gated on include_sla == true. An SLA is a contractual mechanism; key-person",
+        "dependence is a fact about the engagement. The proxy fired on the wrong population in",
+        "both directions -- an engagement turning on two named architects with no service",
+        "levels was invisible, and an SLA-heavy fungible engagement raised the requirement.",
+        "",
+        "Now gated on the fact the statement always described. An SLA remains one treatment",
+        "available for the position, rather than the thing that decides the position exists."
+      ]
     },
     {
       "id": "PERSONAL_DATA_HANDLED",
       "statement": "Where personal data is processed, the processor's obligations are passed through in writing.",
       "identity_test": "Remove it and the Client remains the data fiduciary under section 8(2) of the DPDP Act, 2023 with no contractual means of discharging that responsibility.",
       "applicability": {
-        "position": "processes_personal_data",
-        "value": true
+        "position": "processes_personal_data"
       },
       "satisfied_by": {
         "any_of": [
@@ -269,7 +282,23 @@
         ]
       },
       "when_unsatisfied": "BLOCK",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$migrated": [
+        "REVERTED. This was briefly moved to applicability.evidence on the strength of a",
+        "portfolio measurement that said processes_personal_data had no source in the system.",
+        "That measurement was wrong: deriveGenerationControls takes (documentType, variables)",
+        "and the audit script called it (variables, documentType), so almost nothing came back",
+        "derived and 29 propositions read as orphans where there are 10.",
+        "",
+        "processes_personal_data IS derived, for this family and four others. The position had a",
+        "source all along, and moving it to EVIDENCE made every MSA report the requirement",
+        "permanently undetermined for no reason.",
+        "",
+        "The question the migration raised is still open and is a legal one rather than a",
+        "measurement: what derives this flag is ultimately a user's answer, and whether a party's",
+        "checkbox is the right authority for a fact about a supplier's running systems is not",
+        "something the audit can settle. It is recorded here rather than acted on."
+      ]
     }
   ]
 }

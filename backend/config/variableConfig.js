@@ -1930,6 +1930,37 @@ export const VARIABLE_CONFIG = {
     
       description:
         "Whether to stop the other party poaching your staff or customers. Non-solicitation is more readily enforced in India than a full non-compete.",},
+    // A SUBSTANTIVE COMMERCIAL FACT, not a drafting choice.
+    //
+    // PERSONNEL_CONTINUITY used to be gated on include_sla, which is a
+    // contractual mechanism and not a fact about the engagement. An engagement
+    // can turn entirely on two named architects and carry no service levels; an
+    // SLA-heavy engagement can be wholly fungible. The proxy meant the
+    // requirement fired on the wrong population in both directions.
+    //
+    // Asked, because nothing else in the intake establishes it. An SLA is then
+    // one TREATMENT available for the position this fact opens, rather than the
+    // thing that decides whether the position exists:
+    //
+    //   fact  "the work depends on named individuals"
+    //     -> position  "key-person continuity matters here"
+    //       -> requirement  "continuity needs contractual treatment"
+    //         -> treatment  assignment and replacement mechanism
+    //           -> clause   SERVICE_KEY_PERSONNEL_001
+    key_person_dependency: {
+      excludeShapes: ["NOTICE", "SWORN"],
+      label: "Does this engagement depend on particular named individuals?",
+      type: "select",
+      required: false,
+      group: "Scope",
+      options: ["Yes", "No"],
+      description:
+        "Whether the work turns on specific people rather than on the supplier's team generally. If it does, the agreement should settle how they are assigned and what happens if they are replaced.",
+      applicableDocuments: [
+        "MASTER_SERVICE_AGREEMENT", "SERVICE_AGREEMENT", "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT", "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      ],
+    },
     include_sla: {
       excludeShapes: ["NOTICE", "SWORN"],
       label: "Include SLA / Service Levels Clause?",
@@ -4306,12 +4337,39 @@ export const VARIABLE_CONFIG = {
       description:
         "The date the first instalment falls due. This is often later than the disbursement date where a moratorium applies.",
     },
-    security_collateral: {
-      label: "Security / Collateral (or Unsecured)",
-      type: "textarea",
+    // WHETHER the loan is secured is asked. WHAT secures it is described.
+    //
+    // These were one field. `is_secured` was inferred from whether
+    // security_collateral held a "meaningful value" — anything not empty and
+    // not one of six bare tokens — so a borrower writing "None — this is an
+    // unsecured loan" got a secured loan, a security clause describing
+    // collateral that does not exist, and, where the lender was a scheduled
+    // bank, a SARFAESI clause asserting the lender could take possession of the
+    // secured assets without a court.
+    //
+    // The field's own help text said: write "Unsecured" if there is no
+    // security. "Unsecured" was one of the phrasings that produced a secured
+    // loan. The product instructed the user into the trap.
+    //
+    // A free-text box may DESCRIBE a position. It must not BE one.
+    loan_is_secured: {
+      label: "Is this loan secured by collateral?",
+      type: "select",
+      // Exactly "Yes" and "No". normalizeBooleanLike matches a closed token list,
+      // and a prettier label like "Yes — secured" normalises to null, which
+      // would have left every loan UNKNOWN and silently dropped the security
+      // clause from secured loans — the opposite defect, quietly.
+      options: ["Yes", "No"],
       required: true,
       description:
-        "What secures the loan — property, shares, a personal guarantee, or a charge over assets. Write \"Unsecured\" if there is no security, and the security clause will be left out.",
+        "Whether anything stands behind this loan if it is not repaid. This decides which security and enforcement provisions belong in the agreement, so it is asked rather than read out of a description.",
+    },
+    security_collateral: {
+      label: "Security / Collateral",
+      type: "textarea",
+      required: false,
+      description:
+        "What secures the loan — property, shares, a personal guarantee, or a charge over assets. Answer only where the loan is secured; nothing written here can make an unsecured loan secured.",
     },
     prepayment_terms: {
       label: "Prepayment Permitted? (Yes / No + conditions)",

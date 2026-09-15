@@ -1,0 +1,139 @@
+{
+  "$comment": [
+    "Sixth family, and the first whose truth cannot be established from the generated",
+    "document alone.",
+    "",
+    "A shareholders' agreement is unenforceable against the company to the extent it",
+    "conflicts with the articles of association -- an instrument LegalAId has never seen.",
+    "Every earlier falsification could in principle be settled by reading the artifact, the",
+    "intake, or a date. This one cannot be settled at all without a document that may not",
+    "exist in the system.",
+    "",
+    "The requirement below is EXTERNAL_COHERENCE, not CHARACTER. Internal contradiction is",
+    "read off the artifact; this is a question about EVIDENCE, and the pattern is deliberately",
+    "reusable -- trust deeds, board resolutions, partnership deeds and powers of attorney all",
+    "pose it."
+  ],
+  "document_type": "SHAREHOLDERS_AGREEMENT",
+  "requirements": [
+    {
+      "id": "SHAREHOLDINGS_RECORDED",
+      "kind": "CONTENT",
+      "statement": "Who holds what, and on what class of shares.",
+      "identity_test": "Remove it and the agreement regulates a cap table it does not state.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_SHARE_SUBSCRIPTION_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Assessed a shareholders' agreement whose transfer restrictions are enforceable against the company only if the articles of association reflect them, with no articles supplied, then with another company's articles supplied.",
+        "false_green": "Before the EXTERNAL_COHERENCE pattern existed, absence of the articles was indistinguishable from consistency with them, and a file for the wrong company would have read as evidence.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
+    },
+    {
+      "id": "TRANSFER_REGULATED",
+      "kind": "CONTENT",
+      "statement": "Transfer of shares is regulated.",
+      "identity_test": "Remove it and the central bargain of a shareholders' agreement is absent: the parties are free to sell to anyone tomorrow.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_SHARE_TRANSFER_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "EXIT_RIGHTS",
+      "kind": "CONTENT",
+      "statement": "Minority and majority exit rights are dealt with.",
+      "identity_test": "Remove them and a minority holder has no route out and a majority holder cannot deliver a clean sale.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_TAG_ALONG_001",
+          "CORP_DRAG_ALONG_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "BOARD_COMPOSITION",
+      "kind": "CONTENT",
+      "statement": "Board composition and who appoints whom.",
+      "identity_test": "Remove it and control of the company is undefined between people whose whole purpose in signing was to define it.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_BOARD_COMPOSITION_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "DEADLOCK_RESOLVED",
+      "kind": "CONTENT",
+      "statement": "A route out of deadlock between shareholders who cannot agree.",
+      "identity_test": "Remove it and a fifty-fifty company has no mechanism short of winding up under section 242 of the Companies Act, 2013.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_DEADLOCK_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "TRANSFER_RESTRICTIONS_IN_ARTICLES",
+      "kind": "EXTERNAL_COHERENCE",
+      "statement": "The transfer restrictions in this Agreement are reflected in the company's articles of association.",
+      "identity_test": "Remove it and the restriction binds the shareholders between themselves and not the company: section 58(2) of the Companies Act, 2013 makes shares in a public company freely transferable, and a private company's restrictions take effect through its articles. A transfer made in breach may still be registered.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_SHARE_TRANSFER_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "external_instrument": "ARTICLES_OF_ASSOCIATION",
+      "subject_binding": [
+        "company_cin"
+      ],
+      "external_provision": "share_transfer_restrictions",
+      "requires": "RESTRICTED",
+      "authority": [
+        {
+          "act": "Companies Act, 2013",
+          "section": "58(2)"
+        },
+        {
+          "act": "Companies Act, 2013",
+          "section": "6"
+        }
+      ],
+      "evidence_note": "Absence of the articles is not evidence of consistency with them."
+    }
+  ]
+}

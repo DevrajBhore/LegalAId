@@ -1,0 +1,33 @@
+{
+  "clause_id": "CORE_TERMINATION_NOTICE_001",
+  "name": "Termination Notice",
+  "title": "Termination Notice",
+  "category": "TERMINATION",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Where termination is permitted under this Agreement, the terminating Party shall provide at least thirty (30) days' prior written notice, unless immediate termination is expressly permitted for material breach, fraud, or insolvency.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "37",
+      "note": "Parties must perform or offer to perform; a stated notice period is what makes the end of performance ascertainable."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The notice period is drafted so that a party in material breach may continue performing for thirty days before the agreement ends."
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "authoring_note": "Migrated from backend/commercial/protectionLibrary.js, a second clause library that injected clauses after hardening had run. Its clauses reached shipped documents in seven document types carrying no review status, no structured legal basis and no invalid_if, and were invisible to getAllClauses(), to the unreviewed-clause ceiling, and to any knowledge-defined family. THE TEXT IS UNCHANGED by this migration, so the only difference in output is the clause id. Whether these should instead be deduplicated against their near-equivalents already in the library -- CORE_LIMITATION_LIABILITY_001, CORE_INDEMNITY_001, CORE_FORCE_MAJEURE_001 -- is a drafting decision for an advocate, not a refactor, and is deliberately left open.",
+  "migrated_from": "AUTO-TN-001",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

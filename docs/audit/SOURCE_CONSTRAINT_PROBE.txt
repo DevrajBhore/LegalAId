@@ -1,0 +1,48 @@
+========================================================================================================
+ONLY THE SOURCE VARIES.  Same subject, same provision, same value.
+========================================================================================================
+family  source                                      counts?  SUBSTANCE            SOURCE
+--------------------------------------------------------------------------------------------------------
+SHA     the Registrar's filed copy                  yes      RESOLVED             RESOLVED
+SHA     the company's own unfiled draft             no       RESOLVED             CONTRADICTED
+SHA     another company's filed articles            no       EVIDENCE_MISMATCHED  EVIDENCE_MISMATCHED
+SHA     a filed copy, source unstated               no       RESOLVED             AMBIGUOUS_EVIDENCE
+POA     a registered medical practitioner           yes      RESOLVED             RESOLVED
+POA     the donee, who benefits                     no       RESOLVED             CONTRADICTED
+POA     an unrelated person                         no       RESOLVED             CONTRADICTED
+LOAN    the authorised dealer bank                  yes      RESOLVED             RESOLVED
+LOAN    the borrower                                no       RESOLVED             CONTRADICTED
+LOAN    an unrelated consultancy                    no       RESOLVED             CONTRADICTED
+
+========================================================================================================
+WHAT THE TWO ENCODINGS ACTUALLY ACHIEVE
+========================================================================================================
+
+  ENCODING A — put the source in subject_binding
+      Works only where the expected source is a FIELD OF THIS TRANSACTION.
+      "company_cin" is one, and it already catches another company's
+      articles (below). "the Registrar of Companies", "a registered medical practitioner"
+      and "an authorised dealer bank" are not transaction fields and never will be, so the
+      encoding does not reach the cases this probe is about.
+
+  ENCODING B — assess the source as a second requirement
+      7 of 7 inadmissible sources are correctly NOT resolved on the SOURCE axis.
+      6 of 7 are STILL RESOLVED on the SUBSTANCE axis.
+
+  So the answer to the narrow question is NO, and the missing property is precise:
+
+      a source constraint must decide whether THAT RECORD counts at all,
+      not stand beside it as an independent finding.
+
+  Encoding B does report the bad source. It reports it as a SECOND requirement, and the
+  substantive requirement goes on saying ESTABLISHED_POSITIVE about a record produced by
+  the donee, or the borrower, or a consultancy. A reader taking the substance line at face
+  value — which is what a summary count does — still gets the false green. Two findings
+  beside each other are not the same as one record being refused.
+
+  What is NOT established by this probe: whether identity, competence and power-to-grant
+  share one executable shape. All three are expressed here as "the record's own stated
+  source must equal a declared value", which is suspiciously easy and may simply be the
+  probe flattening them. The record ASSERTS its own source; nothing checks that assertion.
+  A mechanism that trusts evidence about where evidence came from has moved the problem,
+  not solved it — and that is the next thing to settle, before any field is added.

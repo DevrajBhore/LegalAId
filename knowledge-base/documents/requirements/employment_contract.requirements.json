@@ -31,7 +31,12 @@
         ]
       },
       "when_unsatisfied": "BLOCK",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Assessed an employment contract without establishing the employer's headcount, the employee's sex, or whether the role creates copyright.",
+        "false_green": "Three requirements including the POSH duty reported NOT_APPLICABLE — skipped rather than assessed, because an unanswered fact read as an answer of no.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
     },
     {
       "id": "REMUNERATION_STATED",
@@ -161,22 +166,57 @@
       "review_status": "draft-needs-legal-review"
     },
     {
-      "id": "POSH_DUTY_REFLECTED",
-      "statement": "The employer's obligations under the sexual harassment legislation are reflected.",
-      "identity_test": "Remove it and the contract is silent on a duty section 19 of the POSH Act, 2013 imposes regardless — leaving the employee unaware of the Internal Committee that section 4 requires the employer to have constituted.",
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "id": "POSH_AWARENESS_REFLECTED",
+      "statement": "The employer's duty to provide a workplace free of sexual harassment is reflected in the contract.",
+      "identity_test": "Remove it and the contract is silent on a duty section 19 of the POSH Act, 2013 places on the employer, leaving an employee with no contractual notice of it.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "EMP_POSH_POLICY_001",
+          "POSH_POLICY_ADOPTION_001"
+        ]
+      },
+      "$split": [
+        "One half of POSH_DUTY_REFLECTED, which named two duties with different triggers and",
+        "gated both on headcount. Its own identity_test said section 19 imposes its duty",
+        "'regardless', and its applicability was employer_headcount_ge_10 == true, so the",
+        "requirement reported inapplicable for a workplace its own words said was covered.",
+        "",
+        "VERIFY BEFORE RELIANCE: that section 19's duties attach without a headcount threshold,",
+        "and which of them a contract of employment should reflect as distinct from a workplace",
+        "policy. The split follows what the requirement already asserted; the assertion itself",
+        "has not been checked against the Act by an advocate."
+      ],
+      "$verification_needed": "POSH Act, 2013 s.19 — whether the listed employer duties apply irrespective of the number of workers."
+    },
+    {
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review",
+      "id": "POSH_INTERNAL_COMMITTEE_REFLECTED",
+      "statement": "Where the workplace employs ten or more, the Internal Committee the Act requires is reflected.",
+      "identity_test": "Remove it and an employee at a workplace required to have an Internal Committee is left unaware of the forum section 4 exists to provide, and of how to reach it.",
       "applicability": {
         "position": "employer_headcount_ge_10",
         "value": true
       },
       "satisfied_by": {
         "any_of": [
-          "EMP_POSH_POLICY_001",
-          "POSH_POLICY_ADOPTION_001",
-          "POSH_INTERNAL_COMMITTEE_001"
+          "POSH_INTERNAL_COMMITTEE_001",
+          "EMP_POSH_POLICY_001"
         ]
       },
-      "when_unsatisfied": "DISCLOSE",
-      "review_status": "draft-needs-legal-review"
+      "$split": [
+        "The other half. The threshold belongs to this duty and not to the one above.",
+        "POSH_INTERNAL_COMMITTEE_001 states the same threshold in its own text: 'at each",
+        "workplace employing ten or more employees'.",
+        "",
+        "VERIFY BEFORE RELIANCE: the threshold and who counts toward it."
+      ],
+      "$verification_needed": "POSH Act, 2013 s.4 — the composition of the Internal Committee and who is counted toward the ten."
     },
     {
       "id": "CONFIDENTIALITY_BOUNDED",
@@ -199,8 +239,7 @@
       "statement": "Who owns what the employee creates is stated.",
       "identity_test": "Remove it and section 17(c) of the Copyright Act, 1957 vests first ownership in the employer only for work made under a contract of service in the course of employment — which leaves everything at the edges disputed.",
       "applicability": {
-        "position": "assigns_copyright",
-        "value": true
+        "always": true
       },
       "satisfied_by": {
         "any_of": [
@@ -209,14 +248,31 @@
         ]
       },
       "when_unsatisfied": "DISCLOSE",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$repaired": [
+        "Was gated on assigns_copyright == true, which is directionally backwards. The",
+        "identity_test's whole argument is about the gap section 17(c) leaves — work at the",
+        "edges of 'in the course of employment' — and that gap is WIDEST where nothing has been",
+        "assigned. Gating on assignment being present meant the requirement applied only where",
+        "the gap was already smallest.",
+        "",
+        "Unconditional now, which is what the statement says: 'Who owns what the employee",
+        "creates is stated.' Every contract of service states it or leaves it to section 17(c)",
+        "and to argument. The three-state intake field ip_ownership ('Employer owns work product",
+        "IP' / 'Employee retains pre-existing IP only' / 'Custom / shared arrangement') is what",
+        "SATISFIES it; assigns_copyright was a boolean flattening of that field being used to",
+        "decide whether the question arose at all.",
+        "",
+        "VERIFY BEFORE RELIANCE: whether any contract of service should be treated as not",
+        "needing this — an engagement creating no copyrightable work product, for instance."
+      ]
     },
     {
       "id": "MATERNITY_ENTITLEMENT",
       "statement": "Maternity benefit entitlement is reflected where the establishment is covered.",
       "identity_test": "Remove it and the contract is silent on an entitlement the Maternity Benefit Act, 1961 confers by section 5 and which the employer may not lawfully reduce.",
       "applicability": {
-        "position": "is_female_employee",
+        "position": "establishment_is_covered",
         "value": true
       },
       "satisfied_by": {
@@ -225,7 +281,21 @@
         ]
       },
       "when_unsatisfied": "DISCLOSE",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$repaired": [
+        "Was gated on is_female_employee == true while the statement said 'where the",
+        "establishment is covered'. Two different boundaries, and the requirement named the one",
+        "it did not implement.",
+        "",
+        "Now gated on establishment coverage, which is what the statement says. The employee's",
+        "sex is not the condition: a contract at a covered establishment should reflect the",
+        "entitlement whoever currently holds the post, and gating a contractual term on an",
+        "employee's sex is a drafting question in its own right.",
+        "",
+        "VERIFY BEFORE RELIANCE: the Maternity Benefit Act's coverage threshold, and whether",
+        "eligibility of the individual employee (service qualification under section 5) belongs",
+        "here as a second condition or is a matter for the clause's own wording."
+      ]
     },
     {
       "id": "SOCIAL_SECURITY_ADDRESSED",

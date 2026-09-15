@@ -1,0 +1,69 @@
+====================================================================================================
+PART 1 — IS THE GAP UNIFORM?  right subject, right value, no standing to say it
+====================================================================================================
+
+  POWER_OF_ATTORNEY / DONOR_CAPACITY_SUBSISTS   (satisfied by POA_APPOINTMENT_001)
+    from a registered medical practitioner                RESOLVED
+    from the donee, who benefits from the answer          RESOLVED
+    SAME. Authority is not represented for this requirement either.
+
+  SHAREHOLDERS_AGREEMENT / TRANSFER_RESTRICTIONS_IN_ARTICLES   (satisfied by CORP_SHARE_TRANSFER_001)
+    from the Registrar of Companies, from the filed articles RESOLVED
+    from the company's own secretarial team, from an unfiled draft RESOLVED
+    SAME. Authority is not represented for this requirement either.
+
+====================================================================================================
+PART 2 — WOULD ONE REPRESENTATION COVER BOTH, OR LOSE SOMETHING?
+====================================================================================================
+
+  EXTERNAL_COHERENCE carries          EVIDENCE_PROPOSITION carries
+  ----------------------------------  ----------------------------------
+  external_instrument                 (implicit in the proposition id)
+  external_provision                  (implicit in the proposition id)
+  subject_binding  true               subject_binding  true
+  requires: "SUBSISTS"              state: TRUE | FALSE
+  evidence_valid_for_days             evidence_valid_for_days
+  (no source constraint)              admissible_provenance
+
+  2 of 2 external requirements compare a NAMED VALUE, not a boolean:
+      POWER_OF_ATTORNEY/DONOR_CAPACITY_SUBSISTS: requires "SUBSISTS" for "donor_capacity"
+      SHAREHOLDERS_AGREEMENT/TRANSFER_RESTRICTIONS_IN_ARTICLES: requires "RESTRICTED" for "share_transfer_restrictions"
+
+  A proposition is TRUE or FALSE. Routing these through it would turn
+  "the articles record PERMITTED where this Agreement requires RESTRICTED"
+  into "the proposition is false", losing WHAT THE INSTRUMENT ACTUALLY SAYS —
+  which is the sentence an advocate needs and the reason AMBIGUOUS_EVIDENCE and
+  CONTRADICTED are different states.
+
+  So neither mechanism is a superset of the other:
+      external coherence has the value comparison and no source constraint
+      propositions have the source constraint and no value comparison
+  Merging them would lose one or duplicate the other. The smallest reusable thing is
+  the SOURCE ADMISSIBILITY CHECK itself, shared by both — not a merged mechanism.
+
+====================================================================================================
+PART 3 — SAME FLAG, OR DIFFERENT SEMANTICS?
+====================================================================================================
+
+  These are the questions each family's evidence actually raises. They are
+  authorial judgements, printed for a person rather than decided here:
+
+  SHAREHOLDERS_AGREEMENT / ARTICLES_OF_ASSOCIATION
+      the concern is IDENTITY — are these the articles of THIS company, and are
+      they the filed version rather than a draft? The articles are what they are;
+      no third party "grants" them. A source constraint here would be about
+      PROVENANCE OF A COPY.
+
+  POWER_OF_ATTORNEY / DONOR_STATUS_EVIDENCE
+      the concern is COMPETENCE and INTEREST — a donor's capacity attested by the
+      donee is worth nothing, whoever holds the paper. Closest to
+      admissible_provenance as it already exists.
+
+  LOAN / regulatory approval (not authored)
+      the concern is POWER TO GRANT — an LRN is issued by the Reserve Bank
+      through an authorised dealer bank, and nobody else can issue one at all.
+
+  Three different reasons a source might not count. Whether one declaration
+  serves all three is the question to answer BEFORE adding a field, because a
+  flag that means three things is how "risk_level" stopped meaning anything.
+

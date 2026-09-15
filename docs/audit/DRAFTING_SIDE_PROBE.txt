@@ -1,0 +1,65 @@
+====================================================================================================
+DOES THE SIDE THE USER PICKED DO ANYTHING?
+====================================================================================================
+family                      sides                         result
+----------------------------------------------------------------------------------------------------
+MASTER_SERVICE_AGREEMENT    Client / Service Provider     PERSPECTIVE_DECORATIVE
+NDA                         Disclosing Party / Receiving PartyPERSPECTIVE_DECORATIVE
+LOAN_AGREEMENT              Lender / Borrower             PERSPECTIVE_DECORATIVE
+EMPLOYMENT_CONTRACT         Employer / Employee           PERSPECTIVE_DECORATIVE
+
+----------------------------------------------------------------------------------------------------
+
+MASTER_SERVICE_AGREEMENT  (44 clauses either way)
+    CHANGED  survives_sanitisation
+    CHANGED  reaches_derivation
+    same     positions
+    same     assumptions
+    same     clause_ids
+    same     substantive_text
+    identical to a draft where no side was given
+
+NDA  (35 clauses either way)
+    CHANGED  survives_sanitisation
+    CHANGED  reaches_derivation
+    same     positions
+    same     assumptions
+    same     clause_ids
+    same     substantive_text
+    identical to a draft where no side was given
+
+LOAN_AGREEMENT  (29 clauses either way)
+    CHANGED  survives_sanitisation
+    CHANGED  reaches_derivation
+    same     positions
+    same     assumptions
+    same     clause_ids
+    same     substantive_text
+    identical to a draft where no side was given
+
+EMPLOYMENT_CONTRACT  (43 clauses either way)
+    CHANGED  survives_sanitisation
+    CHANGED  reaches_derivation
+    same     positions
+    same     assumptions
+    same     clause_ids
+    same     substantive_text
+    identical to a draft where no side was given
+
+====================================================================================================
+4 of 4 families collect the side and produce identical legal substance
+either way: MASTER_SERVICE_AGREEMENT, NDA, LOAN_AGREEMENT, EMPLOYMENT_CONTRACT.
+
+The document is not wrong. The PRODUCT CLAIM is: the intake asks "Which side are you on?"
+and says the answer points the protections at the right side of the table. It does not.
+A user who answers Customer and a user who answers Supplier receive the same instrument,
+having each been told their answer shaped it.
+
+This is the assumed-side invariant in a new place. A document must never look fully
+fact-specific while resting on a side nobody acted on -- and here nobody acted on it even
+though the user did confirm it.
+
+WHAT THIS DOES NOT SAY: that opposing sides ought to produce different documents. Plenty
+of provisions should be identical whoever asked. The defect is the gap between what the
+question promises and what the pipeline does with the answer -- fixable either by routing
+the side into authored positions, or by not presenting it as a drafting input.

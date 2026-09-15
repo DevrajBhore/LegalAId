@@ -1,0 +1,123 @@
+================================================================================================
+THE FOUR POPULATIONS, RE-DERIVED THROUGH THE CANONICAL ADAPTER
+================================================================================================
+153 conditional gates across 45 families
+
+1. PROPOSITION / NO SOURCE — 17 gate uses, 14 distinct flags
+   of which 5 gate a clause the recorded baseline ships. That smaller number is what
+   auditClaimAuthority reports; the two scripts count different populations on purpose.
+     assignment_addressed [SUPPLY_AGREEMENT]
+     employer_headcount_ge_10 [APPOINTMENT_LETTER]
+     has_esop_or_variable_pay [APPOINTMENT_LETTER]
+     include_change_control [CONSULTANCY_AGREEMENT]
+     include_confidentiality [MASTER_SERVICE_AGREEMENT]
+     include_confidentiality [VENDOR_AGREEMENT]
+     include_entire_agreement [PRIVACY_POLICY]
+     include_entire_agreement [TERMS_OF_SERVICE]
+     include_expenses [CONSULTANCY_AGREEMENT]
+     include_inspection_rights [CONSULTANCY_AGREEMENT]
+     include_ip_assignment [CONSULTANCY_AGREEMENT]
+     include_price_revision [VENDOR_AGREEMENT]
+     include_transition_assistance [CONSULTANCY_AGREEMENT]
+     include_transition_assistance [VENDOR_AGREEMENT]
+     lock_in_period_months [RENTAL_AGREEMENT]
+     personal_guarantee_required [LOAN_AGREEMENT]
+     rent_escalation [RENTAL_AGREEMENT]
+
+2. DETERMINISTIC FACT — 58 gate uses, 30 distinct flags
+     assigns_copyright [IP_ASSIGNMENT_AGREEMENT]
+     assigns_patents [IP_ASSIGNMENT_AGREEMENT]
+     assigns_trademarks [IP_ASSIGNMENT_AGREEMENT]
+     company_processes_personal_data [SHAREHOLDERS_AGREEMENT]
+     counterparty_is_vendor [NDA]
+     employer_headcount_ge_10 [EMPLOYMENT_CONTRACT]
+     firm_processes_personal_data [PARTNERSHIP_DEED]
+     include_competition_compliance [DISTRIBUTION_AGREEMENT]
+     include_deliverables [CONSULTANCY_AGREEMENT]
+     include_deliverables [INDEPENDENT_CONTRACTOR_AGREEMENT]
+     include_deliverables [MASTER_SERVICE_AGREEMENT]
+     include_deliverables [SERVICE_AGREEMENT]
+     include_delivery_terms [VENDOR_AGREEMENT]
+     include_governance_protections [CONSULTANCY_AGREEMENT]
+     include_governance_protections [DISTRIBUTION_AGREEMENT]
+     include_governance_protections [INDEPENDENT_CONTRACTOR_AGREEMENT]
+     include_governance_protections [JOINT_VENTURE_AGREEMENT]
+     include_governance_protections [MASTER_SERVICE_AGREEMENT]
+     include_governance_protections [SERVICE_AGREEMENT]
+     include_governance_protections [SOFTWARE_DEVELOPMENT_AGREEMENT]
+     include_governance_protections [SUPPLY_AGREEMENT]
+     include_indemnity_clause [VENDOR_AGREEMENT]
+     include_insurance [COMMERCIAL_LEASE_AGREEMENT]
+     include_insurance [CONSULTANCY_AGREEMENT]
+     include_insurance [DISTRIBUTION_AGREEMENT]
+     include_insurance [INDEPENDENT_CONTRACTOR_AGREEMENT]
+     include_insurance [JOINT_VENTURE_AGREEMENT]
+     include_insurance [MASTER_SERVICE_AGREEMENT]
+     include_insurance [SERVICE_AGREEMENT]
+     include_insurance [SOFTWARE_DEVELOPMENT_AGREEMENT]
+     include_insurance [SUPPLY_AGREEMENT]
+     include_insurance [VENDOR_AGREEMENT]
+     include_timelines [CONSULTANCY_AGREEMENT]
+     is_commercial_lease [RENTAL_AGREEMENT]
+     is_cross_border [LOAN_AGREEMENT]
+     is_female_employee [EMPLOYMENT_CONTRACT]
+     is_fixed_term [EMPLOYMENT_CONTRACT]
+     is_secured [LOAN_AGREEMENT]
+     is_senior_employee [EMPLOYMENT_CONTRACT]
+     is_senior_employee [SEPARATION_AGREEMENT]
+     jv_processes_personal_data [JOINT_VENTURE_AGREEMENT]
+     lender_is_nbfc [LOAN_AGREEMENT]
+     lender_is_regulated [LOAN_AGREEMENT]
+     long_term_lease [COMMERCIAL_LEASE_AGREEMENT]
+     processes_personal_data [CONSULTANCY_AGREEMENT]
+     processes_personal_data [INDEPENDENT_CONTRACTOR_AGREEMENT]
+     processes_personal_data [MASTER_SERVICE_AGREEMENT]
+     processes_personal_data [SERVICE_AGREEMENT]
+     processes_personal_data [TERMS_OF_SERVICE]
+     reporting_required [DISTRIBUTION_AGREEMENT]
+     restrict_moonlighting [APPOINTMENT_LETTER]
+     restrict_moonlighting [EMPLOYMENT_CONTRACT]
+     return_policy_required [SUPPLY_AGREEMENT]
+     return_policy_required [VENDOR_AGREEMENT]
+     shortage_risk [SUPPLY_AGREEMENT]
+     subletting_addressed [RENTAL_AGREEMENT]
+
+3. UNREACHABLE (gates a clause not in the library) — 0
+     (none)
+
+4. REQUIREMENT / NO ESTABLISHABLE SOURCE — 0
+     (none)
+
+   EVIDENCE-SOURCED REQUIREMENTS — 0
+     (none — the mechanism is built, tested, and consumed by nothing.
+      Left that way on purpose: authoring a requirement onto the EVIDENCE source
+      to make this number move is how the first error became load-bearing.)
+
+================================================================================================
+SUPERSEDED CLAIMS — kept beside their corrections, not quietly dropped
+================================================================================================
+
+  claimed   29 propositions gate a clause with nothing able to establish them
+  actual    14 distinct flags, 17 gate uses
+  reason    three audit scripts called deriveGenerationControls(variables, documentType); the signature is (documentType, variables), and reversed it returns a small plausible object
+  action    canonical adapter added; it refuses a swapped call rather than returning one
+
+  claimed   17 gates rest on a deterministic fact
+  actual    58 gate uses
+  reason    same swapped call — a gate resting on a derived flag read as resting on nothing
+  action    re-derived through the adapter and listed by name above
+
+  claimed   20 gate uses can never fire
+  actual    17 gate uses rest on no source; 0 gate a clause not in the library
+  reason    same swapped call, compounded by a probe that invented lender_type values ("Bank", "NBFC") where the schema declares "Scheduled Bank"
+  action    probe fixtures now come from buildVariables, the baseline's own builder
+
+  claimed   2 requirements rest on something nothing can establish (employer_headcount_ge_10, is_female_employee)
+  actual    0
+  reason    both are derived, and always were
+  action    ceiling emptied; the principle written to protect them is retracted with it
+
+  claimed   MASTER_SERVICE_AGREEMENT/PERSONAL_DATA_HANDLED belongs on the EVIDENCE source
+  actual    reverted to POSITION
+  reason    processes_personal_data is derived for that family and four others; the migration made every MSA report the requirement permanently undetermined
+  action    reverted; the open legal question (is a party's answer the right authority for a fact about its systems?) recorded in the artifact rather than acted on

@@ -1,0 +1,57 @@
+========================================================================================================
+FACT-SOURCE INVENTORY — requirement -> fact -> canonical source -> who can see it
+========================================================================================================
+family / requirement                                fact                      assessment now -> with the fact
+--------------------------------------------------------------------------------------------------------
+EMPLOYMENT_CONTRACT/POSH_INTERNAL_COMMITTEE_REFLECTEDemployer_headcount_ge_10  APPLICABILITY_UNKNOWN -> NOT_APPLICABLE
+                                                    source: derived (generationControls); generation reads it: true; value in the recorded fixture: false
+EMPLOYMENT_CONTRACT/MATERNITY_ENTITLEMENT           establishment_is_covered  APPLICABILITY_UNKNOWN -> NOT_APPLICABLE
+                                                    source: derived (generationControls); generation reads it: true; value in the recorded fixture: false
+LOAN_AGREEMENT/SECURITY_POSITION_SETTLED            is_secured                APPLICABILITY_UNKNOWN -> RESOLVED
+                                                    source: derived (generationControls); generation reads it: true; value in the recorded fixture: true
+LOAN_AGREEMENT/ENFORCEMENT_MATCHES_SECURITY_POSITIONis_secured                APPLICABILITY_UNKNOWN -> NOT_APPLICABLE
+                                                    source: derived (generationControls); generation reads it: true; value in the recorded fixture: true
+LOAN_AGREEMENT/ENFORCEMENT_MATCHES_LENDER_ELIGIBILITYlender_is_regulated       APPLICABILITY_UNKNOWN -> NOT_APPLICABLE
+                                                    source: admitted evidence proposition; generation reads it: true; value in the recorded fixture: true
+LOAN_AGREEMENT/SECURITY_PERFECTION_PROVIDED_FOR     is_secured                APPLICABILITY_UNKNOWN -> PROVIDED_FOR
+                                                    source: derived (generationControls); generation reads it: true; value in the recorded fixture: true
+MASTER_SERVICE_AGREEMENT/SERVICE_LEVELS_MEASURED    include_sla               APPLICABILITY_UNKNOWN -> RESOLVED
+                                                    source: declared (intake field); generation reads it: true; value in the recorded fixture: true
+MASTER_SERVICE_AGREEMENT/PERSONNEL_CONTINUITY       key_person_dependency     APPLICABILITY_UNKNOWN -> RESOLVED
+                                                    source: declared (intake field); generation reads it: true; value in the recorded fixture: Yes
+MASTER_SERVICE_AGREEMENT/PERSONAL_DATA_HANDLED      processes_personal_data   APPLICABILITY_UNKNOWN -> RESOLVED
+                                                    source: admitted evidence proposition; generation reads it: true; value in the recorded fixture: true
+
+========================================================================================================
+BY FACT — what a canonical resolution path would have to own
+========================================================================================================
+  employer_headcount_ge_10     derived (generationControls)   1 requirement in 1 family
+  establishment_is_covered     derived (generationControls)   1 requirement in 1 family
+  include_sla                  declared (intake field)        1 requirement in 1 family
+  is_secured                   derived (generationControls)   3 requirements in 1 family
+  key_person_dependency        declared (intake field)        1 requirement in 1 family
+  lender_is_regulated          admitted evidence proposition  1 requirement in 1 family
+  processes_personal_data      admitted evidence proposition  1 requirement in 1 family
+
+========================================================================================================
+9 of 9 conditional requirements are APPLICABILITY_UNKNOWN as shipped.
+9 become determinate the moment assessment is given the fact generation used.
+
+Every fact above has a source. None of this is legal uncertainty; it is the assessor not
+being handed what the generator already knew.
+
+========================================================================================================
+WHY THE PLUMBING FIX IS NOT ENOUGH
+========================================================================================================
+
+  EMPLOYMENT_CONTRACT/POSH_INTERNAL_COMMITTEE_REFLECTED: UNKNOWN -> NOT_APPLICABLE on employer_headcount_ge_10=false
+     Nothing in the requirement's own text contradicts the transition.
+
+  EMPLOYMENT_CONTRACT/MATERNITY_ENTITLEMENT: UNKNOWN -> NOT_APPLICABLE on establishment_is_covered=false
+     Nothing in the requirement's own text contradicts the transition.
+
+  LOAN_AGREEMENT/ENFORCEMENT_MATCHES_SECURITY_POSITION: UNKNOWN -> NOT_APPLICABLE on is_secured=true
+     Nothing in the requirement's own text contradicts the transition.
+
+  LOAN_AGREEMENT/ENFORCEMENT_MATCHES_LENDER_ELIGIBILITY: UNKNOWN -> NOT_APPLICABLE on lender_is_regulated=true
+     Nothing in the requirement's own text contradicts the transition.

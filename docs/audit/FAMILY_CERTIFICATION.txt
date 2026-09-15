@@ -1,0 +1,100 @@
+
+FALSIFICATION_PASSED  (8)
+  EMPLOYMENT_CONTRACT
+      · 15 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: Three requirements including the POSH duty reported NOT_APPLICABLE — skipped rather than assessed, because an unanswered fact read as an answer of no.
+      · 0 of 15 requirements reviewed
+      · 0 of 43 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  LOAN_AGREEMENT
+      · 10 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: is_secured was inferred from whether the free-text box held a 'meaningful value', so the explicit negative became an affirmative position: a security clause describing collateral that does not exist, and a SARFAESI clause asserting the lender could take possession of the secured assets without a court. After the position was made a declared Yes/No, the security clause was STILL re-injected by dependencyResolver through LOAN_DEFAULT_001.required_with, and SARFAESI still shipped because its gate reads lender eligibility alone.
+      · 0 of 10 requirements reviewed
+      · 0 of 29 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  MASTER_SERVICE_AGREEMENT
+      · 16 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: It satisfied 1 of 13 identity requirements while looking like a complete contract.
+      · 0 of 16 requirements reviewed
+      · 0 of 44 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  MOU
+      · 6 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: 6 of 6 reported RESOLVED including NON_BINDING_CHARACTER, because clause evidence was assumed additive and nothing could defeat a requirement.
+      · 0 of 6 requirements reviewed
+      · 0 of 23 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  NDA
+      · 9 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: 9 of 9 reported RESOLVED for an instrument whose NDA_DURATION_001 says confidentiality survives five years and whose NDA_TERM_SURVIVAL_001 says three, and the declared relationship between them was silently discarded because the model had no notion of relationships. The clause library forces the pairing: NDA_DURATION_001 lists NDA_TERM_SURVIVAL_001 in required_with.
+      · 0 of 9 requirements reviewed
+      · 0 of 35 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+      · approval barred: the document this family generates breaks 1 coherence relationship (CONFIDENTIALITY_PERIOD_COHERENT)
+      ! SHIPS A DEFECT — CONFIDENTIALITY_PERIOD_COHERENT: CONTRADICTED
+        The instrument gives 2 different answers to "the period for which confidentiality obligations run after the agreement ends": NDA_DURATION_001 says 5; NDA_TERM_SURVIVAL_001 says 3. Each clause reads correctly on its own.
+  POWER_OF_ATTORNEY
+      · 6 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: Stale evidence from 2019 and two records flatly disagreeing both reported ESTABLISHED_POSITIVE — the second because the assessor took whichever record arrived first, resolving a legal question by array order.
+      · 0 of 6 requirements reviewed
+      · 0 of 8 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  RENTAL_AGREEMENT
+      · 9 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: INSTRUMENT_IS_REGISTERED reported RESOLVED, which would tell a user their lease is complete when section 49 of the Registration Act, 1908 bars it from evidence.
+      · 0 of 9 requirements reviewed
+      · 0 of 23 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+  SHAREHOLDERS_AGREEMENT
+      · 6 requirements authored and admitted
+      · generates, and the assessment runs against the emitted clause set
+      · adversarially attacked: Before the EXTERNAL_COHERENCE pattern existed, absence of the articles was indistinguishable from consistency with them, and a file for the wrong company would have read as evidence.
+      · 0 of 6 requirements reviewed
+      · 0 of 33 emitted clauses carry advocate sign-off
+      · no family-level advocate review on record
+
+NOT_ASSESSED  (32)
+  AFFIDAVIT
+  APPOINTMENT_LETTER
+  ARBITRATION_NOTICE
+  COMMERCIAL_LEASE_AGREEMENT
+  CONSULTANCY_AGREEMENT
+  DATA_PROCESSING_AGREEMENT
+  DISTRIBUTION_AGREEMENT
+  ESOP_GRANT_LETTER
+  FOUNDERS_AGREEMENT
+  GUARANTEE_AGREEMENT
+  INDEMNITY_BOND
+  INDEPENDENT_CONTRACTOR_AGREEMENT
+  INTERNSHIP_AGREEMENT
+  IP_ASSIGNMENT_AGREEMENT
+  JOINT_VENTURE_AGREEMENT
+  LEAVE_AND_LICENSE_AGREEMENT
+  PARTNERSHIP_DEED
+  POSH_POLICY
+  PRIVACY_POLICY
+  PROMISSORY_NOTE
+  REFUND_AND_CANCELLATION_POLICY
+  SALES_OF_GOODS_AGREEMENT
+  SEPARATION_AGREEMENT
+  SERVICE_AGREEMENT
+  SETTLEMENT_AGREEMENT
+  SHARE_SUBSCRIPTION_AGREEMENT
+  SHIPPING_AND_DELIVERY_POLICY
+  SOFTWARE_DEVELOPMENT_AGREEMENT
+  SUPPLY_AGREEMENT
+  TERMS_OF_SERVICE
+  TERM_SHEET
+  VENDOR_AGREEMENT
+
+1 family generates a document whose own clauses do not agree with one another. A rung is not a clean bill of health.
+
+0 of 40 registered families are approved.
+NOT_ASSESSED=32  FALSIFICATION_PASSED=8

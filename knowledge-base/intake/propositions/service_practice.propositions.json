@@ -1,0 +1,107 @@
+{
+  "$comment": [
+    "Propositions about what a party or a product ACTUALLY DOES, drawn from the 29 orphan gates",
+    "the portfolio audit found: flags the knowledge base already treats as legally consequential",
+    "enough to gate a clause, with nothing in the system able to establish them.",
+    "",
+    "Not every orphan belongs here. The audit's own classification separates three populations,",
+    "and collapsing them would repeat the mistake this layer exists to correct:",
+    "",
+    "  POSITION  the drafting party knows it and was simply never asked --",
+    "            is_female_employee, is_senior_employee, is_fixed_term, employer_headcount_ge_10,",
+    "            is_commercial_lease, lock_in_period_months. The fix is a question, not evidence.",
+    "  FACT      derivable from fields already collected -- long_term_lease from the lease term,",
+    "            is_cross_border from the parties' countries. The fix is a derivation.",
+    "  EVIDENCE  the drafting party's say-so is not the natural authority, or the proposition is",
+    "            about a running system rather than about the deal. Only these are declared here.",
+    "",
+    "Four spellings of one proposition appear in the orphan set -- processes_personal_data,",
+    "jv_processes_personal_data, firm_processes_personal_data, company_processes_personal_data --",
+    "each gating DPDP clauses in a different family. They are declared separately because the",
+    "SUBJECT differs (the service provider, the joint venture, the firm, the company) and subject",
+    "binding is the thing that stops evidence about one from establishing it about another."
+  ],
+  "propositions": [
+    {
+      "id": "processes_personal_data",
+      "statement": "The service provider actually collects or processes personal data of identifiable individuals in performing this engagement.",
+      "class": "service practice",
+      "subject_binding": ["service_provider_name"],
+      "admissible_provenance": ["system_observation", "operator_declaration", "third_party_attestation"],
+      "continuing": true,
+      "evidence_valid_for_days": 365,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "The question is what the running system does, which the party commissioning the contract often does not know and cannot bind. It gates the DPDP clauses in five families, and a wrong answer is a compliance failure rather than a drafting preference.",
+      "gates": ["CORE_DATA_PROCESSING_001"],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "company_processes_personal_data",
+      "statement": "The company whose shareholders are contracting actually collects or processes personal data of identifiable individuals.",
+      "class": "service practice",
+      "subject_binding": ["company_name"],
+      "admissible_provenance": ["system_observation", "operator_declaration", "third_party_attestation"],
+      "continuing": true,
+      "evidence_valid_for_days": 365,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "Same proposition, different subject. Declared apart so that evidence about the service provider cannot establish it about the company.",
+      "gates": ["CORE_DATA_PROCESSING_001"],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "firm_processes_personal_data",
+      "statement": "The partnership firm actually collects or processes personal data of identifiable individuals.",
+      "class": "service practice",
+      "subject_binding": ["firm_name"],
+      "admissible_provenance": ["system_observation", "operator_declaration", "third_party_attestation"],
+      "continuing": true,
+      "evidence_valid_for_days": 365,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "Same proposition, different subject.",
+      "gates": ["CORE_DATA_PROCESSING_001"],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "jv_processes_personal_data",
+      "statement": "The joint venture entity actually collects or processes personal data of identifiable individuals.",
+      "class": "service practice",
+      "subject_binding": ["jv_name"],
+      "admissible_provenance": ["system_observation", "operator_declaration", "third_party_attestation"],
+      "continuing": true,
+      "evidence_valid_for_days": 365,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "Same proposition, different subject.",
+      "gates": ["CORE_DATA_PROCESSING_001"],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "lender_is_nbfc",
+      "statement": "The lender is a non-banking financial company registered with the Reserve Bank of India.",
+      "class": "regulatory status",
+      "subject_binding": ["lender_name"],
+      "admissible_provenance": ["public_register", "third_party_attestation"],
+      "$why_register_only": [
+        "Deliberately NOT operator_declaration. Whether a lender is an RBI-registered NBFC decides",
+        "which lending rules bind it, and a party's own statement about its regulatory status is",
+        "exactly the assertion that most needs a register behind it."
+      ],
+      "continuing": true,
+      "evidence_valid_for_days": 180,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "A registration either exists on a public register or it does not; the borrower cannot know it and the lender's own say-so is not the authority.",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "lender_is_regulated",
+      "statement": "The lender is an entity regulated by the Reserve Bank of India or another financial-sector regulator.",
+      "class": "regulatory status",
+      "subject_binding": ["lender_name"],
+      "admissible_provenance": ["public_register", "third_party_attestation"],
+      "continuing": true,
+      "evidence_valid_for_days": 180,
+      "when_unknown": "ESCALATE",
+      "why_not_position": "As above. A licence can also lapse, so evidence of it speaks only as at a date.",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

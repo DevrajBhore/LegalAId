@@ -28,7 +28,12 @@
         ]
       },
       "when_unsatisfied": "BLOCK",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Authored the thirty-day notice window and the one-month complaint window as content requirements, then assessed a notice with no dates supplied.",
+        "false_green": "7 of 7 reported RESOLVED, including NOTICE_GIVEN_IN_TIME, for a notice the system had no idea when was sent.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
     },
     {
       "id": "DISHONOUR_PARTICULARISED",
@@ -114,10 +119,24 @@
       "window": "Thirty days from receipt of the bank's return memo.",
       "depends_on_event": "the drawer's receipt of the bank's memo returning the cheque unpaid",
       "computable_from": {
-        "event": "return_memo_date",
+        "event": "memo_receipt_date",
+        "event_proxy": {
+          "field": "return_memo_date",
+          "assumption": "that the drawer received the memo on the day the bank wrote it"
+        },
         "act": "notice_date",
         "within_days": 30
-      }
+      },
+      "$trigger_note": [
+        "Proviso (b) runs thirty days from the drawer's RECEIPT of the memo, not from the date",
+        "on the memo. The intake collected only the latter, and the assessment computed from it",
+        "and reported RESOLVED -- telling a payee the notice was in time on the strength of an",
+        "assumption nobody stated. Where a notice went out on day twenty-nine, a two-day postal",
+        "delay is the whole case.",
+        "",
+        "return_memo_date is now declared as what it is: a PROXY. It can produce UNVERIFIABLE",
+        "with the assumption named. It can never produce a positive finding."
+      ]
     },
     {
       "id": "COMPLAINT_FILED_IN_TIME",
@@ -137,6 +156,39 @@
       "window": "One month from the cause of action, which arises fifteen days after the drawer receives this notice.",
       "depends_on_event": "the expiry of the fifteen-day payment period, itself running from service of this notice",
       "$note": "Deliberately left with no computable_from: the complaint has not been filed and the system cannot know when it will be. UNVERIFIABLE is the honest answer."
+    },
+    {
+      "id": "CHEQUE_PRESENTED_IN_TIME",
+      "kind": "TIMING",
+      "statement": "The cheque was presented to the bank within its period of validity.",
+      "identity_test": "Remove it and the earliest condition in section 138 goes unchecked: proviso (a) requires presentation within three months of the cheque's date or its validity, whichever is earlier, and a notice satisfying every later window is worthless if the cheque was presented on the ninety-fourth day.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_CHEQUE_PARTICULARS_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "window": "Three calendar months from the date of the cheque, or its period of validity if shorter.",
+      "depends_on_event": "the date borne on the cheque",
+      "computable_from": {
+        "event": "cheque_date",
+        "act": "cheque_presentation_date",
+        "within_months": 3
+      },
+      "$window_note": [
+        "Three CALENDAR months, not ninety days. The two are different periods and the assessor",
+        "computes calendar months for exactly this reason; a cheque presented on the ninety-second",
+        "day may be perfectly in time.",
+        "",
+        "NOT ENCODED: 'or its period of validity if shorter'. A cheque marked valid for a shorter",
+        "period shortens the window, and the system holds no field for that. This requirement",
+        "therefore establishes the three-month limb ONLY, and an advocate must not read a positive",
+        "finding as clearing proviso (a) entirely."
+      ],
+      "review_status": "draft-needs-legal-review"
     }
   ]
 }

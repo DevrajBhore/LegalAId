@@ -14,6 +14,8 @@
  * So identity is measured on its own, and never inferred from clause count.
  */
 import assert from "node:assert";
+import fs from "node:fs";
+import path from "node:path";
 import { generateDocument } from "../backend/services/documentService.js";
 import {
   assessRequirements, loadDocumentRequirements, COVERAGE, FINDING, findingFor,
@@ -94,8 +96,20 @@ assert.ok(generated.requirements?.assessed,
 const unmet = generated.requirements.results.filter(
   (r) => r.blocking && r.coverage !== COVERAGE.NOT_APPLICABLE
 );
-assert.deepStrictEqual(unmet.map((r) => r.id), [],
-  `the generated MSA fails identity requirements that block: ${unmet.map((r) => r.id).join(", ")}`);
+// Empty again, and getting back here was the point of a correction.
+//
+// This briefly expected PERSONAL_DATA_HANDLED, after the requirement was moved
+// from the POSITION source to the EVIDENCE source on the strength of a
+// portfolio audit reporting that processes_personal_data had no source in the
+// system. The audit was wrong: deriveGenerationControls takes
+// (documentType, variables) and the script called it (variables, documentType),
+// so nearly nothing came back derived. The flag is derived, here and in four
+// other families, and the migration made every MSA report a requirement
+// permanently undetermined for no reason. See tests/derivationProbes.
+assert.deepStrictEqual(
+  unmet.map((r) => r.id), [],
+  `the generated MSA fails identity requirements that block: ${unmet.map((r) => r.id).join(", ")}`
+);
 
 // And without that answer, the same requirement must be reported as undetermined
 // rather than quietly skipped. This is the MSA instance of the defect the
@@ -105,10 +119,17 @@ const unanswered = await generateDocument({
 });
 const dpdp = unanswered.requirements.results.find((r) => r.id === "PERSONAL_DATA_HANDLED");
 assert.strictEqual(dpdp.coverage, COVERAGE.APPLICABILITY_UNKNOWN,
-  "where nobody said whether personal data is processed, the DPDP requirement must be " +
+  "where nobody established whether personal data is processed, the DPDP requirement must be " +
   "reported as undetermined — not skipped as inapplicable");
 assert.ok(dpdp.blocking, "an undetermined requirement keeps the escalation it was authored with");
-checks += 2;
+// And answering DOES settle it, which is the behaviour the revert restored.
+const answeredDpdp = generated.requirements.results.find((r) => r.id === "PERSONAL_DATA_HANDLED");
+assert.notStrictEqual(
+  answeredDpdp.coverage, dpdp.coverage,
+  "answering the access question must change this requirement's coverage; if it does not, the " +
+  "position has lost its source again"
+);
+checks += 3;
 assert.ok(generated.requirements.summary.applicable >= 10,
   "too few requirements were assessed for the result to mean anything");
 checks += 4;
@@ -126,10 +147,20 @@ for (const result of generated.requirements.results) {
     `${result.id} has coverage "${result.coverage}", which is not one of the five`);
   checks += 1;
 }
+// THREE outcomes, not two. This assertion balanced only `applicable` and
+// `not_applicable` and passed for as long as the fixture happened to leave
+// nothing undetermined — so it was asserting the model's own central
+// distinction did not occur, rather than that every requirement was disposed of.
+// Moving one MSA requirement to the EVIDENCE source produced the first
+// undetermined result in this fixture and the assertion failed, which is how it
+// was found. "Nobody knows whether it applies" is a disposition and has to be
+// counted like one.
 assert.strictEqual(
-  generated.requirements.summary.applicable + generated.requirements.summary.not_applicable,
+  generated.requirements.summary.applicable
+    + generated.requirements.summary.not_applicable
+    + generated.requirements.summary.undetermined,
   generated.requirements.results.length,
-  "a requirement was assessed as neither applicable nor not applicable"
+  "a requirement was assessed as neither applicable, nor not applicable, nor undetermined"
 );
 checks += 1;
 console.log("PASS  every requirement terminates in a stated coverage");
@@ -154,12 +185,16 @@ assert.ok(statutory.length >= 5,
 checks += 2;
 
 // ── 6. Silence about applicability is not an answer that it does not apply ──
-// The defect the employment registry exposed. POSH_DUTY_REFLECTED rests on the
-// employer's headcount; where nobody was asked, the requirement was being
-// reported NOT_APPLICABLE -- skipped rather than assessed, on exactly the
-// reasoning invariant 3 forbids.
+// The defect the employment registry exposed. The requirement resting on the
+// employer's headcount was being reported NOT_APPLICABLE where nobody was asked
+// -- skipped rather than assessed, on exactly the reasoning invariant 3 forbids.
+//
+// The requirement is now POSH_INTERNAL_COMMITTEE_REFLECTED. POSH_DUTY_REFLECTED
+// was split in two: it named a s.19 duty its own text called unconditional
+// beside the s.4 committee duty the headcount governs, and gated both on the
+// headcount. The threshold belongs to this half. See tests/authoringCoherence.
 const unknownApplicability = assessRequirements("EMPLOYMENT_CONTRACT", [], {});
-const posh = unknownApplicability.results.find((r) => r.id === "POSH_DUTY_REFLECTED");
+const posh = unknownApplicability.results.find((r) => r.id === "POSH_INTERNAL_COMMITTEE_REFLECTED");
 assert.strictEqual(posh.coverage, COVERAGE.APPLICABILITY_UNKNOWN,
   "a requirement whose applicability rests on a fact nobody established must be reported as " +
   "undetermined, never as not applicable");
@@ -167,7 +202,7 @@ const known = assessRequirements("EMPLOYMENT_CONTRACT", [], {
   employer_headcount_ge_10: { value: false, provenance: "user_answer" },
 });
 assert.strictEqual(
-  known.results.find((r) => r.id === "POSH_DUTY_REFLECTED").coverage,
+  known.results.find((r) => r.id === "POSH_INTERNAL_COMMITTEE_REFLECTED").coverage,
   COVERAGE.NOT_APPLICABLE,
   "an employer who answered that it has fewer than ten employees HAS determined applicability"
 );
@@ -237,9 +272,26 @@ const lateByOne = assessRequirements("CHEQUE_BOUNCE_NOTICE", NOTICE_CLAUSES, {},
 const noDates = assessRequirements("CHEQUE_BOUNCE_NOTICE", NOTICE_CLAUSES, {}, {});
 
 const timed = (a) => a.results.find((r) => r.id === "NOTICE_GIVEN_IN_TIME");
-assert.strictEqual(timed(inTime).coverage, COVERAGE.RESOLVED,
-  "a notice given five days after the memo is in time");
-assert.strictEqual(timed(lateByOne).coverage, COVERAGE.OUT_OF_TIME,
+// Was RESOLVED, and that was wrong. Proviso (b) runs thirty days from the
+// drawer's RECEIPT of the memo; return_memo_date is the date the bank WROTE it,
+// a different and usually earlier event. Computing from the proxy and reporting
+// a positive finding told a payee the notice was in time on an assumption
+// nobody stated — and on day twenty-nine a two-day postal delay is the case.
+// return_memo_date is now declared as a proxy, and a proxy names its assumption
+// and reports UNVERIFIABLE. See tests/timingAssessment.test.mjs.
+assert.strictEqual(timed(inTime).coverage, COVERAGE.UNVERIFIABLE,
+  "the memo's date is not the date it was received, and only the latter starts the clock");
+assert.strictEqual(timed(inTime).computed_from_proxy, "return_memo_date");
+const withTrigger = assessRequirements("CHEQUE_BOUNCE_NOTICE", NOTICE_CLAUSES, {},
+  { memo_receipt_date: "2026-08-20", notice_date: "2026-08-25" });
+assert.strictEqual(timed(withTrigger).coverage, COVERAGE.RESOLVED,
+  "a notice given five days after RECEIPT of the memo is in time");
+checks += 2;
+const lateWithTrigger = assessRequirements("CHEQUE_BOUNCE_NOTICE", NOTICE_CLAUSES, {},
+  { memo_receipt_date: "2026-07-20", notice_date: "2026-08-20" });
+assert.strictEqual(lateByOne.results.find((r) => r.id === "NOTICE_GIVEN_IN_TIME").coverage,
+  COVERAGE.UNVERIFIABLE, "still a proxy, however late the arithmetic looks");
+assert.strictEqual(timed(lateWithTrigger).coverage, COVERAGE.OUT_OF_TIME,
   "a notice given on day thirty-one must fail. Proviso (b) to section 138 cannot be extended " +
   "by anything the notice says, and every other requirement being met is precisely why this " +
   "one has to be reported separately.");
@@ -255,6 +307,82 @@ assert.strictEqual(
   "a future act the system cannot observe must not be reported as satisfied"
 );
 checks += 1;
+
+// ── 8b. A DRAFTED OBLIGATION IS NOT A DISCHARGED ONE ───────────────────────
+//
+// The loan matrix produced six identical CONTENT findings across six different
+// states of the world, and that is CORRECT rather than a defect. The clause
+// LOAN_FEMA_ECB_001 says drawdown shall not occur until approvals are in place.
+// The document contains that promise whether or not the Loan Registration Number
+// was ever issued, so the content axis reports RESOLVED in every case — it is
+// answering "does the instrument address this?", which has one answer.
+//
+// The danger is a future change that makes the requirement assessor "cleverer"
+// and collapses the two truths, so that a document promising to wait for an
+// approval reads as a document whose approval came through. This pins the
+// divergence: for one requirement set, on one document, CONTENT must be able to
+// say RESOLVED while the external axis says UNVERIFIABLE.
+//
+// Same shape as the tenancy: a clause providing for an act is not the act.
+const APPROVAL_PROBE = path.join(
+  path.dirname(new URL(import.meta.url).pathname), "..",
+  "knowledge-base/documents/requirements/__divergence.requirements.json"
+);
+// A probe-only document type. Written under LOAN_AGREEMENT it REPLACED that
+// family's authored requirements in the loader's map — last file wins — which
+// stayed invisible until the Loan family actually had requirements to replace.
+fs.writeFileSync(APPROVAL_PROBE, JSON.stringify({
+  document_type: "__DIVERGENCE_PROBE",
+  requirements: [
+    { id: "APPROVALS_ADDRESSED", kind: "CONTENT",
+      statement: "The approvals a cross-border loan depends on are addressed in the instrument.",
+      identity_test: "Remove it and an ECB agreement says nothing about the registration its drawdown depends on.",
+      applicability: { always: true }, satisfied_by: { any_of: ["LOAN_FEMA_ECB_001"] },
+      when_unsatisfied: "ESCALATE", review_status: "regression-fixture" },
+    { id: "APPROVAL_OBTAINED", kind: "EXTERNAL_COHERENCE",
+      statement: "The registration the drawdown depends on has actually been issued.",
+      identity_test: "Remove it and the agreement's own promise to wait is all that stands between the parties and an unregistered borrowing.",
+      applicability: { always: true }, satisfied_by: { any_of: ["LOAN_FEMA_ECB_001"] },
+      external_instrument: "loan registration record",
+      external_provision: "loan_registration_number_issued",
+      subject_binding: ["party_1_name"], requires: "ISSUED",
+      when_unsatisfied: "ESCALATE", review_status: "regression-fixture" },
+  ],
+}));
+try {
+  loadDocumentRequirements({ refresh: true });
+  const LOAN = ["LOAN_FEMA_ECB_001", "CORE_IDENTITY_001", "CORE_GOVERNING_LAW_001"];
+  const who = { party_1_name: "Meridian Capital Advisors Private Limited" };
+  const divergent = assessRequirements("__DIVERGENCE_PROBE", LOAN, {}, who, []);
+  const addressed = divergent.results.find((r) => r.id === "APPROVALS_ADDRESSED");
+  const obtained = divergent.results.find((r) => r.id === "APPROVAL_OBTAINED");
+
+  assert.strictEqual(addressed.coverage, COVERAGE.RESOLVED,
+    "the instrument contains the approval obligation, so the content axis is satisfied");
+  assert.strictEqual(obtained.coverage, COVERAGE.UNVERIFIABLE,
+    "nothing establishes that the approval was obtained, and the clause saying it must be " +
+    "obtained is not evidence that it was");
+  assert.notStrictEqual(addressed.coverage, obtained.coverage,
+    "CONTENT and EXTERNAL_COHERENCE have collapsed into one answer. A document that promises " +
+    "to wait for an approval now reads the same as one whose approval came through.");
+
+  // And supplying the evidence moves ONLY the external axis.
+  const issued = assessRequirements("__DIVERGENCE_PROBE", LOAN, {}, who, [{
+    instrument: "loan registration record", subject: { party_1_name: who.party_1_name },
+    provisions: { loan_registration_number_issued: "ISSUED" },
+  }]);
+  assert.strictEqual(
+    issued.results.find((r) => r.id === "APPROVALS_ADDRESSED").coverage, addressed.coverage,
+    "evidence about the world changed the content finding; the document did not change"
+  );
+  assert.strictEqual(issued.results.find((r) => r.id === "APPROVAL_OBTAINED").coverage,
+    COVERAGE.RESOLVED);
+  checks += 5;
+} finally {
+  fs.unlinkSync(APPROVAL_PROBE);
+  loadDocumentRequirements({ refresh: true });
+}
+console.log("PASS  a drafted obligation and a discharged one stay different findings");
 
 // ── 9. No coverage state may be counted as success but RESOLVED/DEFAULTED ──
 // PROVIDED_FOR, UNVERIFIABLE and OUT_OF_TIME must never be folded into a
@@ -332,14 +460,20 @@ for (const assessment of [incoherent, inTime, lateByOne, tenancy]) {
 console.log("PASS  kind and finding are separate, and only ESTABLISHED_POSITIVE is success");
 
 // ── 12. The semantic regression corpus ─────────────────────────────────────
-// Five families, each of which once produced a green report for a legally
-// unfinished document. Every future change to this layer must survive all five.
+// Each of these families once produced a green report for a legally unfinished
+// document. Every future change to this layer must survive all of them.
 const CORPUS = {
   MASTER_SERVICE_AGREEMENT: "boilerplate masquerading as substance",
   EMPLOYMENT_CONTRACT: "unknown applicability masquerading as inapplicability",
   RENTAL_AGREEMENT: "a clause about an act masquerading as the act",
   CHEQUE_BOUNCE_NOTICE: "a stated period masquerading as a met deadline",
   MOU: "a declared character its own content defeats",
+  SHAREHOLDERS_AGREEMENT: "absence of an external instrument as evidence of consistency with it",
+  POWER_OF_ATTORNEY: "stale and self-contradictory evidence of a continuing state, as proof it holds now",
+  // The only one of these whose defect is not about a requirement at all. Every
+  // requirement was satisfied by a clause that was present and well drafted;
+  // the two clauses disagreed with each other. See tests/requirementCoherence.
+  NDA: "clauses each satisfying their own requirement while contradicting one another",
 };
 const registered = loadDocumentRequirements();
 for (const [documentType, falseGreen] of Object.entries(CORPUS)) {
@@ -350,5 +484,149 @@ for (const [documentType, falseGreen] of Object.entries(CORPUS)) {
   checks += 1;
 }
 console.log(`PASS  semantic regression corpus intact (${Object.keys(CORPUS).length} families)`);
+
+// ── 13. Truth that cannot be established from the document at all ──────────
+// The sixth family, and the first whose legal effect turns on an instrument
+// LegalAId has never seen. A shareholders' agreement is unenforceable against
+// the company to the extent it conflicts with the articles of association.
+// Every earlier falsification could in principle be settled by reading the
+// artifact, the intake or a date. This one cannot.
+//
+// ABSENCE OF THE ARTICLES IS NOT EVIDENCE OF CONSISTENCY. That is the whole
+// point, and the reason "nothing supplied" and "supplied and consistent" must
+// never share an outcome.
+const SHA_CLAUSES = [
+  "CORP_SHARE_SUBSCRIPTION_001", "CORP_SHARE_TRANSFER_001", "CORP_TAG_ALONG_001",
+  "CORP_DRAG_ALONG_001", "CORP_BOARD_COMPOSITION_001", "CORP_DEADLOCK_001",
+];
+const OURS = { company_cin: "U74999MH2015PTC123456" };
+const articles = (cin, provision) => [{
+  instrument: "ARTICLES_OF_ASSOCIATION",
+  subject: { company_cin: cin },
+  provisions: { share_transfer_restrictions: provision },
+}];
+const external = (instruments) => assessRequirements(
+  "SHAREHOLDERS_AGREEMENT", SHA_CLAUSES, {}, OURS, instruments
+).results.find((r) => r.id === "TRANSFER_RESTRICTIONS_IN_ARTICLES");
+
+const STATES = [
+  ["no articles supplied", [], COVERAGE.UNVERIFIABLE],
+  ["articles of a different company", articles("U11111MH2019PTC999999", "RESTRICTED"),
+    COVERAGE.EVIDENCE_MISMATCHED],
+  ["matching and consistent", articles(OURS.company_cin, "RESTRICTED"), COVERAGE.RESOLVED],
+  ["matching and conflicting", articles(OURS.company_cin, "FREELY_TRANSFERABLE"),
+    COVERAGE.CONTRADICTED],
+  ["matching and ambiguous", articles(OURS.company_cin, "AMBIGUOUS"), COVERAGE.AMBIGUOUS_EVIDENCE],
+  ["matching and silent", articles(OURS.company_cin, "SILENT"), COVERAGE.AMBIGUOUS_EVIDENCE],
+];
+const seen = new Map();
+for (const [label, instruments, expected] of STATES) {
+  const result = external(instruments);
+  assert.strictEqual(result.coverage, expected,
+    `"${label}" reported ${result.coverage}, expected ${expected}`);
+  assert.ok(String(result.detail || "").length > 40, `"${label}" must explain itself`);
+  seen.set(label, result.coverage);
+  checks += 2;
+}
+// Only one of the six is success, and the two "nothing known" cases must not
+// resemble it.
+const successes = [...seen.entries()].filter(([, c]) => findingFor(c) === FINDING.ESTABLISHED_POSITIVE);
+assert.deepStrictEqual(successes.map(([l]) => l), ["matching and consistent"],
+  "only articles that were supplied, match this company and say what the Agreement needs may " +
+  "count as success");
+assert.notStrictEqual(seen.get("no articles supplied"), seen.get("articles of a different company"),
+  "a file existing is not evidence — supplying the wrong company's articles must be reported " +
+  "differently from supplying none, because a careless reader treats a present file as a met " +
+  "requirement");
+checks += 2;
+console.log(
+  `PASS  external coherence: ${new Set(seen.values()).size} distinct outcomes across ` +
+  `${STATES.length} evidence states, one of them success`
+);
+
+// The pattern is reusable, not SHA logic: nothing in the assessor names a
+// shareholders' agreement, articles, or the Companies Act.
+const source = fs.readFileSync(
+  path.resolve("backend/services/documentRequirements.js"), "utf8"
+);
+for (const term of ["SHAREHOLDERS", "ARTICLES_OF_ASSOCIATION", "Companies Act", "share_transfer"]) {
+  assert.ok(!source.includes(term),
+    `the assessor mentions "${term}". External-instrument dependency must be a reusable ` +
+    `requirement pattern — trust deeds, board resolutions, partnership deeds and powers of ` +
+    `attorney pose the same question — not bespoke logic for one family.`);
+  checks += 1;
+}
+console.log("PASS  the pattern names no document family, instrument or statute");
+
+// ── 14. A continuing state must be evidenced as at a moment ────────────────
+// The seventh family, and the matrix was written BEFORE the requirements so the
+// architecture could not be quietly designed around what happens to pass.
+//
+// A power of attorney depends on a state of the world HOLDING NOW: section 201
+// of the Indian Contract Act, 1872 ends the agency on the donor's death or
+// unsoundness of mind, so a flawless instrument is a dead letter the moment it
+// happens and not a word of the document changes. Two of the five cases were
+// reported as success — evidence from 2019, and two records flatly disagreeing,
+// the latter resolved by whichever arrived first.
+const POA_CLAUSES = [
+  "POA_APPOINTMENT_001", "POA_POWERS_001", "POA_LIMITATIONS_001",
+  "POA_REVOCATION_001", "POA_EXECUTION_001",
+];
+const DONOR = { donor_identity_number: "4213 8867 1290" };
+const today = new Date().toISOString().slice(0, 10);
+const status = (capacity, asOf, who = DONOR.donor_identity_number) => ({
+  instrument: "DONOR_STATUS_EVIDENCE",
+  subject: { donor_identity_number: who },
+  as_of: asOf,
+  provisions: { donor_capacity: capacity },
+});
+const capacity = (instruments) => assessRequirements(
+  "POWER_OF_ATTORNEY", POA_CLAUSES, {}, DONOR, instruments
+).results.find((r) => r.id === "DONOR_CAPACITY_SUBSISTS");
+
+const MATRIX = [
+  ["not supplied", [], COVERAGE.UNVERIFIABLE],
+  ["condition ceased", [status("CEASED", today)], COVERAGE.CONTRADICTED],
+  ["condition subsists, evidenced today", [status("SUBSISTS", today)], COVERAGE.RESOLVED],
+  ["subsists, but evidenced in 2019", [status("SUBSISTS", "2019-04-02")], COVERAGE.STALE_EVIDENCE],
+  ["subsists, undated", [status("SUBSISTS", undefined)], COVERAGE.STALE_EVIDENCE],
+  ["records disagree", [status("SUBSISTS", today), status("CEASED", today)],
+    COVERAGE.CONFLICTING_EVIDENCE],
+  ["about a different donor", [status("SUBSISTS", today, "9999 0000 1111")],
+    COVERAGE.EVIDENCE_MISMATCHED],
+];
+for (const [label, instruments, expected] of MATRIX) {
+  const result = capacity(instruments);
+  assert.strictEqual(result.coverage, expected, `"${label}" reported ${result.coverage}`);
+  checks += 1;
+}
+// Order must not decide a legal question.
+const oneWay = capacity([status("SUBSISTS", today), status("CEASED", today)]);
+const theOther = capacity([status("CEASED", today), status("SUBSISTS", today)]);
+assert.strictEqual(oneWay.coverage, theOther.coverage,
+  "reversing the order of two conflicting records changed the finding, so the assessment is " +
+  "deciding a legal question by array order");
+assert.strictEqual(findingFor(oneWay.coverage), FINDING.NOT_ESTABLISHED,
+  "conflicting evidence establishes nothing; which record is right is a question for a person");
+checks += 2;
+
+// Exactly one of the seven is success.
+const positives = MATRIX.filter(([, , expected]) => findingFor(expected) === FINDING.ESTABLISHED_POSITIVE);
+assert.strictEqual(positives.length, 1,
+  `${positives.length} of the seven evidence states count as success`);
+checks += 1;
+console.log(
+  `PASS  continuing state: ${new Set(MATRIX.map(([, , e]) => e)).size} distinct outcomes across ` +
+  `${MATRIX.length} evidence states, one success, order-independent`
+);
+
+// Still no family-specific logic: the temporal window is authored knowledge.
+for (const term of ["POWER_OF_ATTORNEY", "donor", "Contract Act"]) {
+  assert.ok(!source.includes(term),
+    `the assessor mentions "${term}" — continuing-state evidence must stay a reusable pattern, ` +
+    `usable for licence validity, corporate status, insurance cover and board authority alike`);
+  checks += 1;
+}
+console.log("PASS  the temporal and conflict rules name no family, party or statute");
 
 console.log(`\nALL GREEN (${checks} checks)`);

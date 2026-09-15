@@ -1,0 +1,39 @@
+{
+  "clause_id": "CORE_INDEMNITY_FULL_001",
+  "name": "Indemnity",
+  "title": "Indemnity",
+  "category": "RISK",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Each Party (the \"Indemnifying Party\") shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised representatives (each an \"Indemnified Party\") from and against all losses, damages, claims, costs, and liabilities arising from the Indemnifying Party's breach of this Agreement, negligence, or wilful misconduct. The conduct of any claim to which this indemnity applies shall be governed as follows:\n(a) the Indemnified Party shall notify the Indemnifying Party in writing as soon as reasonably practicable after becoming aware of a claim for which indemnity is sought, giving reasonable particulars; a delay in giving notice shall reduce the Indemnifying Party's liability only to the extent it is actually prejudiced by that delay\n(b) the Indemnifying Party may, on written notice, assume conduct of the defence at its own cost using legal advisers reasonably acceptable to the Indemnified Party, and the Indemnified Party shall provide reasonable cooperation and access to relevant records at the Indemnifying Party's cost\n(c) neither Party shall settle or compromise a claim on terms that impose a non-indemnified liability, an admission of wrongdoing, or an ongoing restriction on the other without that other Party's prior written consent, save where urgent action is reasonably required to mitigate loss\n(d) the Indemnified Party shall take reasonable steps to mitigate its loss, and this indemnity shall not extend to loss to the extent caused or increased by the Indemnified Party's own breach, negligence, or failure to mitigate\n(e) recovery under this indemnity shall be reduced by any amount actually recovered from insurance or from a third party in respect of the same loss, so that the Indemnified Party is not compensated twice",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "124",
+      "note": "A contract of indemnity is a promise to save the other from loss caused by the promisor or by any other person."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "125",
+      "note": "The indemnity-holder may recover damages, costs and sums paid under a compromise, provided he acted prudently and did not contravene the indemnifier's orders. Limbs (a) to (e) are the machinery that makes those conditions capable of being satisfied."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Notification is drafted as a condition precedent so that any delay, however harmless, extinguishes the indemnity.",
+    "The indemnifying Party may settle on terms that leave the indemnified Party exposed to the same claimant."
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "authoring_note": "Migrated from backend/commercial/protectionLibrary.js, a second clause library that injected clauses after hardening had run. Its clauses reached shipped documents in seven document types carrying no review status, no structured legal basis and no invalid_if, and were invisible to getAllClauses(), to the unreviewed-clause ceiling, and to any knowledge-defined family. THE TEXT IS UNCHANGED by this migration, so the only difference in output is the clause id. Whether these should instead be deduplicated against their near-equivalents already in the library -- CORE_LIMITATION_LIABILITY_001, CORE_INDEMNITY_001, CORE_FORCE_MAJEURE_001 -- is a drafting decision for an advocate, not a refactor, and is deliberately left open.",
+  "migrated_from": "AUTO-INDEM-001",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

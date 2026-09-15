@@ -1,0 +1,88 @@
+========================================================================================================
+PORTFOLIO INVENTORY — one row per family x requirement, family map derived from the rows
+========================================================================================================
+85 requirements across 9 families with identity authored. 31 registered families have none.
+
+CHEQUE_BOUNCE_NOTICE   [NOT REGISTERED]   8 requirements
+  applicability   unconditional 8  position 0  fact 0  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 3  external-act 0  inter-clause 0
+  findings        family does not generate:8
+  falsification   1 of 8 requirements name an attack
+  review          0 of 8 requirements reviewed; clause/family/approval: no/no/no
+
+EMPLOYMENT_CONTRACT   [FALSIFICATION_PASSED]   15 requirements
+  applicability   unconditional 13  position 0  fact 2  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 0  external-act 0  inter-clause 0
+  findings        RESOLVED:12  UNRESOLVED:1  APPLICABILITY_UNKNOWN:2
+  falsification   1 of 15 requirements name an attack
+  review          0 of 15 requirements reviewed; clause/family/approval: no/no/no
+
+LOAN_AGREEMENT   [FALSIFICATION_PASSED]   10 requirements
+  applicability   unconditional 6  position 0  fact 4  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 1  external-act 1  inter-clause 0
+  findings        RESOLVED:6  APPLICABILITY_UNKNOWN:4
+  falsification   1 of 10 requirements name an attack
+  review          0 of 10 requirements reviewed; clause/family/approval: no/no/no
+
+MASTER_SERVICE_AGREEMENT   [FALSIFICATION_PASSED]   16 requirements
+  applicability   unconditional 13  position 2  fact 1  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 1  external-act 0  inter-clause 0
+  findings        RESOLVED:13  APPLICABILITY_UNKNOWN:3
+  falsification   1 of 16 requirements name an attack
+  review          0 of 16 requirements reviewed; clause/family/approval: no/no/no
+
+MOU   [FALSIFICATION_PASSED]   6 requirements
+  applicability   unconditional 6  position 0  fact 0  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 0  external-act 0  inter-clause 0
+  findings        RESOLVED:5  ESCALATED:1
+  falsification   1 of 6 requirements name an attack
+  review          0 of 6 requirements reviewed; clause/family/approval: no/no/no
+
+NDA   [FALSIFICATION_PASSED]   9 requirements
+  applicability   unconditional 9  position 0  fact 0  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 0  external-act 0  inter-clause 1
+  findings        RESOLVED:9
+  falsification   1 of 9 requirements name an attack   ! SHIPS A DEFECT: CONFIDENTIALITY_PERIOD_COHERENT
+  review          0 of 9 requirements reviewed; clause/family/approval: no/no/no
+
+POWER_OF_ATTORNEY   [FALSIFICATION_PASSED]   6 requirements
+  applicability   unconditional 6  position 0  fact 0  evidence 0
+  dependencies    external-document 1  world 0  system-state 0  temporal 1  external-act 1  inter-clause 0
+  findings        RESOLVED:3  ESCALATED:2  UNVERIFIABLE:1
+  falsification   1 of 6 requirements name an attack
+  review          0 of 6 requirements reviewed; clause/family/approval: no/no/no
+
+RENTAL_AGREEMENT   [FALSIFICATION_PASSED]   9 requirements
+  applicability   unconditional 9  position 0  fact 0  evidence 0
+  dependencies    external-document 0  world 0  system-state 0  temporal 0  external-act 2  inter-clause 0
+  findings        RESOLVED:4  UNRESOLVED:3  PROVIDED_FOR:2
+  falsification   1 of 9 requirements name an attack
+  review          0 of 9 requirements reviewed; clause/family/approval: no/no/no
+
+SHAREHOLDERS_AGREEMENT   [FALSIFICATION_PASSED]   6 requirements
+  applicability   unconditional 6  position 0  fact 0  evidence 0
+  dependencies    external-document 1  world 0  system-state 0  temporal 0  external-act 0  inter-clause 0
+  findings        RESOLVED:5  UNVERIFIABLE:1
+  falsification   1 of 6 requirements name an attack
+  review          0 of 6 requirements reviewed; clause/family/approval: no/no/no
+
+========================================================================================================
+FAILURE IF UNKNOWN — knowing the SOURCE of an input is not knowing what happens without it
+========================================================================================================
+   76  UNCONDITIONAL  -> n/a — always applicable
+    7  FACT           -> APPLICABILITY_UNKNOWN
+    2  POSITION       -> APPLICABILITY_UNKNOWN
+
+No requirement lets an UNKNOWN input collapse into FALSE, NOT_APPLICABLE or a drafting default. That is the invariant, measured rather than asserted.
+
+========================================================================================================
+ARCHITECTURAL DIMENSION COVERAGE — which families exercise which class of truth
+========================================================================================================
+  identity / substance           exercised by CHEQUE_BOUNCE_NOTICE, EMPLOYMENT_CONTRACT, LOAN_AGREEMENT, MASTER_SERVICE_AGREEMENT, MOU, NDA, POWER_OF_ATTORNEY, RENTAL_AGREEMENT, SHAREHOLDERS_AGREEMENT
+  statutory applicability        exercised by EMPLOYMENT_CONTRACT, LOAN_AGREEMENT, MASTER_SERVICE_AGREEMENT
+  formality vs act               exercised by LOAN_AGREEMENT, POWER_OF_ATTORNEY, RENTAL_AGREEMENT
+  timing                         exercised by CHEQUE_BOUNCE_NOTICE   (none falsification-passed)
+  declared character             exercised by LOAN_AGREEMENT, MOU
+  external instrument            exercised by POWER_OF_ATTORNEY, SHAREHOLDERS_AGREEMENT
+  inter-clause coherence         exercised by NDA
+  world-sourced applicability    NOT EXERCISED any family

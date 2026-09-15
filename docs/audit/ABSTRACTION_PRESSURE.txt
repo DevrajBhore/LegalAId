@@ -1,0 +1,74 @@
+====================================================================================================
+PART 1 — THE ORPHAN GATES, SPLIT FIVE WAYS
+====================================================================================================
+14 distinct propositions gate a clause with no source, across 17 gate uses.
+
+  8  a drafting or scope choice, not a fact
+       include_transition_assistance     2 families
+       include_confidentiality           2 families   [clause ships ungated elsewhere]
+       include_entire_agreement          2 families   [clause ships ungated elsewhere]
+       include_inspection_rights         1 family    [clause ships ungated elsewhere]
+       include_ip_assignment             1 family    [clause ships ungated elsewhere]
+       include_expenses                  1 family    [clause ships ungated elsewhere]
+       include_change_control            1 family    [clause ships ungated elsewhere]
+       include_price_revision            1 family 
+
+  6  needs a human call: unsupported fact vs world dependency
+       employer_headcount_ge_10          1 family    [clause ships ungated elsewhere]
+       has_esop_or_variable_pay          1 family 
+       personal_guarantee_required       1 family    [clause ships ungated elsewhere]
+       lock_in_period_months             1 family    [clause ships ungated elsewhere]
+       rent_escalation                   1 family    [clause ships ungated elsewhere]
+       assignment_addressed              1 family    [clause ships ungated elsewhere]
+
+6 propositions cannot be classified mechanically. The question for each is whether
+the drafting party is the natural authority (intake debt) or is not (evidence debt),
+and that is a legal judgement, not a string match.
+
+12 of 17 orphan gate uses withhold a clause that ships UNGATED in another family
+(11 distinct clauses). For these the gate is not protecting the reader from anything;
+it is producing two different documents from one library for no recorded reason.
+
+====================================================================================================
+PART 2 — ABSTRACTION PRESSURE ACROSS THE 33 FAMILIES WITH NO IDENTITY AUTHORED
+====================================================================================================
+Signals count only clauses DISTINCTIVE to a family (shipping in at most 15 of 45).
+Without that filter one boilerplate stamping clause reads as twenty-four families exercising formality.
+
+  external instrument     5 families   SHA-like: the document's correctness depends on a document it is not
+  formal act              3 families   tenancy-like: a clause providing for an act is not the act
+                         (1 ubiquitous clause excluded: CORE_STAMP_AND_COSTS_001)
+  period present (class unknown) 15 families   a period is stated; whether the parties chose it or an Act imposed it is not recorded
+  declared character      1 families   MOU-like: the instrument asserts what kind of instrument it is
+  third-party consent     3 families   a class no certified family exercises: performance conditional on someone outside
+  world claim             1 families   privacy-like: the document asserts a fact about a running service or party
+
+Ranked by number of DISTINCT dependency classes present:
+
+  family                              press  classes
+  COMMERCIAL_LEASE_AGREEMENT             2   formal act, third-party consent
+  LEAVE_AND_LICENSE_AGREEMENT            2   formal act, third-party consent
+  PRIVACY_POLICY                         2   world claim, orphan gates (1)
+  TERM_SHEET                             2   external instrument, period present (class unknown), declared character
+  APPOINTMENT_LETTER                     1   orphan gates (2)
+  CONSULTANCY_AGREEMENT                  1   period present (class unknown), orphan gates (5)
+  ESOP_GRANT_LETTER                      1   external instrument
+  FOUNDERS_AGREEMENT                     1   external instrument, period present (class unknown)
+  JOINT_VENTURE_AGREEMENT                1   external instrument, period present (class unknown)
+  PROMISSORY_NOTE                        1   formal act
+  SHARE_SUBSCRIPTION_AGREEMENT           1   external instrument
+  SOFTWARE_DEVELOPMENT_AGREEMENT         1   period present (class unknown), third-party consent
+  SUPPLY_AGREEMENT                       1   period present (class unknown), orphan gates (1)
+  TERMS_OF_SERVICE                       1   orphan gates (1)
+
+====================================================================================================
+PART 3 — WHICH CLASSES ARE ALREADY COVERED, AND WHICH ARE NOT
+====================================================================================================
+  external instrument    covered by SHAREHOLDERS_AGREEMENT, POWER_OF_ATTORNEY
+  formal act             covered by RENTAL_AGREEMENT, POWER_OF_ATTORNEY
+  period present (class unknown) covered by UNMEASURABLE — the library does not record whose period it is
+                         pressure in 15 uncertified families: TERM_SHEET, CONSULTANCY_AGREEMENT, FOUNDERS_AGREEMENT, JOINT_VENTURE_AGREEMENT, SOFTWARE_DEVELOPMENT_AGREEMENT, SUPPLY_AGREEMENT, …
+  declared character     covered by MOU
+  world claim            covered by MASTER_SERVICE_AGREEMENT (one requirement)
+  third-party consent    NOT COVERED BY ANY CERTIFIED FAMILY
+                         pressure in 3 uncertified families: COMMERCIAL_LEASE_AGREEMENT, LEAVE_AND_LICENSE_AGREEMENT, SOFTWARE_DEVELOPMENT_AGREEMENT

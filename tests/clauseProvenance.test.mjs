@@ -130,7 +130,13 @@ const summary = summariseProvenance(clauses);
 // how a claim is run, which is where an indemnity usually fails -- section 125
 // makes recovery conditional on the indemnity-holder's prudence and on not
 // contravening the indemnifier's orders, so the machinery is not decoration.
-const MAX_UNREVIEWED = 301;
+// Raised to 307 for the six clauses migrated out of
+// backend/commercial/protectionLibrary.js. Their TEXT is unchanged -- the
+// migration moved them into the governed library so they could carry a review
+// status at all. Three of them were already reaching shipped documents in seven
+// document types with no way for an advocate to sign them off, so this is a
+// backlog that was always there and is only now visible.
+const MAX_UNREVIEWED = 307;
 
 console.log(
   `      library: ${summary.total} clauses, ${summary.reviewed} reviewed, ` +
@@ -142,6 +148,38 @@ assert.ok(
   `Either get the new clause reviewed, or lower the ceiling deliberately.`
 );
 console.log(`PASS  unreviewed backlog within the pinned ceiling of ${MAX_UNREVIEWED}`);
+
+// ── Citation identity is not substring matching ─────────────────────────────
+// A review asked one line about "the Section 43A IT Act reference". Scanning for
+// the string "43A" returned twelve clauses; eleven cite it in legal_basis.section
+// and the twelfth mentions section 143A of the Negotiable Instruments Act in
+// prose. The same token-boundary class as the money regex that once read
+// `parent_name` as a rent field and filled a deponent's parent with Rs. 5,00,000.
+//
+// A legal proposition propagating through many clauses is exactly when a
+// miscount matters, so the population is defined by the structured field.
+function clausesCiting(act, section) {
+  return clauses.filter((clause) =>
+    (clause.legal_basis || []).some(
+      (basis) =>
+        String(basis.act || "").includes(act) &&
+        String(basis.section || "").trim() === section
+    )
+  );
+}
+const citing43A = clausesCiting("Information Technology Act, 2000", "43A");
+const mentioning43A = clauses.filter((clause) => JSON.stringify(clause).includes("43A"));
+assert.ok(mentioning43A.length > citing43A.length,
+  "the corpus no longer contains a clause that mentions 43A without citing it, so this " +
+  "regression can no longer be demonstrated — confirm that is intended before deleting it");
+assert.ok(!citing43A.some((c) => c.clause_id === "S138_CONSEQUENCE_001"),
+  "S138_CONSEQUENCE_001 counted as citing IT Act s.43A. It mentions section 143A of the " +
+  "Negotiable Instruments Act in prose. Citation identity must be read from " +
+  "legal_basis.section, never from a substring of the record.");
+console.log(
+  `PASS  citation identity: ${citing43A.length} clauses cite IT Act s.43A, ` +
+  `${mentioning43A.length} records merely contain the string`
+);
 
 // ── 3. Every clause I authored declares its status ──────────────────────────
 const authored = clauses.filter((c) => c.review_status);

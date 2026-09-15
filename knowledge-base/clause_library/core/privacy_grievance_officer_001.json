@@ -44,5 +44,13 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "verification_flags": [
+    {
+      "raised_by": "Client review, September 2026 — 'Check whether the IT Intermediary Rules actually apply to LegalAId'.",
+      "question": "Whether the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 apply to the party adopting this policy. An intermediary under section 2(1)(w) of the IT Act, 2000 receives, stores or transmits a record on behalf of another person; a service that generates content for its own users may fall outside that.",
+      "why_not_resolved_here": "The answer depends on what the adopting party actually does, which is a fact about the business rather than a property of the clause. Citing the Rules where they do not apply asserts obligations the party does not have.",
+      "status": "awaiting-advocate-determination"
+    }
+  ]
 }

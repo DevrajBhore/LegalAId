@@ -1,0 +1,39 @@
+{
+  "clause_id": "CORE_LATE_PAYMENT_INTEREST_001",
+  "name": "Late Payment Interest",
+  "title": "Late Payment Interest",
+  "category": "FINANCE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Any undisputed amount not paid on the due date shall accrue interest from the due date until actual payment at the rate of eighteen percent (18%) per annum or the maximum rate permitted by law, whichever is lower.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "73",
+      "note": "Interest on a sum withheld compensates the loss of its use."
+    },
+    {
+      "act": "Micro, Small and Medium Enterprises Development Act, 2006",
+      "section": "16",
+      "note": "Where the supplier is a registered MSME, compound interest at three times the RBI bank rate is payable whatever the contract says, so a contractual rate must not be presented as the ceiling."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The stated rate is presented as the ceiling where the supplier is a registered MSME and section 16 of the MSMED Act, 2006 imposes a higher statutory rate.",
+    "The rate is so high as to be a penalty rather than compensation for the loss of the use of money."
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "authoring_note": "Migrated from backend/commercial/protectionLibrary.js, a second clause library that injected clauses after hardening had run. Its clauses reached shipped documents in seven document types carrying no review status, no structured legal basis and no invalid_if, and were invisible to getAllClauses(), to the unreviewed-clause ceiling, and to any knowledge-defined family. THE TEXT IS UNCHANGED by this migration, so the only difference in output is the clause id. Whether these should instead be deduplicated against their near-equivalents already in the library -- CORE_LIMITATION_LIABILITY_001, CORE_INDEMNITY_001, CORE_FORCE_MAJEURE_001 -- is a drafting decision for an advocate, not a refactor, and is deliberately left open.",
+  "migrated_from": "AUTO-LPI-001",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,61 @@
+========================================================================================================
+THE SAME TRUE PROPOSITION, ABOUT THE SAME SUBJECT. ONLY PROVENANCE VARIES.
+========================================================================================================
+mode                                                    EXTERNAL_COHERENCE      EVIDENCE_PROPOSITION
+--------------------------------------------------------------------------------------------------------
+A  the record merely claims its source                  RESOLVED                EVIDENCE_PRESENT
+B  claim + system metadata naming the source            RESOLVED                EVIDENCE_PRESENT
+C  independently retrieved from the authority           RESOLVED                EVIDENCE_PRESENT
+D  independently retrieved, bound to the transaction    RESOLVED                EVIDENCE_PRESENT
+E  CONFLICTING: claims the register, arrived by email from the partyRESOLVED                EVIDENCE_PRESENT
+F  no provenance stated at all                          RESOLVED                EVIDENCE_INADMISSIBLE
+
+========================================================================================================
+CAN EITHER MECHANISM TELL A CLAIM OF AUTHORITY FROM AUTHORITY?
+========================================================================================================
+
+  EXTERNAL_COHERENCE
+      A (bare claim) -> RESOLVED      C (independently retrieved) -> RESOLVED
+      IDENTICAL. The mechanism reads `provisions` and nothing else; every other field on the
+      record — how it arrived, whether anyone verified it — is invisible to it. It cannot
+      see provenance at all, so it cannot be fooled about provenance either. It simply
+      never asks.
+
+  EVIDENCE_PROPOSITION
+      A (bare claim) -> EVIDENCE_PRESENT   C (independently retrieved) -> EVIDENCE_PRESENT
+      E (claims the register, arrived by email from the party) -> EVIDENCE_PRESENT
+      F (no provenance stated) -> EVIDENCE_INADMISSIBLE
+
+  THIS IS THE FINDING, AND IT IS ABOUT A MECHANISM I BUILT AND DEFENDED.
+
+  admissible_provenance checks a CLAIM ABOUT PROVENANCE, not provenance. The record says
+  provenance: "public_register" and the layer believes it. A record that arrived as an email
+  attachment from the very party whose status is in question is accepted on identical terms
+  as one retrieved from the register, because the only thing distinguishing them is a field
+  the mechanism does not read.
+
+  So the two defences in evidencePropositions are not what they appeared to be:
+      the absolute rule (an inference is never an authority)  — holds, it is about a
+          provenance VALUE the system itself would have to assert
+      the declaration's own list (lender_is_nbfc excludes operator_declaration) — is only
+          as good as the record's honesty about which of those it is
+
+  tests/evidencePropositions.test.mjs asserts that a record labelled ai_inference is refused.
+  It does NOT assert — and cannot — that a record labelled public_register came from one.
+  The test is true and the security property I claimed for it is narrower than I said.
+
+  WHAT THIS MEANS FOR THE OPEN QUESTION. Adding a source constraint to EXTERNAL_COHERENCE
+  would give it the same property: a check on what the record says about itself. That is
+  worth having — it stops honest mislabelling and makes the requirement state who should
+  have produced the record — but it must not be described as establishing authority, and
+  a certification state must not read as though it does.
+
+  The missing primitive is therefore NOT "a source predicate". It is a distinction the
+  evidence model does not yet draw at all:
+
+      SELF-ASSERTED     the record says where it came from
+      SYSTEM-OBSERVED   the system recorded where it got it
+
+  Only the second can support a claim about authority, and nothing in the record shape
+  distinguishes them today. Both mechanisms take the record's word for it — one by reading
+  a content field, the other by reading a metadata field, neither by knowing anything.

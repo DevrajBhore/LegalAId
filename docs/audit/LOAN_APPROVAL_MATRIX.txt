@@ -1,0 +1,51 @@
+case                                          CONTENT (a)           EXTERNAL_COHERENCE (b)
+--------------------------------------------------------------------------------------------------------
+1  required=YES  obtained=UNKNOWN   (nothing supplied)RESOLVED              UNVERIFIABLE / NOT_ESTABLISHED
+2  required=YES  obtained=YES                 RESOLVED              RESOLVED / ESTABLISHED_POSITIVE
+3  required=YES  obtained=NO        (refused) RESOLVED              CONTRADICTED / ESTABLISHED_NEGATIVE
+4  required=YES  evidence silent              RESOLVED              AMBIGUOUS_EVIDENCE / NOT_ESTABLISHED
+5  evidence about a DIFFERENT transaction     RESOLVED              EVIDENCE_MISMATCHED / NOT_ESTABLISHED
+7  issued — by an incompetent authority       RESOLVED              RESOLVED / ESTABLISHED_POSITIVE
+6  records disagree                           RESOLVED              CONFLICTING_EVIDENCE / NOT_ESTABLISHED
+
+========================================================================================================
+THE CONTROL
+========================================================================================================
+  CONTENT:             required=YES obtained=UNKNOWN -> RESOLVED   |   obtained=YES -> RESOLVED
+  IDENTICAL. A requirement satisfied by clause presence cannot tell a drafted obligation
+  from a discharged one. The document PROMISES drawdown waits for approvals, and the
+  promise is what satisfies the requirement.
+
+  EXTERNAL_COHERENCE:  required=YES obtained=UNKNOWN -> UNVERIFIABLE/NOT_ESTABLISHED   |   obtained=YES -> RESOLVED/ESTABLISHED_POSITIVE
+  THEY DIFFER. The existing external-coherence shape already separates required from
+  obtained, without any new abstraction.
+
+========================================================================================================
+THE DIMENSION THAT IS NOT COVERED
+========================================================================================================
+  genuinely issued        -> RESOLVED/ESTABLISHED_POSITIVE
+  'issued' by the Borrower's own compliance team -> RESOLVED/ESTABLISHED_POSITIVE
+  IDENTICAL. subject_binding ties a record to THIS TRANSACTION, and there is no way to
+  say who is competent to grant the approval. A Loan Registration Number is issued by
+  the Reserve Bank through an authorised dealer bank; a record asserting one, about the
+  right deal, from anybody at all, is accepted.
+
+  This is NOT the required-vs-obtained gap — that one is already covered. It is a third
+  binding: evidence is bound to a transaction and is not bound to an AUTHORITY.
+
+========================================================================================================
+THE SAME QUESTION, ASKED OF THE PROPOSITION LAYER
+========================================================================================================
+  lender_is_nbfc, on a public register        -> EVIDENCE_PRESENT
+  lender_is_nbfc, on the lender's own say-so  -> EVIDENCE_INADMISSIBLE
+  The proposition layer ALREADY constrains who may establish a proposition -- that is what
+  admissible_provenance is. So authority-competence is not a missing capability in the
+  architecture. It is a capability present in one mechanism and absent from the other:
+
+      evidencePropositions   binds to a subject AND to an admissible source
+      EXTERNAL_COHERENCE     binds to a subject only
+
+  Which is a smaller and more tractable finding than 'third-party consent needs a new
+  abstraction', and it is NOT a licence to author a requirement onto the EVIDENCE source
+  to demonstrate it. Whether an LRN belongs there is a question about the Loan family's
+  real requirements, and this probe authored none.

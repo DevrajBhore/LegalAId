@@ -365,7 +365,20 @@ export function deriveGenerationControls(documentType, variables = {}) {
   const gender = normalizeText(variables.employee_gender).toLowerCase();
   if (gender) derived.is_female_employee = gender.includes("female");
   const headcount = normalizeText(variables.workplace_headcount).toLowerCase();
-  if (headcount) derived.employer_headcount_ge_10 = headcount.includes("10 or more");
+  if (headcount) {
+    derived.employer_headcount_ge_10 = headcount.includes("10 or more");
+    // Whether the ESTABLISHMENT is covered, which is a different question from
+    // who the employee is. MATERNITY_ENTITLEMENT used to be gated on
+    // is_female_employee while its own statement said "where the establishment
+    // is covered" — it named one boundary and implemented another.
+    //
+    // Derived from the same headcount answer the user already gave, so nobody
+    // is asked twice. VERIFY: that the Maternity Benefit Act's coverage
+    // threshold is the same ten this field expresses; it is being reused
+    // because it is the closest established fact, not because the two
+    // thresholds have been checked against each other.
+    derived.establishment_is_covered = headcount.includes("10 or more");
+  }
 
   // Employment seniority drives garden leave and exclusivity.
   const seniority = normalizeText(variables.seniority_level).toLowerCase();
@@ -451,14 +464,20 @@ export function deriveGenerationControls(documentType, variables = {}) {
     derived.has_esop_or_variable_pay = explicitEsop;
   }
 
-  // Secured vs unsecured loan: a security clause must only appear when there is
-  // actual collateral. Explicit flag wins; otherwise infer from collateral.
-  const explicitSecured = normalizeBooleanLike(
+  // Secured vs unsecured: DECLARED, never inferred from the collateral text.
+  //
+  // The inference read `hasMeaningfulValue(security_collateral)` — not empty and
+  // not one of six bare tokens. Nine plain-English ways of writing "there is
+  // none" therefore produced a SECURED loan, including "Unsecured", which the
+  // field's own help text told the user to write. An explicit negative became an
+  // affirmative contractual position, and the security and SARFAESI clauses
+  // followed from it.
+  //
+  // A description is not a position. Where the question is unanswered this stays
+  // UNKNOWN and the gate does not fire — silence selects nothing, which is the
+  // rule everywhere else in this file.
+  derived.is_secured = normalizeBooleanLike(
     variables.loan_is_secured ?? variables.is_secured
-  );
-  derived.is_secured = statedOrInferred(
-    explicitSecured,
-    hasMeaningfulValue(variables.security_collateral)
   );
 
   // Lender-type regulatory triggers (finance ruleset feature class).

@@ -1,0 +1,39 @@
+{
+  "clause_id": "CORE_FORCE_MAJEURE_FALLBACK_001",
+  "name": "Force Majeure",
+  "title": "Force Majeure",
+  "category": "FORCE_MAJEURE",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Neither Party shall be liable for any failure or delay in performance to the extent caused by force majeure events or other events beyond its reasonable control, including acts of God, natural disasters, war, civil disturbance, strikes, or governmental action, provided that the affected Party promptly notifies the other Party and resumes performance as soon as reasonably practicable.",
+  "legal_basis": [
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "56",
+      "note": "A contract becomes void when the act it requires afterwards becomes impossible or unlawful."
+    },
+    {
+      "act": "Indian Contract Act, 1872",
+      "section": "32",
+      "note": "A contingent contract becomes void if the uncertain event becomes impossible."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "The clause lists an event that was foreseeable at the date of the Agreement and within the affected Party's control.",
+    "Relief is claimed without the prompt notice the clause requires."
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "authoring_note": "Migrated from backend/commercial/protectionLibrary.js, a second clause library that injected clauses after hardening had run. Its clauses reached shipped documents in seven document types carrying no review status, no structured legal basis and no invalid_if, and were invisible to getAllClauses(), to the unreviewed-clause ceiling, and to any knowledge-defined family. THE TEXT IS UNCHANGED by this migration, so the only difference in output is the clause id. Whether these should instead be deduplicated against their near-equivalents already in the library -- CORE_LIMITATION_LIABILITY_001, CORE_INDEMNITY_001, CORE_FORCE_MAJEURE_001 -- is a drafting decision for an advocate, not a refactor, and is deliberately left open.",
+  "migrated_from": "AUTO-FM-001",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

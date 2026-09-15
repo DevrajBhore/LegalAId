@@ -1,0 +1,208 @@
+{
+  "$comment": [
+    "Eighth family. Scope and duration are deliberately SEPARATE requirements: an NDA can",
+    "have excellent scope and defective duration, or the reverse, and neither may compensate",
+    "for the other in the coverage report.",
+    "",
+    "The requirements below describe what is OBSERVABLE. None of them says 'without a",
+    "public-domain carve-out the obligation is unenforceable' -- that is a legal conclusion,",
+    "and this layer is not permitted to reach one. What it can establish is whether the",
+    "instrument identifies the circumstances in which information ceases to qualify for",
+    "protection. Whether the resulting drafting is legally sufficient is for an advocate."
+  ],
+  "document_type": "NDA",
+  "requirements": [
+    {
+      "id": "SUBJECT_MATTER_BOUNDED",
+      "kind": "CONTENT",
+      "statement": "What counts as Confidential Information is defined.",
+      "identity_test": "Remove it and the obligation has no subject: there is nothing identifiable that the receiving party is bound to protect.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CESSATION_CIRCUMSTANCES_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The circumstances in which information ceases to qualify for protection are identified.",
+      "identity_test": "Remove them and the instrument does not distinguish information it protects from information that stays burdened merely because it was once disclosed — a distinction the parties cannot make later without the instrument's help.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_EXCLUSIONS_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "COMPELLED_DISCLOSURE_ADDRESSED",
+      "kind": "CONTENT",
+      "statement": "Disclosure compelled by law or by an authority is addressed.",
+      "identity_test": "Remove it and a recipient served with an order must choose between breaching the agreement and disobeying the order, with no stated route through.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_DISCLOSURE_PERMITTED_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "OBLIGATIONS_OF_RECIPIENT",
+      "kind": "CONTENT",
+      "statement": "What the recipient must do with the information is stated.",
+      "identity_test": "Remove it and the instrument names a subject and imposes nothing.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_CONFIDENTIALITY_001",
+          "NDA_DATA_SECURITY_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "ONWARD_DISCLOSURE_CONTROLLED",
+      "kind": "CONTENT",
+      "statement": "Disclosure to the recipient's own people and advisers is controlled.",
+      "identity_test": "Remove it and the obligation binds a company whose employees are bound by nothing.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_THIRD_PARTY_DISCLOSURE_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "RETURN_OR_DESTRUCTION",
+      "kind": "CONTENT",
+      "statement": "Return or destruction of the information on demand or on ending is dealt with.",
+      "identity_test": "Remove it and the disclosing party has no route to recover what it disclosed once the discussion fails.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_RETURN_OF_INFORMATION_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONTINUING_OBLIGATION_AFTER_RETURN",
+      "kind": "CONTENT",
+      "statement": "The obligation that continues after return or destruction is distinguished from the physical act.",
+      "identity_test": "Remove it and returning the documents is read as discharging the duty, when copies in backups, in email and in memory are exactly what the duty was for.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_RETURN_OF_INFORMATION_001",
+          "CORE_RESIDUAL_KNOWLEDGE_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONFIDENTIALITY_PERIOD_STATED",
+      "kind": "CONTENT",
+      "statement": "How long the obligation runs is stated.",
+      "identity_test": "Remove it and neither party can say when the burden ends, and a perpetual obligation is read into an instrument nobody intended to be perpetual.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_DURATION_001",
+          "NDA_TERM_SURVIVAL_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Took the NDA the product generates today — every expected clause id present, each clause well drafted on its own — and asked not whether the requirements were satisfied but whether the satisfied clauses agreed with one another about the period they all govern.",
+        "false_green": "9 of 9 reported RESOLVED for an instrument whose NDA_DURATION_001 says confidentiality survives five years and whose NDA_TERM_SURVIVAL_001 says three, and the declared relationship between them was silently discarded because the model had no notion of relationships. The clause library forces the pairing: NDA_DURATION_001 lists NDA_TERM_SURVIVAL_001 in required_with.",
+        "fixture": "tests/requirementCoherence.test.mjs"
+      }
+    },
+    {
+      "id": "BREACH_HAS_A_REMEDY",
+      "kind": "CONTENT",
+      "statement": "What follows a breach is stated.",
+      "identity_test": "Remove it and damages are the only route, for a loss that is characteristically hard to quantify.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_BREACH_REMEDIES_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    }
+  ],
+  "$relationships_comment": [
+    "Requirements that are each satisfied and jointly incoherent.",
+    "",
+    "The five-family corpus established that PRESENCE is not SATISFACTION. This establishes",
+    "the next thing: SATISFACTION of each requirement is not COHERENCE between them. Every",
+    "NDA this system ships contains NDA_DURATION_001, which says the obligation continues for",
+    "five years after termination, and NDA_TERM_SURVIVAL_001, which says it survives for a",
+    "further three years. Both clauses are individually well drafted. Every requirement above",
+    "is satisfied. The document states two different answers to the only question a",
+    "confidentiality obligation has to settle.",
+    "",
+    "The check is deterministic and evidence-based: a declared extraction from each clause's",
+    "own text, compared. It is not a judgment that two clauses 'seem inconsistent'."
+  ],
+  "relationships": [
+    {
+      "id": "CONFIDENTIALITY_PERIOD_COHERENT",
+      "between": [
+        "NDA_DURATION_001",
+        "NDA_TERM_SURVIVAL_001"
+      ],
+      "must_agree_on": "the period for which confidentiality obligations run after the agreement ends",
+      "$comment": [
+        "Anchored on survival language rather than on any 'period of N years' phrasing, because",
+        "NDA_TERM_SURVIVAL_001 states TWO periods: the term of the agreement itself (two years) and",
+        "the post-termination confidentiality period (three years). An unanchored extract would read",
+        "the term out of one clause and the survival period out of the other and compare two different",
+        "things -- and comparing the wrong quantities is a worse failure than not comparing at all,",
+        "because it produces a confident finding.",
+        "",
+        "What this relationship does NOT decide: whether either period is reasonable under section 27",
+        "of the Contract Act, or which of the two ought to govern. Both are legal conclusions. It",
+        "establishes only that the instrument states two and does not say which."
+      ],
+      "extract": "surviv\\w*(?:\\s+for)?[^.]{0,140}?period of [a-z-]+ \\((\\d+)\\) years",
+      "identity_test": "Remove it and the instrument states two different post-termination confidentiality periods, each in a clause that reads correctly on its own, and the requirement model reports both clauses present and every requirement satisfied.",
+      "when_broken": "CONTRADICTED",
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

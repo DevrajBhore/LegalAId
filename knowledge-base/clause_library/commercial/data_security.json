@@ -44,5 +44,13 @@
   ],
   "tds_applicable": false,
   "gst_applicable": false,
-  "msme_sensitive": false
+  "msme_sensitive": false,
+  "verification_flags": [
+    {
+      "raised_by": "Client review of the NDA and Privacy Policy, September 2026 — 'Review the Section 43A IT Act reference'.",
+      "question": "Whether section 43A of the Information Technology Act, 2000 is still available to be cited. Section 44(3) of the Digital Personal Data Protection Act, 2023 omits it, but the omission takes effect on the date that provision is brought into force, and the status of the SPDI Rules, 2011 alongside it is not settled between the sources consulted.",
+      "why_not_resolved_here": "This is a question about what the law currently is, not about how this clause is drafted. It has been recorded on every clause that cites the section rather than answered by editing the citation: eleven clauses across the NDA, employment, IP, privacy and core confidentiality families rest on it, and changing a statutory reference without an advocate would be the system asserting law it cannot verify.",
+      "status": "awaiting-advocate-determination"
+    }
+  ]
 }

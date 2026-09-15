@@ -1,0 +1,235 @@
+{
+  "$comment": [
+    "Ninth family. Authored at step F of the certification method, AFTER the falsification",
+    "attacks rather than before them, so that two defects already found end to end appear here as",
+    "requirements rather than as loose bugs:",
+    "",
+    "  SECURITY_POSITION_SETTLED       is_secured is now a declared answer. It was inferred from",
+    "                                  whether a free-text box held a 'meaningful value', so a",
+    "                                  borrower writing 'None — this is an unsecured loan' got a",
+    "                                  secured loan and a security clause describing collateral",
+    "                                  that did not exist.",
+    "  ENFORCEMENT_MATCHES_THE_LOAN    LOAN_SARFAESI_ENFORCEMENT_001 declares itself invalid where",
+    "                                  the loan is unsecured, in its own invalid_if, and the",
+    "                                  blueprint gates it on lender eligibility alone. The",
+    "                                  knowledge base is more correct than the gate.",
+    "",
+    "WHAT IS DELIBERATELY NOT HERE. No requirement asserts that a given interest rate is usurious,",
+    "that a limitation period has run, or that a charge is void for non-registration. Those are",
+    "legal conclusions. What is authored is what the instrument must ADDRESS, and the assessment",
+    "reports whether it does.",
+    "",
+    "Two clauses in this family carry invalid_if conditions that no requirement can currently",
+    "evaluate -- 'Mortgage not registered with Sub-Registrar', 'Charge not registered with ROC",
+    "within 30 days'. They are FORMALITY requirements below, capped at PROVIDED_FOR, because the",
+    "document can provide for an act and cannot perform it."
+  ],
+  "document_type": "LOAN_AGREEMENT",
+  "requirements": [
+    {
+      "id": "PRINCIPAL_ASCERTAINED",
+      "kind": "CONTENT",
+      "statement": "The sum advanced, and how it reaches the borrower, are stated.",
+      "identity_test": "Remove it and there is no ascertainable sum to repay: the instrument records an intention to lend and nothing a court could order repaid.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_AMOUNT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "REPAYMENT_OBLIGATION_STATED",
+      "kind": "CONTENT",
+      "statement": "The borrower's obligation to repay, and the times at which repayment falls due, are stated.",
+      "identity_test": "Remove it and an advance with no stated obligation to return it is not a loan at all — the instrument describes a transfer and leaves the parties to argue about what it was.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_REPAYMENT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "$timing_note": [
+        "NOT authored as a TIMING requirement. Whether a limitation period has begun, and from",
+        "what, turns on whether the loan is repayable on demand or on a date — and the system",
+        "holds no field distinguishing them. Reporting a computed window here would be the",
+        "cheque-notice proxy defect in a new place: an answer computed from a stand-in for the",
+        "event the statute actually names."
+      ],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "INTEREST_POSITION_SETTLED",
+      "kind": "CONTENT",
+      "statement": "Whether interest runs on the advance, and on what basis, is settled by the instrument.",
+      "identity_test": "Remove it and neither party can compute what is owed on any given day, and the sum demanded on default rests on nothing the agreement says.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_INTEREST_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "DEFAULT_DEFINED",
+      "kind": "CONTENT",
+      "statement": "The events that constitute default are identified.",
+      "identity_test": "Remove it and every remedy in the instrument has no trigger: the lender may act on a default the agreement never defines.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_DEFAULT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "CONSEQUENCE_OF_DEFAULT_STATED",
+      "kind": "CONTENT",
+      "statement": "What the lender may do on default is stated.",
+      "identity_test": "Remove it and default is named and nothing follows from it.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_ACCELERATION_001",
+          "LOAN_DEFAULT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "SECURITY_POSITION_SETTLED",
+      "kind": "CONTENT",
+      "statement": "Where the loan is secured, what secures it is identified in the instrument.",
+      "identity_test": "Remove it and a secured loan names no security, so there is nothing for the default and enforcement provisions to attach to and nothing the borrower has agreed to create.",
+      "applicability": {
+        "position": "is_secured"
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_SECURITY_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "$position_note": [
+        "is_secured is a DECLARED answer (loan_is_secured: Yes/No), not an inference from the",
+        "collateral description. Unanswered leaves this APPLICABILITY_UNKNOWN, which is the",
+        "honest state: nobody has said whether this loan is secured."
+      ],
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "kind": "CHARACTER",
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_DEFAULT_001",
+          "LOAN_ACCELERATION_001"
+        ]
+      },
+      "review_status": "draft-needs-legal-review",
+      "when_unsatisfied": "ESCALATE",
+      "id": "ENFORCEMENT_MATCHES_SECURITY_POSITION",
+      "statement": "An unsecured loan does not assert enforcement remedies that exist only over security.",
+      "identity_test": "Remove it and an unsecured loan can carry a clause entitling the lender to take possession of, manage and transfer 'the secured assets' without the intervention of any court — over assets that do not exist.",
+      "applicability": {
+        "position": "is_secured",
+        "value": false
+      },
+      "contradicted_by": [
+        "LOAN_SARFAESI_ENFORCEMENT_001"
+      ],
+      "coherence_note": "LOAN_SARFAESI_ENFORCEMENT_001 lists 'Loan is unsecured' in its own invalid_if, and the blueprint gates it on lender eligibility alone.",
+      "$split": [
+        "One of the two branches the guarded clause declares. Authored alone it left the other uncovered."
+      ]
+    },
+    {
+      "kind": "CHARACTER",
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_DEFAULT_001",
+          "LOAN_ACCELERATION_001"
+        ]
+      },
+      "review_status": "draft-needs-legal-review",
+      "when_unsatisfied": "ESCALATE",
+      "id": "ENFORCEMENT_MATCHES_LENDER_ELIGIBILITY",
+      "statement": "A lender that cannot invoke the enforcement statute does not assert rights under it.",
+      "identity_test": "Remove it and a loan from a lender outside the class the Act confers these rights on can still carry a clause acknowledging the lender as a secured creditor entitled to enforce without a court.",
+      "applicability": {
+        "position": "lender_is_regulated",
+        "value": false
+      },
+      "contradicted_by": [
+        "LOAN_SARFAESI_ENFORCEMENT_001"
+      ],
+      "coherence_note": "LOAN_SARFAESI_ENFORCEMENT_001 lists 'Lender is not a SARFAESI-eligible secured creditor' in its own invalid_if, and the clause's closing sentence says it 'shall not be construed to confer SARFAESI rights on a lender not so eligible'.",
+      "$split": [
+        "The branch the original requirement omitted. A secured loan from an ineligible lender",
+        "ships the clause and was outside any requirement.",
+        "",
+        "VERIFY BEFORE RELIANCE: lender_is_regulated is derived from lender_type and is NOT the",
+        "same question as whether a lender is a 'secured creditor' within the meaning of the Act.",
+        "The clause's own text names 'a scheduled bank or notified financial institution / NBFC'.",
+        "Whether the derived flag tracks that class is a legal question and the flag is being used",
+        "here as the closest established fact, not as an answer to it."
+      ],
+      "$verification_needed": "SARFAESI Act, 2002 s.2(1)(zd) — which lenders are 'secured creditors' able to invoke the Act, and whether lender_type distinguishes them."
+    },
+    {
+      "id": "SECURITY_PERFECTION_PROVIDED_FOR",
+      "kind": "FORMALITY",
+      "statement": "Where the loan is secured, the instrument provides for the registrations that perfect the security.",
+      "identity_test": "Remove it and the agreement creates security and says nothing about the steps that make it effective against third parties, leaving a lender who believes itself secured with an interest nobody else is bound to notice.",
+      "applicability": {
+        "position": "is_secured"
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_SECURITY_001"
+        ]
+      },
+      "outside_the_document": "Registration of a mortgage with the Sub-Registrar and of a charge with the Registrar of Companies are acts performed after execution. The clause can require them; it cannot accomplish them, and a positive finding here says only that the instrument provides for them.",
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "PREPAYMENT_POSITION_SETTLED",
+      "kind": "CONTENT",
+      "statement": "Whether the borrower may repay early, and on what terms, is settled.",
+      "identity_test": "Remove it and a borrower with the money cannot know whether tendering it discharges the debt or breaches the agreement.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_PREPAYMENT_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "falsification": {
+        "attack": "Wrote the collateral description as a plain-English negative — 'None — this is an unsecured loan', which is what the field's own help text instructed — then generated the agreement from a scheduled-bank lender.",
+        "false_green": "is_secured was inferred from whether the free-text box held a 'meaningful value', so the explicit negative became an affirmative position: a security clause describing collateral that does not exist, and a SARFAESI clause asserting the lender could take possession of the secured assets without a court. After the position was made a declared Yes/No, the security clause was STILL re-injected by dependencyResolver through LOAN_DEFAULT_001.required_with, and SARFAESI still shipped because its gate reads lender eligibility alone.",
+        "fixture": "tests/negativeAsPosition.test.mjs, tests/positionOverride.test.mjs, tests/loanApplicability.test.mjs"
+      },
+      "review_status": "draft-needs-legal-review"
+    }
+  ]
+}

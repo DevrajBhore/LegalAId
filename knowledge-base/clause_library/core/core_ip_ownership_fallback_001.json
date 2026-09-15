@@ -1,0 +1,39 @@
+{
+  "clause_id": "CORE_IP_OWNERSHIP_FALLBACK_001",
+  "name": "Intellectual Property Ownership",
+  "title": "Intellectual Property Ownership",
+  "category": "IP",
+  "document_types": [
+    "ALL"
+  ],
+  "jurisdiction": "India",
+  "text": "Except for each Party's pre-existing intellectual property, all intellectual property in work product, deliverables, or materials created specifically under this Agreement shall vest in the commissioning Party upon full payment of the applicable fees, and the creating Party shall execute all documents reasonably required to perfect such ownership.",
+  "legal_basis": [
+    {
+      "act": "Copyright Act, 1957",
+      "section": "19",
+      "note": "An assignment of copyright must be in writing and signed by the assignor or a duly authorised agent."
+    },
+    {
+      "act": "Copyright Act, 1957",
+      "section": "17",
+      "note": "First ownership of copyright, and the exception for work made under a contract of service."
+    }
+  ],
+  "mandatory": false,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "invalid_if": [
+    "Vesting is conditional on payment in a way that leaves ownership uncertain while a dispute over fees runs.",
+    "The assignment is not in writing and signed, which section 19 of the Copyright Act, 1957 requires."
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "required_with": [],
+  "suggested_with": [],
+  "authoring_note": "Migrated from backend/commercial/protectionLibrary.js, a second clause library that injected clauses after hardening had run. Its clauses reached shipped documents in seven document types carrying no review status, no structured legal basis and no invalid_if, and were invisible to getAllClauses(), to the unreviewed-clause ceiling, and to any knowledge-defined family. THE TEXT IS UNCHANGED by this migration, so the only difference in output is the clause id. Whether these should instead be deduplicated against their near-equivalents already in the library -- CORE_LIMITATION_LIABILITY_001, CORE_INDEMNITY_001, CORE_FORCE_MAJEURE_001 -- is a drafting decision for an advocate, not a refactor, and is deliberately left open.",
+  "migrated_from": "AUTO-IP-001",
+  "review_status": "draft-needs-legal-review",
+  "source": "LegalAId Clause Library",
+  "version": "1.0"
+}

@@ -1,0 +1,144 @@
+{
+  "$comment": [
+    "Seventh family. The adversarial matrix was written BEFORE the requirements, so the",
+    "architecture is not quietly designed around what happens to pass.",
+    "",
+    "  1  continuing condition not supplied          -> NOT_ESTABLISHED",
+    "  2  evidence shows the condition ceased        -> negative finding",
+    "  3  evidence shows it continues                -> positive finding",
+    "  4  evidence is stale or temporally irrelevant -> must NOT be success",
+    "  5  evidence conflicts with itself             -> must NOT be success",
+    "",
+    "A power of attorney introduces a dependency none of the first six had. The SHA asks",
+    "whether another instrument agrees; this asks whether a state of the world HOLDS NOW.",
+    "Section 201 of the Indian Contract Act, 1872 terminates an agency on the death or",
+    "unsoundness of mind of the principal, so a flawlessly drafted power is a dead letter the",
+    "moment the donor dies -- and the document can never know.",
+    "",
+    "The doctrine here is authored, not invented by the test: the conditions are those",
+    "section 201 names, and nothing has been added because the architecture wanted a state."
+  ],
+  "document_type": "POWER_OF_ATTORNEY",
+  "requirements": [
+    {
+      "id": "DONOR_AND_DONEE_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The donor and the attorney are identified.",
+      "identity_test": "Remove it and no one can tell who is authorised to act, or for whom.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_APPOINTMENT_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review",
+      "falsification": {
+        "attack": "Wrote the five-case adversarial matrix before authoring the requirements, then ran evidence of the donor's continuing capacity that was absent, negative, current, seven years old, undated, self-contradictory, and about a different person.",
+        "false_green": "Stale evidence from 2019 and two records flatly disagreeing both reported ESTABLISHED_POSITIVE — the second because the assessor took whichever record arrived first, resolving a legal question by array order.",
+        "fixture": "tests/documentRequirements.test.mjs"
+      }
+    },
+    {
+      "id": "POWERS_ENUMERATED",
+      "kind": "CONTENT",
+      "statement": "The acts the attorney may perform are enumerated.",
+      "identity_test": "Remove it and the instrument confers nothing: a power of attorney is construed strictly and what is not granted is withheld.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_POWERS_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "LIMITS_STATED",
+      "kind": "CONTENT",
+      "statement": "The limits on the authority are stated.",
+      "identity_test": "Remove them and third parties cannot tell where the attorney's authority stops, which is the risk the instrument exists to manage.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_LIMITATIONS_001"
+        ]
+      },
+      "when_unsatisfied": "DISCLOSE",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "REVOCATION_DEALT_WITH",
+      "kind": "CONTENT",
+      "statement": "How the power is revoked, and when it ends.",
+      "identity_test": "Remove it and the donor has no stated route to withdraw an authority that continues to bind them as against third parties without notice.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_REVOCATION_001"
+        ]
+      },
+      "when_unsatisfied": "BLOCK",
+      "review_status": "draft-needs-legal-review"
+    },
+    {
+      "id": "EXECUTION_FORMALITY",
+      "kind": "FORMALITY",
+      "statement": "The instrument is executed and attested as the law requires.",
+      "identity_test": "Remove it and a power authorising acts concerning immovable property may not be received: section 33 of the Registration Act, 1908 requires authentication before a registering officer.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_EXECUTION_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "outside_the_document": "Authentication and, where required, registration are performed on the instrument before an officer. The document can provide for them; it cannot perform them."
+    },
+    {
+      "id": "DONOR_CAPACITY_SUBSISTS",
+      "kind": "EXTERNAL_COHERENCE",
+      "statement": "The donor is alive and of sound mind at the time the attorney acts.",
+      "identity_test": "Remove it and nothing is lost from the page — which is the point. Section 201 of the Indian Contract Act, 1872 terminates the agency on the donor's death or unsoundness of mind, so the instrument becomes a dead letter without a word of it changing, and no reading of the document can reveal that it has happened.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_APPOINTMENT_001"
+        ]
+      },
+      "when_unsatisfied": "ESCALATE",
+      "review_status": "draft-needs-legal-review",
+      "external_instrument": "DONOR_STATUS_EVIDENCE",
+      "subject_binding": [
+        "donor_identity_number"
+      ],
+      "external_provision": "donor_capacity",
+      "requires": "SUBSISTS",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "201"
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "202"
+        }
+      ],
+      "evidence_note": "A continuing state, not a past act. Evidence of it is only ever evidence as at a date, and ninety days is an authored judgment about how long such evidence speaks for -- not an architectural constant.",
+      "evidence_valid_for_days": 90
+    }
+  ]
+}
