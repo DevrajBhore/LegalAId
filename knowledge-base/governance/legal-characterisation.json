@@ -1,0 +1,132 @@
+{
+  "$comment": [
+    "LEGAL CHARACTERISATION — A DIMENSION, NOT A LAYER.",
+    "",
+    "MEASURE, INTERACTION and APPORTIONMENT ask what the ceiling refers to, how it meets other",
+    "exposure provisions, and among whom it operates. All three assume the clause IS a ceiling.",
+    "",
+    "D4.29 produced a case where that assumption is the question. A cap measured on a payment class",
+    "that never arises computes to nil, and nil recovery is what an absolute bar produces. Whether",
+    "the clause is therefore a limitation or an exclusion is a legal characterisation, and it is not",
+    "answered by any of the three layers because it is prior to all of them.",
+    "",
+    "It is recorded as a separate dimension so that it cannot be reached by arithmetic."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "opened_in": "D4.30",
+  "scope_of_this_record": "The liability ceiling. It is NOT generalised to other clause families, because no evidence yet shows the problem recurs outside them — the same refusal recorded in cap-referent.json#engine_generalisation.",
+
+  "hard_constraint": {
+    "id": "ARITHMETIC_DOES_NOT_DETERMINE_CHARACTERISATION",
+    "constraint": "A legal characterisation may never be inferred from a computed value. That the ceiling evaluates to zero does not make the clause an absolute bar, and that it evaluates to a positive figure does not make it a valid limitation.",
+    "why": [
+      "The arithmetic is a fact about this instance. The characterisation is a question about the",
+      "clause, the parties, the bargaining relationship and the applicable authority, and Indian law",
+      "on it is unsettled.",
+      "",
+      "Inferring one from the other would let the engine author a legal conclusion out of a division",
+      "that happened to yield nil. It would also be unstable: the same clause between the same",
+      "parties would change legal character with the invoice history."
+    ],
+    "consequence": "The nil ceiling is surfaced as a computed fact and as an open characterisation question, never as a verdict.",
+    "certification": "AUTHORED_DECISION_PENDING"
+  },
+
+  "characterisation_tree": {
+    "$note": "What the verified authorities actually distinguish. The branches are NOT mutually exclusive — a consumer contract can also contain an absolute bar — so this is a set of questions to be answered, not a classifier that returns one label.",
+    "branches": [
+      {
+        "question": "Is the restriction an absolute bar on claiming damages?",
+        "authority": "Simplex Concrete Piles",
+        "reading": "Held void under s.23 for negating ss.55 and 73.",
+        "caution": "A High Court decision on government standard terms with employer-caused delay. Its reach between commercial equals was not decided."
+      },
+      {
+        "question": "Is it a threshold cap at a stated figure?",
+        "authority": "Bharathi Knitting",
+        "reading": "Enforceable, and enforceable even when very low.",
+        "caution": "The reasoning rests on what the signer could see on the page and the insurance route offered as an alternative. A formula offers neither."
+      },
+      {
+        "question": "Is it an exclusion of a CATEGORY of loss?",
+        "authority": "PLUS 91 Security Solutions",
+        "reading": "Given effect where other heads remained available.",
+        "caution": "The judgment was not read; facts and holding come from a law report. Its relationship to Simplex is the practitioner literature's reading, not this court's words."
+      },
+      {
+        "question": "Is the counterparty a consumer?",
+        "authority": "Consumer Protection Act 2019, s.2(46) with s.49(2)",
+        "reading": "A term unfair to a consumer may be declared null and void, on a statutory route that does not depend on the Simplex line at all.",
+        "caution": "Consumer status under the Act is itself fact-dependent and excludes acquisition for a commercial purpose. It cannot be read off a party type."
+      },
+      {
+        "question": "Are the parties of comparable bargaining power?",
+        "authority": "Central Inland Water Transport v Brojo Nath Ganguly",
+        "reading": "Unconscionability may displace a term where there is great disparity and no meaningful choice.",
+        "caution": "Stated not to reach commercial transactions between equals. Transplanting it as a universal rule is the failure D4.28 recorded."
+      }
+    ],
+    "the_gap": "Where the ceiling is a FORMULA whose referent can be zero, none of the branches answers it. It is textually a threshold, substantively a bar, and category-wise neither. No authority found addresses it."
+  },
+
+  "the_seven_are_not_one_population": {
+    "$note": [
+      "cap-referent.json records seven families whose ceiling is structurally empty. They share an",
+      "arithmetic and they do not share a legal position. Treating them as one population would",
+      "produce a rule that is wrong for at least two of them."
+    ],
+    "populations": [
+      {
+        "id": "CONSUMER_FACING_UNILATERAL",
+        "members": ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+        "character": "Unilateral instruments published to an unnamed counterparty. Neither family collects party_2 at all — verified against the schemas.",
+        "route": "Consumer Protection Act 2019 s.2(46) / s.49(2), which is available regardless of how the Simplex line resolves.",
+        "additional_question": "Whether a published policy is a contract at all, and on what assent — already a live question elsewhere in this investigation."
+      },
+      {
+        "id": "COMMERCIAL_BILATERAL",
+        "members": ["DISTRIBUTION_AGREEMENT", "SHAREHOLDERS_AGREEMENT", "NDA", "FOUNDERS_AGREEMENT"],
+        "character": "Negotiated bilateral instruments between named parties.",
+        "route": "Depends entirely on the Simplex / Bharathi Knitting characterisation, which is unsettled.",
+        "fact_sensitivity": [
+          "NDA — routinely executed between a large company and an individual on the company's form. Whether bargaining power is comparable varies case by case and the instrument records nothing about it.",
+          "FOUNDERS_AGREEMENT — the parties are individuals, and disparity between a lead founder and a junior one is common. Also not recorded."
+        ]
+      },
+      {
+        "id": "ANCILLARY_TO_A_PRINCIPAL_CONTRACT",
+        "members": ["DATA_PROCESSING_AGREEMENT"],
+        "character": "A DPA sits alongside a services agreement. Fees are payable under the PRINCIPAL contract, not under the DPA, so its ceiling measures a payment that arises next door.",
+        "route": "Distinct from both populations above. Obligations under the Digital Personal Data Protection Act 2023 may fall within the clause's own carve-out for liabilities that cannot be limited by law, which would make the nil ceiling partly inoperative rather than total.",
+        "status": "the DPDP interaction is NOT established here and is recorded as a question"
+      }
+    ],
+    "consequence": "A future rule cannot say \"nil cap = invalid\". It has to reach character of the restriction, contractual context, parties, bargaining relationship, consumer status, statutory route, applicable authority and the facts."
+  },
+
+  "the_facts_are_not_collected": {
+    "finding": "The system cannot characterise, because it never asks. No family among the seven collects consumer status or anything describing the bargaining relationship — verified by scanning every field label, name and description in all seven schemas.",
+    "what_exists_instead": "party_1_type and party_2_type, which record legal form — company, LLP, individual, partnership firm, trust, government body.",
+    "forbidden_inference": {
+      "id": "PARTY_TYPE_IS_NOT_CONSUMER_STATUS",
+      "rule": "Legal form must never be used to infer consumer status or bargaining relationship.",
+      "why": [
+        "An individual counterparty is not necessarily a consumer: the Consumer Protection Act excludes acquisition for resale or a commercial purpose, so a sole proprietor buying for the business is not one.",
+        "A company counterparty is not necessarily an equal: a two-person private limited company signing a multinational's standard form is a company and is not of comparable bargaining power.",
+        "In TERMS_OF_SERVICE and PRIVACY_POLICY the only party type collected is the PUBLISHER's, which says nothing whatever about the reader."
+      ],
+      "$discipline": "This is the convenient inference. It is available, it would let the engine produce a characterisation, and it would be an invention. Recorded as forbidden so that it is refused deliberately rather than never noticed."
+    },
+    "consequence": "The characterisation is not merely undecided. It is UNASKABLE on the present intake, and closing that gap is an intake and legal-model question, not a drafting one.",
+    "nature": "INTAKE_AND_APPLICABILITY",
+    "owner": "product and legal model",
+    "status": "OPEN"
+  },
+
+  "what_this_record_does_not_do": [
+    "It does not decide whether any family's ceiling is a bar or a cap.",
+    "It does not resolve the INTERACTION layer, which remains blocked on measurement per head.",
+    "It does not resolve LIABILITY_CAP_APPORTIONMENT, which remains open and untouched.",
+    "It does not add a field, a clause or a validator. Nothing here has been implemented."
+  ]
+}

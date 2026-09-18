@@ -3318,3 +3318,729 @@ JSON file. Neither has been researched, so both are recorded `NOT_REVIEWED` with
 `statute_permits_more_than_two: NOT_ASSESSED`, and a test fails if a statutory
 position is ever asserted for them without the research behind it. An unreviewed
 family is not exposed, so the containment holds without anybody having to guess.
+
+---
+
+## 68. The discovery method was systemically biased, and its replacement is too — measured, not assumed
+
+D4.20 showed the pronoun scan missed `CORE_DISPUTE_RESOLUTION_001`. This asks
+whether that was one blind spot or a defect in the method, and the answer is the
+second — **with the important qualification that the replacement inherits a
+weaker form of the same disease.**
+
+### The pipeline, replacing "pronoun ⇒ N-party issue"
+
+```
+all clauses reachable by an N-party-admissible family
+        ↓   mechanism detectors, each grounded in a demonstrated instance
+semantic candidate + evidence
+        ↓   adjudication, with verdicts recorded as data
+TRUE_CANDIDATE / ALREADY_CLASSIFIED / FALSE_POSITIVE
+```
+
+Eight of the ten detectors are still lexical, and saying so matters — replacing
+one word list with a longer word list would be theatre. Three things make it
+different: every detector names a **mechanism this project has already
+demonstrated on a real clause**; one detector (`RESPONDS_TO_ROSTER`) is not
+lexical at all but renders the clause at two and three principals and compares
+the shipped text; and the output is **evidence per candidate**, so verdicts can
+be adjudicated and the errors counted.
+
+### The result
+
+| | |
+|---|---|
+| clauses reachable | 184 |
+| flagged by the OLD pronoun scan | 49 |
+| flagged by semantic mechanisms | 76 |
+| **invisible to the old scan** | **27** |
+| of those: true candidates / already classified / false positives | **16 / 3 / 3** (+5 folded) |
+
+**`CORE_SURVIVAL_001` is the find.** 24 families, never examined, and it sits
+*downstream of an already-open decision*: `TERMINATION_FOR_DEFAULT_SCOPE` asks
+whether one party's default ends the instrument or one relationship, and survival
+then asks what is left standing — a different answer under every candidate
+treatment. Next to it, `CORE_WAIVER_001` (25 families): does one party's waiver
+extinguish the right for the others, or only against the party it indulged?
+
+### Precision: 42% raw, 89% repaired
+
+The first run produced **59** new candidates. **34 were artefacts of four
+detector defects** — `majority` matching *"the age of majority"*, `Recipient`
+matching *"recipient GSTIN"*, `assign\w*` matching every copyright assignment in
+the corpus, and `proportion` matching vesting over **time** rather than division
+among **people**. Each is the same error as reading the generic plural "the
+Partners" as an attribution: **a word that appears is not a mechanism that
+operates.**
+
+### Recall: the cleared clauses are not clean, and this is demonstrated
+
+I sampled four of the clauses the repaired probe flagged with **nothing**, and
+two of them were real:
+
+- `CORE_STAMP_AND_COSTS_001` (22 families) — costs *"shall be **borne** equally
+  by the Parties"*. The pattern knew "shared equally" and not "borne equally".
+- `CORE_WAIVER_001` (25 families) — no mechanism for one party's unilateral act
+  existed at all until this sample produced one.
+
+A 50% hit rate on a sample of four is not a recall estimate. It is proof that
+**the 108 clauses this probe flags with nothing are not a clean bill of health.**
+Absence of a marker is not absence of a mechanism — exactly what D4.20
+established about pronouns, now demonstrated about the richer vocabulary too.
+
+### What replaces 184 / 17 / 6 / 161
+
+The classification states are unchanged, because **nothing was classified here**
+— this phase discovers and adjudicates, it does not decide. What changed is that
+the 161 `NOT_CLASSIFIED` clauses are no longer undifferentiated:
+
+| within NOT_CLASSIFIED | clauses | meaning |
+|---|---|---|
+| a binary pronoun the old scan saw and never classified | 30 | visible for phases, never acted on |
+| newly found by a semantic mechanism | 22 | **prioritised work, each with a stated question** |
+| no mechanism fires | 108 | no evidence either way — **and provably incomplete** |
+
+"161 unclassified" was a number with no action attached. **21 clauses with a
+stated legal question and an exposure rank** is a backlog somebody can work.
+
+### The rule that survives all of this
+
+> Generation can discover and generalise structural consequences of party count.
+> It cannot resolve an unrecorded legal choice merely because N increased.
+
+Every one of the 16 true candidates is recorded as a **question**, not an answer.
+Not one clause was modified in this phase.
+
+---
+
+## 69. Marker-based discovery does not work on this corpus, and the burden of proof was backwards
+
+D4.21 asked whether the pronoun scan had one blind spot or a systemic defect, and
+answered "systemic" while leaving its own recall unmeasured. D4.22 measured it,
+three ways, and all three agree: **the detector programme is falsified.**
+
+### Experiment 1 — structural detection
+
+A dependency graph already exists in the clause library: **306 edges, 168 clauses
+declaring `depends_on`**, and `dependencyResolver.js` already distinguishes
+`depends_on` (structural — A is incomplete without B) from `required_with`
+(conditional co-presence). Only the first can transmit uncertainty, so only the
+first is walked.
+
+It recovers the model case exactly:
+
+```
+CORE_SURVIVAL_001 --depends_on--> CORE_TERMINATION_001
+                                          ↓
+                         TERMINATION_FOR_DEFAULT_SCOPE is UNDECIDED
+```
+
+without reading a word of the survival clause. **It finds two clauses in the
+whole corpus.** Inheritance reaches only as far as the six open decisions extend,
+so this detector is high-precision and **near-zero-recall by construction** — a
+property of the method, not of the corpus.
+
+### Experiment 2 — reading twelve
+
+Twelve UNDETERMINED clauses, chosen deterministically so the sample is
+reproducible rather than favourable. **Seven carry a real N-party question** —
+a false-negative rate around **58%** in the population the detector had cleared.
+
+`CORE_FURTHER_ASSURANCE_001` is the sharpest: *"Each Party shall, at the
+reasonable request and cost of the requesting Party…"* — it contains the word
+"Party" twice, never "the other Party", and was invisible to the pronoun scan
+**and** to every semantic mechanism. `CORE_TERM_001` was missed on an inflection:
+the pattern wanted "agreed by the Parties" and the text says "agree".
+
+### Experiment 3 — vocabulary ablation
+
+Strip the characteristic words from six clauses known to be cardinality-sensitive.
+
+| clause | lexical before | after ablation | structural | survives |
+|---|---|---|---|---|
+| `CORE_SURVIVAL_001` | — | lost | **found** | **yes** |
+| `CORE_TERMINATION_001` | found | lost | — | no |
+| `CORE_DISPUTE_RESOLUTION_001` | found | lost | — | no |
+| `CORE_LIMITATION_LIABILITY_001` | found | lost | — | no |
+| `CORE_STAMP_AND_COSTS_001` | — | lost | — | no |
+| `CORE_WAIVER_001` | — | lost | — | no |
+
+**Five of six lost.** The detectors have not solved the problem; they recognise
+the words. The one survivor survives structurally, which is the whole argument
+for the graph and also the measure of how little the graph reaches.
+
+### The cause is architectural, not lexical
+
+> This corpus is drafted in **named roles** — Client and Consultant, Borrower and
+> Lender, Assignor and Assignee, Fiduciary and Processor. A role-named clause is
+> implicitly bilateral and never says so. *"The Client shall notify the
+> Consultant"* carries exactly the same N-party question as *"either Party shall
+> notify the other"*, and announces none of it.
+
+No amount of vocabulary tuning fixes that. It is why `PARTY_ROLE_VARIANCE` fired
+on **25 of 25** candidates in this probe's first run: it was detecting "does this
+clause name a party", which is the pronoun scan with extra steps. It is demoted
+to an asymmetric signal — **evidence against irrelevance is not evidence for
+relevance** — and can now block a finding of NOT_RELEVANT while never
+establishing RELEVANT.
+
+### The inversion
+
+**Stop discovering the relevant clauses. Discharge the irrelevant ones.**
+
+The relevant set is large, has a high base rate and emits no signal. The
+irrelevant set is small, closed and characterisable: rules about the *instrument*
+rather than about *who signed it* — definitions, interpretation, severability,
+counterparts, governing law. Only **two** of 108 could be positively discharged.
+
+So the default flips. Every clause in an N-party-admissible family is
+**presumed relevant until positively discharged**, and the work is discharge, not
+search. That changes what the backlog means: 161 unclassified clauses are not
+161 unknowns, they are **161 presumptively-relevant clauses of which 23 have been
+resolved**.
+
+### Reported separately, never blended
+
+| measure | value |
+|---|---|
+| precision of the D4.21 detector | 89% after repair (3 false positives in 27) |
+| recall of the D4.21 detector | unmeasurable by detection; **≈42%** by reading sample |
+| ablation survival | **1 of 6** |
+
+One coverage figure would have hidden that the detector is accurate about what it
+finds and blind to most of what exists. A test now fails if a single blended
+coverage number appears in the record.
+
+### What stands
+
+`CORE_SURVIVAL_001` is confirmed as the correct next clause — it is the one case
+recoverable by mechanism rather than vocabulary, its question is framed by a
+dependency that is already authored, and at 24 families it is the most exposed
+unresolved clause in the portfolio. **No clause was modified in this phase.**
+
+---
+
+## 70. Presumption of relevance: detection may discharge, detection may not certify
+
+D4.22's result, promoted from a probe finding to a methodological rule, because
+continuing to tune detectors would be answering a question that has been settled:
+
+> **N-party relevance is presumed for every clause reachable by an
+> N-party-admissible family, unless evidence establishes irrelevance. Detection
+> may DISCHARGE a clause; detection may not CERTIFY relevance.**
+
+The asymmetry is the whole content. A detector that fires is weak evidence of
+relevance — `PARTY_ROLE_VARIANCE` fired on 25 of 25. A detector that stays silent
+is **no** evidence of irrelevance, because this corpus is drafted in named roles
+and a role-named bilateral clause announces nothing. So detection is used only in
+the direction where a wrong answer is cheap: proposing candidates, never closing
+them.
+
+**`NOT_CLASSIFIED` therefore means *not yet semantically discharged*.** It does
+not mean "probably irrelevant", and a report that treats it as a clean bill of
+health is misreporting the system. The accounting follows:
+
+```
+N-party-admissible clauses (184)
+        ↓  presumptively in scope
+  established treatment (24)  │  not yet discharged (160)
+                              │    AUTHORED_DECISION_PENDING and NOT_CLASSIFIED
+                              │    keep their existing, distinct meanings
+```
+
+The denominator did not change and neither did the states. **The default
+changed.** A worse-sounding ceiling, which is the usual sign of the true one.
+
+Precision, recall and ablation survival stay reported separately and never
+blended — a detector can be 89% precise while being structurally incapable of
+measuring its own recall here, and one combined figure would hide exactly that.
+A test fails if a blended number appears.
+
+---
+
+## 71. The survival gap: a hole that only opens at three parties
+
+`CORE_SURVIVAL_001` — 24 families — is in scope because of an authored edge to
+`CORE_TERMINATION_001`. **The edge establishes scope, not ambiguity**, and
+classifying on inheritance alone would be propagation mistaken for analysis. So
+the counterfactual was enumerated rather than argued.
+
+For three principals, after Party 1's default, which regime binds each pair:
+
+| pair | World A — instrument ends | World B — relationship ends |
+|---|---|---|
+| 1–2 | SURVIVING | **NEITHER** |
+| 1–3 | SURVIVING | **NEITHER** |
+| 2–3 | SURVIVING | LIVE |
+
+**Three of three pairs differ, and the trigger fires in A and not in B.** The
+clause's trigger is *"expiry or termination of **this Agreement**"* — a single
+global predicate — and its survivors *"continue to bind **the Parties**"*.
+
+So under relationship-level termination the departing party falls outside **both**
+regimes: the LIVE regime does not reach them because they are no longer a Party,
+and the SURVIVING regime does not reach them because the Agreement has not
+terminated — it is on foot between the others. **They walk away from
+confidentiality and IP obligations, not because anyone released them, but because
+the trigger is global and the termination was partial.** At two parties this
+cannot happen: departure and termination are the same act.
+
+### A conditional dependent decision — neither inherited nor independent
+
+| parent treatment | world | does choosing it settle survival? |
+|---|---|---|
+| `ENDS_THE_INSTRUMENT` | A | **yes** — trigger fires, everyone stays bound |
+| `REQUIRES_ALL_INNOCENT_PARTIES` | A | **yes** — still instrument-level |
+| `ENDS_THAT_RELATIONSHIP` | B | **no** — a second choice is required |
+
+The question arises under **one of three** parent treatments. Recording it as
+inherited would assert a question where none exists; recording it as independent
+would hide that one choice disposes of it entirely. So it is
+`SURVIVAL_AGAINST_A_DEPARTING_PARTY`, carrying `conditional_on`, under the
+**existing** `PAIRWISE_RIGHT` shape — no survival-specific shape invented,
+because the mechanism is the one that shape already names.
+
+This matters for how the backlog is counted: an advocate choosing
+`ENDS_THE_INSTRUMENT` closes two questions at once; choosing
+`ENDS_THAT_RELATIONSHIP` opens a second. A flat list of open decisions shows
+neither.
+
+### What reading the clause turned up that assuming it would not
+
+I had hardcoded the surviving set as five provisions. The clause enumerates
+**nine**, and three of them carry open decisions of their own — indemnity,
+limitation of liability, dispute resolution. **The gap compounds.** Under World B
+the departing party escapes the liability cap too, which cuts both ways: the cap
+that no longer binds them no longer protects them. Whether that is a windfall or
+an exposure depends on `LIABILITY_CAP_APPORTIONMENT`, which is itself open — so
+these decisions cannot sensibly be taken in isolation.
+
+Ceiling now **24 established / 160 not yet discharged**. No clause was modified.
+
+---
+
+## 72. The six decisions are not a flat list, and the danger is contradiction rather than conditionality
+
+D4.23 left two hypotheses: that `conditional_on` needs engine enforcement, and
+that the decisions may not be independent. Both were measured before either was
+built. Six decisions, thirty ordered pairs:
+
+| edge | count |
+|---|---|
+| `DETERMINES` | **0** |
+| `GATES` | **1** |
+| `CONSTRAINS` | **6** |
+| `INDEPENDENT` | 23 |
+
+**No decision's answer fixes another's, and exactly one can delete another
+question.** The structure is real and thin.
+
+### So: named edges, not a mechanism
+
+A general treatment-level conditionality engine would be built to carry **one
+live instance**. That is abstraction-on-spec, and the answer is to model the edge
+explicitly and wait. A test now fails if a second `GATES` edge or any `DETERMINES`
+edge appears, with a message saying that is the evidence which would justify
+revisiting — so the conclusion can be overturned by measurement rather than
+inherited by default.
+
+### The finding that outranks the one we went looking for
+
+Two of the six edges carry a named risk, and **both are about answers that
+contradict, not questions that disappear**:
+
+- `INCONSISTENT_ANSWERS` — the liability cap with the indemnity
+- `SELF_DEFEATING_COMBINATION` — survival with arbitration reference scope
+
+The second is the sharper one. Dispute resolution is an enumerated survivor, so
+`DEPARTING_PARTY_RELEASED` releases the departing party from the **arbitration
+agreement too** — leaving no forum in which to determine whether they were validly
+released, or to enforce the accrued rights the same clause preserves.
+
+An advocate working a flat checklist can answer two consecutive lines coherently
+and produce an incoherent instrument. Nothing in the current model would notice.
+**The engine gap worth building is a consistency check across resolved treatments
+— not conditionality.** It is not built here, because one measurement is not yet a
+case for either.
+
+### Computing the conflict corrected my account of it
+
+I wrote that `SHARED + SEVERAL_TO_EACH` conflicts while `PER_PARTY +
+SEVERAL_TO_EACH` is coherent. The arithmetic disagreed:
+
+| cap + indemnity | indemnity promises | cap permits | coherent |
+|---|---|---|---|
+| SHARED + SEVERAL_TO_EACH | ₹50,00,000 | ₹10,00,000 | **no** |
+| PER_PARTY + SEVERAL_TO_EACH | ₹50,00,000 | ₹30,00,000 | **no** |
+
+The tension is not a quirk of one pairing. **An indemnity in which everyone owes
+everyone the whole loss outruns any finite cap once the parties outnumber two**,
+and which clause yields is a third question nobody has asked. The figures are
+computed in the probe, so the claim cannot drift away from the numbers again.
+
+### A cycle has no order, and the ordering hid one
+
+The resolution order is now:
+
+1. `TERMINATION_FOR_DEFAULT_SCOPE`
+2. `TRANSITION_ASSISTANCE_SCOPE`, `SURVIVAL_AGAINST_A_DEPARTING_PARTY`
+3. **`INDEMNITY_APPORTIONMENT` and `LIABILITY_CAP_APPORTIONMENT` — jointly**
+4. `ARBITRATION_REFERENCE_SCOPE`
+
+The first version computed in-degrees while **skipping bidirectional edges**,
+which placed the indemnity in tier 1 and the cap in tier 3 — a sequence between
+two decisions that each constrain the other. The cycle was being hidden inside
+the artifact built to expose it. Mutually constraining decisions are now collapsed
+into a joint node: **they are one decision with two parts**, and a test fails if
+they are ever given a sequence again.
+
+`TERMINATION_FOR_DEFAULT_SCOPE` leads because it gates one question and
+constrains another — a scheduling fact a flat list cannot express, and the reason
+this matrix was worth building before any answer was authored.
+
+---
+
+## 73. The cross-treatment inconsistency is a drafting gap, and the repository already contains the fix
+
+D4.24 found that a liability cap and an indemnity, each answered admissibly, can
+jointly promise more cover than the cap permits, and that looked like the case for
+a cross-treatment consistency engine. The guarantee family was chosen to falsify
+it because it is not another MSA with different role names — it has a statute that
+speaks directly to multiple obligors.
+
+**It does not reproduce.** Founders: 2 of 2 combinations incoherent. Guarantee:
+**0 of 2**. And the two reasons are different from each other.
+
+### One — the guarantee family already drafts the interaction, from both ends
+
+> `GUARANTEE_OBLIGATION_001`: the cap applies *"taken together with any liability
+> under the indemnity given in this Agreement"*
+>
+> `GUARANTEE_INDEMNITY_001`: the indemnity *"forms part of, and shall not
+> increase, the aggregate cap"*
+
+Belt and braces, deliberately. The two clauses **cannot** promise more than the cap
+permits, because each says so about the other. The families that carry the two
+decision-bearing clauses together — lease, employment, founders, leave-and-licence,
+NDA — say nothing of the kind.
+
+### Two — s.146 does not resolve the conflict, because there is none for it to resolve
+
+This is the part I was told to test rather than assume, and testing changed the
+answer. **s.146 allocates as between the co-sureties**, in the absence of contract
+to the contrary. **The cap bounds what the creditor may recover**, under s.128's
+*"unless it is otherwise provided by the contract"*. A rule about contribution
+between sureties and a rule about the creditor's reach operate on **different
+axes** and therefore cannot contradict each other.
+
+Had I assumed the statute resolves the conflict, I would have recorded a plausible
+story with the right conclusion and the wrong mechanism — and the generalisation
+drawn from it would have been wrong wherever no statute exists.
+
+### The generalisation, narrower than `INCONSISTENT_ANSWERS` and better
+
+> Cross-treatment inconsistency arises where two treatments quantify **the same
+> exposure on the same axis** with no precedence rule between them. It does not
+> arise where an express interaction clause orders them, and it does not arise
+> where a statute allocates on a different axis.
+
+So **the defect is a missing interaction clause, not a missing engine** — and the
+remedy already exists in this repository, authored by the same hands, in another
+family. A consistency checker would be a detector for a defect that one sentence
+of ordinary drafting prevents. That is the opposite of what D4.24 appeared to
+point at, and it is why the engine was not built.
+
+A test now fails if a cross-treatment consistency engine appears, naming the
+conclusion it would be overturning so the assertion is replaced deliberately
+rather than deleted.
+
+### The reachability correction
+
+My first run asked the MSA for `CORE_INDEMNITY_FULL_001`. **The MSA does not ship
+it** — it carries `CORE_INDEMNITY_001`, a different clause with no open
+apportionment decision. I had nearly drawn a comparative conclusion from a pairing
+that does not co-occur in the document I tested.
+
+Measured instead: **21 document types carry a cap and an indemnity; 5 carry the
+two decision-bearing clauses together**, and four of those five admit a third
+principal today. The D4.24 arithmetic is reachable by a real user, not
+hypothetical — which is what makes the drafting gap worth closing.
+
+### What is untouched
+
+**The N-party question survives.** *"The aggregate liability of the Guarantor"*
+with three co-guarantors is still per-guarantor or shared, and s.146 does not
+answer it because it speaks to contribution rather than to the ceiling.
+`LIABILITY_CAP_APPORTIONMENT` therefore reaches the guarantee family too. Nothing
+was classified, no clause was modified, and no engine was built.
+
+---
+
+## 74. The port was refused, and refused on measurable grounds
+
+D4.25 left an obvious next move: the guarantee family orders its cap against its
+indemnity, five families do not, so port the sentence. The instruction was to
+extract the **semantic contract** rather than copy the wording, and to build one
+reusable treatment **only if the semantics are genuinely identical**.
+
+**They are not**, and the evidence is mechanical rather than a matter of taste.
+
+The shipped cap in all five families reads *"shall not exceed the total
+consideration paid under this Agreement"*. **`NDA` and `FOUNDERS_AGREEMENT`
+collect no consideration field of any kind** — no fee, amount, price or value the
+phrase can measure, and in an NDA the consideration is frequently nil by design.
+
+So folding a mutual confidentiality indemnity into that cap would not *limit* the
+indemnity. It would **erase** it. The same sentence that is a real ceiling in a
+guarantee, where the cap is a stated rupee figure, is an extinguishment in an NDA.
+That is precisely the failure "extract the contract, don't copy the wording" was
+guarding against, and it would have been invisible to anyone who ported on the
+strength of the clause text — which is **byte-identical across all five families**.
+
+### What the guarantee sentence actually asserts
+
+> Two provisions quantify the same exposure, and one is declared to be consumed by
+> the other's ceiling.
+
+The guarantee picks one of **three** available directions:
+
+| direction | appropriate where | destroys the indemnity where |
+|---|---|---|
+| `INDEMNITY_INSIDE_CAP` | the cap is a stated figure | the cap has no referent or is nil |
+| `INDEMNITY_OUTSIDE_CAP` | the harm is unquantifiable or falls on third parties | — |
+| `PARTIALLY_CARVED_OUT` | some heads inside, some outside | — |
+
+The third is the most interesting, because **the instrument is already doing it**.
+The cap carves out *"fraud, wilful misconduct, or liabilities that cannot be
+limited under applicable law"*; the indemnity triggers on *"breach of this
+Agreement, negligence, or wilful misconduct"*. Wilful misconduct is therefore
+already outside the cap **and** already an indemnity trigger — the two clauses
+already interact coherently on one of three heads. **Breach and negligence are
+where nothing has been said.**
+
+### Recorded, not resolved
+
+An `UNDECIDED` decision with three candidate directions, per-family analysis, and
+the authority for each. No clause text changed, nothing attached, no engine built.
+Three engine hypotheses are now recorded as **falsified rather than deferred** —
+conditionality (D4.24), cross-treatment consistency (D4.25), and the single
+portable treatment (D4.26).
+
+### The adversarial fixture asserts the defect, not the fix
+
+Cap, indemnity, three principals, both clauses decision-bearing, in one generated
+`FOUNDERS_AGREEMENT`. The test asserts that the document **does not** order the two
+clauses — the defect stated as a fact about the artifact — with a failure message
+saying that if it ever flips, that may be the fix landing and the governance record
+should be updated rather than the assertion allowed to change silently. The
+guarantee family is the permanent regression case for the resolved pattern.
+
+**A test that passes by describing a hoped-for state is how a suite starts lying.**
+
+### The boundary that was protected
+
+`LIABILITY_CAP_APPORTIONMENT` remains open and untouched. Ordering the indemnity
+against the cap says nothing about whether the cap is per-party, shared, or inter
+se at three principals. A test fails if any candidate direction names an
+apportionment treatment, because **a drafting fix must not answer an open legal
+question as a side effect**.
+
+### Incidental, and independent of everything above
+
+A ceiling measured on *"the total consideration paid"* in two families that
+collect no consideration is not a limitation of liability — it is an unresolved
+reference a court would have to fill. Worth repairing on its own terms, and
+unrelated to both the interaction question and the N-party question.
+
+---
+
+## 75. Measurement precedes interaction, and the cap cannot be computed in ten families
+
+D4.26 refused to port the guarantee's interaction sentence because two families
+collect no consideration for the cap to measure. The finding is deeper than "do
+not copy the sentence":
+
+> **Byte-identical clause text is not evidence of semantic interchangeability.
+> The underlying measurement variable decides what the words do.**
+
+That puts a question *before* the interaction question:
+
+```
+CAP_MEASUREMENT
+    ├── measurable   → the interaction decision may be meaningful
+    └── unmeasurable → the interaction decision is BLOCKED
+```
+
+Asking an advocate whether the indemnity consumes a ceiling that cannot be
+computed is asking them to order a clause against a quantity that does not exist.
+The answer would be recorded, would look like progress, and would mean nothing.
+
+### Measured across 22 cap instances — two failures, not one
+
+| state | families | |
+|---|---|---|
+| `CONFIGURABLE_AND_SUPPLIED` | 6 | the user picks a basis and the intake holds the quantity |
+| `FIXED_PROSE_MEASURABLE` | 6 | no basis question, but the measure happens to be collected |
+| **`OFFERS_A_BASIS_IT_CANNOT_SUPPLY`** | **4** | distribution, JV, partnership, shareholders |
+| **`FIXED_PROSE_UNMEASURABLE`** | **6** | DPA, founders, NDA, privacy policy, share subscription, ToS |
+
+They are kept apart because they need different repairs. The first is an
+**intake** defect: the form offers *"Fees paid or payable in the 12 months before
+the claim"* to a partnership deed, where partners pay each other no fees — the
+option is category-wrong for the family, not merely unsupported. The second is a
+**drafting** defect: no basis question at all, and fixed prose measuring something
+the family never collects. D4.26 found two of these by hand; there are six.
+
+### The interaction question is two heads wide, not one clause wide
+
+The cap already carves out three heads; the indemnity triggers on three; they
+overlap on exactly one.
+
+| head | cap | indemnity trigger | state |
+|---|---|---|---|
+| fraud | carved out | no | settled |
+| wilful misconduct | carved out | **yes** | settled — the one head where the clauses already interact coherently |
+| unlimitable by law | carved out | no | settled |
+| **breach of agreement** | not addressed | yes | **unresolved** |
+| **negligence** | not addressed | yes | **unresolved** |
+
+A Boolean *"is the indemnity capped?"* would overwrite three settled heads to
+answer two open ones. This is visible only because the clause text was read rather
+than summarised.
+
+### Three layers that must not contaminate each other
+
+**MEASUREMENT** — what does the ceiling measure? Blocks everything below.
+**INTERACTION** — per head, does the indemnity consume it, sit outside it, or is
+it carved? Blocked wherever measurement is unresolved.
+**APPORTIONMENT** — with N principals, per-party, shared, or inter se? Open,
+untouched, and asserted untouched.
+
+### A finding I retracted before recording it
+
+Correcting the field list turned up what looked like something worse: ten families
+collect `liability_cap_amount` — a figure the user types — while the clause states
+a formula, so the number never reaches the page. The D4.14 class of failure, and it
+would have been a serious find.
+
+**It is not a defect.** `draftConsistencyValidator.js` already reports
+`LIABILITY_CAP_ANSWERS_CONFLICT`: the user also chose a *basis*, the clause follows
+the basis, and the validator says in terms that the figure has not been used.
+Verified by generating three of the ten and reading the output.
+
+The retraction is kept in the record because it is the useful part. The probe was
+one step from reporting correct, already-disclosed behaviour as a bug, and what
+stopped it was **checking whether the system already said so rather than treating
+silence as confirmation**.
+
+### Three vocabulary defects in one probe
+
+This probe's word lists were wrong three times: `total_fee` and `price` were
+missing, so four families were called unmeasurable when they are not; and a
+fee-specific regex misclassified lease, employment and guarantee, whose caps read
+rent, salary and the guaranteed amount. Each was caught by checking the schema
+rather than trusting the list.
+
+**Every time this phase has written a vocabulary, the vocabulary has been wrong.**
+The measurability question is now asked once, against the measure the clause itself
+names, and reused — not re-derived from a second word list.
+
+---
+
+## 76. The methodology is now data, and the cap has five layers
+
+Two things promoted from conclusions to artifacts, because both bind the next
+probe rather than describing the last one.
+
+### Five rules, each learned by breaking it
+
+| rule | learned in | what it would have caught |
+|---|---|---|
+| `CHECK_WHETHER_THE_SYSTEM_ALREADY_SAYS_SO` | D4.27 | reporting `LIABILITY_CAP_ANSWERS_CONFLICT` as an undiscovered defect |
+| `A_VOCABULARY_DECIDES_THE_FINDING` | D4.21, D4.22, D4.27 | 34 false candidates; five of six clauses lost to ablation; three word-list defects in one probe |
+| `READ_THE_SOURCE_DO_NOT_SUMMARISE_IT` | D4.25, D4.28 | s.146 credited with resolving a conflict it never touched; a UK statutory bar imported into Indian law |
+| `COMPUTE_THE_CONSEQUENCE` | D4.24 | prose calling `PER_PARTY + SEVERAL_TO_EACH` coherent when the arithmetic says otherwise |
+| `ASSERT_THE_STATE_NOT_THE_HOPE` | D4.26 | a fixture asserting a fix that had not landed |
+
+The first is the load-bearing one:
+
+> **A probe must establish whether the production system already recognises and
+> discloses the alleged condition before classifying it as a defect.**
+
+Without it the measurement probes become a source of false legal conclusions —
+the exact failure they exist to prevent, arriving through the instrument meant to
+prevent it.
+
+A test asserts each rule cites its phase and its failure, and that none has been
+softened into a suggestion. **That test failed on my own authoring**: one rule was
+phrased in the imperative while the other four said "must", and the check was
+looking for a word rather than the property. Both were repaired — the rule states
+its obligation explicitly, and the check now recognises imperative mood.
+
+### The cap has five layers, in order
+
+```
+MEASURE ─── computable?    10 of 22 instances are not          (D4.27)
+        └── well-defined?  a cumulative measure is not a figure (D4.28)
+SCOPE       which heads does the ceiling reach?
+EXCLUSIONS  fraud, wilful misconduct, unlimitable by law — settled
+INTERACTION per head: breach and negligence — open, blocked where measurement is
+APPORTIONMENT per-party, shared, or inter se — LIABILITY_CAP_APPORTIONMENT, open
+```
+
+**None may resolve another as a side effect**, and the test asserts the ordering
+and the block.
+
+---
+
+## 77. MEASURABLE was necessary and not sufficient: the cap is a function of time
+
+D4.27 asked whether the ceiling can be computed and answered it. D4.28 took the
+two families where the answer was yes — commercial lease and leave-and-licence,
+where the cap reads rent or licence fee — and asked what it computes.
+
+A lease at ₹2,50,000/month, against a ₹40,00,000 third-party claim:
+
+| month of term | cap = rent paid to date | share of the claim recoverable |
+|---|---|---|
+| 1 | ₹2,50,000 | **6%** |
+| 6 | ₹15,00,000 | 38% |
+| 12 | ₹30,00,000 | 75% |
+| 16+ | ₹40,00,000+ | **100%** |
+
+**The same clause recovers 6% in month one and everything from month sixteen.**
+Nobody chose that. It is an artefact of measuring a ceiling on a **cumulative**
+quantity: protection depends on when the harm happens rather than on what the
+parties agreed, and a tenancy is most exposed in its first months — precisely when
+this cap is smallest.
+
+So the measurement layer has two questions and D4.27 asked only the first.
+**Computable is not well-defined.**
+
+### The two heads, stated as narrowly as the evidence allows
+
+> For a commercial lease and a leave-and-licence agreement, where the ceiling is
+> measured on rent or licence fee paid to date: do the **breach** and
+> **negligence** heads of the mutual indemnity sit inside that ceiling, outside
+> it, or inside it subject to a floor?
+
+Deliberately not bundled in: the three settled heads; whether the cumulative
+measure is the right measure at all; and how the ceiling applies across more than
+two principals.
+
+### The authority, and the thing it is easy to get wrong
+
+Contract Act **s.23** (public policy), *Simplex Concrete Piles* (a clause barring
+s.73 claims is void under s.23), *Central Inland Water Transport* (an unreasonable
+clause between parties of unequal bargaining power is void under s.23).
+
+**Secondary sources state that excluding liability for death or personal injury
+caused by negligence is "automatically void" — and attribute it to common law
+principles. India has no Unfair Contract Terms Act.** The constraint runs through
+s.23 and unconscionability, which are fact-sensitive and turn on bargaining power,
+not through a bright-line statutory bar.
+
+What follows for the negligence head is therefore narrower than "it cannot be
+capped": such a cap is **arguable rather than void**, and its vulnerability rises
+as the ceiling falls — which, on the arithmetic above, is exactly when the tenancy
+is newest.

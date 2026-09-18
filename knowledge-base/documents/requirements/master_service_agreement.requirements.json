@@ -17,6 +17,7 @@
   "requirements": [
     {
       "id": "SOW_GOVERNED_ORDERING",
+      "kind": "CONTENT",
       "statement": "Services can be ordered and scoped from time to time under Statements of Work that take their terms from this Agreement.",
       "identity_test": "Remove it and this stops being a framework at all: it becomes a single-engagement services contract that cannot govern the next order.",
       "applicability": {
@@ -37,6 +38,7 @@
     },
     {
       "id": "PRECEDENCE_OF_DOCUMENTS",
+      "kind": "CONTENT",
       "statement": "Where the Agreement and a Statement of Work conflict, the order of precedence is settled.",
       "identity_test": "Remove it and every SOW creates an unresolved conflict of terms that only litigation settles.",
       "applicability": {
@@ -52,6 +54,7 @@
     },
     {
       "id": "SERVICE_SCOPE_DEFINED",
+      "kind": "CONTENT",
       "statement": "What the Service Provider is engaged to do is identified.",
       "identity_test": "Remove it and there is no ascertainable subject matter; the agreement risks being void for uncertainty under section 29 of the Indian Contract Act, 1872.",
       "applicability": {
@@ -68,6 +71,7 @@
     },
     {
       "id": "CONSIDERATION_SETTLED",
+      "kind": "CONTENT",
       "statement": "What is payable, and when, is settled either in the Agreement or by reference to each Statement of Work.",
       "identity_test": "Remove it and there is no consideration and therefore no enforceable contract under section 25.",
       "applicability": {
@@ -82,10 +86,12 @@
         ]
       },
       "when_unsatisfied": "BLOCK",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$kind_open": "Settled 'by reference to each Statement of Work' points at a document that may not exist yet. CONTENT covers the Agreement establishing the mechanism; it does not verify that any SOW does."
     },
     {
       "id": "SCOPE_CAN_CHANGE",
+      "kind": "CONTENT",
       "statement": "A defined route exists by which the scope, charges or service levels can be varied.",
       "identity_test": "Remove it and every change is either an unpriced concession or a fresh negotiation; a multi-year framework without change control is one that will be breached rather than amended.",
       "applicability": {
@@ -102,6 +108,7 @@
     },
     {
       "id": "DELEGATION_CONTROLLED",
+      "kind": "CONTENT",
       "statement": "Whether the Service Provider may put someone else in its place, and on what terms, is settled.",
       "identity_test": "Remove it and section 40 of the Indian Contract Act, 1872 decides by construction whether performance was personal, and the Client may find it has no contractual relationship with whoever actually performs.",
       "applicability": {
@@ -117,6 +124,7 @@
     },
     {
       "id": "RELATIONSHIP_IS_GOVERNED",
+      "kind": "CONTENT",
       "statement": "Someone on each side is answerable for the relationship, and there is a route for matters they cannot settle.",
       "identity_test": "Remove it and a multi-year engagement has no mechanism short of dispute resolution for the disagreements that arise monthly.",
       "applicability": {
@@ -133,6 +141,7 @@
     },
     {
       "id": "CLIENT_SIDE_OBLIGATIONS",
+      "kind": "CONTENT",
       "statement": "What the Client must supply for performance to be possible, and what follows if it does not.",
       "identity_test": "Remove it and the Service Provider bears the consequences of the Client's own failures; section 67 gives relief but leaves its scope to be argued after the fact.",
       "applicability": {
@@ -148,6 +157,7 @@
     },
     {
       "id": "OWNERSHIP_OF_WORK_PRODUCT",
+      "kind": "CONTENT",
       "statement": "Who owns what is created, and what each side may do with what it learns.",
       "identity_test": "Remove it and the parties discover at the end of the engagement that they disagree about the thing the Client paid for.",
       "applicability": {
@@ -165,6 +175,7 @@
     },
     {
       "id": "CONFIDENTIALITY_BOUNDED",
+      "kind": "CONTENT",
       "statement": "Confidential information is protected, and the protection is bounded so it does not operate as a restraint.",
       "identity_test": "Remove the bound and section 27 of the Indian Contract Act, 1872 may render the protection itself void as against the individuals who hold the knowledge.",
       "applicability": {
@@ -180,6 +191,7 @@
     },
     {
       "id": "EXIT_IS_POSSIBLE",
+      "kind": "CONTENT",
       "statement": "Each side knows how the relationship ends and what survives.",
       "identity_test": "Remove it and a framework agreement with no stated term binds indefinitely, or ends only on repudiation.",
       "applicability": {
@@ -197,6 +209,7 @@
     },
     {
       "id": "RISK_IS_ALLOCATED",
+      "kind": "CONTENT",
       "statement": "Loss caused to one party or to a third party is allocated, and the allocation is capable of being enforced.",
       "identity_test": "Remove the machinery and the indemnity is a promise with no way of being called on: section 125 makes recovery conditional on the indemnity-holder's prudence and on not contravening the indemnifier's orders, neither of which can be shown without a procedure.",
       "applicability": {
@@ -213,6 +226,7 @@
     },
     {
       "id": "LIABILITY_IS_BOUNDED",
+      "kind": "CONTENT",
       "statement": "The outer limit of each party's exposure is stated.",
       "identity_test": "Remove it and a fixed-fee engagement carries unlimited liability, which is a bargain neither side priced.",
       "applicability": {
@@ -229,6 +243,7 @@
     },
     {
       "id": "SERVICE_LEVELS_MEASURED",
+      "kind": "CONTENT",
       "statement": "Where performance standards are promised, they are measurable and the consequence of missing them is stated.",
       "identity_test": "Remove it and a service level is an aspiration; there is nothing to measure and nothing follows from failure.",
       "applicability": {
@@ -246,6 +261,7 @@
     },
     {
       "id": "PERSONNEL_CONTINUITY",
+      "kind": "CONTENT",
       "statement": "Where the engagement depends on particular people, their assignment and replacement is settled.",
       "identity_test": "Remove it and the Client's named team can be reassigned the day after signature.",
       "applicability": {
@@ -271,6 +287,7 @@
     },
     {
       "id": "PERSONAL_DATA_HANDLED",
+      "kind": "CONTENT",
       "statement": "Where personal data is processed, the processor's obligations are passed through in writing.",
       "identity_test": "Remove it and the Client remains the data fiduciary under section 8(2) of the DPDP Act, 2023 with no contractual means of discharging that responsibility.",
       "applicability": {
@@ -300,5 +317,23 @@
         "something the audit can settle. It is recorded here rather than acted on."
       ]
     }
+  ],
+  "$kind_basis": [
+    "WHY EVERY REQUIREMENT HERE IS `kind: CONTENT`.",
+    "",
+    "documentRequirements.admit began refusing records with no `kind`, and these two files were never",
+    "updated — so every document type failed to generate, because the loader admits all requirement",
+    "sources globally before any clause is assembled.",
+    "",
+    "CONTENT is not a guess and not a convenience. It is what the loader was already applying",
+    "silently, and each record's own identity_test confirms it: every one of them turns on what a",
+    "reader can or cannot tell FROM THE CONTRACT. SOCIAL_SECURITY_ADDRESSED says it outright — remove",
+    "it and 'the employee cannot tell from the contract'. MATERNITY_ENTITLEMENT — 'the contract is",
+    "silent on an entitlement'. So declaring CONTENT records the existing behaviour rather than",
+    "changing it, and the guard's complaint was the silence, not the value.",
+    "",
+    "FOUR ARE WORTH AN ADVOCATE'S EYE, and are marked `$kind_open` rather than left to look settled.",
+    "In each, the document reflecting a thing and the thing existing are not the same, and CONTENT",
+    "only reaches the first."
   ]
 }

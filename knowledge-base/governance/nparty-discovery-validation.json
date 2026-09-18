@@ -1,0 +1,276 @@
+{
+  "$comment": [
+    "D4.22 — VALIDATION OF THE DISCOVERY METHOD ITSELF, AND ITS FALSIFICATION.",
+    "",
+    "D4.21 left a question: are the 108 clauses the semantic detector cleared actually clear? Three",
+    "experiments answer it, and they agree.",
+    "",
+    "EXPERIMENT 1 — STRUCTURAL DETECTION. A dependency graph already exists in the clause library:",
+    "306 edges, 168 clauses declaring `depends_on`. Walking it toward clauses with an UNDECIDED",
+    "treatment recovers CORE_SURVIVAL_001 --depends_on--> CORE_TERMINATION_001 without reading a word",
+    "of the survival clause. It also finds MSA_GOVERNANCE_BODY_001. It finds nothing else, because",
+    "inheritance can only reach as far as the six open decisions extend. HIGH PRECISION, NEAR-ZERO",
+    "RECALL, and that is a property of the method rather than a property of the corpus.",
+    "",
+    "EXPERIMENT 2 — READING A SAMPLE. Twelve of the UNDETERMINED clauses were read rather than",
+    "scanned. Seven carry a real N-party question. That is a false-negative rate around 58 percent in",
+    "the population the detector had cleared.",
+    "",
+    "EXPERIMENT 3 — VOCABULARY ABLATION. The characteristic words were removed from six clauses known",
+    "to be cardinality-sensitive. FIVE OF SIX BECAME UNDISCOVERABLE. Only CORE_SURVIVAL_001 survived,",
+    "and only through the dependency graph. The detectors succeed because they see the words.",
+    "",
+    "THE CAUSE, WHICH IS ARCHITECTURAL RATHER THAN LEXICAL:",
+    "",
+    "    This corpus is drafted in NAMED ROLES — Client and Consultant, Borrower and Lender, Assignor",
+    "    and Assignee, Fiduciary and Processor. A role-named clause is implicitly bilateral and never",
+    "    says so. 'The Client shall notify the Consultant' carries exactly the same N-party question",
+    "    as 'either Party shall notify the other', and announces none of it.",
+    "",
+    "So marker-based discovery cannot work here, and no further tuning of the vocabulary will fix it.",
+    "The 42-percent and 89-percent precision figures from D4.21 measured a method that was answering",
+    "a different question from the one asked.",
+    "",
+    "THE INVERSION THIS FORCES. Stop trying to DISCOVER the relevant clauses; the base rate is high",
+    "and the signal is absent. Instead DISCHARGE the irrelevant ones, because that set is small,",
+    "closed and characterisable: definitions, interpretation, severability, counterparts, governing",
+    "law, and other rules about the instrument rather than about who signed it. Every other clause in",
+    "an N-party-admissible family is PRESUMED RELEVANT until positively discharged.",
+    "",
+    "This changes the burden of proof and therefore the meaning of the backlog. It does not classify",
+    "anything, and no clause was modified."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "read_sample": {
+    "method": "Twelve UNDETERMINED clauses, chosen deterministically (top six by family exposure, then every twelfth) so the sample is reproducible rather than favourable.",
+    "adjudications": [
+      {
+        "clause_id": "CORE_FURTHER_ASSURANCE_001",
+        "verdict": "RELEVANT",
+        "question": "'Each Party shall, at the reasonable request and cost of the requesting Party' — with three parties, is assistance owed to each other party severally?",
+        "missed_because": "Contains 'Party' twice and never 'the other Party'. Invisible to the pronoun scan AND to every semantic mechanism."
+      },
+      {
+        "clause_id": "CORE_TERM_001",
+        "verdict": "RELEVANT",
+        "question": "Renewal 'unless the Parties expressly agree in writing' — all of them, or a majority?",
+        "missed_because": "The COLLECTIVE_DECISION pattern required 'agreed by the Parties'; the text says 'agree'. Missed on an inflection."
+      },
+      {
+        "clause_id": "IP_OWNERSHIP_001",
+        "verdict": "RELEVANT",
+        "question": "Work product 'shall vest exclusively in the Client' — where two parties commission or two create, who owns?",
+        "missed_because": "Written entirely in named roles. No party pronoun appears."
+      },
+      {
+        "clause_id": "LOAN_DEFAULT_001",
+        "verdict": "RELEVANT",
+        "question": "'Failure by the Principal Debtor to pay' — with co-borrowers, does one default trigger against all?",
+        "missed_because": "Named roles again. This is the PAIRWISE_RIGHT question in the finance family."
+      },
+      {
+        "clause_id": "LOAN_COVENANTS_001",
+        "verdict": "RELEVANT",
+        "question": "'The Borrower undertakes' — with co-borrowers, are the covenants joint, several, or joint and several?",
+        "missed_because": "Named roles."
+      },
+      {
+        "clause_id": "DPA_SUBPROCESSING_001",
+        "verdict": "RELEVANT",
+        "question": "'Without the Fiduciary's prior written consent' — joint controllers are ordinary under the DPDP Act, 2023; whose consent then?",
+        "missed_because": "Named roles."
+      },
+      {
+        "clause_id": "IPA_COPYRIGHT_ASSIGNMENT_001",
+        "verdict": "RELEVANT",
+        "question": "Co-owners of copyright assigning jointly — Copyright Act, 1957 s.19 requires the assignment to state its terms, and s.18 governs who may assign.",
+        "missed_because": "Named roles; and D4.21 had deliberately narrowed `assign` to exclude property assignments, which excluded this one correctly as to succession and incorrectly as to ownership."
+      },
+      {
+        "clause_id": "CORE_DEFINITIONS_001",
+        "verdict": "NOT_RELEVANT",
+        "reason": "Defines documents and terms. The definitional mechanism does not change with the number of parties."
+      },
+      {
+        "clause_id": "CORE_SEVERABILITY_001",
+        "verdict": "NOT_RELEVANT",
+        "reason": "Operates on provisions, not on parties: a provision is modified or deleted regardless of how many people signed."
+      },
+      {
+        "clause_id": "CORE_PURPOSE_001",
+        "verdict": "UNDETERMINED",
+        "reason": "A recital generated from intake. Whether a trilateral purpose needs different wording is a drafting question, not obviously a legal one."
+      },
+      {
+        "clause_id": "SERVICE_PAYMENT_001",
+        "verdict": "UNDETERMINED",
+        "reason": "Bilateral trade terms in named roles. Who pays whom with three parties depends on what the third party is, which the clause cannot know."
+      },
+      {
+        "clause_id": "SERVICE_ACCEPTANCE_001",
+        "verdict": "UNDETERMINED",
+        "reason": "Acceptance by one of several clients binding the rest is plausibly a real question and plausibly a role question. Not settled by reading alone."
+      }
+    ],
+    "result": {
+      "read": 12,
+      "relevant": 7,
+      "not_relevant": 2,
+      "undetermined": 3,
+      "false_negative_rate": "7 of 12 — about 58 percent of the population the detector had cleared"
+    }
+  },
+  "ablation": {
+    "method": "Characteristic vocabulary removed from six clauses already known to be cardinality-sensitive — 'either/the other/neither/both Party', 'between the Parties', 'equally', 'waiver', 'assign' — then re-detected.",
+    "results": [
+      {
+        "clause_id": "CORE_SURVIVAL_001",
+        "lexical_before": false,
+        "lexical_after": false,
+        "structural": true,
+        "survives": true,
+        "note": "The only survivor, and it survives through the dependency graph rather than through any text. This is the case the whole design was built around."
+      },
+      {
+        "clause_id": "CORE_TERMINATION_001",
+        "lexical_before": true,
+        "lexical_after": false,
+        "structural": false,
+        "survives": false
+      },
+      {
+        "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+        "lexical_before": true,
+        "lexical_after": false,
+        "structural": false,
+        "survives": false
+      },
+      {
+        "clause_id": "CORE_LIMITATION_LIABILITY_001",
+        "lexical_before": true,
+        "lexical_after": false,
+        "structural": false,
+        "survives": false
+      },
+      {
+        "clause_id": "CORE_STAMP_AND_COSTS_001",
+        "lexical_before": false,
+        "lexical_after": false,
+        "structural": false,
+        "survives": false
+      },
+      {
+        "clause_id": "CORE_WAIVER_001",
+        "lexical_before": false,
+        "lexical_after": false,
+        "structural": false,
+        "survives": false
+      }
+    ],
+    "verdict": "FIVE OF SIX LOST. The detectors have not solved the problem; they recognise the words. Only the structural detector is vocabulary-independent, and it reaches two clauses out of 184."
+  },
+  "summary": {
+    "population": 108,
+    "structurally_relevant": 0,
+    "positively_discharged_as_irrelevant": 2,
+    "undetermined": 106,
+    "read_sample_false_negative_rate": "≈58%",
+    "ablation_survival": "1 of 6",
+    "conclusion": [
+      "Reported separately, as required, rather than as one coverage figure:",
+      "",
+      "  precision of the D4.21 detector   89% after repair (3 false positives in 27)",
+      "  recall of the D4.21 detector      unmeasurable by detection; ≈42% by reading sample",
+      "  ablation survival                 1 of 6, and that one only structurally",
+      "",
+      "The discovery defect is SYSTEMIC and is not fixable by a better word list. The corpus is drafted",
+      "in named roles, and a role-named bilateral clause carries the same N-party question as a",
+      "pronoun-named one while announcing none of it."
+    ],
+    "engine_hypotheses_falsified": 3
+  },
+  "methodological_rule": {
+    "rule": "N-party relevance is PRESUMED for every clause reachable by an N-party-admissible family, unless evidence establishes irrelevance. Detection may DISCHARGE a clause; detection may not CERTIFY relevance.",
+    "why": [
+      "D4.22 established this by three independent experiments rather than by argument: the ablation lost",
+      "five of six known-sensitive clauses once their vocabulary was removed; reading twelve cleared",
+      "clauses found seven real questions; and the only vocabulary-independent detector reaches two",
+      "clauses in the whole corpus.",
+      "",
+      "The asymmetry is the point. A detector that fires is weak evidence of relevance, because it fires",
+      "on words rather than mechanisms — PARTY_ROLE_VARIANCE fired on 25 of 25. A detector that stays",
+      "silent is NO evidence of irrelevance, because the corpus is drafted in named roles and a",
+      "role-named bilateral clause announces nothing. So detection can only ever be used in the",
+      "direction where a false answer is cheap: to propose candidates, never to close them."
+    ],
+    "consequences": [
+      "NOT_CLASSIFIED means NOT YET SEMANTICALLY DISCHARGED. It does not mean 'probably irrelevant',",
+      "and any report that treats it as a clean bill of health is misreporting the state of the system.",
+      "",
+      "Discharge requires POSITIVE evidence per clause — that the rule is about the instrument rather",
+      "than about who signed it. Absence of a marker is not that evidence.",
+      "",
+      "Precision, recall and ablation survival are reported SEPARATELY and never blended. D4.22 showed",
+      "exactly why: a detector can be 89 percent precise while being structurally incapable of measuring",
+      "its own recall on this corpus, and one combined figure would hide that."
+    ],
+    "accounting": {
+      "wrong": "161 unclassified — read as 161 unknowns, or worse as 161 probably-fine",
+      "right": [
+        "N-party-admissible clauses (184)",
+        "        ↓ presumptively in scope",
+        "  established treatment (23)   |   not yet discharged (161)",
+        "                               |     of which AUTHORED_DECISION_PENDING and NOT_CLASSIFIED",
+        "                               |     keep their existing and distinct meanings"
+      ],
+      "note": [
+        "The denominator did not change and neither did the states. What changed is the DEFAULT: a",
+        "clause is in scope until discharged, so the 161 is a backlog of presumptively-relevant",
+        "clauses rather than a pile of unknowns. That is a more honest ceiling and a worse-sounding",
+        "one, which is the usual sign it is the true one."
+      ]
+    }
+  },
+  "engine_hypotheses_falsified": [
+    {
+      "hypothesis": "A general treatment-level CONDITIONALITY mechanism is needed, because decisions gate one another.",
+      "phase": "D4.24",
+      "falsified_by": "30 ordered pairs measured: 0 DETERMINES, 1 GATES, 6 CONSTRAINS, 23 INDEPENDENT.",
+      "conclusion": "One gating edge is not a case for an engine. Model named edges; revisit if a second GATES or any DETERMINES edge appears.",
+      "status": "FALSIFIED — not built"
+    },
+    {
+      "hypothesis": "A general CROSS-TREATMENT CONSISTENCY engine is needed, because independently admissible treatments can jointly produce an incoherent instrument.",
+      "phase": "D4.25",
+      "falsified_by": [
+        "The MSA/founders cap-indemnity inconsistency does not reproduce in the guarantee family: 2 of 2",
+        "combinations incoherent there, 0 of 2 here.",
+        "",
+        "Two distinct reasons, and conflating them would have produced the right conclusion by the wrong",
+        "mechanism. First, the guarantee family DRAFTS the interaction from both ends. Second, Contract Act",
+        "s.146 does not resolve the conflict — it allocates as between co-sureties while the cap bounds the",
+        "creditor's recovery under s.128's 'unless otherwise provided'. Different axes cannot contradict.",
+        "Testing that rather than assuming it is what separated the finding from a plausible story."
+      ],
+      "conclusion": "The reusable defect is a missing same-axis interaction RULE, and the remedy is authored legal treatment rather than a detector. An engine would detect a defect that one sentence of ordinary drafting prevents.",
+      "status": "FALSIFIED — not built"
+    },
+    {
+      "hypothesis": "The guarantee interaction sentence can be ported to the five affected families as one reusable treatment.",
+      "phase": "D4.26",
+      "falsified_by": [
+        "The condition was that the semantics be genuinely identical. They are not, and the evidence is",
+        "mechanical: the shipped cap measures 'the total consideration paid under this Agreement', and NDA",
+        "and FOUNDERS_AGREEMENT collect no consideration field of any kind.",
+        "",
+        "Folding a mutual confidentiality indemnity into a cap with no measurable referent does not limit",
+        "the indemnity — it erases it. The same sentence that is a real limit in a guarantee is an erasure",
+        "in an NDA."
+      ],
+      "conclusion": "Recorded as an UNDECIDED decision with three candidate directions and per-family analysis. Nothing attached, no clause text changed.",
+      "status": "FALSIFIED — not ported"
+    }
+  ]
+}

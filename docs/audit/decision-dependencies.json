@@ -1,0 +1,123 @@
+{
+ "decisions": [
+  "LIABILITY_CAP_APPORTIONMENT",
+  "INDEMNITY_APPORTIONMENT",
+  "TERMINATION_FOR_DEFAULT_SCOPE",
+  "TRANSITION_ASSISTANCE_SCOPE",
+  "ARBITRATION_REFERENCE_SCOPE",
+  "SURVIVAL_AGAINST_A_DEPARTING_PARTY"
+ ],
+ "matrix": {
+  "LIABILITY_CAP_APPORTIONMENT": {
+   "LIABILITY_CAP_APPORTIONMENT": null,
+   "INDEMNITY_APPORTIONMENT": "CONSTRAINS",
+   "TERMINATION_FOR_DEFAULT_SCOPE": "INDEPENDENT",
+   "TRANSITION_ASSISTANCE_SCOPE": "INDEPENDENT",
+   "ARBITRATION_REFERENCE_SCOPE": "CONSTRAINS",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": "INDEPENDENT"
+  },
+  "INDEMNITY_APPORTIONMENT": {
+   "LIABILITY_CAP_APPORTIONMENT": "CONSTRAINS",
+   "INDEMNITY_APPORTIONMENT": null,
+   "TERMINATION_FOR_DEFAULT_SCOPE": "INDEPENDENT",
+   "TRANSITION_ASSISTANCE_SCOPE": "INDEPENDENT",
+   "ARBITRATION_REFERENCE_SCOPE": "INDEPENDENT",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": "INDEPENDENT"
+  },
+  "TERMINATION_FOR_DEFAULT_SCOPE": {
+   "LIABILITY_CAP_APPORTIONMENT": "INDEPENDENT",
+   "INDEMNITY_APPORTIONMENT": "INDEPENDENT",
+   "TERMINATION_FOR_DEFAULT_SCOPE": null,
+   "TRANSITION_ASSISTANCE_SCOPE": "CONSTRAINS",
+   "ARBITRATION_REFERENCE_SCOPE": "INDEPENDENT",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": "GATES"
+  },
+  "TRANSITION_ASSISTANCE_SCOPE": {
+   "LIABILITY_CAP_APPORTIONMENT": "INDEPENDENT",
+   "INDEMNITY_APPORTIONMENT": "INDEPENDENT",
+   "TERMINATION_FOR_DEFAULT_SCOPE": "INDEPENDENT",
+   "TRANSITION_ASSISTANCE_SCOPE": null,
+   "ARBITRATION_REFERENCE_SCOPE": "INDEPENDENT",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": "INDEPENDENT"
+  },
+  "ARBITRATION_REFERENCE_SCOPE": {
+   "LIABILITY_CAP_APPORTIONMENT": "INDEPENDENT",
+   "INDEMNITY_APPORTIONMENT": "INDEPENDENT",
+   "TERMINATION_FOR_DEFAULT_SCOPE": "INDEPENDENT",
+   "TRANSITION_ASSISTANCE_SCOPE": "INDEPENDENT",
+   "ARBITRATION_REFERENCE_SCOPE": null,
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": "INDEPENDENT"
+  },
+  "SURVIVAL_AGAINST_A_DEPARTING_PARTY": {
+   "LIABILITY_CAP_APPORTIONMENT": "CONSTRAINS",
+   "INDEMNITY_APPORTIONMENT": "INDEPENDENT",
+   "TERMINATION_FOR_DEFAULT_SCOPE": "INDEPENDENT",
+   "TRANSITION_ASSISTANCE_SCOPE": "INDEPENDENT",
+   "ARBITRATION_REFERENCE_SCOPE": "CONSTRAINS",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY": null
+  }
+ },
+ "claims": [
+  {
+   "from": "TERMINATION_FOR_DEFAULT_SCOPE",
+   "to": "SURVIVAL_AGAINST_A_DEPARTING_PARTY",
+   "edge": "GATES",
+   "instance": "Choose ENDS_THE_INSTRUMENT: the survival trigger fires, every former party stays bound, and there is nothing left to ask. Choose REQUIRES_ALL_INNOCENT_PARTIES: still instrument-level, same result. Only ENDS_THAT_RELATIONSHIP leaves a party outside both regimes and needs a second answer.",
+   "demonstrated_by": "docs/audit/SURVIVAL_COUNTERFACTUAL.md — 3 of 3 pair-regimes differ between the worlds"
+  },
+  {
+   "from": "TERMINATION_FOR_DEFAULT_SCOPE",
+   "to": "TRANSITION_ASSISTANCE_SCOPE",
+   "edge": "CONSTRAINS",
+   "instance": "TRANSITION_ASSISTANCE_SCOPE offers TO_EACH_REMAINING or TO_THE_CONTINUING_ENTITY. Under ENDS_THE_INSTRUMENT there IS no continuing entity — the venture has ended for everybody — so the second candidate has no referent and the choice collapses to one. Under ENDS_THAT_RELATIONSHIP both remain live. Resolving the parent therefore deletes a candidate from the child without answering it."
+  },
+  {
+   "from": "LIABILITY_CAP_APPORTIONMENT",
+   "to": "INDEMNITY_APPORTIONMENT",
+   "edge": "CONSTRAINS",
+   "bidirectional": true,
+   "instance": "Three parties, a cap of ₹10,00,000 and a loss of ₹25,00,000 indemnifiable by two parties to the third. SEVERAL_TO_EACH has each indemnifier owe the whole loss to each indemnitee, so the indemnity promises ₹50,00,000 of cover. The table below computes what each cap treatment permits.\n\nTHE COMPUTATION CORRECTED THE CLAIM THIS EDGE WAS FIRST WRITTEN WITH. The narrative said SHARED plus SEVERAL_TO_EACH conflicts while PER_PARTY plus SEVERAL_TO_EACH is coherent. It is not: at three parties PER_PARTY permits ₹30,00,000 against ₹50,00,000 promised, so that pairing fails too. The tension is not a quirk of one combination — an indemnity in which everyone owes everyone the whole loss outruns any finite cap once the parties outnumber two, and which clause yields is a third question nobody has asked.",
+   "risk": "INCONSISTENT_ANSWERS"
+  },
+  {
+   "from": "SURVIVAL_AGAINST_A_DEPARTING_PARTY",
+   "to": "LIABILITY_CAP_APPORTIONMENT",
+   "edge": "CONSTRAINS",
+   "instance": "Limitation of liability is one of the nine enumerated survivors. Choose DEPARTING_PARTY_RELEASED and the cap stops binding the departing party — which also stops PROTECTING them, since a party outside the cap is exposed without limit. So the apportionment question is being answered for a set of parties that the survival answer has already changed the membership of."
+  },
+  {
+   "from": "SURVIVAL_AGAINST_A_DEPARTING_PARTY",
+   "to": "ARBITRATION_REFERENCE_SCOPE",
+   "edge": "CONSTRAINS",
+   "instance": "Dispute resolution is also an enumerated survivor. Choose DEPARTING_PARTY_RELEASED and the departing party is released from the arbitration agreement along with everything else — so there is no forum in which to determine whether they were validly released, or to enforce the accrued rights the same clause preserves. The candidate is close to self-defeating, which is an argument against it and is recorded as an interaction rather than settled here.",
+   "risk": "SELF_DEFEATING_COMBINATION"
+  },
+  {
+   "from": "LIABILITY_CAP_APPORTIONMENT",
+   "to": "ARBITRATION_REFERENCE_SCOPE",
+   "edge": "CONSTRAINS",
+   "instance": "INTER_SE_ONLY caps claims BETWEEN THE PARTIES and leaves a stranger's claim untouched. Choose it together with BILATERAL_REFERENCE and a party to the instrument who was not joined to the reference is simultaneously a party (so capped) and a stranger to the award (so unbound). 'Inter se' stops having a determinate referent, and the cap's scope turns on a procedural choice made elsewhere."
+  }
+ ],
+ "counts": {
+  "DETERMINES": 0,
+  "GATES": 1,
+  "CONSTRAINS": 6,
+  "INDEPENDENT": 23
+ },
+ "tiers": [
+  [
+   "TERMINATION_FOR_DEFAULT_SCOPE"
+  ],
+  [
+   "TRANSITION_ASSISTANCE_SCOPE",
+   "SURVIVAL_AGAINST_A_DEPARTING_PARTY"
+  ],
+  [
+   "INDEMNITY_APPORTIONMENT + LIABILITY_CAP_APPORTIONMENT"
+  ],
+  [
+   "ARBITRATION_REFERENCE_SCOPE"
+  ]
+ ]
+}

@@ -1,0 +1,2473 @@
+[
+ {
+  "id": "CORE_AMENDMENT_001",
+  "families": 25,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "rson duly authorised for that purpose. No course of dealing between the Parties, exchange of correspondence, or oral assurance shall operat"
+   },
+   {
+    "key": "UNILATERAL_ACT_BINDING_OTHERS",
+    "baseline": false,
+    "evidence": "rded in writing, expressly refers to this Agreement, and is signed by or on behalf of each Party by a person duly authorised for that purpose. No"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "UNIFORM_PROHIBITION",
+  "has_text": true
+ },
+ {
+  "id": "CORE_ASSIGNMENT_001",
+  "families": 24,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Neither Party shall assign, transfer, charge, subcontract, or otherwise d"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "obligations under this Agreement without the prior written consent of the other Party, such consent not to be unreasonably withheld or delayed. ("
+   },
+   {
+    "key": "PARTY_SUCCESSION",
+    "baseline": false,
+    "evidence": "Party may, on written notice to the other Party, assign or novate this Agreement to an Affiliate, or to a successor in title"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "UNIFORM_PROHIBITION",
+  "has_text": true
+ },
+ {
+  "id": "CORE_COMPLIANCE_WITH_LAW_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "necessary for it to perform those obligations lawfully. (a) neither Party shall offer, promise, give, request, or accept any undue ad"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "UNIFORM_PROHIBITION",
+  "has_text": true
+ },
+ {
+  "id": "CORE_CONFIDENTIALITY_001",
+  "families": 15,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "he performance or enjoyment of rights under this Agreement. Neither Party shall disclose Confidential Information to any third party"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "RECIPROCAL_SEVERAL",
+  "has_text": true
+ },
+ {
+  "id": "CORE_CONTRACT_FORMATION_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_COUNTERPARTS_001",
+  "families": 25,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_DATA_PROCESSING_001",
+  "families": 16,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "SAFE",
+  "shape": "ALREADY_N_SAFE",
+  "has_text": false
+ },
+ {
+  "id": "CORE_DEFINITIONS_001",
+  "families": 25,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_DISPUTE_RESOLUTION_001",
+  "families": 28,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days"
+   },
+   {
+    "key": "REFERENCE_OR_PROCEEDING",
+    "baseline": false,
+    "evidence": "ved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 19"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "96. The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) d"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "PAIRWISE_RIGHT",
+  "has_text": true
+ },
+ {
+  "id": "CORE_ENTIRE_AGREEMENT_001",
+  "families": 25,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "s schedules and annexures, constitutes the entire agreement between the Parties in relation to its subject matter and supersedes all prior"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "RECIPROCAL_SEVERAL",
+  "has_text": true
+ },
+ {
+  "id": "CORE_FORCE_MAJEURE_001",
+  "families": 21,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Neither Party shall be liable for any failure or delay in performing its"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "ntinuous period exceeding sixty (60) days, either Party may terminate this Agreement by written notice to the other, without liability except in"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+  "has_text": true
+ },
+ {
+  "id": "CORE_FURTHER_ASSURANCE_001",
+  "families": 25,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_GOVERNANCE_PROTECTIONS_001",
+  "families": 8,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "rmal business hours, and without unreasonable disruption to the other Party's business. A Party exercising such a right shall treat wha"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+  "has_text": true
+ },
+ {
+  "id": "CORE_GOVERNING_LAW_001",
+  "families": 28,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "n other than India (d) nothing in this clause shall prevent either Party from applying to any court of competent jurisdiction for in"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "UNIFORM_PROHIBITION",
+  "has_text": true
+ },
+ {
+  "id": "CORE_IDENTITY_001",
+  "families": 25,
+  "hits": [
+   {
+    "key": "PARTY_ENUMERATION",
+    "baseline": false,
+    "evidence": "ning thereof, include its successors and permitted assigns) of the First Part; AND Beta Consulting LLP, a Limited Liability Partnership"
+   },
+   {
+    "key": "RESPONDS_TO_ROSTER",
+    "baseline": false,
+    "evidence": "shipped text differs between a two-principal and a three-principal deed"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "ROSTER_DRIVEN",
+  "has_text": true
+ },
+ {
+  "id": "CORE_INDEMNITY_001",
+  "families": 14,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "mnifying Party\") shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised repr"
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "Each Party (the \"Indemnifying Party\") shall indemnify, defend, and hold harmless the other Part"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "RECIPROCAL_SEVERAL",
+  "has_text": true
+ },
+ {
+  "id": "CORE_INDEMNITY_FULL_001",
+  "families": 4,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "mnifying Party\") shall indemnify, defend, and hold harmless the other Party and its directors, officers, employees, and authorised repr"
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "Each Party (the \"Indemnifying Party\") shall indemnify, defend, and hold harmless the other Part"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "APPORTIONED_QUANTITY",
+  "has_text": true
+ },
+ {
+  "id": "CORE_INDEMNITY_PROCEDURE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "he claim as it thinks fit and recover the cost of doing so. Neither Party shall admit liability, settle or compromise a claim without"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+  "has_text": true
+ },
+ {
+  "id": "CORE_INTERPRETATION_001",
+  "families": 25,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_LATE_PAYMENT_INTEREST_001",
+  "families": 2,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_LIABILITY_CAP_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement, whether arising"
+   },
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement,"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "APPORTIONED_QUANTITY",
+  "has_text": true
+ },
+ {
+  "id": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "families": 4,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "The aggregate liability of either Party arising out of or in connection with this Agreement shall n"
+   },
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "The aggregate liability of either Party arising out of or in connection with this A"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "APPORTIONED_QUANTITY",
+  "has_text": true
+ },
+ {
+  "id": "CORE_LIMITATION_LIABILITY_001",
+  "families": 13,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement, whether arising"
+   },
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "Subject to the carve-outs below, the aggregate liability of either Party under or in connection with this Agreement,"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "APPORTIONED_QUANTITY",
+  "has_text": true
+ },
+ {
+  "id": "CORE_NOTICE_001",
+  "families": 25,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "s address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the c"
+   },
+   {
+    "key": "RESPONDS_TO_ROSTER",
+    "baseline": false,
+    "evidence": "shipped text differs between a two-principal and a three-principal deed"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "CONSENT_OR_NOTICE_TO_OTHERS",
+  "has_text": true
+ },
+ {
+  "id": "CORE_PURPOSE_001",
+  "families": 16,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_RELATIONSHIP_OF_PARTIES_001",
+  "families": 8,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "relationship is intended or created by this Agreement, and neither Party shall represent otherwise. Responsibility for GST, TDS, pro"
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": ", industrial, or social-security legislation (d) each Party shall indemnify the other against any claim, demand, or proceeding brought"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "UNIFORM_PROHIBITION",
+  "has_text": true
+ },
+ {
+  "id": "CORE_REPRESENTATIONS_001",
+  "families": 4,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Each Party represents and warrants to the other Party, as at the date of this Agreement, that: (a) it is duly inc"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "RECIPROCAL_SEVERAL",
+  "has_text": true
+ },
+ {
+  "id": "CORE_SEVERABILITY_001",
+  "families": 25,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_SIGNATURE_BLOCK_001",
+  "families": 28,
+  "hits": [
+   {
+    "key": "PARTY_ENUMERATION",
+    "baseline": false,
+    "evidence": "IN WITNESS WHEREOF, the Parties hereto have executed this Agreement on the day"
+   },
+   {
+    "key": "RESPONDS_TO_ROSTER",
+    "baseline": false,
+    "evidence": "shipped text differs between a two-principal and a three-principal deed"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "ROSTER_DRIVEN",
+  "has_text": true
+ },
+ {
+  "id": "CORE_STAMP_AND_COSTS_001",
+  "families": 22,
+  "hits": [
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "ental charges payable in respect of this Agreement shall be borne equally by the Parties, and each Party shall bear its own legal, pr"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_SURVIVAL_001",
+  "families": 24,
+  "hits": [
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "Expiry or termination of this Agreement shall not affect any right, remedy, oblig"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_TERMINATION_001",
+  "families": 14,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ounder for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Par"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "AUTHORED_DECISION_PENDING",
+  "shape": "PAIRWISE_RIGHT",
+  "has_text": true
+ },
+ {
+  "id": "CORE_TERM_001",
+  "families": 18,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORE_WAIVER_001",
+  "families": 25,
+  "hits": [
+   {
+    "key": "UNILATERAL_ACT_BINDING_OTHERS",
+    "baseline": false,
+    "evidence": "No failure, delay, or indulgence by a Party in exercising any right, power, or remedy under"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_ANTI_DILUTION_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_BOARD_COMPOSITION_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "ming subscriber, and two independent directors appointed by mutual agreement. Voting rights on shareholder and board matters shall be ex"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_BOARD_INVESTOR_CONTROL_001",
+  "families": 2,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "ming subscriber, and two independent directors appointed by mutual agreement. (a) The Board of Directors shall comprise such number of D"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_DEADLOCK_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "l meet in good faith to attempt a resolution, failing which either Party may invoke the agreed dispute-resolution mechanism or trigg"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_DRAG_ALONG_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "If the Majority Shareholders, holding more than 100% of the issued and paid-up share cap"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_SHARE_SUBSCRIPTION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_SHARE_TRANSFER_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "CORP_TAG_ALONG_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "hts form part of the overall shareholder exit rights agreed between the Parties, including the following liquidity protection: A listing or"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "ong rights form part of the overall shareholder exit rights agreed between the Parties, including the following liquidity protection: A listing or"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DIST_APPOINTMENT_EXCLUSIVE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DIST_COMPETITION_COMPLIANCE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Nothing in this Agreement shall require or permit either Party to act in contravention of the Competition Act, 2002. In pa"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_AUDIT_AND_TRANSFER_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_BREACH_NOTIFICATION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_DATA_PRINCIPAL_RIGHTS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_RETENTION_AND_ERASURE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "(a) on the Fiduciary's instruction, and in any event on the expiry or termination of this Agreement, the Processor shall at the Fiduciary's o"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_ROLES_AND_SCOPE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_SECURITY_SAFEGUARDS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "DPA_SUBPROCESSING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "EMP_NON_COMPETE_001",
+  "families": 2,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "EMP_NON_SOLICITATION_001",
+  "families": 4,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "el member, independent contractor, or key representative of the other Party to terminate their engagement with such other Party or to e"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "g Party or any of its affiliates, without the prior written consent of the other Party."
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "ESOP_EXERCISE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "ESOP_GRANT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "ESOP_LEAVER_AND_LAPSE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "ESOP_TAXATION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "ESOP_VESTING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "FOUNDER_EQUITY_AND_VESTING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "FOUNDER_IP_ASSIGNMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "FOUNDER_LEAVER_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "FOUNDER_ROLES_AND_COMMITMENT_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "listed in this Agreement as a reserved matter requires the unanimous agreement of the Founders; every other decision is taken by"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "GUARANTEE_CONTINUING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "GUARANTEE_IDENTITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "GUARANTEE_INDEMNITY_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "The Guarantor shall indemnify and hold harmless the Creditor against all losses, damages,"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "GUARANTEE_OBLIGATION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "pal Debtor under the underlying financing arrangements. The aggregate liability of the Guarantor under this Agreement, taken together with"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IPA_ASSIGNOR_WARRANTIES_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "the intellectual property to any other person. The Assignor shall indemnify the Assignee against loss arising from a breach of these wa"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IPA_CONSIDERATION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IPA_COPYRIGHT_ASSIGNMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IPA_MORAL_RIGHTS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ment is not valid unless it is in writing and the agreement between the parties concerned is reduced to the form of a document embodying al"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_ASSIGNMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_COPYRIGHT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_FEEDBACK_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Either Party may from time to time provide the other with suggestions, c"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_INFRINGEMENT_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "t it shall not infringe the intellectual property rights of the other Party or any third party. Any such infringement shall constitute"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_LICENSE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_LICENSE_RESTRICTIONS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_OPEN_SOURCE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_OWNERSHIP_001",
+  "families": 6,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "IP_TRADEMARK_USAGE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "JV_CONTRIBUTION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "s and losses arising from the Joint Venture shall be shared between the Parties in the ratio of 60:40. Each Party's contribution shall be m"
+   },
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "Each Party shall contribute to the Joint Venture the agreed resources, expertise, and c"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "ch Party's contribution shall be made within the timeframes agreed between the Parties in writing, and failure to contribute shall constitute a ma"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "JV_CONTRIBUTION_EQUITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": false
+ },
+ {
+  "id": "JV_EXIT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "JV_GOVERNANCE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_ACCELERATION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_AMOUNT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_COVENANTS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_DEFAULT_001",
+  "families": 2,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_INTEREST_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_PREPAYMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_REPAYMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_SARFAESI_ENFORCEMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "LOAN_SECURITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "MOU_BINDING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": false
+ },
+ {
+  "id": "MSA_GOVERNANCE_BODY_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "nce a quarter to review performance, changes and any matter either Party raises. A matter the representatives cannot resolve within"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "MSA_ORDER_OF_PRECEDENCE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "k shall prevail. Pre-printed or standard terms appearing on either Party's purchase orders, acknowledgements, or invoices shall have"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "MSA_SOW_MECHANISM_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "all be executed in writing by authorised representatives of both Parties and shall, upon execution, be deemed incorporated into and"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "cuted SOW shall be made only through a written change order signed by both Parties."
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "MSA_SUBCONTRACTING_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_BREACH_REMEDIES_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ce is a general remedy rather than a discretionary one, and neither Party shall contend that damages are an adequate remedy for the p"
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "t may cause harm that cannot be readily quantified. (a) the Disclosing Party shall be entitled to seek injunctive relief, specific perfo"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": false
+ },
+ {
+  "id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "those directors, employees and professional advisers of the Receiving Party who need the information for the Purpose and are bound by e"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_DATA_SECURITY_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "The Receiving Party shall protect the Confidential Information with reasonable"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_DISCLOSURE_PERMITTED_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "es as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted pur"
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "The Receiving Party shall use Confidential Information solely for Evaluating wh"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_DURATION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "nal data, the obligations shall continue for so long as the Receiving Party retains that data, and the data shall be erased once the pu"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_EXCLUSIONS_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "rd exclusions recognised under applicable law, is expressly agreed by the Parties to include the following excluded categories: Information a"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_NON_COMPETE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "his Agreement and for a period of 24 months thereafter, the Receiving Party shall not, without the prior written consent of the Disclos"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_NON_SOLICITATION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "el member, independent contractor, or key representative of the other Party to terminate their engagement with such other Party or to e"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "g Party or any of its affiliates, without the prior written consent of the other Party."
+   },
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "24 months following its termination or expiry, neither the Disclosing Party nor the Receiving Party shall, directly or indirectly, soli"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_RETURN_OF_INFORMATION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "ermination of this Agreement, or upon written demand by the Disclosing Party, the Receiving Party shall return or securely destroy all C"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_SOURCE_CODE_PROTECTION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": false
+ },
+ {
+  "id": "NDA_TERM_SURVIVAL_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "trade secret, and indefinitely in respect of trade secrets. Either Party may terminate this Agreement by providing thirty (30) days'"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "indefinitely in respect of trade secrets. Either Party may terminate this Agreement by providing thirty (30) days' written notice to the other"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "for a period of two (2) years, unless earlier terminated by mutual written consent of the Parties. Notwithstanding termination or expiry, the"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_THIRD_PARTY_DISCLOSURE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "PAIRWISE_ROLE",
+    "baseline": false,
+    "evidence": "The Receiving Party shall not disclose any Confidential Information to any thir"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "NDA_TRADE_SECRET_PROTECTION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": false
+ },
+ {
+  "id": "PARTNERSHIP_CAPITAL_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "Each Partner shall contribute capital to the partnership in the following amounts: Partne"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "wing limit or approval arrangement: ₹3 (Rupees Three Only). Dissolution shall be governed by the following agreed terms: 24 months."
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "the following arrangement: Ordinary business is decided by simple majority of the board; the reserved matters require the affirmative vote of"
+   },
+   {
+    "key": "RESPONDS_TO_ROSTER",
+    "baseline": false,
+    "evidence": "shipped text differs between a two-principal and a three-principal deed"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "SAFE",
+  "shape": "ROSTER_DRIVEN",
+  "has_text": true
+ },
+ {
+  "id": "PN_DEFAULT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PN_IDENTITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PN_INTEREST_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PN_PROMISE_TO_PAY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PN_STAMP_AND_EXECUTION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "POA_APPOINTMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "POA_EXECUTION_FORMALITIES_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "POA_LIMITATIONS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "POA_POWERS_GRANTED_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "POA_REVOCATION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PROMISSORY_NOTE_PAYMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "PROP_REGISTRATION_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "duty and registration charges shall be borne in the manner agreed by the Parties or, in the absence of a specific agreement, equally."
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENTAL_PROPERTY_DESCRIPTION_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENTAL_RENT_PAYMENT_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENTAL_SECURITY_DEPOSIT_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENTAL_TERMINATION_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "This Agreement may be terminated: (a) by either Party by providing 15 days' prior written notice after expiry of"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENTAL_TERM_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "th basis at the same terms and conditions and terminable by either Party on fifteen (15) days' written notice."
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "ewed or extended only on the following basis: 24 months. On expiry or termination of the term, the Licensee shall vacate the Premises and han"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_LOCKIN_PERIOD_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ent shall be subject to a lock-in period of 3, during which neither Party may terminate for convenience except as expressly provided"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_MAINTENANCE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_POSSESSION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "iver a possession receipt to the Tenant upon handover. Upon expiry or termination of this Agreement, the Tenant shall peaceably hand over vac"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_PROPERTY_USE_001",
+  "families": 2,
+  "hits": [
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": ".m. Any breach of this clause shall entitle the Licensor to terminate this Agreement after written notice in accordance with applicable law."
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_RENT_INCREASE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_SUBLEASE_001",
+  "families": 2,
+  "hits": [
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "ten consent shall be void and shall entitle the Landlord to terminate this Agreement forthwith. If the Landlord grants consent to subletting, su"
+   },
+   {
+    "key": "PARTY_SUCCESSION",
+    "baseline": false,
+    "evidence": "of the whole or any part of the Premises to any person; (b) assign this Agreement or any interest therein to any other person; or (c) grant a"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "RENT_UTILITIES_001",
+  "families": 2,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_ACCEPTANCE_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_CHANGE_REQUEST_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "l be raised through the following change-control mechanism: Either party may raise a written change request; no change takes effect"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_CUSTOMER_DEPENDENCIES_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_DELIVERABLES_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_EXCLUSIVITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_EXPENSES_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_IMPLIED_SERVICES_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_KEY_PERSONNEL_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_PAYMENT_001",
+  "families": 7,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_PAYMENT_FIXED_FEE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_PAYMENT_RETAINER_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ax at source where required under the Income-tax Act, 1961. Either Party may revise the retainer prospectively on not less than thir"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_PERSONNEL_STATUS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_REPORTING_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_SCOPE_001",
+  "families": 7,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ed in accordance with the following change-control process: Either party may raise a written change request; no change takes effect"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_SLA_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_TERMINATION_001",
+  "families": 5,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "ibutor for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Par"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_TERMINATION_CAUSE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Either Party may terminate this Agreement for cause by written notice if"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "Either Party may terminate this Agreement for cause by written notice if the other Party commits a ma"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_TERMINATION_CONVENIENCE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "Either Party may terminate this Agreement at any time, without cause, by"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "Either Party may terminate this Agreement at any time, without cause, by giving the other Party not l"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_TIMELINES_001",
+  "families": 3,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "essence in respect of any milestone dates expressly agreed between the Parties. In the event that the Service Provider anticipates a delay"
+   },
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "of the essence in respect of any milestone dates expressly agreed between the Parties. In the event that the Service Provider anticipates a delay"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SERVICE_WARRANTY_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_CONFIDENTIALITY_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "is Agreement are confidential and shall not be disclosed by either Party except to its professional advisers, to a court or tribunal"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_CONSIDERATION_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "osts and all other claims, and no further sum is payable by either Party to the other in respect of the said disputes."
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_PAYMENT_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_PROCEEDINGS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_RECITALS_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "WHEREAS: (a) Disputes and differences arose between the Parties in respect of the quality of goods supplied under invoice 4"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SETTLE_RELEASE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SSA_CONDITIONS_PRECEDENT_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "s. If a condition is not satisfied or waived by 2026-09-01, either Party may terminate this Agreement by written notice, and neither"
+   },
+   {
+    "key": "INSTRUMENT_CONTINUATION",
+    "baseline": false,
+    "evidence": "is not satisfied or waived by 2026-09-01, either Party may terminate this Agreement by written notice, and neither shall have any claim against"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SSA_SUBSCRIPTION_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SSA_USE_OF_PROCEEDS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_DELIVERY_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_GOODS_DESCRIPTION_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_INSPECTION_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_PAYMENT_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_QUALITY_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_REJECTION_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_RETURN_POLICY_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_RISK_TRANSFER_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_SHORTAGE_001",
+  "families": 3,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "SUPPLY_WARRANTY_001",
+  "families": 4,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TECH_ACCEPTANCE_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TECH_SOURCE_CODE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "COLLECTIVE_DECISION",
+    "baseline": false,
+    "evidence": "ablish and maintain a source-code escrow arrangement with a mutually agreed escrow agent, with release events tied to insolvency, prolo"
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TECH_WARRANTY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TS_BINDING_EFFECT_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "BINARY_PRONOUN",
+    "baseline": true,
+    "evidence": "n sub-clause (b), this Term Sheet is NOT legally binding on either Party. It is a statement of intent, and neither Party is obliged"
+   }
+  ],
+  "lexical": true,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TS_INVESTMENT_TERMS_001",
+  "families": 1,
+  "hits": [],
+  "lexical": false,
+  "candidate": false,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ },
+ {
+  "id": "TS_LIQUIDATION_PREFERENCE_001",
+  "families": 1,
+  "hits": [
+   {
+    "key": "DIVIDED_QUANTITY",
+    "baseline": false,
+    "evidence": "ay instead elect to convert into equity shares and take its pro rata share of the whole, whichever produces the greater amount."
+   }
+  ],
+  "lexical": false,
+  "candidate": true,
+  "state": "NOT_CLASSIFIED",
+  "shape": null,
+  "has_text": true
+ }
+]

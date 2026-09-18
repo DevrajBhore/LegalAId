@@ -19,6 +19,7 @@
   "requirements": [
     {
       "id": "ROLE_AND_PLACE_IDENTIFIED",
+      "kind": "CONTENT",
       "statement": "The position, its duties and the place of work are identified.",
       "identity_test": "Remove it and there is no ascertainable subject matter: neither party can say what was agreed to be done or where.",
       "applicability": {
@@ -40,6 +41,7 @@
     },
     {
       "id": "REMUNERATION_STATED",
+      "kind": "CONTENT",
       "statement": "What the employee is paid, and the period by reference to which it is paid, is stated.",
       "identity_test": "Remove it and the contract fails for want of consideration, and section 15 of the Code on Wages, 2019 has no wage period to attach to.",
       "applicability": {
@@ -57,6 +59,7 @@
     },
     {
       "id": "WAGE_STRUCTURE_COMPLIANT",
+      "kind": "CONTENT",
       "statement": "The split between wages and other components is stated in a way that can be tested against the statutory definition.",
       "identity_test": "Remove it and a cost-to-company figure conceals whether basic wages meet the fifty per cent floor implied by section 2(y) of the Code on Wages, 2019 — which decides gratuity, provident fund and retrenchment compensation for the whole of the employment.",
       "applicability": {
@@ -73,6 +76,7 @@
     },
     {
       "id": "TIME_OF_PAYMENT_FIXED",
+      "kind": "CONTENT",
       "statement": "When wages fall due is fixed.",
       "identity_test": "Remove it and sections 16 and 17 of the Code on Wages, 2019 supply the answer by default, which is rarely what either party assumed.",
       "applicability": {
@@ -89,6 +93,7 @@
     },
     {
       "id": "WORKING_TIME_STATED",
+      "kind": "CONTENT",
       "statement": "Hours of work, and the treatment of work beyond them, are stated.",
       "identity_test": "Remove it and the employer cannot show compliance with the daily and weekly limits, and overtime liability is computed against an unstated norm.",
       "applicability": {
@@ -105,6 +110,7 @@
     },
     {
       "id": "LEAVE_ENTITLEMENT_STATED",
+      "kind": "CONTENT",
       "statement": "Leave entitlement is stated and is not below the statutory floor.",
       "identity_test": "Remove it and entitlement is whatever the applicable Shops and Establishments Act provides, which varies by state and which neither party has read.",
       "applicability": {
@@ -120,6 +126,7 @@
     },
     {
       "id": "EXIT_MECHANICS_STATED",
+      "kind": "CONTENT",
       "statement": "How either side ends the employment, on what notice, and what is payable on exit.",
       "identity_test": "Remove it and separation is governed by implied terms and state legislation, and the employee has no stated route out at all.",
       "applicability": {
@@ -137,6 +144,7 @@
     },
     {
       "id": "MISCONDUCT_PROCEDURE",
+      "kind": "CONTENT",
       "statement": "A procedure exists before an employee is disciplined or dismissed for cause.",
       "identity_test": "Remove it and a dismissal for misconduct is open to challenge for want of natural justice, whatever the substance of the allegation.",
       "applicability": {
@@ -152,6 +160,7 @@
     },
     {
       "id": "GRIEVANCE_ROUTE",
+      "kind": "CONTENT",
       "statement": "The employee has a stated route for raising a grievance.",
       "identity_test": "Remove it and section 4 of the Industrial Relations Code, 2020 requires a grievance redressal committee that the contract does not reflect.",
       "applicability": {
@@ -169,6 +178,7 @@
       "when_unsatisfied": "DISCLOSE",
       "review_status": "draft-needs-legal-review",
       "id": "POSH_AWARENESS_REFLECTED",
+      "kind": "CONTENT",
       "statement": "The employer's duty to provide a workplace free of sexual harassment is reflected in the contract.",
       "identity_test": "Remove it and the contract is silent on a duty section 19 of the POSH Act, 2013 places on the employer, leaving an employee with no contractual notice of it.",
       "applicability": {
@@ -197,6 +207,7 @@
       "when_unsatisfied": "DISCLOSE",
       "review_status": "draft-needs-legal-review",
       "id": "POSH_INTERNAL_COMMITTEE_REFLECTED",
+      "kind": "CONTENT",
       "statement": "Where the workplace employs ten or more, the Internal Committee the Act requires is reflected.",
       "identity_test": "Remove it and an employee at a workplace required to have an Internal Committee is left unaware of the forum section 4 exists to provide, and of how to reach it.",
       "applicability": {
@@ -216,10 +227,12 @@
         "",
         "VERIFY BEFORE RELIANCE: the threshold and who counts toward it."
       ],
-      "$verification_needed": "POSH Act, 2013 s.4 — the composition of the Internal Committee and who is counted toward the ten."
+      "$verification_needed": "POSH Act, 2013 s.4 — the composition of the Internal Committee and who is counted toward the ten.",
+      "$kind_open": "CONTENT is satisfied by the contract describing the Internal Committee. It cannot establish that a Committee was ever constituted under s.4. If the requirement is meant to reach the body's existence, this is EXTERNAL_COHERENCE and no clause can satisfy it."
     },
     {
       "id": "CONFIDENTIALITY_BOUNDED",
+      "kind": "CONTENT",
       "statement": "Confidential information is protected, and the protection does not survive as a restraint on the employee's livelihood.",
       "identity_test": "Remove the bound and section 27 of the Indian Contract Act, 1872 may void the protection entirely as against a departing employee.",
       "applicability": {
@@ -236,6 +249,7 @@
     },
     {
       "id": "WORK_PRODUCT_OWNERSHIP",
+      "kind": "CONTENT",
       "statement": "Who owns what the employee creates is stated.",
       "identity_test": "Remove it and section 17(c) of the Copyright Act, 1957 vests first ownership in the employer only for work made under a contract of service in the course of employment — which leaves everything at the edges disputed.",
       "applicability": {
@@ -269,6 +283,7 @@
     },
     {
       "id": "MATERNITY_ENTITLEMENT",
+      "kind": "CONTENT",
       "statement": "Maternity benefit entitlement is reflected where the establishment is covered.",
       "identity_test": "Remove it and the contract is silent on an entitlement the Maternity Benefit Act, 1961 confers by section 5 and which the employer may not lawfully reduce.",
       "applicability": {
@@ -295,10 +310,12 @@
         "VERIFY BEFORE RELIANCE: the Maternity Benefit Act's coverage threshold, and whether",
         "eligibility of the individual employee (service qualification under section 5) belongs",
         "here as a second condition or is a matter for the clause's own wording."
-      ]
+      ],
+      "$kind_open": "Same shape. The contract reflecting the entitlement is CONTENT; whether the establishment is in fact covered is a record elsewhere."
     },
     {
       "id": "SOCIAL_SECURITY_ADDRESSED",
+      "kind": "CONTENT",
       "statement": "Provident fund, insurance and retirement benefits are addressed.",
       "identity_test": "Remove it and the employee cannot tell from the contract whether the employer treats the establishment as covered by the Employees' Provident Funds and Miscellaneous Provisions Act, 1952, which decides what is deducted from the wages stated in it.",
       "applicability": {
@@ -311,7 +328,26 @@
         ]
       },
       "when_unsatisfied": "DISCLOSE",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "$kind_open": "The contract addressing PF, ESI and retirement benefits is CONTENT. Actual registration under the 1952 Act is a FORMALITY performed outside the instrument, and this requirement does not reach it."
     }
+  ],
+  "$kind_basis": [
+    "WHY EVERY REQUIREMENT HERE IS `kind: CONTENT`.",
+    "",
+    "documentRequirements.admit began refusing records with no `kind`, and these two files were never",
+    "updated — so every document type failed to generate, because the loader admits all requirement",
+    "sources globally before any clause is assembled.",
+    "",
+    "CONTENT is not a guess and not a convenience. It is what the loader was already applying",
+    "silently, and each record's own identity_test confirms it: every one of them turns on what a",
+    "reader can or cannot tell FROM THE CONTRACT. SOCIAL_SECURITY_ADDRESSED says it outright — remove",
+    "it and 'the employee cannot tell from the contract'. MATERNITY_ENTITLEMENT — 'the contract is",
+    "silent on an entitlement'. So declaring CONTENT records the existing behaviour rather than",
+    "changing it, and the guard's complaint was the silence, not the value.",
+    "",
+    "FOUR ARE WORTH AN ADVOCATE'S EYE, and are marked `$kind_open` rather than left to look settled.",
+    "In each, the document reflecting a thing and the thing existing are not the same, and CONTENT",
+    "only reaches the first."
   ]
 }

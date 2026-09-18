@@ -1,0 +1,297 @@
+{
+  "$comment": [
+    "D4.26 — THE MISSING SAME-AXIS INTERACTION RULE, AND WHY IT WAS NOT PORTED.",
+    "",
+    "D4.25 established that a liability cap and an indemnity can jointly promise more cover than",
+    "the cap permits, that the guarantee family prevents this with an express interaction sentence,",
+    "and that five families carrying both decision-bearing clauses have no such sentence.",
+    "",
+    "The instruction was to extract the SEMANTIC CONTRACT of the guarantee wording rather than copy",
+    "the sentence, and to create one reusable treatment ONLY IF the semantics are genuinely identical",
+    "across the affected families.",
+    "",
+    "THEY ARE NOT, AND THE EVIDENCE IS MECHANICAL RATHER THAN A MATTER OF JUDGEMENT.",
+    "",
+    "The shipped cap in all five families reads: 'shall not exceed the total consideration paid under",
+    "this Agreement'. NDA and FOUNDERS_AGREEMENT COLLECT NO CONSIDERATION FIELD AT ALL — no fee, no",
+    "amount, no price, nothing the phrase can measure. In an NDA the consideration is frequently nil",
+    "or nominal by design. So porting the guarantee's 'the indemnity forms part of, and shall not",
+    "increase, the aggregate cap' into an NDA would fold a mutual confidentiality indemnity into a cap",
+    "of nothing, and extinguish it.",
+    "",
+    "That is the opposite of what the guarantee sentence does there, where the cap is a stated rupee",
+    "figure and folding the indemnity into it is a real limit rather than an erasure. Same words,",
+    "opposite effect. The condition for a single reusable treatment therefore fails, and nothing was",
+    "attached to any family.",
+    "",
+    "WHAT IS RECORDED INSTEAD: the interaction as an UNDECIDED decision with three candidate",
+    "directions, per-family analysis of which is likely intended, and the authority for each. An",
+    "advocate decides; this file states the question and what turns on it."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "semantic_contract": {
+    "extracted_from": [
+      "GUARANTEE_OBLIGATION_001",
+      "GUARANTEE_INDEMNITY_001"
+    ],
+    "what_the_guarantee_asserts": [
+      "CAP: the ceiling applies to guarantee liability AND indemnity liability taken together.",
+      "INDEMNITY: liability under it forms part of the cap and does not increase it.",
+      "",
+      "Stripped of its wording, the relationship is: TWO PROVISIONS QUANTIFY THE SAME EXPOSURE, AND",
+      "ONE IS DECLARED TO BE CONSUMED BY THE OTHER'S CEILING. The direction is what matters, and the",
+      "guarantee happens to choose one of three available directions."
+    ],
+    "the_general_relation": "SAME_AXIS_INTERACTION — two treatments quantify one exposure, and the instrument must say which bounds which, or neither does."
+  },
+  "candidate_directions": [
+    {
+      "direction": "INDEMNITY_INSIDE_CAP",
+      "reading": "Indemnity liability counts toward the aggregate cap and cannot exceed it.",
+      "used_by": "GUARANTEE_AGREEMENT, expressly and from both ends",
+      "appropriate_where": "The cap is a stated figure and the indemnity is a payment obligation of the same order — a guarantor's exposure, a supplier's service liability.",
+      "destroys_the_indemnity_where": "The cap has no measurable referent or is nil, which is exactly the NDA and FOUNDERS_AGREEMENT position."
+    },
+    {
+      "direction": "INDEMNITY_OUTSIDE_CAP",
+      "reading": "The indemnity is carved out; the cap does not limit it.",
+      "appropriate_where": "The indemnified harm is unquantifiable or falls on third parties — confidentiality breach, IP infringement, personal injury on demised premises. Market practice in NDAs and leases treats these as uncapped heads.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "74",
+          "note": "A sum named in the contract is recoverable as reasonable compensation, not automatically in full — so an uncapped indemnity is not an unlimited one in practice."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "73",
+          "note": "Compensation for loss naturally arising, which is what an uncapped indemnity leaves the court to measure."
+        }
+      ]
+    },
+    {
+      "direction": "PARTIALLY_CARVED_OUT",
+      "reading": "Specified heads sit outside the cap; the rest are inside it.",
+      "appropriate_where": "The cap already carves out fraud and wilful misconduct, so the instrument is ALREADY doing this in part. The open question is whether breach and negligence — both indemnity triggers — belong inside or outside.",
+      "note": [
+        "This is the most interesting candidate because the shipped cap already reads 'except in cases",
+        "of fraud, wilful misconduct, or liabilities that cannot be limited under applicable law', while",
+        "the indemnity triggers on 'breach of this Agreement, negligence, or wilful misconduct'.",
+        "",
+        "Wilful misconduct is therefore already outside the cap and already an indemnity trigger — the",
+        "two clauses ALREADY interact, coherently, on one of three heads. Breach and negligence are the",
+        "heads where nothing has been said."
+      ]
+    }
+  ],
+  "per_family": [
+    {
+      "document_type": "NDA",
+      "n_party_admissible": true,
+      "cap_measure": "total consideration paid under this Agreement",
+      "consideration_field_exists": false,
+      "likely_direction": "INDEMNITY_OUTSIDE_CAP",
+      "why": "An NDA frequently has no consideration beyond mutual promises, so a cap measured on consideration paid is nil or unstatable. Folding a confidentiality indemnity into it would leave the disclosing party with a remedy of nothing, which cannot be what either party intends by signing a confidentiality agreement.",
+      "verdict": "PORTING THE GUARANTEE PATTERN HERE WOULD BE A SUBSTANTIVE HARM, NOT A CLARIFICATION."
+    },
+    {
+      "document_type": "FOUNDERS_AGREEMENT",
+      "n_party_admissible": true,
+      "cap_measure": "total consideration paid under this Agreement",
+      "consideration_field_exists": false,
+      "likely_direction": "UNDETERMINED",
+      "why": "Founders typically pay each other nothing under the founders' agreement itself; value moves through the company. The cap has no referent, and whether the indemnity should be limited at all is a question about the founders' bargain rather than about drafting hygiene.",
+      "verdict": "The cap's measure is the prior defect. The interaction question cannot be answered until it is."
+    },
+    {
+      "document_type": "COMMERCIAL_LEASE_AGREEMENT",
+      "n_party_admissible": true,
+      "cap_measure": "total consideration paid under this Agreement",
+      "consideration_field_exists": true,
+      "consideration_fields": [
+        "rent_amount"
+      ],
+      "likely_direction": "PARTIALLY_CARVED_OUT",
+      "why": "Rent paid to date is a measurable figure that grows over the term, so the cap means something. But a lease indemnity commonly answers third-party claims — injury on the premises, statutory liability — and capping those at rent paid would leave the landlord or tenant exposed to a claim the instrument purports to allocate.",
+      "verdict": "Plausible but not obvious. Needs the advocate to separate third-party heads from inter-party heads."
+    },
+    {
+      "document_type": "LEAVE_AND_LICENSE_AGREEMENT",
+      "n_party_admissible": true,
+      "cap_measure": "total consideration paid under this Agreement",
+      "consideration_field_exists": true,
+      "consideration_fields": [
+        "license_fee"
+      ],
+      "likely_direction": "PARTIALLY_CARVED_OUT",
+      "why": "Same analysis as the commercial lease; the licence fee supplies a measurable cap.",
+      "verdict": "Resolves with COMMERCIAL_LEASE_AGREEMENT as one question, not two."
+    },
+    {
+      "document_type": "EMPLOYMENT_CONTRACT",
+      "n_party_admissible": false,
+      "cap_measure": "total consideration paid under this Agreement",
+      "consideration_field_exists": true,
+      "consideration_fields": [
+        "salary"
+      ],
+      "likely_direction": "DIRECTION_DEPENDENT",
+      "why": "The clause is mutual — 'each Party shall indemnify the other' — but the two directions are not symmetrical in employment. An employee's indemnity to the employer capped at salary paid may be generous to the employer; an employer's indemnity to the employee capped at the same figure may be inadequate. Employment law constrains what an employer may recover from an employee in ways this clause does not acknowledge.",
+      "verdict": "The mutuality is the defect here, not the cap. Not N-party admissible, so it is outside the scope this phase was scoped to."
+    }
+  ],
+  "decision": "UNDECIDED",
+  "what_was_deliberately_not_done": [
+    "No clause text was changed in any family.",
+    "No single interaction treatment was attached, because the semantics are not identical and the",
+    "instruction made identity the condition for a reusable shape.",
+    "No cross-treatment consistency engine was built — D4.25 falsified that hypothesis and D4.26",
+    "does not revive it.",
+    "",
+    "LIABILITY_CAP_APPORTIONMENT REMAINS OPEN AND UNTOUCHED. Ordering the indemnity against the cap",
+    "says nothing about whether the cap is per-party, shared, or inter se once there are three",
+    "principals. The two questions compose and must not be allowed to resolve each other by",
+    "accident: an interaction treatment that silently assumed a shared cap would answer an open",
+    "legal question as a side effect of a drafting fix."
+  ],
+  "incidental_defect": {
+    "finding": "The cap measures 'the total consideration paid under this Agreement' in five families, two of which collect no consideration field of any kind.",
+    "independent_of": "the interaction question and the N-party question alike",
+    "note": "Worth repairing on its own terms. A ceiling that cannot be computed is not a limitation of liability; it is an unresolved reference that a court would have to fill."
+  },
+  "blocking_prior": {
+    "decision_id": "CAP_MEASUREMENT_BASIS",
+    "status": "UNDECIDED — AND IT BLOCKS THE INTERACTION DECISION",
+    "hierarchy": [
+      "CAP_MEASUREMENT",
+      "    ├── measurable   → the interaction decision may be meaningful",
+      "    └── unmeasurable → the interaction decision is BLOCKED"
+    ],
+    "why_it_blocks": [
+      "Asking an advocate whether the indemnity consumes a ceiling that cannot be computed is asking",
+      "them to order a clause against a quantity that does not exist. The answer would be recorded, it",
+      "would look like progress, and it would mean nothing.",
+      "",
+      "A ceiling that cannot be computed is not a limitation of liability. It is an unresolved",
+      "reference, and a court asked to apply it would have to supply the missing term or treat the",
+      "limitation as ineffective — the opposite of what the party relying on it expects."
+    ],
+    "measured": {
+      "cap_instances": 22,
+      "two_distinct_failures": [
+        {
+          "state": "OFFERS_A_BASIS_IT_CANNOT_SUPPLY",
+          "families": 4,
+          "members": [
+            "DISTRIBUTION_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT"
+          ],
+          "what": "The form offers 'Fees paid or payable in the 12 months before the claim' as a cap basis and the family collects no fee of any kind. Partners and shareholders do not pay fees to one another under the deed, so the option is category-wrong for the family rather than merely unsupported.",
+          "repair": "An intake question, and an advocate's view on what these instruments should measure instead — capital contributed, shareholding, a stated sum, or no monetary cap."
+        },
+        {
+          "state": "FIXED_PROSE_UNMEASURABLE",
+          "families": 6,
+          "members": [
+            "DATA_PROCESSING_AGREEMENT",
+            "FOUNDERS_AGREEMENT",
+            "NDA",
+            "PRIVACY_POLICY",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "TERMS_OF_SERVICE"
+          ],
+          "what": "No cap-basis question at all, and the clause's fixed prose measures a quantity the family never collects. The user cannot configure it and the instrument cannot compute it.",
+          "repair": "The D4.26 case generalised. NDA and FOUNDERS_AGREEMENT were the two found by hand; there are six."
+        }
+      ],
+      "note": [
+        "The four states are distinguished because they need different repairs. Conflating them into",
+        "'the cap is broken' would put an intake question and a drafting question in one queue item."
+      ]
+    },
+    "advocate_queue_item": {
+      "title": "CAP_MEASUREMENT / CONSIDERATION_REFERENCE",
+      "question": "For each family whose cap cannot be computed, what is the liability ceiling actually meant to measure, if anything: stated consideration or fees, a separately stated monetary amount, another contract-specific quantity, or no monetary cap at all?",
+      "constraint": "Subsequent indemnity-interaction decisions must not resolve or imply this question. An interaction treatment that assumed a measure would answer it as a side effect.",
+      "authority": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "73",
+          "note": "Compensation for loss naturally arising. A cap displaces this measure, so a cap that cannot be computed displaces it with nothing."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "74",
+          "note": "A sum named in the contract is recoverable as reasonable compensation. A ceiling with no referent is not a named sum."
+        }
+      ]
+    }
+  },
+  "interaction_is_per_head_not_boolean": {
+    "why": [
+      "The shipped cap already carves out three heads while the indemnity triggers on three, and",
+      "they overlap on exactly one. So the instrument is ALREADY ordering the two clauses in part,",
+      "and a Boolean 'is the indemnity capped?' would overwrite a settled head to answer an open one."
+    ],
+    "heads": [
+      {
+        "head": "FRAUD",
+        "cap_treatment": "expressly outside the cap",
+        "indemnity_trigger": false,
+        "state": "SETTLED"
+      },
+      {
+        "head": "WILFUL_MISCONDUCT",
+        "cap_treatment": "expressly outside the cap",
+        "indemnity_trigger": true,
+        "state": "SETTLED — and it is the one head where the two clauses already interact coherently"
+      },
+      {
+        "head": "UNLIMITABLE_BY_LAW",
+        "cap_treatment": "expressly outside the cap",
+        "indemnity_trigger": false,
+        "state": "SETTLED"
+      },
+      {
+        "head": "BREACH_OF_AGREEMENT",
+        "cap_treatment": "not addressed",
+        "indemnity_trigger": true,
+        "state": "**UNRESOLVED**"
+      },
+      {
+        "head": "NEGLIGENCE",
+        "cap_treatment": "not addressed",
+        "indemnity_trigger": true,
+        "state": "**UNRESOLVED**"
+      }
+    ],
+    "consequence": "The open question is two heads wide, not a whole clause wide. That is a materially cheaper thing to put to an advocate, and it is only visible because the clause text was read rather than summarised."
+  },
+  "three_layers_must_not_contaminate": [
+    "MEASUREMENT   — what does the ceiling measure? Blocks everything below it.",
+    "INTERACTION   — per head, does the indemnity consume that ceiling, sit outside it, or is it carved?",
+    "APPORTIONMENT — with N principals, is the ceiling per-party, shared, or inter se?",
+    "",
+    "Each is a separate advocate decision with separate authority, and none may resolve another as a",
+    "side effect. The apportionment question is LIABILITY_CAP_APPORTIONMENT and remains open and",
+    "untouched; the interaction question is blocked wherever measurement is unresolved; measurement is",
+    "answerable today."
+  ],
+  "retracted_finding": {
+    "claim": "Ten document types collect a liability cap figure and state a different basis in the clause, so the user's number never reaches the page.",
+    "status": "RETRACTED BEFORE RECORDING",
+    "why": [
+      "draftConsistencyValidator.js already reports it as LIABILITY_CAP_ANSWERS_CONFLICT. The user",
+      "also chose a BASIS, the clause follows the basis, and the validator says in terms that the",
+      "figure has not been used. Verified by generating three of the ten and reading the output.",
+      "",
+      "Recorded because the retraction is the useful part: the probe was one step from reporting",
+      "correct, already-disclosed behaviour as a defect, and what stopped it was checking whether",
+      "the system already said so rather than treating silence as confirmation."
+    ]
+  }
+}

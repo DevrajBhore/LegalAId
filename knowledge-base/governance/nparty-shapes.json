@@ -89,11 +89,12 @@
       "form": "by either Party if the other Party commits a material breach",
       "generalises": "UNDETERMINED",
       "decision_required": true,
-      "note": "A right arising from one party's default. With three, does the innocent party end the whole instrument, or only its relationship with the defaulter? For a partnership that is the difference between dissolving the firm and expelling a partner, which the Partnership Act 1932 treats quite differently. The two-party text cannot distinguish them because ending the relationship and ending the instrument are the same act. D4.20 ADDED CORE_DISPUTE_RESOLUTION_001 WITHOUT ADDING A SHAPE. The default framing above is the instance this shape was drawn from, not its essence. Stripped to semantics it is: a right exercised with respect to one other party, where more than two parties force a choice between bilateral and multilateral effect. Referring a dispute to arbitration against one of three parties is that question exactly — bilateral reference leaving the third out, or one reference binding everybody. A new shape would have read more neatly and would have been an abstraction built because the architecture seemed to want one.",
+      "note": "A right arising from one party's default. With three, does the innocent party end the whole instrument, or only its relationship with the defaulter? For a partnership that is the difference between dissolving the firm and expelling a partner, which the Partnership Act 1932 treats quite differently. The two-party text cannot distinguish them because ending the relationship and ending the instrument are the same act. D4.20 ADDED CORE_DISPUTE_RESOLUTION_001 WITHOUT ADDING A SHAPE. The default framing above is the instance this shape was drawn from, not its essence. Stripped to semantics it is: a right exercised with respect to one other party, where more than two parties force a choice between bilateral and multilateral effect. Referring a dispute to arbitration against one of three parties is that question exactly — bilateral reference leaving the third out, or one reference binding everybody. A new shape would have read more neatly and would have been an abstraction built because the architecture seemed to want one. D4.23 ADDED CORE_SURVIVAL_001, AND DELIBERATELY DID NOT ADD A SHAPE FOR IT. The survival clause is in scope because of an authored depends_on edge to CORE_TERMINATION_001, but the edge establishes SCOPE, NOT AMBIGUITY — classifying on inheritance alone would be propagation mistaken for analysis. The counterfactual was enumerated instead: at three parties the binding regime differs for 3 of 3 pairs between instrument-level and relationship-level termination, so the clause is not invariant across its parent's treatments. The mechanism is the one this shape already names, so the shape was reused and the new question recorded as a decision.",
       "clauses": [
         "CORE_TERMINATION_001",
         "CORE_TRANSITION_ASSISTANCE_001",
-        "CORE_DISPUTE_RESOLUTION_001"
+        "CORE_DISPUTE_RESOLUTION_001",
+        "CORE_SURVIVAL_001"
       ],
       "multi_component_clauses": {
         "CORE_DISPUTE_RESOLUTION_001": [
@@ -138,7 +139,7 @@
     }
   ],
   "summary": {
-    "clauses_classified": 27,
+    "clauses_classified": 28,
     "shapes": 7,
     "shapes_requiring_a_legal_decision": 2,
     "clauses_requiring_a_legal_decision": 7,

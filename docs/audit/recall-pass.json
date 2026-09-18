@@ -1,0 +1,1099 @@
+[
+ {
+  "id": "CORE_CONTRACT_FORMATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 4
+ },
+ {
+  "id": "CORE_COUNTERPARTS_001",
+  "verdict": "NOT_RELEVANT",
+  "why": "states a rule about the instrument, in terms that hold for any number of parties",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 25
+ },
+ {
+  "id": "CORE_DATA_PROCESSING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "CORE_DEFINITIONS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 25
+ },
+ {
+  "id": "CORE_FURTHER_ASSURANCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 25
+ },
+ {
+  "id": "CORE_INTERPRETATION_001",
+  "verdict": "NOT_RELEVANT",
+  "why": "states a rule about the instrument, in terms that hold for any number of parties",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 25
+ },
+ {
+  "id": "CORE_LATE_PAYMENT_INTEREST_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 2
+ },
+ {
+  "id": "CORE_PURPOSE_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Client, Consultant, Distributor, Guarantor, Creditor, Principal"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 16
+ },
+ {
+  "id": "CORE_SEVERABILITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 25
+ },
+ {
+  "id": "CORE_TERM_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Guarantor, Creditor"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 18
+ },
+ {
+  "id": "CORP_ANTI_DILUTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 3
+ },
+ {
+  "id": "CORP_SHARE_SUBSCRIPTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "CORP_SHARE_TRANSFER_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 4
+ },
+ {
+  "id": "DIST_APPOINTMENT_EXCLUSIVE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_AUDIT_AND_TRANSFER_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_BREACH_NOTIFICATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_DATA_PRINCIPAL_RIGHTS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_ROLES_AND_SCOPE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_SECURITY_SAFEGUARDS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "DPA_SUBPROCESSING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "EMP_NON_COMPETE_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Contractor, Client"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 2
+ },
+ {
+  "id": "ESOP_EXERCISE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "ESOP_GRANT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "ESOP_LEAVER_AND_LAPSE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "ESOP_TAXATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "ESOP_VESTING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "FOUNDER_EQUITY_AND_VESTING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "FOUNDER_IP_ASSIGNMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "FOUNDER_LEAVER_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "GUARANTEE_CONTINUING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "GUARANTEE_IDENTITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IPA_CONSIDERATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IPA_COPYRIGHT_ASSIGNMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IPA_MORAL_RIGHTS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_ASSIGNMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_COPYRIGHT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_LICENSE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_LICENSE_RESTRICTIONS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_OPEN_SOURCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "IP_OWNERSHIP_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Client, Consultant, Party 2, Party 1, Service Provider, Developer"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 5
+ },
+ {
+  "id": "IP_TRADEMARK_USAGE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "JV_CONTRIBUTION_EQUITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "JV_EXIT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "JV_GOVERNANCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_ACCELERATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_AMOUNT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_COVENANTS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_DEFAULT_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Principal, Creditor"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 2
+ },
+ {
+  "id": "LOAN_INTEREST_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_PREPAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_REPAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_SARFAESI_ENFORCEMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "LOAN_SECURITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "MOU_BINDING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "MSA_SUBCONTRACTING_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "NDA_SOURCE_CODE_PROTECTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "NDA_TRADE_SECRET_PROTECTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 0
+ },
+ {
+  "id": "PN_DEFAULT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "PN_IDENTITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "PN_INTEREST_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "PN_PROMISE_TO_PAY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "PN_STAMP_AND_EXECUTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "POA_APPOINTMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "POA_EXECUTION_FORMALITIES_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "POA_LIMITATIONS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "POA_POWERS_GRANTED_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "POA_REVOCATION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "PROMISSORY_NOTE_PAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "RENTAL_PROPERTY_DESCRIPTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Landlord, Tenant, Licensor, Licensee"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "RENTAL_RENT_PAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Tenant, Landlord, Licensee, Licensor"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "RENTAL_SECURITY_DEPOSIT_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Tenant, Landlord, Licensee, Licensor"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "RENT_MAINTENANCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 2
+ },
+ {
+  "id": "RENT_RENT_INCREASE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "RENT_UTILITIES_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Tenant, Landlord, Licensee, Licensor"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 2
+ },
+ {
+  "id": "SERVICE_ACCEPTANCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Client, Consultant, Contractor, Service Provider"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SERVICE_CUSTOMER_DEPENDENCIES_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_DELIVERABLES_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Consultant, Client, Contractor, Service Provider, Developer"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 4
+ },
+ {
+  "id": "SERVICE_EXCLUSIVITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_EXPENSES_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Contractor, Client, Service Provider"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SERVICE_IMPLIED_SERVICES_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_KEY_PERSONNEL_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_PAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Distributor, Principal, Client, Contractor, Service Provider, Seller"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 5
+ },
+ {
+  "id": "SERVICE_PAYMENT_FIXED_FEE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_PERSONNEL_STATUS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SERVICE_REPORTING_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Consultant, Client, Distributor, Principal, Service Provider"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SERVICE_SLA_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Consultant, Client, Service Provider"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SERVICE_WARRANTY_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Consultant, Contractor, Service Provider"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 4
+ },
+ {
+  "id": "SETTLE_PAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SETTLE_PROCEEDINGS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SETTLE_RELEASE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SSA_SUBSCRIPTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SSA_USE_OF_PROCEEDS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "SUPPLY_DELIVERY_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Principal, Seller, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 4
+ },
+ {
+  "id": "SUPPLY_GOODS_DESCRIPTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Principal, Distributor, Seller, Buyer, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 4
+ },
+ {
+  "id": "SUPPLY_INSPECTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_PAYMENT_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Buyer, Seller, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_QUALITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Seller, Buyer, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_REJECTION_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Buyer, Seller, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_RETURN_POLICY_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Buyer, Seller, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_RISK_TRANSFER_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Seller, Buyer, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 3
+ },
+ {
+  "id": "SUPPLY_SHORTAGE_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Buyer, Seller, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 2
+ },
+ {
+  "id": "SUPPLY_WARRANTY_001",
+  "verdict": "UNDETERMINED",
+  "why": "party-relative, so it cannot be certified neutral — but no mechanism was demonstrated either",
+  "evidence": [
+   {
+    "detector": "PARTY_ROLE_VARIANCE",
+    "detail": "renders with different party roles across families: Principal, Distributor, Seller, Buyer, Supplier"
+   }
+  ],
+  "establishing": 0,
+  "party_relative": true,
+  "families": 4
+ },
+ {
+  "id": "TECH_ACCEPTANCE_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "TECH_WARRANTY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ },
+ {
+  "id": "TS_INVESTMENT_TERMS_001",
+  "verdict": "UNDETERMINED",
+  "why": "no mechanism demonstrated and no positive evidence of irrelevance",
+  "evidence": [],
+  "establishing": 0,
+  "party_relative": false,
+  "families": 1
+ }
+]

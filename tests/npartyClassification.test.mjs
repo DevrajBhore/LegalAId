@@ -306,7 +306,7 @@ check("the classified set only grows — a ratchet, not a snapshot", () => {
    * it back in the invisible backlog with nobody told. So the floor is recorded
    * and enforced, and raising it is a deliberate edit to this line.
    */
-  const FLOOR = { SAFE: 17, AUTHORED_DECISION_PENDING: 6 };
+  const FLOOR = { SAFE: 17, AUTHORED_DECISION_PENDING: 7 };
   assert.ok(counts.SAFE >= FLOOR.SAFE,
     `SAFE fell from ${FLOOR.SAFE} to ${counts.SAFE}: a clause lost its classification`);
   assert.ok(counts.AUTHORED_DECISION_PENDING >= FLOOR.AUTHORED_DECISION_PENDING,

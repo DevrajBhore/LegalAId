@@ -1,0 +1,180 @@
+[
+ {
+  "type": "COMMERCIAL_LEASE_AGREEMENT",
+  "capId": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "measure": "total consideration paid",
+  "supplying": [
+   "rent_amount"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "CONSULTANCY_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "consulting_fee"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "DATA_PROCESSING_AGREEMENT",
+  "capId": "CORE_LIABILITY_CAP_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "DISTRIBUTION_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "EMPLOYMENT_CONTRACT",
+  "capId": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "measure": "total consideration paid",
+  "supplying": [
+   "salary"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "FOUNDERS_AGREEMENT",
+  "capId": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "measure": "total consideration paid",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "GUARANTEE_AGREEMENT",
+  "capId": "GUARANTEE_OBLIGATION_001",
+  "measure": "a stated rupee figure",
+  "supplying": [
+   "guaranteed_amount"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "contract_value"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "IP_ASSIGNMENT_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "contract_value"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "JOINT_VENTURE_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "LEAVE_AND_LICENSE_AGREEMENT",
+  "capId": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "measure": "total consideration paid",
+  "supplying": [
+   "license_fee"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "MASTER_SERVICE_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "contract_value"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "NDA",
+  "capId": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+  "measure": "total consideration paid",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "PARTNERSHIP_DEED",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "PRIVACY_POLICY",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "SALES_OF_GOODS_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "price"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "SERVICE_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "contract_value"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "SHAREHOLDERS_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "SHARE_SUBSCRIPTION_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ },
+ {
+  "type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "total_fee"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "SUPPLY_AGREEMENT",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [
+   "price"
+  ],
+  "verdict": "MEASURABLE"
+ },
+ {
+  "type": "TERMS_OF_SERVICE",
+  "capId": "CORE_LIMITATION_LIABILITY_001",
+  "measure": "aggregate fees paid or payable",
+  "supplying": [],
+  "verdict": "UNMEASURABLE"
+ }
+]

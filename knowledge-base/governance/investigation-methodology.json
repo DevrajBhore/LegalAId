@@ -1,0 +1,579 @@
+{
+  "$comment": [
+    "RULES THIS INVESTIGATION LEARNED BY BREAKING THEM.",
+    "",
+    "Each rule below exists because a probe in this project produced a wrong answer that the rule",
+    "would have caught, and each names the phase where that happened. They are recorded as data so",
+    "a later probe can be checked against them, not as advice."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "rules": [
+    {
+      "id": "CHECK_WHETHER_THE_SYSTEM_ALREADY_SAYS_SO",
+      "rule": "A probe must establish whether the production system already recognises and discloses the alleged condition BEFORE classifying it as a defect.",
+      "learned_in": "D4.27",
+      "what_happened": [
+        "A probe found ten families collecting `liability_cap_amount` while the clause stated a formula,",
+        "and was one step from reporting that the user's figure never reaches the page — the D4.14 class",
+        "of failure, and a serious find if true.",
+        "",
+        "draftConsistencyValidator.js already reports it as LIABILITY_CAP_ANSWERS_CONFLICT. The user also",
+        "chose a BASIS, the clause follows the basis, and the validator says in terms that the figure has",
+        "not been used. The behaviour is correct and already disclosed."
+      ],
+      "why_it_matters": "Without this rule the measurement probes become a source of false legal conclusions — the exact failure mode they exist to prevent, arriving through the instrument meant to prevent it.",
+      "how_to_apply": "Generate the document, read the validation output, and only then decide whether silence is real."
+    },
+    {
+      "id": "A_VOCABULARY_DECIDES_THE_FINDING",
+      "rule": "Where a probe's word list determines its verdict, the word list must be derived from what the schemas and artifacts actually contain, and a verdict already computed must be reused rather than re-derived from a second list.",
+      "learned_in": "D4.21, D4.22, D4.27",
+      "what_happened": [
+        "D4.21: four detector defects produced 34 false candidates out of 59.",
+        "D4.22: ablation showed five of six known-sensitive clauses become undiscoverable once their",
+        "vocabulary is removed — the detectors recognise words, not mechanisms.",
+        "D4.27: three separate word-list defects in ONE probe. `total_fee` and `price` were missing, and",
+        "a fee-specific regex misclassified lease, employment and guarantee, whose caps read rent, salary",
+        "and the guaranteed amount.",
+        "",
+        "Every time this investigation has written a vocabulary, the vocabulary has been wrong."
+      ]
+    },
+    {
+      "id": "READ_THE_SOURCE_DO_NOT_SUMMARISE_IT",
+      "rule": "Where a legal conclusion turns on a statute or authority, the probe must read what that source actually does before building on it. A plausible mechanism that reaches the right conclusion is still wrong, and the generalisation drawn from it will not survive.",
+      "learned_in": "D4.25, D4.28",
+      "what_happened": [
+        "D4.25: it was tempting to record that Contract Act s.146 resolves the cap/indemnity conflict in",
+        "the guarantee family. It does not. It allocates as between co-sureties while the cap bounds the",
+        "creditor's recovery — different axes, so there was no conflict for it to resolve. Right",
+        "conclusion, wrong mechanism, and the generalisation drawn from it would have failed wherever no",
+        "statute exists.",
+        "",
+        "D4.28: secondary sources state that excluding liability for death or personal injury caused by",
+        "negligence is 'automatically void', attributing it to COMMON LAW PRINCIPLES. India has no Unfair",
+        "Contract Terms Act. The constraint runs through s.23 public policy and Central Inland Water",
+        "Transport unconscionability, which are fact-sensitive. Recording it as a bright line would have",
+        "rested an Indian answer on another jurisdiction's statute."
+      ]
+    },
+    {
+      "id": "COMPUTE_THE_CONSEQUENCE",
+      "rule": "State a quantitative consequence by computing it in the probe, not by asserting it in prose.",
+      "learned_in": "D4.24",
+      "what_happened": [
+        "The narrative said SHARED + SEVERAL_TO_EACH conflicts while PER_PARTY + SEVERAL_TO_EACH is",
+        "coherent. The arithmetic showed PER_PARTY permits 30,00,000 against 50,00,000 promised, so that",
+        "pairing fails too. The tension was structural rather than a quirk of one combination, and the",
+        "prose had the shape of the finding wrong."
+      ]
+    },
+    {
+      "id": "ASSERT_THE_STATE_NOT_THE_HOPE",
+      "rule": "A regression fixture asserts the current state, including when that state is a defect. It must never assert a solution that has not landed.",
+      "learned_in": "D4.26",
+      "what_happened": [
+        "The cap/indemnity fixture asserts that the document does NOT order the two clauses, with a",
+        "failure message saying that if it ever flips, that may be the fix landing and the governance",
+        "record should be updated rather than the assertion allowed to change silently.",
+        "",
+        "A test that passes by describing a hoped-for state is how a suite starts lying."
+      ]
+    },
+    {
+      "id": "A_UNIFORM_FIXTURE_HIDES_MAGNITUDE",
+      "rule": "Where a finding turns on a quantitative relationship, the fixture must supply realistic, NON-COLLIDING values. A fixture that answers every numeric question with the same number cannot distinguish a sound magnitude from an absurd one, and cannot distinguish a correct formula from several incorrect ones. Output that looks like a defect must be checked against the input that produced it before it is reported as one.",
+      "learned_in": "D4.29",
+      "what_happened": [
+        "Reading rendered text across the portfolio turned up `The liability of the Obligor under this",
+        "Deed is limited to Rs. 3/-` in INDEMNITY_BOND and `an amount equal to 0.3 times the amount",
+        "invested` in TERM_SHEET. A three-rupee indemnity bond and a 0.3x liquidation preference are",
+        "both commercially absurd, and both were one step from being recorded as defects.",
+        "",
+        "Neither is one. The WELL_FILLED fixture answers every numeric question with 3, and 0.3 for a",
+        "multiple. The engine rendered the answers it was given, correctly.",
+        "",
+        "The cost is not the near-miss. It is that no probe built on this fixture can test D4.28's",
+        "WELL_DEFINED sub-question at all, because every magnitude in it is the same magnitude.",
+        "probeLeaseCapHeads had to supply its own figures for exactly this reason and that was treated",
+        "as a convenience at the time; it was a requirement."
+      ],
+      "why_it_matters": "This is the inverse of the D4.19 rule. There, a fixture that could not reach a behaviour reported it as absent. Here, a fixture that reaches every behaviour with one value reports every magnitude as equally plausible.",
+      "how_to_apply": "Before reporting a quantity as wrong, print the input that produced it. Before concluding that magnitudes are sound, check that the fixture varies them.",
+      "non_collision": {
+        "$why": [
+          "The uniform value does two kinds of damage and the second is worse.",
+          "",
+          "It hides magnitude: a three-rupee indemnity bond looks like a defect and is not.",
+          "",
+          "It hides FORMULA ERROR: where fee, investment, cap and claim are all 3, a cap computed from",
+          "the wrong quantity produces the right number. Several incorrect formulas agree, and a suite",
+          "that exercises every path reports confidence it has not earned.",
+          "",
+          "The fixture proves the path works. It does not prove the semantics work, and this",
+          "investigation has been reading its green as though it proved both."
+        ],
+        "requirement": "Distinct, realistic, mutually non-divisible values per quantity, so that a formula reading the wrong one produces a visibly wrong answer.",
+        "status": "the existing WELL_FILLED fixture does not meet this and has not been changed; changing it would move the clause baseline and is its own piece of work"
+      }
+    },
+    {
+      "id": "ATTACK_THE_PROBE_BEFORE_TRUSTING_IT",
+      "rule": "Before a probe's output is treated as a finding, the probe itself must be attacked: its vocabulary, its fixture, its assumption that silence means absence, and whether the production system already says what it is about to report. A probe is an instrument and an unexamined instrument produces confident nonsense.",
+      "learned_in": "D4.21 through D4.29, cumulatively",
+      "what_happened": [
+        "This investigation has now retracted seven claims before recording them, listed in",
+        "`retraction_register` below. Every one came from the measurement apparatus rather than from",
+        "the product.",
+        "",
+        "That ratio is the finding. For a system whose purpose is to refuse to fabricate legal content,",
+        "a measurement methodology that fabricates defects is the same failure arriving through the",
+        "instrument built to prevent it."
+      ],
+      "why_it_matters": "Finding defects in the product is the visible work. Discovering how readily the method invents them is what makes the visible work trustworthy.",
+      "how_to_apply": "For each probe, before reading its output: what decides this verdict, and what would make that wrong? Then check that specific thing."
+    },
+    {
+      "id": "A_LEGAL_PROPOSITION_IS_NOT_KNOWLEDGE_UNTIL_VERIFIED",
+      "rule": "No legal proposition becomes executable knowledge on the strength of this investigation's own assertion. It must be verified against sources, each source's weight recorded, and anything that could not be confirmed left marked as reported rather than established.",
+      "learned_in": "D4.29",
+      "what_happened": [
+        "D4.29 characterised a nil ceiling as a total exclusion and recorded a legal frame around it",
+        "from recollection. Verification against Indian sources found the draft wrong in BOTH directions:",
+        "",
+        "It UNDERSTATED the authority against damage-barring clauses — there is a named line of decisions",
+        "holding them void under s.23, not merely a fact-sensitive argument.",
+        "",
+        "It OVERSTATED the unconscionability doctrine, which does not reach equal-bargaining commercial",
+        "transactions.",
+        "",
+        "It MISSED the Consumer Protection Act 2019 entirely, which changes the answer for the two",
+        "consumer-facing families.",
+        "",
+        "And the central characterisation turned out to be precisely the question the authorities leave",
+        "open, rather than a conclusion they support."
+      ],
+      "why_it_matters": "A plausible legal frame is the most dangerous output this system can produce, because it is the one a reader is least equipped to check.",
+      "how_to_apply": "Record the authority, the court, what it decides, its bearing on the question, and how it was verified. Where it was not read, say so and do not cite it."
+    }
+  ],
+  "cap_decomposition": {
+    "$note": "The five layers the investigation separated, in the order they must be answered. None may resolve another as a side effect.",
+    "layers": [
+      {
+        "layer": "MEASURE",
+        "question": "What quantity does the ceiling refer to, can it arise here, can it be established when a claim is made, and can the instrument compute it?",
+        "sub_questions": [
+          {
+            "id": "REFERENT_NON_EMPTY",
+            "question": "Can the class of payment the clause names arise between these parties under this instrument at all?",
+            "opened_in": "D4.29",
+            "result": "7 of 22 cap instances name a class of payment that never arises in their family, and 3 more turn on whether a contribution to a firm, a JV vehicle or a company is a payment between the Parties. Where it cannot arise the ceiling is nil, so the clause is an exclusion of liability rather than a limitation of it.",
+            "$why_first": "It precedes COMPUTABLE because an empty referent is not a missing field. Asking whether the formula can be computed invites the repair of adding the field, and adding a fee to a partnership deed is not a repair."
+          },
+          {
+            "id": "REFERENT_OBSERVABLE",
+            "question": "Granted that the quantity can arise, can the parties establish what it was when a claim is made?",
+            "opened_in": "D4.29",
+            "$why_it_is_its_own_rung": [
+              "A referent can be non-empty and still not observable. Fees paid in the preceding twelve",
+              "months are observable from invoices. The value of an opportunity lost, or consideration",
+              "described but never quantified anywhere, can genuinely arise and still leave the ceiling",
+              "undeterminable at the moment it matters.",
+              "",
+              "Collapsing this into COMPUTABLE would once again invite the intake repair — add a field —",
+              "when the defect is that the quantity is not knowable from any record either party keeps."
+            ],
+            "status": "OPEN — not yet measured across the portfolio"
+          },
+          {
+            "id": "COMPUTABLE",
+            "question": "Is there a quantity the formula can read?",
+            "settled_in": "D4.27",
+            "result": "10 of 22 cap instances cannot be computed"
+          },
+          {
+            "id": "WELL_DEFINED",
+            "question": "Is what it computes stable and intended?",
+            "opened_in": "D4.28",
+            "result": "A cumulative measure makes the ceiling a function of elapsed time. In a commercial lease at 2,50,000 per month, the same clause recovers 6 percent of a 40,00,000 claim in month one and 100 percent from month sixteen. MEASURABLE was necessary and not sufficient."
+          }
+        ]
+      },
+      {
+        "layer": "SCOPE",
+        "question": "Which exposure heads does the ceiling reach at all?"
+      },
+      {
+        "layer": "EXCLUSIONS",
+        "question": "Which heads are expressly outside it?",
+        "settled": [
+          "fraud",
+          "wilful misconduct",
+          "liabilities unlimitable by law"
+        ]
+      },
+      {
+        "layer": "INTERACTION",
+        "question": "Per head, how do other exposure provisions affect it?",
+        "open_heads": [
+          "breach of agreement",
+          "negligence"
+        ],
+        "blocked_where": "measurement is unresolved"
+      },
+      {
+        "layer": "APPORTIONMENT",
+        "question": "How does the ceiling apply across more than two principals?",
+        "decision_id": "LIABILITY_CAP_APPORTIONMENT",
+        "status": "UNDECIDED"
+      }
+    ]
+  },
+  "finding_taxonomy": [
+    {
+      "finding": "4 families offer a cap basis they cannot supply",
+      "layer": "MEASURE",
+      "nature": "INTAKE_AND_APPLICABILITY",
+      "owner": "product and legal model",
+      "members": [
+        "DISTRIBUTION_AGREEMENT",
+        "JOINT_VENTURE_AGREEMENT",
+        "PARTNERSHIP_DEED",
+        "SHAREHOLDERS_AGREEMENT"
+      ]
+    },
+    {
+      "finding": "6 families contain a fixed basis nothing can measure",
+      "layer": "MEASURE",
+      "nature": "DOCUMENT_SEMANTICS",
+      "owner": "knowledge and content",
+      "members": [
+        "DATA_PROCESSING_AGREEMENT",
+        "FOUNDERS_AGREEMENT",
+        "NDA",
+        "PRIVACY_POLICY",
+        "SHARE_SUBSCRIPTION_AGREEMENT",
+        "TERMS_OF_SERVICE"
+      ]
+    },
+    {
+      "finding": "the cumulative measure makes the ceiling time-dependent",
+      "layer": "MEASURE",
+      "nature": "DOCUMENT_SEMANTICS",
+      "owner": "advocate",
+      "opened_in": "D4.28"
+    },
+    {
+      "finding": "2 interaction heads unresolved",
+      "layer": "INTERACTION",
+      "nature": "ADVOCATE_DECISION",
+      "owner": "advocate",
+      "investigable_now_in": [
+        "COMMERCIAL_LEASE_AGREEMENT",
+        "LEAVE_AND_LICENSE_AGREEMENT"
+      ]
+    },
+    {
+      "finding": "N-party allocation of the ceiling",
+      "layer": "APPORTIONMENT",
+      "nature": "ADVOCATE_DECISION",
+      "owner": "advocate",
+      "decision_id": "LIABILITY_CAP_APPORTIONMENT"
+    },
+    {
+      "finding": "7 families name a payment class that never arises, so the ceiling is nil",
+      "layer": "MEASURE",
+      "sub_question": "REFERENT_NON_EMPTY",
+      "nature": "DOCUMENT_SEMANTICS",
+      "owner": "knowledge and content",
+      "opened_in": "D4.29",
+      "members_recorded_in": "knowledge-base/governance/cap-referent.json#structurally_empty",
+      "$members_not_duplicated_here": "The membership has one home. Copying it would let the two records drift."
+    },
+    {
+      "finding": "the negotiated-cap basis option renders the default fees formula and collects no figure",
+      "layer": "MEASURE",
+      "nature": "INTAKE_AND_APPLICABILITY",
+      "owner": "product and legal model",
+      "opened_in": "D4.29",
+      "members_recorded_in": "knowledge-base/governance/cap-referent.json#basis_option_defect"
+    }
+  ],
+  "taxonomy_note": {
+    "$correction": [
+      "D4.27 recorded that a family has one defect kind per layer. D4.29 falsified that.",
+      "",
+      "DISTRIBUTION_AGREEMENT and SHAREHOLDERS_AGREEMENT each carry BOTH defects at the MEASURE",
+      "layer: the form offers a fees basis the family cannot supply, which is an intake defect owned",
+      "by product, AND the clause names fees that can never arise between these parties, which is a",
+      "content defect owned by knowledge. Two repairs, two owners, one family.",
+      "",
+      "The rule that survives is narrower: a FINDING has one nature. A family may appear in several",
+      "findings, and the reason to keep the natures apart is that they route to different people, not",
+      "that they are mutually exclusive."
+    ],
+    "rule": "A finding has exactly one nature. A family may appear in more than one finding.",
+    "falsified_in": "D4.29",
+    "falsified_by": [
+      "DISTRIBUTION_AGREEMENT",
+      "SHAREHOLDERS_AGREEMENT"
+    ]
+  },
+  "architectural_constraints": {
+    "$note": [
+      "These are not implementation features and they are not preferences. Each is a boundary that,",
+      "if crossed, makes the system assert something no advocate decided. They are recorded here",
+      "rather than in a family file because they bind every family."
+    ],
+    "constraints": [
+      {
+        "id": "UNKNOWN_IS_NOT_ZERO",
+        "constraint": "A ceiling that computes to zero must never be treated as a ceiling that is present and satisfied. Zero is a substantive answer and must be surfaced as one; unknown is the absence of an answer. The two must not share a signal.",
+        "established_in": "D4.29",
+        "why": [
+          "A formula whose referent cannot arise is formally computable and substantively catastrophic.",
+          "It yields nil, and nil passes every structural check a 'is there a cap?' test can apply.",
+          "The document then carries a reassuring cap-present signal over a total bar on recovery.",
+          "",
+          "An unknown ceiling fails safe in the reader's mind — it looks incomplete and invites",
+          "negotiation. A nil ceiling does not look incomplete."
+        ],
+        "test_form": "No check may report a cap as present on the strength of the clause rendering. Presence is a property of the referent, not of the sentence."
+      },
+      {
+        "id": "INTERACTION_IS_PER_HEAD",
+        "constraint": "The relationship between the cap and other exposure provisions is decided per exposure head. No single Boolean may stand for it.",
+        "established_in": "D4.26, confirmed D4.29",
+        "why": [
+          "The shipped cap already carves out three heads — fraud, wilful misconduct, and liabilities",
+          "unlimitable by law — while the indemnity triggers on three, overlapping on exactly one. The",
+          "instrument is therefore ALREADY ordering the two clauses in part.",
+          "",
+          "A field such as `indemnity_inside_cap = true/false` would overwrite three settled heads in",
+          "order to answer two open ones. It would answer more than the advocate decided, which is the",
+          "specific way this system would fabricate legal content while appearing to record a choice."
+        ],
+        "forbidden_shapes": [
+          "indemnity_inside_cap",
+          "indemnity_within_cap",
+          "capped_indemnity",
+          "indemnity_subject_to_cap"
+        ],
+        "open_heads": [
+          "BREACH_OF_AGREEMENT",
+          "NEGLIGENCE"
+        ],
+        "settled_heads": [
+          "FRAUD",
+          "WILFUL_MISCONDUCT",
+          "UNLIMITABLE_BY_LAW"
+        ]
+      },
+      {
+        "id": "LAYERS_ARE_INDEPENDENT",
+        "constraint": "MEASURE, INTERACTION and APPORTIONMENT are separate questions with separate authority. No result from one may resolve another as a side effect.",
+        "established_in": "D4.26, hardened D4.29",
+        "shape": {
+          "MEASURE": "what does the ceiling refer to?",
+          "INTERACTION": "per head, how do other exposure provisions bear on it?",
+          "APPORTIONMENT": "with more than two principals, among whom does it apply?"
+        },
+        "why": [
+          "D4.29 showed how easily one answers another by accident. Establishing that the NDA's cap is",
+          "nil makes the interaction question look answered — the indemnity is simply consumed — and it",
+          "is not answered, it is merely rendered stark. Recording it as decided would take a measurement",
+          "result and pass it off as an interaction decision."
+        ],
+        "worked_example_of_the_temptation": "knowledge-base/governance/cap-referent.json#interaction_layer_note, which records the NDA chain and explicitly does not decide it."
+      },
+      {
+        "id": "INTAKE_AND_CONTENT_ARE_DIFFERENT_OWNERS",
+        "constraint": "A defect in what the form offers and a defect in what the instrument says are routed to different people and repaired differently, even when they appear in the same family and the same layer.",
+        "established_in": "D4.27, corrected D4.29",
+        "why": "DISTRIBUTION_AGREEMENT and SHAREHOLDERS_AGREEMENT carry both at MEASURE: the form offers a fees basis they cannot supply, and the clause names fees that can never arise between these parties. Two repairs, two owners, one family.",
+        "superseded_claim": "D4.27's 'a family has one defect kind per layer', falsified in D4.29."
+      }
+    ]
+  },
+  "retraction_register": {
+    "$note": [
+      "Kept because the retractions are evidence in their own right. Seven claims were one step from",
+      "being recorded as defects. All seven originated in the measurement methodology, not in the",
+      "product.",
+      "",
+      "For a legal system this matters almost as much as the defects found: it is the measured rate at",
+      "which our own instruments hallucinate."
+    ],
+    "entries": [
+      {
+        "phase": "D4.19",
+        "nearly_claimed": "no allocation fields exist in the portfolio",
+        "falsified_by": "the probe read `.documents` where the baseline holds `.types`",
+        "class": "PROBE_DEFECT"
+      },
+      {
+        "phase": "D4.19",
+        "nearly_claimed": "the profit share is attributed to the roster",
+        "falsified_by": "the regex matched the generic plural \"the Partners\"",
+        "class": "VOCABULARY"
+      },
+      {
+        "phase": "D4.21",
+        "nearly_claimed": "59 N-party candidate clauses",
+        "falsified_by": "four detector defects; 34 were false, precision 42%",
+        "class": "PROBE_DEFECT"
+      },
+      {
+        "phase": "D4.24",
+        "nearly_claimed": "PER_PARTY with SEVERAL_TO_EACH is coherent",
+        "falsified_by": "the arithmetic: 30,00,000 permitted against 50,00,000 promised",
+        "class": "ASSERTED_NOT_COMPUTED"
+      },
+      {
+        "phase": "D4.25",
+        "nearly_claimed": "Contract Act s.146 resolves the cap/indemnity conflict in the guarantee family",
+        "falsified_by": "reading s.146 — it allocates between co-sureties while the cap bounds the creditor's recovery; different axes",
+        "class": "LEGAL_MECHANISM"
+      },
+      {
+        "phase": "D4.27",
+        "nearly_claimed": "ten families collect a cap figure that never reaches the page",
+        "falsified_by": "draftConsistencyValidator already reports it as LIABILITY_CAP_ANSWERS_CONFLICT; the behaviour is correct and disclosed",
+        "class": "ALREADY_DISCLOSED"
+      },
+      {
+        "phase": "D4.27",
+        "nearly_claimed": "lease, employment and guarantee caps are unmeasurable",
+        "falsified_by": "a fee-specific regex; their caps read rent, salary and the guaranteed amount",
+        "class": "VOCABULARY"
+      },
+      {
+        "phase": "D4.29",
+        "nearly_claimed": "a three-rupee indemnity bond and a 0.3x liquidation preference are rendering defects",
+        "falsified_by": "the fixture answers every numeric question with 3; both were rendered faithfully",
+        "class": "FIXTURE"
+      },
+      {
+        "phase": "D4.29",
+        "nearly_claimed": "a family has one defect kind per layer",
+        "falsified_by": "DISTRIBUTION and SHAREHOLDERS each carry an intake defect and a content defect at MEASURE",
+        "class": "OWN_PRIOR_RULE"
+      },
+      {
+        "phase": "D4.29",
+        "nearly_claimed": "a referent-resolution engine primitive is warranted",
+        "falsified_by": "every non-cap measured quantity in the portfolio measures against a rate or a supplied figure; the premise does not reproduce",
+        "class": "PREMATURE_ABSTRACTION"
+      },
+      {
+        "phase": "D4.29",
+        "nearly_claimed": "the nil ceiling is a total exclusion, constrained through s.23 and unconscionability",
+        "falsified_by": "verification against Indian sources: understated Simplex, overstated Brojo Nath, missed the Consumer Protection Act 2019, and the characterisation is the open question rather than the answer",
+        "class": "LEGAL_FRAME"
+      }
+    ],
+    "reading": "Eleven retractions across six phases. Classes: PROBE_DEFECT, VOCABULARY, ASSERTED_NOT_COMPUTED, LEGAL_MECHANISM, ALREADY_DISCLOSED, FIXTURE, OWN_PRIOR_RULE, PREMATURE_ABSTRACTION, LEGAL_FRAME. Vocabulary is the most frequent and the legal ones are the most dangerous."
+  },
+  "knowledge_authoring_pipeline": {
+    "$note": [
+      "Without this, the investigation becomes a backdoor knowledge-authoring system. The failure mode",
+      "is short and entirely plausible:",
+      "",
+      "    researcher observes something -> writes a proposition -> a test passes -> the system",
+      "    treats the proposition as law",
+      "",
+      "Every step there is something this project does daily, and the last one is fabrication. A green",
+      "test proves the record is internally consistent. It proves nothing whatever about the law."
+    ],
+    "applies_to": "LEGAL propositions. A mechanical observation about what the software does — that an option renders the default formula, that a field is absent — is established by generating and reading, and does not pass through these gates.",
+    "gates": [
+      {
+        "gate": 1,
+        "id": "OBSERVATION",
+        "question": "What did the instrument actually do? Established by generating and reading, never by summarising."
+      },
+      {
+        "gate": 2,
+        "id": "CANDIDATE_PROPOSITION",
+        "question": "What legal claim would explain it? Explicitly a candidate, and labelled as one."
+      },
+      {
+        "gate": 3,
+        "id": "AUTHORITATIVE_VERIFICATION",
+        "question": "What do the sources say? Each authority read or marked REPORTED_UNVERIFIED, with its court, date, facts, what it decided and what it did not."
+      },
+      {
+        "gate": 4,
+        "id": "SCOPE_JURISDICTION_EXCEPTIONS",
+        "question": "Does it reach OUR facts? Which parties, which contractual context, which statute, which exceptions. This is where a correct proposition most often stops."
+      },
+      {
+        "gate": 5,
+        "id": "ADVOCATE_LEGAL_REVIEW",
+        "question": "Does a qualified advocate adopt it? Nothing in this repository has passed this gate."
+      },
+      {
+        "gate": 6,
+        "id": "EXECUTABLE_KNOWLEDGE",
+        "question": "Only now may it drive generation, validation or certification."
+      }
+    ],
+    "current_positions": [
+      {
+        "proposition": "A cap measured on a payment class that never arises produces a nil ceiling.",
+        "gate_reached": 1,
+        "note": "An arithmetic consequence of an observation, not a legal claim. Established."
+      },
+      {
+        "proposition": "A nil ceiling is a total exclusion of liability rather than a limitation.",
+        "gate_reached": 3,
+        "outcome": "FAILED AT GATE 3 and returned to gate 2, reframed. Verification found the authorities draw the line between absolute bars and threshold caps and do not address a formula that evaluates to nil. The claim became the question.",
+        "now_recorded_as": "knowledge-base/governance/legal-characterisation.json"
+      },
+      {
+        "proposition": "Simplex Concrete Piles does not address clauses that cap damages at a threshold.",
+        "gate_reached": 3,
+        "note": "Judgment read; the limitation confirmed in the text rather than inferred. Awaiting gate 4 — whether a government standard-form construction contract's reasoning reaches an NDA between commercial parties."
+      },
+      {
+        "proposition": "Consumer Protection Act 2019 s.49(2) permits a term unfair to a consumer to be declared void.",
+        "gate_reached": 3,
+        "note": "Section text read. Gate 4 is open and substantial: whether a liability ceiling in published terms of service is a term 'unfair to a consumer' within s.2(46), and whether the reader is a consumer at all."
+      },
+      {
+        "proposition": "PLUS 91 limits Simplex to absolute prohibitions.",
+        "gate_reached": 2,
+        "note": "Held at gate 2 deliberately. The law report was read and does not discuss Simplex; the limitation is the practitioner literature's reading. It is the distinction this whole finding turns on, so it is the one least entitled to be assumed."
+      }
+    ],
+    "$standing": "Nothing in this repository has passed gate 5. 308 clauses carry no advocate sign-off and every governance record is marked draft-needs-legal-review. That is the accurate state and it should not drift silently."
+  },
+  "fourth_dimension": {
+    "$note": [
+      "MEASURE, INTERACTION and APPORTIONMENT all assume the clause IS a ceiling. D4.29 produced a case",
+      "where that assumption is the question, so characterisation is recorded as a DIMENSION beside the",
+      "three layers rather than as a fourth layer within them — it is prior to all three, not after them."
+    ],
+    "id": "LEGAL_CHARACTERISATION",
+    "question": "Is this actually a cap, or an exclusion or bar?",
+    "opened_in": "D4.30",
+    "recorded_in": "knowledge-base/governance/legal-characterisation.json",
+    "hard_constraint": "ARITHMETIC_DOES_NOT_DETERMINE_CHARACTERISATION — a legal characterisation may never be inferred from a computed value.",
+    "not_generalised": "Scoped to the liability ceiling. No evidence yet shows the problem recurs in other clause families, and generalising without it would be the abstraction this investigation refused in D4.29."
+  },
+  "property_the_suite_must_keep": {
+    "id": "THE_SUITE_CAN_FAIL_BECAUSE_WE_WERE_WRONG",
+    "property": "The test suite must be capable of failing because a hypothesis of ours was wrong, not only because the product regressed.",
+    "how_it_is_achieved": [
+      "Fixtures assert the CURRENT state including defects, so a repair flips them and forces the governance record to be updated rather than the assertion quietly relaxed.",
+      "Governance records are asserted, so softening a rule, dropping an authority or hardening a provisional reading into a verdict fails a test.",
+      "Refusals carry their evidence, so accepting a previously refused abstraction fails unless the evidence is replaced."
+    ],
+    "demonstrated_in": [
+      "D4.29 — adding REFERENT_NON_EMPTY failed the sub-question assertion, which is what forced the change to be deliberate.",
+      "D4.29 — the taxonomy check that asserted 'one defect kind per family' failed once DISTRIBUTION and SHAREHOLDERS were found to carry two. Our rule was wrong and the suite said so.",
+      "D4.30 — the legal-frame check failed when the frame was rewritten after verification."
+    ]
+  }
+}

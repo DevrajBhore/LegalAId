@@ -1,0 +1,251 @@
+{
+  "$comment": [
+    "ADJUDICATION OF THE SEMANTIC CANDIDATE SWEEP.",
+    "",
+    "D4.20 falsified the pronoun scan. D4.21 replaced it with mechanism detectors and immediately",
+    "reproduced the same disease one level up: the first run flagged 59 new candidates, of which 34",
+    "were artefacts of four detector defects — `majority` matching 'the age of majority', `Recipient`",
+    "matching 'recipient GSTIN', `assign\\w*` matching every copyright assignment in the corpus, and",
+    "`proportion` matching vesting over TIME rather than division among PEOPLE.",
+    "",
+    "A detector that cannot be wrong has not been tested, so every surviving candidate is adjudicated",
+    "here with a verdict and a reason. The verdicts are mine, read off the shipped clause text; they",
+    "are a reading and need an advocate, exactly like the shape assignments in nparty-shapes.json.",
+    "",
+    "VERDICTS:",
+    "  TRUE_CANDIDATE      a question genuinely arises above two parties. Becomes work.",
+    "  ALREADY_CLASSIFIED  found correctly and already carries a shape. Evidence the detector works.",
+    "  FALSE_POSITIVE      the marker fired and no cardinality question exists. Reason recorded.",
+    "",
+    "THE SYSTEMATIC FALSE POSITIVE WORTH NAMING. `expiry or termination of this Agreement` is a",
+    "TEMPORAL TRIGGER — it says WHEN an obligation bites, not WHO it binds — and it appears in a dozen",
+    "clauses that have no cardinality question at all. It is the single largest source of noise in the",
+    "INSTRUMENT_CONTINUATION mechanism, and it is the direct analogue of 'between the Parties' in the",
+    "old scan: a phrase that looks structural and is merely idiomatic."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "adjudications": [
+    {
+      "clause_id": "CORE_SIGNATURE_BLOCK_001",
+      "verdict": "ALREADY_CLASSIFIED",
+      "shape": "ROSTER_DRIVEN",
+      "reason": "Assembled from the roster and proved at two, three and four principals. Its appearance here is the detector agreeing with a result established independently."
+    },
+    {
+      "clause_id": "CORE_IDENTITY_001",
+      "verdict": "ALREADY_CLASSIFIED",
+      "shape": "ROSTER_DRIVEN",
+      "reason": "Same. Both were invisible to the pronoun scan and both are genuinely cardinality-sensitive, which is the clearest evidence the old method under-sampled."
+    },
+    {
+      "clause_id": "PARTNERSHIP_CAPITAL_001",
+      "verdict": "ALREADY_CLASSIFIED",
+      "shape": "ROSTER_DRIVEN",
+      "reason": "Settled on cardinality, open on allocation — governed by allocation-semantics.json. The detector firing on DIVIDED_QUANTITY is correct and points at the axis that is still open."
+    },
+    {
+      "clause_id": "CORE_SURVIVAL_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 24,
+      "priority": "HIGHEST",
+      "mechanism": "INSTRUMENT_CONTINUATION",
+      "question": "Where the instrument ends as to one party but continues between the others, which obligations survive, and between whom?",
+      "reason": "This is DOWNSTREAM OF AN ALREADY-OPEN DECISION. TERMINATION_FOR_DEFAULT_SCOPE asks whether a default ends the instrument or only one relationship; survival then asks what is left standing afterwards, and the answer differs under every candidate treatment. 24 families — the highest-exposure unclassified clause in the portfolio once identity and signature are removed.",
+      "candidate_shape": "PAIRWISE_RIGHT, pending confirmation that it is not an independent question"
+    },
+    {
+      "clause_id": "FOUNDER_ROLES_AND_COMMITMENT_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "HIGH",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "Reserved matters require 'the unanimous agreement of the Founders' and everything else a majority. With two founders unanimity and majority are the same thing; with three they are not, and a two-founder deadlock has no majority at all.",
+      "reason": "The clause already speaks in N-party vocabulary, which is why it needs classifying rather than rewriting. Note the converse defect: at two founders 'majority' is unreachable."
+    },
+    {
+      "clause_id": "CORP_BOARD_COMPOSITION_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 3,
+      "priority": "HIGH",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "Board seats and voting rights allocated among N shareholders rather than two.",
+      "reason": "Board composition is an allocation of control. Companies Act, 2013 s.149 and s.152 govern appointment; who nominates which director is exactly the kind of question that has one answer at two shareholders and several at three."
+    },
+    {
+      "clause_id": "CORP_BOARD_INVESTOR_CONTROL_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 2,
+      "priority": "MEDIUM",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "Same mechanism as board composition, for investor-appointed seats.",
+      "reason": "Likely resolves with CORP_BOARD_COMPOSITION_001 as one decision rather than two."
+    },
+    {
+      "clause_id": "CORP_DRAG_ALONG_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 3,
+      "priority": "HIGH",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "Drag-along is definitionally an N-party mechanism: a majority compels a minority to sell. At two shareholders there is no minority to drag that is not simply the other party.",
+      "reason": "A clause whose entire purpose presupposes more than two holders, sitting in a corpus that assumes two.",
+      "incidental_defect": "The shipped text reads 'the Majority Shareholders, holding more than 100% of the issued and paid-up share capital' — a rendering defect in the drag threshold, independent of cardinality and worth fixing on its own."
+    },
+    {
+      "clause_id": "TS_LIQUIDATION_PREFERENCE_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "HIGH",
+      "mechanism": "DIVIDED_QUANTITY",
+      "question": "A liquidation waterfall distributes a finite pool. With more than two holders the order and the pro rata share both become live.",
+      "reason": "Same family of question as LIABILITY_CAP_APPORTIONMENT and differs in money at three."
+    },
+    {
+      "clause_id": "GUARANTEE_OBLIGATION_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "HIGH",
+      "mechanism": "DIVIDED_QUANTITY",
+      "question": "'The aggregate liability of the Guarantor' — with co-guarantors, is the cap each, shared, or joint and several?",
+      "reason": "Directly governed: Indian Contract Act, 1872 s.146 makes co-sureties liable to contribute equally in the absence of contract, and s.147 addresses unequal sums. So unlike the liability cap, this one has a statutory default the instrument may be displacing without saying so."
+    },
+    {
+      "clause_id": "RENT_SUBLEASE_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 2,
+      "priority": "MEDIUM",
+      "mechanism": "INSTRUMENT_CONTINUATION + PARTY_SUCCESSION",
+      "question": "'Entitle the Landlord to terminate this Agreement forthwith' — with co-tenants, does one tenant's unauthorised assignment end the tenancy for all of them?",
+      "reason": "The PAIRWISE_RIGHT question in a different family. Also the only clause in the corpus where 'assign this Agreement' survives the narrowed succession test, which is the mechanism working as intended."
+    },
+    {
+      "clause_id": "PROP_REGISTRATION_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 3,
+      "priority": "MEDIUM",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "Stamp duty and registration charges 'borne in the manner agreed by the Parties' — among three, in what shares?",
+      "reason": "An unattributed division of a real cost, which is the economic-allocation problem of invariant 63 appearing in a second place."
+    },
+    {
+      "clause_id": "IPA_ASSIGNOR_WARRANTIES_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "LOW",
+      "mechanism": "PAIRWISE_ROLE",
+      "question": "Assignor indemnifies Assignee — with co-assignors, severally or jointly?",
+      "reason": "Same shape as INDEMNITY_APPORTIONMENT; probably resolves with it rather than separately."
+    },
+    {
+      "clause_id": "GUARANTEE_INDEMNITY_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "LOW",
+      "mechanism": "PAIRWISE_ROLE",
+      "question": "Guarantor indemnifies Creditor — with co-guarantors, how apportioned?",
+      "reason": "Folds into GUARANTEE_OBLIGATION_001 and Contract Act s.146."
+    },
+    {
+      "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "MEDIUM",
+      "mechanism": "PAIRWISE_ROLE",
+      "question": "In a multi-party NDA, is each party both Discloser and Recipient as to every other, pairwise?",
+      "reason": "Seven NDA clauses share this one question and should be ONE decision, not seven. Likely RECIPROCAL_SEVERAL and therefore determined — but 'likely' is not a classification, and the NDA family admits a third principal today.",
+      "resolves_with": [
+        "NDA_DATA_SECURITY_001",
+        "NDA_DURATION_001",
+        "NDA_NON_COMPETE_001",
+        "NDA_RETURN_OF_INFORMATION_001",
+        "NDA_THIRD_PARTY_DISCLOSURE_001"
+      ]
+    },
+    {
+      "clause_id": "TECH_SOURCE_CODE_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 1,
+      "priority": "LOW",
+      "mechanism": "COLLECTIVE_DECISION",
+      "question": "'A mutually agreed escrow agent' — agreed by all parties or by the two principals?",
+      "reason": "Almost certainly CONSENT_OR_NOTICE_TO_OTHERS and determined. Recorded so the cheap ones are visibly cheap."
+    },
+    {
+      "clause_id": "RENT_PROPERTY_USE_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 2,
+      "priority": "LOW",
+      "mechanism": "INSTRUMENT_CONTINUATION",
+      "question": "One co-licensee's breach of permitted use entitling termination against all.",
+      "reason": "Same question as RENT_SUBLEASE_001; folds into it."
+    },
+    {
+      "clause_id": "DPA_RETENTION_AND_ERASURE_001",
+      "verdict": "FALSE_POSITIVE",
+      "mechanism": "INSTRUMENT_CONTINUATION",
+      "reason": "Matched 'on the expiry or termination of this Agreement, the Processor shall...'. That is a TEMPORAL TRIGGER — it fixes when erasure is due, not who is bound. The obligation is already distributive across any number of processors. No cardinality question."
+    },
+    {
+      "clause_id": "RENT_POSSESSION_001",
+      "verdict": "FALSE_POSITIVE",
+      "mechanism": "INSTRUMENT_CONTINUATION",
+      "reason": "Same temporal trigger: 'Upon expiry or termination of this Agreement, the Tenant shall deliver up possession.' Handing back the premises does not change with the number of tenants."
+    },
+    {
+      "clause_id": "NDA_EXCLUSIONS_001",
+      "verdict": "FALSE_POSITIVE",
+      "mechanism": "COLLECTIVE_DECISION",
+      "reason": "Matched 'expressly agreed by the Parties to include the following excluded categories'. The parties agreeing a DEFINITION is not a decision that party count affects — the same categories are excluded however many of them there are."
+    },
+    {
+      "clause_id": "CORE_WAIVER_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 25,
+      "priority": "HIGHEST",
+      "mechanism": "UNILATERAL_ACT_BINDING_OTHERS",
+      "question": "A waiver is effective only if 'signed by or on behalf of' the party granting it. Where there are more than two parties, does one party's waiver of a right extinguish that right for the others, or only as between the waiving party and the one it indulged?",
+      "reason": "Found by SAMPLING THE CLAUSES THIS PROBE HAD CLEARED, not by the probe itself — which is why the mechanism now exists. 25 families, and the two readings are indistinguishable at two parties because there is nobody else whose rights could survive the waiver.",
+      "candidate_shape": "PAIRWISE_RIGHT, pending confirmation"
+    },
+    {
+      "clause_id": "CORE_STAMP_AND_COSTS_001",
+      "verdict": "TRUE_CANDIDATE",
+      "families": 22,
+      "priority": "HIGH",
+      "mechanism": "DIVIDED_QUANTITY",
+      "question": "Stamp duty and registration charges 'shall be borne equally by the Parties'. Equally between two is half each; equally among three is a third each — but the Indian Stamp Act, 1899 s.29 allocates duty by instrument type irrespective of what the parties agree, so the clause may be dividing something it cannot divide.",
+      "reason": "A DEMONSTRATED FALSE NEGATIVE of this probe's first repaired run: the pattern knew 'shared equally' and not 'borne equally', so a divided quantity in 22 documents was reported as carrying no mechanism at all. It is recorded here as a finding about the METHOD as much as about the clause.",
+      "candidate_shape": "Likely determined — 'equally' generalises without a choice — but likely is not a classification."
+    }
+  ],
+  "summary": {
+    "newly_discovered": 27,
+    "adjudicated": 22,
+    "true_candidates": 16,
+    "already_classified": 3,
+    "false_positives": 3,
+    "folded_into_another_adjudication": 5,
+    "accounted_for": 27,
+    "note": [
+      "Five NDA clauses are folded into NDA_CONFIDENTIAL_INFORMATION_SCOPE_001 via `resolves_with` rather",
+      "than adjudicated separately, because they raise ONE question between them. Counting them",
+      "individually would inflate the candidate set with the same finding six times.",
+      "",
+      "PRECISION AND RECALL, BOTH MEASURED RATHER THAN CLAIMED.",
+      "",
+      "  Precision: the first run produced 59 candidates, of which 34 were artefacts of four detector",
+      "  defects. Raw precision about 42 percent; after repair, 3 false positives in 27 — about 89 percent.",
+      "",
+      "  Recall: sampling four clauses the repaired probe had CLEARED found two real candidates it had",
+      "  missed — CORE_STAMP_AND_COSTS_001 (22 families) and CORE_WAIVER_001 (25 families). A 50 percent",
+      "  hit rate on a sample of four is not a recall estimate, but it is proof that the 108 clauses this",
+      "  probe flags with nothing are NOT a clean bill of health. Absence of a marker is not absence of a",
+      "  mechanism — which is exactly what D4.20 established about pronouns, now demonstrated about this",
+      "  richer vocabulary as well.",
+      "",
+      "The summary is recomputed from the adjudications by tests/npartyCandidates.test.mjs rather than",
+      "maintained by hand, because the first version of this block said 15 true candidates over a list of 14."
+    ]
+  }
+}

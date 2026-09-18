@@ -1,0 +1,103 @@
+{
+  "$comment": [
+    "THREE KINDS OF NOT-KNOWING, AND WHY THE THIRD IS NEW.",
+    "",
+    "D4.30 set out to record a constraint on legal characterisation and found something upstream of",
+    "it: for TERMS_OF_SERVICE and PRIVACY_POLICY the characterisation question cannot be ASKED,",
+    "because the fact that selects its branch — whether the reader is a consumer, what the bargaining",
+    "relationship is — is not represented anywhere in the system.",
+    "",
+    "That is not an advocate failing to decide. It is the question having no place to land.",
+    "",
+    "The engine already separates two kinds of not-knowing and says in terms why merging them would",
+    "hide the smaller one. This record adds the third and, more importantly, records that it would",
+    "currently be absorbed by the wrong one."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "opened_in": "D4.30",
+  "closes": "D4.30 as an investigation result. Nothing here is implemented.",
+
+  "states": [
+    {
+      "id": "ESTABLISHED",
+      "definition": "The necessary proposition exists with acceptable authority, and the characterisation follows from it.",
+      "discharged_by": "nothing — it is the terminal state",
+      "present_count_in_this_investigation": 0,
+      "$note": "No legal proposition in this repository has reached it. Gate 5 of the knowledge-authoring pipeline has never been passed."
+    },
+    {
+      "id": "UNDECIDED",
+      "definition": "The system represents the relevant fact and the question is well-formed, but no legally authorised answer exists.",
+      "discharged_by": "an advocate choosing between authored candidate readings",
+      "engine_equivalent": "AUTHORED_DECISION_PENDING",
+      "example": "LIABILITY_CAP_APPORTIONMENT — the roster is represented, the candidates are authored, nobody has chosen."
+    },
+    {
+      "id": "UNASKABLE",
+      "definition": "The legal question is well-formed and requires a fact the system does not represent. There is nothing for an advocate to decide, because the input that selects the answer is absent.",
+      "discharged_by": "deciding how the fact should be represented, and by whom it can be authored — NOT by further analysis of the clause",
+      "engine_equivalent": "NONE — and that is the finding",
+      "example": "Whether the liability ceiling in TERMS_OF_SERVICE is a term unfair to a consumer under s.2(46) of the Consumer Protection Act 2019. The family collects no party_2 at all and nothing anywhere describes the reader."
+    }
+  ],
+
+  "the_collapse_that_must_not_happen": {
+    "rule": "UNDECIDED, UNASKABLE and ESTABLISHED must never share a signal, and none of the three may be rendered as a generic UNKNOWN.",
+    "why_each_merge_is_wrong": [
+      "UNASKABLE read as UNDECIDED tells an advocate there is a decision waiting for them. There is not. They would be asked to choose a branch without the fact that selects it, and whatever they chose would be an assumption wearing a decision's clothes.",
+      "UNASKABLE read as NOT_CLASSIFIED — the likelier accident — makes a representability failure look like a backlog item. NOT_CLASSIFIED is discharged by looking. UNASKABLE is not discharged by looking, however hard, because the thing that is missing is not in the clause.",
+      "Either merged into UNKNOWN loses the only actionable part: who has to do what next. Those are three different people."
+    ],
+    "$precedent": "The engine already refuses one such merge. documentService.buildOpenTreatments separates AUTHORED_DECISION_PENDING from NOT_CLASSIFIED with a comment saying that merging them hides the smaller one, and it emits the word UNDECIDED rather than omitting the key, because a missing key reads as nothing to see. This record extends the same discipline one state further."
+  },
+
+  "engine_state_mapping": {
+    "$method": "Read from backend/services/documentService.js#buildOpenTreatments rather than recalled. The CHECK_WHETHER_THE_SYSTEM_ALREADY_SAYS_SO rule applies to the system's vocabulary as much as to its validations.",
+    "what_exists": [
+      {"kind": "AUTHORED_DECISION_PENDING", "means": "the clause is classified into a decision-requiring shape, candidates are authored, nobody has chosen"},
+      {"kind": "NOT_CLASSIFIED", "means": "the clause was never examined for this behaviour; deliberately unresolved rather than safe"}
+    ],
+    "where_unaskable_would_land": "NOT_CLASSIFIED, because it has no shape and no candidates — and it would be wrong for exactly the reason above.",
+    "scope_of_the_existing_kinds": "Both are about N-party clause classification and fire only where the roster exceeds two principals. The characterisation question is not an N-party question, so it has no representation in that channel either.",
+    "consequence": "Adding UNASKABLE is not a matter of adding a third enum value to buildOpenTreatments. Where such a state should surface, and through which channel, is undetermined."
+  },
+
+  "worked_case": {
+    "question": "Is the liability ceiling in TERMS_OF_SERVICE a term unfair to a consumer, within s.2(46) of the Consumer Protection Act 2019?",
+    "chain": [
+      "The ceiling measures fees payable under the Agreement.",
+      "TERMS_OF_SERVICE records no fee, so the ceiling is nil. (MEASURE — established.)",
+      "Whether a nil ceiling is a threshold cap or an absolute bar is unsettled in Indian law. (CHARACTERISATION — UNDECIDED at law.)",
+      "The Consumer Protection Act route does not depend on that split — but it requires the reader to be a consumer.",
+      "Consumer status is fact-dependent and excludes acquisition for a commercial purpose.",
+      "The family collects no party_2 and no field anywhere describes the reader.",
+      "So the branch cannot be entered. (UNASKABLE.)"
+    ],
+    "what_it_is_not": "This is not a finding that the clause is unfair, or that it is not. It is a finding that the system cannot reach the question.",
+    "certification": "UNASKABLE"
+  },
+
+  "deliberately_not_done": {
+    "$note": [
+      "The obvious move from here is to add consumer-status and bargaining-power fields to the intake.",
+      "That is a jump from finding to solution, and 'the law mentions bargaining power' does not tell",
+      "us what data model this system should hold. The determination below comes first, and it is D4.31."
+    ],
+    "the_determination_that_must_come_first": [
+      {"step": 1, "question": "For each characterisation branch, what is the legally necessary factual proposition?", "answer": null},
+      {"step": 2, "question": "Who is competent to author that proposition — the user, the advocate, a statute, or an external record?", "answer": null},
+      {"step": 3, "question": "What authority or provenance could establish it, and to what standard?", "answer": null},
+      {"step": 4, "question": "Is the proposition reusable across document populations, or particular to one?", "answer": null},
+      {"step": 5, "question": "What is the minimum representation that would make the question askable?", "answer": null},
+      {"step": 6, "question": "Only then: is that representation an intake field, a concept, a relationship, or something else?", "answer": null}
+    ],
+    "$why_the_answers_are_null": "They are null because they are not known, and a record that guessed them would be the backdoor the knowledge-authoring pipeline exists to close. A test asserts they stay null until evidence fills them."
+  },
+
+  "what_this_record_does_not_do": [
+    "It does not add a field, a concept, an enum value or a validator.",
+    "It does not decide any characterisation.",
+    "It does not resolve MEASURE, INTERACTION or APPORTIONMENT.",
+    "It does not claim the three states are the right set for anything beyond this investigation; they were reached from one family's evidence and are recorded at that strength."
+  ]
+}

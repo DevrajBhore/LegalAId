@@ -1,0 +1,113 @@
+{
+  "$comment": [
+    "THE SEMANTIC SURFACE A REQUIREMENT MAY REST ON.",
+    "",
+    "This file did not exist. canonicalFacts.loadSemanticFacts tolerates that — ENOENT yields an",
+    "empty set — so nothing broke visibly until documentRequirements began refusing an applicability",
+    "that rests on a fact nobody declared. Two requirements did, and every document type then failed",
+    "to generate, because requirement sources are admitted globally before any clause is assembled.",
+    "",
+    "Both facts already existed as derivation controls in generationControls.js and were already",
+    "driving applicability. Declaring them changes no value. It makes the surface they were reaching",
+    "through explicit, which is what the guard was added to require.",
+    "",
+    "Both are DERIVED, not DECLARED. The user answers `workplace_headcount` — a select reading",
+    "'Fewer than 10' or '10 or more' — and resolveDeclared normalises through positionOf, which",
+    "takes booleans and not phrases. More importantly, reporting an inference of ours as the user's",
+    "own answer would put our reasoning behind their signature."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "facts": [
+    {
+      "id": "employer_headcount_ge_10",
+      "kind": "DERIVED",
+      "statement": "The workplace employs ten or more persons, which is the threshold at which the POSH Act, 2013 requires an Internal Committee under section 4.",
+      "established_by": [
+        "workplace_headcount"
+      ],
+      "when_unknown": "The requirement resting on it is not assessed, and no Internal Committee position is asserted either way. Silence about headcount is not a statement that the workplace is under ten.",
+      "review_status": "draft-needs-legal-review",
+      "$verification_needed": "POSH Act, 2013 s.4 — the composition of the Internal Committee and, specifically, who is counted toward the ten."
+    },
+    {
+      "id": "establishment_is_covered",
+      "kind": "DERIVED",
+      "statement": "The establishment falls within the coverage of the Maternity Benefit Act, 1961, so the entitlement it confers by section 5 applies to this employment.",
+      "established_by": [
+        "workplace_headcount"
+      ],
+      "when_unknown": "Maternity entitlement is not assessed and nothing is asserted about coverage. Absence of an answer must not become a finding that the establishment is outside the Act.",
+      "review_status": "draft-needs-legal-review",
+      "$verification_needed": [
+        "THIS IS THE ONE TO READ FIRST. generationControls derives this fact from the SAME headcount",
+        "answer as employer_headcount_ge_10, and its own comment says so: the field is reused because",
+        "it is the closest established fact, NOT because the two thresholds have been checked against",
+        "each other.",
+        "",
+        "The POSH threshold and the Maternity Benefit Act's coverage are different statutory tests.",
+        "Whether they coincide at ten for this portfolio's workplace types — the intake offers only",
+        "'Shop / Office' and 'Factory' — has not been established, and is not established here.",
+        "",
+        "Until it is, this fact is a reasonable proxy carrying a known and recorded doubt, not a",
+        "settled proposition of law."
+      ]
+    },
+    {
+      "id": "is_secured",
+      "kind": "DECLARED",
+      "statement": "The loan is secured, so the security, perfection and enforcement provisions are in play rather than merely available.",
+      "established_by": [
+        "loan_is_secured"
+      ],
+      "when_unknown": "Neither a secured nor an unsecured position is asserted, and the requirements resting on it are not assessed. The instrument must not describe collateral it has not been told exists, and must not deny security either.",
+      "review_status": "draft-needs-legal-review",
+      "$why_declared": "loan_is_secured is a Yes/No the user answers, and the derivation does no more than normalise it. Reporting it DERIVED would credit an inference nobody made."
+    },
+    {
+      "id": "lender_is_regulated",
+      "kind": "DERIVED",
+      "statement": "The lender is a scheduled bank or an NBFC, and so belongs to the class of lenders entitled to invoke the enforcement statutes the loan clauses may otherwise assert.",
+      "established_by": [
+        "lender_type"
+      ],
+      "when_unknown": "No eligibility position is taken, and ENFORCEMENT_MATCHES_LENDER_ELIGIBILITY is not assessed. Silence about the lender's type is not a finding that it is unregulated.",
+      "review_status": "draft-needs-legal-review",
+      "$verification_needed": "SARFAESI eligibility is narrower than 'bank or NBFC' — it turns on notification. The derivation reads the lender_type string for 'bank' or 'nbfc'; whether that matches the statutory class has not been checked."
+    },
+    {
+      "id": "include_sla",
+      "kind": "DERIVED",
+      "statement": "The engagement promises measurable service levels, so the requirement that they be measurable and consequence-bearing applies.",
+      "established_by": [
+        "include_sla",
+        "service_levels"
+      ],
+      "when_unknown": "SERVICE_LEVELS_MEASURED is not assessed and no service-level position is asserted. An unanswered question is not a decision to omit service levels.",
+      "review_status": "draft-needs-legal-review",
+      "$why_derived": "The user may answer include_sla directly, but the derivation will also infer it from free text in service_levels. An inference reported as the user's own answer puts our reading of their prose behind their signature."
+    },
+    {
+      "id": "processes_personal_data",
+      "kind": "DERIVED",
+      "statement": "Personal data is processed under the engagement, so the processor obligations that must be passed through are engaged.",
+      "established_by": [
+        "processes_personal_data",
+        "involves_personal_data"
+      ],
+      "when_unknown": "PERSONAL_DATA_HANDLED is not assessed. Absence of an answer must not become a finding that no personal data is processed, which is the assumption that produces a data agreement with no processor terms.",
+      "review_status": "draft-needs-legal-review",
+      "$why_derived": "Two intake fields feed it and the derivation ORs them, so the value can come from either question."
+    },
+    {
+      "id": "key_person_dependency",
+      "kind": "DECLARED",
+      "statement": "The engagement depends on particular named individuals rather than on the supplier's team generally, so how they are assigned and replaced has to be settled.",
+      "established_by": [
+        "key_person_dependency"
+      ],
+      "when_unknown": "PERSONNEL_CONTINUITY is not assessed and no dependency is asserted either way.",
+      "review_status": "draft-needs-legal-review",
+      "$note": "This one has NO derivation control at all — unlike the other six, generationControls never computes it. It resolves only because the intake field carries the fact's own name and the user answers it directly."
+    }
+  ]
+}

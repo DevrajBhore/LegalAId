@@ -306,23 +306,134 @@
       },
       "decision": "UNDECIDED",
       "review_status": "draft-needs-legal-review"
+    },
+    {
+      "decision_id": "SURVIVAL_AGAINST_A_DEPARTING_PARTY",
+      "shape": "PAIRWISE_RIGHT",
+      "clauses": [
+        "CORE_SURVIVAL_001"
+      ],
+      "binary_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination... the provisions of this Agreement relating to confidentiality, ownership of intellectual property, indemnity, limitation of liability, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+      "legal_question": "Where one party ceases to be a party but the instrument continues between the others, does the departing party remain bound by the provisions expressed to survive — given that the clause's trigger is expiry or termination of THIS AGREEMENT, which has not occurred, and its survivors bind THE PARTIES, of whom the departing party is no longer one?",
+      "conditional_on": {
+        "decision_id": "TERMINATION_FOR_DEFAULT_SCOPE",
+        "treatment": "ENDS_THAT_RELATIONSHIP",
+        "note": [
+          "THIS QUESTION DOES NOT ALWAYS EXIST. Under ENDS_THE_INSTRUMENT and under",
+          "REQUIRES_ALL_INNOCENT_PARTIES the trigger fires, every former party stays bound by the",
+          "survivors, and there is nothing further to decide. It arises under exactly ONE of the three",
+          "parent treatments.",
+          "",
+          "So it is neither merely inherited nor independent, and recording it as either would be wrong:",
+          "inherited would assert a question under treatments where none exists; independent would hide",
+          "that choosing ENDS_THE_INSTRUMENT disposes of it entirely."
+        ]
+      },
+      "counterfactual_evidence": {
+        "method": "Enumerate, for every pair of three principals, which regime binds them after Party 1's default.",
+        "world_a_instrument_ends": {
+          "1-2": "SURVIVING",
+          "1-3": "SURVIVING",
+          "2-3": "SURVIVING",
+          "trigger_fires": true
+        },
+        "world_b_relationship_ends": {
+          "1-2": "NEITHER",
+          "1-3": "NEITHER",
+          "2-3": "LIVE",
+          "trigger_fires": false
+        },
+        "pairs_differing": "3 of 3",
+        "the_gap": [
+          "Under World B the pairs involving the departing party fall outside BOTH regimes. The LIVE",
+          "regime does not reach them because Party 1 is no longer a Party; the SURVIVING regime does",
+          "not reach them because 'this Agreement' has not expired or terminated — it is on foot",
+          "between Parties 2 and 3.",
+          "",
+          "The departing party therefore walks away from confidentiality and intellectual-property",
+          "obligations, not because anyone released them but because the trigger is a global predicate",
+          "and the termination was partial. The gap does not exist at two parties, where partial",
+          "termination is not a thing that can happen."
+        ]
+      },
+      "authority_basis": [
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "37",
+          "note": "Parties must perform or offer to perform their promises unless dispensed with under the Act. A party who ceases to be a party is not thereby dispensed with as to what has already accrued."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "39",
+          "note": "Where a party refuses or disables itself from performing, the promisee may put an end to the contract — the provision that makes partial termination arguable at all."
+        },
+        {
+          "act": "Indian Partnership Act, 1932",
+          "section": "33",
+          "note": "Expulsion of a partner. The firm continues; the expelled partner's continuing duties are governed by the contract between the partners, which is precisely what this clause fails to state for them."
+        },
+        {
+          "act": "Indian Partnership Act, 1932",
+          "section": "53",
+          "note": "After dissolution, a partner may restrain the others from using the firm property or name — an example of an obligation the statute continues expressly, which this instrument does not do for a departing party."
+        },
+        {
+          "act": "Indian Contract Act, 1872",
+          "section": "27",
+          "note": "Relevant to the confidentiality survivor: a restraint on a departing party must still be a lawful restraint, so 'they remain bound' is not automatically the safe answer."
+        }
+      ],
+      "candidate_treatments": [
+        {
+          "treatment": "DEPARTING_PARTY_REMAINS_BOUND",
+          "reading": "The survivors bind a departing party as if the instrument had terminated as to them.",
+          "consequence_2": "indistinguishable — with two parties, one leaving IS termination",
+          "consequence_3": "confidentiality and IP obligations follow the departing party out; the instrument continues unchanged between the remaining two",
+          "consequence_4": "same, for each successive departure"
+        },
+        {
+          "treatment": "DEPARTING_PARTY_RELEASED",
+          "reading": "Only accrued rights survive against them; forward-looking survivors do not.",
+          "consequence_2": "indistinguishable",
+          "consequence_3": "the departing party may use confidential information from the date of departure, and the remaining parties have no contractual remedy",
+          "consequence_4": "same, and the exposure compounds with each departure"
+        },
+        {
+          "treatment": "SURVIVAL_TRIGGERS_PRO_TANTO",
+          "reading": "The instrument is treated as terminated as to the departing party alone, so the clause operates for their pairs and the instrument continues for the rest.",
+          "consequence_2": "indistinguishable",
+          "consequence_3": "requires the clause to say what 'termination of this Agreement' means when termination is partial — wording the instrument does not currently contain",
+          "consequence_4": "same, and the drafting must handle several partial terminations at different dates"
+        }
+      ],
+      "why_the_two_party_document_hides_it": "With two parties there is no such event as one party ceasing to be a party while the instrument continues. Departure and termination are the same act, the trigger always fires, and all three treatments produce identical words. The gap is not latent in the two-party deed; it does not exist there.",
+      "compounding": [
+        "Three of the nine enumerated survivors carry open decisions of their own: indemnity",
+        "(INDEMNITY_APPORTIONMENT), limitation of liability (LIABILITY_CAP_APPORTIONMENT) and dispute",
+        "resolution (ARBITRATION_REFERENCE_SCOPE). Under World B the departing party escapes the cap",
+        "as well — which cuts both ways, because the cap that no longer binds them no longer protects",
+        "them either. Whether that is a windfall or an exposure depends on the apportionment question",
+        "that is itself open, so these decisions cannot sensibly be taken in isolation."
+      ],
+      "decision": "UNDECIDED",
+      "review_status": "draft-needs-legal-review"
     }
   ],
   "summary": {
-    "decisions": 5,
-    "clauses_covered": 7,
+    "decisions": 6,
+    "clauses_covered": 8,
     "all_undecided": true,
     "note": [
-      "Five decisions cover seven clauses because three liability-cap clauses raise one question.",
+      "Six decisions over eight clauses. SURVIVAL_AGAINST_A_DEPARTING_PARTY is the first CONDITIONAL",
+      "decision in this file: it carries `conditional_on`, because it arises under exactly one of the",
+      "three treatments of its parent and does not exist under the other two.",
       "",
-      "ARBITRATION_REFERENCE_SCOPE was added in D4.20 and is the first decision found by the portfolio sweep rather",
-      "than by one MSA fixture. It is also the first found in a sentence that names no party at all: 'it shall be",
-      "referred to arbitration'. The lexical scan that found the original twenty-three — looking for 'either Party'",
-      "and 'the other Party' — passes straight over it and flags the harmless amicable-discussion sentence instead.",
+      "That structure matters for how the backlog is counted. An advocate who chooses ENDS_THE_INSTRUMENT",
+      "closes two questions at once; an advocate who chooses ENDS_THAT_RELATIONSHIP opens a second one.",
+      "A flat list of open decisions would show neither.",
       "",
-      "Until each is authored, a document with more than two parties must report the point as open rather than adopt",
-      "a reading. An engine that picked a default here would be choosing a legal position on the user's behalf and",
-      "calling it a rendering detail."
+      "Until each is authored, a document with more than two parties must report the point as open rather",
+      "than adopt a reading."
     ]
   }
 }

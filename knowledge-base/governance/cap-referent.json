@@ -1,0 +1,394 @@
+{
+  "$comment": [
+    "D4.29 — WHAT THE LIABILITY CEILING MEASURES ITSELF AGAINST.",
+    "",
+    "D4.27 reported 10 of 22 cap instances as UNMEASURABLE. That word turned out to point at the",
+    "wrong repair. 'Unmeasurable' suggests a missing intake field, and the fix it implies — collect",
+    "a fee in the partnership deed — is nonsense, because partners do not pay fees to one another.",
+    "",
+    "This record replaces the measurable/unmeasurable split with the distinction that actually",
+    "governs: whether the quantity the clause names is one the instrument must record, or one",
+    "determined at the time of the claim, and in the second case whether that class of payment can",
+    "arise under the instrument at all."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.29",
+  "supersedes_reading_in": "D4.27 cap-measurement verdicts (the counts stand; the characterisation does not)",
+  "referent_kinds": [
+    {
+      "id": "DOCUMENT_INTERNAL",
+      "definition": "The ceiling is a figure the instrument itself records.",
+      "example": "shall not exceed ₹5,00,000 in the aggregate",
+      "needs_intake_field": true,
+      "can_be_structurally_empty": false
+    },
+    {
+      "id": "EVENT_EXTERNAL",
+      "definition": "The ceiling is determined at the time of the claim from facts outside the page.",
+      "example": "the aggregate fees paid or payable under this Agreement in the preceding twelve months",
+      "needs_intake_field": false,
+      "can_be_structurally_empty": true,
+      "$note": [
+        "An event-external referent does not need a field. It needs the CLASS OF PAYMENT it names",
+        "to be capable of arising between these parties under this instrument. Where it cannot, the",
+        "referent is not unmeasured — it is empty, and the ceiling evaluates to nil."
+      ]
+    }
+  ],
+  "central_finding": {
+    "id": "NIL_CEILING_IS_AN_EXCLUSION",
+    "statement": "A cap measured on a class of payment that never arises under the instrument produces a nil ceiling. Whether that is a limitation of liability at a very low threshold, which Indian authority enforces, or an absolute bar on damages, which one line of Indian authority holds void under s.23, is the question the case law has framed and not answered. The instrument presents it to the user as the common commercial default either way.",
+    "arithmetic": {
+      "claim": 4000000,
+      "aggregate_fees_paid_or_payable": 0,
+      "ceiling": 0,
+      "recoverable_share_percent": 0
+    },
+    "why_this_matters_more_than_unmeasurability": [
+      "An unmeasurable ceiling fails safe in the reader's mind: nobody knows the number, so the",
+      "clause looks incomplete and invites negotiation. A nil ceiling does not look incomplete. It",
+      "reads as an ordinary market-standard limitation and operates as a complete bar."
+    ],
+    "legal_frame": {
+      "$status": "VERIFIED_AGAINST_SOURCES — see `verification` below. The draft version of this block was written from recollection and was wrong in both directions: it understated the authority against damage-barring clauses, and it missed a statutory route entirely.",
+      "the_question_authority_actually_answers": {
+        "settled": [
+          "A clause that LIMITS liability to a stated threshold is enforceable, including where the threshold is very low. Bharathi Knitting upheld a limit of US$100.",
+          "A clause that ABSOLUTELY BARS a claim for damages has been held void under s.23 for negating the statutory entitlement in ss.55 and 73 — the Simplex line.",
+          "Exclusions of particular KINDS of loss (indirect, consequential, loss of profit) are not caught by the Simplex line."
+        ],
+        "unsettled": "Which of those two a cap belongs to when the ceiling is stated as a FORMULA and that formula evaluates to nil. It is textually a threshold and substantively a bar, and no decision found addresses it."
+      },
+      "authorities": [
+        {
+          "case": "Bharathi Knitting Co. v DHL Worldwide Express Courier Division of Airfreight Ltd",
+          "citation": "(1996) 4 SCC 704",
+          "court": "Supreme Court of India",
+          "date": "9 May 1996",
+          "proposition_actually_decided": "A party who signs a document containing contractual terms is bound by them; the agreed limit of liability was enforced.",
+          "factual_context": "A courier consignment. The consignor signed a consignment note whose clauses limited liability to US$100 and excluded consequential damages, and carried a notice advising insurance for greater protection. The claim came through the consumer fora.",
+          "scope": "A DOCUMENT-INTERNAL limit — a stated figure, brought to the signer's attention, with an alternative route to greater protection offered on the face of it.",
+          "did_not_decide": [
+            "Whether unequal bargaining power or unconscionability would displace the limit — the judgment contains no such analysis, so it cannot be cited as having considered and rejected the argument.",
+            "Anything about a ceiling expressed as a formula, or one whose value the signer could not read off the page."
+          ],
+          "bearing": "The authority against treating a low ceiling as inherently objectionable. But its reasoning rests on what the signer could see and could do about it, and a formula evaluating to nil offers neither.",
+          "verified": "read on indiankanoon"
+        },
+        {
+          "case": "Central Inland Water Transport Corpn Ltd v Brojo Nath Ganguly",
+          "citation": "(1986) 3 SCC 156",
+          "court": "Supreme Court of India",
+          "date": "6 April 1986",
+          "proposition_actually_decided": "An unconscionable term in a contract between parties of unequal bargaining power may be refused enforcement as opposed to public policy under s.23.",
+          "factual_context": "A service rule permitting termination of a permanent employee of a government corporation on notice. Employment, a standard-form rule the employee had no power to alter, and a state instrumentality on the other side.",
+          "scope": "Where there is great disparity in economic strength and the weaker party has no meaningful choice.",
+          "did_not_decide": [
+            "That the doctrine reaches commercial contracts between parties of comparable bargaining power. It is stated not to.",
+            "Anything about limitation-of-liability clauses specifically; the vehicle was a termination rule."
+          ],
+          "bearing": "Narrower than the draft of this record implied, and transplanting it as a universal rule would be the D4.28 failure in a new form.",
+          "verified": "holding and its stated limitation corroborated across independent secondary sources"
+        },
+        {
+          "case": "Simplex Concrete Piles (India) Ltd v Union of India",
+          "court": "Delhi High Court",
+          "date": "23 February 2010",
+          "proposition_actually_decided": "A clause providing that no claim for compensation shall be admitted in respect of an extension granted is void under s.23, because it negates the entitlement conferred by ss.55 and 73 — described as \"the very heart, foundation and basis\" of the Act.",
+          "factual_context": "A government construction contract on IAFW-2249 standard terms. Clauses 11A to 11C: extensions of time were granted for delay, and 11C then barred any claim for compensation in respect of them. The contractor's claim was for damages for prolongation caused by the employer.",
+          "scope": "A clause that ENTIRELY BARS compensation. Standard government terms, employer-caused delay, no alternative route to recovery left open.",
+          "did_not_decide": [
+            "Anything about clauses that merely CAP or LIMIT damages to a threshold. The judgment addresses only the total bar — confirmed by reading it.",
+            "Whether the result would differ between commercial parties of equal standing rather than a contractor on the State's standard form."
+          ],
+          "bearing": "The authority for treating a nil recovery as impermissible IF the clause is characterised as a bar. The characterisation is the whole question.",
+          "verified": "judgment read on indiankanoon; the limitation to total bars confirmed there rather than inferred"
+        },
+        {
+          "case": "MBL Infrastructures v Delhi Metro Rail Corpn",
+          "court": "Delhi High Court",
+          "date": "2023",
+          "proposition_actually_decided": "Reported as following Simplex and setting aside an award that gave effect to such a clause, as contrary to the fundamental policy of Indian law.",
+          "factual_context": "Reported as a construction contract in arbitration; the facts were not read.",
+          "scope": "not established",
+          "did_not_decide": "not established",
+          "verified": "REPORTED_UNVERIFIED — single secondary source; the judgment was not read and the citation is not confirmed. Do not cite in output until read."
+        },
+        {
+          "case": "PLUS 91 Security Solutions v NEC Corporation India",
+          "court": "Delhi High Court (Division Bench)",
+          "date": "2024",
+          "proposition_actually_decided": "Where the parties have agreed that a particular type of damages will not be payable, that agreement is to be given effect; an arbitral award of loss of profits contrary to the clause could not stand.",
+          "factual_context": "An MOU of 25 September 2014 between a security-solutions firm and a biometrics company over an Airport Authority of India tender, which NEC went on to win alone. The claim was for roughly Rs.132.6 crore; the tribunal had awarded about Rs.8.43 crore for loss of profits. The proceeding was an appeal under s.37(1)(c) of the Arbitration and Conciliation Act 1996. Clause 10 barred claims for certain TYPES of damages without extinguishing all remedies.",
+          "scope": "Exclusion of a CATEGORY of loss — loss of profits — while other heads remained available.",
+          "did_not_decide": [
+            "Whether a ceiling expressed as a formula that evaluates to nil is a category exclusion, a threshold cap, or a total bar.",
+            "Whether the MOU itself was valid, or which other heads of damage survived."
+          ],
+          "bearing": "The distinction this record turns on — absolute bar versus threshold cap versus category exclusion — is drawn in the practitioner literature's READING of this decision alongside Simplex. The judgment report read here does not itself discuss Simplex.",
+          "verified": "facts, court, bench, proceeding and holding read from a contemporaneous law report. THE SIMPLEX DISTINCTION IS SECONDARY-SOURCE ONLY — the judgment text returned 403 and was not read. Record it as the literature's reading, never as this court's holding."
+        },
+        {
+          "case": "C&C Constructions Ltd v IRCON International Ltd",
+          "citation": "2025 INSC 138",
+          "court": "Supreme Court of India",
+          "date": "31 January 2025",
+          "proposition_actually_decided": "Reported as giving full effect to a clause restricting claims for delay, on the parties' conduct and an undertaking not to claim damages.",
+          "factual_context": "A construction contract in which the contractor sought extensions of time while undertaking not to make a claim for damages.",
+          "scope": "Turns on conduct and estoppel rather than on the validity of the clause in the abstract.",
+          "did_not_decide": [
+            "The s.23 public-policy question directly. It reached enforcement by another route, which is why it does not settle the Simplex line."
+          ],
+          "bearing": "The most recent Supreme Court word, running with enforcement — but on reasoning that leaves the characterisation question untouched.",
+          "verified": "citation, court and date confirmed against a decision database; the holding is from secondary sources and the judgment was not read"
+        },
+        {
+          "case": "General Manager, Northern Railway v Sarvesh Chopra",
+          "court": "Supreme Court of India",
+          "date": "2002",
+          "proposition_actually_decided": "Reported as permitting damages claims notwithstanding an exclusion clause where stated pre-conditions are met.",
+          "factual_context": "not established",
+          "scope": "not established",
+          "did_not_decide": "not established",
+          "verified": "REPORTED_UNVERIFIED — single secondary source, citation not confirmed. Do not cite in output until read."
+        },
+        {
+          "case": "State of Jharkhand v Indian Builders",
+          "proposition_actually_decided": "Reported as a pending reference to a larger bench of the Supreme Court on this very tension.",
+          "factual_context": "not established",
+          "scope": "not established",
+          "did_not_decide": "not established",
+          "verified": "REPORTED_UNVERIFIED — single secondary source. If true the position may change; do not build on either line as though it were final."
+        }
+      ],
+      "statutory_route_the_draft_missed": {
+        "$note": "The draft said India has no Unfair Contract Terms Act, which is true of commercial contracts and misleading as a general statement. For CONSUMER contracts there is a statutory unfairness jurisdiction, and it reaches two of the seven structurally empty families.",
+        "act": "Consumer Protection Act, 2019",
+        "s_2_46": "Defines \"unfair contract\", including a term imposing on the consumer any unreasonable charge, obligation or condition which puts the consumer to a disadvantage.",
+        "s_49_2": "The State Commission may declare any term of a contract which is unfair to a consumer to be null and void.",
+        "s_59_2": "Reported to confer the equivalent power on the National Commission — REPORTED, not independently confirmed.",
+        "verified": "s.2(46) and s.49(2) read on indiankanoon",
+        "consequence_for_this_portfolio": "TERMS_OF_SERVICE and PRIVACY_POLICY are consumer-facing. For them the nil ceiling has a statutory route that does not depend on the Simplex/PLUS 91 split at all. The remaining five are commercial and depend on it entirely.",
+        "$discipline": "So the answer is not uniform across the seven. A single characterisation applied to all of them would be wrong for two."
+      },
+      "not_cited_deliberately": [
+        "s.28 Contract Act — considered and rejected. It addresses restraint of legal proceedings and time-barring of rights, not the quantum recoverable.",
+        "The UK Unfair Contract Terms Act 1977 — there is no Indian commercial equivalent, and D4.28 already recorded that borrowing it silently is how an Indian answer ends up resting on another jurisdiction's statute."
+      ],
+      "what_this_makes_the_finding": {
+        "not": "a legal conclusion that the nil cap is void",
+        "is": "a characterisation question that Indian authority has framed but not answered, arising in seven families, with a different and stronger answer available in the two consumer-facing ones",
+        "certification": "AUTHORED_DECISION_PENDING"
+      },
+      "$authority_schema": {
+        "$note": "Every authority carries all of these. 'Court said X' is not a record — it omits the two fields that decide whether X reaches our facts.",
+        "fields": [
+          "case",
+          "citation",
+          "court",
+          "date",
+          "proposition_actually_decided",
+          "factual_context",
+          "scope",
+          "did_not_decide",
+          "verified"
+        ],
+        "load_bearing": [
+          "did_not_decide",
+          "factual_context"
+        ],
+        "$why": "The nil-cap question lives entirely in what these decisions did NOT decide. A record that stopped at the holding would have made the question invisible."
+      }
+    }
+  },
+  "structurally_empty": {
+    "count": 7,
+    "definition": "The family records no rupee quantity at all, or records only `liability_cap_amount`, which is the figure the cap would have used instead of measuring — so counting it is circular.",
+    "members": [
+      {
+        "type": "DATA_PROCESSING_AGREEMENT",
+        "clause": "CORE_LIABILITY_CAP_001",
+        "measures": "aggregate fees paid or payable",
+        "rupee_fields": "none",
+        "$note": "Fees under a DPA are payable under the main services agreement, not under the DPA. This is a known drafting trap rather than an omission."
+      },
+      {
+        "type": "DISTRIBUTION_AGREEMENT",
+        "clause": "CORE_LIMITATION_LIABILITY_001",
+        "measures": "aggregate fees paid or payable",
+        "rupee_fields": "only liability_cap_amount"
+      },
+      {
+        "type": "FOUNDERS_AGREEMENT",
+        "clause": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+        "measures": "total consideration paid",
+        "rupee_fields": "none"
+      },
+      {
+        "type": "NDA",
+        "clause": "CORE_LIABILITY_LIMIT_FALLBACK_001",
+        "measures": "total consideration paid",
+        "rupee_fields": "none"
+      },
+      {
+        "type": "PRIVACY_POLICY",
+        "clause": "CORE_LIMITATION_LIABILITY_001",
+        "measures": "aggregate fees paid or payable",
+        "rupee_fields": "none"
+      },
+      {
+        "type": "SHAREHOLDERS_AGREEMENT",
+        "clause": "CORE_LIMITATION_LIABILITY_001",
+        "measures": "aggregate fees paid or payable",
+        "rupee_fields": "only liability_cap_amount"
+      },
+      {
+        "type": "TERMS_OF_SERVICE",
+        "clause": "CORE_LIMITATION_LIABILITY_001",
+        "measures": "aggregate fees paid or payable",
+        "rupee_fields": "none"
+      }
+    ]
+  },
+  "flow_undetermined": {
+    "$note": [
+      "A rupee field being present does not establish that the money moves between the two",
+      "contracting parties, and the cap measures what is paid under the Agreement. These three turn",
+      "on that distinction. They are NOT moved into the structurally empty table, because moving",
+      "them is an authored legal decision and a field list is not entitled to make it."
+    ],
+    "count": 3,
+    "if_resolved_against_the_clause": "PARTNERSHIP_DEED and JOINT_VENTURE_AGREEMENT join the structurally empty set, taking it from 7 to 9.",
+    "members": [
+      {
+        "type": "PARTNERSHIP_DEED",
+        "quantity": "capital_contribution_1/2, drawing_limit",
+        "question": "Capital is contributed to the common stock of the firm. A firm has no separate legal personality under the Partnership Act 1932, so the contribution is not made to the other partner either. Is it a payment between the Parties in the sense the cap uses?",
+        "provisional_reading": "probably not, and in any event not a FEE"
+      },
+      {
+        "type": "JOINT_VENTURE_AGREEMENT",
+        "quantity": "capital_contribution_1/2",
+        "question": "Capital is subscribed into the JV vehicle. Where that vehicle is incorporated it is a separate person and commonly not a party to the JV agreement, so the payment leaves the two Parties rather than passing between them.",
+        "provisional_reading": "probably not"
+      },
+      {
+        "type": "SHARE_SUBSCRIPTION_AGREEMENT",
+        "quantity": "investment_amount",
+        "question": "Subscription monies are paid to the company, and the company IS a party to the subscription agreement. So this plausibly is a payment between the Parties — but is an investment a FEE?",
+        "provisional_reading": "a payment between the Parties; not naturally a fee"
+      }
+    ]
+  },
+  "basis_option_defect": {
+    "id": "NEGOTIATED_CAP_IS_NOT_NEGOTIATED",
+    "field": "liability_cap_basis",
+    "option": "Direct damages only subject to a negotiated cap",
+    "what_it_renders": "shall be limited to direct damages only and, in any event, shall not exceed the aggregate fees paid or payable under this Agreement during the twelve (12) months preceding the event giving rise to the claim",
+    "finding": "The option prepends a direct-damages restriction to the default fees formula. It produces no negotiated cap and cannot: `liability_cap_amount` is shown only when the basis is \"Specific amount\", so no negotiated figure could reach the clause by any path.",
+    "why_nothing_is_disclosed": "draftConsistencyValidator checks this option by looking for the words \"direct damages\" in the rendered clause. They are present, so the check passes.",
+    "second_order": "The direct-damages branch also omits the indicative-figure suffix that the default branch appends, so selecting it removes a disclosure the user would otherwise have received. No reason for the asymmetry is recorded.",
+    "nature": "INTAKE_AND_APPLICABILITY",
+    "status": "OPEN"
+  },
+  "disclosure": {
+    "mechanism": "documentHardening.resolveLiabilityCapText appends an indicative figure where both the consideration and the term are known.",
+    "instances_stating_a_formula": 21,
+    "instances_also_stating_a_figure": 4,
+    "reading": "The disclosure written for this problem cannot fire where the problem is worst: the structurally empty families know neither the consideration nor the term, so the formula stands alone on the page."
+  },
+  "interaction_layer_note": {
+    "$caution": "This does not resolve the INTERACTION layer. It records what the measurement answer implies for it, which is what the five-layer decomposition predicted would happen once measurement was settled.",
+    "observed_in": "NDA",
+    "chain": [
+      "CORE_INDEMNITY_FULL_001 indemnifies breach, negligence and wilful misconduct.",
+      "CORE_LIABILITY_LIMIT_FALLBACK_001 caps aggregate liability at the total consideration paid, which is nil.",
+      "Its carve-outs are fraud, wilful misconduct, and non-limitable liabilities. Negligence is not among them.",
+      "So negligent disclosure of confidential information is indemnified in terms and recoverable in nil."
+    ],
+    "partial_mitigation": "NDA_BREACH_REMEDIES_001 grants injunctive relief and specific performance, citing the Specific Relief (Amendment) Act 2018, and equitable relief is unaffected by a damages cap. The unmitigated exposure is monetary loss already suffered.",
+    "status": "recorded, not decided"
+  },
+  "engine_generalisation": {
+    "candidate": "A referent-resolution primitive: any clause stating a ceiling declares its referent as typed data, the engine resolves it against the family, and an unresolvable referent is exposed as an open treatment.",
+    "verdict": "REFUSED_ON_EVIDENCE",
+    "method": "Every non-cap clause in the portfolio that states a measured quantity was generated and read.",
+    "what_they_measure": "A rate applied to a runtime amount — 18% per annum on the outstanding amount, 3% on each anniversary — or a figure the user supplies directly.",
+    "why_that_settles_it": "A rate needs no referent in the intake and cannot be structurally empty. If nothing is outstanding, no interest accrues, and the clause is correct. Only the cap names a class of payment that may not exist under the instrument at all.",
+    "conclusion": "The premise does not reproduce outside the cap family, so the repair is knowledge-level: the clause must name a quantity that is true of the family carrying it, or the family must not carry the clause.",
+    "$discipline": "Building the primitive would have been building an abstraction on one family's evidence, which this investigation has already done once and had to retract."
+  },
+  "method_limit": {
+    "id": "A_UNIFORM_FIXTURE_CANNOT_TEST_MAGNITUDE",
+    "finding": "The WELL_FILLED fixture answers every numeric question with 3. Two clauses outside the cap family therefore render \"limited to Rs. 3/-\" (INDEMNITY_BOND) and \"equal to 0.3 times the amount invested\" (TERM_SHEET). Both read as defects. Neither is one — they are fixture values rendered faithfully.",
+    "consequence": "No probe built on this fixture can test D4.28's WELL_DEFINED sub-question, because every magnitude in it is the same magnitude.",
+    "status_of_the_remaining_families": "NOT_KNOWN, not negative.",
+    "what_would_resolve_it": "A fixture profile that varies amounts across realistic ranges, in the manner of probeLeaseCapHeads, which had to supply its own figures for exactly this reason.",
+    "prior_form_of_this_rule": "D4.19 — a fixture that cannot reach a behaviour reports that behaviour as absent. This is its inverse."
+  },
+  "crosswalk_to_d427": {
+    "$note": [
+      "D4.27's taxonomy and this one classify on different axes and must not be read as contradicting.",
+      "D4.27 asked: does the family ASK a basis question, and can it supply the basis it offers?",
+      "D4.29 asks: does the class of payment the clause names arise under the instrument at all?",
+      "A family can sit in different cells of the two without either being wrong."
+    ],
+    "axis_d427": "whether the basis is configurable, and whether the offered basis is supplied",
+    "axis_d429": "whether the named referent can arise between these parties under this instrument",
+    "differences": [
+      {
+        "type": "SHARE_SUBSCRIPTION_AGREEMENT",
+        "d427": "FIXED_PROSE_UNMEASURABLE",
+        "d429": "referent exists (investment_amount), flow to a party plausible, name doubtful",
+        "reconciliation": "D4.27 looked for a FEE field and found none. D4.29 found a payment that is not called a fee. Both true."
+      },
+      {
+        "type": "DISTRIBUTION_AGREEMENT",
+        "d427": "OFFERS_A_BASIS_IT_CANNOT_SUPPLY",
+        "d429": "structurally empty",
+        "reconciliation": "It offers the fees basis and holds only the cap's own input, so it fails on both axes."
+      },
+      {
+        "type": "SHAREHOLDERS_AGREEMENT",
+        "d427": "OFFERS_A_BASIS_IT_CANNOT_SUPPLY",
+        "d429": "structurally empty",
+        "reconciliation": "As above."
+      },
+      {
+        "type": "PARTNERSHIP_DEED",
+        "d427": "OFFERS_A_BASIS_IT_CANNOT_SUPPLY",
+        "d429": "flow undetermined",
+        "reconciliation": "Capital contributions exist; whether they are payments between the Parties is the open question."
+      },
+      {
+        "type": "JOINT_VENTURE_AGREEMENT",
+        "d427": "OFFERS_A_BASIS_IT_CANNOT_SUPPLY",
+        "d429": "flow undetermined",
+        "reconciliation": "As above."
+      }
+    ]
+  },
+  "verification": {
+    "performed_on": "2026-09-15",
+    "prompted_by": "The user declined to accept the legal premise on the strength of the investigation's own assertion, and required independent verification before it became executable knowledge.",
+    "method": "Searched and read Indian primary sources on indiankanoon where available, and corroborated each holding across independent secondary sources before recording it. Each authority carries its own verification state.",
+    "what_changed": [
+      "The draft was UNDERSTATED on the authority against damage-barring clauses. It offered s.23 as a fact-sensitive route; there is in fact a named line of decisions — Simplex, followed in MBL Infrastructures — holding such clauses void.",
+      "The draft was OVERSTATED on Brojo Nath. Its unconscionability doctrine does not reach equal-bargaining commercial transactions, which is most of this portfolio.",
+      "The draft MISSED the Consumer Protection Act 2019 entirely. It gives a statutory unfairness jurisdiction over consumer contracts, which changes the answer for TERMS_OF_SERVICE and PRIVACY_POLICY.",
+      "The draft's central characterisation — nil cap as exclusion — turns out to be exactly the question PLUS 91 leaves open, not a conclusion the authorities support. Recorded as open."
+    ],
+    "sources": [
+      "https://indiankanoon.org/doc/126678/",
+      "https://indiankanoon.org/doc/62183455/",
+      "https://indiankanoon.org/doc/184616009/",
+      "https://www.casemine.com/commentary/in/contractual-clauses-preventing-damages-claims-void-under-section-23-of-the-contract-act/view",
+      "https://www.argus-p.com/papers-publications/thought-paper/exclusion-clauses-in-contracts-barring-a-claim-for-damages-a-study-on-the-enforceability-of-such-clauses-in-india/",
+      "https://www.barandbench.com/view-point/when-a-breach-has-no-remedy-no-claim-no-damage-clauses",
+      "https://www.livelaw.in/articles/restrictive-clauses-construction-contracts-lawful-bargain-unlawful-exclusion-532346",
+      "https://corporate.cyrilamarchandblogs.com/2020/06/do-parties-have-an-unfettered-right-to-exclude-or-limit-their-liability-for-breach-of-contract-part-i/",
+      "https://jusmundi.com/en/document/decision/en-c-c-constructions-ltd-v-ircon-international-ltd-judgment-of-the-supreme-court-of-india-2025-insc-138-friday-31st-january-2025"
+    ],
+    "$standing_rule": "No legal proposition in this investigation becomes executable knowledge on the strength of the investigation's own assertion. It is verified against sources, each source's weight is recorded, and what could not be confirmed stays marked REPORTED_UNVERIFIED."
+  }
+}
