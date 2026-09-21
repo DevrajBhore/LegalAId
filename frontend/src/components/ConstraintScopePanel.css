@@ -1,0 +1,59 @@
+/* Constraint scope panel — follows LibraryReviewPanel's visual language. */
+
+.constraint-scope .cs-summary {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: baseline;
+  padding: 0.75rem 1rem; margin-bottom: 0.75rem;
+  background: #f6f7f9; border-radius: 6px; font-size: 0.9rem;
+}
+.constraint-scope .cs-awaiting { color: #8a6d1f; }
+.constraint-scope .cs-note { color: #666; font-style: italic; flex-basis: 100%; }
+
+.constraint-scope .cs-filters { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.constraint-scope .cs-filters button {
+  padding: 0.35rem 0.8rem; border: 1px solid #d0d4da; background: #fff;
+  border-radius: 999px; font-size: 0.85rem; cursor: pointer;
+}
+.constraint-scope .cs-filters button.is-active { background: #1f3864; color: #fff; border-color: #1f3864; }
+
+.constraint-scope .cs-error { padding: 0.6rem 0.9rem; background: #fdecea; color: #8b1a10; border-radius: 6px; margin-bottom: 0.75rem; }
+.constraint-scope .cs-loading,
+.constraint-scope .cs-empty { padding: 1rem; color: #666; }
+
+.constraint-scope .cs-list { list-style: none; margin: 0; padding: 0; }
+.constraint-scope .cs-row { border: 1px solid #e3e6ea; border-radius: 8px; margin-bottom: 0.5rem; background: #fff; }
+.constraint-scope .cs-row.is-open { border-color: #1f3864; }
+
+.constraint-scope .cs-head {
+  display: grid; grid-template-columns: 16rem 1fr auto; gap: 1rem; align-items: center;
+  width: 100%; padding: 0.7rem 0.9rem; background: none; border: 0; cursor: pointer; text-align: left;
+}
+.constraint-scope .cs-id { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; color: #1f3864; }
+.constraint-scope .cs-prop { font-size: 0.9rem; }
+.constraint-scope .cs-state { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: #8a6d1f; }
+.constraint-scope .cs-state-decided { color: #1e7a41; }
+.constraint-scope .cs-state-not_representable { color: #8b1a10; }
+
+.constraint-scope .cs-body { padding: 0 0.9rem 0.9rem; border-top: 1px solid #eef0f3; }
+.constraint-scope .cs-facts { display: grid; grid-template-columns: 16rem 1fr; gap: 0.35rem 1rem; margin: 0.8rem 0; font-size: 0.88rem; }
+.constraint-scope .cs-facts dt { color: #666; }
+.constraint-scope .cs-facts dd { margin: 0; }
+
+.constraint-scope .cs-consequence { background: #f6f7f9; border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 0.9rem; font-size: 0.88rem; }
+.constraint-scope .cs-consequence h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+.constraint-scope .cs-measured-on { color: #777; font-size: 0.8rem; margin: 0 0 0.5rem; }
+.constraint-scope .cs-consequence ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+.constraint-scope .cs-warning { color: #8a6d1f; font-style: italic; margin: 0.5rem 0 0; }
+
+.constraint-scope .cs-form label { display: block; margin-bottom: 0.7rem; font-size: 0.88rem; }
+.constraint-scope .cs-form textarea,
+.constraint-scope .cs-form input { width: 100%; margin-top: 0.25rem; padding: 0.5rem; border: 1px solid #d0d4da; border-radius: 6px; font: inherit; font-size: 0.88rem; }
+.constraint-scope .cs-required { color: #8b1a10; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; margin-left: 0.4rem; }
+
+.constraint-scope .cs-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.constraint-scope .cs-actions button { padding: 0.45rem 0.9rem; border: 1px solid #d0d4da; background: #fff; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+.constraint-scope .cs-actions .cs-primary { background: #1f3864; color: #fff; border-color: #1f3864; }
+.constraint-scope .cs-actions button:disabled { opacity: 0.5; cursor: default; }
+
+.constraint-scope .cs-recorded { background: #f3f8f4; border-radius: 6px; padding: 0.8rem 1rem; font-size: 0.88rem; }
+.constraint-scope .cs-recorded h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+.constraint-scope .cs-meta { color: #777; font-size: 0.8rem; }

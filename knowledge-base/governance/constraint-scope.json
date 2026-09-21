@@ -96,7 +96,32 @@
         "CORE_SIGNATURE_BLOCK_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Contracts"
+      "scope_stated_in_its_own_prose": "Contracts",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 25,
+          "do_not": 4,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 25,
+            "do_not": 0,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
@@ -121,7 +146,32 @@
         "CORE_CONFIDENTIALITY_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Every contract"
+      "scope_stated_in_its_own_prose": "Every contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 25,
+          "do_not": 4,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 25,
+            "do_not": 0,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
@@ -133,7 +183,27 @@
         "CORE_GOVERNING_LAW_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "All contracts"
+      "scope_stated_in_its_own_prose": "All contracts",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 29,
+          "do_not": 0,
+          "not_applicable": 0,
+          "not_satisfied_by": []
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 25,
+            "do_not": 0,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_ROLE",
@@ -146,7 +216,48 @@
         "CORE_PURPOSE_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 17,
+          "do_not": 12,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 17,
+            "do_not": 8,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_COMPENSATION",
@@ -159,7 +270,59 @@
         "SERVICE_PAYMENT_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 6,
+          "do_not": 23,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 6,
+            "do_not": 19,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_TERMINATION",
@@ -172,7 +335,50 @@
         "CORE_TERMINATION_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 15,
+          "do_not": 14,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 15,
+            "do_not": 10,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_CONFIDENTIALITY",
@@ -186,7 +392,51 @@
         "EMP_CONFIDENTIALITY_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 14,
+          "do_not": 15,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "TERM_SHEET",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SALES_OF_GOODS_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "VENDOR_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 14,
+            "do_not": 11,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_NOTICE_PERIOD",
@@ -198,7 +448,64 @@
         "EMP_NOTICE_PERIOD_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contracts"
+      "scope_stated_in_its_own_prose": "Employment contracts",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_LEAVE_POLICY",
@@ -210,7 +517,64 @@
         "EMP_LEAVE_POLICY_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contracts"
+      "scope_stated_in_its_own_prose": "Employment contracts",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_WORKING_HOURS",
@@ -223,7 +587,64 @@
         "EMP_WORKING_HOURS_FACTORY_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contracts"
+      "scope_stated_in_its_own_prose": "Employment contracts",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_MINIMUM_WAGES",
@@ -236,7 +657,64 @@
         "EMPLOYMENT_COMPENSATION_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_PF_ESI",
@@ -248,7 +726,64 @@
         "EMP_BENEFITS_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     },
     {
       "rule_id": "EMP_REQUIRES_GRATUITY",
@@ -261,7 +796,64 @@
         "EMP_FIXED_TERM_001"
       ],
       "declared_scope": null,
-      "scope_stated_in_its_own_prose": "Employment contract"
+      "scope_stated_in_its_own_prose": "Employment contract",
+      "measured_consequence": {
+        "measured_on": "2026-09-21",
+        "population": "the adopted 40-family population; 29 realize",
+        "today": {
+          "satisfy": 1,
+          "do_not": 28,
+          "not_applicable": 0,
+          "not_satisfied_by": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        "candidates": [
+          {
+            "id": "A",
+            "scope": "applies only to the EMPLOYMENT_CONTRACT document type",
+            "satisfy": 1,
+            "do_not": 0,
+            "not_applicable": 28,
+            "$caution": "makes the rule not-applicable to appointment letters, internship agreements and separation agreements"
+          },
+          {
+            "id": "B",
+            "scope": "exclude instruments that are not bargains (SWORN, NOTICE, POLICY)",
+            "satisfy": 1,
+            "do_not": 24,
+            "not_applicable": 4
+          }
+        ],
+        "$note": "Shown so the effect of an answer is visible, NOT so an answer can be chosen by its effect."
+      }
     }
   ],
   "the_questions_for_each_rule": [

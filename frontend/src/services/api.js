@@ -84,6 +84,15 @@ export const getLibraryReviewSummary = () =>
   API.get("/admin/library-review/summary");
 export const recordLibraryReview = (clauseId, body) =>
   API.patch(`/admin/library-review/${clauseId}`, body);
+
+export const getConstraintScopes = (params) =>
+  API.get("/admin/constraint-scope", { params });
+
+export const getConstraintScopeSummary = () =>
+  API.get("/admin/constraint-scope/summary");
+
+export const recordConstraintScope = (ruleId, body) =>
+  API.patch(`/admin/constraint-scope/${ruleId}`, body);
 export const getDocumentHistoryList = () => API.get("/history/documents");
 export const getDocumentHistoryDetail = (draftId) =>
   API.get(`/history/documents/${draftId}`);

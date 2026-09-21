@@ -9,6 +9,7 @@ import {
 } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import LibraryReviewPanel from "../components/LibraryReviewPanel";
+import ConstraintScopePanel from "../components/ConstraintScopePanel";
 import { Scales, ArrowRight, Sparkles, Search } from "../utils/icons";
 import "./AdminClauses.css";
 
@@ -125,6 +126,11 @@ export default function AdminClauses() {
       {/* Advocate review of the live library. Placed first: these clauses are
           already reaching users, whereas the queue below is candidate text. */}
       <LibraryReviewPanel />
+
+      {/* Which instruments each constraint governs. Placed after the clause
+          panel: clause wording is what reaches users today, whereas these
+          decisions change nothing until they are encoded and re-measured. */}
+      <ConstraintScopePanel />
 
       {/* AI authoring */}
       <section className="admin-panel">
