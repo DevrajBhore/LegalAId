@@ -1,0 +1,69 @@
+{
+  "$comment": [
+    "THE 308th CLAUSE.",
+    "",
+    "clauseProvenance.test.mjs pins the unreviewed backlog at 307 and says in terms that the number",
+    "is lowered or raised deliberately. On the deployed tree it is 308, so the suite is red at the",
+    "governance level while generation is green.",
+    "",
+    "This is NOT evidence that generation is broken. It is evidence that the review state has crossed",
+    "an explicitly established boundary, and the boundary exists to force someone to look."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "opened_in": "D4.31",
+  "level": "LEGAL_AND_CONTENT_GOVERNANCE",
+
+  "finding": {
+    "ceiling": 307,
+    "actual": 308,
+    "library": "308 clauses loaded, 0 reviewed, 166 awaiting review, 142 unmarked",
+    "generation_impact": "none — goldenCorpus is green on the same tree"
+  },
+
+  "what_crossed_it": {
+    "clause_id": "SERVICE_PERSONNEL_STATUS_001",
+    "name": "Personnel Resourcing and Employment Status",
+    "file": "knowledge-base/clause_library/commercial/service_personnel_status.json",
+    "entered_in": "commit b9115549e, 15 September 2026",
+    "$method": "git log --diff-filter=A over knowledge-base/clause_library. It is the only clause that commit added.",
+    "document_types": [
+      "MASTER_SERVICE_AGREEMENT", "SERVICE_AGREEMENT", "CONSULTANCY_AGREEMENT",
+      "SOFTWARE_DEVELOPMENT_AGREEMENT", "INDEPENDENT_CONTRACTOR_AGREEMENT"
+    ],
+    "review_status": "draft-needs-legal-review",
+    "mandatory": false,
+    "legal_basis": [
+      "Code on Wages, 2019 s.43 — responsibility for payment of wages rests with the employer",
+      "Employees' Provident Funds and Miscellaneous Provisions Act, 1952 s.8A"
+    ]
+  },
+
+  "was_it_legitimately_admitted": {
+    "reading": "Yes, on the evidence. It is a substantive authored clause carrying statutory basis and a review status, not an accidental or duplicated record. Nothing suggests it was admitted by mistake.",
+    "consequence": "The correct response is therefore a deliberate raise of the ceiling to 308, or getting this clause reviewed so the backlog returns to 307. It is NOT a removal.",
+    "$not_done_here": "Neither has been done. Raising a pinned ceiling is the act the pin exists to make deliberate, and a probe is not entitled to perform it."
+  },
+
+  "the_same_commit_caused_the_outage": {
+    "$note": [
+      "Worth recording because it is one story rather than three. Commit b9115549e introduced:",
+      "",
+      "  canonicalFacts.js (new, 257 lines) — reading a semantic_facts.json that was never added",
+      "  documentRequirements.js (+50)      — the kind guard and the semantic-fact guard",
+      "  service_personnel_status.json      — the 308th clause",
+      "",
+      "A large change landed with its guards but without the knowledge those guards require, and",
+      "without the ceiling being moved for the clause it brought in. Every document type stopped",
+      "generating, and the review backlog crossed its boundary, from one commit."
+    ],
+    "lesson_already_recorded": "A_GREEN_SUITE_MUST_NAME_THE_TREE_IT_RAN_ON — the suite would have caught both on the day, had it been run where the change landed."
+  },
+
+  "decision_required": {
+    "id": "CLAUSE_REVIEW_CEILING",
+    "question": "Raise the pinned ceiling to 308, or get SERVICE_PERSONNEL_STATUS_001 reviewed?",
+    "owner": "advocate and maintainer",
+    "status": "UNDECIDED",
+    "$constraint": "The test must not decide which. Its job is to stop the number moving without someone choosing."
+  }
+}

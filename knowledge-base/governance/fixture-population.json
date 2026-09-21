@@ -1,0 +1,369 @@
+{
+  "$comment": [
+    "THE FIXTURE POPULATION, AND WHAT RESTORING FIXTURE_PROFILE DID AND DID NOT RESTORE.",
+    "",
+    "36 shipped files imported FIXTURE_PROFILE from sweep.mjs and sweep.mjs never exported it — 14",
+    "tests and 22 probes, dead at link time. The export is now restored and most of them execute.",
+    "",
+    "It does not follow that the D4.27 to D4.30 evidence is restored, and this record exists to stop",
+    "that inference being made later by someone reading a green suite."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.32",
+  "kind": "MEASUREMENT_INFRASTRUCTURE — not an evidence result",
+  "what_was_repaired": {
+    "export": "FIXTURE_PROFILE { WELL_FILLED, MINIMAL_DECLINED }, plus isProtectionToggle",
+    "call_sites": {
+      "WELL_FILLED": 41,
+      "MINIMAL_DECLINED": 2
+    },
+    "semantics": "The two profiles differ on protection toggles and on nothing else. Keeping every other field identical is what makes the pair a control, which is what declinedProtections.test.mjs says it relies on."
+  },
+  "well_filled_is_not_the_default": {
+    "$note": "Established by measurement, not assumed, and it is the load-bearing decision in the repair.",
+    "mechanism": "sampleFor answers a select with options[0]. include_force_majeure and include_entire_agreement declare their options as [\"No\",\"Yes\"], so the plain default DECLINES them.",
+    "verification": "Generated SERVICE_AGREEMENT, MASTER_SERVICE_AGREEMENT and CONSULTANCY_AGREEMENT with the plain default and read which clause ids were occupied. include_entire_agreement answered \"No\" and CORE_ENTIRE_AGREEMENT_001 was absent in all three.",
+    "why_it_matters": "declinedProtections states the contract in terms — MINIMAL_DECLINED declines every optional protection, WELL_FILLED accepts them. A WELL_FILLED defined as the plain default would have satisfied all 41 imports and silently inverted half of the pairing that test exists to control.",
+    "incidental_observation": {
+      "finding": "Under the plain default include_force_majeure answers \"No\" and CORE_FORCE_MAJEURE_001 is present anyway, in all three families examined.",
+      "status": "NOT INVESTIGATED HERE — this repair was scoped to infrastructure and a declined protection appearing is a content question. declinedProtections.test.mjs fails on exactly this and is listed below."
+    }
+  },
+  "historical_population_is_reproducible": false,
+  "evidence": [
+    {
+      "measurement": "document types that generate from the shipped fixture",
+      "now": "29 of 40",
+      "historically_implied": "40 of 40 — every D4.27 to D4.30 probe iterated the full baseline and reported results for families that do not generate here",
+      "failing_examples": [
+        "IP_ASSIGNMENT_AGREEMENT",
+        "POSH_POLICY",
+        "AFFIDAVIT",
+        "PROMISSORY_NOTE",
+        "SEPARATION_AGREEMENT"
+      ]
+    },
+    {
+      "measurement": "cap instances reported by scripts/probeCapReferent.mjs",
+      "now": 21,
+      "recorded_in_cap_referent_json": 22,
+      "explanation": "IP_ASSIGNMENT_AGREEMENT does not generate on the shipped fixture, so its CORE_LIMITATION_LIABILITY_001 instance is absent. The seven structurally empty families reproduce exactly; the difference is one family that cannot be reached at all."
+    }
+  ],
+  "reading": [
+    "The working copy those phases ran in held an evolved sweep.mjs, and the missing export was only",
+    "part of that evolution. The richer sample coverage that let all forty families generate was never",
+    "delivered either, and unlike the export it cannot be recovered from the call sites — nothing in",
+    "the repository records what those samples were.",
+    "",
+    "So this is not a case of one missing line. It is a measurement population that existed on one",
+    "machine and is gone."
+  ],
+  "consequence_for_earlier_counts": "The D4.27 to D4.30 counts are historical measurements of a population this tree cannot reconstruct. They must be re-derived on the product tree, not carried forward. Where a governance record states a count, the count is provisional until a probe reproduces it here.",
+  "$what_this_refuses": "False continuity — the same test names over different facts, reported as though the evidence had been restored along with the import.",
+  "state_after_the_repair": {
+    "executing_and_green": [
+      "rosterConservation (13)",
+      "economicAllocation (21)",
+      "npartyClassification (10)",
+      "capIndemnityInteraction (9)",
+      "capReferent (15)",
+      "crossTreatmentCoherence (4)",
+      "conceptVerticalSlice (12)"
+    ],
+    "still_failing": [
+      {
+        "test": "declinedProtections",
+        "symptom": "a protection the user declined is present under some clause id",
+        "reading": "Matches the incidental observation above. Possibly the defect the test was written to catch, possibly a fixture artefact. CONTENT question, deliberately not investigated during an infrastructure repair."
+      },
+      {
+        "test": "propositionCoverage",
+        "symptom": "ERR_MODULE_NOT_FOUND",
+        "reading": "A SECOND undelivered dependency, of the same class as FIXTURE_PROFILE. Not yet identified."
+      },
+      {
+        "test": "poshFalsification",
+        "symptom": "the baseline POSH policy does not generate",
+        "reading": "POSH_POLICY is one of the 11 types the shipped fixture cannot generate"
+      },
+      {
+        "test": "poshDissemination",
+        "symptom": "the policy no longer asserts display",
+        "reading": "same fixture-population cause, most likely"
+      },
+      {
+        "test": "tosFalsification",
+        "symptom": "INSTRUMENT_IDENTIFIES_THE_SERVICE does not resolve",
+        "reading": "same fixture-population cause, most likely"
+      },
+      {
+        "test": "statutoryCustody",
+        "symptom": "recorded pairings no longer occur",
+        "reading": "its baseline was recorded under the historical population"
+      },
+      {
+        "test": "gateReachability",
+        "symptom": "frozen gates repaired but still recorded as known",
+        "reading": "its baseline was recorded under the historical population"
+      }
+    ],
+    "$note": "The last four are the same finding wearing four faces: a recorded baseline outlives the population it was recorded against. Re-recording them would be quick and would be wrong until the fixture question is settled, because it would pin whatever this tree happens to produce today."
+  },
+  "not_done": [
+    "The six D4.31 representation questions remain open and untouched.",
+    "The 308 clause ceiling remains at 307, undecided.",
+    "No legal or content rule was changed.",
+    "No recorded baseline was re-pinned."
+  ],
+  "second_undelivered_dependency": {
+    "$note": [
+      "D4.32 opened with one missing export. Diagnosing the last failing test found a second, larger",
+      "instance of the same class: the whole scripts/lib/ directory was absent from the repository."
+    ],
+    "module": "scripts/lib/semanticMutation.mjs",
+    "imported_by": {
+      "tests": [
+        "propositionCoverage",
+        "probeContract"
+      ],
+      "probes": 8,
+      "total_files": 10
+    },
+    "exports_used": [
+      "optionMeaning",
+      "canDecline",
+      "mutateTo",
+      "fieldsBehindGate"
+    ],
+    "why_this_one_was_recoverable_and_the_fixture_was_not": [
+      "The fixture population had no specification anywhere — its richer sample definitions existed",
+      "only in a working copy and nothing in the repository records what they were, so reconstruction",
+      "could only have been a guess dressed as a repair.",
+      "",
+      "This module is different in kind. probeContract.test.mjs SHIPPED, it is a specification rather",
+      "than a usage example, and it fixes all four exports across twelve assertions — including the",
+      "exact three-way select that caused error #5 and the gate that caused error #3. Reconstruction",
+      "here is verifiable against a recorded contract, not inferred from call sites.",
+      "",
+      "The distinction is worth keeping: a lost dependency is recoverable when its contract shipped,",
+      "and not otherwise. Same failure class, different evidentiary position."
+    ],
+    "reconstruction_status": {
+      "behavioural_assertions": "12 of 12 pass — probeContract is ALL GREEN",
+      "remaining_failure": "the twelfth check, which is not about this module at all"
+    },
+    "what_the_contract_test_still_catches": {
+      "finding": "scripts/reviewpack.mjs chooses an answer with `def.options[0]` — positional choice, recorded as measurement error #4.",
+      "diagnosis": "It carries a COPY of sampleFor from sweep.mjs: 31 of 36 lines identical, comments included.",
+      "why_it_is_not_simply_exempted": [
+        "probeContract exempts freezeClauseBaseline.mjs on the ground that a sampler chooses a specimen",
+        "VALUE rather than an answer with a position — AND that sweep.mjs states which profile it",
+        "represents. The second half is the condition, and the duplicate in reviewpack states nothing.",
+        "",
+        "Widening the exemption would silence the check while leaving two samplers free to drift apart.",
+        "That is the failure this module exists to prevent, so the check is left failing."
+      ],
+      "status": "RESOLVED — see duplicated_sampler below"
+    },
+    "propositionCoverage_after_the_repair": {
+      "before": "ERR_MODULE_NOT_FOUND at link time",
+      "now": "loads and executes; fails on a substantive assertion — a legal proposition applicable in some world and implemented by no clause",
+      "reading": "The dependency failure is resolved. The remaining failure is most likely population-blocked like the others, since 11 of 40 families do not generate here. Not investigated: that is a content question."
+    }
+  },
+  "d432_status": "CLOSED",
+  "duplicated_sampler": {
+    "$note": [
+      "The last thing probeContract was catching, and it turned out not to be cosmetic."
+    ],
+    "finding": "scripts/reviewpack.mjs carried its own copy of sampleFor and chose answers by position in the option list — measurement error #4.",
+    "why_the_duplicate_existed": "Its header said so: sweep.mjs was not in the repository, so reading the sampler from it meant the script could not run from a clean checkout. sweep.mjs is tracked now, so the stated reason had expired.",
+    "how_far_they_had_drifted": {
+      "$method": "Extracted the inlined sampler and compared it field by field against sweep.mjs across every document type.",
+      "fields_compared": 7151,
+      "divergent": 3801,
+      "share": "53%",
+      "character": "sweep.mjs had grown per-field specimens — a real cheque number, a real notice narrative — while the copy still answered most free text with one generic sentence about industrial pumps."
+    },
+    "consequence_found": {
+      "artifact": "reviewpack.json and LegalAId_Advocate_Review_Pack.xlsx",
+      "reading": "They were built by the OLD sampler, so the pack an advocate reviews was measured on a different population from the one the suite measures. This is the population-provenance problem again, this time between two committed files rather than between a working copy and the repository.",
+      "$not_done": "reviewpack.json was NOT regenerated. It is now stale with respect to the authoritative sampler, and regenerating it changes a delivered artifact — a visible act that should be taken deliberately, not as a side effect of deduplication."
+    },
+    "repair": "reviewpack.mjs now imports sampleFor from sweep.mjs. The inlined sampler and its dead constants are gone. Its variable-assembly logic — required-only with a retry that fills what generation asks for — is untouched, because the invariant at stake is one authoritative definition of SAMPLING SEMANTICS, not one way of assembling a fixture.",
+    "incidental": {
+      "finding": "probeContract's scan is a regex over source text and does not distinguish code from comments. Describing the banned spelling in a comment re-triggers it.",
+      "status": "NOT FIXED — noted. Making the detector comment-aware is a change to a guard, and a guard is not loosened in passing."
+    }
+  },
+  "three_dimensions_of_provenance": {
+    "$note": "D4.31 exposed one, D4.32 exposed two more. They are not interchangeable: the first asks what produced the measurement, the second what population it measured, the third whether a lost artifact may be rebuilt at all.",
+    "repository_provenance": {
+      "exposed_in": "D4.31",
+      "failure": "We did not know which tree produced the measurement.",
+      "enforced_by": "tests/measurementProvenance.test.mjs"
+    },
+    "population_provenance": {
+      "exposed_in": "D4.32",
+      "failure": "We know which tree produced today's measurement, and we do not know whether today's population is the population that produced the historical one.",
+      "enforced_by": "this record, and tests/fixtureProfileContract.test.mjs asserting that no continuity is claimed"
+    },
+    "property": "A historical measurement is not continuous merely because the same test name executes and produces a comparable number. Continuity requires the same measurement population, or a demonstrated equivalence between populations.",
+    "$why_it_bites_here": "Every one of the seven still-failing tests would go green under some population. Choosing that population to make them green would be choosing the answer.",
+    "specification_provenance": {
+      "exposed_in": "D4.32",
+      "question": "What authoritative record tells us what the missing artifact was supposed to MEAN?",
+      "why_it_is_separate": "It is what decides whether a lost artifact may be reconstructed at all. A usage pattern tells you how something was consumed; it does not tell you what it was for.",
+      "rule": "Reconstruction is admissible where a contract for the artifact exists in the repository, and not otherwise.",
+      "worked": [
+        "semanticMutation.mjs — probeContract.test.mjs shipped and specifies all four exports. ADMISSIBLE, and verified: 12 of 12.",
+        "the historical fixture population — no specification anywhere. NOT ADMISSIBLE; reconstruction could only be a guess dressed as a repair."
+      ]
+    },
+    "governance_principle": "Choosing the population that makes the tests green is choosing the answer. A suite that admits it stops falsifying anything: test fails, alter population, test passes, declare the regression resolved."
+  },
+  "d432_closure": {
+    "closed_on": "2026-09-19",
+    "checks": [
+      {
+        "item": "repository provenance",
+        "state": "ESTABLISHED",
+        "by": "tests/measurementProvenance.test.mjs — runs first, refuses a tree that cannot name its commit, prints the commit and content digests"
+      },
+      {
+        "item": "specification provenance",
+        "state": "ESTABLISHED",
+        "by": "the reconstruction-admissibility rule: a lost artifact may be rebuilt where a contract for it shipped, and not otherwise"
+      },
+      {
+        "item": "population provenance",
+        "state": "ESTABLISHED",
+        "by": "knowledge-base/governance/measurement-population.json, rule ADOPTED"
+      },
+      {
+        "item": "authoritative sampler",
+        "state": "ESTABLISHED",
+        "by": "sweep.mjs is the only one; reviewpack.mjs's 53%-divergent copy removed"
+      },
+      {
+        "item": "deterministic profiles",
+        "state": "ESTABLISHED",
+        "by": "FIXTURE_PROFILE restored and contracted; the two differ on protection toggles and nothing else"
+      },
+      {
+        "item": "independent 40-family population",
+        "state": "ADOPTED",
+        "by": "registry entry with an existing named blueprint"
+      },
+      {
+        "item": "realization accounting",
+        "state": "29 of 40 realize, 11 do not, all 11 remain in the population",
+        "by": "tests/measurementPopulation.test.mjs asserts the figures account for every member"
+      },
+      {
+        "item": "constraint-scope finding",
+        "state": "PRESERVED AS A D4.33 QUESTION",
+        "by": "knowledge-base/governance/constraint-applicability.json — mechanism established, legal decision UNDECIDED"
+      },
+      {
+        "item": "historical population",
+        "state": "EXPLICITLY NON-REPRODUCIBLE",
+        "by": "this record; a test asserts the flag stays false"
+      },
+      {
+        "item": "stale artifacts",
+        "state": "RESOLVED",
+        "by": "reviewpack.json regenerated with a provenance header and repo-relative paths; the XLSX marked HISTORICAL with the command to refresh it"
+      }
+    ],
+    "evidence_classes_for_the_handoff": {
+      "$note": "What the next phase may and may not treat as current.",
+      "A_population_independent": {
+        "examples": [
+          "the nil-ceiling characterisation",
+          "the unaskable characterisation",
+          "the empty cap referent",
+          "clause-level semantic relationships"
+        ],
+        "rule": "Grounded in clause text, knowledge records and schemas rather than in fixture coverage, so the lost population probably does not invalidate them. PROBABLY is not CHECKED — re-derive on the current tree before treating them as current evidence."
+      },
+      "B_population_dependent": {
+        "examples": [
+          "which families generate",
+          "how many families exhibit a relationship",
+          "doc_types_reached in the review pack",
+          "which clauses were occupied"
+        ],
+        "rule": "Must be re-run against the adopted population. A figure of this kind carried forward from D4.27-D4.30 is historical."
+      },
+      "C_historical": {
+        "rule": "The D4.27-D4.30 numbers whose original population cannot be reconstructed. They stay historical and are never silently promoted back to current evidence."
+      }
+    },
+    "handoff": "D4.33 is substantive legal and product reasoning. No further measurement-infrastructure phase unless a concrete measurement failure appears in the course of it.",
+    "$closing_note": [
+      "The measurement work ends having done the thing it was built for, twice.",
+      "",
+      "It stopped a product problem being fixed by changing the experiment — the population was never",
+      "redefined to the families that happened to generate.",
+      "",
+      "And once the experiment was trustworthy it produced a defect nobody was looking for: an",
+      "undeclared constraint scope is a universal one, so an affidavit is required to have lawful",
+      "consideration. That finding was unreachable while the tree being measured was unknown."
+    ],
+    "class_A_rederivation": {
+      "$note": [
+        "The closure attached an uncomfortable rule to Class A: PROBABLY is not CHECKED. This is the",
+        "check.",
+        "",
+        "Six test files already asserted these findings and all six are green, and that was not enough.",
+        "A test asserting \"the record says X\" has not re-derived X. scripts/probeClassARederivation.mjs",
+        "recomputes each claim from the engine and the schemas and then compares, rather than reading",
+        "the governance records to decide."
+      ],
+      "performed_on": "2026-09-20",
+      "population": "the adopted 40, with 29 realizing",
+      "result": {
+        "hold": 6,
+        "changed": 0,
+        "unreachable": 0
+      },
+      "claims": [
+        {
+          "claim": "the 7 structurally empty families each render a ceiling measured on fees or consideration",
+          "held": true,
+          "grounding": "generated; all 7 realize, so none was unreachable"
+        },
+        {
+          "claim": "none of the 7 collects a rupee quantity other than liability_cap_amount",
+          "held": true,
+          "grounding": "schema — independent of realization"
+        },
+        {
+          "claim": "TERMS_OF_SERVICE and PRIVACY_POLICY collect no party_2",
+          "held": true,
+          "grounding": "schema"
+        },
+        {
+          "claim": "no family among the 7 collects consumer status or bargaining relationship",
+          "held": true,
+          "grounding": "schema — the characterisation remains UNASKABLE"
+        },
+        {
+          "claim": "the negotiated-cap basis renders the fees formula and no figure",
+          "held": true,
+          "grounding": "generated"
+        },
+        {
+          "claim": "the engine emits exactly AUTHORED_DECISION_PENDING and NOT_CLASSIFIED",
+          "held": true,
+          "grounding": "source"
+        }
+      ],
+      "consequence": "These six are now CURRENT EVIDENCE on the adopted population, not historical. The nil ceiling, the unaskable characterisation and the empty referent survive the population change, which is what the class was predicted to do and had not been shown to do.",
+      "still_class_B": "Every count that depends on which families realize — 22 cap instances, 21 stating a formula, 4 with an indicative figure. Blocked behind CONSTRAINT_SCOPE_DECLARATIONS; re-pinning them now would pin the 29-family realization as though it were the answer.",
+      "still_class_C": "The D4.27-D4.30 figures whose original population cannot be reconstructed. Never promoted."
+    }
+  }
+}

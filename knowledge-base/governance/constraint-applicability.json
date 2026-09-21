@@ -1,0 +1,90 @@
+{
+  "$comment": [
+    "WHY ELEVEN FAMILIES DO NOT REALIZE — MECHANISM ESTABLISHED.",
+    "",
+    "D4.32 classified the eleven by blocking rule and refused to call the classification a diagnosis.",
+    "This record answers the four factual questions that were left open, by reading the evaluator",
+    "rather than inferring from behaviour, and by running the two rules against all forty members.",
+    "",
+    "It stops at the mechanism. Whether the scoping SHOULD change, and to what, is an authored legal",
+    "and product decision and is not made here."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.32 item 1",
+  "kind": "PRODUCT FINDING — the first to come out of the measurement work",
+
+  "the_four_questions": [
+    {
+      "q": "Does the constraint evaluator consult documentShape?",
+      "a": "YES.",
+      "evidence": "IRE/src/indian-rule-engine/constraintEngine.js imports documentShape and ruleAppliesToDocType reads it to honour excludes_shapes."
+    },
+    {
+      "q": "What happens when a constraint declares no applicable document type or shape?",
+      "a": "IT APPLIES TO EVERYTHING.",
+      "evidence": "`if (!Array.isArray(rule.applies_to_doc_types)) return true;` — an undeclared scope is universal, not empty."
+    },
+    {
+      "q": "Is applicability evaluated before the assertion?",
+      "a": "YES.",
+      "evidence": "ruleAppliesToDocType is checked first and the loop continues past the rule before any assertion runs."
+    },
+    {
+      "q": "Does the system distinguish NOT APPLICABLE from FAILED ASSERTION?",
+      "a": "YES, and it distinguishes a third state too.",
+      "evidence": "Outcomes are recorded as not_applicable, no_assertion, pass or fail. A rule with neither assert nor fails_if is recorded as no_assertion rather than treated as vacuously passing."
+    }
+  ],
+
+  "reading": [
+    "THE MACHINERY IS SOUND. Every distinction this question needed already exists in the evaluator,",
+    "and the scoping vocabulary is real and in use — corporate and finance declare applies_to_doc_types,",
+    "general_provisions and execution_authority declare excludes_doc_types and excludes_shapes.",
+    "",
+    "The finding is in the DECLARATIONS. contract.constraints.json carries 3 rules and",
+    "employment.constraints.json carries 10, and not one of the 13 declares any scoping at all.",
+    "Undeclared means universal, so all 13 are evaluated against all 40 families."
+  ],
+
+  "measurement": {
+    "$method": "Ran contract and employment rules through runConstraints for every registry family with no clauses present, and read the recorded outcome.",
+    "CONTRACT_REQUIRES_CONSIDERATION": { "fail": 40, "not_applicable": 0 },
+    "EMP_REQUIRES_ROLE": { "fail": 40, "not_applicable": 0 },
+    "by_shape": { "AGREEMENT": 31, "POLICY": 5, "SWORN": 3, "NOTICE": 1 },
+    "reading": "Neither rule is ever recorded not_applicable. An affidavit is required to have lawful consideration and a POSH policy to define an employee's role, because nothing tells the evaluator otherwise."
+  },
+
+  "falsification": {
+    "requirement": "Any account of the eleven has to explain BOTH halves — the five that are not agreement-shaped and the six that are.",
+    "result": "SURVIVES.",
+    "how": [
+      "One mechanism, two manifestations.",
+      "",
+      "SHAPE-INAPPROPRIATE (5): POWER_OF_ATTORNEY, AFFIDAVIT and INDEMNITY_BOND are SWORN, POSH_POLICY",
+      "is POLICY, ARBITRATION_NOTICE is NOTICE. A rule about bargains reaches them because it declares",
+      "no excludes_shapes.",
+      "",
+      "TYPE-INAPPROPRIATE (6): ESOP_GRANT_LETTER, APPOINTMENT_LETTER, INTERNSHIP_AGREEMENT and",
+      "SEPARATION_AGREEMENT are AGREEMENT-shaped and are not employment contracts. PROMISSORY_NOTE and",
+      "IP_ASSIGNMENT_AGREEMENT likewise are not the instruments their blocking rules describe. Shape",
+      "would not have excluded any of them; applies_to_doc_types would."
+    ],
+    "$why_this_matters": "A shape-only explanation would have covered five of eleven and read as a complete account. The control the earlier record insisted on is what forced the second half into view."
+  },
+
+  "what_is_NOT_established": [
+    "That the rules are wrong. A rule firing on an instrument is not the same as the instrument being entitled to omit what the rule requires, and the answer differs per instrument — consideration is genuinely irrelevant to an affidavit and genuinely central to a promissory note.",
+    "That the eleven SHOULD generate. Membership in the population does not settle whether the family's current knowledge is complete.",
+    "Which of the thirteen rules needs scoping, or whether scoping is the right repair at all rather than, say, the families carrying the clauses the rules look for."
+  ],
+
+  "why_it_bites_only_eleven": "The rules fail for all forty when no clauses are present. Twenty-nine families nonetheless generate, because their clause sets happen to contain a clause that satisfies the rule. So the over-broad scope is universal and the BLOCK is not: it lands where the family has no satisfying clause, which is exactly where the rule was least appropriate.",
+
+  "decision_required": {
+    "id": "CONSTRAINT_SCOPE_DECLARATIONS",
+    "question": "For each of the 13 rules in contract.constraints.json and employment.constraints.json, which document types or shapes is it a rule about?",
+    "owner": "advocate, with the product model",
+    "status": "UNDECIDED",
+    "$constraint": "Not a mechanical repair. Each answer is a statement about which instruments a statutory requirement governs, and s.25 of the Contract Act does not reach an affidavit for the same reason it does reach a promissory note."
+  }
+}

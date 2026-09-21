@@ -4,11 +4,13 @@
  *
  * Run from the repository root:   node scripts/reviewpack.mjs
  *
- * Self-contained by design. This script used to read its sample-value generator
- * out of a sweep.mjs sitting in the repository root, which meant it could not be
- * run from a clean checkout at all. The sampler is inlined below instead.
+ * Sampling comes from sweep.mjs, which is the authoritative definition of what a
+ * fixture answer means. This script once inlined its own copy because sweep.mjs
+ * was not in the repository; it is now, and the copy had drifted to disagree with
+ * it on 53% of fields.
  */
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
+import { sampleFor } from "../sweep.mjs";
 import { VARIABLE_CONFIG } from "../backend/config/variableConfig.js";
 import { generateDocument } from "../backend/services/documentService.js";
 import fs from "fs";
@@ -16,110 +18,28 @@ import path from "path";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 
-const SAMPLES = { name:"Alpha Industries Private Limited", address:"1 First Road, Mumbai, Maharashtra 400001",
-  email:"contact@alpha.example", url:"https://alpha.example", city:"Pune", state:"Maharashtra",
-  date:"2026-09-01", number:"500000", pan:"AAACA1234A", gstin:"27AAACA1234A1Z5",
-  cin:"U74999MH2015PTC123456", llpin:"AAB-1234" };
 
-/* ── Sample-value generator ──────────────────────────────────────────────── */
-const ENTITY_NAMES = [
-  "Alpha Industries Private Limited",
-  "Beta Consulting LLP",
-  "Gamma Ventures Private Limited",
-];
-const PERSON_NAMES = ["Ramesh Kulkarni", "Sunita Deshmukh", "Arjun Nair"];
-// Which of the two pools each party slot draws from.
-const ENTITY_OR_PERSON = [ENTITY_NAMES[0], ENTITY_NAMES[1], ENTITY_NAMES[2]];
-const ADDRESSES = [
-  "1 First Road, Mumbai, Maharashtra 400001",
-  "2 Second Road, Pune, Maharashtra 411001",
-  "3 Third Road, Nashik, Maharashtra 422001",
-];
-
-// Distinguish the first, second and third counterparty so the fixture doesn't
-// name both sides identically (which is itself a validation failure).
-function partyIndex(key) {
-  if (/(_|\b)(2|second|b)\b|_2_|employee|licensee|tenant|borrower|buyer|purchaser|contractor|consultant|distributor|recipient|service_provider/i.test(key)) return 1;
-  if (/(_|\b)(3|third)\b|_3_|guarantor|witness/i.test(key)) return 2;
-  return 0;
-}
-
-function sampleFor(key, def) {
-  const k = key.toLowerCase();
-  const idx = partyIndex(k);
-
-  if (def.type === "select" && Array.isArray(def.options) && def.options.length) {
-    // A "party type" select must agree with the name we generated for that
-    // party, or the entity-consistency validator rejects the pair.
-    if (/_type$/.test(k) && /party|employer|employee|partner|shareholder|guarantor|lender|borrower|licensor|licensee|landlord|tenant|buyer|seller|discloser|recipient/.test(k)) {
-      const paired = ENTITY_OR_PERSON[idx] || "";
-      const wantsPerson = PERSON_NAMES.includes(paired);
-      // The suffix on the generated name decides the type. Matching "private
-      // limited|company|llp" in option order gave "Beta Consulting LLP" the type
-      // "Private Limited Company", which the graph validator blocks -- rightly,
-      // because that pair would describe an LLP under the Companies Act.
-      const wanted = wantsPerson
-        ? /individual|person|proprietor/i
-        : /\bLLP\b/i.test(paired)
-          ? /llp|limited liability partnership/i
-          : /private limited/i;
-      const match = def.options.find((o) => wanted.test(o));
-      if (match) return match;
-    }
-    // A state field is answered with the state the sample city is actually in.
-    // Taking options[0] gave every fixture "Andhra Pradesh" alongside a Pune
-    // seat and Maharashtra addresses -- a contradiction the graph validator now
-    // blocks, and rightly: the fixture was wrong, not the check.
-    if (/state/.test(k) && def.options.includes(SAMPLES.state)) return SAMPLES.state;
-    return def.options[0];
-  }
-  if (def.type === "date") return SAMPLES.date;
-
-  if (/working_hours/.test(k)) return "40";
-  // Free-text commercial fields must be filled with prose, not a bare number:
-  // "price_terms" matches the money heuristic below and would otherwise be given
-  // "500000", which the specificity check rejects for having no words in it.
-  if (/price_terms|pricing|payment_terms|prepayment_terms|repayment_terms/.test(k))
-    return "list price less a 15 percent trade discount, invoiced monthly and payable within 30 days of a valid tax invoice";
-  if (/signatory_name/.test(k)) return PERSON_NAMES[idx];
-  if (/signatory_designation|designation/.test(k)) return "Director";
-  if (/board_resolution_date|authorisation_date/.test(k)) return SAMPLES.date;
-
-  // Bounded numerics first — a percentage field given 500000 fails its range
-  // check and blocks generation for a reason that has nothing to do with drafting.
-  // Shareholdings must sum to 100 across the two shareholders, or the validator
-  // rejects the pair before any drafting happens.
-  if (/^shareholding_percentage_1$/.test(k)) return "60";
-  if (/^shareholding_percentage_2$/.test(k)) return "40";
-  if (/percent|percentage|_rate$|rate_|escalation|share_of|margin|discount/.test(k)) return "10";
-  if (/notice_period|_days$|days_/.test(k)) return "30";
-  if (/_months$|months_/.test(k)) return "24";
-  if (/_years$|years_/.test(k)) return "3";
-  if (/age$/.test(k)) return "18";
-  if (/headcount|number_of|count$|quantity/.test(k)) return "25";
-  if (def.type === "number") return SAMPLES.number;
-
-  if (/_pan$|^pan$/.test(k)) return SAMPLES.pan;
-  if (/gstin/.test(k)) return SAMPLES.gstin;
-  if (/\bcin\b|_cin$/.test(k)) return SAMPLES.cin;
-  if (/llpin/.test(k)) return SAMPLES.llpin;
-  if (/email/.test(k)) return SAMPLES.email;
-  if (/url|website|domain/.test(k)) return SAMPLES.url;
-  if (/city/.test(k)) return SAMPLES.city;
-  if (/state/.test(k)) return SAMPLES.state;
-  if (/address|premises|property|registered_office|location/.test(k)) return ADDRESSES[idx];
-  if (/date/.test(k)) return SAMPLES.date;
-  if (/amount|value|fee|rent|salary|deposit|price|capital|loan|consideration|turnover|revenue/.test(k))
-    return SAMPLES.number;
-  if (/term|duration|period|tenure/.test(k)) return "24 months";
-  if (/employee_name|individual_name|partner_\d_name|witness/.test(k)) return PERSON_NAMES[idx];
-  if (/name$/.test(k)) return ENTITY_NAMES[idx];
-
-  // Deliberately concrete: the vagueness check rejects "as agreed" style answers,
-  // and rightly so -- the object of a contract must be certain.
-  return "wholesale supply, installation and maintenance of industrial pumps and spare parts across western India, performed to the standards and timelines recorded in this Agreement";
-}
-/* ── end sampler ─────────────────────────────────────────────────────────── */
+/* ── Sampling comes from the authoritative sampler ───────────────────────── */
+//
+// This file used to inline its own copy of sampleFor. The header explained why:
+// sweep.mjs was not in the repository, so reading the sampler from it meant the
+// script could not run from a clean checkout. sweep.mjs IS tracked now, so the
+// reason the duplicate existed has expired.
+//
+// It was not a near-copy by the time it was removed. Compared field by field
+// across every document type, the two samplers disagreed on 3,801 of 7,151
+// values — 53%. sweep.mjs had grown per-field specimens while this copy still
+// answered most free text with one generic sentence, so the review pack was
+// being measured on a different population from the suite.
+//
+// probeContract.test.mjs bans positional choice in scripts/, and this file was
+// the one offender: the removed copy chose an answer by its position in the
+// option list, which is measurement error #4. Removing the duplicate removes
+// that too.
+//
+// The spelling is not repeated here on purpose. That scan is a regex over source
+// text and does not distinguish code from comments, so describing the pattern
+// literally re-triggers it. Worth knowing about the detector; not fixed here.
 
 // How many document types each clause actually reaches.
 const usage = new Map();
@@ -192,7 +112,12 @@ for (const dir of fs.readdirSync(LIB, { withFileTypes: true })) {
         clause_id: c.clause_id,
         title: c.title || c.name || "",
         domain: dir.name,
-        file: full,
+        // Repo-relative, deliberately. The committed pack carried absolute paths
+        // beginning /tmp/la — the ephemeral working copy it was generated in, which
+        // no longer exists. An artifact that records the machine it was built on
+        // instead of the file it describes cannot be read on any other machine, and
+        // it is how this pack's own provenance was lost.
+        file: path.relative(ROOT, full).split(path.sep).join("/"),
         doc_types_reached: u.types.length,
         doc_types: u.types.join(", "),
         rendered_words: u.words,
@@ -240,7 +165,27 @@ for (const c of clauses) {
 }
 clauses.sort((a, b) => b.priority - a.priority);
 
-fs.writeFileSync(path.join(ROOT, "reviewpack.json"), JSON.stringify(clauses, null, 1));
+// A provenance header, so the pack can say what produced it.
+//
+// `doc_types_reached` is POPULATION-DEPENDENT evidence: it counts the families
+// that actually generated, not the families in the measurement population. Eleven
+// of the forty do not currently realize, so a clause reaching only agreements
+// shows a smaller number here than it will once CONSTRAINT_SCOPE_DECLARATIONS is
+// decided. Stamping the figures is what stops them being read as stable.
+const realized = new Set();
+for (const c of clauses) for (const t of String(c.doc_types || "").split(", ").filter(Boolean)) realized.add(t);
+const provenance = {
+  generated_at: new Date().toISOString(),
+  sampler: "sweep.mjs — the authoritative sampler; this script no longer keeps its own copy",
+  population_rule: "DOCUMENT_TYPE_REGISTRY with an existing named blueprint",
+  population_members: Object.keys(DOCUMENT_TYPE_REGISTRY).length,
+  families_realized: realized.size,
+  caveat: "doc_types_reached counts realized families, not population members. It moves when realization changes.",
+};
+fs.writeFileSync(
+  path.join(ROOT, "reviewpack.json"),
+  JSON.stringify({ $provenance: provenance, clauses }, null, 1)
+);
 const reached = clauses.filter(c => c.doc_types_reached > 0);
 const typeCount = Object.keys(DOCUMENT_TYPE_REGISTRY).length;
 const conditional = clauses.filter(c => c.doc_types_reached === 0 && blueprintReferenced.has(c.clause_id));

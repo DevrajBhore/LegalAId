@@ -1,0 +1,201 @@
+{
+  "$comment": [
+    "WHAT RULE DECIDES WHICH FAMILIES BELONG IN A MEASUREMENT POPULATION.",
+    "",
+    "The historical 40-family population is irrecoverable and that is settled. The question this",
+    "record answers is deliberately NOT \"how do we get back to 40\", because the number is historical",
+    "evidence and not a specification. Aiming at it would let the desired answer choose the method,",
+    "which is the circularity the last three phases have been removing.",
+    "",
+    "The question is: what independently defensible rule determines membership, decided from",
+    "authoritative artifacts and not from the results the population is used to measure?"
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.32 item 6",
+  "status": "ADOPTED",
+  "independence_condition": {
+    "requirement": "Membership must be decidable without generating a document.",
+    "rejected_rule": {
+      "rule": "the families that currently generate successfully",
+      "count_today": 29,
+      "why_rejected": "It makes the population endogenous to the outcome. A family that stops generating would leave the population, the measurement would stay green, and the regression would disappear by definition rather than by repair."
+    },
+    "$governance": "Choosing the population that makes the tests green is choosing the answer."
+  },
+  "candidate_rules": [
+    {
+      "id": "REGISTRY_WITH_BLUEPRINT",
+      "rule": "A family belongs iff DOCUMENT_TYPE_REGISTRY lists it AND the blueprint its entry names exists.",
+      "count": 40,
+      "decidable_without_generating": true,
+      "sources": [
+        "shared/documentRegistry.js",
+        "knowledge-base/clause_library/blueprints/"
+      ],
+      "measured": "All 40 registry entries name a blueprint and all 40 of those files exist. The rule is satisfiable today with no exceptions.",
+      "falsifiable": "A registry entry naming a missing blueprint fails the rule loudly instead of being quietly skipped.",
+      "$meaning": "The registry is what the product offers a user. That is a defensible basis for what the suite must measure."
+    },
+    {
+      "id": "BLUEPRINT_EXISTS",
+      "rule": "A family belongs iff a blueprint file exists for it.",
+      "count": "46 files naming 45 document types",
+      "decidable_without_generating": true,
+      "why_not_preferred": "It over-includes. Six blueprint files are named by no registry entry, and three of them — contractor, employment, ip — look like superseded generics that the specific blueprints replaced. Measuring against them would hold the suite to instruments the product does not offer."
+    },
+    {
+      "id": "IRE_REGISTERED",
+      "rule": "A family belongs iff the IRE bootstrap registers it.",
+      "count": "49 reported at bootstrap",
+      "decidable_without_generating": true,
+      "why_not_preferred": "The widest of the three and the least explained. What the engine can register is not the same claim as what the product offers or what has authored intake."
+    }
+  ],
+  "an_apparent_corroboration_that_is_not_one": {
+    "observation": "tests/baseline/clause-baseline.json also contains exactly 40 document types, matching the registry precisely.",
+    "why_it_proves_nothing": "scripts/freezeClauseBaseline.mjs builds the baseline by iterating DOCUMENT_TYPE_REGISTRY. The two agree by construction. This is one source counted twice, not two sources agreeing, and citing it as convergent evidence would manufacture confidence.",
+    "$note": "Recorded because the coincidence is exactly the shape that invites the wrong inference — and because 40 matching the historical number could otherwise read as the old population having been recovered. It has not been. The rule was chosen first and the count fell out of it."
+  },
+  "what_the_rules_disagree_about": {
+    "count": 6,
+    "$note": "The disagreement is not noise. It names specific instruments, and the two kinds need different answers.",
+    "apparently_superseded": {
+      "blueprints": [
+        "contractor",
+        "employment",
+        "ip"
+      ],
+      "reading": "Generic blueprints that specific ones appear to have replaced — independent_contractor_agreement, employment_contract, ip_assignment_agreement all exist and are registered.",
+      "question": "Are these dead files, or are they still reachable through some path?"
+    },
+    "unlisted_instruments": {
+      "blueprints": [
+        "legal_notice",
+        "cheque_bounce_notice",
+        "reply_to_legal_notice"
+      ],
+      "reading": "These are NOT superseded. LEGAL_NOTICE, CHEQUE_BOUNCE_NOTICE and REPLY_TO_LEGAL_NOTICE are absent from DOCUMENT_TYPE_REGISTRY entirely, while blueprints and clause sets exist for them.",
+      "question": "Is the knowledge base ahead of the registry, or was the registry entry deliberately withheld? One is a gap in what the product offers; the other is a decision.",
+      "$why_it_cannot_be_settled_mechanically": "Nothing in either artifact records the intent. Distinguishing a superseded file from a withheld instrument is an authored judgement, and a rule that guessed would be inventing product scope."
+    }
+  },
+  "recommendation": {
+    "rule": "REGISTRY_WITH_BLUEPRINT",
+    "count_that_follows": 40,
+    "$order_matters": "The rule was selected on the independence and decidability criteria, and the count was then measured. It was not chosen because it produces 40.",
+    "what_it_makes_measurable": "29 of 40 generating becomes a RESULT about the product rather than a definition of the population. The eleven that fail stay in the population and stay visible.",
+    "open": "The six orphan blueprints are recorded above and remain undecided. Resolving them may move the count in either direction, and that is a product-scope decision rather than a measurement one."
+  },
+  "not_done": [
+    "No population was pinned and no baseline was re-recorded.",
+    "The historical 40-family fixture population remains irrecoverable; nothing here claims to restore it.",
+    "propositionCoverage's substantive failure remains uninterpreted.",
+    "declinedProtections remains uninvestigated.",
+    "The six D4.31 representation questions and the 308 clause ceiling are untouched."
+  ],
+  "population_vs_realization": {
+    "$note": [
+      "Two different facts about a family, and conflating them is what would make the next round of",
+      "findings uninterpretable.",
+      "",
+      "  MEMBERSHIP   decided by the rule, before any document is generated.",
+      "  REALIZATION  whether the fixture can actually produce a draft for that member today.",
+      "",
+      "A family that is in the population and does not realize is a measurable product result. It is",
+      "NOT a family that has left the experiment, and it is NOT yet evidence of a knowledge gap."
+    ],
+    "consequence_for_propositionCoverage": "A proposition that fails because its family cannot currently be realized is not equivalent to the product lacking the required legal proposition. That test stays uninterpreted until realization is characterized.",
+    "realization_today": {
+      "members": 40,
+      "realize": 29,
+      "do_not_realize": 11
+    }
+  },
+  "realization_classification": {
+    "$status": "DATA, NOT INTERPRETATION. What follows is which rule blocked which family. Why those rules fire is the next investigation and is not decided here.",
+    "$method": "Generated all 40 members under WELL_FILLED and read the blocking rule ids. None of the 11 reported a missing field — every one was blocked by a validation rule.",
+    "by_blocking_rule": [
+      {
+        "rule": "CONTRACT_REQUIRES_CONSIDERATION",
+        "families": [
+          "PROMISSORY_NOTE",
+          "POWER_OF_ATTORNEY",
+          "ARBITRATION_NOTICE",
+          "AFFIDAVIT",
+          "INDEMNITY_BOND"
+        ]
+      },
+      {
+        "rule": "EMP_REQUIRES_ROLE and siblings",
+        "families": [
+          "ESOP_GRANT_LETTER",
+          "APPOINTMENT_LETTER",
+          "INTERNSHIP_AGREEMENT",
+          "SEPARATION_AGREEMENT",
+          "POSH_POLICY"
+        ]
+      },
+      {
+        "rule": "IP_REQUIRES_OWNERSHIP",
+        "families": [
+          "IP_ASSIGNMENT_AGREEMENT"
+        ]
+      }
+    ],
+    "an_observation_that_is_not_yet_a_finding": {
+      "fact_1": "shared/documentShape.js classifies five of the eleven as something other than an agreement: POWER_OF_ATTORNEY, AFFIDAVIT and INDEMNITY_BOND are SWORN, POSH_POLICY is POLICY, ARBITRATION_NOTICE is NOTICE.",
+      "fact_2": "The vocabulary for scoping a constraint exists and is used: corporate and finance constraint sets declare applies_to_doc_types; general_provisions and execution_authority declare excludes_doc_types and excludes_shapes.",
+      "fact_3": "contract.constraints.json and employment.constraints.json declare none of them. Their rules carry only rule_id, severity, description, statutory_reference and fails_if.",
+      "$what_is_NOT_claimed": "That fact 3 causes the eleven failures. Three facts sitting next to each other are not a mechanism, and this investigation has recorded what happens when a plausible mechanism is adopted because it reaches the right conclusion.",
+      "$what_would_settle_it": "Whether the constraint evaluator consults documentShape at all, and what it does for a rule that declares no applicability. Neither was read.",
+      "$note_on_the_other_six": "ESOP_GRANT_LETTER, PROMISSORY_NOTE, IP_ASSIGNMENT_AGREEMENT, APPOINTMENT_LETTER, INTERNSHIP_AGREEMENT and SEPARATION_AGREEMENT are AGREEMENT by the same taxonomy, so a shape explanation would not cover them. Any account of the eleven has to explain both halves.",
+      "$resolved_in": "D4.32 item 1 — mechanism established by reading the evaluator and measuring all forty families. See knowledge-base/governance/constraint-applicability.json. It survived the both-halves control: one mechanism, two manifestations, shape-inappropriate for five and type-inappropriate for six."
+    }
+  },
+  "d432_state": {
+    "population_rule": "ADOPTED — registry entry with an existing named blueprint; 40 members",
+    "population_count": "40, computed from the rule rather than targeted",
+    "generation_result": "29 of 40 — a measurable product result, not a population definition",
+    "historical_population": "IRRECOVERABLE",
+    "six_unregistered_blueprints": "scope intent UNRESOLVED; knowledge exists, product-scope intent is unestablished",
+    "clause_baseline_40": "non-independent; derived from the registry and explicitly neutralised",
+    "propositionCoverage": "UNRESOLVED — realization is now characterized, so it becomes interpretable once CONSTRAINT_SCOPE_DECLARATIONS is decided and the eleven are re-measured",
+    "declinedProtections": "separate substantive finding, still uninterpreted",
+    "baseline_repinning": "PROHIBITED",
+    "six_representation_questions": "UNTOUCHED",
+    "clause_ceiling_308": "UNTOUCHED",
+    "eleven_realization_failures": "MECHANISM ESTABLISHED; the scoping decision is UNDECIDED and belongs to an advocate"
+  },
+  "adoption": {
+    "rule": "DOCUMENT_TYPE_REGISTRY entry with an existing named blueprint",
+    "adopted_on": "2026-09-19",
+    "population_members": 40,
+    "errors_not_exclusions": "A registry entry naming a blueprint that does not exist is an ERROR. It fails loudly and is repaired; it never silently shrinks the population.",
+    "forbidden_definition": "\"the families that currently generate\" must never be used as the population. It is endogenous to the result, and a family that stopped generating would leave the experiment instead of failing in it.",
+    "$what_adoption_changes": "Membership is now settled. Realization, and every count that depends on it, is a result measured against this population rather than a definition of it."
+  },
+  "stale_artifact_resolution": {
+    "$note": [
+      "reviewpack.json was regenerated. Disclosing how it happened: the first regeneration was an",
+      "ACCIDENT — checking that the deduplicated reviewpack.mjs still imported cleanly ran its",
+      "top-level build, which writes the file. It was then done deliberately, after inspecting what",
+      "changed."
+    ],
+    "why_regenerating_was_right": "The committed pack recorded every clause's `file` as an absolute path beginning /tmp/la — the ephemeral working copy it was built in, which no longer exists. That is direct evidence the artifact was produced in a tree with no provenance, and it cannot be read on any other machine.",
+    "what_changed": {
+      "clauses": "250 -> 308",
+      "$reading": "The committed pack had no review row for 58 clauses — nearly a fifth of the library was invisible to the advocate.",
+      "reach_counts": "87 clauses' doc_types_reached changed, downward in every sample examined (CORE_DISPUTE_RESOLUTION_001 36 -> 28), because fewer families realize under the authoritative sampler.",
+      "paths": "absolute container paths -> repo-relative"
+    },
+    "generator_repaired": "scripts/reviewpack.mjs now writes repo-relative paths and a $provenance header recording the sampler, the population rule, the member count and the realized count.",
+    "the_caveat_now_stamped_on_the_artifact": "doc_types_reached is POPULATION-DEPENDENT evidence. It counts realized families, not population members, and it will move when CONSTRAINT_SCOPE_DECLARATIONS is decided and the eleven realize.",
+    "an_honest_discrepancy": "The provenance header reports 28 realized where the WELL_FILLED measurement reports 29. reviewpack.mjs assembles its own variables — required-only with a retry — rather than using a fixture profile, so its realization count is its own. Recorded rather than reconciled; reconciling it would mean changing the script's assembly, which is not this phase's work.",
+    "xlsx": {
+      "file": "LegalAId_Advocate_Review_Pack.xlsx",
+      "status": "HISTORICAL — NOT CURRENT",
+      "why": "It was built by scripts/buildReviewPack.py from the OLD reviewpack.json, so it is missing the 58 clauses and carries the superseded reach counts.",
+      "how_to_refresh": "python scripts/buildReviewPack.py — a deliberate act, because it replaces the artifact an advocate works from."
+    }
+  }
+}

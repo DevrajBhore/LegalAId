@@ -1,0 +1,170 @@
+{
+  "$comment": [
+    "D4.34 — A DECLINED PROTECTION STILL REACHES THE PAGE, IN NINE PLACES.",
+    "",
+    "declinedProtections.test.mjs asserts a role-level invariant: a user who declines a protection",
+    "must not find it in the draft under ANY clause id. Its own header records that six stages could",
+    "reintroduce an excluded clause and that each was found only after the previous repair failed.",
+    "",
+    "It fails. This record establishes where, and how much of the why is actually established."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.34",
+  "kind": "PRODUCT FINDING",
+  "status": "SPLIT INTO THREE INVESTIGATIONS — none repaired",
+  "not_caused_by_the_reconstructed_fixture": {
+    "$note": "Checked first, because MINIMAL_DECLINED was reconstructed in D4.32 and a defect traceable to my own profile would be worthless as a finding.",
+    "method": "Generated with the plain default variables and set ONE field to \"No\" — no profile involved.",
+    "result": "The clause appears in all three sampled cases. The profile is not in the causal chain."
+  },
+  "occurrences": {
+    "total": 9,
+    "by_role": [
+      {
+        "role": "ENTIRE_AGREEMENT",
+        "clause": "CORE_ENTIRE_AGREEMENT_001",
+        "families": 5,
+        "members": [
+          "FOUNDERS_AGREEMENT",
+          "TERM_SHEET",
+          "SHARE_SUBSCRIPTION_AGREEMENT",
+          "DATA_PROCESSING_AGREEMENT",
+          "SETTLEMENT_AGREEMENT"
+        ],
+        "blueprint_status": "absent — the clause is not in these blueprints at all, so no conditional gate could decline it",
+        "injected_by": "(none recorded)"
+      },
+      {
+        "role": "NOMENCLATURE",
+        "clause": "CORE_DEFINITIONS_001",
+        "families": 3,
+        "members": [
+          "CONSULTANCY_AGREEMENT",
+          "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "SOFTWARE_DEVELOPMENT_AGREEMENT"
+        ],
+        "blueprint_status": "conditional, gated on include_nomenclature_clause == true",
+        "injected_by": "dependencyResolver"
+      },
+      {
+        "role": "FORCE_MAJEURE",
+        "clause": "CORE_FORCE_MAJEURE_001",
+        "families": 1,
+        "members": [
+          "MOU"
+        ],
+        "blueprint_status": "required",
+        "injected_by": "(none recorded)"
+      }
+    ]
+  },
+  "established": {
+    "class": "NOMENCLATURE — 3 families",
+    "mechanism": "The blueprint gate correctly excludes CORE_DEFINITIONS_001 when the user declines, and the dependency resolver then re-injects it because another clause in those families declares it as a dependency.",
+    "evidence": "The clause object in the draft carries injected_by: \"dependencyResolver\". The mechanism is STATED by the artifact rather than inferred from behaviour.",
+    "control": "SERVICE_AGREEMENT has the identical conditional gate and the identical per-document hardening entry, and it RESPECTS the decline — its validation records GENERAL_PROVISION_MISSING_DEFINITIONS as a declined default. So neither the gate nor the hardening list distinguishes the cases; the dependency does.",
+    "$this_is_the_test's_own_prediction": "dependency injection is one of the six stages its header names."
+  },
+  "not_established": {
+    "classes": [
+      "ENTIRE_AGREEMENT — 5 families",
+      "FORCE_MAJEURE — MOU"
+    ],
+    "why": [
+      "Six of the nine clauses arrive with NO injector recorded. The draft cannot say where they",
+      "came from.",
+      "",
+      "Two paths reach these families and neither leaves a mark: the blueprint's required list, and",
+      "defaults.hardening.baselineClauseIds — which contains all three clause ids. Either is",
+      "plausible and this probe cannot choose between them."
+    ],
+    "$a_hypothesis_i_did_not_adopt": "The per-document hardening requiredClauseIds looked like the answer until the control was built properly: SERVICE_AGREEMENT carries CORE_ENTIRE_AGREEMENT_001 in its requiredClauseIds too and respects the decline. Same declaration, different outcome, so the declaration is not the mechanism.",
+    "what_would_settle_it": "Stamp injected_by at every stage that can add a clause. The one class that could be established is the one class that stamps."
+  },
+  "the_provenance_gap_is_the_deeper_finding": {
+    "statement": "A generated clause should be able to say which stage put it there. Three of nine can; six cannot.",
+    "why_it_matters": "This investigation has spent three phases on provenance of MEASUREMENTS. This is the same gap one level down, inside the artifact the product ships: a clause in a legal instrument whose origin the system cannot state.",
+    "$scope": "Recorded, not repaired. Adding stamps touches the assembly path, and the assembly path is what this finding is about."
+  },
+  "not_all_nine_are_necessarily_defects": {
+    "$caution": "The MOU case is different in kind. Its blueprint marks CORE_FORCE_MAJEURE_001 REQUIRED, so a clause appearing despite a decline may be the blueprint doing its job. The defect there would be that the form offers a choice the knowledge does not honour — an intake/knowledge disagreement rather than an injection bug.",
+    "consequence": "Three candidate repairs, not one: teach the dependency resolver about declines; stamp and then trace the unstamped six; and decide, per role, whether the form should be offering the choice at all."
+  },
+  "what_this_record_does_not_do": [
+    "It does not repair anything.",
+    "It does not decide whether a declined protection SHOULD be overridable by a dependency — a clause another clause depends on may be one the instrument genuinely cannot omit.",
+    "It does not touch the intake, the blueprints or the hardening policy.",
+    "It does not reinterpret the test; the test is correct and the invariant it asserts is the right one."
+  ],
+  "three_investigations": {
+    "$note": [
+      "One red test, three precisely bounded questions. They are kept apart because they have",
+      "different causes, different owners and different repairs, and because repairing A must not be",
+      "allowed to make B and C look resolved."
+    ],
+    "A_DECLINE_PRECEDENCE": {
+      "state": "ESTABLISHED DEFECT",
+      "finding": "A downstream dependency stage can override an explicit negative protection decision without consulting that decision.",
+      "$why_this_phrasing": "Narrower and more actionable than 'declined protection bug'. The control ruled out the tempting account — the conditional gate is NOT broken, it works; something downstream of it wins.",
+      "evidence": "injected_by: dependencyResolver on the clause object, with SERVICE_AGREEMENT as the control carrying an identical gate and hardening entry while respecting the decline.",
+      "affected": [
+        "CONSULTANCY_AGREEMENT",
+        "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "SOFTWARE_DEVELOPMENT_AGREEMENT"
+      ],
+      "owner": "engine, with a knowledge input — see the invariant",
+      "repaired": false
+    },
+    "B_CLAUSE_PROVENANCE": {
+      "state": "ESTABLISHED DEFECT",
+      "finding": "Six generated clauses lack sufficient assembly provenance to identify their originating stage.",
+      "$what_it_is_not": "It is not six injection defects. The clause exists, the blueprint may require it, the hardening baseline may require it, and nothing records which path won. Picking one because it looks plausible would be inventing the mechanism.",
+      "$on_the_analogy": "It rhymes with the measurement-provenance work of D4.31 and D4.32 and is not the same thing. The analogy is useful; the technical mechanisms are distinct and should not be merged.",
+      "affected": [
+        "FOUNDERS_AGREEMENT",
+        "TERM_SHEET",
+        "SHARE_SUBSCRIPTION_AGREEMENT",
+        "DATA_PROCESSING_AGREEMENT",
+        "SETTLEMENT_AGREEMENT",
+        "MOU"
+      ],
+      "owner": "engine",
+      "repaired": false
+    },
+    "C_INTAKE_KNOWLEDGE_CONSISTENCY": {
+      "state": "QUESTION — not a defect until answered",
+      "question": "When knowledge marks a protection required, should the intake expose it as a declinable option at all?",
+      "$why_not_a_defect_yet": "The MOU blueprint marks CORE_FORCE_MAJEURE_001 required, so the engine may be faithfully implementing the knowledge. The contradiction sits one layer earlier: the intake says the user declined and the knowledge says the clause is required.",
+      "candidate_outcomes": [
+        "the protection should not be offered as optional for this family",
+        "the protection genuinely is mandatory and the intake's semantics are wrong",
+        "the decline should raise an unresolved conflict rather than silently yielding the required clause"
+      ],
+      "which_is_correct": "NOT ESTABLISHED",
+      "affected": [
+        "MOU"
+      ],
+      "owner": "advocate, with the product model",
+      "repaired": false
+    }
+  },
+  "invariants_emerging": [
+    {
+      "id": "A_NEGATIVE_DECISION_MUST_SURVIVE_ASSEMBLY",
+      "statement": "An explicit negative user decision must survive every downstream clause-assembly stage unless a higher-authority legal requirement has been established.",
+      "$the_load_bearing_phrase": "'has been established'. The hierarchy comes from the knowledge model, not from the order the stages happen to run in.",
+      "what_must_NOT_be_encoded": [
+        "'dependency beats decline' — that would let an assembly convenience overrule a user's choice by default.",
+        "'the user's decline always wins' — that would let a user strip a clause the instrument cannot lawfully omit."
+      ],
+      "$status": "recorded as the shape of the answer, not as the answer. Neither branch is defensible until the knowledge model says which requirements outrank a decline."
+    },
+    {
+      "id": "A_SHIPPED_CLAUSE_MUST_SAY_WHY_IT_IS_THERE",
+      "statement": "Every shipped clause must carry enough assembly provenance to identify why it was selected.",
+      "$not_a_schema": "Not necessarily one injector name. Enough to distinguish the kinds: required by blueprint, selected by a condition, added as a dependency, supplied by the hardening baseline.",
+      "current_state": "3 of 9 occurrences carry it; 6 do not.",
+      "$status": "recorded, not implemented"
+    }
+  ]
+}

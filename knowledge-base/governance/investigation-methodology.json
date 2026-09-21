@@ -155,6 +155,42 @@
       ],
       "why_it_matters": "A plausible legal frame is the most dangerous output this system can produce, because it is the one a reader is least equipped to check.",
       "how_to_apply": "Record the authority, the court, what it decides, its bearing on the question, and how it was verified. Where it was not read, say so and do not cite it."
+    },
+    {
+      "id": "A_GREEN_SUITE_MUST_NAME_THE_TREE_IT_RAN_ON",
+      "rule": "A suite result is evidence only about the tree it ran against, and the run must be able to name that tree. A number reported from a working copy that cannot state its commit is not evidence about the product.",
+      "learned_in": "D4.31",
+      "what_happened": [
+        "Three times across D4.29 and D4.30 this investigation reported \"314 checks green, no baseline",
+        "drift\". Every one of those runs was made in a copy whose knowledge-base differed from the",
+        "product's, and on the product every single document type failed to generate.",
+        "",
+        "THE COVERAGE WAS NEVER MISSING. documentRequirements.test.mjs calls",
+        "loadDocumentRequirements({refresh:true}) at module scope; on the product tree it dies on import",
+        "with the exact error the users were seeing. Restoring the pre-fix files and running that one",
+        "file reproduces it in full. The suite was right and the measurement was wrong.",
+        "",
+        "The copy had no provenance at all — `git status` in it answered \"fatal: not a git repository\".",
+        "It could not name a commit, and it produced a number that read exactly like one that could."
+      ],
+      "why_it_matters": "This is the probe-shadows-production failure at repository scale. documentRequirements.js already carries a comment about a probe fixture silently replacing a family's authored requirements, noting it happened four times. The same mistake one level up is harder to see and costs more: it does not corrupt one measurement, it makes every measurement unattributable.",
+      "how_to_apply": "Run the suite in the repository. Where that is impossible, say in the report which tree was measured and what is known to differ — and do not state the number as a property of the product."
+    },
+    {
+      "id": "TWO_ARTIFACTS_ARE_NOT_TWO_SOURCES",
+      "rule": "Two artifacts are not independent evidence when one derives its population, or its content, from the other. Before citing agreement between them, establish that neither was built from the other.",
+      "learned_in": "D4.32 item 6",
+      "what_happened": [
+        "DOCUMENT_TYPE_REGISTRY contains 40 document types. tests/baseline/clause-baseline.json contains",
+        "the same 40. Read as two artifacts agreeing, that is strong support for 40 being the right",
+        "population — and it supports nothing at all, because freezeClauseBaseline.mjs builds the",
+        "baseline by iterating the registry.",
+        "",
+        "The coincidence was doubly inviting here: 40 is also the historical count, so the agreement",
+        "could have been read as the lost population having been recovered. It has not been."
+      ],
+      "why_it_matters": "This is how a derived artifact becomes a second witness. A later investigator sees two files saying 40 and stops asking.",
+      "how_to_apply": "For each artifact cited in support, name what produced it. Where one produced the other, say so in the same breath as the agreement."
     }
   ],
   "cap_decomposition": {
@@ -393,6 +429,37 @@
         "established_in": "D4.27, corrected D4.29",
         "why": "DISTRIBUTION_AGREEMENT and SHAREHOLDERS_AGREEMENT carry both at MEASURE: the form offers a fees basis they cannot supply, and the clause names fees that can never arise between these parties. Two repairs, two owners, one family.",
         "superseded_claim": "D4.27's 'a family has one defect kind per layer', falsified in D4.29."
+      },
+      {
+        "id": "AUTHORED_SCOPE_IS_NOT_EXECUTABLE_SCOPE",
+        "constraint": "An absent executable scope must never be read as evidence that the authored scope is universal. Where a constraint's prose names an instrument class and its declaration names none, that is a SCOPE_ENCODING_GAP, not a statement that the rule applies everywhere.",
+        "established_in": "D4.33",
+        "shape": [
+          "AUTHORED_SCOPE  exists — 'Employment contract must define the employee's role and duties.'",
+          "EXECUTABLE_SCOPE absent — no applies_to_doc_types, no excludes_doc_types, no excludes_shapes",
+          "        ↓",
+          "SCOPE_ENCODING_GAP",
+          "        ↓",
+          "must NOT be silently interpreted as UNIVERSAL"
+        ],
+        "why": [
+          "The evaluator's primitive — an undeclared allow-list means the rule applies to everything — is",
+          "defensible in the abstract and dangerous for authored legal constraints, because it converts",
+          "",
+          "    'we have not encoded what the author said'",
+          "",
+          "into",
+          "",
+          "    'the author said this applies everywhere'.",
+          "",
+          "Those are opposite claims. One is an admission of incompleteness; the other is an assertion of",
+          "legal reach that no advocate made.",
+          "",
+          "Measured consequence: 342 employment-rule failures across 39 of 40 families, including a",
+          "partnership deed failing a statutory social-security requirement."
+        ],
+        "governed_condition": "Scope-encoding completeness is a condition of production validity for an authored constraint. A rule whose prose names an instrument class and whose declaration names none is not production-valid, whatever its assertions do.",
+        "$not_done": "The evaluator was NOT changed. Changing the primitive before the thirteen scope decisions exist would replace one unauthored default with another."
       }
     ]
   },
@@ -471,9 +538,27 @@
         "nearly_claimed": "the nil ceiling is a total exclusion, constrained through s.23 and unconscionability",
         "falsified_by": "verification against Indian sources: understated Simplex, overstated Brojo Nath, missed the Consumer Protection Act 2019, and the characterisation is the open question rather than the answer",
         "class": "LEGAL_FRAME"
+      },
+      {
+        "phase": "D4.31",
+        "nearly_claimed": "314 checks green, no baseline drift — reported three times as a property of the product",
+        "falsified_by": "the product could not generate any document at all; the runs were made in a copy with a different knowledge-base and no git provenance",
+        "class": "MEASURED_THE_WRONG_TREE"
+      },
+      {
+        "phase": "D4.31",
+        "nearly_claimed": "the remote's knowledge-base is behind its own backend, so the break is remote-only",
+        "falsified_by": "the two requirement files were byte-identical on the device; both trees were broken, and the mechanism was right while the location was wrong",
+        "class": "WRONG_LOCATION"
+      },
+      {
+        "phase": "D4.31",
+        "nearly_claimed": "the push is blocked by a tarball committed in history",
+        "falsified_by": "the tarball is 382 KB. The repository carries 161,400 tracked files and a 209 MiB pack, almost all of it scraped corpus already present on the remote — so the delta push was small and no history rewrite was needed",
+        "class": "ASSERTED_NOT_COMPUTED"
       }
     ],
-    "reading": "Eleven retractions across six phases. Classes: PROBE_DEFECT, VOCABULARY, ASSERTED_NOT_COMPUTED, LEGAL_MECHANISM, ALREADY_DISCLOSED, FIXTURE, OWN_PRIOR_RULE, PREMATURE_ABSTRACTION, LEGAL_FRAME. Vocabulary is the most frequent and the legal ones are the most dangerous."
+    "reading": "14 retractions across seven phases. Classes: PROBE_DEFECT, VOCABULARY, ASSERTED_NOT_COMPUTED, LEGAL_MECHANISM, ALREADY_DISCLOSED, FIXTURE, OWN_PRIOR_RULE, PREMATURE_ABSTRACTION, LEGAL_FRAME, MEASURED_THE_WRONG_TREE, WRONG_LOCATION. Vocabulary is the most frequent, the legal ones are the most dangerous, and MEASURED_THE_WRONG_TREE is the most expensive: it did not corrupt one finding, it made every finding in two phases unattributable until re-run."
   },
   "knowledge_authoring_pipeline": {
     "$note": [
@@ -574,6 +659,130 @@
       "D4.29 — adding REFERENT_NON_EMPTY failed the sub-question assertion, which is what forced the change to be deliberate.",
       "D4.29 — the taxonomy check that asserted 'one defect kind per family' failed once DISTRIBUTION and SHAREHOLDERS were found to carry two. Our rule was wrong and the suite said so.",
       "D4.30 — the legal-frame check failed when the frame was rewritten after verification."
+    ],
+    "what_it_does_not_reach": [
+      "The property says the suite can fail because a hypothesis of ours was wrong. D4.31 found a class it",
+      "cannot reach: the suite failing correctly, in a tree nobody ran it in.",
+      "",
+      "A failing check is only useful where it is executed. Provenance is therefore part of the property,",
+      "not an operational detail beside it — tests/measurementProvenance.test.mjs makes each run state the",
+      "commit and a digest of the knowledge-base and services it measured."
     ]
+  },
+  "measurement_model": {
+    "$note": [
+      "Three levels, kept apart because collapsing them is how 'all tests green' gets read as 'the",
+      "product is ready to ship'. D4.31 produced one failure at each, and they needed different people.",
+      "",
+      "The outage was a Level 1 failure wearing a Level 2 disguise: the detector existed and was",
+      "correct, and the green number came from a tree nobody could name."
+    ],
+    "levels": [
+      {
+        "level": 1,
+        "id": "EXECUTION_PROVENANCE",
+        "question": "What exact tree did we run?",
+        "enforced_by": "tests/measurementProvenance.test.mjs, which runs first",
+        "failure_in_d431": "Three green runs came from a copy that was not a git working tree at all and could not name a commit."
+      },
+      {
+        "level": 2,
+        "id": "TEST_EVIDENCE",
+        "question": "What did that tree actually establish?",
+        "enforced_by": "the suite, and goldenCorpus in particular",
+        "state_in_d431": "green on the deployed tree — generation works end to end"
+      },
+      {
+        "level": 3,
+        "id": "LEGAL_AND_CONTENT_GOVERNANCE",
+        "question": "Is the resulting state permitted to ship?",
+        "enforced_by": "pinned ceilings, review states and the certification axes",
+        "state_in_d431": "308 unreviewed clauses against a ceiling of 307 — open, deliberately"
+      }
+    ],
+    "rule": "A finding is evidential only when BOTH its correctness and its measurement provenance are established. Level 2 alone is not evidence about the product.",
+    "$why_separate": "A Level 3 breach is not a Level 2 failure. The clause ceiling failing does not mean generation is broken, and reading it that way would either cause a panic or, worse, teach the reader to dismiss a red suite."
+  },
+  "open_refinements": [
+    {
+      "id": "REPOSITORY_IDENTITY_IS_NOT_MEASUREMENT_IDENTITY",
+      "observation": "A commit plus \"3 uncommitted paths\" does not uniquely identify a tree. Two machines can both report 0993c7ae6 + 3 uncommitted paths while holding different modifications.",
+      "distinction": {
+        "repository_identity": [
+          "commit",
+          "branch",
+          "dirty or clean"
+        ],
+        "measurement_identity": [
+          "commit",
+          "content hashes of the artifacts that decide the result",
+          "the exact test command or profile",
+          "runtime and package identity where material"
+        ]
+      },
+      "current_position": "The provenance test already prints content digests for knowledge-base and backend/services, which is most of the way there.",
+      "status": "OPEN — not expanded",
+      "$discipline": "A full environment fingerprint is not added on the strength of the argument that it COULD matter. A dimension is added when an investigation demonstrates that it can change a result. Building it now would be the premature abstraction this project refused in D4.29, in a new place."
+    }
+  ],
+  "d431_closing_state": {
+    "production_outage": "RESOLVED — pushed as 0993c7ae6 and deployed",
+    "generation": "OPERATIONAL",
+    "golden_corpus": "GREEN on the deployed tree",
+    "measurement_provenance": "ENFORCED — first test in the suite",
+    "prior_measurements": {
+      "claim": "314 checks green, no baseline drift, reported three times across D4.29 and D4.30",
+      "status": "RETRACTED AS PRODUCT EVIDENCE",
+      "retained_as": "historical measurements of the tree they were taken in",
+      "$why_not_deleted": "The register preserves how the investigation's confidence changed. Rewriting the earlier reports to match what is now known would destroy the only record of the error."
+    },
+    "clause_governance": "308 unreviewed against a pinned ceiling of 307 — OPEN, deliberately; see clause-ceiling.json",
+    "representation_determination": "six questions intentionally open in representability.json#deliberately_not_done",
+    "ceiling_adjustment": "NOT MADE",
+    "suite_on_the_deployed_tree": {
+      "$correction": [
+        "An earlier reading of this run said 'one failure, the governance ceiling'. That was incomplete,",
+        "and incomplete in the D4.31 manner: it described what the run reached, not what the tree holds.",
+        "The suite stops at the clause ceiling, and BEHIND that gate a second failure was waiting."
+      ],
+      "level_3_gate": "clauseProvenance — 308 unreviewed against 307. Open deliberately; see clause-ceiling.json.",
+      "behind_the_gate": "FIXTURE_PROFILE_WAS_NEVER_SHIPPED"
+    },
+    "outstanding": [
+      {
+        "id": "FIXTURE_PROFILE_WAS_NEVER_SHIPPED",
+        "severity": "the suite's own guards do not run",
+        "finding": [
+          "sweep.mjs exports { sampleFor, variablesFor } and nothing else. 36 shipped files import",
+          "FIXTURE_PROFILE from it — 14 tests and 22 probes — so every one of them fails at link time with",
+          "\"does not provide an export named 'FIXTURE_PROFILE'\".",
+          "",
+          "Among the fourteen: rosterConservation, economicAllocation, npartyClassification,",
+          "capIndemnityInteraction, capReferent, crossTreatmentCoherence. That is most of the guard set",
+          "built across D4.18 to D4.30. None of it executes on the product tree."
+        ],
+        "root_cause": "The same one as the outage. The API existed only in a working copy; the files depending on it were delivered and the dependency was not. sweep.mjs is byte-identical (32,009) on the device and on origin, so it was never on either.",
+        "required_surface": {
+          "FIXTURE_PROFILE.WELL_FILLED": "41 call sites — every applicable variable filled; the semantics of today's default variablesFor(type)",
+          "FIXTURE_PROFILE.MINIMAL_DECLINED": "2 call sites — declinedProtections.test.mjs states it: declines every optional protection, where WELL_FILLED accepts them"
+        },
+        "why_not_reconstructed_here": [
+          "Reconstructing the profile semantics is authoring, and a WELL_FILLED that differs from the one",
+          "the D4.27 to D4.30 measurements actually used would silently change the evidence base for those",
+          "phases while appearing to restore it.",
+          "",
+          "That is the failure this whole phase is about, so it is not committed at the phase's closing",
+          "point on the strength of a reasonable guess."
+        ],
+        "recommended_shape": [
+          "WELL_FILLED defined AS the existing default, so no measurement moves.",
+          "MINIMAL_DECLINED as requiredOnly plus every field the schema itself groups under 'Optional",
+          "Protections' set to decline — derived from the schema's own group, not from a written list, per",
+          "A_VOCABULARY_DECIDES_THE_FINDING."
+        ],
+        "status": "OPEN"
+      }
+    ],
+    "clean_stopping_point": "NO — the governance records close cleanly; the suite does not. The item above has to be settled before any further measurement can be attributed."
   }
 }

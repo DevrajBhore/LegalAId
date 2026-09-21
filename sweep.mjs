@@ -420,13 +420,66 @@ function sampleFor(key, def) {
   return `${def.label}: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.`;
 }
 
-function variablesFor(docType, { requiredOnly } = {}) {
+/*
+ * THE TWO FIXTURE POPULATIONS, AND WHY THEY ARE EXPORTED.
+ *
+ * 36 files imported FIXTURE_PROFILE from this module and this module never
+ * exported it — 14 tests and 22 probes, dead at link time on any tree but the
+ * working copy where the API was written and never delivered. Everything guarding
+ * D4.18 to D4.30 was among them.
+ *
+ * Restoring it is measurement infrastructure, so the danger is not that it fails.
+ * It is that a plausible reconstruction succeeds while meaning something slightly
+ * different, leaving the historical findings resting on a population that no
+ * longer exists under the same name.
+ *
+ * WELL_FILLED IS NOT THE DEFAULT, and that was established by measurement rather
+ * than assumed. sampleFor answers a select with options[0]; include_force_majeure
+ * and include_entire_agreement declare their options as ["No","Yes"], so the
+ * plain default DECLINES them — verified by generating three families and reading
+ * which clause ids were occupied. declinedProtections.test.mjs states the contract
+ * in terms: MINIMAL_DECLINED declines every optional protection and WELL_FILLED
+ * accepts them. A WELL_FILLED equal to the default would have satisfied the
+ * import and quietly inverted half of the pairing it exists to control.
+ */
+const FIXTURE_PROFILE = {
+  WELL_FILLED: "WELL_FILLED",
+  MINIMAL_DECLINED: "MINIMAL_DECLINED",
+};
+
+/*
+ * A protection toggle is a Yes/No select the SCHEMA itself marks as optional
+ * protection — by its group, or by the include_ prefix the config uses for the
+ * same purpose. Both are read from the declaration; neither is a list kept here.
+ *
+ * The group alone is not sufficient and that was measured too:
+ * include_force_majeure and include_entire_agreement sit under "Context & Risk
+ * Profile", and declinedProtections treats both as protections to decline. A rule
+ * resting on the group alone would miss two of the four roles that test asserts.
+ */
+function isProtectionToggle(key, def) {
+  if (!def || def.type !== "select" || !Array.isArray(def.options)) return false;
+  if (def.group !== "Optional Protections" && !/^include_/.test(key)) return false;
+  return def.options.some((o) => /^yes$/i.test(o)) && def.options.some((o) => /^no$/i.test(o));
+}
+
+const optionMatching = (def, pattern) => def.options.find((o) => pattern.test(o));
+
+function variablesFor(docType, { requiredOnly, profile } = {}) {
   const vars = {};
   for (const group of [VARIABLE_CONFIG.COMMON, VARIABLE_CONFIG[docType]]) {
     for (const [key, def] of Object.entries(group || {})) {
       if (Array.isArray(def.excludeDocuments) && def.excludeDocuments.includes(docType)) continue;
       if (requiredOnly && !def.required) continue;
       vars[key] = sampleFor(key, def);
+
+      // The ONLY axis on which the two profiles differ. Keeping everything else
+      // identical is what makes the pair a control: a change in the draft between
+      // them is attributable to the protections and to nothing else.
+      if (profile && isProtectionToggle(key, def)) {
+        const wanted = profile === FIXTURE_PROFILE.MINIMAL_DECLINED ? /^no$/i : /^yes$/i;
+        vars[key] = optionMatching(def, wanted) ?? vars[key];
+      }
     }
   }
   return vars;
@@ -527,4 +580,4 @@ if (IS_MAIN) {
   }
 }
 
-export { sampleFor, variablesFor };
+export { sampleFor, variablesFor, FIXTURE_PROFILE, isProtectionToggle };

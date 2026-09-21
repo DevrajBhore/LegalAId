@@ -1,0 +1,577 @@
+{
+  "$comment": [
+    "D4.33 — WHAT EACH CONSTRAINT IS A RULE ABOUT.",
+    "",
+    "D4.32 established the mechanism: an undeclared scope is a universal one, and these thirteen",
+    "rules declare none. This record does step one and two of the constraint-by-constraint method —",
+    "what the proposition asserts, and what evidence exists about the instruments it governs — and",
+    "step three, which is measuring what candidate scopes would do.",
+    "",
+    "It does not choose a scope. Each answer is a statement about which instruments a statutory",
+    "requirement governs, and that is an advocate's to make."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.33",
+  "decision_id": "CONSTRAINT_SCOPE_DECLARATIONS",
+  "headline_finding": {
+    "statement": "The intended scope is not unknown. ALL THIRTEEN rules state it in their own description — 'Employment contract must…', 'Every contract must…', 'All contracts must…', 'Contracts must…' — in English, where the evaluator cannot read it.",
+    "consequence": "The gap is between a scope that is AUTHORED IN PROSE and a scope that is DECLARED AS DATA. That is a smaller and more tractable problem than an unknown scope, and a more embarrassing one.",
+    "$caution": "It does not follow that the prose is the correct scope. 'Employment contract' is what the author wrote; whether the rule governs an appointment letter or an internship agreement is the question, not the answer.",
+    "$measured": "Checked by matching each description's opening subject; 13 of 13 name their instrument class in prose."
+  },
+  "portfolio_measurement": {
+    "$method": "Generated all 40 population members under WELL_FILLED, then evaluated all 13 rules against each family's actual clause set and read the recorded outcomes.",
+    "employment_rules_today": {
+      "evaluations": 400,
+      "not_applicable": 0,
+      "pass": 58,
+      "fail": 342,
+      "families_with_any_failure": 39
+    },
+    "contract_rules_today": {
+      "evaluations": 120,
+      "not_applicable": 0,
+      "pass": 79,
+      "fail": 41,
+      "families_with_any_failure": 15
+    },
+    "reading": [
+      "342 employment-rule failures across 39 of the 40 families. A partnership deed is currently",
+      "failing 'must provide for statutory social-security contributions'.",
+      "",
+      "The eleven realization failures were the visible tip. Twenty-eight realized families are ALSO",
+      "failing employment rules and generate anyway, because only the CRITICAL subset blocks. The",
+      "over-broad scope was portfolio-wide the whole time and only measurable once the population and",
+      "the sampler were settled."
+    ]
+  },
+  "counterfactuals": {
+    "$note": "What each candidate scope would do. Measured, not argued — and neither is adopted.",
+    "$invariant": "not_applicable is NOT pass. The goal is not to turn 11 failures into 11 passes; it is the legally correct outcome for each constraint/instrument pair.",
+    "candidates": [
+      {
+        "id": "C1_LITERAL_DESCRIPTION",
+        "applied_to": "employment rules",
+        "scope": "applies_to_doc_types = [EMPLOYMENT_CONTRACT]",
+        "result": {
+          "not_applicable": 390,
+          "pass": 10,
+          "fail": 0
+        },
+        "reading": "EMPLOYMENT_CONTRACT satisfies all ten rules on its own. The rules are correct FOR THE INSTRUMENT THEY NAME.",
+        "why_it_is_probably_too_narrow": "APPOINTMENT_LETTER and INTERNSHIP_AGREEMENT are employment instruments on any ordinary reading, and this scope would make every employment protection not_applicable to them. That is the decision, not a side effect."
+      },
+      {
+        "id": "C2_SHAPE_EXCLUSION",
+        "applied_to": "employment rules",
+        "scope": "excludes_shapes = [SWORN, NOTICE, POLICY]",
+        "result": {
+          "not_applicable": 90,
+          "pass": 58,
+          "fail": 252
+        },
+        "reading": "Barely helps. Most families are AGREEMENT-shaped, so 252 failures survive across 30 families. Confirms again that shape alone cannot scope the employment rules."
+      },
+      {
+        "id": "C2_SHAPE_EXCLUSION_CONTRACT",
+        "applied_to": "contract rules",
+        "scope": "excludes_shapes = [SWORN, NOTICE, POLICY]",
+        "result": {
+          "not_applicable": 27,
+          "pass": 75,
+          "fail": 18
+        },
+        "reading": "Failures fall from 41 to 18 and affected families from 15 to 6. Helps materially and does not resolve it, so a shape exclusion is part of an answer here rather than the whole of one."
+      }
+    ]
+  },
+  "rules": [
+    {
+      "rule_id": "CONTRACT_REQUIRES_SIGNATURE_BLOCK",
+      "set": "contract",
+      "severity": "CRITICAL",
+      "proposition": "Contracts must include a signature block.",
+      "statute": "Indian Contract Act 1872 – S.10",
+      "satisfied_by": [
+        "CORE_SIGNATURE_BLOCK_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Contracts"
+    },
+    {
+      "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+      "set": "contract",
+      "severity": "CRITICAL",
+      "proposition": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+      "statute": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+      "satisfied_by": [
+        "CORE_CONTRACT_FORMATION_001",
+        "SERVICE_PAYMENT_001",
+        "SUPPLY_PAYMENT_001",
+        "LOAN_AMOUNT_001",
+        "GUARANTEE_OBLIGATION_001",
+        "GUARANTEE_OBLIGATION_LIMITED_001",
+        "EMPLOYMENT_COMPENSATION_001",
+        "RENTAL_RENT_PAYMENT_001",
+        "PARTNERSHIP_CAPITAL_001",
+        "JV_CONTRIBUTION_001",
+        "CORP_SHARE_SUBSCRIPTION_001",
+        "EMP_WAGES_001",
+        "CORE_IDENTITY_001",
+        "CORE_CONFIDENTIALITY_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Every contract"
+    },
+    {
+      "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+      "set": "contract",
+      "severity": "CRITICAL",
+      "proposition": "All contracts must specify governing law as Indian law.",
+      "statute": "Indian Contract Act 1872 – S.23",
+      "satisfied_by": [
+        "CORE_GOVERNING_LAW_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "All contracts"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_ROLE",
+      "set": "employment",
+      "severity": "CRITICAL",
+      "proposition": "Employment contract must define the employee's role and duties.",
+      "statute": "Industrial Disputes Act 1947 – S.25F",
+      "satisfied_by": [
+        "EMPLOYMENT_ROLE_001",
+        "CORE_PURPOSE_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_COMPENSATION",
+      "set": "employment",
+      "severity": "CRITICAL",
+      "proposition": "Employment contract must specify compensation and salary terms.",
+      "statute": "Payment of Wages Act 1936 – S.3",
+      "satisfied_by": [
+        "EMPLOYMENT_COMPENSATION_001",
+        "SERVICE_PAYMENT_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_TERMINATION",
+      "set": "employment",
+      "severity": "CRITICAL",
+      "proposition": "Employment contract must include termination provisions.",
+      "statute": "Industrial Disputes Act 1947 – S.25F",
+      "satisfied_by": [
+        "EMPLOYMENT_TERMINATION_001",
+        "CORE_TERMINATION_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_CONFIDENTIALITY",
+      "set": "employment",
+      "severity": "MEDIUM",
+      "proposition": "Employment contract should include a confidentiality obligation.",
+      "statute": null,
+      "satisfied_by": [
+        "EMP_CONFIDENTIALITY_001",
+        "CORE_CONFIDENTIALITY_001",
+        "EMP_CONFIDENTIALITY_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_NOTICE_PERIOD",
+      "set": "employment",
+      "severity": "HIGH",
+      "proposition": "Employment contracts must specify notice period for termination as required by applicable labour law.",
+      "statute": "Industrial Employment (Standing Orders) Act 1946 – S.13; Industrial Disputes Act 1947 – S.25F",
+      "satisfied_by": [
+        "EMP_NOTICE_PERIOD_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contracts"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_LEAVE_POLICY",
+      "set": "employment",
+      "severity": "MEDIUM",
+      "proposition": "Employment contracts should include leave policy in compliance with applicable Shops & Establishments Act.",
+      "statute": "Factories Act 1948 – S.78; Shops and Establishments Acts (State-specific)",
+      "satisfied_by": [
+        "EMP_LEAVE_POLICY_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contracts"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_WORKING_HOURS",
+      "set": "employment",
+      "severity": "MEDIUM",
+      "proposition": "Employment contracts should specify working hours in compliance with applicable labour statutes.",
+      "statute": "Factories Act 1948 – S.51; Shops and Establishments Acts (State-specific)",
+      "satisfied_by": [
+        "EMP_WORKING_HOURS_001",
+        "EMP_WORKING_HOURS_FACTORY_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contracts"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_MINIMUM_WAGES",
+      "set": "employment",
+      "severity": "HIGH",
+      "proposition": "Employment contract must state wages, which may not fall below the applicable minimum wage.",
+      "statute": "Minimum Wages Act 1948; Payment of Wages Act 1936 – S.3; Code on Wages 2019",
+      "satisfied_by": [
+        "EMP_WAGES_001",
+        "EMPLOYMENT_COMPENSATION_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_PF_ESI",
+      "set": "employment",
+      "severity": "HIGH",
+      "proposition": "Employment contract must provide for statutory social-security contributions. Non-deduction/non-deposit of EPF is a criminal offence for the employer.",
+      "statute": "EPF & MP Act 1952 – S.14; ESI Act 1948",
+      "satisfied_by": [
+        "EMP_BENEFITS_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    },
+    {
+      "rule_id": "EMP_REQUIRES_GRATUITY",
+      "set": "employment",
+      "severity": "MEDIUM",
+      "proposition": "Employment contract should address gratuity / terminal benefits on cessation of employment.",
+      "statute": "Payment of Gratuity Act 1972 – S.4",
+      "satisfied_by": [
+        "EMP_RETIREMENT_001",
+        "EMP_FIXED_TERM_001"
+      ],
+      "declared_scope": null,
+      "scope_stated_in_its_own_prose": "Employment contract"
+    }
+  ],
+  "the_questions_for_each_rule": [
+    "What exactly is the proposition asserting?",
+    "Which instruments does it govern — by document type, by shape, by instrument character, by transaction context, by a party or role condition, or by some combination?",
+    "Does it govern an affidavit? a power of attorney? an indemnity bond? an arbitration notice?",
+    "And separately: which agreement-shaped instruments does it govern? Shape alone cannot answer this, which the counterfactuals above measure rather than assume."
+  ],
+  "how_the_answer_must_be_encoded": {
+    "correct": "constraint -> legal proposition -> scope declaration -> predicate applicability -> assertion",
+    "incorrect": "constraint -> a special case in JavaScript",
+    "$why": "The vocabulary already exists and is used by four other constraint sets. Encoding a scope anywhere but the declaration puts it where neither an advocate nor the next probe can see it — which is how it came to be in a prose description in the first place."
+  },
+  "what_this_record_does_not_do": [
+    "It does not choose a scope for any of the thirteen rules.",
+    "It does not conclude that any rule is legally wrong. A rule firing on an instrument is not the same as the instrument being entitled to omit what the rule requires.",
+    "It does not aim at making the eleven generate. Some of them may be correctly blocked.",
+    "It changes no constraint file."
+  ],
+  "representable_dimensions": {
+    "$note": "What the engine can actually express, read from constraintEngine.js. An advocate's answer has to land in this vocabulary or the vocabulary has to grow, and knowing which is part of the decision.",
+    "rule_level_applicability": {
+      "$when": "evaluated before the assertion; a rule scoped out is recorded not_applicable and never asserted",
+      "applies_to_doc_types": "allow-list by document type",
+      "excludes_doc_types": "deny-list by document type; wins over the allow-list",
+      "excludes_shapes": "deny-list by document shape — AGREEMENT, SWORN, NOTICE, POLICY"
+    },
+    "predicate_level_when": {
+      "$when": "evaluated after applicability and before the assertion; composable with not and any_of",
+      "doc_type_in": "document type",
+      "state_in": "jurisdiction, with `of` resolving a jurisdictional subject",
+      "var + op + value": "ANY intake variable — this is how a party or role condition, or a transaction context, is expressed",
+      "clause_present / clause_absent / category_present": "what the draft already contains"
+    },
+    "reading": [
+      "The vocabulary is richer than the three rule-level keys suggest. A scope of the form 'where the",
+      "counterparty is an employee' or 'where the instrument records remuneration' is expressible today",
+      "through `var`, without any engine change.",
+      "",
+      "What has no first-class representation is INSTRUMENT CHARACTER beyond the four shapes. If an",
+      "advocate's answer needs a distinction finer than AGREEMENT/SWORN/NOTICE/POLICY and coarser than",
+      "a list of document types, that is a vocabulary gap and should be recorded as one rather than",
+      "approximated with a type list."
+    ]
+  },
+  "production_validity": {
+    "condition": "AUTHORED_SCOPE_IS_NOT_EXECUTABLE_SCOPE — a constraint whose prose names an instrument class and whose declaration names none is not production-valid.",
+    "rules_failing_it": 13,
+    "of": 13,
+    "$note": "Recorded as a certification condition, not enforced in the evaluator. Enforcing it today would block generation portfolio-wide on a gap the advocate decisions are about to close."
+  },
+  "decision_sheet": {
+    "$note": "One row per rule, answers null. A test asserts they stay null until an advocate fills them with an authority.",
+    "$invariant": "An answer without an authority is not a decision.",
+    "rows": [
+      {
+        "rule_id": "CONTRACT_REQUIRES_SIGNATURE_BLOCK",
+        "proposition": "Contracts must include a signature block.",
+        "statute": "Indian Contract Act 1872 – S.10",
+        "scope_in_prose": "Contracts",
+        "satisfied_by_count": 1,
+        "question": "Which instruments does this proposition govern? The prose says \"Contracts\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+        "proposition": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+        "statute": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+        "scope_in_prose": "Every contract",
+        "satisfied_by_count": 14,
+        "question": "Which instruments does this proposition govern? The prose says \"Every contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+        "proposition": "All contracts must specify governing law as Indian law.",
+        "statute": "Indian Contract Act 1872 – S.23",
+        "scope_in_prose": "All contracts",
+        "satisfied_by_count": 1,
+        "question": "Which instruments does this proposition govern? The prose says \"All contracts\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_ROLE",
+        "proposition": "Employment contract must define the employee's role and duties.",
+        "statute": "Industrial Disputes Act 1947 – S.25F",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_COMPENSATION",
+        "proposition": "Employment contract must specify compensation and salary terms.",
+        "statute": "Payment of Wages Act 1936 – S.3",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_TERMINATION",
+        "proposition": "Employment contract must include termination provisions.",
+        "statute": "Industrial Disputes Act 1947 – S.25F",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_CONFIDENTIALITY",
+        "proposition": "Employment contract should include a confidentiality obligation.",
+        "statute": null,
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 3,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_NOTICE_PERIOD",
+        "proposition": "Employment contracts must specify notice period for termination as required by applicable labour law.",
+        "statute": "Industrial Employment (Standing Orders) Act 1946 – S.13; Industrial Disputes Act 1947 – S.25F",
+        "scope_in_prose": "Employment contracts",
+        "satisfied_by_count": 1,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contracts\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_LEAVE_POLICY",
+        "proposition": "Employment contracts should include leave policy in compliance with applicable Shops & Establishments Act.",
+        "statute": "Factories Act 1948 – S.78; Shops and Establishments Acts (State-specific)",
+        "scope_in_prose": "Employment contracts",
+        "satisfied_by_count": 1,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contracts\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_WORKING_HOURS",
+        "proposition": "Employment contracts should specify working hours in compliance with applicable labour statutes.",
+        "statute": "Factories Act 1948 – S.51; Shops and Establishments Acts (State-specific)",
+        "scope_in_prose": "Employment contracts",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contracts\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_MINIMUM_WAGES",
+        "proposition": "Employment contract must state wages, which may not fall below the applicable minimum wage.",
+        "statute": "Minimum Wages Act 1948; Payment of Wages Act 1936 – S.3; Code on Wages 2019",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_PF_ESI",
+        "proposition": "Employment contract must provide for statutory social-security contributions. Non-deduction/non-deposit of EPF is a criminal offence for the employer.",
+        "statute": "EPF & MP Act 1952 – S.14; ESI Act 1948",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 1,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      },
+      {
+        "rule_id": "EMP_REQUIRES_GRATUITY",
+        "proposition": "Employment contract should address gratuity / terminal benefits on cessation of employment.",
+        "statute": "Payment of Gratuity Act 1972 – S.4",
+        "scope_in_prose": "Employment contract",
+        "satisfied_by_count": 2,
+        "question": "Which instruments does this proposition govern? The prose says \"Employment contract\".",
+        "sub_questions": [
+          "Is that class identical to a current LegalAId document type, or wider, or narrower?",
+          "If it is not a type, which representable dimension expresses it — type, shape, a variable condition, a jurisdiction, or a combination?",
+          "Which agreement-shaped instruments are inside it and which are outside?",
+          "Are any of the current failures INTENDED requirements rather than applicability errors?"
+        ],
+        "answer": null,
+        "authority": null,
+        "decided_by": null
+      }
+    ]
+  },
+  "d433_state": {
+    "not": [
+      "fixed",
+      "failed",
+      "legally incorrect",
+      "universally applicable",
+      "ready for executable encoding"
+    ],
+    "established": [
+      "13 of 13 scope declarations are unencoded.",
+      "AUTHORED_SCOPE_IS_NOT_EXECUTABLE_SCOPE is an architectural invariant.",
+      "Scope-encoding completeness is a certification condition, not an evaluator gate.",
+      "The evaluator's universal behaviour is unchanged and stays unchanged until authoritative decisions exist.",
+      "The existing predicate vocabulary already expresses party/role and transaction-context conditions.",
+      "Instrument character finer than the four shapes is the only identified vocabulary gap.",
+      "The 13-row sheet is deliberately undecided; answer, authority and decided_by must all be populated before a decision exists."
+    ],
+    "the_342_and_the_41": "Observations of the present executable model. NOT determinations that those rules are legally wrong.",
+    "no_constraint_file_altered": true,
+    "measurement_record": {
+      "provenance": 3,
+      "model": 7,
+      "fixture": 7,
+      "population": 11,
+      "applicability": 6,
+      "scope": 10,
+      "methodology": 12
+    },
+    "$corrected": "The methodology count is 12, not the 13 reported earlier — that number counted the file's own ALL GREEN line. No substantive consequence; retained as the corrected measurement.",
+    "the_chain_that_must_not_reverse": "authored proposition -> advocate scope decision -> executable scope -> applicability evaluation -> generation consequence. The generation consequence must never be allowed to determine the legal scope retroactively."
+  },
+  "investigation_status": "INVESTIGATION COMPLETE — legal scope decisions pending advocate review",
+  "decision_status": "UNDECIDED",
+  "$two_statuses": "The investigation is complete and the decision is not. Collapsing them would let a finished investigation read as a settled question."
+}
