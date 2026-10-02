@@ -84,7 +84,7 @@ export default function ConstraintScopePanel() {
   return (
     <section className="admin-panel constraint-scope">
       <div className="admin-panel-head">
-        <h2><Scales /> Constraint scope</h2>
+        <h2><Scales size={16} /> Constraint scope</h2>
         <p>
           Which instruments each rule actually governs. Thirteen rules say so in
           their own wording and declare nothing the engine can read, so every one
@@ -110,7 +110,7 @@ export default function ConstraintScopePanel() {
           <button
             key={f.key || "all"}
             type="button"
-            className={stateFilter === f.key ? "is-active" : ""}
+            className={`admin-chip${stateFilter === f.key ? " admin-chip--on" : ""}`}
             onClick={() => setStateFilter(f.key)}
           >
             {f.label}
@@ -118,11 +118,15 @@ export default function ConstraintScopePanel() {
         ))}
       </div>
 
-      {error && <div className="cs-error">{error}</div>}
-      {loading && <div className="cs-loading">Loading…</div>}
+      {error && <div className="admin-error">{error}</div>}
+      {loading && <p className="admin-note">Loading…</p>}
 
       {!loading && rules.length === 0 && (
-        <div className="cs-empty">Nothing in this view.</div>
+        <p className="admin-note">
+          {stateFilter === "outstanding"
+            ? "Nothing outstanding — every scope question in this view has been answered."
+            : "No rules match."}
+        </p>
       )}
 
       <ul className="cs-list">
@@ -195,7 +199,8 @@ export default function ConstraintScopePanel() {
                           engineer encodes this and re-measures before anything changes.
                         </p>
                       )}
-                      <button type="button" disabled={busy} onClick={() => submit(r.rule_id, "reset")}>
+                      <button type="button" className="admin-btn" disabled={busy}
+                              onClick={() => submit(r.rule_id, "reset")}>
                         Withdraw
                       </button>
                     </div>
@@ -229,15 +234,15 @@ export default function ConstraintScopePanel() {
                         />
                       </label>
                       <div className="cs-actions">
-                        <button type="button" className="cs-primary" disabled={busy}
+                        <button type="button" className="admin-btn admin-btn--gold" disabled={busy}
                                 onClick={() => submit(r.rule_id, "decide")}>
                           Record decision
                         </button>
-                        <button type="button" disabled={busy}
+                        <button type="button" className="admin-btn" disabled={busy}
                                 onClick={() => submit(r.rule_id, "not_representable")}>
                           Cannot be expressed this way
                         </button>
-                        <button type="button" disabled={busy}
+                        <button type="button" className="admin-btn" disabled={busy}
                                 onClick={() => submit(r.rule_id, "discuss")}>
                           Needs discussion
                         </button>

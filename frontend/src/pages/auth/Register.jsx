@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/api";
 import { Icons } from "../../utils/icons";
 import AuthShowcase from "./AuthShowcase";
+import { MINIMUM_AGE, LEGAL_NOTICE_SHORT } from "../../data/legalNotice";
 import "./Auth.css";
 
 function getStrength(pw) {
@@ -19,6 +20,8 @@ function getStrength(pw) {
 export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name:"", email:"", phone:"", password:"" });
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,9 +33,11 @@ export default function Register() {
     e.preventDefault(); setError(null);
     if (form.password.length < 8) return setError("Password must be at least 8 characters.");
     if (form.phone && !/^[6-9]\d{9}$/.test(form.phone)) return setError("Enter a valid 10-digit Indian mobile number.");
+    if (!ageConfirmed) return setError(`You must be ${MINIMUM_AGE} or older to use LegalAId.`);
+    if (!acceptedTerms) return setError("Please accept the Terms of Service and Privacy Policy.");
     setLoading(true);
     try {
-      const res = await registerUser(form);
+      const res = await registerUser({ ...form, ageConfirmed, acceptedTerms });
       setSuccess(res.data.message);
     } catch(err) {
       const d = err.response?.data;
@@ -50,15 +55,15 @@ export default function Register() {
           eyebrow="Create your workspace"
           headline="Start drafting Indian"
           emphasis="legal documents faster"
-          description="Open a workspace with AI drafting, browser editing, legal validation, and instant DOCX export. Free forever."
+          description="Open a workspace with AI drafting, browser editing, automated checks, and instant DOCX export. Currently free."
           highlights={[
-            { icon:Icons.fileText, title:"16+ document types", text:"NDAs, employment contracts, leases, and more." },
-            { icon:Icons.sparkles, title:"AI-drafted clauses", text:"AI drafts every clause from your actual inputs." },
-            { icon:Icons.shieldCheck, title:"Legal validation", text:"Built-in checks review structure, drafting quality, and key legal terms." },
-            { icon:Icons.download, title:"DOCX export", text:"Court-ready Word documents in one click." },
+            { icon:Icons.fileText, title:"Indian document types", text:"NDAs, employment contracts, leases, and more." },
+            { icon:Icons.sparkles, title:"Tailored clauses", text:"Clauses from a structured library, tailored to your answers by AI." },
+            { icon:Icons.shieldCheck, title:"Automated checks", text:"Built-in checks review structure, drafting quality and key terms. They are not a legal review." },
+            { icon:Icons.download, title:"DOCX export", text:"Editable Word drafts in one click." },
           ]}
           footerTitle="What you unlock"
-          footerPoints={["A guided intake form for every document type.","Clause-by-clause browser editing with AI assistance.","Validate and export a certified DOCX in minutes."]}
+          footerPoints={["A guided intake form for every document type.","Clause-by-clause browser editing with AI assistance.","Run the checks and export an editable DOCX draft."]}
         />
       </div>
       <div className="auth-right">
@@ -78,7 +83,7 @@ export default function Register() {
           <>
             <div className="auth-form-header">
               <h1 className="auth-title">Create account</h1>
-              <p className="auth-subtitle">Free forever. No credit card required.</p>
+              <p className="auth-subtitle">Currently free. No credit card required.</p>
             </div>
             <div className="auth-inline-panel">
               <span className="auth-inline-icon">{Icons.mail}</span>
@@ -117,6 +122,15 @@ export default function Register() {
                   </div>
                 )}
               </div>
+              <label className="auth-check" htmlFor="register-age">
+                <input id="register-age" type="checkbox" checked={ageConfirmed} onChange={e=>setAgeConfirmed(e.target.checked)} required/>
+                <span>I am {MINIMUM_AGE} or older.</span>
+              </label>
+              <label className="auth-check" htmlFor="register-terms">
+                <input id="register-terms" type="checkbox" checked={acceptedTerms} onChange={e=>setAcceptedTerms(e.target.checked)} required/>
+                <span>I agree to the <Link to="/terms-of-service" target="_blank" rel="noopener">Terms of Service</Link> and have read the <Link to="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</Link>.</span>
+              </label>
+              <p className="auth-notice">{LEGAL_NOTICE_SHORT}</p>
               <button className={`auth-btn${loading?" auth-btn--loading":""}`} type="submit" disabled={loading}>
                 {loading ? <><span className="btn-spinner"/> Creating account…</> : "Create Account →"}
               </button>

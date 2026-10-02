@@ -1,0 +1,2556 @@
+{
+  "$probe": "probeBlockDecomposition.mjs",
+  "$question": "For each family that produces no draft, which exact assertion blocks, and what CAUSED the block?",
+  "$method_rule": "No hypothesis is tested by generating again with a change. Every verdict is derived from declarations that already exist: the rule's satisfier set, the blueprint's lists, the intake schema, the clause library.",
+  "$fails_if_is_a_disjunction": "A rule fails only when NONE of the clauses it names is present. 'Which clause is missing' is the wrong question; 'why is the whole satisfier set unavailable' is the right one.",
+  "$classifies_does_not_repair": true,
+  "$the_category_test_is_a_proxy": [
+    "SATISFIER_ENUMERATION is reached by comparing declared clause categories. That is a proxy for the",
+    "legal question 'does this clause discharge the rule's proposition', and it has been seen to fail in",
+    "both directions. Every such verdict carries draft_contents so it can be checked, and none of them",
+    "is treated as established without a reading of the actual clauses."
+  ],
+  "fixture": "WELL_FILLED",
+  "families_not_generating": 11,
+  "by_blocker": {
+    "SATISFIER_ENUMERATION": [
+      "ESOP_GRANT_LETTER",
+      "PROMISSORY_NOTE",
+      "IP_ASSIGNMENT_AGREEMENT",
+      "APPOINTMENT_LETTER",
+      "INTERNSHIP_AGREEMENT",
+      "SEPARATION_AGREEMENT",
+      "POSH_POLICY"
+    ],
+    "BLUEPRINT": [
+      "ESOP_GRANT_LETTER",
+      "POWER_OF_ATTORNEY",
+      "SEPARATION_AGREEMENT",
+      "POSH_POLICY",
+      "ARBITRATION_NOTICE",
+      "AFFIDAVIT",
+      "INDEMNITY_BOND"
+    ]
+  },
+  "group_1_all_blockers_awaiting_D4_33_scope": [
+    "ESOP_GRANT_LETTER",
+    "PROMISSORY_NOTE",
+    "POWER_OF_ATTORNEY",
+    "APPOINTMENT_LETTER",
+    "INTERNSHIP_AGREEMENT",
+    "SEPARATION_AGREEMENT",
+    "POSH_POLICY",
+    "ARBITRATION_NOTICE",
+    "AFFIDAVIT",
+    "INDEMNITY_BOND"
+  ],
+  "group_2_not_fully_explained_by_D4_33": [
+    "IP_ASSIGNMENT_AGREEMENT"
+  ],
+  "rows": [
+    {
+      "document_type": "ESOP_GRANT_LETTER",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 8,
+      "intake_fields": 41,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "EMP_REQUIRES_ROLE",
+          "asserts": "Employment contract must define the employee's role and duties.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "ESOP_GRANT_001",
+              "category": "PURPOSE",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "ESOP_GRANT_001",
+              "category": "PURPOSE",
+              "title": "Grant of Options"
+            },
+            {
+              "clause_id": "ESOP_VESTING_001",
+              "category": "TERM",
+              "title": "Vesting"
+            },
+            {
+              "clause_id": "ESOP_EXERCISE_001",
+              "category": "OBLIGATIONS",
+              "title": "Exercise"
+            },
+            {
+              "clause_id": "ESOP_TAXATION_001",
+              "category": "COMPLIANCE",
+              "title": "Taxation"
+            },
+            {
+              "clause_id": "ESOP_LEAVER_AND_LAPSE_001",
+              "category": "TERMINATION",
+              "title": "Cessation of Employment"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_ROLE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_PURPOSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_COMPENSATION",
+          "asserts": "Employment contract must specify compensation and salary terms.",
+          "statutory_reference": "Payment of Wages Act 1936 – S.3",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "ESOP_GRANT_001",
+              "category": "PURPOSE",
+              "title": "Grant of Options"
+            },
+            {
+              "clause_id": "ESOP_VESTING_001",
+              "category": "TERM",
+              "title": "Vesting"
+            },
+            {
+              "clause_id": "ESOP_EXERCISE_001",
+              "category": "OBLIGATIONS",
+              "title": "Exercise"
+            },
+            {
+              "clause_id": "ESOP_TAXATION_001",
+              "category": "COMPLIANCE",
+              "title": "Taxation"
+            },
+            {
+              "clause_id": "ESOP_LEAVER_AND_LAPSE_001",
+              "category": "TERMINATION",
+              "title": "Cessation of Employment"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_TERMINATION",
+          "asserts": "Employment contract must include termination provisions.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "ESOP_LEAVER_AND_LAPSE_001",
+              "category": "TERMINATION",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "ESOP_GRANT_001",
+              "category": "PURPOSE",
+              "title": "Grant of Options"
+            },
+            {
+              "clause_id": "ESOP_VESTING_001",
+              "category": "TERM",
+              "title": "Vesting"
+            },
+            {
+              "clause_id": "ESOP_EXERCISE_001",
+              "category": "OBLIGATIONS",
+              "title": "Exercise"
+            },
+            {
+              "clause_id": "ESOP_TAXATION_001",
+              "category": "COMPLIANCE",
+              "title": "Taxation"
+            },
+            {
+              "clause_id": "ESOP_LEAVER_AND_LAPSE_001",
+              "category": "TERMINATION",
+              "title": "Cessation of Employment"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION",
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "PROMISSORY_NOTE",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 8,
+      "intake_fields": 39,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+          "asserts": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+          "statutory_reference": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+          "satisfier_count": 14,
+          "satisfiers_existing_in_library": 14,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 2 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "PN_IDENTITY_001",
+              "category": "IDENTITY",
+              "satisfiers_with_this_category": 1,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 1 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            },
+            {
+              "clause_id": "PN_PROMISE_TO_PAY_001",
+              "category": "CONSIDERATION",
+              "satisfiers_with_this_category": 7,
+              "satisfiers_with_any_category": 14,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            },
+            {
+              "clause_id": "PROMISSORY_NOTE_PAYMENT_001",
+              "category": "FINANCE",
+              "satisfiers_with_this_category": 4,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 4 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            },
+            {
+              "clause_id": "PN_INTEREST_001",
+              "category": "CONSIDERATION",
+              "satisfiers_with_this_category": 7,
+              "satisfiers_with_any_category": 14,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "PN_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties"
+            },
+            {
+              "clause_id": "PN_PROMISE_TO_PAY_001",
+              "category": "CONSIDERATION",
+              "title": "Promise to Pay"
+            },
+            {
+              "clause_id": "PROMISSORY_NOTE_PAYMENT_001",
+              "category": "FINANCE",
+              "title": "Promissory Note Payment"
+            },
+            {
+              "clause_id": "PN_INTEREST_001",
+              "category": "CONSIDERATION",
+              "title": "Interest"
+            },
+            {
+              "clause_id": "PN_DEFAULT_001",
+              "category": "TERMINATION",
+              "title": "Default"
+            },
+            {
+              "clause_id": "PN_STAMP_AND_EXECUTION_001",
+              "category": "EXECUTION_FORMALITIES",
+              "title": "Stamping and Execution"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_CONTRACT_FORMATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SUPPLY_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "LOAN_AMOUNT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_LIMITED_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "RENTAL_RENT_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "PARTNERSHIP_CAPITAL_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "JV_CONTRIBUTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_WAGES_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "IP_ASSIGNMENT_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 13,
+      "intake_fields": 39,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "IP_REQUIRES_OWNERSHIP"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "IP_REQUIRES_OWNERSHIP",
+          "asserts": "IP agreements must clearly specify ownership or assignment of intellectual property rights.",
+          "statutory_reference": "Copyright Act 1957 – S.17; Patents Act 1970 – S.68",
+          "satisfier_count": 5,
+          "satisfiers_existing_in_library": 5,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": false,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "IPA_MORAL_RIGHTS_001",
+              "category": "IP",
+              "satisfiers_with_this_category": 4,
+              "satisfiers_with_any_category": 5,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "CORE_DEFINITIONS_001",
+              "category": "DEFINITIONS",
+              "title": "Definitions"
+            },
+            {
+              "clause_id": "IPA_MORAL_RIGHTS_001",
+              "category": "IP",
+              "title": "Author's Special Rights"
+            },
+            {
+              "clause_id": "IPA_CONSIDERATION_001",
+              "category": "CONSIDERATION",
+              "title": "Consideration"
+            },
+            {
+              "clause_id": "IPA_ASSIGNOR_WARRANTIES_001",
+              "category": "REPRESENTATIONS",
+              "title": "Assignor's Warranties"
+            },
+            {
+              "clause_id": "IPA_REGISTRATION_AND_FURTHER_ASSURANCE_001",
+              "category": "OBLIGATIONS",
+              "title": "Registration and Further Assurance"
+            },
+            {
+              "clause_id": "CORE_INDEMNITY_001",
+              "category": "RISK",
+              "title": "Indemnity"
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "category": "CONFIDENTIALITY",
+              "title": "Confidentiality Obligation"
+            },
+            {
+              "clause_id": "CORE_NOTICE_001",
+              "category": "NOTICE",
+              "title": "Notices"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            },
+            {
+              "clause_id": "IPA_COPYRIGHT_ASSIGNMENT_001",
+              "category": "PURPOSE",
+              "title": "Assignment of Copyright"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "IP_OWNERSHIP_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "IP_DEVELOPER_RETAINS_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "IP_ASSIGNMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_IP_ASSIGNMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "IP_LICENSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION"
+      ],
+      "all_blocking_rules_awaiting_scope": false
+    },
+    {
+      "document_type": "POWER_OF_ATTORNEY",
+      "shape": "SWORN",
+      "blueprint_resolved": true,
+      "clauses_assembled": 7,
+      "intake_fields": 11,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+          "asserts": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+          "statutory_reference": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+          "satisfier_count": 14,
+          "satisfiers_existing_in_library": 14,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either. Peripheral category matches were found and rejected: they match only an outlier satisfier's category, not the rule's subject.",
+          "rejected_peripheral_candidates": [
+            {
+              "clause_id": "POA_APPOINTMENT_001",
+              "category": "IDENTITY",
+              "satisfiers_with_this_category": 1,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 1 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "POA_APPOINTMENT_001",
+              "category": "IDENTITY",
+              "title": "Appointment"
+            },
+            {
+              "clause_id": "POA_POWERS_GRANTED_001",
+              "category": "PURPOSE",
+              "title": "Powers Granted"
+            },
+            {
+              "clause_id": "POA_LIMITATIONS_001",
+              "category": "OBLIGATIONS",
+              "title": "Limitations"
+            },
+            {
+              "clause_id": "POA_REVOCATION_001",
+              "category": "TERMINATION",
+              "title": "Duration and Revocation"
+            },
+            {
+              "clause_id": "POA_EXECUTION_FORMALITIES_001",
+              "category": "EXECUTION_FORMALITIES",
+              "title": "Execution and Formalities"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_CONTRACT_FORMATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SUPPLY_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "LOAN_AMOUNT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_LIMITED_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "RENTAL_RENT_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "PARTNERSHIP_CAPITAL_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "JV_CONTRIBUTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_WAGES_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "APPOINTMENT_LETTER",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 15,
+      "intake_fields": 54,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "EMP_REQUIRES_ROLE",
+          "asserts": "Employment contract must define the employee's role and duties.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_APPOINTMENT_TERMS_001",
+              "category": "PURPOSE",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_APPOINTMENT_TERMS_001",
+              "category": "PURPOSE",
+              "title": "Appointment"
+            },
+            {
+              "clause_id": "EMP_CTC_STRUCTURE_001",
+              "category": "CONSIDERATION",
+              "title": "Remuneration"
+            },
+            {
+              "clause_id": "EMP_JOINING_CONDITIONS_001",
+              "category": "EMPLOYMENT",
+              "title": "Conditions of Joining"
+            },
+            {
+              "clause_id": "CORE_TERM_001",
+              "category": "TERM",
+              "title": "Term of Agreement"
+            },
+            {
+              "clause_id": "EMP_PROBATION_001",
+              "category": "EMPLOYMENT",
+              "title": "Probation Period"
+            },
+            {
+              "clause_id": "EMP_WORKING_HOURS_001",
+              "category": "EMPLOYMENT",
+              "title": "Working Hours"
+            },
+            {
+              "clause_id": "EMP_LEAVE_POLICY_001",
+              "category": "EMPLOYMENT",
+              "title": "Leave Policy"
+            },
+            {
+              "clause_id": "EMP_CONFIDENTIALITY_001",
+              "category": "CONFIDENTIALITY",
+              "title": "Employee Confidentiality"
+            },
+            {
+              "clause_id": "EMP_IP_ASSIGNMENT_001",
+              "category": "INTELLECTUAL_PROPERTY",
+              "title": "Intellectual Property Assignment"
+            },
+            {
+              "clause_id": "EMP_NOTICE_PERIOD_001",
+              "category": "EMPLOYMENT",
+              "title": "Notice Period"
+            },
+            {
+              "clause_id": "EMP_TERMINATION_001",
+              "category": "EMPLOYMENT",
+              "title": "Termination of Employment"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_ROLE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_PURPOSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_COMPENSATION",
+          "asserts": "Employment contract must specify compensation and salary terms.",
+          "statutory_reference": "Payment of Wages Act 1936 – S.3",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_CTC_STRUCTURE_001",
+              "category": "CONSIDERATION",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_APPOINTMENT_TERMS_001",
+              "category": "PURPOSE",
+              "title": "Appointment"
+            },
+            {
+              "clause_id": "EMP_CTC_STRUCTURE_001",
+              "category": "CONSIDERATION",
+              "title": "Remuneration"
+            },
+            {
+              "clause_id": "EMP_JOINING_CONDITIONS_001",
+              "category": "EMPLOYMENT",
+              "title": "Conditions of Joining"
+            },
+            {
+              "clause_id": "CORE_TERM_001",
+              "category": "TERM",
+              "title": "Term of Agreement"
+            },
+            {
+              "clause_id": "EMP_PROBATION_001",
+              "category": "EMPLOYMENT",
+              "title": "Probation Period"
+            },
+            {
+              "clause_id": "EMP_WORKING_HOURS_001",
+              "category": "EMPLOYMENT",
+              "title": "Working Hours"
+            },
+            {
+              "clause_id": "EMP_LEAVE_POLICY_001",
+              "category": "EMPLOYMENT",
+              "title": "Leave Policy"
+            },
+            {
+              "clause_id": "EMP_CONFIDENTIALITY_001",
+              "category": "CONFIDENTIALITY",
+              "title": "Employee Confidentiality"
+            },
+            {
+              "clause_id": "EMP_IP_ASSIGNMENT_001",
+              "category": "INTELLECTUAL_PROPERTY",
+              "title": "Intellectual Property Assignment"
+            },
+            {
+              "clause_id": "EMP_NOTICE_PERIOD_001",
+              "category": "EMPLOYMENT",
+              "title": "Notice Period"
+            },
+            {
+              "clause_id": "EMP_TERMINATION_001",
+              "category": "EMPLOYMENT",
+              "title": "Termination of Employment"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "INTERNSHIP_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 11,
+      "intake_fields": 44,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "EMP_REQUIRES_ROLE",
+          "asserts": "Employment contract must define the employee's role and duties.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_INTERNSHIP_ENGAGEMENT_001",
+              "category": "PURPOSE",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_ENGAGEMENT_001",
+              "category": "PURPOSE",
+              "title": "Nature of the Internship"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_STIPEND_001",
+              "category": "CONSIDERATION",
+              "title": "Stipend"
+            },
+            {
+              "clause_id": "CORE_TERM_001",
+              "category": "TERM",
+              "title": "Term of Agreement"
+            },
+            {
+              "clause_id": "EMP_CONFIDENTIALITY_001",
+              "category": "CONFIDENTIALITY",
+              "title": "Employee Confidentiality"
+            },
+            {
+              "clause_id": "EMP_IP_ASSIGNMENT_001",
+              "category": "INTELLECTUAL_PROPERTY",
+              "title": "Intellectual Property Assignment"
+            },
+            {
+              "clause_id": "EMP_POSH_POLICY_001",
+              "category": "COMPLIANCE",
+              "title": "Prevention of Sexual Harassment"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_COMPLETION_001",
+              "category": "TERMINATION",
+              "title": "Completion and Termination"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_ROLE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_PURPOSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_COMPENSATION",
+          "asserts": "Employment contract must specify compensation and salary terms.",
+          "statutory_reference": "Payment of Wages Act 1936 – S.3",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_INTERNSHIP_STIPEND_001",
+              "category": "CONSIDERATION",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_ENGAGEMENT_001",
+              "category": "PURPOSE",
+              "title": "Nature of the Internship"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_STIPEND_001",
+              "category": "CONSIDERATION",
+              "title": "Stipend"
+            },
+            {
+              "clause_id": "CORE_TERM_001",
+              "category": "TERM",
+              "title": "Term of Agreement"
+            },
+            {
+              "clause_id": "EMP_CONFIDENTIALITY_001",
+              "category": "CONFIDENTIALITY",
+              "title": "Employee Confidentiality"
+            },
+            {
+              "clause_id": "EMP_IP_ASSIGNMENT_001",
+              "category": "INTELLECTUAL_PROPERTY",
+              "title": "Intellectual Property Assignment"
+            },
+            {
+              "clause_id": "EMP_POSH_POLICY_001",
+              "category": "COMPLIANCE",
+              "title": "Prevention of Sexual Harassment"
+            },
+            {
+              "clause_id": "EMP_INTERNSHIP_COMPLETION_001",
+              "category": "TERMINATION",
+              "title": "Completion and Termination"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "SEPARATION_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blueprint_resolved": true,
+      "clauses_assembled": 8,
+      "intake_fields": 46,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "EMP_REQUIRES_ROLE",
+          "asserts": "Employment contract must define the employee's role and duties.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_SEPARATION_PURPOSE_001",
+              "category": "PURPOSE",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_SEPARATION_PURPOSE_001",
+              "category": "PURPOSE",
+              "title": "Purpose"
+            },
+            {
+              "clause_id": "EMP_FNF_SETTLEMENT_001",
+              "category": "CONSIDERATION",
+              "title": "Full and Final Settlement"
+            },
+            {
+              "clause_id": "EMP_FNF_RELEASE_001",
+              "category": "RELEASE",
+              "title": "Release and Discharge"
+            },
+            {
+              "clause_id": "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+              "category": "OBLIGATIONS",
+              "title": "Continuing Obligations"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_ROLE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_PURPOSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_COMPENSATION",
+          "asserts": "Employment contract must specify compensation and salary terms.",
+          "statutory_reference": "Payment of Wages Act 1936 – S.3",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "EMP_FNF_SETTLEMENT_001",
+              "category": "CONSIDERATION",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_SEPARATION_PURPOSE_001",
+              "category": "PURPOSE",
+              "title": "Purpose"
+            },
+            {
+              "clause_id": "EMP_FNF_SETTLEMENT_001",
+              "category": "CONSIDERATION",
+              "title": "Full and Final Settlement"
+            },
+            {
+              "clause_id": "EMP_FNF_RELEASE_001",
+              "category": "RELEASE",
+              "title": "Release and Discharge"
+            },
+            {
+              "clause_id": "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+              "category": "OBLIGATIONS",
+              "title": "Continuing Obligations"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_TERMINATION",
+          "asserts": "Employment contract must include termination provisions.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Recitals"
+            },
+            {
+              "clause_id": "EMP_SEPARATION_PURPOSE_001",
+              "category": "PURPOSE",
+              "title": "Purpose"
+            },
+            {
+              "clause_id": "EMP_FNF_SETTLEMENT_001",
+              "category": "CONSIDERATION",
+              "title": "Full and Final Settlement"
+            },
+            {
+              "clause_id": "EMP_FNF_RELEASE_001",
+              "category": "RELEASE",
+              "title": "Release and Discharge"
+            },
+            {
+              "clause_id": "EMP_FNF_SURVIVING_OBLIGATIONS_001",
+              "category": "OBLIGATIONS",
+              "title": "Continuing Obligations"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+              "category": "DISPUTE_RESOLUTION",
+              "title": "Dispute Resolution Mechanism"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION",
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "POSH_POLICY",
+      "shape": "POLICY",
+      "blueprint_resolved": true,
+      "clauses_assembled": 7,
+      "intake_fields": 27,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "EMP_REQUIRES_ROLE",
+          "asserts": "Employment contract must define the employee's role and duties.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "SATISFIER_ENUMERATION",
+          "why": "this blueprint names no clause the rule lists, but the draft already carries 1 clause(s) in the rule's OWN PRINCIPAL CATEGORY. The rule's satisfier list may be under-enumerated rather than the blueprint incomplete. Which of the two is true is a legal question about whether those clauses discharge the rule's proposition — NOT settled here.",
+          "candidates": [
+            {
+              "clause_id": "POSH_SCOPE_DEFINITIONS_001",
+              "category": "PURPOSE",
+              "satisfiers_with_this_category": 2,
+              "satisfiers_with_any_category": 2,
+              "strength": "PRIMARY",
+              "$meaning": "this category is the one the largest group of the rule's own satisfiers holds — the rule's subject"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "POSH_SCOPE_DEFINITIONS_001",
+              "category": "PURPOSE",
+              "title": "Scope and Definitions"
+            },
+            {
+              "clause_id": "POSH_INTERNAL_COMMITTEE_001",
+              "category": "COMPLIANCE",
+              "title": "Internal Committee"
+            },
+            {
+              "clause_id": "POSH_COMPLAINT_PROCEDURE_001",
+              "category": "COMPLIANCE",
+              "title": "Making a Complaint"
+            },
+            {
+              "clause_id": "POSH_INQUIRY_RELIEF_001",
+              "category": "COMPLIANCE",
+              "title": "Inquiry and Interim Relief"
+            },
+            {
+              "clause_id": "POSH_CONSEQUENCES_REPORTING_001",
+              "category": "COMPLIANCE",
+              "title": "Action and Reporting"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "POSH_POLICY_ADOPTION_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Adoption"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_ROLE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_PURPOSE_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_COMPENSATION",
+          "asserts": "Employment contract must specify compensation and salary terms.",
+          "statutory_reference": "Payment of Wages Act 1936 – S.3",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "POSH_SCOPE_DEFINITIONS_001",
+              "category": "PURPOSE",
+              "title": "Scope and Definitions"
+            },
+            {
+              "clause_id": "POSH_INTERNAL_COMMITTEE_001",
+              "category": "COMPLIANCE",
+              "title": "Internal Committee"
+            },
+            {
+              "clause_id": "POSH_COMPLAINT_PROCEDURE_001",
+              "category": "COMPLIANCE",
+              "title": "Making a Complaint"
+            },
+            {
+              "clause_id": "POSH_INQUIRY_RELIEF_001",
+              "category": "COMPLIANCE",
+              "title": "Inquiry and Interim Relief"
+            },
+            {
+              "clause_id": "POSH_CONSEQUENCES_REPORTING_001",
+              "category": "COMPLIANCE",
+              "title": "Action and Reporting"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "POSH_POLICY_ADOPTION_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Adoption"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "EMP_REQUIRES_TERMINATION",
+          "asserts": "Employment contract must include termination provisions.",
+          "statutory_reference": "Industrial Disputes Act 1947 – S.25F",
+          "satisfier_count": 2,
+          "satisfiers_existing_in_library": 2,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "POSH_SCOPE_DEFINITIONS_001",
+              "category": "PURPOSE",
+              "title": "Scope and Definitions"
+            },
+            {
+              "clause_id": "POSH_INTERNAL_COMMITTEE_001",
+              "category": "COMPLIANCE",
+              "title": "Internal Committee"
+            },
+            {
+              "clause_id": "POSH_COMPLAINT_PROCEDURE_001",
+              "category": "COMPLIANCE",
+              "title": "Making a Complaint"
+            },
+            {
+              "clause_id": "POSH_INQUIRY_RELIEF_001",
+              "category": "COMPLIANCE",
+              "title": "Inquiry and Interim Relief"
+            },
+            {
+              "clause_id": "POSH_CONSEQUENCES_REPORTING_001",
+              "category": "COMPLIANCE",
+              "title": "Action and Reporting"
+            },
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "category": "GOVERNING_LAW",
+              "title": "Governing Law"
+            },
+            {
+              "clause_id": "POSH_POLICY_ADOPTION_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Adoption"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "EMPLOYMENT_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_TERMINATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "SATISFIER_ENUMERATION",
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "ARBITRATION_NOTICE",
+      "shape": "NOTICE",
+      "blueprint_resolved": true,
+      "clauses_assembled": 10,
+      "intake_fields": 21,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+          "asserts": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+          "statutory_reference": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+          "satisfier_count": 14,
+          "satisfiers_existing_in_library": 14,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either. Peripheral category matches were found and rejected: they match only an outlier satisfier's category, not the rule's subject.",
+          "rejected_peripheral_candidates": [
+            {
+              "clause_id": "NOTICE_ADDRESSEE_001",
+              "category": "IDENTITY",
+              "satisfiers_with_this_category": 1,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 1 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "NOTICE_ADDRESSEE_001",
+              "category": "IDENTITY",
+              "title": "Addressee and Date"
+            },
+            {
+              "clause_id": "ARB_NOTICE_SUBJECT_001",
+              "category": "NOTICE_HEADING",
+              "title": "Subject"
+            },
+            {
+              "clause_id": "NOTICE_INSTRUCTIONS_001",
+              "category": "NOTICE_HEADING",
+              "title": "Authority to Send"
+            },
+            {
+              "clause_id": "ARB_NOTICE_AGREEMENT_001",
+              "category": "NOTICE_FACTS",
+              "title": "The Arbitration Agreement"
+            },
+            {
+              "clause_id": "ARB_NOTICE_DISPUTES_001",
+              "category": "NOTICE_BREACH",
+              "title": "The Disputes Referred"
+            },
+            {
+              "clause_id": "ARB_NOTICE_INVOCATION_001",
+              "category": "NOTICE_DEMAND",
+              "title": "Invocation and Nomination"
+            },
+            {
+              "clause_id": "ARB_NOTICE_DEADLINE_001",
+              "category": "NOTICE_DEADLINE",
+              "title": "Thirty Days to Concur"
+            },
+            {
+              "clause_id": "ARB_NOTICE_CONSEQUENCE_001",
+              "category": "NOTICE_CONSEQUENCE",
+              "title": "Consequence of Non-Concurrence"
+            },
+            {
+              "clause_id": "NOTICE_RESERVATION_001",
+              "category": "NOTICE_RESERVATION",
+              "title": "Reservation of Rights"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_CONTRACT_FORMATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SUPPLY_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "LOAN_AMOUNT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_LIMITED_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "RENTAL_RENT_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "PARTNERSHIP_CAPITAL_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "JV_CONTRIBUTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_WAGES_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+          "asserts": "All contracts must specify governing law as Indian law.",
+          "statutory_reference": "Indian Contract Act 1872 – S.23",
+          "satisfier_count": 1,
+          "satisfiers_existing_in_library": 1,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "NOTICE_ADDRESSEE_001",
+              "category": "IDENTITY",
+              "title": "Addressee and Date"
+            },
+            {
+              "clause_id": "ARB_NOTICE_SUBJECT_001",
+              "category": "NOTICE_HEADING",
+              "title": "Subject"
+            },
+            {
+              "clause_id": "NOTICE_INSTRUCTIONS_001",
+              "category": "NOTICE_HEADING",
+              "title": "Authority to Send"
+            },
+            {
+              "clause_id": "ARB_NOTICE_AGREEMENT_001",
+              "category": "NOTICE_FACTS",
+              "title": "The Arbitration Agreement"
+            },
+            {
+              "clause_id": "ARB_NOTICE_DISPUTES_001",
+              "category": "NOTICE_BREACH",
+              "title": "The Disputes Referred"
+            },
+            {
+              "clause_id": "ARB_NOTICE_INVOCATION_001",
+              "category": "NOTICE_DEMAND",
+              "title": "Invocation and Nomination"
+            },
+            {
+              "clause_id": "ARB_NOTICE_DEADLINE_001",
+              "category": "NOTICE_DEADLINE",
+              "title": "Thirty Days to Concur"
+            },
+            {
+              "clause_id": "ARB_NOTICE_CONSEQUENCE_001",
+              "category": "NOTICE_CONSEQUENCE",
+              "title": "Consequence of Non-Concurrence"
+            },
+            {
+              "clause_id": "NOTICE_RESERVATION_001",
+              "category": "NOTICE_RESERVATION",
+              "title": "Reservation of Rights"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "AFFIDAVIT",
+      "shape": "SWORN",
+      "blueprint_resolved": true,
+      "clauses_assembled": 5,
+      "intake_fields": 14,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+          "asserts": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+          "statutory_reference": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+          "satisfier_count": 14,
+          "satisfiers_existing_in_library": 14,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either. Peripheral category matches were found and rejected: they match only an outlier satisfier's category, not the rule's subject.",
+          "rejected_peripheral_candidates": [
+            {
+              "clause_id": "AFFIDAVIT_DEPONENT_001",
+              "category": "IDENTITY",
+              "satisfiers_with_this_category": 1,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 1 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "AFFIDAVIT_TITLE_001",
+              "category": "NOTICE_HEADING",
+              "title": "Title"
+            },
+            {
+              "clause_id": "AFFIDAVIT_DEPONENT_001",
+              "category": "IDENTITY",
+              "title": "The Deponent"
+            },
+            {
+              "clause_id": "AFFIDAVIT_DEPOSITION_001",
+              "category": "DEPOSITION",
+              "title": "Statements"
+            },
+            {
+              "clause_id": "AFFIDAVIT_TRUTH_001",
+              "category": "STATEMENT_OF_TRUTH",
+              "title": "Statement of Truth"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_CONTRACT_FORMATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SUPPLY_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "LOAN_AMOUNT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_LIMITED_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "RENTAL_RENT_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "PARTNERSHIP_CAPITAL_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "JV_CONTRIBUTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_WAGES_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+          "asserts": "All contracts must specify governing law as Indian law.",
+          "statutory_reference": "Indian Contract Act 1872 – S.23",
+          "satisfier_count": 1,
+          "satisfiers_existing_in_library": 1,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "AFFIDAVIT_TITLE_001",
+              "category": "NOTICE_HEADING",
+              "title": "Title"
+            },
+            {
+              "clause_id": "AFFIDAVIT_DEPONENT_001",
+              "category": "IDENTITY",
+              "title": "The Deponent"
+            },
+            {
+              "clause_id": "AFFIDAVIT_DEPOSITION_001",
+              "category": "DEPOSITION",
+              "title": "Statements"
+            },
+            {
+              "clause_id": "AFFIDAVIT_TRUTH_001",
+              "category": "STATEMENT_OF_TRUTH",
+              "title": "Statement of Truth"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    },
+    {
+      "document_type": "INDEMNITY_BOND",
+      "shape": "SWORN",
+      "blueprint_resolved": true,
+      "clauses_assembled": 5,
+      "intake_fields": 14,
+      "required_fields_unfilled": [],
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "decomposition": [
+        {
+          "rule_id": "CONTRACT_REQUIRES_CONSIDERATION",
+          "asserts": "Every contract must have lawful consideration as required by the Indian Contract Act 1872.",
+          "statutory_reference": "Indian Contract Act 1872 – S.2(d), S.10, S.25",
+          "satisfier_count": 14,
+          "satisfiers_existing_in_library": 14,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either. Peripheral category matches were found and rejected: they match only an outlier satisfier's category, not the rule's subject.",
+          "rejected_peripheral_candidates": [
+            {
+              "clause_id": "BOND_IDENTITY_001",
+              "category": "IDENTITY",
+              "satisfiers_with_this_category": 1,
+              "satisfiers_with_any_category": 14,
+              "strength": "PERIPHERAL",
+              "$meaning": "only 1 of 14 satisfiers hold this category; the match may be an outlier satisfier's category leaking in"
+            }
+          ],
+          "draft_contents": [
+            {
+              "clause_id": "BOND_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Date"
+            },
+            {
+              "clause_id": "BOND_RECITAL_001",
+              "category": "RECITALS",
+              "title": "Recital"
+            },
+            {
+              "clause_id": "BOND_COVENANT_001",
+              "category": "INDEMNITY_COVENANT",
+              "title": "Indemnity"
+            },
+            {
+              "clause_id": "BOND_EXTENT_001",
+              "category": "INDEMNITY_COVENANT",
+              "title": "Extent and Duration"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_CONTRACT_FORMATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SERVICE_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "SUPPLY_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "LOAN_AMOUNT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "GUARANTEE_OBLIGATION_LIMITED_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMPLOYMENT_COMPENSATION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "RENTAL_RENT_PAYMENT_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "PARTNERSHIP_CAPITAL_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "JV_CONTRIBUTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORP_SHARE_SUBSCRIPTION_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "EMP_WAGES_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_IDENTITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            },
+            {
+              "clause_id": "CORE_CONFIDENTIALITY_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        },
+        {
+          "rule_id": "CONTRACT_REQUIRES_GOVERNING_LAW",
+          "asserts": "All contracts must specify governing law as Indian law.",
+          "statutory_reference": "Indian Contract Act 1872 – S.23",
+          "satisfier_count": 1,
+          "satisfiers_existing_in_library": 1,
+          "satisfiers_named_by_this_blueprint": 0,
+          "declares_scope": false,
+          "awaiting_D4_33_scope_decision": true,
+          "blocker": "BLUEPRINT",
+          "why": "satisfying clauses exist in the library, this blueprint names none of them, and the draft carries nothing in the rule's principal category either.",
+          "draft_contents": [
+            {
+              "clause_id": "BOND_IDENTITY_001",
+              "category": "IDENTITY",
+              "title": "Parties and Date"
+            },
+            {
+              "clause_id": "BOND_RECITAL_001",
+              "category": "RECITALS",
+              "title": "Recital"
+            },
+            {
+              "clause_id": "BOND_COVENANT_001",
+              "category": "INDEMNITY_COVENANT",
+              "title": "Indemnity"
+            },
+            {
+              "clause_id": "BOND_EXTENT_001",
+              "category": "INDEMNITY_COVENANT",
+              "title": "Extent and Duration"
+            },
+            {
+              "clause_id": "CORE_SIGNATURE_BLOCK_001",
+              "category": "SIGNATURE_BLOCK",
+              "title": "Execution and Signatures"
+            }
+          ],
+          "satisfiers": [
+            {
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "exists_in_library": true,
+              "in_draft": false,
+              "placement": {
+                "where": "ABSENT"
+              }
+            }
+          ]
+        }
+      ],
+      "blockers": [
+        "BLUEPRINT"
+      ],
+      "all_blocking_rules_awaiting_scope": true
+    }
+  ]
+}

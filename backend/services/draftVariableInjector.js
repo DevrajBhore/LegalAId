@@ -1,4 +1,5 @@
 import { injectVariables } from "./variableInjector.js";
+import { forClause } from "./provenance.js";
 
 export function injectDraftVariables(draft, variables = {}) {
   if (!draft || !Array.isArray(draft.clauses)) {
@@ -6,7 +7,8 @@ export function injectDraftVariables(draft, variables = {}) {
   }
 
   draft.clauses = draft.clauses.map((c) => {
-    const injectedText = injectVariables(c.text || "", variables);
+    // D4.43: tells the provenance recorder which clause this injection is for. No effect on text.
+    const injectedText = forClause(c.clause_id, () => injectVariables(c.text || "", variables));
     const leftover = [
       ...(injectedText.match(/{{(.*?)}}/g) || []),
       ...(injectedText.match(/\[[A-Z0-9_]+\]/g) || []),

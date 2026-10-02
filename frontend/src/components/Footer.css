@@ -138,3 +138,13 @@
 @media (max-width: 560px) {
   .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
 }
+
+/* The not-legal-advice line, on every page. */
+.footer-notice {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--sp-4) var(--sp-gutter) 0;
+  font-size: var(--fs-xs);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}

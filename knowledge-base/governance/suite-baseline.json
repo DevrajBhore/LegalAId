@@ -1,0 +1,282 @@
+{
+  "$comment": [
+    "THE TRUE STATE OF THE TEST SUITE ON THIS TREE.",
+    "",
+    "D4.31 established that three 'all green' reports had been taken from a directory that was not",
+    "a git repository. This record is the replacement: the suite measured on the tree the product",
+    "actually deploys from, with the failures attributed rather than counted."
+  ],
+  "review_status": "measurement — no legal content",
+  "phase": "D4.34-A (measured while tracing it)",
+  "kind": "MEASUREMENT",
+  "measured_on": {
+    "repository": "DevrajBhore/LegalAId",
+    "base_commit": "0993c7ae6",
+    "working_tree": "base commit plus this session's uncommitted changes",
+    "$why_stated": "A suite result with no tree identity is the D4.31 error. The number below means nothing without this block."
+  },
+  "result": {
+    "$two_measurements_kept": "The first is the state this session found. The second is after the instrument repair described below. Keeping both is the point: the difference is what one broken probe was worth.",
+    "as_found": {
+      "suites_run": 74,
+      "passed": 57,
+      "failed": 17,
+      "$and_at_the_base_commit": "all 17 fail at 0993c7ae6 as well, each re-run individually on a clean tree. This session introduced no regression, and the tree has not been green at any point this session."
+    },
+    "after_the_instrument_repair": {
+      "suites_run": 76,
+      "passed": 60,
+      "failed": 16,
+      "$what_moved": "universality and factAdmission recovered (74 checks between them), and the two new D4.34 regression files were added and pass. No suite that was passing began to fail.",
+      "$what_did_not_move": "The 16 remaining failures are unchanged in identity. Nothing here repaired the product.",
+      "$superseded_by": "after_the_block_decomposition_work"
+    },
+    "after_the_block_decomposition_work": {
+      "suites_run": 77,
+      "passed": 61,
+      "failed": 16,
+      "$what_moved": "one new regression file (blockDecomposition) added and passing. No suite changed state.",
+      "$the_16_are_unchanged_in_identity": "Nothing in the decomposition work repaired the product, and the suite says so.",
+      "$superseded_by": "after_D4_36"
+    },
+    "after_D4_36": {
+      "suites_run": 78,
+      "passed": 62,
+      "failed": 16,
+      "$what_moved": "one new regression file (propositionSatisfactionLayer) added and passing. No suite changed state.",
+      "$the_16_are_unchanged_in_identity": "Nothing in D4.35 or D4.36 repaired the product.",
+      "$superseded_by": "after_D4_37"
+    },
+    "after_D4_37": {
+      "suites_run": 79,
+      "passed": 63,
+      "failed": 16,
+      "$what_moved": "one new regression file (vacuousSatisfaction) added and passing. No suite changed state.",
+      "$the_16_are_unchanged_in_identity": "Nothing in D4.35, D4.36 or D4.37 repaired the product.",
+      "$superseded_by": "after_D4_38"
+    },
+    "after_D4_38": {
+      "suites_run": 80,
+      "passed": 64,
+      "failed": 16,
+      "$what_moved": "one new regression file (satisfactionContract) added and passing. No suite changed state.",
+      "$worth_noting": "That new file failed on its first run and its failure retracted ten reported findings in D4.37. A regression test earning its keep before it ever guarded anything.",
+      "$superseded_by": "after_D4_39"
+    },
+    "after_D4_39": {
+      "suites_run": 81,
+      "passed": 65,
+      "failed": 16,
+      "$what_moved": "one new regression file (satisfactionCapabilityAudit) added and passing. No suite changed state.",
+      "$the_16_are_unchanged_in_identity": "Nothing from D4.35 through D4.39 repaired the product. Five phases of evidence, zero changes to generation.",
+      "$superseded_by": "after_D4_40"
+    },
+    "after_D4_40": {
+      "suites_run": 82,
+      "passed": 66,
+      "failed": 16,
+      "$what_moved": "one new regression file (satisfactionOwnership) added and passing. No suite changed state.",
+      "$six_phases_zero_repairs": "D4.35 through D4.40. Six phases of evidence and one architecture decision, with no change to generation, no satisfier list edited and no implements declaration added.",
+      "$superseded_by": "after_D4_41"
+    },
+    "after_D4_41": {
+      "suites_run": 84,
+      "passed": 68,
+      "failed": 16,
+      "$what_moved": "two new regression files (satisfactionReduction, conceptLayerGaps) added and passing; three earlier files corrected to assert behaviour rather than declarations. No suite changed state.",
+      "$first_production_code_since_D4_34": "One line: `matches` exported from conceptResolver. Visibility only. The reduction module is reachable from nothing on the generation path.",
+      "$superseded_by": "after_D4_42"
+    },
+    "after_D4_42": {
+      "suites_run": 85,
+      "passed": 69,
+      "failed": 16,
+      "$what_moved": "one new regression file (placeholderProvenance) added and passing; satisfactionReduction's case A/G1 re-driven through binding_nature on shipped drafts, still passing. No generation code changed.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "$why_the_list_is_recorded_now": "Earlier entries recorded counts only, so 'unchanged in identity' could be asserted but not checked. From here on it can be diffed.",
+      "$superseded_by": "after_D4_43"
+    },
+    "after_D4_43": {
+      "suites_run": 87,
+      "passed": 71,
+      "failed": 16,
+      "$what_moved": "two new files (provenanceInjector, provenanceConservation) added and passing. The first production change to the generation path since D4.34: provenance instrumentation of the variable injector, proven byte-conserving.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_after_D4_42": true,
+      "$superseded_by": "after_D4_43_hardening"
+    },
+    "after_D4_43_hardening": {
+      "suites_run": 88,
+      "passed": 72,
+      "failed": 16,
+      "$what_moved": "one new file (provenanceHardening) added and passing; provenanceInjector updated to the two-dimension record and passing; provenanceConservation still 0 violations.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true,
+      "$superseded_by": "after_launch_compliance"
+    },
+    "after_launch_compliance": {
+      "suites_run": 89,
+      "passed": 73,
+      "failed": 16,
+      "$what_moved": "one new file (launchCompliance) added and passing; provenanceConservation re-baselined for the deliberate export notice (138 text_sha256 changes, nothing else) and passing.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true
+    }
+  },
+  "an_instrument_defect_found_and_repaired": {
+    "$category": "measurement infrastructure, not product — the same category as the D4.32 FIXTURE_PROFILE repair",
+    "what": "knowledge-base/intake/facts/ is a contributed-facts directory that is legitimately EMPTY in the shipped state. Git does not track empty directories, so it did not survive the clone.",
+    "who_assumed_it_existed": [
+      "factRegistry.js — TOLERANT. It treats a missing directory as 'no contributed facts', which is correct.",
+      "tests/factAdmission.test.mjs — not tolerant. Wrote a probe file into it and died. 61 checks unavailable.",
+      "scripts/proveUniversality.mjs — not tolerant, and worse: see below."
+    ],
+    "the_worse_case": [
+      "proveUniversality installs a synthetic family, proves the engine handles it with no code change,",
+      "and removes it again. install() was called OUTSIDE its own try/finally, so when the write into",
+      "the missing directory threw, teardown never ran and three synthetic artifacts stayed in the",
+      "knowledge base.",
+      "",
+      "They are not inert. Families are DISCOVERED from knowledge-base/documents, so the residue added",
+      "a 41st family whose blueprint had already been deleted — and every later suite that iterates the",
+      "population failed for a reason that had nothing to do with it.",
+      "",
+      "One broken probe made fifteen unrelated suites red, and running the same suites in a different",
+      "order gave a different answer."
+    ],
+    "repair": [
+      "knowledge-base/intake/facts/.gitkeep so the directory survives a clone",
+      "proveUniversality: create the directory before writing, and move install() inside the try so teardown is unconditional"
+    ],
+    "recovered_by_the_repair": [
+      "tests/universality.test.mjs — 13 checks, green",
+      "tests/factAdmission.test.mjs — 61 checks, green"
+    ],
+    "$the_generalisable_bit": "A contract expressed as 'this directory exists' cannot survive a clone when the directory is empty. Anything that WRITES into a knowledge directory must create it, and any probe that mutates the knowledge base must tear down in a finally that its own setup cannot skip."
+  },
+  "the_17_are_not_17_causes": {
+    "$why_this_section_exists": "A list of red test names invites one repair per name. Most of these share a cause, and two of them are not defects at all.",
+    "dominant_cause": {
+      "statement": "11 of 40 families produce no draft at all. Every suite that needs a corpus then fails for lack of one.",
+      "measured_in": "docs/audit/ungenerated-families.json",
+      "blocking_rules": 6,
+      "of_which_awaiting_D4_33_scope_decision": 5,
+      "outside_the_D4_33_queue": [
+        "IP_REQUIRES_OWNERSHIP"
+      ],
+      "$not_a_claim": "This does NOT assert that any of those constraints is wrong. A constraint that refuses an affidavit may be refusing correctly; whether it should reach that shape at all is exactly the undecided question."
+    },
+    "two_kinds_kept_apart": {
+      "$why": "Folding them together would let 'unencoded constraint scope' take credit for blueprint gaps it had nothing to do with.",
+      "SHAPE_MISMATCH_CANDIDATE": {
+        "count": 5,
+        "families": [
+          "POWER_OF_ATTORNEY",
+          "AFFIDAVIT",
+          "INDEMNITY_BOND",
+          "ARBITRATION_NOTICE",
+          "POSH_POLICY"
+        ],
+        "shapes": [
+          "SWORN",
+          "SWORN",
+          "SWORN",
+          "NOTICE",
+          "POLICY"
+        ],
+        "description": "A constraint written for contracts is refusing a document that is not a contract. CONTRACT_REQUIRES_CONSIDERATION refusing an affidavit is the clearest instance.",
+        "owner": "advocate — this is the D4.33 scope question, already queued as a row in the constraint scope panel"
+      },
+      "AGREEMENT_FAMILY_BLOCKED": {
+        "count": 6,
+        "families": [
+          "ESOP_GRANT_LETTER",
+          "PROMISSORY_NOTE",
+          "IP_ASSIGNMENT_AGREEMENT",
+          "APPOINTMENT_LETTER",
+          "INTERNSHIP_AGREEMENT",
+          "SEPARATION_AGREEMENT"
+        ],
+        "description": "The family IS an agreement, so the constraint may apply perfectly well and the blueprint may simply lack the clause it requires. That is knowledge completeness, not constraint scope.",
+        "owner": "engine plus knowledge — NOT the advocate queue",
+        "$the_one_that_is_neither": "PROMISSORY_NOTE is classified AGREEMENT here but is governed by the Negotiable Instruments Act 1881, which treats consideration differently from the Contract Act. Whether it belongs in this group at all is a legal question, and it is NOT asserted either way in this record."
+      }
+    },
+    "$do_not_expand_the_queue": "These 11 families are CONSEQUENCES of questions already asked, not 11 new questions. D4.33 set that rule for the 342/41 failures and it holds here for the same reason.",
+    "$note_on_the_count": "Written when the count was 17; it is 16 after the instrument repair. The attribution below is unaffected — factAdmission was the one that left."
+  },
+  "what_this_record_does_not_do": [
+    "It does not decide any constraint's scope.",
+    "It does not assert that any of the 17 failures is acceptable.",
+    "It does not claim the 17 are all explained — only the dominant cause is attributed; individual suites may have their own reasons on top.",
+    "It does not repair the product. The only repair made was to the measurement instrument, and it is described above so it can be disputed."
+  ]
+}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Icons } from "../utils/icons";
 import "./Help.css";
@@ -8,11 +9,11 @@ const FAQS = [
     items: [
       {
         q: "What is LegalAId?",
-        a: "LegalAId is an AI-powered legal document drafting workspace built exclusively for Indian law. You fill a guided intake form, the AI drafts the document, legal validation checks it, and you download a court-ready DOCX.",
+        a: "LegalAId is an AI-powered legal document drafting workspace built exclusively for Indian law. You fill a guided intake form, the document is drafted from a clause library with AI tailoring the wording, automated checks review it, and you download an editable DOCX. LegalAId is software, not a law firm, and does not give legal advice: have an advocate review any document before you rely on it.",
       },
       {
         q: "Is it really free?",
-        a: "Yes. Core drafting - all 16+ document types, AI editing, legal validation, and DOCX export - is completely free. No credit card required.",
+        a: "Yes. Drafting, AI editing, the automated checks and DOCX export are currently free. No credit card required.",
       },
       {
         q: "Do I need legal knowledge to use it?",
@@ -25,7 +26,7 @@ const FAQS = [
     items: [
       {
         q: "Why does generation take a few seconds?",
-        a: "LegalAId assembles the clause library from your inputs, drafts the document, runs legal validation, and builds the final structured draft before opening the workspace.",
+        a: "LegalAId assembles the clause library from your inputs, drafts the document, runs automated checks, and builds the final structured draft before opening the workspace.",
       },
       {
         q: "What if I do not have all the details?",
@@ -38,15 +39,15 @@ const FAQS = [
     ],
   },
   {
-    cat: "Legal Validation",
+    cat: "Automated Checks",
     items: [
       {
         q: "How does validation work?",
-        a: "Legal validation checks every generated document for structural integrity, drafting quality, variable correctness, and document completeness before export.",
+        a: "Automated checks review every generated document for structural integrity, drafting quality, variable correctness and completeness before export. They are software checks, not a review by an advocate.",
       },
       {
-        q: "What does 'Certified' mean?",
-        a: "A certified document has passed all blocking validation rules - no missing mandatory provisions, no structurally invalid sections, and no unresolved critical issues. Advisory notes may still appear but do not block certification.",
+        q: "What does 'No blocking issues' mean?",
+        a: "The draft has passed LegalAId\u2019s own automated blocking checks - no missing mandatory provisions, no structurally invalid sections, and no unresolved critical issues. Advisory notes may still appear. It is not a legal review and does not mean the document is fit for your situation.",
       },
       {
         q: "Can the AI fix flagged issues?",
@@ -142,7 +143,7 @@ export default function Help() {
             <div className="help-stuck-icon">{Icons.messageSquare}</div>
             <h3>Still have questions?</h3>
             <p>
-              Our team is reachable at <a href="mailto:support@legalaid.in">support@legalaid.in</a> and typically responds within one business day.
+              Send us a message from the <Link to="/contact">Contact page</Link> and we will reply by email.
             </p>
           </div>
         </div>

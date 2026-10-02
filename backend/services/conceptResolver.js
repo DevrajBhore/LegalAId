@@ -88,7 +88,16 @@ export function clearConceptCache() { cache = null; }
  * evaluator competing with the blueprint one, and the concept records were
  * authored against these operators only.
  */
-function matches(condition, values) {
+/*
+ * EXPORTED FOR REUSE AS MECHANISM ONLY (D4.41). This is the repository's one
+ * predicate evaluator, and the satisfaction reduction calls it rather than
+ * writing a second. Exporting changed its visibility and nothing else; its only
+ * caller in this file is unchanged. Two input shapes it evaluates SILENTLY and
+ * wrongly -- an array `var` (read as one comma-joined key, so always absent) and
+ * an unknown `op` (always false) -- so a reuser must refuse those at admission
+ * rather than inherit the failure. See concept-layer-gaps.json.
+ */
+export function matches(condition, values) {
   const actual = values?.[condition.var];
   switch (condition.op) {
     case "present":

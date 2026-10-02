@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import { Icons } from "../utils/icons";
+import { LEGAL_NOTICE } from "../data/legalNotice";
 import "./LegalPage.css";
 
+// Factual corrections from the 26 Sep 2026 launch-compliance audit. The full
+// Terms are being drafted for legal review (docs/legal/TERMS_OF_SERVICE_DRAFT.md).
 const TERMS = [
+  {
+    title: "Not legal advice",
+    body: LEGAL_NOTICE,
+  },
+  {
+    title: "Who can use LegalAId",
+    body: "You must be 18 or older and able to enter into a binding contract to create an account.",
+  },
+  {
+    title: "How documents are produced",
+    body:
+      "Documents are assembled from a clause library according to your answers, and an AI model (Google Gemini, or Groq as a fallback) tailors the wording. Automated checks review the structure and some statutory requirements; they are not a legal review, and some document types may be unavailable.",
+  },
   {
     title: "Use of the platform",
     body:
@@ -46,7 +62,7 @@ export default function TermsOfService() {
             These terms govern access to LegalAId and the use of its drafting,
             validation, document history, and export workflows.
           </p>
-          <div className="legal-meta">Last updated | 30 March 2026</div>
+          <div className="legal-meta">Last updated | 26 September 2026</div>
         </div>
       </section>
 

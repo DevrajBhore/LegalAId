@@ -13,12 +13,12 @@ const FEATURES = [
   {
     icon: Icons.sparkles,
     title: "AI-Drafted Clauses",
-    body: "AI drafts every clause using your exact inputs. No blanks and no placeholders.",
+    body: "Clauses are tailored to your answers, and the draft discloses what it assumed where you left something out.",
   },
   {
     icon: Icons.shieldCheck,
-    title: "Legal Validation",
-    body: "Built-in Indian legal validation checks structure, key terms, and drafting quality before you download.",
+    title: "Automated Checks",
+    body: "Built-in automated checks review structure, key terms and drafting quality before you download. They are not a legal review.",
   },
   {
     icon: Icons.scroll,
@@ -28,7 +28,7 @@ const FEATURES = [
   {
     icon: Icons.download,
     title: "DOCX Export",
-    body: "Execution-ready Word documents with signature blocks and clean formatting.",
+    body: "Editable Word drafts with signature blocks and clean formatting, ready for your advocate to review.",
   },
 ];
 

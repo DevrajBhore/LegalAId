@@ -6,12 +6,12 @@ const PILLARS = [
   {
     icon: Icons.sparkles,
     title: "AI-First Drafting",
-    body: "AI drafts every clause from your exact inputs. No blanks, no lorem ipsum, and no placeholder language.",
+    body: "Clauses are selected from a structured library and tailored to your answers. Where you leave something out, the draft says so rather than leaving a blank.",
   },
   {
     icon: Icons.shieldCheck,
-    title: "Legal Validation",
-    body: "Every document passes through layered Indian legal validation that checks structure, variable correctness, and drafting quality before export.",
+    title: "Automated Checks",
+    body: "Every document runs through automated checks for structure, variable correctness and drafting quality before export. They are software checks, not a review by an advocate.",
   },
   {
     icon: Icons.scroll,
@@ -21,7 +21,7 @@ const PILLARS = [
   {
     icon: Icons.download,
     title: "Export-Ready Output",
-    body: "When everything passes, download a court-ready DOCX with signature blocks, stamp duty notices, and Indian legal formatting baked in.",
+    body: "Download an editable DOCX with signature blocks, stamp duty notices and Indian formatting, ready for review by your advocate.",
   },
 ];
 
@@ -35,23 +35,23 @@ const ACTS = [
   "Registration Act, 1908",
   "Indian Stamp Act, 1899",
   "Shops & Establishments Act",
-  "Payment of Wages Act, 1936",
-  "Maternity Benefit Act, 1961",
+  "Code on Wages, 2019",
+  "Code on Social Security, 2020",
   "Bonded Labour (Abolition) Act, 1976",
 ];
 
 const TEAM_VALUES = [
   {
-    title: "Accuracy first",
-    body: "Every output is grounded in document rules, validation checks, and Indian legal drafting standards. We do not guess.",
+    title: "Checked, then disclosed",
+    body: "Every draft runs through structural and statutory checks, and the document tells you what it assumed and what those checks cannot confirm.",
   },
   {
-    title: "Lawyers-first design",
-    body: "Built for practitioners who review serious documents, not for generic copy generation.",
+    title: "Made to be reviewed",
+    body: "Drafts are structured so an advocate can review them quickly. LegalAId is software, not a law firm, and does not give legal advice.",
   },
   {
     title: "Open by default",
-    body: "Free for individuals. Core drafting stays accessible, while teams can expand with enterprise workflows when needed.",
+    body: "Currently free to use while we build out the product.",
   },
 ];
 
@@ -136,7 +136,7 @@ export default function About() {
         <div className="about-inner">
           <div className="about-cta-box animate-in">
             <h2 className="about-cta-title">Ready to start drafting?</h2>
-            <p className="about-cta-sub">Free to use. No credit card. 16+ document types.</p>
+            <p className="about-cta-sub">Currently free. No credit card required.</p>
             <div className="about-cta-actions">
               <Link to="/register" className="about-cta-btn-primary">
                 Create free account {Icons.arrowRight}

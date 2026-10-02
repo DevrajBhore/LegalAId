@@ -1,0 +1,53 @@
+{
+  "$comment": [
+    "D4.41 FIXTURES — NOT KNOWLEDGE.",
+    "",
+    "These live under tests/, deliberately outside knowledge-base/. D4.41 is a reduction proof and is",
+    "not authorised to add propositions to the vocabulary or implements declarations to the clause",
+    "library. Every clause id below is real and every run is against a real assembled draft; what is",
+    "fixture is only the AUTHORING — which dimensions a proposition has, and which dimension a clause",
+    "claims — because that authoring does not exist in the repository yet and is not this phase's to add."
+  ],
+
+  "propositions": {
+    "IP_ASSIGNMENT_SPECIFIED__ALL_RIGHTS": {
+      "$legal_answer_represented": "An IP assignment must specify the assignment of every right type, whether or not that type is in play. Under this authoring a copyright-only assignment is NOT established.",
+      "proposition_id": "IP_ASSIGNMENT_SPECIFIED",
+      "dimensions": [
+        { "dimension_id": "copyright" },
+        { "dimension_id": "patents" },
+        { "dimension_id": "trademarks" }
+      ]
+    },
+    "IP_ASSIGNMENT_SPECIFIED__RIGHTS_IN_PLAY": {
+      "$legal_answer_represented": "An IP assignment must specify the assignment of each right type THAT IS BEING ASSIGNED. Under this authoring a copyright-only assignment IS established.",
+      "$why_both_exist": "D4.38 case B: whether a trademark-only (or copyright-only) assignment establishes the proposition is a LEGAL question. The structure must be able to represent either answer and must not choose one by defaulting. These two records are the same proposition authored both ways.",
+      "proposition_id": "IP_ASSIGNMENT_SPECIFIED",
+      "dimensions": [
+        { "dimension_id": "copyright",  "required_when": { "var": "assigns_copyright",  "op": "eq", "value": true } },
+        { "dimension_id": "patents",    "required_when": { "var": "assigns_patents",    "op": "eq", "value": true } },
+        { "dimension_id": "trademarks", "required_when": { "var": "assigns_trademarks", "op": "eq", "value": true } }
+      ]
+    },
+    "IP_OWNERSHIP_ALLOCATED": {
+      "$case": "F — opposite allocations both satisfy one proposition, inside a dimensioned proposition, so existential satisfaction is shown to survive B's conjunction.",
+      "proposition_id": "IP_OWNERSHIP_ALLOCATED",
+      "dimensions": [ { "dimension_id": "allocation" } ]
+    },
+    "LEGAL_RELATIONS_INTENDED": {
+      "$case": "A and G1, read from the LIVE declaration on MOU_BINDING_001 — the only fixture here whose satisfying claim is real repository content rather than fixture authoring.",
+      "proposition_id": "LEGAL_RELATIONS_INTENDED"
+    }
+  },
+
+  "clause_declarations": {
+    "$what_these_stand_in_for": "The clause-side `implements` these clauses do not carry today. Consulted before the live library; a clause not listed here falls through to its real `implements`.",
+    "IPA_COPYRIGHT_ASSIGNMENT_001": [ { "proposition_id": "IP_ASSIGNMENT_SPECIFIED", "dimension_id": "copyright" } ],
+    "IP_PATENT_RIGHTS_001":         [ { "proposition_id": "IP_ASSIGNMENT_SPECIFIED", "dimension_id": "patents" } ],
+    "IPA_TRADEMARK_ASSIGNMENT_001": [ { "proposition_id": "IP_ASSIGNMENT_SPECIFIED", "dimension_id": "trademarks" } ],
+    "IP_OWNERSHIP_001":             [ { "proposition_id": "IP_OWNERSHIP_ALLOCATED",  "dimension_id": "allocation" } ],
+    "IP_DEVELOPER_RETAINS_001":     [ { "proposition_id": "IP_OWNERSHIP_ALLOCATED",  "dimension_id": "allocation" } ]
+  },
+
+  "$caveat_on_IP_OWNERSHIP_001": "Its rendered text differs materially by world under one clause id: client-exclusive assignment when the client owns, 'allocated in accordance with the following arrangement: Shared IP' when shared. A declaration on that id must hold in EVERY world that renders it. The F runs therefore use only the two worlds whose operative text plainly allocates ownership, and the Shared world is recorded as a G1 hazard rather than run."
+}

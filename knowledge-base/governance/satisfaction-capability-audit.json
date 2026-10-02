@@ -1,0 +1,145 @@
+{
+  "$comment": [
+    "D4.39 \u2014 THE EIGHT REQUIREMENTS, CHALLENGED AGAINST MACHINERY THAT ALREADY EXISTS.",
+    "",
+    "D4.38 derived what a satisfaction relation must express, from eight real cases. This asks the",
+    "question that must come before any schema: of those eight, which can the repository ALREADY",
+    "represent, which need a genuinely new primitive, and which are legal judgements no primitive",
+    "will ever settle.",
+    "",
+    "No schema is proposed. Nothing is migrated. The point of the exercise is to avoid inventing",
+    "machinery that has already been built and shipped somewhere else in this codebase."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.39",
+  "kind": "ARCHITECTURAL AUDIT",
+  "status": "AUDITED \u2014 no representation selected, no migration begun",
+  "the_three_machineries_audited_against": {
+    "legal_propositions": {
+      "where": "knowledge-base/propositions/propositions.json, plus clause.implements",
+      "direction": "SATISFACTION \u2014 a clause declares what it establishes",
+      "vocabulary": "proposition_id, statement, authority, applicability {always | position+value}, satisfaction {IN_THE_DOCUMENT | OUTSIDE_THE_DOCUMENT}",
+      "$note": "The youngest of the three and by far the weakest. 12 propositions, 3 implementing clauses."
+    },
+    "evidence_propositions": {
+      "where": "knowledge-base/intake/propositions/, backend/services/evidencePropositions.js",
+      "direction": "APPLICABILITY \u2014 evidence about the world gates a clause",
+      "vocabulary": "subject_binding, admissible_provenance, continuing, evidence_valid_for_days, when_unknown; a seven-value EVIDENCE state vocabulary and a four-value APPLICABILITY one"
+    },
+    "concepts": {
+      "where": "knowledge-base/concepts/",
+      "direction": "APPLICABILITY \u2014 a legal concept attaches clauses, rules and disclosures",
+      "vocabulary": "requires_dimensions, attributes (typed enum/boolean/string), detection rules with {var, op, value} predicates, attaches, confirmation, unresolved_behaviour"
+    }
+  },
+  "the_headline": {
+    "finding": "Every requirement that needs a new primitive already has a WORKING PRECEDENT elsewhere in this repository \u2014 built, shipped and tested, pointing in the applicability direction.",
+    "$what_that_means": "The satisfaction layer does not need machinery invented for it. It needs machinery that exists to be turned around. That is a materially smaller and more reviewable change than designing a proposition system from first principles, and it is the difference between extending this architecture and replacing it.",
+    "$what_it_does_not_mean": "That turning it around is mechanical. An applicability predicate answers 'does this clause belong here'; a satisfaction predicate answers 'is this requirement met'. Same shape, different truth-maker, and the legal residue in the table below does not shrink at all.",
+    "$corrected_in_D4_41": "Overstated for B. 'Every requirement needing a new primitive has a working precedent' holds for the OPERATIONS; for B's dimension structure it holds only as a data shape nobody evaluates."
+  },
+  "the_audit": [
+    {
+      "case": "A_SINGLE_CLAUSE",
+      "verdict": "ALREADY REPRESENTABLE",
+      "how": "clause.implements \u2192 proposition_id. Live on 3 clauses today.",
+      "legal_residue": "Whether the claim is true. Unverified against the clause text; see case D."
+    },
+    {
+      "case": "F_OPPOSITE_OUTCOMES_BOTH_SATISFY",
+      "verdict": "ALREADY REPRESENTABLE",
+      "how": "Several clauses each declaring the same proposition, evaluated existentially. IP_OWNERSHIP_001 and IP_DEVELOPER_RETAINS_001 both satisfying 'ownership is specified' is exactly what existential satisfaction is for.",
+      "$the_design_constraint_this_creates": "Existential satisfaction must SURVIVE whatever is built for case B. A relation that becomes conjunctive by default breaks this case. The two must coexist and be selectable per proposition \u2014 and the choice between them is itself a legal judgement about what the proposition asserts.",
+      "legal_residue": "Whether the proposition is about specification or about outcome. F only works because 'ownership is specified' was framed that way."
+    },
+    {
+      "case": "H_OUTSIDE_THE_DOCUMENT",
+      "verdict": "ALREADY REPRESENTABLE",
+      "how": "satisfaction: OUTSIDE_THE_DOCUMENT, declared on INSTRUMENT_REGISTERED.",
+      "legal_residue": "What counts as discharge outside the document, and what evidence of it is admissible \u2014 which is the evidence layer's whole subject."
+    },
+    {
+      "case": "C_FAMILY_SPECIALISED_CLAUSE",
+      "verdict": "REPRESENTABLE IN FORM, UNENFORCED",
+      "how": "implements already lives on the clause, which is the right location \u2014 specialising knowledge and declaring what it establishes become one authoring act.",
+      "the_gap": "Nothing requires the declaration. A new clause with no implements is indistinguishable from one that establishes nothing, which is the D4.35 failure exactly.",
+      "precedent_for_the_fix": "documentRequirements.admit already refuses knowledge records that do not declare their kind \u2014 the repository has an admission gate that makes silent omission impossible. The pattern exists; it is not applied here.",
+      "legal_residue": "None for the obligation itself. Enforcing a declaration is mechanical; its content is not."
+    },
+    {
+      "case": "D_MUST_NOT_ESTABLISH",
+      "verdict": "REPRESENTABLE IN FORM, UNENFORCED",
+      "how": "implements_review_status exists on every declaring clause, and the advocate review system built in this phase persists decisions with reviewer identity and enrolment.",
+      "the_gap": "Every claim reads draft-needs-legal-review, and nothing distinguishes a claim reviewed BY ITS AUTHOR from one reviewed by anyone else. Refutability needs a different reader, not merely a status field.",
+      "precedent_for_the_fix": "constraintScopeReviewService refuses a decision with no authority cited \u2014 the repository already has a review surface that will not accept an answer without its basis.",
+      "legal_residue": "The review itself. This is the case that cannot be automated at all."
+    },
+    {
+      "case": "B_JOINT_SATISFACTION",
+      "verdict": "NEW PRIMITIVE \u2014 PRECEDENT EXISTS",
+      "how_today": "Nothing expresses 'these together'. Satisfaction is existential; gates and attaches are lists of what is affected, not conjunctions of what establishes.",
+      "the_precedent": "concepts.requires_dimensions is a conjunction across keys with disjunction inside each \u2014 {\"role\":[\"employer\"],\"event\":[\"employ\"]} means role AND event, any listed value within each. That is precisely the shape the IP grant needs: copyright AND patents AND trademarks, where each is satisfied by any of its own clauses.",
+      "$so_the_primitive_is_not_new_in_shape": "It is new in the satisfaction direction. The conjunction/disjunction structure has been authored, shipped and tested on the applicability side.",
+      "legal_residue": "Whether a trademark-only assignment establishes the proposition. The structure can represent either answer; only an advocate can choose.",
+      "$corrected_in_D4_41": "requires_dimensions is read by NO code. The precedent cited here is a declared data shape, not executed machinery, and this audit's test checked only that the shape existed. The operations B needs \u2014 one predicate, conjunction across a list, disjunction across alternatives \u2014 ARE executed inside resolveConcept; the composition is what is new."
+    },
+    {
+      "case": "E_CONTEXT_DEPENDENT",
+      "verdict": "NEW PRIMITIVE \u2014 PRECEDENT EXISTS",
+      "how_today": "Satisfaction is a two-valued enum with no reference to document content. CORE_PURPOSE_001 discharges a scope requirement while deferring its substance to {{purpose}}.",
+      "the_precedent": "concepts.detection carries predicates of the form {var, op, value} with ops including eq and present, over field: and control: sources \u2014 and concepts.attributes types the values (enum, boolean, string, optional). Together they already express 'this holds when this field has this value'.",
+      "$what_turning_it_around_means": "Those predicates currently decide whether a clause BELONGS. The same predicate shape would decide whether a present clause SUFFICES. 'A payment clause stating an amount and a date' is expressible with machinery that exists.",
+      "legal_residue": "Which values count, and whether the proposition requires context at all. A rule asserting 'must specify payment terms' may or may not be discharged by a payment clause with no figure."
+    },
+    {
+      "case": "G_NEGATIVE_EVIDENCE",
+      "verdict": "NEW PRIMITIVE \u2014 PRECEDENT EXISTS, AND IT IS THE STRONGEST ONE",
+      "how_today": "The satisfaction side is binary and has no room for 'about the proposition and does not establish it'. Silence and denial are the same fact.",
+      "the_precedent": "The evidence layer's seven-value vocabulary is the same distinction already solved: EVIDENCE_ABSENT says nothing either way, while MISMATCHED, INADMISSIBLE, AMBIGUOUS, STALE and CONFLICTING each say something different and none of them is a denial. Its own comment records that each was a distinct false positive and that collapsing any two recreates the bug.",
+      "$why_this_is_the_strongest": "It is not merely a shape to copy. It is the same lesson, already learned the hard way in this codebase, in a layer that was built because collapsing states caused real defects. The satisfaction layer repeats the mistake the evidence layer exists to correct.",
+      "legal_residue": "Whether a given clause is negative evidence. IPA_MORAL_RIGHTS_001 recording rights that survive assignment is a legal reading, not a structural property.",
+      "$superseded_by_D4_40": "Reclassified. G1 is solved by an existing pattern (authoring, not machinery); G2 is withdrawn as an instrument artifact. The 'strongest precedent' framing below described a requirement that does not hold as stated."
+    }
+  ],
+  "the_tally": {
+    "already_representable": [
+      "A_SINGLE_CLAUSE",
+      "F_OPPOSITE_OUTCOMES_BOTH_SATISFY",
+      "H_OUTSIDE_THE_DOCUMENT"
+    ],
+    "representable_in_form_but_unenforced": [
+      "C_FAMILY_SPECIALISED_CLAUSE",
+      "D_MUST_NOT_ESTABLISH"
+    ],
+    "new_primitive_with_an_existing_precedent": [
+      "B_JOINT_SATISFACTION",
+      "E_CONTEXT_DEPENDENT",
+      "G_NEGATIVE_EVIDENCE"
+    ],
+    "new_primitive_with_no_precedent": [],
+    "$the_last_line_is_the_result": "Nothing in the eight requires machinery this repository has never built. Three need an existing pattern turned around, two need an existing pattern applied, three already work.",
+    "$corrected_in_D4_40": "new_primitive_with_an_existing_precedent is B and E, not B, E and G. Case G moved out after D4.40 found the repository had already solved and recorded it."
+  },
+  "what_no_primitive_will_settle": {
+    "$this_list_does_not_shrink": "It is the same length whatever is built. A schema that appears to shorten it has absorbed a legal judgement into a default.",
+    "judgements": [
+      "Whether a clause's text discharges a proposition (every case).",
+      "Whether a set of clauses jointly suffices where none does alone (B).",
+      "Whether a proposition requires context, and which values count (E).",
+      "Whether a clause is negative evidence rather than weak evidence (G).",
+      "Whether a proposition is about specification or about outcome (F) \u2014 which decides whether satisfaction is disjunctive or conjunctive in the first place.",
+      "Whether an authored claim is true (D) \u2014 reviewable by a person, never by a mechanism."
+    ]
+  },
+  "what_this_record_does_not_do": [
+    "It proposes no schema, no field names and no encoding. D4.38's scope holds.",
+    "It does not claim the precedents transfer cleanly. An applicability predicate and a satisfaction predicate share a shape and not a truth-maker.",
+    "It does not migrate anything or touch a satisfier list.",
+    "It does not decide whether to extend the legal-proposition layer, generalise the concept layer, or build a third thing. That is the next decision, and it now has an evidence base rather than a preference."
+  ],
+  "the_next_decision": {
+    "question": "Given that three requirements need an existing pattern turned around and none needs new machinery, is the right move to extend the legal-proposition layer with those patterns, or to generalise the concept layer to serve both directions?",
+    "$what_makes_it_answerable_now": "Before this audit the choice was between an imagined proposition system and the status quo. It is now a choice between two concrete bodies of working code, with a list of exactly which capabilities each would have to gain.",
+    "owner": "engine for the structure; advocate for the six judgements above, which are unchanged by whichever structure wins"
+  }
+}

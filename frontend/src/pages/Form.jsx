@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   chatWithIntakeAssistant,
   getDocumentConfig,
@@ -8,6 +8,7 @@ import {
 import { Icons, ChevronRight, Zap, FileText, MessageSquare, ArrowRight } from "../utils/icons";
 import ConversationalIntake from "../components/ConversationalIntake";
 import MobileActionBar from "../components/MobileActionBar";
+import { LEGAL_NOTICE, LEGAL_NOTICE_TITLE, AI_PROCESSING_NOTICE } from "../data/legalNotice";
 import "./Form.css";
 
 const STEP_LABELS = ["Fill Details", "Review Inputs", "Generate Draft"];
@@ -57,10 +58,12 @@ const GEN_MESSAGES = [
   "Resolving clause dependencies",
   "Tailoring to your answers",
   "Applying drafting guardrails",
-  "Running legal validation",
+  "Running automated checks",
 ];
-const LEGAL_DISCLAIMER =
-  "LegalAId generates contracts based on established Indian legal principles and standard drafting practices. The documents are designed to be enforceable and commercially usable. Like any legal document, final enforceability depends on execution and specific circumstances, so review is recommended for complex or high-value cases.";
+// The old text here said documents were "designed to be enforceable" -- a claim
+// labelled as a disclaimer. The notice now lives in one place and is the same
+// wording the exports print.
+const LEGAL_DISCLAIMER = LEGAL_NOTICE;
 const INTAKE_ASSISTANT_WELCOME =
   "Ask me what to write in any field, and I will suggest practical wording you can apply directly to the form.";
 
@@ -1533,7 +1536,7 @@ export default function Form() {
           </div>
 
           <div className="form-sidebar-disclaimer">
-            <strong>Legal disclaimer</strong>
+            <strong>{LEGAL_NOTICE_TITLE}</strong>
             <span>{LEGAL_DISCLAIMER}</span>
           </div>
         </aside>
@@ -1542,6 +1545,10 @@ export default function Form() {
           <div className="form-header animate-in">
             <span className="form-header-kicker">{family} - Indian Law</span>
             <h1 className="form-header-title">{displayName}</h1>
+            <p className="form-privacy-notice" role="note">
+              {AI_PROCESSING_NOTICE}{" "}
+              <Link to="/privacy-policy" target="_blank" rel="noopener">How we handle your data</Link>
+            </p>
             {flow && !showInterview && (
               <p className="form-header-sub">
                 Fill the intake form to generate a polished, editable first draft
@@ -1827,7 +1834,7 @@ export default function Form() {
 
               <div className="form-disclaimer-panel">
                 <div className="form-disclaimer-panel__label">
-                  Legal disclaimer
+                  {LEGAL_NOTICE_TITLE}
                 </div>
                 <p>{LEGAL_DISCLAIMER}</p>
               </div>

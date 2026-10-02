@@ -1,0 +1,629 @@
+{
+  "$comment": [
+    "D4.43 — PROVENANCE INSTRUMENTATION. Observe, record, prove conservation. Nothing more.",
+    "No default was changed. No clause, gate, validation, disclosure or export was changed. Nothing reads the record.",
+    "Written by scripts/recordProvenanceInstrumentation.mjs; every figure is measured on shipped drafts when the script runs."
+  ],
+  "review_status": "UNREVIEWED — engineering instrumentation. No legal judgement is made or implied, and no default is put to the advocate yet.",
+  "phase": "D4.43",
+  "kind": "instrumentation",
+  "status": "INJECTOR: CHOICES RECORDED · HARDENING: OBSERVED, 20 FIELDS' FALLBACKS RECORDED · 3 PRODUCERS AND ALL TRANSFORMERS REMAIN",
+  "progression": [
+    {
+      "step": "1. variableInjector",
+      "state": "DONE",
+      "establishes": "conservation proven; its choices recorded; shown to be a minor production point"
+    },
+    {
+      "step": "2. renderHardClause, central",
+      "state": "DONE",
+      "establishes": "every renderer invocation observed: identity, reads present and missing, whether its text shipped; artifact survival measured. COVERAGE, not provenance."
+    },
+    {
+      "step": "3. selected renderer fallbacks",
+      "state": "DONE",
+      "establishes": "the fallback branches of the 20 fields D4.42 showed shipping unchosen wording record their choice where it is made"
+    },
+    {
+      "step": "4. transformers",
+      "state": "NEXT",
+      "establishes": "artifact-survival tracking through normalisation, quality passes, fixer, AI merge"
+    },
+    {
+      "step": "5. advocate report",
+      "state": "WAITING ON 4",
+      "establishes": "the actual defaults requiring legal review, from recorded rows only"
+    },
+    {
+      "step": "—",
+      "state": "NOT IN SCOPE",
+      "establishes": "remediation of any default"
+    }
+  ],
+  "the_gate": {
+    "rule": "If any provenance implementation changes the artifact, stop. The contract has been violated.",
+    "what_is_compared": "For every (family, input world) case: the whole generateDocument result with draft.metadata.provenance removed, the plain-text export and the disclosure block. Keys sorted, arrays in order; byte equality.",
+    "corpus": {
+      "cases": 217,
+      "shipping_a_draft": 138,
+      "blocked": 79
+    },
+    "baseline": "Captured once from the pre-D4.43 code (all changed files restored byte-for-byte, git diff empty), clock frozen at 2026-09-01T06:30Z. Re-captured once since, for a deliberate output change: see rebaselines.",
+    "results": [
+      {
+        "batch": "injector",
+        "violations": 0
+      },
+      {
+        "batch": "hardening stage 1 (central observation)",
+        "violations": 0
+      },
+      {
+        "batch": "hardening stage 2 (20 fields' fallback branches)",
+        "violations": 0
+      },
+      {
+        "batch": "record additions (withheld counts, pass inputs)",
+        "violations": 0
+      }
+    ],
+    "the_gate_was_shown_to_bite": [
+      "injector: record write also reset metadata.assumptions → 183; clause-labelling wrapper appended a space → 18; synthesised purpose wording changed → 8",
+      "stage 2: a labelled literal changed (probation) → 4; the WITHDRAWN branch returned ' Nil.' instead of nothing → 142"
+    ],
+    "rebaselines": [
+      {
+        "date": "2026-09-26",
+        "why": "DELIBERATE OUTPUT CHANGE, not instrumentation: every DOCX, PDF and TXT export now ends with the not-legal-advice notice (backend/services/legalNotice.js), from the launch-compliance fixes.",
+        "evidence": "Before re-capture the gate reported 138 violations, all of kind text_sha256 — exactly the 138 shipping cases' plain-text export. result_sha256, disclosure_sha256 and clause order were identical in all 217 cases, and the 79 blocked cases were untouched.",
+        "rule": "The gate is re-captured only for a change that is MEANT to alter what ships, and each re-capture is recorded here with the kinds that moved."
+      }
+    ],
+    "what_the_gate_does_not_catch_by_design": [
+      "A LABEL that is wrong. Mislabelling the answered restriction period as CONSTANT_DEFAULT → 0 violations, because the artifact did not change. tests/provenanceHardening.test.mjs caught it. The gate proves the text; the tests prove the record.",
+      "A whitespace-only change a later normaliser absorbs. The WITHDRAWN branch returning ' ' instead of '' → 0 violations, because the shipped text is genuinely the same."
+    ]
+  },
+  "two_dimensions": {
+    "source_class": "Where a value came from. Closed: USER_SUPPLIED, CLIENT_DEFAULT, ALIAS, DERIVED, SYNTHESISED, CONSTANT_DEFAULT, NORMALISED, WITHDRAWN — or NOT_YET_RECORDED while the producer that chose it is uninstrumented.",
+    "artifact_survival": "Whether a producer's text reached the artifact: SURVIVED | TRANSFORMED_AFTER_PRODUCTION | NO_PRODUCER_OBSERVED. Never a source class.",
+    "provenance_status": "Per clause: RECORDED | NOT_YET_RECORDED | WITHHELD (with its survival reason). A renderer clause is never RECORDED as a whole: its renderer is observed, and only selected branches record choices.",
+    "rule": "A producer's value-level record is attached only when its output IS the shipped text. When a later stage changed it, the choices are counted (withheld_choice_count) and not asserted.",
+    "producer_of_the_text": "The latest event that MADE the shipped text: an injection, or a renderer that changed its input. A renderer that handed its input back unchanged reproduced it and is not its producer."
+  },
+  "stage_1_central_observation": {
+    "where": "renderHardClause in documentHardening.js — the single dispatch for all renderers. When recording, the renderer receives a read-observing Proxy over the same variables (same values, same keys). When not recording it is a direct call.",
+    "per_invocation": "clause id; renderer identity; keys read and present; keys read and missing; the pass it ran in (whose non-empty input keys are listed once in renderer_passes); input and output hashes; whether its output is the shipped text",
+    "it_does_not": "infer a fallback's source. A read that found nothing is 'missing', not 'defaulted'.",
+    "measured": {
+      "corpus": "well-filled fixture",
+      "families_shipping": 29,
+      "clauses": 820,
+      "survival": {
+        "SURVIVED": 581,
+        "TRANSFORMED_AFTER_PRODUCTION": 227,
+        "NO_PRODUCER_OBSERVED": 12
+      },
+      "status": {
+        "NOT_YET_RECORDED": 508,
+        "WITHHELD": 239,
+        "RECORDED": 73
+      },
+      "survived_by_producer": {
+        "documentHardening": 495,
+        "variableInjector": 86
+      },
+      "transformed_after": {
+        "variableInjector": 63,
+        "documentHardening": 164
+      },
+      "renderer_clauses": 660,
+      "renderer_produced_shipped_text": 496,
+      "share_of_shipped_clauses_whose_text_a_recorded_producer_made": "70.9%",
+      "record_size": "9.2% of the serialised result"
+    }
+  },
+  "stage_2_labelled_fallbacks": {
+    "scope": "Exactly the 20 fields D4.42 showed shipping unchosen wording. A test fails if any other field is labelled, or any of the 20 is not.",
+    "how": "Four helpers in documentHardening (orConstant, strippedOrConstant, sentenceFor, and chose at named sites) each return exactly what the expression they replaced returned, and record which branch ran. The class is the branch's: a constant branch is CONSTANT_DEFAULT; an empty branch is WITHDRAWN; an alias branch is ALIAS with the key; an answered branch is the input (NOT_YET_RECORDED until its upstream producer is instrumented).",
+    "the_class_comes_from_the_branch": "A user who types 'twelve (12) months' is recorded as the input, not as a default — same words, different source. Tested.",
+    "measured_with_the_20_fields_unanswered": {
+      "recorded_rows": 23,
+      "constant_defaults_recorded_on_shipped_text": 17,
+      "fields_with_a_recorded_constant_default": [
+        "acceptance_criteria",
+        "change_request_process",
+        "confidential_information_definition",
+        "confidentiality_access_scope",
+        "events_of_default",
+        "exit_terms",
+        "expenses_policy",
+        "leave_policy",
+        "non_compete_period",
+        "probation_period",
+        "risk_transfer_terms",
+        "service_levels",
+        "title_transfer_terms",
+        "warranty_period"
+      ],
+      "withdrawn_rows": 3,
+      "alias_rows": 0,
+      "rows": [
+        {
+          "field": "acceptance_criteria",
+          "clause_id": "SERVICE_SCOPE_001",
+          "source_class": "WITHDRAWN",
+          "producer": "documentHardening.renderers.SERVICE_SCOPE_001",
+          "field_answered": false,
+          "value": "",
+          "families": [
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT"
+          ]
+        },
+        {
+          "field": "acceptance_criteria",
+          "clause_id": "SERVICE_WARRANTY_001",
+          "source_class": "WITHDRAWN",
+          "producer": "documentHardening.renderers.SERVICE_WARRANTY_001",
+          "field_answered": false,
+          "value": "",
+          "families": [
+            "CONSULTANCY_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT"
+          ]
+        },
+        {
+          "field": "acceptance_criteria",
+          "clause_id": "TECH_ACCEPTANCE_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.TECH_ACCEPTANCE_001",
+          "field_answered": false,
+          "value": "the requirements of the Services and the deliverables described in this Agreement, and its fitness for the purpose for which it was commissioned",
+          "families": [
+            "SOFTWARE_DEVELOPMENT_AGREEMENT"
+          ]
+        },
+        {
+          "field": "change_request_process",
+          "clause_id": "SERVICE_CHANGE_REQUEST_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.SERVICE_CHANGE_REQUEST_001",
+          "field_answered": false,
+          "value": "the requesting Party shall submit a written change request describing the proposed change, the Parties shall assess its legal, commercial, technical, and timeli…",
+          "families": [
+            "SOFTWARE_DEVELOPMENT_AGREEMENT"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "confidential_information_definition",
+          "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "field_answered": false,
+          "value": "all non-public, proprietary, commercially sensitive, technical, financial, business, strategic, operational, customer, vendor, employee, and other information d…",
+          "families": [
+            "NDA"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "confidentiality_access_scope",
+          "clause_id": "CORE_CONFIDENTIALITY_001",
+          "source_class": "WITHDRAWN",
+          "producer": "documentHardening.renderers.CORE_CONFIDENTIALITY_001",
+          "field_answered": false,
+          "value": "",
+          "families": [
+            "FOUNDERS_AGREEMENT",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "MASTER_SERVICE_AGREEMENT"
+          ]
+        },
+        {
+          "field": "confidentiality_access_scope",
+          "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+          "field_answered": false,
+          "value": " Access to such Confidential Information shall be limited to persons with a strict need to know for the permitted purpose and who are bound by confidentiality o…",
+          "families": [
+            "NDA"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "events_of_default",
+          "clause_id": "LOAN_DEFAULT_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.LOAN_DEFAULT_001",
+          "field_answered": false,
+          "value": "failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due date; material breach by …",
+          "families": [
+            "LOAN_AGREEMENT"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "execution_city",
+          "clause_id": "CORE_GOVERNING_LAW_001",
+          "source_class": "NOT_YET_RECORDED",
+          "producer": "documentHardening.renderers.CORE_GOVERNING_LAW_001",
+          "field_answered": true,
+          "value": "Pune",
+          "families": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "REFUND_AND_CANCELLATION_POLICY",
+            "SHIPPING_AND_DELIVERY_POLICY",
+            "SETTLEMENT_AGREEMENT",
+            "NDA",
+            "EMPLOYMENT_CONTRACT",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "SUPPLY_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "GUARANTEE_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "VENDOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT",
+            "TERMS_OF_SERVICE",
+            "PRIVACY_POLICY",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        {
+          "field": "execution_city",
+          "clause_id": "CORE_IDENTITY_001",
+          "source_class": "NOT_YET_RECORDED",
+          "producer": "documentHardening.resolveExecutionVenue",
+          "field_answered": true,
+          "value": "Pune",
+          "families": [
+            "FOUNDERS_AGREEMENT",
+            "TERM_SHEET",
+            "SHARE_SUBSCRIPTION_AGREEMENT",
+            "DATA_PROCESSING_AGREEMENT",
+            "SETTLEMENT_AGREEMENT",
+            "EMPLOYMENT_CONTRACT",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "PARTNERSHIP_DEED",
+            "SHAREHOLDERS_AGREEMENT",
+            "JOINT_VENTURE_AGREEMENT",
+            "DISTRIBUTION_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "COMMERCIAL_LEASE_AGREEMENT",
+            "LEAVE_AND_LICENSE_AGREEMENT",
+            "LOAN_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MOU",
+            "MASTER_SERVICE_AGREEMENT",
+            "RENTAL_AGREEMENT"
+          ]
+        },
+        {
+          "field": "exit_terms",
+          "clause_id": "JV_EXIT_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.JV_EXIT_001",
+          "field_answered": false,
+          "value": "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer to acquire the exitin…",
+          "families": [
+            "JOINT_VENTURE_AGREEMENT"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "expenses_policy",
+          "clause_id": "SERVICE_EXPENSES_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.resolveExpensePolicyClause",
+          "field_answered": false,
+          "value": "Except as expressly approved in writing in advance by the Client, all out-of-pocket, travel, accommodation, communication, and incidental expenses incurred by t…",
+          "families": [
+            "SERVICE_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "leave_policy",
+          "clause_id": "EMP_LEAVE_POLICY_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.EMP_LEAVE_POLICY_001",
+          "field_answered": false,
+          "value": "earned leave, sick leave, casual leave, public holidays, and such other leave as may be mandated by law or prescribed under the Employer's policy",
+          "families": [
+            "EMPLOYMENT_CONTRACT"
+          ]
+        },
+        {
+          "field": "non_compete_period",
+          "clause_id": "EMP_NON_COMPETE_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.resolveRestrictionPeriod",
+          "field_answered": false,
+          "value": "twelve (12) months",
+          "families": [
+            "FOUNDERS_AGREEMENT",
+            "EMPLOYMENT_CONTRACT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT"
+          ]
+        },
+        {
+          "field": "non_compete_period",
+          "clause_id": "EMP_NON_SOLICITATION_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.resolveRestrictionPeriod",
+          "field_answered": false,
+          "value": "twelve (12) months",
+          "families": [
+            "EMPLOYMENT_CONTRACT",
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT"
+          ]
+        },
+        {
+          "field": "non_compete_period",
+          "clause_id": "NDA_NON_COMPETE_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.resolveRestrictionPeriod",
+          "field_answered": false,
+          "value": "twelve (12) months",
+          "families": [
+            "NDA"
+          ]
+        },
+        {
+          "field": "non_compete_period",
+          "clause_id": "NDA_NON_SOLICITATION_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.resolveRestrictionPeriod",
+          "field_answered": false,
+          "value": "twelve (12) months",
+          "families": [
+            "NDA"
+          ]
+        },
+        {
+          "field": "probation_period",
+          "clause_id": "EMP_PROBATION_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.EMP_PROBATION_001",
+          "field_answered": false,
+          "value": "the period expressly stated in this Agreement",
+          "families": [
+            "EMPLOYMENT_CONTRACT"
+          ]
+        },
+        {
+          "field": "risk_transfer_terms",
+          "clause_id": "SUPPLY_RISK_TRANSFER_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.SUPPLY_RISK_TRANSFER_001",
+          "field_answered": false,
+          "value": " Where delivery is by carrier, risk shall pass to the Buyer upon delivery to the first carrier unless the Supplier has specifically arranged for transit insuran…",
+          "families": [
+            "SUPPLY_AGREEMENT",
+            "VENDOR_AGREEMENT"
+          ],
+          "$value_truncated_for_this_record_only": true
+        },
+        {
+          "field": "service_levels",
+          "clause_id": "SERVICE_SLA_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.SERVICE_SLA_001",
+          "field_answered": false,
+          "value": "the service levels expressly recorded in this Agreement",
+          "families": [
+            "CONSULTANCY_AGREEMENT"
+          ]
+        },
+        {
+          "field": "title_transfer_terms",
+          "clause_id": "SUPPLY_RISK_TRANSFER_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.SUPPLY_RISK_TRANSFER_001",
+          "field_answered": false,
+          "value": "Title to the Goods shall pass to the Buyer simultaneously with the passing of risk, subject to the Supplier's receipt of full payment of the applicable invoice.",
+          "families": [
+            "SUPPLY_AGREEMENT",
+            "VENDOR_AGREEMENT"
+          ]
+        },
+        {
+          "field": "warranty_period",
+          "clause_id": "SERVICE_WARRANTY_001",
+          "source_class": "CONSTANT_DEFAULT",
+          "producer": "documentHardening.renderers.SERVICE_WARRANTY_001",
+          "field_answered": false,
+          "value": "ninety (90) days from delivery or acceptance",
+          "families": [
+            "CONSULTANCY_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT"
+          ]
+        },
+        {
+          "field": "warranty_period",
+          "clause_id": "SUPPLY_WARRANTY_001",
+          "source_class": "NOT_YET_RECORDED",
+          "producer": "documentHardening.renderers.SUPPLY_WARRANTY_001",
+          "field_answered": true,
+          "value": "24 months",
+          "families": [
+            "SUPPLY_AGREEMENT",
+            "VENDOR_AGREEMENT"
+          ]
+        }
+      ],
+      "clauses_whose_choices_are_withheld": [
+        {
+          "clause_id": "DPA_RETENTION_AND_ERASURE_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "DATA_PROCESSING_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "CORE_IDENTITY_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "NDA",
+            "SUPPLY_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT",
+            "VENDOR_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "NDA_EXCLUSIONS_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "NDA"
+          ]
+        },
+        {
+          "clause_id": "SERVICE_SCOPE_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "SOFTWARE_DEVELOPMENT_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "SERVICE_SLA_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SERVICE_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "SERVICE_ACCEPTANCE_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SERVICE_AGREEMENT",
+            "CONSULTANCY_AGREEMENT",
+            "INDEPENDENT_CONTRACTOR_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "SERVICE_WARRANTY_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SERVICE_AGREEMENT",
+            "MASTER_SERVICE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "JV_GOVERNANCE_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "JOINT_VENTURE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "SUPPLY_WARRANTY_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "DISTRIBUTION_AGREEMENT",
+            "SALES_OF_GOODS_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "SUPPLY_RISK_TRANSFER_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SALES_OF_GOODS_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "GUARANTEE_OBLIGATION_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "GUARANTEE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "LOAN_DEFAULT_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "GUARANTEE_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "TECH_WARRANTY_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "SOFTWARE_DEVELOPMENT_AGREEMENT"
+          ]
+        },
+        {
+          "clause_id": "PRIVACY_DATA_RETENTION_001",
+          "reason": "TRANSFORMED_AFTER_PRODUCTION",
+          "families": [
+            "PRIVACY_POLICY"
+          ]
+        }
+      ]
+    }
+  },
+  "what_blocks_the_advocate_report": {
+    "finding": "Several of the defaults that matter most are chosen by an instrumented renderer and then changed by a later stage, so their choices are WITHHELD: CORE_IDENTITY_001, DPA_RETENTION_AND_ERASURE_001, GUARANTEE_OBLIGATION_001, JV_GOVERNANCE_001, LOAN_DEFAULT_001, NDA_EXCLUSIONS_001, PRIVACY_DATA_RETENTION_001, SERVICE_ACCEPTANCE_001, SERVICE_SCOPE_001, SERVICE_SLA_001, SERVICE_WARRANTY_001, SUPPLY_RISK_TRANSFER_001, SUPPLY_WARRANTY_001, TECH_WARRANTY_001.",
+    "examples_of_what_changed_them": [
+      "a defined term capitalised: 'the service provider' → 'the Service Provider' (SERVICE_SLA_001)",
+      "a doubled full stop collapsed: 'delivery.. If' → 'delivery. If' (SERVICE_WARRANTY_001)",
+      "a word after an abbreviation capitalised as if it began a sentence: '5:00 p.m. local time' → '5:00 p.m. Local time' (CORE_NOTICE_001) — a transformer introducing an error, noted here, not repaired"
+    ],
+    "$examples_not_a_census": "Three diffs read by hand. Which transformer makes each change is step 4's measurement.",
+    "consequence": "An advocate report built now would cover the defaults that happen to survive and silently omit ones that do not — including the service-level and warranty text. That is the partial picture the sequence exists to avoid."
+  },
+  "what_changed_in_code": {
+    "backend/services/provenance.js": "The vocabulary; the survival dimension and statuses; a per-generation recorder (AsyncLocalStorage); observeRenderer, noteRenderer and chose; attachProvenance, which returns a NEW result with draft.metadata.provenance.",
+    "backend/services/variableInjector.js": "Labelled picks in buildDerivedVariables; slot recording in injectVariables. Proven identical to a frozen copy of the old file on 4000 random inputs.",
+    "backend/services/documentService.js": "generateDocument wraps the unchanged generation in a recorder.",
+    "backend/services/documentHardening.js": "renderHardClause wraps the unchanged renderer dispatch (renamed renderHardClauseUnobserved); four labelling helpers; the 20 fields' fallback branches routed through them; forClause on cloneClauseForDraft.",
+    "backend/services/draftVariableInjector.js, dependencyResolver.js": "forClause around each injectVariables call."
+  },
+  "instrument_flaws_found_this_phase": [
+    "1. The first conservation snapshot did not freeze the clock. Time is now frozen after modules load (mongoose rejects a Date subclass at import).",
+    "2. The injector differential used a floating-point LCG that collapses above 2^53; a planted whitespace mutation passed 4000 'random' cases. Replaced with a 32-bit PRNG.",
+    "3. The first survival rule named as producer the LAST event whose output matched the shipped text. A renderer that returned its input unchanged was then credited with text the injector made. The producer is now the latest event that changed the text.",
+    "4. A test named 'left out is WITHDRAWN' asserted a CONSTANT_DEFAULT on a different clause. It passed and proved nothing about its name. Split into two tests that each check what they say."
+  ],
+  "what_this_record_does_not_do": [
+    "It does not change any default, clause, gate, validation, disclosure or export.",
+    "It does not classify values chosen by generationControls, jurisdictionEngine or the client; or by any renderer branch outside the 20 fields.",
+    "It does not say whether any value legally satisfies any proposition, and nothing may read it as if it did.",
+    "It does not produce the advocate report."
+  ]
+}

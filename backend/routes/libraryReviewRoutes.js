@@ -43,11 +43,11 @@ router.get("/", (req, res) => {
 // PATCH /admin/library-review/:clauseId
 // { decision: approve|amend|reject|discuss|reset, revised_text, note }
 // The reviewer is taken from the authenticated session.
-router.patch("/:clauseId", (req, res) => {
+router.patch("/:clauseId", async (req, res) => {
   try {
     const body = req.body || {};
     res.json(
-      recordLibraryReview({
+      await recordLibraryReview({
         clauseId: req.params.clauseId,
         decision: body.decision,
         revisedText: body.revised_text,

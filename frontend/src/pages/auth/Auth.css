@@ -428,3 +428,9 @@
 @media (max-width: 480px) {
   .auth-brand-sub { font-size: var(--fs-xs); }
 }
+
+/* Sign-up confirmations: age and terms. */
+.auth-check { display: flex; align-items: flex-start; gap: var(--sp-2); font-size: var(--fs-xs); color: var(--text-secondary); line-height: 1.5; cursor: pointer; }
+.auth-check input { margin-top: 3px; width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--gold); }
+.auth-check a { color: var(--gold); }
+.auth-notice { margin: 0; font-size: var(--fs-xs); color: var(--text-muted, var(--text-secondary)); line-height: 1.5; }

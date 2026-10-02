@@ -1,0 +1,156 @@
+{
+  "$comment": [
+    "D4.40 \u2014 WHICH LAYER OWNS THE STATEMENT 'THIS DOCUMENT ESTABLISHES PROPOSITION X'.",
+    "",
+    "Narrow by design: extend the legal-proposition layer, or generalise the concept layer, judged",
+    "against the eight demonstrated requirements and the six legal judgements no structure settles.",
+    "",
+    "It also corrects case G, which the repository itself had already solved and recorded before",
+    "this investigation restated it as an open requirement.",
+    "",
+    "No generation change. No satisfier migration. No implements expansion. An architecture",
+    "decision is earned; an implementation is not."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.40",
+  "kind": "ARCHITECTURE DECISION",
+  "status": "DECIDED ON OWNERSHIP OF MEANING \u2014 no schema, no code, nothing migrated",
+  "a_correction_to_case_G_the_repository_had_already_made": {
+    "$found_how": "Reading the legal propositions for this comparison turned up a `_polarity_note` on SOURCE_CODE_ESCROW_ESTABLISHED and an `_implements_withheld` field on TECH_SOURCE_CODE_001. Both were authored in an earlier phase. D4.38 restated as an open requirement a problem this repository had already diagnosed and solved.",
+    "what_D4_38_claimed": "Case G \u2014 the relation must have room for 'this clause is about the proposition and does not establish it', distinct from 'no declaration exists'. Classified in D4.39 as needing a new primitive, with the evidence layer's state vocabulary as the strongest precedent.",
+    "what_is_actually_true": {
+      "G1_polarity_under_one_id": {
+        "the_real_problem": "TECH_SOURCE_CODE_001 states the escrow obligation when escrow_required is yes and states its ABSENCE when no, under ONE clause id. An `implements` annotation on that id is false in one of the two worlds, which is why one was authored and then deliberately withdrawn.",
+        "$this_is_sharper_than_case_G_as_stated": "The defect is not that negative evidence exists. It is that `implements` is keyed to a CLAUSE ID, and a clause whose text varies by world cannot carry a truthful annotation under a single id.",
+        "the_repair": "Author the two positions as two clause ids behind a variant slot.",
+        "$already_demonstrated_in_production": "MOU_BINDING_001 implements LEGAL_RELATIONS_INTENDED; MOU_NON_BINDING_001 implements nothing; a variant slot selects between them on is_binding_mou. The proposition record calls this 'the CONTROL for the escrow case' and concludes that implements on a clause id is world-correct WITHOUT ANY NEW MECHANISM.",
+        "what_remains": "One clause needs splitting, which is new legal text and needs an advocate. Not a primitive.",
+        "$corrected_in_D4_41": "'One clause needs splitting' is at least two. IP_OWNERSHIP_001 renders a client-exclusive assignment in one world and 'allocated in accordance with the following arrangement: Shared IP' in another, under one id. The hazard is proposition-relative. No census has been taken."
+      },
+      "G2_about_but_not_establishing": {
+        "the_claim": "That the relation needs a state meaning 'about the proposition and does not establish it', distinct from silence.",
+        "$where_it_actually_came_from": "My own category heuristic, which offered IPA_MORAL_RIGHTS_001 as evidence of an assignment clause. Under a declaration-based model nothing searches for candidates by topic: a clause that does not establish simply declares nothing, and no confusion arises.",
+        "verdict": "NOT DEMONSTRATED as a production requirement. It was an artifact of the instrument, not of the system, and it is withdrawn rather than carried forward.",
+        "$the_rule_this_reinforces": "Do not build an abstraction because the architecture seems to want one. The requirement felt real because my measurement needed it; the production path never asks the question."
+      }
+    },
+    "consequence_for_the_D4_39_tally": {
+      "was": "3 requirements needing a new primitive \u2014 B, E, G",
+      "now": "2 \u2014 B and E. Case G moves to 'solved by an existing pattern, one instance awaiting authoring'.",
+      "$direction_of_travel": "Every phase of this investigation has reduced what must be built. 83\u21924 findings, 3\u21922 primitives."
+    }
+  },
+  "the_criterion": {
+    "chosen": "Ownership of meaning \u2014 which layer is supposed to own the statement 'this document establishes proposition X'.",
+    "rejected": "Implementation convenience. The concept layer has more of the machinery, and that is the wrong reason to give it the meaning.",
+    "$why": "Applicability and satisfaction are different questions with different truth-makers. A layer that owns both will be asked to answer both with one mechanism, and the mechanism will be tuned to whichever question it was built for."
+  },
+  "the_decisive_evidence": {
+    "$what_it_is": "The three layers handle an unresolved question in three incompatible ways, and the difference is not stylistic.",
+    "measured": [
+      {
+        "layer": "concepts",
+        "on_unknown": "ASSUME",
+        "detail": "7 of 10 concepts declare an assumption \u2014 safe_default \u00d73, present \u00d73, absent \u00d71; only 3 declare none."
+      },
+      {
+        "layer": "evidence propositions",
+        "on_unknown": "ESCALATE",
+        "detail": "every one, without exception."
+      },
+      {
+        "layer": "legal propositions",
+        "on_unknown": "no construct exists at all",
+        "detail": "no assume, default or unresolved_behaviour key anywhere in the vocabulary."
+      }
+    ],
+    "the_asymmetry": [
+      "`assume: present` is SAFE for applicability. Where the system cannot establish that GST applies, assuming it does adds a GST clause \u2014 an over-inclusive document, cautious and usually harmless.",
+      "",
+      "Turn the same construct around into satisfaction and it reads: WHERE THE SYSTEM CANNOT ESTABLISH THAT A REQUIREMENT IS MET, ASSUME IT IS MET.",
+      "",
+      "That is the exact false positive this investigation has spent four phases measuring, elevated into a first-class design feature and applied by default to seven of ten records."
+    ],
+    "$conclusion": "The concept layer's semantics are built on assumption being safe, because for applicability it is. Satisfaction tolerates no assumption at all: an over-satisfied requirement ships a defective instrument rather than a verbose one. Generalising that layer to own satisfaction would carry its most dangerous construct across the boundary that makes it dangerous.",
+    "$corrected_in_D4_41": {
+      "what_was_counted": "DECLARATIONS: 7 of 10 concepts declare an assumption.",
+      "what_executes": "4. safe_default \u2192 PRESENT for 3 concepts; absent \u2192 ABSENT for 1. The 3 `assume: present` declarations are not implemented and stay UNRESOLVED.",
+      "does_the_decision_stand": "Yes. On live behaviour three concepts still turn 'cannot establish' into 'applies' \u2014 the construct that reads 'assume the requirement is met' once turned around. The measured count was wrong; the asymmetry is real.",
+      "$lesson": "A decision's evidence must be taken from what runs, not from what is declared. See concept-layer-gaps.json."
+    }
+  },
+  "the_decision": {
+    "owner_of_meaning": "The legal-proposition layer (knowledge-base/propositions, clause.implements).",
+    "reasons": [
+      "It already owns the direction. `implements` is declared on the clause, which D4.38 case C established is the right location.",
+      "It has NO assumption machinery, which for satisfaction is a feature and not a gap. It starts where satisfaction must start: nothing is established until something establishes it.",
+      "Its records carry the statutory authority for the REQUIREMENT, which is what a satisfaction claim is a claim about.",
+      "It already solves case F (opposite outcomes) and case G1 (polarity) with no new mechanism, as MOU_BINDING_001 / MOU_NON_BINDING_001 demonstrates in production."
+    ],
+    "the_concept_layer_stays_what_it_is": "The machinery precedent, not the semantic owner. Its conjunction structure (case B) and its predicate/attribute machinery (case E) are patterns to copy into the satisfaction direction \u2014 deliberately copied, never inherited, so that unresolved_behaviour does not come with them.",
+    "the_evidence_layer_contributes_its_discipline": "Not its vocabulary wholesale. What transfers is the rule that an unresolved question ESCALATES rather than defaults \u2014 which the legal-proposition layer can adopt without adopting seven evidence states it has no use for.",
+    "$what_is_explicitly_not_decided": "The schema. This settles which layer the meaning belongs to, not how it is written down."
+  },
+  "what_would_falsify_this": {
+    "$stated_because": "A decision with no falsifier is a preference.",
+    "conditions": [
+      "A satisfaction case where assuming the requirement met is the correct behaviour. That would mean the assumption asymmetry is not the boundary it appears to be, and the concept layer's semantics would no longer be disqualifying.",
+      "A demonstrated satisfaction requirement that the legal-proposition layer cannot express even after gaining B and E, while the concept layer can.",
+      "Evidence that applicability and satisfaction share a truth-maker after all \u2014 for instance a proposition whose establishment is decided entirely by the same intake facts that decide its applicability."
+    ],
+    "$none_observed": "Across eight demonstrated cases, none of the three holds. But only eight cases have been examined, and D4.38 already records that a ninth may appear.",
+    "$strength_of_the_conclusion": "That no such case exists in the repository, not that none can exist. Eight cases were examined. The claim is that the repository currently provides no evidence supporting assumption semantics for satisfaction \u2014 which is the appropriate strength, and is falsified by one counterexample rather than requiring proof of impossibility."
+  },
+  "the_six_legal_judgements_are_unchanged": {
+    "$the_point_of_repeating_them": "The decision moves no work from the advocate to the engine. A structure that appeared to shorten this list would have absorbed a judgement into a default, which is precisely what the concept layer's assumption machinery does and why it was not chosen.",
+    "judgements": [
+      "Whether a clause's text discharges a proposition.",
+      "Whether a set of clauses jointly suffices where none does alone.",
+      "Whether a proposition requires context, and which values count.",
+      "Whether a clause is negative evidence rather than weak evidence.",
+      "Whether a proposition is about specification or about outcome \u2014 which decides disjunctive or conjunctive satisfaction.",
+      "Whether an authored claim is true."
+    ]
+  },
+  "what_this_record_does_not_do": [
+    "It proposes no schema, no field names and no encoding.",
+    "It changes no generation behaviour, migrates no satisfier list and adds no implements declaration.",
+    "It does not decide how the two borrowed patterns are written down, only that they are borrowed rather than inherited.",
+    "It does not claim the concept layer is wrong. It is correct for applicability, and its assumption machinery is correct there too \u2014 which is exactly why it must not cross the boundary."
+  ],
+  "ownership_of_meaning_is_not_ownership_of_mechanism": {
+    "$why_this_is_stated_separately": "It is the distinction most likely to erode the moment someone implements D4.40. 'The legal-proposition layer owns satisfaction' reads, to a hurried reader, as 'build everything there' \u2014 and that is how a directory choice turns into a second engine.",
+    "what_the_evidence_supports": "Ownership of the TRUTH CONDITION. The legal-proposition layer decides what the document must establish and whether its authored declarations satisfy that requirement.",
+    "what_the_evidence_does_NOT_support": [
+      "Duplicating the concept layer's predicate engine. The evidence shows its predicate SHAPE is reusable, not that it should exist twice.",
+      "Inventing a second general expression language. The repository already carries two closed evaluators \u2014 the blueprint gate grammar and the concept detection predicates \u2014 and a third would be a new dialect with its own drift.",
+      "Moving applicability semantics into propositions. A legal proposition's `applicability` is deliberately narrow today: `always: true`, or one position and its value. That narrowness is load-bearing, not an omission waiting to be filled."
+    ],
+    "$the_operational_form": "If implementing satisfaction requires writing an expression evaluator, stop. Either an existing evaluator can be called, or the requirement has not been reduced far enough to be implemented yet.",
+    "$the_falsifiable_boundary": "This turns D4.40 from 'we picked a directory' into an architectural claim that can fail: if the proposition layer grows a general predicate tree, or a second expression grammar appears, the boundary has been crossed and the decision has been misapplied."
+  },
+  "the_three_questions_kept_apart": {
+    "$the_precise_statement": "Concepts determine or describe legal-world concepts and applicability. Evidence propositions describe what the available evidence establishes. Legal propositions determine what the document must establish, and whether its authored declarations satisfy that requirement.",
+    "questions": [
+      {
+        "n": 1,
+        "question": "Does this concept apply?",
+        "owner": "concepts",
+        "truth_maker": "the transaction's own shape and the intake facts"
+      },
+      {
+        "n": 2,
+        "question": "What does the evidence establish about the world?",
+        "owner": "evidence propositions",
+        "truth_maker": "admissible evidence about a named subject, current as at a date"
+      },
+      {
+        "n": 3,
+        "question": "Does the document establish the required legal proposition?",
+        "owner": "legal propositions",
+        "truth_maker": "the instrument's own authored content"
+      }
+    ],
+    "$why_the_separation_is_the_safety_property": "Collapsing 1 or 2 into 3 is what creates the false-positive risk. Each has a different truth-maker, and a mechanism built for one will answer the others in its own terms \u2014 which is precisely how `assume: present` would become 'assume the requirement is met'."
+  }
+}

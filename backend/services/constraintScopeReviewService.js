@@ -30,6 +30,8 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const KB = path.resolve(__dirname, "../../knowledge-base");
 const CONSTRAINT_DIR = path.join(KB, "constraints");
@@ -67,7 +69,12 @@ function locateRule(ruleId) {
     const rules = parsed?.rules;
     if (!Array.isArray(rules)) continue;
     const index = rules.findIndex((r) => r?.rule_id === ruleId);
-    if (index !== -1) return { file, parsed, index };
+    if (index !== -1) {
+      // Same reason as the clause library: this deployment has no persistent
+      // disk, so a decision written only to the file is reverted on restart.
+      applyOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId, rules[index]);
+      return { file, parsed, index };
+    }
   }
   return null;
 }
@@ -141,7 +148,7 @@ export function summariseConstraintScope() {
  * engineering act that has to be measured, and a translation made silently at
  * the moment of decision is one nobody checked.
  */
-export function recordScopeDecision({
+export async function recordScopeDecision({
   ruleId,
   decision,
   scope = "",
@@ -210,6 +217,10 @@ export function recordScopeDecision({
     };
   }
 
+  const persistence = action === "reset"
+    ? await clearOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId)
+    : await saveOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId, { scope_decision: rule.scope_decision }, name);
+
   fs.writeFileSync(file, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
 
   // NOTE: no cache is cleared, deliberately. Nothing here alters what the
@@ -218,6 +229,8 @@ export function recordScopeDecision({
     rule_id: ruleId,
     decision: action,
     scope_decision: rule.scope_decision || null,
+    persisted: persistence.persisted,
+    persistence_note: persistence.persisted ? null : persistence.reason,
     summary: summariseConstraintScope(),
   };
 }

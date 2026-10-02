@@ -1,0 +1,266 @@
+{
+  "$probe": "probeDeclinePrecedence.mjs (D4.34-A)",
+  "$what_this_is": "a stage-by-stage trace. Generation is unchanged by this script.",
+  "target_clause": "CORE_DEFINITIONS_001",
+  "decline_field": "include_nomenclature_clause",
+  "structural_carriers_in_library": [
+    {
+      "carrier": "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+      "relationship": "depends_on"
+    },
+    {
+      "carrier": "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+      "relationship": "depends_on"
+    },
+    {
+      "carrier": "SERVICE_PAYMENT_001",
+      "relationship": "depends_on"
+    },
+    {
+      "carrier": "CORE_CONFIDENTIALITY_001",
+      "relationship": "depends_on"
+    },
+    {
+      "carrier": "CORE_INTERPRETATION_001",
+      "relationship": "depends_on"
+    }
+  ],
+  "rows": [
+    {
+      "document_type": "CONSULTANCY_AGREEMENT",
+      "selection": {
+        "knew": "the decline is recorded: the target is in applicability_excluded_clause_ids",
+        "did": "absent"
+      },
+      "carriers_present_at_selection": [
+        {
+          "carrier": "CORE_CONFIDENTIALITY_001",
+          "relationship": "depends_on"
+        }
+      ],
+      "stages": [
+        {
+          "stage": "resolveDependencies",
+          "target_present_after": true,
+          "transition": "ADDED here",
+          "injected_by": "dependencyResolver",
+          "exclusion_set_reaches_this_stage": true
+        },
+        {
+          "stage": "injectJurisdictionRules",
+          "target_present_after": true
+        },
+        {
+          "stage": "injectDoctrine",
+          "target_present_after": true
+        },
+        {
+          "stage": "enforceScopeGuard",
+          "target_present_after": true
+        },
+        {
+          "stage": "resolveSignatures",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentHardening",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentQualityControls",
+          "target_present_after": true
+        },
+        {
+          "stage": "enhanceCommercially",
+          "target_present_after": true
+        },
+        {
+          "stage": "lockCriticalClauses",
+          "target_present_after": true
+        },
+        {
+          "stage": "normalizeClauseText",
+          "target_present_after": true
+        }
+      ],
+      "final": "DECLINE LOST"
+    },
+    {
+      "document_type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "selection": {
+        "knew": "the decline is recorded: the target is in applicability_excluded_clause_ids",
+        "did": "absent"
+      },
+      "carriers_present_at_selection": [
+        {
+          "carrier": "SERVICE_PAYMENT_001",
+          "relationship": "depends_on"
+        },
+        {
+          "carrier": "CORE_CONFIDENTIALITY_001",
+          "relationship": "depends_on"
+        }
+      ],
+      "stages": [
+        {
+          "stage": "resolveDependencies",
+          "target_present_after": true,
+          "transition": "ADDED here",
+          "injected_by": "dependencyResolver",
+          "exclusion_set_reaches_this_stage": true
+        },
+        {
+          "stage": "injectJurisdictionRules",
+          "target_present_after": true
+        },
+        {
+          "stage": "injectDoctrine",
+          "target_present_after": true
+        },
+        {
+          "stage": "enforceScopeGuard",
+          "target_present_after": true
+        },
+        {
+          "stage": "resolveSignatures",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentHardening",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentQualityControls",
+          "target_present_after": true
+        },
+        {
+          "stage": "enhanceCommercially",
+          "target_present_after": true
+        },
+        {
+          "stage": "lockCriticalClauses",
+          "target_present_after": true
+        },
+        {
+          "stage": "normalizeClauseText",
+          "target_present_after": true
+        }
+      ],
+      "final": "DECLINE LOST"
+    },
+    {
+      "document_type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "selection": {
+        "knew": "the decline is recorded: the target is in applicability_excluded_clause_ids",
+        "did": "absent"
+      },
+      "carriers_present_at_selection": [
+        {
+          "carrier": "SERVICE_PAYMENT_001",
+          "relationship": "depends_on"
+        },
+        {
+          "carrier": "CORE_CONFIDENTIALITY_001",
+          "relationship": "depends_on"
+        }
+      ],
+      "stages": [
+        {
+          "stage": "resolveDependencies",
+          "target_present_after": true,
+          "transition": "ADDED here",
+          "injected_by": "dependencyResolver",
+          "exclusion_set_reaches_this_stage": true
+        },
+        {
+          "stage": "injectJurisdictionRules",
+          "target_present_after": true
+        },
+        {
+          "stage": "injectDoctrine",
+          "target_present_after": true
+        },
+        {
+          "stage": "enforceScopeGuard",
+          "target_present_after": true
+        },
+        {
+          "stage": "resolveSignatures",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentHardening",
+          "target_present_after": true
+        },
+        {
+          "stage": "applyDocumentQualityControls",
+          "target_present_after": true
+        },
+        {
+          "stage": "enhanceCommercially",
+          "target_present_after": true
+        },
+        {
+          "stage": "lockCriticalClauses",
+          "target_present_after": true
+        },
+        {
+          "stage": "normalizeClauseText",
+          "target_present_after": true
+        }
+      ],
+      "final": "DECLINE LOST"
+    },
+    {
+      "document_type": "SERVICE_AGREEMENT",
+      "selection": {
+        "knew": "the decline is recorded: the target is in applicability_excluded_clause_ids",
+        "did": "absent"
+      },
+      "carriers_present_at_selection": [],
+      "stages": [
+        {
+          "stage": "resolveDependencies",
+          "target_present_after": false
+        },
+        {
+          "stage": "injectJurisdictionRules",
+          "target_present_after": false
+        },
+        {
+          "stage": "injectDoctrine",
+          "target_present_after": false
+        },
+        {
+          "stage": "enforceScopeGuard",
+          "target_present_after": false
+        },
+        {
+          "stage": "resolveSignatures",
+          "target_present_after": false
+        },
+        {
+          "stage": "applyDocumentHardening",
+          "target_present_after": false
+        },
+        {
+          "stage": "applyDocumentQualityControls",
+          "target_present_after": false
+        },
+        {
+          "stage": "enhanceCommercially",
+          "target_present_after": false
+        },
+        {
+          "stage": "lockCriticalClauses",
+          "target_present_after": false
+        },
+        {
+          "stage": "normalizeClauseText",
+          "target_present_after": false
+        }
+      ],
+      "final": "decline survived"
+    }
+  ]
+}

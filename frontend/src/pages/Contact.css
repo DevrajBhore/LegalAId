@@ -195,3 +195,8 @@
 @media (max-width: 820px) {
   .contact-shell { grid-template-columns: 1fr; }
 }
+
+.contact-error { padding: 10px 12px; border-radius: 10px; font-size: 0.88rem; color: var(--red, #e5645c); border: 1px solid currentColor; }
+.contact-privacy { margin: 0; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.contact-privacy a, .contact-info-value a { color: var(--gold); }
+.contact-hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }

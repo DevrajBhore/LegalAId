@@ -1,0 +1,178 @@
+{
+  "$comment": [
+    "D4.41 — REDUCING B AND E TO MECHANISMS THE REPOSITORY ALREADY EXECUTES.",
+    "",
+    "Acceptance invariant: a satisfaction implementation may reuse mechanism, but it may not inherit",
+    "semantic ownership. Stopping rule: if B or E cannot be expressed by composing existing mechanisms",
+    "while preserving the recorded truth-makers, the requirement is not yet reduced enough to implement.",
+    "",
+    "Result: B reduces. E does not, and the stopping rule was applied rather than worked around."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.41",
+  "kind": "REDUCTION",
+  "status": "B REDUCED — proof module, not wired into generation. E NOT REDUCED — stopping rule applied.",
+  "the_only_production_code_change": {
+    "file": "backend/services/conceptResolver.js",
+    "change": "`function matches` → `export function matches`, plus a comment naming the two input shapes it evaluates silently and wrongly. Visibility only; its one caller in that file is unchanged; conceptRecords and conceptVerticalSlice pass unchanged.",
+    "$why_exporting_was_the_only_option": "D4.40 forbade a second evaluator and D4.39 named 'duplicating the predicate engine' as unsupported. Reusing the one evaluator that exists required making it reachable."
+  },
+  "corrections_found_while_reducing": {
+    "$recorded_because": "Reduction means running the precedents, not reading them. Running them overturned claims three earlier records made from reading.",
+    "D4_39_B_had_a_shape_not_an_evaluator": {
+      "claimed": "Case B's precedent — concepts.requires_dimensions — was 'built, shipped and tested'.",
+      "true": "No code anywhere reads requires_dimensions. It is a declared data shape. The D4.39 test checked that the shape existed in JSON; it never checked that anything evaluated it.",
+      "what_B_actually_reuses": "The operations B needs ARE executed, inside resolveConcept: matches() for one predicate, Array.every across a source's `when` list (conjunction), and first-positive-wins across sources (disjunction). The composition is new; each operation is not.",
+      "$the_invariant": "A declaration is not an evaluator."
+    },
+    "D4_40_counted_declarations_not_behaviour": {
+      "claimed": "7 of 10 concepts assume when unresolved — safe_default ×3, present ×3, absent ×1.",
+      "true": "7 DECLARE an assumption; the resolver IMPLEMENTS 4. `safe_default` → PRESENT (3 concepts), `absent` → ABSENT (1). The three `assume: present` declarations fall through unhandled and stay UNRESOLVED.",
+      "does_the_decision_stand": "Yes, on live behaviour. Three concepts still convert 'cannot establish' into 'applies' in the running system, which is the construct that inverts dangerously across the applicability/satisfaction boundary. The count was wrong; the asymmetry is real.",
+      "and_it_exposed": "A latent concept-layer defect — see concept-layer-gaps.json."
+    },
+    "D4_37_SUPPLY_row_was_reasoned_from_a_template": {
+      "claimed": "SERVICE_REQUIRES_SCOPE on SUPPLY_AGREEMENT is discharged by CORE_PURPOSE_001, 'a clause that defers its own substance to a template variable'.",
+      "true": "The instrument actually shipped reads '…in relation to Stainless steel commercial kitchen equipment: 1800 mm x 600 mm work tables, four-tier storage racks and 300-litre undercounter refrigeration units, all in 304-grade brushed finish.' The placeholder is filled.",
+      "re_measured_not_hand_edited": "The probe now classifies from the RENDERED clause. The verdict HELD — the rendered clause states the goods supplied, and the rule asks for a scope of SERVICES, which it does not speak to. D4.37's count stays at 4. Only its stated reason was wrong.",
+      "$the_near_miss": "I expected this row to move to UNRESOLVED and was about to record '4 → 3' by hand. Re-running the instrument showed the verdict survives for a different reason. A hand-edited count would have been a new error.",
+      "$the_invariant": "A template is not the artifact — and correcting a reason is not the same as correcting a verdict."
+    },
+    "D4_40_G1_is_at_least_two": {
+      "claimed": "One clause (TECH_SOURCE_CODE_001) still awaits the polarity split.",
+      "true": "IP_OWNERSHIP_001's rendered text differs materially by world under one id: a client-exclusive assignment when the client owns, 'allocated in accordance with the following arrangement: Shared IP' when shared.",
+      "$proposition_relative": "Whether that is a G1 hazard depends on the claim. For 'IP vests in the client' it is false in the Shared world; for 'ownership is specified' it is a legal question. Any implements on that id must hold in every world that renders it.",
+      "$not_a_census": "Found incidentally while building case F. How many clauses render materially different substance by world under one id has not been measured."
+    }
+  },
+  "B_joint_satisfaction": {
+    "verdict": "REDUCED",
+    "module": "backend/services/propositionSatisfaction.js — one import (matches), not wired into generation",
+    "the_shape": "Fixed depth two, no operators, no nesting. Every REQUIRED dimension must be satisfied (AND across); a dimension is satisfied by ANY present clause declaring it (OR within). A dimension may carry one `required_when` condition, evaluated by matches().",
+    "who_owns_what": {
+      "the_proposition": "its dimensions and when each is required — the truth condition. It names NO clauses.",
+      "the_clause": "which dimension of which proposition it claims to establish — declared where the knowledge is authored (case C).",
+      "the_mechanism": "whether one {var, op, value} condition holds in a context. Nothing else."
+    },
+    "what_the_layer_owns_that_the_mechanism_must_not_supply": [
+      "An ABSENT condition variable is UNRESOLVED. matches() returns false, which would drop the dimension as not required and let the proposition go green on a question nobody answered.",
+      "VACUITY — no dimension required — is UNRESOLVED, never ESTABLISHED. The default the other way is D4.37's vacuous satisfaction.",
+      "An UNDECLARED clause is not a clause that establishes nothing. A dimension no declaring clause covers is UNSATISFIED only if every present clause has declared; otherwise UNRESOLVED.",
+      "A definite failure in a conjunction is a definite failure. That is logic, not an assumption, and it is the only negative the layer concludes."
+    ],
+    "refused_at_admission": [
+      "an array `var` — matches() reads it as one comma-joined key and returns false silently",
+      "any `op` but `eq` for required_when — matches() returns false for an unknown op, and `present`/`in` are not demonstrated for B",
+      "any clause list on a proposition or dimension (satisfied_by, fails_if, clauses…) — the id-list coupling, rebuilt",
+      "requires_content — case E is not reduced"
+    ],
+    "the_context_is_the_object_the_gates_saw": {
+      "fact": "The raw IP intake carries no assigns_* at all. The blueprint gates read derived controls: copyright true, patents false, trademarks false.",
+      "consequence": "required_when is judged against draft.metadata.resolved_generation_controls. Judged against the raw intake, every dimension goes UNRESOLVED — the absent-is-not-false rule makes the wrong object fail SAFE rather than fail wrong."
+    },
+    "demonstrated_on_real_drafts": [
+      {
+        "case": "B, two authorings",
+        "draft": "IP_ASSIGNMENT_AGREEMENT (copyright grant only)",
+        "result": "all-rights authoring NOT_ESTABLISHED; rights-in-play authoring ESTABLISHED. Same draft, same proposition id, opposite verdicts. The evaluator chose neither legal answer."
+      },
+      {
+        "case": "F inside B",
+        "draft": "SOFTWARE_DEVELOPMENT_AGREEMENT, both allocation worlds via the real ip_ownership field",
+        "result": "ESTABLISHED by IP_OWNERSHIP_001 in one world, by IP_DEVELOPER_RETAINS_001 in the other. Existential satisfaction survives the conjunction."
+      },
+      {
+        "case": "A and G1",
+        "draft": "MOU, binding and non-binding",
+        "result": "Binding: ESTABLISHED from the LIVE declaration on MOU_BINDING_001. Non-binding: not established — polarity handled by clause identity, no new mechanism."
+      }
+    ],
+    "what_B_cannot_do_until_case_C": {
+      "finding": "With the live library, B can establish a proposition or escalate it, but it can almost never conclude NOT_ESTABLISHED — because a negative requires every present clause to have declared what it establishes, and 3 of 316 have.",
+      "shown": "The all-rights authoring on the real IP draft is UNRESOLVED today and NOT_ESTABLISHED only under a HYPOTHETICAL in which every present clause has declared.",
+      "$why_this_is_the_right_failure": "No false positive and no false negative — only escalation. It is also the cost of case C, made exact: the authoring obligation is what licenses a negative verdict."
+    }
+  },
+  "E_context_dependent_satisfaction": {
+    "verdict": "NOT REDUCED — the stopping rule applies",
+    "the_only_demonstrated_instance": "CORE_PURPOSE_001, '…in relation to {{purpose}}'.",
+    "what_running_it_showed": [
+      "SUPPLY_AGREEMENT's intake has no `purpose` field, yet the rendered clause is filled with a detailed goods description.",
+      "`{{purpose}}` is resolved by a fallback chain of FIFTEEN sources in variableInjector: purpose, services_description, consulting_services, business_purpose, jv_purpose, mou_purpose, project_description, product_description, goods_description, property_description, security_collateral — then SYNTHESISED sentences built from company_name, partnership_name, jv_name, loan_amount, guaranteed_amount, property_address.",
+      "So rendered presence is guaranteed whenever almost anything is filled, including by boilerplate manufactured from a party name. Presence is not evidence that substance was stated.",
+      "The truth-maker is WHICH source filled the placeholder — a user's own description, or a manufactured sentence — and the injector discards that."
+    ],
+    "the_two_routes_and_why_each_is_refused": [
+      {
+        "route": "Condition satisfaction on the source fields — 'any of these description fields is present'.",
+        "refused_because": [
+          "It is a SECOND ENUMERATION of the fallback chain, correct only while every description source precedes every synthesised one. Reorder derivePurpose and the two copies diverge silently — the 'two call sites that currently agree' defect Phase A removed, and D4.38's fifth guardrail.",
+          "Worse, it would import the INJECTOR'S DRAFTING HEURISTIC — which fields may fill a placeholder — as a LEGAL TRUTH CONDITION about what states a scope. That is semantic leakage from the rendering path into satisfaction."
+        ]
+      },
+      {
+        "route": "Have the injector report which source filled each placeholder, and read that.",
+        "refused_because": "It changes the generation path, which D4.41 may not do."
+      }
+    ],
+    "the_unblocking_requirement": "PLACEHOLDER-LEVEL CONTENT PROVENANCE: the rendering path records, for each substituted placeholder, which source supplied it.",
+    "$the_connection": "This is D4.34-B's provenance gap one level down. D4.34-B: a third of shipped clauses cannot say which stage put them there. D4.41: a filled placeholder cannot say which field — or which manufactured sentence — filled it. Satisfaction on content needs the second the way auditability needs the first.",
+    "second_instance_observed": "IP_OWNERSHIP_001 in the Shared world: the operative allocation of new IP is the literal form label 'Shared IP' substituted into the clause. Recorded as a question for the advocate; not pursued."
+  },
+  "mutation_evidence": {
+    "$method": "Each leak reintroduced into the module; each must be refused by the check written for it.",
+    "results": [
+      {
+        "mutation": "an absent condition read as false",
+        "caught_by": "LEAK PROBE — an absent condition"
+      },
+      {
+        "mutation": "a concept semantic imported alongside matches",
+        "caught_by": "the module imports exactly one thing"
+      },
+      {
+        "mutation": "an undeclared clause read as declaring nothing",
+        "caught_by": "LEAK PROBE — a missing declaration is not a denial"
+      },
+      {
+        "mutation": "vacuity defaulted to established",
+        "caught_by": "LEAK PROBE — vacuity"
+      },
+      {
+        "mutation": "an array var admitted",
+        "caught_by": "LEAK PROBE — an array var"
+      },
+      {
+        "mutation": "the layer evaluating a condition itself instead of calling the mechanism",
+        "caught_by": "every evaluable condition goes through the injected mechanism"
+      }
+    ]
+  },
+  "what_was_not_touched": [
+    "clause selection",
+    "blueprint gates",
+    "interview logic",
+    "generation ordering",
+    "applicability semantics",
+    "concept unresolved_behaviour — including the three defects in it this phase found",
+    "the evidence-state vocabulary",
+    "the proposition vocabulary (still 12)",
+    "the clause library's implements declarations (still 3)",
+    "the six legal judgements"
+  ],
+  "what_this_record_does_not_do": [
+    "It does not wire the reduction into generation or validation.",
+    "It does not add any proposition to the vocabulary or any implements declaration to a clause — the fixtures that exercise B live under tests/.",
+    "It does not generalise B past the demonstrated cases: one operator, one condition per dimension, depth two.",
+    "It does not approximate E.",
+    "It does not decide which authoring of the IP proposition is legally correct."
+  ],
+  "correction_D4_42": {
+    "what": "Case A/G1 evidence was produced by setting `is_binding_mou` directly on assembleDocument. `is_binding_mou` is the derived control the MOU blueprint gate reads (generationControls.js derives it from the form field `binding_nature`); it is not a form field, and assembleDocument does not sanitise input to the form.",
+    "consequence": "The test injected the gate's input instead of the user's answer, skipping the derivation, and judged an assembled rather than a shipped draft.",
+    "does_the_conclusion_change": "No. Re-run through `binding_nature` and generateDocument: 'Binding' ships MOU_BINDING_001 and is ESTABLISHED from the live declaration; 'Non-binding' ships MOU_NON_BINDING_001 and is not established.",
+    "what_changed": "tests/satisfactionReduction.test.mjs case A/G1 now drives `binding_nature` through generateDocument and asserts that `is_binding_mou` is not a form field.",
+    "stage_of_case_B_stated": "Case B remains on the ASSEMBLED draft because IP_ASSIGNMENT_AGREEMENT ships no draft under the well-filled fixture (0 clauses). What is judged there is clause selection, which assembly completes. This is now stated in the test.",
+    "adjacent_observation_for_the_advocate": "'Partly binding' derives is_binding_mou = true and ships MOU_BINDING_001: the same clause, byte-identical to 'Binding'. Whether a partly-binding MOU may be drafted as wholly binding is a legal question and is not decided here."
+  }
+}

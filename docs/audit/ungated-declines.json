@@ -1,0 +1,598 @@
+{
+  "$probe": "probeUngatedDeclines.mjs (D4.34-B step 3)",
+  "$finding": "applicability_excluded_clause_ids is keyed to the blueprint's questions, not to the user's answers. A protection the intake offers but no blueprint gates produces an answer no downstream stage can see.",
+  "$not_a_claim": [
+    "NOT a claim that the clause should be absent in these cases. Whether a declined protection should be honoured is the precedence question of D4.34-A, still unanswered.",
+    "NOT a claim that every ungated pair is a defect. A protection the intake asks about for one family may be legitimately unconditional in another."
+  ],
+  "fixture": "MINIMAL_DECLINED",
+  "totals": {
+    "pairs_where_intake_asks": 40,
+    "asked_and_gated": 30,
+    "asked_but_ungated": 10,
+    "ungated_AND_declined_by_the_user": 10,
+    "families_in_the_blind_spot": 10,
+    "roles_in_the_blind_spot": [
+      "ENTIRE_AGREEMENT",
+      "FORCE_MAJEURE"
+    ]
+  },
+  "blind_spot": [
+    {
+      "type": "FOUNDERS_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "TERM_SHEET",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "SHARE_SUBSCRIPTION_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "IP_ASSIGNMENT_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "DATA_PROCESSING_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "APPOINTMENT_LETTER",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "INTERNSHIP_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "SEPARATION_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "SETTLEMENT_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    },
+    {
+      "type": "MOU",
+      "role": "FORCE_MAJEURE",
+      "field": "include_force_majeure",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_FORCE_MAJEURE_FALLBACK_001",
+        "CORE_FORCE_MAJEURE_001",
+        "AUTO-FM-001"
+      ],
+      "gated_ids": [],
+      "recorded_as_excluded": []
+    }
+  ],
+  "asked_and_gated": [
+    {
+      "type": "NDA",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "EMPLOYMENT_CONTRACT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SERVICE_AGREEMENT",
+      "role": "INDEMNITY",
+      "field": "include_indemnity_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_INDEMNITY_FULL_001",
+        "CORE_INDEMNITY_001",
+        "AUTO-INDEM-001"
+      ],
+      "gated_ids": [
+        "CORE_INDEMNITY_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_INDEMNITY_001"
+      ]
+    },
+    {
+      "type": "SERVICE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SERVICE_AGREEMENT",
+      "role": "NOMENCLATURE",
+      "field": "include_nomenclature_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "gated_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_DEFINITIONS_001"
+      ]
+    },
+    {
+      "type": "CONSULTANCY_AGREEMENT",
+      "role": "INDEMNITY",
+      "field": "include_indemnity_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_INDEMNITY_FULL_001",
+        "CORE_INDEMNITY_001",
+        "AUTO-INDEM-001"
+      ],
+      "gated_ids": [
+        "CORE_INDEMNITY_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_INDEMNITY_001"
+      ]
+    },
+    {
+      "type": "CONSULTANCY_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "CONSULTANCY_AGREEMENT",
+      "role": "NOMENCLATURE",
+      "field": "include_nomenclature_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "gated_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_DEFINITIONS_001"
+      ]
+    },
+    {
+      "type": "PARTNERSHIP_DEED",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SHAREHOLDERS_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "JOINT_VENTURE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SUPPLY_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "DISTRIBUTION_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SALES_OF_GOODS_AGREEMENT",
+      "role": "FORCE_MAJEURE",
+      "field": "include_force_majeure",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_FORCE_MAJEURE_FALLBACK_001",
+        "CORE_FORCE_MAJEURE_001",
+        "AUTO-FM-001"
+      ],
+      "gated_ids": [
+        "CORE_FORCE_MAJEURE_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_FORCE_MAJEURE_001"
+      ]
+    },
+    {
+      "type": "SALES_OF_GOODS_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "role": "INDEMNITY",
+      "field": "include_indemnity_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_INDEMNITY_FULL_001",
+        "CORE_INDEMNITY_001",
+        "AUTO-INDEM-001"
+      ],
+      "gated_ids": [
+        "CORE_INDEMNITY_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_INDEMNITY_001"
+      ]
+    },
+    {
+      "type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "role": "NOMENCLATURE",
+      "field": "include_nomenclature_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "gated_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_DEFINITIONS_001"
+      ]
+    },
+    {
+      "type": "COMMERCIAL_LEASE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "LEAVE_AND_LICENSE_AGREEMENT",
+      "role": "FORCE_MAJEURE",
+      "field": "include_force_majeure",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_FORCE_MAJEURE_FALLBACK_001",
+        "CORE_FORCE_MAJEURE_001",
+        "AUTO-FM-001"
+      ],
+      "gated_ids": [
+        "CORE_FORCE_MAJEURE_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_FORCE_MAJEURE_001"
+      ]
+    },
+    {
+      "type": "LEAVE_AND_LICENSE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "LOAN_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "GUARANTEE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "role": "INDEMNITY",
+      "field": "include_indemnity_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_INDEMNITY_FULL_001",
+        "CORE_INDEMNITY_001",
+        "AUTO-INDEM-001"
+      ],
+      "gated_ids": [
+        "CORE_INDEMNITY_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_INDEMNITY_001"
+      ]
+    },
+    {
+      "type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "role": "NOMENCLATURE",
+      "field": "include_nomenclature_clause",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "gated_ids": [
+        "CORE_DEFINITIONS_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_DEFINITIONS_001"
+      ]
+    },
+    {
+      "type": "MOU",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "VENDOR_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "MASTER_SERVICE_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    },
+    {
+      "type": "RENTAL_AGREEMENT",
+      "role": "ENTIRE_AGREEMENT",
+      "field": "include_entire_agreement",
+      "answered": "No",
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "gated_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "recorded_as_excluded": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ]
+    }
+  ]
+}

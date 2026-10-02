@@ -1,0 +1,10 @@
+Contributed fact files (`*.facts.json`) are written here by a family that asks a
+legal question of its own. The directory is legitimately EMPTY in the shipped
+state — and git does not track empty directories, so it vanished on clone.
+
+Three consumers assumed it existed: factRegistry (tolerant — it treats a missing
+directory as "no contributed facts", which is correct), factAdmission.test.mjs
+and proveUniversality.mjs (both not tolerant — they write into it).
+
+This file exists so the directory survives a clone. Do not delete it while the
+directory is empty.

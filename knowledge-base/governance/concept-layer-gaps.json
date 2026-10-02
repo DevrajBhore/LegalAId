@@ -1,0 +1,49 @@
+{
+  "$comment": [
+    "THREE PLACES WHERE THE CONCEPT LAYER DECLARES SEMANTICS ITS EVALUATOR DOES NOT EXECUTE.",
+    "",
+    "Found by D4.41 while running the concept layer as a precedent instead of reading it. None is",
+    "repaired: concept unresolved_behaviour and applicability semantics were explicitly out of bounds for",
+    "D4.41, and two of the three change what documents contain. They are recorded, pinned, and handed on."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "found_in": "D4.41",
+  "kind": "PRODUCT FINDING",
+  "status": "RECORDED — not repaired",
+
+  "the_pattern": "The concept layer's data vocabulary has drifted ahead of its evaluator. Records declare behaviour that no code implements, and nothing reports the difference.",
+
+  "gaps": [
+    {
+      "id": "REQUIRES_DIMENSIONS_IS_NEVER_READ",
+      "declared": "Every concept carries requires_dimensions — e.g. {\"role\":[\"employer\"],\"event\":[\"employ\"]}.",
+      "executed": "No code in backend, shared, IRE or scripts reads the key.",
+      "consequence": "No behavioural effect today. It misled D4.39, which cited it as an executed precedent for joint satisfaction.",
+      "severity": "documentation — the declaration promises a check that does not happen"
+    },
+    {
+      "id": "ASSUME_PRESENT_IS_NOT_IMPLEMENTED",
+      "declared": "COMPULSORILY_REGISTRABLE, GST_TAXABLE_SUPPLY and TDS_DEDUCTIBLE_PAYMENT declare unresolved_behaviour.assume = \"present\".",
+      "executed": "resolveConcept handles only \"absent\" and \"safe_default\". \"present\" falls through, the concept stays UNRESOLVED, and conceptAttaches returns false.",
+      "consequence": "Where the knowledge says 'if we cannot tell, treat GST / TDS / compulsory registration as applying', the running system does not attach those clauses. The drafting intent of three concept records is silently unexecuted.",
+      "severity": "affects document content"
+    },
+    {
+      "id": "ARRAY_VAR_IS_READ_AS_ONE_MISSING_KEY",
+      "declared": "GST_TAXABLE_SUPPLY detection: {var: [party_1_gstin, party_2_gstin, employer_gstin], op: present}, with the note that a party supplying a GSTIN is strong evidence the supply is taxable. TDS_DEDUCTIBLE_PAYMENT: the same shape over two PAN fields.",
+      "executed": "matches() reads values[condition.var]. An array is coerced to the single key 'party_1_gstin,party_2_gstin,employer_gstin', which never exists, so `present` is false.",
+      "observed_live": "resolveConcept(GST_TAXABLE_SUPPLY, {party_1_gstin: '27AAACA1234A1Z5'}) → ABSENT. Supplying a PAN to TDS_DEDUCTIBLE_PAYMENT → ABSENT.",
+      "consequence": "The evidence meant to ESTABLISH the concept records its ABSENCE. Because the result is ABSENT rather than UNRESOLVED, the declared assume:present would not engage even if it were implemented.",
+      "severity": "affects document content — actively inverts the author's intent"
+    }
+  ],
+
+  "$how_d4_41_protects_itself": "The satisfaction reduction reuses matches() and refuses, at admission, the two input shapes matches() mis-evaluates silently: an array var and an unknown operator. Reusing a mechanism must not mean inheriting its failures.",
+
+  "owner": "engine (evaluator coverage of the declared vocabulary) and advocate (whether the three assume:present intents are correct before they are made to execute)",
+
+  "$do_not_repair_by": [
+    "Implementing assume:present without the advocate confirming it. Making three unexecuted assumptions execute changes documents, and D4.40 established that assumption semantics must be handled with care even on the applicability side.",
+    "Special-casing array vars inside matches() without deciding whether the whole concept vocabulary should admit them — that would be growing the one evaluator the repository has, which D4.40 asked to be done deliberately if at all."
+  ]
+}

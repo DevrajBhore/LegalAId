@@ -784,5 +784,60 @@
       }
     ],
     "clean_stopping_point": "NO — the governance records close cleanly; the suite does not. The item above has to be settled before any further measurement can be attributed."
-  }
+  },
+  "measurement_invariants": [
+    {
+      "id": "APPLICABILITY_PRECEDES_EVALUATION",
+      "statement": "A constraint that does not apply to a family cannot be evaluated as vacuously satisfied, or as failed, for that family.",
+      "$established_by": "D4.37 pass 3. An unscoped probe iterated every rule against every family and scored a distribution rule as vacuously satisfied on a share subscription agreement — a family binding only `contract` and `corporate`, where that rule never runs.",
+      "$cost_of_ignoring_it": "584 measured pairs fell to 211 and 80 reported findings fell to 14 when the binding was applied. Four fifths of the result was an artifact of the instrument.",
+      "$generalises_to": "Any measurement over rules, constraints or checks must first establish WHICH of them the production system actually evaluates for the subject being measured. Otherwise the population is the union of everything declared anywhere, which no running system ever sees.",
+      "$sits_alongside": "The repository, population and specification provenance dimensions of D4.31-D4.32. This is the same class of error one level down: not 'which tree' or 'which population', but 'which rules were even in play'."
+    },
+    {
+      "id": "AN_EXCERPT_IS_NOT_THE_ARTIFACT",
+      "statement": "A classification made from a truncated read of an artifact is not a classification of that artifact.",
+      "$established_by": "D4.37 pass 5. A probe stored 260 characters of a 508-character clause and reported ten families on the half that did not contain the consideration recital.",
+      "$why_it_is_subtle": "The rule 'inspect the generated artifact before classifying it' was already in force and was followed in form. The probe did inspect, print and record the clause. It recorded a prefix.",
+      "$the_operational_form": "Anything a verdict depends on is carried whole. Truncate for display if you must; never for the comparison."
+    },
+    {
+      "id": "A_TEMPLATE_IS_NOT_THE_ARTIFACT",
+      "statement": "A clause in the library and the same clause in a shipped instrument are different objects. Classify the rendered one.",
+      "$established_by": "D4.41. D4.37 reasoned about SERVICE_REQUIRES_SCOPE from '…in relation to {{purpose}}'; the shipped clause names specific kitchen equipment. Separately, a suspicion that choosing 'Shared IP' produces a client-exclusive clause came from the template and was false: hardening re-renders the clause per world.",
+      "$it_cuts_both_ways": "The template made one finding's REASON wrong while its verdict survived on the rendered text, and made one suspected finding wrong outright. Re-measuring, not editing, is what distinguished the two.",
+      "$extends": "AN_EXCERPT_IS_NOT_THE_ARTIFACT — a prefix of the artifact, and an unrendered form of it, are both not it."
+    },
+    {
+      "id": "A_DECLARATION_IS_NOT_AN_EVALUATOR",
+      "statement": "That a record declares a behaviour is not evidence that anything performs it. A precedent is cited from what executes.",
+      "$established_by": "D4.41. requires_dimensions is read by no code; assume:present is not implemented; an array var is read as one missing key. D4.39 and D4.40 each cited declarations as behaviour.",
+      "$the_operational_form": "Before citing machinery as precedent, run it on an input that exercises the cited behaviour and observe the output."
+    },
+    {
+      "id": "A_SEARCH_FINDS_ONLY_WHAT_IT_NAMES",
+      "statement": "An instrument that looks for a known value can report only the presence or absence of that value. It cannot report that some other value filled the same place.",
+      "$established_by": "D4.42. A probe searched shipped text for the injector's default '12 months' and reported the non-compete period as 'user value only'. The instrument shipped 'twelve (12) months' from a second rendering path whose default the probe did not know.",
+      "$the_operational_form": "To find what fills a slot, compare the answered and unanswered worlds and read what occupies the slot. Discover the value; do not assume it."
+    },
+    {
+      "id": "ATTRIBUTION_REQUIRES_INTERVENTION",
+      "statement": "That a value also appears in an input is not evidence that the input supplied it. Attribute a value to a source only if altering the source moves the value.",
+      "$established_by": "D4.42. 'Mumbai' filled an unanswered place of execution and also appeared in the first party's address and in a renderer constant. Moving the address moved the value: the address was the source. A select-field alteration that the validator refused was first reported as 'from no input' — an untested intervention is not a negative result.",
+      "$the_operational_form": "Follow test: alter the candidate, re-render both worlds, re-align, attribute only on movement. If the alteration cannot be run, say so; never read that as absence.",
+      "$extends": "'a trace of a different object is not a trace' — co-occurrence is a trace of nothing."
+    },
+    {
+      "id": "A_GATE_IS_UNPROVEN_UNTIL_IT_CATCHES_A_PLANTED_DEFECT",
+      "statement": "A test or gate that passes has shown nothing until it has been seen to fail on a defect planted on purpose.",
+      "$established_by": "D4.43. A differential test ran 4000 'random' inputs through the old and new injector and passed. Its generator was a floating-point LCG that collapses above 2^53, so the inputs barely varied; a mutation that stopped skipping whitespace-only values also passed. With a 32-bit PRNG the same mutation fails at once. The conservation gate was likewise mutated three ways before it was trusted (183, 18 and 8 violations).",
+      "$the_operational_form": "For every gate: plant at least one defect of the kind it exists to catch, watch it fail, revert, record the count."
+    },
+    {
+      "id": "THE_GATE_PROVES_THE_TEXT_THE_TESTS_PROVE_THE_RECORD",
+      "statement": "An output-conservation gate cannot detect a wrong label, because a label is not output. Instrumentation needs two proofs: the artifact is unchanged, and the record is true.",
+      "$established_by": "D4.43. Mislabelling the answered restriction period as CONSTANT_DEFAULT left all 217 cases byte-identical — the gate passed, correctly. tests/provenanceHardening.test.mjs failed on it. A mutation that changed a labelled literal did the opposite: the gate failed (4 cases).",
+      "$the_operational_form": "For every instrumented branch, the gate covers what ships; a test drives the branch both ways and asserts the recorded class. Mutate each side and watch the other stay silent."
+    }
+  ]
 }

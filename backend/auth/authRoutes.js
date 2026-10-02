@@ -3,6 +3,9 @@ import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import User from "../models/User.js";
+import DocumentDraft from "../models/DocumentDraft.js";
+import DocumentVersion from "../models/DocumentVersion.js";
+import { TERMS_VERSION, PRIVACY_VERSION, MINIMUM_AGE } from "../services/legalNotice.js";
 import { protect } from "./authMiddleware.js";
 import {
   sendVerificationEmail,
@@ -68,6 +71,8 @@ function serializeUser(user) {
   };
 }
 
+const INDIAN_MOBILE = /^[6-9]\d{9}$/;
+
 // ── POST /auth/register ───────────────────────────────────────────────────────
 router.post("/register", async (req, res) => {
   try {
@@ -79,11 +84,21 @@ router.post("/register", async (req, res) => {
       return res
         .status(400)
         .json({ error: "Name, email and password are required." });
+    // Enforced here, not only by the form's checkboxes: a request that skips the
+    // form must still carry both confirmations.
+    if (req.body?.ageConfirmed !== true)
+      return res
+        .status(400)
+        .json({ error: `You must be ${MINIMUM_AGE} or older to use LegalAId.` });
+    if (req.body?.acceptedTerms !== true)
+      return res
+        .status(400)
+        .json({ error: "Please accept the Terms of Service and Privacy Policy." });
     if (password.length < 8)
       return res
         .status(400)
         .json({ error: "Password must be at least 8 characters." });
-    if (phone && !/^[6-9]\d{9}$/.test(phone))
+    if (phone && !INDIAN_MOBILE.test(phone))
       return res
         .status(400)
         .json({ error: "Please enter a valid 10-digit Indian mobile number." });
@@ -110,6 +125,12 @@ router.post("/register", async (req, res) => {
       password,
       verificationToken,
       verificationTokenExpiry: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      consent: {
+        termsVersion: TERMS_VERSION,
+        privacyVersion: PRIVACY_VERSION,
+        ageConfirmed: true,
+        acceptedAt: new Date(),
+      },
     });
     await sendVerificationEmail(name, email, verificationToken);
     res
@@ -346,6 +367,99 @@ router.post("/change-password", protect, async (req, res) => {
     res
       .status(500)
       .json({ error: "Failed to change password. Please try again." });
+  }
+});
+
+// ── PATCH /auth/me — correct your own details ─────────────────────────────────
+// Name and phone. Changing the sign-in email needs re-verification and is handled
+// by support for now.
+router.patch("/me", protect, async (req, res) => {
+  try {
+    const update = {};
+    if (req.body?.name !== undefined) {
+      const name = readCredential(req.body.name)?.trim();
+      if (!name || name.length > 100)
+        return res.status(400).json({ error: "Name must be 1 to 100 characters." });
+      update.name = name;
+    }
+    if (req.body?.phone !== undefined) {
+      const phone = readCredential(req.body.phone)?.trim() ?? null;
+      if (phone && !INDIAN_MOBILE.test(phone))
+        return res.status(400).json({ error: "Please enter a valid 10-digit Indian mobile number." });
+      update.phone = phone || undefined;
+    }
+    if (!Object.keys(update).length)
+      return res.status(400).json({ error: "Nothing to update." });
+
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(401).json({ error: "User not found." });
+    if ("name" in update) user.name = update.name;
+    if ("phone" in update) user.phone = update.phone;
+    await user.save();
+    res.json({ user: serializeUser(user) });
+  } catch {
+    res.status(500).json({ error: "Could not update your details. Please try again." });
+  }
+});
+
+// ── GET /auth/me/export — everything we hold about you ───────────────────────
+// Account details, consent record, every saved draft and every stored version,
+// as one JSON file. Secrets (password hash, tokens) are never included.
+router.get("/me/export", protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).lean();
+    if (!user) return res.status(401).json({ error: "User not found." });
+    const [drafts, versions] = await Promise.all([
+      DocumentDraft.find({ userId: user._id }).lean(),
+      DocumentVersion.find({ userId: user._id }).lean(),
+    ]);
+    const payload = {
+      exported_at: new Date().toISOString(),
+      account: {
+        id: String(user._id),
+        name: user.name,
+        email: user.email,
+        phone: user.phone || null,
+        is_verified: Boolean(user.isVerified),
+        created_at: user.createdAt,
+        updated_at: user.updatedAt,
+        consent: user.consent || null,
+      },
+      documents: drafts,
+      document_versions: versions,
+    };
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="legalaid-data-${new Date().toISOString().slice(0, 10)}.json"`);
+    res.send(JSON.stringify(payload, null, 2));
+  } catch {
+    res.status(500).json({ error: "Could not prepare your data. Please try again." });
+  }
+});
+
+// ── DELETE /auth/me — delete your account and everything in it ────────────────
+// Needs the current password. Removes every stored version, every draft, then
+// the account, and ends the session. Nothing is kept.
+router.delete("/me", protect, async (req, res) => {
+  try {
+    const password = readCredential(req.body?.password);
+    if (!password) return res.status(400).json({ error: "Enter your password to confirm." });
+    const user = await User.findById(req.user._id).select("+password");
+    if (!user) return res.status(401).json({ error: "User not found." });
+    if (!(await user.comparePassword(password)))
+      return res.status(400).json({ error: "Password is incorrect." });
+
+    const [versions, drafts] = await Promise.all([
+      DocumentVersion.deleteMany({ userId: user._id }),
+      DocumentDraft.deleteMany({ userId: user._id }),
+    ]);
+    await User.deleteOne({ _id: user._id });
+    res.clearCookie(AUTH_COOKIE_NAME, authCookieOptions());
+    res.json({
+      message: "Your account and all saved documents have been deleted.",
+      deleted: { documents: drafts.deletedCount ?? 0, versions: versions.deletedCount ?? 0, account: 1 },
+    });
+  } catch {
+    res.status(500).json({ error: "Could not delete your account. Please try again." });
   }
 });
 

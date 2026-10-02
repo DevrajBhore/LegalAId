@@ -1,0 +1,817 @@
+{
+  "$comment": [
+    "D4.42 — PLACEHOLDER PROVENANCE. Measure and specify. No generation code changed.",
+    "D4.41 stopped case E (context-dependent satisfaction) because a filled slot cannot say where its value came from. This phase measured where values come from, through the real form and the shipped text, and specifies the minimum the product would have to record. It records nothing yet: doing so is the first change to the generation path since this series began and needs explicit go-ahead.",
+    "Counts are written by scripts/recordPlaceholderProvenance.mjs from docs/audit/placeholder-provenance.json and docs/audit/unanswered-fill.json."
+  ],
+  "review_status": "UNREVIEWED — engineering measurement. Every legal question below is the advocate's.",
+  "phase": "D4.42",
+  "kind": "measure-and-specify",
+  "status": "MEASURED; CONTRACT SPECIFIED; NOT IMPLEMENTED",
+  "the_answer_in_one_paragraph": "A value in a shipped instrument can be chosen in at least five places, and none of them records that it chose. The browser writes defaults into the form before submission (the server cannot tell them from answers). generationControls derives values from other answers (the place of execution and the forum from the first party's address). variableInjector aliases, synthesises and defaults. The per-clause renderers in documentHardening re-render 132 clauses with their own fallbacks in their own spelling. jurisdictionEngine composes the forum. The injector's constant defaults were never observed to ship; the renderers' were — including a twelve-month restrictive covenant nobody chose and a probation clause that refers to a period the agreement never states. Case E cannot be built on this: it would have to infer, from rendered words, a fact the pipeline knew and discarded.",
+  "no_generation_change": {
+    "claim": "D4.42 changed no file on the generation path.",
+    "evidence": "git diff against the base commit is empty for documentHardening.js, variableInjector.js, generationControls.js, jurisdictionEngine.js, documentService.js, backend/config/ and frontend/src/pages/Form.jsx. The one mutation made (to confirm the regression test bites) was reverted from a byte copy and re-diffed."
+  },
+  "where_a_value_is_chosen": [
+    {
+      "site": "frontend/src/pages/Form.jsx",
+      "what": "SELECT_DEFAULTS (ip_ownership, employment_termination_type), effective_date = today, governing_law_state ← operating_state; written into EMPTY fields before submission",
+      "records_the_choice": false,
+      "server_can_tell": false
+    },
+    {
+      "site": "backend/services/generationControls.js",
+      "what": "derived controls read by blueprint gates (e.g. is_binding_mou ← binding_nature); arbitration seat ← execution_city ‖ city of party_1_address ‖ state",
+      "records_the_choice": false
+    },
+    {
+      "site": "backend/services/variableInjector.js",
+      "what": "buildDerivedVariables: alias chains, synthesis (purpose from company name), constant defaults; `{{placeholder}}` substitution",
+      "records_the_choice": false
+    },
+    {
+      "site": "backend/services/documentHardening.js",
+      "what": "renderHardClause: 132 per-clause renderers, each with its own fallbacks (resolveRestrictionPeriod, resolveExecutionVenue, the recital purpose chain, …)",
+      "records_the_choice": false
+    },
+    {
+      "site": "backend/services/jurisdictionEngine.js",
+      "what": "dispute-resolution and governing-law clause composition; forum and seat",
+      "records_the_choice": false
+    }
+  ],
+  "measurements": {
+    "A_injector_placeholders_by_execution": {
+      "candidate_keys": 26,
+      "produce_a_value_from_no_input": [
+        {
+          "key": "party_1_type",
+          "value": "Individual"
+        },
+        {
+          "key": "party_2_type",
+          "value": "Individual"
+        },
+        {
+          "key": "party_1_descriptor",
+          "value": "Party, an Individual"
+        },
+        {
+          "key": "party_2_descriptor",
+          "value": "Party, an Individual"
+        },
+        {
+          "key": "guarantor_type",
+          "value": "Individual"
+        },
+        {
+          "key": "guarantor_descriptor",
+          "value": "Party, an Individual"
+        },
+        {
+          "key": "purpose",
+          "value": "the lawful business relationship described in this Agreement"
+        },
+        {
+          "key": "confidentiality_period",
+          "value": "3 years"
+        },
+        {
+          "key": "agreement_term",
+          "value": "2 years"
+        },
+        {
+          "key": "non_compete_period",
+          "value": "12 months"
+        },
+        {
+          "key": "permitted_use",
+          "value": "lawful commercial use"
+        },
+        {
+          "key": "prepayment_premium",
+          "value": "0"
+        }
+      ],
+      "synthesis": {
+        "key": "purpose",
+        "input": "company_name only",
+        "rendered": "the governance, shareholding rights, and management framework of SENTINEL_CO",
+        "synthesised": true
+      }
+    },
+    "B_injector_constant_defaults_end_to_end": {
+      "tallies": {
+        "party_1_type": {},
+        "party_2_type": {},
+        "party_1_descriptor": {},
+        "party_2_descriptor": {},
+        "guarantor_type": {},
+        "guarantor_descriptor": {},
+        "purpose": {
+          "UNASKABLE_LITERAL_ABSENT": 26,
+          "UNVERIFIABLE": 14
+        },
+        "confidentiality_period": {
+          "UNASKABLE_LITERAL_ABSENT": 28,
+          "UNVERIFIABLE": 12
+        },
+        "agreement_term": {
+          "UNASKABLE_LITERAL_ABSENT": 28,
+          "UNVERIFIABLE": 12
+        },
+        "non_compete_period": {
+          "UNASKABLE_LITERAL_ABSENT": 26,
+          "UNVERIFIABLE": 11,
+          "INJECTOR_LITERAL_NOT_SHIPPED": 3
+        },
+        "permitted_use": {
+          "UNASKABLE_LITERAL_ABSENT": 25,
+          "UNVERIFIABLE": 14,
+          "INJECTOR_LITERAL_NOT_SHIPPED": 1
+        },
+        "prepayment_premium": {
+          "UNASKABLE_LITERAL_NOT_DISTINCTIVE": 29,
+          "UNVERIFIABLE": 11
+        }
+      },
+      "$what_it_shows": "No injector constant default was observed in a shipped instrument in its injector spelling.",
+      "$retracted_conclusion": "This part first reported non_compete_period and permitted_use as USER_VALUE_ONLY — 'the default never ships'. That was wrong: it searched only for the injector's literal. The state is renamed INJECTOR_LITERAL_NOT_SHIPPED, which is all it measured. Part D found what does ship."
+    },
+    "C_two_purpose_chains": {
+      "CANNOT_DIVERGE": 35,
+      "NOT_BOTH_PRESENT": 3,
+      "AGREE": 1,
+      "DIVERGE": 1
+    },
+    "D_unanswered_slot_differential": {
+      "method": "Supplied-vs-missing differential per text field, through the real form. The default is discovered, not assumed. No generation code changed.",
+      "scope": {
+        "families": 40,
+        "text_fields_examined": 748
+      },
+      "tally": {
+        "BLOCKED_WHEN_UNANSWERED": 167,
+        "FILLED_FROM_ANOTHER_ANSWER": 26,
+        "FILLED_FROM_NO_INPUT": 83,
+        "PHRASE_OR_SENTENCE_WITHDRAWN": 190,
+        "SENTINEL_REJECTED": 209,
+        "FAMILY_UNVERIFIABLE": 11,
+        "NOT_ALIGNABLE": 19,
+        "ANSWER_NOT_OBSERVED": 54
+      },
+      "required_vs_optional": {
+        "required": {
+          "BLOCKED_WHEN_UNANSWERED": 166,
+          "FILLED_FROM_ANOTHER_ANSWER": 21,
+          "PHRASE_OR_SENTENCE_WITHDRAWN": 54,
+          "FILLED_FROM_NO_INPUT": 7,
+          "ANSWER_NOT_OBSERVED": 8,
+          "SENTINEL_REJECTED": 12
+        },
+        "optional": {
+          "FILLED_FROM_NO_INPUT": 76,
+          "PHRASE_OR_SENTENCE_WITHDRAWN": 136,
+          "SENTINEL_REJECTED": 197,
+          "NOT_ALIGNABLE": 19,
+          "ANSWER_NOT_OBSERVED": 46,
+          "FILLED_FROM_ANOTHER_ANSWER": 5,
+          "BLOCKED_WHEN_UNANSWERED": 1
+        }
+      },
+      "filled_from_no_input": {
+        "rows": 83,
+        "of_which_generic_signatory_fallback": 44,
+        "operative_wording": {
+          "distinct_field_clause_pairs": 26,
+          "fields": 20,
+          "families": 19,
+          "rows": [
+            {
+              "field": "execution_city",
+              "clause_id": "CORE_GOVERNING_LAW_001",
+              "alignment": "REWORDED_SLOT",
+              "required_in_form": true,
+              "fill_excerpt": "having territorial jurisdiction in the State of",
+              "families": [
+                "REFUND_AND_CANCELLATION_POLICY",
+                "SHIPPING_AND_DELIVERY_POLICY",
+                "EMPLOYMENT_CONTRACT",
+                "PARTNERSHIP_DEED",
+                "SHAREHOLDERS_AGREEMENT",
+                "TERMS_OF_SERVICE",
+                "PRIVACY_POLICY"
+              ]
+            },
+            {
+              "field": "confidential_information_definition",
+              "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "all non-public, proprietary, commercially sensitive, technical, financial, business, strategic, operational, customer, vendor, employee, and",
+              "families": [
+                "NDA"
+              ]
+            },
+            {
+              "field": "confidentiality_exclusions",
+              "clause_id": "NDA_EXCLUSIONS_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "is or becomes publicly available without breach of this Agreement, was lawfully known to the Receiving Party without restriction before disc",
+              "families": [
+                "NDA"
+              ]
+            },
+            {
+              "field": "confidentiality_access_scope",
+              "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "persons with a strict need to know for the permitted purpose and who are bound by confidentiality obligations no less protective than those ",
+              "families": [
+                "NDA"
+              ]
+            },
+            {
+              "field": "non_compete_period",
+              "clause_id": "NDA_NON_SOLICITATION_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "twelve (12) months",
+              "families": [
+                "NDA"
+              ]
+            },
+            {
+              "field": "non_compete_period",
+              "clause_id": "NDA_NON_COMPETE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "twelve (12) months",
+              "families": [
+                "NDA"
+              ]
+            },
+            {
+              "field": "probation_period",
+              "clause_id": "EMP_PROBATION_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the period expressly stated in this Agreement",
+              "families": [
+                "EMPLOYMENT_CONTRACT"
+              ]
+            },
+            {
+              "field": "leave_policy",
+              "clause_id": "EMP_LEAVE_POLICY_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "earned leave, sick leave, casual leave, public holidays, and such other leave as may be mandated by law or prescribed under the Employer's p",
+              "families": [
+                "EMPLOYMENT_CONTRACT"
+              ]
+            },
+            {
+              "field": "service_levels",
+              "clause_id": "SERVICE_SLA_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the service levels expressly recorded in this Agreement",
+              "families": [
+                "SERVICE_AGREEMENT",
+                "MASTER_SERVICE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "expenses_policy",
+              "clause_id": "SERVICE_EXPENSES_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "Except as expressly approved in writing in advance by the Client, all out-of-pocket, travel, accommodation, communication, and incidental ex",
+              "families": [
+                "SERVICE_AGREEMENT",
+                "INDEPENDENT_CONTRACTOR_AGREEMENT",
+                "MASTER_SERVICE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "warranty_period",
+              "clause_id": "SERVICE_WARRANTY_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "ninety (90) days from delivery or acceptance",
+              "families": [
+                "SERVICE_AGREEMENT",
+                "CONSULTANCY_AGREEMENT",
+                "INDEPENDENT_CONTRACTOR_AGREEMENT",
+                "MASTER_SERVICE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "acceptance_criteria",
+              "clause_id": "SERVICE_ACCEPTANCE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the scope of Services and the deliverables described in this Agreement, and their fitness for the purpose for which they were commissioned",
+              "families": [
+                "SERVICE_AGREEMENT",
+                "CONSULTANCY_AGREEMENT",
+                "INDEPENDENT_CONTRACTOR_AGREEMENT"
+              ]
+            },
+            {
+              "field": "non_compete_period",
+              "clause_id": "EMP_NON_SOLICITATION_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "twelve (12) months",
+              "families": [
+                "CONSULTANCY_AGREEMENT",
+                "INDEPENDENT_CONTRACTOR_AGREEMENT"
+              ]
+            },
+            {
+              "field": "management_control",
+              "clause_id": "JV_GOVERNANCE_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational deci",
+              "families": [
+                "JOINT_VENTURE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "exit_terms",
+              "clause_id": "JV_EXIT_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer t",
+              "families": [
+                "JOINT_VENTURE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "risk_transfer_terms",
+              "clause_id": "SUPPLY_RISK_TRANSFER_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "Where delivery is by carrier, risk shall pass to the Buyer upon delivery to the first carrier unless the Supplier has specifically arranged ",
+              "families": [
+                "SUPPLY_AGREEMENT",
+                "VENDOR_AGREEMENT"
+              ]
+            },
+            {
+              "field": "title_transfer_terms",
+              "clause_id": "SUPPLY_RISK_TRANSFER_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "to the Buyer simultaneously with the passing of risk, subject to the Seller's receipt of full payment of the applicable invoice",
+              "families": [
+                "SALES_OF_GOODS_AGREEMENT"
+              ]
+            },
+            {
+              "field": "non_compete_period",
+              "clause_id": "EMP_NON_COMPETE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "twelve (12) months",
+              "families": [
+                "INDEPENDENT_CONTRACTOR_AGREEMENT"
+              ]
+            },
+            {
+              "field": "events_of_default",
+              "clause_id": "LOAN_DEFAULT_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "(#) failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due d",
+              "$note": "(#) is a list marker normalised for alignment",
+              "families": [
+                "LOAN_AGREEMENT"
+              ]
+            },
+            {
+              "field": "invocation_conditions",
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "upon any payment default, material breach, insolvency event, or other event of default under the underlying financing arrangements",
+              "families": [
+                "GUARANTEE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "invocation_procedure",
+              "clause_id": "GUARANTEE_OBLIGATION_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "Creditor may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand",
+              "families": [
+                "GUARANTEE_AGREEMENT"
+              ]
+            },
+            {
+              "field": "acceptance_criteria",
+              "clause_id": "TECH_ACCEPTANCE_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the requirements of the Services and the deliverables described in this Agreement, and its fitness for the purpose for which it was commissi",
+              "families": [
+                "SOFTWARE_DEVELOPMENT_AGREEMENT"
+              ]
+            },
+            {
+              "field": "warranty_period",
+              "clause_id": "TECH_WARRANTY_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "ninety (90) days",
+              "families": [
+                "SOFTWARE_DEVELOPMENT_AGREEMENT"
+              ]
+            },
+            {
+              "field": "change_request_process",
+              "clause_id": "SERVICE_SCOPE_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "expansion or variation of the service scope, timeline, or output expectations shall require prior written agreement between the Parties, inc",
+              "families": [
+                "SOFTWARE_DEVELOPMENT_AGREEMENT"
+              ]
+            },
+            {
+              "field": "change_request_process",
+              "clause_id": "SERVICE_CHANGE_REQUEST_001",
+              "alignment": "EXACT_SLOT",
+              "required_in_form": false,
+              "fill_excerpt": "the requesting Party shall submit a written change request describing the proposed change, the Parties shall assess its legal, commercial, t",
+              "families": [
+                "SOFTWARE_DEVELOPMENT_AGREEMENT"
+              ]
+            },
+            {
+              "field": "retention_period",
+              "clause_id": "PRIVACY_DATA_RETENTION_001",
+              "alignment": "SENTENCE_REPLACED",
+              "required_in_form": false,
+              "fill_excerpt": "only for as long as the purpose for which it was collected requires, or as a law in force",
+              "families": [
+                "PRIVACY_POLICY"
+              ]
+            }
+          ]
+        },
+        "containing_a_quantity": [
+          {
+            "field": "non_compete_period",
+            "clause_id": "NDA_NON_SOLICITATION_001",
+            "families": 1,
+            "fill_excerpt": "twelve (12) months"
+          },
+          {
+            "field": "non_compete_period",
+            "clause_id": "NDA_NON_COMPETE_001",
+            "families": 1,
+            "fill_excerpt": "twelve (12) months"
+          },
+          {
+            "field": "warranty_period",
+            "clause_id": "SERVICE_WARRANTY_001",
+            "families": 4,
+            "fill_excerpt": "ninety (90) days from delivery or acceptance"
+          },
+          {
+            "field": "non_compete_period",
+            "clause_id": "EMP_NON_SOLICITATION_001",
+            "families": 2,
+            "fill_excerpt": "twelve (12) months"
+          },
+          {
+            "field": "exit_terms",
+            "clause_id": "JV_EXIT_001",
+            "families": 1,
+            "fill_excerpt": "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer t"
+          },
+          {
+            "field": "non_compete_period",
+            "clause_id": "EMP_NON_COMPETE_001",
+            "families": 1,
+            "fill_excerpt": "twelve (12) months"
+          },
+          {
+            "field": "events_of_default",
+            "clause_id": "LOAN_DEFAULT_001",
+            "families": 1,
+            "fill_excerpt": "(#) failure by the Borrower to pay any principal, interest, or other sum due under this Agreement within five (5) Business Days of the due d"
+          },
+          {
+            "field": "warranty_period",
+            "clause_id": "TECH_WARRANTY_001",
+            "families": 1,
+            "fill_excerpt": "ninety (90) days"
+          }
+        ]
+      },
+      "filled_from_another_answer_confirmed_by_follow_test": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "TERM_SHEET",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "NDA",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "NDA",
+          "field": "permitted_use",
+          "from": [
+            "purpose"
+          ]
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "field": "nomenclature_terms",
+          "from": [
+            "services_description",
+            "deliverables"
+          ]
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "field": "nomenclature_terms",
+          "from": [
+            "consulting_services",
+            "deliverables"
+          ]
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "field": "nomenclature_terms",
+          "from": [
+            "services_description",
+            "deliverables"
+          ]
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "field": "nomenclature_terms",
+          "from": [
+            "project_description",
+            "services_description"
+          ]
+        },
+        {
+          "family": "MOU",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "field": "execution_city",
+          "from": [
+            "party_1_address"
+          ]
+        }
+      ],
+      "self_referential_candidates": {
+        "flagged": 7,
+        "verified_circular_by_reading": [
+          "EMPLOYMENT_CONTRACT/probation_period → EMP_PROBATION_001",
+          "SERVICE_AGREEMENT/service_levels → SERVICE_SLA_001"
+        ],
+        "not_circular": "the acceptance_criteria fills refer to the Services and deliverables, which the agreement does describe",
+        "not_decided": "MASTER_SERVICE_AGREEMENT/service_levels refers to service levels 'expressly recorded in this Agreement'; an MSA's SOWs may record them. Whether an SOW is part of 'this Agreement' is for the advocate."
+      },
+      "out_of_scope": "select, number and date fields (a sentinel cannot be placed in them); identifier fields with format validation (PAN, GSTIN, CIN, LLPIN — every sentinel refused). 11 families produce no draft under the well-filled fixture."
+    }
+  },
+  "verified_findings": [
+    {
+      "id": "TWO_RENDERING_PATHS_TWO_DEFAULTS",
+      "finding": "The same concept has a default in each rendering path, in different spellings. injectVariables('{{non_compete_period}}', {}) is '12 months'; what ships is the renderer's 'twelve (12) months'. The injector's default is dead for this concept, and nothing says so.",
+      "why_it_matters_for_provenance": "Provenance recorded in the injector alone would describe a value that is not the one shipped."
+    },
+    {
+      "id": "RESTRICTIVE_PERIOD_FILLED_FROM_NO_INPUT",
+      "finding": "With a non-compete or non-solicit opted in and the period left blank (the field is optional), the instrument imposes 'twelve (12) months'. Blank and missing render identically. Observed in NDA (both covenants), INDEPENDENT_CONTRACTOR_AGREEMENT (both) and CONSULTANCY_AGREEMENT (non-solicit).",
+      "source": "documentHardening.js resolveRestrictionPeriod — also maps 'NA', 'none', 'nil', 'not applicable' to twelve months, a branch the validator currently makes unreachable (next finding).",
+      "adjacent": "One field sets both covenants' durations in NDA and INDEPENDENT_CONTRACTOR_AGREEMENT, though labelled 'Non-Compete Period'. In CONSULTANCY_AGREEMENT include_non_compete adds only a during-term exclusivity clause, so the period governs only the non-solicit.",
+      "legal_question_for_the_advocate": "Whether a post-term restriction of a duration the user never chose may ship, and how section 27 of the Indian Contract Act bears on these clauses at all."
+    },
+    {
+      "id": "NA_INVITED_BY_LABEL_REFUSED_BY_VALIDATOR",
+      "finding": "The period field's label invites 'NA' ('e.g. 1 year, or NA'). 'NA', 'N/A', 'None', 'nil' and 'Not applicable' are each refused (INVALID_INPUT_1) — including when both covenants are switched off and the period governs nothing. The only way to not state a period is to leave it blank, which ships twelve months."
+    },
+    {
+      "id": "SELF_REFERENTIAL_FILL",
+      "finding": "Unanswered, EMP_PROBATION_001 reads 'on probation for the period expressly stated in this Agreement', and no other clause mentions probation. SERVICE_AGREEMENT's SERVICE_SLA_001 reads 'shall meet the following service levels …: the service levels expressly recorded in this Agreement', and none are recorded. The words look like a filled slot and are a hole.",
+      "machine_checkable": "A fill that refers to 'this Agreement' for a value can be tested for a referent in the same draft. Nothing does this today."
+    },
+    {
+      "id": "PLACE_OF_EXECUTION_DERIVED_FROM_PARTY_ADDRESS",
+      "finding": "When execution_city is not answered, the instrument states it was 'executed at' the first party's city and gives that city's courts exclusive jurisdiction; the value follows the address when the address is moved (confirmed by follow test in 21 families).",
+      "reach": "execution_city is marked required in variableConfig but is not in DOCUMENT_CONFIG.requiredFields, so the server does not require it; and it is not an essential field in 36 families, so QUICK MODE neither shows nor requires it. A quick-mode user reaches this without doing anything unusual.",
+      "legal_question_for_the_advocate": "Whether an instrument may state a place of execution nobody gave, and whether defaulting the exclusive forum to the first party's city is acceptable (it favours that party)."
+    },
+    {
+      "id": "CLIENT_DEFAULTS_ARRIVE_AS_ANSWERS",
+      "finding": "Form.jsx writes 'Employer owns work product IP' into an empty ip_ownership, today's date into effective_date, and the operating state into governing_law_state, before submission. The request carries no marker, so the server receives these as the user's answers. The ip_ownership default applies only in EMPLOYMENT_CONTRACT (the one family whose options contain that choice), and there ip_ownership is not an essential field: in quick mode the IP allocation is chosen by the browser and never shown to the user.",
+      "why_it_matters_for_satisfaction": "A satisfaction reading of IP allocation in EMPLOYMENT_CONTRACT (D4.38 case F's proposition) would treat a browser default as an established allocation. No server-side record can be made correct without the client declaring what it defaulted.",
+      "$declaration_level": "The SELECT_DEFAULTS behaviour is read from source; the quick-mode visibility is read from essentialFields. Neither was driven through a browser."
+    },
+    {
+      "id": "ONE_CONCEPT_TWO_CHAINS_TWO_SOURCES",
+      "finding": "In SOFTWARE_DEVELOPMENT_AGREEMENT, with both required fields answered realistically, the recital's purpose comes from services_description and CORE_PURPOSE_001's from project_description. Both are the user's words, so nothing is fabricated — but one concept is stated twice from two answers that can disagree, and the document cannot say which is 'the purpose'.",
+      "adjacent": "CORE_PURPOSE_001 composes 'to design, develop, test, and deliver {project_description}', which with a gerund answer ('Building a …', the shape the label invites) ships 'deliver building a …'. A composition defect, not a provenance one; noted, not pursued."
+    },
+    {
+      "id": "REQUIRED_FREE_TEXT_ANSWER_WITH_NO_EFFECT",
+      "finding": "LOAN_AGREEMENT's repayment_schedule and CONSULTANCY_AGREEMENT's payment_terms are required free-text questions whose answers change no byte of the shipped instrument. The repayment clause is composed from structured fields (tenure, instalment amount, start date); the retainer clause from consulting_fee with a constant 'fifth (5th) day'. If the user's text and the structured fields disagree, the text loses silently.",
+      "scope_note": "54 text answers were not observed in shipped text; only these two were confirmed byte-identical. D2.2 (DEAD_QUESTIONS.md) measured select and toggle questions only, so these free-text cases are new."
+    }
+  ],
+  "instrument_flaws_found_this_phase": [
+    "1. Case-sensitive matching missed a recital that lowercases its purpose.",
+    "2. Free-text sentinels placed in normalised fields (party types, descriptors) cannot survive.",
+    "3. The literal '0' matches any date or number; not attributable by search.",
+    "4. A value whose carrying clause is absent was reported as 'never reaches'.",
+    "5. Families that produced no draft were dropped silently instead of recorded.",
+    "6. Junk-looking sentinels were refused by input validation — the probe blocked the generations it meant to observe.",
+    "7. A blocked supplied-world was then read as 'value not observed'.",
+    "8. Searching for a KNOWN default literal can find only the defaults already known. Part B's 'USER_VALUE_ONLY' hid the renderer's twelve-month covenant. Replaced by the supplied-vs-missing differential (Part D), which discovers the fill.",
+    "9. Attribution by text search is coincidence-prone: 'Mumbai' occurred in the party address and in a renderer constant. Replaced by a follow test — alter the candidate answer, re-render both worlds, re-align, and attribute only if the fill moves.",
+    "10. The follow test appended a marker to a SELECT answer, which the validator refused, and the refusal was reported as FROM_NO_INPUT. Select candidates are now switched to another of their own options; an untestable candidate yields ATTRIBUTION_UNTESTABLE, never FROM_NO_INPUT.",
+    "11. List items are relettered when one is withdrawn, which made a withdrawn definition look like a replaced one. Alignment now ignores list markers. The first version of that fix also rewrote '(90)' in 'ninety (90) days'; numerals are now excluded.",
+    "12. The self-reference flag is a phrase match and over-flags: 4 of 7 flagged fills refer to things the agreement does describe. Flag, then read; only the two read as circular are reported as findings."
+  ],
+  "correction_to_D4_41": {
+    "what": "Case A/G1 was demonstrated by setting the derived control is_binding_mou directly on assembleDocument — the gate's input, not the user's answer, on an assembled rather than shipped draft.",
+    "now": "Driven through the real form field binding_nature and generateDocument. Conclusion unchanged. Case B stays on the assembled draft because IP_ASSIGNMENT_AGREEMENT ships no draft under the fixture; this is now stated in the test.",
+    "recorded_in": "knowledge-base/governance/satisfaction-reduction.json → correction_D4_42"
+  },
+  "minimum_provenance_contract": {
+    "status": "SPECIFICATION ONLY. Nothing implements it.",
+    "source_classes": {
+      "$closed": "Exactly one per filled slot. The vocabulary is closed: a chain that cannot name its class has not chosen legitimately.",
+      "USER_SUPPLIED": "The user typed or selected it in a field they could see.",
+      "CLIENT_DEFAULT": "The browser wrote it into an empty field. Carries visible_to_user: true|false.",
+      "ALIAS": "Another answer's value, used as-is for this slot. Carries the source key.",
+      "DERIVED": "Computed from other answers (a city parsed from an address; a control from a selection). Carries the source keys and the deriving site.",
+      "SYNTHESISED": "New words built around other answers (a purpose sentence from a company name). Carries the source keys and the site.",
+      "CONSTANT_DEFAULT": "Words from no input at all. Carries the site that holds the literal.",
+      "NORMALISED": "The user's value, reformatted (party type, descriptor). Carries the source key.",
+      "WITHDRAWN": "The slot's phrase, sentence or clause was omitted because it was unanswered."
+    },
+    "requirements": [
+      "R1 — every filled slot in a shipped instrument carries exactly one source class and, for every class but USER_SUPPLIED and CONSTANT_DEFAULT, the input keys it came from.",
+      "R2 — provenance is recorded where the choice is made (each of the five sites above), never reconstructed afterwards. Reconstruction by sentinel is an investigation technique; it is not product behaviour.",
+      "R3 — the client declares which fields it defaulted and whether they were visible. Without this, CLIENT_DEFAULT is indistinguishable from USER_SUPPLIED at the trust boundary and R1 cannot be met.",
+      "R4 — a concept filled in more than one slot is answerable as a whole: same class and same source everywhere, or not.",
+      "R5 — recording provenance changes no shipped byte. Testable: every family's shipped text is byte-identical with recording on and off.",
+      "R6 — satisfaction (case E) reads the source class; it never re-derives it from text.",
+      "R7 — a CONSTANT_DEFAULT whose words refer to 'this Agreement' for a value must have a referent in the same draft; otherwise it is a hole, not a fill."
+    ],
+    "what_it_would_unblock": "Case E: 'is this proposition established by what the user decided, or by what the system assumed?' becomes a lookup, not an inference.",
+    "what_it_does_not_decide": "Whether any default is legally acceptable. The contract makes defaults visible; the advocate decides which may ship."
+  },
+  "what_this_record_does_not_do": [
+    "It does not change generation, validation, the form, or any default.",
+    "It does not judge whether any default is legally acceptable.",
+    "It does not claim coverage of select, number or date fields, identifier fields, or the 11 families that produce no draft under the fixture.",
+    "It does not establish which code path chose a FROM_NO_INPUT fill — only that no input contained it.",
+    "It does not implement the contract. Implementing it touches every site that chooses a value and needs explicit go-ahead."
+  ]
+}

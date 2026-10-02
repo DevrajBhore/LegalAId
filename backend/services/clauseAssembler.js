@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import Ajv from "ajv";
+import { applyOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
 
 import { toBlueprintName } from "./documentTypeNormalizer.js";
 import { normalizeClauseCategory } from "../config/clauseOrder.js";
@@ -381,6 +382,13 @@ function loadClauseCache() {
 
       const filePath = path.join(dir, file.name);
       const clause = readJsonFile(filePath);
+
+      // An advocate's sign-off — and an amendment to the clause TEXT — lives in
+      // the database, because the deployment's filesystem does not survive a
+      // restart. Applied here so the amended wording reaches generation, which
+      // is what the admin guide promises: "Approve with amendment edits the live
+      // product immediately."
+      applyOverlay(OVERLAY_KIND.CLAUSE, clause.clause_id, clause);
 
       if (!validateClause(clause)) {
         const details = (validateClause.errors || [])

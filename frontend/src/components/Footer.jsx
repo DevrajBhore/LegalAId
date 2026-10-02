@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Icons } from "../utils/icons";
+import { LEGAL_NOTICE_SHORT } from "../data/legalNotice";
 import "./Footer.css";
 
 export default function Footer() {
@@ -19,8 +20,8 @@ export default function Footer() {
           </Link>
 
           <p className="footer-desc">
-            AI-assisted Indian legal drafting with in-browser review, validation,
-            and export-ready document workflows.
+            AI-assisted drafting of Indian legal documents, with in-browser
+            review, automated checks and export.
           </p>
 
           <div className="footer-trust">
@@ -91,6 +92,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
+        <p className="footer-notice">{LEGAL_NOTICE_SHORT}</p>
         <div className="footer-bottom-inner">
           <span className="footer-copy">
             &copy; {year} LegalAId. All rights reserved.
@@ -98,6 +100,7 @@ export default function Footer() {
           <div className="footer-legal">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>
+            <a href="/third-party-notices.txt" target="_blank" rel="noopener">Open-source notices</a>
           </div>
         </div>
       </div>

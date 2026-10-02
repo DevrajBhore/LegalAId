@@ -1,0 +1,188 @@
+{
+  "$probe": "probeUngeneratedFamilies.mjs",
+  "$question": "Of the families that produce no draft, which constraint refused, and is its scope one of the 13 still awaiting advocate decision?",
+  "$not_a_claim": [
+    "NOT a claim that any of these constraints is wrong. A constraint that refuses an affidavit may be refusing correctly; whether it should apply to that shape at all is precisely the undecided question.",
+    "NOT 11 new legal questions. These are consequences of the 13 already queued, and adding them as questions would inflate the queue with duplicates."
+  ],
+  "fixture": "WELL_FILLED",
+  "totals": {
+    "families": 40,
+    "produce_a_draft": 29,
+    "produce_no_draft": 11,
+    "distinct_blocking_rules": 6,
+    "blocking_rules_awaiting_D4_33_scope": 5,
+    "blocking_rules_outside_D4_33": [
+      "IP_REQUIRES_OWNERSHIP"
+    ],
+    "shape_mismatch_candidates": 5,
+    "agreement_families_blocked": 6
+  },
+  "blocked": [
+    {
+      "type": "ESOP_GRANT_LETTER",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "PROMISSORY_NOTE",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "IP_ASSIGNMENT_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "IP_REQUIRES_OWNERSHIP"
+      ],
+      "rules_awaiting_D4_33_scope": [],
+      "rules_outside_D4_33": [
+        "IP_REQUIRES_OWNERSHIP"
+      ],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "POWER_OF_ATTORNEY",
+      "shape": "SWORN",
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "CONTRACT_REQUIRES_CONSIDERATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "SHAPE MISMATCH CANDIDATE — a contract constraint refusing a non-contract",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "APPOINTMENT_LETTER",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "INTERNSHIP_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "SEPARATION_AGREEMENT",
+      "shape": "AGREEMENT",
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "AGREEMENT FAMILY — the constraint may apply correctly and the blueprint may simply lack the clause",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "POSH_POLICY",
+      "shape": "POLICY",
+      "blocking_rules": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "EMP_REQUIRES_ROLE",
+        "EMP_REQUIRES_COMPENSATION",
+        "EMP_REQUIRES_TERMINATION"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "SHAPE MISMATCH CANDIDATE — a contract constraint refusing a non-contract",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "ARBITRATION_NOTICE",
+      "shape": "NOTICE",
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "SHAPE MISMATCH CANDIDATE — a contract constraint refusing a non-contract",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "AFFIDAVIT",
+      "shape": "SWORN",
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "SHAPE MISMATCH CANDIDATE — a contract constraint refusing a non-contract",
+      "$kind_is_a_classification_not_a_decision": true
+    },
+    {
+      "type": "INDEMNITY_BOND",
+      "shape": "SWORN",
+      "blocking_rules": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_awaiting_D4_33_scope": [
+        "CONTRACT_REQUIRES_CONSIDERATION",
+        "CONTRACT_REQUIRES_GOVERNING_LAW"
+      ],
+      "rules_outside_D4_33": [],
+      "$kind": "SHAPE MISMATCH CANDIDATE — a contract constraint refusing a non-contract",
+      "$kind_is_a_classification_not_a_decision": true
+    }
+  ]
+}

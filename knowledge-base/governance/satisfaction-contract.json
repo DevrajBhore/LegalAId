@@ -1,0 +1,188 @@
+{
+  "$comment": [
+    "D4.38 \u2014 WHAT A 'SATISFIES THIS LEGAL PROPOSITION' RELATION MUST BE ABLE TO EXPRESS.",
+    "",
+    "D4.35, D4.36 and D4.37 established the defect strongly enough to stop collecting examples.",
+    "This record does the next thing and only the next thing: it states the expressive power the",
+    "relation must have, derived from cases that ALREADY EXIST in the repository.",
+    "",
+    "It deliberately proposes NO schema, NO field names and NO encoding. Choosing a representation",
+    "before the requirements are agreed is how an abstraction gets built because the architecture",
+    "seemed to want one."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.38",
+  "kind": "ARCHITECTURAL REQUIREMENTS",
+  "status": "REQUIREMENTS STATED \u2014 no schema proposed, nothing migrated, no satisfier list touched",
+  "the_problem_this_must_solve": {
+    "one_sentence": "A legal proposition is currently represented by a hand-maintained enumeration of clause identifiers, and an enumeration drifts in both directions at once.",
+    "evidence_both_ways": {
+      "too_narrow": "D4.35 \u2014 a family specialises its knowledge, the new clause id falls outside the list, and a document containing the required substance is refused. 6 families.",
+      "too_broad": "D4.37 \u2014 a general provision sits inside the list and discharges the requirement unconditionally, so the rule can never refuse anything. 14 rule-family pairs."
+    },
+    "$why_editing_the_lists_is_not_the_fix": "Nothing keeps an enumeration correct after it is corrected. Both failure modes recur the next time knowledge is authored, and neither is visible at the moment of authoring.",
+    "$and_why_implements_is_not_yet_the_fix": "D4.36 established that `implements` is an AUTHORED CLAIM, not verified satisfaction. Migrating the lists into it reproduces both failure modes with the coupling merely made local."
+  },
+  "the_cases_the_contract_must_handle": {
+    "$provenance": "Every case below is an artifact already in this repository, named with its real ids. None is hypothetical. A requirement with no case behind it is not listed.",
+    "cases": [
+      {
+        "id": "A_SINGLE_CLAUSE",
+        "shape": "One clause establishes one proposition.",
+        "example": "SERVICE_KEY_PERSONNEL_001 implements PERSONAL_PERFORMANCE_INTENDED",
+        "expressible_today": true,
+        "requirement": "None beyond what exists."
+      },
+      {
+        "id": "B_JOINT_SATISFACTION",
+        "shape": "Several clauses together establish one proposition; no one of them does alone.",
+        "example": "IP assignment splits its operative grant by right type \u2014 IPA_COPYRIGHT_ASSIGNMENT_001, IP_PATENT_RIGHTS_001, IPA_TRADEMARK_ASSIGNMENT_001 \u2014 each behind its own condition.",
+        "expressible_today": false,
+        "requirement": "The relation must distinguish 'any of these' from 'all of these' from 'these, for the right types in play'. Today satisfaction is purely existential.",
+        "$the_hard_part": "Whether assigning only trademarks establishes the proposition is a LEGAL question about what the instrument purports to do. The contract must be able to represent either answer; it must not choose one by defaulting."
+      },
+      {
+        "id": "C_FAMILY_SPECIALISED_CLAUSE",
+        "shape": "A family authors its own clause for a proposition the portfolio states generically.",
+        "example": "EMP_APPOINTMENT_TERMS_001, EMP_INTERNSHIP_ENGAGEMENT_001 and EMP_SEPARATION_PURPOSE_001 each do the work that EMP_REQUIRES_ROLE names only EMPLOYMENT_ROLE_001 and CORE_PURPOSE_001 for.",
+        "expressible_today": "Only by editing a central list \u2014 which is the defect.",
+        "requirement": "The declaration must be made WHERE THE CLAUSE IS AUTHORED, so specialising knowledge and declaring what it establishes are one act rather than two, the second of which is forgotten."
+      },
+      {
+        "id": "D_MUST_NOT_ESTABLISH",
+        "shape": "A clause is plausibly listed but does not establish the proposition.",
+        "example": "CORE_TERM_001 \u2014 'Term of Agreement', 144 characters in full: 'This Agreement shall commence on the Effective Date and shall continue in force until terminated\u2026'. It is enumerated by SERVICE_REQUIRES_PAYMENT and discharges it unconditionally in three families. How long the agreement runs is not what is paid for it.",
+        "expressible_today": false,
+        "requirement": "Nothing prevents a wrong claim and nothing surfaces one. The contract must make a satisfaction claim REFUTABLE \u2014 checkable by someone other than its author against the clause's FULL text \u2014 or it inherits this failure mode wholesale.",
+        "$example_replaced": "This case first cited CORE_IDENTITY_001 against the consideration rule. That example was withdrawn: the clause carries the conventional consideration recital, which the probe had truncated away. The case survives on a clause whose full text was read."
+      },
+      {
+        "id": "E_CONTEXT_DEPENDENT",
+        "shape": "Whether the clause establishes the proposition depends on the document's own content, not on the clause's presence.",
+        "example": "CORE_PURPOSE_001 reads 'The purpose of this Agreement is to define the rights and obligations of the Parties in relation to {{purpose}}.' Whether that defines a scope of services depends entirely on what fills the variable. It currently discharges SERVICE_REQUIRES_SCOPE by being present.",
+        "expressible_today": false,
+        "requirement": "Satisfaction must be able to depend on stated content \u2014 a value present, a figure given, a party named \u2014 and not on clause presence alone.",
+        "$why_this_one_matters_most": "It is the difference between 'a payment clause is present' and 'a payment clause stating an amount and a date is present'. Several of the rules in the measured evidence assert the second and test the first.",
+        "$corrected_in_D4_41": "The requirement stands and is sharper. The placeholder is not empty in practice: {{purpose}} is filled by a fifteen-source fallback chain, from a user's own description where one exists and otherwise from sentences synthesised out of a party name or an amount. The same clause id renders different substance per family. Satisfaction therefore depends on WHICH source filled it \u2014 and the rendering path discards that. See satisfaction-reduction.json: E is not reducible until placeholder-level provenance exists."
+      },
+      {
+        "id": "F_OPPOSITE_OUTCOMES_BOTH_SATISFY",
+        "shape": "Two clauses allocating a right in OPPOSITE directions both establish the same proposition, because the proposition is about specification rather than outcome.",
+        "example": "IP_OWNERSHIP_001 (rights vest in the client) and IP_DEVELOPER_RETAINS_001 (rights remain with the provider) are both satisfiers of IP_REQUIRES_OWNERSHIP, whose proposition is that ownership be clearly specified.",
+        "expressible_today": true,
+        "requirement": "The contract must keep this expressible. A naive 'the clause must assert the proposition' reading would break it \u2014 the proposition is 'ownership is specified', not 'ownership vests in X'.",
+        "$listed_because": "It is the case most likely to be broken by a repair aimed at D and E."
+      },
+      {
+        "id": "G_NEGATIVE_EVIDENCE",
+        "shape": "A clause superficially on-topic is substantively evidence of the negative.",
+        "example": "IPA_MORAL_RIGHTS_001 records that under Copyright Act 1957 s.57 the author's special rights subsist \u2014 rights that are precisely NOT assigned. A category-based instrument offered it as evidence of an assignment clause.",
+        "expressible_today": false,
+        "requirement": "The relation must have room for 'this clause is about the proposition and does not establish it', distinct from 'no declaration exists'. Silence and denial are different facts.",
+        "$corrected_in_D4_40": "This case was overstated. Split in two: G1 (a clause whose text flips polarity by world under one id) is real, in production, and already solved by an existing shipped pattern \u2014 two clause ids behind a variant slot, as MOU_BINDING_001 / MOU_NON_BINDING_001 demonstrates. G2 (about-but-not-establishing) was an artifact of the measuring instrument, not a production requirement, and is withdrawn. See satisfaction-ownership-decision.json."
+      },
+      {
+        "id": "H_OUTSIDE_THE_DOCUMENT",
+        "shape": "The proposition is established by something other than the instrument's text.",
+        "example": "INSTRUMENT_REGISTERED declares satisfaction OUTSIDE_THE_DOCUMENT \u2014 registration is an act, not a clause.",
+        "expressible_today": true,
+        "requirement": "Must be preserved. A contract that can only speak about clauses cannot represent requirements discharged by conduct, filing or a register."
+      }
+    ]
+  },
+  "what_the_engine_can_decide_and_what_it_cannot": {
+    "$why_this_split_is_the_whole_design": "Every failure in D4.35 and D4.37 came from a mechanism deciding something only a lawyer can decide, or from no mechanism deciding something anyone could have checked. The contract is sound exactly to the extent that it puts each question on the right side of this line.",
+    "the_engine_can_decide": [
+      "Whether a declaration exists for a clause at all \u2014 so silent omission is detectable.",
+      "Whether every member of a joint set is present in this document.",
+      "Whether the values a context-dependent declaration names are actually filled in this document.",
+      "Whether a recorded review exists, by whom, and whether it is current.",
+      "Whether a proposition applicable to this document has no candidate establisher at all."
+    ],
+    "the_engine_must_not_decide": [
+      "Whether a clause's text discharges a proposition. This is the judgement D4.35 and D4.37 both show instruments getting wrong in both directions.",
+      "Whether a set of clauses jointly suffices where none does alone.",
+      "Whether a proposition needs context at all, and which values count.",
+      "Whether an opposite-outcome clause still specifies the thing the proposition requires."
+    ],
+    "$consequence": "The contract is a structure for CARRYING legal decisions and making their absence visible. It is not a mechanism for reaching them. Anything in it that reaches one is a defect."
+  },
+  "what_the_contract_must_forbid": {
+    "$these_are_the_guardrails": "Each is a failure this investigation observed, stated as a prohibition so a later design can be checked against it.",
+    "forbidden": [
+      {
+        "rule": "A missing declaration must never read as 'does not satisfy'.",
+        "because": "That is the D4.35 failure exactly: a specialised clause with no declaration silently stops covering a requirement. Absence must be UNKNOWN and must be visible."
+      },
+      {
+        "rule": "A satisfaction claim must not be believable solely because its author wrote it.",
+        "because": "D4.36 established `implements` is an authored claim. D4.37 showed what an unreviewed satisfier assertion costs: a recitals clause discharging the consideration requirement in ten families."
+      },
+      {
+        "rule": "Presence must not stand in for content where the proposition is about content.",
+        "because": "Case E. A clause whose substance is a template variable currently satisfies a rule about that substance."
+      },
+      {
+        "rule": "No default may be applied to make a document generate.",
+        "because": "The whole class of repair this investigation has refused. A default chosen to clear a red test is an unauthorised legal rule encoded as a convenience."
+      },
+      {
+        "rule": "The relation must not become a second enumeration, merely distributed.",
+        "because": "Moving 316 clause ids out of 18 rule files and into 316 clause files is relocation, not repair, unless the declaration is also checkable and its absence detectable."
+      }
+    ]
+  },
+  "the_five_prerequisites_restated_against_the_cases": [
+    {
+      "prerequisite": "joint satisfaction",
+      "case": "B",
+      "status": "not expressible"
+    },
+    {
+      "prerequisite": "authoring obligation",
+      "case": "C and the D4.35 failure",
+      "status": "absent \u2014 nothing detects a missing declaration"
+    },
+    {
+      "prerequisite": "context and attribute requirements",
+      "case": "E",
+      "status": "not expressible"
+    },
+    {
+      "prerequisite": "review of the 12 propositions and every implements claim",
+      "case": "D",
+      "status": "none reviewed; all draft-needs-legal-review"
+    },
+    {
+      "prerequisite": "independent reviewability of the relation",
+      "case": "D and G",
+      "status": "no mechanism \u2014 a claim can only be checked by reading the clause and forming a legal view"
+    }
+  ],
+  "what_this_record_does_not_do": [
+    "It proposes no schema, no field names and no encoding. That is deliberate: the requirements must be agreed before a representation is chosen, or the representation will be the argument.",
+    "It migrates nothing. No satisfier list, clause, rule or proposition was touched.",
+    "It does not decide any of the legal questions its own cases raise \u2014 whether a recitals clause evidences consideration, whether a trademark-only assignment establishes IP ownership, whether an option grant is compensation.",
+    "It does not claim the eight cases are exhaustive. They are the ones the repository actually contains; a ninth may appear, and the contract should be judged on whether it can absorb one."
+  ],
+  "the_next_decision_and_who_owns_it": {
+    "question": "Are these eight cases the ones the relation must serve, and is the engine/legal split above the right line?",
+    "$why_it_is_asked_before_any_design": "A schema that serves seven of eight will look finished and fail on the eighth in production, where the cost is a legal instrument that is wrong rather than a test that is red.",
+    "owner": "advocate for the case list and the split; engine for the representation once both are settled"
+  },
+  "$a_case_example_was_withdrawn_during_drafting": {
+    "$recorded_because": "The requirement did not change, but the evidence for it did, and a reader who sees only the surviving example would not know the record had been corrected.",
+    "what_happened": "Case D originally cited CORE_IDENTITY_001 discharging CONTRACT_REQUIRES_CONSIDERATION in ten families. The test written to pin this very case list asserted that the clause does not mention consideration, and failed: the clause carries a full consideration recital that the measuring probe had truncated at 260 characters.",
+    "$what_it_demonstrates": "A requirements record pinned to real artifacts catches its own errors. This one caught an error in the finding it was derived from, not merely in itself."
+  },
+  "D4_38_status": {
+    "headline": "satisfaction-contract requirements established from eight real artifact cases; no representation selected and no migration begun",
+    "the_chain": [
+      "D4.35 \u2014 id-list false negatives",
+      "D4.36 \u2014 existing proposition layer examined",
+      "D4.37 \u2014 id-list false-positive direction measured",
+      "D4.38 \u2014 expressive requirements derived from real cases"
+    ],
+    "$why_F_is_the_load_bearing_case": "If client-owns and provider-retains both satisfy 'ownership is specified', then a satisfaction mechanism cannot encode one substantive outcome as the proposition's required truth. `proposition -> expected text or value` is therefore insufficient: a proposition may be satisfied by several legally acceptable states, subject to context."
+  }
+}

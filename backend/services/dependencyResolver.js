@@ -7,6 +7,7 @@
 
 import { getClauseById } from "./clauseAssembler.js";
 import { injectVariables } from "./variableInjector.js";
+import { forClause } from "./provenance.js";
 import { normalizeClauseCategory } from "../config/clauseOrder.js";
 import { toBlueprintName } from "./documentTypeNormalizer.js";
 
@@ -67,7 +68,7 @@ function buildInjectedClauseFromKB(clauseId, variables = {}) {
     ...clause,
     category: normalizeClauseCategory(clause.category),
     title: clause.title || clause.name || null,
-    text: injectVariables(clause.text || "", variables),
+    text: forClause(clauseId, () => injectVariables(clause.text || "", variables)),
     injected_by: "dependencyResolver",
   };
 }
@@ -305,7 +306,7 @@ function resolveFallbackDependencies(draft, variables = {}, documentType = "") {
           clause_id: rule.required_clause_id,
           category: rule.category,
           title: rule.title,
-          text: injectVariables(rule.fallback_text, variables),
+          text: forClause(rule.required_clause_id, () => injectVariables(rule.fallback_text, variables)),
           injected_by: "dependencyResolver",
         };
 

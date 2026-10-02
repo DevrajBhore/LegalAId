@@ -113,7 +113,10 @@
   white-space: nowrap;
 }
 .admin-chip:hover { color: var(--text-primary); border-color: var(--line-strong); }
-.admin-chip--active { background: var(--gold-pale); border-color: var(--line-gold); color: var(--gold); font-weight: 600; }
+.admin-chip--active,
+/* --on is the modifier LibraryReviewPanel and ConstraintScopePanel emit.
+   It had no rule anywhere, so their active filter never highlighted. */
+.admin-chip--on { background: var(--gold-pale); border-color: var(--line-gold); color: var(--gold); font-weight: 600; }
 
 /* ── Review rows ─────────────────────────────────────────────────────────── */
 

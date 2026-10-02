@@ -37,5 +37,7 @@ services:
         sync: false
       - key: EMAIL_FROM
         sync: false
+      - key: CONTACT_EMAIL
+        sync: false
       - key: JWT_EXPIRES_IN
         value: 7d

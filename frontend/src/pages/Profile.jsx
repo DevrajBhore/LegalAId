@@ -2,11 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Icons } from "../utils/icons";
+import YourData from "../components/YourData";
 import "./Profile.css";
 
 const FEATURES = [
-  { icon: Icons.fileText, label: "16+ document types", active: true },
-  { icon: Icons.shieldCheck, label: "Legal validation", active: true },
+  { icon: Icons.fileText, label: "Indian document types", active: true },
+  { icon: Icons.shieldCheck, label: "Automated checks", active: true },
   { icon: Icons.sparkles, label: "AI drafting assistant", active: true },
   { icon: Icons.download, label: "DOCX export", active: true },
 ];
@@ -78,6 +79,7 @@ export default function Profile() {
               {[
                 ["Full Name", user.name],
                 ["Email Address", user.email],
+                ["Mobile Number", user.phone || "Not given"],
                 ["Account Status", null],
               ].map(([label, value]) => (
                 <div key={label} className="profile-field">
@@ -132,6 +134,8 @@ export default function Profile() {
               </button>
             </div>
           </div> */}
+
+          <YourData />
 
           <div className="profile-card profile-card--actions">
             <h3 className="profile-card-title">Quick actions</h3>

@@ -1,0 +1,186 @@
+{
+  "$comment": [
+    "D4.37 \u2014 THE FALSE-POSITIVE DIRECTION, MEASURED WITHOUT MAKING THE LEGAL JUDGEMENT.",
+    "",
+    "D4.35 established the false negative: the document contains the legal substance and the",
+    "constraint does not recognise it. This is the converse, and the hard part was measuring it",
+    "without answering a question this investigation has no standing to answer.",
+    "",
+    "The knowledge model is unchanged. No rule, satisfier list, clause or category was edited."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.37",
+  "kind": "PRODUCT FINDING",
+  "status": "MEASURED \u2014 not repaired",
+  "measured_in": "docs/audit/vacuous-satisfaction.json",
+  "the_question_reframed": {
+    "$why_it_had_to_be_reframed": "The obvious measurement \u2014 'does this clause really establish consideration?' \u2014 is a legal judgement. An engine probe answering it would be exactly the overreach the methodology forbids.",
+    "asked_instead": "CAN THIS RULE FAIL FOR THIS FAMILY AT ALL?",
+    "reasoning": [
+      "A rule whose satisfier is UNCONDITIONALLY present \u2014 named in the blueprint's required list, or",
+      "in the hardening floor with no gate over it \u2014 is satisfied in every document of that family",
+      "whatever the user answers. It cannot refuse anything. It is not a check; it is a constant.",
+      "",
+      "That is structural, checkable, and needs no view about what the clause means."
+    ],
+    "$vacuity_alone_is_not_a_defect": "A rental agreement always contains a rent clause, so a consideration rule being unfailable there may be exactly right. The defect is vacuity discharged by a clause that is not about the rule's subject \u2014 and THAT distinction is legal, so the probe surfaces the evidence and classifies only what structure settles."
+  },
+  "outcomes": {
+    "$scored_over": "211 rule-family pairs where the rule actually runs and is satisfied",
+    "ESTABLISHED_POSITIVE": {
+      "count": 16,
+      "means": "every satisfier present is contingent, so the rule can fail here. It is doing work."
+    },
+    "ESTABLISHED_NEGATIVE": {
+      "count": 4,
+      "means": "the rule cannot fail here, nothing satisfying it is in its principal category, AND the satisfier's full text does not speak to the rule's subject."
+    },
+    "NOT_ESTABLISHED": {
+      "count": 180,
+      "means": "the rule cannot fail here, but an on-subject satisfier is involved. Vacuous, possibly for the right reason. Legal question."
+    },
+    "UNRESOLVED": {
+      "count": 11,
+      "means": "the structural signal points at a defect and something contradicts it \u2014 the satisfier's text speaks to the subject, or its category is used once in the whole library. Withheld rather than guessed."
+    },
+    "UNVERIFIABLE": {
+      "count": 11,
+      "means": "the family produces no draft \u2014 the D4.35 direction, not this one."
+    }
+  },
+  "the_headline_that_is_not_the_finding": {
+    "observation": "194 of 211 evaluated pairs are vacuous: the rule cannot fail for that family.",
+    "$why_it_is_not_reported_as_a_defect": [
+      "Most of that 194 is the 180 NOT_ESTABLISHED, where the unconditional satisfier IS in the rule's",
+      "principal category. A supply agreement always containing a supply clause is a constraint that",
+      "cannot fail because the knowledge is correct, not because the check is broken.",
+      "",
+      "Reporting '92% of constraint evaluations cannot fail' would be true, alarming, and misleading."
+    ],
+    "$what_it_does_suggest": "Constraints in this system behave more as a floor the knowledge is authored to meet than as a filter that rejects. Whether that is the intended design is worth an explicit decision, and it is not one this record makes."
+  },
+  "the_fourteen": {
+    "$renamed": "This section was 'the fourteen' until a fifth correction reduced it to four. The old heading is kept in the history below rather than erased.",
+    "$all_share_one_shape": "A general provision \u2014 a clause almost every instrument carries regardless of subject \u2014 is enumerated in the rule's satisfier list, is unconditionally present, and its FULL text says nothing about the rule's subject.",
+    "by_rule": [
+      {
+        "rule_id": "SERVICE_REQUIRES_PAYMENT",
+        "asserts": "Service agreement must specify payment terms.",
+        "families": [
+          "SERVICE_AGREEMENT",
+          "CONSULTANCY_AGREEMENT",
+          "SUPPLY_AGREEMENT"
+        ],
+        "discharged_by": "CORE_TERM_001 \u2014 'Term of Agreement', declared TERM, named by 19 of 40 blueprints",
+        "full_clause_text": "This Agreement shall commence on the Effective Date and shall continue in force until terminated in accordance with the terms of this Agreement.",
+        "$the_whole_clause_is_144_characters": "Read in full, not excerpted. How long the agreement runs is not what is paid for it."
+      },
+      {
+        "rule_id": "SERVICE_REQUIRES_SCOPE",
+        "asserts": "Service agreement must define the scope of services.",
+        "families": [
+          "SUPPLY_AGREEMENT"
+        ],
+        "discharged_by": "CORE_PURPOSE_001 \u2014 a generic purpose clause, named by 17 of 40 blueprints",
+        "full_clause_text": "The purpose of this Agreement is to define the rights and obligations of the Parties in relation to Stainless steel commercial kitchen equipment: 1800 mm x 600 mm work tables, four-tier storage racks and 300-litre undercounter refrigeration units, all in 304-grade brushed finish.",
+        "$the_whole_clause_is_112_characters": "SUPERSEDED \u2014 that length and the '{{purpose}}' text were the library TEMPLATE. The text above is the RENDERED clause in the draft the rule was evaluated on.",
+        "$the_correct_reason": "The rendered clause states the GOODS supplied. The rule asks for a scope of SERVICES, and nothing in the rendered clause speaks to services. The verdict holds; the earlier reason \u2014 'defers its substance to a template variable' \u2014 was read from the template and is withdrawn. Whether a service-scope rule should reach a supply agreement at all is a scope question."
+      }
+    ],
+    "$not_concluded": [
+      "That either rule is wrong. Their propositions are sound and their statutory references are real.",
+      "That these documents lack payment terms or scope \u2014 many will have them in other clauses. What is established is that the RULE would not have noticed if they did not.",
+      "What the repair is. Narrowing a satisfier list is a legal act performed as a code change."
+    ]
+  },
+  "what_the_measurement_cost_to_get_right": {
+    "$recorded_because": "The first pass reported 83 findings. The honest number is 14. Every correction removed findings, and an investigation that only ever grows its own result should be distrusted.",
+    "corrections_in_order": [
+      {
+        "pass": 1,
+        "reported": 83,
+        "error": "Treated hardening-floor membership as guaranteeing presence. Hardening filters its floor through the exclusion record, so a floor clause the blueprint also gates can be declined away.",
+        "effect": "15 pairs moved from vacuous to can-fail."
+      },
+      {
+        "pass": 2,
+        "reported": 82,
+        "error": "Scored a correct IP assignment clause as off-subject because its category is spelled INTELLECTUAL_PROPERTY while the rule's other satisfiers say IP \u2014 a singleton the library uses once against IP's twenty.",
+        "fix": "A category held by exactly one clause in 316 cannot support a claim about a rule's subject. Such rows are withheld as UNRESOLVED, not decided.",
+        "effect": "2 rows withheld."
+      },
+      {
+        "pass": 3,
+        "reported": 80,
+        "error": "THE LARGE ONE. Iterated every rule in the repository without checking whether it is bound to the family. A distribution rule was scored as vacuously satisfied on a share subscription agreement \u2014 a family binding only `contract` and `corporate`, where that rule never runs at all.",
+        "fix": "Scope the measurement to rules the domain registry actually binds to the family. A rule that does not run cannot be vacuously satisfied.",
+        "effect": "584 pairs fell to 211; 80 findings fell to 14."
+      },
+      {
+        "pass": 4,
+        "reported": 14,
+        "error": "Split 'general provision' from 'subject-specific' at half the portfolio, which put CORE_TERM_001 (19 of 40) on the subject-specific side \u2014 plainly wrong.",
+        "fix": "Report the raw reach per satisfier and classify nothing on it. Tuning the cutoff until it agreed with me would have been fitting the instrument to the answer.",
+        "effect": "No change to the count; the derived label was removed."
+      },
+      {
+        "pass": 5,
+        "reported": 14,
+        "error": "THE ONE MY OWN TEST CAUGHT. Classified from a 260-character excerpt of a 508-character clause, and reported ten families on the half that did not contain the consideration recital.",
+        "fix": "Carry the FULL text, and withhold the off-subject verdict wherever the text speaks to the rule's subject even though the declared category does not. A category is a label someone applied; the text is the artifact.",
+        "effect": "14 findings fell to 4. Ten moved to UNRESOLVED.",
+        "$found_by": "tests/satisfactionContract.test.mjs, written to pin the D4.38 case list \u2014 it asserted that CORE_IDENTITY_001 does not mention consideration, and it failed on the first run."
+      },
+      {
+        "pass": 6,
+        "reported": 4,
+        "error": "Classified from the library TEMPLATE of each satisfying clause rather than the RENDERED clause in the draft the rule was evaluated on. Found in D4.41.",
+        "fix": "The probe now reads the rendered text from the generated draft; category and title remain library metadata.",
+        "effect": "No change to the count. The SUPPLY_AGREEMENT row survives on the rendered text for a DIFFERENT and correct reason; its recorded reason was replaced. The three CORE_TERM_001 rows were re-checked on rendered text \u2014 hardening re-renders that clause too \u2014 and still carry no payment language.",
+        "$worth_noting": "The first correction in this record's history that did not reduce the count. Re-measuring rather than hand-editing is what showed it: the expected answer was 3."
+      }
+    ],
+    "$the_rule_this_reinforces": "A trace of a different object is not a trace \u2014 D4.34-A's rule, hit again in pass 3 and in the largest possible way. Both times the error was scoring something the production system never evaluates.",
+    "$final": "83 \u2192 82 \u2192 80 \u2192 14 \u2192 4. Every correction removed findings. The instrument was wrong in the same direction five times, and each time the error was reading something other than what the production system actually does or says."
+  },
+  "relationship_to_the_other_findings": {
+    "vs_D4_35_false_negative": "Opposite directions, same root. D4.35: the satisfier list is too NARROW, so specialised knowledge falls outside it. D4.37: the satisfier list is too BROAD, so a general provision falls inside it. Both are the id-list coupling \u2014 an enumeration maintained by hand drifts in both directions at once.",
+    "$this_strengthens_the_architectural_case": "A semantic satisfaction relation would address both. An enumeration cannot be made correct by editing it, because nothing keeps it correct afterwards.",
+    "vs_D4_36_proposition_layer": "It also raises the bar for that layer. An `implements` claim is an authored claim, unverified against the clause text \u2014 so a wrong claim reproduces exactly this failure, attributably. Migration relocates accountability; it does not by itself prevent a recitals clause being declared to establish consideration.",
+    "vs_D4_33_scope": "One of the three rules, CONTRACT_REQUIRES_CONSIDERATION, is already in the advocate's scope queue. The other two are not, and are not scope questions: a service agreement is the family these rules are FOR."
+  },
+  "what_this_record_does_not_do": [
+    "It does not change the knowledge model. No rule, satisfier list, clause or category was edited.",
+    "It does not decide whether a recitals clause evidences consideration. That is the Contract Act question and it belongs to the advocate.",
+    "It does not claim the 180 NOT_ESTABLISHED rows are correct \u2014 only that structure cannot settle them.",
+    "It does not propose narrowing any satisfier list, which would be a legal act performed as a code change."
+  ],
+  "D4_37_status": {
+    "headline": "false-positive satisfier measurement complete; 4 established cases; no repair",
+    "$what_the_measurement_establishes": "That the listed clause is not a reliable discriminator for the proposition, on the content inspected. It does NOT independently establish the legal proposition itself, and no row here should be read as a legal conclusion.",
+    "superseded_counts": {
+      "first_pass": 83,
+      "second": 82,
+      "third": 80,
+      "fourth": 14,
+      "final": 4,
+      "$note": "Only the last is evidence. The rest are recorded so the reduction is visible rather than implied."
+    },
+    "$the_four_are_not_legal_conclusions": "Four CANDIDATE false-positive satisfier cases, not four legal false positives. Each is a case where the current satisfier relationship deserves examination against the proposition. None asserts that the rule is wrong."
+  },
+  "the_ten_that_did_not_survive": {
+    "$why_this_section_exists": "They were reported as the strongest part of this finding, and they are not findings at all. Deleting them would leave the correction history describing a reduction the record no longer shows.",
+    "rule": "CONTRACT_REQUIRES_CONSIDERATION, in 10 families, discharged by CORE_IDENTITY_001.",
+    "what_was_reported": "That a 'Parties and Recitals' clause names who is contracting and does not state what is given in return.",
+    "what_is_true": [
+      "CORE_IDENTITY_001 runs to 508 characters and carries the conventional consideration recital:",
+      "'WHEREAS, the Parties desire to enter into this Agreement for a lawful purpose and lawful consideration under the Indian Contract Act, 1872; NOW, THEREFORE, in consideration of the mutual covenants and promises set forth herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged\u2026'",
+      "",
+      "Mutual promises are consideration under s.2(d). Whether a recital of this kind SUFFICES \u2014 s.25 requires consideration to exist, and a court may look behind an acknowledgement of receipt \u2014 is a real legal question with arguments both ways.",
+      "It is therefore UNRESOLVED, and it was never ESTABLISHED_NEGATIVE."
+    ],
+    "how_the_error_happened": "The probe stored a 260-character excerpt and classified from it. The consideration language begins at roughly character 300. Ten families were reported on the strength of half a clause.",
+    "$the_rule_it_breaks": "'Inspect the generated artifact before classifying it' \u2014 followed in form, not in substance. An excerpt is not the artifact.",
+    "$their_proper_state": "UNRESOLVED, pending the legal question of whether a consideration recital establishes the required consideration. They are RETRACTED EVIDENCE, not current defects, and the regression reopens them if CORE_IDENTITY_001 changes."
+  }
+}

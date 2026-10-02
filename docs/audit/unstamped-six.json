@@ -1,0 +1,66 @@
+{
+  "$probe": "probeUnstampedSix.mjs (D4.34-B step 2)",
+  "$what_changed_since_D4_34": "D4.34 read the finished draft and could not attribute these six. A differential walk attributes them without the artifact's cooperation.",
+  "$what_did_not_change": "The shipped document still cannot state its own origin. Attribution for the investigation is not provenance for the product.",
+  "fixture": "MINIMAL_DECLINED",
+  "rows": [
+    {
+      "family": "FOUNDERS_AGREEMENT",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "blueprint_declares_it_required": false,
+      "recorded_as_excluded": false,
+      "produced_by": "applyDocumentHardening",
+      "stamped": false,
+      "stamp": null
+    },
+    {
+      "family": "TERM_SHEET",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "blueprint_declares_it_required": false,
+      "recorded_as_excluded": false,
+      "produced_by": "applyDocumentHardening",
+      "stamped": false,
+      "stamp": null
+    },
+    {
+      "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "blueprint_declares_it_required": false,
+      "recorded_as_excluded": false,
+      "produced_by": "applyDocumentHardening",
+      "stamped": false,
+      "stamp": null
+    },
+    {
+      "family": "DATA_PROCESSING_AGREEMENT",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "blueprint_declares_it_required": false,
+      "recorded_as_excluded": false,
+      "produced_by": "applyDocumentHardening",
+      "stamped": false,
+      "stamp": null
+    },
+    {
+      "family": "SETTLEMENT_AGREEMENT",
+      "clause": "CORE_ENTIRE_AGREEMENT_001",
+      "blueprint_declares_it_required": false,
+      "recorded_as_excluded": false,
+      "produced_by": "applyDocumentHardening",
+      "stamped": false,
+      "stamp": null
+    },
+    {
+      "family": "MOU",
+      "clause": "CORE_FORCE_MAJEURE_001",
+      "blueprint_declares_it_required": true,
+      "recorded_as_excluded": false,
+      "produced_by": "resolveClauseSelection (blueprint)",
+      "stamped": false,
+      "$reading": "present straight out of selection — the blueprint names it, so no later stage needed to add it"
+    }
+  ],
+  "attributed_to": {
+    "applyDocumentHardening": 5,
+    "resolveClauseSelection (blueprint)": 1
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "$comment": [
+    "D4.36 \u2014 WHAT THE PROPOSITION LAYER ACTUALLY IS, AND WHETHER IT CAN CARRY THE SATISFACTION",
+    "RELATION D4.35 SHOWED IS MISSING.",
+    "",
+    "Six questions were put to it. They are answered below from the declarations and the code, and",
+    "nothing is wired in. Two of the answers say the layer cannot do what a constraint would need,",
+    "and those are the load-bearing ones."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.36",
+  "kind": "ARCHITECTURAL INVESTIGATION",
+  "status": "ANSWERED \u2014 nothing wired in, nothing migrated",
+  "a_correction_i_nearly_shipped": {
+    "what_i_was_about_to_report": "That the repository's proposition vocabulary runs only in the APPLICABILITY direction \u2014 proposition gates clause \u2014 and therefore could not express satisfaction at all.",
+    "why_that_was_wrong": [
+      "There are TWO directories with 'propositions' in the path and they are different layers:",
+      "",
+      "  knowledge-base/intake/propositions/   EVIDENCE about the world. Declares `gates`.",
+      "  knowledge-base/propositions/          LEGAL PROPOSITIONS a document must establish.",
+      "",
+      "I read the first, found only applicability, and was one paragraph from reporting that no",
+      "satisfaction relation existed anywhere. It exists, in the second, and clauses declare it with",
+      "an `implements` field."
+    ],
+    "what_caught_it": "propositionVocabulary.test.mjs prints 'every implements reference resolves'. The test named a relation I had just concluded was absent.",
+    "$the_recurring_error": "Third time this session that a finding was about to be made against the wrong object \u2014 after the hand-built decline fixture and after reading d.clauses instead of out.draft.clauses. The pattern is the same each time: a conclusion drawn from the first artifact whose name matched."
+  },
+  "the_three_layers_and_their_directions": {
+    "$why_this_matters_first": "They are easy to confuse and they answer different questions. Merging them would produce a system that cannot tell 'this clause is required here' from 'this requirement is met'.",
+    "layers": [
+      {
+        "layer": "concepts (knowledge-base/concepts)",
+        "direction": "APPLICABILITY",
+        "edge": "concept `attaches` -> { clauses, rules, disclosures }",
+        "answers": "does this clause/rule apply to this transaction at all",
+        "$note": "It already has a rule-facing edge. A concept can say a rule APPLIES. It has no way to say a rule is SATISFIED."
+      },
+      {
+        "layer": "evidence propositions (knowledge-base/intake/propositions)",
+        "direction": "APPLICABILITY",
+        "edge": "proposition `gates` -> clauses",
+        "answers": "is this true of the world, established by admissible evidence about a named subject",
+        "$truth_maker": "evidence outside the document \u2014 system_observation, public_register, third_party_attestation"
+      },
+      {
+        "layer": "legal propositions (knowledge-base/propositions)",
+        "direction": "SATISFACTION",
+        "edge": "clause `implements` -> proposition_id",
+        "answers": "does this document establish the proposition",
+        "$truth_maker": "the presence of a clause that declares it implements the proposition",
+        "$this_is_the_candidate_bridge": true
+      }
+    ]
+  },
+  "the_six_questions": [
+    {
+      "q": "Is it an authored legal proposition?",
+      "a": "YES.",
+      "evidence": "Each carries a `statement` in its own words and an `authority` block of act/section/note. propositionVocabulary.test.mjs enforces that a proposition is never merely the statute restated.",
+      "caveat": "All 12 are review_status draft-needs-legal-review. Authored, not reviewed."
+    },
+    {
+      "q": "Is it merely descriptive metadata?",
+      "a": "NO. It carries an executable contract.",
+      "evidence": "`satisfaction` is an enum of IN_THE_DOCUMENT | OUTSIDE_THE_DOCUMENT, and `applicability` is either {always:true} or {position, value}. Both are evaluated by propositionCoverage.test.mjs, which fails today on a real gap rather than on a schema complaint."
+    },
+    {
+      "q": "Does a proposition represent something a clause ESTABLISHES, or merely what it is ABOUT?",
+      "a": "ESTABLISHES \u2014 and this is the one thing D4.35 said was missing.",
+      "evidence": "The edge is clause.implements -> proposition_id, declared ON THE CLAUSE. That is the opposite direction from the other two layers, and it is the direction a constraint needs.",
+      "$the_architecturally_significant_part": "Because the declaration is co-located with the clause, authoring a specialised clause puts the obligation in front of the author who is writing it \u2014 instead of requiring them to find and edit a central cross-family id list they may not know exists. That is the actual difference from fails_if, and it is a real one."
+    },
+    {
+      "q": "Can ONE clause establish MULTIPLE propositions?",
+      "a": "YES by schema, UNTESTED in practice.",
+      "evidence": "`implements` is an array. All three existing declarations hold exactly one element, so nothing exercises the plural case."
+    },
+    {
+      "q": "Can MULTIPLE clauses JOINTLY establish ONE proposition?",
+      "a": "NO. This is a real gap.",
+      "evidence": "Satisfaction is evaluated existentially \u2014 `some(id => implementers.get(p)?.has(id))`. Any one implementing clause satisfies it. There is no construct for 'these three together'.",
+      "$why_it_bites_immediately": "The IP case from D4.35 is exactly this shape. IP_ASSIGNMENT_AGREEMENT splits its operative grant across three right-type clauses \u2014 copyright, patents, trademarks \u2014 each behind its own condition. Under an existential rule, a document assigning only trademarks would establish IP_REQUIRES_OWNERSHIP's proposition as fully as one assigning everything. Whether that is correct is a legal question; that the layer cannot even express the alternative is an architectural fact."
+    },
+    {
+      "q": "Can a proposition require ATTRIBUTES or CONTEXT rather than mere clause presence?",
+      "a": "NO. And this is the load-bearing limitation.",
+      "evidence": "`satisfaction` is a two-valued enum. It carries no attribute requirements, no subject binding and no provenance \u2014 unlike the concept layer, which has `attributes` and `requires_dimensions`, and unlike the evidence layer, which has `subject_binding` and `admissible_provenance`. The satisfaction layer has the weakest vocabulary of the three.",
+      "$consequence": "Satisfaction today means 'a clause claiming to implement this is present'. That is the SAME test as fails_if, indirected through a name."
+    }
+  ],
+  "the_answer_to_the_question_that_was_asked": {
+    "question": "Can the existing proposition vocabulary support an executable 'satisfies this legal proposition' relationship without turning semantic labels into another unreliable proxy?",
+    "answer": "PARTLY, AND NOT YET.",
+    "what_it_already_does_better_than_fails_if": [
+      "The declaration lives on the clause, so specialising knowledge and declaring what the specialised clause establishes are the same authoring act.",
+      "The proposition is stated in legal terms with an authority, so what is being required is reviewable as law rather than as a list of identifiers.",
+      "A clause that implements nothing is visible as such; a clause missing from someone else's id list is not."
+    ],
+    "what_would_still_be_a_proxy": [
+      "`implements` is a CLAIM by the clause's author that the clause discharges the proposition. Nothing verifies it against the clause text. A wrong claim is a false positive of exactly the kind CONTRACT_REQUIRES_CONSIDERATION already exhibits by accepting an identity clause \u2014 the failure mode does not disappear, it moves to a place where it is at least attributable and reviewable.",
+      "Nothing requires a clause to declare `implements` at all. A newly specialised clause that omits it reproduces the D4.35 false negative exactly, with no warning at authoring time.",
+      "Existential satisfaction means one implementing clause of any quality closes the requirement."
+    ],
+    "$the_honest_summary": "It relocates the coupling from a central id list to a local declaration, which is a genuine improvement in reviewability and in who is accountable for it. It does not by itself make satisfaction semantic, and calling it semantic would be the category error D4.35 warned about."
+  },
+  "what_the_layer_would_need_before_it_could_carry_constraints": {
+    "$status": "REQUIREMENTS, NOT A DESIGN. Nothing here is proposed for implementation.",
+    "items": [
+      {
+        "need": "joint satisfaction",
+        "because": "the IP grant is split across three clauses and the layer can only ask whether any one is present"
+      },
+      {
+        "need": "an authoring obligation",
+        "because": "without one, the next specialised clause silently reproduces the D4.35 failure \u2014 and the whole point is that nothing warned anyone"
+      },
+      {
+        "need": "a decision on whether satisfaction may require attributes",
+        "because": "'a payment clause is present' and 'a payment clause stating an amount and a date is present' are different requirements, and only the second is what several of the blocking rules actually assert"
+      },
+      {
+        "need": "review of all 12 propositions and of every implements claim",
+        "because": "every one is draft-needs-legal-review, and an unreviewed claim that a clause discharges a statutory requirement is worth less than the id list it would replace"
+      },
+      {
+        "need": "independent reviewability of the satisfaction relation",
+        "because": "Without it the relation becomes an opaque assertion that happens to make constraints pass. That is strictly worse than the id list it replaces: the id list is at least visible in one place, whereas 316 scattered unverified claims are not.",
+        "$test_of_whether_this_is_met": "Someone who did not author the clause can look at the clause text and the proposition and say whether the claim holds \u2014 and their saying so is recorded."
+      }
+    ],
+    "$count_note": "Five, not four. The fifth was added after D4.37 showed what an unreviewable satisfier assertion costs in practice."
+  },
+  "the_layer_is_almost_entirely_unpopulated": {
+    "clauses_in_the_library": 316,
+    "clauses_declaring_implements": 3,
+    "propositions_declared": 12,
+    "propositions_with_at_least_one_implementer": 3,
+    "propositions_with_more_than_one_implementer": 0,
+    "clauses_implementing_more_than_one_proposition": 0,
+    "$what_this_means_for_the_evidence": "Both plural cases \u2014 one clause to many propositions, many clauses to one \u2014 are unexercised. Any claim about how the layer behaves at scale is a claim about code that has never run on real data.",
+    "$and_the_two_tests_fail": "propositionVocabulary fails for want of control clauses in its falsification; propositionCoverage fails because a proposition applicable in some world is implemented by no clause in the document. Both failures are consistent with a layer that was designed and then not populated."
+  },
+  "what_this_record_does_not_do": [
+    "It does not wire the layer into the constraint engine.",
+    "It does not migrate any rule from fails_if to a proposition.",
+    "It does not add an implements declaration to any clause.",
+    "It does not decide whether satisfaction should require attributes \u2014 that is the question the next step turns on, and it is legal as much as architectural.",
+    "It does not claim the layer is a proxy or is not one. It states which parts are verified and which rest on an author's unverified claim."
+  ],
+  "what_implements_actually_means": {
+    "$why_stated_explicitly": "Without this line the whole finding can be misread as 'the bridge exists, populate it'. It is the sentence that stops the old hand-maintained coupling from simply moving out of a central list and into individual clause metadata.",
+    "statement": "`implements` is currently evidence of an AUTHORED CLAIM, not independent evidence that the clause establishes the proposition.",
+    "what_it_does_assert": "That the clause's author, at the moment of writing it, believed this clause discharges this proposition \u2014 and recorded that belief where the next reader will find it.",
+    "what_it_does_NOT_assert": [
+      "That the clause text in fact discharges the proposition. Nothing verifies the claim against the text.",
+      "That anyone with legal authority agreed. All three existing claims are implements_review_status draft-needs-legal-review.",
+      "That the proposition is discharged in THIS document, as opposed to in general. Satisfaction carries no context."
+    ],
+    "$consequence_for_the_false_positive_problem": "A wrong `implements` claim is a false positive of exactly the kind CONTRACT_REQUIRES_CONSIDERATION already exhibits. Migrating does not remove that failure mode; it moves it somewhere attributable and reviewable, which is an improvement in accountability and NOT an improvement in correctness.",
+    "$the_test_that_would_change_this": "An implements claim confirmed by an advocate against the clause text stops being an authored claim and becomes reviewed knowledge. Until then the layer inherits every weakness of the id list plus one new one: the claim is made by whoever was fastest to write the clause."
+  }
+}

@@ -1,0 +1,1833 @@
+{
+  "$probe": "probePlaceholderProvenance.mjs (D4.42)",
+  "$method": "Sentinel attribution through the real form and the production chains. No generation code changed; no chain copied.",
+  "$attribution_is_not_provenance": "This establishes which source filled a value for the investigation. The shipped artifact still records none of it.",
+  "A_placeholders_classified_by_execution": {
+    "candidate_keys": 26,
+    "produce_a_value_from_no_input": [
+      {
+        "key": "party_1_type",
+        "value": "Individual"
+      },
+      {
+        "key": "party_2_type",
+        "value": "Individual"
+      },
+      {
+        "key": "party_1_descriptor",
+        "value": "Party, an Individual"
+      },
+      {
+        "key": "party_2_descriptor",
+        "value": "Party, an Individual"
+      },
+      {
+        "key": "guarantor_type",
+        "value": "Individual"
+      },
+      {
+        "key": "guarantor_descriptor",
+        "value": "Party, an Individual"
+      },
+      {
+        "key": "purpose",
+        "value": "the lawful business relationship described in this Agreement"
+      },
+      {
+        "key": "confidentiality_period",
+        "value": "3 years"
+      },
+      {
+        "key": "agreement_term",
+        "value": "2 years"
+      },
+      {
+        "key": "non_compete_period",
+        "value": "12 months"
+      },
+      {
+        "key": "permitted_use",
+        "value": "lawful commercial use"
+      },
+      {
+        "key": "prepayment_premium",
+        "value": "0"
+      }
+    ],
+    "synthesis": {
+      "key": "purpose",
+      "input": "company_name only",
+      "rendered": "the governance, shareholding rights, and management framework of SENTINEL_CO",
+      "synthesised": true
+    }
+  },
+  "B_constant_defaults": [
+    {
+      "key": "party_1_type",
+      "default_value": "Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "party_2_type",
+      "default_value": "Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "party_1_descriptor",
+      "default_value": "Party, an Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "party_2_descriptor",
+      "default_value": "Party, an Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "guarantor_type",
+      "default_value": "Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "guarantor_descriptor",
+      "default_value": "Party, an Individual",
+      "method": "NOT_ATTRIBUTABLE_BY_SENTINEL",
+      "why": "normalised from the party's name and declared type, not substituted — a free-text marker cannot survive it",
+      "per_family": [],
+      "tally": {}
+    },
+    {
+      "key": "purpose",
+      "default_value": "the lawful business relationship described in this Agreement",
+      "distinctive_literal": true,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_ABSENT": 26,
+        "UNVERIFIABLE": 14
+      }
+    },
+    {
+      "key": "confidentiality_period",
+      "default_value": "3 years",
+      "distinctive_literal": true,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_ABSENT": 28,
+        "UNVERIFIABLE": 12
+      }
+    },
+    {
+      "key": "agreement_term",
+      "default_value": "2 years",
+      "distinctive_literal": true,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_ABSENT": 28,
+        "UNVERIFIABLE": 12
+      }
+    },
+    {
+      "key": "non_compete_period",
+      "default_value": "12 months",
+      "distinctive_literal": true,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": true,
+          "state": "INJECTOR_LITERAL_NOT_SHIPPED",
+          "clauses_reached_by_the_user_value": [
+            "NDA_NON_SOLICITATION_001",
+            "NDA_NON_COMPETE_001"
+          ],
+          "clauses_filled_by_the_default_when_unanswered": [],
+          "blank_vs_missing": [
+            {
+              "clause_id": "NDA_NON_SOLICITATION_001",
+              "blank_and_missing_render_identically": true
+            },
+            {
+              "clause_id": "NDA_NON_COMPETE_001",
+              "blank_and_missing_render_identically": true
+            }
+          ]
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": true,
+          "state": "INJECTOR_LITERAL_NOT_SHIPPED",
+          "clauses_reached_by_the_user_value": [
+            "EMP_NON_SOLICITATION_001"
+          ],
+          "clauses_filled_by_the_default_when_unanswered": [],
+          "blank_vs_missing": [
+            {
+              "clause_id": "EMP_NON_SOLICITATION_001",
+              "blank_and_missing_render_identically": true
+            }
+          ]
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": true,
+          "state": "INJECTOR_LITERAL_NOT_SHIPPED",
+          "clauses_reached_by_the_user_value": [
+            "EMP_NON_COMPETE_001",
+            "EMP_NON_SOLICITATION_001"
+          ],
+          "clauses_filled_by_the_default_when_unanswered": [],
+          "blank_vs_missing": [
+            {
+              "clause_id": "EMP_NON_COMPETE_001",
+              "blank_and_missing_render_identically": true
+            },
+            {
+              "clause_id": "EMP_NON_SOLICITATION_001",
+              "blank_and_missing_render_identically": true
+            }
+          ]
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_ABSENT": 26,
+        "UNVERIFIABLE": 11,
+        "INJECTOR_LITERAL_NOT_SHIPPED": 3
+      }
+    },
+    {
+      "key": "permitted_use",
+      "default_value": "lawful commercial use",
+      "distinctive_literal": true,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": true,
+          "state": "INJECTOR_LITERAL_NOT_SHIPPED",
+          "clauses_reached_by_the_user_value": [
+            "NDA_DISCLOSURE_PERMITTED_001"
+          ],
+          "clauses_filled_by_the_default_when_unanswered": [],
+          "blank_vs_missing": [
+            {
+              "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
+              "blank_and_missing_render_identically": true
+            }
+          ]
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_ABSENT"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": true,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_ABSENT": 25,
+        "UNVERIFIABLE": 14,
+        "INJECTOR_LITERAL_NOT_SHIPPED": 1
+      }
+    },
+    {
+      "key": "prepayment_premium",
+      "default_value": "0",
+      "distinctive_literal": false,
+      "per_family": [
+        {
+          "family": "FOUNDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "TERM_SHEET",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "ESOP_GRANT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "PROMISSORY_NOTE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "IP_ASSIGNMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POWER_OF_ATTORNEY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "DATA_PROCESSING_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "REFUND_AND_CANCELLATION_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SHIPPING_AND_DELIVERY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "APPOINTMENT_LETTER",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INTERNSHIP_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SEPARATION_AGREEMENT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "POSH_POLICY",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "ARBITRATION_NOTICE",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "SETTLEMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "AFFIDAVIT",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "INDEMNITY_BOND",
+          "askable": false,
+          "state": "UNVERIFIABLE",
+          "why": "produces no draft"
+        },
+        {
+          "family": "NDA",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "EMPLOYMENT_CONTRACT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "CONSULTANCY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "PARTNERSHIP_DEED",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SHAREHOLDERS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "JOINT_VENTURE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SUPPLY_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "DISTRIBUTION_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SALES_OF_GOODS_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "COMMERCIAL_LEASE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "LEAVE_AND_LICENSE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "LOAN_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "GUARANTEE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "MOU",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "VENDOR_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "MASTER_SERVICE_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "TERMS_OF_SERVICE",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "PRIVACY_POLICY",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        },
+        {
+          "family": "RENTAL_AGREEMENT",
+          "askable": false,
+          "state": "UNASKABLE_LITERAL_NOT_DISTINCTIVE",
+          "why": "the default \"0\" is too common to attribute by search"
+        }
+      ],
+      "tally": {
+        "UNASKABLE_LITERAL_NOT_DISTINCTIVE": 29,
+        "UNVERIFIABLE": 11
+      }
+    }
+  ],
+  "C_purpose_chains": {
+    "tally": {
+      "CANNOT_DIVERGE": 35,
+      "NOT_BOTH_PRESENT": 3,
+      "AGREE": 1,
+      "DIVERGE": 1
+    },
+    "per_family": [
+      {
+        "family": "FOUNDERS_AGREEMENT",
+        "offered": [
+          "business_purpose"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "TERM_SHEET",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "ESOP_GRANT_LETTER",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SHARE_SUBSCRIPTION_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "PROMISSORY_NOTE",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "IP_ASSIGNMENT_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "POWER_OF_ATTORNEY",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "DATA_PROCESSING_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "REFUND_AND_CANCELLATION_POLICY",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SHIPPING_AND_DELIVERY_POLICY",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "APPOINTMENT_LETTER",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "INTERNSHIP_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SEPARATION_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "POSH_POLICY",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "ARBITRATION_NOTICE",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SETTLEMENT_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "AFFIDAVIT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "INDEMNITY_BOND",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "NDA",
+        "offered": [
+          "purpose",
+          "permitted_use"
+        ],
+        "state": "NOT_BOTH_PRESENT",
+        "recital_took": "purpose",
+        "purpose_clause_took": null
+      },
+      {
+        "family": "EMPLOYMENT_CONTRACT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SERVICE_AGREEMENT",
+        "offered": [
+          "services_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "CONSULTANCY_AGREEMENT",
+        "offered": [
+          "consulting_services"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "PARTNERSHIP_DEED",
+        "offered": [
+          "business_purpose"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SHAREHOLDERS_AGREEMENT",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "JOINT_VENTURE_AGREEMENT",
+        "offered": [
+          "jv_purpose"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SUPPLY_AGREEMENT",
+        "offered": [
+          "goods_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "DISTRIBUTION_AGREEMENT",
+        "offered": [
+          "product_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SALES_OF_GOODS_AGREEMENT",
+        "offered": [
+          "goods_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+        "offered": [
+          "services_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "COMMERCIAL_LEASE_AGREEMENT",
+        "offered": [
+          "property_description",
+          "permitted_use"
+        ],
+        "state": "NOT_BOTH_PRESENT",
+        "recital_took": "property_description",
+        "purpose_clause_took": null
+      },
+      {
+        "family": "LEAVE_AND_LICENSE_AGREEMENT",
+        "offered": [
+          "property_description",
+          "permitted_use"
+        ],
+        "state": "NOT_BOTH_PRESENT",
+        "recital_took": "property_description",
+        "purpose_clause_took": null
+      },
+      {
+        "family": "LOAN_AGREEMENT",
+        "offered": [
+          "purpose",
+          "security_collateral"
+        ],
+        "state": "AGREE",
+        "recital_took": "purpose",
+        "purpose_clause_took": "purpose"
+      },
+      {
+        "family": "GUARANTEE_AGREEMENT",
+        "offered": [
+          "purpose"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+        "offered": [
+          "services_description",
+          "project_description"
+        ],
+        "state": "DIVERGE",
+        "recital_took": "services_description",
+        "purpose_clause_took": "project_description"
+      },
+      {
+        "family": "MOU",
+        "offered": [
+          "mou_purpose"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "VENDOR_AGREEMENT",
+        "offered": [
+          "goods_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "MASTER_SERVICE_AGREEMENT",
+        "offered": [
+          "services_description"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "TERMS_OF_SERVICE",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "PRIVACY_POLICY",
+        "offered": [],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      },
+      {
+        "family": "RENTAL_AGREEMENT",
+        "offered": [
+          "permitted_use"
+        ],
+        "state": "CANNOT_DIVERGE",
+        "why": "the form offers fewer than two purpose sources"
+      }
+    ]
+  }
+}

@@ -57,7 +57,10 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, logout }}>
+    // updateUser: after the user edits their details. endSession: after the
+    // account is deleted (the server has already cleared the cookie).
+    <AuthContext.Provider value={{ user, token, loading, login, logout, updateUser: setUser,
+      endSession: () => { setAuthToken(null); setToken(null); setUser(null); } }}>
       {children}
     </AuthContext.Provider>
   );

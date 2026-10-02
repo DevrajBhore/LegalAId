@@ -1,0 +1,231 @@
+{
+  "$comment": [
+    "THE 11 NON-GENERATING FAMILIES \u2014 CAUSAL BLOCKERS ESTABLISHED, NOTHING REPAIRED.",
+    "",
+    "Every verdict here is derived from declarations that already exist: the rule's satisfier set, the",
+    "blueprint's own lists, the intake schema, the clause library. No hypothesis was tested by",
+    "generating again with a change, because 'I added a clause and it generated' establishes that a",
+    "symptom responds to a change, not what caused the block."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.35",
+  "kind": "PRODUCT FINDING",
+  "status": "CLASSIFIED \u2014 not repaired",
+  "measured_in": "docs/audit/block-decomposition.json",
+  "a_correction_to_my_own_earlier_split": {
+    "what_i_said": "Five failures are attributable to the 13 D4.33 scopes and six are not.",
+    "what_is_true": "Ten of the eleven are blocked ONLY by rules that are in the D4.33 queue. Just one \u2014 IP_ASSIGNMENT_AGREEMENT \u2014 is blocked by a rule outside it.",
+    "$why_the_earlier_number_was_wrong": "It split by document SHAPE, not by which rules were doing the blocking, and then reported the result as though it were the latter.",
+    "$but_the_split_still_matters": [
+      "Being in the D4.33 queue and being RESOLVED by the D4.33 decision are different things.",
+      "",
+      "The scope question is 'should this contract rule reach this document at all'. For a SWORN, NOTICE",
+      "or POLICY document the answer can remove the block. For an AGREEMENT the answer is 'yes, it",
+      "legitimately reaches it' \u2014 and the block still stands.",
+      "",
+      "So the useful axis is not queue membership. It is whether a scope decision could possibly resolve it."
+    ]
+  },
+  "the_split_that_matters": {
+    "SCOPE_RESOLVABLE": {
+      "count": 5,
+      "families": [
+        "POWER_OF_ATTORNEY",
+        "AFFIDAVIT",
+        "INDEMNITY_BOND",
+        "ARBITRATION_NOTICE",
+        "POSH_POLICY"
+      ],
+      "shapes": [
+        "SWORN",
+        "SWORN",
+        "SWORN",
+        "NOTICE",
+        "POLICY"
+      ],
+      "why": "A contract rule is refusing a document that is not a contract. An affidavit has no consideration to state, so the blueprint correctly contains nothing that addresses the rule, and the classifier's BLUEPRINT verdict is exactly what a mis-scoped rule looks like from the inside.",
+      "$the_classifier_cannot_tell_these_apart": "'the blueprint is missing something' and 'the rule should not be here' produce the identical mechanical signature. Only the shape and the advocate's scope decision distinguish them.",
+      "owner": "advocate \u2014 already queued, no new question",
+      "action": "none. Blocked on scope decision."
+    },
+    "NOT_SCOPE_RESOLVABLE": {
+      "count": 6,
+      "families": [
+        "ESOP_GRANT_LETTER",
+        "PROMISSORY_NOTE",
+        "IP_ASSIGNMENT_AGREEMENT",
+        "APPOINTMENT_LETTER",
+        "INTERNSHIP_AGREEMENT",
+        "SEPARATION_AGREEMENT"
+      ],
+      "why": "All six are AGREEMENT-shaped, so the rules reach them legitimately. Answering the scope question leaves every one of them blocked."
+    }
+  },
+  "what_actually_blocks_the_six": {
+    "$headline": "In every case the document ALREADY CONTAINS a clause in the rule's own principal category, under an id the rule does not know.",
+    "$fails_if_is_a_disjunction": "A rule fails only when NONE of the clauses it names is present. So the question is never 'which clause is missing' but 'why is the whole satisfier set unavailable' \u2014 and the answer here is that the set is enumerated by clause ID.",
+    "evidence": [
+      {
+        "family": "APPOINTMENT_LETTER",
+        "rule": "EMP_REQUIRES_ROLE",
+        "rule_names": [
+          "EMPLOYMENT_ROLE_001",
+          "CORE_PURPOSE_001"
+        ],
+        "document_has": "EMP_APPOINTMENT_TERMS_001 [PURPOSE]",
+        "category_match": "2 of 2 satisfiers share this category"
+      },
+      {
+        "family": "APPOINTMENT_LETTER",
+        "rule": "EMP_REQUIRES_COMPENSATION",
+        "document_has": "EMP_CTC_STRUCTURE_001 [CONSIDERATION]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "INTERNSHIP_AGREEMENT",
+        "rule": "EMP_REQUIRES_ROLE",
+        "document_has": "EMP_INTERNSHIP_ENGAGEMENT_001 [PURPOSE]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "INTERNSHIP_AGREEMENT",
+        "rule": "EMP_REQUIRES_COMPENSATION",
+        "document_has": "EMP_INTERNSHIP_STIPEND_001 [CONSIDERATION]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "SEPARATION_AGREEMENT",
+        "rule": "EMP_REQUIRES_ROLE",
+        "document_has": "EMP_SEPARATION_PURPOSE_001 [PURPOSE]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "SEPARATION_AGREEMENT",
+        "rule": "EMP_REQUIRES_COMPENSATION",
+        "document_has": "EMP_FNF_SETTLEMENT_001 [CONSIDERATION]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "ESOP_GRANT_LETTER",
+        "rule": "EMP_REQUIRES_ROLE",
+        "document_has": "ESOP_GRANT_001 [PURPOSE]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "ESOP_GRANT_LETTER",
+        "rule": "EMP_REQUIRES_TERMINATION",
+        "document_has": "ESOP_LEAVER_AND_LAPSE_001 [TERMINATION]",
+        "category_match": "2 of 2"
+      },
+      {
+        "family": "PROMISSORY_NOTE",
+        "rule": "CONTRACT_REQUIRES_CONSIDERATION",
+        "document_has": "PN_PROMISE_TO_PAY_001 and PN_INTEREST_001 [CONSIDERATION]",
+        "category_match": "7 of 14 \u2014 the modal category of the rule's satisfiers"
+      },
+      {
+        "family": "IP_ASSIGNMENT_AGREEMENT",
+        "rule": "IP_REQUIRES_OWNERSHIP",
+        "document_has": "IPA_COPYRIGHT_ASSIGNMENT_001 \u2014 the operative grant",
+        "$see": "the_IP_case_separately"
+      }
+    ],
+    "residual_true_blueprint_gaps": [
+      {
+        "family": "ESOP_GRANT_LETTER",
+        "rule": "EMP_REQUIRES_COMPENSATION",
+        "verdict": "BLUEPRINT",
+        "$note": "nothing in the grant letter is in the CONSIDERATION category. Whether an option grant IS compensation for this rule's purposes is a legal question, not an engineering one."
+      },
+      {
+        "family": "SEPARATION_AGREEMENT",
+        "rule": "EMP_REQUIRES_TERMINATION",
+        "verdict": "BLUEPRINT",
+        "$note": "a separation agreement follows a termination rather than providing for one. Same observation: the classification is mechanical, the resolution is legal."
+      }
+    ]
+  },
+  "the_architectural_finding": {
+    "statement": "Constraints assert their requirements against a hand-maintained list of clause IDs, not against the PROPOSITION a clause must establish. Clauses do not declare what they establish. So every time knowledge is specialised for a family, the id-list silently stops covering it \u2014 and the specialised document is refused for lacking something it contains.",
+    "$this_is_the_general_form": "Four families, three rules, one mechanism. It is not four blueprint gaps.",
+    "$why_it_will_recur": "Nothing warns anyone. Adding EMP_INTERNSHIP_ENGAGEMENT_001 for the internship family is a correct, local act of knowledge authoring; it is also what broke EMP_REQUIRES_ROLE for that family, silently, at authoring time.",
+    "$measured_against_the_universal_architecture_rule": "A list of clause ids is neither knowledge the family supplies nor reasoning mechanics the engine supplies. It is a coupling between the two, maintained by hand, and it is the thing that breaks.",
+    "a_layer_already_exists_and_is_not_connected": {
+      "observed": "The repository carries a proposition vocabulary (knowledge-base/intake/propositions, propositionVocabulary and propositionCoverage tests, evidencePropositions). Clause objects carry no field declaring what they establish, and the constraint engine does not reference propositions at all.",
+      "$not_a_proposal": "Stating what exists. Whether constraints should be migrated to propositions \u2014 and what proposition each clause establishes \u2014 is a large change resting on a legal judgement per clause, and NOTHING here decides it."
+    }
+  },
+  "the_IP_case": {
+    "$why_separately": "The user asked for it specifically, and it is the one blocker outside the advocate queue.",
+    "what_the_rule_asserts": "IP agreements must clearly specify ownership or assignment of intellectual property rights.",
+    "authority_cited_by_the_rule": "Copyright Act 1957 \u2013 S.17; Patents Act 1970 \u2013 S.68",
+    "what_the_rule_accepts": [
+      "IP_OWNERSHIP_001",
+      "IP_DEVELOPER_RETAINS_001",
+      "IP_ASSIGNMENT_001",
+      "EMP_IP_ASSIGNMENT_001",
+      "IP_LICENSE_001"
+    ],
+    "what_the_IP_family_actually_supplies": {
+      "in_the_draft": "IPA_COPYRIGHT_ASSIGNMENT_001 \u2014 the operative copyright grant \u2014 is present in the assembled document.",
+      "declared_conditionally_by_the_blueprint": [
+        "IPA_COPYRIGHT_ASSIGNMENT_001 (assigns_copyright)",
+        "IP_PATENT_RIGHTS_001 (assigns_patents)",
+        "IPA_TRADEMARK_ASSIGNMENT_001 (assigns_trademarks)"
+      ],
+      "$structure": "This family splits its operative grant across three clauses by right-type. The rule names none of the three, and instead names five generic clauses belonging to other families."
+    },
+    "verdict": "SATISFIER_ENUMERATION. The document grants the assignment and is refused for not granting it.",
+    "$not_concluded": "That the rule is wrong. Its proposition is sound and its authority is real. What is established is that its satisfier list does not describe this family's knowledge.",
+    "owner": "advocate to confirm that the three right-type grants discharge the proposition; engine to stop expressing the requirement as an id-list"
+  },
+  "the_instrument_and_where_it_fails": {
+    "$recorded_because": "The category test produced a right verdict from wrong evidence, and that is worth more than the verdict.",
+    "how_it_works": "A candidate is a clause in the draft, not named by the rule, whose declared category is held by the rule's satisfiers. It is weighted: a category held by the modal group of satisfiers is the rule's subject; one held by an outlier is that outlier's category leaking in.",
+    "it_failed_in_both_directions_on_the_IP_case": [
+      "FALSE POSITIVE: it offered IPA_MORAL_RIGHTS_001 as evidence of an ownership clause. Under Copyright Act 1957 s.57 moral rights are precisely the rights that are NOT assigned \u2014 close to the opposite of the rule's subject.",
+      "FALSE NEGATIVE: it missed IPA_COPYRIGHT_ASSIGNMENT_001, the actual operative grant, because that clause is declared category PURPOSE rather than IP."
+    ],
+    "$consequence": "The IP verdict is right, and the heuristic did not earn it. The finding rests on reading the draft, which is why every decomposition row carries draft_contents.",
+    "$the_weighting_did_work_elsewhere": "It rejected AFFIDAVIT_DEPONENT_001 as evidence of consideration \u2014 a match that existed only because CORE_IDENTITY_001 sits in CONTRACT_REQUIRES_CONSIDERATION's satisfier list."
+  },
+  "a_separate_observation_not_investigated": {
+    "what": "CONTRACT_REQUIRES_CONSIDERATION accepts CORE_IDENTITY_001 and CORE_CONFIDENTIALITY_001 as satisfiers.",
+    "$why_it_is_noted": "Neither clause states consideration. A satisfier list that accepts an identity clause as proof of consideration will pass documents that have none.",
+    "$why_it_is_not_investigated_here": "It is the opposite failure \u2014 over-enumeration rather than under \u2014 and it would show up as documents generating that should not, which is a different measurement. Raised, not pursued, and not repaired.",
+    "owner": "advocate"
+  },
+  "what_this_record_does_not_do": [
+    "It does not repair anything. No rule, blueprint, clause or stage was changed.",
+    "It does not decide whether any same-category clause discharges its rule's proposition. Every one of those is a legal question.",
+    "It does not propose migrating constraints to propositions. It records that the layer exists and is unconnected.",
+    "It does not treat the classifier's verdict as established where it rests on the category proxy alone \u2014 those are marked as leads."
+  ],
+  "D4_35_status": {
+    "headline": "causal classification complete; semantic satisfier architecture identified; no repair yet",
+    "established": [
+      "11 realization failures have causal explanations.",
+      "10 of 11 are blocked only by rules in the D4.33 scope queue; 1 (IP_ASSIGNMENT_AGREEMENT) is blocked independently by IP_REQUIRES_OWNERSHIP.",
+      "The axis that matters is queue membership x scope-resolvability, not document shape: 5 are scope-resolvable, 6 are not.",
+      "Five cases demonstrate a FALSE NEGATIVE caused by under-enumerated satisfier ids.",
+      "The IP case shows the same architectural pattern outside the employment and contract constraints.",
+      "An existing proposition vocabulary is a candidate architectural bridge \u2014 examined separately in proposition-satisfaction-layer.json.",
+      "Category matching alone is demonstrably insufficient: it produced a false positive and a false negative on one case.",
+      "No satisfier list has been expanded as a shortcut, and the regression pin refuses that repair.",
+      "Two residual legal questions remain explicitly unresolved (ESOP compensation; separation-agreement termination)."
+    ],
+    "the_two_directions": {
+      "FALSE_NEGATIVE": {
+        "state": "ESTABLISHED by D4.35",
+        "shape": "document contains the legal substance; the constraint does not recognise it"
+      },
+      "FALSE_POSITIVE": {
+        "state": "OBSERVED, NOT MEASURED",
+        "shape": "document lacks the legal substance; the constraint recognises an unrelated clause",
+        "$why_not_pursued": "It would show up as documents generating that should not, which the current corpus measurement does not test. Raised rather than pursued opportunistically.",
+        "$candidate_next_investigation": true
+      }
+    },
+    "$the_next_question_is_not": "how do we make these 11 generate"
+  }
+}

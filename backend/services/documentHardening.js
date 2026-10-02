@@ -1,5 +1,6 @@
 import { getClauseById } from "./clauseAssembler.js";
 import { injectVariables } from "./variableInjector.js";
+import { forClause, isRecording, observeRenderer, noteRenderer, chose, SOURCE_CLASS, NOT_YET_RECORDED } from "./provenance.js";
 import { normalizeClauseCategory, sortClausesByOrder } from "../config/clauseOrder.js";
 import { hasMeaningfulValue, positionOf, POSITION } from "./generationControls.js";
 import { deriveRiskProfile } from "./riskProfile.js";
@@ -39,6 +40,44 @@ function normalizeWhitespace(value = "") {
 function isNotApplicable(value = "") {
   const normalized = normalizeWhitespace(value).toLowerCase();
   return !normalized || ["na", "n/a", "none", "nil", "not applicable"].includes(normalized);
+}
+
+/* ── D4.43 stage 2: labelled fallback branches ──────────────────────────────
+ *
+ * Each helper returns EXACTLY what the expression it replaced returned, and
+ * records which branch was taken at the moment it was taken. The class comes from
+ * the branch, never from how the resulting text looks: a missing answer that
+ * leads to the constant branch is CONSTANT_DEFAULT because that branch is the
+ * constant, not because the words read like one. Only the fields D4.42 showed
+ * shipping unchosen wording are labelled; every other branch stays unrecorded.
+ */
+const P = (name) => `documentHardening.${name}`;
+const fromInput = (field, extra = {}) => ({ source_class: NOT_YET_RECORDED, chosen_by: "input", from: [field], field_answered: true, ...extra });
+const constantDefault = (producer, extra = {}) => ({ source_class: SOURCE_CLASS.CONSTANT_DEFAULT, chosen_by: producer, literal_site: producer, field_answered: false, ...extra });
+const withdrawn = (producer, extra = {}) => ({ source_class: SOURCE_CLASS.WITHDRAWN, chosen_by: producer, field_answered: false, ...extra });
+const aliasOf = (producer, key, extra = {}) => ({ source_class: SOURCE_CLASS.ALIAS, chosen_by: producer, from: [key], field_answered: false, ...extra });
+
+// `value || literal`, labelled.
+function orConstant(field, producer, value, literal) {
+  return value
+    ? chose(field, producer, value, fromInput(field))
+    : chose(field, producer, literal, constantDefault(producer));
+}
+
+// stripExternalReferencePhrases(value, literal), labelled.
+function strippedOrConstant(field, producer, value, literal) {
+  const out = stripExternalReferencePhrases(value, literal);
+  if (!normalizeWhitespace(value)) {
+    return chose(field, producer, out, literal === "" ? withdrawn(producer) : constantDefault(producer));
+  }
+  return chose(field, producer, out, fromInput(field, out !== normalizeWhitespace(value) ? { transformed_by: P("stripExternalReferencePhrases") } : {}));
+}
+
+// present ? whenPresent() : whenAbsent, labelled. The present branch is the answer
+// wrapped in drafting; the absent branch is the renderer's own sentence, or nothing.
+function sentenceFor(field, producer, present, whenPresent, whenAbsent) {
+  if (present) return chose(field, producer, whenPresent(), fromInput(field, { form: "sentence built around the answer" }));
+  return chose(field, producer, whenAbsent, whenAbsent === "" ? withdrawn(producer) : constantDefault(producer, { form: "sentence" }));
 }
 
 function parseNumberish(value) {
@@ -89,13 +128,22 @@ function formatFormalExecutionDate(value) {
 }
 
 function resolveExecutionVenue(variables = {}) {
-  return stripExternalReferencePhrases(
+  const producer = P("resolveExecutionVenue");
+  const chain = ["execution_city", "arbitration_city", "delivery_location", "operating_state"];
+  const winner = chain.find((key) => variables[key]);
+  const out = stripExternalReferencePhrases(
     variables.execution_city ||
       variables.arbitration_city ||
       variables.delivery_location ||
       variables.operating_state,
     ""
   );
+  // arbitration_city is itself chosen upstream (generationControls may derive it
+  // from the first party's address); that producer is not instrumented yet.
+  return chose("execution_city", producer, out,
+    winner === "execution_city" ? fromInput("execution_city")
+      : winner ? aliasOf(producer, winner, { upstream: winner === "arbitration_city" ? "generationControls (not yet instrumented)" : "input" })
+      : withdrawn(producer));
 }
 
 function withIndefiniteArticle(value = "") {
@@ -279,7 +327,10 @@ function resolveGenericTerminationText(namedParties, variables = {}, present = E
 
 function resolveRestrictionPeriod(variables = {}) {
   const period = normalizeWhitespace(variables.non_compete_period);
-  return isNotApplicable(period) ? "twelve (12) months" : period;
+  return isNotApplicable(period)
+    ? chose("non_compete_period", P("resolveRestrictionPeriod"), "twelve (12) months",
+        constantDefault(P("resolveRestrictionPeriod"), { answer_seen: period ? "NOT_APPLICABLE_WORD" : "ABSENT" }))
+    : chose("non_compete_period", P("resolveRestrictionPeriod"), period, fromInput("non_compete_period"));
 }
 
 function buildInvoiceComplianceSentence(payeeLabel, variables = {}, documentType = "") {
@@ -475,9 +526,13 @@ function resolveExpensePolicyClause(documentType, serviceLabels, variables = {})
   ]);
 
   if (!hasMeaningfulValue(policy)) {
+    chose("expenses_policy", P("resolveExpensePolicyClause"),
+      `Except as expressly approved in writing in advance by ${payer}, all out-of-pocket, travel, accommodation, communication, and incidental expenses incurred by ${actor} in performing the Services shall be borne solely by ${actor}.`,
+      constantDefault(P("resolveExpensePolicyClause"), { form: "sentence" }));
     return `Except as expressly approved in writing in advance by ${payer}, all out-of-pocket, travel, accommodation, communication, and incidental expenses incurred by ${actor} in performing the Services shall be borne solely by ${actor}. Where an expense is approved in advance, the following shall apply:\n${mechanics}`;
   }
 
+  chose("expenses_policy", P("resolveExpensePolicyClause"), policy, fromInput("expenses_policy"));
   return `The following expense reimbursement arrangement shall apply under this Agreement: ${policy}. Any reimbursable expense claimed by ${actor} shall be supported by reasonable documentary evidence and, unless the stated policy provides otherwise, shall require the prior written approval of ${payer}. In addition:\n${mechanics}`;
 }
 
@@ -1616,7 +1671,21 @@ function survivingProvisionLabels(present) {
   return labels;
 }
 
-function renderHardClause(
+/*
+ * D4.43 — every renderer runs through here. When a generation is recording
+ * provenance, the renderer sees a read-observing view of the variables (same
+ * values, same keys) so the record can say which renderer ran, what it read, and
+ * what it found missing. When nothing is recording this is a direct call.
+ * Observation is coverage, not provenance: which VALUE a renderer chose is
+ * recorded only on branches that call chose(), never inferred here.
+ */
+function renderHardClause(clause, variables = {}, documentType = "", semanticContext = {}, present = EMPTY_PRESENCE) {
+  if (!isRecording()) return renderHardClauseUnobserved(clause, variables, documentType, semanticContext, present);
+  return observeRenderer(clause, variables, (view) =>
+    renderHardClauseUnobserved(clause, view, documentType, semanticContext, present));
+}
+
+function renderHardClauseUnobserved(
   clause,
   variables = {},
   documentType = "",
@@ -1892,9 +1961,9 @@ function renderHardClause(
 
     EMP_PROBATION_SENIOR_001: () => {
       const period = normalizeWhitespace(variables.probation_period);
-      const opening = period
-        ? `Given the seniority of the role, the Employee shall be subject only to a confirmation period of ${period}.`
-        : "Given the seniority of the role, the Employee shall not be subject to probation, and the employment is confirmed with effect from the date of joining.";
+      const opening = sentenceFor("probation_period", P("renderers.EMP_PROBATION_SENIOR_001"), Boolean(period),
+        () => `Given the seniority of the role, the Employee shall be subject only to a confirmation period of ${period}.`,
+        "Given the seniority of the role, the Employee shall not be subject to probation, and the employment is confirmed with effect from the date of joining.");
       return [
         opening,
         formatStructuredSubparts([
@@ -1976,9 +2045,9 @@ function renderHardClause(
       const period = stripExternalReferencePhrases(variables.retention_period, "");
       const purpose = stripExternalReferencePhrases(variables.processing_purpose, "");
 
-      const first = period
-        ? `Personal data is retained for no longer than ${period}, and in any event only for as long as the purpose for which it was collected requires.`
-        : "Personal data is retained only for as long as the purpose for which it was collected requires, or as a law in force requires.";
+      const first = sentenceFor("retention_period", P("renderers.PRIVACY_DATA_RETENTION_001"), Boolean(period),
+        () => `Personal data is retained for no longer than ${period}, and in any event only for as long as the purpose for which it was collected requires.`,
+        "Personal data is retained only for as long as the purpose for which it was collected requires, or as a law in force requires.");
 
       const second = purpose
         ? `That purpose is ${purpose}. Once it is served, or once you withdraw your consent, the personal data is erased or irreversibly anonymised, as Section 8(7) of the Digital Personal Data Protection Act, 2023 requires.`
@@ -2095,9 +2164,9 @@ function renderHardClause(
       const period = stripExternalReferencePhrases(variables.retention_period, "");
       const purpose = stripExternalReferencePhrases(variables.processing_purpose, "");
 
-      const opening = period
-        ? `The Processor shall retain personal data for no longer than ${period}, and in any event only for as long as the purpose of the processing requires.`
-        : "The Processor shall retain personal data only for as long as the purpose of the processing requires.";
+      const opening = sentenceFor("retention_period", P("renderers.DPA_RETENTION_AND_ERASURE_001"), Boolean(period),
+        () => `The Processor shall retain personal data for no longer than ${period}, and in any event only for as long as the purpose of the processing requires.`,
+        "The Processor shall retain personal data only for as long as the purpose of the processing requires.");
 
       return [
         opening,
@@ -2492,20 +2561,26 @@ function renderHardClause(
       const deliverablesSentence = hasMeaningfulValue(variables.deliverables)
         ? "The Parties acknowledge that the service scope is expected to culminate in the delivery of the outputs, work product, and reporting items expressly identified in this Agreement."
         : "";
-      const acceptanceSentence = hasMeaningfulValue(variables.acceptance_criteria)
-        ? `The services shall be measured against the following acceptance, review, or completion standard: ${stripExternalReferencePhrases(
+      const acceptanceSentence = sentenceFor("acceptance_criteria", P("renderers.SERVICE_SCOPE_001"),
+        hasMeaningfulValue(variables.acceptance_criteria),
+        () => `The services shall be measured against the following acceptance, review, or completion standard: ${stripExternalReferencePhrases(
             variables.acceptance_criteria,
             ""
-          )}.`
-        : "";
+          )}.`,
+        "");
+      const standardChangeControl = "Any material expansion or variation of the service scope, timeline, or output expectations shall require prior written agreement between the Parties, including any corresponding commercial adjustment where applicable.";
+      // Only SOFTWARE_DEVELOPMENT_AGREEMENT asks for a change process; elsewhere the
+      // standard sentence is fixed drafting, not a fallback for an unanswered field.
       const changeControlSentence =
-        documentType === "SOFTWARE_DEVELOPMENT_AGREEMENT" &&
-        hasMeaningfulValue(variables.change_request_process)
-          ? `Any material change to the service scope, specifications, or delivery expectations shall be handled in accordance with the following change-control process: ${stripExternalReferencePhrases(
-              variables.change_request_process,
-              ""
-            )}.`
-          : "Any material expansion or variation of the service scope, timeline, or output expectations shall require prior written agreement between the Parties, including any corresponding commercial adjustment where applicable.";
+        documentType === "SOFTWARE_DEVELOPMENT_AGREEMENT"
+          ? sentenceFor("change_request_process", P("renderers.SERVICE_SCOPE_001"),
+              hasMeaningfulValue(variables.change_request_process),
+              () => `Any material change to the service scope, specifications, or delivery expectations shall be handled in accordance with the following change-control process: ${stripExternalReferencePhrases(
+                variables.change_request_process,
+                ""
+              )}.`,
+              standardChangeControl)
+          : standardChangeControl;
 
       return `${serviceScopeText}${techStackText ? `\n${techStackText}` : ""}\nThe ${actor} shall perform the services with reasonable skill, care, and diligence, in accordance with the scope described above and with the standard of skill and care reasonably expected of a competent provider of comparable services.${resolveAvailabilitySentence(
         actor,
@@ -2545,33 +2620,33 @@ function renderHardClause(
     }),
 
     CORE_CONFIDENTIALITY_001: () =>
-      `The ${namedParties.first} and the ${namedParties.second} shall each keep confidential all Confidential Information disclosed by the other in connection with this Agreement and shall use such Confidential Information solely for the performance or enjoyment of rights under this Agreement. Neither Party shall disclose Confidential Information to any third party except to its employees, professional advisers, auditors, or subcontractors who have a strict need to know the same and who are bound by confidentiality obligations no less protective than those contained herein, or where disclosure is required by applicable law, stock exchange regulation, or order of a competent court or authority.${hasMeaningfulValue(
+      `The ${namedParties.first} and the ${namedParties.second} shall each keep confidential all Confidential Information disclosed by the other in connection with this Agreement and shall use such Confidential Information solely for the performance or enjoyment of rights under this Agreement. Neither Party shall disclose Confidential Information to any third party except to its employees, professional advisers, auditors, or subcontractors who have a strict need to know the same and who are bound by confidentiality obligations no less protective than those contained herein, or where disclosure is required by applicable law, stock exchange regulation, or order of a competent court or authority.${sentenceFor("confidentiality_access_scope", P("renderers.CORE_CONFIDENTIALITY_001"), hasMeaningfulValue(
         variables.confidentiality_access_scope
-      ) ? ` The Parties specifically agree that access to Confidential Information shall be restricted as follows: ${stripExternalReferencePhrases(
+      ), () => ` The Parties specifically agree that access to Confidential Information shall be restricted as follows: ${stripExternalReferencePhrases(
         variables.confidentiality_access_scope,
         ""
-      )}.` : ""} Each Party shall exercise at least reasonable care to protect the other Party's Confidential Information and shall, upon termination or written request, promptly return or securely destroy the Confidential Information of the other Party except to the extent retention is required by law or bona fide internal record-keeping policies.`,
+      )}.`, "")} Each Party shall exercise at least reasonable care to protect the other Party's Confidential Information and shall, upon termination or written request, promptly return or securely destroy the Confidential Information of the other Party except to the extent retention is required by law or bona fide internal record-keeping policies.`,
 
     NDA_CONFIDENTIAL_INFORMATION_SCOPE_001: () =>
-      `"Confidential Information" means ${stripExternalReferencePhrases(
+      `"Confidential Information" means ${strippedOrConstant("confidential_information_definition", P("renderers.NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"),
         variables.confidential_information_definition,
         "all non-public, proprietary, commercially sensitive, technical, financial, business, strategic, operational, customer, vendor, employee, and other information disclosed by either Party, whether in oral, written, visual, digital, or other form, which is designated as confidential or which by its nature ought reasonably to be regarded as confidential"
-      )}.${hasMeaningfulValue(variables.confidentiality_access_scope) ? ` Access to such Confidential Information shall be limited to ${stripExternalReferencePhrases(
+      )}.${sentenceFor("confidentiality_access_scope", P("renderers.NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"), hasMeaningfulValue(variables.confidentiality_access_scope), () => ` Access to such Confidential Information shall be limited to ${stripExternalReferencePhrases(
         variables.confidentiality_access_scope,
         ""
-      )}.` : " Access to such Confidential Information shall be limited to persons with a strict need to know for the permitted purpose and who are bound by confidentiality obligations no less protective than those contained in this Agreement."}${normalizeWhitespace(
+      )}.`, " Access to such Confidential Information shall be limited to persons with a strict need to know for the permitted purpose and who are bound by confidentiality obligations no less protective than those contained in this Agreement.")}${normalizeWhitespace(
         variables.residual_knowledge_treatment
       ).toLowerCase().includes("permitted")
         ? " The Receiving Party may use information retained in the unaided memory of its personnel, provided that this does not permit deliberate memorisation, copying, or use of source materials contrary to this Agreement."
         : " No residual knowledge carve-out shall permit the Receiving Party or its personnel to use, retain, or exploit Confidential Information except as expressly permitted under this Agreement."}`,
 
     NDA_EXCLUSIONS_001: () =>
-      `Confidential Information shall not include information that${hasMeaningfulValue(
+      `Confidential Information shall not include information that${sentenceFor("confidentiality_exclusions", P("renderers.NDA_EXCLUSIONS_001"), hasMeaningfulValue(
         variables.confidentiality_exclusions
-      ) ? `, in addition to the standard exclusions recognised under applicable law, is expressly agreed by the Parties to include the following excluded categories: ${stripExternalReferencePhrases(
+      ), () => `, in addition to the standard exclusions recognised under applicable law, is expressly agreed by the Parties to include the following excluded categories: ${stripExternalReferencePhrases(
         variables.confidentiality_exclusions,
         ""
-      )}` : " is or becomes publicly available without breach of this Agreement, was lawfully known to the receiving party without restriction before disclosure, is lawfully received from a third party without confidentiality restriction, or is independently developed without reference to the disclosing party's Confidential Information"}.`,
+      )}`, " is or becomes publicly available without breach of this Agreement, was lawfully known to the receiving party without restriction before disclosure, is lawfully received from a third party without confidentiality restriction, or is independently developed without reference to the disclosing party's Confidential Information")}.`,
 
     // The clause stated the permitted purpose and stopped. Every NDA also needs a
     // route for disclosure compelled by law or by a regulator -- without one the
@@ -2840,7 +2915,7 @@ function renderHardClause(
 
     SERVICE_SLA_001: () => {
       return `The ${actor} shall meet the following service levels and performance standards under this Agreement: ${normalizeWhitespace(
-        variables.service_levels || "the service levels expressly recorded in this Agreement"
+        orConstant("service_levels", P("renderers.SERVICE_SLA_001"), variables.service_levels, "the service levels expressly recorded in this Agreement")
       )}. If ${timelineLabels.performer} fails to meet a material service level, ${timelineLabels.reviewer} shall be entitled to require a remediation plan, reasonable corrective action, and such service credits or other contractual remedies as are expressly stated in this Agreement.${resolveDelayRemediesSentence(
         timelineLabels.reviewer,
         variables
@@ -2875,7 +2950,7 @@ function renderHardClause(
 
     SUPPLY_WARRANTY_001: () =>
       `The Supplier warrants that all Goods supplied under this Agreement shall be free from defects in materials, workmanship, and design for a period of ${normalizeWhitespace(
-        variables.warranty_period || "twelve (12) months"
+        orConstant("warranty_period", P("renderers.SUPPLY_WARRANTY_001"), variables.warranty_period, "twelve (12) months")
       )} from the date of delivery ('Warranty Period'); shall conform to the agreed specifications and applicable standards; and shall be fit for their intended purpose. During the Warranty Period, the Supplier shall, at the Buyer's option and at the Supplier's cost, repair or replace defective Goods or refund the purchase price for any defective Goods that cannot be rectified within a reasonable time.`,
 
     SUPPLY_INSPECTION_001: () =>
@@ -2910,17 +2985,17 @@ function renderHardClause(
               ? "simultaneously with transfer of title"
               : `upon delivery of the Goods at ${normalizeWhitespace(
                   variables.delivery_location || "the agreed delivery location"
-                )}`}, provided that the Goods conform to the contract description and are accompanied by all required documentation.${hasMeaningfulValue(
+                )}`}, provided that the Goods conform to the contract description and are accompanied by all required documentation.${sentenceFor("risk_transfer_terms", P("renderers.SUPPLY_RISK_TRANSFER_001"), hasMeaningfulValue(
         variables.risk_transfer_terms
-      ) ? ` The Parties specifically agree that risk transfer shall operate as follows: ${stripExternalReferencePhrases(
+      ), () => ` The Parties specifically agree that risk transfer shall operate as follows: ${stripExternalReferencePhrases(
         variables.risk_transfer_terms,
         ""
-      )}.` : " Where delivery is by carrier, risk shall pass to the Buyer upon delivery to the first carrier unless the Supplier has specifically arranged for transit insurance, in which case risk passes upon delivery at the destination."} ${hasMeaningfulValue(
+      )}.`, " Where delivery is by carrier, risk shall pass to the Buyer upon delivery to the first carrier unless the Supplier has specifically arranged for transit insurance, in which case risk passes upon delivery at the destination.")} ${sentenceFor("title_transfer_terms", P("renderers.SUPPLY_RISK_TRANSFER_001"), hasMeaningfulValue(
         variables.title_transfer_terms
-      ) ? `Title to the Goods shall pass in accordance with the following arrangement: ${stripExternalReferencePhrases(
+      ), () => `Title to the Goods shall pass in accordance with the following arrangement: ${stripExternalReferencePhrases(
         variables.title_transfer_terms,
         ""
-      )}.` : "Title to the Goods shall pass to the Buyer simultaneously with the passing of risk, subject to the Supplier's receipt of full payment of the applicable invoice."}`,
+      )}.`, "Title to the Goods shall pass to the Buyer simultaneously with the passing of risk, subject to the Supplier's receipt of full payment of the applicable invoice.")}`,
 
     SERVICE_TIMELINES_001: () =>
       `${timelineLabels.performer} shall perform the Services in accordance with the project timeline and milestones expressly agreed in this Agreement${
@@ -2939,7 +3014,7 @@ function renderHardClause(
       )}`,
 
     TECH_ACCEPTANCE_001: () =>
-      `Upon delivery of the Software or any milestone deliverable, ${serviceLabels.payer} shall have a period of fifteen (15) business days ('Acceptance Testing Period') to test and evaluate the Software against ${stripExternalReferencePhrases(
+      `Upon delivery of the Software or any milestone deliverable, ${serviceLabels.payer} shall have a period of fifteen (15) business days ('Acceptance Testing Period') to test and evaluate the Software against ${strippedOrConstant("acceptance_criteria", P("renderers.TECH_ACCEPTANCE_001"),
         variables.acceptance_criteria,
         // No acceptance criteria were supplied, so the test is the scope and
         // deliverables the document actually defines. Pointing at "the criteria
@@ -2954,7 +3029,7 @@ function renderHardClause(
       )} If ${serviceLabels.payer} fails to issue an acceptance notice or a defect notice within the Acceptance Testing Period, the Software shall be deemed accepted.`,
 
     SERVICE_ACCEPTANCE_001: () =>
-      `${serviceLabels.payer} shall review the relevant Services or deliverables against ${stripExternalReferencePhrases(
+      `${serviceLabels.payer} shall review the relevant Services or deliverables against ${strippedOrConstant("acceptance_criteria", P("renderers.SERVICE_ACCEPTANCE_001"),
         variables.acceptance_criteria,
         "the scope of Services and the deliverables described in this Agreement, and their fitness for the purpose for which they were commissioned"
       )}. Unless a different review period is expressly agreed, ${serviceLabels.payer} shall notify ${serviceLabels.payee} of any material non-conformity within ${Math.max(
@@ -2963,14 +3038,14 @@ function renderHardClause(
       )} Business Days after the relevant delivery or completion milestone. If ${serviceLabels.payer} does not issue such notice within that period, the Services or deliverables shall be deemed accepted. Upon receipt of a valid non-conformity notice, ${serviceLabels.payee} shall promptly correct the identified deficiencies and resubmit the affected Services or deliverables for review.`,
 
     SERVICE_CHANGE_REQUEST_001: () =>
-      `Any request for a change to the Services, scope of work, specifications, timelines, fees, or deliverables under this Agreement shall be raised through the following change-control mechanism: ${stripExternalReferencePhrases(
+      `Any request for a change to the Services, scope of work, specifications, timelines, fees, or deliverables under this Agreement shall be raised through the following change-control mechanism: ${strippedOrConstant("change_request_process", P("renderers.SERVICE_CHANGE_REQUEST_001"),
         variables.change_request_process,
         "the requesting Party shall submit a written change request describing the proposed change, the Parties shall assess its legal, commercial, technical, and timeline impact, and no change shall become binding unless approved in writing by authorised representatives of both Parties"
       )}. Until such written approval is granted, the existing scope, timelines, fees, and obligations shall continue to apply.`,
 
     EMP_PROBATION_001: () =>
       `The Employee shall be on probation for ${normalizeWhitespace(
-        variables.probation_period || "the period expressly stated in this Agreement"
+        orConstant("probation_period", P("renderers.EMP_PROBATION_001"), variables.probation_period, "the period expressly stated in this Agreement")
       )}, during which the Employer shall assess performance, conduct, role fit, and overall suitability. During probation, the employment may be confirmed, extended, or terminated in accordance with applicable labour laws, the notice obligations under this Agreement, and the Employer's lawful policies.`,
 
     EMP_DUTIES_001: () =>
@@ -2990,7 +3065,7 @@ function renderHardClause(
       )}` : ""}, subject always to applicable labour laws, rest intervals, and overtime requirements. The Employer may require reasonable additional hours where business necessity so requires, provided that all statutory limits, overtime rules, and safety obligations are complied with.`,
 
     EMP_LEAVE_POLICY_001: () =>
-      `The Employee shall be entitled to leave in accordance with applicable labour laws and the following leave policy: ${stripExternalReferencePhrases(
+      `The Employee shall be entitled to leave in accordance with applicable labour laws and the following leave policy: ${strippedOrConstant("leave_policy", P("renderers.EMP_LEAVE_POLICY_001"),
         variables.leave_policy,
         "earned leave, sick leave, casual leave, public holidays, and such other leave as may be mandated by law or prescribed under the Employer's policy"
       )}. Leave shall be administered in accordance with the Employer's lawful leave-approval process, and statutory leave entitlements shall not be reduced or denied by policy.`,
@@ -3052,12 +3127,12 @@ function renderHardClause(
       `The Joint Venture shall be managed by a Management Committee comprising representatives from each Party. The agreed structure of the Joint Venture is ${stripExternalReferencePhrases(
         variables.jv_structure,
         "the structure expressly agreed between the Parties"
-      )}, and the Parties shall use that structure to govern ownership economics, contribution obligations, decision rights, operational responsibility, and authority to deal with third parties.${hasMeaningfulValue(
+      )}, and the Parties shall use that structure to govern ownership economics, contribution obligations, decision rights, operational responsibility, and authority to deal with third parties.${sentenceFor("management_control", P("renderers.JV_GOVERNANCE_001"), hasMeaningfulValue(
         variables.management_control
-      ) ? ` The Parties specifically agree that management control shall operate as follows: ${stripExternalReferencePhrases(
+      ), () => ` The Parties specifically agree that management control shall operate as follows: ${stripExternalReferencePhrases(
         variables.management_control,
         ""
-      )}.` : " Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational decisions."} Major decisions shall include approval of the annual budget, entry into any third-party contract outside the ordinary course of business, any material change in the scope of the Joint Venture, and admission of any new party to the Joint Venture. Each Party shall designate its representatives to the Management Committee in writing and may replace them at any time on written notice.${resolveGovernanceProtectionSentences(
+      )}.`, " Decisions of the Management Committee shall require unanimous consent for major decisions and a simple majority for routine operational decisions.")} Major decisions shall include approval of the annual budget, entry into any third-party contract outside the ordinary course of business, any material change in the scope of the Joint Venture, and admission of any new party to the Joint Venture. Each Party shall designate its representatives to the Management Committee in writing and may replace them at any time on written notice.${resolveGovernanceProtectionSentences(
         variables
       )}`,
 
@@ -3178,7 +3253,7 @@ function renderHardClause(
 
     JV_EXIT_001: () =>
       [
-        `Exit from the Joint Venture shall be treated separately from termination of this Agreement. The agreed exit mechanism shall apply as follows: ${stripExternalReferencePhrases(
+        `Exit from the Joint Venture shall be treated separately from termination of this Agreement. The agreed exit mechanism shall apply as follows: ${strippedOrConstant("exit_terms", P("renderers.JV_EXIT_001"),
           variables.exit_terms,
           "the exiting Party shall give not less than ninety (90) days' prior written notice, the non-exiting Party shall have a right of first offer to acquire the exiting Party's interest at fair market value determined by an independent valuer, and if no buyout is completed within the agreed period the Parties shall jointly implement a commercially reasonable unwind, transfer, or sale process"
         )}.`,
@@ -3300,7 +3375,13 @@ function renderHardClause(
       // can actually file, so compose "City, State" when the city is known and
       // fall back to the competent courts OF the state when it is not.
       const city = normalizeWhitespace(
-        variables.execution_city || variables.arbitration_city
+        variables.execution_city
+          ? chose("execution_city", P("renderers.CORE_GOVERNING_LAW_001"), variables.execution_city, fromInput("execution_city"))
+          : variables.arbitration_city
+            ? chose("execution_city", P("renderers.CORE_GOVERNING_LAW_001"), variables.arbitration_city,
+                aliasOf(P("renderers.CORE_GOVERNING_LAW_001"), "arbitration_city", { upstream: "generationControls (not yet instrumented)" }))
+            : chose("execution_city", P("renderers.CORE_GOVERNING_LAW_001"), variables.arbitration_city,
+                withdrawn(P("renderers.CORE_GOVERNING_LAW_001"), { $note: "no city: the forum falls to the courts of the State" }))
       );
       // A "city" equal to the state is the state. Returning it as the forum
       // produced "the competent courts at Maharashtra"; falling through to the
@@ -3536,7 +3617,7 @@ function renderHardClause(
 
     TECH_WARRANTY_001: () =>
       `The Developer warrants that the Software shall substantially conform to the agreed specifications and requirements for a period of ${normalizeWhitespace(
-        variables.warranty_period || "ninety (90) days"
+        orConstant("warranty_period", P("renderers.TECH_WARRANTY_001"), variables.warranty_period, "ninety (90) days")
       )} from acceptance ('Warranty Period'); shall be free from material defects in design, code, and functionality; and shall not contain malicious code or undisclosed back-door access. During the Warranty Period, the Developer shall remedy defects at no additional cost. ${hasMeaningfulValue(
         variables.support_maintenance
       ) ? ` Post-warranty support and maintenance shall operate in accordance with the following arrangement: ${stripExternalReferencePhrases(
@@ -3545,13 +3626,13 @@ function renderHardClause(
       )}.` : " Any post-warranty maintenance or support shall be governed by the support obligations expressly stated in this Agreement or in a separate maintenance arrangement."}`,
 
     SERVICE_WARRANTY_001: () =>
-      `The ${actor} warrants that the Services and all Deliverables shall be performed with reasonable skill, care, diligence, and professional competence and shall materially conform to the scope of Services and the deliverables described in this Agreement.${hasMeaningfulValue(
+      `The ${actor} warrants that the Services and all Deliverables shall be performed with reasonable skill, care, diligence, and professional competence and shall materially conform to the scope of Services and the deliverables described in this Agreement.${sentenceFor("acceptance_criteria", P("renderers.SERVICE_WARRANTY_001"), hasMeaningfulValue(
         variables.acceptance_criteria
-      ) ? ` For clarity, conformity shall be tested against the following completion or acceptance standard: ${stripExternalReferencePhrases(
+      ), () => ` For clarity, conformity shall be tested against the following completion or acceptance standard: ${stripExternalReferencePhrases(
           variables.acceptance_criteria,
           ""
-        )}.` : ""} If any Service or Deliverable is found during the warranty period to be materially defective, incomplete, non-conforming, or not in accordance with this Agreement, the ${actor} shall, at its own cost and within a commercially reasonable time, correct, re-perform, update, or replace the affected Service or Deliverable. The warranty period for this clause shall be ${normalizeWhitespace(
-        variables.warranty_period || "ninety (90) days from delivery or acceptance"
+        )}.`, "")} If any Service or Deliverable is found during the warranty period to be materially defective, incomplete, non-conforming, or not in accordance with this Agreement, the ${actor} shall, at its own cost and within a commercially reasonable time, correct, re-perform, update, or replace the affected Service or Deliverable. The warranty period for this clause shall be ${normalizeWhitespace(
+        orConstant("warranty_period", P("renderers.SERVICE_WARRANTY_001"), variables.warranty_period, "ninety (90) days from delivery or acceptance")
       )}.${hasMeaningfulValue(
         variables.support_maintenance
       ) ? ` Post-warranty support, maintenance, or additional support obligations shall operate in accordance with the following arrangement: ${stripExternalReferencePhrases(
@@ -3614,6 +3695,7 @@ function renderHardClause(
     LOAN_DEFAULT_001: () => {
       const supplied = stripExternalReferencePhrases(variables.events_of_default, "");
       if (supplied) {
+        chose("events_of_default", P("renderers.LOAN_DEFAULT_001"), supplied, fromInput("events_of_default"));
         return renderStructuredDetailText(
           "Each of the following shall constitute an Event of Default under this Agreement:",
           supplied
@@ -3654,6 +3736,8 @@ function renderHardClause(
         );
       }
 
+      chose("events_of_default", P("renderers.LOAN_DEFAULT_001"), events.join("; "),
+        constantDefault(P("renderers.LOAN_DEFAULT_001"), { form: "list", $note: "two limbs vary with whether representations are present and whether the loan is secured" }));
       return [
         "Each of the following shall constitute an Event of Default under this Agreement:",
         formatStructuredSubparts(events),
@@ -3664,13 +3748,13 @@ function renderHardClause(
     GUARANTEE_OBLIGATION_001: () =>
       `In consideration of the Lender agreeing to extend financial accommodation to the Principal Debtor, the Guarantor hereby unconditionally and irrevocably guarantees to the Lender the due and punctual payment of all amounts payable by the Principal Debtor under the underlying financing arrangements. The aggregate liability of the Guarantor under this Agreement, taken together with any liability under the indemnity given in this Agreement and including principal, interest, default interest, costs, and enforcement expenses, shall not exceed ${formatCurrency(
         variables.guaranteed_amount
-      )}. This Guarantee shall be invoked in the circumstances described as follows: ${stripExternalReferencePhrases(
+      )}. This Guarantee shall be invoked in the circumstances described as follows: ${strippedOrConstant("invocation_conditions", P("renderers.GUARANTEE_OBLIGATION_001"),
         variables.invocation_conditions,
         "upon any payment default, material breach, insolvency event, or other event of default under the underlying financing arrangements"
-      )}.${hasMeaningfulValue(variables.invocation_procedure) ? ` The parties further agree that invocation shall be carried out in accordance with the following procedure: ${stripExternalReferencePhrases(
+      )}.${sentenceFor("invocation_procedure", P("renderers.GUARANTEE_OBLIGATION_001"), hasMeaningfulValue(variables.invocation_procedure), () => ` The parties further agree that invocation shall be carried out in accordance with the following procedure: ${stripExternalReferencePhrases(
         variables.invocation_procedure,
         ""
-      )}.` : " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand."} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor under Section 128 of the Indian Contract Act, 1872, subject in all cases to the aggregate cap stated in this clause.`,
+      )}.`, " The Lender may invoke this Guarantee by written demand to the Guarantor specifying the default, the amount due, and the basis of the demand.")} The liability of the Guarantor shall be co-extensive with that of the Principal Debtor under Section 128 of the Indian Contract Act, 1872, subject in all cases to the aggregate cap stated in this clause.`,
 
     // GUARANTEE_CONTINUING_001 and CORE_TERM_001 were both rendered by
     // resolveGuaranteeTermText, so a guarantee carried the same paragraph twice
@@ -3704,6 +3788,7 @@ function renderHardClause(
   };
 
   const render = renderers[clause.clause_id];
+  noteRenderer(Boolean(render));
   if (!render) {
     return clause;
   }
@@ -3748,7 +3833,8 @@ function cloneClauseForDraft(clauseId, variables = {}) {
     ...clause,
     category: normalizeClauseCategory(clause.category),
     title: clause.title || clause.name || null,
-    text: injectVariables(clause.text || "", variables),
+    // D4.43: labels the injection with its clause for the provenance record. No effect on text.
+    text: forClause(clauseId, () => injectVariables(clause.text || "", variables)),
   };
 }
 

@@ -1,0 +1,134 @@
+{
+  "$comment": [
+    "D4.34-A — WHERE A DECLINED PROTECTION IS LOST, AND WHAT STILL HAS NO ANSWER.",
+    "",
+    "D4.34 split one red test into three bounded investigations. This is the first of them,",
+    "traced but deliberately not repaired: the repair requires an authority nobody has supplied.",
+    "",
+    "It also corrects one thing the D4.34 record implied, and records a methodology failure of",
+    "this investigation's own, because both changed what the result means."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.34-A",
+  "kind": "PRODUCT FINDING",
+  "status": "TRACED AND BOUNDED — not repaired. Generation is unchanged.",
+
+  "the_trace": {
+    "$method": "Each stage of applyGenerationStages re-run in documentService's own order, recording two things separately at every stage: what the decline looks like in the information that stage RECEIVES, and whether the clause is present AFTER it runs.",
+    "$why_separately": "'The stage re-injected the clause' and 'the stage could not have known not to' are different findings with different owners and different repairs. A trace that reports only presence cannot tell them apart, and the repair it suggests would be the wrong one.",
+    "stages_walked": [
+      "resolveDependencies", "injectJurisdictionRules", "injectDoctrine", "enforceScopeGuard",
+      "resolveSignatures", "applyDocumentHardening", "applyDocumentQualityControls",
+      "enhanceCommercially", "lockCriticalClauses", "normalizeClauseText"
+    ],
+    "result": "The decline is lost at exactly ONE stage — resolveDependencies — and no later stage removes the clause again.",
+    "the_gate_is_not_broken": "In all four families traced, blueprint selection EXCLUDED the target and recorded it in applicability_excluded_clause_ids. The conditional gate does its job everywhere. Whatever the defect is, it is not there."
+  },
+
+  "the_mechanism": {
+    "statement": "The dependency resolver treats `depends_on` as structural and injects the target whatever the applicability gate decided. `required_with` consults the exclusion set and refuses. The two branches sit in the same function.",
+    "$this_is_not_an_information_gap": [
+      "The exclusion set REACHES the resolver. metadata.applicability_excluded_clause_ids is read at",
+      "the top of resolveDependencies and passed in, and the required_with branch uses it to refuse",
+      "and to write a diagnostic.",
+      "",
+      "So the stage has the decline and does not consult it on one of its two paths. That is a",
+      "precedence rule already encoded in code — 'a structural dependency outranks a user's decline' —",
+      "which no authority was ever cited for. The repair is therefore NOT 'give the stage the",
+      "information'. It is 'decide the precedence, and encode it once, where precedence belongs'."
+    ],
+    "evidence": "The injected clause carries injected_by: \"dependencyResolver\". The mechanism is STATED by the artifact, not inferred from behaviour."
+  },
+
+  "the_exposure_surface": {
+    "$why_measured_separately": "Nine occurrences is what one fixture happened to trip. It is not the size of the defect, and reporting it as the size would understate or overstate it by an unknown amount.",
+    "rule": "A family loses a decline here when BOTH hold: the target is in the exclusion set, AND some clause that survived selection declares depends_on on it. The second is a property of the DRAFT, not of the family.",
+    "measured": {
+      "families_measured": 40,
+      "families_exposed": 3,
+      "families_with_no_exposed_pair": 37,
+      "families_not_measurable": 1,
+      "distinct_excluded_clauses_with_a_present_carrier": 1
+    },
+    "pairs": [
+      { "family": "CONSULTANCY_AGREEMENT", "excluded_clause": "CORE_DEFINITIONS_001", "carriers_present": ["CORE_CONFIDENTIALITY_001"] },
+      { "family": "INDEPENDENT_CONTRACTOR_AGREEMENT", "excluded_clause": "CORE_DEFINITIONS_001", "carriers_present": ["SERVICE_PAYMENT_001", "CORE_CONFIDENTIALITY_001"] },
+      { "family": "SOFTWARE_DEVELOPMENT_AGREEMENT", "excluded_clause": "CORE_DEFINITIONS_001", "carriers_present": ["SERVICE_PAYMENT_001", "CORE_CONFIDENTIALITY_001"] }
+    ],
+    "$the_37_are_not_protected": "They are clean because no carrier clause is present in their draft, not because anything defends the decline. A clean family becomes an exposed one the moment a carrier enters its blueprint, with no code change and no review."
+  },
+
+  "a_correction_to_the_D4_34_record": {
+    "what_it_said": "SERVICE_AGREEMENT has the identical conditional gate and the identical per-document hardening entry, and it RESPECTS the decline — so neither the gate nor the hardening list distinguishes the cases; the dependency does.",
+    "what_is_true": "The conclusion holds. The control does not support it the way the sentence implies.",
+    "why": [
+      "SERVICE_AGREEMENT's decline survives because NO structural carrier is present in its draft under",
+      "this fixture — its confidentiality and payment clauses are themselves absent. It is never",
+      "subjected to the pressure the other three are under.",
+      "",
+      "So it is a control by accident of fixture, not a family that withstands the mechanism. The",
+      "resolver would do exactly the same to it if a carrier appeared."
+    ],
+    "$why_this_matters": "It changes the blast radius from 'three families have a bug' to 'three families currently satisfy a condition that nothing prevents any family from satisfying'. The second is the finding."
+  },
+
+  "a_methodology_failure_in_this_investigation": {
+    "$recorded_because": "It produced a false contradiction with an established record, and the rule that caught it is worth keeping.",
+    "what_happened": [
+      "The first version of the trace built six variables by hand instead of using the fixture the",
+      "finding came from. On that draft the structural carriers were absent, so ALL FOUR families —",
+      "including the three known-affected ones — came out clean, and the trace appeared to refute the",
+      "D4.34 record.",
+      "",
+      "The record was right. The trace was of a different object."
+    ],
+    "rule": "A TRACE OF A DIFFERENT OBJECT IS NOT A TRACE. An investigation into a finding must reproduce that finding with its own instrument and fixture BEFORE it is entitled to contradict it.",
+    "$the_near_miss": "The contradiction was three sentences away from being written up as 'D4.34's control claim is wrong'. What stopped it was re-running the original probe first and seeing the finding reproduce unchanged."
+  },
+
+  "what_is_now_definitively_excluded": {
+    "claim": "The other six occurrences are NOT this mechanism.",
+    "basis": "injected_by is stamped at exactly two sites, both inside dependencyResolver — the explicit-dependency path and the fallback-rule path. A clause bearing no stamp therefore did not come from the dependency resolver at all.",
+    "$consequence": "D4.34-B is not 'the rest of the same bug'. It is a different stage that stamps nothing, and merging the two would have hidden it.",
+    "$scope_note": "This says where the six did NOT come from. It does not say where they DID. That is D4.34-B."
+  },
+
+  "the_precedence_decision": {
+    "$status": "NOT MADE. This record states the question and the constraints on any answer; it does not answer it.",
+    "question": "When a user declines a protection and another clause in the same document structurally depends on it, which prevails?",
+    "$why_it_cannot_be_settled_here": "Both answers are defensible as engineering and neither is defensible as law without an authority. The hierarchy has to come from the knowledge model, not from the order the stages happen to run in.",
+    "candidate_answers_and_what_each_costs": [
+      {
+        "answer": "the dependency prevails",
+        "cost": "an assembly convenience silently overrules a user's express choice, which is the present behaviour and the thing the red test objects to"
+      },
+      {
+        "answer": "the decline prevails",
+        "cost": "a clause the instrument may not be able to omit can be stripped by a user answering one question, and the dependent clause is left referring to definitions that are not there"
+      },
+      {
+        "answer": "neither prevails silently — the conflict is surfaced as unresolved",
+        "cost": "the user must resolve something they may not be equipped to resolve; the draft cannot complete without an answer",
+        "$note": "Listed because it is the only candidate that requires no legal hierarchy to be established first. That makes it easier, not therefore correct."
+      }
+    ],
+    "what_an_answer_must_supply": [
+      "the provision or decision relied on",
+      "whether it establishes a requirement that OUTRANKS a party's express choice, or merely a default",
+      "whether the answer is general or specific to this clause role",
+      "what the draft must say when the conflict occurs"
+    ],
+    "owner": "advocate, with the product model",
+    "$do_not_encode_meanwhile": [
+      "'dependency beats decline' as a default — that is the unauthorised rule already in the code, and writing it into knowledge would launder it as a decision.",
+      "'decline always wins' — same objection in the other direction."
+    ]
+  },
+
+  "what_this_record_does_not_do": [
+    "It does not change generation. The resolver is untouched.",
+    "It does not decide the precedence question.",
+    "It does not touch the intake, the blueprints or the hardening policy.",
+    "It does not treat the three exposed families as the defect's boundary — only as its current occupants."
+  ]
+}

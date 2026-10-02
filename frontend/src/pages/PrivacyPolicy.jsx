@@ -2,36 +2,48 @@ import { Link } from "react-router-dom";
 import { Icons } from "../utils/icons";
 import "./LegalPage.css";
 
+// Factual corrections from the 26 Sep 2026 launch-compliance audit. Every line
+// here describes what the code does today. The full policy is being drafted for
+// legal review (docs/legal/PRIVACY_POLICY_DRAFT.md) and will replace this page.
 const SECTIONS = [
   {
     title: "Information we collect",
     body:
-      "We collect the account information you provide to access LegalAId, along with the document inputs, draft content, validation results, and workspace activity required to generate, save, review, and export legal documents within the product.",
+      "Account details: your name, email address, optional mobile number, and a securely hashed password. Document details: the answers you give in the intake form, which usually include details about other people (the other parties to your document, such as names, addresses, PAN, GSTIN or CIN numbers, and salary or loan amounts), the drafts produced from them, their check results, and messages you send to the drafting assistant.",
   },
   {
-    title: "How we use your information",
+    title: "Why we collect it",
     body:
-      "We use your information to operate the drafting workflow, improve document quality, maintain your saved drafts, deliver validation results, and support account security, support requests, and product reliability.",
+      "Account details let you sign in, verify your email and reset your password. Intake answers are needed to draft your document. Drafts and versions let you return to, edit and export your work. Assistant messages are needed to answer them. We use aggregate counts of missing clauses, with no personal data, to improve the clause library.",
   },
   {
-    title: "Document content and retention",
+    title: "Who processes it, and where",
     body:
-      "Document inputs and saved drafts are stored to power your workspace, document history, validation flow, and exports. We retain this information for as long as it is needed to provide the service, subject to your account activity and deletion actions inside the product.",
+      "To draft and edit documents, your intake answers, drafts and assistant messages are sent to Google (Gemini API) and, if Gemini is unavailable, to Groq. Stored data is kept in MongoDB Atlas. Emails are sent through Resend. The service is hosted on Render and Vercel. These providers process data outside India, including in the United States. We do not sell your data or use it for advertising.",
   },
   {
-    title: "Sharing and disclosures",
+    title: "How long we keep it",
     body:
-      "We do not publish your private drafts. Information may be processed by service providers that help operate the platform infrastructure, authentication, storage, and communications, but only to the extent needed to provide LegalAId.",
+      "Your account and saved documents are kept until you delete them or delete your account. We keep up to 20 versions of each saved document. Our AI providers may keep what we send them for a limited time to detect abuse: Google up to 55 days and Groq up to 30 days.",
+  },
+  {
+    title: "Your rights and choices",
+    body:
+      "From your Profile you can correct your name and mobile number, download everything we hold about you, and delete your account together with all saved documents and versions. You can delete individual drafts from My documents. For anything else, including a complaint about how your data is handled, use the Contact page.",
+  },
+  {
+    title: "Cookies",
+    body:
+      "We use one cookie: a secure, HTTP-only sign-in cookie that keeps you logged in for up to seven days. The editor keeps your open draft in your browser's session storage until you close the tab. We use no analytics, advertising or tracking cookies. Fonts are served from our own site.",
+  },
+  {
+    title: "Who can use LegalAId",
+    body: "You must be 18 or older to create an account.",
   },
   {
     title: "Security",
     body:
-      "We use reasonable technical and operational safeguards to protect account and document data, but no online service can guarantee absolute security. Users should avoid uploading information they are not authorized to process through the platform.",
-  },
-  {
-    title: "Your choices",
-    body:
-      "You can update account details through your profile, delete saved drafts through the documents area, and use account recovery through the sign-in flow if you lose access to your password.",
+      "Passwords are hashed, sessions use a secure HTTP-only cookie, and each account can only reach its own documents. No online service can guarantee absolute security, so only enter information you are entitled to share.",
   },
 ];
 
@@ -47,7 +59,7 @@ export default function PrivacyPolicy() {
             content, and workspace data across the drafting, validation, and
             export workflow.
           </p>
-          <div className="legal-meta">Last updated | 30 March 2026</div>
+          <div className="legal-meta">Last updated | 26 September 2026</div>
         </div>
       </section>
 

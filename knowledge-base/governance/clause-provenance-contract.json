@@ -1,0 +1,125 @@
+{
+  "$comment": [
+    "D4.34-B — WHAT A SHIPPED CLAUSE MUST BE ABLE TO SAY ABOUT ITSELF.",
+    "",
+    "D4.34 recorded that six of nine declined-yet-present clauses could not name the stage that",
+    "produced them. That framing understated it. Measured across the whole population, roughly a",
+    "third of every clause the product ships can say nothing at all about why it is in the document.",
+    "",
+    "This record states the contract. It does not implement it: clause selection is unchanged."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "phase": "D4.34-B",
+  "kind": "PRODUCT FINDING + CONTRACT",
+  "status": "MEASURED AND SPECIFIED — not implemented. Clause selection is unchanged.",
+
+  "the_producers": {
+    "$method": "Measured, not read off the code. Every stage of applyGenerationStages run in documentService's own order, clause-id set diffed across each, over all 40 families. grep for `clauses.push` finds neither the stages that rebuild the array wholesale nor the ones whose additions are conditional on the document.",
+    "measured_in": "docs/audit/clause-producers.json",
+    "producers_in_the_deterministic_path": [
+      { "stage": "resolveClauseSelection (blueprint)", "families": 40, "distinct_clauses": 248, "stamps": "NEVER" },
+      { "stage": "applyDocumentHardening",             "families": 31, "distinct_clauses": 30,  "stamps": "NEVER" },
+      { "stage": "enhanceCommercially",                "families": 6,  "distinct_clauses": 3,   "stamps": "NEVER" },
+      { "stage": "resolveDependencies",                "families": 32, "distinct_clauses": 13,  "stamps": "ALWAYS" }
+    ],
+    "$one_of_four_stamps": "And it is the smallest of the four by volume.",
+    "removers_also_exist": [
+      { "stage": "applyDocumentQualityControls", "families": 5 },
+      { "stage": "normalizeClauseText", "families": 1 }
+    ],
+    "not_measured": [
+      { "stage": "semantic/AI merge in documentService", "why": "requires a live provider key; both configured providers return 403 in this environment", "$status": "must be ASSUMED a producer until measured. Omitting it would make it look like a stage that cannot add a clause." },
+      { "stage": "applyDeterministicFixes / issueRepairService", "why": "runs only on the validation-failure path, which this walk does not enter" }
+    ]
+  },
+
+  "what_a_shipped_clause_can_say_today": {
+    "$measured_over": "971 clause occurrences across 40 families, after selection, dependency resolution and hardening",
+    "partition": [
+      { "carries": "inclusion_reason + blueprint_position", "occurrences": 606, "share": "62.4%", "produced_by": "blueprint selection", "$can_answer": "why this clause, in a sentence for the reader" },
+      { "carries": "injected_by", "occurrences": 56, "share": "5.8%", "produced_by": "dependency resolver", "$can_answer": "which stage added it" },
+      { "carries": "NOTHING", "occurrences": 309, "share": "31.8%", "produced_by": "hardening baseline and commercial enhancement", "$can_answer": "nothing" }
+    ],
+    "$the_partition_is_exact": "606 + 56 + 309 = 971. No occurrence carries both, and none is unaccounted for.",
+    "$why_this_is_the_real_finding": "A legal instrument is being shipped in which roughly one clause in three cannot state why it is there. The declined-protection case is one symptom; it is not the size of the problem."
+  },
+
+  "where_the_six_came_from": {
+    "$what_changed": "D4.34 read the finished draft and could not attribute them. A differential walk attributes them without the artifact's cooperation.",
+    "measured_in": "docs/audit/unstamped-six.json",
+    "attribution": {
+      "applyDocumentHardening": { "count": 5, "clause": "CORE_ENTIRE_AGREEMENT_001", "families": ["FOUNDERS_AGREEMENT", "TERM_SHEET", "SHARE_SUBSCRIPTION_AGREEMENT", "DATA_PROCESSING_AGREEMENT", "SETTLEMENT_AGREEMENT"] },
+      "resolveClauseSelection (blueprint required list)": { "count": 1, "clause": "CORE_FORCE_MAJEURE_001", "families": ["MOU"] }
+    },
+    "$the_MOU_case_is_D4_34_C": "It came from the blueprint's own required list, which is exactly what D4.34 cautioned it might be: the engine faithfully implementing knowledge that says the clause is required, while the intake offers it as declinable. An intake/knowledge disagreement, not an injection defect.",
+    "$attribution_is_not_provenance": "This resolves the attribution FOR THE INVESTIGATION. It does not close the gap. A differential walk is not available to anyone reading a draft in production, and the shipped document still cannot state its own origin."
+  },
+
+  "where_the_negative_decision_is_actually_lost": {
+    "$not_at_hardening": [
+      "Hardening consults applicability_excluded_clause_ids, and its own comment states the right",
+      "principle: the gate was evaluated against this user's answers and the baseline was not, so the",
+      "gate wins. Given the information, it behaves correctly."
+    ],
+    "the_mechanism": [
+      "applicability_excluded_clause_ids is built from CONDITIONAL entries whose include_if evaluated",
+      "false. It can therefore only record a decline the BLUEPRINT ASKED ABOUT.",
+      "",
+      "For these families the blueprint neither requires CORE_ENTIRE_AGREEMENT_001 nor has any",
+      "conditional entry for it. The intake collects include_entire_agreement = No, selection has no",
+      "gate to evaluate, nothing is recorded, and every downstream stage is blind to the answer.",
+      "",
+      "So the exclusion record is keyed to the BLUEPRINT'S QUESTIONS, not to the USER'S ANSWERS."
+    ],
+    "$how_this_differs_from_D4_34_A": "D4.34-A is not an information gap — the resolver has the decline and does not consult it on one of its two paths. This one IS an information gap: no stage could have honoured an answer that was never turned into anything readable.",
+    "the_blind_spot": {
+      "measured_in": "docs/audit/ungated-declines.json",
+      "pairs_where_the_intake_asks": 40,
+      "asked_and_gated": 30,
+      "asked_but_no_blueprint_gate": 10,
+      "of_those_declined_by_the_user": 10,
+      "roles": ["ENTIRE_AGREEMENT (9 families)", "FORCE_MAJEURE (MOU)"]
+    },
+    "the_numbers_reconcile": {
+      "$check": "10 blind-spot pairs, of which 4 families produce no draft at all (IP_ASSIGNMENT_AGREEMENT, APPOINTMENT_LETTER, INTERNSHIP_AGREEMENT, SEPARATION_AGREEMENT — all among the 11 recorded in suite-baseline.json), leaves 6 observable occurrences.",
+      "$and": "That is exactly the six unstamped occurrences D4.34 recorded. The account is complete: there is no seventh path."
+    }
+  },
+
+  "the_minimum_provenance_contract": {
+    "$status": "SPECIFIED, NOT IMPLEMENTED. No stage was changed.",
+    "statement": "Every clause in a shipped draft must carry, at the moment it is added, a record of the KIND of decision that put it there, drawn from a closed vocabulary, together with enough to locate the declaration that decided it.",
+    "$not_a_single_injector_name": "One stage can add a clause for more than one reason. Hardening's baseline and a document type's own required list are different decisions with different authority, and a stamp reading 'applyDocumentHardening' would merge them.",
+    "the_closed_vocabulary": [
+      { "kind": "BLUEPRINT_REQUIRED",     "means": "named in the blueprint's unconditional clause list" },
+      { "kind": "BLUEPRINT_CONDITIONAL",  "means": "a conditional entry whose include_if evaluated true" },
+      { "kind": "BLUEPRINT_VARIANT",      "means": "chosen to fill a variant slot" },
+      { "kind": "DEPENDENCY_STRUCTURAL",  "means": "pulled in by a depends_on edge" },
+      { "kind": "DEPENDENCY_CONDITIONAL", "means": "pulled in by a required_with edge whose target was applicable" },
+      { "kind": "DEPENDENCY_FALLBACK",    "means": "added by a fallback dependency rule" },
+      { "kind": "HARDENING_BASELINE",     "means": "supplied by the cross-family clause floor" },
+      { "kind": "HARDENING_REQUIRED",     "means": "supplied by this document type's own required set" },
+      { "kind": "COMMERCIAL_ENHANCEMENT", "means": "added by commercial enhancement" },
+      { "kind": "SEMANTIC_MERGE",         "means": "returned by a semantic generation pass and merged" }
+    ],
+    "$the_vocabulary_is_closed_on_purpose": "An open string field would be filled with whatever each site found convenient, and the distinctions that matter would not survive. A new producer must ADD a kind deliberately, which is a reviewable act.",
+    "must_also_carry": [
+      "the declaration that decided it — the blueprint file and entry, the dependency edge and its carrier, or the hardening list — so the decision can be found and disputed",
+      "for a conditional kind, the condition that was evaluated"
+    ],
+    "what_must_NOT_be_done": [
+      "Do not INFER the kind after the fact by re-deriving what would have happened. A reconstruction is not a record, and it will agree with reality exactly until the moment the two diverge — which is the moment anyone needs it.",
+      "Do not back-fill a default kind for clauses that carry none. A clause labelled BLUEPRINT_REQUIRED because nothing said otherwise is worse than one labelled nothing: it makes an unknown look established.",
+      "Do not fold this into inclusion_reason. That field is a sentence for the reader and is already used for that; a machine-checkable origin and a human explanation are different things and merging them loses both.",
+      "Do not treat stamping as a licence to change WHICH clauses are selected. This contract is about the record, not the decision."
+    ],
+    "$relationship_to_D4_34_A": "Independent. Stamping every producer would not have prevented the decline override, and honouring declines would not make the other 309 occurrences explicable. They were split for this reason and the split held."
+  },
+
+  "what_this_record_does_not_do": [
+    "It does not implement the contract. No stage was changed.",
+    "It does not decide whether a declined protection should be honoured — that is D4.34-A, still unanswered and still needing an authority.",
+    "It does not decide the MOU question — that is D4.34-C, and it belongs to the advocate.",
+    "It does not claim the producer list is complete: the semantic merge path is unmeasured and is recorded as such, not omitted."
+  ]
+}

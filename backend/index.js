@@ -42,12 +42,14 @@ import {
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
 
 import authRoutes from "./auth/authRoutes.js";
+import { contactHandler } from "./routes/contactRoutes.js";
 import { protect, requireAdmin } from "./auth/authMiddleware.js";
 import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
 import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
 import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
 import constraintScopeRoutes from "./routes/constraintScopeRoutes.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
+import { hydrateReviewOverlay, reviewOverlayStatus } from "./services/reviewOverlay.js";
 
 // Defence in depth against NoSQL operator injection: any object that reaches a
 // query filter with a `$` key gets wrapped in `$eq` instead of being executed as
@@ -274,8 +276,28 @@ function buildGenerationErrorInfo({ error, details, validation, statusCode }) {
 // ── MongoDB connection ────────────────────────────────────────────────────────
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => {
+  .then(async () => {
     console.log("✅ MongoDB connected");
+
+    // Advocate sign-offs live in the database, not in the knowledge-base files:
+    // this service has no persistent disk, so a decision written only to a file
+    // is reverted whenever the instance restarts or wakes from sleep. Hydrated
+    // here, once, because the clause cache is built synchronously and cannot
+    // await a query.
+    const overlay = await hydrateReviewOverlay();
+    if (overlay.available) {
+      console.log(`[Review] ${overlay.hydrated} advocate decision(s) restored from the database`);
+    } else {
+      console.warn(
+        "[Review] Advocate decisions are NOT being persisted — review state will be lost on restart." +
+        (overlay.error ? ` (${overlay.error})` : "")
+      );
+    }
+    // The clause cache may already have been built from the files during
+    // bootstrap, before the overlay existed. Rebuild it so amended wording is
+    // the wording that ships.
+    const { clearClauseCache } = await import("./services/clauseAssembler.js");
+    clearClauseCache();
     if (process.env.GEMINI_WARMUP_ON_STARTUP === "true") {
       import("./ai/geminiClient.js")
         .then(({ callGeminiSafety }) => {
@@ -294,13 +316,28 @@ mongoose
 app.use(
   "/auth",
   (req, res, next) =>
-    (SESSION_ENDPOINTS.has(req.path) ? sessionLimiter : authLimiter)(
+    // Only the cheap session READS get the generous budget. PATCH and DELETE on
+    // /me change or destroy the account (DELETE checks a password), so they stay
+    // on the brute-force budget.
+    ((req.path === "/logout" || (req.path === "/me" && req.method === "GET")) ? sessionLimiter : authLimiter)(
       req,
       res,
       next
     ),
   authRoutes
 );
+
+// ── Contact form (public) ─────────────────────────────────────────────────────
+// Delivers to CONTACT_EMAIL. Without it the form refuses rather than pretending
+// to send, which is what the page used to do.
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many messages. Please wait a few minutes and try again." },
+});
+app.post("/contact", contactLimiter, contactHandler());
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {

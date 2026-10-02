@@ -21,6 +21,7 @@ import { fileURLToPath } from "url";
 
 import { clauseReviewState, REVIEW_STATE } from "../../shared/clauseProvenance.js";
 import { clearClauseCache } from "./clauseAssembler.js";
+import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLAUSE_LIB = path.resolve(__dirname, "../../knowledge-base/clause_library");
@@ -258,7 +259,12 @@ function locateClause(clauseId) {
   for (const file of walkClauseFiles()) {
     const parsed = readClauseFile(file);
     const index = parsed.findIndex((entry) => entry?.clause_id === clauseId);
-    if (index !== -1) return { file, parsed, index };
+    if (index !== -1) {
+      // The file is the text; the database is the review state. Merge before any
+      // caller reads a status from it.
+      applyOverlay(OVERLAY_KIND.CLAUSE, clauseId, parsed[index]);
+      return { file, parsed, index };
+    }
   }
   return null;
 }
@@ -270,7 +276,7 @@ function locateClause(clauseId) {
  * status that is no longer "draft-needs-legal-review" (see clauseProvenance.js),
  * so both are written together or not at all.
  */
-export function recordLibraryReview({
+export async function recordLibraryReview({
   clauseId,
   decision,
   revisedText = "",
@@ -335,6 +341,28 @@ export function recordLibraryReview({
     delete clause.reviewed_on;
   }
 
+  // PERSIST FIRST, then write the file.
+  //
+  // The file write is kept so a maintainer can commit accumulated sign-offs into
+  // the repository, and so importReviewSignoff.py keeps working. It is NOT what
+  // the running product relies on: this deployment has no persistent disk, and a
+  // sign-off that existed only in a file was reverted the next time the instance
+  // restarted. That is the defect this repairs.
+  //
+  // Keys set to null are deletions, so a withdrawal removes the reviewer instead
+  // of leaving a stale one behind.
+  const OVERLAY_KEYS = [
+    "review_status", "reviewed_by", "reviewed_on", "reviewer_enrolment",
+    "review_note", "review_outcome", "review_flagged_by", "review_flagged_on",
+    "text",
+  ];
+  const overlayPayload = Object.fromEntries(
+    OVERLAY_KEYS.map((key) => [key, Object.prototype.hasOwnProperty.call(clause, key) ? clause[key] : null])
+  );
+  const persistence = action === "reset"
+    ? await clearOverlay(OVERLAY_KIND.CLAUSE, clauseId)
+    : await saveOverlay(OVERLAY_KIND.CLAUSE, clauseId, overlayPayload, name);
+
   const payload = Array.isArray(JSON.parse(fs.readFileSync(file, "utf8"))) ? parsed : parsed[0];
   fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
 
@@ -349,6 +377,10 @@ export function recordLibraryReview({
     reviewed: clauseReviewState(clause).reviewed,
     reviewed_by: clause.reviewed_by || null,
     reviewed_on: clause.reviewed_on || null,
+    // Surfaced so a failure to persist is visible rather than silent. A decision
+    // that did not reach the database is a decision that will vanish.
+    persisted: persistence.persisted,
+    persistence_note: persistence.persisted ? null : persistence.reason,
     summary: summariseLibraryReview(),
   };
 }

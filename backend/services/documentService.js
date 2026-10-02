@@ -13,6 +13,7 @@ import { enforceScopeGuard } from "./scopeGuard.js";
 import { resolveSignatures } from "./signatureResolver.js";
 import { assembleDocument } from "./clauseAssembler.js";
 import { injectDraftVariables } from "./draftVariableInjector.js";
+import { withProvenanceRecording, attachProvenance } from "./provenance.js";
 import { sanitizeVariablesForDocument } from "../config/variableConfig.js";
 import { loadVariables } from "./variableLoader.js";
 import { validateVariables } from "./variableValidator.js";
@@ -730,7 +731,19 @@ function buildPriorClauseMap(priorDraft) {
   return map;
 }
 
+/*
+ * D4.43 — provenance instrumentation. The generation below is unchanged; this
+ * wrapper runs it with a recorder active and, once the result is complete, adds
+ * draft.metadata.provenance. Nothing inside generation reads the record, and the
+ * result is copied, not mutated. scripts/provenanceConservation.mjs proves that
+ * every other byte of every result is what it was.
+ */
 export async function generateDocument(input, options = {}) {
+  const { result, recorder } = await withProvenanceRecording(() => generateDocumentUnrecorded(input, options));
+  return attachProvenance(result, recorder);
+}
+
+async function generateDocumentUnrecorded(input, options = {}) {
   await loadIREModules();
 
   // Phase 5. Answers to the gap-check questions arrive here, are turned into

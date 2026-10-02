@@ -15,6 +15,7 @@ import {
   validateDocument,
 } from "../services/api";
 import { Icons } from "../utils/icons";
+import { LEGAL_NOTICE, LEGAL_NOTICE_TITLE } from "../data/legalNotice";
 import "./Editor.css";
 
 const SESSION_KEY = "legalaid_editor_draft";
@@ -23,8 +24,10 @@ const EXPORT_FORMATS = [
   { value: "docx", label: "DOCX" },
   { value: "txt", label: "TXT" },
 ];
-const LEGAL_DISCLAIMER =
-  "LegalAId generates contracts based on established Indian legal principles and standard drafting practices. The documents are designed to be enforceable and commercially usable. Like any legal document, final enforceability depends on execution and specific circumstances, so review is recommended for complex or high-value cases.";
+// The old text here said documents were "designed to be enforceable" -- a claim
+// labelled as a disclaimer. The notice now lives in one place and is the same
+// wording the exports print.
+const LEGAL_DISCLAIMER = LEGAL_NOTICE;
 
 function formatExportLabel(format = "docx") {
   return String(format || "docx").toUpperCase();
@@ -650,7 +653,7 @@ export default function Editor() {
   const workspaceStatus = needsValidation
     ? "Edited - re-validate"
     : validation?.certified && issueCount === 0
-      ? "Certified"
+      ? "No blocking issues"
       : validation
         ? "In review"
         : "Draft loaded";
@@ -832,7 +835,7 @@ export default function Editor() {
         </div>
 
         <div className="editor-disclaimer">
-          <div className="editor-disclaimer__label">Legal disclaimer</div>
+          <div className="editor-disclaimer__label">{LEGAL_NOTICE_TITLE}</div>
           <p>{LEGAL_DISCLAIMER}</p>
         </div>
 
@@ -1111,7 +1114,7 @@ export default function Editor() {
           label={isExporting ? `Preparing ${formatExportLabel(downloadingFormat)}…` : `Export ${formatExportLabel(exportFormat)}`}
           onClick={() => handleDownload(exportFormat)}
           disabled={isExporting}
-          hint="Certified"
+          hint="No blocking issues"
           trailing={isExporting ? null : Icons.download}
         />
       ) : (

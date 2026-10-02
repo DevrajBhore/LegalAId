@@ -66,7 +66,9 @@ function normalizeEmailPayload(mailOptions) {
     text: mailOptions.text,
     cc: mailOptions.cc,
     bcc: mailOptions.bcc,
-    reply_to: mailOptions.reply_to,
+    // The Resend SDK (v6) reads `replyTo` and sends it as reply_to; a `reply_to`
+    // key passed to the SDK is silently dropped. nodemailer also reads `replyTo`.
+    replyTo: mailOptions.replyTo ?? mailOptions.reply_to,
     headers: mailOptions.headers,
     tags: mailOptions.tags,
   };
@@ -157,7 +159,7 @@ const emailShell = (content) => `
         <tr>
           <td style="padding:16px 40px;border-top:1px solid #e8e5de;background:#faf9f7;">
             <p style="margin:0;font-size:11px;color:#a8a8bc;text-align:center;">
-              © ${YEAR} LegalAId · AI-drafted, IRE-validated Indian legal documents<br/>
+              © ${YEAR} LegalAId · Software for drafting Indian legal documents. Not a law firm; not legal advice.<br/>
               <span style="font-size:10px;">Do not reply to this email. This is an automated message.</span>
             </p>
           </td>
@@ -197,7 +199,7 @@ export async function sendVerificationEmail(name, email, token) {
             Verify your email
           </h1>
           <p style="margin:0 0 28px;font-size:15px;color:#3a3a4a;line-height:1.65;">
-            Hi <strong>${name}</strong>, welcome to LegalAId. Click the button below to verify your email address and start generating legally sound Indian documents.
+            Hi <strong>${name}</strong>, welcome to LegalAId. Click the button below to verify your email address and start drafting Indian legal documents.
           </p>
           <table cellpadding="0" cellspacing="0">
             <tr>
@@ -277,4 +279,26 @@ export async function sendPasswordResetEmail(name, email, token) {
       </tr>
     `),
   }, { idempotencyKey: `reset:${token}` });
+}
+
+
+// ── Contact form message → CONTACT_EMAIL ──────────────────────────────────────
+const escapeHtml = (value = "") =>
+  String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+export async function sendContactMessage({ name, email, subject, body }) {
+  const to = process.env.CONTACT_EMAIL;
+  if (!to) throw new Error("CONTACT_EMAIL is not configured.");
+  await sendMailWithRetry({
+    from: getEmailFromAddress(),
+    to,
+    replyTo: email,
+    subject: `[LegalAId contact · ${subject}] ${name}`,
+    tags: [
+      { name: "flow", value: "contact" },
+      { name: "product", value: "legalaid" },
+    ],
+    text: `From: ${name} <${email}>\nTopic: ${subject}\n\n${body}`,
+    html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;<br/><strong>Topic:</strong> ${escapeHtml(subject)}</p><p style="white-space:pre-wrap">${escapeHtml(body)}</p>`,
+  });
 }

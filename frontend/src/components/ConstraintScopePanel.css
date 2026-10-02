@@ -1,59 +1,255 @@
-/* Constraint scope panel — follows LibraryReviewPanel's visual language. */
+/* Constraint scope panel.
+   Shares the dark admin surface defined in AdminClauses.css and the type/colour
+   tokens in index.css. Nothing here hardcodes a colour: an earlier revision of
+   this file carried a light-theme palette (#fff, #f6f7f9, #1f3864) that did not
+   belong to this application at all. */
+
+/* ── Summary strip ───────────────────────────────────────────────────────── */
 
 .constraint-scope .cs-summary {
-  display: flex; flex-wrap: wrap; gap: 1rem; align-items: baseline;
-  padding: 0.75rem 1rem; margin-bottom: 0.75rem;
-  background: #f6f7f9; border-radius: 6px; font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2) var(--sp-5);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-4);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
 }
-.constraint-scope .cs-awaiting { color: #8a6d1f; }
-.constraint-scope .cs-note { color: #666; font-style: italic; flex-basis: 100%; }
-
-.constraint-scope .cs-filters { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
-.constraint-scope .cs-filters button {
-  padding: 0.35rem 0.8rem; border: 1px solid #d0d4da; background: #fff;
-  border-radius: 999px; font-size: 0.85rem; cursor: pointer;
+.constraint-scope .cs-summary strong { color: var(--text-primary); }
+.constraint-scope .cs-awaiting { color: var(--gold-light); }
+.constraint-scope .cs-note {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
 }
-.constraint-scope .cs-filters button.is-active { background: #1f3864; color: #fff; border-color: #1f3864; }
 
-.constraint-scope .cs-error { padding: 0.6rem 0.9rem; background: #fdecea; color: #8b1a10; border-radius: 6px; margin-bottom: 0.75rem; }
-.constraint-scope .cs-loading,
-.constraint-scope .cs-empty { padding: 1rem; color: #666; }
+/* ── Filters ─────────────────────────────────────────────────────────────── */
+
+.constraint-scope .cs-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+/* ── Rows ────────────────────────────────────────────────────────────────── */
 
 .constraint-scope .cs-list { list-style: none; margin: 0; padding: 0; }
-.constraint-scope .cs-row { border: 1px solid #e3e6ea; border-radius: 8px; margin-bottom: 0.5rem; background: #fff; }
-.constraint-scope .cs-row.is-open { border-color: #1f3864; }
+
+.constraint-scope .cs-row {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  margin-bottom: var(--sp-2);
+  background: var(--surface-raised);
+}
+.constraint-scope .cs-row.is-open {
+  border-color: var(--line-gold);
+  background: var(--surface-2);
+}
 
 .constraint-scope .cs-head {
-  display: grid; grid-template-columns: 16rem 1fr auto; gap: 1rem; align-items: center;
-  width: 100%; padding: 0.7rem 0.9rem; background: none; border: 0; cursor: pointer; text-align: left;
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) auto;
+  gap: var(--sp-4);
+  align-items: center;
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  background: none;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.constraint-scope .cs-id { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; color: #1f3864; }
-.constraint-scope .cs-prop { font-size: 0.9rem; }
-.constraint-scope .cs-state { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: #8a6d1f; }
-.constraint-scope .cs-state-decided { color: #1e7a41; }
-.constraint-scope .cs-state-not_representable { color: #8b1a10; }
+.constraint-scope .cs-head:hover { background: var(--surface-hover); }
 
-.constraint-scope .cs-body { padding: 0 0.9rem 0.9rem; border-top: 1px solid #eef0f3; }
-.constraint-scope .cs-facts { display: grid; grid-template-columns: 16rem 1fr; gap: 0.35rem 1rem; margin: 0.8rem 0; font-size: 0.88rem; }
-.constraint-scope .cs-facts dt { color: #666; }
-.constraint-scope .cs-facts dd { margin: 0; }
+.constraint-scope .cs-id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.constraint-scope .cs-prop {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--text-primary);
+}
+.constraint-scope .cs-state {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+  padding: 3px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-full);
+  color: var(--text-secondary);
+}
+/* Four states, as constraintScopeReviewService emits them. OUTSTANDING is not
+   a failure, so it reads neutral-gold; INCOMPLETE means a decision was begun
+   without its authority and cannot be used;
+   NOT_REPRESENTABLE is not a decision the advocate can make at all, so it is
+   marked apart from both. */
+.constraint-scope .cs-state-outstanding { color: var(--gold-light); }
+.constraint-scope .cs-state-incomplete { color: var(--amber); border-color: var(--amber-border); }
+.constraint-scope .cs-state-decided { color: var(--green); border-color: var(--green-border); }
+.constraint-scope .cs-state-not_representable { color: var(--red); border-color: var(--red-border); }
 
-.constraint-scope .cs-consequence { background: #f6f7f9; border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 0.9rem; font-size: 0.88rem; }
-.constraint-scope .cs-consequence h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
-.constraint-scope .cs-measured-on { color: #777; font-size: 0.8rem; margin: 0 0 0.5rem; }
-.constraint-scope .cs-consequence ul { margin: 0.4rem 0; padding-left: 1.2rem; }
-.constraint-scope .cs-warning { color: #8a6d1f; font-style: italic; margin: 0.5rem 0 0; }
+/* ── Expanded body ───────────────────────────────────────────────────────── */
 
-.constraint-scope .cs-form label { display: block; margin-bottom: 0.7rem; font-size: 0.88rem; }
+.constraint-scope .cs-body {
+  padding: 0 var(--sp-4) var(--sp-4);
+  border-top: 1px solid var(--line);
+}
+
+.constraint-scope .cs-facts {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: var(--sp-2) var(--sp-4);
+  margin: var(--sp-4) 0;
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+}
+.constraint-scope .cs-facts dt {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--fs-2xs);
+}
+.constraint-scope .cs-facts dd {
+  margin: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+.constraint-scope .cs-facts code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--text-primary);
+}
+
+.constraint-scope .cs-consequence {
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-4);
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+}
+.constraint-scope .cs-consequence h4 {
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--text-muted);
+}
+.constraint-scope .cs-consequence ul { margin: var(--sp-2) 0 0; padding-left: var(--sp-5); }
+.constraint-scope .cs-consequence li { margin-bottom: var(--sp-1); }
+.constraint-scope .cs-measured-on {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--text-faint);
+}
+/* The measurement caveat must not be mistaken for the measurement. */
+.constraint-scope .cs-warning {
+  margin: var(--sp-2) 0 0;
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--amber);
+  color: var(--gold-light);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Decision form ───────────────────────────────────────────────────────── */
+
+.constraint-scope .cs-form { display: flex; flex-direction: column; gap: var(--sp-3); }
+.constraint-scope .cs-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-muted);
+}
 .constraint-scope .cs-form textarea,
-.constraint-scope .cs-form input { width: 100%; margin-top: 0.25rem; padding: 0.5rem; border: 1px solid #d0d4da; border-radius: 6px; font: inherit; font-size: 0.88rem; }
-.constraint-scope .cs-required { color: #8b1a10; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; margin-left: 0.4rem; }
+.constraint-scope .cs-form input {
+  width: 100%;
+  padding: 9px 11px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--fs-sm);
+  text-transform: none;
+  letter-spacing: normal;
+}
+.constraint-scope .cs-form textarea { resize: vertical; line-height: var(--lh-relaxed); min-height: 84px; }
+.constraint-scope .cs-form textarea:focus,
+.constraint-scope .cs-form input:focus { outline: none; border-color: var(--line-gold); }
+/* The server refuses a decision with no authority. The form says so before
+   the advocate spends the keystrokes. */
+.constraint-scope .cs-required {
+  margin-left: var(--sp-2);
+  color: var(--red);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--tracking-wide);
+}
 
-.constraint-scope .cs-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.constraint-scope .cs-actions button { padding: 0.45rem 0.9rem; border: 1px solid #d0d4da; background: #fff; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
-.constraint-scope .cs-actions .cs-primary { background: #1f3864; color: #fff; border-color: #1f3864; }
-.constraint-scope .cs-actions button:disabled { opacity: 0.5; cursor: default; }
+.constraint-scope .cs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
 
-.constraint-scope .cs-recorded { background: #f3f8f4; border-radius: 6px; padding: 0.8rem 1rem; font-size: 0.88rem; }
-.constraint-scope .cs-recorded h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
-.constraint-scope .cs-meta { color: #777; font-size: 0.8rem; }
+/* ── Recorded decision ───────────────────────────────────────────────────── */
+
+.constraint-scope .cs-recorded {
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--r-md);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+  color: var(--text-secondary);
+}
+.constraint-scope .cs-recorded h4 {
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--green);
+}
+.constraint-scope .cs-recorded p { margin: 0 0 var(--sp-2); }
+.constraint-scope .cs-recorded p:last-child { margin-bottom: 0; }
+.constraint-scope .cs-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--text-faint);
+}
+.constraint-scope .cs-recorded .admin-btn { margin-top: var(--sp-3); }
+
+/* ── Narrow screens ──────────────────────────────────────────────────────────
+   Both grids are fixed-column and overflow below roughly 640px. The advocate
+   works this queue on whatever device is to hand, as with the clause queue. */
+
+@media (max-width: 720px) {
+  .constraint-scope .cs-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-2);
+    align-items: start;
+  }
+  .constraint-scope .cs-state { justify-self: start; }
+  .constraint-scope .cs-facts { grid-template-columns: minmax(0, 1fr); gap: var(--sp-1) 0; }
+  .constraint-scope .cs-facts dd { margin-bottom: var(--sp-2); }
+  .constraint-scope .cs-actions .admin-btn { flex: 1 1 130px; min-height: 44px; justify-content: center; }
+}

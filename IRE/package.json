@@ -9,9 +9,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
     "ajv": "^8.17.1"
-  }
+  },
+  "private": true
 }

@@ -1,0 +1,102 @@
+{
+  "$probe": "probeClauseProducers.mjs (D4.34-B step 1)",
+  "$method": "every stage run in documentService's order, clause-id set diffed across each, over the whole population",
+  "$scope_limit": [
+    "The DETERMINISTIC path only. documentService can also merge clauses returned by a semantic/AI",
+    "generation pass, and no API key is available here, so that path is NOT measured. It must be",
+    "assumed to be a producer until measured — it is listed as UNMEASURED rather than omitted, because",
+    "a stage left out of this table would look like a stage that cannot add a clause."
+  ],
+  "fixture": "WELL_FILLED",
+  "families_walked": 40,
+  "families_not_walkable": [],
+  "producers": [
+    {
+      "stage": "resolveClauseSelection (blueprint)",
+      "families": 40,
+      "distinct_clauses": 248,
+      "occurrences_stamped": 0,
+      "occurrences_unstamped": 606,
+      "stamps": "NEVER",
+      "example_clauses": [
+        "CORE_IDENTITY_001",
+        "FOUNDER_ROLES_AND_COMMITMENT_001",
+        "CORE_DEFINITIONS_001",
+        "FOUNDER_EQUITY_AND_VESTING_001",
+        "FOUNDER_IP_ASSIGNMENT_001"
+      ]
+    },
+    {
+      "stage": "applyDocumentHardening",
+      "families": 31,
+      "distinct_clauses": 30,
+      "occurrences_stamped": 0,
+      "occurrences_unstamped": 309,
+      "stamps": "NEVER",
+      "example_clauses": [
+        "CORE_INTERPRETATION_001",
+        "CORE_FORCE_MAJEURE_001",
+        "CORE_SURVIVAL_001",
+        "CORE_ASSIGNMENT_001",
+        "CORE_AMENDMENT_001"
+      ]
+    },
+    {
+      "stage": "enhanceCommercially",
+      "families": 6,
+      "distinct_clauses": 3,
+      "occurrences_stamped": 0,
+      "occurrences_unstamped": 10,
+      "stamps": "NEVER",
+      "example_clauses": [
+        "CORE_INDEMNITY_FULL_001",
+        "CORE_LIABILITY_LIMIT_FALLBACK_001",
+        "CORE_LATE_PAYMENT_INTEREST_001"
+      ]
+    },
+    {
+      "stage": "resolveDependencies",
+      "families": 32,
+      "distinct_clauses": 13,
+      "occurrences_stamped": 56,
+      "occurrences_unstamped": 0,
+      "stamps": "ALWAYS",
+      "example_clauses": [
+        "CORE_TERMINATION_001",
+        "CORE_DISPUTE_RESOLUTION_001",
+        "CORE_LIMITATION_LIABILITY_001",
+        "CORE_NOTICE_001",
+        "CORE_TERM_001"
+      ]
+    }
+  ],
+  "producers_unmeasured": [
+    {
+      "stage": "semantic/AI merge (documentService)",
+      "why": "requires a live provider key; both configured providers return 403 here"
+    },
+    {
+      "stage": "applyDeterministicFixes / issueRepairService",
+      "why": "runs only on the validation-failure path, which this walk does not enter"
+    }
+  ],
+  "removers": [
+    {
+      "stage": "applyDocumentQualityControls",
+      "families": 5,
+      "distinct_clauses": 2,
+      "example_clauses": [
+        "CORE_LIMITATION_LIABILITY_001",
+        "CORE_TERMINATION_001"
+      ]
+    },
+    {
+      "stage": "normalizeClauseText",
+      "families": 1,
+      "distinct_clauses": 1,
+      "example_clauses": [
+        "CORE_TERMINATION_001"
+      ]
+    }
+  ]
+}

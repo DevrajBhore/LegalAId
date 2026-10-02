@@ -45,15 +45,15 @@ export default function Login() {
           eyebrow="Workspace access"
           headline="Back to your legal"
           emphasis="drafting workspace"
-          description="Continue with AI-assisted drafting, clause editing, legal validation, and one-click DOCX export."
+          description="Continue with AI-assisted drafting, clause editing, automated checks, and one-click DOCX export."
           highlights={[
-            { icon:Icons.fileText, title:"16+ document types", text:"Access every Indian legal document type in the library." },
+            { icon:Icons.fileText, title:"Indian document types", text:"NDAs, employment contracts, leases, loans and more." },
             { icon:Icons.sparkles, title:"AI drafting support", text:"Generate a complete first draft from your intake form." },
-            { icon:Icons.shieldCheck, title:"Legal validation", text:"Built-in checks review structure, key terms, and drafting quality before export." },
-            { icon:Icons.download, title:"DOCX export", text:"Download court-ready Word documents in one click." },
+            { icon:Icons.shieldCheck, title:"Automated checks", text:"Built-in checks review structure, key terms, and drafting quality before export. They are not a legal review." },
+            { icon:Icons.download, title:"DOCX export", text:"Download an editable Word draft in one click." },
           ]}
           footerTitle="After signing in"
-          footerPoints={["Pick a document type and fill the guided intake form.","Review, edit, and refine clauses in the browser workspace.","Validate and export your certified DOCX."]}
+          footerPoints={["Pick a document type and fill the guided intake form.","Review, edit, and refine clauses in the browser workspace.","Run the checks and export an editable DOCX draft."]}
         />
       </div>
       <div className="auth-right">

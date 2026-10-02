@@ -138,6 +138,27 @@ export const resetPassword = (token, password) =>
 export const getCurrentUser = () =>
   API.get("/auth/me", { skipAuthRedirect: true });
 
+// ── Your data (DPDP access, correction and erasure) ──────────────────────────
+export const updateMyDetails = (data) => API.patch("/auth/me", data);
+export const deleteMyAccount = (password) =>
+  API.delete("/auth/me", { data: { password }, skipAuthRedirect: true });
+export async function downloadMyData() {
+  const res = await API.get("/auth/me/export", { responseType: "blob" });
+  const disposition = res.headers?.["content-disposition"] || "";
+  const name = /filename="([^"]+)"/.exec(disposition)?.[1] || "legalaid-data.json";
+  const url = URL.createObjectURL(res.data);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+export const sendContactMessage = (data) =>
+  API.post("/contact", data, { skipAuthRedirect: true });
+
 function resolveDownloadExtension(format = "docx") {
   const normalized = String(format || "docx").toLowerCase();
   if (["docx", "pdf", "txt"].includes(normalized)) {

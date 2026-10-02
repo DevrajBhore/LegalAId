@@ -55,7 +55,7 @@ export default function DocumentIntelligence({ intelligence, obligations, valida
           <span className="di-score__label">
             {certified ? (
               <>
-                <ShieldCheck size={13} /> {overall.certification || "Certified"}
+                <ShieldCheck size={13} /> {overall.certification || "No blocking issues"}
               </>
             ) : (
               <>

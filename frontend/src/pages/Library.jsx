@@ -66,7 +66,7 @@ export default function Library() {
         <div className="library-hero-panel">
           <div className="library-hero-stat">
             <span className="library-hero-stat-label">Available now</span>
-            <strong>{docTypes.length || "17"} document types</strong>
+            <strong>{docTypes.length ? `${docTypes.length} document types` : "Document types"}</strong>
           </div>
           <div className="library-hero-stat">
             <span className="library-hero-stat-label">Drafting flow</span>

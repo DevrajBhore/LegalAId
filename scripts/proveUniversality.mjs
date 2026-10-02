@@ -130,19 +130,51 @@ const artifacts = [
   }],
 ];
 
+/*
+ * MEASUREMENT-INFRASTRUCTURE REPAIR (D4.34-A, found while tracing something else).
+ *
+ * install() wrote into knowledge-base/intake/facts/, a directory this repository
+ * has never contained. writeFileSync threw there, on every run, and because
+ * install() was called OUTSIDE the try/finally below, remove() never ran. Three
+ * synthetic artifacts were left in the knowledge base.
+ *
+ * They are not inert. The engine discovers families from knowledge-base/documents,
+ * so the residue adds a 41st family whose blueprint was never written — and every
+ * later suite that iterates the population then fails for a reason that has
+ * nothing to do with it. One broken probe was turning fifteen unrelated suites
+ * red, and a fresh run of the same suites in a different order gave a different
+ * answer.
+ *
+ * Two changes, both about the instrument and neither about the engine: create the
+ * directory before writing into it, and make teardown unconditional.
+ */
+const createdDirs = new Set();
+
 function install() {
-  for (const [file, body] of artifacts) fs.writeFileSync(file, `${JSON.stringify(body, null, 2)}\n`);
+  for (const [file, body] of artifacts) {
+    const dir = path.dirname(file);
+    if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); createdDirs.add(dir); }
+    fs.writeFileSync(file, `${JSON.stringify(body, null, 2)}\n`);
+  }
 }
 function remove() {
   for (const [file] of artifacts) if (fs.existsSync(file)) fs.unlinkSync(file);
+  // Only directories this function created, and only while still empty: a
+  // directory someone else's artifact landed in is not ours to delete.
+  for (const dir of createdDirs) {
+    try { if (fs.readdirSync(dir).length === 0) fs.rmdirSync(dir); } catch { /* leave it */ }
+  }
+  createdDirs.clear();
 }
 
 export async function proveUniversality() {
 const blocked = [];
 const crossed = [];
 
-install();
 try {
+  // Inside the try, so a failure part-way through installation is still cleaned
+  // up. It was outside, and that is how the residue escaped.
+  install();
   const { clearClauseCache, getClauseById, getBlueprintForDocumentType } =
     await import("../backend/services/clauseAssembler.js");
   const { clearKnowledgeDocumentCache } = await import("../shared/knowledgeDocuments.js");

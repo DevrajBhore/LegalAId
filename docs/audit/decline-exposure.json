@@ -1,0 +1,59 @@
+{
+  "$probe": "probeDeclineExposure.mjs (D4.34-A)",
+  "$question": "In how many families does an excluded clause have a structural carrier present, so the dependency stage will re-inject it?",
+  "$not_a_claim_about": [
+    "whether re-injection is WRONG in any given pair — that is the precedence question, still unanswered",
+    "the nine occurrences, which are a different count: those are roles the fixture declined and then found in the draft"
+  ],
+  "fixture": "MINIMAL_DECLINED",
+  "totals": {
+    "families_measured": 40,
+    "families_exposed": 3,
+    "families_with_no_exposed_pair": 37,
+    "families_not_measurable": 1,
+    "distinct_excluded_clauses_with_a_present_carrier": 1
+  },
+  "exposed": [
+    {
+      "type": "CONSULTANCY_AGREEMENT",
+      "pairs": [
+        {
+          "excluded_clause": "CORE_DEFINITIONS_001",
+          "carriers_present": [
+            "CORE_CONFIDENTIALITY_001"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "INDEPENDENT_CONTRACTOR_AGREEMENT",
+      "pairs": [
+        {
+          "excluded_clause": "CORE_DEFINITIONS_001",
+          "carriers_present": [
+            "SERVICE_PAYMENT_001",
+            "CORE_CONFIDENTIALITY_001"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "pairs": [
+        {
+          "excluded_clause": "CORE_DEFINITIONS_001",
+          "carriers_present": [
+            "SERVICE_PAYMENT_001",
+            "CORE_CONFIDENTIALITY_001"
+          ]
+        }
+      ]
+    }
+  ],
+  "not_measurable": [
+    {
+      "type": "ZORVIC_CUSTODY_ARRANGEMENT",
+      "reason": "Blueprint not found for document type: \"ZORVIC_CUSTODY_ARRANGEMENT\". Tried: zorvic_custody_arrangeme"
+    }
+  ]
+}

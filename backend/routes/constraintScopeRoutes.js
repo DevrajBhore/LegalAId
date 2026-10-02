@@ -41,11 +41,11 @@ router.get("/", (req, res) => {
 // The decider is taken from the authenticated session, as with clause review.
 // The authority is NOT — it has to be typed, because it is the thing that makes
 // the answer a decision rather than an opinion.
-router.patch("/:ruleId", (req, res) => {
+router.patch("/:ruleId", async (req, res) => {
   try {
     const body = req.body || {};
     res.json(
-      recordScopeDecision({
+      await recordScopeDecision({
         ruleId: req.params.ruleId,
         decision: body.decision,
         scope: body.scope,

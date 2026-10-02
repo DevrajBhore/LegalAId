@@ -37,6 +37,14 @@ const userSchema = new mongoose.Schema(
     verificationTokenExpiry: { type: Date, select: false },
     resetPasswordToken: { type: String, select: false },
     resetPasswordExpiry: { type: Date, select: false },
+    // What the user accepted at sign-up, and when. Accounts created before
+    // consent was recorded have no value here.
+    consent: {
+      termsVersion: { type: String, default: null },
+      privacyVersion: { type: String, default: null },
+      ageConfirmed: { type: Boolean, default: false },
+      acceptedAt: { type: Date, default: null },
+    },
   },
   { timestamps: true }
 );

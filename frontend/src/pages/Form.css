@@ -1389,3 +1389,13 @@
 .field-check input:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
 .field-check:has(input:checked) { color: var(--text-primary); }
 .field-multiselect--error { outline: 1px solid var(--red); border-radius: var(--r-sm); }
+
+/* Notice above the intake: where the answers go, before any are typed. */
+.form-privacy-notice {
+  margin: 10px 0 0;
+  max-width: 62ch;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.form-privacy-notice a { color: var(--gold); white-space: nowrap; }
