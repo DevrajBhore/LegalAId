@@ -188,7 +188,40 @@
         "certificationDimensions.test.mjs",
         "scripts/freezeClauseBaseline.mjs"
       ],
-      "failing_set_identical_to_previous": true
+      "failing_set_identical_to_previous": true,
+      "$superseded_by": "after_D4_44"
+    },
+    "after_D4_44": {
+      "suites_run": 91,
+      "passed": 75,
+      "failed": 16,
+      "$what_moved": "two new files (termSheetWithdrawal, termSheetFalsification) added and passing. Five passing suites failed on the first run and were brought back by correcting their premises, not their assertions: three because the fixture profile gave the term sheet a lapse date equal to its own date (blockDecomposition, provenanceInjector, and the generation under declinedProtectionsFinding); declinedProtectionsFinding and statutory-custody records named TERM_SHEET/CORE_ENTIRE_AGREEMENT_001, which is repaired and recorded as such; clauseProvenanceReach read the clause baseline with the old term-sheet clause ids (re-frozen for TERM_SHEET only, every other type byte-identical); cardinalitySupport forbade a form exposing a third principal, now allowed only when the family is withdrawn and recorded as contained by that withdrawal.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true,
+      "$inside_the_failing_set": [
+        "clauseProvenance: the unreviewed-clause count it reports rose from 308 to 313, the five new term-sheet clauses. The pinned ceiling (307) was not raised: they are unreviewed.",
+        "documentHealthScore: one new sub-failure appeared on the first run (a withdrawn term sheet has no score) and was fixed by asserting the superseded figure instead; the suite now fails exactly as before.",
+        "statutoryCustody: its list of vanished pairings is the baseline list minus TERM_SHEET/CORE_ENTIRE_AGREEMENT_001.",
+        "scripts/freezeClauseBaseline.mjs: drift in 27 of 40 types, was 28; the difference is TERM_SHEET, re-frozen."
+      ],
+      "$measurement_note": "The suite runner used for this record skipped the last line of the test list (no trailing newline); scripts/freezeClauseBaseline.mjs was run by hand on both trees and compared."
     }
   },
   "an_instrument_defect_found_and_repaired": {

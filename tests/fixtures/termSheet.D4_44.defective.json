@@ -1,0 +1,465 @@
+{
+  "$comment": [
+    "Frozen 9 Oct 2026 (D4.44). The term sheet the engine shipped, captured with the generation clock at 2026-09-01T06:30Z.",
+    "The engine scored it 100 / 'No issues detected'. It contradicts itself on whether it binds, binds non-parties, cross-refers to approvals that do not exist, states that a shareholders' agreement prevails over the Articles, and omits core deal terms.",
+    "Do not regenerate. The point of the fixture is that it is the OLD output: tests/termSheetFalsification.test.mjs requires the coherence checks to fail it for each defect listed in expected_failures."
+  ],
+  "captured_at": "2026-10-09",
+  "document_type": "TERM_SHEET",
+  "input_profile": "WELL_FILLED",
+  "variables": {
+    "drafting_for": "Which side are you on?: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.",
+    "sender_name": "Alpha Industries Private Limited",
+    "sender_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "addressee_name": "1 First Road, Mumbai, Maharashtra 400001",
+    "addressee_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "notice_date": "2026-09-01",
+    "advocate_name": "Ramesh Kulkarni",
+    "advocate_enrolment_number": "Advocate's Enrolment Number: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.",
+    "notice_service_date": "2026-09-01",
+    "cause_of_action_date": "2026-09-01",
+    "acknowledgement_date": "2026-09-01",
+    "notice_facts": "1. By an agreement dated 12 March 2026 my client agreed to supply goods to you on thirty days' credit.\n2. My client delivered the goods on 5 May 2026 and raised invoice 44/2026 for Rs. 4,50,000 on the same day.\n3. You acknowledged receipt of the goods in writing on 6 May 2026 and raised no complaint.\n4. The invoice fell due on 4 June 2026 and remains wholly unpaid.",
+    "breached_obligation": "clause 6 of the agreement dated 12 March 2026, which requires payment within thirty days of a valid tax invoice",
+    "loss_description": "the loss of the use of Rs. 4,50,000 since 4 June 2026, and the cost of financing the shortfall in working capital",
+    "notice_demand": "pay my client Rs. 4,50,000 towards invoice 44/2026, together with interest at 12 per cent per annum from 4 June 2026 to the date of payment",
+    "notice_demand_summary": "PAY Rs. 4,50,000 DUE UNDER INVOICE 44/2026",
+    "compliance_period_days": "90",
+    "addressee_is_government": "No",
+    "cheque_number": "004521",
+    "cheque_date": "2026-09-01",
+    "cheque_amount": "3",
+    "cheque_amount_words": "Rupees Four Lakh Fifty Thousand",
+    "drawee_bank": "HDFC Bank Limited",
+    "drawee_branch": "Camp Branch, Pune",
+    "payee_bank": "State Bank of India",
+    "payee_branch": "Deccan Gymkhana Branch, Pune",
+    "return_memo_date": "2026-09-01",
+    "return_reason": "Funds Insufficient",
+    "underlying_liability": "the price of stainless steel kitchen equipment supplied under invoice 44/2026 dated 5 May 2026",
+    "original_notice_date": "2026-09-01",
+    "original_notice_received_date": "2026-09-01",
+    "original_notice_reference": "AKS/2026/318",
+    "admitted_facts": "That an agreement dated 12 March 2026 was entered into between the parties, and that two consignments were delivered under it.",
+    "denied_facts": "That any consignment was defective, that any complaint was made within the contractual window, and that any sum remains due.",
+    "reply_facts": "The goods were inspected on delivery and accepted without protest. The first complaint was made four months later, after the contractual inspection window had closed, and only once payment fell due.",
+    "counter_claim_description": "Your Counter-Claim: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.",
+    "counter_demand": "What You Want From Them: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.",
+    "underlying_agreement_description": "the Supply Agreement for stainless steel kitchen equipment",
+    "underlying_agreement_date": "2026-09-01",
+    "arbitration_clause_number": "18.2",
+    "disputes_description": "whether the consignment delivered on 5 May 2026 conformed to the agreed specification, whether the sum of Rs. 4,50,000 is due, and whether the agreement was validly terminated on 20 July 2026.",
+    "claims_description": "Rs. 4,50,000 as the price of goods sold and delivered, interest at 12 per cent per annum from 4 June 2026, and the costs of the arbitration.",
+    "nominated_arbitrator": "Ramesh Kulkarni",
+    "dispute_description": "the quality of goods supplied under invoice 44/2026 and the sum said to be due for them",
+    "proceedings_description": "Commercial Suit 214 of 2026, pending before the Commercial Court at Pune",
+    "settlement_amount_words": "Rupees Three Lakh",
+    "settlement_payment_schedule": "in three equal monthly instalments, the first falling due thirty days after this Agreement",
+    "settlement_default_days": "3",
+    "settlement_withdrawal_days": "3",
+    "deponent_name": "Ramesh Kulkarni",
+    "deponent_age": "54",
+    "deponent_relation": "son",
+    "deponent_parent_name": "Ramesh Kulkarni",
+    "deponent_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "deponent_id_type": "Aadhaar",
+    "deponent_id_number": "4213 8867 1290",
+    "affidavit_purpose": "filing before the Registrar of Companies in support of an application for the change of registered office",
+    "affidavit_statements": "Maharashtra",
+    "verification_place": "Place of Swearing: the arrangement agreed between the parties in writing before performance begins, recorded here in full and not by reference to any other document.",
+    "obligor_name": "Alpha Industries Private Limited",
+    "obligor_description": "a company incorporated under the Companies Act, 2013 and having its registered office at the address below",
+    "obligor_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "beneficiary_name": "Alpha Industries Private Limited",
+    "beneficiary_description": "a company incorporated under the Companies Act, 2013 and having its registered office at the address below",
+    "beneficiary_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "bond_occasion": "The Beneficiary has been asked to release consignment 44/2026 from its warehouse without production of the original delivery order, the original having been lost in transit.",
+    "indemnified_risk": "the release of consignment 44/2026 without production of the original delivery order, including any claim brought by a person presenting that original at a later date",
+    "bond_duration": "24 months",
+    "board_structure": "A board of five directors: two nominated by the promoters, one by the incoming subscriber, and two independent directors appointed by mutual agreement.",
+    "reserved_matters": "Altering the share capital, approving a budget above the agreed threshold, incurring borrowing above Rs. 1,00,00,000, and any related party transaction.",
+    "founder_roles": "The first Founder is responsible for product and engineering; the second Founder is responsible for sales, finance and compliance.",
+    "founder_equity_split": "Sixty per cent to the first Founder and forty per cent to the second Founder, in each case vesting monthly over four years with a twelve-month cliff.",
+    "vesting_period": "24 months",
+    "vesting_cliff": "Twelve months from the grant date",
+    "include_drag_along": "Yes",
+    "investment_amount": "30000",
+    "pre_money_valuation": "300000",
+    "security_type": "Compulsorily Convertible Preference Shares (CCPS)",
+    "esop_pool_percentage": "3",
+    "liquidation_preference_multiple": "0.3",
+    "exclusivity_period": "24 months",
+    "options_granted": "3",
+    "exercise_price": "3",
+    "exercise_window": "Ninety days from the date of vesting, or until the date the option lapses under the Scheme, whichever is earlier.",
+    "securities_subscribed": "1,00,000 Compulsorily Convertible Preference Shares of face value Rs. 10 each, issued at a premium of Rs. 490 each, converting to equity on a one-for-one basis.",
+    "use_of_proceeds": "Hiring engineering and sales staff, funding a twelve-month marketing programme, and meeting working capital requirements.",
+    "long_stop_date": "2026-09-01",
+    "principal_amount": "3",
+    "repayment_terms": "list price less a 15 percent trade discount, invoiced monthly and payable within 30 days of a valid tax invoice",
+    "interest_rate": "3",
+    "interest_payment_frequency": "Monthly",
+    "cure_period_days": "3",
+    "assigned_work_description": "The source code, database schema, user interface designs and technical documentation of the inventory management application developed by the Assignor between January and July 2026.",
+    "powers_granted": "To operate the principal's bank account numbered 001234567890 at the Pune branch, to sign cheques on it up to Rs. 5,00,000, and to file and receive documents from the Registrar of Companies.",
+    "goods_or_services_description": "Subscription access to a cloud-hosted inventory management platform, with onboarding, data migration and email support.",
+    "return_window_days": "3",
+    "refund_window_days": "3",
+    "dispatch_window_days": "3",
+    "delivery_attempts": "3",
+    "shortage_report_days": "3",
+    "reporting_to": "Head of Engineering",
+    "internship_duration": "24 months",
+    "stipend_amount": "3",
+    "learning_objectives": "Exposure to production software development practices, code review, testing and release management, under the supervision of a named mentor.",
+    "last_working_day": "2026-09-01",
+    "settlement_amount": "3",
+    "separation_reason": "Resignation by the employee",
+    "non_solicit_period": "24 months",
+    "posh_presiding_officer": "Ramesh Kulkarni",
+    "posh_external_member": "Ramesh Kulkarni",
+    "posh_committee_contact": "ic@alpha.example",
+    "posh_district": "Pune",
+    "operating_state": "Maharashtra",
+    "execution_city": "Pune",
+    "party_1_signatory_name": "Ramesh Kulkarni",
+    "party_1_signatory_designation": "Director",
+    "party_1_authority_reference": "Board resolution dated 12 August 2026, a certified copy of which is annexed to this Agreement.",
+    "party_2_signatory_name": "Sunita Deshmukh",
+    "party_2_signatory_designation": "Director",
+    "party_2_authority_reference": "Board resolution dated 14 August 2026, a certified copy of which is annexed to this Agreement.",
+    "effective_date": "2026-09-01",
+    "involves_personal_data": "No",
+    "include_force_majeure": "Yes",
+    "employee_gender": "Female",
+    "workplace_headcount": "Fewer than 10",
+    "workplace_type": "Shop / Office",
+    "has_esop_or_variable_pay": "No",
+    "lender_type": "Scheduled Bank",
+    "jv_involves_equity": "No",
+    "company_has_ip_assets": "No",
+    "repayment_structure": "Amortising / EMI",
+    "guarantee_extent": "Unlimited",
+    "governance_control": "Founder-controlled",
+    "title_transfer": "On delivery",
+    "include_inspection_rights": "Yes",
+    "payment_model": "Fixed",
+    "termination_style": "Cause",
+    "include_entire_agreement": "Yes",
+    "governing_law_state": "Maharashtra",
+    "dispute_resolution_method": "Arbitration",
+    "termination_notice_period": "3",
+    "termination_for_convenience": "Yes",
+    "termination_for_cause": "Yes",
+    "liability_cap_basis": "Fees paid or payable in the 12 months before the claim",
+    "liability_cap_amount": "3",
+    "indemnity_scope": "Breach of agreement only",
+    "include_indemnity_clause": "Yes",
+    "include_warranty_clause": "Yes",
+    "include_nomenclature_clause": "Yes",
+    "nomenclature_terms": "24 months",
+    "include_non_compete": "Yes",
+    "include_non_solicit": "Yes",
+    "key_person_dependency": "Yes",
+    "include_sla": "Yes",
+    "include_reporting": "Yes",
+    "audit_rights": "Compliance may be audited once in any twelve-month period, on fifteen days' written notice, during business hours and at the auditing party's own cost.",
+    "information_rights": "Monthly management accounts within twenty-one days of month end, audited accounts within ninety days of the financial year end, and an annual budget before the year begins.",
+    "escalation_mechanism": "10",
+    "additional_protection_clauses": "A twelve-month non-solicitation of the disclosing party's employees and a prohibition on reverse engineering any disclosed prototype.",
+    "party_1_type": "Private Limited Company",
+    "party_2_type": "LLP",
+    "party_1_pan": "AAACA1234C",
+    "party_1_gstin": "27AAACA1234C1ZG",
+    "party_1_cin": "U74999MH2015PTC123456",
+    "party_1_llpin": "",
+    "party_2_pan": "AABFB2345F",
+    "party_2_gstin": "27AABFB2345F1ZW",
+    "party_2_cin": "",
+    "party_2_llpin": "AAC-2345",
+    "company_name": "Alpha Industries Private Limited",
+    "party_1_name": "Alpha Industries Private Limited",
+    "party_1_address": "1 First Road, Mumbai, Maharashtra 400001",
+    "party_2_name": "Beta Consulting LLP",
+    "party_2_address": "2 Second Road, Pune, Maharashtra 411001"
+  },
+  "clause_ids": [
+    "CORE_IDENTITY_001",
+    "TS_BINDING_EFFECT_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "TS_INVESTMENT_TERMS_001",
+    "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+    "TS_LIQUIDATION_PREFERENCE_001",
+    "CORP_ANTI_DILUTION_001",
+    "CORP_BOARD_INVESTOR_CONTROL_001",
+    "CORP_SHARE_TRANSFER_001",
+    "CORP_TAG_ALONG_001",
+    "CORP_DRAG_ALONG_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+  ],
+  "clauses": [
+    {
+      "clause_id": "CORE_IDENTITY_001",
+      "title": "Parties and Recitals",
+      "text": "THIS AGREEMENT (\"Agreement\") is made and executed at Pune on this 1st day of September, 2026.\n\nBY AND BETWEEN\n\nAlpha Industries Private Limited, a private limited company having Corporate Identity Number (CIN) U74999MH2015PTC123456 incorporated under the provisions of the Companies Act, 2013 and PAN AAACA1234C and GSTIN 27AAACA1234C1ZG, having its address at 1 First Road, Mumbai, Maharashtra 400001, represented by Ramesh Kulkarni, Director, duly authorised vide Board resolution dated 12 August 2026, a certified copy of which is annexed to this Agreement. (hereinafter referred to as the \"Company\", which expression shall, unless repugnant to the context or meaning thereof, include its successors and permitted assigns) of the First Part;\n\nAND\n\nBeta Consulting LLP, a Limited Liability Partnership duly registered under the provisions of the Limited Liability Partnership Act, 2008 having LLPIN AAC-2345 and PAN AABFB2345F and GSTIN 27AABFB2345F1ZW, having its address at 2 Second Road, Pune, Maharashtra 411001, represented by Sunita Deshmukh, Director, duly authorised vide Board resolution dated 14 August 2026, a certified copy of which is annexed to this Agreement. (hereinafter referred to as the \"Investor\", which expression shall, unless repugnant to the context or meaning thereof, include its successors and permitted assigns) of the Second Part.\n\nThe Company and the Investor are hereinafter collectively referred to as the \"Parties\" and individually as a \"Party\".\n\na. WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to the lawful commercial relationship and obligations contemplated by the Parties;\n\nb. AND WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and\n\nc. AND WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;\n\nNOW, THEREFORE, in consideration of the mutual covenants and undertakings contained herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:"
+    },
+    {
+      "clause_id": "TS_BINDING_EFFECT_001",
+      "title": "Binding Effect",
+      "text": "This Term Sheet records the terms on which Beta Consulting LLP (the \"Investor\") proposes to invest in Alpha Industries Private Limited (the \"Company\"). Its effect is as follows.\n(a) Except for the provisions listed in sub-clause (b), this Term Sheet is NOT legally binding on either Party. It is a statement of intent, and neither Party is obliged to proceed with the investment. No obligation to invest, to issue securities, or to complete arises unless and until definitive agreements are executed.\n(b) The following provisions ARE legally binding and are intended to create legal relations: the provisions on confidentiality, on exclusivity, on costs, and on governing law and dispute resolution.\n(c) Neither Party is liable to the other for any cost, loss, or expense incurred in connection with the proposed investment if it does not proceed, except under a provision listed in sub-clause (b).\n(d) This Term Sheet does not create a partnership, a joint venture, or an agency between the Parties.\n(e) The terms recorded here are subject to the Investor completing due diligence to its satisfaction, to the approvals listed in this Term Sheet, and to the execution of definitive agreements."
+    },
+    {
+      "clause_id": "CORE_DEFINITIONS_001",
+      "title": "Definitions",
+      "text": "In this Agreement, unless the context otherwise requires, the following expressions shall have the meanings set out below, and cognate expressions shall be construed accordingly:\n(a) \"Agreement\" means this Agreement together with its schedules, annexures, written amendments, and other documents expressly incorporated by reference.\n(b) \"Effective Date\" means 1 September 2026.\n(c) \"Affiliate\" means in relation to a Party, any entity that directly or indirectly controls, is controlled by, or is under common control with that Party, where \"control\" means the ownership of more than fifty percent (50%) of the voting securities of an entity, or the power to direct its management and policies, whether through ownership of voting securities, by contract, or otherwise.\n(d) \"Applicable Law\" means all statutes, enactments, ordinances, rules, regulations, notifications, circulars, guidelines, policies, directions, judgments, decrees, and orders of any Government Authority having the force of law in India, as in force from time to time and as amended, consolidated, re-enacted, or replaced.\n(e) \"Business Day\" means a day other than a Saturday, a Sunday, or a day declared to be a public holiday under the Negotiable Instruments Act, 1881 in the State in which this Agreement is executed, on which scheduled commercial banks are open for normal banking business in that State.\n(f) \"Force Majeure Event\" means any event or circumstance beyond the reasonable control of the affected Party which prevents or materially impedes the performance of its obligations, including act of God, fire, flood, earthquake, cyclone, epidemic, pandemic, lockdown or other restriction imposed by order of a Government Authority, war, hostilities, act of terrorism, riot, civil commotion, strike or other industrial action not confined to the affected Party's own workforce, failure of public utilities or telecommunications infrastructure, and any change in Applicable Law that renders performance unlawful.\n(g) \"Term\" means the period commencing on the Effective Date and continuing until this Agreement expires or is terminated in accordance with its terms.\nA term defined in this clause bears that meaning wherever it appears in this Agreement in capitalised form, including in the recitals, the schedules, and any annexure, unless the context otherwise requires."
+    },
+    {
+      "clause_id": "CORE_INTERPRETATION_001",
+      "title": "Interpretation",
+      "text": "In this Agreement, unless the context otherwise requires:\n(a) headings and titles are inserted for convenience only and shall not affect interpretation\n(b) words importing the singular include the plural and vice versa, and words importing a gender include every gender\n(c) the words \"including\", \"includes\", and similar expressions shall be construed as illustrative and not exhaustive\n(d) references to any law, statute, rule, regulation, or governmental direction include all amendments, consolidations, re-enactments, and subordinate legislation made thereunder from time to time\n(e) any schedule, annexure, appendix, or statement expressly incorporated into this Agreement shall form part of this Agreement, and in the event of inconsistency, the more specific commercial or technical provision shall prevail over the more general provision to the extent of that inconsistency"
+    },
+    {
+      "clause_id": "TS_INVESTMENT_TERMS_001",
+      "title": "Investment Terms",
+      "text": "The proposed investment is on the following terms.\n(a) the Investor proposes to invest 30000 rupees in the Company.\n(b) The pre-money valuation of the Company is 300000 rupees, and the post-money valuation is the pre-money valuation together with the investment amount.\n(c) The investment is by way of subscription to Compulsorily Convertible Preference Shares (CCPS) of the Company, issued at a price determined by reference to the pre-money valuation on a fully diluted basis.\n(d) Fully diluted basis means the issued equity share capital of the Company assuming the conversion of every convertible security and the exercise of every option granted or reserved, including the whole of the option pool referred to in sub-clause (e).\n(e) An employee stock option pool of 3 per cent of the post-issue fully diluted share capital shall be created or maintained, and shall be included in the pre-money capitalisation.\n(f) The securities shall be issued in accordance with Section 42 and Section 62 of the Companies Act, 2013, and the price shall be supported by a valuation report of a registered valuer where the Act or the rules require one."
+    },
+    {
+      "clause_id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+      "title": "Exclusivity and Confidentiality",
+      "text": "The following provisions are binding on the Parties.\n(a) For 24 months from the date of this Term Sheet, the Company and the Founders shall not solicit, entertain, or negotiate any offer of investment in, or acquisition of, the Company from any other person, and shall inform the Investor of any approach received.\n(b) Each Party shall keep confidential the existence and the terms of this Term Sheet, and any information disclosed in connection with it, and shall not disclose it except to its professional advisers, or as required by law or by a regulator.\n(c) The exclusivity in sub-clause (a) ends if the Investor notifies the Company that it will not proceed, or on the expiry of the period, whichever is earlier.\n(d) Each Party bears its own costs of negotiating and documenting the proposed investment. Where the definitive agreements provide for the Company to bear the Investor's costs, that obligation arises only on completion and is capped at the amount the definitive agreements state.\n(e) A breach of sub-clause (a) or (b) may be restrained by injunction, damages alone being an inadequate remedy."
+    },
+    {
+      "clause_id": "TS_LIQUIDATION_PREFERENCE_001",
+      "title": "Liquidation Preference",
+      "text": "On a Liquidity Event, the proceeds available for distribution shall be applied as follows.\n(a) Liquidity Event means a winding up of the Company, a sale of all or substantially all of its assets, or a sale or transfer of shares resulting in a change of control of the Company.\n(b) the Investor shall receive, in priority to the holders of equity shares, an amount equal to 0.3 times the amount invested, together with any declared but unpaid dividend.\n(c) The preference is non-participating: after receiving the amount in sub-clause (b), the Investor does not share further in the remaining proceeds, but may instead elect to convert into equity shares and take its pro rata share of the whole, whichever produces the greater amount.\n(d) The balance of the proceeds is distributed among the holders of equity shares in proportion to their shareholding.\n(e) A distribution on a winding up is subject to Section 53 of the Insolvency and Bankruptcy Code, 2016 where that Code applies, and the priority in this clause operates only among shareholders and does not affect the rights of creditors."
+    },
+    {
+      "clause_id": "CORP_ANTI_DILUTION_001",
+      "title": "Anti-Dilution Protection",
+      "text": "In the event the Company issues any new shares or other equity instruments at a price per share lower than the price per share paid by the existing Shareholders ('Down Round'), the affected Shareholders shall be entitled to anti-dilution protection in the form of a broad-based weighted average adjustment. The conversion price or subscription price applicable to such Shareholders shall be adjusted downward using the following formula: CP2 = CP1 × (A + B) ÷ (A + C), where CP1 is the existing conversion price, CP2 is the adjusted conversion price, A is the number of shares outstanding immediately prior to the new issuance, B is the number of shares that would have been issued at CP1 for the aggregate consideration received, and C is the number of shares actually issued. Any adjustment under this clause shall be subject to applicable provisions of the Companies Act, 2013, including requirements for shareholder approval for further issuance of shares."
+    },
+    {
+      "clause_id": "CORP_BOARD_INVESTOR_CONTROL_001",
+      "title": "Board and Reserved Matters (Investor-Protective)",
+      "text": "The governance of the Company shall reflect the protective rights agreed in favour of the Investor(s), and the board composition shall be A board of five directors: two nominated by the promoters, one by the incoming subscriber, and two independent directors appointed by mutual agreement. (a) The Board of Directors shall comprise such number of Directors as agreed; each Investor holding not less than the agreed threshold shall be entitled to nominate at least one Investor Director, and the quorum for any Board meeting shall require the presence of at least one Investor Director (subject to adjournment provisions where an Investor Director is absent from successive meetings). (b) Notwithstanding any other provision, none of the matters listed as Reserved Matters (including Altering the share capital, approving a budget above the agreed threshold, incurring borrowing above Rs. 1,00,00,000, and any related party transaction. , and any change to the charter documents, share capital, business plan, related-party transactions, incurrence of indebtedness above agreed thresholds, winding up, or any merger, acquisition, or disposal of material assets) shall be undertaken by the Company or its Board without the prior written affirmative consent of the Investor(s) or the Investor Director(s). (c) the Investor(s) shall have customary information and inspection rights, including audited and management accounts, and access to the books and records of the Company. (d) These rights are intended to operate within the framework of the Companies Act, 2013, and shall, to the extent required, be incorporated into the Articles of Association of the Company; in the event of any conflict between this Agreement and the Articles as between the Shareholders, this Agreement shall prevail and the Shareholders shall procure amendment of the Articles accordingly."
+    },
+    {
+      "clause_id": "CORP_SHARE_TRANSFER_001",
+      "title": "Share Transfer Restrictions and Right of First Refusal",
+      "text": "No Shareholder shall transfer, assign, pledge, or otherwise dispose of any shares held by it without complying with the transfer restrictions in this Agreement. Before transferring any shares to a third party, the transferring Shareholder shall first offer those shares to the remaining Shareholders on a pro-rata basis under a right of first refusal. The remaining Shareholders shall have 30 days from receipt of the transfer notice to exercise that right. Any transfer made in breach of this clause shall be void to the fullest extent permitted by applicable law and the constitutional documents of the Company shall, where necessary, be aligned with these transfer restrictions."
+    },
+    {
+      "clause_id": "CORP_TAG_ALONG_001",
+      "title": "Tag-Along Rights",
+      "text": "If any Shareholder proposes to sell, transfer, or otherwise dispose of any shares to a third-party purchaser, each other Shareholder shall have the right, but not the obligation, to participate in such sale by selling a pro-rata portion of its shares to such third party on the same price, terms, and conditions. The Selling Shareholder shall give not less than thirty (30) days' prior written notice to all other Shareholders before completing any such sale."
+    },
+    {
+      "clause_id": "CORP_DRAG_ALONG_001",
+      "title": "Drag-Along Rights",
+      "text": "If the Majority Shareholders, holding more than 75% of the issued and paid-up share capital, receive a bona fide offer from a third party to acquire one hundred percent (100%) of the shares of the Company, they shall have the right to require all other Shareholders to sell their shares to such third party on the same price, terms, and conditions as accepted by the Majority Shareholders. The Majority Shareholders shall give not less than thirty (30) days' prior written notice before exercising such right, and the drag-along price per share shall not be less than the price per share offered to the Majority Shareholders."
+    },
+    {
+      "clause_id": "CORE_FORCE_MAJEURE_001",
+      "title": "Force Majeure",
+      "text": "Neither Party shall be liable for any failure or delay in performing its obligations under this Agreement to the extent that the failure or delay is caused by a Force Majeure Event, provided that the affected Party complies with this clause. An obligation to pay an amount already due and payable shall not be excused by a Force Majeure Event.\n(a) the affected Party shall notify the other Party in writing within seven (7) days of becoming aware of the Force Majeure Event, describing the event, the obligations affected, and its anticipated duration, and shall keep the other Party reasonably informed of material developments\n(b) the affected Party's obligations shall be suspended for so long as the Force Majeure Event continues, and the time for performance shall be extended by the period of suspension\n(c) the affected Party shall use reasonable endeavours to mitigate the effect of the Force Majeure Event and to resume full performance as soon as reasonably practicable, and shall notify the other Party promptly upon the event ceasing\n(d) if a Force Majeure Event continues for a continuous period exceeding sixty (60) days, either Party may terminate this Agreement by written notice to the other, without liability except in respect of obligations accrued before the date of termination"
+    },
+    {
+      "clause_id": "CORE_SURVIVAL_001",
+      "title": "Survival",
+      "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+      "clause_id": "CORE_NOTICE_001",
+      "title": "Notices",
+      "text": "Any notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this clause, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:\n(a) if delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. Local time, and otherwise on the next Business Day\n(b) if sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier\n(c) if sent by a reputed courier service, on the second (2nd) Business Day after the date of dispatch\n(d) if sent by electronic mail to the address notified for that purpose, on the date of transmission where sent on a Business Day before 5:00 p.m. Local time and no delivery-failure notification is received, and otherwise on the next Business Day\nA Party changing its address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the change, and until that notice is given a communication sent to the last notified address shall be validly given.\nThe addresses for notices are:\n(a) Company: Alpha Industries Private Limited, 1 First Road, Mumbai, Maharashtra 400001\n(b) Investor: Beta Consulting LLP, 2 Second Road, Pune, Maharashtra 411001"
+    },
+    {
+      "clause_id": "CORE_ASSIGNMENT_001",
+      "title": "Assignment",
+      "text": "Neither Party shall assign, transfer, charge, subcontract, or otherwise deal with all or any of its rights or obligations under this Agreement without the prior written consent of the other Party, such consent not to be unreasonably withheld or delayed.\n(a) a Party may, on written notice to the other Party, assign or novate this Agreement to an Affiliate, or to a successor in title to substantially the whole of the business or assets to which this Agreement relates, provided that the assignee agrees in writing to be bound by this Agreement\n(b) any purported assignment, transfer, or charge in breach of this clause shall be void and of no effect\n(c) this Agreement shall be binding on, and shall enure for the benefit of, each Party and its permitted successors and assigns"
+    },
+    {
+      "clause_id": "CORE_AMENDMENT_001",
+      "title": "Amendment",
+      "text": "No amendment, variation, or modification of this Agreement shall be valid or binding unless it is recorded in writing, expressly refers to this Agreement, and is signed by or on behalf of each Party by a person duly authorised for that purpose. No course of dealing between the Parties, exchange of correspondence, or oral assurance shall operate to vary this Agreement. Where an amendment attracts stamp duty or compulsory registration under Applicable Law, that amendment shall be duly stamped and, where required, registered before either Party relies upon it."
+    },
+    {
+      "clause_id": "CORE_WAIVER_001",
+      "title": "Waiver",
+      "text": "No failure, delay, or indulgence by a Party in exercising any right, power, or remedy under this Agreement shall operate as a waiver of that right, power, or remedy, nor shall any single or partial exercise of it preclude any further exercise of that or any other right, power, or remedy. A waiver of any right, power, or remedy under this Agreement is effective only if it is given in writing and signed by or on behalf of the waiving Party, and shall not be treated as a waiver of any subsequent breach or default. The rights and remedies provided under this Agreement are cumulative and are not exclusive of any rights or remedies available under Applicable Law."
+    },
+    {
+      "clause_id": "CORE_SEVERABILITY_001",
+      "title": "Severability",
+      "text": "If any provision or part-provision of this Agreement is or becomes invalid, illegal, or unenforceable under Applicable Law, it shall be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, and if such modification is not possible, the provision or part-provision concerned shall be deemed deleted. Any modification to, or deletion of, a provision or part-provision under this clause shall not affect the validity and enforceability of the remainder of this Agreement, which shall continue in full force and effect. Where a provision is modified or deleted under this clause, the Parties shall negotiate in good faith to substitute a valid and enforceable provision that achieves, so far as possible, the commercial result originally intended."
+    },
+    {
+      "clause_id": "CORE_ENTIRE_AGREEMENT_001",
+      "title": "Entire Agreement",
+      "text": "This Agreement, together with its schedules and annexures, constitutes the entire agreement between the Parties in relation to its subject matter and supersedes all prior agreements, arrangements, understandings, term sheets, proposals, quotations, and representations, whether written or oral, relating to that subject matter.\n(a) each Party acknowledges that in entering into this Agreement it does not rely on, and shall have no remedy in respect of, any statement, representation, assurance, or warranty that is not expressly set out in this Agreement\n(b) nothing in this clause shall exclude or limit any liability for fraud or fraudulent misrepresentation, or operate to exclude any term implied by Applicable Law which cannot lawfully be excluded\n(c) where any purchase order, invoice, acknowledgement, portal terms, or other standard-form document issued by either Party contains terms inconsistent with this Agreement, the terms of this Agreement shall prevail unless the Parties expressly agree otherwise in a written amendment executed in accordance with this Agreement"
+    },
+    {
+      "clause_id": "CORE_FURTHER_ASSURANCE_001",
+      "title": "Further Assurance",
+      "text": "Each Party shall, at the reasonable request and cost of the requesting Party, promptly execute and deliver such further documents, instruments, declarations, forms, and writings, and do or procure to be done all such further acts and things, as may be reasonably necessary or expedient to give full force and effect to this Agreement and to perfect, record, or protect the rights, title, interests, and obligations created or intended to be created under it, including any filings, registrations, or intimations required to be made before any statutory or regulatory authority."
+    },
+    {
+      "clause_id": "CORE_DISPUTE_RESOLUTION_001",
+      "title": "Dispute Resolution Mechanism",
+      "text": "Any dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) days of a written request, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted on the following terms:\n(a) The seat of arbitration shall be Pune, Maharashtra, and the courts at Pune, Maharashtra shall have exclusive supervisory jurisdiction over the arbitration.\n(b) Hearings may be held at Pune, Maharashtra or, where the arbitrator so directs or the Parties agree, by video conference.\n(c) The arbitral tribunal shall consist of a sole arbitrator, and the proceedings and the award shall be in the English language.\n(d) The award shall be in writing, shall state the reasons on which it is based, and shall be final and binding on the Parties.\n(e) The arbitrator shall determine the costs of the arbitration, including the fees and expenses of the arbitrator and the reasonable legal costs of the Parties, in accordance with Section 31A of the Arbitration and Conciliation Act, 1996.\n(f) Nothing in this clause prevents a Party from applying to a competent court for interim measures of protection under Section 9 of the Arbitration and Conciliation Act, 1996, before or during the arbitral proceedings."
+    },
+    {
+      "clause_id": "CORE_GOVERNING_LAW_001",
+      "title": "Governing Law and Jurisdiction",
+      "text": "This Agreement, and any dispute or claim arising out of or in connection with it, its subject matter or its formation (including non-contractual disputes or claims), shall be governed by and construed in accordance with the laws of India, and where local procedural, registration, or stamp matters are relevant, as applied in the State of Maharashtra.\n(a) subject to the dispute resolution provisions of this Agreement, the competent courts at Pune, Maharashtra shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction\n(b) each Party waives any objection to that forum on the ground of inconvenient forum or that proceedings have been brought in an inappropriate court\n(c) the rules of private international law shall not apply to the extent they would result in the application of the law of any jurisdiction other than India\n(d) nothing in this clause shall prevent either Party from applying to any court of competent jurisdiction for interim or protective relief, including injunctive relief, to preserve its rights pending resolution of the dispute"
+    },
+    {
+      "clause_id": "CORE_COUNTERPARTS_001",
+      "title": "Counterparts and Electronic Execution",
+      "text": "This Agreement may be executed in any number of counterparts, each of which when executed and delivered shall constitute an original, and all counterparts taken together shall constitute one and the same instrument. A Party may enter into this Agreement by executing a counterpart and delivering it by electronic mail in portable document format, or by affixing an electronic signature to it. The Parties acknowledge that, under Section 5 of the Information Technology Act, 2000, an electronic signature affixed in the prescribed manner satisfies a requirement of law that information be authenticated by signature, save in respect of the classes of document excluded by the First Schedule to that Act; and where this Agreement or any amendment to it falls within that Schedule, it shall be executed as a physical instrument bearing wet-ink signatures."
+    },
+    {
+      "clause_id": "CORE_STAMP_AND_COSTS_001",
+      "title": "Stamp Duty, Registration and Costs",
+      "text": "This Agreement shall be stamped with non-judicial stamp duty of the value payable under the Maharashtra Stamp Act, 1958, and shall be stamped before or at the time of execution.\nUnless otherwise expressly agreed in writing, the stamp duty, registration fees where registration is required under applicable law, and all incidental charges payable in respect of this Agreement shall be borne equally by the Parties, and each Party shall bear its own legal, professional, and advisory costs.\nThe Parties acknowledge that an instrument which is not duly stamped is inadmissible in evidence until the deficiency in duty, together with any penalty, is made good in accordance with the applicable stamp legislation."
+    },
+    {
+      "clause_id": "CORE_SIGNATURE_BLOCK_001",
+      "title": "Execution and Signatures",
+      "text": "IN WITNESS WHEREOF, the Parties hereto have executed this Agreement on the day and year first above written.\n\nFor and on behalf of Alpha Industries Private Limited\n______________________________\nAuthorized Signatory\nName: ________________________\nDesignation: __________________\nDate: ________________________\n\nFor and on behalf of Beta Consulting LLP\n______________________________\nAuthorized Signatory\nName: ________________________\nDesignation: __________________\nDate: ________________________"
+    }
+  ],
+  "rendered_text": "Term Sheet\n==========\n\nTHIS AGREEMENT (\"Agreement\") is made and executed at Pune on this 1st day of September, 2026.\n\nBY AND BETWEEN\n\nAlpha Industries Private Limited, a private limited company having Corporate Identity Number (CIN) U74999MH2015PTC123456 incorporated under the provisions of the Companies Act, 2013 and PAN AAACA1234C and GSTIN 27AAACA1234C1ZG, having its address at 1 First Road, Mumbai, Maharashtra 400001, represented by Ramesh Kulkarni, Director, duly authorised vide Board resolution dated 12 August 2026, a certified copy of which is annexed to this Agreement. (hereinafter referred to as the \"Company\", which expression shall, unless repugnant to the context or meaning thereof, include its successors and permitted assigns) of the First Part;\n\nAND\n\nBeta Consulting LLP, a Limited Liability Partnership duly registered under the provisions of the Limited Liability Partnership Act, 2008 having LLPIN AAC-2345 and PAN AABFB2345F and GSTIN 27AABFB2345F1ZW, having its address at 2 Second Road, Pune, Maharashtra 411001, represented by Sunita Deshmukh, Director, duly authorised vide Board resolution dated 14 August 2026, a certified copy of which is annexed to this Agreement. (hereinafter referred to as the \"Investor\", which expression shall, unless repugnant to the context or meaning thereof, include its successors and permitted assigns) of the Second Part.\n\nThe Company and the Investor are hereinafter collectively referred to as the \"Parties\" and individually as a \"Party\".\n\na. WHEREAS, the Parties intend to enter into a legally binding arrangement in relation to the lawful commercial relationship and obligations contemplated by the Parties;\n\nb. AND WHEREAS, the Parties desire to record the terms and conditions governing their respective rights, obligations, responsibilities, and risk allocation in a formal written instrument; and\n\nc. AND WHEREAS, the transaction contemplated herein is intended for a lawful object and lawful consideration under applicable Indian law;\n\nNOW, THEREFORE, in consideration of the mutual covenants and undertakings contained herein, and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:\n\n\n1. BINDING EFFECT\n----------------------------------------\nThis Term Sheet records the terms on which Beta Consulting LLP (the \"Investor\") proposes to invest in Alpha Industries Private Limited (the \"Company\"). Its effect is as follows.\n    1.1  Except for the provisions listed in sub-clause 1.2, this Term Sheet is NOT legally binding on either Party. It is a statement of intent, and neither Party is obliged to proceed with the investment. No obligation to invest, to issue securities, or to complete arises unless and until definitive agreements are executed.\n    1.2  The following provisions ARE legally binding and are intended to create legal relations: the provisions on confidentiality, on exclusivity, on costs, and on governing law and dispute resolution.\n    1.3  Neither Party is liable to the other for any cost, loss, or expense incurred in connection with the proposed investment if it does not proceed, except under a provision listed in sub-clause 1.2.\n    1.4  This Term Sheet does not create a partnership, a joint venture, or an agency between the Parties.\n    1.5  The terms recorded here are subject to the Investor completing due diligence to its satisfaction, to the approvals listed in this Term Sheet, and to the execution of definitive agreements.\n\n2. DEFINITIONS\n----------------------------------------\nIn this Agreement, unless the context otherwise requires, the following expressions shall have the meanings set out below, and cognate expressions shall be construed accordingly:\n    2.1  \"Agreement\" means this Agreement together with its schedules, annexures, written amendments, and other documents expressly incorporated by reference.\n    2.2  \"Effective Date\" means 1 September 2026.\n    2.3  \"Affiliate\" means in relation to a Party, any entity that directly or indirectly controls, is controlled by, or is under common control with that Party, where \"control\" means the ownership of more than fifty percent (50%) of the voting securities of an entity, or the power to direct its management and policies, whether through ownership of voting securities, by contract, or otherwise.\n    2.4  \"Applicable Law\" means all statutes, enactments, ordinances, rules, regulations, notifications, circulars, guidelines, policies, directions, judgments, decrees, and orders of any Government Authority having the force of law in India, as in force from time to time and as amended, consolidated, re-enacted, or replaced.\n    2.5  \"Business Day\" means a day other than a Saturday, a Sunday, or a day declared to be a public holiday under the Negotiable Instruments Act, 1881 in the State in which this Agreement is executed, on which scheduled commercial banks are open for normal banking business in that State.\n    2.6  \"Force Majeure Event\" means any event or circumstance beyond the reasonable control of the affected Party which prevents or materially impedes the performance of its obligations, including act of God, fire, flood, earthquake, cyclone, epidemic, pandemic, lockdown or other restriction imposed by order of a Government Authority, war, hostilities, act of terrorism, riot, civil commotion, strike or other industrial action not confined to the affected Party's own workforce, failure of public utilities or telecommunications infrastructure, and any change in Applicable Law that renders performance unlawful.\n    2.7  \"Term\" means the period commencing on the Effective Date and continuing until this Agreement expires or is terminated in accordance with its terms.\nA term defined in this clause bears that meaning wherever it appears in this Agreement in capitalised form, including in the recitals, the schedules, and any annexure, unless the context otherwise requires.\n\n3. INTERPRETATION\n----------------------------------------\nIn this Agreement, unless the context otherwise requires:\n    3.1  Headings and titles are inserted for convenience only and shall not affect interpretation.\n    3.2  Words importing the singular include the plural and vice versa, and words importing a gender include every gender.\n    3.3  The words \"including\", \"includes\", and similar expressions shall be construed as illustrative and not exhaustive.\n    3.4  References to any law, statute, rule, regulation, or governmental direction include all amendments, consolidations, re-enactments, and subordinate legislation made thereunder from time to time.\n    3.5  Any schedule, annexure, appendix, or statement expressly incorporated into this Agreement shall form part of this Agreement, and in the event of inconsistency, the more specific commercial or technical provision shall prevail over the more general provision to the extent of that inconsistency.\n\n4. INVESTMENT TERMS\n----------------------------------------\nThe proposed investment is on the following terms.\n    4.1  The Investor proposes to invest 30000 rupees in the Company.\n    4.2  The pre-money valuation of the Company is 300000 rupees, and the post-money valuation is the pre-money valuation together with the investment amount.\n    4.3  The investment is by way of subscription to Compulsorily Convertible Preference Shares (CCPS) of the Company, issued at a price determined by reference to the pre-money valuation on a fully diluted basis.\n    4.4  Fully diluted basis means the issued equity share capital of the Company assuming the conversion of every convertible security and the exercise of every option granted or reserved, including the whole of the option pool referred to in sub-clause 4.5.\n    4.5  An employee stock option pool of 3 per cent of the post-issue fully diluted share capital shall be created or maintained, and shall be included in the pre-money capitalisation.\n    4.6  The securities shall be issued in accordance with Section 42 and Section 62 of the Companies Act, 2013, and the price shall be supported by a valuation report of a registered valuer where the Act or the rules require one.\n\n5. EXCLUSIVITY AND CONFIDENTIALITY\n----------------------------------------\nThe following provisions are binding on the Parties.\n    5.1  For 24 months from the date of this Term Sheet, the Company and the Founders shall not solicit, entertain, or negotiate any offer of investment in, or acquisition of, the Company from any other person, and shall inform the Investor of any approach received.\n    5.2  Each Party shall keep confidential the existence and the terms of this Term Sheet, and any information disclosed in connection with it, and shall not disclose it except to its professional advisers, or as required by law or by a regulator.\n    5.3  The exclusivity in sub-clause 5.1 ends if the Investor notifies the Company that it will not proceed, or on the expiry of the period, whichever is earlier.\n    5.4  Each Party bears its own costs of negotiating and documenting the proposed investment. Where the definitive agreements provide for the Company to bear the Investor's costs, that obligation arises only on completion and is capped at the amount the definitive agreements state.\n    5.5  A breach of sub-clause 5.1 or 5.2 may be restrained by injunction, damages alone being an inadequate remedy.\n\n6. LIQUIDATION PREFERENCE\n----------------------------------------\nOn a Liquidity Event, the proceeds available for distribution shall be applied as follows.\n    6.1  Liquidity Event means a winding up of the Company, a sale of all or substantially all of its assets, or a sale or transfer of shares resulting in a change of control of the Company.\n    6.2  The Investor shall receive, in priority to the holders of equity shares, an amount equal to 0.3 times the amount invested, together with any declared but unpaid dividend.\n    6.3  The preference is non-participating: after receiving the amount in sub-clause 6.2, the Investor does not share further in the remaining proceeds, but may instead elect to convert into equity shares and take its pro rata share of the whole, whichever produces the greater amount.\n    6.4  The balance of the proceeds is distributed among the holders of equity shares in proportion to their shareholding.\n    6.5  A distribution on a winding up is subject to Section 53 of the Insolvency and Bankruptcy Code, 2016 where that Code applies, and the priority in this clause operates only among shareholders and does not affect the rights of creditors.\n\n7. ANTI-DILUTION PROTECTION\n----------------------------------------\nIn the event the Company issues any new shares or other equity instruments at a price per share lower than the price per share paid by the existing Shareholders ('Down Round'), the affected Shareholders shall be entitled to anti-dilution protection in the form of a broad-based weighted average adjustment. The conversion price or subscription price applicable to such Shareholders shall be adjusted downward using the following formula: CP2 = CP1 × (A + B) ÷ (A + C), where CP1 is the existing conversion price, CP2 is the adjusted conversion price, A is the number of shares outstanding immediately prior to the new issuance, B is the number of shares that would have been issued at CP1 for the aggregate consideration received, and C is the number of shares actually issued. Any adjustment under this clause shall be subject to applicable provisions of the Companies Act, 2013, including requirements for shareholder approval for further issuance of shares.\n\n8. BOARD AND RESERVED MATTERS (INVESTOR-PROTECTIVE)\n----------------------------------------\nThe governance of the Company shall reflect the protective rights agreed in favour of the Investor(s), and the board composition shall be A board of five directors: two nominated by the promoters, one by the incoming subscriber, and two independent directors appointed by mutual agreement.\n    8.1  The Board of Directors shall comprise such number of Directors as agreed; each Investor holding not less than the agreed threshold shall be entitled to nominate at least one Investor Director, and the quorum for any Board meeting shall require the presence of at least one Investor Director (subject to adjournment provisions where an Investor Director is absent from successive meetings).\n    8.2  Notwithstanding any other provision, none of the matters listed as Reserved Matters (including Altering the share capital, approving a budget above the agreed threshold, incurring borrowing above Rs. 1,00,00,000, and any related party transaction. , and any change to the charter documents, share capital, business plan, related-party transactions, incurrence of indebtedness above agreed thresholds, winding up, or any merger, acquisition, or disposal of material assets) shall be undertaken by the Company or its Board without the prior written affirmative consent of the Investor(s) or the Investor Director(s).\n    8.3  The Investor(s) shall have customary information and inspection rights, including audited and management accounts, and access to the books and records of the Company.\n    8.4  These rights are intended to operate within the framework of the Companies Act, 2013, and shall, to the extent required, be incorporated into the Articles of Association of the Company; in the event of any conflict between this Agreement and the Articles as between the Shareholders, this Agreement shall prevail and the Shareholders shall procure amendment of the Articles accordingly.\n\n9. SHARE TRANSFER RESTRICTIONS AND RIGHT OF FIRST REFUSAL\n----------------------------------------\nNo Shareholder shall transfer, assign, pledge, or otherwise dispose of any shares held by it without complying with the transfer restrictions in this Agreement. Before transferring any shares to a third party, the transferring Shareholder shall first offer those shares to the remaining Shareholders on a pro-rata basis under a right of first refusal. The remaining Shareholders shall have 30 days from receipt of the transfer notice to exercise that right. Any transfer made in breach of this clause shall be void to the fullest extent permitted by applicable law and the constitutional documents of the Company shall, where necessary, be aligned with these transfer restrictions.\n\n10. TAG-ALONG RIGHTS\n----------------------------------------\nIf any Shareholder proposes to sell, transfer, or otherwise dispose of any shares to a third-party purchaser, each other Shareholder shall have the right, but not the obligation, to participate in such sale by selling a pro-rata portion of its shares to such third party on the same price, terms, and conditions. The Selling Shareholder shall give not less than thirty (30) days' prior written notice to all other Shareholders before completing any such sale.\n\n11. DRAG-ALONG RIGHTS\n----------------------------------------\nIf the Majority Shareholders, holding more than 75% of the issued and paid-up share capital, receive a bona fide offer from a third party to acquire one hundred percent (100%) of the shares of the Company, they shall have the right to require all other Shareholders to sell their shares to such third party on the same price, terms, and conditions as accepted by the Majority Shareholders. The Majority Shareholders shall give not less than thirty (30) days' prior written notice before exercising such right, and the drag-along price per share shall not be less than the price per share offered to the Majority Shareholders.\n\n12. FORCE MAJEURE\n----------------------------------------\nNeither Party shall be liable for any failure or delay in performing its obligations under this Agreement to the extent that the failure or delay is caused by a Force Majeure Event, provided that the affected Party complies with this clause. An obligation to pay an amount already due and payable shall not be excused by a Force Majeure Event.\n    12.1  The affected Party shall notify the other Party in writing within seven (7) days of becoming aware of the Force Majeure Event, describing the event, the obligations affected, and its anticipated duration, and shall keep the other Party reasonably informed of material developments.\n    12.2  The affected Party's obligations shall be suspended for so long as the Force Majeure Event continues, and the time for performance shall be extended by the period of suspension.\n    12.3  The affected Party shall use reasonable endeavours to mitigate the effect of the Force Majeure Event and to resume full performance as soon as reasonably practicable, and shall notify the other Party promptly upon the event ceasing.\n    12.4  If a Force Majeure Event continues for a continuous period exceeding sixty (60) days, either Party may terminate this Agreement by written notice to the other, without liability except in respect of obligations accrued before the date of termination.\n\n13. SURVIVAL\n----------------------------------------\nExpiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.\n\n14. NOTICES\n----------------------------------------\nAny notice, consent, approval, demand, or other communication required or permitted under this Agreement shall be in writing in the English language and shall be sent to the address of the recipient Party set out in this clause, or to such other address as that Party may notify under this clause. A communication shall be deemed to have been received as follows:\n    14.1  If delivered by hand, on the date of delivery where delivered on a Business Day before 5:00 p.m. Local time, and otherwise on the next Business Day.\n    14.2  If sent by registered post or speed post with acknowledgement due, on the date recorded on the acknowledgement or on the fifth (5th) Business Day after posting, whichever is earlier.\n    14.3  If sent by a reputed courier service, on the second (2nd) Business Day after the date of dispatch.\n    14.4  If sent by electronic mail to the address notified for that purpose, on the date of transmission where sent on a Business Day before 5:00 p.m. Local time and no delivery-failure notification is received, and otherwise on the next Business Day.\nA Party changing its address or electronic mail address for notices shall give the other Party not less than seven (7) days' prior written notice of the change, and until that notice is given a communication sent to the last notified address shall be validly given.\nThe addresses for notices are:\n    14.5  Company: Alpha Industries Private Limited, 1 First Road, Mumbai, Maharashtra 400001.\n    14.6  Investor: Beta Consulting LLP, 2 Second Road, Pune, Maharashtra 411001.\n\n15. ASSIGNMENT\n----------------------------------------\nNeither Party shall assign, transfer, charge, subcontract, or otherwise deal with all or any of its rights or obligations under this Agreement without the prior written consent of the other Party, such consent not to be unreasonably withheld or delayed.\n    15.1  A Party may, on written notice to the other Party, assign or novate this Agreement to an Affiliate, or to a successor in title to substantially the whole of the business or assets to which this Agreement relates, provided that the assignee agrees in writing to be bound by this Agreement.\n    15.2  Any purported assignment, transfer, or charge in breach of this clause shall be void and of no effect.\n    15.3  This Agreement shall be binding on, and shall enure for the benefit of, each Party and its permitted successors and assigns.\n\n16. AMENDMENT\n----------------------------------------\nNo amendment, variation, or modification of this Agreement shall be valid or binding unless it is recorded in writing, expressly refers to this Agreement, and is signed by or on behalf of each Party by a person duly authorised for that purpose. No course of dealing between the Parties, exchange of correspondence, or oral assurance shall operate to vary this Agreement. Where an amendment attracts stamp duty or compulsory registration under Applicable Law, that amendment shall be duly stamped and, where required, registered before either Party relies upon it.\n\n17. WAIVER\n----------------------------------------\nNo failure, delay, or indulgence by a Party in exercising any right, power, or remedy under this Agreement shall operate as a waiver of that right, power, or remedy, nor shall any single or partial exercise of it preclude any further exercise of that or any other right, power, or remedy. A waiver of any right, power, or remedy under this Agreement is effective only if it is given in writing and signed by or on behalf of the waiving Party, and shall not be treated as a waiver of any subsequent breach or default. The rights and remedies provided under this Agreement are cumulative and are not exclusive of any rights or remedies available under Applicable Law.\n\n18. SEVERABILITY\n----------------------------------------\nIf any provision or part-provision of this Agreement is or becomes invalid, illegal, or unenforceable under Applicable Law, it shall be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable, and if such modification is not possible, the provision or part-provision concerned shall be deemed deleted. Any modification to, or deletion of, a provision or part-provision under this clause shall not affect the validity and enforceability of the remainder of this Agreement, which shall continue in full force and effect. Where a provision is modified or deleted under this clause, the Parties shall negotiate in good faith to substitute a valid and enforceable provision that achieves, so far as possible, the commercial result originally intended.\n\n19. ENTIRE AGREEMENT\n----------------------------------------\nThis Agreement, together with its schedules and annexures, constitutes the entire agreement between the Parties in relation to its subject matter and supersedes all prior agreements, arrangements, understandings, term sheets, proposals, quotations, and representations, whether written or oral, relating to that subject matter.\n    19.1  Each Party acknowledges that in entering into this Agreement it does not rely on, and shall have no remedy in respect of, any statement, representation, assurance, or warranty that is not expressly set out in this Agreement.\n    19.2  Nothing in this clause shall exclude or limit any liability for fraud or fraudulent misrepresentation, or operate to exclude any term implied by Applicable Law which cannot lawfully be excluded.\n    19.3  Where any purchase order, invoice, acknowledgement, portal terms, or other standard-form document issued by either Party contains terms inconsistent with this Agreement, the terms of this Agreement shall prevail unless the Parties expressly agree otherwise in a written amendment executed in accordance with this Agreement.\n\n20. FURTHER ASSURANCE\n----------------------------------------\nEach Party shall, at the reasonable request and cost of the requesting Party, promptly execute and deliver such further documents, instruments, declarations, forms, and writings, and do or procure to be done all such further acts and things, as may be reasonably necessary or expedient to give full force and effect to this Agreement and to perfect, record, or protect the rights, title, interests, and obligations created or intended to be created under it, including any filings, registrations, or intimations required to be made before any statutory or regulatory authority.\n\n21. DISPUTE RESOLUTION MECHANISM\n----------------------------------------\nAny dispute, controversy, or claim arising out of or in connection with this Agreement shall first be attempted to be resolved amicably between the Parties. If the dispute remains unresolved within fifteen (15) days of written notice, it shall be referred to arbitration in accordance with the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted by a sole arbitrator jointly appointed by the Parties and, failing agreement within fifteen (15) days of a written request, the arbitrator shall be appointed in accordance with the Arbitration and Conciliation Act, 1996. The arbitration shall be conducted on the following terms:\n    21.1  The seat of arbitration shall be Pune, Maharashtra, and the courts at Pune, Maharashtra shall have exclusive supervisory jurisdiction over the arbitration.\n    21.2  Hearings may be held at Pune, Maharashtra or, where the arbitrator so directs or the Parties agree, by video conference.\n    21.3  The arbitral tribunal shall consist of a sole arbitrator, and the proceedings and the award shall be in the English language.\n    21.4  The award shall be in writing, shall state the reasons on which it is based, and shall be final and binding on the Parties.\n    21.5  The arbitrator shall determine the costs of the arbitration, including the fees and expenses of the arbitrator and the reasonable legal costs of the Parties, in accordance with Section 31A of the Arbitration and Conciliation Act, 1996.\n    21.6  Nothing in this clause prevents a Party from applying to a competent court for interim measures of protection under Section 9 of the Arbitration and Conciliation Act, 1996, before or during the arbitral proceedings.\n\n22. GOVERNING LAW AND JURISDICTION\n----------------------------------------\nThis Agreement, and any dispute or claim arising out of or in connection with it, its subject matter or its formation (including non-contractual disputes or claims), shall be governed by and construed in accordance with the laws of India, and where local procedural, registration, or stamp matters are relevant, as applied in the State of Maharashtra.\n    22.1  Subject to the dispute resolution provisions of this Agreement, the competent courts at Pune, Maharashtra shall have exclusive jurisdiction to settle any dispute or claim arising out of or in connection with this Agreement, and each Party irrevocably submits to that jurisdiction.\n    22.2  Each Party waives any objection to that forum on the ground of inconvenient forum or that proceedings have been brought in an inappropriate court.\n    22.3  The rules of private international law shall not apply to the extent they would result in the application of the law of any jurisdiction other than India.\n    22.4  Nothing in this clause shall prevent either Party from applying to any court of competent jurisdiction for interim or protective relief, including injunctive relief, to preserve its rights pending resolution of the dispute.\n\n23. COUNTERPARTS AND ELECTRONIC EXECUTION\n----------------------------------------\nThis Agreement may be executed in any number of counterparts, each of which when executed and delivered shall constitute an original, and all counterparts taken together shall constitute one and the same instrument. A Party may enter into this Agreement by executing a counterpart and delivering it by electronic mail in portable document format, or by affixing an electronic signature to it. The Parties acknowledge that, under Section 5 of the Information Technology Act, 2000, an electronic signature affixed in the prescribed manner satisfies a requirement of law that information be authenticated by signature, save in respect of the classes of document excluded by the First Schedule to that Act; and where this Agreement or any amendment to it falls within that Schedule, it shall be executed as a physical instrument bearing wet-ink signatures.\n\n24. STAMP DUTY, REGISTRATION AND COSTS\n----------------------------------------\nThis Agreement shall be stamped with non-judicial stamp duty of the value payable under the Maharashtra Stamp Act, 1958, and shall be stamped before or at the time of execution.\nUnless otherwise expressly agreed in writing, the stamp duty, registration fees where registration is required under applicable law, and all incidental charges payable in respect of this Agreement shall be borne equally by the Parties, and each Party shall bear its own legal, professional, and advisory costs.\nThe Parties acknowledge that an instrument which is not duly stamped is inadmissible in evidence until the deficiency in duty, together with any penalty, is made good in accordance with the applicable stamp legislation.\n\n----------------------------------------\nIN WITNESS WHEREOF, the Parties hereto have executed this Agreement on the day and year first above written.\n\nFor and on behalf of Alpha Industries Private Limited\n______________________________\nAuthorized Signatory\nName: ________________________\nDesignation: __________________\nDate: ________________________\n\nFor and on behalf of Beta Consulting LLP\n______________________________\nAuthorized Signatory\nName: ________________________\nDesignation: __________________\nDate: ________________________\n\nNOT LEGAL ADVICE: GENERATED BY LEGALAID\nLegalAId is software, not a law firm, and does not provide legal advice. Documents are drafted from a clause library and user answers, with AI used to tailor wording. The clause library has not yet been reviewed by an advocate, and a draft may contain errors or omissions. Have a qualified advocate review any document before you sign or rely on it.",
+  "rendered_text_sha256": "1277a0fef9d49c79da02ceae98cd09eb327c94a02a8267d49dcdf42cf5948679",
+  "validation_awarded": {
+    "score": 100,
+    "certification": "No issues detected",
+    "blocking": 0,
+    "advisory": 0,
+    "notices": 3
+  },
+  "expected_failures": [
+    {
+      "defect": "contradictory binding status",
+      "rule_id": "BINDING_STATUS_CONTRADICTED",
+      "clause_id": "CORE_IDENTITY_001",
+      "why": "Opening 'THIS AGREEMENT ... made and executed', recital of intent to be legally bound, consideration recital and 'agree as follows', against clause 1 saying the document is not binding."
+    },
+    {
+      "defect": "non-binding investor rights drafted as obligations",
+      "rule_id": "NON_BINDING_OPERATIVE_LANGUAGE",
+      "clause_id": "CORP_SHARE_TRANSFER_001",
+      "why": "'Any transfer made in breach of this clause shall be void' in a provision the document itself lists as non-binding."
+    },
+    {
+      "defect": "non-binding economics drafted as obligations",
+      "rule_id": "NON_BINDING_OPERATIVE_LANGUAGE",
+      "clause_id": "TS_LIQUIDATION_PREFERENCE_001",
+      "why": "'The Investor shall receive ...'"
+    },
+    {
+      "defect": "obligation on non-parties (founders)",
+      "rule_id": "NON_PARTY_OBLIGATION",
+      "clause_id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+      "why": "'the Company and the Founders shall not solicit' while the founders are not parties."
+    },
+    {
+      "defect": "obligation on non-parties (shareholders)",
+      "rule_id": "NON_PARTY_OBLIGATION",
+      "clause_id": "CORP_SHARE_TRANSFER_001",
+      "why": "'No Shareholder shall transfer ...'"
+    },
+    {
+      "defect": "undefined approvals",
+      "rule_id": "UNDEFINED_CROSS_REFERENCE",
+      "clause_id": "TS_BINDING_EFFECT_001",
+      "why": "'the approvals listed in this Term Sheet' — none are listed."
+    },
+    {
+      "defect": "contradictory board size",
+      "rule_id": "BOARD_SIZE_CONTRADICTION",
+      "clause_id": null,
+      "why": "'A board of five directors' and 'such number of Directors as agreed'."
+    },
+    {
+      "defect": "unsupported Articles precedence",
+      "rule_id": "ARTICLES_PRECEDENCE_UNSUPPORTED",
+      "clause_id": "CORP_BOARD_INVESTOR_CONTROL_001",
+      "why": "'this Agreement shall prevail' over the Articles."
+    },
+    {
+      "defect": "boilerplate contamination",
+      "rule_id": "BINDING_CONTRACT_BOILERPLATE",
+      "clause_id": "CORE_FORCE_MAJEURE_001",
+      "why": "Thirteen general provisions of a binding contract, inherited from defaults."
+    },
+    {
+      "defect": "self-supersession",
+      "rule_id": "SELF_SUPERSESSION",
+      "clause_id": "CORE_ENTIRE_AGREEMENT_001",
+      "why": "The entire-agreement clause supersedes 'term sheets' from inside a term sheet."
+    },
+    {
+      "defect": "missing deal economics",
+      "rule_id": "REQUIRED_TERM_MISSING",
+      "term": "PRICE_PER_SECURITY",
+      "why": "No price per share."
+    },
+    {
+      "defect": "missing deal economics",
+      "rule_id": "REQUIRED_TERM_MISSING",
+      "term": "NUMBER_OF_SECURITIES",
+      "why": "No number of shares."
+    },
+    {
+      "defect": "missing deal economics",
+      "rule_id": "REQUIRED_TERM_MISSING",
+      "term": "CONVERSION_TERMS",
+      "why": "CCPS with no conversion terms."
+    },
+    {
+      "defect": "missing process terms",
+      "rule_id": "REQUIRED_TERM_MISSING",
+      "term": "EXPIRY",
+      "why": "No lapse date."
+    },
+    {
+      "defect": "founders not parties",
+      "rule_id": "REQUIRED_TERM_MISSING",
+      "term": "FOUNDERS_ARE_PARTIES",
+      "why": "Only the Company and the Investor are parties."
+    },
+    {
+      "defect": "silent default",
+      "rule_id": "SILENT_DEFAULT",
+      "choice": "OPTION_POOL_TIMING",
+      "why": "Option pool 'included in the pre-money capitalisation' with no field asking."
+    },
+    {
+      "defect": "silent default",
+      "rule_id": "SILENT_DEFAULT",
+      "choice": "LIQUIDATION_PARTICIPATION",
+      "why": "'non-participating' with no field asking."
+    },
+    {
+      "defect": "silent default",
+      "rule_id": "SILENT_DEFAULT",
+      "choice": "ANTI_DILUTION_TYPE",
+      "why": "'broad-based weighted average' with no field asking."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "$comment": [
+    "D4.44 — the term sheet: withdrawn, frozen, rebuilt. 9 October 2026.",
+    "Order followed: withdraw → freeze the failing sample as regression evidence → define the legal requirements and the binding model → rebuild blueprint and intake → test the rendered output → advocate review → restore. The first five are done. The last two are not, and the type stays withdrawn until they are."
+  ],
+  "review_status": "UNREVIEWED — engineering and drafting for an advocate's review. The rebuilt clauses are marked draft-needs-legal-review. Nothing here is legal advice.",
+  "the_finding": {
+    "what_shipped": "A term sheet that (1) opened 'THIS AGREEMENT ... made and executed', recited that the Parties 'intend to enter into a legally binding arrangement' and concluded 'in consideration of the mutual covenants ... agree as follows', while clause 1 said it was not binding; (2) drafted the investor-rights provisions as present obligations ('any transfer made in breach of this clause shall be void'); (3) bound 'the Founders' and 'Shareholders', who were not parties and signed nothing; (4) referred to 'the approvals listed in this Term Sheet', of which there were none; (5) gave the board as five directors and as 'such number of Directors as agreed'; (6) stated that the agreement prevails over the Articles of Association; (7) carried thirteen general provisions of a binding contract, including an entire-agreement clause superseding 'term sheets'; (8) omitted the price per share, the number of shares, the conversion terms, founder vesting, conditions, a completion date, use of funds and a lapse date; (9) stated three value-moving economic choices nobody had been asked: option pool in the pre-money, non-participating preference, broad-based weighted average.",
+    "what_the_engine_said": "Score 100, 'No issues detected'.",
+    "frozen_as": "tests/fixtures/termSheet.D4_44.defective.json — captured from the pre-change commit with the generation clock frozen. Its rendered text is hash-pinned and never regenerated.",
+    "root_causes": [
+      "The drafting policy's note said 'The general-provisions baseline is suppressed' for TERM_SHEET, but the policy data did not set baselineClauseIds: [], so the thirteen provisions were inherited from defaults. The constraint rules already excluded TERM_SHEET from asking for them, so validation never noticed they were there.",
+      "The blueprint reused five shareholders'-agreement clauses (CORP_*) written as operative obligations of a binding contract.",
+      "The identity renderer has one frame for every document: an agreement's opening, recitals and testatum.",
+      "No validator read the document as a whole against what it declares itself to be. Each structural check was right about what it checked."
+    ]
+  },
+  "withdrawal": {
+    "register": "shared/documentWithdrawals.js",
+    "refused": [
+      "POST /generate",
+      "POST /interview",
+      "POST /interview/extract",
+      "POST /interview/step",
+      "POST /intake-assistant",
+      "GET /document-config/TERM_SHEET (410)",
+      "generateDocumentForRequest (410), the entry point POST /generate uses"
+    ],
+    "hidden": "GET /document-types leaves withdrawn types out.",
+    "kept": "Blueprint, clauses (old versions in git history and in the frozen fixture), fixtures. The engine (generateDocument) still builds it, so the harnesses, the conservation gate and the regression tests can prove the rebuild; no production path reaches the engine except through generateDocumentForRequest.",
+    "existing_documents": "Preserved and still the user's to open, edit and download. Every validation of a term sheet — new, saved, or a saved version — is read through withValidationAssuranceWithdrawn: score null, 'Requires review', a DOCUMENT_TYPE_WITHDRAWN finding, the old figure kept only as superseded_assessment. Stored records are not rewritten; the mark is applied on read, so it is reversible and complete.",
+    "a_decision_for_the_owner": "Export of an existing term sheet is still allowed (the withdrawal finding is HIGH, not blocking), because the document belongs to the user. If you would rather block export, make the finding CRITICAL in shared/documentWithdrawals.js."
+  },
+  "binding_model": {
+    "where": "knowledge-base/metadata/drafting_policies.json → documents.TERM_SHEET.instrument",
+    "binding_character": "PARTLY_BINDING",
+    "states": {
+      "BINDING_NOW": "binds on signature",
+      "NON_BINDING": "a proposal; drafted as 'it is proposed that ... be'",
+      "UNRESOLVED_PENDING_REVIEW": "any clause in the document that the map does not list"
+    },
+    "binding_now": [
+      "Status of this Term Sheet",
+      "Exclusivity",
+      "Confidentiality and Costs",
+      "Expiry",
+      "governing law",
+      "dispute resolution",
+      "identity and signatures"
+    ],
+    "non_binding": [
+      "The Proposed Investment",
+      "Option Pool and Anti-Dilution",
+      "Liquidation Preference",
+      "Governance and Founder Terms",
+      "Conditions and Completion"
+    ]
+  },
+  "rebuild": {
+    "structure": "Five parts. Participants and transaction (Company, Founder 1, optional Founder 2, Investor; The Proposed Investment). Economics (Option Pool and Anti-Dilution; Liquidation Preference). Governance and founder terms. Process and closing (Conditions and Completion; Expiry). Legal status (Status of this Term Sheet; Exclusivity; Confidentiality and Costs; governing law; dispute resolution; signatures).",
+    "founders_are_parties": "party_3 and party_4 are declared participants with their own labels and sign individually, because the exclusivity binds them.",
+    "no_hidden_defaults": "Every economic choice is an optional question with no default. Unanswered, or answered 'To be agreed', the term renders as '[To be agreed: …]'. The price per share is computed only from the Company's fully diluted share count; it is never estimated.",
+    "law_is_not_a_default": "The statutory approvals are stated by security type: Companies Act 2013 s.62(1)(c) with a registered valuer's report and s.42 for shares; s.71(1) and s.42 for convertible debentures; the FEMA (Non-debt Instruments) Rules 2019 for a non-resident investor.",
+    "ai_tailoring": "Off for this instrument (generation.semantic_tailoring: false). Its effect turns on exact wording.",
+    "intake": "Ten generic questions a term sheet never used (three on termination, non-compete, non-solicit, SLA, reporting, cure period, personal data, entire agreement) are no longer asked, nor is the duplicate Company Name field."
+  },
+  "engine_changes_universal": [
+    "instrumentKnowledge.js: reads a family's instrument description — its noun, opening, recitals, testatum, provision status and phrased terms. A type with no instrument entry is untouched.",
+    "CORE_IDENTITY_001 opens as the declared instrument when one is declared.",
+    "The noun pass: shared clauses say 'this Term Sheet', not 'this Agreement', in a type that declares its noun.",
+    "PRIORITY_PARTICIPANT_GROUPS includes party_3 and party_4, so a schema that declares more than two principals gets them as declared participants. No other schema declares them.",
+    "instrumentCoherence.js + knowledge-base/metadata/instrument_coherence.json: the rendered-document checks. They run only where an instrument is declared.",
+    "The two s.29 uncertainty rules are applied to the binding provisions of a partly binding instrument, not to its open proposals.",
+    "Role aliases no longer rewrite names or defined terms (found here: 'Northbridge Seed Fund LLP' printed as 'Northbridge Seed Investor LLP'). Elsewhere this repaired NDA 'Permitted Recipient' and LOAN 'Principal Amount', which had been corrupted.",
+    "Amounts keep their paise (found here: a price of ₹3,000.03 printed as ₹3,000). Elsewhere a fixture price of 0.03 had been printed as '₹0'.",
+    "A clean validation result is labelled 'Automated checks passed', not 'No issues detected', and the score is labelled as an automated-check score that is not a legal review."
+  ],
+  "coherence_checks": {
+    "INCOHERENT": [
+      "BINDING_STATUS_CONTRADICTED",
+      "NON_BINDING_OPERATIVE_LANGUAGE",
+      "NON_PARTY_OBLIGATION",
+      "BINDING_CONTRACT_BOILERPLATE",
+      "SELF_SUPERSESSION",
+      "UNDEFINED_CROSS_REFERENCE",
+      "BOARD_SIZE_CONTRADICTION"
+    ],
+    "INCOMPLETE": [
+      "REQUIRED_TERM_MISSING",
+      "SILENT_DEFAULT",
+      "TERMS_TO_BE_AGREED"
+    ],
+    "LEGAL_REVIEW_REQUIRED": [
+      "BINDING_STATUS_UNDECLARED",
+      "ARTICLES_PRECEDENCE_UNSUPPORTED"
+    ],
+    "operative_vs_descriptive": "An obligation marker ('shall', 'must', 'hereby', 'agrees to') counts as operative unless the sentence is a list item under 'It is proposed that:' or a descriptive frame precedes it in the sentence. Interpretive constructions ('shall have the meaning', 'shall be construed') are not obligations. Confidentiality and exclusivity are BINDING_NOW and are not checked for it.",
+    "input_outcome_classes": {
+      "INVALID_INPUT": "blocks: non-positive amounts or preference, a lapse date not after the term sheet's date, an exclusivity that is not a period, a pool size or multiple missing for a chosen option.",
+      "COMMERCIALLY_UNUSUAL": "advisory: preference below 1x or above 2x, exclusivity over 90 days, pool over 20%, investment above the pre-money valuation.",
+      "LEGAL_REVIEW_REQUIRED": "advisory, marked for an advocate: exclusivity over 180 days (Contract Act s.27), non-resident investor (NDI Rules), CCDs (deposit rules), preference on equity shares (Companies Act s.43), non-resident with anti-dilution.",
+      "LEGALLY_PROHIBITED": "defined and empty: nothing is placed here without a verified authority."
+    }
+  },
+  "proof": {
+    "tests/termSheetFalsification.test.mjs": "57 checks. The frozen sample fails for each of its 18 recorded defects; full validation of it is blocked (30 blocking findings) instead of 100. The rebuilt term sheet has no coherence finding. Each check catches its defect planted into the rebuilt output. Open choices are marked, never filled. 0.3x and 24 months are unusual and for review, not invalid.",
+    "tests/termSheetWithdrawal.test.mjs": "19 checks. Refusal at generateDocument (410) and on every starting route; a request cannot opt back in; stored assurances are withdrawn on read.",
+    "a_gate_that_failed_its_own_plant": "The first run of the planted-defect test failed: an obligation appended after the 'It is proposed that:' list was treated as part of the proposal. Frame inheritance was narrowed to list items.",
+    "conservation_gate": "Re-baselined with every non-term-sheet difference explained (provenance-instrumentation.json → the_gate.rebaselines, 2026-10-09).",
+    "suite": "91 suites: 75 pass, 16 fail, the same 16 as before (suite-baseline.json → after_D4_44)."
+  },
+  "not_done": [
+    "Advocate review of the rebuilt clauses, the binding model and the coherence lexicon. The type stays withdrawn until then; restoring it is removing TERM_SHEET from shared/documentWithdrawals.js.",
+    "The coherence checks run only for TERM_SHEET. The other 39 types declare no instrument, so they are neither checked nor reported as skipped. That is a coverage gap, recorded here rather than hidden.",
+    "The same 'this Agreement shall prevail' over the Articles sentence still ships in the Shareholders' Agreement and the Share Subscription Agreement (CORP_BOARD_INVESTOR_CONTROL_001). It needs the advocate's view and the same check.",
+    "variableConfig.js has two COMMON definitions of cure_period_days; the first (PROMISSORY_NOTE only) is dead because the second overrides it. Not changed here.",
+    "The '5:00 p.m. Local time' capitalisation bug is untouched (separate work item).",
+    "The identity validator checks parties 1 and 2 only. With founders as parties 3 and 4, a founder given a company PAN or the Company's own PAN is not flagged. Found while fixing the fixture.",
+    "The five new term-sheet clauses are unreviewed; clauseProvenance's unreviewed count is 313 against a ceiling of 307 (it was 308 before)."
+  ],
+  "measurement_infrastructure": "sweep.mjs (the fixture profile) was taught two things, both touching only the term sheet's new fields: a lapse date and a completion date come after the document's date (ORDERED_DATE_SAMPLES), and party_3 / party_4 are individuals with personal PANs. Without the first, every corpus term sheet was refused as invalid input and the fixture would have been measuring its own mistake."
+}

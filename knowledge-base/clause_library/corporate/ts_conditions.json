@@ -1,0 +1,47 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "The document refers to approvals or conditions it does not state"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "2.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_CONDITIONS_AND_CLOSING_001",
+  "name": "Conditions and Completion",
+  "title": "Conditions and Completion",
+  "category": "PROCEDURAL",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "It is proposed that:\n(a) the Investment be subject to the Investor completing legal, financial and tax due diligence on the Company to its satisfaction;\n(b) the Investment be subject to the approvals the law requires for the issue of the Securities, including {{ts_statutory_approvals_text}}{{ts_fema_text}};\n(c) {{ts_conditions_text}}; and\n(d) {{ts_closing_text}}.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(c)",
+      "note": "Preferential issue of shares: special resolution and valuation by a registered valuer, subject to section 42"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "71(1)",
+      "note": "Debentures with an option to convert must be approved by special resolution"
+    },
+    {
+      "act": "Foreign Exchange Management (Non-debt Instruments) Rules, 2019",
+      "section": "",
+      "note": "Pricing and reporting for investment by a person resident outside India"
+    }
+  ],
+  "source": "Companies Act, 2013",
+  "statutory_reference": "Companies Act, 2013 - S.42, S.62(1)(c), S.71(1)",
+  "authoring_note": "The statutory approvals are law, not defaults, and are stated for the security type chosen. Anything beyond due diligence and the statutory approvals comes from the user or is marked 'To be agreed'.",
+  "d4_44": "Rebuilt 9 Oct 2026. Non-binding provisions are drafted as proposals ('it is proposed that ... be'), never as obligations, so the wording agrees with the Status provision."
+}

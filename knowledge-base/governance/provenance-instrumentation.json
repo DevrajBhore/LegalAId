@@ -77,6 +77,12 @@
         "why": "DELIBERATE OUTPUT CHANGE, not instrumentation: every DOCX, PDF and TXT export now ends with the not-legal-advice notice (backend/services/legalNotice.js), from the launch-compliance fixes.",
         "evidence": "Before re-capture the gate reported 138 violations, all of kind text_sha256 — exactly the 138 shipping cases' plain-text export. result_sha256, disclosure_sha256 and clause order were identical in all 217 cases, and the 79 blocked cases were untouched.",
         "rule": "The gate is re-captured only for a change that is MEANT to alter what ships, and each re-capture is recorded here with the kinds that moved."
+      },
+      {
+        "date": "2026-10-09",
+        "why": "DELIBERATE OUTPUT CHANGES, D4.44 (term sheet withdrawal and rebuild). The gate measures the engine, which still builds withdrawn types; withdrawal is enforced at the request entry point.",
+        "evidence": "Full (json) snapshots were taken from the pre-change commit and from the changed tree and compared case by case. All 5 TERM_SHEET cases changed (rebuilt), and all 5 now ship (138 → 139 shipping cases): the fixture profile was taught that a lapse date follows the document's date and that the founders are individuals, a change that touches only the term sheet's new fields. Of the other 212 cases, 141 are byte-identical and all 71 that differ are explained, exactly, by four named changes and nothing else: (1) the clean-result label 'No issues detected' became 'Automated checks passed' (53 cases, result JSON only); (2) the role-alias rewrite no longer corrupts names and defined terms: NDA 'Permitted Recipient' had been rewritten to 'Permitted Receiving Party' (6 cases) and LOAN 'Principal Amount' to 'Borrower Amount' (3 cases); (3) amounts keep their paise: the fixture's price of 0.03 had been printed as '₹0 (Rupees Zero Only)' and is now '₹0.03 (Paise Three Only)' (12 cases). Clause order outside TERM_SHEET is unchanged in all 212.",
+        "rule": "Same rule as before: re-capture only for a change meant to alter what ships, recorded with what moved."
       }
     ],
     "what_the_gate_does_not_catch_by_design": [

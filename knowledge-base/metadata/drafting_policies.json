@@ -1058,11 +1058,26 @@
               "Subscriber",
               "Fund"
             ]
+          },
+          "third": {
+            "canonical": "Founder 1",
+            "aliases": [
+              "Founder 1",
+              "First Founder"
+            ]
+          },
+          "fourth": {
+            "canonical": "Founder 2",
+            "aliases": [
+              "Founder 2",
+              "Second Founder"
+            ]
           }
         }
       },
       "hardening": {
-        "requiredClauseIds": []
+        "requiredClauseIds": [],
+        "baselineClauseIds": []
       },
       "roles": {
         "payer": "second",
@@ -1073,7 +1088,654 @@
       "rendering": {
         "purposeMode": "investment_intent"
       },
-      "//": "The general-provisions baseline is suppressed. A term sheet is expressly non-binding except for a short list; bolting on notice, assignment, counterparts and force majeure clauses would contradict that and hand a party an argument that the document was meant to bind after all."
+      "//": "The general-provisions baseline is suppressed, by baselineClauseIds: [] (D4.44). Until 9 Oct 2026 this note said so while the data did not: the policy inherited the thirteen general provisions from defaults, and every term sheet shipped force majeure, assignment, waiver, severability, entire agreement (superseding 'term sheets'), further assurance and counterparts. The constraint rules already excluded TERM_SHEET, so validation never asked for them and never noticed they were there.",
+      "generation": {
+        "semantic_tailoring": false,
+        "//": "AI tailoring is off for this instrument. Whether a provision binds turns on its exact wording, and a model asked to make text read naturally turns 'it is proposed that the Investor will' into 'the Investor shall'. The coherence checks would catch it; not generating it is better."
+      },
+      "instrument": {
+        "//": [
+          "D4.44. The instrument is described here, as knowledge, and the engine reads it: the opening, the recitals, the noun the document uses for itself, which provisions bind, the terms a term sheet must state, and the economic choices that must come from an answer.",
+          "binding_character: BINDING | PARTLY_BINDING | NON_BINDING. provision_status maps clause ids to BINDING_NOW | NON_BINDING; a clause in the document that is not listed is UNRESOLVED_PENDING_REVIEW, and the coherence checks report it."
+        ],
+        "noun": "Term Sheet",
+        "opening": "THIS TERM SHEET is dated {date} and is signed at {place}.",
+        "opening_without_place": "THIS TERM SHEET is dated {date}.",
+        "collective_sentence": "{labels} are together the \"Parties\" and each a \"Party\". The Founder or Founders named above are together the \"Founders\".",
+        "recitals": [
+          "a. The Investor proposes to invest in the Company, and the Company and the Founders wish to record the principal terms on which that investment is proposed (the \"Investment\").",
+          "b. Except for the Binding Provisions identified in the provision headed \"Status of this Term Sheet\", this Term Sheet is not legally binding, and the Investment is subject to the execution of Definitive Agreements."
+        ],
+        "testatum": "The proposed terms are as follows.",
+        "binding_character": "PARTLY_BINDING",
+        "provision_status": {
+          "CORE_IDENTITY_001": "BINDING_NOW",
+          "TS_BINDING_EFFECT_001": "BINDING_NOW",
+          "TS_INVESTMENT_TERMS_001": "NON_BINDING",
+          "TS_ECONOMIC_TERMS_001": "NON_BINDING",
+          "TS_LIQUIDATION_PREFERENCE_001": "NON_BINDING",
+          "TS_GOVERNANCE_AND_FOUNDERS_001": "NON_BINDING",
+          "TS_CONDITIONS_AND_CLOSING_001": "NON_BINDING",
+          "TS_EXCLUSIVITY_001": "BINDING_NOW",
+          "TS_CONFIDENTIALITY_AND_COSTS_001": "BINDING_NOW",
+          "TS_EXPIRY_001": "BINDING_NOW",
+          "CORE_GOVERNING_LAW_001": "BINDING_NOW",
+          "CORE_DISPUTE_RESOLUTION_001": "BINDING_NOW",
+          "CORE_SIGNATURE_BLOCK_001": "BINDING_NOW"
+        },
+        "required_terms": [
+          {
+            "id": "FOUNDERS_ARE_PARTIES",
+            "label": "the founders as parties",
+            "check": "party_label_present",
+            "label_pattern": "^Founder\\b"
+          },
+          {
+            "id": "INVESTMENT_AMOUNT",
+            "label": "the investment amount",
+            "pattern": "\\binvest\\b[^.\\n]{0,40}\\d"
+          },
+          {
+            "id": "VALUATION",
+            "label": "the pre-money valuation",
+            "pattern": "pre-money valuation"
+          },
+          {
+            "id": "PRICE_PER_SECURITY",
+            "label": "the price per share or security",
+            "pattern": "(?:at|of) ₹[\\d,]+(?:\\.\\d+)?[^.]{0,80}per (?:Security|share)|price per Security and the number"
+          },
+          {
+            "id": "NUMBER_OF_SECURITIES",
+            "label": "the number of shares or securities to be issued",
+            "pattern": "number of (?:Securities|shares to be issued)|Securities would be issued"
+          },
+          {
+            "id": "CONVERSION_TERMS",
+            "label": "the conversion terms of the securities",
+            "pattern": "(?:convert into equity shares of the Company on the following terms|conversion ratio|do not convert)"
+          },
+          {
+            "id": "OPTION_POOL",
+            "label": "the option pool",
+            "pattern": "option pool"
+          },
+          {
+            "id": "LIQUIDATION_PREFERENCE",
+            "label": "the liquidation preference",
+            "pattern": "liquidation preference|Liquidity Event"
+          },
+          {
+            "id": "ANTI_DILUTION",
+            "label": "anti-dilution protection",
+            "pattern": "anti-dilution"
+          },
+          {
+            "id": "BOARD",
+            "label": "board composition",
+            "pattern": "\\bboard\\b"
+          },
+          {
+            "id": "FOUNDER_VESTING",
+            "label": "founder vesting",
+            "pattern": "\\bvest"
+          },
+          {
+            "id": "CONDITIONS",
+            "label": "conditions and approvals",
+            "pattern": "subject to the following further conditions|conditions precedent|approvals the law requires|conditions to the Investment"
+          },
+          {
+            "id": "CLOSING",
+            "label": "the target date for completion",
+            "pattern": "completion of the Investment|completion date|closing date"
+          },
+          {
+            "id": "USE_OF_FUNDS",
+            "label": "the use of funds",
+            "pattern": "proceeds of the Investment"
+          },
+          {
+            "id": "EXPIRY",
+            "label": "the date the term sheet lapses",
+            "pattern": "this Term Sheet lapses"
+          }
+        ],
+        "economic_choices": [
+          {
+            "id": "OPTION_POOL_TIMING",
+            "field": "option_pool_timing",
+            "label": "whether the option pool is counted before or after the investment",
+            "asserted_by": [
+              "counted in the pre-money (?:valuation|capitalisation)",
+              "included in the pre-money (?:valuation|capitalisation)",
+              "created after the Investment"
+            ]
+          },
+          {
+            "id": "LIQUIDATION_PARTICIPATION",
+            "field": "liquidation_participation",
+            "label": "whether the liquidation preference participates",
+            "asserted_by": [
+              "non-participating",
+              "\\bparticipating\\b",
+              "share in the remaining proceeds"
+            ]
+          },
+          {
+            "id": "ANTI_DILUTION_TYPE",
+            "field": "anti_dilution_type",
+            "label": "the type of anti-dilution protection",
+            "asserted_by": [
+              "broad-based weighted average",
+              "narrow-based weighted average",
+              "full ratchet"
+            ]
+          }
+        ],
+        "terms": [
+          {
+            "key": "ts_investment_amount_text",
+            "cases": [
+              {
+                "text": "{investment_amount|inr}"
+              }
+            ],
+            "unresolved": "the amount of the Investment"
+          },
+          {
+            "key": "ts_pre_money_text",
+            "cases": [
+              {
+                "text": "{pre_money_valuation|inr}"
+              }
+            ],
+            "unresolved": "the pre-money valuation"
+          },
+          {
+            "key": "ts_post_money_text",
+            "cases": [
+              {
+                "text": "{=add(pre_money_valuation,investment_amount)|inr}"
+              }
+            ],
+            "unresolved": "the post-money valuation"
+          },
+          {
+            "key": "ts_investor_percentage_text",
+            "cases": [
+              {
+                "text": "{=percent(investment_amount,add(pre_money_valuation,investment_amount))|pct}"
+              }
+            ],
+            "unresolved": "the Investor's percentage"
+          },
+          {
+            "key": "ts_price_text",
+            "cases": [
+              {
+                "text": "the Securities be issued at {=divide(pre_money_valuation,pre_money_fully_diluted_shares)|inr2} per Security, being the pre-money valuation divided by the {pre_money_fully_diluted_shares|int} shares of the Company stated by the Company to be outstanding on a fully diluted basis before the Investment, so that approximately {=floor(divide(investment_amount,divide(pre_money_valuation,pre_money_fully_diluted_shares)))|int} Securities would be issued"
+              }
+            ],
+            "unresolved": "the price per Security and the number of Securities to be issued, which depend on the number of shares of the Company outstanding on a fully diluted basis before the Investment"
+          },
+          {
+            "key": "ts_conversion_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "security_type",
+                  "in": [
+                    "Equity Shares"
+                  ]
+                },
+                "text": "the Securities are equity shares and do not convert"
+              },
+              {
+                "text": "the Securities convert into equity shares of the Company on the following terms: {conversion_terms}"
+              }
+            ],
+            "unresolved": "the conversion ratio of the Securities and the latest date by which they must convert"
+          },
+          {
+            "key": "ts_use_of_funds_text",
+            "cases": [
+              {
+                "text": "the proceeds of the Investment be used for {use_of_funds}"
+              }
+            ],
+            "unresolved": "the use of the proceeds of the Investment"
+          },
+          {
+            "key": "ts_option_pool_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "option_pool_timing",
+                  "in": [
+                    "No option pool is proposed"
+                  ]
+                },
+                "text": "no employee stock option pool be created or enlarged as part of the Investment"
+              },
+              {
+                "when": {
+                  "field": "option_pool_timing",
+                  "in": [
+                    "Counted before the investment (dilutes existing shareholders only)"
+                  ]
+                },
+                "text": "an employee stock option pool equal to {esop_pool_percentage|num} per cent of the share capital of the Company on a fully diluted basis immediately after the Investment be created or enlarged before the Investment and counted in the pre-money valuation, so that its dilution falls on the existing shareholders and not on the Investor"
+              },
+              {
+                "when": {
+                  "field": "option_pool_timing",
+                  "in": [
+                    "Created after the investment (dilutes all shareholders, including the Investor)"
+                  ]
+                },
+                "text": "an employee stock option pool equal to {esop_pool_percentage|num} per cent of the share capital of the Company on a fully diluted basis be created after the Investment, so that its dilution falls on all shareholders, including the Investor, in proportion to their holdings"
+              }
+            ],
+            "unresolved": "whether an employee stock option pool is to be created or enlarged, its size, and whether it is counted before or after the Investment"
+          },
+          {
+            "key": "ts_anti_dilution_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "anti_dilution_type",
+                  "in": [
+                    "No anti-dilution protection"
+                  ]
+                },
+                "text": "the Investor have no price-based anti-dilution protection"
+              },
+              {
+                "when": {
+                  "field": "anti_dilution_type",
+                  "in": [
+                    "Broad-based weighted average"
+                  ]
+                },
+                "text": "if the Company later issues shares or convertible securities at a price per share below the price paid by the Investor, the Investor be protected against the dilution by a broad-based weighted average adjustment to the conversion price of its Securities, or for equity shares by an equivalent issue of further shares, as the Definitive Agreements will set out"
+              },
+              {
+                "when": {
+                  "field": "anti_dilution_type",
+                  "in": [
+                    "Narrow-based weighted average"
+                  ]
+                },
+                "text": "if the Company later issues shares or convertible securities at a price per share below the price paid by the Investor, the Investor be protected against the dilution by a narrow-based weighted average adjustment to the conversion price of its Securities, or for equity shares by an equivalent issue of further shares, as the Definitive Agreements will set out"
+              },
+              {
+                "when": {
+                  "field": "anti_dilution_type",
+                  "in": [
+                    "Full ratchet"
+                  ]
+                },
+                "text": "if the Company later issues shares or convertible securities at a price per share below the price paid by the Investor, the conversion price of the Investor's Securities be reduced to that lower price (full ratchet), or for equity shares an equivalent issue of further shares be made, as the Definitive Agreements will set out"
+              }
+            ],
+            "unresolved": "whether the Investor is to have anti-dilution protection and, if so, of what type"
+          },
+          {
+            "key": "ts_liquidation_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "liquidation_participation",
+                  "in": [
+                    "No liquidation preference"
+                  ]
+                },
+                "text": "the Investor have no liquidation preference, and on a Liquidity Event share in the proceeds with the other shareholders in proportion to its shareholding on an as-converted basis"
+              },
+              {
+                "when": {
+                  "field": "liquidation_participation",
+                  "in": [
+                    "Non-participating"
+                  ]
+                },
+                "text": "on a Liquidity Event the Investor receive, before any distribution to the holders of equity shares, {liquidation_preference_multiple|num} times the amount it invested together with any declared but unpaid dividend or, if greater, the amount it would receive had its Securities converted into equity shares, and nothing further (a non-participating preference)"
+              },
+              {
+                "when": {
+                  "field": "liquidation_participation",
+                  "in": [
+                    "Participating"
+                  ]
+                },
+                "text": "on a Liquidity Event the Investor receive, before any distribution to the holders of equity shares, {liquidation_preference_multiple|num} times the amount it invested together with any declared but unpaid dividend, and then also share in the remaining proceeds with the holders of equity shares in proportion to its shareholding on an as-converted basis (a participating preference)"
+              }
+            ],
+            "unresolved": "whether the Investor is to have a liquidation preference, its multiple, and whether it shares in the remaining proceeds"
+          },
+          {
+            "key": "ts_board_text",
+            "cases": [
+              {
+                "text": "the board of directors of the Company be constituted as follows: {board_structure}"
+              }
+            ],
+            "unresolved": "the composition of the board of directors of the Company and the Investor's right to nominate a director"
+          },
+          {
+            "key": "ts_reserved_matters_text",
+            "cases": [
+              {
+                "text": "the following matters require the prior written consent of the Investor, to the extent the Companies Act, 2013 permits the powers of the Board and of the shareholders to be so limited: {reserved_matters}"
+              }
+            ],
+            "unresolved": "the matters that will require the Investor's prior consent"
+          },
+          {
+            "key": "ts_vesting_text",
+            "cases": [
+              {
+                "text": "the shares held by each Founder be subject to vesting on the following terms: {founder_vesting}"
+              }
+            ],
+            "unresolved": "whether the Founders' shares are to vest and on what terms"
+          },
+          {
+            "key": "ts_transfer_text",
+            "cases": [
+              {
+                "text": "transfers of shares in the Company be subject to the following: {transfer_restrictions}"
+              }
+            ],
+            "unresolved": "rights of first refusal, tag-along and drag-along rights, and any lock-in of the Founders' shares"
+          },
+          {
+            "key": "ts_conditions_text",
+            "cases": [
+              {
+                "text": "the Investment be subject to the following further conditions: {conditions_precedent}"
+              }
+            ],
+            "unresolved": "any conditions to the Investment beyond due diligence and the approvals the law requires"
+          },
+          {
+            "key": "ts_statutory_approvals_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "security_type",
+                  "in": [
+                    "Compulsorily Convertible Debentures (CCD)"
+                  ]
+                },
+                "text": "a special resolution of the shareholders of the Company under Section 71(1) of the Companies Act, 2013 approving the option to convert the debentures, and compliance with Section 42 of that Act"
+              },
+              {
+                "text": "a special resolution of the shareholders of the Company under Section 62(1)(c) of the Companies Act, 2013, with the price determined by the valuation report of a registered valuer, and compliance with Section 42 of that Act"
+              }
+            ],
+            "unresolved": "the corporate approvals required for the issue"
+          },
+          {
+            "key": "ts_fema_text",
+            "cases": [
+              {
+                "when": {
+                  "field": "investor_residency",
+                  "in": [
+                    "Non-resident (foreign investment)"
+                  ]
+                },
+                "text": ", and, because the Investor is resident outside India, compliance with the Foreign Exchange Management (Non-debt Instruments) Rules, 2019, including their pricing and reporting requirements"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "unresolved": ""
+          },
+          {
+            "key": "ts_closing_text",
+            "cases": [
+              {
+                "text": "completion of the Investment take place on or before {closing_date_target|date}"
+              }
+            ],
+            "unresolved": "the target date for completion of the Investment"
+          },
+          {
+            "key": "ts_expiry_text",
+            "cases": [
+              {
+                "text": "{term_sheet_expiry_date|date}"
+              }
+            ],
+            "unresolved": "the date on which this Term Sheet lapses"
+          },
+          {
+            "key": "ts_confidentiality_survival_text",
+            "cases": [
+              {
+                "text": "{confidentiality_survival_period}"
+              }
+            ],
+            "unresolved": "the period for which confidentiality continues"
+          },
+          {
+            "key": "ts_effective_date_text",
+            "cases": [
+              {
+                "text": "{effective_date|date}"
+              }
+            ],
+            "unresolved": "the date of this Term Sheet"
+          }
+        ],
+        "input_checks": [
+          {
+            "id": "TS_AMOUNT_NOT_POSITIVE",
+            "outcome": "INVALID_INPUT",
+            "fields": [
+              "investment_amount",
+              "pre_money_valuation"
+            ],
+            "rule": "positive",
+            "message": "The investment amount and the pre-money valuation must be positive amounts."
+          },
+          {
+            "id": "TS_SHARES_NOT_POSITIVE",
+            "outcome": "INVALID_INPUT",
+            "fields": [
+              "pre_money_fully_diluted_shares"
+            ],
+            "rule": "positive_integer_if_answered",
+            "message": "The number of shares outstanding on a fully diluted basis must be a whole number above zero."
+          },
+          {
+            "id": "TS_POOL_OUT_OF_RANGE",
+            "outcome": "INVALID_INPUT",
+            "fields": [
+              "esop_pool_percentage"
+            ],
+            "rule": "range_if_answered",
+            "min_exclusive": 0,
+            "max_exclusive": 100,
+            "message": "The option pool must be a percentage above 0 and below 100."
+          },
+          {
+            "id": "TS_PREFERENCE_NOT_POSITIVE",
+            "outcome": "INVALID_INPUT",
+            "fields": [
+              "liquidation_preference_multiple"
+            ],
+            "rule": "range_if_answered",
+            "min_exclusive": 0,
+            "message": "A liquidation preference multiple must be above zero. Choose 'No liquidation preference' if none is intended."
+          },
+          {
+            "id": "TS_POOL_SIZE_MISSING",
+            "outcome": "INVALID_INPUT",
+            "rule": "required_when",
+            "field": "esop_pool_percentage",
+            "when": {
+              "field": "option_pool_timing",
+              "in": [
+                "Counted before the investment (dilutes existing shareholders only)",
+                "Created after the investment (dilutes all shareholders, including the Investor)"
+              ]
+            },
+            "message": "Give the size of the option pool, or choose that no option pool is proposed."
+          },
+          {
+            "id": "TS_MULTIPLE_MISSING",
+            "outcome": "INVALID_INPUT",
+            "rule": "required_when",
+            "field": "liquidation_preference_multiple",
+            "when": {
+              "field": "liquidation_participation",
+              "in": [
+                "Non-participating",
+                "Participating"
+              ]
+            },
+            "message": "Give the liquidation preference multiple, or choose that there is no liquidation preference."
+          },
+          {
+            "id": "TS_EXPIRY_NOT_AFTER_DATE",
+            "outcome": "INVALID_INPUT",
+            "rule": "date_after",
+            "field": "term_sheet_expiry_date",
+            "after": "effective_date",
+            "message": "The date this Term Sheet lapses must be after the date of the Term Sheet."
+          },
+          {
+            "id": "TS_EXCLUSIVITY_NOT_A_PERIOD",
+            "outcome": "INVALID_INPUT",
+            "rule": "duration",
+            "field": "exclusivity_period",
+            "message": "State the exclusivity period as a length of time, for example '45 days' or 'sixty days'."
+          },
+          {
+            "id": "TS_PREFERENCE_BELOW_1X",
+            "outcome": "COMMERCIALLY_UNUSUAL",
+            "rule": "range_if_answered",
+            "fields": [
+              "liquidation_preference_multiple"
+            ],
+            "min_inclusive": 1,
+            "message": "A liquidation preference below 1x is unusual: the Investor would be entitled to less than it invested before other shareholders are paid. It is not invalid; check that it is intended."
+          },
+          {
+            "id": "TS_PREFERENCE_ABOVE_2X",
+            "outcome": "COMMERCIALLY_UNUSUAL",
+            "rule": "range_if_answered",
+            "fields": [
+              "liquidation_preference_multiple"
+            ],
+            "max_inclusive": 2,
+            "message": "A liquidation preference above 2x is unusual and can leave founders and employees with little or nothing on a modest exit."
+          },
+          {
+            "id": "TS_EXCLUSIVITY_LONG",
+            "outcome": "COMMERCIALLY_UNUSUAL",
+            "rule": "duration_days_max",
+            "field": "exclusivity_period",
+            "max_days": 90,
+            "message": "An exclusivity period over 90 days is unusual; 30 to 60 days is common. A long period keeps the Company from other investors while the Investor is not committed."
+          },
+          {
+            "id": "TS_EXCLUSIVITY_VERY_LONG",
+            "outcome": "LEGAL_REVIEW_REQUIRED",
+            "rule": "duration_days_max",
+            "field": "exclusivity_period",
+            "max_days": 180,
+            "message": "An exclusivity period over 180 days should be reviewed by an advocate for reasonableness under Section 27 of the Indian Contract Act, 1872."
+          },
+          {
+            "id": "TS_POOL_LARGE",
+            "outcome": "COMMERCIALLY_UNUSUAL",
+            "rule": "range_if_answered",
+            "fields": [
+              "esop_pool_percentage"
+            ],
+            "max_inclusive": 20,
+            "message": "An option pool above 20 per cent of fully diluted capital is unusual."
+          },
+          {
+            "id": "TS_INVESTOR_MAJORITY",
+            "outcome": "COMMERCIALLY_UNUSUAL",
+            "rule": "investment_exceeds",
+            "field": "investment_amount",
+            "than": "pre_money_valuation",
+            "message": "The investment is larger than the pre-money valuation, so the Investor would hold a majority after the Investment. Check that this is intended; it changes who controls the Company."
+          },
+          {
+            "id": "TS_NON_RESIDENT",
+            "outcome": "LEGAL_REVIEW_REQUIRED",
+            "rule": "equals",
+            "field": "investor_residency",
+            "in": [
+              "Non-resident (foreign investment)"
+            ],
+            "message": "A non-resident investor brings the Foreign Exchange Management (Non-debt Instruments) Rules, 2019 into play, including pricing, sectoral and reporting requirements. Have an advocate confirm the structure."
+          },
+          {
+            "id": "TS_CCD_DEPOSIT",
+            "outcome": "LEGAL_REVIEW_REQUIRED",
+            "rule": "equals",
+            "field": "security_type",
+            "in": [
+              "Compulsorily Convertible Debentures (CCD)"
+            ],
+            "message": "Have an advocate confirm whether these debentures fall outside the definition of 'deposit' under the Companies (Acceptance of Deposits) Rules, 2014."
+          },
+          {
+            "id": "TS_EQUITY_PREFERENCE",
+            "outcome": "LEGAL_REVIEW_REQUIRED",
+            "rule": "all",
+            "conditions": [
+              {
+                "field": "security_type",
+                "in": [
+                  "Equity Shares"
+                ]
+              },
+              {
+                "field": "liquidation_participation",
+                "in": [
+                  "Non-participating",
+                  "Participating"
+                ]
+              }
+            ],
+            "message": "Equity shares carry no preferential right on a winding up (Section 43 of the Companies Act, 2013). A preference on equity shares can operate only as an arrangement among shareholders; have an advocate confirm how it would work."
+          },
+          {
+            "id": "TS_NON_RESIDENT_ANTI_DILUTION",
+            "outcome": "LEGAL_REVIEW_REQUIRED",
+            "rule": "all",
+            "conditions": [
+              {
+                "field": "investor_residency",
+                "in": [
+                  "Non-resident (foreign investment)"
+                ]
+              },
+              {
+                "field": "anti_dilution_type",
+                "in": [
+                  "Broad-based weighted average",
+                  "Narrow-based weighted average",
+                  "Full ratchet"
+                ]
+              }
+            ],
+            "message": "For a non-resident investor, any adjustment to the conversion price must still satisfy the pricing requirements of the Foreign Exchange Management (Non-debt Instruments) Rules, 2019. Have an advocate confirm the mechanism."
+          }
+        ],
+        "legally_prohibited_note": "No input is placed in the LEGALLY_PROHIBITED class without a verified authority. None has been verified for this instrument yet, so the class is defined and empty."
+      }
     },
     "SHARE_SUBSCRIPTION_AGREEMENT": {
       "naming": {

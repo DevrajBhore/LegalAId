@@ -1,0 +1,173 @@
+{
+  "//": [
+    "D4.44. The lexicon the rendered-document coherence checks read. Universal: nothing here names a document type.",
+    "The checks run only for a document type whose drafting policy declares rendering.instrument (today: TERM_SHEET). Every other type is unaffected, which is recorded as a coverage gap in knowledge-base/governance/term-sheet-rebuild.json, not hidden.",
+    "These are checks on WORDING, not legal conclusions. Each finding says what the text does and why that matters; none of them decides whether a provision is enforceable."
+  ],
+  "contract_formation_formulae": [
+    {
+      "pattern": "intend(?:s)? to enter into a legally binding",
+      "describes": "a recital that the parties intend a legally binding arrangement"
+    },
+    {
+      "pattern": "in consideration of the mutual (?:covenants|promises)",
+      "describes": "a consideration recital"
+    },
+    {
+      "pattern": "receipt and sufficiency of which",
+      "describes": "an acknowledgement of consideration"
+    },
+    {
+      "pattern": "\\bagree as follows\\b",
+      "describes": "an operative 'the Parties agree as follows'"
+    },
+    {
+      "pattern": "\\bTHIS AGREEMENT\\b",
+      "describes": "an opening that calls the document an agreement"
+    },
+    {
+      "pattern": "\\bmade and executed\\b",
+      "describes": "an execution formula"
+    }
+  ],
+  "obligation_markers": [
+    "\\bshall\\b",
+    "\\bmust\\b",
+    "\\bhereby\\b",
+    "\\bundertakes? to\\b",
+    "\\bagrees? to\\b",
+    "\\bis obliged to\\b",
+    "\\bis bound to\\b"
+  ],
+  "descriptive_frames": [
+    "\\bit is proposed that\\b",
+    "\\bpropose(?:s|d)? that\\b",
+    "\\bthe Definitive Agreements (?:will|would|are to|are expected to|may) (?:provide|set out|require|include)\\b",
+    "\\bas the Definitive Agreements will set out\\b",
+    "\\bintend(?:s)? (?:these|that|for)\\b",
+    "\\bwould\\b"
+  ],
+  "person_roles": [
+    "Founder",
+    "Founders",
+    "Promoter",
+    "Promoters",
+    "Shareholder",
+    "Shareholders",
+    "Majority Shareholders",
+    "Selling Shareholder",
+    "Selling Shareholders",
+    "Remaining Shareholders",
+    "Minority Shareholders",
+    "Guarantor",
+    "Subscriber",
+    "Holder",
+    "Holders",
+    "Employee",
+    "Employees",
+    "Director",
+    "Directors",
+    "Investor Director",
+    "Nominee Director"
+  ],
+  "role_aliases_satisfied_by_party": {
+    "Founders": "Founder",
+    "Founder": "Founder",
+    "Investor Director": "Investor",
+    "Directors": null,
+    "Director": null
+  },
+  "binding_contract_only_provisions": [
+    {
+      "clause_ids": [
+        "CORE_FORCE_MAJEURE_001",
+        "AUTO-FM-001"
+      ],
+      "title": "force majeure"
+    },
+    {
+      "clause_ids": [
+        "CORE_SURVIVAL_001"
+      ],
+      "title": "survival"
+    },
+    {
+      "clause_ids": [
+        "CORE_ASSIGNMENT_001"
+      ],
+      "title": "assignment"
+    },
+    {
+      "clause_ids": [
+        "CORE_AMENDMENT_001"
+      ],
+      "title": "amendment"
+    },
+    {
+      "clause_ids": [
+        "CORE_WAIVER_001"
+      ],
+      "title": "waiver"
+    },
+    {
+      "clause_ids": [
+        "CORE_SEVERABILITY_001"
+      ],
+      "title": "severability"
+    },
+    {
+      "clause_ids": [
+        "CORE_ENTIRE_AGREEMENT_001"
+      ],
+      "title": "entire agreement"
+    },
+    {
+      "clause_ids": [
+        "CORE_FURTHER_ASSURANCE_001"
+      ],
+      "title": "further assurance"
+    },
+    {
+      "clause_ids": [
+        "CORE_COUNTERPARTS_001"
+      ],
+      "title": "counterparts"
+    },
+    {
+      "clause_ids": [
+        "CORE_TERM_001",
+        "NOTICE_PERIOD_DEFAULT"
+      ],
+      "title": "termination notice"
+    }
+  ],
+  "articles_precedence": {
+    "patterns": [
+      "this (?:Agreement|Term Sheet) shall prevail[^.]{0,200}\\bArticles\\b",
+      "\\bArticles\\b[^.]{0,200}this (?:Agreement|Term Sheet) shall prevail"
+    ],
+    "authority": "V.B. Rangaraj v. V.B. Gopalakrishnan, (1992) 1 SCC 160: a restriction on share transfer not contained in the Articles does not bind the company or its shareholders. Later decisions have qualified this, which is why it is a review finding and not a rule.",
+    "outcome": "LEGAL_REVIEW_REQUIRED"
+  },
+  "cross_reference_patterns": [
+    "\\bthe ([a-z][a-z ]{2,40}?) (?:listed|set out|specified|described) in this (?:Term Sheet|Agreement)\\b"
+  ],
+  "heading_reference_pattern": "provisions? headed ((?:\"[^\"]+\"(?:,\\s*|\\s+and\\s+)?)+)",
+  "board_size": {
+    "determinate": [
+      "\\bboard of (\\w+)(?: \\(\\d+\\))? directors\\b",
+      "\\b(\\w+) directors:"
+    ],
+    "indeterminate": [
+      "such number of directors as (?:may be )?agreed"
+    ]
+  },
+  "interpretive_constructions": [
+    "shall have the meanings?",
+    "shall be construed",
+    "shall not affect (?:the )?interpretation",
+    "shall bear that meaning",
+    "shall include",
+    "shall be read"
+  ]
+}

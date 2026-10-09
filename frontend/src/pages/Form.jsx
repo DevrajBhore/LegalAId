@@ -1028,7 +1028,15 @@ export default function Form() {
       })
       .catch((err) =>
         setError(
-          buildFormIssue({
+          err?.response?.status === 410
+            ? buildFormIssue({
+                title: "This document is temporarily unavailable",
+                message: err.response.data?.error || "This document type has been withdrawn while it is rebuilt.",
+                cause: "The document type has been withdrawn from generation.",
+                solution: "Choose another document from the library.",
+                technicalDetail: err?.message,
+              })
+            : buildFormIssue({
             title: "Form could not be loaded",
             message:
               "LegalAId could not load the intake fields for this document type.",

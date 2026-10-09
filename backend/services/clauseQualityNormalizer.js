@@ -59,10 +59,36 @@ function replaceRoleAliases(text = "", roleRule = null) {
     if (!canonical) continue;
 
     const escaped = alias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    result = result.replace(new RegExp(`\\b${escaped}\\b`, "g"), canonical);
+    result = result.replace(new RegExp(`\\b${escaped}\\b`, "g"), (match, offset, source) =>
+      isInsideProperName(source, offset, match.length) ? match : canonical
+    );
   }
 
   return result;
+}
+
+// D4.44. An alias is a ROLE word ("the Fund", "the Subscriber"), and the
+// replacement is meant for the role. It was also rewriting names: the investor
+// "Northbridge Seed Fund LLP" was printed in its own term sheet as "Northbridge
+// Seed Investor LLP", because "Fund" is an alias of "Investor". A word that sits
+// inside a run of capitalised words -- a capitalised word before it that is not a
+// sentence-opening function word, or a capitalised word after it -- is part of a
+// name and is left alone. This only ever declines a replacement.
+const FUNCTION_WORDS = new Set([
+  "The", "A", "An", "Each", "Any", "Every", "Such", "No", "That", "This", "If",
+  "Where", "When", "Unless", "Upon", "On", "In", "For", "By", "To", "Of", "And", "Or",
+]);
+
+function isInsideProperName(source, offset, length) {
+  const before = /([A-Za-z][\w&.'-]*)\s+$/.exec(source.slice(Math.max(0, offset - 40), offset));
+  const after = /^\s+([A-Za-z][\w&.'-]*)/.exec(source.slice(offset + length, offset + length + 40));
+  const capitalised = (word) => Boolean(word) && /^[A-Z]/.test(word);
+  if (before && capitalised(before[1]) && !FUNCTION_WORDS.has(before[1])) return true;
+  // After the word, only a Titlecase word continues a name ("Fund Partners",
+  // "Principal Amount"). An all-capitals token is an identifier label, not a
+  // name: "the Supplier GSTIN" is still the role, and is still replaced.
+  if (after && /^[A-Z][a-z]/.test(after[1]) && !FUNCTION_WORDS.has(after[1])) return true;
+  return false;
 }
 
 function normalizeGrammar(text = "") {

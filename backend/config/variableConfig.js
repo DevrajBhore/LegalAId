@@ -1386,7 +1386,7 @@ export const VARIABLE_CONFIG = {
       group: "Context & Risk Profile",
       // Not shown for NDA (it defines its own) — NDA's type-specific field wins
       // on merge anyway, but excluding here keeps the form free of duplicates.
-      excludeDocuments: ["NDA"],
+      excludeDocuments: ["TERM_SHEET", "NDA"],
       description:
         "If yes, LegalAId adds a data-processing clause aligned with the Digital Personal Data Protection Act, 2023.",
       options: ["No", "Yes"],
@@ -1568,7 +1568,7 @@ export const VARIABLE_CONFIG = {
       // Withdrawn rather than honoured: honouring it would put a clause into two
       // families whose own knowledge says it does not belong, on the strength of
       // an intake field nobody scoped to them.
-      excludeDocuments: ["ESOP_GRANT_LETTER", "PROMISSORY_NOTE"],
+      excludeDocuments: ["TERM_SHEET", "ESOP_GRANT_LETTER", "PROMISSORY_NOTE"],
       label: "Add an entire-agreement (no oral terms) clause?",
       type: "select",
       required: false,
@@ -1703,7 +1703,7 @@ export const VARIABLE_CONFIG = {
       group: "Termination & Remedies",
       description:
         "How many days' written notice a party must give to end the agreement without any fault. Leave blank and the system sets it from the value and length of the deal.",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "SALES_OF_GOODS_AGREEMENT",
       ],
     },
@@ -1713,7 +1713,7 @@ export const VARIABLE_CONFIG = {
       type: "select",
       required: false,
       group: "Termination & Remedies",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "NDA",
         "SALES_OF_GOODS_AGREEMENT",
       ],
@@ -1727,7 +1727,7 @@ export const VARIABLE_CONFIG = {
       type: "select",
       required: false,
       group: "Termination & Remedies",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "NDA",
         "SALES_OF_GOODS_AGREEMENT",
       ],
@@ -1740,7 +1740,7 @@ export const VARIABLE_CONFIG = {
       type: "number",
       required: false,
       group: "Termination & Remedies",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "NDA",
         "SALES_OF_GOODS_AGREEMENT",
       ],
@@ -1927,6 +1927,8 @@ export const VARIABLE_CONFIG = {
       aiGuidance: "Give LegalAId 2 to 5 important terms in plain English and it will turn them into a formal definitions / nomenclature clause.",
     },
     include_non_compete: {
+      // D4.44: a term sheet records proposed terms; it does not ask this.
+      excludeDocuments: ["TERM_SHEET"],
       excludeShapes: ["NOTICE", "SWORN"],
       label: "Include Non-Compete Clause?",
       type: "select",
@@ -1937,6 +1939,8 @@ export const VARIABLE_CONFIG = {
       description:
         "Whether to restrict the other party from competing with you. Note that under section 27 of the Indian Contract Act, 1872 a restraint of trade operating after the agreement ends is generally void, so this is safest limited to the term itself.",},
     include_non_solicit: {
+      // D4.44: a term sheet records proposed terms; it does not ask this.
+      excludeDocuments: ["TERM_SHEET"],
       excludeShapes: ["NOTICE", "SWORN"],
       label: "Include Non-Solicitation Clause?",
       type: "select",
@@ -1986,7 +1990,7 @@ export const VARIABLE_CONFIG = {
       options: ["Yes", "No"],
       description:
         "Whether to add measurable service levels — uptime, response times, resolution targets — with consequences if they are missed.",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "COMMERCIAL_LEASE_AGREEMENT",
         "GUARANTEE_AGREEMENT",
         "JOINT_VENTURE_AGREEMENT",
@@ -2011,7 +2015,7 @@ export const VARIABLE_CONFIG = {
       options: ["Yes", "No"],
       description:
         "Whether the service provider must send regular progress or status reports.",
-      excludeDocuments: [
+      excludeDocuments: ["TERM_SHEET", 
         "COMMERCIAL_LEASE_AGREEMENT",
         "GUARANTEE_AGREEMENT",
         "LEAVE_AND_LICENSE_AGREEMENT",
@@ -2640,14 +2644,50 @@ export const VARIABLE_CONFIG = {
     party_2_type: { label: "Second Founder Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the second founder." },
   },
 
+  // D4.44 (9 Oct 2026): rebuilt as a term sheet's own intake. Founders are
+  // parties (party_3, party_4) because the exclusivity binds them. Every
+  // economic choice is optional and has no default: unanswered, or answered
+  // "To be agreed", the term sheet says the term is to be agreed. Only what a
+  // binding provision needs to be certain is required.
   TERM_SHEET: {
-    company_name: { label: "Company Name", type: "text", required: true, description: "The company receiving the investment." },
-    party_1_name: { label: "Company Name", type: "text", required: true, description: "The company receiving the investment, as registered." },
-    party_1_address: { label: "Company Address", type: "text", required: true, description: "Full registered address." },
-    party_1_type: { label: "Company Type", type: "select", required: true, options: ["Private Limited Company", "Individual", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the company." },
+    party_1_name: { label: "Company Name", type: "text", required: true, description: "The company receiving the investment, as registered with the Registrar of Companies." },
+    party_1_address: { label: "Company Registered Office", type: "text", required: true, description: "The registered office address." },
+    party_1_type: { label: "Company Type", type: "select", required: true, options: ["Private Limited Company", "Body Corporate"], description: "The legal form of the company." },
+    party_3_name: { label: "Founder 1 Name", type: "text", required: true, description: "A founder who will sign the term sheet. Founders are parties because the exclusivity binds them." },
+    party_3_address: { label: "Founder 1 Address", type: "text", required: true, description: "Residential address." },
+    party_3_type: { label: "Founder 1 Type", type: "select", required: true, options: ["Individual"], description: "Founders sign in their own names." },
+    party_3_pan: { label: "Founder 1 PAN", type: "text", required: false, description: "Optional." },
+    party_4_name: { label: "Founder 2 Name", type: "text", required: false, description: "A second founder, if there is one." },
+    party_4_address: { label: "Founder 2 Address", type: "text", required: false, description: "Residential address." },
+    party_4_type: { label: "Founder 2 Type", type: "select", required: false, options: ["Individual"], description: "Founders sign in their own names." },
+    party_4_pan: { label: "Founder 2 PAN", type: "text", required: false, description: "Optional." },
     party_2_name: { label: "Investor Name", type: "text", required: true, description: "The investor, fund or individual proposing to invest." },
-    party_2_address: { label: "Investor Address", type: "text", required: true, description: "Full registered address." },
+    party_2_address: { label: "Investor Address", type: "text", required: true, description: "Full registered or residential address." },
     party_2_type: { label: "Investor Type", type: "select", required: true, options: ["Individual", "Private Limited Company", "LLP", "Partnership Firm", "Trust", "Body Corporate"], description: "The legal form of the investor." },
+    investor_residency: { label: "Is the Investor resident in India?", type: "select", required: true, options: ["Resident in India", "Non-resident (foreign investment)"], description: "A non-resident investor brings in the Foreign Exchange Management (Non-debt Instruments) Rules, 2019, which govern pricing and reporting." },
+
+    investment_amount: { label: "Investment Amount (Rs.)", type: "number", required: true, group: "Finance & Security", description: "How much the investor proposes to invest." },
+    pre_money_valuation: { label: "Pre-Money Valuation (Rs.)", type: "number", required: true, group: "Finance & Security", description: "The valuation of the company before the investment. The post-money valuation and the investor's percentage are calculated from this and the investment amount." },
+    security_type: { label: "Type of Security", type: "select", required: true, group: "Finance & Security", options: ["Compulsorily Convertible Preference Shares (CCPS)", "Equity Shares", "Compulsorily Convertible Debentures (CCD)"], description: "CCPS is the usual instrument for an Indian venture round." },
+    pre_money_fully_diluted_shares: { label: "Shares Outstanding Before the Round (fully diluted)", type: "number", required: false, group: "Finance & Security", description: "All issued shares plus every option and convertible, before the investment. If an option pool is to be counted before the investment, include it. Used to calculate the price per share and the number of shares; leave blank and the term sheet will say these are to be agreed." },
+    conversion_terms: { label: "Conversion Terms", type: "textarea", required: false, group: "Finance & Security", showIf: { field: "security_type", equals: ["Compulsorily Convertible Preference Shares (CCPS)", "Compulsorily Convertible Debentures (CCD)"] }, description: "The conversion ratio and the latest date for conversion, for example \"1:1, adjusted for anti-dilution, converting on the earlier of a qualified IPO and the 19th anniversary of issue\". Leave blank to mark them as to be agreed." },
+    use_of_funds: { label: "Use of Funds", type: "textarea", required: false, group: "Finance & Security", description: "What the money is for, for example \"product development and hiring\"." },
+    option_pool_timing: { label: "Employee Option Pool", type: "select", required: false, group: "Finance & Security", options: ["Counted before the investment (dilutes existing shareholders only)", "Created after the investment (dilutes all shareholders, including the Investor)", "No option pool is proposed", "To be agreed"], description: "A pool counted before the investment dilutes only the existing shareholders, usually the founders. One created after dilutes everyone, including the investor." },
+    esop_pool_percentage: { label: "Option Pool Size (% of fully diluted capital)", type: "number", required: false, group: "Finance & Security", showIf: { field: "option_pool_timing", equals: ["Counted before the investment (dilutes existing shareholders only)", "Created after the investment (dilutes all shareholders, including the Investor)"] }, description: "The pool as a percentage of fully diluted share capital." },
+    liquidation_participation: { label: "Liquidation Preference", type: "select", required: false, group: "Finance & Security", options: ["Non-participating", "Participating", "No liquidation preference", "To be agreed"], description: "Non-participating: the investor takes its preference OR its share as if converted, whichever is more. Participating: it takes its preference AND a share of what is left. The difference is the largest economic term in a term sheet." },
+    liquidation_preference_multiple: { label: "Liquidation Preference Multiple", type: "number", required: false, group: "Finance & Security", showIf: { field: "liquidation_participation", equals: ["Non-participating", "Participating"] }, description: "How many times its investment the investor takes first. 1x is common." },
+    anti_dilution_type: { label: "Anti-Dilution Protection", type: "select", required: false, group: "Finance & Security", options: ["Broad-based weighted average", "Narrow-based weighted average", "Full ratchet", "No anti-dilution protection", "To be agreed"], description: "How the investor is protected if the company later raises money at a lower price. Weighted average is common; full ratchet is far harsher on founders." },
+
+    board_structure: { label: "Board Composition", type: "textarea", required: false, group: "Governance & Control", description: "How many directors each side nominates, for example \"three directors: two nominated by the founders and one by the investor\". Leave blank to mark it as to be agreed." },
+    reserved_matters: { label: "Investor Consent Matters", type: "textarea", required: false, group: "Governance & Control", description: "Decisions needing the investor's consent, for example issuing new shares or borrowing above a limit." },
+    founder_vesting: { label: "Founder Vesting", type: "text", required: false, group: "Governance & Control", description: "For example \"four years with a one-year cliff, starting from completion\". Leave blank to mark it as to be agreed." },
+    transfer_restrictions: { label: "Share Transfer Terms", type: "textarea", required: false, group: "Governance & Control", description: "Right of first refusal, tag-along, drag-along and any founder lock-in, for example \"investor right of first refusal and tag-along; founder lock-in for three years\"." },
+
+    conditions_precedent: { label: "Further Conditions", type: "textarea", required: false, group: "Agreement Basics", description: "Conditions beyond due diligence and the approvals the law requires, for example \"assignment of all founder IP to the company\"." },
+    closing_date_target: { label: "Target Completion Date", type: "date", required: false, group: "Agreement Basics", description: "When the investment is expected to complete." },
+    term_sheet_expiry_date: { label: "Term Sheet Lapses On", type: "date", required: true, group: "Agreement Basics", description: "If the definitive agreements are not signed by this date, the term sheet lapses." },
+    exclusivity_period: { label: "Exclusivity Period", type: "text", required: true, group: "Agreement Basics", description: "How long the company and founders agree not to talk to other investors, for example \"45 days\". Thirty to sixty days is common." },
+    confidentiality_survival_period: { label: "Confidentiality After Lapse", type: "text", required: true, group: "Agreement Basics", description: "How long confidentiality continues after the term sheet lapses, for example \"twelve months\"." },
   },
 
   ESOP_GRANT_LETTER: {

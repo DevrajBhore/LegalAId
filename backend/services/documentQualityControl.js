@@ -1,3 +1,4 @@
+import { applyInstrumentNoun } from "./instrumentKnowledge.js";
 import { getVariables } from "../config/variableConfig.js";
 import { getForbiddenPartyTerms, getParticipantExpectations } from "./draftingPolicy.js";
 import {
@@ -295,7 +296,9 @@ export function applyDocumentQualityControls(draft, input = {}) {
   const documentType = input.document_type || draft.document_type;
   const variables = input.variables || draft.metadata?.source_variables || {};
   let clauses = applyConditionalClauseResolution(draft.clauses, documentType, variables)
-    .map((clause) => normalizeClauseText(clause, variables));
+    .map((clause) => normalizeClauseText(clause, variables))
+    // The instrument's own noun ("this Term Sheet"), for types that declare one.
+    .map((clause) => applyInstrumentNoun(clause, documentType));
   clauses = normalizeLiabilityCap(clauses, variables);
   clauses = dedupeClauses(clauses);
   // Runs last: it needs the final clause set to know what the document uses.

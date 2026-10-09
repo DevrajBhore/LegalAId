@@ -1,28 +1,32 @@
 {
   "document_type": "TERM_SHEET",
   "family": "corporate",
-  "version": "1.0",
+  "version": "2.0",
+  "//": [
+    "D4.44 rebuild, 9 Oct 2026. Five parts: participants and transaction (identity, The Proposed Investment); economics (Option Pool and Anti-Dilution, Liquidation Preference); governance and founder terms; process and closing (Conditions and Completion, Expiry); legal status (Status of this Term Sheet, Exclusivity, Confidentiality and Costs, governing law, signatures).",
+    "Version 1.0 borrowed five shareholders'-agreement clauses (CORP_ANTI_DILUTION_001, CORP_BOARD_INVESTOR_CONTROL_001, CORP_SHARE_TRANSFER_001, CORP_TAG_ALONG_001, CORP_DRAG_ALONG_001) drafted as operative obligations. Its output is frozen in tests/fixtures/termSheet.D4_44.defective.json."
+  ],
   "clauses": [
     "CORE_IDENTITY_001",
     "TS_BINDING_EFFECT_001",
     "TS_INVESTMENT_TERMS_001",
+    "TS_ECONOMIC_TERMS_001",
     "TS_LIQUIDATION_PREFERENCE_001",
-    "CORP_ANTI_DILUTION_001",
-    "CORP_BOARD_INVESTOR_CONTROL_001",
-    "CORP_SHARE_TRANSFER_001",
-    "CORP_TAG_ALONG_001",
-    "CORP_DRAG_ALONG_001",
-    "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+    "TS_GOVERNANCE_AND_FOUNDERS_001",
+    "TS_CONDITIONS_AND_CLOSING_001",
+    "TS_EXCLUSIVITY_001",
+    "TS_CONFIDENTIALITY_AND_COSTS_001",
+    "TS_EXPIRY_001",
     "CORE_GOVERNING_LAW_001",
     "CORE_SIGNATURE_BLOCK_001"
   ],
   "conditional_clauses": [],
   "mandatory_legal_checks": [
     "Contract Act 1872 S.10 — whether a term sheet binds is decided on its terms; the binding/non-binding split must be explicit and consistent",
-    "Companies Act 2013 S.42 and S.62(1)(c) — the issue requires the prescribed resolutions and a registered valuer's report",
-    "Income-tax Act S.56(2)(viib) — angel tax ABOLISHED from 1 April 2025 for all investors including non-residents",
-    "Income-tax Act S.56(2)(x) — unaffected by that abolition; charges the RECIPIENT of shares issued below fair value",
+    "Companies Act 2013 S.62(1)(c) — a preferential issue needs a special resolution and a price determined by a registered valuer's report, subject to S.42",
+    "Companies Act 2013 S.71(1) — debentures with an option to convert need a special resolution",
+    "Income-tax Act S.56(2)(viib) (angel tax) was omitted by the Finance (No. 2) Act, 2024; the Income-tax Act, 2025 has replaced the 1961 Act from 1 April 2026 — the current position for share premium and for shares received below fair value needs advocate review before it is cited",
     "IBC 2016 S.53 — a liquidation preference ranks only among shareholders and cannot displace creditors",
-    "Option pool in the PRE-money capitalisation dilutes founders alone; state which is intended"
+    "FEMA (Non-debt Instruments) Rules 2019 — pricing and reporting where the investor is resident outside India"
   ]
 }

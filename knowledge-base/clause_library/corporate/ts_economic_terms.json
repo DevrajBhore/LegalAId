@@ -1,0 +1,42 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "An option-pool position or an anti-dilution type is stated that the user did not choose"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "2.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_ECONOMIC_TERMS_001",
+  "name": "Option Pool and Anti-Dilution",
+  "title": "Option Pool and Anti-Dilution",
+  "category": "FINANCE",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "It is proposed that:\n(a) {{ts_option_pool_text}}; and\n(b) {{ts_anti_dilution_text}}.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "62(1)(b)",
+      "note": "Issue of shares to employees under a scheme of employees' stock option, by special resolution"
+    },
+    {
+      "act": "Companies (Share Capital and Debentures) Rules, 2014",
+      "section": "Rule 12",
+      "note": "Employees' stock option schemes"
+    }
+  ],
+  "source": "Companies Act, 2013",
+  "statutory_reference": "Companies Act, 2013 - S.62(1)(b)",
+  "authoring_note": "Both terms are choices that move value between founders and the investor, so neither has a default. An option pool counted before the investment dilutes only the existing shareholders; one created after dilutes everyone. Weighted-average and full-ratchet anti-dilution differ greatly in effect on a down round. If the user does not choose, the term sheet says the term is to be agreed.",
+  "d4_44": "Rebuilt 9 Oct 2026. Non-binding provisions are drafted as proposals ('it is proposed that ... be'), never as obligations, so the wording agrees with the Status provision."
+}

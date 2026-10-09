@@ -121,6 +121,9 @@ const ROLE_SLOTS = [
   [/^(party_1|first_party|disclosing|manufacturer|principal|employer|company|landlord|licensor|lessor|lender|creditor|seller|supplier|vendor|service_provider|consultant_client|franchisor|assignor|obligor|shareholder_1|partner_1|founder_1|promisor)/, 0],
   [/^(party_2|second_party|receiving|distributor|employee|intern|tenant|licensee|lessee|borrower|debtor|buyer|purchaser|customer|contractor|consultant|franchisee|assignee|beneficiary|shareholder_2|partner_2|founder_2|promisee)/, 1],
   [/^(guarantor|surety|third_party|witness|deponent|attorney|trustee|shareholder_3|partner_3)/, 2],
+  // D4.44: a term sheet's founders sign as parties 3 and 4.
+  [/^party_3_/, 2],
+  [/^party_4_/, 3],
 ];
 
 function roleSlot(field) {
@@ -129,6 +132,8 @@ function roleSlot(field) {
   }
   return null;
 }
+
+const ORDERED_DATES = { term_sheet_expiry_date: "2025-03-01", closing_date_target: "2025-02-15" };
 
 // Jurisdiction and dates are shared by every role and every type.
 const FIXED = {
@@ -192,7 +197,7 @@ function syntheticValue(field, definition = {}) {
     if (/_type$/.test(name)) {
       const slot = roleSlot(name);
       const wanted = slot === null ? null : SPECIMEN_ENTITIES[slot % SPECIMEN_ENTITIES.length].type;
-      const isPerson = /(employee|intern|deponent|witness|founder|partner_|attorney|individual)/.test(name);
+      const isPerson = /(employee|intern|deponent|witness|founder|partner_|attorney|individual)|^party_[34]_/.test(name);
       const match = definition.options.find((option) =>
         isPerson
           ? /individual|person|natural/i.test(String(option))
@@ -230,6 +235,7 @@ function syntheticValue(field, definition = {}) {
     if (/_cin$/.test(name)) return entity.cin;
     if (/_llpin$/.test(name)) return entity.llpin;
     if (/_din$/.test(name)) return `0012345${slot}`;
+    if (/^party_[34]_type$/.test(name)) return "Individual";
     if (/_type$/.test(name)) return entity.type;
     if (/_address$/.test(name)) return entity.address;
     if (/_signatory_name$/.test(name)) return entity.signatory;
@@ -242,13 +248,16 @@ function syntheticValue(field, definition = {}) {
       // An employee, intern or deponent is a natural person; a manufacturer or
       // lender is an entity. Picking the wrong one trips the check that a name
       // must agree with the entity type declared beside it.
-      return /(employee|intern|deponent|witness|founder|partner_|attorney|individual)/.test(name)
+      return /(employee|intern|deponent|witness|founder|partner_|attorney|individual)|^party_[34]_/.test(name)
         ? SPECIMEN_PEOPLE[slot % SPECIMEN_PEOPLE.length]
         : entity.name;
     }
   }
 
 
+  // A date defined as FOLLOWING the document's date cannot be the same constant
+  // (D4.44: a term sheet that lapses on its own date is invalid input).
+  if (ORDERED_DATES[name]) return ORDERED_DATES[name];
   if (type === "date" || /_date$/.test(name)) return "2025-01-01";
   if (type === "checkbox" || type === "boolean") return true;
 

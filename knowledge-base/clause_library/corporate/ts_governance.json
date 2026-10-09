@@ -1,0 +1,43 @@
+{
+  "jurisdiction": "India",
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "HIGH",
+  "invalid_if": [
+    "A governance right is drafted as a present obligation",
+    "The document states that a shareholders' agreement prevails over the Articles"
+  ],
+  "depends_on": [],
+  "conflicts_with": [],
+  "version": "2.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "clause_id": "TS_GOVERNANCE_AND_FOUNDERS_001",
+  "name": "Governance and Founder Terms",
+  "title": "Governance and Founder Terms",
+  "category": "GOVERNANCE",
+  "document_types": [
+    "TERM_SHEET"
+  ],
+  "text": "It is proposed that:\n(a) {{ts_board_text}};\n(b) {{ts_reserved_matters_text}};\n(c) {{ts_vesting_text}}; and\n(d) {{ts_transfer_text}}.\nThe Parties intend these rights to be reflected in the Articles of Association of the Company, and propose that the Definitive Agreements provide for the Articles to be amended accordingly.",
+  "legal_basis": [
+    {
+      "act": "Companies Act, 2013",
+      "section": "5",
+      "note": "Articles of association; entrenchment"
+    },
+    {
+      "act": "Companies Act, 2013",
+      "section": "58",
+      "note": "Refusal of registration and appeal against refusal; transfer restrictions in a private company"
+    }
+  ],
+  "source": "Companies Act, 2013",
+  "statutory_reference": "Companies Act, 2013 - S.5, S.58",
+  "authoring_note": "Replaces the shareholders'-agreement clauses the old term sheet borrowed (board control, transfer restrictions, tag-along, drag-along), which were drafted as operative obligations on 'Shareholders' who were not parties, and which stated that the agreement prevails over the Articles. This provision states no precedence rule: it records the intention that the rights be put in the Articles.",
+  "d4_44": "Rebuilt 9 Oct 2026. Non-binding provisions are drafted as proposals ('it is proposed that ... be'), never as obligations, so the wording agrees with the Status provision."
+}

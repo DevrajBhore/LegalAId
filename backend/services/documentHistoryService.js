@@ -1,3 +1,4 @@
+import { withValidationAssuranceWithdrawn } from "../../shared/documentWithdrawals.js";
 import crypto from "crypto";
 import mongoose from "mongoose";
 import DocumentDraft from "../models/DocumentDraft.js";
@@ -80,8 +81,15 @@ function deriveStatus({ changeType, validation }) {
   return "draft";
 }
 
+// Saved documents of a withdrawn type are preserved, but whatever assurance was
+// stored with them is withdrawn on every read, so an old "validated" status or a
+// score of 100 is never shown again for an output of that type.
+function currentValidationOf(record) {
+  return withValidationAssuranceWithdrawn(record.currentValidation, record.documentType);
+}
+
 function buildHistorySummary(record) {
-  const validationSummary = summarizeValidation(record.currentValidation);
+  const validationSummary = summarizeValidation(currentValidationOf(record));
 
   // record.versionCount is a monotonic high-water mark used to number new
   // versions — pruneVersions() never decrements it when it trims old snapshots.
@@ -98,7 +106,10 @@ function buildHistorySummary(record) {
     title: record.title,
     documentMeta:
       record.documentMeta || buildDocumentTypeMeta(record.documentType),
-    status: record.status,
+    status:
+      currentValidationOf(record)?.assurance_withdrawn && record.status === "validated"
+        ? "draft"
+        : record.status,
     currentVersionNumber: record.currentVersionNumber || 1,
     versionCount: retainedVersions,
     updatedAt: record.updatedAt,
@@ -212,13 +223,15 @@ async function pruneVersions(record) {
   }
 }
 
-function serializeVersionSummary(version) {
+function serializeVersionSummary(version, documentType) {
   return {
     versionId: String(version._id),
     versionNumber: version.versionNumber,
     changeType: version.changeType,
     createdAt: version.createdAt,
-    validation: summarizeValidation(version.validationSnapshot),
+    validation: summarizeValidation(
+      withValidationAssuranceWithdrawn(version.validationSnapshot, documentType)
+    ),
   };
 }
 
@@ -305,7 +318,7 @@ export async function saveDocumentHistory({
     return {
       history: buildHistorySummary(record),
       versionCreated: true,
-      latestVersion: serializeVersionSummary(firstVersion),
+      latestVersion: serializeVersionSummary(firstVersion, record.documentType),
     };
   }
 
@@ -354,7 +367,7 @@ export async function saveDocumentHistory({
   return {
     history: buildHistorySummary(record),
     versionCreated: Boolean(createdVersion),
-    latestVersion: createdVersion ? serializeVersionSummary(createdVersion) : null,
+    latestVersion: createdVersion ? serializeVersionSummary(createdVersion, record.documentType) : null,
   };
 }
 
@@ -405,11 +418,11 @@ export async function getDocumentHistoryDetail(userId, draftId) {
 
   return {
     draft: cloneValue(record.currentDraft),
-    validation: cloneValue(record.currentValidation),
+    validation: cloneValue(currentValidationOf(record)),
     documentMeta:
       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
     history: buildHistorySummary(record),
-    versions: versions.map(serializeVersionSummary),
+    versions: versions.map((v) => serializeVersionSummary(v, record.documentType)),
   };
 }
 
@@ -498,11 +511,11 @@ export async function restoreDocumentHistoryVersion({ userId, draftId, versionId
 
   return {
     draft: cloneValue(record.currentDraft),
-    validation: cloneValue(record.currentValidation),
+    validation: cloneValue(currentValidationOf(record)),
     documentMeta:
       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
     history: buildHistorySummary(record),
-    versions: versions.map(serializeVersionSummary),
+    versions: versions.map((v) => serializeVersionSummary(v, record.documentType)),
     restoredFromVersion: version.versionNumber,
   };
 }

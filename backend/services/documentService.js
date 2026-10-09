@@ -14,6 +14,8 @@ import { resolveSignatures } from "./signatureResolver.js";
 import { assembleDocument } from "./clauseAssembler.js";
 import { injectDraftVariables } from "./draftVariableInjector.js";
 import { withProvenanceRecording, attachProvenance } from "./provenance.js";
+import { withdrawalFor, withdrawalIssue } from "../../shared/documentWithdrawals.js";
+import { deriveInstrumentTerms, isSemanticTailoringDisabled } from "./instrumentKnowledge.js";
 import { sanitizeVariablesForDocument } from "../config/variableConfig.js";
 import { loadVariables } from "./variableLoader.js";
 import { validateVariables } from "./variableValidator.js";
@@ -276,10 +278,17 @@ function prepareGenerationInput(input = {}) {
     sanitizedVariables,
     sanitizedVariables.__resolved_positions || {}
   );
-  const variables = deriveGenerationControls(input.document_type, {
+  const controlled = deriveGenerationControls(input.document_type, {
     ...sanitizedVariables,
     ...canonical.values,
   });
+  // D4.44: an instrument that describes its terms in the knowledge base gets
+  // them phrased from the answers here, once, for every consumer downstream.
+  // Empty for every type without an instrument entry.
+  const variables = {
+    ...controlled,
+    ...deriveInstrumentTerms(input.document_type, controlled),
+  };
 
   return {
     ...input,
@@ -458,6 +467,10 @@ function applyGenerationStages(draft, input) {
 }
 
 function shouldUseSemanticGeneration(input = {}) {
+  // An instrument whose policy turns tailoring off is never tailored, whatever
+  // the caller asks for: its legal effect turns on wording a model must not
+  // rephrase (D4.44, the term sheet's binding and non-binding provisions).
+  if (isSemanticTailoringDisabled(input?.document_type)) return false;
   // Explicit opt-out always wins (lets callers force the deterministic path).
   if (input?.semantic_generation === false) return false;
   if (String(input?.generation_style || "").toLowerCase() === "deterministic") {
@@ -738,6 +751,25 @@ function buildPriorClauseMap(priorDraft) {
  * result is copied, not mutated. scripts/provenanceConservation.mjs proves that
  * every other byte of every result is what it was.
  */
+/**
+ * The entry point for a user's request (POST /generate). It refuses a document
+ * type withdrawn from public generation (shared/documentWithdrawals.js), with
+ * 410, before anything runs. generateDocument below is the engine and does not
+ * check: the measurement harnesses, the conservation gate and the regression
+ * tests must still be able to build a withdrawn type, which is the only way to
+ * prove its rebuild. No production path calls the engine except through here.
+ */
+export async function generateDocumentForRequest(input = {}) {
+  const withdrawal = withdrawalFor(input?.document_type);
+  if (withdrawal) {
+    return buildBlockedGenerationResult(
+      [{ ...withdrawalIssue(input.document_type), severity: "CRITICAL", blocks_generation: true }],
+      { statusCode: 410 }
+    );
+  }
+  return generateDocument(input);
+}
+
 export async function generateDocument(input, options = {}) {
   const { result, recorder } = await withProvenanceRecording(() => generateDocumentUnrecorded(input, options));
   return attachProvenance(result, recorder);

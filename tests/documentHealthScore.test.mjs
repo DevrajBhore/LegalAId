@@ -126,6 +126,14 @@ await test("the score is the arithmetic its own breakdown reports", () => {
     const breakdown = result.validation?.score_breakdown;
     assert.ok(breakdown, `${documentType} carries no score_breakdown`);
     const deducted = breakdown.deductions.reduce((total, entry) => total + entry.points, 0);
+    // D4.44: a withdrawn type shows no score at all; the figure the arithmetic
+    // gives is kept, labelled superseded, and must still be that arithmetic.
+    if (result.validation.assurance_withdrawn) {
+      assert.strictEqual(result.validation.score, null, `${documentType}: withdrawn, yet scored`);
+      assert.strictEqual(result.validation.assurance_withdrawn.superseded_assessment?.score, Math.max(0, 100 - deducted),
+        `${documentType}: superseded score does not follow from its deductions`);
+      continue;
+    }
     assert.strictEqual(
       result.validation.score,
       Math.max(0, 100 - deducted),

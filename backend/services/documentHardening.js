@@ -1,4 +1,5 @@
 import { getClauseById } from "./clauseAssembler.js";
+import { getInstrument } from "./instrumentKnowledge.js";
 import { injectVariables } from "./variableInjector.js";
 import { forClause, isRecording, observeRenderer, noteRenderer, chose, SOURCE_CLASS, NOT_YET_RECORDED } from "./provenance.js";
 import { normalizeClauseCategory, sortClausesByOrder } from "../config/clauseOrder.js";
@@ -1786,6 +1787,39 @@ function renderHardClauseUnobserved(
           )
         );
       });
+
+      /*
+       * D4.44. An instrument that describes itself in the knowledge base opens
+       * as that instrument, with its own recitals and testatum. A term sheet
+       * that opened "THIS AGREEMENT ... made and executed", recited that the
+       * Parties "intend to enter into a legally binding arrangement" and
+       * concluded "in consideration of the mutual covenants ... the Parties agree
+       * as follows" contradicted its own Status provision before it began.
+       * The party introductions above are shared; only the frame changes.
+       */
+      const instrument = getInstrument(documentType);
+      if (instrument?.opening) {
+        // Plain form ("9 October 2026"): this is the only place a term sheet
+        // states its date, and the consistency check reads it from here.
+        const date = formatFormalDate(variables.effective_date) || formatFormalExecutionDate(variables.effective_date);
+        const opening = executionVenue
+          ? instrument.opening.replace("{date}", date).replace("{place}", executionVenue)
+          : (instrument.opening_without_place || instrument.opening).replace("{date}", date).replace(" and is signed at {place}", "");
+        const labels = formatPartyLabelList(roll.map((entry) => entry.label));
+        return [
+          opening,
+          "",
+          roll.length > 2 ? "BY AND AMONG" : "BY AND BETWEEN",
+          "",
+          ...introductions,
+          "",
+          String(instrument.collective_sentence || '{labels} are together the "Parties" and each a "Party".').replace("{labels}", labels),
+          "",
+          ...(instrument.recitals || []).flatMap((recital, i, all) => (i < all.length - 1 ? [recital, ""] : [recital])),
+          "",
+          instrument.testatum || "",
+        ].join("\n");
+      }
 
       return [
         `THIS AGREEMENT ("Agreement") is made and executed${

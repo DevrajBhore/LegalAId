@@ -3,11 +3,11 @@ import { formatValidationResult } from "../backend/services/validationService.js
 
 // ── 1. "Certified" no longer appears as a user-facing verdict ────────────────
 const clean = formatValidationResult({ issues: [] });
-assert.strictEqual(clean.certification, "No issues detected",
-  'a clean run must not be labelled "Certified"');
+assert.strictEqual(clean.certification, "Automated checks passed",
+  'a clean run claims only that the checks passed (D4.44): not "Certified", not "No issues detected"');
 assert.strictEqual(clean.certified, true, "the internal export gate is retained");
 assert.strictEqual(clean.checks_passed, true);
-console.log("PASS  clean run reported as 'No issues detected', gate flag retained");
+console.log("PASS  clean run reported as 'Automated checks passed', gate flag retained");
 
 const blocked = formatValidationResult({
   issues: [{ rule_id: "X", severity: "CRITICAL", message: "m" }],

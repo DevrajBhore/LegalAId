@@ -1,3 +1,5 @@
+import { withValidationAssuranceWithdrawn } from "../../shared/documentWithdrawals.js";
+import { validateInstrumentCoherence, declaresInstrument, scopeUncertaintyToBindingProvisions } from "./instrumentCoherence.js";
 import fs from "fs";
 import { validateAgreementGraph } from "./agreementGraphValidator.js";
 
@@ -244,6 +246,17 @@ export async function runDocumentValidation(
       }),
     "document type unknown"
   );
+  // D4.44. The rendered document read as a whole, against what the instrument
+  // declares itself to be. Runs only where the drafting policy declares an
+  // instrument, and is otherwise neither run nor reported as skipped, so no
+  // other document type's result changes.
+  const coherenceIssues = declaresInstrument(resolvedDocumentType)
+    ? (layersRun.push("instrument_coherence"),
+      validateInstrumentCoherence(draft, {
+        documentType: resolvedDocumentType,
+        variables: resolvedSourceVariables || {},
+      }))
+    : [];
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -255,10 +268,12 @@ export async function runDocumentValidation(
     "document type unknown"
   );
 
-  return formatValidationResult({
+  // A withdrawn type keeps every finding, but loses its score and its "no issues"
+  // band: the checks below are known to have passed a defective output of it.
+  return withValidationAssuranceWithdrawn(formatValidationResult({
     mode: coreValidation.mode || mode,
     issues: [
-      ...(coreValidation.issues || []),
+      ...scopeUncertaintyToBindingProvisions(coreValidation.issues || [], draft, resolvedDocumentType),
       ...commercialIssues,
       ...consistencyIssues,
       ...plausibilityIssues,
@@ -269,6 +284,7 @@ export async function runDocumentValidation(
       ...clauseQualityIssues,
       ...graphIssues,
       ...finalQualityIssues,
+      ...coherenceIssues,
       ...statutoryChecklistNotices,
       ...extraIssues,
     ],
@@ -280,6 +296,7 @@ export async function runDocumentValidation(
       clause_quality_issues: clauseQualityIssues.length,
       agreement_graph_issues: graphIssues.length,
       final_quality_issues: finalQualityIssues.length,
+      ...(coherenceIssues.length ? { instrument_coherence_issues: coherenceIssues.length } : {}),
       statutory_checklist_items: statutoryChecklistNotices[0]?.items?.length || 0,
       extra_issues: extraIssues.length,
     },
@@ -291,7 +308,7 @@ export async function runDocumentValidation(
         coreValidation.constraint_outcomes || coreValidation._constraint_outcomes,
       clauses: draft?.clauses || [],
     }),
-  });
+  }), resolvedDocumentType);
 }
 
 export function formatValidationResult({
@@ -357,7 +374,11 @@ export function formatValidationResult({
   // Verification band. Deliberately NOT the word "certified": passing means the
   // checks that ran found nothing, which is a narrower claim than compliance.
   // The `certified` field below is retained as the internal export gate.
-  let certification = "No issues detected";
+  // "Automated checks passed", not "No issues detected" (D4.44). A term sheet
+  // that contradicted itself on whether it binds was shown "No issues detected"
+  // with a score of 100. The checks that ran found nothing; that is all a clean
+  // result can claim, and the wording now says exactly that.
+  let certification = "Automated checks passed";
   if (blockingIssues.length > 0) certification = "Blocked";
   else if (actionableIssues.length > 0) certification = "Review Required";
 

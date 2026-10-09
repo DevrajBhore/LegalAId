@@ -30,9 +30,10 @@ export const ESSENTIAL_FIELDS = {
     "founder_equity_split", "effective_date",
   ],
   TERM_SHEET: [
-    "operating_state", "company_name",
-    "party_1_name", "party_1_type", "party_2_name", "party_2_type",
-    "investment_amount", "pre_money_valuation", "effective_date",
+    "operating_state",
+    "party_1_name", "party_1_type", "party_3_name", "party_3_type", "party_2_name", "party_2_type", "investor_residency",
+    "investment_amount", "pre_money_valuation", "security_type", "effective_date",
+    "term_sheet_expiry_date", "exclusivity_period", "confidentiality_survival_period",
   ],
   ESOP_GRANT_LETTER: [
     "operating_state", "company_name",

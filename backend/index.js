@@ -12,7 +12,7 @@ import rateLimit from "express-rate-limit";
 import { loadVariables } from "./services/variableLoader.js";
 import {
   GENERATION_GUARDRAIL_BUILD,
-  generateDocument,
+  generateDocumentForRequest,
 } from "./services/documentService.js";
 import { preloadKnowledgeBase } from "./services/clauseAssembler.js";
 import { buildDocumentTypeMeta } from "./services/documentTypeNormalizer.js";
@@ -49,6 +49,7 @@ import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
 import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
 import constraintScopeRoutes from "./routes/constraintScopeRoutes.js";
 import { DOCUMENT_TYPE_REGISTRY } from "../shared/documentRegistry.js";
+import { withdrawalFor } from "../shared/documentWithdrawals.js";
 import { hydrateReviewOverlay, reviewOverlayStatus } from "./services/reviewOverlay.js";
 
 // Defence in depth against NoSQL operator injection: any object that reaches a
@@ -339,6 +340,25 @@ const contactLimiter = rateLimit({
 });
 app.post("/contact", contactLimiter, contactHandler());
 
+// ── Withdrawn document types ──────────────────────────────────────────────────
+// A withdrawn type cannot be started or generated through any public route. The
+// generation service refuses it as well; these route checks stop a user being
+// walked through an intake for a document that will then be refused.
+function refuseWithdrawnType(documentType, res) {
+  const withdrawal = withdrawalFor(documentType);
+  if (!withdrawal) return false;
+  res.status(410).json({
+    error: withdrawal.user_message,
+    withdrawn: { document_type: String(documentType), withdrawn_on: withdrawal.withdrawn_on },
+  });
+  return true;
+}
+function rejectWithdrawnBody(req, res, next) {
+  const type = req.body?.document_type || req.body?.documentType;
+  if (refuseWithdrawnType(type, res)) return;
+  next();
+}
+
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get("/health", (_req, res) => {
   res.json({
@@ -349,8 +369,9 @@ app.get("/health", (_req, res) => {
 });
 
 // ── Get all supported document types (public — needed for home page) ──────────
+// Withdrawn types are left out: they cannot be started, so they are not offered.
 app.get("/document-types", (_req, res) => {
-  const types = Object.entries(DOCUMENT_CONFIG).map(([key, config]) => ({
+  const types = Object.entries(DOCUMENT_CONFIG).filter(([key]) => !withdrawalFor(key)).map(([key, config]) => ({
     ...buildDocumentTypeMeta(key),
     signatureType: config.signatureType,
     requiredFields: config.requiredFields,
@@ -360,6 +381,7 @@ app.get("/document-types", (_req, res) => {
 
 // ── Document config (public — needed for form page) ───────────────────────────
 app.get("/document-config/:type", (req, res) => {
+  if (refuseWithdrawnType(req.params.type, res)) return;
   const cached = documentConfigCache.get(req.params.type);
   if (!cached)
     return res
@@ -432,9 +454,10 @@ app.get("/search/clauses", protect, (req, res) => {
 });
 
 // Generate document
-app.post("/generate", protect, aiLimiter, async (req, res) => {
+app.post("/generate", protect, aiLimiter, rejectWithdrawnBody, async (req, res) => {
   try {
-    const result = await generateDocument(req.body);
+    // The request entry point refuses withdrawn types; the engine does not.
+    const result = await generateDocumentForRequest(req.body);
     if (result.error) {
       const statusCode = result.statusCode || 503;
       return res
@@ -478,7 +501,7 @@ app.post("/generate", protect, aiLimiter, async (req, res) => {
 });
 
 // Legal interview — free-text situation → structured field pre-fills
-app.post("/interview", protect, aiLimiter, async (req, res) => {
+app.post("/interview", protect, aiLimiter, rejectWithdrawnBody, async (req, res) => {
   try {
     const { document_type: documentType, message } = req.body || {};
     if (!documentType || !String(message || "").trim()) {
@@ -499,7 +522,7 @@ app.post("/interview", protect, aiLimiter, async (req, res) => {
 // Prompt-first conversational intake — bulk-extract one free-form description
 // into the intake schema (variables only). Gaps are then collected by
 // /interview/step. Stateless: the client carries the filled values.
-app.post("/interview/extract", protect, aiLimiter, async (req, res) => {
+app.post("/interview/extract", protect, aiLimiter, rejectWithdrawnBody, async (req, res) => {
   try {
     const { document_type: documentType, description } = req.body || {};
     if (!documentType) {
@@ -518,7 +541,7 @@ app.post("/interview/extract", protect, aiLimiter, async (req, res) => {
 // Conversational intake — one question at a time, fills fields as the user
 // answers. State (filled values) is carried by the client, so this stays
 // stateless on the server.
-app.post("/interview/step", protect, aiLimiter, async (req, res) => {
+app.post("/interview/step", protect, aiLimiter, rejectWithdrawnBody, async (req, res) => {
   try {
     const {
       document_type: documentType,
@@ -545,7 +568,7 @@ app.post("/interview/step", protect, aiLimiter, async (req, res) => {
 });
 
 // Intake assistant
-app.post("/intake-assistant", protect, aiLimiter, async (req, res) => {
+app.post("/intake-assistant", protect, aiLimiter, rejectWithdrawnBody, async (req, res) => {
   try {
     const { document_type: documentType, variables, message } = req.body || {};
     if (!documentType || !String(message || "").trim()) {

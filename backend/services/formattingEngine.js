@@ -89,6 +89,18 @@ export function amountToIndianWords(value) {
 export function formatIndianAmount(value, { includeWords = false } = {}) {
   const numeric = parseNumberish(value);
   if (numeric === null) return "the agreed amount";
+  // Paise are kept. Rounding every amount to whole rupees turned a term sheet's
+  // price of Rs. 3,000.03 per share into Rs. 3,000 (D4.44): on 8,333 shares that
+  // is a different investment. Whole-rupee amounts print exactly as before.
+  const paise = Math.round(Math.abs(numeric) * 100) % 100;
+  if (paise !== 0) {
+    const rupees = Math.trunc(numeric);
+    const sign = numeric < 0 ? "-" : "";
+    const formatted = `${sign}${RUPEE}${Math.abs(rupees).toLocaleString("en-IN")}.${String(paise).padStart(2, "0")}`;
+    if (!includeWords) return formatted;
+    const rupeeWords = Math.abs(rupees) ? `Rupees ${amountToIndianWords(Math.abs(rupees))} and ` : "";
+    return `${formatted} (${rupeeWords}Paise ${amountToIndianWords(paise)} Only)`;
+  }
   const rounded = Math.round(numeric);
   const formatted = `${RUPEE}${rounded.toLocaleString("en-IN")}`;
   if (!includeWords) return formatted;
@@ -126,7 +138,7 @@ export function normalizeCurrencyText(text = "", { includeWords = false } = {}) 
       const trailingWs = (amount.match(/\s+$/) || [""])[0];
       const tail = source.slice(offset + _match.length, offset + _match.length + 24);
       const formatted = formatIndianAmount(numeric, {
-        includeWords: includeWords && !/^\s*\(Rupees\b/i.test(tail),
+        includeWords: includeWords && !/^\s*\((?:Rupees|Paise)\b/i.test(tail),
       });
       return formatted + trailingWs;
     }

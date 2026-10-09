@@ -63,22 +63,28 @@ const CODE_DEFINED_CONFIG = {
     ],
   },
 
+  // D4.44: five parts — participants and transaction, economics, governance and
+  // founder terms, process and closing, and the binding terms.
   TERM_SHEET: {
     requiredFields: [
-      "operating_state", "company_name",
+      "operating_state",
       "party_1_name", "party_1_address", "party_1_type",
-      "party_2_name", "party_2_address", "party_2_type",
+      "party_3_name", "party_3_address", "party_3_type",
+      "party_2_name", "party_2_address", "party_2_type", "investor_residency",
       "investment_amount", "pre_money_valuation", "security_type",
-      "esop_pool_percentage", "liquidation_preference_multiple",
-      "exclusivity_period", "board_structure", "reserved_matters", "effective_date",
+      "effective_date", "term_sheet_expiry_date", "exclusivity_period", "confidentiality_survival_period",
     ],
     signatureType: "BILATERAL",
     sections: [
-      { title: "Company", fields: ["company_name", "party_1_name", "party_1_address", "party_1_type"] },
-      { title: "Investor", fields: ["party_2_name", "party_2_address", "party_2_type"] },
-      { title: "The Round", fields: ["investment_amount", "pre_money_valuation", "security_type", "esop_pool_percentage", "liquidation_preference_multiple"] },
-      { title: "Governance", fields: ["board_structure", "reserved_matters"] },
-      { title: "Process", fields: ["exclusivity_period", "effective_date"] },
+      { title: "Company", fields: ["party_1_name", "party_1_address", "party_1_type"] },
+      { title: "Founder 1", fields: ["party_3_name", "party_3_address", "party_3_type", "party_3_pan"] },
+      { title: "Founder 2", fields: ["party_4_name", "party_4_address", "party_4_type", "party_4_pan"] },
+      { title: "Investor", fields: ["party_2_name", "party_2_address", "party_2_type", "investor_residency"] },
+      { title: "The Investment", fields: ["investment_amount", "pre_money_valuation", "security_type", "pre_money_fully_diluted_shares", "conversion_terms", "use_of_funds"] },
+      { title: "Economic Terms", fields: ["option_pool_timing", "esop_pool_percentage", "liquidation_participation", "liquidation_preference_multiple", "anti_dilution_type"] },
+      { title: "Governance and Founder Terms", fields: ["board_structure", "reserved_matters", "founder_vesting", "transfer_restrictions"] },
+      { title: "Conditions and Completion", fields: ["conditions_precedent", "closing_date_target", "term_sheet_expiry_date"] },
+      { title: "Binding Terms", fields: ["exclusivity_period", "confidentiality_survival_period", "effective_date"] },
     ],
   },
 

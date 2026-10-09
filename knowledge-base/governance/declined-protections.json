@@ -18,21 +18,28 @@
     "result": "The clause appears in all three sampled cases. The profile is not in the causal chain."
   },
   "occurrences": {
-    "total": 9,
+    "total": 8,
     "by_role": [
       {
         "role": "ENTIRE_AGREEMENT",
         "clause": "CORE_ENTIRE_AGREEMENT_001",
-        "families": 5,
+        "families": 4,
         "members": [
           "FOUNDERS_AGREEMENT",
-          "TERM_SHEET",
           "SHARE_SUBSCRIPTION_AGREEMENT",
           "DATA_PROCESSING_AGREEMENT",
           "SETTLEMENT_AGREEMENT"
         ],
         "blueprint_status": "absent — the clause is not in these blueprints at all, so no conditional gate could decline it",
-        "injected_by": "(none recorded)"
+        "injected_by": "(none recorded)",
+        "repaired": [
+          {
+            "document_type": "TERM_SHEET",
+            "on": "2026-10-09",
+            "phase": "D4.44",
+            "how": "The term sheet's drafting policy now carries baselineClauseIds: [], which its note had always claimed. The entire-agreement clause had been inherited from the defaults baseline (it superseded 'term sheets' from inside a term sheet). Nothing about the general declined-protections mechanism changed; this family simply no longer inherits the clause."
+          }
+        ]
       },
       {
         "role": "NOMENCLATURE",

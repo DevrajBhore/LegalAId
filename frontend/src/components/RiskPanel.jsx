@@ -90,8 +90,12 @@ export default function RiskPanel({
   // the merits: a draft the engine scored 100 showed as 92, and one it scored 90
   // showed as 75, because the band -- not the findings -- set the base. A single
   // MEDIUM note therefore pinned every document in the catalogue to 73-76.
-  const riskScore =
-    typeof validation.score === "number"
+  // A withdrawn document type has no score: the checks are known to have passed
+  // a defective output of it, so no number is shown, estimated or otherwise.
+  const assuranceWithdrawn = validation.assurance_withdrawn || null;
+  const riskScore = assuranceWithdrawn
+    ? null
+    : typeof validation.score === "number"
       ? Math.max(0, Math.min(100, Math.round(validation.score)))
       : estimateRiskScore({
           overall,
@@ -107,7 +111,7 @@ export default function RiskPanel({
   // Review" directly above the words "No blocking issues".
   const certification =
     validation.certification ||
-    (blockingCount > 0 ? "Blocked" : certified ? "No issues detected" : "Review required");
+    (blockingCount > 0 ? "Blocked" : certified ? "Automated checks passed" : "Review required");
   const certificationClass =
     blockingCount > 0 ? "certified-blocked" : certified ? "certified-yes" : "certified-review";
   const sortedBlockingIssues = [...blockingIssues].sort(
@@ -141,14 +145,18 @@ export default function RiskPanel({
       </div>
 
       <div className={`risk-score ${meta.cls}`}>
-        <div className="risk-score-num">{riskScore}<span>/100</span></div>
+        <div className="risk-score-num">{riskScore ?? "—"}{riskScore != null && <span>/100</span>}</div>
         <div className="risk-score-bar">
           <div
             className="risk-score-fill"
-            style={{ width: `${riskScore}%` }}
+            style={{ width: `${riskScore ?? 0}%` }}
           />
         </div>
-        <div className="risk-score-label">Document health score</div>
+        <div className="risk-score-label">
+          {assuranceWithdrawn
+            ? "No score: this document type was withdrawn after a defective output passed these checks."
+            : "Automated check score. Automated checks are not a legal review."}
+        </div>
       </div>
 
       <div className="risk-breakdown">

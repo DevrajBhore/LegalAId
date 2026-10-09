@@ -271,6 +271,12 @@ const FIELD_SAMPLES = {
     "One vote per equity share on a poll; the preference shares carry votes only on matters directly affecting their rights.",
 };
 
+// Dates that are defined as coming after the document's own date.
+const ORDERED_DATE_SAMPLES = {
+  term_sheet_expiry_date: "2026-11-30",
+  closing_date_target: "2026-11-15",
+};
+
 // Free-text fields with no dedicated sample. Reported at the end of a run so the
 // fixture can be kept honest as the intake grows.
 const UNCOVERED_FREE_TEXT = new Set();
@@ -326,7 +332,10 @@ function sampleFor(key, def) {
     if (/state/.test(k) && def.options.includes(SAMPLES.state)) return SAMPLES.state;
     return def.options[0];
   }
-  if (def.type === "date") return SAMPLES.date;
+  // A date that must FOLLOW another cannot be the same sample date: a term sheet
+  // whose lapse date is its own date is invalid input, and the fixture would be
+  // measuring its own mistake (D4.44).
+  if (def.type === "date") return ORDERED_DATE_SAMPLES[k] || SAMPLES.date;
 
   // Slots that can only be a natural person. A deponent swears an affidavit and
   // an advocate signs a notice; neither can be a company, and the entity-type
@@ -334,8 +343,9 @@ function sampleFor(key, def) {
   // Guarded on the field being a name. "deponent" alone also matches
   // deponent_age and deponent_id_number, and handing those a person's name is
   // just the previous bug pointing the other way.
+  // party_3 / party_4 are a term sheet's founders (D4.44): they sign as individuals.
   const NAMES_A_PERSON =
-    /^(nominated_arbitrator|posh_presiding_officer|posh_external_member|grievance_officer|deponent_relation)$/;
+    /^(nominated_arbitrator|posh_presiding_officer|posh_external_member|grievance_officer|deponent_relation|party_3_name|party_4_name)$/;
   if (
     def.type !== "number" &&
     def.type !== "date" &&
@@ -384,7 +394,7 @@ function sampleFor(key, def) {
   // Identifiers belong to a party, not to the fixture. Each slot gets its own,
   // with the PAN holder code matching the entity the slot is named for.
   if (/_pan$|^pan$/.test(k)) {
-    const wantsPerson = /employee|individual|signatory|witness|proprietor/.test(k);
+    const wantsPerson = /employee|individual|signatory|witness|proprietor|^party_[34]_pan$/.test(k);
     return (wantsPerson ? PERSON_PANS : PARTY_PANS)[idx];
   }
   if (/gstin/.test(k)) return gstinFor("27", PARTY_PANS[idx]);

@@ -337,12 +337,14 @@
       "document_type": "TERM_SHEET",
       "principal_series": "party_N_*",
       "admitted_by_engine": true,
-      "exposed_by_intake": false,
+      "exposed_by_intake": true,
       "legally_supported": "NOT_REVIEWED",
       "statute_permits_more_than_two": "NOT_ASSESSED",
       "statutory_note": null,
       "reviewed_by": null,
-      "reviewed_on": null
+      "reviewed_on": null,
+      "contained_by": "WITHDRAWAL",
+      "$why": "D4.44. A term sheet's exclusivity binds the founders, so the founders must be parties: party_3 (Founder 1, required) and party_4 (Founder 2, optional) are declared on the form with their own labels. That exposes a third and fourth principal before an advocate has reviewed the family for them. It is contained by the withdrawal: the type cannot be started by any user (shared/documentWithdrawals.js), and its restore conditions include this review. Un-withdrawing it without a review fails tests/cardinalitySupport.test.mjs."
     },
     {
       "document_type": "VENDOR_AGREEMENT",
@@ -358,7 +360,7 @@
   ],
   "summary": {
     "families_admitted_by_engine": 28,
-    "families_exposed_by_intake": 0,
+    "families_exposed_by_intake": 1,
     "families_legally_supported": 0,
     "note": [
       "28 admitted, 0 exposed, 0 reviewed. The gap between the first two numbers is deliberate and is the",
@@ -369,7 +371,10 @@
       "That is NOT legal support for the family: the statute permitting three partners says nothing about",
       "whether this deed's clauses have been classified for three. Statutory permissibility and instrument",
       "readiness are different questions, and conflating them is the same error as conflating admission with",
-      "exposure, one level up."
-    ]
+      "exposure, one level up.",
+      "",
+      "D4.44: TERM_SHEET is exposed (its founders are parties) and contained by withdrawal: no user can start one until an advocate has reviewed it, including for more than two principals."
+    ],
+    "families_exposed_but_contained_by_withdrawal": 1
   }
 }

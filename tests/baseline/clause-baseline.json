@@ -3168,40 +3168,32 @@
         "clauses": [
           "CORE_IDENTITY_001",
           "TS_BINDING_EFFECT_001",
-          "CORE_DEFINITIONS_001",
-          "CORE_INTERPRETATION_001",
           "TS_INVESTMENT_TERMS_001",
-          "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+          "TS_ECONOMIC_TERMS_001",
           "TS_LIQUIDATION_PREFERENCE_001",
-          "CORP_ANTI_DILUTION_001",
-          "CORP_BOARD_INVESTOR_CONTROL_001",
-          "CORP_SHARE_TRANSFER_001",
-          "CORP_TAG_ALONG_001",
-          "CORP_DRAG_ALONG_001",
-          "CORE_FORCE_MAJEURE_001",
-          "CORE_SURVIVAL_001",
-          "CORE_NOTICE_001",
-          "CORE_ASSIGNMENT_001",
-          "CORE_AMENDMENT_001",
-          "CORE_WAIVER_001",
-          "CORE_SEVERABILITY_001",
-          "CORE_ENTIRE_AGREEMENT_001",
-          "CORE_FURTHER_ASSURANCE_001",
+          "TS_GOVERNANCE_AND_FOUNDERS_001",
+          "TS_CONDITIONS_AND_CLOSING_001",
+          "TS_EXCLUSIVITY_001",
+          "TS_CONFIDENTIALITY_AND_COSTS_001",
+          "TS_EXPIRY_001",
           "CORE_DISPUTE_RESOLUTION_001",
           "CORE_GOVERNING_LAW_001",
-          "CORE_COUNTERPARTS_001",
-          "CORE_STAMP_AND_COSTS_001",
           "CORE_SIGNATURE_BLOCK_001"
         ],
         "blocking": [],
         "advisory": [
-          "MISSING_CIN_PARTY_1"
+          "DOCUMENT_TYPE_WITHDRAWN",
+          "MISSING_CIN_PARTY_1",
+          "TERMS_TO_BE_AGREED",
+          "TS_EXCLUSIVITY_LONG",
+          "TS_EXCLUSIVITY_VERY_LONG"
         ],
         "notices": [
           "EXECUTION_AUTHORITY_NOT_STATED_PARTY_1",
           "EXECUTION_AUTHORITY_NOT_STATED_PARTY_2",
           "STALE_CITATION_AWAITING_REVIEW",
-          "STATUTORY_CHECKLIST"
+          "STATUTORY_CHECKLIST",
+          "SUBORDINATE_LEGISLATION_REVIEW"
         ]
       },
       "full": {
@@ -3209,42 +3201,34 @@
         "clauses": [
           "CORE_IDENTITY_001",
           "TS_BINDING_EFFECT_001",
-          "CORE_DEFINITIONS_001",
-          "CORE_INTERPRETATION_001",
           "TS_INVESTMENT_TERMS_001",
-          "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
+          "TS_ECONOMIC_TERMS_001",
           "TS_LIQUIDATION_PREFERENCE_001",
-          "CORP_ANTI_DILUTION_001",
-          "CORP_BOARD_INVESTOR_CONTROL_001",
-          "CORP_SHARE_TRANSFER_001",
-          "CORP_TAG_ALONG_001",
-          "CORP_DRAG_ALONG_001",
-          "CORE_FORCE_MAJEURE_001",
-          "CORE_SURVIVAL_001",
-          "CORE_NOTICE_001",
-          "CORE_ASSIGNMENT_001",
-          "CORE_AMENDMENT_001",
-          "CORE_WAIVER_001",
-          "CORE_SEVERABILITY_001",
-          "CORE_ENTIRE_AGREEMENT_001",
-          "CORE_FURTHER_ASSURANCE_001",
+          "TS_GOVERNANCE_AND_FOUNDERS_001",
+          "TS_CONDITIONS_AND_CLOSING_001",
+          "TS_EXCLUSIVITY_001",
+          "TS_CONFIDENTIALITY_AND_COSTS_001",
+          "TS_EXPIRY_001",
           "CORE_DISPUTE_RESOLUTION_001",
           "CORE_GOVERNING_LAW_001",
-          "CORE_COUNTERPARTS_001",
-          "CORE_STAMP_AND_COSTS_001",
           "CORE_SIGNATURE_BLOCK_001"
         ],
         "blocking": [],
         "advisory": [
           "CIN_ON_LLP_PARTY_2",
+          "DOCUMENT_TYPE_WITHDRAWN",
           "ENTITY_TYPE_CONTRADICTS_PAN_PARTY_2",
           "FORM_VALUE_NOT_REFLECTED_PARTY_2_CIN",
           "INVALID_PARTY_1_GSTIN",
-          "INVALID_PARTY_2_GSTIN"
+          "INVALID_PARTY_2_GSTIN",
+          "TS_EXCLUSIVITY_LONG",
+          "TS_EXCLUSIVITY_VERY_LONG",
+          "TS_POOL_LARGE"
         ],
         "notices": [
           "STALE_CITATION_AWAITING_REVIEW",
-          "STATUTORY_CHECKLIST"
+          "STATUTORY_CHECKLIST",
+          "SUBORDINATE_LEGISLATION_REVIEW"
         ]
       }
     },

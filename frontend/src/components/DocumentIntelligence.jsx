@@ -35,8 +35,9 @@ export default function DocumentIntelligence({ intelligence, obligations, valida
 
   const { overall = {}, clauses = [], conflicts = [] } = intelligence;
   // Keep the headline score live with the latest validation if present.
-  const score = validation?.score ?? overall.risk_score;
-  const certified = validation?.certified ?? overall.certified;
+  const assuranceWithdrawn = Boolean(validation?.assurance_withdrawn);
+  const score = assuranceWithdrawn ? null : validation?.score ?? overall.risk_score;
+  const certified = assuranceWithdrawn ? false : validation?.certified ?? overall.certified;
   const tone = riskTone(score);
   const enf = overall.enforceability || { HIGH: 0, MEDIUM: 0, LOW: 0 };
   const toggle = (id) =>

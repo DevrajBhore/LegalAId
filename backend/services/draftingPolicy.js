@@ -79,8 +79,12 @@ const PREFERRED_CANONICAL_LABELS = [
   "Party 2",
 ];
 
+// party_3 and party_4 are listed so a schema that DECLARES more than two
+// principals (the term sheet's founders, D4.44) gets them as declared
+// participants with their own labels. A schema that declares two is unaffected:
+// the group keeps only the bases the schema configures.
 const PRIORITY_PARTICIPANT_GROUPS = [
-  ["party_1", "party_2", "guarantor"],
+  ["party_1", "party_2", "party_3", "party_4", "guarantor"],
   ["employer", "employee"],
   ["partner_1", "partner_2"],
   ["shareholder_1", "shareholder_2"],

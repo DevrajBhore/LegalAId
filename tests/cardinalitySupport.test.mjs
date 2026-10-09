@@ -27,6 +27,7 @@ import { fileURLToPath } from "node:url";
 import { getVariables } from "../backend/config/variableConfig.js";
 import { buildDocumentFields } from "../backend/services/documentIntakeConfig.js";
 import { isRosterExtensionField } from "../backend/services/partyRoster.js";
+import { isWithdrawn } from "../shared/documentWithdrawals.js";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(HERE, "..");
@@ -76,21 +77,31 @@ check("the record matches what the engine actually admits", () => {
   }
 });
 
-check("no form offers a third principal, and the record says so", () => {
+check("no form offers a third principal to a user, and the record says so", () => {
   /*
    * The containment. An API caller can build a three-party deed today and get a
    * correct one; no user is invited to by a form until a family is reviewed.
+   *
+   * D4.44 adds the one way a form may carry a third principal before review:
+   * the family is withdrawn from public generation, so no user can reach the
+   * form. The record must say so, and the withdrawal must be real. Restoring the
+   * family without a review makes this fail.
    */
+  const recorded = new Map(doc.families.map((f) => [f.document_type, f]));
   for (const m of measured) {
-    assert.strictEqual(m.exposed, false,
+    if (!m.exposed) continue;
+    const r = recorded.get(m.type);
+    assert.ok(r?.exposed_by_intake === true && r.contained_by === "WITHDRAWAL" && isWithdrawn(m.type),
       `${m.type} now offers ${m.prefix}_3_name on its form — a family nobody has reviewed for ` +
       `three principals is inviting users to make one`);
   }
   for (const f of doc.families) {
-    assert.strictEqual(f.exposed_by_intake, false,
-      `${f.document_type} is recorded as exposed; update the record only after review`);
+    if (!f.exposed_by_intake) continue;
+    assert.ok(f.contained_by === "WITHDRAWAL" && isWithdrawn(f.document_type),
+      `${f.document_type} is recorded as exposed and is reachable by users; update the record only after review`);
   }
-  assert.strictEqual(doc.summary.families_exposed_by_intake, 0);
+  assert.strictEqual(doc.summary.families_exposed_by_intake,
+    doc.families.filter((f) => f.exposed_by_intake).length);
 });
 
 check("admission does not imply exposure, and the gap is the point", () => {
@@ -110,6 +121,7 @@ check("exposure never runs ahead of legal support", () => {
    */
   for (const f of doc.families) {
     if (!f.exposed_by_intake) continue;
+    if (f.contained_by === "WITHDRAWAL" && isWithdrawn(f.document_type)) continue;
     assert.strictEqual(f.legally_supported, "REVIEWED_SUPPORTED",
       `${f.document_type} is exposed to users without an advocate having established ` +
       `that the family operates correctly above two principals`);

@@ -838,6 +838,12 @@
       "statement": "An output-conservation gate cannot detect a wrong label, because a label is not output. Instrumentation needs two proofs: the artifact is unchanged, and the record is true.",
       "$established_by": "D4.43. Mislabelling the answered restriction period as CONSTANT_DEFAULT left all 217 cases byte-identical — the gate passed, correctly. tests/provenanceHardening.test.mjs failed on it. A mutation that changed a labelled literal did the opposite: the gate failed (4 cases).",
       "$the_operational_form": "For every instrumented branch, the gate covers what ships; a test drives the branch both ways and asserts the recorded class. Mutate each side and watch the other stay silent."
+    },
+    {
+      "id": "A_PASSING_CHECK_IS_A_CLAIM_ABOUT_THE_CHECKS",
+      "statement": "A clean validation result says that the checks which ran found nothing. It says nothing about checks that do not exist. A document can be structurally complete and legally incoherent at once, and only a check that reads the document as a whole can see the second.",
+      "$established_by": "D4.44. A term sheet that recited an intention to be legally bound, called itself non-binding in clause 1, bound founders who were not parties and carried thirteen general provisions of a binding contract scored 100 / 'No issues detected'. Every structural check passed, correctly. The drafting policy's own note said the general provisions were suppressed; the data did not carry it.",
+      "$the_operational_form": "Freeze the defective output that passed. A new check is accepted only if it fails that frozen output for the named reason AND catches the same defect planted in the corrected output. The clean-result label says 'Automated checks passed', never 'No issues detected'."
     }
   ]
 }

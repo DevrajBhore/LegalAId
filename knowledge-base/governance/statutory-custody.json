@@ -444,13 +444,6 @@
       "disposition": "NOT_REVIEWED",
       "note": null
     },
-    "TERM_SHEET/CORE_ENTIRE_AGREEMENT_001": {
-      "acts": [
-        "Indian Contract Act, 1872 s.17"
-      ],
-      "disposition": "NOT_REVIEWED",
-      "note": null
-    },
     "VENDOR_AGREEMENT/SUPPLY_RETURN_POLICY_001": {
       "acts": [
         "Sale of Goods Act, 1930 s.59"
@@ -458,5 +451,13 @@
       "disposition": "NOT_REVIEWED",
       "note": null
     }
-  }
+  },
+  "repaired": [
+    {
+      "key": "TERM_SHEET/CORE_ENTIRE_AGREEMENT_001",
+      "on": "2026-10-09",
+      "phase": "D4.44",
+      "how": "The term sheet no longer carries the entire-agreement clause (its drafting policy now sets baselineClauseIds: [] as its note always claimed). The pairing no longer occurs because the clause is gone, not because custody of the statute moved."
+    }
+  ]
 }

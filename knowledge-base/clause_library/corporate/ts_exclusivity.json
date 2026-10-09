@@ -1,39 +1,34 @@
 {
   "jurisdiction": "India",
-  "mandatory": false,
+  "mandatory": true,
   "enforceability": "HIGH",
   "risk_level": "HIGH",
   "invalid_if": [
-    "The exclusivity period is open-ended or unreasonably long",
-    "The company is made liable for the investor's costs whether or not the investment completes"
+    "The exclusivity binds a person who is not a party",
+    "The exclusivity period is open-ended"
   ],
   "depends_on": [],
   "conflicts_with": [],
-  "version": "1.0",
+  "version": "2.0",
   "review_status": "draft-needs-legal-review",
   "reviewed_by": "PENDING",
   "reviewed_on": null,
   "tds_applicable": false,
   "gst_applicable": false,
   "msme_sensitive": false,
-  "clause_id": "TS_EXCLUSIVITY_AND_CONFIDENTIALITY_001",
-  "name": "Exclusivity, Confidentiality and Costs",
-  "title": "Exclusivity and Confidentiality",
-  "category": "CONFIDENTIALITY",
+  "clause_id": "TS_EXCLUSIVITY_001",
+  "name": "Exclusivity",
+  "title": "Exclusivity",
+  "category": "RESTRAINT",
   "document_types": [
     "TERM_SHEET"
   ],
-  "text": "The following provisions are binding on the Parties.\n(a) For {{exclusivity_period}} from the date of this Term Sheet, the Company and the Founders shall not solicit, entertain, or negotiate any offer of investment in, or acquisition of, the Company from any other person, and shall inform the Investor of any approach received.\n(b) Each Party shall keep confidential the existence and the terms of this Term Sheet, and any information disclosed in connection with it, and shall not disclose it except to its professional advisers, or as required by law or by a regulator.\n(c) The exclusivity in sub-clause (a) ends if the Investor notifies the Company that it will not proceed, or on the expiry of the period, whichever is earlier.\n(d) Each Party bears its own costs of negotiating and documenting the proposed investment. Where the definitive agreements provide for the Company to bear the Investor's costs, that obligation arises only on completion and is capped at the amount the definitive agreements state.\n(e) A breach of sub-clause (a) or (b) may be restrained by injunction, damages alone being an inadequate remedy.",
+  "text": "This provision is a Binding Provision.\n(a) The \"Exclusivity Period\" begins on the date of this Term Sheet and ends on the earliest of: the end of {{exclusivity_period}} from that date; the execution of the Definitive Agreements; and the date on which the Investor notifies the Company in writing that it does not wish to proceed.\n(b) During the Exclusivity Period, the Company and each Founder shall not, directly or indirectly, solicit, encourage, negotiate or accept any proposal from any person other than the Investor for an investment in the Company, or for the acquisition of shares in, or of all or substantially all of the assets of, the Company.\n(c) The Company shall promptly inform the Investor if it or any Founder receives such a proposal during the Exclusivity Period.",
   "legal_basis": [
     {
       "act": "Indian Contract Act, 1872",
       "section": "27",
-      "note": "Agreements in restraint of trade are void; a time-limited exclusivity in a transaction negotiation is a restraint on dealing rather than on trade and is generally upheld, but the period must be reasonable"
-    },
-    {
-      "act": "Specific Relief Act, 1963",
-      "section": "41",
-      "note": "Injunctions, and the circumstances in which they will not be granted"
+      "note": "Agreements in restraint of trade are void; a short, definite exclusivity in a negotiation restrains dealing rather than trade, but the period must be reasonable"
     },
     {
       "act": "Indian Contract Act, 1872",
@@ -41,7 +36,8 @@
       "note": "Compensation for loss caused by breach"
     }
   ],
-  "source": "Indian Contract Act, 1872; Specific Relief Act, 1963",
+  "source": "Indian Contract Act, 1872",
   "statutory_reference": "Indian Contract Act, 1872 - S.27",
-  "authoring_note": "Sub-clause (d) is drafted to protect the company. A term sheet that obliges the company to pay the investor's legal costs regardless of completion leaves a start-up paying for a deal that never happened, and is a term founders accept without noticing. The advocate should set the exclusivity period; thirty to sixty days is usual, and an open-ended period is both commercially unreasonable and more vulnerable under Section 27."
+  "authoring_note": "Binds the Company and each Founder, all of whom are parties and sign. The old clause bound 'the Founders', who were not parties to the old term sheet and signed nothing. The period comes from the user; periods over 90 days are flagged as unusual and over 180 days for review.",
+  "d4_44": "Rebuilt 9 Oct 2026. Non-binding provisions are drafted as proposals ('it is proposed that ... be'), never as obligations, so the wording agrees with the Status provision."
 }
