@@ -1,0 +1,112 @@
+{
+  "$comment": [
+    "D4.46 — Generation Integrity and Release Enforcement. One record per acceptance criterion, each with the evidence that shows it met and the test that fails if it breaks.",
+    "Measured on 16 October 2026 against commit 8c73f15b6 (D4.45) plus the D4.46 working tree. The term sheet stays withdrawn; nothing here restores it.",
+    "No legal proposition was decided here. Every requirement remains draft-needs-legal-review; 'Automated checks passed' is still not a legal approval."
+  ],
+  "review_status": "engineering — requirement content awaits advocate review",
+  "phase": "D4.46",
+  "acceptance": [
+    {
+      "criterion": 1,
+      "statement": "User-supplied commercial values survive generation, repair, AI tailoring, validation and export unchanged unless the user authorises a new value.",
+      "status": "MET",
+      "how": [
+        "backend/services/mutationGuard.js: one rule on every path that changes rendered text. A user figure the clause carried must still be in it; AI may not introduce a figure; a refused change keeps the previous text and is recorded in metadata.refused_mutations.",
+        "deterministicFixer no longer rewrites rates (>=40% -> 24%) or MSME periods (>=60 days -> 45 days); the concern stays a finding.",
+        "NDA_TERM_SURVIVAL_001 now renders agreement_term; it used to state 'two (2) years' whatever the user entered.",
+        "The AI path starts from the variable-injected seed, so the baseline it is judged against carries the user's values."
+      ],
+      "frozen_evidence": ["tests/fixtures/repairOverride.D4_46.json", "tests/fixtures/ndaContradiction.D4_46.json"],
+      "verified_by": ["tests/generationIntegrity.test.mjs", "tests/ndaContradiction.test.mjs"]
+    },
+    {
+      "criterion": 2,
+      "statement": "Clause locks are enforced on every mutation path, including /fix-issue.",
+      "status": "MET",
+      "how": ["One protected set (PROTECTED_CATEGORIES, PROTECTED_CLAUSE_IDS) read by clauseLocker, the AI merge and every guard. repairDocumentIssue passes AI edits through guardDraftMutation and returns fixed:false with the refusals and the reason."],
+      "verified_by": ["tests/generationIntegrity.test.mjs"]
+    },
+    {
+      "criterion": 3,
+      "statement": "AI integrity checks use immutable pre-transformation evidence.",
+      "status": "MET",
+      "how": ["metadata.pre_ai_baseline is written once, before any AI change, and never reset. validateAIIntegrity compares every clause whose text is still exactly the AI's (_ai_text_sha) with it; a clause the user later edited is the user's and is not judged. AI_CHANGED_AGREED_TERMS is CRITICAL. The check holds although baseline_clause_map is reset to the AI text."],
+      "verified_by": ["tests/generationIntegrity.test.mjs"]
+    },
+    {
+      "criterion": 4,
+      "statement": "Applicable, verified BLOCK requirements prevent release.",
+      "status": "MET",
+      "how": [
+        "backend/services/requirementRelease.js runs the existing assessRequirements as a validation layer; no second evaluator. The response's requirement report and the release decision are compared on every generated corpus world and are identical.",
+        "Each of the 34 BLOCK requirements audited individually (governance/block-requirements-audit.json, scripts/auditBlockRequirements.mjs): 23 ACTIVE_BLOCK; 11 held — 7 because no fixture world of CHEQUE_BOUNCE_NOTICE or POWER_OF_ATTORNEY generates (no evidence is not passing evidence), 3 for missing or unreachable satisfier clauses, 1 (MOU NON_BINDING_CHARACTER) because character is a legal judgment. A held requirement unmet gives 'Requires legal review'. A BLOCK requirement absent from the audit is held."
+      ],
+      "verified_by": ["tests/releaseEnforcement.test.mjs"]
+    },
+    {
+      "criterion": 5,
+      "statement": "Material contradictions such as the NDA's period conflict cannot receive a clean validation result.",
+      "status": "MET",
+      "how": [
+        "The frozen NDA (24 months in Duration of Confidentiality; a two-year term and three further years in Term and Survival; old result 'Automated checks passed', 100) is now Blocked with MATERIAL_CONTRADICTION quoting both periods.",
+        "Relationships compare periods, not digits (answer_kind DURATION): 24 months equals two (2) years; 90 days does not equal 3 months; text that is not a period is unread, never agreement. A clause that defers by name (declared 'defers' pattern) states no second answer.",
+        "The engine no longer produces the contradiction: Term and Survival defers to Duration of Confidentiality.",
+        "A relationship that cannot be read is 'Requires legal review', neither Blocked nor passed."
+      ],
+      "frozen_evidence": ["tests/fixtures/ndaContradiction.D4_46.json"],
+      "verified_by": ["tests/ndaContradiction.test.mjs", "tests/requirementCoherence.test.mjs"]
+    },
+    {
+      "criterion": 6,
+      "statement": "'Requires information' and 'Requires legal review' are distinct from Blocked and from 'Automated checks passed'.",
+      "status": "MET",
+      "how": [
+        "validation.release_outcome: BLOCKED > REQUIRES_INFORMATION > REQUIRES_LEGAL_REVIEW > REVIEW_REQUIRED > AUTOMATED_CHECKS_PASSED; validation.certification carries the label. A blocking finding always wins.",
+        "Five requirement states, each in validation.requirements: VIOLATED (blocks only an ACTIVE_BLOCK requirement), EVIDENCE_MISSING (information or legal review by cause), APPLICABILITY_UNRESOLVED (information; never treated as met or not applicable), NOT_APPLICABLE (with the condition not met), SATISFIED (with the satisfying clauses).",
+        "Withdrawn and superseded outputs: 'Requires legal review' (was 'Requires review')."
+      ],
+      "verified_by": ["tests/releaseEnforcement.test.mjs", "tests/termSheetWithdrawal.test.mjs"]
+    },
+    {
+      "criterion": 7,
+      "statement": "Each repaired defect has positive, negative, boundary and regression tests, including cross-family checks.",
+      "status": "MET",
+      "tests": {
+        "tests/generationIntegrity.test.mjs": "25 checks: regression on the frozen repair override; end-to-end 48% loan; guard boundaries (re-formatting is not a change; the engine may add a figure, the AI may not); AI merge refusal and acceptance; immutable-baseline check; user edits not judged; /fix-issue refusals; one protected set.",
+        "tests/ndaContradiction.test.mjs": "20 checks: frozen NDA blocked; the engine no longer produces it; user term and period survive; contradictions caught in both library phrasings and when planted; same period in different words and deferral are not contradictions; unreadable, mutually deferring and single-clause boundaries; unit normalisation.",
+        "tests/releaseEnforcement.test.mjs": "17 checks: the audit (34, once each; NOT_TESTED held; unaudited held); ACTIVE_BLOCK blocks (loan without principal); HELD gives legal review (rental without premises); MOU contradicted character; SHA requires information; applicability unresolved; ledger evidence and reasons; precedence; cross-family over every generated world of the 9 families with requirements."
+      }
+    },
+    {
+      "criterion": 8,
+      "statement": "The 16 failing suites remain explicitly tracked; no claim of a fully passing suite.",
+      "status": "MET",
+      "how": ["Recorded in governance/suite-baseline.json (after_D4_46). Each of the 16 was run on 8c73f15b6 and on D4.46 and its output compared."]
+    }
+  ],
+  "release_effect_on_the_corpus": {
+    "$what": "Conservation gate, 217 cases, before and after (governance/provenance-instrumentation.json, rebaseline of 16 Oct 2026, D4.46). Shipping status and clause order unchanged.",
+    "no_longer_automated_checks_passed": {
+      "MOU": "NON_BINDING_CHARACTER contradicted by dispute resolution, governing law, survival and termination -> Requires legal review",
+      "EMPLOYMENT_CONTRACT": "POSH_AWARENESS_REFLECTED unmet -> Requires legal review",
+      "RENTAL_AGREEMENT": "POSSESSION_DELT_WITH unmet -> Requires legal review"
+    },
+    "now_requires_information": {
+      "SHAREHOLDERS_AGREEMENT": "transfer restrictions cannot be checked against Articles never supplied",
+      "MASTER_SERVICE_AGREEMENT (QUICK_ESSENTIALS)": "two requirements whose applicability nobody established"
+    },
+    "text_changed": {
+      "NDA": "Term and Survival takes the user's term and defers to Duration of Confidentiality",
+      "EMPLOYMENT_CONTRACT": "survival list now names indemnity and limitation of liability (see SURVIVAL_LIST_STALE_AFTER_INJECTION)"
+    }
+  },
+  "found_and_not_fixed": [
+    "SURVIVAL_LIST_STALE_AFTER_INJECTION (P1): protections injected after the survival clause is rendered; 8 of 113 shipped documents name fewer surviving provisions than they contain. The text depends on whether the repair round ran.",
+    "MOU_NON_BINDING_ALWAYS_APPLIES (P2, legal): applies to an MOU the user declares Binding.",
+    "REQUIREMENT_GAPS_SURFACED (P1, legal): Employment POSH provision, Rental delivery of possession.",
+    "BLOCK_REQUIREMENTS_UNTESTED_ON_CORPUS (P2): CHEQUE_BOUNCE_NOTICE and POWER_OF_ATTORNEY never generate in the fixture corpus.",
+    "The response's requirement report and the release decision call the same evaluator twice with inputs shown equal on the corpus; making buildSuccess reuse the validation's assessment would remove the second call."
+  ],
+  "term_sheet": "Still withdrawn. Nothing in D4.46 changes that."
+}

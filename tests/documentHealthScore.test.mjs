@@ -146,7 +146,16 @@ await test("a well-filled document is not banded as a risk by notes alone", () =
   // Not a ratchet on any particular type -- a ratchet on the shape of the
   // distribution. Before the fix, exactly zero types scored 100 and the mode was
   // 75; if that returns, something is charging every document for the same thing.
-  const perfect = [...drafts.values()].filter((d) => d.result.validation?.score === 100);
+  //
+  // D4.46: findings of the requirement model are per family and each is recorded
+  // (document-quality-standard.json, REQUIREMENT_GAPS_SURFACED), so they are not
+  // the catalogue-wide charge this guards against. A document whose only
+  // deductions are requirement findings counts as clean HERE; its outcome is
+  // still "Requires legal review" or "Requires information" everywhere else.
+  const REQUIREMENT_RULES = /^(REQUIREMENT_|MATERIAL_CONTRADICTION$|RELATIONSHIP_NOT_ESTABLISHED$)/;
+  const perfect = [...drafts.values()].filter((d) =>
+    d.result.validation?.score === 100 ||
+    (d.result.validation?.score_breakdown?.deductions || []).every((x) => REQUIREMENT_RULES.test(x.rule_id)));
   assert.ok(
     perfect.length >= drafts.size / 2,
     `only ${perfect.length} of ${drafts.size} types are clean; a defect common to the whole catalogue is the likely cause`

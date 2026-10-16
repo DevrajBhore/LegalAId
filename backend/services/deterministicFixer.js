@@ -2,6 +2,9 @@
  * deterministicFixer.js
  *
  * Applies hardcoded deterministic repairs before invoking the AI.
+ *
+ * It may ADD a protection the user has not declined. It may not change any text
+ * the engine has rendered (D4.46).
  */
 
 import { injectProtection } from "../commercial/injector.js";
@@ -29,47 +32,12 @@ export function applyDeterministicFixes(draft, issues = []) {
     }
   }
 
-  const clauseScopedIssues = issues.filter(
-    (issue) => issue.auto_fixable && issue.offending_clause_id
-  );
-
-  if (clauseScopedIssues.length === 0) {
-    return nextDraft;
-  }
-
-  const modifiedClauses = nextDraft.clauses.map((clause) => {
-    let newText = clause.text;
-
-    clauseScopedIssues.forEach((issue) => {
-      if (issue.offending_clause_id === clause.clause_id && !clause.locked) {
-        switch (issue.rule_id) {
-          case "USURIOUS_INTEREST_RATE":
-            newText = newText.replace(/(?:4[0-9]|[5-9]\d|\d{3,})\s*%/g, "24%");
-            break;
-
-          case "ICA_S28_OUSTER_OF_COURTS":
-            newText =
-              "All disputes arising out of this agreement shall be submitted to binding arbitration governed by the Arbitration and Conciliation Act, 1996.";
-            break;
-
-          case "MSME_PAYMENT_DELAY":
-            newText = newText.replace(
-              /(?:6[0-9]|[7-9]\d|\d{3,})\s*(?:days)/gi,
-              "45 days"
-            );
-            break;
-        }
-      }
-    });
-
-    return {
-      ...clause,
-      text: newText,
-    };
-  });
-
-  return {
-    ...nextDraft,
-    clauses: modifiedClauses,
-  };
+  // D4.46. This file used to rewrite clause text to "fix" three findings:
+  // USURIOUS_INTEREST_RATE replaced any rate of 40% or more with "24%",
+  // MSME_PAYMENT_DELAY replaced any period of 60 days or more with "45 days", and
+  // ICA_S28_OUSTER_OF_COURTS replaced the clause with an arbitration clause. Each
+  // changed a term the user had agreed, without asking, and the document then
+  // shipped. A finding about a value is for the user to act on; the repair never
+  // changes it (backend/services/mutationGuard.js enforces that on every path).
+  return nextDraft;
 }

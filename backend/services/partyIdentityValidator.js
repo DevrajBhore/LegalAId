@@ -1,4 +1,5 @@
 import { getVariables } from "../config/variableConfig.js";
+import { getParticipantExpectations } from "./draftingPolicy.js";
 
 // Who the parties are, checked as identities rather than as strings.
 //
@@ -224,6 +225,89 @@ function collectParties(definitions, variables) {
   return parties;
 }
 
+/*
+ * EVERY ACTUAL PARTY, NOT FOUR FIXED POSITIONS (D4.45 P0).
+ *
+ * PARTY_GROUPS names the slots this layer was written for. A term sheet's
+ * founders (party_3, party_4), a third partner (partner_3_*) or a third
+ * shareholder were never checked: a founder could carry the Company's own PAN
+ * and nothing said so. A partnership deed and a shareholders' agreement name
+ * their principals partner_N / shareholder_N and put the identifiers in
+ * party_N_*, so even their first two principals were checked without a name.
+ *
+ * The principals come from getParticipantExpectations, the one place that
+ * answers "who are the parties" for the identity clause, the signature block and
+ * the consistency validator. A principal already collected under its own slot is
+ * left as it is; a slot that had identifiers but no name gets the principal's
+ * name and type; anyone else is added. Nothing here invents a party.
+ */
+function withEveryPrincipal(parties, documentType, variables, definitions = {}) {
+  let participants = [];
+  try {
+    participants = getParticipantExpectations(documentType, variables) || [];
+  } catch {
+    return parties;
+  }
+  const byId = new Map(parties.map((party) => [party.id, party]));
+  participants.forEach((participant, index) => {
+    if (!participant?.name) return;
+    // A party is a principal series member (party_N, partner_N …) or a role the
+    // schema describes as a party, with its own address or entity type. A name
+    // field alone is not a party: "deponent_parent_name" is the deponent's
+    // father, and counting it produced "The deponent and The deponent are given
+    // the same name" (found by the conservation comparison, D4.45).
+    const id = String(participant.id || "");
+    const principalSeries = /^(party|partner|shareholder|member|founder)_\d+$/.test(id);
+    if (!principalSeries && !definitions[`${id}_address`] && !definitions[`${id}_type`]) return;
+    const ordinal = Number((/_(\d+)$/.exec(String(participant.id || "")) || [])[1]) || index + 1;
+    const own = byId.get(participant.id);
+    if (own) return;
+    // partner_1 / shareholder_1 are described by the party_1_* identifier slot.
+    // When the schema describes this principal's identifiers under party_N_*,
+    // the principal IS party N for this layer, whether or not any identifier was
+    // answered, so its findings carry one stable id (…_PARTY_1).
+    const describedBySlot = /^(partner|shareholder|member)_\d+$/.test(String(participant.id)) &&
+      ["pan", "gstin", "cin", "llpin", "type"].some((k) => definitions[`party_${ordinal}_${k}`]);
+    if (describedBySlot && !byId.has(`party_${ordinal}`)) {
+      const created = {
+        id: `party_${ordinal}`, label: participant.label || `Party ${ordinal}`, isNamedParty: false,
+        name: "", type: "", typeWasDeclared: false, identifiers: {}, offered: new Set(), fieldNames: {},
+      };
+      parties.push(created);
+      byId.set(created.id, created);
+    }
+    const slot = byId.get(`party_${ordinal}`);
+    if (slot && !slot.isNamedParty && /^(partner|shareholder|member)_\d+$/.test(String(participant.id))) {
+      slot.name = participant.name;
+      slot.isNamedParty = true;
+      slot.enriched = true;
+      slot.label = participant.label || slot.label;
+      if (!slot.type && participant.type) { slot.type = participant.type; slot.typeWasDeclared = true; }
+      return;
+    }
+    if (byId.has(`party_${ordinal}`) && String(participant.id).startsWith("party_")) return;
+    const identifiers = {};
+    for (const kind of ["pan", "gstin", "cin", "llpin"]) {
+      if (present(participant[kind])) identifiers[kind] = String(participant[kind]).trim();
+    }
+    const party = {
+      id: String(participant.id),
+      label: participant.label || `Party ${ordinal}`,
+      isNamedParty: true,
+      name: String(participant.name).trim(),
+      type: participant.type ? String(participant.type).trim() : "",
+      typeWasDeclared: Boolean(participant.type),
+      identifiers,
+      offered: new Set(Object.keys(identifiers)),
+      fieldNames: {},
+      from_participants: true,
+    };
+    parties.push(party);
+    byId.set(party.id, party);
+  });
+  return parties;
+}
+
 const IDENTIFIER_LABELS = { pan: "PAN", gstin: "GSTIN", cin: "CIN", llpin: "LLPIN" };
 const IDENTIFIER_VALIDATORS = {
   pan: isValidPan,
@@ -440,6 +524,25 @@ function checkUniqueness(parties) {
     for (const [value, holders] of byValue) {
       if (holders.length < 2) continue;
       const labels = holders.map((party) => party.label);
+      // D4.45: a principal this layer only now names (a shareholder, a third
+      // partner) carrying the COMPANY's own identifier is a real defect, but a
+      // different one from two parties being one person: the company is often
+      // the subject of the document rather than a party to it. Reported, not
+      // blocking, so extending coverage does not silently turn a review point
+      // into a refusal.
+      const companyPair = holders.length === 2 && holders.some((p) => p.id === "company") &&
+        holders.some((p) => p.enriched || p.from_participants);
+      if (companyPair) {
+        issues.push(
+          buildIssue(
+            `PRINCIPAL_CARRIES_COMPANY_${kind.toUpperCase()}`,
+            "HIGH",
+            `${labels.join(" and ")} carry the same ${IDENTIFIER_LABELS[kind]} (${value}): a principal is recorded with the Company's own identifier.`,
+            `Give the principal its own ${IDENTIFIER_LABELS[kind]}. A company is not ordinarily its own shareholder (Companies Act, 2013 s.67).`
+          )
+        );
+        continue;
+      }
       const involvesGuarantor = holders.some((party) => party.id === "guarantor");
       issues.push(
         buildIssue(
@@ -485,7 +588,7 @@ export function validatePartyIdentity({ documentType, variables = {} } = {}) {
   if (!documentType || !variables || typeof variables !== "object") return [];
 
   const definitions = getVariables(documentType) || {};
-  const parties = collectParties(definitions, variables);
+  const parties = withEveryPrincipal(collectParties(definitions, variables), documentType, variables, definitions);
   if (!parties.length) return [];
 
   const issues = [];

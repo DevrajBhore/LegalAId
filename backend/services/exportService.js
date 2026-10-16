@@ -1,5 +1,6 @@
 import { buildDisclosureBlock, renderDisclosureText } from "./disclosureRenderer.js";
 import { LEGAL_NOTICE, LEGAL_NOTICE_TITLE } from "./legalNotice.js";
+import { supersededOutputFor } from "../../shared/documentWithdrawals.js";
 
 // Printed last in every export, after any disclosure: the file the parties sign
 // must say what the product is, not only the screen they drafted it on. It is
@@ -1397,6 +1398,17 @@ export async function draftToDocx(draft) {
     }),
   ];
 
+  // D4.44. A document produced by a withdrawn version says so on page 1 and
+  // again at the end. Its own text is exported unchanged.
+  const superseded = supersededOutputFor(docType, draft);
+  const supersededParagraphs = () => superseded
+    ? [
+        new Paragraph({ style: STYLE_ID.body, spacing: { before: 120 }, children: [new TextRun({ text: superseded.export_heading, bold: true })] }),
+        new Paragraph({ style: STYLE_ID.body, spacing: { after: 240 }, children: [new TextRun({ text: superseded.export_notice, bold: true })] }),
+      ]
+    : [];
+  children.push(...supersededParagraphs());
+
   if (identityClause?.text?.trim()) {
     renderIdentityClause(children, identityClause.text);
   }
@@ -1444,6 +1456,7 @@ export async function draftToDocx(draft) {
     });
   }
 
+  children.push(...supersededParagraphs());
   children.push(
     new Paragraph({ style: STYLE_ID.body, spacing: { before: 360 }, children: [new TextRun({ text: EXPORT_NOTICE_HEADING, bold: true })] }),
     new Paragraph({ style: STYLE_ID.body, children: [new TextRun({ text: LEGAL_NOTICE, italics: true })] })
@@ -1606,6 +1619,18 @@ export async function draftToPdf(draft) {
     doc.y += PDF_BLOCK_GAP * 1.6;
     doc.x = PDF_MARGIN;
 
+    const superseded = supersededOutputFor(docType, draft);
+    const writeSuperseded = () => {
+      if (!superseded) return;
+      doc.font("Times-Bold").fontSize(PDF_BODY_SIZE)
+        .text(pdfSafeText(superseded.export_heading), PDF_MARGIN, doc.y, { width: PDF_CONTENT_WIDTH });
+      doc.font("Times-Bold").fontSize(PDF_BODY_SIZE)
+        .text(pdfSafeText(superseded.export_notice), PDF_MARGIN, doc.y, { width: PDF_CONTENT_WIDTH });
+      doc.y += PDF_BLOCK_GAP;
+      doc.x = PDF_MARGIN;
+    };
+    writeSuperseded();
+
     if (identityClause?.text?.trim()) {
       renderPdfIdentityClause(doc, identityClause.text);
     }
@@ -1643,6 +1668,7 @@ export async function draftToPdf(draft) {
     }
 
     doc.y += PDF_BLOCK_GAP;
+    writeSuperseded();
     doc.font("Times-Bold").fontSize(PDF_BODY_SIZE)
       .text(pdfSafeText(EXPORT_NOTICE_HEADING), PDF_MARGIN, doc.y, { width: PDF_CONTENT_WIDTH });
     doc.font("Times-Italic").fontSize(PDF_BODY_SIZE)
@@ -1656,6 +1682,8 @@ export function draftToText(draft) {
     draft?.clauses || []
   );
   const lines = [`${title}\n${"=".repeat(title.length)}\n`];
+  const superseded = supersededOutputFor(draft?.document_type, draft);
+  if (superseded) lines.push(superseded.export_heading, superseded.export_notice, "");
 
   if (identityClause?.text?.trim()) {
     lines.push(identityClause.text.trim(), "");
@@ -1698,6 +1726,7 @@ export function draftToText(draft) {
   const disclosure = renderDisclosureText(draft);
   if (disclosure) lines.push(disclosure);
 
+  if (superseded) lines.push("", superseded.export_heading, superseded.export_notice);
   lines.push("", EXPORT_NOTICE_HEADING, LEGAL_NOTICE);
 
   return lines.join("\n");

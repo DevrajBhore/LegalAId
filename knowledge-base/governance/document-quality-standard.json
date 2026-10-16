@@ -1,0 +1,2746 @@
+{
+  "$comment": [
+    "D4.45 — the LegalAId 100-level Document Generation & Quality Standard: 60 generation levels and 40 quality levels, mapped against the code as it stands on 16 October 2026.",
+    "This is the TARGET standard and an honest first map of where the engine stands against it. It is not a claim that any level is complete, and 100 levels do not make a document 100% legally correct: they say what has been checked, what is uncertain, and what an advocate has actually approved.",
+    "The map was produced by reading the code (two read-only reviews of backend/, IRE/, knowledge-base/, tests/), and the most serious findings were re-checked by hand. Each status is a first assessment; a level is EXISTS only when it is enforced for every family it applies to AND has a test that fails when it breaks."
+  ],
+  "review_status": "PROPOSED STANDARD — adopted as the target by the owner (D4.45). Statuses are engineering assessments. Nothing here is legal advice.",
+  "three_requirements": {
+    "engineering_correctness": "The system produces exactly what its knowledge and inputs specify.",
+    "legal_correctness": "An advocate has verified that the authored legal positions are sound and scoped.",
+    "document_correctness": "The rendered instrument is internally coherent, complete and faithful to the user's transaction.",
+    "rule": "None substitutes for another."
+  },
+  "statuses": {
+    "EXISTS": "enforced for every family it applies to, with a failing-capable test",
+    "PARTIAL": "some families or aspects, or computed but not acted on, or test-only",
+    "MISSING": "not implemented",
+    "NEEDS_LEGAL_JUDGMENT": "can only be completed by an advocate's recorded decision"
+  },
+  "per_level_record": {
+    "fields": [
+      "input",
+      "decision",
+      "output",
+      "provenance",
+      "failure_behaviour",
+      "verification"
+    ],
+    "state": "Not yet written for any level. Each level carries the empty record; filling it is part of building the level.",
+    "evidence_for_every_finding": [
+      "rule tested",
+      "rendered passage",
+      "expected result",
+      "observed result",
+      "authority where applicable",
+      "the test proving the check can fail"
+    ]
+  },
+  "release_outcomes": {
+    "target": [
+      {
+        "outcome": "Blocked",
+        "meaning": "A critical error, contradiction or invalid requirement prevents release.",
+        "today": "EXISTS — any CRITICAL or blocks_generation finding; generation and export refuse."
+      },
+      {
+        "outcome": "Requires information",
+        "meaning": "Material facts or choices are missing.",
+        "today": "EXISTS since D4.46 — APPLICABILITY_UNKNOWN and unverifiable or stale evidence give 'Requires information' (release_outcome REQUIRES_INFORMATION); it outranks legal review, and a blocking finding outranks both."
+      },
+      {
+        "outcome": "Requires legal review",
+        "meaning": "A substantive legal question remains unresolved.",
+        "today": "EXISTS since D4.46 — unmet held or ESCALATE/DISCLOSE requirements, contradicted character, unreadable relationships, and withdrawn or superseded outputs give 'Requires legal review'. LEGAL_REVIEW_REQUIRED findings outside the requirement model still ship as 'Review Required'."
+      },
+      {
+        "outcome": "Automated checks passed",
+        "meaning": "Implemented automated checks passed; not a legal approval.",
+        "today": "EXISTS (wording since D4.44)."
+      },
+      {
+        "outcome": "Advocate approved",
+        "meaning": "A defined family and variant reviewed and approved within its recorded scope.",
+        "today": "MISSING — 0 families approved; familyCertification is not attached to outputs."
+      }
+    ],
+    "rule": "A critical failure at any level blocks, whatever the other levels show. A score may be shown only as an automated-check score and may never override a blocking or legal-review outcome.",
+    "today_the_score": "Itemised deductions (CRITICAL 40, HIGH 20, MEDIUM 10, LOW 2). A blocked document still shows a number (e.g. 60). Deduplication keys on rule_id+clause+message, so one defect found by several evaluators is charged several times."
+  },
+  "generation_levels": [
+    {
+      "id": "G01",
+      "phase": "Discovery",
+      "name": "Identify the user's objective",
+      "status": "MISSING",
+      "evidence": [
+        "frontend/src/pages/Form.jsx"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [],
+      "gap": "The objective is never captured; the user starts from a chosen document type.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G02",
+      "phase": "Discovery",
+      "name": "Classify family and instrument type",
+      "status": "MISSING",
+      "evidence": [
+        "backend/index.js",
+        "shared/documentShape.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block (unknown or withdrawn type)",
+      "verification": [
+        "tests/termSheetWithdrawal.test.mjs"
+      ],
+      "gap": "The user picks the type; nothing checks that it fits the transaction (legal-characterisation.json: 'the system cannot characterise, because it never asks').",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G03",
+      "phase": "Discovery",
+      "name": "Identify the underlying transaction",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/generationControls.js",
+        "backend/services/conceptResolver.js",
+        "knowledge-base/governance/legal-characterisation.json"
+      ],
+      "scope": "12 concepts",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/conceptVerticalSlice.test.mjs",
+        "tests/legalCharacterisation.test.mjs"
+      ],
+      "gap": "Concepts are resolved into metadata but select nothing; no blueprint uses the concept: gate.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G04",
+      "phase": "Discovery",
+      "name": "Determine whether related documents are needed",
+      "status": "MISSING",
+      "evidence": [
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "SHA (external coherence only)",
+      "failure_behaviour": "none",
+      "verification": [],
+      "gap": "No notion of a document set; buildSuccess passes no external instruments.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G05",
+      "phase": "Discovery",
+      "name": "Load the document-specific blueprint and requirements",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseAssembler.js",
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "blueprints: all; requirements: 9 types",
+      "failure_behaviour": "500 on a missing blueprint",
+      "verification": [
+        "tests/documentRequirements.test.mjs"
+      ],
+      "gap": "Requirements are loaded after the draft is decided, so they cannot shape it.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G06",
+      "phase": "Intake",
+      "name": "Present questions relevant to the document",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/config/variableConfig.js",
+        "backend/services/documentIntakeConfig.js",
+        "backend/config/essentialFields.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "ask",
+      "verification": [
+        "tests/cardinalitySupport.test.mjs"
+      ],
+      "gap": "A static per-type schema; relevance was wrong for the term sheet until D4.44.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G07",
+      "phase": "Intake",
+      "name": "Adapt questions to prior answers",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/config/variableConfig.js",
+        "backend/services/factQuestionPlanner.js"
+      ],
+      "scope": "21 showIf fields; gap questions planned",
+      "failure_behaviour": "ask",
+      "verification": [
+        "tests/factQuestions.test.mjs",
+        "tests/materialityAnalysis.test.mjs"
+      ],
+      "gap": "Gap questions are planned but no route serves them and the form never sends answers.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G08",
+      "phase": "Intake",
+      "name": "Validate answer types, formats, ranges and combinations",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/variableValidator.js",
+        "backend/services/partyIdentityValidator.js",
+        "backend/services/numericPlausibilityValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block (400)",
+      "verification": [
+        "tests/nPartyIdentity.test.mjs"
+      ],
+      "gap": "The validator refuses 'NA' for optional periods, so a blank ships a default (placeholder-provenance.json).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G09",
+      "phase": "Intake",
+      "name": "Identify missing, ambiguous or contradictory information",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/materialityAnalysis.js",
+        "backend/services/partyRoster.js",
+        "backend/services/economicAllocation.js"
+      ],
+      "scope": "all (roster); allocation families",
+      "failure_behaviour": "block for some cross-field rules; otherwise response only",
+      "verification": [
+        "tests/rosterConservation.test.mjs",
+        "tests/economicAllocation.test.mjs"
+      ],
+      "gap": "Free-text ambiguity is not detected; most findings stay in the API response.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G10",
+      "phase": "Intake",
+      "name": "Preserve unanswered material questions instead of guessing",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/positionResolution.js",
+        "backend/services/disclosureRenderer.js",
+        "knowledge-base/governance/placeholder-provenance.json"
+      ],
+      "scope": "positions: all; term sheet: all choices",
+      "failure_behaviour": "disclose",
+      "verification": [
+        "tests/positionConservation.test.mjs",
+        "tests/disclosureArtifact.test.mjs",
+        "tests/placeholderProvenance.test.mjs"
+      ],
+      "gap": "Hardening renderers still fill 20 field-level blanks with constants (D4.42).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G11",
+      "phase": "Parties",
+      "name": "Identify all individuals and entities",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/partyRoster.js",
+        "backend/services/draftingPolicy.js"
+      ],
+      "scope": "N parties admitted for 28 families, exposed for 1 (term sheet, withdrawn)",
+      "failure_behaviour": "disclose roster conflicts",
+      "verification": [
+        "tests/rosterConservation.test.mjs",
+        "tests/cardinalitySupport.test.mjs"
+      ],
+      "gap": "N-party legal support reviewed for 0 families.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G12",
+      "phase": "Parties",
+      "name": "Establish legal names, entity types and identifiers",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/variableValidator.js",
+        "backend/services/partyIdentityValidator.js",
+        "backend/services/agreementGraphValidator.js"
+      ],
+      "scope": "all parties (D4.45)",
+      "failure_behaviour": "block on invalid input; HIGH otherwise",
+      "verification": [
+        "tests/nPartyIdentity.test.mjs"
+      ],
+      "gap": "Format and checksum only; nothing verifies an identifier belongs to the named entity.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G13",
+      "phase": "Parties",
+      "name": "Determine each person's role",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/draftingPolicy.js",
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "disclose (assumed counterparty)",
+      "verification": [
+        "tests/draftingSide.test.mjs"
+      ],
+      "gap": "Roles come from field prefixes; the drafting side is assumed, not asked.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G14",
+      "phase": "Parties",
+      "name": "Distinguish parties, signatories, beneficiaries and third parties",
+      "status": "MISSING",
+      "evidence": [
+        "backend/services/signatureResolver.js"
+      ],
+      "scope": "none",
+      "failure_behaviour": "none",
+      "verification": [],
+      "gap": "No typology; a corporate signatory's name is left blank.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G15",
+      "phase": "Parties",
+      "name": "Build multi-party structure and authority requirements",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "backend/services/npartyTreatment.js",
+        "knowledge-base/governance/cardinality-support.json"
+      ],
+      "scope": "28 admitted families",
+      "failure_behaviour": "disclose (response only)",
+      "verification": [
+        "tests/npartyClassification.test.mjs"
+      ],
+      "gap": "Six N-party treatments are UNDECIDED; signing authority is never captured.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G16",
+      "phase": "Facts",
+      "name": "Convert answers into canonical structured facts",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/canonicalFacts.js",
+        "backend/services/generationControls.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/factSourceParity.test.mjs",
+        "tests/positionSemantics.test.mjs",
+        "tests/negativeAsPosition.test.mjs"
+      ],
+      "gap": "—",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G17",
+      "phase": "Facts",
+      "name": "Preserve fact provenance and answer authority",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/positionResolution.js",
+        "backend/services/provenance.js"
+      ],
+      "scope": "positions; 2 of 5 value producers",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/provenanceInjector.test.mjs",
+        "tests/placeholderProvenance.test.mjs"
+      ],
+      "gap": "The server cannot tell a typed answer from a form default, today's date, a copied state or an AI-extracted value.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G18",
+      "phase": "Facts",
+      "name": "Resolve legal concepts from evidence",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/conceptResolver.js",
+        "backend/services/evidencePropositions.js"
+      ],
+      "scope": "12 concepts",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/conceptLayerGaps.test.mjs",
+        "tests/evidencePropositions.test.mjs"
+      ],
+      "gap": "Evidence resolution has no backend caller.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G19",
+      "phase": "Facts",
+      "name": "Identify jurisdictions, locations and legal contexts",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/jurisdictionEngine.js",
+        "backend/services/statutoryCitationResolver.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block on governing-law or seat mismatch",
+      "verification": [
+        "tests/jurisdictionSubject.test.mjs"
+      ],
+      "gap": "Dispute method defaults to arbitration and the seat falls back to the execution city; neither is provenance-recorded.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G20",
+      "phase": "Facts",
+      "name": "Escalate unknown concepts, conflicting facts and unsupported inferences",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/positionResolution.js",
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "positions; 9 requirement types",
+      "failure_behaviour": "label only",
+      "verification": [
+        "tests/positionConservation.test.mjs"
+      ],
+      "gap": "The frontend renders none of position_outcomes, requirements or open_treatments.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G21",
+      "phase": "Requirements",
+      "name": "Identify applicable legal requirements and formalities",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentRequirements.js",
+        "backend/services/statutoryChecklist.js",
+        "IRE/src/indian-rule-engine/stampDutyValidator.js"
+      ],
+      "scope": "9 requirement types; stamp: 29 types",
+      "failure_behaviour": "notice",
+      "verification": [
+        "tests/documentRequirements.test.mjs",
+        "tests/requirementKind.test.mjs"
+      ],
+      "gap": "Formalities are notices; stamp adequacy is not machine-verified.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G22",
+      "phase": "Requirements",
+      "name": "Identify propositions the document must establish",
+      "status": "PARTIAL",
+      "evidence": [
+        "knowledge-base/propositions/propositions.json",
+        "backend/services/propositionSatisfaction.js"
+      ],
+      "scope": "tests and scripts only",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/propositionSatisfactionLayer.test.mjs",
+        "tests/satisfactionContract.test.mjs"
+      ],
+      "gap": "Proposition satisfaction is off the generation path by design until the advocate approves the satisfier model.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G23",
+      "phase": "Requirements",
+      "name": "Determine applicability from supported facts",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseAssembler.js",
+        "backend/services/dependencyResolver.js"
+      ],
+      "scope": "blueprint gates: all",
+      "failure_behaviour": "exclude",
+      "verification": [
+        "tests/declinePrecedence.test.mjs",
+        "tests/loanApplicability.test.mjs",
+        "tests/gateReachability.test.mjs"
+      ],
+      "gap": "Evidence-based applicability is always APPLICABILITY_UNKNOWN; frozen gates recorded as not repaired.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G24",
+      "phase": "Requirements",
+      "name": "Identify prohibited, restricted or uncertain treatments",
+      "status": "PARTIAL",
+      "evidence": [
+        "knowledge-base/rules/illegal_clauses.rules.json",
+        "backend/services/documentHardening.js",
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "all (keyword based)",
+      "failure_behaviour": "block (illegal clauses); review (Articles precedence)",
+      "verification": [
+        "tests/articlesPrecedence.test.mjs",
+        "tests/declinedProtections.test.mjs"
+      ],
+      "gap": "Keyword detection; most rules await legal review.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G25",
+      "phase": "Requirements",
+      "name": "Record unresolved legal judgments for advocate review",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "backend/services/libraryReviewService.js",
+        "backend/services/constraintScopeReviewService.js",
+        "knowledge-base/governance/articles-precedence-review.json"
+      ],
+      "scope": "all",
+      "failure_behaviour": "escalate (records only)",
+      "verification": [
+        "tests/certificationDimensions.test.mjs"
+      ],
+      "gap": "Scaffolding exists; no advocate decision has been recorded.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G26",
+      "phase": "Selection",
+      "name": "Select mandatory clauses from the blueprint",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/clauseAssembler.js",
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "46 blueprints",
+      "failure_behaviour": "n/a",
+      "verification": [
+        "tests/generalProvisionsBaseline.test.mjs",
+        "tests/goldenCorpus.test.mjs"
+      ],
+      "gap": "Blueprints themselves are unreviewed (quality level 11).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G27",
+      "phase": "Selection",
+      "name": "Evaluate conditional inclusion",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/clauseAssembler.js"
+      ],
+      "scope": "31 blueprints",
+      "failure_behaviour": "n/a",
+      "verification": [
+        "tests/declinePrecedence.test.mjs",
+        "tests/loanSecurityTreatment.test.mjs"
+      ],
+      "gap": "—",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G28",
+      "phase": "Selection",
+      "name": "Select variants reflecting confirmed positions",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseAssembler.js"
+      ],
+      "scope": "15 blueprints",
+      "failure_behaviour": "n/a",
+      "verification": [],
+      "gap": "A fallback default variant is explained as 'Selected to match your situation'.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G29",
+      "phase": "Selection",
+      "name": "Resolve dependencies, requirements and conflicts",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/dependencyResolver.js",
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "n/a",
+      "verification": [
+        "tests/declinedProtectionsFinding.test.mjs",
+        "tests/positionOverride.test.mjs"
+      ],
+      "gap": "The clause set is mutated in at least six places; a dependency can re-inject a declined clause.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G30",
+      "phase": "Selection",
+      "name": "Construct the clause set and ordering",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseAssembler.js",
+        "backend/config/clauseOrder.js",
+        "backend/services/documentService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "n/a",
+      "verification": [],
+      "gap": "Blueprint order is overridden by category sorting; the AI merge cannot add or drop clause ids but can change a clause's category, which drives sorting and locking.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G31",
+      "phase": "Construction",
+      "name": "Construct operative rights and obligations",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "backend/services/documentHardening.js",
+        "backend/services/obligationTracker.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/goldenCorpus.test.mjs"
+      ],
+      "gap": "Library text plus 132 renderers; 0 of 316 clauses reviewed.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G32",
+      "phase": "Construction",
+      "name": "Construct ownership, control and allocation",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/economicAllocation.js",
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "allocation families",
+      "failure_behaviour": "report",
+      "verification": [
+        "tests/economicAllocation.test.mjs"
+      ],
+      "gap": "Allocations are reported, never rescaled or reconciled.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G33",
+      "phase": "Construction",
+      "name": "Apply legal protections and regulatory requirements",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/doctrineInjector.js",
+        "backend/commercial/commercialEngine.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/poshFalsification.test.mjs",
+        "tests/tosFalsification.test.mjs"
+      ],
+      "gap": "Concepts are not wired to clause selection.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G34",
+      "phase": "Construction",
+      "name": "Construct reps, warranties, indemnities and liability",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/commercial/injector.js",
+        "backend/commercial/protectionLibrary.js"
+      ],
+      "scope": "commercial families",
+      "failure_behaviour": "advisory; repair may inject",
+      "verification": [
+        "tests/capIndemnityInteraction.test.mjs",
+        "tests/capReferent.test.mjs"
+      ],
+      "gap": "The repair round injects protections the user never asked for (only explicit declines are respected).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G35",
+      "phase": "Construction",
+      "name": "Align remedies, restrictions and consequences",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "9 requirement types",
+      "failure_behaviour": "reported, never gating",
+      "verification": [
+        "tests/crossTreatmentCoherence.test.mjs",
+        "tests/requirementCoherence.test.mjs"
+      ],
+      "gap": "The NDA ships CONFIDENTIALITY_PERIOD_COHERENT: CONTRADICTED (5 years vs 3).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G36",
+      "phase": "Commercial",
+      "name": "Populate consideration, prices, fees and payments",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/variableInjector.js",
+        "backend/services/formattingEngine.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "economic mismatches advisory",
+      "verification": [
+        "tests/inputMismatchSeverity.test.mjs"
+      ],
+      "gap": "An amount that does not reach the document is advisory, not blocking.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G37",
+      "phase": "Commercial",
+      "name": "Calculate percentages, shares, interest and taxes",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/instrumentKnowledge.js",
+        "backend/services/economicAllocation.js"
+      ],
+      "scope": "term sheet (withdrawn); stamp financials",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "Calculations exist only for the term sheet; elsewhere figures are copied, not computed or checked.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G38",
+      "phase": "Commercial",
+      "name": "Construct performance obligations, deliverables and milestones",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "service families",
+      "failure_behaviour": "advisory (dangling references)",
+      "verification": [],
+      "gap": "Self-referential fills ship (SERVICE_SLA_001).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G39",
+      "phase": "Commercial",
+      "name": "Construct commencement, renewal, expiry and termination",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/statutoryDeadlines.js",
+        "backend/services/draftConsistencyValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block on date or duration mismatch",
+      "verification": [
+        "tests/timingAssessment.test.mjs"
+      ],
+      "gap": "The renewal → expiry → termination sequence is not checked as a whole.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G40",
+      "phase": "Commercial",
+      "name": "Align financial consequences with obligations; no silent economic defaults",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHardening.js",
+        "backend/services/positionResolution.js",
+        "knowledge-base/governance/placeholder-provenance.json"
+      ],
+      "scope": "term sheet: none silent; others: constants recorded, not printed",
+      "failure_behaviour": "disclose positions; constants hidden",
+      "verification": [
+        "tests/placeholderProvenance.test.mjs",
+        "tests/provenanceHardening.test.mjs"
+      ],
+      "gap": "Hardening constants (default events, invocation conditions, 12-month covenants) are recorded in provenance but never shown to the user.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G41",
+      "phase": "Rendering",
+      "name": "Render clauses with the correct facts and positions",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/draftVariableInjector.js",
+        "backend/services/documentService.js"
+      ],
+      "scope": "deterministic path: all",
+      "failure_behaviour": "CRITICAL on unresolved placeholders",
+      "verification": [],
+      "gap": "On the AI path the seed is not variable-injected, so the model substitutes values in clauses without a renderer.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G42",
+      "phase": "Rendering",
+      "name": "Preserve names, identifiers, numbers, dates and defined terms",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseQualityNormalizer.js",
+        "backend/services/formattingEngine.js",
+        "backend/services/draftConsistencyValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block for identity, law, start date, duration",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs",
+        "tests/partyNameValidation.test.mjs"
+      ],
+      "gap": "D4.44 fixed alias rewriting of names and lost paise; the PAN check still passes if the digits appear anywhere in the document.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G43",
+      "phase": "Rendering",
+      "name": "Apply instrument-appropriate binding or non-binding language",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/instrumentKnowledge.js",
+        "backend/services/instrumentCoherence.js",
+        "knowledge-base/metadata/drafting_policies.json"
+      ],
+      "scope": "term sheet only (withdrawn)",
+      "failure_behaviour": "block",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "39 types declare no instrument.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G44",
+      "phase": "Rendering",
+      "name": "Optional AI tailoring within deterministic boundaries",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentService.js",
+        "backend/services/clauseLocker.js"
+      ],
+      "scope": "all except the term sheet",
+      "failure_behaviour": "fallback to deterministic on blocking issues",
+      "verification": [],
+      "gap": "Tailoring is on by default; the semantic-merge test is not in the suite; locking lists exist twice.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G45",
+      "phase": "Rendering",
+      "name": "Record value-source provenance and transformations",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/provenance.js",
+        "scripts/provenanceConservation.mjs"
+      ],
+      "scope": "injector and hardening (2 of 5 producers)",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/provenanceInjector.test.mjs",
+        "tests/provenanceHardening.test.mjs",
+        "tests/provenanceConservation.test.mjs"
+      ],
+      "gap": "generationControls, jurisdictionEngine, the client, the AI merge and repair are not recorded.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G46",
+      "phase": "Assembly",
+      "name": "Construct title, introduction and recitals",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHardening.js",
+        "backend/services/exportService.js"
+      ],
+      "scope": "all; instrument-aware for the term sheet",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "Generic agreement recitals for every type that declares no instrument.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G47",
+      "phase": "Assembly",
+      "name": "Assemble definitions and operative provisions consistently",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentQualityControl.js",
+        "backend/services/clauseQualityNormalizer.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "HIGH",
+      "verification": [
+        "tests/documentStructure.test.mjs"
+      ],
+      "gap": "A capitalised term used but never defined is not detected.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G48",
+      "phase": "Assembly",
+      "name": "Generate schedules, annexures and exhibits",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/exportService.js"
+      ],
+      "scope": "types with schedule clauses",
+      "failure_behaviour": "CRITICAL on an unresolved schedule reference",
+      "verification": [],
+      "gap": "No schedule builder.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G49",
+      "phase": "Assembly",
+      "name": "Generate execution blocks for every signatory",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHardening.js",
+        "backend/services/signatureResolver.js"
+      ],
+      "scope": "CORE_SIGNATURE_BLOCK_001: N parties; others: 2 (guarantee 3)",
+      "failure_behaviour": "block on a party missing from the block",
+      "verification": [
+        "tests/nPartyIdentity.test.mjs",
+        "tests/unilateralPartyValidation.test.mjs"
+      ],
+      "gap": "Two signature implementations; capacities and authority are not shown.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G50",
+      "phase": "Assembly",
+      "name": "Apply numbering, headings, layout and formatting",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/config/clauseOrder.js",
+        "backend/services/exportService.js",
+        "backend/services/documentStructure.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "n/a",
+      "verification": [
+        "tests/documentStructure.test.mjs",
+        "tests/launchCompliance.test.mjs"
+      ],
+      "gap": "Numbering is not verified in the output (quality level 32).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G51",
+      "phase": "Uncertainty",
+      "name": "Identify unresolved facts, choices and propositions",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "response only",
+      "verification": [],
+      "gap": "requirements, open_treatments, position_outcomes and party_roster are computed and returned, not displayed or gated.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G52",
+      "phase": "Uncertainty",
+      "name": "Decide whether missing information blocks or is disclosed",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentService.js",
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "only CRITICAL blocks",
+      "verification": [
+        "tests/documentRequirements.test.mjs",
+        "tests/releaseEnforcement.test.mjs"
+      ],
+      "gap": "34 requirements marked when_unsatisfied: BLOCK never block: assessment runs after the decision. D4.46: requirements now decide release (requirementRelease.js); 23 audited BLOCK requirements block, 11 are held for legal review.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G53",
+      "phase": "Uncertainty",
+      "name": "Record and display defaults, assumptions and open points",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/disclosureRenderer.js"
+      ],
+      "scope": "positions (all); term sheet open points",
+      "failure_behaviour": "disclose in DOCX, PDF, TXT",
+      "verification": [
+        "tests/disclosureArtifact.test.mjs"
+      ],
+      "gap": "Only metadata.assumptions are printed; hardening constants and roster gaps are not.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G54",
+      "phase": "Uncertainty",
+      "name": "Repair deterministically without changing confirmed user positions",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/deterministicFixer.js",
+        "backend/services/issueRepairService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "—",
+      "verification": [
+        "tests/generationIntegrity.test.mjs"
+      ],
+      "gap": "D4.46: the repair no longer changes rendered figures or locked clauses on any path (fixer, AI merge, /fix-issue); refusals are recorded in metadata.refused_mutations. Remaining: the six-field record.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G55",
+      "phase": "Uncertainty",
+      "name": "Submit the draft to independent rendered-document checks",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/validationService.js",
+        "IRE/src/indian-rule-engine/aiLegalSafetyValidator.js",
+        "backend/services/documentService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block on CRITICAL",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs",
+        "tests/verificationCoverage.test.mjs"
+      ],
+      "gap": "After the AI merge the tamper baseline is reset to the AI text; the AI safety check is an LLM and non-blocking when unavailable; a fix is accepted when the targeted rule disappears.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G56",
+      "phase": "Delivery",
+      "name": "Freeze the draft with its source facts and clause versions",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHistoryService.js",
+        "backend/models/DocumentVersion.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [],
+      "gap": "Saving is client-initiated with a client-supplied draft and validation; clause versions are not in the content hash.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G57",
+      "phase": "Delivery",
+      "name": "Generate DOCX, PDF and TXT",
+      "status": "EXISTS",
+      "evidence": [
+        "backend/services/exportService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "422 on blocking issues",
+      "verification": [
+        "tests/launchCompliance.test.mjs",
+        "tests/termSheetWithdrawal.test.mjs"
+      ],
+      "gap": "Content fidelity across formats is not compared (quality level 34).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G58",
+      "phase": "Delivery",
+      "name": "Preserve history, provenance and validation evidence",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHistoryService.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/termSheetWithdrawal.test.mjs"
+      ],
+      "gap": "20 versions kept; one record per user per document type; older records' versions are deleted.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G59",
+      "phase": "Delivery",
+      "name": "Attach automated-check and legal-review status",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/validationService.js",
+        "shared/documentWithdrawals.js"
+      ],
+      "scope": "all; withdrawn and superseded term sheets marked",
+      "failure_behaviour": "label",
+      "verification": [
+        "tests/verificationCoverage.test.mjs",
+        "tests/termSheetWithdrawal.test.mjs"
+      ],
+      "gap": "Family certification status is not attached to any output.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "G60",
+      "phase": "Delivery",
+      "name": "Release or withhold by approval and safety conditions",
+      "status": "PARTIAL",
+      "evidence": [
+        "shared/documentWithdrawals.js",
+        "backend/services/familyCertification.js",
+        "shared/clauseProvenance.js"
+      ],
+      "scope": "withdrawal: term sheet only",
+      "failure_behaviour": "410 for withdrawn types",
+      "verification": [
+        "tests/termSheetWithdrawal.test.mjs",
+        "tests/familyCertification.test.mjs"
+      ],
+      "gap": "Nothing stops a NOT_ASSESSED family; LEGALAID_REQUIRE_REVIEWED_CLAUSES is off and filters only the rule engine's registry.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    }
+  ],
+  "quality_levels": [
+    {
+      "id": "Q01",
+      "phase": "Transaction",
+      "name": "Document classification",
+      "status": "MISSING",
+      "evidence": [
+        "shared/documentShape.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block only when absent",
+      "verification": [],
+      "gap": "Nothing checks the chosen family fits the transaction.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q02",
+      "phase": "Transaction",
+      "name": "Transaction purpose",
+      "status": "PARTIAL",
+      "evidence": [
+        "IRE/src/indian-rule-engine/completenessValidator.js",
+        "backend/services/documentRequirements.js"
+      ],
+      "scope": "all (heuristic)",
+      "failure_behaviour": "advisory",
+      "verification": [],
+      "gap": "Length and keyword tests; no purpose model.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q03",
+      "phase": "Transaction",
+      "name": "Party identification",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/partyIdentityValidator.js",
+        "IRE/src/indian-rule-engine/executionValidator.js"
+      ],
+      "scope": "all parties (D4.45)",
+      "failure_behaviour": "block on duplicates and missing names; HIGH otherwise",
+      "verification": [
+        "tests/nPartyIdentity.test.mjs"
+      ],
+      "gap": "Identifiers are checked for form, not ownership.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q04",
+      "phase": "Transaction",
+      "name": "Party capacity and authority",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "knowledge-base/constraints/execution_authority.constraints.json",
+        "IRE/src/universal/primitives/capacity.js"
+      ],
+      "scope": "parties 1–2",
+      "failure_behaviour": "notice",
+      "verification": [],
+      "gap": "Authority is never verified; MINOR_PARTY is dead code.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q05",
+      "phase": "Transaction",
+      "name": "Fact completeness",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/variableValidator.js",
+        "backend/services/materialityAnalysis.js",
+        "backend/services/positionResolution.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block on required fields",
+      "verification": [],
+      "gap": "Unsupported facts are only measured.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q06",
+      "phase": "Legal foundation",
+      "name": "Jurisdiction",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/jurisdictionEngine.js",
+        "IRE/src/indian-rule-engine/semanticValidator.js",
+        "backend/services/agreementGraphValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "mixed",
+      "verification": [
+        "tests/jurisdictionSubject.test.mjs"
+      ],
+      "gap": "Stamp duty uses the governing-law state, not where the property sits or the deed is executed.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q07",
+      "phase": "Legal foundation",
+      "name": "Statutory applicability",
+      "status": "PARTIAL",
+      "evidence": [
+        "IRE/src/statutes/statutoryEngine.js",
+        "backend/services/conceptResolver.js",
+        "backend/services/statutoryChecklist.js"
+      ],
+      "scope": "varies",
+      "failure_behaviour": "advisory",
+      "verification": [],
+      "gap": "If the statutory engine throws it returns no issues and coverage does not record the skip.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q08",
+      "phase": "Legal foundation",
+      "name": "Legal concept resolution",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/conceptResolver.js"
+      ],
+      "scope": "12 concepts",
+      "failure_behaviour": "not a finding",
+      "verification": [
+        "tests/conceptLayerGaps.test.mjs"
+      ],
+      "gap": "An unresolved concept falls back to its assumption; validation never sees it.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q09",
+      "phase": "Legal foundation",
+      "name": "Legal proposition coverage",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentRequirements.js",
+        "backend/services/propositionSatisfaction.js"
+      ],
+      "scope": "9 requirement types",
+      "failure_behaviour": "measured only",
+      "verification": [
+        "tests/propositionCoverage.test.mjs",
+        "tests/releaseEnforcement.test.mjs"
+      ],
+      "gap": "UNRESOLVED or CONTRADICTED requirements never become findings. D4.46: requirements now decide release (requirementRelease.js); 23 audited BLOCK requirements block, 11 are held for legal review.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q10",
+      "phase": "Legal foundation",
+      "name": "Legal formalities",
+      "status": "PARTIAL",
+      "evidence": [
+        "IRE/src/indian-rule-engine/stampDutyValidator.js",
+        "IRE/src/indian-rule-engine/registrationValidator.js"
+      ],
+      "scope": "listed types",
+      "failure_behaviour": "stamp never blocks; missing registration blocks",
+      "verification": [],
+      "gap": "Witnessing is counted by the word 'witness'.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q11",
+      "phase": "Clause architecture",
+      "name": "Blueprint correctness",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "IRE/src/indian-rule-engine/blueprintValidator.js",
+        "backend/services/clauseAssembler.js",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block when a draft strays",
+      "verification": [],
+      "gap": "Nothing validates a blueprint itself; that is an advocate's review.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q12",
+      "phase": "Clause architecture",
+      "name": "Mandatory clause coverage",
+      "status": "PARTIAL",
+      "evidence": [
+        "IRE/src/indian-rule-engine/constraintEngine.js",
+        "backend/services/documentHardening.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block or HIGH",
+      "verification": [
+        "tests/constraintScope.test.mjs"
+      ],
+      "gap": "13 constraint scopes UNDECIDED; all constraints draft-needs-legal-review.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q13",
+      "phase": "Clause architecture",
+      "name": "Conditional applicability",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseAssembler.js",
+        "knowledge-base/governance/frozen-gates.json"
+      ],
+      "scope": "all",
+      "failure_behaviour": "selection",
+      "verification": [
+        "tests/gateReachability.test.mjs"
+      ],
+      "gap": "Evidence-based applicability not wired; frozen gates not repaired.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q14",
+      "phase": "Clause architecture",
+      "name": "Dependency and conflict resolution",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/dependencyResolver.js",
+        "backend/services/clauseQualityNormalizer.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "overlap blocks; others advisory",
+      "verification": [
+        "tests/loanSecurityTreatment.test.mjs"
+      ],
+      "gap": "A dependency can re-inject a declined clause.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q15",
+      "phase": "Clause architecture",
+      "name": "Boilerplate relevance",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentHardening.js",
+        "knowledge-base/metadata/drafting_policies.json",
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "12 policies; term sheet coherence",
+      "failure_behaviour": "advisory; HIGH for the term sheet",
+      "verification": [
+        "tests/generalProvisionsBaseline.test.mjs",
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "No general rule for whether a general provision suits the instrument.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q16",
+      "phase": "Substance",
+      "name": "Economic accuracy",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/numericPlausibilityValidator.js",
+        "backend/services/economicAllocation.js"
+      ],
+      "scope": "53 fields, 9 cross-field rules",
+      "failure_behaviour": "impossible input blocks",
+      "verification": [],
+      "gap": "Calculations in the rendered prose, and amounts in figures vs words, are never checked.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q17",
+      "phase": "Substance",
+      "name": "Rights and obligations",
+      "status": "MISSING",
+      "evidence": [
+        "backend/services/instrumentCoherence.js",
+        "backend/services/obligationTracker.js"
+      ],
+      "scope": "term sheet (non-party obligations)",
+      "failure_behaviour": "CRITICAL for the term sheet",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "No model of who must do what, and when.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q18",
+      "phase": "Substance",
+      "name": "Risk allocation",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "IRE/src/universal/primitives/indemnity.js",
+        "backend/services/riskProfile.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "advisory",
+      "verification": [
+        "tests/capIndemnityInteraction.test.mjs"
+      ],
+      "gap": "Adequacy is an advocate's call.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q19",
+      "phase": "Substance",
+      "name": "Lifecycle logic",
+      "status": "PARTIAL",
+      "evidence": [
+        "IRE/src/universal/primitives/termination.js",
+        "backend/services/statutoryDeadlines.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "mixed",
+      "verification": [
+        "tests/timingAssessment.test.mjs"
+      ],
+      "gap": "The sequence is not checked as a whole.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q20",
+      "phase": "Substance",
+      "name": "Remedies and enforceability",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "IRE/src/indian-rule-engine/illegalClauseValidator.js",
+        "IRE/src/universal/primitives/restraintOfTrade.js"
+      ],
+      "scope": "all (keyword)",
+      "failure_behaviour": "illegal clauses block",
+      "verification": [
+        "tests/illegalClausePatterns.test.mjs"
+      ],
+      "gap": "Keyword based; enforceability needs an advocate.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q21",
+      "phase": "Coherence",
+      "name": "Binding-status consistency",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "term sheet only",
+      "failure_behaviour": "block",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "39 types unchecked (MOU checked for presence only).",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q22",
+      "phase": "Coherence",
+      "name": "Cross-clause consistency",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentRequirements.js",
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "NDA relationships (reported); term sheet board size",
+      "failure_behaviour": "measured only",
+      "verification": [
+        "tests/ndaContradiction.test.mjs",
+        "tests/requirementCoherence.test.mjs"
+      ],
+      "gap": "D4.46: cross-clause relationships are compared by meaning for durations and block when contradicted (MATERIAL_CONTRADICTION). Only the NDA declares a relationship so far; other families have none.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q23",
+      "phase": "Coherence",
+      "name": "Defined-term consistency",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentQualityControl.js",
+        "backend/services/clauseQualityNormalizer.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "CRITICAL for party naming; HIGH otherwise",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "An undefined capitalised term is not detected.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q24",
+      "phase": "Coherence",
+      "name": "Cross-reference integrity",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentQualityControl.js",
+        "backend/services/instrumentCoherence.js",
+        "backend/services/agreementGraphValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "mostly advisory",
+      "verification": [
+        "tests/agreementGraph.test.mjs"
+      ],
+      "gap": "Clause-number references assume number = position; graph findings block only behind an environment flag.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q25",
+      "phase": "Coherence",
+      "name": "External-document alignment",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "backend/services/instrumentCoherence.js",
+        "knowledge-base/governance/articles-precedence-review.json"
+      ],
+      "scope": "every document (Articles precedence)",
+      "failure_behaviour": "legal review",
+      "verification": [
+        "tests/articlesPrecedence.test.mjs"
+      ],
+      "gap": "SHA and SSA wording awaits the advocate.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q26",
+      "phase": "Precision",
+      "name": "Value provenance",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/provenance.js"
+      ],
+      "scope": "2 of 5 producers",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/provenanceInjector.test.mjs",
+        "tests/provenanceHardening.test.mjs"
+      ],
+      "gap": "Validation never reads the provenance record.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q27",
+      "phase": "Precision",
+      "name": "Default and assumption control",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/positionResolution.js",
+        "backend/services/disclosureRenderer.js",
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "positions; term sheet SILENT_DEFAULT",
+      "failure_behaviour": "advisory",
+      "verification": [
+        "tests/disclosureArtifact.test.mjs",
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "Hardening constants are recorded, not disclosed.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q28",
+      "phase": "Precision",
+      "name": "Identity preservation",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseQualityNormalizer.js",
+        "backend/services/draftConsistencyValidator.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "block for names; HIGH for identifiers",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "No exact before/after comparison of each value through every stage.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q29",
+      "phase": "Precision",
+      "name": "Numerical and date precision",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/formattingEngine.js",
+        "backend/services/instrumentCoherence.js"
+      ],
+      "scope": "all (paise); term sheet dates",
+      "failure_behaviour": "HIGH",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "No figures-vs-words check; no general date-ordering check.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q30",
+      "phase": "Precision",
+      "name": "Transformation integrity",
+      "status": "PARTIAL",
+      "evidence": [
+        "scripts/provenanceConservation.mjs",
+        "backend/services/provenance.js"
+      ],
+      "scope": "corpus (217 cases)",
+      "failure_behaviour": "gate in tests",
+      "verification": [
+        "tests/generationIntegrity.test.mjs",
+        "tests/provenanceConservation.test.mjs"
+      ],
+      "gap": "D4.46: AI tailoring and repairs are checked against immutable pre-transformation text for figures and locks. Normalise/dedupe/prune stages still have no meaning-preservation check.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q31",
+      "phase": "Inspection",
+      "name": "Grammar and legal drafting",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/clauseQualityNormalizer.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "HIGH",
+      "verification": [],
+      "gap": "No drafting-style checks; '5:00 p.m. Local time' still ships.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q32",
+      "phase": "Inspection",
+      "name": "Formatting and numbering",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/documentStructure.js",
+        "backend/services/formattingEngine.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "CRITICAL for clauses after signatures",
+      "verification": [
+        "tests/documentStructure.test.mjs"
+      ],
+      "gap": "Numbering is not verified in the output.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q33",
+      "phase": "Inspection",
+      "name": "Signature and execution blocks",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/signatureResolver.js",
+        "backend/services/draftConsistencyValidator.js"
+      ],
+      "scope": "all parties named (D4.45)",
+      "failure_behaviour": "block",
+      "verification": [
+        "tests/nPartyIdentity.test.mjs"
+      ],
+      "gap": "Capacities and authority not checked.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q34",
+      "phase": "Inspection",
+      "name": "Export fidelity",
+      "status": "MISSING",
+      "evidence": [
+        "backend/services/exportService.js"
+      ],
+      "scope": "none",
+      "failure_behaviour": "none",
+      "verification": [
+        "tests/termSheetWithdrawal.test.mjs",
+        "tests/disclosureArtifact.test.mjs"
+      ],
+      "gap": "Validation runs on draft JSON, never on the DOCX/PDF bytes; tests check only that notices are present.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q35",
+      "phase": "Inspection",
+      "name": "Final artifact completeness",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/exportService.js",
+        "backend/services/disclosureRenderer.js",
+        "shared/documentWithdrawals.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "CRITICAL for placeholders",
+      "verification": [
+        "tests/termSheetWithdrawal.test.mjs",
+        "tests/launchCompliance.test.mjs"
+      ],
+      "gap": "Dangling references are advisory.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q36",
+      "phase": "Assurance",
+      "name": "Adversarial defect testing",
+      "status": "PARTIAL",
+      "evidence": [
+        "tests/termSheetFalsification.test.mjs",
+        "tests/poshFalsification.test.mjs",
+        "tests/tosFalsification.test.mjs"
+      ],
+      "scope": "about 10 families",
+      "failure_behaviour": "tests",
+      "verification": [
+        "tests/termSheetFalsification.test.mjs"
+      ],
+      "gap": "Most families have no planted-defect tests.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q37",
+      "phase": "Assurance",
+      "name": "Scenario and boundary testing",
+      "status": "MISSING",
+      "evidence": [
+        "tests/golden/corpus.json",
+        "sweep.mjs"
+      ],
+      "scope": "5 golden fixtures; fixture profiles",
+      "failure_behaviour": "tests",
+      "verification": [
+        "tests/goldenCorpus.test.mjs"
+      ],
+      "gap": "Not systematic.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q38",
+      "phase": "Assurance",
+      "name": "Regression and historical comparison",
+      "status": "PARTIAL",
+      "evidence": [
+        "scripts/freezeClauseBaseline.mjs",
+        "tests/fixtures/termSheet.D4_44.defective.json",
+        "knowledge-base/governance/suite-baseline.json"
+      ],
+      "scope": "clause sets; one frozen document",
+      "failure_behaviour": "tests",
+      "verification": [
+        "tests/clauseProvenanceReach.test.mjs"
+      ],
+      "gap": "No rendered-text comparison against earlier outputs except the conservation gate.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q39",
+      "phase": "Assurance",
+      "name": "Advocate review and authority verification",
+      "status": "NEEDS_LEGAL_JUDGMENT",
+      "evidence": [
+        "backend/services/libraryReviewService.js",
+        "backend/models/ReviewSignoff.js",
+        "backend/services/statutoryCitationResolver.js"
+      ],
+      "scope": "all",
+      "failure_behaviour": "none",
+      "verification": [],
+      "gap": "0 of 40 families approved; 0 of 316 clauses reviewed.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    },
+    {
+      "id": "Q40",
+      "phase": "Assurance",
+      "name": "Release certification",
+      "status": "PARTIAL",
+      "evidence": [
+        "backend/services/familyCertification.js",
+        "shared/documentWithdrawals.js"
+      ],
+      "scope": "withdrawal: term sheet",
+      "failure_behaviour": "410 for withdrawn types",
+      "verification": [
+        "tests/familyCertification.test.mjs",
+        "tests/termSheetWithdrawal.test.mjs"
+      ],
+      "gap": "Certification is computed by scripts only; nothing stops a NOT_ASSESSED family.",
+      "record": {
+        "input": null,
+        "decision": null,
+        "output": null,
+        "provenance": null,
+        "failure_behaviour": null,
+        "verification": null
+      }
+    }
+  ],
+  "summary": {
+    "generation": {
+      "MISSING": 4,
+      "PARTIAL": 45,
+      "EXISTS": 8,
+      "NEEDS_LEGAL_JUDGMENT": 3
+    },
+    "quality": {
+      "MISSING": 4,
+      "PARTIAL": 30,
+      "NEEDS_LEGAL_JUDGMENT": 6
+    }
+  },
+  "defects_found_by_the_mapping": [
+    {
+      "id": "REPAIR_OVERRIDES_USER_VALUES",
+      "level": [
+        "G54",
+        "Q30"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "what": "backend/services/deterministicFixer.js rewrites any interest rate of 40% or more to '24%' (USURIOUS_INTEREST_RATE) and any MSME payment period of 60 days or more to '45 days', in the clause text, without asking. Because economic input mismatches are advisory, the draft ships with a figure the user did not enter.",
+      "status": "FIXED_D4_46",
+      "resolution": "The fixer no longer rewrites any clause text (backend/services/deterministicFixer.js); every machine mutation passes backend/services/mutationGuard.js. A 48% loan ships at 48% and is flagged USURIOUS_INTEREST_RATE.",
+      "verified_by": [
+        "tests/generationIntegrity.test.mjs",
+        "tests/fixtures/repairOverride.D4_46.json"
+      ]
+    },
+    {
+      "id": "TAMPER_BASELINE_RESET_AFTER_AI",
+      "level": [
+        "G55",
+        "Q30"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "what": "After the AI merge, attachDraftContext(..., { resetBaseline: true }) rebuilds baseline_clause_map from the AI text (documentService.js), so CLAUSE_TAMPER_DETECTED compares the AI's text with itself.",
+      "status": "FIXED_D4_46",
+      "resolution": "AI output is checked against metadata.pre_ai_baseline, written once before any AI change and never reset (validateAIIntegrity, layer ai_integrity, AI_CHANGED_AGREED_TERMS CRITICAL). The merge also refuses AI clauses that change figures.",
+      "verified_by": [
+        "tests/generationIntegrity.test.mjs"
+      ]
+    },
+    {
+      "id": "FIX_ISSUE_IGNORES_LOCKS",
+      "level": [
+        "G54"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "what": "POST /fix-issue (issueRepairService) applies AI edits to any clause id with no check of locked or protected clauses.",
+      "status": "FIXED_D4_46",
+      "resolution": "repairDocumentIssue passes every AI edit through guardDraftMutation: locked or protected clauses, removed user figures and introduced figures are refused, and the user is told why.",
+      "verified_by": [
+        "tests/generationIntegrity.test.mjs"
+      ]
+    },
+    {
+      "id": "REQUIREMENT_BLOCK_NEVER_BLOCKS",
+      "level": [
+        "G52",
+        "Q09"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "what": "34 requirements are authored when_unsatisfied: BLOCK; assessRequirements reports blocking:true, but assessment runs in buildSuccess after the release decision, so none blocks.",
+      "status": "FIXED_D4_46",
+      "resolution": "The requirement model runs as a validation layer (backend/services/requirementRelease.js) and decides release in five states. Each of the 34 BLOCK requirements was audited individually (governance/block-requirements-audit.json): 23 ACTIVE_BLOCK, 11 held (Requires legal review when unmet).",
+      "verified_by": [
+        "tests/releaseEnforcement.test.mjs"
+      ]
+    },
+    {
+      "id": "NDA_SHIPS_KNOWN_CONTRADICTION",
+      "level": [
+        "G35",
+        "Q22"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "what": "docs/audit/FAMILY_CERTIFICATION.txt: the NDA ships CONFIDENTIALITY_PERIOD_COHERENT: CONTRADICTED (5 years vs 3 years) and is labelled 'Automated checks passed'.",
+      "status": "FIXED_D4_46",
+      "resolution": "Frozen as tests/fixtures/ndaContradiction.D4_46.json (24 months vs a two-year term and three further years, certified 'Automated checks passed' at 100); now Blocked with MATERIAL_CONTRADICTION. The relationship compares periods (answer_kind DURATION), and NDA_TERM_SURVIVAL_001 has a renderer that uses agreement_term and defers to Duration of Confidentiality.",
+      "verified_by": [
+        "tests/ndaContradiction.test.mjs"
+      ]
+    },
+    {
+      "id": "UNCERTIFIED_FAMILIES_RELEASED",
+      "level": [
+        "G60",
+        "Q40"
+      ],
+      "severity": "P1",
+      "verified_by_hand": false,
+      "what": "familyCertification.certify runs only in scripts and tests; nothing withholds a NOT_ASSESSED family. LEGALAID_REQUIRE_REVIEWED_CLAUSES is off and does not filter generation.",
+      "status": "OPEN"
+    },
+    {
+      "id": "STATUTORY_ENGINE_FAILS_SILENTLY",
+      "level": [
+        "Q07"
+      ],
+      "severity": "P2",
+      "verified_by_hand": false,
+      "what": "runStatutoryValidation swallows errors and returns no issues, and coverage does not record the layer as skipped.",
+      "status": "OPEN"
+    },
+    {
+      "id": "AI_PATH_UNINJECTED_SEED",
+      "level": [
+        "G41"
+      ],
+      "severity": "P2",
+      "verified_by_hand": false,
+      "what": "The semantic seed is not variable-injected, so on the AI path the model fills values in clauses that have no renderer, outside provenance.",
+      "status": "FIXED_D4_46",
+      "resolution": "The semantic seed is createDeterministicBaseDraft(generationInput), variable-injected, so the AI starts from and is judged against the user's values.",
+      "verified_by": [
+        "tests/generationIntegrity.test.mjs"
+      ]
+    },
+    {
+      "id": "NDA_AGREEMENT_TERM_IGNORED",
+      "level": [
+        "G37",
+        "Q22"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "status": "FIXED_D4_46",
+      "what": "The NDA asked for an Agreement Term (required) and NDA_TERM_SURVIVAL_001 was static library text stating 'two (2) years' whatever was entered.",
+      "resolution": "The renderer takes the term from agreement_term.",
+      "verified_by": [
+        "tests/ndaContradiction.test.mjs"
+      ]
+    },
+    {
+      "id": "SURVIVAL_LIST_STALE_AFTER_INJECTION",
+      "level": [
+        "G44",
+        "Q22"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "status": "OPEN",
+      "what": "enhanceCommercially injects CORE_INDEMNITY_FULL_001 and CORE_LIABILITY_LIMIT_FALLBACK_001 after documentHardening renders CORE_SURVIVAL_001, so a document that passes clean names fewer surviving provisions than it contains; one that enters the repair round is re-rendered correctly. Measured on the D4.46 conservation capture: 8 of 113 shipped documents with a survival clause (NDA 5, LEAVE_AND_LICENSE 3); 16 before D4.46.",
+      "next": "Belongs with the injected-protections workstream: render enumerating clauses after injection, so the text never depends on whether validation found anything."
+    },
+    {
+      "id": "MOU_NON_BINDING_ALWAYS_APPLIES",
+      "level": [
+        "Q21"
+      ],
+      "severity": "P2",
+      "verified_by_hand": true,
+      "status": "OPEN_NEEDS_LEGAL_JUDGMENT",
+      "what": "MOU NON_BINDING_CHARACTER applies 'always'. For an MOU the user declares Binding or Partly binding it reports unmet; held, so the outcome is 'Requires legal review', never a block. Its applicability should rest on binding_nature, which is a legal decision for the advocate."
+    },
+    {
+      "id": "REQUIREMENT_GAPS_SURFACED",
+      "level": [
+        "G35",
+        "Q09"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "status": "OPEN",
+      "what": "Now that requirements decide release, three families no longer pass clean on the fixture corpus: EMPLOYMENT_CONTRACT lacks a POSH provision (POSH_AWARENESS_REFLECTED) although the form asks for the Internal Committee's details; RENTAL_AGREEMENT does not deal with delivery of possession (POSSESSION_DELT_WITH; RENT_POSSESSION_001 is in the library, not the blueprint); SHAREHOLDERS_AGREEMENT cannot check transfer restrictions against Articles nobody supplied. Each is 'Requires legal review' or 'Requires information', as the requirement says; none is hidden.",
+      "next": "Per family: decide whether the blueprint should carry the provision (advocate), or ask for the evidence."
+    },
+    {
+      "id": "BLOCK_REQUIREMENTS_UNTESTED_ON_CORPUS",
+      "level": [
+        "G52"
+      ],
+      "severity": "P2",
+      "verified_by_hand": true,
+      "status": "OPEN",
+      "what": "No fixture world of CHEQUE_BOUNCE_NOTICE or POWER_OF_ATTORNEY generates (constraint refusals, tracked in governance/block-decomposition.json), so their 7 BLOCK requirements have no corpus evidence and are held rather than activated."
+    }
+  ],
+  "duplicate_evaluators": {
+    "rule": "Before building a missing level, choose the one owner of its topic; do not add a fourth predicate grammar or a seventh placeholder rule.",
+    "topics": {
+      "placeholders and uncertainty": [
+        "UNFILLED_PLACEHOLDERS",
+        "FORMAT_UNRESOLVED_PLACEHOLDER",
+        "UNCERTAINTY_PLACEHOLDER",
+        "AGREEMENT_VOID_FOR_UNCERTAINTY",
+        "ICA_S29_VAGUE_AGREEMENT",
+        "TERMS_TO_BE_AGREED"
+      ],
+      "entity type and identity": [
+        "partyIdentityValidator.checkEntityType",
+        "ENTITY_TYPE_CONTRADICTS_NAME (agreement graph)",
+        "INPUT_MISMATCH_*_TYPE",
+        "signatureResolver.looksIndividual",
+        "factExtractor.detectCorporateParty"
+      ],
+      "party presence": [
+        "NO_PARTY_IDENTIFICATION",
+        "STUB_PARTY_NAMES",
+        "FORMAT_MISSING_PARTY_*",
+        "INPUT_MISMATCH_*_NAME",
+        "CORP_REQUIRES_PARTIES",
+        "MISSING_CATEGORY_IDENTITY"
+      ],
+      "required clauses": [
+        "MISSING_REQUIRED_CLAUSE (blueprint)",
+        "MISSING_REQUIRED_CLAUSE_<id> (hardening)",
+        "*_REQUIRES_* constraints",
+        "documentRequirements"
+      ],
+      "signature blocks": [
+        "signatureResolver (2 parties)",
+        "CORE_SIGNATURE_BLOCK_001 renderer (N parties)"
+      ],
+      "clause ordering": [
+        "blueprint order",
+        "sortClausesByOrder in hardening",
+        "splitDocumentClauses in export"
+      ],
+      "locking": [
+        "clauseLocker.lockCriticalClauses",
+        "PROTECTED_SEMANTIC_* in documentService"
+      ],
+      "governing law, forum, restraint, ouster, penalty, unilateral change, termination notice, consideration": "two or three rules each (see the quality map)"
+    }
+  },
+  "next_sequence": [
+    {
+      "priority": "DONE_D4_46",
+      "work": "Generation integrity (repair, AI merge, /fix-issue, AI check on immutable baseline), BLOCK enforcement with the five requirement states, the NDA contradiction, 'Requires information' and 'Requires legal review'.",
+      "exit": "tests/generationIntegrity, tests/ndaContradiction, tests/releaseEnforcement."
+    },
+    {
+      "priority": "P1",
+      "work": "SURVIVAL_LIST_STALE_AFTER_INJECTION and the injected-protections silent default, as one workstream",
+      "exit": "Enumerating clauses are rendered after injection; the text is identical whether or not the repair round runs."
+    },
+    {
+      "priority": "P1",
+      "work": "Write the six-field record (input, decision, output, provenance, failure, verification) for each EXISTS and PARTIAL level, starting with the 13 the term sheet exercises",
+      "exit": "Each record names a test that fails when the level breaks."
+    },
+    {
+      "priority": "P1",
+      "work": "REQUIREMENT_GAPS_SURFACED: per family, the advocate decides the missing provisions (Employment POSH, Rental possession) and the MOU applicability",
+      "exit": "Each finding is either fixed in the blueprint or accepted with a recorded reason."
+    },
+    {
+      "priority": "P1",
+      "work": "Extend instrument declarations, coherence checks and clause relationships family by family",
+      "exit": "Per family: frozen defect, planted defects, negative controls."
+    },
+    {
+      "priority": "P2",
+      "work": "Export fidelity (Q34), scenario testing (Q37), provenance for the remaining producers (G45), citation migration, the 16 failing suites, the constraint refusals that keep 11 families from generating in the fixture corpus",
+      "exit": "Separate governed workstreams with reproducible evidence."
+    }
+  ]
+}

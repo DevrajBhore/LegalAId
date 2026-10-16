@@ -146,8 +146,9 @@
       "this (?:Agreement|Term Sheet) shall prevail[^.]{0,200}\\bArticles\\b",
       "\\bArticles\\b[^.]{0,200}this (?:Agreement|Term Sheet) shall prevail"
     ],
-    "authority": "V.B. Rangaraj v. V.B. Gopalakrishnan, (1992) 1 SCC 160: a restriction on share transfer not contained in the Articles does not bind the company or its shareholders. Later decisions have qualified this, which is why it is a review finding and not a rule.",
-    "outcome": "LEGAL_REVIEW_REQUIRED"
+    "authority": "V.B. Rangaraj v. V.B. Gopalakrishnan, (1992) 1 SCC 160 held that a restriction on transfer not contained in the Articles does not bind the company or its shareholders; later decisions and Section 58(2) of the Companies Act, 2013 (for a public company's securities) have qualified this",
+    "outcome": "LEGAL_REVIEW_REQUIRED",
+    "//": "Runs for every document type (validateArticlesPrecedence), not only declared instruments. One evaluator: instrument coherence does not repeat it."
   },
   "cross_reference_patterns": [
     "\\bthe ([a-z][a-z ]{2,40}?) (?:listed|set out|specified|described) in this (?:Term Sheet|Agreement)\\b"

@@ -121,8 +121,10 @@ for (const variant of ["minimal", "full"]) {
   assert.equal(period.coverage, COVERAGE.CONTRADICTED);
   assert.equal(period.finding, FINDING.ESTABLISHED_NEGATIVE);
   // Evidence-based: the finding names what each clause says, out of its own text.
-  assert.deepEqual(period.read.NDA_DURATION_001, ["5"]);
-  assert.deepEqual(period.read.NDA_TERM_SURVIVAL_001, ["3"]);
+  // D4.46: answers are periods (answer_kind DURATION), so "five (5) years" reads
+  // as 60 months, and 24 months and two years are the same answer.
+  assert.deepEqual(period.read.NDA_DURATION_001, ["60 months"]);
+  assert.deepEqual(period.read.NDA_TERM_SURVIVAL_001, ["36 months"]);
   checks += 5;
 }
 
@@ -429,7 +431,7 @@ const selfBroken = assessRequirements(
   "NDA", baseline.minimal.clauses, {}, {}, [], SELF_CONTRADICTING
 );
 assert.deepEqual(
-  selfBroken.relationships[0].read.NDA_TERM_SURVIVAL_001, ["5", "7"],
+  selfBroken.relationships[0].read.NDA_TERM_SURVIVAL_001, ["60 months", "84 months"],
   "every answer the clause gives is evidence, not only the first"
 );
 assert.equal(

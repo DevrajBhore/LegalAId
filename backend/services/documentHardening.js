@@ -3607,6 +3607,36 @@ function renderHardClauseUnobserved(
       };
     },
 
+    // D4.46. This clause was static library text: a two-year term whatever the
+    // user entered as the Agreement Term, and confidentiality surviving "a
+    // further period of three (3) years" beside Duration of Confidentiality,
+    // which states the user's own period. An NDA entered as 24 months shipped
+    // three different periods and was certified "Automated checks passed". The
+    // instrument now states the confidentiality period ONCE: the term comes from
+    // the user, and survival defers to Duration of Confidentiality by name.
+    NDA_TERM_SURVIVAL_001: () => {
+      const producer = P("NDA_TERM_SURVIVAL_001");
+      const term = strippedOrConstant(
+        "agreement_term", producer,
+        normalizeWhitespace(variables.agreement_term).replace(/\s+from\s+the\s+effective\s+date\.?$/i, ""),
+        "two (2) years"
+      );
+      const survival = present.clauseIds.has("NDA_DURATION_001")
+        ? 'Notwithstanding termination or expiry, the obligations of confidentiality shall survive for the period, and on the terms, set out in the clause headed "Duration of Confidentiality".'
+        : `Notwithstanding termination or expiry, the obligations of confidentiality shall survive for ${strippedOrConstant(
+            "confidentiality_period", producer, variables.confidentiality_period, "three (3) years"
+          )} in respect of Confidential Information that does not constitute a trade secret, and for so long as it retains that character in respect of a trade secret.`;
+      return {
+        title: clause.title || "Term and Survival",
+        text: [
+          `This Agreement shall commence on the Effective Date and continue for ${term}, unless earlier terminated by mutual written consent of the Parties or under this clause.`,
+          "Either Party may terminate this Agreement by giving thirty (30) days' written notice to the other Party.",
+          survival,
+          "Termination or expiry shall not affect any right or liability that accrued before it.",
+        ].join(" "),
+      };
+    },
+
     CORE_ENTIRE_AGREEMENT_001: () => ({
       title: "Entire Agreement",
       text: [

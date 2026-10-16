@@ -3,7 +3,7 @@
     "D4.44 — the term sheet: withdrawn, frozen, rebuilt. 9 October 2026.",
     "Order followed: withdraw → freeze the failing sample as regression evidence → define the legal requirements and the binding model → rebuild blueprint and intake → test the rendered output → advocate review → restore. The first five are done. The last two are not, and the type stays withdrawn until they are."
   ],
-  "review_status": "UNREVIEWED — engineering and drafting for an advocate's review. The rebuilt clauses are marked draft-needs-legal-review. Nothing here is legal advice.",
+  "review_status": "UNREVIEWED — engineering and drafting for an advocate's review. Certification: ENGINEERING_COMPLETE_PENDING_ADVOCATE (below APPROVED). Nothing here is legal advice.",
   "the_finding": {
     "what_shipped": "A term sheet that (1) opened 'THIS AGREEMENT ... made and executed', recited that the Parties 'intend to enter into a legally binding arrangement' and concluded 'in consideration of the mutual covenants ... agree as follows', while clause 1 said it was not binding; (2) drafted the investor-rights provisions as present obligations ('any transfer made in breach of this clause shall be void'); (3) bound 'the Founders' and 'Shareholders', who were not parties and signed nothing; (4) referred to 'the approvals listed in this Term Sheet', of which there were none; (5) gave the board as five directors and as 'such number of Directors as agreed'; (6) stated that the agreement prevails over the Articles of Association; (7) carried thirteen general provisions of a binding contract, including an entire-agreement clause superseding 'term sheets'; (8) omitted the price per share, the number of shares, the conversion terms, founder vesting, conditions, a completion date, use of funds and a lapse date; (9) stated three value-moving economic choices nobody had been asked: option pool in the pre-money, non-participating preference, broad-based weighted average.",
     "what_the_engine_said": "Score 100, 'No issues detected'.",
@@ -107,7 +107,8 @@
     "tests/termSheetWithdrawal.test.mjs": "19 checks. Refusal at generateDocument (410) and on every starting route; a request cannot opt back in; stored assurances are withdrawn on read.",
     "a_gate_that_failed_its_own_plant": "The first run of the planted-defect test failed: an obligation appended after the 'It is proposed that:' list was treated as part of the proposal. Frame inheritance was narrowed to list items.",
     "conservation_gate": "Re-baselined with every non-term-sheet difference explained (provenance-instrumentation.json → the_gate.rebaselines, 2026-10-09).",
-    "suite": "91 suites: 75 pass, 16 fail, the same 16 as before (suite-baseline.json → after_D4_44)."
+    "suite": "91 suites: 75 pass, 16 fail, the same 16 as before (suite-baseline.json → after_D4_44).",
+    "negative_controls_D4_45": "tests/termSheetFalsification.test.mjs §5b: the binding exclusivity and confidentiality obligations are not rejected; the same exclusivity sentence IS caught when moved into a non-binding provision (status, not wording, decides); a 'shall' inside a description of the definitive agreements, an interpretive 'shall have the meaning', obligations on actual parties and the arbitration clause's 'final and binding' are not rejected; a binding NDA gets none of the term sheet's semantics. Writing them found a second gap: a lettered '(b) … shall not' appended after the proposal list's closing paragraph was treated as part of the proposal. The list now ends at the first non-list line."
   },
   "not_done": [
     "Advocate review of the rebuilt clauses, the binding model and the coherence lexicon. The type stays withdrawn until then; restoring it is removing TERM_SHEET from shared/documentWithdrawals.js.",
@@ -118,5 +119,22 @@
     "The identity validator checks parties 1 and 2 only. With founders as parties 3 and 4, a founder given a company PAN or the Company's own PAN is not flagged. Found while fixing the fixture.",
     "The five new term-sheet clauses are unreviewed; clauseProvenance's unreviewed count is 313 against a ceiling of 307 (it was 308 before)."
   ],
-  "measurement_infrastructure": "sweep.mjs (the fixture profile) was taught two things, both touching only the term sheet's new fields: a lapse date and a completion date come after the document's date (ORDERED_DATE_SAMPLES), and party_3 / party_4 are individuals with personal PANs. Without the first, every corpus term sheet was refused as invalid input and the fixture would have been measuring its own mistake."
+  "measurement_infrastructure": "sweep.mjs (the fixture profile) was taught two things, both touching only the term sheet's new fields: a lapse date and a completion date come after the document's date (ORDERED_DATE_SAMPLES), and party_3 / party_4 are individuals with personal PANs. Without the first, every corpus term sheet was refused as invalid input and the fixture would have been measuring its own mistake.",
+  "certification": {
+    "status": "ENGINEERING_COMPLETE_PENDING_ADVOCATE",
+    "levels": [
+      "WITHDRAWN",
+      "ENGINEERING_COMPLETE_PENDING_ADVOCATE",
+      "ADVOCATE_REVIEWED_CHANGES_REQUIRED",
+      "APPROVED"
+    ],
+    "approved_by": null,
+    "approved_on": null,
+    "milestone": "D4.44 — Engineering rebuild complete; historical-output safeguards in place; N-party identity validation and the SHA/SSA Articles-precedence review prepared (D4.45 P0); advocate approval pending; public availability blocked.",
+    "rule": "Restoring the term sheet requires status APPROVED with a named advocate and a date. tests/termSheetWithdrawal.test.mjs fails if the type is restored below that."
+  },
+  "historical_outputs": {
+    "decision": "Owner's decision, 9 Oct 2026: keep downloads of previously saved term sheets available; mark them superseded and requiring legal review; never replace them silently or show their old scores as current assurance; preserve the original and its validation history.",
+    "how": "shared/documentWithdrawals.js → SUPERSEDED_OUTPUTS. A draft without metadata.instrument_version = 2.0 is a superseded output, permanently, including after the type is restored. Its validation shows no score and an OUTPUT_SUPERSEDED finding; every DOCX, PDF and TXT download carries the warning on page 1 and at the end; the export pipeline does not apply the term sheet's noun substitution to it, so it is exported as generated. Nothing stored is rewritten: the marks are applied on read and on export."
+  }
 }

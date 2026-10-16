@@ -20,7 +20,10 @@ import crypto from "crypto";
 
 const { generateDocument } = await import("../backend/services/documentService.js");
 const { runDocumentValidation } = await import("../backend/services/validationService.js");
-const { validateInstrumentCoherence, validateInstrumentInputs, parseDurationDays } = await import("../backend/services/instrumentCoherence.js");
+const { validateInstrumentCoherence: coherenceOnly, validateArticlesPrecedence, validateInstrumentInputs, parseDurationDays } = await import("../backend/services/instrumentCoherence.js");
+// The rendered-document checks this file holds to account: instrument coherence plus the
+// universal Articles-precedence evaluator (one evaluator for that proposition, D4.45).
+const validateInstrumentCoherence = (draft, opts) => [...coherenceOnly(draft, opts), ...validateArticlesPrecedence(draft)];
 const { draftToText } = await import("../backend/services/exportService.js");
 
 const FROZEN = JSON.parse(fs.readFileSync(new URL("./fixtures/termSheet.D4_44.defective.json", import.meta.url), "utf8"));
@@ -100,6 +103,36 @@ ok(has(coherence(complete.draft.clauses, withoutPoolAnswer), "SILENT_DEFAULT", (
 const withBoilerplate = [...complete.draft.clauses, { clause_id: "CORE_FORCE_MAJEURE_001", title: "Force Majeure", text: "Neither Party shall be liable for delay caused by a Force Majeure Event." }];
 ok(has(coherence(withBoilerplate, INPUTS.complete), "BINDING_CONTRACT_BOILERPLATE") && has(coherence(withBoilerplate, INPUTS.complete), "BINDING_STATUS_UNDECLARED"),
   "planted: a force majeure clause is caught as boilerplate and as a provision with no declared status");
+
+/* ── 5b. Negative controls: legitimate wording is not rejected ─────────── */
+// A check that rejects everything also catches every planted defect. These prove
+// the binding-status checks discriminate rather than fire on the word "shall".
+const findingsOn = (id, fn) => coherence(plant(id, fn), INPUTS.complete);
+const operative = (issues) => issues.filter((i) => i.rule_id === "NON_BINDING_OPERATIVE_LANGUAGE");
+ok(operative(coherence(complete.draft.clauses, INPUTS.complete)).length === 0 &&
+   /each Founder shall not/.test(complete.draft.clauses.find((c) => c.clause_id === "TS_EXCLUSIVITY_001").text),
+  "negative control: the binding exclusivity ('the Company and each Founder shall not …') is not rejected");
+ok(/Each Party shall keep confidential/.test(complete.draft.clauses.find((c) => c.clause_id === "TS_CONFIDENTIALITY_AND_COSTS_001").text) &&
+   operative(coherence(complete.draft.clauses, INPUTS.complete)).length === 0,
+  "negative control: the binding confidentiality and costs obligations are not rejected");
+const exclusivityText = complete.draft.clauses.find((c) => c.clause_id === "TS_EXCLUSIVITY_001").text;
+const exclusivitySentence = exclusivityText.split("\n").find((l) => /each Founder shall not/.test(l));
+ok(operative(findingsOn("TS_GOVERNANCE_AND_FOUNDERS_001", (t) => `${t}\n${exclusivitySentence.replace(/^\([a-z]\)\s*/, "")}`)).length === 1,
+  "control: the SAME exclusivity sentence is caught when it sits in a non-binding provision (status, not wording, decides)");
+ok(operative(findingsOn("TS_GOVERNANCE_AND_FOUNDERS_001", (t) => `${t}\n${exclusivitySentence}`)).length === 1,
+  "control: a lettered item placed after the proposal list has closed is not treated as part of the proposal");
+ok(operative(findingsOn("TS_GOVERNANCE_AND_FOUNDERS_001", (t) => `${t}\nThe Parties propose that the Definitive Agreements will provide that no Founder shall transfer shares during the lock-in.`)).length === 0,
+  "negative control: a 'shall' inside a description of what the definitive agreements will provide is not rejected");
+ok(operative(findingsOn("TS_LIQUIDATION_PREFERENCE_001", (t) => `${t}\n"Proceeds" shall have the meaning given in the Definitive Agreements.`)).length === 0,
+  "negative control: an interpretive 'shall have the meaning' is not an obligation");
+ok(!coherence(complete.draft.clauses, INPUTS.complete).some((i) => i.rule_id === "NON_PARTY_OBLIGATION"),
+  "negative control: obligations on the Company, the Investor and each Founder (all parties) are not rejected");
+ok(!coherence(complete.draft.clauses, INPUTS.complete).some((i) => i.rule_id === "BINDING_STATUS_CONTRADICTED"),
+  "negative control: the dispute-resolution clause's 'final and binding' award is not read as a contract-formation formula");
+const nda = await generateDocument({ document_type: "NDA", variables: (await import("../sweep.mjs")).variablesFor("NDA", { profile: (await import("../sweep.mjs")).FIXTURE_PROFILE.WELL_FILLED }) });
+ok(nda.draft && validateInstrumentCoherence({ document_type: "NDA", clauses: nda.draft.clauses }, { documentType: "NDA", variables: {} })
+  .filter((i) => i.rule_id !== "ARTICLES_PRECEDENCE_UNSUPPORTED").length === 0,
+  "negative control: a binding agreement (NDA) gets none of the term sheet's binding-status semantics");
 
 /* ── 6. Open choices are marked, never filled; outcome classes apart ───── */
 const open = await gen(INPUTS.open);

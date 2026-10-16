@@ -154,6 +154,11 @@ const FIXED = {
 // what you break. So the synthesiser reads the SAME schema the validator reads
 // (VARIABLE_CONFIG, via getVariables) and takes its answers from there.
 function syntheticValue(field, definition = {}) {
+  // D4.45: a term sheet's founders (party_3, party_4) are individuals with their
+  // own personal PANs. Without this they inherited a company specimen's PAN, which
+  // the N-party identity layer now (rightly) reads as the Company being a founder.
+  if (field === "party_3_pan") return PERSON_PANS[2];
+  if (field === "party_4_pan") return PERSON_PANS[3];
   if (FIXED[field] !== undefined) return FIXED[field];
 
   const type = String(definition.type || "text").toLowerCase();

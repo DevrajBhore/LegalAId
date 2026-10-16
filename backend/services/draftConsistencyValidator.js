@@ -675,6 +675,27 @@ export function validateDraftConsistency(
       );
     }
 
+    // D4.45 P0: a principal beyond the first two must also be DEFINED in the
+    // identity clause under its own role label ("Founder 1", "Partner 3"), or
+    // every provision that names the role refers to nobody. The first two are
+    // already held to their labels by PARTY_NAMING_INCONSISTENCY, so this does
+    // not check them twice.
+    if (
+      participants.indexOf(participant) >= 2 &&
+      participant.name &&
+      participant.label &&
+      !identityText.includes(`"${participant.label}"`)
+    ) {
+      issues.push(
+        buildIssue(
+          `INPUT_MISMATCH_${participant.id.toUpperCase()}_ROLE_LABEL`,
+          "HIGH",
+          `${participant.label} ("${participant.name}") is not defined under that role in the identity clause.`,
+          `Introduce "${participant.name}" in the identity clause as the "${participant.label}".`
+        )
+      );
+    }
+
     if (participant.name && !partyNameAppears(signatureText, participant.name)) {
       issues.push(
         buildIssue(

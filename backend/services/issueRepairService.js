@@ -4,6 +4,8 @@ import {
   normalizeSingleClause,
 } from "./clauseQualityNormalizer.js";
 import { runDocumentValidation } from "./validationService.js";
+import { guardDraftMutation, userValueFigures } from "./mutationGuard.js";
+import { getVariables } from "../config/variableConfig.js";
 
 const DETERMINISTIC_REPAIR_RULES = new Set([
   "CLAUSE_TAMPER_DETECTED",
@@ -181,7 +183,8 @@ function attachRepairMetadata(draft, { aiTouched = false } = {}) {
   };
 }
 
-export async function repairDocumentIssue(draft, issue) {
+export async function repairDocumentIssue(draft, issue, { aiFix = callAIFix } = {}) {
+  const refusedEdits = [];
   const workingDraft = attachRepairMetadata(cloneDraft(draft));
   const originalValidation = await runDocumentValidation(workingDraft, {
     mode: "final",
@@ -213,16 +216,25 @@ export async function repairDocumentIssue(draft, issue) {
     }
   }
 
-  const aiResult = await callAIFix(workingDraft, issue);
+  const aiResult = await aiFix(workingDraft, issue);
   if (aiResult?.edits?.length) {
-    const aiDraft = attachRepairMetadata(
-      applyAIEdits(workingDraft, aiResult.edits),
-      { aiTouched: true }
-    );
+    // D4.46: an AI fix may not touch a locked or protected clause, drop a value
+    // the user supplied, or introduce a new figure. Such edits are refused before
+    // the candidate is validated; a fix that needed one is reported as not fixed,
+    // with the reason, so the user decides.
+    const guarded = guardDraftMutation(workingDraft, applyAIEdits(workingDraft, aiResult.edits), {
+      userFigures: userValueFigures(getSourceVariables(workingDraft) || {}, getVariables(workingDraft?.document_type) || {}),
+      source: "fix_issue_ai",
+      introducedFiguresForbidden: true,
+    });
+    if (guarded.refused.length) {
+      refusedEdits.push(...guarded.refused);
+    }
+    const aiDraft = attachRepairMetadata(guarded.draft, { aiTouched: true });
     const result = await validateRepairCandidate(aiDraft, issue);
     const candidateIssueCount = getOpenIssueCount(result.validation);
 
-    if (result.targetedIssueResolved && candidateIssueCount <= originalIssueCount) {
+    if (result.targetedIssueResolved && candidateIssueCount <= originalIssueCount && !guarded.refused.length) {
       return {
         fixed: true,
         source: "ai",
@@ -239,8 +251,10 @@ export async function repairDocumentIssue(draft, issue) {
   return {
     fixed: false,
     source: "none",
-    explanation:
-      "No reliable automatic fix could be validated for this issue. Please edit the clause manually or restore it to the last validated wording.",
+    explanation: refusedEdits.length
+      ? "The automatic fix was not applied because it would have changed a locked clause or a value you entered. If the value should change, edit the clause yourself."
+      : "No reliable automatic fix could be validated for this issue. Please edit the clause manually or restore it to the last validated wording.",
+    refused: refusedEdits,
     edits: [],
     draft: workingDraft,
     validation: originalValidation,

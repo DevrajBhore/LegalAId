@@ -157,11 +157,15 @@ await check("where the renderer substitutes its own standard instead, that is a 
   assert.match(c.value, /^the requirements of the Services and the deliverables described in this Agreement/);
 });
 
-await check("only the 20 D4.42 fields record choices inside the renderers", () => {
+// D4.46 adds two, with evidence: the NDA's Term and Survival shipped "two (2) years"
+// and "three (3) years" whatever agreement_term and confidentiality_period said
+// (tests/fixtures/ndaContradiction.D4_46.json). Its renderer labels both branches.
+const D4_46_FIELDS = ["agreement_term", "confidentiality_period"];
+await check("only the 20 D4.42 fields and the 2 D4.46 fields record choices inside the renderers", () => {
   const FIELDS = new Set(["execution_city", "confidential_information_definition", "confidentiality_exclusions", "confidentiality_access_scope",
     "non_compete_period", "probation_period", "leave_policy", "service_levels", "expenses_policy", "warranty_period", "acceptance_criteria",
     "management_control", "exit_terms", "risk_transfer_terms", "title_transfer_terms", "events_of_default", "invocation_conditions",
-    "invocation_procedure", "change_request_process", "retention_period"]);
+    "invocation_procedure", "change_request_process", "retention_period", ...D4_46_FIELDS]);
   const src = fs.readFileSync(path.join(ROOT, "backend/services/documentHardening.js"), "utf8");
   const labelled = new Set([...src.matchAll(/(?:chose|orConstant|strippedOrConstant|sentenceFor)\(\s*"([a-z_]+)"/g)].map((m) => m[1]));
   assert.deepStrictEqual([...labelled].filter((f) => !FIELDS.has(f)), [], "a field outside the D4.42 set was labelled without evidence");

@@ -11,27 +11,16 @@
  * - LIABILITY_CAP
  */
 
+import { PROTECTED_CATEGORIES, PROTECTED_CLAUSE_IDS } from "./mutationGuard.js";
+
 export function lockCriticalClauses(draft) {
   if (!draft || !Array.isArray(draft.clauses)) {
     return draft;
   }
 
-  const CORE_CATEGORIES = new Set([
-    "IDENTITY",
-    "GOVERNING_LAW",
-    "DISPUTE_RESOLUTION",
-    "SIGNATURE_BLOCK",
-    "SIGNATURES",
-    "LIABILITY_CAP"
-  ]);
-
-  const CORE_CLAUSE_IDS = new Set([
-    "CORE_IDENTITY_001",
-    "CORE_GOVERNING_LAW_001",
-    "CORE_DISPUTE_RESOLUTION_001",
-    "CORE_SIGNATURE_BLOCK_001",
-    "CORE_LIABILITY_CAP_001",
-  ]);
+  // One definition, shared with every mutation guard (D4.46).
+  const CORE_CATEGORIES = PROTECTED_CATEGORIES;
+  const CORE_CLAUSE_IDS = PROTECTED_CLAUSE_IDS;
 
   draft.clauses = draft.clauses.map(clause => {
     if (

@@ -1094,9 +1094,11 @@
         "//": "AI tailoring is off for this instrument. Whether a provision binds turns on its exact wording, and a model asked to make text read naturally turns 'it is proposed that the Investor will' into 'the Investor shall'. The coherence checks would catch it; not generating it is better."
       },
       "instrument": {
+        "version": "2.0",
         "//": [
           "D4.44. The instrument is described here, as knowledge, and the engine reads it: the opening, the recitals, the noun the document uses for itself, which provisions bind, the terms a term sheet must state, and the economic choices that must come from an answer.",
-          "binding_character: BINDING | PARTLY_BINDING | NON_BINDING. provision_status maps clause ids to BINDING_NOW | NON_BINDING; a clause in the document that is not listed is UNRESOLVED_PENDING_REVIEW, and the coherence checks report it."
+          "binding_character: BINDING | PARTLY_BINDING | NON_BINDING. provision_status maps clause ids to BINDING_NOW | NON_BINDING; a clause in the document that is not listed is UNRESOLVED_PENDING_REVIEW, and the coherence checks report it.",
+          "version: stamped on every draft as metadata.instrument_version. A draft without the current stamp is a superseded output (shared/documentWithdrawals.js → SUPERSEDED_OUTPUTS)."
         ],
         "noun": "Term Sheet",
         "opening": "THIS TERM SHEET is dated {date} and is signed at {place}.",

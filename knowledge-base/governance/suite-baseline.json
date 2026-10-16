@@ -221,7 +221,65 @@
         "statutoryCustody: its list of vanished pairings is the baseline list minus TERM_SHEET/CORE_ENTIRE_AGREEMENT_001.",
         "scripts/freezeClauseBaseline.mjs: drift in 27 of 40 types, was 28; the difference is TERM_SHEET, re-frozen."
       ],
-      "$measurement_note": "The suite runner used for this record skipped the last line of the test list (no trailing newline); scripts/freezeClauseBaseline.mjs was run by hand on both trees and compared."
+      "$measurement_note": "The suite runner used for this record skipped the last line of the test list (no trailing newline); scripts/freezeClauseBaseline.mjs was run by hand on both trees and compared.",
+      "$superseded_by": "after_D4_45_P0"
+    },
+    "after_D4_45_P0": {
+      "suites_run": 94,
+      "passed": 78,
+      "failed": 16,
+      "$what_moved": "four new files added and passing: nPartyIdentity (18 checks), articlesPrecedence (14), documentQualityStandard (9); termSheetWithdrawal grew to 39 checks (historical download warning, approval gate) and termSheetFalsification to 66 (negative controls). No suite changed state.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true,
+      "$inside_the_failing_set": [
+        "clauseProvenance: unreviewed count 313 against the ceiling of 307, unchanged since D4.44.",
+        "scripts/freezeClauseBaseline.mjs: drift in 27 of 40 types, unchanged. On the first run it showed 28: the harness gave the term sheet's second founder a company specimen's PAN, which the new N-party identity check correctly read as the Company being a founder. The harness now gives founders personal PANs; the term sheet's recorded baseline did not change."
+      ],
+      "$measurement_note": "93 suites were run by the runner; documentQualityStandard was added after the run began and was run separately (passing).",
+      "$superseded_by": "after_D4_46"
+    },
+    "after_D4_46": {
+      "suites_run": 97,
+      "passed": 81,
+      "failed": 16,
+      "$what_moved": "three new files added and passing: generationIntegrity (25 checks), ndaContradiction (20), releaseEnforcement (17). Two passing suites failed on the first run and were corrected for a deliberate change, not by weakening what they guard: provenanceHardening, whose closed list of labelled renderer fields now admits agreement_term and confidentiality_period with the frozen NDA as evidence; requirementCoherence, whose NDA relationship now reads periods ('60 months') instead of digits ('5'). termSheetWithdrawal reads 'Requires legal review' for the withdrawn label.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true,
+      "$each_compared": "Each of the 16 was run on 8c73f15b6 and on D4.46. 14 produce identical output. documentHealthScore grew one sub-failure ('a well-filled document is not banded as a risk by notes alone': 12 of 29 clean) because requirement findings now deduct; the distribution check was scoped to catalogue-wide charges by excluding findings of the requirement model, which are per family and recorded, and the suite now fails exactly as before. scripts/freezeClauseBaseline.mjs drifted in 30 types, not 27: LOAN_AGREEMENT, MOU and RENTAL_AGREEMENT gained only requirement advisories and were re-frozen alone (--only), so drift is back to the same 27."
     }
   },
   "an_instrument_defect_found_and_repaired": {

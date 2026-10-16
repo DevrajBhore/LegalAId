@@ -1,0 +1,1210 @@
+{
+  "$comment": [
+    "D4.46 — the 34 requirements authored when_unsatisfied: BLOCK, audited one by one before any is allowed to block (scripts/auditBlockRequirements.mjs).",
+    "This audit verifies MECHANICS only: that each requirement's applicability is decidable, its satisfying clauses exist and are reachable, and it does not fire on corpus documents that otherwise generate. It does not verify that the legal proposition is right; every requirement remains draft-needs-legal-review.",
+    "ACTIVE_BLOCK: applicable and unsatisfied blocks release. HELD_FOR_LEGAL_REVIEW: applicable and unsatisfied gives 'Requires legal review', never 'Automated checks passed'."
+  ],
+  "audited_on": "2026-10-16",
+  "summary": {
+    "total": 34,
+    "active_block": 23,
+    "held_for_legal_review": 11
+  },
+  "requirements": [
+    {
+      "document_type": "CHEQUE_BOUNCE_NOTICE",
+      "id": "DEMAND_IS_UNAMBIGUOUS",
+      "kind": "CONTENT",
+      "statement": "The notice demands payment of the cheque amount in terms capable of being complied with.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_STATUTORY_DEMAND_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "S138_STATUTORY_DEMAND_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "CHEQUE_BOUNCE_NOTICE",
+      "id": "DISHONOUR_PARTICULARISED",
+      "kind": "CONTENT",
+      "statement": "The cheque, its dishonour and the bank's reason are particularised.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "S138_CHEQUE_PARTICULARS_001",
+          "S138_DISHONOUR_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "S138_CHEQUE_PARTICULARS_001",
+        "S138_DISHONOUR_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "CHEQUE_BOUNCE_NOTICE",
+      "id": "LIABILITY_STATED",
+      "kind": "CONTENT",
+      "statement": "The debt or liability the cheque was issued to discharge is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_CHEQUE_PARTICULARS_001",
+          "S138_SUBJECT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "S138_CHEQUE_PARTICULARS_001",
+        "S138_SUBJECT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "CHEQUE_BOUNCE_NOTICE",
+      "id": "FIFTEEN_DAY_PERIOD_STATED",
+      "kind": "CONTENT",
+      "statement": "The fifteen-day period for payment is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "S138_PAYMENT_PERIOD_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "S138_PAYMENT_PERIOD_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "EMPLOYMENT_CONTRACT",
+      "id": "ROLE_AND_PLACE_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The position, its duties and the place of work are identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "EMPLOYMENT_ROLE_001",
+          "EMP_DUTIES_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "EMPLOYMENT_ROLE_001",
+        "EMP_DUTIES_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "EMPLOYMENT_CONTRACT",
+      "id": "REMUNERATION_STATED",
+      "kind": "CONTENT",
+      "statement": "What the employee is paid, and the period by reference to which it is paid, is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "EMPLOYMENT_COMPENSATION_001",
+          "EMP_WAGES_001",
+          "EMP_CTC_STRUCTURE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "EMPLOYMENT_COMPENSATION_001",
+        "EMP_WAGES_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "EMPLOYMENT_CONTRACT",
+      "id": "EXIT_MECHANICS_STATED",
+      "kind": "CONTENT",
+      "statement": "How either side ends the employment, on what notice, and what is payable on exit.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "EMP_NOTICE_PERIOD_001",
+          "EMPLOYMENT_TERMINATION_001",
+          "EMP_TERMINATION_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "EMP_NOTICE_PERIOD_001",
+        "EMPLOYMENT_TERMINATION_001",
+        "EMP_TERMINATION_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "id": "PRINCIPAL_ASCERTAINED",
+      "kind": "CONTENT",
+      "statement": "The sum advanced, and how it reaches the borrower, are stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_AMOUNT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "LOAN_AMOUNT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "id": "REPAYMENT_OBLIGATION_STATED",
+      "kind": "CONTENT",
+      "statement": "The borrower's obligation to repay, and the times at which repayment falls due, are stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_REPAYMENT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "LOAN_REPAYMENT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "id": "DEFAULT_DEFINED",
+      "kind": "CONTENT",
+      "statement": "The events that constitute default are identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_DEFAULT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "LOAN_DEFAULT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "id": "CONSEQUENCE_OF_DEFAULT_STATED",
+      "kind": "CONTENT",
+      "statement": "What the lender may do on default is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_ACCELERATION_001",
+          "LOAN_DEFAULT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "LOAN_ACCELERATION_001",
+        "LOAN_DEFAULT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "id": "SECURITY_POSITION_SETTLED",
+      "kind": "CONTENT",
+      "statement": "Where the loan is secured, what secures it is identified in the instrument.",
+      "applicability": {
+        "position": "is_secured"
+      },
+      "satisfied_by": {
+        "any_of": [
+          "LOAN_SECURITY_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "LOAN_SECURITY_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "SOW_GOVERNED_ORDERING",
+      "kind": "CONTENT",
+      "statement": "Services can be ordered and scoped from time to time under Statements of Work that take their terms from this Agreement.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "MSA_SOW_MECHANISM_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "MSA_SOW_MECHANISM_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "PRECEDENCE_OF_DOCUMENTS",
+      "kind": "CONTENT",
+      "statement": "Where the Agreement and a Statement of Work conflict, the order of precedence is settled.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "all_of": [
+          "MSA_ORDER_OF_PRECEDENCE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "MSA_ORDER_OF_PRECEDENCE_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "SERVICE_SCOPE_DEFINED",
+      "kind": "CONTENT",
+      "statement": "What the Service Provider is engaged to do is identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_SCOPE_001",
+          "SERVICE_DELIVERABLES_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": false,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: C_satisfier_reachable. Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "CONSIDERATION_SETTLED",
+      "kind": "CONTENT",
+      "statement": "What is payable, and when, is settled either in the Agreement or by reference to each Statement of Work.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_PAYMENT_001",
+          "SERVICE_PAYMENT_FIXED_FEE_001",
+          "SERVICE_PAYMENT_MILESTONE_001",
+          "SERVICE_PAYMENT_RETAINER_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "SERVICE_PAYMENT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "OWNERSHIP_OF_WORK_PRODUCT",
+      "kind": "CONTENT",
+      "statement": "Who owns what is created, and what each side may do with what it learns.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "IP_OWNERSHIP_001",
+          "IP_ASSIGNMENT_001",
+          "IP_CONTRACTOR_RETAINS_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "IP_OWNERSHIP_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "EXIT_IS_POSSIBLE",
+      "kind": "CONTENT",
+      "statement": "Each side knows how the relationship ends and what survives.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "SERVICE_TERMINATION_001",
+          "CORE_TERMINATION_001",
+          "SERVICE_TERMINATION_CONVENIENCE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "SERVICE_TERMINATION_001",
+        "SERVICE_TERMINATION_CONVENIENCE_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MASTER_SERVICE_AGREEMENT",
+      "id": "PERSONAL_DATA_HANDLED",
+      "kind": "CONTENT",
+      "statement": "Where personal data is processed, the processor's obligations are passed through in writing.",
+      "applicability": {
+        "position": "processes_personal_data"
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_DATA_PROCESSING_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORE_DATA_PROCESSING_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MOU",
+      "id": "PURPOSE_STATED",
+      "kind": "CONTENT",
+      "statement": "The subject the parties intend to explore is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_PURPOSE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORE_PURPOSE_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MOU",
+      "id": "PARTIES_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The parties are identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_IDENTITY_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORE_IDENTITY_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "MOU",
+      "id": "NON_BINDING_CHARACTER",
+      "kind": "CHARACTER",
+      "statement": "The instrument states that it does not create legally binding obligations.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "MOU_NON_BINDING_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": false
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "MOU_NON_BINDING_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: E_kind_activatable. Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "NDA",
+      "id": "SUBJECT_MATTER_BOUNDED",
+      "kind": "CONTENT",
+      "statement": "What counts as Confidential Information is defined.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "NDA",
+      "id": "CESSATION_CIRCUMSTANCES_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The circumstances in which information ceases to qualify for protection are identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_EXCLUSIONS_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "NDA_EXCLUSIONS_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "NDA",
+      "id": "OBLIGATIONS_OF_RECIPIENT",
+      "kind": "CONTENT",
+      "statement": "What the recipient must do with the information is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORE_CONFIDENTIALITY_001",
+          "NDA_DATA_SECURITY_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORE_CONFIDENTIALITY_001",
+        "NDA_DATA_SECURITY_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "NDA",
+      "id": "CONFIDENTIALITY_PERIOD_STATED",
+      "kind": "CONTENT",
+      "statement": "How long the obligation runs is stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "NDA_DURATION_001",
+          "NDA_TERM_SURVIVAL_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "NDA_DURATION_001",
+        "NDA_TERM_SURVIVAL_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "POWER_OF_ATTORNEY",
+      "id": "DONOR_AND_DONEE_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The donor and the attorney are identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_APPOINTMENT_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "POA_APPOINTMENT_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "POWER_OF_ATTORNEY",
+      "id": "POWERS_ENUMERATED",
+      "kind": "CONTENT",
+      "statement": "The acts the attorney may perform are enumerated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_POWERS_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": false,
+        "C_satisfier_reachable": false,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [
+        "POA_POWERS_001"
+      ],
+      "reachable_satisfiers": [],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: B_satisfiers_exist, C_satisfier_reachable, D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "POWER_OF_ATTORNEY",
+      "id": "REVOCATION_DEALT_WITH",
+      "kind": "CONTENT",
+      "statement": "How the power is revoked, and when it ends.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "POA_REVOCATION_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": "NOT_TESTED",
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "POA_REVOCATION_001"
+      ],
+      "corpus": {
+        "worlds_generated": 0,
+        "worlds_refused": 2,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: D_never_violated_on_corpus not tested (no fixture world of this type generates). Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "RENTAL_AGREEMENT",
+      "id": "PREMISES_IDENTIFIED",
+      "kind": "CONTENT",
+      "statement": "The property let is identified.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_PREMISES_001",
+          "RENTAL_PROPERTY_DESCRIPTION_001",
+          "RENT_PROPERTY_USE_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": false,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [
+        "RENT_PREMISES_001"
+      ],
+      "reachable_satisfiers": [
+        "RENTAL_PROPERTY_DESCRIPTION_001",
+        "RENT_PROPERTY_USE_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: B_satisfiers_exist. Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "RENTAL_AGREEMENT",
+      "id": "RENT_AND_TERM_CERTAIN",
+      "kind": "CONTENT",
+      "statement": "The rent and the period of the tenancy are stated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_RENT_PAYMENT_001",
+          "RENTAL_RENT_PAYMENT_001",
+          "RENTAL_TERM_001",
+          "RENT_TERM_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": false,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [
+        "RENT_TERM_001"
+      ],
+      "reachable_satisfiers": [
+        "RENTAL_RENT_PAYMENT_001",
+        "RENTAL_TERM_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "HELD_FOR_LEGAL_REVIEW",
+      "why": "Held: B_satisfiers_exist. Reported as 'Requires legal review', never as satisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "RENTAL_AGREEMENT",
+      "id": "EXIT_AND_NOTICE",
+      "kind": "CONTENT",
+      "statement": "How the tenancy ends, and on what notice.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "RENT_TERMINATION_001",
+          "RENTAL_TERM_001",
+          "CORE_TERMINATION_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "RENTAL_TERM_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "SHAREHOLDERS_AGREEMENT",
+      "id": "SHAREHOLDINGS_RECORDED",
+      "kind": "CONTENT",
+      "statement": "Who holds what, and on what class of shares.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_SHARE_SUBSCRIPTION_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORP_SHARE_SUBSCRIPTION_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    },
+    {
+      "document_type": "SHAREHOLDERS_AGREEMENT",
+      "id": "TRANSFER_REGULATED",
+      "kind": "CONTENT",
+      "statement": "Transfer of shares is regulated.",
+      "applicability": {
+        "always": true
+      },
+      "satisfied_by": {
+        "any_of": [
+          "CORP_SHARE_TRANSFER_001"
+        ]
+      },
+      "checks": {
+        "A_applicability_decidable": true,
+        "B_satisfiers_exist": true,
+        "C_satisfier_reachable": true,
+        "D_never_violated_on_corpus": true,
+        "E_kind_activatable": true
+      },
+      "missing_clauses": [],
+      "reachable_satisfiers": [
+        "CORP_SHARE_TRANSFER_001"
+      ],
+      "corpus": {
+        "worlds_generated": 2,
+        "worlds_refused": 0,
+        "violated_in": [],
+        "applicability_unknown_in": []
+      },
+      "enforcement": "ACTIVE_BLOCK",
+      "why": "Mechanics verified (A–E). Blocks release when applicable and unsatisfied.",
+      "legal_review": "draft-needs-legal-review"
+    }
+  ]
+}

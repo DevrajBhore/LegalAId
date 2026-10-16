@@ -197,12 +197,22 @@
         "",
         "What this relationship does NOT decide: whether either period is reasonable under section 27",
         "of the Contract Act, or which of the two ought to govern. Both are legal conclusions. It",
-        "establishes only that the instrument states two and does not say which."
+        "establishes only that the instrument states two and does not say which.",
+        "",
+        "D4.46. The extract read only 'period of three (3) years' and so read nothing out of Duration of",
+        "Confidentiality as rendered ('shall continue for 24 months after the expiry or earlier termination'):",
+        "a document stating 24 months and three years was AMBIGUOUS_EVIDENCE, and shipped as 'Automated checks",
+        "passed'. Each phrasing the library renders is now an alternative branch, anchored as before on",
+        "post-termination language so the agreement's own term is never read as the confidentiality period.",
+        "answer_kind DURATION compares periods (24 months = two (2) years), and `defers` reads a clause that",
+        "answers by naming Duration of Confidentiality rather than stating a second period."
       ],
-      "extract": "surviv\\w*(?:\\s+for)?[^.]{0,140}?period of [a-z-]+ \\((\\d+)\\) years",
+      "extract": "continue for ((?:a period of )?[^.;]{1,60}?) after the (?:expiry|termination)|surviv\\w*(?:\\s+for)?[^.]{0,140}?period of ([a-z-]+ \\(\\d+\\) (?:years?|months?))|surviv\\w*[^.]{0,80}?and continue for (?:a period of )?([a-z-]+ \\(\\d+\\) (?:years?|months?)) thereafter",
       "identity_test": "Remove it and the instrument states two different post-termination confidentiality periods, each in a clause that reads correctly on its own, and the requirement model reports both clauses present and every requirement satisfied.",
       "when_broken": "CONTRADICTED",
-      "review_status": "draft-needs-legal-review"
+      "review_status": "draft-needs-legal-review",
+      "answer_kind": "DURATION",
+      "defers": "confidentiality shall survive for the period[^.]{0,60}set out in the clause headed \\\"Duration of Confidentiality\\\""
     }
   ]
 }

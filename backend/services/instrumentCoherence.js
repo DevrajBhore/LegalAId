@@ -129,11 +129,17 @@ function checkOperativeLanguage(clauses, documentType, instrument) {
     const lines = String(clause.text || "").split(/\n+/).map((l) => l.trim()).filter(Boolean);
     const inheritsFrame = lines.length > 0 && /:\s*$/.test(lines[0]) && frames.some((f) => rx(f).test(lines[0]));
     const findings = [];
+    const LIST_ITEM = /^\(?(?:[a-z]{1,3}|\d{1,2}(?:\.\d{1,2})*)[.)]\s/i;
+    // The list under "It is proposed that:" ends at the first line that is not a
+    // list item; an item after that is not part of the proposal (D4.45 negative
+    // control: a "(b) … shall not" appended after the closing paragraph passed).
+    let inProposalList = inheritsFrame;
     lines.forEach((line, i) => {
       // Only a LIST ITEM under "It is proposed that:" inherits the frame. A plain
       // sentence after the list does not: planting "Any transfer ... shall be
       // void." after the list passed until this was narrowed (D4.44).
-      const framedLine = inheritsFrame && i > 0 && /^\(?(?:[a-z]{1,3}|\d{1,2}(?:\.\d{1,2})*)[.)]\s/i.test(line);
+      if (i > 0 && !LIST_ITEM.test(line)) inProposalList = false;
+      const framedLine = inProposalList && i > 0;
       for (const sentence of sentencesOf(line)) {
         const interpretive = (lexicon().interpretive_constructions || []).map((p) => rx(p, "gi"));
         const plain = interpretive.reduce((t, r) => t.replace(r, " "), sentence);
@@ -285,11 +291,29 @@ function checkArticlesPrecedence(clauses) {
   for (const clause of clauses) {
     const m = patterns.map((p) => rx(p).exec(clause.text || "")).find(Boolean);
     if (!m) continue;
+    const sentence = (String(clause.text).slice(0, m.index).split(/(?<=[.;])\s/).pop() || "") + m[0];
+    const interSe = /as between the (?:Shareholders|Parties)/i.test(sentence);
     out.push(issue("ARTICLES_PRECEDENCE_UNSUPPORTED", "HIGH", OUTCOME.LEGAL_REVIEW_REQUIRED,
-      `${clause.title || clause.clause_id} states that the contract prevails over the Articles of Association: "${clip(m[0])}". Under Indian company law a restriction that is not in the Articles may not bind the company or its shareholders (${authority}).`,
-      { offending_clause_id: clause.clause_id || null }));
+      `${clause.title || clause.clause_id} states that the contract prevails over the Articles of Association: "${clip(m[0])}".` +
+      (interSe
+        ? " It is limited to the position 'as between' the parties, which is a narrower and commonly used construction; whether it is effective, and whether the Company and any non-signing shareholder are bound before the Articles are amended, depends on the company type, the right concerned and the Articles."
+        : " It is not limited to the position between the parties.") +
+      ` Needs an advocate's view (${authority}).`,
+      { offending_clause_id: clause.clause_id || null, evidence: m[0], inter_se: interSe, layer: "articles_precedence" }));
   }
   return out;
+}
+
+/**
+ * Articles precedence is a question about any document that relates a contract
+ * to a company's Articles, not about term sheets. It runs for every type, as the
+ * one evaluator of this proposition; the instrument coherence checks do not
+ * repeat it. A review finding, never a block: the answer turns on the company,
+ * the right and the Articles (D4.45, knowledge-base/governance/articles-precedence-review.json).
+ */
+export function validateArticlesPrecedence(draft) {
+  if (!Array.isArray(draft?.clauses)) return [];
+  return checkArticlesPrecedence(draft.clauses.filter((c) => c && typeof c.text === "string"));
 }
 
 function checkRequiredTerms(clauses, instrument) {
@@ -457,7 +481,6 @@ export function validateInstrumentCoherence(draft, { documentType, variables } =
     ...checkBoilerplate(clauses, instrument),
     ...checkCrossReferences(clauses),
     ...checkBoardSize(clauses),
-    ...checkArticlesPrecedence(clauses),
     ...checkRequiredTerms(clauses, instrument),
     ...checkSilentDefaults(clauses, instrument, variables || {}),
     ...checkUnresolved(clauses),

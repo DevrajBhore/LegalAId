@@ -15,7 +15,7 @@ import { assembleDocument } from "./clauseAssembler.js";
 import { injectDraftVariables } from "./draftVariableInjector.js";
 import { withProvenanceRecording, attachProvenance } from "./provenance.js";
 import { withdrawalFor, withdrawalIssue } from "../../shared/documentWithdrawals.js";
-import { deriveInstrumentTerms, isSemanticTailoringDisabled } from "./instrumentKnowledge.js";
+import { deriveInstrumentTerms, isSemanticTailoringDisabled, getInstrument } from "./instrumentKnowledge.js";
 import { sanitizeVariablesForDocument } from "../config/variableConfig.js";
 import { loadVariables } from "./variableLoader.js";
 import { validateVariables } from "./variableValidator.js";
@@ -23,6 +23,8 @@ import { applyDeterministicFixes } from "./deterministicFixer.js";
 import { enhanceCommercially } from "../commercial/commercialEngine.js";
 import { normalizeClauseText } from "./clauseQualityNormalizer.js";
 import { lockCriticalClauses } from "./clauseLocker.js";
+import { isProtectedClause, userValueFigures, guardDraftMutation, refusalReasons } from "./mutationGuard.js";
+import { createHash } from "crypto";
 import { resolveDependencies } from "./dependencyResolver.js";
 import { injectJurisdictionRules } from "./jurisdictionEngine.js";
 import { applyDocumentHardening } from "./documentHardening.js";
@@ -436,11 +438,24 @@ function applyDeterministicRepairRound(draft, validation, input) {
     return draft;
   }
 
-  return applyFinalDraftGuardrails(applyDeterministicFixes(draft, issues), input);
+  // D4.46: the repair may add a protection; it may not change a rendered
+  // clause's figures or touch a locked clause. The guard judges the REPAIR's own
+  // edits; the guardrails that follow re-render from the user's answers, which is
+  // the engine drafting, not a repair overriding it.
+  const fixed = guardDraftMutation(draft, applyDeterministicFixes(draft, issues), {
+    userFigures: userFiguresFor(input),
+    source: "deterministic_repair",
+  }).draft;
+  return applyFinalDraftGuardrails(fixed, input);
 }
 
 function applyGenerationStages(draft, input) {
   if (!draft.metadata) draft.metadata = {};
+  // Which version of a declared instrument produced this draft. A draft without
+  // the current stamp is treated as a superseded output for ever after
+  // (shared/documentWithdrawals.js), so the stamp goes on before any stage runs.
+  const instrumentVersion = getInstrument(input.document_type)?.version;
+  if (instrumentVersion) draft.metadata.instrument_version = instrumentVersion;
 
   draft = resolveDependencies(draft, input);
   draft = injectJurisdictionRules(draft, input);
@@ -502,31 +517,17 @@ function isSignatureClause(clause = {}) {
   );
 }
 
-const PROTECTED_SEMANTIC_CATEGORIES = new Set([
-  "IDENTITY",
-  "GOVERNING_LAW",
-  "DISPUTE_RESOLUTION",
-  "SIGNATURE_BLOCK",
-  "SIGNATURES",
-  "LIABILITY_CAP",
-]);
-
-const PROTECTED_SEMANTIC_CLAUSE_IDS = new Set([
-  "CORE_IDENTITY_001",
-  "CORE_GOVERNING_LAW_001",
-  "CORE_DISPUTE_RESOLUTION_001",
-  "CORE_SIGNATURE_BLOCK_001",
-  "CORE_LIABILITY_CAP_001",
-]);
-
+// The protected set lives in mutationGuard.js, shared with the clause locker and
+// with /fix-issue (D4.46); two copies of the list used to be kept here and there.
 function isProtectedSemanticClause(clause = {}) {
-  return Boolean(
-    clause?.locked ||
-      isSignatureClause(clause) ||
-      PROTECTED_SEMANTIC_CATEGORIES.has(clause?.category) ||
-      PROTECTED_SEMANTIC_CLAUSE_IDS.has(clause?.clause_id)
-  );
+  return Boolean(isProtectedClause(clause) || isSignatureClause(clause));
 }
+
+function userFiguresFor(input = {}) {
+  return userValueFigures(input.variables || {}, getVariables(input.document_type) || {});
+}
+
+const sha256 = (text) => createHash("sha256").update(String(text || "")).digest("hex");
 
 function applyFinalDraftGuardrails(draft, input) {
   let next = resolveSignatures(draft, input);
@@ -589,6 +590,7 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
 
   let tailored = 0;
   let reused = 0;
+  const refusedByGuard = [];
   const mergedClauses = seedDraft.clauses.map((seedClause) => {
     if (isProtectedSemanticClause(seedClause)) {
       return seedClause;
@@ -602,6 +604,17 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
     const aiClause = aiById.get(seedClause.clause_id);
     if (!aiClause) {
       return seedClause; // keep the deterministic, hardened clause as-is
+    }
+    // D4.46: the AI tailors wording, not terms. A rewrite that drops one of the
+    // user's figures, or introduces a figure the deterministic clause did not
+    // carry, is refused and the deterministic clause is kept.
+    const reasons = refusalReasons(seedClause, { ...seedClause, text: aiClause.text.trim() }, {
+      userFigures: userFiguresFor(input),
+      introducedFiguresForbidden: true,
+    });
+    if (reasons.length) {
+      refusedByGuard.push({ clause_id: seedClause.clause_id, source: "ai_tailoring", reasons });
+      return seedClause;
     }
     tailored += 1;
     return {
@@ -617,6 +630,9 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
         aiClause.statutory_reference ?? seedClause.statutory_reference ?? null,
       text: aiClause.text.trim(),
       _seed_text: seedClause._seed_text,
+      // Identifies text that is still exactly what the AI produced, so the
+      // integrity check can tell AI output from the user's own later edits.
+      _ai_text_sha: sha256(aiClause.text.trim()),
     };
   });
 
@@ -632,6 +648,17 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
       ai_reused_clause_count: reused,
       ai_total_clause_count: seedDraft.clauses.length,
       ai_generation_provider: provider || null,
+      // The deterministic text of every clause before any AI change, written once
+      // and never reset (D4.46). baseline_clause_map is the LAST VALIDATED text and
+      // is reset after the merge, which is right for spotting a user's later edit
+      // but useless for checking the AI: compared with itself, the AI is always
+      // clean. The AI integrity check reads this instead.
+      pre_ai_baseline:
+        seedDraft.metadata?.pre_ai_baseline ||
+        Object.fromEntries(seedDraft.clauses.map((c) => [c.clause_id, c._seed_text ?? c.text ?? ""])),
+      ...(refusedByGuard.length
+        ? { refused_mutations: [...(seedDraft.metadata?.refused_mutations || []), ...refusedByGuard] }
+        : {}),
     },
   });
 
@@ -847,7 +874,11 @@ async function generateDocumentUnrecorded(input, options = {}) {
 
   if (shouldUseSemanticGeneration(input)) {
     const semanticSeed = stampSeedText(
-      applyGenerationStages(createBlueprintDraft(generationInput), generationInput)
+      // D4.46: the AI starts from the same variable-injected draft the
+      // deterministic path ships, so its seed (and pre_ai_baseline) carry the
+      // user's actual values and the guard can tell whether the AI kept them.
+      // It used to start from the uninjected blueprint and fill values itself.
+      applyGenerationStages(createDeterministicBaseDraft(generationInput), generationInput)
     );
     const semanticDraft = await attemptSemanticDraft(semanticSeed, generationInput, {
       priorClausesById,

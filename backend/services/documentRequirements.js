@@ -303,6 +303,14 @@ function admit(doc, source) {
         problems.push(`${id}: extract does not compile — ${error.message}`);
       }
     }
+    if (relationship.answer_kind !== undefined && !["TEXT", "DURATION"].includes(relationship.answer_kind)) {
+      problems.push(`${id}: answer_kind must be TEXT or DURATION`);
+    }
+    if (relationship.defers !== undefined) {
+      try { new RegExp(String(relationship.defers), "i"); } catch (error) {
+        problems.push(`${id}: defers does not compile — ${error.message}`);
+      }
+    }
     if (!Object.prototype.hasOwnProperty.call(COVERAGE, String(relationship.when_broken))) {
       problems.push(`${id}: when_broken must be one of ${Object.keys(COVERAGE).join(", ")}`);
     }
@@ -632,18 +640,62 @@ function normaliseAnswer(value) {
   return String(value).trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function readAnswers(text, extract) {
+// D4.46 — answers of KIND DURATION are compared as periods, not as strings.
+//
+// The NDA relationship read "3" out of Term and Survival and nothing out of
+// Duration of Confidentiality ("continue for 24 months after the expiry"), so a
+// document stating 24 months, two years and three years was AMBIGUOUS_EVIDENCE,
+// and AMBIGUOUS gated nothing: it shipped as "Automated checks passed". As
+// strings, "24 months" and "two (2) years" would also differ though they agree.
+// A period is reduced to months (years and months) or days (anything with weeks
+// or days); a text the normaliser cannot read as a period is NOT an answer, so
+// the clause counts as unread rather than as agreeing.
+const WORD_NUMBERS = {
+  one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+  eleven: 11, twelve: 12, fifteen: 15, eighteen: 18, twenty: 20, "twenty-four": 24, thirty: 30,
+  "thirty-six": 36, forty: 40, "forty-five": 45, sixty: 60, ninety: 90,
+};
+const UNBOUNDED = /\b(indefinite(ly)?|perpetu\w*|without limit of time|in perpetuity)\b/i;
+
+export function normaliseDuration(text) {
+  const s = String(text || "").toLowerCase();
+  const parts = [...s.matchAll(/(?:\b([a-z]+(?:-[a-z]+)?)\s+)?(?:\((\d+(?:\.\d+)?)\)|(\d+(?:\.\d+)?))?\s*\b(year|month|week|day)s?\b/g)]
+    .map((m) => {
+      const n = m[2] ?? m[3] ?? WORD_NUMBERS[m[1]];
+      return n === undefined ? null : { n: Number(n), unit: m[4] };
+    });
+  if (!parts.length || parts.some((p) => p === null)) return UNBOUNDED.test(s) && !parts.length ? "unlimited" : null;
+  if (parts.every((p) => p.unit === "year" || p.unit === "month")) {
+    const months = parts.reduce((t, p) => t + (p.unit === "year" ? p.n * 12 : p.n), 0);
+    return `${months} months`;
+  }
+  const days = parts.reduce((t, p) => t + p.n * { year: 365, month: 30, week: 7, day: 1 }[p.unit], 0);
+  return `${days} days`;
+}
+
+const ANSWER_KINDS = {
+  TEXT: normaliseAnswer,
+  DURATION: normaliseDuration,
+};
+
+function readAnswers(text, extract, kind = "TEXT") {
   const pattern = new RegExp(extract, "gi");
+  const normalise = ANSWER_KINDS[kind] || normaliseAnswer;
   const answers = [];
+  const raw = [];
   let match;
   while ((match = pattern.exec(text)) !== null) {
     // First non-empty capture: an extract may offer alternative phrasings of the
     // same answer, and which branch fired is not itself evidence of anything.
     const captured = match.slice(1).find((group) => group !== undefined && group !== "");
-    if (captured !== undefined) answers.push(normaliseAnswer(captured));
+    if (captured !== undefined) {
+      const answer = normalise(captured);
+      raw.push(captured.trim());
+      if (answer !== null) answers.push(answer);
+    }
     if (match.index === pattern.lastIndex) pattern.lastIndex += 1;
   }
-  return answers;
+  return { answers, raw };
 }
 
 export function assessRelationships(relationships = [], clauseIds = [], clauseTexts = {}) {
@@ -684,19 +736,35 @@ export function assessRelationships(relationships = [], clauseIds = [], clauseTe
     }
 
     const answers = {};
+    const raw = {};
     const silent = [];
+    // A clause that answers by naming another participant ("for the period set
+    // out in the clause headed ...") states no second answer. That is read from
+    // its own text by the declared `defers` pattern, never assumed from silence.
+    const deferring = {};
     for (const id of engaged) {
-      const found = readAnswers(textOf(id), relationship.extract);
-      if (!found.length) silent.push(id);
-      else answers[id] = found;
+      const found = readAnswers(textOf(id), relationship.extract, relationship.answer_kind);
+      if (found.raw.length) raw[id] = found.raw;
+      if (found.answers.length) { answers[id] = found.answers; continue; }
+      const defers = relationship.defers ? textOf(id).match(new RegExp(relationship.defers, "i")) : null;
+      if (defers) deferring[id] = defers[0];
+      else silent.push(id);
     }
+    const deferral = Object.keys(deferring).length ? { defers: deferring } : {};
     if (silent.length) {
       return {
         ...base, coverage: COVERAGE.AMBIGUOUS_EVIDENCE, engaged, silent,
-        read: answers,
+        read: answers, read_raw: raw, ...deferral,
         detail: `${silent.join(", ")} is in this draft and the declared extract read no answer ` +
                 `out of it. What that clause says about "${relationship.must_agree_on}" is ` +
                 `unknown, and unknown is not agreement.`,
+      };
+    }
+    if (!Object.keys(answers).length) {
+      return {
+        ...base, coverage: COVERAGE.AMBIGUOUS_EVIDENCE, engaged, silent: [], read: {}, ...deferral,
+        detail: `Every participating clause defers to another for "${relationship.must_agree_on}", ` +
+                `so the instrument never states it.`,
       };
     }
 
@@ -704,18 +772,22 @@ export function assessRelationships(relationships = [], clauseIds = [], clauseTe
     if (distinct.length > 1) {
       return {
         ...base, coverage: COVERAGE[relationship.when_broken] || COVERAGE.CONTRADICTED,
-        engaged, read: answers, distinct,
+        engaged, read: answers, read_raw: raw, distinct, ...deferral,
         detail: `The instrument gives ${distinct.length} different answers to ` +
                 `"${relationship.must_agree_on}": ` +
                 Object.entries(answers)
-                  .map(([id, values]) => `${id} says ${values.join("/")}`)
+                  .map(([id, values]) => `${id} says ${(raw[id] || values).join("/")}`)
                   .join("; ") + `. Each clause reads correctly on its own.`,
       };
     }
+    const stating = Object.keys(answers).length;
     return {
-      ...base, coverage: COVERAGE.RESOLVED, engaged, read: answers, distinct,
-      detail: `All ${engaged.length} participating clauses answer "${relationship.must_agree_on}" ` +
-              `the same way (${distinct[0]}).`,
+      ...base, coverage: COVERAGE.RESOLVED, engaged, read: answers, read_raw: raw, distinct, ...deferral,
+      detail: stating === engaged.length
+        ? `All ${engaged.length} participating clauses answer "${relationship.must_agree_on}" ` +
+          `the same way (${distinct[0]}).`
+        : `"${relationship.must_agree_on}" is stated once (${distinct[0]}), and ` +
+          `${Object.keys(deferring).join(", ")} defers to it by name.`,
     };
   });
 }

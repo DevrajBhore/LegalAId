@@ -1,4 +1,5 @@
 import { applyInstrumentNoun } from "./instrumentKnowledge.js";
+import { supersededOutputFor } from "../../shared/documentWithdrawals.js";
 import { getVariables } from "../config/variableConfig.js";
 import { getForbiddenPartyTerms, getParticipantExpectations } from "./draftingPolicy.js";
 import {
@@ -297,8 +298,11 @@ export function applyDocumentQualityControls(draft, input = {}) {
   const variables = input.variables || draft.metadata?.source_variables || {};
   let clauses = applyConditionalClauseResolution(draft.clauses, documentType, variables)
     .map((clause) => normalizeClauseText(clause, variables))
-    // The instrument's own noun ("this Term Sheet"), for types that declare one.
-    .map((clause) => applyInstrumentNoun(clause, documentType));
+    // The instrument's own noun ("this Term Sheet"), for types that declare one,
+    // and only on a CURRENT output. A superseded draft is exported as it was
+    // generated, with a warning: re-wording it here would silently repair part
+    // of a document the user may already have sent.
+    .map((clause) => (supersededOutputFor(documentType, draft) ? clause : applyInstrumentNoun(clause, documentType)));
   clauses = normalizeLiabilityCap(clauses, variables);
   clauses = dedupeClauses(clauses);
   // Runs last: it needs the final clause set to know what the document uses.

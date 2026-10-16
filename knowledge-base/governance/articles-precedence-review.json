@@ -1,0 +1,54 @@
+{
+  "$comment": [
+    "D4.45 P0 — the 'this Agreement shall prevail' over the Articles sentence, prepared for an advocate. 9 October 2026.",
+    "Engineering has flagged it and frozen it. Engineering has NOT changed it. The owner's instruction: do not mechanically reverse the sentence without examining the particular rights, the applicable company law and how the Articles and the definitive agreements interact."
+  ],
+  "review_status": "AWAITING_ADVOCATE — nothing here is legal advice.",
+  "where_it_ships": {
+    "clause": "CORP_BOARD_INVESTOR_CONTROL_001 (knowledge-base/clause_library/commercial/corp_board_investor_control.json), sub-clause (d)",
+    "documents": [
+      "SHARE_SUBSCRIPTION_AGREEMENT — always (in the blueprint's core list)",
+      "SHAREHOLDERS_AGREEMENT — when governance_control is 'Investor-protective' (variant slot governance_control)"
+    ],
+    "no_longer": "TERM_SHEET — removed in D4.44; the rebuilt term sheet says the Parties intend the rights to be reflected in the Articles and propose that the definitive agreements provide for the amendment.",
+    "frozen_as": "tests/fixtures/articlesPrecedence.D4_45.json (rendered clause, hash-pinned, with the generating inputs)"
+  },
+  "the_sentence": "(d) These rights are intended to operate within the framework of the Companies Act, 2013, and shall, to the extent required, be incorporated into the Articles of Association of the Company; in the event of any conflict between this Agreement and the Articles as between the Shareholders, this Agreement shall prevail and the Shareholders shall procure amendment of the Articles accordingly.",
+  "a_correction_to_an_earlier_statement": "In the D4.44 conversation the term-sheet version of this sentence was described as stating the opposite of Indian law. That was too strong. The sentence is limited to the position 'as between the Shareholders' and pairs it with an obligation to amend the Articles, which is a common construction in Indian shareholders' agreements. The questions below are what decides whether it works; engineering cannot decide them.",
+  "what_it_governs": [
+    "the board composition and the Investor's right to nominate a director",
+    "a quorum that requires an Investor Director",
+    "Reserved Matters: an Investor veto over listed company actions, said to apply 'notwithstanding any other provision'",
+    "information and inspection rights",
+    "precedence of the agreement over the Articles 'as between the Shareholders', and an obligation on the Shareholders to procure amendment of the Articles"
+  ],
+  "questions_for_the_advocate": [
+    "Is the Company itself a party to the SHA and the SSA as generated, and if not, which of these rights can bind the Company before the Articles are amended?",
+    "Does the answer differ for a private company (Articles restrict transfer under Companies Act 2013 s.2(68)) and a public company (s.58(2) proviso: a contract between two or more persons on transfer of securities is enforceable as a contract)?",
+    "For each right listed above — board nomination, quorum, Reserved Matters veto, information rights — is an inter se precedence clause effective between the signing shareholders, and what is the position of a shareholder who has not signed?",
+    "Should the SHA and SSA instead (or also) make the Articles amendment a condition precedent to completion, so the rights are in the Articles from the outset?",
+    "Is the 'notwithstanding any other provision' veto consistent with directors' duties (s.166) and with the statutory powers of the Board and of the general meeting that cannot be delegated or fettered?",
+    "Does s.6 (the Act overrides the Memorandum, the Articles and any agreement to the extent of repugnancy) require any qualification in the clause?",
+    "Approve, amend or replace sub-clause (d), separately for the SHA and the SSA."
+  ],
+  "authorities_to_verify": [
+    {"authority": "Companies Act, 2013 s.6", "point": "the Act overrides the Memorandum, Articles and agreements to the extent repugnant", "verified": false},
+    {"authority": "Companies Act, 2013 s.2(68)", "point": "a private company's Articles restrict the right to transfer its shares", "verified": false},
+    {"authority": "Companies Act, 2013 s.58(2), proviso", "point": "contracts between two or more persons in respect of transfer of securities (of a public company) are enforceable as contracts", "verified": false},
+    {"authority": "V.B. Rangaraj v. V.B. Gopalakrishnan, (1992) 1 SCC 160", "point": "a restriction on share transfer not contained in the Articles does not bind the company or its shareholders", "verified": false},
+    {"authority": "Later decisions qualifying Rangaraj (for example Messer Holdings v. Shyam Madanmohan Ruia, Bombay High Court; Vodafone International Holdings v. Union of India, (2012) 6 SCC 613; World Phone India v. WPI Group, Delhi High Court)", "point": "listed as leads only; their holdings and citations must be confirmed by the advocate before anything relies on them", "verified": false}
+  ],
+  "what_engineering_did": [
+    "ARTICLES_PRECEDENCE_UNSUPPORTED is now one evaluator for every document type (validateArticlesPrecedence), not a term-sheet check, and the instrument coherence checks no longer repeat it.",
+    "It is a HIGH, LEGAL_REVIEW_REQUIRED finding. It does not block: SHA and SSA documents still generate, now with 'Review Required' and the finding explaining why.",
+    "It recognises the 'as between the Shareholders' limit and says so in the finding, rather than describing the sentence as plainly wrong.",
+    "tests/articlesPrecedence.test.mjs pins: the frozen text, today's output equal to it (no silent re-wording), exactly one finding per document, an unqualified precedence statement caught, and negative controls that do not fire."
+  ],
+  "decision": {
+    "status": "AWAITING_ADVOCATE",
+    "decided_by": null,
+    "decided_on": null,
+    "outcome": null,
+    "rule": "When decided, record the outcome here per document (SHA, SSA), change the clause only as decided, re-freeze the fixture with the reason, and keep the frozen pre-decision text in git history."
+  }
+}

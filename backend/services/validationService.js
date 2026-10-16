@@ -1,5 +1,8 @@
 import { withValidationAssuranceWithdrawn } from "../../shared/documentWithdrawals.js";
-import { validateInstrumentCoherence, declaresInstrument, scopeUncertaintyToBindingProvisions } from "./instrumentCoherence.js";
+import { validateAIIntegrity, userValueFigures } from "./mutationGuard.js";
+import { getVariables as getSchemaVariables } from "../config/variableConfig.js";
+import { validateRequirements, releaseOutcomeOf, RELEASE_LABEL } from "./requirementRelease.js";
+import { validateInstrumentCoherence, declaresInstrument, scopeUncertaintyToBindingProvisions, validateArticlesPrecedence } from "./instrumentCoherence.js";
 import fs from "fs";
 import { validateAgreementGraph } from "./agreementGraphValidator.js";
 
@@ -257,6 +260,24 @@ export async function runDocumentValidation(
         variables: resolvedSourceVariables || {},
       }))
     : [];
+  // D4.45: a contract said to prevail over the Articles, in any document.
+  const articlesIssues = validateArticlesPrecedence(draft);
+  // D4.46: AI output checked against the immutable pre-AI text. Only AI-touched
+  // drafts carry metadata.pre_ai_baseline, so nothing else is affected.
+  const aiIntegrityIssues = draft?.metadata?.pre_ai_baseline
+    ? (layersRun.push("ai_integrity"),
+      validateAIIntegrity(draft, {
+        userFigures: userValueFigures(resolvedSourceVariables || {}, getSchemaVariables(resolvedDocumentType) || {}),
+      }))
+    : [];
+  // D4.46: what this KIND of document must do, deciding release. The one
+  // requirement evaluator (assessRequirements), read in five states; see
+  // requirementRelease.js. Families without a requirements file are unaffected.
+  const requirementCheck = resolvedDocumentType
+    ? validateRequirements(draft, { documentType: resolvedDocumentType, variables: resolvedSourceVariables || {} })
+    : { issues: [], ledger: null };
+  if (requirementCheck.ledger) layersRun.push("requirements");
+  const requirementIssues = requirementCheck.issues;
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -285,6 +306,9 @@ export async function runDocumentValidation(
       ...graphIssues,
       ...finalQualityIssues,
       ...coherenceIssues,
+      ...articlesIssues,
+      ...aiIntegrityIssues,
+      ...requirementIssues,
       ...statutoryChecklistNotices,
       ...extraIssues,
     ],
@@ -297,6 +321,7 @@ export async function runDocumentValidation(
       agreement_graph_issues: graphIssues.length,
       final_quality_issues: finalQualityIssues.length,
       ...(coherenceIssues.length ? { instrument_coherence_issues: coherenceIssues.length } : {}),
+      ...(requirementIssues.length ? { requirement_issues: requirementIssues.length } : {}),
       statutory_checklist_items: statutoryChecklistNotices[0]?.items?.length || 0,
       extra_issues: extraIssues.length,
     },
@@ -308,7 +333,8 @@ export async function runDocumentValidation(
         coreValidation.constraint_outcomes || coreValidation._constraint_outcomes,
       clauses: draft?.clauses || [],
     }),
-  }), resolvedDocumentType);
+    requirements: requirementCheck.ledger,
+  }), resolvedDocumentType, draft);
 }
 
 export function formatValidationResult({
@@ -316,6 +342,7 @@ export function formatValidationResult({
   issues = [],
   layers = {},
   coverage = null,
+  requirements = null,
 } = {}) {
   const dedupedIssues = collapseClauseIssueNoise(deduplicateIssues(issues));
   const notices = dedupedIssues.filter(isNoticeIssue);
@@ -378,9 +405,13 @@ export function formatValidationResult({
   // that contradicted itself on whether it binds was shown "No issues detected"
   // with a score of 100. The checks that ran found nothing; that is all a clean
   // result can claim, and the wording now says exactly that.
-  let certification = "Automated checks passed";
-  if (blockingIssues.length > 0) certification = "Blocked";
-  else if (actionableIssues.length > 0) certification = "Review Required";
+  //
+  // D4.46: two further outcomes, distinct from both Blocked and passed. A
+  // finding that needs an answer the user has not given is "Requires
+  // information"; one that needs a lawyer's judgment is "Requires legal
+  // review". A blocking finding always wins (see releaseOutcomeOf).
+  const releaseOutcome = releaseOutcomeOf(blockingIssues, actionableIssues);
+  const certification = RELEASE_LABEL[releaseOutcome];
 
   let overallRisk = "LOW";
   if (blockingIssues.length > 0) overallRisk = "BLOCKED";
@@ -392,6 +423,7 @@ export function formatValidationResult({
     score,
     score_breakdown: scoreBreakdown,
     certification,
+    release_outcome: releaseOutcome,
     risk: overallRisk,
     overall_risk: overallRisk,
     risk_level: overallRisk,
@@ -400,6 +432,7 @@ export function formatValidationResult({
     certified: actionableIssues.length === 0,
     checks_passed: actionableIssues.length === 0,
     coverage,
+    ...(requirements ? { requirements } : {}),
     blockingIssues,
     advisoryIssues,
     notices,

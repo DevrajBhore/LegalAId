@@ -85,7 +85,7 @@ function deriveStatus({ changeType, validation }) {
 // stored with them is withdrawn on every read, so an old "validated" status or a
 // score of 100 is never shown again for an output of that type.
 function currentValidationOf(record) {
-  return withValidationAssuranceWithdrawn(record.currentValidation, record.documentType);
+  return withValidationAssuranceWithdrawn(record.currentValidation, record.documentType, record.currentDraft);
 }
 
 function buildHistorySummary(record) {
@@ -230,7 +230,7 @@ function serializeVersionSummary(version, documentType) {
     changeType: version.changeType,
     createdAt: version.createdAt,
     validation: summarizeValidation(
-      withValidationAssuranceWithdrawn(version.validationSnapshot, documentType)
+      withValidationAssuranceWithdrawn(version.validationSnapshot, documentType, version.draftSnapshot)
     ),
   };
 }
