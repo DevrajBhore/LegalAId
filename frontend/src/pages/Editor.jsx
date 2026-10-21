@@ -668,10 +668,19 @@ export default function Editor() {
         : history?.draftId
           ? "Saved"
           : "Saving soon";
+  // Export is offered whenever the latest validation found no BLOCKING issue and
+  // the draft has not been edited since. It used to require `certified` and zero
+  // issues of any kind, so a single advisory note ("Review Required") hid the
+  // button, although the server withholds an export only for a blocking finding
+  // (backend/index.js /export, D4.47). Advisory notes stay visible in the
+  // Validation tab; they never stop a download.
+  const blockingCount =
+    validation?.summary?.blocking ??
+    (validation?.blockingIssues || validation?.issues || []).length;
   const isCertified =
-    validation?.certified === true &&
+    Boolean(validation) &&
     riskLevel !== "BLOCKED" &&
-    issueCount === 0 &&
+    blockingCount === 0 &&
     !needsValidation;
   const isExporting = Boolean(downloadingFormat);
   const workspaceLinks = [
