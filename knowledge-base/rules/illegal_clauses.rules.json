@@ -177,9 +177,12 @@
     {
       "rule_id": "USURIOUS_INTEREST_RATE",
       "severity": "HIGH",
-      "message": "Interest rate appears usurious. Courts may reduce it under the Usurious Loans Act 1918.",
+      "message": "The interest rate is high enough that a court could examine it under section 3 of the Usurious Loans Act, 1918, which allows a transaction to be reopened where the interest is excessive and the transaction substantially unfair. Whether this rate is excessive depends on the facts; this is not a finding that it is usurious, and the rate you entered has not been changed.",
       "reference": "Usurious Loans Act 1918 – S.3",
-      "suggestion": "Keep interest rates commercially reasonable (typically below 24% per annum for commercial loans).",
+      "suggestion": "Have a lawyer confirm the rate is defensible on the facts of this loan, or record the commercial reasons for it. The rate stays as you entered it unless you change it.",
+      "release_outcome": "REQUIRES_LEGAL_REVIEW",
+      "verified_authority": false,
+      "$d4_47": "Reworded: it used to say the rate 'appears usurious' and suggested keeping it 'typically below 24%', which reads as a legal limit. Section 3 has no numerical ceiling; excessiveness is a judicial assessment. The 24% figure was the one the old repair silently substituted (D4.46).",
       "patterns": [
         "interest.*(?:4[0-9]|[5-9]\\d|\\d{3,})%",
         "interest.*per.*month.*(?:[4-9]|[1-9]\\d)%"

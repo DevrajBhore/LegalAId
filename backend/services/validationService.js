@@ -2,6 +2,7 @@ import { withValidationAssuranceWithdrawn } from "../../shared/documentWithdrawa
 import { validateAIIntegrity, userValueFigures } from "./mutationGuard.js";
 import { getVariables as getSchemaVariables } from "../config/variableConfig.js";
 import { validateRequirements, releaseOutcomeOf, RELEASE_LABEL } from "./requirementRelease.js";
+import { verifySurvivalReferences } from "./survivalSemantics.js";
 import { validateInstrumentCoherence, declaresInstrument, scopeUncertaintyToBindingProvisions, validateArticlesPrecedence } from "./instrumentCoherence.js";
 import fs from "fs";
 import { validateAgreementGraph } from "./agreementGraphValidator.js";
@@ -278,6 +279,11 @@ export async function runDocumentValidation(
     : { issues: [], ledger: null };
   if (requirementCheck.ledger) layersRun.push("requirements");
   const requirementIssues = requirementCheck.issues;
+  // D4.47: the survival list as printed, against the provisions the document
+  // contains. Runs on every document; a list the engine drew is right by
+  // construction, so this fires on edits and on defects.
+  layersRun.push("survival_references");
+  const survivalIssues = verifySurvivalReferences(draft);
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -309,6 +315,7 @@ export async function runDocumentValidation(
       ...articlesIssues,
       ...aiIntegrityIssues,
       ...requirementIssues,
+      ...survivalIssues,
       ...statutoryChecklistNotices,
       ...extraIssues,
     ],

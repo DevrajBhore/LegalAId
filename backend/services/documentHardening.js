@@ -2,6 +2,7 @@ import { getClauseById } from "./clauseAssembler.js";
 import { getInstrument } from "./instrumentKnowledge.js";
 import { injectVariables } from "./variableInjector.js";
 import { forClause, isRecording, observeRenderer, noteRenderer, chose, SOURCE_CLASS, NOT_YET_RECORDED } from "./provenance.js";
+import { survivingLabels, survivalReferencingClauseIds } from "./survivalSemantics.js";
 import { normalizeClauseCategory, sortClausesByOrder } from "../config/clauseOrder.js";
 import { hasMeaningfulValue, positionOf, POSITION } from "./generationControls.js";
 import { deriveRiskProfile } from "./riskProfile.js";
@@ -1652,22 +1653,16 @@ function buildClausePresence(clauses = []) {
   return { has: (concept) => concepts.has(concept), concepts, clauseIds };
 }
 
-// The survival list, built from what the document contains rather than from a
-// fixed sentence. Order follows the order a reader meets the provisions.
-const SURVIVAL_ORDER = [
-  "confidentiality",
-  "intellectual_property",
-  "indemnity",
-  "liability_cap",
-  "dispute_resolution",
-  "governing_law",
-  "notices",
-];
+// The survival list: see survivingProvisionLabels below and
+// knowledge-base/metadata/survival_semantics.json (D4.47).
 
+// D4.47: established by clause id against knowledge-base/metadata/
+// survival_semantics.json, not by matching titles. A "Termination Notice" made
+// notices survive and a licence made "ownership of intellectual property"
+// survive; the authored list names each survival-bearing clause and records the
+// ones a title would have pulled in.
 function survivingProvisionLabels(present) {
-  const labels = SURVIVAL_ORDER.filter((concept) => present.has(concept)).map(
-    (concept) => CONCEPT_MARKERS.find((marker) => marker.concept === concept).label
-  );
+  const labels = survivingLabels([...(present.clauseIds || [])]);
   labels.push("this clause");
   return labels;
 }
@@ -3933,6 +3928,32 @@ export function getDisallowedProtections(documentType) {
   return new Set(
     getDocumentDraftingPolicy(documentType)?.hardening?.disallowedProtections || []
   );
+}
+
+/**
+ * D4.47. Render the clauses that enumerate surviving provisions again, from the
+ * FINAL clause set. The survival list used to be drawn while hardening ran,
+ * before enhanceCommercially injected indemnity and limitation of liability, so
+ * a document that passed clean named fewer surviving provisions than it
+ * contained, and one that entered the repair round was re-rendered correctly:
+ * the text depended on whether validation had found anything.
+ */
+export function rerenderSurvivalReferences(draft, input = {}) {
+  if (!draft || !Array.isArray(draft.clauses)) return draft;
+  const ids = survivalReferencingClauseIds();
+  if (!draft.clauses.some((c) => ids.has(c.clause_id))) return draft;
+  const documentType = input.document_type || draft.document_type;
+  const variables = input.variables || draft.metadata?.source_variables || {};
+  const semanticContext = input.semanticContext || draft.metadata?.interpreted_facts || {};
+  const present = buildClausePresence(draft.clauses);
+  return {
+    ...draft,
+    clauses: draft.clauses.map((clause) => {
+      if (!ids.has(clause.clause_id)) return clause;
+      const rendered = renderHardClause(clause, variables, documentType, semanticContext, present);
+      return rendered && typeof rendered.text === "string" ? { ...clause, text: rendered.text } : clause;
+    }),
+  };
 }
 
 export function applyDocumentHardening(draft, input = {}) {

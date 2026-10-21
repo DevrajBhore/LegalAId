@@ -1,0 +1,80 @@
+{
+  "$comment": [
+    "D4.47 — every path that changes clause text after the engine has rendered it, what guards it, and the test that fails if the guard is removed.",
+    "A path missing from this list is a path nobody has checked. tests/mutationPaths.test.mjs reads this file and verifies each entry against the code."
+  ],
+  "review_status": "engineering",
+  "paths": [
+    {
+      "id": "DETERMINISTIC_REPAIR",
+      "where": "backend/services/documentService.js applyDeterministicRepairRound",
+      "guard": "guardDraftMutation (figures, locks)",
+      "code_marker": "source: \"deterministic_repair\"",
+      "verified_by": "tests/generationIntegrity.test.mjs"
+    },
+    {
+      "id": "AI_TAILORING",
+      "where": "backend/services/documentService.js mergeAIDraftWithSeed",
+      "guard": "refusalReasons with introducedFiguresForbidden and partyNames (figures, locks, meaning markers)",
+      "code_marker": "partyNames,",
+      "verified_by": "tests/mutationPaths.test.mjs"
+    },
+    {
+      "id": "FIX_ISSUE",
+      "where": "backend/services/issueRepairService.js repairDocumentIssue",
+      "guard": "guardDraftMutation with introducedFiguresForbidden (figures, locks, meaning markers)",
+      "code_marker": "guardDraftMutation(",
+      "verified_by": "tests/generationIntegrity.test.mjs"
+    },
+    {
+      "id": "AI_CHAT",
+      "where": "backend/index.js POST /chat -> mutationEntryPoints.guardChatEdits",
+      "guard": "guardDraftMutation with introducedFiguresForbidden; figures the user typed are authorised",
+      "code_marker": "guardChatEdits(draft, result, message)",
+      "verified_by": "tests/mutationPaths.test.mjs",
+      "was": "Applied in the browser with no check at all."
+    },
+    {
+      "id": "EXPORT_QUALITY_CONTROLS",
+      "where": "backend/index.js POST /export -> mutationEntryPoints.prepareExportDraft",
+      "guard": "guardDraftMutation (figures, locks)",
+      "code_marker": "prepareExportDraft(",
+      "verified_by": "tests/mutationPaths.test.mjs",
+      "was": "Unguarded. Measured a fixed point on every engine draft; it normalises edited text."
+    },
+    {
+      "id": "SURVIVAL_RERENDER",
+      "where": "backend/services/documentService.js finaliseSurvivalReferences",
+      "guard": "Engine drafting from the final clause set; touches only the clauses in survival_semantics.referenced_by.",
+      "code_marker": "finaliseSurvivalReferences(",
+      "verified_by": "tests/survivalReferences.test.mjs"
+    }
+  ],
+  "not_machine_mutations": [
+    "Manual edits in the editor, restoring a saved version, and revision regeneration reusing wording the user accepted: the user's own text.",
+    "Generation stages before the first validation (hardening, quality controls, normalisation, category mapping): the engine drafting; covered by the conservation gate. Exception found in D4.47: normalisation is not idempotent (NORMALISATION_NOT_IDEMPOTENT), so it must not be run twice over a finished draft; the survival stage normalises only the clauses it re-renders."
+  ],
+  "meaning_markers": {
+    "$what": "For AI changes (tailoring, /fix-issue, chat) the guard reads these from the words, before and after.",
+    "caught": [
+      "negation added or removed",
+      "obligation words changed (shall/must/may/will, and their negatives)",
+      "conditions, qualifications and exceptions added or removed (unless, except, excluding, provided that, subject to, notwithstanding, only if, save that, if, where)",
+      "remedies added or removed (indemnify, damages, terminate, injunction, specific performance, interest, penalty, liquidated, refund, forfeit, set-off, suspend)",
+      "a party added, removed or exchanged for another",
+      "numbers written as words (two to a hundred)"
+    ],
+    "not_caught": [
+      "scope quantifiers: 'all' to 'any' or 'some'",
+      "temporal order: 'before' to 'after', 'within' to 'not later than'",
+      "standards of conduct: 'reasonable' to 'sole discretion', 'best endeavours' to 'reasonable endeavours'",
+      "the subject matter a clause applies to: 'Confidential Information' to 'trade secrets'",
+      "a party described rather than named (the guard reads defined names only)"
+    ],
+    "$why_not_caught_is_recorded": "These pass the guard. tests/mutationPaths.test.mjs asserts that they do, so that the list cannot quietly become false in either direction."
+  },
+  "export_fidelity": {
+    "docx": "Every figure in the draft text is present in the DOCX document text, on the whole corpus (tests/mutationPaths.test.mjs).",
+    "pdf": "NOT verified: no PDF text extractor is installed; the PDF is built from the same text as the DOCX."
+  }
+}

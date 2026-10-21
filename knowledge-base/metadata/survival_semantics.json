@@ -1,0 +1,107 @@
+{
+  "$comment": [
+    "D4.47 — which provisions of an agreement are stated to survive its termination, and which clauses ARE those provisions.",
+    "Before D4.47 the survival list was read off clause titles and categories by regular expression (CONCEPT_MARKERS in documentHardening.js): any clause whose id contained NOTICE made 'notices' survive (a Termination Notice or a Notice Period included), any IP-category clause made 'ownership of intellectual property' survive (a licence that ends on termination included), and the list was drawn before indemnity and liability clauses were injected, so it omitted them.",
+    "Whether and to what extent a provision survives termination is a drafting decision, not a consequence of its title. Each clause below is named individually; a clause not named here does not enter the survival list, whatever it is called. The exclusions record the clauses a title would have pulled in, and why they are not survival-bearing.",
+    "The concepts, their order and their labels are the ones the engine already printed; D4.47 changes how presence is established, not what is said to survive. Every entry is draft-needs-legal-review."
+  ],
+  "review_status": "draft-needs-legal-review",
+  "referenced_by": {
+    "$why": "Clauses whose rendered text enumerates the surviving provisions. They are rendered again once the final clause set is known (documentService finaliseSurvivalReferences).",
+    "clause_ids": ["CORE_SURVIVAL_001", "CORE_TERMINATION_001", "SERVICE_TERMINATION_001"]
+  },
+  "concepts": [
+    {
+      "concept": "confidentiality",
+      "label": "confidentiality",
+      "survives": true,
+      "clause_ids": [
+        "CORE_CONFIDENTIALITY_001", "NDA_CONFIDENTIALITY_HEIGHTENED_001", "NDA_CONFIDENTIALITY_TRADE_SECRET_001",
+        "NDA_TRADE_SECRET_PROTECTION_001", "NDA_THIRD_PARTY_DISCLOSURE_001", "DPA_PERSONNEL_AND_CONFIDENTIALITY_001",
+        "EMP_CONFIDENTIALITY_001", "EMP_CONFIDENTIALITY_TRADE_SECRET_001", "SETTLE_CONFIDENTIALITY_001", "TS_CONFIDENTIALITY_AND_COSTS_001"
+      ],
+      "excluded": [
+        { "clause_id": "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001", "why": "A definition, not an obligation." },
+        { "clause_id": "NDA_DATA_SECURITY_001", "why": "Safeguards while the information is held; not a continuing duty of confidence in itself." },
+        { "clause_id": "NDA_RETURN_OF_INFORMATION_001", "why": "An obligation triggered by termination, not one carried beyond it." },
+        { "clause_id": "NDA_NON_SOLICITATION_001", "why": "A restrictive covenant with its own period; whether a restraint survives is a section 27 question, not a consequence of sitting in the confidentiality category." },
+        { "clause_id": "CORE_RESIDUAL_KNOWLEDGE_001", "why": "A carve-out from confidentiality, not a confidentiality obligation." }
+      ]
+    },
+    {
+      "concept": "intellectual_property",
+      "label": "ownership of intellectual property",
+      "survives": true,
+      "clause_ids": [
+        "IP_OWNERSHIP_001", "CORE_IP_OWNERSHIP_FALLBACK_001", "IP_ASSIGNMENT_001", "IP_COPYRIGHT_001", "IP_PATENT_RIGHTS_001",
+        "IP_CONTRACTOR_RETAINS_001", "IP_DEVELOPER_RETAINS_001", "EMP_IP_ASSIGNMENT_001", "FOUNDER_IP_ASSIGNMENT_001",
+        "IPA_TRADEMARK_ASSIGNMENT_001", "IPA_MORAL_RIGHTS_001"
+      ],
+      "excluded": [
+        { "clause_id": "IP_LICENSE_001", "why": "A licence granted for the term; it ends on termination unless it says otherwise." },
+        { "clause_id": "IP_LICENSE_RESTRICTIONS_001", "why": "Restrictions on a licence that ends with it." },
+        { "clause_id": "TOS_LICENSE_TO_USE_001", "why": "A licence to use the service, which ends with access." },
+        { "clause_id": "TOS_USER_CONTENT_001", "why": "A licence of user content; its own terms say how long it runs." },
+        { "clause_id": "IP_TRADEMARK_USAGE_001", "why": "Permission to use marks during the term." },
+        { "clause_id": "IP_OPEN_SOURCE_001", "why": "A compliance duty during development." },
+        { "clause_id": "IP_FEEDBACK_001", "why": "A licence of feedback, not ownership; its duration is stated in it." },
+        { "clause_id": "IP_INFRINGEMENT_001", "why": "A warranty and remedy for infringement, not ownership." },
+        { "clause_id": "TECH_SOURCE_CODE_001", "why": "Source-code delivery and escrow mechanics." },
+        { "clause_id": "NDA_SOURCE_CODE_PROTECTION_001", "why": "Covered by confidentiality, not ownership." }
+      ]
+    },
+    {
+      "concept": "indemnity",
+      "label": "indemnity",
+      "survives": true,
+      "clause_ids": ["CORE_INDEMNITY_001", "CORE_INDEMNITY_FULL_001", "CORE_INDEMNITY_PROCEDURE_001", "GUARANTEE_INDEMNITY_001"],
+      "$scope": "An indemnity survives for losses arising from acts or omissions before termination; the survival clause says the provision continues, the indemnity itself fixes its scope.",
+      "excluded": [
+        { "clause_id": "BOND_COVENANT_001", "why": "The operative covenant of an indemnity bond, which is itself the instrument; it has no separate survival clause." },
+        { "clause_id": "BOND_EXTENT_001", "why": "States its own duration." }
+      ]
+    },
+    {
+      "concept": "liability_cap",
+      "label": "limitation of liability",
+      "survives": true,
+      "clause_ids": ["CORE_LIABILITY_CAP_001", "CORE_LIABILITY_LIMIT_FALLBACK_001", "CORE_LIMITATION_LIABILITY_001"],
+      "excluded": []
+    },
+    {
+      "concept": "dispute_resolution",
+      "label": "dispute resolution",
+      "survives": true,
+      "clause_ids": ["CORE_DISPUTE_RESOLUTION_001", "CORE_ARBITRATION_001"],
+      "excluded": [
+        { "clause_id": "ARB_NOTICE_DISPUTES_001", "why": "Part of a notice invoking arbitration, not an agreement's dispute clause." }
+      ]
+    },
+    {
+      "concept": "governing_law",
+      "label": "governing law and jurisdiction",
+      "survives": true,
+      "clause_ids": ["CORE_GOVERNING_LAW_001", "CORE_GOV_LAW_001"],
+      "excluded": []
+    },
+    {
+      "concept": "notices",
+      "label": "notices",
+      "survives": true,
+      "clause_ids": ["CORE_NOTICE_001"],
+      "excluded": [
+        { "clause_id": "CORE_TERMINATION_NOTICE_001", "why": "How notice of termination is given; it is spent once given." },
+        { "clause_id": "EMP_NOTICE_PERIOD_001", "why": "A notice period for ending employment, not the notices machinery." }
+      ]
+    }
+  ],
+  "does_not_survive": {
+    "$why": "Negative controls. Present in documents, deliberately never named in the survival list.",
+    "concepts": [
+      { "concept": "representations", "why": "Representations speak as at signing; whether a warranty claim survives is governed by limitation, not by this list." },
+      { "concept": "security", "why": "Security is discharged on repayment; its survival is the security document's business." },
+      { "concept": "insurance", "why": "A duty to insure for the term." },
+      { "concept": "licences", "why": "See the exclusions under intellectual_property." }
+    ]
+  }
+}

@@ -51,7 +51,7 @@
       {
         "outcome": "Requires legal review",
         "meaning": "A substantive legal question remains unresolved.",
-        "today": "EXISTS since D4.46 — unmet held or ESCALATE/DISCLOSE requirements, contradicted character, unreadable relationships, and withdrawn or superseded outputs give 'Requires legal review'. LEGAL_REVIEW_REQUIRED findings outside the requirement model still ship as 'Review Required'."
+        "today": "EXISTS since D4.46 — unmet held or ESCALATE/DISCLOSE requirements, contradicted character, unreadable relationships, and withdrawn or superseded outputs give 'Requires legal review'. LEGAL_REVIEW_REQUIRED findings outside the requirement model still ship as 'Review Required'. D4.47: also a model's verdict (AI review), a usury concern, and a survival list that does not match the document."
       },
       {
         "outcome": "Automated checks passed",
@@ -2626,9 +2626,13 @@
       ],
       "severity": "P1",
       "verified_by_hand": true,
-      "status": "OPEN",
+      "status": "FIXED_D4_47",
       "what": "enhanceCommercially injects CORE_INDEMNITY_FULL_001 and CORE_LIABILITY_LIMIT_FALLBACK_001 after documentHardening renders CORE_SURVIVAL_001, so a document that passes clean names fewer surviving provisions than it contains; one that enters the repair round is re-rendered correctly. Measured on the D4.46 conservation capture: 8 of 113 shipped documents with a survival clause (NDA 5, LEAVE_AND_LICENSE 3); 16 before D4.46.",
-      "next": "Belongs with the injected-protections workstream: render enumerating clauses after injection, so the text never depends on whether validation found anything."
+      "next": "Belongs with the injected-protections workstream: render enumerating clauses after injection, so the text never depends on whether validation found anything.",
+      "resolution": "The survival list is drawn by clause id against knowledge-base/metadata/survival_semantics.json (not titles), rendered again as the last stage once the clause set is final, and checked against the document on every validation (SURVIVAL_REFERENCES_MISMATCH, Requires legal review). The 8 documents are frozen as tests/fixtures/survivalStale.D4_47.json.",
+      "verified_by": [
+        "tests/survivalReferences.test.mjs"
+      ]
     },
     {
       "id": "MOU_NON_BINDING_ALWAYS_APPLIES",
@@ -2661,6 +2665,93 @@
       "verified_by_hand": true,
       "status": "OPEN",
       "what": "No fixture world of CHEQUE_BOUNCE_NOTICE or POWER_OF_ATTORNEY generates (constraint refusals, tracked in governance/block-decomposition.json), so their 7 BLOCK requirements have no corpus evidence and are held rather than activated."
+    },
+    {
+      "id": "EXPORT_REFUSES_PASSING_DOCUMENTS",
+      "level": [
+        "G57",
+        "Q40"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "status": "FIXED_D4_47",
+      "what": "Reported by the user: documents shown green could not be downloaded. Export re-validates in 'final' mode, where the AI safety layer runs for any AI-touched or edited draft and never ran in what the user was shown. Its tamper heuristics read the engine's own '(iii)', 'Schedule III' and clauses opening '(a)' as malformed text; with nothing changed it judged every clause as an edit; and a model's unverified verdict blocked. Measured: 18 of 58 corpus documents refused once AI-touched, including MASTER_SERVICE_AGREEMENT and SETTLEMENT_AGREEMENT shown 'Automated checks passed' at 100.",
+      "resolution": "Roman numerals and leading enumerators are legal drafting; only text an edit introduced is judged; an unchanged draft has nothing judged; a model's verdict is 'Requires legal review', never a block. Deterministic tampering still blocks. Frozen as tests/fixtures/exportRefusal.D4_47.json.",
+      "verified_by": [
+        "tests/exportParity.test.mjs"
+      ]
+    },
+    {
+      "id": "CHAT_EDITS_UNGUARDED",
+      "level": [
+        "G54"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "status": "FIXED_D4_47",
+      "what": "AI edits from the chat panel were applied in the browser with no check: locked clauses, figures and meaning could all change.",
+      "resolution": "POST /chat passes every edit through the mutation guard; figures the user typed are authorised.",
+      "verified_by": [
+        "tests/mutationPaths.test.mjs"
+      ]
+    },
+    {
+      "id": "EXPORT_TRANSFORM_UNGUARDED",
+      "level": [
+        "G54",
+        "Q30"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "status": "FIXED_D4_47",
+      "what": "Export-time quality controls ran on the user's draft with no guard. Measured a fixed point on all 58 engine drafts; on edited text they normalise.",
+      "resolution": "Guarded (figures, locks); the export carries what the user saw if a change is refused.",
+      "verified_by": [
+        "tests/mutationPaths.test.mjs"
+      ]
+    },
+    {
+      "id": "GUARD_READS_NUMBERS_ONLY",
+      "level": [
+        "G54",
+        "Q30"
+      ],
+      "severity": "P0",
+      "verified_by_hand": true,
+      "status": "PARTLY_FIXED_D4_47",
+      "what": "The D4.46 guard compared figures and locks only. A rewrite keeping every number could drop 'not', turn 'shall' into 'may', remove an 'unless', exchange the parties or remove a remedy; numbers in words were invisible.",
+      "resolution": "For AI changes the guard reads negation, obligation words, conditions and exceptions, remedies, parties and numbers in words. Still not caught, and asserted as such: scope quantifiers, temporal order, standards of conduct, subject matter (governance/mutation-paths.json).",
+      "verified_by": [
+        "tests/mutationPaths.test.mjs"
+      ]
+    },
+    {
+      "id": "MODEL_VERDICT_TREATED_AS_LAW",
+      "level": [
+        "Q19",
+        "Q40"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "status": "FIXED_D4_47",
+      "what": "A model's reading (AI_SEMANTIC_*) blocked with CRITICAL severity; USURIOUS_INTEREST_RATE said a rate 'appears usurious' and suggested 'typically below 24%', which reads as a legal limit section 3 does not have.",
+      "resolution": "Both are now 'Requires legal review', marked verified_authority false, and say they are not a legal conclusion.",
+      "verified_by": [
+        "tests/exportParity.test.mjs",
+        "tests/generationIntegrity.test.mjs"
+      ]
+    },
+    {
+      "id": "NORMALISATION_NOT_IDEMPOTENT",
+      "level": [
+        "Q30",
+        "Q22"
+      ],
+      "severity": "P1",
+      "verified_by_hand": true,
+      "status": "OPEN",
+      "what": "Text inserted by quality controls after normalizeClauseText is never role-normalised, so NDA_DISCLOSURE_PERMITTED_001 ships 'the Recipient', and the Software Development Agreement's IP_LICENSE_001 and IP_LICENSE_RESTRICTIONS_001 ship 'the Licensor'/'the Licensee', none of which the documents define. A second normalisation would fix those and break LOAN_AMOUNT_001 ('Principal sum' to 'Borrower sum'). Measured: 6 of 58 drafts not a fixed point.",
+      "next": "One normalisation stage after the last insertion, with defined terms ('Principal' in a loan) masked, and an idempotence test on the corpus."
     }
   ],
   "duplicate_evaluators": {
@@ -2718,9 +2809,14 @@
       "exit": "tests/generationIntegrity, tests/ndaContradiction, tests/releaseEnforcement."
     },
     {
+      "priority": "DONE_D4_47",
+      "work": "Export parity (green documents download), survival list from the final clause set, every mutation path guarded and inventoried (incl. chat and export), meaning markers for AI changes, mixed-findings precedence.",
+      "exit": "tests/exportParity, tests/survivalReferences, tests/mutationPaths."
+    },
+    {
       "priority": "P1",
-      "work": "SURVIVAL_LIST_STALE_AFTER_INJECTION and the injected-protections silent default, as one workstream",
-      "exit": "Enumerating clauses are rendered after injection; the text is identical whether or not the repair round runs."
+      "work": "NORMALISATION_NOT_IDEMPOTENT: one role-normalisation stage after the last insertion, defined terms masked",
+      "exit": "normalisation is a fixed point on the corpus; no undefined role word ships."
     },
     {
       "priority": "P1",

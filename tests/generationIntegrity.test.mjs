@@ -40,6 +40,11 @@ const loanText = draftToText(loan.draft);
 ok(/48%/.test(loanText) && /50%/.test(loanText) && !/\b24%/.test(loanText), "a 48% loan ships at 48% (default 50%), never 24%");
 const findings = [...loan.validation.blockingIssues, ...loan.validation.advisoryIssues].map((i) => i.rule_id);
 ok(findings.includes("USURIOUS_INTEREST_RATE"), "the concern is flagged separately, as a finding the user sees");
+// D4.47: flagging is not concluding. Section 3 has no numerical ceiling.
+const usuryFinding = [...loan.validation.blockingIssues, ...loan.validation.advisoryIssues].find((i) => i.rule_id === "USURIOUS_INTEREST_RATE");
+ok(usuryFinding.release_outcome === "REQUIRES_LEGAL_REVIEW" && usuryFinding.verified_authority === false && !usuryFinding.blocks_generation &&
+   /not a finding that it is usurious/.test(usuryFinding.issue) && !/below 24%/.test(usuryFinding.fix_suggestion) && loan.validation.certification === "Requires legal review",
+  "the finding asks for legal review and says it is not a conclusion that the rate is usurious; no 24% 'limit' is suggested");
 const usury = illegalClauseValidate(loan.draft).find((i) => i.rule_id === "USURIOUS_INTEREST_RATE");
 ok(usury?.auto_fixable === true && applyDeterministicFixes(loan.draft, [usury]).clauses.every((c, i) => c.text === loan.draft.clauses[i].text),
   "even with the finding marked auto-fixable and a clause id, the repair changes no clause text");

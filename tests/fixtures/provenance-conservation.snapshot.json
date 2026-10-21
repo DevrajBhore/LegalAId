@@ -1,6 +1,6 @@
 {
  "FOUNDERS_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "6433e6be3e9a0656d3152067129dd61b310f6cd0feb704f1af9500a62479d9e7",
+  "result_sha256": "e2cf7ecf6dc0b55d2bc10dc3ef54083836d3532fec657d00c136f7d2264541cf",
   "text_sha256": "de8ad89fbb13e245b6c62c06fbccbb9765206f77e8e4e72853688293bf2ae83f",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -41,7 +41,7 @@
   "has_provenance": true
  },
  "FOUNDERS_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "93915b5708edbe10754041def63e62350bba47a3982f7cde077934f304e1503d",
+  "result_sha256": "589e1648c6fcaeb95d6b5c5fb39a8e6534f0c6f0c3fe79c763ee53a2807c6c08",
   "text_sha256": "f2c54820ad5e2ee0c255e52cc70897825d60cd793efbcebf1cfb23cef2f6597a",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -80,7 +80,7 @@
   "has_provenance": true
  },
  "FOUNDERS_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "8d38965fb903d57fa22b338f08b658ca99f5044f5e1fedb35d80f1b832d0f603",
+  "result_sha256": "2476956be3f9d5276d4e1723a188cf78d538c11c5d7f04f7e44da02df3772740",
   "text_sha256": "4a9dbdb7c8e93bd5f2989e9d2582cc5c694c7029e758dbe9a92553d01306682e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -129,7 +129,7 @@
   "has_provenance": false
  },
  "FOUNDERS_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "217c9444ebb387bd7bf209bbbbcfbf0db49faea269c107abf8d986390fc0dfe8",
+  "result_sha256": "47e5a8a5e6ab2d9d36b97c4f6ec728eb20461d2161da66fea868cf4afaf8fea6",
   "text_sha256": "35162317ed337a2a2c162e1cb602a7d34668bfcd7406d71d033b79d9c07202f6",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -170,7 +170,7 @@
   "has_provenance": true
  },
  "TERM_SHEET::WELL_FILLED": {
-  "result_sha256": "4acdf8405cf31c2f88882009207e30e363ffcfc354d73f56a0aad7a437bcb1a8",
+  "result_sha256": "6fd44c00d6ece8c8fa78fff713c927a36cea26cc26217384be54853614de1bab",
   "text_sha256": "b3bf820bbd5aab708d846bcae516b056d867b42689eff18bd6f91b6c589db6e0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -192,7 +192,7 @@
   "has_provenance": true
  },
  "TERM_SHEET::MINIMAL_DECLINED": {
-  "result_sha256": "4acdf8405cf31c2f88882009207e30e363ffcfc354d73f56a0aad7a437bcb1a8",
+  "result_sha256": "6fd44c00d6ece8c8fa78fff713c927a36cea26cc26217384be54853614de1bab",
   "text_sha256": "b3bf820bbd5aab708d846bcae516b056d867b42689eff18bd6f91b6c589db6e0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -214,7 +214,7 @@
   "has_provenance": true
  },
  "TERM_SHEET::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "68746fdb00f36f37dbc08cfe84d52a0f31e749afe80e96d69c02c4f2f2a66a7e",
+  "result_sha256": "d1f2def41c2cdd57423919bb335a650fe4dbc5a457d95bb9ae14a7cb4cfa43e1",
   "text_sha256": "846350e45238f228a6d135d22e47757cad3b81c3af76aafb2dec5b8e69f15125",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -236,7 +236,7 @@
   "has_provenance": true
  },
  "TERM_SHEET::QUICK_ESSENTIALS": {
-  "result_sha256": "2ef430585a0e896399f5513b6412375216b8587bea70a02cfc84ef115c48fe1e",
+  "result_sha256": "449f690d598e57ea455299ba05ec5eeccf83121ff79df974a230d57a81bfb841",
   "text_sha256": "53b13bf04bd5dd91ae8492c4c2dd7bf830e132a321dbe073f935d6839fc13596",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -258,7 +258,7 @@
   "has_provenance": true
  },
  "TERM_SHEET::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "41505659263208c6eb76c2fb8ca1c3b171bea65b5a3907497e0b187cab4649d2",
+  "result_sha256": "ce31965bc27f2f2de191f3da08b2a445482e8c0caefec420cb54f6f0cbb74305",
   "text_sha256": "752a8d560aec2002400958c1c03b89ddca83047d6b4b971002c78e670f12a577",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -280,7 +280,7 @@
   "has_provenance": true
  },
  "ESOP_GRANT_LETTER::WELL_FILLED": {
-  "result_sha256": "7b17e12d0e2bbeb70f34dd86f7ff3521bfefc36b5f82571b65cd45965b178cf8",
+  "result_sha256": "eb7944b929f708c3c96ca94f3504c0e08dda3a7cd52db1749f19478adbdf8f42",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -288,7 +288,7 @@
   "has_provenance": false
  },
  "ESOP_GRANT_LETTER::MINIMAL_DECLINED": {
-  "result_sha256": "7b17e12d0e2bbeb70f34dd86f7ff3521bfefc36b5f82571b65cd45965b178cf8",
+  "result_sha256": "eb7944b929f708c3c96ca94f3504c0e08dda3a7cd52db1749f19478adbdf8f42",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -296,7 +296,7 @@
   "has_provenance": false
  },
  "ESOP_GRANT_LETTER::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "a24ef0ed231db0ff4f93d74fe56cc9b0c653a156cdb2f6f3baac186813c3d99b",
+  "result_sha256": "1478991fb052fa1de7e01c0c215acda41b934ea5b9e58596899c1253afd2990a",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -312,7 +312,7 @@
   "has_provenance": false
  },
  "ESOP_GRANT_LETTER::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "7b17e12d0e2bbeb70f34dd86f7ff3521bfefc36b5f82571b65cd45965b178cf8",
+  "result_sha256": "eb7944b929f708c3c96ca94f3504c0e08dda3a7cd52db1749f19478adbdf8f42",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -320,7 +320,7 @@
   "has_provenance": false
  },
  "SHARE_SUBSCRIPTION_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "564d2d39d99912fcd7b159d0d54e7149c2d8db6dde7647632969462f49dd5ec3",
+  "result_sha256": "67cb3faf361a589f0994e63759460f4cc0f7f7a467e2085ec8129f0039fbf394",
   "text_sha256": "51972ae3e3cbde43e6cf6a0f67826603a4f13918e52eeb5558c09ec0cf0b56da",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -357,7 +357,7 @@
   "has_provenance": true
  },
  "SHARE_SUBSCRIPTION_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "79dda9a60613107bda1bb42e0c7595a7a9ac865497672e2f6d2abea7802ac235",
+  "result_sha256": "cdd954632950868bb4e7de732a8086d878297cf3c7126edf70cd51dd75f73d26",
   "text_sha256": "51972ae3e3cbde43e6cf6a0f67826603a4f13918e52eeb5558c09ec0cf0b56da",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -394,7 +394,7 @@
   "has_provenance": true
  },
  "SHARE_SUBSCRIPTION_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "c09d5c5de99a2776c6ae8926aa34cbe3a4a28c3f7bdddd212e74b03be10d8c34",
+  "result_sha256": "82185db60f262f33e42128a0a8969e22e2e6e3460dfa4f054c634ce49ad83dff",
   "text_sha256": "17f3f86998fde19a26a4b3ac1345bfc2bbcce740f316a37efb4ad1dfffed763a",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -439,7 +439,7 @@
   "has_provenance": false
  },
  "SHARE_SUBSCRIPTION_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "5c8b8a6d95bc540bdea8e5447bd019d5ba26e8c69cc38406dd6a0e67fddc8939",
+  "result_sha256": "28bcbada35e688fb6e4330a5be19d6a16859bb17ead64d54dce2ed6e93978509",
   "text_sha256": "be76896a65ad3e1409ca78ffd0f52ae6fa7b4f72d0c88bf180c3e87ac419e112",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -476,7 +476,7 @@
   "has_provenance": true
  },
  "PROMISSORY_NOTE::WELL_FILLED": {
-  "result_sha256": "07fb38463c467f8d6e25c647d7345cbe5733d49bf432c770a996c9312dccc9b3",
+  "result_sha256": "d85ae219e9637b0467f0ae3bd84f03d258fc57082e3a7a011cf319443738958f",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -484,7 +484,7 @@
   "has_provenance": false
  },
  "PROMISSORY_NOTE::MINIMAL_DECLINED": {
-  "result_sha256": "07fb38463c467f8d6e25c647d7345cbe5733d49bf432c770a996c9312dccc9b3",
+  "result_sha256": "d85ae219e9637b0467f0ae3bd84f03d258fc57082e3a7a011cf319443738958f",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -492,7 +492,7 @@
   "has_provenance": false
  },
  "PROMISSORY_NOTE::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "b49c9b05b5b30a046c88cc5df762a7daa5abc5116f21013f4b9572aea9cf8c76",
+  "result_sha256": "3bc478b45dcae1a352cd8a30d016ddf5ce7352e8b38296a532fa1cce9d52c1f4",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -516,7 +516,7 @@
   "has_provenance": false
  },
  "IP_ASSIGNMENT_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "f0adee2309c1507307b7ba0fa076c20b08ca4bf79b38987205c1888278d0116a",
+  "result_sha256": "2837791d99bf2ebaf365074d5e347684269d16b134a0d1b798538b96aaf8f141",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -524,7 +524,7 @@
   "has_provenance": false
  },
  "IP_ASSIGNMENT_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "f0adee2309c1507307b7ba0fa076c20b08ca4bf79b38987205c1888278d0116a",
+  "result_sha256": "2837791d99bf2ebaf365074d5e347684269d16b134a0d1b798538b96aaf8f141",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -532,7 +532,7 @@
   "has_provenance": false
  },
  "IP_ASSIGNMENT_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "deeffca7386272d80a01fda58b9b1711533e0fac6d8cb6752daffe287fbacec9",
+  "result_sha256": "7279f1d3fdca35ebb9d34b7dec47a7c1801e973e59f6164e323122589a2cee76",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -548,7 +548,7 @@
   "has_provenance": false
  },
  "IP_ASSIGNMENT_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "f0adee2309c1507307b7ba0fa076c20b08ca4bf79b38987205c1888278d0116a",
+  "result_sha256": "2837791d99bf2ebaf365074d5e347684269d16b134a0d1b798538b96aaf8f141",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -556,7 +556,7 @@
   "has_provenance": false
  },
  "POWER_OF_ATTORNEY::WELL_FILLED": {
-  "result_sha256": "835d66541ba543082c5f2722388b9b5f230b2a8cf5182d6cf3ca0a5349a8d07c",
+  "result_sha256": "87a98d7fc6fc98018f38c4ed7a12398e570a83d1aeb8f38acd35f927954cf88e",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -564,7 +564,7 @@
   "has_provenance": false
  },
  "POWER_OF_ATTORNEY::MINIMAL_DECLINED": {
-  "result_sha256": "835d66541ba543082c5f2722388b9b5f230b2a8cf5182d6cf3ca0a5349a8d07c",
+  "result_sha256": "87a98d7fc6fc98018f38c4ed7a12398e570a83d1aeb8f38acd35f927954cf88e",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -572,7 +572,7 @@
   "has_provenance": false
  },
  "POWER_OF_ATTORNEY::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "835d66541ba543082c5f2722388b9b5f230b2a8cf5182d6cf3ca0a5349a8d07c",
+  "result_sha256": "87a98d7fc6fc98018f38c4ed7a12398e570a83d1aeb8f38acd35f927954cf88e",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -596,7 +596,7 @@
   "has_provenance": false
  },
  "DATA_PROCESSING_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "05bb73fb9a9ca65bd65216679f17fedcb2b14e9400f13499d5d904b24a936f4b",
+  "result_sha256": "d1551e35a1dcf500fe4b1657917e28200e46cbc971880fa57692c5f1a69b7b95",
   "text_sha256": "c197b8ae23c0b00d05549a1e7307e09aa427868e73ade827c368f34e63103919",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -634,7 +634,7 @@
   "has_provenance": true
  },
  "DATA_PROCESSING_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "bf4b4a715cdebe5e82bba57f679b48b0656abf234031d01ded892e53ac94d6a8",
+  "result_sha256": "b03a57e0b5df686ae7e080f8fc24206b4e59dfac658011d82d9f866cd490d4a6",
   "text_sha256": "c197b8ae23c0b00d05549a1e7307e09aa427868e73ade827c368f34e63103919",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -672,7 +672,7 @@
   "has_provenance": true
  },
  "DATA_PROCESSING_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "68a680356385ac8edf0fe9be8c4c49c594c5ffdb514967145c6919a139f4dd63",
+  "result_sha256": "72c1c37874d69590454a5bddab28f0aa26868907b9b8b6227528882fc41c9f34",
   "text_sha256": "19145b8ac1938a64baa2fb9a0a0bd471d65cede0119f69b4fab923615daa9923",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -710,7 +710,7 @@
   "has_provenance": true
  },
  "DATA_PROCESSING_AGREEMENT::QUICK_ESSENTIALS": {
-  "result_sha256": "0ad630df31c36d966808a54cf4f5080d24110a2d41181e94b566e40e481125a2",
+  "result_sha256": "e432f827d2fffad4171c1778db63e82900afc981b7aba07dddfce93183057e73",
   "text_sha256": "49f28de4ec5ccf54491aa48bb796fb7c4e8a52e382033fbaf9384b28c5a5f2ee",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -748,7 +748,7 @@
   "has_provenance": true
  },
  "DATA_PROCESSING_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "539a5605206e138040047496e069c194e81bfb4e908365cb055f2f18daf6b09f",
+  "result_sha256": "28b02c632e759278d21bd15237c4682051df35f1149a6ed3313edeade0bf94c9",
   "text_sha256": "f5fc469a63a733a3aea77f8a4e4243d5517003388b5fb6a25cf73af0242d6450",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -786,7 +786,7 @@
   "has_provenance": true
  },
  "REFUND_AND_CANCELLATION_POLICY::WELL_FILLED": {
-  "result_sha256": "c6dddd69c21d4a161c1b3118d3ee87277493415a34747a601f977d4b015f578a",
+  "result_sha256": "c76e856d1108b1fe9f15f8992a8b897ca9d913cc31b814f7c754a2a896dd2cff",
   "text_sha256": "0821d27f9210ebf2aed9f362fe9cdfca3dbfecd5a005866ab4b6208ebf08b4c1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -803,7 +803,7 @@
   "has_provenance": true
  },
  "REFUND_AND_CANCELLATION_POLICY::MINIMAL_DECLINED": {
-  "result_sha256": "e2f9410680c4797cb506bd76bdb023a03b14cee455a4c2ecad91c8fb28b8d1fc",
+  "result_sha256": "702025d39ae8eb6cefe56ac2a9627a4fc4973dca51e3ac5333213031430d2d8d",
   "text_sha256": "0821d27f9210ebf2aed9f362fe9cdfca3dbfecd5a005866ab4b6208ebf08b4c1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -820,7 +820,7 @@
   "has_provenance": true
  },
  "REFUND_AND_CANCELLATION_POLICY::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "d3b8b69c3ce53c06a8830610dce09f29890eae7b259410c6c2eebc128712fe31",
+  "result_sha256": "c52fe32416efc92af9cb490a9532b124a3063b3cdaa18416327bacd4c393a2ab",
   "text_sha256": "0821d27f9210ebf2aed9f362fe9cdfca3dbfecd5a005866ab4b6208ebf08b4c1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -845,7 +845,7 @@
   "has_provenance": false
  },
  "REFUND_AND_CANCELLATION_POLICY::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "8db9c53cb9cd2d8f82028e95e3ef3b86ee90dbbb67ddc6ad3ce14fa4e4884a7f",
+  "result_sha256": "4d1b04d7e323cb4ce2de47e88d263f59c1159a968a75cbd6bab64ae1091fdf6e",
   "text_sha256": "e0936a210140ec12f9a20f495b0e297f0ddac90d928f26ef30885f4533baa2eb",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -862,7 +862,7 @@
   "has_provenance": true
  },
  "SHIPPING_AND_DELIVERY_POLICY::WELL_FILLED": {
-  "result_sha256": "27aac255fb5887696341d8fd73200b446c41db689598a958277eb8c0d3dbab45",
+  "result_sha256": "98637f7ca62f57d0e588536474c86e0efcaee5459470584c90bc36b084d0ebc2",
   "text_sha256": "4205aabd64e7d90516ef6aa5157504968f0cea1416ea1a71918319b29505d2f1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -879,7 +879,7 @@
   "has_provenance": true
  },
  "SHIPPING_AND_DELIVERY_POLICY::MINIMAL_DECLINED": {
-  "result_sha256": "63bd369c4d4b1f8b36c72cf0446cd6b65f997e6f70325ae320de1211f3b9510d",
+  "result_sha256": "3a063d5bd25700db8efc4788be90b4bd0f252a5b45988fdf3488b2ae667cbf26",
   "text_sha256": "4205aabd64e7d90516ef6aa5157504968f0cea1416ea1a71918319b29505d2f1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -896,7 +896,7 @@
   "has_provenance": true
  },
  "SHIPPING_AND_DELIVERY_POLICY::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "b56e80bb6a49eb05ae2980ea134ceb64bdc5072da09a158dc208d02144bab41e",
+  "result_sha256": "32c6bfe7c757d13a359e7d199c841e4877a4c3190946fc856543a1834124ab23",
   "text_sha256": "4205aabd64e7d90516ef6aa5157504968f0cea1416ea1a71918319b29505d2f1",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -921,7 +921,7 @@
   "has_provenance": false
  },
  "SHIPPING_AND_DELIVERY_POLICY::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "20261eed5dedab5165abdc4c23f5ce530115e34952028d509ef596189d3612f5",
+  "result_sha256": "b47c7c663de5d6eccea6939ba4db32fd62054c159d6c36714bd499b35e7a3802",
   "text_sha256": "333cbcf37b8ae7bffbf4dc01bb57dd904c08dc064b797b3798ba0d260500c26e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -938,7 +938,7 @@
   "has_provenance": true
  },
  "APPOINTMENT_LETTER::WELL_FILLED": {
-  "result_sha256": "6d0b784c93ef5930a81c2258791193b6471a9730444e0de92b69c98b11217101",
+  "result_sha256": "0f2ec2b83316be8d446cb215c0024d32be57bebbdd3081720318153bbcf1e184",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -946,7 +946,7 @@
   "has_provenance": false
  },
  "APPOINTMENT_LETTER::MINIMAL_DECLINED": {
-  "result_sha256": "6d0b784c93ef5930a81c2258791193b6471a9730444e0de92b69c98b11217101",
+  "result_sha256": "0f2ec2b83316be8d446cb215c0024d32be57bebbdd3081720318153bbcf1e184",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -954,7 +954,7 @@
   "has_provenance": false
  },
  "APPOINTMENT_LETTER::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "c8c5e57258fbd331bc5a864ccbd25ead2824ad8f36bf61051537b2aae73c0ab1",
+  "result_sha256": "3fa6b49c75d669a81cea0eadaeaa9aca35e199156375ff88b18a1ec1f5a94b27",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -970,7 +970,7 @@
   "has_provenance": false
  },
  "APPOINTMENT_LETTER::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "6d0b784c93ef5930a81c2258791193b6471a9730444e0de92b69c98b11217101",
+  "result_sha256": "0f2ec2b83316be8d446cb215c0024d32be57bebbdd3081720318153bbcf1e184",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -978,7 +978,7 @@
   "has_provenance": false
  },
  "APPOINTMENT_LETTER::PROBATION_UNANSWERED": {
-  "result_sha256": "6d0b784c93ef5930a81c2258791193b6471a9730444e0de92b69c98b11217101",
+  "result_sha256": "0f2ec2b83316be8d446cb215c0024d32be57bebbdd3081720318153bbcf1e184",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -986,7 +986,7 @@
   "has_provenance": false
  },
  "INTERNSHIP_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "6b588d111f98e3c295d769726e010408ec500855f69f3cbd8534fe58d11c9679",
+  "result_sha256": "e99e09f56c5bce53883f6195cb70b576406e710be94be212fde0580711f06ded",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -994,7 +994,7 @@
   "has_provenance": false
  },
  "INTERNSHIP_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "6b588d111f98e3c295d769726e010408ec500855f69f3cbd8534fe58d11c9679",
+  "result_sha256": "e99e09f56c5bce53883f6195cb70b576406e710be94be212fde0580711f06ded",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1002,7 +1002,7 @@
   "has_provenance": false
  },
  "INTERNSHIP_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "00295e0c2f87bc22d9191f1abaed6f7919f98124ea78c72be7521fc84f6534cc",
+  "result_sha256": "43705a647ec3cdf6f05126e0678c497ede9a9bd8016b99de091de112375e4fca",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1018,7 +1018,7 @@
   "has_provenance": false
  },
  "INTERNSHIP_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "6b588d111f98e3c295d769726e010408ec500855f69f3cbd8534fe58d11c9679",
+  "result_sha256": "e99e09f56c5bce53883f6195cb70b576406e710be94be212fde0580711f06ded",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1026,7 +1026,7 @@
   "has_provenance": false
  },
  "SEPARATION_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "37a38ad7e2d17362b7235a65abd6240f81afc89b1840cd8fc714fd5543e7b532",
+  "result_sha256": "491fa636747fc91bd2ad449a0dfe7cbac1ebc220ffde3b80906aa058e7b5aa17",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1034,7 +1034,7 @@
   "has_provenance": false
  },
  "SEPARATION_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "37a38ad7e2d17362b7235a65abd6240f81afc89b1840cd8fc714fd5543e7b532",
+  "result_sha256": "491fa636747fc91bd2ad449a0dfe7cbac1ebc220ffde3b80906aa058e7b5aa17",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1042,7 +1042,7 @@
   "has_provenance": false
  },
  "SEPARATION_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "061d7ca26e96e2c50d5a6a8273f9dcb52aa13d07eeb740773b356826b5a53df2",
+  "result_sha256": "84b7572279c5d828c370648b90a3695da71dd422c70da5c8f490ce00fb06b03c",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1058,7 +1058,7 @@
   "has_provenance": false
  },
  "SEPARATION_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "37a38ad7e2d17362b7235a65abd6240f81afc89b1840cd8fc714fd5543e7b532",
+  "result_sha256": "491fa636747fc91bd2ad449a0dfe7cbac1ebc220ffde3b80906aa058e7b5aa17",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1066,7 +1066,7 @@
   "has_provenance": false
  },
  "POSH_POLICY::WELL_FILLED": {
-  "result_sha256": "319e09f97cc63a183321d54106de9f3be6ce95fe9968208de0dd4266b8640b2d",
+  "result_sha256": "8c95ec1bd6177bb5a30aa5df8f1fbf56303cc0d9d3034de8535f30c9b8879736",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1074,7 +1074,7 @@
   "has_provenance": false
  },
  "POSH_POLICY::MINIMAL_DECLINED": {
-  "result_sha256": "319e09f97cc63a183321d54106de9f3be6ce95fe9968208de0dd4266b8640b2d",
+  "result_sha256": "8c95ec1bd6177bb5a30aa5df8f1fbf56303cc0d9d3034de8535f30c9b8879736",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1082,7 +1082,7 @@
   "has_provenance": false
  },
  "POSH_POLICY::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "319e09f97cc63a183321d54106de9f3be6ce95fe9968208de0dd4266b8640b2d",
+  "result_sha256": "8c95ec1bd6177bb5a30aa5df8f1fbf56303cc0d9d3034de8535f30c9b8879736",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1098,7 +1098,7 @@
   "has_provenance": false
  },
  "POSH_POLICY::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "319e09f97cc63a183321d54106de9f3be6ce95fe9968208de0dd4266b8640b2d",
+  "result_sha256": "8c95ec1bd6177bb5a30aa5df8f1fbf56303cc0d9d3034de8535f30c9b8879736",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1106,7 +1106,7 @@
   "has_provenance": false
  },
  "ARBITRATION_NOTICE::WELL_FILLED": {
-  "result_sha256": "12181a78fceeaaf1511567efee789547a4e4da2d91bfa1ada6bb2f85ab19fa52",
+  "result_sha256": "335dbc5e96668a0bb90f50adfdf2343a6073b5fdba2f1ee7765849647f0f2356",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1114,7 +1114,7 @@
   "has_provenance": false
  },
  "ARBITRATION_NOTICE::MINIMAL_DECLINED": {
-  "result_sha256": "12181a78fceeaaf1511567efee789547a4e4da2d91bfa1ada6bb2f85ab19fa52",
+  "result_sha256": "335dbc5e96668a0bb90f50adfdf2343a6073b5fdba2f1ee7765849647f0f2356",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1122,7 +1122,7 @@
   "has_provenance": false
  },
  "ARBITRATION_NOTICE::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "12181a78fceeaaf1511567efee789547a4e4da2d91bfa1ada6bb2f85ab19fa52",
+  "result_sha256": "335dbc5e96668a0bb90f50adfdf2343a6073b5fdba2f1ee7765849647f0f2356",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1138,7 +1138,7 @@
   "has_provenance": false
  },
  "SETTLEMENT_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "84ba13a0c9a33035a8b133cbf327d36bf712b1f1991fd7cfd786b1453ef065a9",
+  "result_sha256": "0ba7c58add763f6926e2df7301bb487fff810206a080a166dd9f7bd63fc41328",
   "text_sha256": "2e732588b3d132bd076d5490483ca555e6724d6097ffa6278665ff224ddce884",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1167,7 +1167,7 @@
   "has_provenance": true
  },
  "SETTLEMENT_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "9f31c49273fd9bdd50dcfb9de8ace0cb39957dbe0be3e47ac13b5b8c132af630",
+  "result_sha256": "799042f8e31da86452186ffc589c6c54fa88006f23f1213461b5fcfe081c4b45",
   "text_sha256": "2e732588b3d132bd076d5490483ca555e6724d6097ffa6278665ff224ddce884",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1196,7 +1196,7 @@
   "has_provenance": true
  },
  "SETTLEMENT_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "4230aab3f6b8f3a1aa54df8f444b106d442bda1cffc22728af661a3969e45e16",
+  "result_sha256": "038d85877e466ad238bffaafb92ceb73c79224055729d2e6f9cfd33e71798fbd",
   "text_sha256": "6da5f48cdafce23ac2f7fde8e0e8fb9b7e2d05e44b5ba4756ccc6958a770fd0a",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1233,7 +1233,7 @@
   "has_provenance": false
  },
  "AFFIDAVIT::WELL_FILLED": {
-  "result_sha256": "d5f5e86471e3daae1fc19668c8e5b6bffefb19fba5f1fb90c99a40c3f8356f14",
+  "result_sha256": "0ff443456b321a4cef7ccdef0c4e3344452afd5f89b0dcd62ddd80ead177c0e9",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1241,7 +1241,7 @@
   "has_provenance": false
  },
  "AFFIDAVIT::MINIMAL_DECLINED": {
-  "result_sha256": "d5f5e86471e3daae1fc19668c8e5b6bffefb19fba5f1fb90c99a40c3f8356f14",
+  "result_sha256": "0ff443456b321a4cef7ccdef0c4e3344452afd5f89b0dcd62ddd80ead177c0e9",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1249,7 +1249,7 @@
   "has_provenance": false
  },
  "AFFIDAVIT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "d5f5e86471e3daae1fc19668c8e5b6bffefb19fba5f1fb90c99a40c3f8356f14",
+  "result_sha256": "0ff443456b321a4cef7ccdef0c4e3344452afd5f89b0dcd62ddd80ead177c0e9",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1265,7 +1265,7 @@
   "has_provenance": false
  },
  "INDEMNITY_BOND::WELL_FILLED": {
-  "result_sha256": "f127b9528a43f713dc46c6442224d9112a4c5f8a32074cfdb27c068dc5d7001d",
+  "result_sha256": "0e6fb19cc01be307ddb2599f14fd93c2085d12dbafd68f6daef3f04281b37d6b",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1273,7 +1273,7 @@
   "has_provenance": false
  },
  "INDEMNITY_BOND::MINIMAL_DECLINED": {
-  "result_sha256": "f127b9528a43f713dc46c6442224d9112a4c5f8a32074cfdb27c068dc5d7001d",
+  "result_sha256": "0e6fb19cc01be307ddb2599f14fd93c2085d12dbafd68f6daef3f04281b37d6b",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1281,7 +1281,7 @@
   "has_provenance": false
  },
  "INDEMNITY_BOND::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "f127b9528a43f713dc46c6442224d9112a4c5f8a32074cfdb27c068dc5d7001d",
+  "result_sha256": "0e6fb19cc01be307ddb2599f14fd93c2085d12dbafd68f6daef3f04281b37d6b",
   "text_sha256": null,
   "disclosure_sha256": null,
   "clause_order": [],
@@ -1297,8 +1297,8 @@
   "has_provenance": false
  },
  "NDA::WELL_FILLED": {
-  "result_sha256": "25f38fba4d979bc00b18141b4220fbe6418118cb06e7f107d8771057a6a93fc3",
-  "text_sha256": "a47cca2b5b7b6ce48b5a3f437c204e1f72085157b4acb5af48204f8caa371de5",
+  "result_sha256": "7f7865b0e4bb4e747c995ccc89381e389f93ddcc3c8e7e6514a2cb196af183a0",
+  "text_sha256": "40cb7fa9653529cc040ba8d9f15b82194decaafa7eb0d70e75a55ec8a6c6887d",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -1339,8 +1339,8 @@
   "has_provenance": true
  },
  "NDA::MINIMAL_DECLINED": {
-  "result_sha256": "53fa40187381f1be5288b4b4ac1463b031c2c6896ed9e470963b5145fce1a4de",
-  "text_sha256": "8807bb21716cef1b8cde60aed857950f4eb215dd9ec9061e816924f2ac87d3e6",
+  "result_sha256": "827d478b31ed89edf3773a9704e2ebfae47b622f454bbf1da45a5ed9a4f30b5d",
+  "text_sha256": "29d092657210e83b44d6f456ded383978104eac3e9042a7a01ffbae0e4d517b2",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -1378,7 +1378,7 @@
   "has_provenance": true
  },
  "NDA::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "31c41fefc638ea3d9236fb4cef58171427f1ed23e4c1601ad7d65e303488054a",
+  "result_sha256": "550d5c8aa873f7ef5f4d5cda3ec352baeca197e4f3a5c593957817ca79370085",
   "text_sha256": "04e97ddc9096675540d825f0d6f4cb282f85a2c382bd1b96d9318369372d23f0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1428,8 +1428,8 @@
   "has_provenance": false
  },
  "NDA::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "613c66cceb4237b78770856468627fa726a1c232bfa2233f5319449137c3826c",
-  "text_sha256": "d5068e6ad05a5c50a344dd7c485c2a62d270b123afc9f740d465364e2cfce035",
+  "result_sha256": "851bcc6261dbf6457a65f13ba0f89e74f78a2a606a866652673f74f500bf37fc",
+  "text_sha256": "cf7aae424802351985635c131313605307cf50dd5e0ad5906da04e14d9467eaf",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -1470,8 +1470,8 @@
   "has_provenance": true
  },
  "NDA::RESTRICTION_PERIOD_UNANSWERED": {
-  "result_sha256": "75acf33a0b5f3fe3fe77a454ff5f2fb3772dfe83e672979356f03214c88defec",
-  "text_sha256": "c916ec5b245eb8f2a68bfa4a63df11dae3e2e793befb7f64f923f720c1eacca4",
+  "result_sha256": "faa01f90e5bb42ac63f0f1135051c8629e0071d3951a15893bc59eb0615bd6b6",
+  "text_sha256": "7eedc1290b48131ddf329c810f2bba8933897467bcd7c9df732f5ca6bd3b4e1b",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -1512,8 +1512,8 @@
   "has_provenance": true
  },
  "NDA::RESTRICTION_PERIOD_BLANK": {
-  "result_sha256": "192889d2b1ad31bca6aa87712db54da1b5f8a2d034639e9fea2dcd74a4e9888a",
-  "text_sha256": "c916ec5b245eb8f2a68bfa4a63df11dae3e2e793befb7f64f923f720c1eacca4",
+  "result_sha256": "f875a7deda7cfcb59d60477f53f86f36472912da6ed3a22688211da87843bced",
+  "text_sha256": "7eedc1290b48131ddf329c810f2bba8933897467bcd7c9df732f5ca6bd3b4e1b",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -1554,7 +1554,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::WELL_FILLED": {
-  "result_sha256": "9c4fb8aa46cbab353703ccdb6cb03b84de3326a06f7852ef66474790964c714c",
+  "result_sha256": "0ce71c13bf0afcbf415d6e5323dfbf2cc2908fa35d178deaefa554f4eaa9a545",
   "text_sha256": "9336fc1b0ad137162e9cf8c3b555459df0abf5e9e810c085f5817365d3c899b0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1604,7 +1604,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::MINIMAL_DECLINED": {
-  "result_sha256": "738befc0c034372095adcaa0c3d63dddee5594d9073b0237f4c360a920e758a9",
+  "result_sha256": "20c257a17c1b91800cc9f2ee098f69f312f9ef2b065d1168dacaa09ff449ed82",
   "text_sha256": "75b590e1f00d0e4326a3559e7e35f04167ccd2cfb80c727a833e7c786c27382c",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1651,7 +1651,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "4c4bb4570d1cdc37450f673a0a6c30656247973a8ad2d84659a020e0404f0433",
+  "result_sha256": "c1b56725b343ce75e23810ad2234ecfef2d1552f1fa5a0de766d5983a3bfe3d8",
   "text_sha256": "b74d02fe8140f7eef7f9a61a587906f175f99278b23ca68ef9fda94c2d274429",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1709,7 +1709,7 @@
   "has_provenance": false
  },
  "EMPLOYMENT_CONTRACT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "ca832df2e1a53f5efebd3c8731a151df08bbdce4daa69b2b55e6c3c03da1337e",
+  "result_sha256": "b77431d51b7afacefa8f51c660c74d8c8cb180c7d45bb6e133a0816f7e58fe4c",
   "text_sha256": "ac363653b669d66adfbf77d175161daa514fcf2111748752a69a8778947642dc",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1759,7 +1759,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::PROBATION_UNANSWERED": {
-  "result_sha256": "4ade66ef22f8a6c16c40355bc88bd41163d0af613ad25d9a5d712518e2e2c012",
+  "result_sha256": "2c4b0a340d5314a9a9ca431fba775a7c71b14612fcb692e95077d43ec92eea12",
   "text_sha256": "c335d7f735891c093933d8f304c0a22df083cad9906ab103a9853bcfb6013ea5",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1809,7 +1809,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::IP_Employer owns work product IP": {
-  "result_sha256": "9c4fb8aa46cbab353703ccdb6cb03b84de3326a06f7852ef66474790964c714c",
+  "result_sha256": "0ce71c13bf0afcbf415d6e5323dfbf2cc2908fa35d178deaefa554f4eaa9a545",
   "text_sha256": "9336fc1b0ad137162e9cf8c3b555459df0abf5e9e810c085f5817365d3c899b0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1859,7 +1859,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::IP_Employee retains pre-existing IP only": {
-  "result_sha256": "5e3a17d6d634568f626045549a419c3b12c30df9b6fcfa2f12f0fd821cb55034",
+  "result_sha256": "19887d9da7ced2609c5eb81fa96e46080f0d7fa18fc05100327773eba3dd6947",
   "text_sha256": "1ba0c6ecd4ffb6a5d0abae2eeb347d53017895d3dc7a9ae96eec12d41271ba81",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1909,7 +1909,7 @@
   "has_provenance": true
  },
  "EMPLOYMENT_CONTRACT::IP_Custom / shared arrangement": {
-  "result_sha256": "a5be74e7dc2fe17257b9b0216604c90682828532fde70f3b951902c904ebd9bf",
+  "result_sha256": "a7d8005118b5aa555b9ce75b0f0e2be53d3f9f897a719d28266c522c35142211",
   "text_sha256": "3f6bd931b752ae0d84f7ed9e39d65e956e8d731a8f1708580b532015d1325348",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -1959,7 +1959,7 @@
   "has_provenance": true
  },
  "SERVICE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "221a9eb5d2e02b74a5cfa1080948c3c3f58984ee7689faf243f04d8004eb20a6",
+  "result_sha256": "00e0f8b462fbe774cfa084291dd97113426e32ad98fda14f4f99cb594262f288",
   "text_sha256": "7248b6fe397963c0795bec3c6e8d6f347e36ddadba993941801ff9c8b4d07b43",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -2005,7 +2005,7 @@
   "has_provenance": true
  },
  "SERVICE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "5f8dc55879f77a4714582706bc59ac4f07644198db61c8018a8d44cbc4050463",
+  "result_sha256": "c578d229b78867f61a766e646727dec9b99903e4e2d691edc2cf07f25ec312ec",
   "text_sha256": "ac0e45db423481961941c591de272162cdda8df1b696812b61aea811889d167d",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -2044,7 +2044,7 @@
   "has_provenance": true
  },
  "SERVICE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "72545e6a4157c4e883f8035a6d9665cf4d3ef40abedb7823737f791256a9b7f5",
+  "result_sha256": "fd120708bacf3a3060bef229003e0c42ca30b7725e655d5c5fa1a3ac66f2a5a2",
   "text_sha256": "12c8cb71d065e7e71d97dbaa60d13f8a6eb10f5e12c9282fd8b369d7e4974fb0",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -2098,7 +2098,7 @@
   "has_provenance": false
  },
  "SERVICE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "76d1e9dbaffb86e297590b6882f2aff30fd1efb60cd1d0b9e4d79f876c1719cc",
+  "result_sha256": "1454ca6a402ac87c5512dbf44195a13a5499d3a4a1fa4376aeb53207fe347a9f",
   "text_sha256": "fce74942705b35c88e60cd95cfefa599091b93703e864efa284afcb88068fcb2",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -2144,7 +2144,7 @@
   "has_provenance": true
  },
  "CONSULTANCY_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "f5f8b9e9fcef03c67e55f1ee8eb4ade3815ecf50ee222e7ebe1a8603d16bb9d0",
+  "result_sha256": "8e1140537e4faf7920d607ae38cc950092d8094dc8f52210801687b197e21824",
   "text_sha256": "504d5724c9044c2e8d3eb22974bf13266258fda0b19ddceb4a1a9c2dbbe727b1",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2189,7 +2189,7 @@
   "has_provenance": true
  },
  "CONSULTANCY_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "cd9db190fe8de98176d39356c5f18719082521b16d618fb9b98a9d494fd5857c",
+  "result_sha256": "104405c41b2b26a8e50b8d6fe0613ea490bf5b820643a6e165463b7ea7d71e59",
   "text_sha256": "be9f2a48da0dcff2bcf212ddd841321983a0ef021bf6e4e0d4b39ad85d6994ee",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2227,7 +2227,7 @@
   "has_provenance": true
  },
  "CONSULTANCY_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "de09e21f6d13e70fa1541393b299c8fd967be43ba1b371c0c8b9ab8c94668793",
+  "result_sha256": "9c8ba2495772aa79f232fa49b814a61f45556921ed278ce45e208d24ce6e9eb5",
   "text_sha256": "f81d405febb0690d9046c4c52b7bd8e9ceeac83229c6dcbe3cac07b9bf1aa7b8",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2279,7 +2279,7 @@
   "has_provenance": false
  },
  "CONSULTANCY_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "41795ae11d2929c6a38c79b58db2185061d66aadd8adec98321ae7e0ccb3ab2b",
+  "result_sha256": "c95b54c1643100ca0d4592fb3bf98dac83d9b21b10d9e11be823ff5efc2e4736",
   "text_sha256": "444dfa8dbd9ae634588855b5db19f4bb98c61f4a6859682c6ab7ed0939f605d2",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2324,7 +2324,7 @@
   "has_provenance": true
  },
  "CONSULTANCY_AGREEMENT::RESTRICTION_PERIOD_UNANSWERED": {
-  "result_sha256": "59e749af4c7e39be27840dc58e31f8f02e556349b0ef1b742a04b3eb2bce1720",
+  "result_sha256": "df90bc90df0cab4faad0fb322c88718b6aeecc1b4d773700b1a6dd6def1e8bc8",
   "text_sha256": "a9262f8908d0f5ae2c6950ff6f2e701096cabc3cbdcd62c726fae72dafc43fbf",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2369,7 +2369,7 @@
   "has_provenance": true
  },
  "CONSULTANCY_AGREEMENT::RESTRICTION_PERIOD_BLANK": {
-  "result_sha256": "741c5391fcadebbf39f9d85bc4329f96e5177a3d73fb5ddb40961a3c83bc211f",
+  "result_sha256": "fab0bab89257d76883aec6b693293794aeab81fc6e2197547955fccb98c3fe7f",
   "text_sha256": "a9262f8908d0f5ae2c6950ff6f2e701096cabc3cbdcd62c726fae72dafc43fbf",
   "disclosure_sha256": "9aa11fb25f9135a278a200084baffde420b2e8b6de4a89aa50a3778a9e561dd1",
   "clause_order": [
@@ -2414,7 +2414,7 @@
   "has_provenance": true
  },
  "PARTNERSHIP_DEED::WELL_FILLED": {
-  "result_sha256": "52cb97e89114f54d17da6009bbcb1d1132fadd3979830c343bdb9b0682e9ffd9",
+  "result_sha256": "1d702702ac5f123404dc83fccfd8b62a5ef856a9be5190851a3e32c457473718",
   "text_sha256": "edf420285f3de728f725f7943049129308d77e673c9ae2145e20239f117cf09d",
   "disclosure_sha256": "d986ea3cdca1f30c89800d5ac557fca6886795b8f9a20bab57ff955e1f2cb6d0",
   "clause_order": [
@@ -2448,7 +2448,7 @@
   "has_provenance": true
  },
  "PARTNERSHIP_DEED::MINIMAL_DECLINED": {
-  "result_sha256": "25ad59ff0f91d8553fec7392aa5f074803244861f6e7d8894a6eccc8e1a3c9f5",
+  "result_sha256": "6fb804f8cfca60739e045bc434a872e2cd4b33c51fb8eb5718260f55066a79e5",
   "text_sha256": "21c2fad25bf67d4af7158394a2497932d50e113dce0fa131ce5ca10938061c54",
   "disclosure_sha256": "d986ea3cdca1f30c89800d5ac557fca6886795b8f9a20bab57ff955e1f2cb6d0",
   "clause_order": [
@@ -2481,7 +2481,7 @@
   "has_provenance": true
  },
  "PARTNERSHIP_DEED::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "e3ce49701b0f4dae608defb86773cb9b493244a6aa2b8722c06e24a591a24489",
+  "result_sha256": "30a818223bb141e951d702f446385ab72beece8ddd67bcb4c9c8929e528bd130",
   "text_sha256": "05bd2333f0a793822ef5d108688c4079ec0fe56590f9c2a752725037e0c06f5f",
   "disclosure_sha256": "d986ea3cdca1f30c89800d5ac557fca6886795b8f9a20bab57ff955e1f2cb6d0",
   "clause_order": [
@@ -2523,7 +2523,7 @@
   "has_provenance": false
  },
  "PARTNERSHIP_DEED::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "ddb590934231c3b5d36169dc132fd23649f1929ca96878e070c3ab0f6ebefb22",
+  "result_sha256": "036bd162b0c49ff64def4646553ce1a93ee7570c9c577ce293cd874d442b1700",
   "text_sha256": "cf2a0e82959c9f5f7ac9ad170af2b32b9b6b9dd3adab499e3f375e3273094b02",
   "disclosure_sha256": "d986ea3cdca1f30c89800d5ac557fca6886795b8f9a20bab57ff955e1f2cb6d0",
   "clause_order": [
@@ -2557,7 +2557,7 @@
   "has_provenance": true
  },
  "SHAREHOLDERS_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "12809f44d3e9a23f5f4df3559337fcd722012c177d17549825ad38faccbf680e",
+  "result_sha256": "97d142163be6a22745ce2e5b24af4993fa73cd235367c58ced25753651b00cea",
   "text_sha256": "8bfd8e548f21442e270398a007dfe179ba39e71079b5e6524dfd2f463cc9b044",
   "disclosure_sha256": "5340726216543a7f0bb2db01f2651684f93df29f2621e50552dc9762883f429a",
   "clause_order": [
@@ -2597,7 +2597,7 @@
   "has_provenance": true
  },
  "SHAREHOLDERS_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "cc791cd008c3247bcd25747390d4c2f2b99a9f6f04b1168cf30385de9ab8a3aa",
+  "result_sha256": "24475539eb79a7768aeba7d532f369b2f0b0fe6f3cb17aae20697b3d56da28dc",
   "text_sha256": "dc1a6d8093bd839d7bac8792221ee8979ab5301a50acb525b6a6c0d2efed2cff",
   "disclosure_sha256": "5340726216543a7f0bb2db01f2651684f93df29f2621e50552dc9762883f429a",
   "clause_order": [
@@ -2636,7 +2636,7 @@
   "has_provenance": true
  },
  "SHAREHOLDERS_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "2a545c09b774dde4792ffbb6e901b648b7b7bfc90e1e401bfd301c12a3d600ce",
+  "result_sha256": "1ae5877fc6035b2168c2c21147502d379c0a039866c43f171e0858dd582e09e7",
   "text_sha256": "23837c2abdc531ac87dc09d106ab64b27690671f319ec2e8af8ddf31c70ef5b7",
   "disclosure_sha256": "5340726216543a7f0bb2db01f2651684f93df29f2621e50552dc9762883f429a",
   "clause_order": [
@@ -2684,7 +2684,7 @@
   "has_provenance": false
  },
  "SHAREHOLDERS_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "52c5900ed069ed369b1e5c4835777a06d86b4fec231152ad3e5e43f3e70c3178",
+  "result_sha256": "bb460551210c33c868d9cbb9ee9ace2a0694c4bd6fb7051efc66f0bb7fd99caf",
   "text_sha256": "70861148a5b893d9911659c7347f1dde8aa648a390172cb948b9cf6e3c0c6885",
   "disclosure_sha256": "5340726216543a7f0bb2db01f2651684f93df29f2621e50552dc9762883f429a",
   "clause_order": [
@@ -2724,7 +2724,7 @@
   "has_provenance": true
  },
  "JOINT_VENTURE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "964fe4fe64c317ace9d70b0b25e373b914b78d78f80ec17d95af7f4fbfcc2073",
+  "result_sha256": "f4a9a53758b6a24822ee230f94e26b3cba94ea5290c58bd84b6ddc351c76754e",
   "text_sha256": "00b63e7c050c86ff2b38ac7bd83ac7781bd042f78375c6ee6b726863a873a65a",
   "disclosure_sha256": "c03da77777b88d1af7355e6a4f024b4a7b5615b4c4f0bb2f896d15bcc43ae465",
   "clause_order": [
@@ -2763,7 +2763,7 @@
   "has_provenance": true
  },
  "JOINT_VENTURE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "f54284f7c8e5edde95dbec2f383842027dda2e6e2bd1d3a9a4d304459c3303f9",
+  "result_sha256": "39a57968beacfe0e82f4a929f1271bd97c5dcc6e3265759d2d1b00b192be4443",
   "text_sha256": "545573b48b5bdb77f09944f9448c242762b40f15af541ca0af6260993b9bb0bc",
   "disclosure_sha256": "c03da77777b88d1af7355e6a4f024b4a7b5615b4c4f0bb2f896d15bcc43ae465",
   "clause_order": [
@@ -2801,7 +2801,7 @@
   "has_provenance": true
  },
  "JOINT_VENTURE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "5466d4e98b7407c3cbb151fa19a03301ce5b076513f206f0ce84d78da9aefb6a",
+  "result_sha256": "cea4aa45935dfae2c669527b04de6a2c420c1bcf22a637bdbdffcfabcebfd201",
   "text_sha256": "34793e7f23ceda8547580e9faa7fd39f8830f4775c0008ef1706edb712c05f2c",
   "disclosure_sha256": "c03da77777b88d1af7355e6a4f024b4a7b5615b4c4f0bb2f896d15bcc43ae465",
   "clause_order": [
@@ -2848,7 +2848,7 @@
   "has_provenance": false
  },
  "JOINT_VENTURE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "8d20ff819d9d35751f08abbafe04c7c09011593e507f620ea314e8b1805160a2",
+  "result_sha256": "82ba872c5c2d80cd4b98d07d50a6a0cf2d8d97fe9ce82bd112f5314cf127eacc",
   "text_sha256": "5596d6d41a2eb03e05e48dee17b8295dcfd2da776a108ad92854f1e0856cb650",
   "disclosure_sha256": "c03da77777b88d1af7355e6a4f024b4a7b5615b4c4f0bb2f896d15bcc43ae465",
   "clause_order": [
@@ -2887,7 +2887,7 @@
   "has_provenance": true
  },
  "SUPPLY_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "d1d417a5428245bdfd30a9cc064e0451716696f77a2b4f5d037b9185b52984cf",
+  "result_sha256": "e8e78df4962e5246515a44172eb6073802deb212511b1d500cfa17e947ab7b98",
   "text_sha256": "3cd87202f78fdd94d42f58a2da4568c22b778e68c0ab7e5366a0f1dc10c00cb8",
   "disclosure_sha256": "730bb712f4df38517e755d5a604650c1c03217a38cfabca4e8c3de8a1491a931",
   "clause_order": [
@@ -2929,7 +2929,7 @@
   "has_provenance": true
  },
  "SUPPLY_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "6f86a66bcee24e19cdc4195057db46719b1a5dfdb911c4f39507617fc13bf6fb",
+  "result_sha256": "3691f8b0b1bbff2d85054fe375ff9e04d6fabf033f01791f92d7460d872f9f80",
   "text_sha256": "32c77fb51b6b4937351251afc88fd7e73b8a936681fe833320d7a74a7c1e2828",
   "disclosure_sha256": "730bb712f4df38517e755d5a604650c1c03217a38cfabca4e8c3de8a1491a931",
   "clause_order": [
@@ -2970,7 +2970,7 @@
   "has_provenance": true
  },
  "SUPPLY_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "a37df0ee1531009bc63b2879815dbf0c11dd201278ec0d0aacf2d357c2075118",
+  "result_sha256": "6bfbff0abeccb136e4afe78605d9da338d0d8d41d41b00659f6cc8c2b0631d36",
   "text_sha256": "47a8d4628cfc68e419ed61a14fc4bb4eaa8a26cd7a6e7de70f516f2574a14cba",
   "disclosure_sha256": "730bb712f4df38517e755d5a604650c1c03217a38cfabca4e8c3de8a1491a931",
   "clause_order": [
@@ -3020,7 +3020,7 @@
   "has_provenance": false
  },
  "SUPPLY_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "8e0e1f25493cbd8dae8b6009654c139d06203dfe5243c2759a2eaf7f15a85031",
+  "result_sha256": "282cbba455271b732d979139db9da62d33e8e74e9078ac74e328e2b467026869",
   "text_sha256": "3b84d1420f8e7c6fe1e4e7fd361c31a5e3c59b253f7216191176ffe896c0a929",
   "disclosure_sha256": "730bb712f4df38517e755d5a604650c1c03217a38cfabca4e8c3de8a1491a931",
   "clause_order": [
@@ -3062,8 +3062,8 @@
   "has_provenance": true
  },
  "DISTRIBUTION_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "60e50d3142b7a7be9ddd190cc528eb1a0634895bd4f045e09e4c71c5c120c233",
-  "text_sha256": "0525fa4f9ee00aa7d192d6a5d1564cd053899a1f20f99066c2a5353c6cf7e004",
+  "result_sha256": "49a86060a372bb51975e1be087564e625fbf7588cc49b11fd2d2d2c0c2381e29",
+  "text_sha256": "caec741b61e7f2bbaa996030dd248374b3ea9b243790671832be5e584c9b5fdd",
   "disclosure_sha256": "f61080a9b5c807f20a6c67dce28a629567bc8c10170ba80d453d29d8ec8bce02",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -3104,8 +3104,8 @@
   "has_provenance": true
  },
  "DISTRIBUTION_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "30ae0ca7f544a33ae3ddc05a1d871e7266e782dbc74f8119cde6d6e8bbb9843a",
-  "text_sha256": "1d3ae0478b3032ffe34466b2bda9c2b3d2af35e5d642f4b0fb0b755fdfe573d7",
+  "result_sha256": "dd23fd3ded84a339cdfa87c2060859cce848509e728399f98e61e31a12d7b3c0",
+  "text_sha256": "858eae6cc4f909801111295c05120d8189ab077f693e90fd0046a3bdabe7f939",
   "disclosure_sha256": "f61080a9b5c807f20a6c67dce28a629567bc8c10170ba80d453d29d8ec8bce02",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -3144,8 +3144,8 @@
   "has_provenance": true
  },
  "DISTRIBUTION_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "e617ac5094b332b4b3f757be2bc270ea310824b112e83e01ff5a0e25fae9b57f",
-  "text_sha256": "e3ae7ad87c435402ea3318e4eb74932a9bf7b0fb8553b370e2e477dded3ed811",
+  "result_sha256": "da42bc2af78adf2bc819c889a5b91e31cec646d6d61a7e3e14ed931beb691b24",
+  "text_sha256": "6f12f62c97b3fe734afdfa8b1a5c87dc6987c3db0b329990cdd1cf444878efcb",
   "disclosure_sha256": "f61080a9b5c807f20a6c67dce28a629567bc8c10170ba80d453d29d8ec8bce02",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -3194,8 +3194,8 @@
   "has_provenance": false
  },
  "DISTRIBUTION_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "a6d0e684e8afb276802008aae26477fce0a047d745c47875eec923e17e199b15",
-  "text_sha256": "6965a9574348fa3ff836ed8a91267df331f6ef1b951663bf7a41526408ee18b5",
+  "result_sha256": "6e482a886c3d13498513798c7b537e1816a869f63fb359dd3d221587297e0d26",
+  "text_sha256": "665214bacacfe21d22f15044b0cbc7c93d9279c9d95f091b6332cf8e6bdacee8",
   "disclosure_sha256": "f61080a9b5c807f20a6c67dce28a629567bc8c10170ba80d453d29d8ec8bce02",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -3236,7 +3236,7 @@
   "has_provenance": true
  },
  "SALES_OF_GOODS_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "98417b51ee9cbf482a7d86e4db8c9b28e7afc4c3071deb0c932608dea59d5146",
+  "result_sha256": "df5b3c92dc0abfdcf1505a571573255c60c7a47b4fe124a261d4b530d027d0ef",
   "text_sha256": "03fb6691c646a9c3d4b2c6e126d5384a11b671f9ae0f3f9d4e2ddf859d1aede5",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -3279,7 +3279,7 @@
   "has_provenance": true
  },
  "SALES_OF_GOODS_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "2a0a53b62e5f68ba78bd753d92439799319562701792fc24bf678d8c39675045",
+  "result_sha256": "0de65b41be2ce10977891b93a4327d29d27504ae349a078955c7f63d8b331fb3",
   "text_sha256": "3ac3a908a40e6c0c0369a2182f75ecd7b2269f9896dfe60893fa437981411bfb",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -3320,7 +3320,7 @@
   "has_provenance": true
  },
  "SALES_OF_GOODS_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "f968ef83f027ead9a09a1d9912041e48dd765aebdd3df95132b4c23c9f923a2b",
+  "result_sha256": "c79cb831fc8883d77b280d9fcdf990d88c0cf4ca8deefe316b71e8be442f43b2",
   "text_sha256": "eff65fd8aef6a874f93522f908308f27308d2f584033f43321d1309844ba7958",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -3371,7 +3371,7 @@
   "has_provenance": false
  },
  "SALES_OF_GOODS_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "5726bad6aac7b139e409e1e57930b21de3011fb90270cb7337ffb0c3a7bb47de",
+  "result_sha256": "5d686c9222f3b808db86aaf17fe52c8ab5bd4cd719b542546520980b51c962ce",
   "text_sha256": "a604ee93436e06793f9b609a8582be5b2bc8811d5f90bede2346f83b3eb24566",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -3414,7 +3414,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "9c63c3c24f4bb041f95eb8aa7e674d33246b6365ba600843b525bd09ae56b3f3",
+  "result_sha256": "a987ec4055350cd8d608b3ad70bedbe0ae575b84432f928198bca2cc1ef6ac75",
   "text_sha256": "a905955d94bd1c38447d207e22e37304a03a7995582486fa7ddd9e1716ade94c",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3456,7 +3456,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "33f8a11e85d673714f4ac1a90606e8f84af902a48df679d9faad9d8dd96873e8",
+  "result_sha256": "8e546d273885b026d82bba949013cb114b51ab81c1e316c4417f448050a75f63",
   "text_sha256": "396298e8785b850872ff73a68da5287affa9641c5d885974eed4daec2e9bc80e",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3493,7 +3493,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "b2f5a4d3ebde862f61d3ba4167306755616ea15973cb087bd579b4cd1218975c",
+  "result_sha256": "28ebf4722c3a0e7549771c8332953537123167f24183034407437763042b0ab0",
   "text_sha256": "e7e7d3e22c2794b0795a81b830909f1e175b7cb25a99e0228dd4541e4795732f",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3543,7 +3543,7 @@
   "has_provenance": false
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "7e1bccc4d189a472d375d02e2e5b4042b3f0e017dfaa2e8801707f5ebc824f5f",
+  "result_sha256": "888ed3e592703951ceb5f12bce197ccb5fb5c5253ff28fb7b88a09b9244964eb",
   "text_sha256": "d46c80a198ee0094e6d601bdb7a5269fb138abbc935c68d1dc2e852a377d41e3",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3585,7 +3585,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::RESTRICTION_PERIOD_UNANSWERED": {
-  "result_sha256": "42b77e1f939bfd13d69fd2e3cc7855e01ce7a087512d2431780d8fef231f797b",
+  "result_sha256": "40e982bea02511576b644cb75edb701a2d6c8338cd89cd20c2d7b663c7c4f166",
   "text_sha256": "a85aff3fe167c6b87c183210c02a10c0d942bb93086e92b829158bdb59782aa0",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3627,7 +3627,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::RESTRICTION_PERIOD_BLANK": {
-  "result_sha256": "50df4e77ce060538c787a9138c76b5fe65a4132608fe30b486b17b20b6a395fc",
+  "result_sha256": "8c56a3300c047d4189c94086ecc42fa9ddbb77e7c28f193a1456ae4bf37c97bd",
   "text_sha256": "a85aff3fe167c6b87c183210c02a10c0d942bb93086e92b829158bdb59782aa0",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3669,7 +3669,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::IP_Client owns all IP": {
-  "result_sha256": "9c63c3c24f4bb041f95eb8aa7e674d33246b6365ba600843b525bd09ae56b3f3",
+  "result_sha256": "a987ec4055350cd8d608b3ad70bedbe0ae575b84432f928198bca2cc1ef6ac75",
   "text_sha256": "a905955d94bd1c38447d207e22e37304a03a7995582486fa7ddd9e1716ade94c",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3711,7 +3711,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::IP_Contractor retains IP": {
-  "result_sha256": "277a37ceca5623fae8e9a22b89d1429c49aae6b155257121240e4a2fe3e314ac",
+  "result_sha256": "d17f025cd202f47b689a0e8333690ec8dc1c426319ca956ec7cc8c1082990d55",
   "text_sha256": "e60f4f4376311e1a118ba9f101bcf4030e08b4b49da104b0195793186219ef22",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3753,7 +3753,7 @@
   "has_provenance": true
  },
  "INDEPENDENT_CONTRACTOR_AGREEMENT::IP_Shared IP": {
-  "result_sha256": "3e021f91b6ff19e8686bf6101623bee559525e45d081dd7d8d85e8e2294c3939",
+  "result_sha256": "067ccbef58955e4e4cd402b64ccb4c2d861c95020a8bf22d410ee441d4bdef9b",
   "text_sha256": "8ab225027d10766c98bf59194ece48e37faac19a921caaf7fdb10ddd9b37285a",
   "disclosure_sha256": "8126ac3c10024bf7ed2d81026a4e0b087b566cc64bc201dd092169313555380a",
   "clause_order": [
@@ -3795,7 +3795,7 @@
   "has_provenance": true
  },
  "COMMERCIAL_LEASE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "1b9373c0db5506c37451a8085a9764db7cff38677d04df7791b11f5636752a6c",
+  "result_sha256": "4256883be6b77d94d51d11f922c76e5b153bb45839427c93cfdb11d32c8979ce",
   "text_sha256": "6b340fda3cd8c5114fd91aac09500bd1d99eaf9711b37dfd672279dfdefee3eb",
   "disclosure_sha256": "4d36bdc73f4c2911157d63fe5914e92206074c622194cbcbcd04de34b52f5e00",
   "clause_order": [
@@ -3834,7 +3834,7 @@
   "has_provenance": true
  },
  "COMMERCIAL_LEASE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "f980bc2bdc394545a16523f8e27c6187274c758a09be00f2450f9afcc0c1abf1",
+  "result_sha256": "858b9319563e1d7d80ab4f892ee9f66ca864cf6857e28d7de25b4eb249b5fc29",
   "text_sha256": "d989f86d33c566967fd44823c729c84da341d79f3536230a2b4abe2e1bbe34ae",
   "disclosure_sha256": "4d36bdc73f4c2911157d63fe5914e92206074c622194cbcbcd04de34b52f5e00",
   "clause_order": [
@@ -3872,7 +3872,7 @@
   "has_provenance": true
  },
  "COMMERCIAL_LEASE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "03f49c5288085b87e03aca5c1bfdfddf625c1be565cb1f803213a9cabe45e0bf",
+  "result_sha256": "3384b88d0310a9d15c2276b681efbf148b52dc6673bbcb987f94de83d25e6f89",
   "text_sha256": "2f44d7ad822d0a07353aca43385300f4906ba700e3c81fc03186faa9c21b38cf",
   "disclosure_sha256": "4d36bdc73f4c2911157d63fe5914e92206074c622194cbcbcd04de34b52f5e00",
   "clause_order": [
@@ -3919,7 +3919,7 @@
   "has_provenance": false
  },
  "COMMERCIAL_LEASE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "e669027cc455acd33b33498a1f2437fc3905a48e8aa66270fcb08b7801c8411f",
+  "result_sha256": "193fdf0bbfd52e00509d51e993f208391d85f3c216af6012689fa2fc406c31f8",
   "text_sha256": "914c523231e0fed50e9763ff529f6308744d23be3c93db632e9ba31570df2e53",
   "disclosure_sha256": "4d36bdc73f4c2911157d63fe5914e92206074c622194cbcbcd04de34b52f5e00",
   "clause_order": [
@@ -3958,8 +3958,8 @@
   "has_provenance": true
  },
  "LEAVE_AND_LICENSE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "9273cbeb2cdd513218b2c507716027ac6939122fc8044686cd6656e55e24075b",
-  "text_sha256": "a8577c1632a937eb9f98875a0ec6ac6120dd9cd46c86fa2a26c7e4ab99d69a05",
+  "result_sha256": "36c3c0cade0f8cc95f725069c4a2693399e0bdc1a611b43540a6ab9e39604e3f",
+  "text_sha256": "57564ccc54c46c466cdb8cdc043ab215f47b3378bef52d882219221c6147185d",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -3993,8 +3993,8 @@
   "has_provenance": true
  },
  "LEAVE_AND_LICENSE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "67230e476269bd964a743195ae598197a8c91fac7d46ae7500593b361afbe4eb",
-  "text_sha256": "55e0a7bdb67ba8270b5409ac583d77968d163cb2f09ba46607d5d8ea821a638e",
+  "result_sha256": "45c08b3127b3f86aed417e2ab68bbe8510374163b6c01e8408ac14677f91b73b",
+  "text_sha256": "22d2b4f10f9bf6d6a1c263ba72dc9769f67c1f30116657e7422847719968c8f9",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -4026,7 +4026,7 @@
   "has_provenance": true
  },
  "LEAVE_AND_LICENSE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "22c16b6886caa2dae20d2f2712084d275cfcb0e5a3c69bcff374bf2195a51280",
+  "result_sha256": "201a6594ee229c733b984ec3638d6c4160469285d57996292df41f9250def1ba",
   "text_sha256": "0bfeca6b1805c7240716ff1ada1783accf67ccfadb1769bfe8df3a72d324f57a",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4069,8 +4069,8 @@
   "has_provenance": false
  },
  "LEAVE_AND_LICENSE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "b9ba92434770a92af800c1e260597d7912355f9107eb577952191403153451e4",
-  "text_sha256": "f9ad853e851ab521b3c2e98fa576490fc6a4039975ee2a0061097c18ce741739",
+  "result_sha256": "903e25feaa8230aefd03731d5f3a82a98dac31ca253a1866dd9cddf99be22d2d",
+  "text_sha256": "b5db1e5415cdbbc8e14be79cd6ce2f5a2963439c0012f6540321de10ac30334f",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
    "CORE_IDENTITY_001",
@@ -4104,7 +4104,7 @@
   "has_provenance": true
  },
  "LOAN_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "0a45fb687b03c3f119c32dece36218aca149de4c6fcf846388a0e9dc7c2dcc36",
+  "result_sha256": "8187bf20670182a3ff6886c22c434149b7fa9613cd704238b85449e4f3c89997",
   "text_sha256": "d77ccd0271287a93fab8f0feb2650522eb9ad6ceeddbc0c01dddc1f04ce5daa6",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4142,7 +4142,7 @@
   "has_provenance": true
  },
  "LOAN_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "1a3201ab61cff8bf6a6b1ec3d9013b58450e98b2e400f89aaea192b4736c71f7",
+  "result_sha256": "f4f7570aed214a91984983fe754693cdbe4e14ee3c35cb09940221daca5e7794",
   "text_sha256": "9560dbe905d287ca90172a78f2fa7a8abc0429b703619be4fa903dd9f32e11c0",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4195,7 +4195,7 @@
   "has_provenance": false
  },
  "LOAN_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "7e1a3d4b700fa37d914a6d57072eeb4f808cd22ef0110062b7044bd1f6ab35d1",
+  "result_sha256": "5a6608b487c7daaa7acc9c1f39f0e06cfec351ad148d99819de72cdee071c24c",
   "text_sha256": "f304a172ddf20db47eb2b648e9b4f3b8014ae5e9c7cb084651a8d6ea16f1d072",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4233,7 +4233,7 @@
   "has_provenance": true
  },
  "GUARANTEE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "7215477befd1cd0ddc3b0116b6a98531896d6dc21fa70c1969b317af26d42710",
+  "result_sha256": "3770455219e6f36345305abadb4235b2dd012b77ad85f6b706c8c58f5fae1ea5",
   "text_sha256": "28b30f3e2966ab42f58c0cc2b0fe450140427a9c075184770018094cc362a2db",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4266,7 +4266,7 @@
   "has_provenance": true
  },
  "GUARANTEE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "6b2ed6acf4a4cc0a273999af72de4c2cb330a3f2099ea3f2225ecac399d66ede",
+  "result_sha256": "8d6b321658b850eb8f7e31c964d0d694b2b3e069882a2e36ab93d1443d15a290",
   "text_sha256": "edc8a6ee79afd361eb4a675575a4d2ed097d5e27b912de542d847bf90172423c",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4298,7 +4298,7 @@
   "has_provenance": true
  },
  "GUARANTEE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "8275f9ff4c3955c7f73d4dfddcfb8392002d6f81e319ca29daa36d2db7ddc53b",
+  "result_sha256": "c4d797b6346127e5e8ae3202c694700ad954116e1659035bc6ae6dededeb0042",
   "text_sha256": "e4a5088b853623d00d53cd58924669b81b84d357d48724b051e4ce860b3b60e3",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4339,7 +4339,7 @@
   "has_provenance": false
  },
  "GUARANTEE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "8f3343c05c8528bb9f4e10873419361187a7295542947661170a82e715f4a0e1",
+  "result_sha256": "743be86b1affa265125c52452af8cb4e9e8c7470de1f38099e2351a48ccf1560",
   "text_sha256": "d73f115c795851d3be755225dc2920de94fbe66ad74cf899fafe8ece5250d68b",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4372,7 +4372,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "7d795d0284b044a42e8d0e80c9d6a7ed0cea41c3788bb039188e34f85bdf8820",
+  "result_sha256": "759c99e98d9050982772841fefa1ce7cb619124aa82d4f9de0df5e0ef7e8e565",
   "text_sha256": "2d63ed4ab9f260427163b5dfbf81e0d2fc9d8cf50b7d1dc69cfc75c562a0dac2",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4420,7 +4420,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "c814751c7ca13b862d5857392a59b1bd2a39195b30ff47df123d3c2d7a1a81cc",
+  "result_sha256": "d4f736b109e664e72a4a69affc39acddc72a02ab47ef39d29db8dc5ff9bb4a9d",
   "text_sha256": "8bca0c0d195c173294d997019295de437f412f542ee461f6cf0107b7da5ceed0",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4466,7 +4466,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "d660ff802d3a53ba00c6a816ba74b30206f8dbbca778da9c13882c4edd711ad3",
+  "result_sha256": "169747da2a03f33c1f4c0ec4ba0b8fdcf0ab7bceee19c13013329c3034923126",
   "text_sha256": "2c940e5dd8449db79b2a388694f5c70920b28e4e0c7fc814975494dbc6a33824",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4522,7 +4522,7 @@
   "has_provenance": false
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "0aa7f723f2a0b22db835e73fd48d007511c3df6c32616019502d9d223ffd0b45",
+  "result_sha256": "91437dfd197348273373d79c23b125bb82a64a5c6518e21a0262fe0c00307922",
   "text_sha256": "ba13058f33dd7734d57f7ab95e4b13802b8888e8c4c3c5c779d1d42e38cf6c3c",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4570,7 +4570,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::IP_Client owns all IP": {
-  "result_sha256": "7d795d0284b044a42e8d0e80c9d6a7ed0cea41c3788bb039188e34f85bdf8820",
+  "result_sha256": "759c99e98d9050982772841fefa1ce7cb619124aa82d4f9de0df5e0ef7e8e565",
   "text_sha256": "2d63ed4ab9f260427163b5dfbf81e0d2fc9d8cf50b7d1dc69cfc75c562a0dac2",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4618,7 +4618,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::IP_Developer retains IP": {
-  "result_sha256": "5434d364b8cd790b853b573f116a82475cf7a73641b09246309353709bc6a362",
+  "result_sha256": "8c3ca23da04551b6671dead1537d9fadfea9e0b686d34ff9ef03c782b9ff6237",
   "text_sha256": "71c2ec830a4e2daf0cae1b715cd19aedc7d6b23c474f5760785c284764e9644a",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4666,7 +4666,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::IP_Shared IP": {
-  "result_sha256": "6bfdd70134b86d71daeb513c80751aec0b27d0e9bdf1b6acaed61df049356175",
+  "result_sha256": "7a501f13cb83fab7df3ae7cf8219235e4a5606bca24d37d8b20c6205a75ed2ab",
   "text_sha256": "f7f552ea53399eff5f777a52b1944f18b155e0c28910b6de07ec3ce0ba7bf1fd",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4714,7 +4714,7 @@
   "has_provenance": true
  },
  "SOFTWARE_DEVELOPMENT_AGREEMENT::PURPOSE_TWO_SOURCES": {
-  "result_sha256": "e73ab98e5519fe5f30882803c27f2cfdfb78c723119b04f3697240514f2c14e8",
+  "result_sha256": "d6ba0e1d7802bb164d4a56a7a5533668927948c36644b4492f59180499683fbc",
   "text_sha256": "9b7d7e9f2d4d247df6b0ac89b1915c49fef78f43384fc5204c23200bef2a2513",
   "disclosure_sha256": "29f00df22cc8769e466a52758e3e2523fa103889940ccbfadce26f4f0e1f3d0e",
   "clause_order": [
@@ -4762,7 +4762,7 @@
   "has_provenance": true
  },
  "MOU::WELL_FILLED": {
-  "result_sha256": "69f018c126821b948e43f68d606fad337f46a71280bfdcd11b2bfbe2c6d371d6",
+  "result_sha256": "66cdca4f0e751b0a2f32fb9ec3a7867cf002eaa89642848c6a94c089e737e4f6",
   "text_sha256": "54a0cad5a8af415439eee12500a977c18e1d2c57c34953b3e7e747f16636823e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4793,7 +4793,7 @@
   "has_provenance": true
  },
  "MOU::MINIMAL_DECLINED": {
-  "result_sha256": "dd0eff7a4203c65fadfd7616e0652e52f17556e2a26dc09b7df8702034c2745d",
+  "result_sha256": "ae34e8165193a4321b67419290992282212950ce42e7f6b5eadeb5f5a5b4e9a4",
   "text_sha256": "224a75fd7e672f46b35324876638ad77f7a0afdcb5ae952fc3079e3cd63f1bff",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4823,7 +4823,7 @@
   "has_provenance": true
  },
  "MOU::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "2ae97da7a60a2548958bf1af9134f205cb1abb492bcd5b9b559a1ff0e4f7f519",
+  "result_sha256": "8be655107fcba95ce5df9b7daf2e8325cc15f72322fe89de7575fe97de4cd232",
   "text_sha256": "256e0df3ae4e23e0d344a0b086fe8b45d51f8f3c70ce379552847d0c614b8133",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4862,7 +4862,7 @@
   "has_provenance": false
  },
  "MOU::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "814dc465b8fd847dff497d3040a7edd43c0827ce1f3af20d017f50e23570f6cc",
+  "result_sha256": "ff2f51aadd34d28093dfd187106d85ae0bf2b726ab91d1e5fadbfa59376a7a4d",
   "text_sha256": "b8ce65ae42a13facba67251f1872252641de4c65e74d601d4143aa3cb5684418",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4893,7 +4893,7 @@
   "has_provenance": true
  },
  "MOU::BINDING_Non-binding": {
-  "result_sha256": "69f018c126821b948e43f68d606fad337f46a71280bfdcd11b2bfbe2c6d371d6",
+  "result_sha256": "66cdca4f0e751b0a2f32fb9ec3a7867cf002eaa89642848c6a94c089e737e4f6",
   "text_sha256": "54a0cad5a8af415439eee12500a977c18e1d2c57c34953b3e7e747f16636823e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4924,7 +4924,7 @@
   "has_provenance": true
  },
  "MOU::BINDING_Binding": {
-  "result_sha256": "1673606107916a25a61d20f9d6a2389ca3eb33cd314a74104eb73c5281cdba3c",
+  "result_sha256": "549ca757b698528e86ad19184e7561bf4b7a7f8222da6f3b5fae9da702e85fe1",
   "text_sha256": "81a6e1ffe6495c51a7147e50a0c42e5646de864c09ca64fae4132dcd6e1042f2",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4955,7 +4955,7 @@
   "has_provenance": true
  },
  "MOU::BINDING_Partly binding": {
-  "result_sha256": "e279edb1a36a2a96d0de704169a01c3235079fca4fc068f48ea5c85cfcccb23c",
+  "result_sha256": "ed0496b2d47c68dd8e04cbced0541d05c38569354f6f65658f2c20ccf5fc69fc",
   "text_sha256": "81a6e1ffe6495c51a7147e50a0c42e5646de864c09ca64fae4132dcd6e1042f2",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -4986,7 +4986,7 @@
   "has_provenance": true
  },
  "VENDOR_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "c8b9289dd3cfcf7c8486476be07ff0d4cc9896d0b2409edef55372582c0b6822",
+  "result_sha256": "679a2476820c45c476b28edad09475987f6a5df2da281780c0344e2ec1ee91a3",
   "text_sha256": "28e61428b7b5dc532fa51ebe6af75a1c3cbed8926977075ca6036fbfe3aa17a1",
   "disclosure_sha256": "f4ea51bfae5d2364e6b121329a5330a6e399264aaf7e9762d92a1298b50a8d85",
   "clause_order": [
@@ -5026,7 +5026,7 @@
   "has_provenance": true
  },
  "VENDOR_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "d9a70b6075404ff9f249f0cfc69e7f6a3a2b2c0f46775f2232d786062a255a75",
+  "result_sha256": "671395f3417a0c39cd1bf7122f8d6e490477d937fc912a9cff83a5dbba21e915",
   "text_sha256": "89ee53d6dfda9f5004ceb5da3b5584ba60f328d566f1f8096fc62a5291c34977",
   "disclosure_sha256": "f4ea51bfae5d2364e6b121329a5330a6e399264aaf7e9762d92a1298b50a8d85",
   "clause_order": [
@@ -5065,7 +5065,7 @@
   "has_provenance": true
  },
  "VENDOR_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "f2ab8f45bd3f022a022d3409cbd4782dc85dc8193b158bae5b15970fb025d15e",
+  "result_sha256": "c101f11321dea0ee8dff3a58af2394c93e7d9d05444009a8f81da0aea60a2e7e",
   "text_sha256": "312f809bc1fbc7df6ae6316a389f5ea9279fb29401ced4b5600cc1ae03f9dfb8",
   "disclosure_sha256": "f4ea51bfae5d2364e6b121329a5330a6e399264aaf7e9762d92a1298b50a8d85",
   "clause_order": [
@@ -5113,7 +5113,7 @@
   "has_provenance": false
  },
  "VENDOR_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "a8a960ee2b04b886674fa7012cbe8e40a2c0d8d5fd0d0407cb9946187eed5172",
+  "result_sha256": "4852dd2179474f3b9c9e2a077bd06648fadd234975a466b416fb6b547801875a",
   "text_sha256": "1c3573b4474791d0c648b865d5c3fd7d7316c34c1a7269bf56b337ca0d5de49c",
   "disclosure_sha256": "f4ea51bfae5d2364e6b121329a5330a6e399264aaf7e9762d92a1298b50a8d85",
   "clause_order": [
@@ -5153,7 +5153,7 @@
   "has_provenance": true
  },
  "MASTER_SERVICE_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "13c7da1e0924d0e4c1d25404026dacc73a65cdbf9a271cef07d3b3a8f3b7b2b2",
+  "result_sha256": "71a896585fa69191cedc53730abf17ffb02f05c93ee70a399220b3756fd802fb",
   "text_sha256": "a11d84de3cd59015cd376efb6a8677d28cd8e55b3290b09781570447420f1e60",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -5205,7 +5205,7 @@
   "has_provenance": true
  },
  "MASTER_SERVICE_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "754a857347ce725ad982fafb5bdebbf8535a3066b610fd1d7bafca8ea34696be",
+  "result_sha256": "0ab5c1ff1567a089877caf07a9843d30b8b592ef006f039a0f5a89449ad19576",
   "text_sha256": "148e5e8a4d1e4edd2ea346504b403206d3fcdc253c3441c71f34f26569c0e5af",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -5253,7 +5253,7 @@
   "has_provenance": true
  },
  "MASTER_SERVICE_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "ddfd725a96860f3e66bbc8fa26ea9fa007467d53b322abe2c50a879b0dc8089a",
+  "result_sha256": "84b5e265cc903541aac9ae67e025680c3bfee2d825029bb003ba431a2674a252",
   "text_sha256": "5b2c1bfa98fec266b41289708546fae9438f4ffd3a4930f0928b60adc297e9a8",
   "disclosure_sha256": "36af3d6c85e8a2304aa2be830892217950d05ac3647e56a151db909d7a7f011a",
   "clause_order": [
@@ -5303,7 +5303,7 @@
   "has_provenance": true
  },
  "MASTER_SERVICE_AGREEMENT::QUICK_ESSENTIALS": {
-  "result_sha256": "59d45ee6b9189fba95a0ec834e78c5604f771164596bc1c834e79020e0d6b8cc",
+  "result_sha256": "acdbea4a679f4eb1a838f5a2c1113b0ebaf35e1385cbf61d4ae33165cde2367d",
   "text_sha256": "9b9d03e27c568f04bf5ea64970fd486c9bd8a3e8a27febe363ae07d5fea4bff5",
   "disclosure_sha256": "2d18e9fcd482ef65b3de7f4c980e16249651aba5a593ab3db69ad78f3bf22a6e",
   "clause_order": [
@@ -5348,7 +5348,7 @@
   "has_provenance": true
  },
  "MASTER_SERVICE_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "e02d836066a9596546368b82c3e1cf8e42dd8ebc267bd2f191bf65eaf5168847",
+  "result_sha256": "6bb852cf4302fcc12324aa6141f5b26e2f92b8dcab5a63ec479416edb49b7fb2",
   "text_sha256": "75e566f87d5f0a0e80f99585a82acf80f420577ed9f62088ea1dee7005343e97",
   "disclosure_sha256": "4f76412a67f8d4809bc8a7b0bcb2de473eccd0ce6fc6bf892a7413ce65187bd5",
   "clause_order": [
@@ -5400,7 +5400,7 @@
   "has_provenance": true
  },
  "TERMS_OF_SERVICE::WELL_FILLED": {
-  "result_sha256": "559e7a8b4368a860a042b8ba592c3efd191c14f2cb6301f1f4a6955fb58e73c6",
+  "result_sha256": "7bfaeb6a8e5fbeecc5d705a2a030024dd4209ea641a378f116e90750d00e4282",
   "text_sha256": "b2d1a8771ce759c5184a3e21d67db63f72fd078e58e5d4d4f59e459ba32c711e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5427,7 +5427,7 @@
   "has_provenance": true
  },
  "TERMS_OF_SERVICE::MINIMAL_DECLINED": {
-  "result_sha256": "eccc9e52e3123cc577b7751f2f12b49962f402e109682da58e9e55add0df3aab",
+  "result_sha256": "5c29dada8e3de1773a89e23e3c232737501583c0c1732d252adb79e1b33e53af",
   "text_sha256": "b2d1a8771ce759c5184a3e21d67db63f72fd078e58e5d4d4f59e459ba32c711e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5454,7 +5454,7 @@
   "has_provenance": true
  },
  "TERMS_OF_SERVICE::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "559e7a8b4368a860a042b8ba592c3efd191c14f2cb6301f1f4a6955fb58e73c6",
+  "result_sha256": "7bfaeb6a8e5fbeecc5d705a2a030024dd4209ea641a378f116e90750d00e4282",
   "text_sha256": "b2d1a8771ce759c5184a3e21d67db63f72fd078e58e5d4d4f59e459ba32c711e",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5481,7 +5481,7 @@
   "has_provenance": true
  },
  "TERMS_OF_SERVICE::QUICK_ESSENTIALS": {
-  "result_sha256": "45c63d247c0ca7c518fdf5ecd0d4702173fa40bd10cc90fec42e44a331bbe5b2",
+  "result_sha256": "8aaf2d3a11dd419bfdfe6b2735955e84716bb87d553f094f39c0ba98da179a1b",
   "text_sha256": "5f9fdbfcc42e5626a48afaa56adeaf8eb156afef3d103533892d4047b589a3aa",
   "disclosure_sha256": "541315c2e8bac27e1dd849189bf3830a3c57fccbfa0556d6df3f20eea9f5250d",
   "clause_order": [
@@ -5509,7 +5509,7 @@
   "has_provenance": true
  },
  "TERMS_OF_SERVICE::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "10d7ee00af3737b9c84f1094fa42c6436a2a863f3e371471bae5422b6b228d52",
+  "result_sha256": "d328dce4e8ce30759dd0085f29d4d87b69ac57012ffa88e18900746168921852",
   "text_sha256": "e7db54db6f4b618bef04a8ffa4b959aa4f90c78a5382ed38146c7e22eeba5861",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5536,7 +5536,7 @@
   "has_provenance": true
  },
  "PRIVACY_POLICY::WELL_FILLED": {
-  "result_sha256": "29fa72a7b350e7dc4efc57f2a297571f43692a078b3093aaa4458e0536a2c688",
+  "result_sha256": "83ca2734ab612b5495092298cb993d8e7e296dec27dc6f08ea62f80baf561344",
   "text_sha256": "e64b065bc30ee3e163649fedfb4892dc05fee85ebdab3955250a8b9a9814dfb3",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5561,7 +5561,7 @@
   "has_provenance": true
  },
  "PRIVACY_POLICY::MINIMAL_DECLINED": {
-  "result_sha256": "28a9b127d61d2c7d901720a88003aeb831e20ec93cdafec2bb131ea523ff2ac0",
+  "result_sha256": "75f299f73286ff9d890702518356514079eefe34dcaaf2834866e1f69653bf40",
   "text_sha256": "e64b065bc30ee3e163649fedfb4892dc05fee85ebdab3955250a8b9a9814dfb3",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5586,7 +5586,7 @@
   "has_provenance": true
  },
  "PRIVACY_POLICY::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "dfc36e791cf1de6f1e66efc7baf45f14b3f9dfdf62379d3825fabb8aec15ac99",
+  "result_sha256": "43058dcc97cf67f460bfa8db941484bc4071a4ac33015af3cbe5d26a3084c629",
   "text_sha256": "614c7ff87fb03129ad12bb7e6fce89b4026ba8c3b6beb2cbae4e35e8ab54e0d7",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5611,7 +5611,7 @@
   "has_provenance": true
  },
  "PRIVACY_POLICY::QUICK_ESSENTIALS": {
-  "result_sha256": "95dc523f86773d1a731371c38a25dc87dade8aac9572ce68d2e73472ae203996",
+  "result_sha256": "37235c75e0ade6254400e5b24f003488b0fb0bc3e1e52e2afaf420c5c56e859c",
   "text_sha256": "01f18d32aa4ecc0de5895b46c4e438df411ec81a5eb57413c3f19153fc339304",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5636,7 +5636,7 @@
   "has_provenance": true
  },
  "PRIVACY_POLICY::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "f89038c3b2c727a4cc07ef2a35c1247939f67e4072920a83a83b89ccbec0233e",
+  "result_sha256": "b01ce3fe02f056b6874321d7f5fe7ac60740eca38d3bbe3948c8fbe6c92e755f",
   "text_sha256": "5e98c021cd4e7ea9369ddea8c6dc03a05a77f665e5a0c4eb1e796fe54678f4b7",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5661,7 +5661,7 @@
   "has_provenance": true
  },
  "RENTAL_AGREEMENT::WELL_FILLED": {
-  "result_sha256": "f49fd5e23e18fb1d73ffdc201d9ffc856c6bc9965e900686cdd2c082b7b8cba8",
+  "result_sha256": "c99f292ccaef0c6619802a645647523acb914bb1752fee411fedf3a4143c84e3",
   "text_sha256": "630a247be67187b8f3745029db2902409dc9d8ce09a4ef4fc04c03d2511173cf",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5695,7 +5695,7 @@
   "has_provenance": true
  },
  "RENTAL_AGREEMENT::MINIMAL_DECLINED": {
-  "result_sha256": "f882abae5a163ce4a44c119d173e3ad8ea14a8daa1187291996e86d9c6272a2d",
+  "result_sha256": "68404cf396db9281b38a94ff5e2e6cb3e830cfa493e6b571abdd883ec5fce677",
   "text_sha256": "c28ea9a369cf5c1a3df9534e9f5a75550934e7f5886e28b73f2b496534dc550d",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5728,7 +5728,7 @@
   "has_provenance": true
  },
  "RENTAL_AGREEMENT::OPTIONAL_TEXT_UNANSWERED": {
-  "result_sha256": "75271318be232124c168a04932e511d214fa72f756294f6085d60146f3bdee7b",
+  "result_sha256": "6492ea9df7230976cd516d75fab2d1bd1890ac2dea7e7afea592a014fe0704a3",
   "text_sha256": "8fc3ad1e9e0ebe219d3478623c46fcbc9bbe5e99f802e7e737f01dc84478728b",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [
@@ -5770,7 +5770,7 @@
   "has_provenance": false
  },
  "RENTAL_AGREEMENT::EXECUTION_CITY_UNANSWERED": {
-  "result_sha256": "9d22bc3c075ebfeebd60c9a6ff7883928157cd43b3143d899d76b561939d19d4",
+  "result_sha256": "e7b25abecc98fca95c19f692adb2a7b1b320b853e95ca0554eb3aaeaf02de780",
   "text_sha256": "b705391769d2538941a7cbb9bb0c4127e137b45539f9160b5a2bb78775830d84",
   "disclosure_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "clause_order": [

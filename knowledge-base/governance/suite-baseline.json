@@ -279,7 +279,34 @@
         "scripts/freezeClauseBaseline.mjs"
       ],
       "failing_set_identical_to_previous": true,
-      "$each_compared": "Each of the 16 was run on 8c73f15b6 and on D4.46. 14 produce identical output. documentHealthScore grew one sub-failure ('a well-filled document is not banded as a risk by notes alone': 12 of 29 clean) because requirement findings now deduct; the distribution check was scoped to catalogue-wide charges by excluding findings of the requirement model, which are per family and recorded, and the suite now fails exactly as before. scripts/freezeClauseBaseline.mjs drifted in 30 types, not 27: LOAN_AGREEMENT, MOU and RENTAL_AGREEMENT gained only requirement advisories and were re-frozen alone (--only), so drift is back to the same 27."
+      "$each_compared": "Each of the 16 was run on 8c73f15b6 and on D4.46. 14 produce identical output. documentHealthScore grew one sub-failure ('a well-filled document is not banded as a risk by notes alone': 12 of 29 clean) because requirement findings now deduct; the distribution check was scoped to catalogue-wide charges by excluding findings of the requirement model, which are per family and recorded, and the suite now fails exactly as before. scripts/freezeClauseBaseline.mjs drifted in 30 types, not 27: LOAN_AGREEMENT, MOU and RENTAL_AGREEMENT gained only requirement advisories and were re-frozen alone (--only), so drift is back to the same 27.",
+      "$superseded_by": "after_D4_47"
+    },
+    "after_D4_47": {
+      "suites_run": 100,
+      "passed": 84,
+      "failed": 16,
+      "$what_moved": "three new files added and passing: exportParity (20 checks), survivalReferences (16), mutationPaths (16); generationIntegrity grew to 26 (the usury finding is a review question, not a conclusion). No suite changed state.",
+      "failing_suites": [
+        "clauseProvenance.test.mjs",
+        "documentHealthScore.test.mjs",
+        "answerStateCorpus.test.mjs",
+        "poshDissemination.test.mjs",
+        "poshFalsification.test.mjs",
+        "tosFalsification.test.mjs",
+        "loanApplicability.test.mjs",
+        "loanSecurityTreatment.test.mjs",
+        "positionOverride.test.mjs",
+        "declinedProtections.test.mjs",
+        "gateReachability.test.mjs",
+        "statutoryCustody.test.mjs",
+        "propositionVocabulary.test.mjs",
+        "propositionCoverage.test.mjs",
+        "certificationDimensions.test.mjs",
+        "scripts/freezeClauseBaseline.mjs"
+      ],
+      "failing_set_identical_to_previous": true,
+      "$each_compared": "Each of the 16 was run on D4.46 and D4.47 and its output compared: identical in all 16 (documentHealthScore 1 sub-failure, the fixture corpus; freezeClauseBaseline drift in the same 27 types)."
     }
   },
   "an_instrument_defect_found_and_repaired": {

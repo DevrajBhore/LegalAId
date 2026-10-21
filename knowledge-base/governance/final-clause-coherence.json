@@ -1,0 +1,68 @@
+{
+  "$comment": [
+    "D4.47 — Final-Clause Coherence and Evidence Coverage. What was required, what was done, the evidence, and what remains open.",
+    "Measured on 16 October 2026 against commit 39422d779 (D4.46) plus the D4.47 working tree. The term sheet stays withdrawn. Nothing here is a legal approval; the survival semantics and the reworded findings are draft-needs-legal-review."
+  ],
+  "phase": "D4.47",
+  "review_status": "engineering — survival semantics await advocate review",
+  "items": [
+    {
+      "id": "EXPORT_PARITY",
+      "priority": "P0 (reported by the user)",
+      "requirement": "A document shown without a blocking issue can be downloaded.",
+      "found": "Export re-validates in 'final' mode; the AI safety layer runs there for any AI-touched or edited draft and never ran in what the user was shown. Its tamper heuristics flagged the engine's own '(iii)', 'Schedule III' and '(a) In full and final settlement'; an unchanged draft had every clause judged as an edit; a model's verdict blocked. 18 of 58 corpus documents refused once AI-touched, two of them shown 'Automated checks passed' at 100. In production the AI path is the default, so this hit real users.",
+      "done": [
+        "IRE/src/indian-rule-engine/aiLegalSafetyValidator.js: Roman numerals and leading enumerators are drafting; a token or lowercase opening already in the drafted text was not introduced by an edit; an unchanged draft has nothing judged; the drafted text is the immutable pre-AI text where the AI tailored.",
+        "A model's verdict (integrity or legal) is 'Requires legal review', verified_authority false; deterministic tampering still blocks.",
+        "frontend Editor.jsx: a refused export lists only the blocking findings and links each to its clause; the explanation no longer says export needs zero open issues."
+      ],
+      "frozen_evidence": "tests/fixtures/exportRefusal.D4_47.json",
+      "verified_by": "tests/exportParity.test.mjs (20 checks; 174 exports across plain, AI-touched and edited drafts)"
+    },
+    {
+      "id": "SURVIVAL_FROM_FINAL_CLAUSE_SET",
+      "priority": "P0",
+      "requirement": "Final clause set and final survival wording agree; survival is a drafting decision, not a consequence of a title.",
+      "done": [
+        "knowledge-base/metadata/survival_semantics.json names each survival-bearing clause by id and records 20 clauses a title would have pulled in (termination notice, notice period, licences, data security, return of information ...) with the reason each does not survive.",
+        "documentService.finaliseSurvivalReferences: the clauses that enumerate surviving provisions are rendered again as the last stage, from the final clause set, on every path (generation, repair, AI merge).",
+        "survivalSemantics.verifySurvivalReferences on every validation: SURVIVAL_REFERENCES_MISMATCH (Requires legal review) when the printed list omits a surviving provision present or names one absent."
+      ],
+      "frozen_evidence": "tests/fixtures/survivalStale.D4_47.json (the 8 documents)",
+      "verified_by": "tests/survivalReferences.test.mjs (16 checks; all 58 documents agree and the list is a fixed point)"
+    },
+    {
+      "id": "MUTATION_PATH_COVERAGE",
+      "priority": "P0",
+      "requirement": "Every mutation entry point, including export-time transformations, is guarded; the guard protects meaning, not only numbers.",
+      "done": [
+        "knowledge-base/governance/mutation-paths.json lists the 6 paths; the test checks each against the code.",
+        "Two were unguarded: chat edits (applied in the browser) and export-time quality controls. Both now pass the guard (backend/services/mutationEntryPoints.js).",
+        "For AI changes the guard reads negation, obligation words, conditions and exceptions, remedies, parties (from the identity clause) and numbers in words.",
+        "Gaps recorded and asserted: scope quantifiers, temporal order, standards of conduct, subject matter.",
+        "DOCX fidelity: every figure in the draft text is in the exported DOCX on all 58 drafts. PDF not verified (no extractor)."
+      ],
+      "verified_by": "tests/mutationPaths.test.mjs (16 checks), tests/generationIntegrity.test.mjs"
+    },
+    {
+      "id": "MIXED_FINDINGS_PRECEDENCE",
+      "requirement": "A document with a blocking contradiction and missing information shows Blocked and keeps the missing-information finding in its report.",
+      "verified_by": "tests/mutationPaths.test.mjs"
+    },
+    {
+      "id": "LEGAL_CONCLUSIONS_WITHOUT_AUTHORITY",
+      "requirement": "A warning does not conclude a legal result without a verified basis.",
+      "done": ["USURIOUS_INTEREST_RATE: says section 3 lets a court reopen excessive interest, that this is not a finding of usury, and that the rate was not changed; no '24%' limit is suggested; Requires legal review."],
+      "verified_by": "tests/generationIntegrity.test.mjs"
+    }
+  ],
+  "still_open": [
+    "NORMALISATION_NOT_IDEMPOTENT (P1): three clauses ship role words their documents never define (NDA 'Recipient', Software Development 'Licensor'/'Licensee'); a second normalisation would break the loan's 'Principal sum'.",
+    "Held BLOCK requirements (11): visible as Requires legal review; activation waits for applicability and satisfier evidence.",
+    "MOU binding/non-binding classification, Employment POSH coverage, Rental possession: advocate decisions.",
+    "Six-field evidence records for each generation and quality level.",
+    "Meaning-guard gaps listed in mutation-paths.json; PDF export fidelity.",
+    "The 16 failing suites remain tracked; the suite is not fully passing."
+  ],
+  "term_sheet": "Still withdrawn pending advocate approval."
+}

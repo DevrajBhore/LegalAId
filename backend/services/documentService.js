@@ -23,11 +23,11 @@ import { applyDeterministicFixes } from "./deterministicFixer.js";
 import { enhanceCommercially } from "../commercial/commercialEngine.js";
 import { normalizeClauseText } from "./clauseQualityNormalizer.js";
 import { lockCriticalClauses } from "./clauseLocker.js";
-import { isProtectedClause, userValueFigures, guardDraftMutation, refusalReasons } from "./mutationGuard.js";
+import { isProtectedClause, userValueFigures, guardDraftMutation, refusalReasons, partyNamesOf } from "./mutationGuard.js";
 import { createHash } from "crypto";
 import { resolveDependencies } from "./dependencyResolver.js";
 import { injectJurisdictionRules } from "./jurisdictionEngine.js";
-import { applyDocumentHardening } from "./documentHardening.js";
+import { applyDocumentHardening, rerenderSurvivalReferences } from "./documentHardening.js";
 import { applyDocumentQualityControls } from "./documentQualityControl.js";
 import {
   formatValidationResult,
@@ -478,7 +478,31 @@ function applyGenerationStages(draft, input) {
   draft = normalizeClauseText(draft);
   draft = applyDocumentQualityControls(draft, input);
 
-  return draft;
+  return finaliseSurvivalReferences(draft, input);
+}
+
+// D4.47. The LAST stage on every path that produces a draft: once no clause will
+// be added or removed, the clauses that enumerate surviving provisions are
+// rendered from the final clause set, then normalised like every other clause.
+function finaliseSurvivalReferences(draft, input) {
+  const rerendered = rerenderSurvivalReferences(draft, input);
+  if (rerendered === draft) return draft;
+  // Only the re-rendered clauses take the normalised text. Running the
+  // whole-document passes a further time is not neutral: a second
+  // normalizeClauseText renamed "Principal sum" to "Borrower sum" and the
+  // Licensor and Licensee to the party names (found in D4.47; see
+  // governance/mutation-paths.json).
+  const normalised = applyDocumentQualityControls(normalizeClauseText(rerendered), input);
+  const ids = new Set(
+    rerendered.clauses.filter((c, i) => c.text !== draft.clauses[i]?.text).map((c) => c.clause_id)
+  );
+  const textOf = new Map(normalised.clauses.map((c) => [c.clause_id, c.text]));
+  return {
+    ...draft,
+    clauses: draft.clauses.map((c) =>
+      ids.has(c.clause_id) && textOf.has(c.clause_id) ? { ...c, text: textOf.get(c.clause_id) } : c
+    ),
+  };
 }
 
 function shouldUseSemanticGeneration(input = {}) {
@@ -536,7 +560,7 @@ function applyFinalDraftGuardrails(draft, input) {
   next = lockCriticalClauses(next);
   next = normalizeClauseText(next);
   next = applyDocumentQualityControls(next, input);
-  return next;
+  return finaliseSurvivalReferences(next, input);
 }
 
 // Resilient per-clause merge. The rule engine has ALREADY decided the clause set
@@ -591,6 +615,7 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
   let tailored = 0;
   let reused = 0;
   const refusedByGuard = [];
+  const partyNames = partyNamesOf(seedDraft);
   const mergedClauses = seedDraft.clauses.map((seedClause) => {
     if (isProtectedSemanticClause(seedClause)) {
       return seedClause;
@@ -611,6 +636,9 @@ export function mergeAIDraftWithSeed(seedDraft, aiDraft, input, provider, option
     const reasons = refusalReasons(seedClause, { ...seedClause, text: aiClause.text.trim() }, {
       userFigures: userFiguresFor(input),
       introducedFiguresForbidden: true,
+      // D4.47: and not meaning either -- negation, obligation, conditions,
+      // remedies and parties are read from the words and must survive.
+      partyNames,
     });
     if (reasons.length) {
       refusedByGuard.push({ clause_id: seedClause.clause_id, source: "ai_tailoring", reasons });

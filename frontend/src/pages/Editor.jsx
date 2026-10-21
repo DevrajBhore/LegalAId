@@ -89,10 +89,10 @@ async function parseExportError(error) {
 
 function buildExportErrorExplainer(format, { status, data, raw }) {
   const validation = data?.validation;
-  const blocking = [
-    ...(validation?.blockingIssues || []),
-    ...(validation?.advisoryIssues || []),
-  ].filter(Boolean);
+  // Only blocking findings withhold an export (backend/index.js). Advisory
+  // findings were listed here too, so the user could not tell which item was
+  // actually stopping the download.
+  const blocking = (validation?.blockingIssues || []).filter(Boolean);
 
   if (status === 422) {
     return {
@@ -102,14 +102,14 @@ function buildExportErrorExplainer(format, { status, data, raw }) {
         data?.error ||
         "This document still has open issues that must be resolved before it can be exported.",
       cause:
-        "Export is only allowed once the document passes final validation with zero open issues — duplicate clauses, unresolved placeholders, invalid party details, or currency problems all block it.",
+        "Export runs the final checks again and is withheld only by a blocking finding, listed below. Advisory findings and items marked 'Requires legal review' never stop a download.",
       solution:
         "Open the Validation tab, resolve each issue below (use Fix where offered), re-validate, then export again.",
       items: blocking.map((issue) => ({
         title: issue.title || issue.rule_id || "Validation issue",
         detail: issue.message,
         suggestion: issue.suggestion,
-        clauseId: issue.clause_id || issue.clauseId || null,
+        clauseId: issue.offending_clause_id || issue.clause_id || issue.clauseId || null,
       })),
       technicalDetail: data?.details || raw || "",
     };

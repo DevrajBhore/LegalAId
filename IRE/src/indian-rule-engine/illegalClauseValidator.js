@@ -108,6 +108,10 @@ export function illegalClauseValidate(draft) {
       fix_suggestion: rule.suggestion,
       auto_fixable: rule.severity !== "CRITICAL",
       blocks_generation: rule.blocks_generation ?? true, 
+      // D4.47: a rule may say what its finding means for release, and whether
+      // the authority behind it has been verified.
+      ...(rule.release_outcome ? { release_outcome: rule.release_outcome, manual_review_required: true } : {}),
+      ...(rule.verified_authority === false ? { verified_authority: false } : {}),
       offending_clause_id: offendingClause?.clause_id || null,
       offending_category: offendingClause?.category || null,
     });

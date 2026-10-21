@@ -40,6 +40,7 @@ import {
   extractIntakeFromPrompt,
 } from "./services/interviewService.js";
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
+import { prepareExportDraft, guardChatEdits } from "./services/mutationEntryPoints.js";
 
 import authRoutes from "./auth/authRoutes.js";
 import { contactHandler } from "./routes/contactRoutes.js";
@@ -638,10 +639,11 @@ app.post("/export", protect, async (req, res) => {
       });
     }
 
-    const exportDraft = applyDocumentQualityControls(draft, {
-      document_type: draft.document_type,
-      variables: req.body?.variables || draft?.metadata?.source_variables || {},
-    });
+    // D4.47: guarded like every other mutation path (mutationEntryPoints.js).
+    const exportDraft = prepareExportDraft(
+      draft,
+      req.body?.variables || draft?.metadata?.source_variables || {}
+    ).draft;
 
     const validation = await runDocumentValidation(exportDraft, {
       mode: "final",
@@ -721,7 +723,8 @@ app.post("/chat", protect, aiLimiter, async (req, res) => {
     const { draft, message } = req.body;
     if (!message) return res.status(400).json({ error: "Missing message" });
     const result = await callAIChat(draft, message);
-    res.json(result);
+    // D4.47: chat edits pass the mutation guard (mutationEntryPoints.js).
+    res.json(guardChatEdits(draft, result, message));
   } catch (error) {
     console.error("Chat error:", error);
     res.status(500).json({ error: "Chat failed", details: error.message });

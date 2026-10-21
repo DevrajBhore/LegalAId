@@ -1,0 +1,450 @@
+{
+ "$comment": [
+  "Frozen 16 Oct 2026 (D4.47) from the D4.46 engine (commit 39422d779), conservation capture. Never regenerate.",
+  "Each shipped draft contains an indemnity and a limitation-of-liability clause, injected by enhanceCommercially after the survival list was drawn, and its Survival clause does not name them.",
+  "tests/survivalReferences.test.mjs requires validation to flag each of these and the current engine to draw the list from the final clause set.",
+  "Compacted: each case keeps its clause ids and the full text of the clauses that enumerate surviving provisions, which is everything the survival check reads."
+ ],
+ "captured_from_commit": "39422d779",
+ "cases": [
+  {
+   "case": "NDA::WELL_FILLED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_NON_SOLICITATION_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_NON_COMPETE_001",
+    "NDA_BREACH_REMEDIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_TERMINATION_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "NDA",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+     "clause_id": "CORE_TERMINATION_001",
+     "title": "Termination",
+     "text": "This Agreement may be terminated (a) by either Disclosing Party or Receiving Party for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within 15 days after receipt of written notice requiring the same to be remedied; (c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, governing law and jurisdiction, notices, and any accrued rights or remedies."
+    }
+   ]
+  },
+  {
+   "case": "NDA::MINIMAL_DECLINED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_BREACH_REMEDIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_TERMINATION_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "NDA",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+     "clause_id": "CORE_TERMINATION_001",
+     "title": "Termination",
+     "text": "This Agreement may be terminated (a) by either Disclosing Party or Receiving Party for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within 15 days after receipt of written notice requiring the same to be remedied; (c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, governing law and jurisdiction, notices, and any accrued rights or remedies."
+    }
+   ]
+  },
+  {
+   "case": "NDA::EXECUTION_CITY_UNANSWERED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_NON_SOLICITATION_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_NON_COMPETE_001",
+    "NDA_BREACH_REMEDIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_TERMINATION_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "NDA",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+     "clause_id": "CORE_TERMINATION_001",
+     "title": "Termination",
+     "text": "This Agreement may be terminated (a) by either Disclosing Party or Receiving Party for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within 15 days after receipt of written notice requiring the same to be remedied; (c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, governing law and jurisdiction, notices, and any accrued rights or remedies."
+    }
+   ]
+  },
+  {
+   "case": "NDA::RESTRICTION_PERIOD_UNANSWERED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_NON_SOLICITATION_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_NON_COMPETE_001",
+    "NDA_BREACH_REMEDIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_TERMINATION_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "NDA",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+     "clause_id": "CORE_TERMINATION_001",
+     "title": "Termination",
+     "text": "This Agreement may be terminated (a) by either Disclosing Party or Receiving Party for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within 15 days after receipt of written notice requiring the same to be remedied; (c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, governing law and jurisdiction, notices, and any accrued rights or remedies."
+    }
+   ]
+  },
+  {
+   "case": "NDA::RESTRICTION_PERIOD_BLANK",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "NDA_CONFIDENTIAL_INFORMATION_SCOPE_001",
+    "NDA_CONFIDENTIALITY_HEIGHTENED_001",
+    "NDA_THIRD_PARTY_DISCLOSURE_001",
+    "NDA_DATA_SECURITY_001",
+    "NDA_RETURN_OF_INFORMATION_001",
+    "NDA_NON_SOLICITATION_001",
+    "NDA_EXCLUSIONS_001",
+    "NDA_DISCLOSURE_PERMITTED_001",
+    "NDA_NON_COMPETE_001",
+    "NDA_BREACH_REMEDIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "NDA_DURATION_001",
+    "NDA_TERM_SURVIVAL_001",
+    "CORE_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "CORE_SURVIVAL_001",
+    "CORE_TERMINATION_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_STAMP_AND_COSTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "NDA",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to confidentiality, dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    },
+    {
+     "clause_id": "CORE_TERMINATION_001",
+     "title": "Termination",
+     "text": "This Agreement may be terminated (a) by either Disclosing Party or Receiving Party for convenience upon 3 days' prior written notice to the other Party; (b) by either Party with immediate effect if the other Party commits a material breach of this Agreement and, where such breach is capable of remedy, fails to cure it within 15 days after receipt of written notice requiring the same to be remedied; (c) by either Party with immediate effect if the other Party becomes insolvent, is wound up, enters into a composition with creditors, or ceases to carry on business. Upon termination or expiry, each Party shall remain liable for accrued payment obligations and for all obligations which by their nature are intended to survive, including confidentiality, dispute resolution, governing law and jurisdiction, notices, and any accrued rights or remedies."
+    }
+   ]
+  },
+  {
+   "case": "LEAVE_AND_LICENSE_AGREEMENT::WELL_FILLED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "RENTAL_RENT_PAYMENT_001",
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "PROP_REGISTRATION_001",
+    "RENT_PROPERTY_USE_001",
+    "RENT_UTILITIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "RENTAL_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "RENTAL_TERMINATION_001",
+    "CORE_SURVIVAL_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "LEAVE_AND_LICENSE_AGREEMENT",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    }
+   ]
+  },
+  {
+   "case": "LEAVE_AND_LICENSE_AGREEMENT::MINIMAL_DECLINED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "RENTAL_RENT_PAYMENT_001",
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "PROP_REGISTRATION_001",
+    "RENT_PROPERTY_USE_001",
+    "RENT_UTILITIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "RENTAL_TERM_001",
+    "RENTAL_TERMINATION_001",
+    "CORE_SURVIVAL_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "LEAVE_AND_LICENSE_AGREEMENT",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    }
+   ]
+  },
+  {
+   "case": "LEAVE_AND_LICENSE_AGREEMENT::EXECUTION_CITY_UNANSWERED",
+   "missing": [
+    "indemnity",
+    "limitation of liability"
+   ],
+   "survival_text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties.",
+   "clause_ids": [
+    "CORE_IDENTITY_001",
+    "RENTAL_PROPERTY_DESCRIPTION_001",
+    "CORE_DEFINITIONS_001",
+    "CORE_INTERPRETATION_001",
+    "RENTAL_RENT_PAYMENT_001",
+    "RENTAL_SECURITY_DEPOSIT_001",
+    "PROP_REGISTRATION_001",
+    "RENT_PROPERTY_USE_001",
+    "RENT_UTILITIES_001",
+    "CORE_INDEMNITY_FULL_001",
+    "CORE_LIABILITY_LIMIT_FALLBACK_001",
+    "RENTAL_TERM_001",
+    "CORE_FORCE_MAJEURE_001",
+    "RENTAL_TERMINATION_001",
+    "CORE_SURVIVAL_001",
+    "CORE_NOTICE_001",
+    "CORE_ASSIGNMENT_001",
+    "CORE_AMENDMENT_001",
+    "CORE_WAIVER_001",
+    "CORE_SEVERABILITY_001",
+    "CORE_ENTIRE_AGREEMENT_001",
+    "CORE_FURTHER_ASSURANCE_001",
+    "CORE_DISPUTE_RESOLUTION_001",
+    "CORE_GOVERNING_LAW_001",
+    "CORE_COUNTERPARTS_001",
+    "CORE_SIGNATURE_BLOCK_001"
+   ],
+   "shown": {
+    "certification": "Automated checks passed",
+    "score": 100
+   },
+   "document_type": "LEAVE_AND_LICENSE_AGREEMENT",
+   "referencing_clauses": [
+    {
+     "clause_id": "CORE_SURVIVAL_001",
+     "title": "Survival",
+     "text": "Expiry or termination of this Agreement shall not affect any right, remedy, obligation, or liability of a Party that has accrued as at the date of expiry or termination, and shall not affect the coming into force or the continuance in force of any provision which is expressly, or by implication, intended to come into force or to continue in force on or after that date. Without limiting the generality of the foregoing, the provisions of this Agreement relating to dispute resolution, governing law and jurisdiction, notices, and this clause shall survive expiry or termination and shall continue to bind the Parties."
+    }
+   ]
+  }
+ ]
+}

@@ -133,23 +133,44 @@ function getBaselineClauseMap(draft) {
   return draft?.metadata?.baseline_clause_map || {};
 }
 
+// D4.47. The text the engine drafted for a clause, before anyone changed it:
+// the immutable pre-AI text where the AI tailored the draft (D4.46), otherwise
+// the last validated text. This layer exists to judge CHANGES; the engine's own
+// wording is checked by every other layer and is not an edit.
+function draftedTextOf(draft, clauseId) {
+  const preAi = draft?.metadata?.pre_ai_baseline?.[clauseId];
+  if (typeof preAi === "string") return preAi;
+  const baseline = getBaselineClauseMap(draft)?.[clauseId];
+  return typeof baseline?.text === "string" ? baseline.text : null;
+}
+
+function hasDraftedReference(draft) {
+  return Boolean(
+    Object.keys(getBaselineClauseMap(draft)).length ||
+      Object.keys(draft?.metadata?.pre_ai_baseline || {}).length
+  );
+}
+
+// Before D4.47 a draft in which nothing had changed had EVERY clause judged as
+// if edited ("changedClauses.length ? changedClauses : clauses"), so the export
+// of an untouched AI-tailored or once-edited document ran the engine's own
+// wording through the tamper heuristics and the AI review, and was refused.
 function getRelevantClauses(draft) {
-  const baselineMap = getBaselineClauseMap(draft);
   const clauses = (draft?.clauses || []).filter(
     (clause) => clause?.category !== "SIGNATURE_BLOCK"
   );
 
-  if (!Object.keys(baselineMap).length) {
+  // A draft with no record of what the engine drafted (a legacy save) cannot be
+  // told apart from an edit, so all of it is judged, as before.
+  if (!hasDraftedReference(draft)) {
     return clauses;
   }
 
-  const changedClauses = clauses.filter((clause) => {
-    const baseline = baselineMap?.[clause.clause_id];
-    if (!baseline) return true;
-    return normalizeComparableText(clause.text) !== normalizeComparableText(baseline.text);
+  return clauses.filter((clause) => {
+    const drafted = draftedTextOf(draft, clause.clause_id);
+    if (drafted === null) return true; // a clause the engine did not draft
+    return normalizeComparableText(clause.text) !== normalizeComparableText(drafted);
   });
-
-  return changedClauses.length ? changedClauses : clauses;
 }
 
 function firstAlphabeticCharacter(text = "") {
@@ -157,15 +178,36 @@ function firstAlphabeticCharacter(text = "") {
   return match ? match[0] : null;
 }
 
-function collectRepeatedCharacterToken(text = "") {
+// Roman numerals are legal drafting: "(iii)", "(viii)", "Schedule III",
+// "Part XXX". Before D4.47 every one of them read as a malformed token.
+const ROMAN_NUMERAL = /^(?=[ivxlcdm]+$)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})$/i;
+
+function collectRepeatedCharacterToken(text = "", drafted = "") {
+  const already = new Set(
+    [...String(drafted || "").matchAll(REPEATED_CHARACTER_TOKEN_PATTERN)].map((m) => m[1].toLowerCase())
+  );
   const matches = String(text).matchAll(REPEATED_CHARACTER_TOKEN_PATTERN);
   for (const match of matches) {
     const token = match[1];
+    if (ROMAN_NUMERAL.test(token)) continue;
+    // A token the engine itself drafted was not introduced by an edit.
+    if (already.has(token.toLowerCase())) continue;
     if (/(.)\1{2,}/i.test(token)) {
       return token;
     }
   }
   return null;
+}
+
+// "(a) In full and final settlement ..." and "(iii) the Licensee ..." open with
+// an enumerator, not with a lowercase fragment. The enumerator is skipped and
+// the first word of the provision itself is what is read.
+const LEADING_ENUMERATOR = /^\s*(?:(?:\(\s*(?:[a-z]{1,2}|[ivxlcdm]{1,6}|\d{1,3})\s*\)|(?:[a-z]|[ivxlcdm]{1,6}|\d{1,3}(?:\.\d{1,3})*)[.)])\s+)+/i;
+
+function startsWithLowercaseFragment(text = "") {
+  const body = String(text).replace(LEADING_ENUMERATOR, "");
+  const firstAlpha = firstAlphabeticCharacter(body);
+  return Boolean(firstAlpha && firstAlpha === firstAlpha.toLowerCase());
 }
 
 function extractContiguousChange(previous = "", current = "") {
@@ -228,7 +270,7 @@ function looksLikeStandaloneTamper(fragment = "", change = {}) {
   return allLowercase && boundaryInsert;
 }
 
-function detectDeterministicIntegrityFailures(clauses = [], baselineMap = {}) {
+function detectDeterministicIntegrityFailures(clauses = [], baselineMap = {}, draft = null) {
   const failures = [];
 
   for (const clause of clauses) {
@@ -237,8 +279,10 @@ function detectDeterministicIntegrityFailures(clauses = [], baselineMap = {}) {
     if (!text) continue;
 
     const baseline = clauseId ? baselineMap?.[clauseId] : null;
-    const firstAlpha = firstAlphabeticCharacter(text);
-    if (firstAlpha && firstAlpha === firstAlpha.toLowerCase()) {
+    const drafted = draft ? draftedTextOf(draft, clauseId) : baseline?.text ?? null;
+    // Judged only where the edit made it so: a drafted clause that already
+    // opened this way was not changed into a fragment.
+    if (startsWithLowercaseFragment(text) && !(drafted && startsWithLowercaseFragment(drafted))) {
       failures.push({
         clause_id: clauseId,
         reason:
@@ -247,7 +291,7 @@ function detectDeterministicIntegrityFailures(clauses = [], baselineMap = {}) {
       continue;
     }
 
-    const repeatedToken = collectRepeatedCharacterToken(text);
+    const repeatedToken = collectRepeatedCharacterToken(text, drafted);
     if (repeatedToken) {
       failures.push({
         clause_id: clauseId,
@@ -378,6 +422,7 @@ function buildAIUnavailableIssue(reasons = []) {
     suggestion:
       "Re-run validation once the AI safety layer is available, or manually restore the affected clause to the last validated text.",
     blocks_generation: false,
+    release_outcome: "REQUIRES_LEGAL_REVIEW",
     ai_detected: true,
     manual_review_required: true,
   };
@@ -385,7 +430,12 @@ function buildAIUnavailableIssue(reasons = []) {
 
 export async function aiLegalSafetyValidate(
   draft,
-  { isUserEdit = false } = {}
+  {
+    isUserEdit = false,
+    // Injectable so the treatment of a model's verdict can be tested without a
+    // provider; production always uses the real prompts.
+    reviewers = { integrity: checkClauseIntegrity, legal: checkLegalSafety },
+  } = {}
 ) {
   if (!isUserEdit) return [];
   if (!draft?.clauses?.length) return [];
@@ -397,15 +447,16 @@ export async function aiLegalSafetyValidate(
   const issues = [];
   const deterministicFailures = detectDeterministicIntegrityFailures(
     clauses,
-    baselineMap
+    baselineMap,
+    draft
   );
 
-  let integrityFailures = [...deterministicFailures];
+  let integrityFailures = deterministicFailures.map((f) => ({ ...f, deterministic: true }));
   let legalViolations = [];
 
   const [integrityResult, legalResult] = await Promise.allSettled([
-    checkClauseIntegrity(clauses),
-    checkLegalSafety(clauses, draft.document_type),
+    reviewers.integrity(clauses),
+    reviewers.legal(clauses, draft.document_type),
   ]);
 
   const aiFailures = [];
@@ -422,15 +473,29 @@ export async function aiLegalSafetyValidate(
     aiFailures.push(`legal safety check unavailable: ${legalResult.reason?.message || "unknown error"}`);
   }
 
+  // D4.47: what blocks, and what asks for a lawyer.
+  //
+  // A deterministic finding is evidence read out of the edited text itself (a
+  // fragment inserted where none was drafted) and keeps blocking. A model's
+  // verdict is not verified authority: it may be right, and it may read an
+  // ordinary arbitration clause as an ouster of the courts. Before D4.47 every
+  // model verdict blocked the export of a document the user had been shown as
+  // passing, because this layer runs only at export. It is now "Requires legal
+  // review": visible, never silent, and never a refusal to hand over the
+  // user's own document on an unverified reading.
   for (const failure of integrityFailures) {
+    const verified = failure.deterministic === true;
     issues.push({
-      rule_id: failure.rule_id || "AI_INTEGRITY_VIOLATION",
-      severity: "CRITICAL",
-      message: `Clause "${failure.clause_id}" contains text that is not genuine legal drafting: ${failure.reason}`,
+      rule_id: failure.rule_id || (verified ? "AI_INTEGRITY_VIOLATION" : "AI_INTEGRITY_REVIEW"),
+      severity: verified ? "CRITICAL" : "HIGH",
+      message: verified
+        ? `Clause "${failure.clause_id}" contains text that is not genuine legal drafting: ${failure.reason}`
+        : `AI review questioned whether clause "${failure.clause_id}" still reads as legal drafting: ${failure.reason} This is a model's reading, not a verified finding.`,
       suggestion:
         "Remove the non-legal insertion or restore the clause to the last validated wording.",
       statutory_reference: "Indian Contract Act 1872 S.23",
-      blocks_generation: true,
+      blocks_generation: verified,
+      ...(verified ? {} : { release_outcome: "REQUIRES_LEGAL_REVIEW", manual_review_required: true, verified_authority: false }),
       offending_clause_id: failure.clause_id,
       ai_detected: true,
     });
@@ -444,12 +509,18 @@ export async function aiLegalSafetyValidate(
     const category = CATEGORY_MAP[violation.category_id];
     issues.push({
       rule_id: `AI_SEMANTIC_${violation.category_id}`,
-      severity: category?.severity || "CRITICAL",
-      message: violation.explanation,
+      // The category's own severity is kept as the concern's weight; whether the
+      // clause actually falls within the statute is for a lawyer (D4.47).
+      severity: "HIGH",
+      concern_severity: category?.severity || "CRITICAL",
+      message: `AI review flagged a possible concern under ${category?.statute || "Indian law"}: ${violation.explanation} This is a model's reading, not a verified legal conclusion.`,
       statutory_reference: category?.statute || "Indian Law",
       suggestion:
-        "Review and remove or rephrase this clause so it complies with Indian law.",
-      blocks_generation: category?.blocks_generation ?? true,
+        "Have a lawyer confirm whether the clause falls within the provision cited, and rephrase it if it does.",
+      blocks_generation: false,
+      release_outcome: "REQUIRES_LEGAL_REVIEW",
+      manual_review_required: true,
+      verified_authority: false,
       offending_clause_id: violation.clause_id || null,
       ai_detected: true,
       confidence: violation.confidence,
