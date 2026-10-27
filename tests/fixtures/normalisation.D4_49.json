@@ -1,0 +1,114 @@
+{
+  "//": "D4.49 frozen defect: NORMALISATION_NOT_IDEMPOTENT. Captured once from the D4.48 engine (commit below, a local commit of the D4.48 patch applied to GitHub 223bfc821) with sweep.mjs variablesFor(type, {profile}) and no AI provider. Never regenerate. The normaliser capitalised role ALIASES as well as canonical roles, so one pass turned a renderer's lower-case 'the recipient' or 'a principal sum' into a capitalised alias the document never defines, and a second pass replaced that alias ('Principal sum' became 'Borrower sum').",
+  "captured_from_tree": "e7c0ad689cba43b273b2da28c6de659323d70cea",
+  "captured_from_local_commit": "f2945e07244abbce1966c36a6a56b50ae0d28005",
+  "captured_on": "2026-10-21",
+  "shipped_clauses_a_second_pass_changes": [
+    {
+      "document_type": "NDA",
+      "profile": "WELL_FILLED",
+      "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
+      "shipped_text": "The Receiving Party shall use Confidential Information solely for Evaluating whether to enter into a commercial supply arrangement with the Disclosing Party, and for no other purpose. Where this Agreement operates as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted purpose. Disclosure is permitted only as follows:\n(a) to those of its personnel, professional advisers, and auditors who need the Confidential Information for the permitted purpose and who are bound by obligations of confidence no less protective than those in this Agreement, the Recipient remaining responsible for their compliance\n(b) where disclosure is required by Applicable Law, by a court or tribunal of competent jurisdiction, by a regulator, or by the rules of a stock exchange to which the Recipient is subject\n(c) where disclosure is compelled under the preceding limb, the Recipient shall, to the extent legally permitted, give the other Party prompt written notice before disclosing so that it may seek a protective order, and shall disclose only the minimum required while using reasonable endeavours to obtain confidential treatment\n(d) no other disclosure is permitted, and a disclosure made in reliance on this clause does not otherwise release the Confidential Information from the obligations of this Agreement",
+      "after_a_second_pass": "The Receiving Party shall use Confidential Information solely for Evaluating whether to enter into a commercial supply arrangement with the Disclosing Party, and for no other purpose. Where this Agreement operates as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted purpose. Disclosure is permitted only as follows:\n(a) to those of its personnel, professional advisers, and auditors who need the Confidential Information for the permitted purpose and who are bound by obligations of confidence no less protective than those in this Agreement, the Receiving Party remaining responsible for their compliance\n(b) where disclosure is required by Applicable Law, by a court or tribunal of competent jurisdiction, by a regulator, or by the rules of a stock exchange to which the Receiving Party is subject\n(c) where disclosure is compelled under the preceding limb, the Receiving Party shall, to the extent legally permitted, give the other Party prompt written notice before disclosing so that it may seek a protective order, and shall disclose only the minimum required while using reasonable endeavours to obtain confidential treatment\n(d) no other disclosure is permitted, and a disclosure made in reliance on this clause does not otherwise release the Confidential Information from the obligations of this Agreement"
+    },
+    {
+      "document_type": "NDA",
+      "profile": "MINIMAL_DECLINED",
+      "clause_id": "NDA_DISCLOSURE_PERMITTED_001",
+      "shipped_text": "The Receiving Party shall use Confidential Information solely for Evaluating whether to enter into a commercial supply arrangement with the Disclosing Party, and for no other purpose. Where this Agreement operates as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted purpose. Disclosure is permitted only as follows:\n(a) to those of its personnel, professional advisers, and auditors who need the Confidential Information for the permitted purpose and who are bound by obligations of confidence no less protective than those in this Agreement, the Recipient remaining responsible for their compliance\n(b) where disclosure is required by Applicable Law, by a court or tribunal of competent jurisdiction, by a regulator, or by the rules of a stock exchange to which the Recipient is subject\n(c) where disclosure is compelled under the preceding limb, the Recipient shall, to the extent legally permitted, give the other Party prompt written notice before disclosing so that it may seek a protective order, and shall disclose only the minimum required while using reasonable endeavours to obtain confidential treatment\n(d) no other disclosure is permitted, and a disclosure made in reliance on this clause does not otherwise release the Confidential Information from the obligations of this Agreement",
+      "after_a_second_pass": "The Receiving Party shall use Confidential Information solely for Evaluating whether to enter into a commercial supply arrangement with the Disclosing Party, and for no other purpose. Where this Agreement operates as a mutual non-disclosure agreement, each Party may use the other Party's Confidential Information only for that same permitted purpose. Disclosure is permitted only as follows:\n(a) to those of its personnel, professional advisers, and auditors who need the Confidential Information for the permitted purpose and who are bound by obligations of confidence no less protective than those in this Agreement, the Receiving Party remaining responsible for their compliance\n(b) where disclosure is required by Applicable Law, by a court or tribunal of competent jurisdiction, by a regulator, or by the rules of a stock exchange to which the Receiving Party is subject\n(c) where disclosure is compelled under the preceding limb, the Receiving Party shall, to the extent legally permitted, give the other Party prompt written notice before disclosing so that it may seek a protective order, and shall disclose only the minimum required while using reasonable endeavours to obtain confidential treatment\n(d) no other disclosure is permitted, and a disclosure made in reliance on this clause does not otherwise release the Confidential Information from the obligations of this Agreement"
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "profile": "WELL_FILLED",
+      "clause_id": "LOAN_AMOUNT_001",
+      "shipped_text": "Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a Principal sum of ₹3 (Rupees Three Only) ('Principal Amount'). The Principal Amount shall be disbursed by electronic transfer to the Borrower's designated bank account within seven (7) Business Days of completion of the agreed conditions precedent, including know-your-customer checks, execution of this Agreement, and creation of the agreed security. The Borrower shall utilise the Principal Amount solely for Evaluating a possible investment by the receiving party in the disclosing party's business, and shall not divert funds for any other purpose.",
+      "after_a_second_pass": "Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a Borrower sum of ₹3 (Rupees Three Only) ('Principal Amount'). The Principal Amount shall be disbursed by electronic transfer to the Borrower's designated bank account within seven (7) Business Days of completion of the agreed conditions precedent, including know-your-customer checks, execution of this Agreement, and creation of the agreed security. The Borrower shall utilise the Principal Amount solely for Evaluating a possible investment by the receiving party in the disclosing party's business, and shall not divert funds for any other purpose."
+    },
+    {
+      "document_type": "LOAN_AGREEMENT",
+      "profile": "MINIMAL_DECLINED",
+      "clause_id": "LOAN_AMOUNT_001",
+      "shipped_text": "Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a Principal sum of ₹3 (Rupees Three Only) ('Principal Amount'). The Principal Amount shall be disbursed by electronic transfer to the Borrower's designated bank account within seven (7) Business Days of completion of the agreed conditions precedent, including know-your-customer checks, execution of this Agreement, and creation of the agreed security. The Borrower shall utilise the Principal Amount solely for Evaluating a possible investment by the receiving party in the disclosing party's business, and shall not divert funds for any other purpose.",
+      "after_a_second_pass": "Subject to the terms and conditions of this Agreement, the Lender agrees to lend to the Borrower, and the Borrower agrees to borrow from the Lender, a Borrower sum of ₹3 (Rupees Three Only) ('Principal Amount'). The Principal Amount shall be disbursed by electronic transfer to the Borrower's designated bank account within seven (7) Business Days of completion of the agreed conditions precedent, including know-your-customer checks, execution of this Agreement, and creation of the agreed security. The Borrower shall utilise the Principal Amount solely for Evaluating a possible investment by the receiving party in the disclosing party's business, and shall not divert funds for any other purpose."
+    },
+    {
+      "document_type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "profile": "WELL_FILLED",
+      "clause_id": "IP_LICENSE_001",
+      "shipped_text": "To the extent that any intellectual property is licensed rather than assigned under this Agreement, the Licensor grants the Licensee a licence on the terms set out below and retains all rights not expressly granted.\n(a) the licence is non-exclusive, non-transferable, and royalty-free unless this Agreement expressly provides otherwise, and extends to the territory of India unless a wider territory is expressly stated\n(b) the licence is granted solely for the purpose of receiving and using the deliverables or services under this Agreement, and for no other purpose\n(c) the licence continues for the term of this Agreement and, in respect of deliverables paid for in full, on a perpetual basis after termination, save where this Agreement is terminated for the Licensee's material breach\n(d) the Licensor warrants that it is entitled to grant the licence and that use of the licensed material in accordance with this Agreement will not infringe the intellectual property rights of any third party\n(e) no licence is granted by implication, estoppel, or otherwise in respect of any intellectual property other than that expressly identified",
+      "after_a_second_pass": "To the extent that any intellectual property is licensed rather than assigned under this Agreement, the Developer grants the Client a licence on the terms set out below and retains all rights not expressly granted.\n(a) the licence is non-exclusive, non-transferable, and royalty-free unless this Agreement expressly provides otherwise, and extends to the territory of India unless a wider territory is expressly stated\n(b) the licence is granted solely for the purpose of receiving and using the deliverables or services under this Agreement, and for no other purpose\n(c) the licence continues for the term of this Agreement and, in respect of deliverables paid for in full, on a perpetual basis after termination, save where this Agreement is terminated for the Client's material breach\n(d) the Developer warrants that it is entitled to grant the licence and that use of the licensed material in accordance with this Agreement will not infringe the intellectual property rights of any third party\n(e) no licence is granted by implication, estoppel, or otherwise in respect of any intellectual property other than that expressly identified"
+    },
+    {
+      "document_type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "profile": "WELL_FILLED",
+      "clause_id": "IP_LICENSE_RESTRICTIONS_001",
+      "shipped_text": "The Licensee shall not, and shall not permit any third party to, do any of the following in relation to the licensed material:\n(a) sub-license, assign, rent, lease, lend, distribute, or otherwise make the licensed material available to any third party, except to its own personnel and professional advisers who need access for the permitted purpose and who are bound by equivalent restrictions\n(b) reverse engineer, decompile, or disassemble the licensed material, or otherwise attempt to derive its source code, structure, or underlying ideas, except to the limited extent that such an act cannot lawfully be prohibited\n(c) remove, obscure, or alter any proprietary notice, trade mark, watermark, or attribution appearing on or in the licensed material\n(d) use the licensed material to build, train, or improve a competing product or service, or to benchmark it for publication without the Licensor's prior written consent\n(e) use the licensed material beyond the scope, territory, user count, or period expressly permitted, and any such use shall be a material breach of this Agreement",
+      "after_a_second_pass": "The Client shall not, and shall not permit any third party to, do any of the following in relation to the licensed material:\n(a) sub-license, assign, rent, lease, lend, distribute, or otherwise make the licensed material available to any third party, except to its own personnel and professional advisers who need access for the permitted purpose and who are bound by equivalent restrictions\n(b) reverse engineer, decompile, or disassemble the licensed material, or otherwise attempt to derive its source code, structure, or underlying ideas, except to the limited extent that such an act cannot lawfully be prohibited\n(c) remove, obscure, or alter any proprietary notice, trade mark, watermark, or attribution appearing on or in the licensed material\n(d) use the licensed material to build, train, or improve a competing product or service, or to benchmark it for publication without the Developer's prior written consent\n(e) use the licensed material beyond the scope, territory, user count, or period expressly permitted, and any such use shall be a material breach of this Agreement"
+    },
+    {
+      "document_type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "profile": "MINIMAL_DECLINED",
+      "clause_id": "IP_LICENSE_001",
+      "shipped_text": "To the extent that any intellectual property is licensed rather than assigned under this Agreement, the Licensor grants the Licensee a licence on the terms set out below and retains all rights not expressly granted.\n(a) the licence is non-exclusive, non-transferable, and royalty-free unless this Agreement expressly provides otherwise, and extends to the territory of India unless a wider territory is expressly stated\n(b) the licence is granted solely for the purpose of receiving and using the deliverables or services under this Agreement, and for no other purpose\n(c) the licence continues for the term of this Agreement and, in respect of deliverables paid for in full, on a perpetual basis after termination, save where this Agreement is terminated for the Licensee's material breach\n(d) the Licensor warrants that it is entitled to grant the licence and that use of the licensed material in accordance with this Agreement will not infringe the intellectual property rights of any third party\n(e) no licence is granted by implication, estoppel, or otherwise in respect of any intellectual property other than that expressly identified",
+      "after_a_second_pass": "To the extent that any intellectual property is licensed rather than assigned under this Agreement, the Developer grants the Client a licence on the terms set out below and retains all rights not expressly granted.\n(a) the licence is non-exclusive, non-transferable, and royalty-free unless this Agreement expressly provides otherwise, and extends to the territory of India unless a wider territory is expressly stated\n(b) the licence is granted solely for the purpose of receiving and using the deliverables or services under this Agreement, and for no other purpose\n(c) the licence continues for the term of this Agreement and, in respect of deliverables paid for in full, on a perpetual basis after termination, save where this Agreement is terminated for the Client's material breach\n(d) the Developer warrants that it is entitled to grant the licence and that use of the licensed material in accordance with this Agreement will not infringe the intellectual property rights of any third party\n(e) no licence is granted by implication, estoppel, or otherwise in respect of any intellectual property other than that expressly identified"
+    },
+    {
+      "document_type": "SOFTWARE_DEVELOPMENT_AGREEMENT",
+      "profile": "MINIMAL_DECLINED",
+      "clause_id": "IP_LICENSE_RESTRICTIONS_001",
+      "shipped_text": "The Licensee shall not, and shall not permit any third party to, do any of the following in relation to the licensed material:\n(a) sub-license, assign, rent, lease, lend, distribute, or otherwise make the licensed material available to any third party, except to its own personnel and professional advisers who need access for the permitted purpose and who are bound by equivalent restrictions\n(b) reverse engineer, decompile, or disassemble the licensed material, or otherwise attempt to derive its source code, structure, or underlying ideas, except to the limited extent that such an act cannot lawfully be prohibited\n(c) remove, obscure, or alter any proprietary notice, trade mark, watermark, or attribution appearing on or in the licensed material\n(d) use the licensed material to build, train, or improve a competing product or service, or to benchmark it for publication without the Licensor's prior written consent\n(e) use the licensed material beyond the scope, territory, user count, or period expressly permitted, and any such use shall be a material breach of this Agreement",
+      "after_a_second_pass": "The Client shall not, and shall not permit any third party to, do any of the following in relation to the licensed material:\n(a) sub-license, assign, rent, lease, lend, distribute, or otherwise make the licensed material available to any third party, except to its own personnel and professional advisers who need access for the permitted purpose and who are bound by equivalent restrictions\n(b) reverse engineer, decompile, or disassemble the licensed material, or otherwise attempt to derive its source code, structure, or underlying ideas, except to the limited extent that such an act cannot lawfully be prohibited\n(c) remove, obscure, or alter any proprietary notice, trade mark, watermark, or attribution appearing on or in the licensed material\n(d) use the licensed material to build, train, or improve a competing product or service, or to benchmark it for publication without the Developer's prior written consent\n(e) use the licensed material beyond the scope, territory, user count, or period expressly permitted, and any such use shall be a material breach of this Agreement"
+    }
+  ],
+  "library_clauses_not_idempotent": [
+    {
+      "document_type": "DISTRIBUTION_AGREEMENT",
+      "clause_id": "DIST_APPOINTMENT_001",
+      "once": "independent principal-to-principal on a Buyer-seller basis; the Distributor is n",
+      "twice": "independent principal-to-principal on a Distributor-seller basis; the Distributo"
+    },
+    {
+      "document_type": "DISTRIBUTION_AGREEMENT",
+      "clause_id": "DIST_APPOINTMENT_EXCLUSIVE_001",
+      "once": "tionship is principal-to-principal on a Buyer-seller basis; the Distributor is n",
+      "twice": "tionship is principal-to-principal on a Distributor-seller basis; the Distributo"
+    },
+    {
+      "document_type": "DISTRIBUTION_AGREEMENT",
+      "clause_id": "DIST_APPOINTMENT_SOLE_001",
+      "once": "tionship is principal-to-principal on a Buyer-seller basis; the Distributor is n",
+      "twice": "tionship is principal-to-principal on a Distributor-seller basis; the Distributo"
+    },
+    {
+      "document_type": "IP_ASSIGNMENT_AGREEMENT",
+      "clause_id": "IPA_MORAL_RIGHTS_001",
+      "once": "Parties record the following about the Author's special rights.\n(a) Section 57 o",
+      "twice": "Parties record the following about the Assignor's special rights.\n(a) Section 57"
+    },
+    {
+      "document_type": "ESOP_GRANT_LETTER",
+      "clause_id": "EMP_GARDEN_LEAVE_001",
+      "once": "and contractual benefits; (b) remain an Employee bound by all obligations under ",
+      "twice": "and contractual benefits; (b) remain an Optionee bound by all obligations under "
+    },
+    {
+      "document_type": "INTERNSHIP_AGREEMENT",
+      "clause_id": "EMP_GARDEN_LEAVE_001",
+      "once": "and contractual benefits; (b) remain an Employee bound by all obligations under ",
+      "twice": "and contractual benefits; (b) remain an Intern bound by all obligations under th"
+    },
+    {
+      "document_type": "INTERNSHIP_AGREEMENT",
+      "clause_id": "EMP_INTERNSHIP_COMPLETION_001",
+      "once": " conduct that would be misconduct in an Employee.\n(d) Where the internship is en",
+      "twice": " conduct that would be misconduct in an Intern.\n(d) Where the internship is ende"
+    },
+    {
+      "document_type": "INTERNSHIP_AGREEMENT",
+      "clause_id": "EMP_INTERNSHIP_ENGAGEMENT_001",
+      "once": "al harassment, as if the Intern were an Employee.",
+      "twice": "al harassment, as if the Intern were an Intern."
+    }
+  ]
+}

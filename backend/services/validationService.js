@@ -3,6 +3,9 @@ import { validateAIIntegrity, userValueFigures } from "./mutationGuard.js";
 import { getVariables as getSchemaVariables } from "../config/variableConfig.js";
 import { validateRequirements, releaseOutcomeOf, RELEASE_LABEL } from "./requirementRelease.js";
 import { verifySurvivalReferences } from "./survivalSemantics.js";
+import { verifyInstrumentClass } from "./instrumentClass.js";
+import { rescopeSucceededClauseFindings } from "./clauseSuccession.js";
+import { verifyDeclinedProtections } from "./protectionDecisions.js";
 import { validateInstrumentCoherence, declaresInstrument, scopeUncertaintyToBindingProvisions, validateArticlesPrecedence } from "./instrumentCoherence.js";
 import fs from "fs";
 import { validateAgreementGraph } from "./agreementGraphValidator.js";
@@ -284,6 +287,13 @@ export async function runDocumentValidation(
   // construction, so this fires on edits and on defects.
   layersRun.push("survival_references");
   const survivalIssues = verifySurvivalReferences(draft);
+  // D4.48: a provision of an agreement in a document that is not one (a policy,
+  // a term sheet). Clean by construction for a fresh draft; never blocks.
+  layersRun.push("instrument_class");
+  const instrumentClassIssues = verifyInstrumentClass(draft, resolvedDocumentType || draft?.document_type);
+  // D4.51: a protection the user declined that is still in the document.
+  layersRun.push("protection_decisions");
+  const declinedProtectionIssues = verifyDeclinedProtections(draft, resolvedDocumentType || draft?.document_type, resolvedSourceVariables || {});
   const finalQualityIssues = runLayer(
     "document_quality",
     Boolean(resolvedDocumentType),
@@ -300,7 +310,13 @@ export async function runDocumentValidation(
   return withValidationAssuranceWithdrawn(formatValidationResult({
     mode: coreValidation.mode || mode,
     issues: [
-      ...scopeUncertaintyToBindingProvisions(coreValidation.issues || [], draft, resolvedDocumentType),
+      // D4.48: a required clause a newer blueprint introduced, missing from a
+      // document saved under the earlier version, asks for review, not refusal.
+      ...rescopeSucceededClauseFindings(
+        scopeUncertaintyToBindingProvisions(coreValidation.issues || [], draft, resolvedDocumentType),
+        draft,
+        resolvedDocumentType
+      ),
       ...commercialIssues,
       ...consistencyIssues,
       ...plausibilityIssues,
@@ -316,6 +332,8 @@ export async function runDocumentValidation(
       ...aiIntegrityIssues,
       ...requirementIssues,
       ...survivalIssues,
+      ...instrumentClassIssues,
+      ...declinedProtectionIssues,
       ...statutoryChecklistNotices,
       ...extraIssues,
     ],

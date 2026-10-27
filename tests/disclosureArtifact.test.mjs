@@ -61,7 +61,10 @@ checks += 4;
 const docx = asString(await draftToDocx(generated.draft));
 const pdf = asString(await draftToPdf(generated.draft));
 const bare = await generateDocument({ document_type: "CONSULTANCY_AGREEMENT", variables: BASE, answers: {} });
-bare.draft.metadata = { ...bare.draft.metadata, assumptions: [] };
+// Nothing to disclose. Since D4.50 a draft has two sources of disclosure: the
+// resolution's assumptions and the protections no answer governs
+// (protectionDecisions.js), so "nothing" means both are empty.
+bare.draft.metadata = { ...bare.draft.metadata, assumptions: [], protection_decisions: [] };
 const docxBare = asString(await draftToDocx(bare.draft));
 const pdfBare = asString(await draftToPdf(bare.draft));
 

@@ -1,0 +1,1324 @@
+{
+  "//": "D4.51. The approved treatment of each protection in each document family: one entry per (family, protection) the D4.50 audit found (tests/fixtures/injectedProtections.D4_50.json). Read by backend/services/protectionDecisions.js and by nothing else. Every entry is PENDING: no treatment has been decided, and the engine does not change any document because of this file. A treatment takes effect only when an advocate has approved it, named, with a date (tests/protectionTreatments.test.mjs refuses any other state). The facts under as_found are a measurement, not a recommendation.",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "treatments": {
+    "KEEP": "Include the protection under a documented, reviewed specification for this family. The rationale records why, and which variant.",
+    "ASK": "Require an explicit user choice before inclusion. Needs an intake question; until one exists the protection stays disclosed as a default.",
+    "CHANGE": "Replace it with a variant appropriate to this family (for a cap: a referent the family actually holds; for an indemnity: its stated relation to the cap). The rationale names the variant.",
+    "REMOVE": "Exclude the protection from this family."
+  },
+  "statuses": [
+    "PENDING",
+    "APPROVED"
+  ],
+  "separate_questions": {
+    "cap_indemnity_relation": "For every family carrying both an indemnity and a cap, whether indemnity liability is capped, uncapped, separately capped, or subject to stated exceptions. Recorded per family under cap_indemnity_relation once decided; all 37 indemnities in the audit sit beside a cap that does not carve them out (cap-indemnity-interaction.json).",
+    "cap_referent": "For the 14 caps that measure a quantity their family does not hold (cap-referent.json), the referent the cap should measure. Decided independently of the KEEP/CHANGE question."
+  },
+  "families": {
+    "COMMERCIAL_LEASE_AGREEMENT": {
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_FULL_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_LIMIT_FALLBACK_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "CONSULTANCY_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "indemnity_scope",
+            "include_indemnity_clause"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LATE_PAYMENT_INTEREST": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LATE_PAYMENT_INTEREST_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001",
+            "CORE_LIABILITY_CAP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL",
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "DATA_PROCESSING_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_CAP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "DISTRIBUTION_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "DEPENDENCY_RESOLVER"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "EMPLOYMENT_CONTRACT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_FULL_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_LIMIT_FALLBACK_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "FOUNDERS_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_FULL_001"
+          ],
+          "added_by": [
+            "REPAIR_ROUND"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_LIMIT_FALLBACK_001"
+          ],
+          "added_by": [
+            "REPAIR_ROUND"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "indemnity_scope",
+            "include_indemnity_clause"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001",
+            "CORE_LIABILITY_CAP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL",
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "JOINT_VENTURE_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "ip_ownership"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "DEPENDENCY_RESOLVER"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "include_force_majeure"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_FULL_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_LIMIT_FALLBACK_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "MASTER_SERVICE_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "MOU": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "include_force_majeure"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "NDA": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_FULL_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIABILITY_LIMIT_FALLBACK_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "PARTNERSHIP_DEED": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "DEPENDENCY_RESOLVER"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "RENTAL_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SALES_OF_GOODS_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "include_force_majeure"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SERVICE_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "indemnity_scope",
+            "include_indemnity_clause"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LATE_PAYMENT_INTEREST": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LATE_PAYMENT_INTEREST_001"
+          ],
+          "added_by": [
+            "COMMERCIAL_ENGINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001",
+            "CORE_LIABILITY_CAP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL",
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "DEPENDENCY_RESOLVER"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "DEPENDENCY_RESOLVER"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT_CONDITIONAL"
+          ],
+          "fixture_worlds": 1,
+          "worlds_governed_by_an_answer": 1,
+          "intake_controls_in_schema": [
+            "indemnity_scope",
+            "include_indemnity_clause"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "ip_ownership"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "SUPPLY_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "indemnity_scope"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 2,
+          "intake_controls_in_schema": [
+            "liability_cap_basis",
+            "liability_cap_amount"
+          ]
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "TERMS_OF_SERVICE": {
+      "INDEMNITY": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_INDEMNITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "IP_OWNERSHIP": {
+        "as_found": {
+          "clause_ids": [
+            "IP_OWNERSHIP_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      },
+      "LIABILITY_CAP": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_LIMITATION_LIABILITY_001"
+          ],
+          "added_by": [
+            "BLUEPRINT"
+          ],
+          "fixture_worlds": 3,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    },
+    "VENDOR_AGREEMENT": {
+      "FORCE_MAJEURE": {
+        "as_found": {
+          "clause_ids": [
+            "CORE_FORCE_MAJEURE_001"
+          ],
+          "added_by": [
+            "HARDENING_BASELINE"
+          ],
+          "fixture_worlds": 2,
+          "worlds_governed_by_an_answer": 0,
+          "intake_controls_in_schema": []
+        },
+        "treatment": null,
+        "status": "PENDING",
+        "decided_by": null,
+        "decided_on": null,
+        "rationale": null
+      }
+    }
+  },
+  "//as_found": "as_found.worlds_governed_by_an_answer counts the fixture worlds in which an answer of the user's governs the protection, by the D4.50 rule: a toggle answered No does not govern a clause that is still present. The D4.50 audit's own column counted that No as governing, once (MOU, MINIMAL_DECLINED, force majeure); that is the whole difference between its 92 and D4.50's 93 (injected-protections.json, reconciliation)."
+}

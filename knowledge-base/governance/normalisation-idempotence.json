@@ -1,0 +1,45 @@
+{
+  "$comment": [
+    "D4.49 — Normalisation idempotence. What was required, what was done, the evidence, and what remains open.",
+    "Measured on 21 October 2026 against the D4.48 tree (the D4.48 patch applied to GitHub 223bfc821) and the D4.49 working tree. Engineering only: no legal content changed."
+  ],
+  "phase": "D4.49",
+  "review_status": "engineering",
+  "items": [
+    {
+      "id": "NORMALISATION_NOT_IDEMPOTENT",
+      "priority": "P1 (recorded in D4.47; brief §9 item 2)",
+      "requirement": "Normalisation is a fixed point: a second pass over a finished document changes nothing, and no document ships a capitalised role word it does not define.",
+      "found": [
+        "Measured: on the D4.48 engine, a second normalizeClauseText over the 58 fixture documents (29 types x WELL_FILLED, MINIMAL_DECLINED) changed 8 clauses in 6 documents: NDA_DISCLOSURE_PERMITTED_001 ('the Recipient'), LOAN_AMOUNT_001 ('a Principal sum' to 'a Borrower sum'), IP_LICENSE_001 and IP_LICENSE_RESTRICTIONS_001 ('the Licensor'/'the Licensee'). Over the clause library, 8 of 8,146 normalisations were not idempotent, among them 'as if the Intern were an Intern' and 'a Distributor-seller basis'.",
+        "Traced stage by stage, the D4.47 diagnosis (text inserted by the quality controls after normalisation) was wrong. Each word was created by the first normalisation pass: the hardening renderers write lower-case 'the recipient', 'the licensor', 'a principal sum'; replaceRoleAliases is case-sensitive and left them; normalizeRoleCapitalization then capitalised aliases as well as canonical roles. The normaliser manufactured the aliases it exists to remove."
+      ],
+      "done": [
+        "backend/services/clauseQualityNormalizer.js: normalizeRoleCapitalization capitalises only the canonical role ('the receiving party' to 'the Receiving Party'). An alias is only ever replaced; a lower-case alias is ordinary English and is left as written.",
+        "No extra normalisation stage and no new masking were needed, so none was added: once the rule stopped manufacturing aliases, the existing single pass is a fixed point.",
+        "documentService.js: the survival stage's comment updated; it still normalises only the clauses it re-renders, because the quality controls are not proven idempotent."
+      ],
+      "result": "0 of 8,154 library normalisations and 0 clauses of the 58 fixture documents change on a second pass. Shipped text changed in 21 conservation cases, each a correction: the NDA's 'the recipient' (and 'the recipient Party' in its notices clause, as every other agreement already read), the loan's 'a principal sum', the Software Development Agreement's lower-case 'licensor'/'licensee', and the Distribution Agreement's 'a buyer-seller basis' (it had shipped 'a Distributor-seller basis'). Nothing else moved: no finding, score, certification or clause order.",
+      "frozen_evidence": "tests/fixtures/normalisation.D4_49.json (captured from the D4.48 tree)",
+      "verified_by": "tests/normalisationIdempotence.test.mjs (37 checks: frozen defect, regression, positive, negative, boundary, library-wide and corpus-wide idempotence)"
+    }
+  ],
+  "records_updated": [
+    "document-quality-standard.json: NORMALISATION_NOT_IDEMPOTENT FIXED_D4_49, with the corrected diagnosis; its next_sequence item DONE_D4_49.",
+    "mutation-paths.json: the D4.47 exception notes the fix.",
+    "provenance-instrumentation.json: the gate re-baseline (2026-10-21, D4.49)."
+  ],
+  "still_open": [
+    "The NDA and the Software Development Agreement now say 'the recipient' and 'the licensor'/'the licensee' in lower case: ordinary words, no longer undefined defined terms. Whether those clauses should name the defined roles instead ('the Receiving Party') is a drafting choice for the advocate; in a licence clause the direction of the licence can run either way, which is why the generic words were kept.",
+    "The quality controls (documentQualityControl.js) are not proven idempotent; the survival stage still avoids re-running them over the whole document."
+  ],
+  "accepted": {
+    "on": "2026-10-21",
+    "decision": "Accepted as engineering-complete on the evidence reported, pending integration into GitHub main (D4.48 then D4.49, in the verified order 223bfc821 -> e7c0ad689c -> 76d352a91b).",
+    "qualifications": [
+      "Idempotence is not semantic correctness. The tests prove that a second pass changes nothing over the tested corpus; they do not prove that every normalised clause is substantively correct. A normaliser can repeat a wrong result exactly.",
+      "The terminology question is decided per document, not by a universal rule. Whether 'recipient', 'licensor' and 'licensee' should be defined terms in the NDA and the Software Development Agreement depends on each instrument's parties, definitions and obligations; the document's approved terminology decides whether a role word is a defined term or an ordinary noun. No universal capitalisation rule is to be introduced.",
+      "Normaliser idempotence is established; idempotence of the whole generation and quality-control sequence is not. The two stay separate in this record until the latter is measured."
+    ]
+  }
+}

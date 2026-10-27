@@ -11,6 +11,7 @@
  */
 import { getDocumentDraftingPolicy } from "./draftingPolicy.js";
 import { formatIndianAmount, formatFormalDate, parseNumberish } from "./formattingEngine.js";
+import { getInstrumentSelfName } from "./instrumentClass.js";
 
 export const PROVISION_STATUS = Object.freeze({
   BINDING_NOW: "BINDING_NOW",
@@ -163,14 +164,18 @@ export function deriveInstrumentTerms(documentType, variables = {}) {
  * to be one.
  */
 export function applyInstrumentNoun(clause, documentType) {
-  const noun = getInstrument(documentType)?.noun;
+  // D4.48: a type without an instrument entry may still name itself through its
+  // instrument class (instrument_classes.json): the Deed, the MOU, a Policy.
+  const noun = getInstrument(documentType)?.noun || getInstrumentSelfName(documentType)?.noun;
   if (!noun || !clause || typeof clause.text !== "string") return clause;
   const swap = (text) =>
     text
       .replace(/\(\s*"Agreement"\s*\)/g, `("${noun}")`)
       .replace(/\bthis Agreement\b/g, `this ${noun}`)
       .replace(/\bThis Agreement\b/g, `This ${noun}`)
-      .replace(/\bthe Agreement\b/g, `this ${noun}`);
+      .replace(/\bthe Agreement\b/g, `this ${noun}`)
+      // The definition that followed the swap read '"Agreement" means this Deed'.
+      .replace(new RegExp(`"Agreement" means this ${noun}\\b`, "g"), `"${noun}" means this ${noun}`);
   const text = swap(clause.text);
   const title = typeof clause.title === "string" ? swap(clause.title) : clause.title;
   if (text === clause.text && title === clause.title) return clause;

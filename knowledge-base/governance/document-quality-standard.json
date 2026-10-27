@@ -26,7 +26,7 @@
       "failure_behaviour",
       "verification"
     ],
-    "state": "Not yet written for any level. Each level carries the empty record; filling it is part of building the level.",
+    "state": "Written for G34 (D4.50); not yet for any other level. Each level carries the record; filling it is part of building the level.",
     "evidence_for_every_finding": [
       "rule tested",
       "rendered passage",
@@ -887,16 +887,18 @@
       "failure_behaviour": "advisory; repair may inject",
       "verification": [
         "tests/capIndemnityInteraction.test.mjs",
-        "tests/capReferent.test.mjs"
+        "tests/capReferent.test.mjs",
+        "tests/injectedProtections.test.mjs",
+        "tests/protectionConsent.test.mjs"
       ],
-      "gap": "The repair round injects protections the user never asked for (only explicit declines are respected).",
+      "gap": "The repair round injects protections the user never asked for (only explicit declines are respected). D4.50: every protection no answer governs is now recorded and disclosed as a drafting default, not removed; whether each default should stay is open (injected-protections.json). The cap's referent (cap-referent.json) and the cap and indemnity interaction (cap-indemnity-interaction.json) remain open.",
       "record": {
-        "input": null,
-        "decision": null,
-        "output": null,
-        "provenance": null,
-        "failure_behaviour": null,
-        "verification": null
+        "input": "The user's answers that govern a protection, per role (knowledge-base/metadata/protection_decisions.json: liability_cap_basis and liability_cap_amount, indemnity_scope and include_indemnity_clause, include_force_majeure, ip_ownership, termination_notice_period and notice_period_days; none for late payment interest), and the document type.",
+        "decision": "Which stage put each protection in the draft (draft.metadata.clause_origin: blueprint, hardening_baseline, dependency_resolver, commercial_engine, deterministic_repair) and on what basis (draft.metadata.protection_decisions: USER_CHOICE, TEMPLATE_STANDARD, ENGINE_DEFAULT, REPAIR_RECOMMENDATION, ORIGIN_NOT_RECORDED). Never LEGALLY_REQUIRED: no verified authority supports it for any of the six. D4.51: the single basis became five fields kept apart (origin_stage, inclusion_basis, value_provenance, legal_review, user_decision); each family's treatment is registered PENDING in knowledge-base/metadata/protection_treatments.json; a declined protection still present raises DECLINED_PROTECTION_RETAINED (Requires legal review, never blocking).",
+        "output": "The clause, unchanged; and, for every protection no answer governs, a DRAFTING DEFAULT entry in ASSUMPTIONS AND OPEN POINTS in the DOCX, PDF and TXT exports, in the API's assumptions and (D4.51) in the editor before download.",
+        "provenance": "draft.metadata.clause_origin agrees with a stage-by-stage instrumented measurement for 136 of 136 protection clauses (tests/fixtures/injectedProtections.D4_50.json).",
+        "failure_behaviour": "Disclosure, never removal and never a changed validation result. A protection present although the user answered No says so. A protection with no recorded origin says that it has none. A protection deleted after generation is no longer disclosed.",
+        "verification": "tests/injectedProtections.test.mjs (30 checks); D4.51: tests/protectionConsent.test.mjs (36 checks)"
       }
     },
     {
@@ -2749,9 +2751,14 @@
       ],
       "severity": "P1",
       "verified_by_hand": true,
-      "status": "OPEN",
+      "status": "FIXED_D4_49",
       "what": "Text inserted by quality controls after normalizeClauseText is never role-normalised, so NDA_DISCLOSURE_PERMITTED_001 ships 'the Recipient', and the Software Development Agreement's IP_LICENSE_001 and IP_LICENSE_RESTRICTIONS_001 ship 'the Licensor'/'the Licensee', none of which the documents define. A second normalisation would fix those and break LOAN_AMOUNT_001 ('Principal sum' to 'Borrower sum'). Measured: 6 of 58 drafts not a fixed point.",
-      "next": "One normalisation stage after the last insertion, with defined terms ('Principal' in a loan) masked, and an idempotence test on the corpus."
+      "next": "One normalisation stage after the last insertion, with defined terms ('Principal' in a loan) masked, and an idempotence test on the corpus.",
+      "diagnosis_corrected": "D4.49 traced each word stage by stage: nothing was inserted after normalisation. The first normalisation pass created the words. The hardening renderers write lower-case 'the recipient', 'the licensor', 'a principal sum'; replaceRoleAliases is case-sensitive and left them; normalizeRoleCapitalization then capitalised ALIASES as well as canonical roles, producing 'the Recipient', 'the Licensor', 'a Principal sum', which a second pass replaced. Across the library the same rule made 8 clauses not idempotent (e.g. 'as if the Intern were an Intern', 'a Distributor-seller basis'; the Distribution Agreement shipped the latter).",
+      "resolution": "normalizeRoleCapitalization capitalises only the canonical role; an alias is only ever replaced, and a lower-case word is left as written. No masking or extra stage was needed: the normaliser is now a fixed point on all 8,154 library normalisations and all 58 fixture documents. 21 conservation cases changed text, each a correction (NDA 'the recipient' and 'the recipient Party', as every other agreement already read; loan 'a principal sum'; Software Development 'the licensor'/'the licensee'; Distribution 'a buyer-seller basis'). Frozen: tests/fixtures/normalisation.D4_49.json.",
+      "verified_by": [
+        "tests/normalisationIdempotence.test.mjs"
+      ]
     }
   ],
   "duplicate_evaluators": {
@@ -2814,8 +2821,8 @@
       "exit": "tests/exportParity, tests/survivalReferences, tests/mutationPaths."
     },
     {
-      "priority": "P1",
-      "work": "NORMALISATION_NOT_IDEMPOTENT: one role-normalisation stage after the last insertion, defined terms masked",
+      "priority": "DONE_D4_49",
+      "work": "NORMALISATION_NOT_IDEMPOTENT: one role-normalisation stage after the last insertion, defined terms masked (done differently once traced: the normaliser stopped capitalising aliases)",
       "exit": "normalisation is a fixed point on the corpus; no undefined role word ships."
     },
     {

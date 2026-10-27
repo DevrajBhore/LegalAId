@@ -17,7 +17,12 @@ import {
   Tab,
   TabStopPosition,
   TabStopType,
+  Table,
+  TableCell,
+  TableRow,
   TextRun,
+  VerticalAlign,
+  WidthType,
   convertInchesToTwip,
 } from "docx";
 import crypto from "crypto";
@@ -25,6 +30,8 @@ import fs from "fs";
 import PDFDocument from "pdfkit";
 import { parseIdentityClause } from "./documentStructure.js";
 import { getDocumentDisplayName } from "../../shared/documentRegistry.js";
+import { instrumentLayout } from "./instrumentClass.js";
+import { provisionStatusOf, PROVISION_STATUS } from "./instrumentKnowledge.js";
 import {
 
   normalizeClauseCategory,
@@ -1368,6 +1375,277 @@ function renderPdfSignatureBlock(doc, text) {
   }
 }
 
+// ── Summary-of-terms table (D4.48) ──────────────────────────────────────────
+//
+// An instrument whose class lays it out as a table of terms
+// (knowledge-base/metadata/instrument_classes.json, layout "terms_table": the
+// term sheet) is not printed as a deed. Its parties, recitals and execution
+// block stay as they are; its provisions become rows of a table that says, for
+// each, whether it binds now. The status column is read from the family's
+// instrument entry (drafting_policies.json, instrument.provision_status), the
+// same declaration the coherence checks enforce, so the table cannot say a
+// provision binds when the document's own "Status" provision says it does not.
+//
+// The clause text is printed verbatim, with the same decimal numbering as every
+// other export, so a cross-reference ("the provision headed Exclusivity") reads
+// the same in all three formats.
+//
+// A superseded output (a term sheet generated before the rebuild) keeps the
+// layout it was generated with: D4.44 exports it unchanged, with its warning.
+const TERMS_TABLE_STATUS_LABEL = Object.freeze({
+  [PROVISION_STATUS.BINDING_NOW]: "Binding",
+  [PROVISION_STATUS.NON_BINDING]: "Non-binding",
+  [PROVISION_STATUS.UNRESOLVED_PENDING_REVIEW]: "Not yet determined",
+});
+const TERMS_TABLE_HEADINGS = Object.freeze(["Term", "Status", "Proposed terms"]);
+
+export function termsTableRows(draft, bodyClauses) {
+  const docType = draft?.document_type;
+  if (instrumentLayout(docType) !== "terms_table") return null;
+  if (supersededOutputFor(docType, draft)) return null;
+  return bodyClauses.map((clause, index) => {
+    const number = index + 1;
+    const status = provisionStatusOf(docType, clause.clause_id) || PROVISION_STATUS.UNRESOLVED_PENDING_REVIEW;
+    return {
+      clause_id: clause.clause_id,
+      number,
+      heading: resolveFallbackHeading(clause, number),
+      status,
+      statusLabel: TERMS_TABLE_STATUS_LABEL[status] || TERMS_TABLE_STATUS_LABEL[PROVISION_STATUS.UNRESOLVED_PENDING_REVIEW],
+      blocks: numberClauseBlocks(tokenizeClauseText(clause.text || ""), number),
+    };
+  });
+}
+
+// DOCX. A4 content width is 9026 twips (11906 less two 1-inch margins).
+const TT_SIZE = 22; // 11 pt: a table cell is narrower than the page
+const TT_WIDTHS = [2200, 1500, 5326]; // "Non-binding" must fit its column on one line
+const TT_BORDER = { style: BorderStyle.SINGLE, size: 4, color: "000000" };
+const TT_BORDERS = { top: TT_BORDER, bottom: TT_BORDER, left: TT_BORDER, right: TT_BORDER };
+const TT_MARGINS = { top: 80, bottom: 80, left: 100, right: 100 };
+
+function ttParagraph(children, options = {}) {
+  return new Paragraph({
+    alignment: options.alignment || AlignmentType.LEFT,
+    spacing: { after: options.after ?? 80, line: QUOTE_LINE_SPACING },
+    indent: options.indent,
+    tabStops: options.tabStops,
+    keepNext: options.keepNext,
+    children,
+  });
+}
+
+function ttRun(text, options = {}) {
+  return new TextRun({ text, font: BODY_FONT, size: TT_SIZE, ...options });
+}
+
+function ttCell(children, width, options = {}) {
+  return new TableCell({
+    width: { size: width, type: WidthType.DXA },
+    borders: TT_BORDERS,
+    margins: TT_MARGINS,
+    verticalAlign: VerticalAlign.TOP,
+    shading: options.shading,
+    children,
+  });
+}
+
+function renderDocxTermsTable(children, rows) {
+  const header = new TableRow({
+    tableHeader: true,
+    cantSplit: true,
+    children: TERMS_TABLE_HEADINGS.map((label, i) =>
+      ttCell([ttParagraph([ttRun(label, { bold: true })], { after: 0 })], TT_WIDTHS[i], {
+        shading: { fill: "E7E6E6", color: "auto", type: "clear" },
+      })
+    ),
+  });
+
+  const body = rows.map((row) => {
+    const labels = row.blocks.map((b) => b.label).filter(Boolean);
+    const hanging = Math.round(labelColumnWidth(labels) * 20 * (TT_SIZE / BODY_SIZE));
+    const textParagraphs = row.blocks.map((block) => {
+      if (block.type === "item") {
+        const left = hanging * (block.depth >= 2 ? 2 : 1);
+        return ttParagraph(
+          block.label
+            ? [ttRun(block.label), new TextRun({ children: [new Tab()], font: BODY_FONT, size: TT_SIZE }), ttRun(block.body)]
+            : [ttRun(block.text)],
+          { alignment: AlignmentType.JUSTIFIED, indent: { left, hanging: block.label ? hanging : 0 }, tabStops: [{ type: TabStopType.LEFT, position: left }] }
+        );
+      }
+      return ttParagraph([ttRun(block.text)], { alignment: AlignmentType.JUSTIFIED });
+    });
+    return new TableRow({
+      children: [
+        ttCell([ttParagraph([ttRun(`${row.number}. `), ttRun(row.heading, { bold: true })])], TT_WIDTHS[0]),
+        ttCell([ttParagraph([ttRun(row.statusLabel, { bold: row.status === PROVISION_STATUS.BINDING_NOW })])], TT_WIDTHS[1]),
+        ttCell(textParagraphs.length ? textParagraphs : [ttParagraph([])], TT_WIDTHS[2]),
+      ],
+    });
+  });
+
+  children.push(
+    new Table({
+      width: { size: TT_WIDTHS.reduce((a, b) => a + b, 0), type: WidthType.DXA },
+      columnWidths: TT_WIDTHS,
+      rows: [header, ...body],
+    }),
+    // A table cannot be the last thing before the execution block without a
+    // paragraph between them, or Word joins the two.
+    new Paragraph({ style: STYLE_ID.body, spacing: { after: 0 }, children: [] })
+  );
+}
+
+// PDF. The same three columns, drawn by hand: pdfkit has no table primitive. A
+// row that does not fit on the page continues on the next, under a repeated
+// header row, with the term marked "(continued)".
+const PDF_TT_SIZE = 11;
+const PDF_TT_PAD = 5;
+const PDF_TT_WIDTHS = [110, 75, PDF_CONTENT_WIDTH - 110 - 75];
+const PDF_TT_GAP = 1;
+
+function pdfTableColumnsX() {
+  const xs = [PDF_MARGIN];
+  for (const w of PDF_TT_WIDTHS) xs.push(xs[xs.length - 1] + w);
+  return xs; // four x positions: the three column edges and the right edge
+}
+
+function pdfCellText(doc, text, column, y, options = {}) {
+  const xs = pdfTableColumnsX();
+  doc
+    .font(options.bold ? "Times-Bold" : options.italic ? "Times-Italic" : "Times-Roman")
+    .fontSize(PDF_TT_SIZE)
+    .text(pdfSafeText(text), xs[column] + PDF_TT_PAD + (options.indent || 0), y, {
+      width: PDF_TT_WIDTHS[column] - PDF_TT_PAD * 2 - (options.indent || 0),
+      align: options.align || "left",
+      lineGap: PDF_TT_GAP,
+      lineBreak: options.lineBreak ?? true,
+    });
+  return doc.y;
+}
+
+function pdfCellHeight(doc, text, column, options = {}) {
+  doc.font(options.bold ? "Times-Bold" : "Times-Roman").fontSize(PDF_TT_SIZE);
+  return doc.heightOfString(pdfSafeText(text), {
+    width: PDF_TT_WIDTHS[column] - PDF_TT_PAD * 2 - (options.indent || 0),
+    align: options.align || "left",
+    lineGap: PDF_TT_GAP,
+  });
+}
+
+function pdfRowFrame(doc, top, bottom) {
+  const xs = pdfTableColumnsX();
+  doc.save().lineWidth(0.6).strokeColor("black");
+  doc.rect(xs[0], top, xs[3] - xs[0], bottom - top).stroke();
+  doc.moveTo(xs[1], top).lineTo(xs[1], bottom).stroke();
+  doc.moveTo(xs[2], top).lineTo(xs[2], bottom).stroke();
+  doc.restore();
+}
+
+function pdfTableHeader(doc) {
+  const top = doc.y;
+  const xs = pdfTableColumnsX();
+  const height = PDF_TT_SIZE + PDF_TT_PAD * 2 + 2;
+  doc.save().rect(xs[0], top, xs[3] - xs[0], height).fill("#E7E6E6").restore();
+  doc.fillColor("black");
+  TERMS_TABLE_HEADINGS.forEach((label, i) => pdfCellText(doc, label, i, top + PDF_TT_PAD, { bold: true, lineBreak: false }));
+  pdfRowFrame(doc, top, top + height);
+  doc.y = top + height;
+}
+
+function renderPdfTermsTable(doc, rows) {
+  const pageBottom = () => doc.page.height - doc.page.margins.bottom;
+  const lineHeight = PDF_TT_SIZE + PDF_TT_GAP + 2;
+
+  doc.y += PDF_BLOCK_GAP;
+  if (doc.y + lineHeight * 5 > pageBottom()) doc.addPage();
+  pdfTableHeader(doc);
+
+  for (const row of rows) {
+    const labels = row.blocks.map((b) => b.label).filter(Boolean);
+    const hanging = labelColumnWidth(labels) * (PDF_TT_SIZE / PDF_BODY_SIZE);
+    const term = `${row.number}. ${row.heading}`;
+
+    // Keep the term, its status and the opening of its text together: the
+    // first block and up to three lines of the next, so a one-line lead-in
+    // ("This provision is a Binding Provision.") is never left alone at the
+    // foot of a page.
+    const blockHeight = (block) => pdfCellHeight(doc, block.body ?? block.text, 2);
+    const openingText = row.blocks.slice(0, 2).reduce(
+      (sum, block, i) => sum + (i === 0 ? Math.min(blockHeight(block), lineHeight * 6) : Math.min(blockHeight(block), lineHeight * 3)),
+      0
+    );
+    const opening = Math.max(pdfCellHeight(doc, term, 0, { bold: true }), openingText) + PDF_TT_PAD * 2;
+    if (doc.y + opening > pageBottom()) {
+      doc.addPage();
+      pdfTableHeader(doc);
+    }
+
+    let segmentTop = doc.y;
+    const leftBottom = Math.max(
+      pdfCellText(doc, term, 0, segmentTop + PDF_TT_PAD, { bold: true }),
+      pdfCellText(doc, row.statusLabel, 1, segmentTop + PDF_TT_PAD, { bold: row.status === PROVISION_STATUS.BINDING_NOW })
+    );
+    let y = segmentTop + PDF_TT_PAD;
+    let leftEdge = leftBottom;
+
+    for (const block of row.blocks) {
+      const isItem = block.type === "item" && block.label;
+      const indent = block.type === "item" ? hanging * (block.depth >= 2 ? 2 : 1) : 0;
+      const body = isItem ? block.body : block.text;
+      const height = pdfCellHeight(doc, body, 2, { indent, align: "justify" });
+
+      if (y + height > pageBottom() - PDF_TT_PAD && y > segmentTop + PDF_TT_PAD) {
+        // Close this page's part of the row and continue it overleaf.
+        pdfRowFrame(doc, segmentTop, Math.max(y, leftEdge) + PDF_TT_PAD);
+        doc.addPage();
+        pdfTableHeader(doc);
+        segmentTop = doc.y;
+        leftEdge = Math.max(
+          pdfCellText(doc, `${term} (continued)`, 0, segmentTop + PDF_TT_PAD, { italic: true }),
+          pdfCellText(doc, row.statusLabel, 1, segmentTop + PDF_TT_PAD, { bold: row.status === PROVISION_STATUS.BINDING_NOW })
+        );
+        y = segmentTop + PDF_TT_PAD;
+      }
+
+      if (isItem) {
+        pdfCellText(doc, block.label, 2, y, { indent: indent - hanging, lineBreak: false });
+      }
+      y = pdfCellText(doc, body, 2, y, { indent, align: "justify" }) + 2;
+    }
+
+    const rowBottom = Math.max(y, leftEdge) + PDF_TT_PAD;
+    pdfRowFrame(doc, segmentTop, rowBottom);
+    doc.y = rowBottom;
+    doc.x = PDF_MARGIN;
+  }
+  doc.y += PDF_BLOCK_GAP;
+}
+
+// TXT. Plain text has no columns that survive a change of font or window
+// width, and wrapping the clause text into a fixed-width grid would split its
+// sentences across lines. Each row is therefore one block: a rule, the term
+// with its status on the same line, and the clause text, unwrapped.
+const TXT_TT_WIDTH = 72;
+
+function renderTextTermsTable(lines, rows) {
+  const rule = "=".repeat(TXT_TT_WIDTH);
+  const spread = (left, right) => {
+    const gap = TXT_TT_WIDTH - left.length - right.length;
+    return gap >= 2 ? `${left}${" ".repeat(gap)}${right}` : `${left}  ${right}`;
+  };
+  lines.push("", rule, spread(TERMS_TABLE_HEADINGS[0].toUpperCase(), TERMS_TABLE_HEADINGS[1].toUpperCase()), rule);
+  for (const row of rows) {
+    lines.push(spread(`${row.number}. ${row.heading.toUpperCase()}`, `[${row.statusLabel}]`), "-".repeat(TXT_TT_WIDTH));
+    for (const block of row.blocks) {
+      const pad = block.depth >= 2 ? "      " : "    ";
+      lines.push(block.label ? `${pad}${block.label}  ${block.body}` : block.text);
+    }
+    lines.push(rule);
+  }
+}
+
 export async function draftToDocx(draft) {
   const docType = draft?.document_type || "LEGAL DOCUMENT";
   const title = formatDocTitle(docType);
@@ -1414,10 +1692,16 @@ export async function draftToDocx(draft) {
   }
 
   // A deed runs continuously from the testatum to the testimonium: no interior
-  // "TERMS AND CONDITIONS" / "EXECUTION" banner headings.
-  bodyClauses.forEach((clause, index) => {
-    renderBodyClause(children, clause, index + 1);
-  });
+  // "TERMS AND CONDITIONS" / "EXECUTION" banner headings. A summary of terms
+  // sets its provisions out as a table instead (D4.48).
+  const termRows = termsTableRows(draft, bodyClauses);
+  if (termRows) {
+    renderDocxTermsTable(children, termRows);
+  } else {
+    bodyClauses.forEach((clause, index) => {
+      renderBodyClause(children, clause, index + 1);
+    });
+  }
 
   signatureClauses.forEach((clause) => {
     renderSignatureBlock(children, clause.text);
@@ -1635,9 +1919,14 @@ export async function draftToPdf(draft) {
       renderPdfIdentityClause(doc, identityClause.text);
     }
 
-    bodyClauses.forEach((clause, index) => {
-      renderPdfBodyClause(doc, clause, index + 1);
-    });
+    const termRows = termsTableRows(draft, bodyClauses);
+    if (termRows) {
+      renderPdfTermsTable(doc, termRows);
+    } else {
+      bodyClauses.forEach((clause, index) => {
+        renderPdfBodyClause(doc, clause, index + 1);
+      });
+    }
 
     signatureClauses.forEach((clause) => {
       renderPdfSignatureBlock(doc, clause.text);
@@ -1689,7 +1978,10 @@ export function draftToText(draft) {
     lines.push(identityClause.text.trim(), "");
   }
 
-  bodyClauses.forEach((clause, index) => {
+  const termRows = termsTableRows(draft, bodyClauses);
+  if (termRows) renderTextTermsTable(lines, termRows);
+
+  (termRows ? [] : bodyClauses).forEach((clause, index) => {
     const heading = resolveFallbackHeading(clause, index + 1);
     lines.push(`\n${index + 1}. ${heading.toUpperCase()}\n${"-".repeat(40)}`);
     for (const block of numberClauseBlocks(

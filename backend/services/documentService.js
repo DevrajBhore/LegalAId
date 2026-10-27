@@ -28,6 +28,9 @@ import { createHash } from "crypto";
 import { resolveDependencies } from "./dependencyResolver.js";
 import { injectJurisdictionRules } from "./jurisdictionEngine.js";
 import { applyDocumentHardening, rerenderSurvivalReferences } from "./documentHardening.js";
+import { enforceInstrumentClass } from "./instrumentClass.js";
+import { decideProtections, protectionDisclosures } from "./protectionDecisions.js";
+import { disclosureFor } from "./disclosureRenderer.js";
 import { applyDocumentQualityControls } from "./documentQualityControl.js";
 import {
   formatValidationResult,
@@ -137,13 +140,16 @@ function buildSuccess(draft, validation, resolution = null, options = {}) {
       ...(draft?.metadata || {}),
       generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
       // Carried on the draft itself, not only on the API response, so whatever
-      // renders the document can put these in front of the reader. NOTE: the
-      // DOCX, PDF and text exporters do not yet print them -- a disclosure that
-      // appears in the app but not in the file the user signs is worth less than
-      // none, so that is a deliberate next step rather than a half-done one.
+      // renders the document can put these in front of the reader. The DOCX, PDF
+      // and text exporters print them (disclosureRenderer.js, "ASSUMPTIONS AND
+      // OPEN POINTS"); the editor does not yet show them (D4.50, still open).
       assumptions: resolution?.assumptions || [],
     },
   };
+  // D4.50: how each protection got into the document, and whether an answer of
+  // the user's governs it. Those no answer governs are disclosed as drafting
+  // defaults (disclosureRenderer.js) -- never removed, never silent.
+  markedDraft.metadata.protection_decisions = decideProtections(markedDraft, markedDraft.document_type, variables);
 
   // The resolution computed upstream in prepareGenerationInput, carried here
   // rather than recomputed. Falls back to resolving only where a draft reached
@@ -155,13 +161,14 @@ function buildSuccess(draft, validation, resolution = null, options = {}) {
 
   return {
     draft: markedDraft,
-    validation,
+    // D4.51: the editor shows the same ASSUMPTIONS AND OPEN POINTS the exports print.
+    validation: validation ? { ...validation, disclosure: disclosureFor(markedDraft) } : validation,
     intelligence: buildDocumentIntelligence(markedDraft, validation),
     obligations: buildObligations(draft, variables),
     // What this document assumes, and what it still does not settle. Written so
     // a reader can act on it: every entry says what was not decided and who did
     // not decide it, and none of them claims the user chose.
-    assumptions: resolution?.assumptions || [],
+    assumptions: [...(resolution?.assumptions || []), ...protectionDisclosures(markedDraft)],
     position_outcomes: resolution?.outcomes || [],
     // Does this document do what this KIND of document has to do? Reported
     // separately from the clause count, because a draft can carry forty
@@ -442,7 +449,7 @@ function applyDeterministicRepairRound(draft, validation, input) {
   // clause's figures or touch a locked clause. The guard judges the REPAIR's own
   // edits; the guardrails that follow re-render from the user's answers, which is
   // the engine drafting, not a repair overriding it.
-  const fixed = guardDraftMutation(draft, applyDeterministicFixes(draft, issues), {
+  const fixed = guardDraftMutation(draft, noteClauseOrigins(applyDeterministicFixes(draft, issues), "deterministic_repair"), {
     userFigures: userFiguresFor(input),
     source: "deterministic_repair",
   }).draft;
@@ -457,15 +464,17 @@ function applyGenerationStages(draft, input) {
   const instrumentVersion = getInstrument(input.document_type)?.version;
   if (instrumentVersion) draft.metadata.instrument_version = instrumentVersion;
 
-  draft = resolveDependencies(draft, input);
-  draft = injectJurisdictionRules(draft, input);
-  draft = injectDoctrine(draft);
-  draft = enforceScopeGuard(draft, input);
-  draft = resolveSignatures(draft, input);
-  draft = applyDocumentHardening(draft, input);
-  draft = applyDocumentQualityControls(draft, input);
-  draft = enhanceCommercially(draft);
-  draft = lockCriticalClauses(draft);
+  // D4.50: which stage first put each clause in the draft (draft.metadata.clause_origin).
+  draft = noteClauseOrigins(draft, "blueprint");
+  draft = noteClauseOrigins(resolveDependencies(draft, input), "dependency_resolver");
+  draft = noteClauseOrigins(injectJurisdictionRules(draft, input), "jurisdiction_rules");
+  draft = noteClauseOrigins(injectDoctrine(draft, input.document_type), "doctrine");
+  draft = noteClauseOrigins(enforceScopeGuard(draft, input), "scope_guard");
+  draft = noteClauseOrigins(resolveSignatures(draft, input), "signatures");
+  draft = noteClauseOrigins(applyDocumentHardening(draft, input), "hardening_baseline");
+  draft = noteClauseOrigins(applyDocumentQualityControls(draft, input), "quality_controls");
+  draft = noteClauseOrigins(enhanceCommercially(draft), "commercial_engine");
+  draft = noteClauseOrigins(lockCriticalClauses(draft), "locks");
   draft.document_type = input.document_type;
 
   try {
@@ -474,24 +483,49 @@ function applyGenerationStages(draft, input) {
   } catch {
     /* non-fatal */
   }
+  draft = noteClauseOrigins(draft, "category_mapping");
 
-  draft = normalizeClauseText(draft);
-  draft = applyDocumentQualityControls(draft, input);
+  draft = noteClauseOrigins(normalizeClauseText(draft), "normalisation");
+  draft = noteClauseOrigins(applyDocumentQualityControls(draft, input), "quality_controls");
 
-  return finaliseSurvivalReferences(draft, input);
+  return noteClauseOrigins(finaliseSurvivalReferences(draft, input), "finalise");
+}
+
+// D4.50. Records, for every clause, the generation stage that first put it in the
+// draft, as draft.metadata.clause_origin { clause_id: stage }. A clause already
+// recorded keeps its first origin. Before this, a protection the commercial
+// engine or the repair round added carried no record of how it got there, and
+// provenance reported it as NO_PRODUCER_OBSERVED. Metadata only: no clause and no
+// text is changed here.
+function noteClauseOrigins(draft, stage) {
+  if (!draft || !Array.isArray(draft.clauses)) return draft;
+  const known = draft.metadata?.clause_origin || {};
+  const fresh = draft.clauses.filter((c) => c?.clause_id && !Object.prototype.hasOwnProperty.call(known, c.clause_id));
+  if (!fresh.length && draft.metadata?.clause_origin) return draft;
+  const clauseOrigin = { ...known };
+  for (const clause of fresh) clauseOrigin[clause.clause_id] = stage;
+  return { ...draft, metadata: { ...(draft.metadata || {}), clause_origin: clauseOrigin } };
 }
 
 // D4.47. The LAST stage on every path that produces a draft: once no clause will
 // be added or removed, the clauses that enumerate surviving provisions are
 // rendered from the final clause set, then normalised like every other clause.
 function finaliseSurvivalReferences(draft, input) {
+  // D4.48. Before the survival list is drawn, remove every clause the
+  // instrument's class forbids, whichever stage added it: the blueprint, the
+  // hardening baseline, a dependency, or a commercial protection. Four stages
+  // each assumed a contract; deciding here, once, on every path, is what makes
+  // the classification hold. What was removed is recorded on
+  // metadata.instrument_class. An agreement is returned unchanged.
+  draft = enforceInstrumentClass(draft, input.document_type || draft.document_type);
   const rerendered = rerenderSurvivalReferences(draft, input);
   if (rerendered === draft) return draft;
-  // Only the re-rendered clauses take the normalised text. Running the
-  // whole-document passes a further time is not neutral: a second
-  // normalizeClauseText renamed "Principal sum" to "Borrower sum" and the
-  // Licensor and Licensee to the party names (found in D4.47; see
-  // governance/mutation-paths.json).
+  // Only the re-rendered clauses take the normalised text. In D4.47 a second
+  // whole-document pass was not neutral: normalizeClauseText renamed "Principal
+  // sum" to "Borrower sum" and the Licensor and Licensee to the party names.
+  // D4.49 made the normaliser idempotent (tests/normalisationIdempotence), so a
+  // further pass would now change nothing; the narrower scope is kept because
+  // the quality controls below are not proven idempotent.
   const normalised = applyDocumentQualityControls(normalizeClauseText(rerendered), input);
   const ids = new Set(
     rerendered.clauses.filter((c, i) => c.text !== draft.clauses[i]?.text).map((c) => c.clause_id)
@@ -554,13 +588,13 @@ function userFiguresFor(input = {}) {
 const sha256 = (text) => createHash("sha256").update(String(text || "")).digest("hex");
 
 function applyFinalDraftGuardrails(draft, input) {
-  let next = resolveSignatures(draft, input);
-  next = applyDocumentHardening(next, input);
-  next = applyDocumentQualityControls(next, input);
-  next = lockCriticalClauses(next);
-  next = normalizeClauseText(next);
-  next = applyDocumentQualityControls(next, input);
-  return finaliseSurvivalReferences(next, input);
+  let next = noteClauseOrigins(resolveSignatures(draft, input), "signatures");
+  next = noteClauseOrigins(applyDocumentHardening(next, input), "hardening_baseline");
+  next = noteClauseOrigins(applyDocumentQualityControls(next, input), "quality_controls");
+  next = noteClauseOrigins(lockCriticalClauses(next), "locks");
+  next = noteClauseOrigins(normalizeClauseText(next), "normalisation");
+  next = noteClauseOrigins(applyDocumentQualityControls(next, input), "quality_controls");
+  return noteClauseOrigins(finaliseSurvivalReferences(next, input), "finalise");
 }
 
 // Resilient per-clause merge. The rule engine has ALREADY decided the clause set

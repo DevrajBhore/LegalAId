@@ -22,11 +22,21 @@ const SUPERSEDED_CLAUSE_RULES = [
   },
 ];
 
+// D4.49. Only the CANONICAL role is capitalised ("the receiving party" becomes
+// "the Receiving Party"). Aliases used to be capitalised too, and that made the
+// normaliser manufacture the very aliases it exists to remove: a renderer's
+// lower-case "the recipient", "the licensor" or "a principal sum" came out of
+// one pass as "the Recipient", "the Licensor", "a Principal sum" -- capitalised
+// words the document never defines -- and a second pass then replaced them, so
+// the loan's "Principal sum" became "Borrower sum". An alias is only ever
+// replaced (replaceRoleAliases, which is case-sensitive); a lower-case word is
+// ordinary English and is left as written. With this, normalizeClauseBody is
+// idempotent: a second pass changes nothing (tests/normalisationIdempotence).
 function normalizeRoleCapitalization(text = "", roleRule = null) {
   if (!roleRule) return text;
 
   const roleTerms = (roleRule.participants || [])
-    .flatMap((participant) => [participant.canonical, ...(participant.aliases || [])])
+    .map((participant) => participant.canonical)
     .filter(Boolean)
     .sort((left, right) => right.length - left.length);
 

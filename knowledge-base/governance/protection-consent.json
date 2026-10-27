@@ -1,0 +1,59 @@
+{
+  "$comment": [
+    "D4.51 — Protection decisions and consent integrity, the engineering half. What was asked, what was done, the evidence, and what is left for the owner and the advocate.",
+    "Measured on 23 October 2026 against the D4.50 tree (38cc6987e2: D4.48 to D4.50 applied to GitHub 223bfc821), over the 63 documents of tests/fixtures/injectedProtections.D4_50.json. No legal or commercial decision is made here: every protection's treatment stays PENDING, and the engine changes no clause."
+  ],
+  "phase": "D4.51",
+  "review_status": "engineering — every treatment awaits the owner and the advocate",
+  "accepted_d4_50": "D4.50 is accepted as engineering-complete for attribution and export disclosure (review of 23 October 2026). The protection problem is not resolved: disclosure says a default exists; it does not decide whether the default belongs.",
+  "items": [
+    {
+      "id": "RECONCILE_92_93",
+      "requirement": "Account for the difference between the audit's 92 ungoverned protections and D4.50's 93 disclosed, from the evidence.",
+      "result": "Exactly one clause changed classification: the MOU force majeure in MINIMAL_DECLINED, where the user answered No. Recorded in injected-protections.json → reconciliation.",
+      "verified_by": "tests/protectionConsent.test.mjs §1"
+    },
+    {
+      "id": "FIVE_FIELDS",
+      "requirement": "Origin, basis, value provenance, legal review and user decision kept apart, so a template-standard clause cannot be mistaken for a user-approved commercial choice.",
+      "done": "draft.metadata.protection_decisions[] now carries origin_stage, inclusion_basis (USER_SELECTED only for an explicit yes; otherwise TEMPLATE_STANDARD, ENGINE_DEFAULT, REPAIR_RECOMMENDATION or ORIGIN_NOT_RECORDED), value_provenance ({source: USER_ANSWERS | TEMPLATE_WORDING, parameters}), legal_review ({clause_review_status, treatment, treatment_status, approved}) and user_decision (ACCEPTED, DECLINED, NOT_ASKED; never inferred). The single D4.50 basis field, which reported a chosen cap figure as USER_CHOICE, is removed.",
+      "found": "Of the 43 protections D4.50 treated as governed by the user, 3 were explicitly accepted (force majeure answered Yes in the Sales of Goods, Leave and License and MOU well-filled documents). The other 40 were never offered as a choice: the user answered their parameters (liability_cap_basis, indemnity_scope, ip_ownership and the like) and was never asked whether to include them. They are recorded as NOT_ASKED with USER_ANSWERS values. D4.50's rule does not disclose them; whether it should is an open decision below.",
+      "verified_by": "tests/protectionConsent.test.mjs §2"
+    },
+    {
+      "id": "TREATMENT_REGISTER",
+      "requirement": "Every injected protection resolved family by family as KEEP, ASK, CHANGE or REMOVE, decided on the transaction, not the clause title, with advocate review as the gate.",
+      "done": "knowledge-base/metadata/protection_treatments.json registers all 66 (family, protection) pairs the audit found, each with what was measured (clause ids, which stages added it, how many fixture worlds an answer governs) and status PENDING. treatmentRegisterProblems() refuses an APPROVED entry without a treatment from the four, a named approver, a date and a rationale, and refuses a treatment recorded while PENDING. Each decision travels with the clause as legal_review.treatment_status. The engine applies no treatment yet: there is none to apply.",
+      "separate_questions": "Recorded in the register, decided independently: the cap and indemnity relation for each family carrying both (capped, uncapped, separately capped, or stated exceptions; 37 indemnities sit beside a cap that does not carve them out), and the referent for the 14 caps that measure a quantity their family does not hold.",
+      "verified_by": "tests/protectionConsent.test.mjs §3"
+    },
+    {
+      "id": "DECLINED_CHOICES",
+      "requirement": "A user's explicit No is not silently overridden; if a provision is kept despite it, the system explains the conflict and asks for it to be resolved.",
+      "done": "verifyDeclinedProtections (protectionDecisions.js), run on every validation as the layer protection_decisions, raises DECLINED_PROTECTION_RETAINED for a protection the user declined that is still in the document: Requires legal review, never blocking, naming the clause and saying the answer and the document disagree. It goes when the clause is removed. In the corpus it fires once, on the MOU force majeure; planted on a Service Agreement indemnity it fires the same way.",
+      "not_done": "The clause is not removed: the MOU blueprint requires it, and whether the blueprint or the answer should stand is the open decision in declined-protections.json.",
+      "verified_by": "tests/protectionConsent.test.mjs §4"
+    },
+    {
+      "id": "DISCLOSE_BEFORE_EXPORT",
+      "requirement": "The editor shows the same Assumptions and open points as the DOCX, PDF and TXT, before download.",
+      "done": "disclosureFor(draft) (disclosureRenderer.js) returns the export's block. It is attached to the validation returned by generation, by POST /validate (for the draft as edited, so a deleted protection drops out) and, computed on read and never stored, by saved-document reads. frontend AssumptionsPanel shows it in the editor's validation tab, which opens by default, and words nothing itself. Checked entry for entry against the export block for all 63 documents, and rendered and inspected.",
+      "verified_by": "tests/protectionConsent.test.mjs §5"
+    },
+    {
+      "id": "SAVED_DRAFTS_NOT_REPRESENTED_AS_ASSESSED",
+      "requirement": "Documents saved before D4.50 get no retroactive disclosure and must not be represented as having passed the new standard.",
+      "done": "disclosureFor reports protections_assessed: false for a draft with no protection_decisions, with a note in the editor: the list does not cover the protections LegalAId adds on its own; generate the document again to see them. Their stored validation and export are unchanged.",
+      "verified_by": "tests/protectionConsent.test.mjs §5 (the four saved documents in tests/fixtures/savedBeforeInstrumentClasses.D4_48.json)"
+    }
+  ],
+  "decisions_for_the_owner_and_the_advocate": [
+    "For each of the 66 entries in protection_treatments.json: KEEP, ASK, CHANGE or REMOVE, with a rationale, decided by an advocate named with a date.",
+    "For each family with both an indemnity and a cap: the relation between them.",
+    "For the 14 caps with no referent in their family: what they should measure.",
+    "The MOU force majeure: the blueprint or the user's No.",
+    "Whether the 40 protections governed only by chosen parameters should also be disclosed, since nobody was asked whether to include them. D4.50's rule leaves them undisclosed; changing it changes 40 exported documents' disclosure blocks.",
+    "Which list of commercial document types stands (commercialEngine.js or commercialValidator.js); the Founders Agreement's repair-round protections exist because they differ."
+  ],
+  "release_note": "Before the D4.48 to D4.51 push: the backend redeploys. Saved documents are read by the new code with disclosure computed on read; nothing stored is rewritten. Clients that do not read validation.disclosure are unaffected by it."
+}

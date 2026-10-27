@@ -12,6 +12,7 @@
  * One classification, imported everywhere, so a new document type is exempted
  * from the right checks once.
  */
+import { createRequire } from "module";
 
 export const DOCUMENT_SHAPES = {
   // Two or more parties, a bargain, recitals, an operative part and a
@@ -47,22 +48,19 @@ export const DOCUMENT_SHAPES = {
  * the verification that Order XIX and Order VI Rule 15 of the Civil Procedure
  * Code require.
  */
-const BY_TYPE = {
-  PRIVACY_POLICY: DOCUMENT_SHAPES.POLICY,
-  TERMS_OF_SERVICE: DOCUMENT_SHAPES.POLICY,
-  POSH_POLICY: DOCUMENT_SHAPES.POLICY,
-  REFUND_AND_CANCELLATION_POLICY: DOCUMENT_SHAPES.POLICY,
-  SHIPPING_AND_DELIVERY_POLICY: DOCUMENT_SHAPES.POLICY,
-
-  LEGAL_NOTICE: DOCUMENT_SHAPES.NOTICE,
-  CHEQUE_BOUNCE_NOTICE: DOCUMENT_SHAPES.NOTICE,
-  REPLY_TO_LEGAL_NOTICE: DOCUMENT_SHAPES.NOTICE,
-  ARBITRATION_NOTICE: DOCUMENT_SHAPES.NOTICE,
-
-  AFFIDAVIT: DOCUMENT_SHAPES.SWORN,
-  INDEMNITY_BOND: DOCUMENT_SHAPES.SWORN,
-  POWER_OF_ATTORNEY: DOCUMENT_SHAPES.SWORN,
-};
+// D4.48. The shape is read from knowledge-base/metadata/instrument_classes.json,
+// which also records each type's finer instrument class (a published policy, a
+// standard-form ToS, a non-binding term sheet, a letter). This file had kept its
+// own list, and the assembly side of the engine kept none at all, so the checks
+// knew a Privacy Policy had no counterparty while the clauses it was built from
+// were written for one. One file now answers both. The mapping it yields is the
+// list that stood here at fe48d5a6c, unchanged (tests/instrumentClasses.test.mjs).
+const MODEL = createRequire(import.meta.url)("../knowledge-base/metadata/instrument_classes.json");
+const BY_TYPE = Object.fromEntries(
+  Object.entries(MODEL.document_types)
+    .map(([type, entry]) => [type, entry.shape || MODEL.classes[entry.class]?.shape])
+    .filter(([, shape]) => shape && shape !== DOCUMENT_SHAPES.AGREEMENT)
+);
 
 // A reply answers a demand and makes none of its own, so the deadline and
 // consequence a demand notice must carry are not required of it.

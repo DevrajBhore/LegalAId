@@ -1,0 +1,49 @@
+{
+  "jurisdiction": "India",
+  "depends_on": [],
+  "conflicts_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "clause_id": "ECOM_POLICY_GOVERNING_LAW_001",
+  "name": "Governing Law",
+  "title": "Governing Law",
+  "category": "COMPLIANCE",
+  "document_types": [
+    "REFUND_AND_CANCELLATION_POLICY",
+    "SHIPPING_AND_DELIVERY_POLICY"
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "LOW",
+  "text": "This Policy is governed by the laws of India. It is to be read with, and does not exclude or limit, the rights and remedies of a consumer under the Consumer Protection Act, 2019 and the Consumer Protection (E-Commerce) Rules, 2020.",
+  "legal_basis": [
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "100",
+      "note": "The Act is in addition to, and not in derogation of, any other law"
+    },
+    {
+      "act": "Consumer Protection Act, 2019",
+      "section": "2(46)",
+      "note": "An unfair contract term includes one that excludes a consumer's statutory rights"
+    }
+  ],
+  "invalid_if": [
+    "The policy purports to oust the consumer's statutory remedies or to require arbitration of a consumer complaint"
+  ],
+  "source": "Consumer Protection Act, 2019",
+  "required_with": [
+    "ECOM_GRIEVANCE_REDRESSAL_001"
+  ],
+  "litigation_risk": "LOW",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [],
+  "authoring_note": "D4.48. Replaces CORE_GOVERNING_LAW_001 and the CORE_DISPUTE_RESOLUTION_001 that the dependency resolver attached to it. A consumer policy that refers 'any dispute between the Parties' to a sole arbitrator reads as an attempt to take the consumer out of the Consumer Commission. The route a consumer has is in ECOM_GRIEVANCE_REDRESSAL_001 (Grievance Officer, then the Commission). The advocate should confirm the Section 100 and Section 2(46) citations."
+}

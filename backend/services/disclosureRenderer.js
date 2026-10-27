@@ -21,6 +21,8 @@
  * an explanation for malformed input is worse than staying silent, because a
  * fabricated disclosure reads exactly like a real one.
  */
+import { protectionDisclosures } from "./protectionDecisions.js";
+
 export const DISCLOSURE_HEADING = "ASSUMPTIONS AND OPEN POINTS";
 
 // Presentation only. The kinds themselves are defined in positionResolution.js.
@@ -42,8 +44,14 @@ const PREAMBLE =
  *          and must produce no section at all rather than an empty one.
  */
 export function buildDisclosureBlock(draft) {
-  const assumptions = draft?.metadata?.assumptions;
-  if (!Array.isArray(assumptions) || !assumptions.length) return null;
+  // D4.50: protections no answer of the user's governs are disclosed as drafting
+  // defaults, read from draft.metadata.protection_decisions, and only while the
+  // clause is still in the document (protectionDecisions.js).
+  const assumptions = [
+    ...(Array.isArray(draft?.metadata?.assumptions) ? draft.metadata.assumptions : []),
+    ...protectionDisclosures(draft),
+  ];
+  if (!assumptions.length) return null;
 
   const entries = assumptions
     .map((assumption) => {
@@ -75,4 +83,26 @@ export function renderDisclosureText(draft) {
     lines.push("");
   });
   return lines.join("\n").replace(/\n+$/, "\n");
+}
+
+/**
+ * D4.51. The disclosure for the editor, from the same renderer as the exports, so
+ * the screen and the file cannot say different things. `protections_assessed` is
+ * false for a draft generated before D4.50, which records no protection decisions:
+ * its list does not cover the protections the engine added on its own, and the
+ * editor says so rather than presenting the list as complete.
+ */
+export const DISCLOSURE_NOT_ASSESSED_NOTE =
+  "This document was created before LegalAId recorded which protections it adds on its own, so this list does not cover them. Generate the document again to see them.";
+
+export function disclosureFor(draft) {
+  const block = buildDisclosureBlock(draft);
+  const assessed = Array.isArray(draft?.metadata?.protection_decisions);
+  return {
+    heading: DISCLOSURE_HEADING,
+    preamble: block?.preamble || PREAMBLE,
+    entries: block?.entries || [],
+    protections_assessed: assessed,
+    note: assessed ? null : DISCLOSURE_NOT_ASSESSED_NOTE,
+  };
 }

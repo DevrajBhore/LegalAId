@@ -14,9 +14,12 @@ export function validateBlueprint(requiredClauses, draftedClauses, variantGroups
       id => !draftedIds.has(id) && !satisfiedByVariant(id)
     );
 
+    // missing_clause_id (D4.48) names the clause as data, so a later layer can
+    // reason about it without parsing the message.
     return missing.map(id => ({
       rule_id: "MISSING_REQUIRED_CLAUSE",
       severity: "CRITICAL",
+      missing_clause_id: id,
       message: `Blueprint requires clause ${id} but it is missing`
     }));
 

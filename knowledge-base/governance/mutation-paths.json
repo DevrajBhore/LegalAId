@@ -52,7 +52,7 @@
   ],
   "not_machine_mutations": [
     "Manual edits in the editor, restoring a saved version, and revision regeneration reusing wording the user accepted: the user's own text.",
-    "Generation stages before the first validation (hardening, quality controls, normalisation, category mapping): the engine drafting; covered by the conservation gate. Exception found in D4.47: normalisation is not idempotent (NORMALISATION_NOT_IDEMPOTENT), so it must not be run twice over a finished draft; the survival stage normalises only the clauses it re-renders."
+    "Generation stages before the first validation (hardening, quality controls, normalisation, category mapping): the engine drafting; covered by the conservation gate. Exception found in D4.47: normalisation is not idempotent (NORMALISATION_NOT_IDEMPOTENT), so it must not be run twice over a finished draft; the survival stage normalises only the clauses it re-renders. Fixed in D4.49: the normaliser is idempotent (tests/normalisationIdempotence.test.mjs); the survival stage keeps its narrower scope because the quality controls are not proven idempotent."
   ],
   "meaning_markers": {
     "$what": "For AI changes (tailoring, /fix-issue, chat) the guard reads these from the words, before and after.",

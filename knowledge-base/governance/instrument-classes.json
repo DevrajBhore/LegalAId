@@ -1,0 +1,98 @@
+{
+  "$comment": [
+    "D4.48 — Instrument classes. What was required, what was done, the evidence, and what remains open.",
+    "Measured on 21 October 2026 against GitHub commit 223bfc821 (D4.45 to D4.47 engine, plus the frontend export-button fix) and the D4.48 working tree. The term sheet stays withdrawn. Nothing here is an advocate's decision: every new clause, the classification itself and the succession records are draft-needs-legal-review."
+  ],
+  "phase": "D4.48",
+  "review_status": "engineering — the classification and the three new clauses await advocate review",
+  "reported_by_the_owner": "Many templates are the wrong kind of document: the term sheet and the privacy policy look like agreements. 'Firstly we have to strengthen our core.'",
+  "owner_decisions_21_oct": [
+    "Build the classification and fix the 29 types that generate. The 11 types that do not generate are classified but stay blocked until the advocate decides their constraint scopes.",
+    "Render the term sheet as a summary-of-terms table.",
+    "Policies carry a brief governing-law line and the routes by which a person can complain; no arbitration, indemnity, waiver or severability."
+  ],
+  "items": [
+    {
+      "id": "INSTRUMENT_CLASS_MODEL",
+      "priority": "P1 (reported by the owner)",
+      "requirement": "Every document type is drafted as the kind of instrument it is, decided in one place.",
+      "found": "Every layer assumed a bilateral contract: blueprints listed contract general provisions; drafting_policies.json supplied thirteen by default; doctrineInjector.js added an Indian Contract Act warranty by 'the Parties' to every document; the commercial engine and the dependency resolver added indemnity, liability limits and arbitration; the identity renderer opened every instrument 'THIS AGREEMENT (\"Agreement\")'. The Privacy Policy called itself 'this Agreement' 28 times; the Refund and Shipping policies sent consumers to arbitration 'between the Parties'; the MOU and the Partnership Deed opened as agreements; the term sheet was laid out as a deed.",
+      "done": [
+        "knowledge-base/metadata/instrument_classes.json: eight classes (AGREEMENT, NON_BINDING_TERMS, STANDARD_TERMS, PUBLISHED_POLICY, UNILATERAL_INSTRUMENT, SWORN_STATEMENT, LETTER, NOTICE), each with its contract-doctrine flag, clause rule, layout and signing form; every registered type classified, with a self-name where it has one.",
+        "backend/services/instrumentClass.js is the only reader. The doctrine injector, the hardening baseline, the identity opening, the instrument noun and validation ask it; the last generation stage (finaliseSurvivalReferences) removes any clause the class forbids, whichever stage added it, and records what it removed on draft.metadata.instrument_class.",
+        "shared/documentShape.js reads its coarse shapes from the same file, so the checks and the assembly cannot disagree; the mapping is unchanged for all 44 classified types and for an unknown one.",
+        "Only AGREEMENT, NON_BINDING_TERMS, STANDARD_TERMS and PUBLISHED_POLICY are enforced. The four classes of the 11 non-generating types are recorded but not applied, so their reasons for refusal do not move before the advocate decides them (the PoSH Policy is held out by name).",
+        "A type name is canonicalised before lookup ('privacy_policy' was found to fall through to AGREEMENT; fixed)."
+      ],
+      "frozen_evidence": "tests/fixtures/instrumentShape.D4_48.json (all 40 types at fe48d5a6c)",
+      "verified_by": "tests/instrumentClasses.test.mjs"
+    },
+    {
+      "id": "PUBLISHED_POLICIES",
+      "priority": "P1",
+      "requirement": "A published policy carries none of an agreement's general provisions, states its governing law briefly, and tells the reader how to complain.",
+      "done": [
+        "Privacy Policy blueprint 4.0: CORE_DEFINITIONS, CORE_DATA_PROCESSING, CORE_COMPLIANCE_WITH_LAW, CORE_LIMITATION_LIABILITY, CORE_DISPUTE_RESOLUTION, CORE_GOVERNING_LAW and the optional entire-agreement clause removed; PRIVACY_SECURITY_SHARING_001 (DPDP Act s.8(2), 8(5), 8(6), 16) and PRIVACY_LAW_AND_COMPLAINTS_001 (withdrawal of consent s.6(4), 6(6); complaint to the Board s.13(3); notice content s.5(1); a one-sentence governing law) added.",
+        "Refund and Shipping blueprints: CORE_GOVERNING_LAW_001, which pulled in arbitration through required_with, replaced by ECOM_POLICY_GOVERNING_LAW_001 (Consumer Protection Act 2019 s.100 and s.2(46)).",
+        "PRIVACY_SIGNATURE_BLOCK_001: 'and agree to be bound by' removed; consent under DPDP s.6 is purpose-specific, not inferred from use.",
+        "The intake no longer asks the three policies for a governing-law state, and the governing-law-state consistency check applies only where a governing-law clause exists."
+      ],
+      "result": "All three generate in every fixture world with no CORE_ or AUTO- clause, no warranty, no arbitration, never 'this Agreement' or 'the Parties', and pass the export gate with nothing blocking.",
+      "verified_by": "tests/instrumentClasses.test.mjs §3"
+    },
+    {
+      "id": "SAVED_DOCUMENTS_STILL_DOWNLOAD",
+      "priority": "P0 (found in this phase; would have shipped)",
+      "requirement": "A document a user saved before a template changed can still be downloaded (the D4.47 rule: never refuse for a finding the user did not cause and cannot act on).",
+      "found": "As first written, the new policy blueprints require clauses an old policy does not have. The engine reports a missing required clause as CRITICAL, so every Privacy, Refund and Shipping policy saved before D4.48 — each shown 'Automated checks passed' at 100 — was refused at export. The conservation gate cannot see this: its corpus is freshly generated documents.",
+      "done": [
+        "Each changed blueprint records its succession: the new clause and the clauses it replaced.",
+        "backend/services/clauseSuccession.js re-scopes a missing required clause to SUPERSEDED_TEMPLATE_CLAUSE (Requires legal review, 'generate the document again') only when the document still carries a clause the new one replaced. A current document missing a required clause with nothing it replaced is still blocked.",
+        "IRE blueprintValidator.js: the finding names its clause as data (missing_clause_id), so nothing parses the message.",
+        "The validation layer instrument_class reports each provision a saved document's class forbids, and the Contract Act warranty, as Requires legal review; it never blocks."
+      ],
+      "frozen_evidence": "tests/fixtures/savedBeforeInstrumentClasses.D4_48.json (Privacy, Refund, Shipping and ToS as generated and saved at 223bfc821)",
+      "result": "All four saved documents export; each now shows Requires legal review instead of 'Automated checks passed'. That is a change of outcome for saved documents and it is deliberate: each still contains the contract provisions that were the defect.",
+      "verified_by": "tests/instrumentClasses.test.mjs §6"
+    },
+    {
+      "id": "STANDARD_TERMS_AND_SELF_NAMES",
+      "priority": "P1",
+      "done": [
+        "Terms of Service (STANDARD_TERMS): no longer carries the warranty that 'the Parties' gave free consent and are competent to contract; keeps its limitation of liability, indemnity and forum clauses, which a standard-form contract may carry.",
+        "Partnership Deed opens 'THIS DEED OF PARTNERSHIP (\"Deed\")' and calls itself 'this Deed'; MOU opens 'THIS MEMORANDUM OF UNDERSTANDING (\"MOU\")'. The definition follows the noun.",
+        "Found by the conservation gate: the Deed's indemnity ('breach of this Deed') then failed the indemnity-scope matcher, which accepted only 'breach of this agreement' — a false finding and 20 points off every Partnership Deed. The matcher now accepts every self-name the model declares."
+      ],
+      "verified_by": "tests/instrumentClasses.test.mjs §4, §7, §8"
+    },
+    {
+      "id": "TERM_SHEET_TABLE",
+      "priority": "P1 (owner decision)",
+      "requirement": "The term sheet is presented as a summary of terms, not as a deed, in every export format.",
+      "done": [
+        "backend/services/exportService.js: a type whose class has layout 'terms_table' prints its parties and recitals as before, then a table — Term, Status, Proposed terms — then the execution block. Status is the family's declared provision_status (Binding / Non-binding / Not yet determined), the same declaration the coherence checks enforce. Clause text is verbatim, with the usual decimal numbering.",
+        "DOCX: a real table with a header row repeated on every page. PDF: drawn by hand (pdfkit has no table); a row that runs over a page continues under a repeated header, marked '(continued)', and keeps its opening lines with the term. TXT: one block per row with the term and its status on the heading line; the clause text is not wrapped, because wrapping it into a fixed-width grid would split its sentences.",
+        "A superseded term sheet keeps the layout it was generated with: D4.44 exports it unchanged."
+      ],
+      "checked_by_eye": "PDF and DOCX rendered to images and inspected (column widths widened after 'Non-binding' was found wrapping).",
+      "verified_by": "tests/instrumentClasses.test.mjs §9; termSheetFalsification and termSheetWithdrawal unchanged and passing"
+    }
+  ],
+  "measurements": {
+    "suite": "See suite-baseline.json after_D4_48.",
+    "conservation_gate": "Re-baselined and explained in provenance-instrumentation.json → the_gate.rebaselines (2026-10-21).",
+    "frontend_build": "vite build passes (documentShape.js now reads JSON through createRequire; no frontend module imports it)."
+  },
+  "still_open": [
+    "Advocate review: the classification itself; PRIVACY_SECURITY_SHARING_001, PRIVACY_LAW_AND_COMPLAINTS_001 and ECOM_POLICY_GOVERNING_LAW_001 and their citations (which DPDP provisions and rules are in force on a policy's effective date; Consumer Protection Act s.100 and s.2(46)). They raise the unreviewed clause count from 313 to 316 (clauseProvenance, already over its ceiling of 307; the ceiling was not raised).",
+    "tosFalsification (a known failing suite) now fails earlier: D4.48 removed two of the four self-certifying claims it documents (free consent, capacity). Its evidence must be re-gathered against the current ToS, as the test itself says; not done here, to keep workstreams separate.",
+    "The ToS still calls itself 'this Agreement'; 'these Terms' needs plural handling in the noun swap.",
+    "The MOU recital asserts the Parties intend a legally binding arrangement, whatever the user chose (advocate question: MOU binding classification).",
+    "Policies still ask agreement questions such as cure period, non-compete and the second party's signatory (intake workstream).",
+    "data_categories renders '. —' (punctuation).",
+    "A saved Privacy Policy shows one INSTRUMENT_CLASS_MISMATCH per contract provision (10 findings). Accurate, but noisy; grouping them is a presentation decision.",
+    "The 11 non-generating types: classified, not enforced, awaiting the advocate's constraint-scope decisions.",
+    "Restoring the term sheet still requires an advocate's APPROVED with a name and a date; the table changes its presentation, not its status."
+  ],
+  "term_sheet": "Still withdrawn pending advocate approval."
+}

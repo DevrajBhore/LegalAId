@@ -1,4 +1,5 @@
 import { withValidationAssuranceWithdrawn } from "../../shared/documentWithdrawals.js";
+import { disclosureFor } from "./disclosureRenderer.js";
 import crypto from "crypto";
 import mongoose from "mongoose";
 import DocumentDraft from "../models/DocumentDraft.js";
@@ -85,7 +86,12 @@ function deriveStatus({ changeType, validation }) {
 // stored with them is withdrawn on every read, so an old "validated" status or a
 // score of 100 is never shown again for an output of that type.
 function currentValidationOf(record) {
-  return withValidationAssuranceWithdrawn(record.currentValidation, record.documentType, record.currentDraft);
+  const validation = withValidationAssuranceWithdrawn(record.currentValidation, record.documentType, record.currentDraft);
+  // D4.51: computed on read from the stored draft, never stored. A draft saved
+  // before D4.50 has no protection decisions and is reported as not assessed.
+  return validation && typeof validation === "object"
+    ? { ...validation, disclosure: disclosureFor(record.currentDraft) }
+    : validation;
 }
 
 function buildHistorySummary(record) {

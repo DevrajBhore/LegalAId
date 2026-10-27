@@ -29,6 +29,7 @@ import {
   normalizeExportFormat,
 } from "./services/exportService.js";
 import { runDocumentValidation } from "./services/validationService.js";
+import { disclosureFor } from "./services/disclosureRenderer.js";
 import { callAIChat } from "./ai/aiClient.js";
 import { listAvailableModels } from "./ai/geminiClient.js";
 import { repairDocumentIssue } from "./services/issueRepairService.js";
@@ -617,7 +618,8 @@ app.post("/validate", protect, async (req, res) => {
       documentType: body.document_type,
       sourceVariables: body.variables,
     });
-    res.json({ validation });
+    // D4.51: the disclosure follows the draft as edited (a deleted protection drops out).
+    res.json({ validation: { ...validation, disclosure: disclosureFor(body) } });
   } catch (error) {
     console.error("Validation error:", error);
     res

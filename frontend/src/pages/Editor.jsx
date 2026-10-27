@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ClauseEditor from "../components/ClauseEditor";
+import AssumptionsPanel from "../components/AssumptionsPanel";
 import RiskPanel from "../components/RiskPanel";
 import ErrorExplainer from "../components/ErrorExplainer";
 import DocumentIntelligence from "../components/DocumentIntelligence";
@@ -236,6 +237,14 @@ export default function Editor() {
   const [initialState] = useState(getInitialState);
   const [draft, setDraft] = useState(initialState.draft);
   const [validation, setValidation] = useState(initialState.validation);
+  // D4.51: the assumptions the export will print, from the latest validation of
+  // the draft as it stands. Tracked separately from `validation` because the
+  // background check keeps an older, riskier result, and the disclosure must not
+  // go stale with it (a protection the user deletes drops out of the list).
+  const [disclosure, setDisclosure] = useState(initialState.validation?.disclosure || null);
+  useEffect(() => {
+    if (validation?.disclosure) setDisclosure(validation.disclosure);
+  }, [validation]);
   const [intelligence] = useState(initialState.intelligence);
   const [obligations] = useState(initialState.obligations);
   const [documentMeta] = useState(initialState.documentMeta);
@@ -322,6 +331,7 @@ export default function Editor() {
       try {
         const res = await validateDocument(draft, "background");
         const nextValidation = res.data?.validation;
+        if (nextValidation?.disclosure) setDisclosure(nextValidation.disclosure);
         if (!nextValidation?.risk) return;
 
         setValidation((prev) => {
@@ -1037,6 +1047,7 @@ export default function Editor() {
 
             {activeTab === "validation" && (
               <div className="sidebar-panel">
+                <AssumptionsPanel disclosure={disclosure} />
                 <RiskPanel
                   validation={validation}
                   onDownload={handleDownload}

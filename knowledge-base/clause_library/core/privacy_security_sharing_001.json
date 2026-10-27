@@ -1,0 +1,58 @@
+{
+  "jurisdiction": "India",
+  "depends_on": [],
+  "conflicts_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "clause_id": "PRIVACY_SECURITY_SHARING_001",
+  "name": "How We Protect and Share Personal Data",
+  "title": "How We Protect and Share Personal Data",
+  "category": "PRIVACY",
+  "document_types": [
+    "PRIVACY_POLICY"
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "text": "{{company_name}} protects the personal data it processes and shares it only as this Policy describes.\n(a) We take reasonable security safeguards, including access controls and, where appropriate, encryption, to prevent a personal data breach, as Section 8(5) of the Digital Personal Data Protection Act, 2023 (\"DPDP Act\") requires.\n(b) Where we engage a Data Processor to process personal data on our behalf, we do so only under a valid contract, and we remain responsible for that processing under Section 8 of the DPDP Act.\n(c) If a personal data breach occurs, we shall intimate the Data Protection Board of India and each affected data principal in the form and manner prescribed under Section 8(6) of the DPDP Act.\n(d) We transfer personal data outside India only to the extent Section 16 of the DPDP Act, and any restriction notified under it, permits.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(5)",
+      "note": "Reasonable security safeguards to prevent a personal data breach"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(2)",
+      "note": "A Data Fiduciary may engage a Data Processor only under a valid contract"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "8(6)",
+      "note": "Intimation of a personal data breach to the Board and each affected Data Principal"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "16",
+      "note": "Processing outside India, subject to restriction by notification"
+    }
+  ],
+  "invalid_if": [
+    "The policy says personal data is shared without stating the safeguards that apply"
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "required_with": [],
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Breach intimation timelines are prescribed by rules; the advocate should confirm the form and timing in force"
+  ],
+  "authoring_note": "D4.48. Replaces CORE_DATA_PROCESSING_001 in the Privacy Policy. That clause was written for a contract ('each Party shall ...', with a mutual indemnity) and told the reader of a published notice what 'the affected Party' must do. These are the same four obligations stated as the publisher's commitments. No fact about the business is asserted that the user has not supplied: the clause does not say personal data is never sold or never shared, because nobody has been asked."
+}

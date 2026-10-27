@@ -6,7 +6,7 @@
     "PRIVACY_POLICY"
   ],
   "jurisdiction": "India",
-  "text": "This Privacy Policy is published by the organisation in accordance with applicable Indian law. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. This Policy was last updated on the date indicated above and supersedes all prior versions.",
+  "text": "This Privacy Policy is published by the organisation in accordance with applicable Indian law. By accessing or using our services, you acknowledge that you have read and understood this Privacy Policy. This Policy was last updated on the date indicated above and supersedes all prior versions.",
   "legal_basis": [
     {
       "act": "Digital Personal Data Protection Act, 2023",
@@ -25,6 +25,7 @@
   "invalid_if": [],
   "source": "DPDPA, 2023; IT Act, 2000",
   "version": "3.0",
+  "authoring_note": "D4.48: 'and agree to be bound by' removed. A privacy notice informs the data principal; it is not a contract the reader accepts, and consent under Section 6 of the DPDP Act must be specific to a purpose, not inferred from use of the service.",
   "title": "Acknowledgement",
   "depends_on": [
     "PRIVACY_GRIEVANCE_OFFICER_001"

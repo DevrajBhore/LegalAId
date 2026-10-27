@@ -1,0 +1,314 @@
+{
+  "//": "D4.48. What kind of instrument each document type is. Before this file every layer of the engine assumed a bilateral contract: blueprints listed contract general provisions, drafting_policies.json supplied thirteen of them by default, doctrineInjector.js added an Indian Contract Act warranty to every document, the commercial engine and the dependency resolver added indemnity, liability limits and arbitration, and the identity renderer opened every instrument 'THIS AGREEMENT'. A Privacy Policy therefore called itself an Agreement 28 times and offered arbitration between 'the Parties' it did not have. This file is read by backend/services/instrumentClass.js and by nothing else; each layer asks that module, so the classification is decided once.",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "classes": {
+    "AGREEMENT": {
+      "label": "Agreement or deed between parties",
+      "shape": "AGREEMENT",
+      "description": "A contract made between two or more named parties who each sign it. Carries the general provisions of an agreement and, where the family chooses, risk allocation and dispute resolution.",
+      "enforced": true,
+      "contract_doctrine": true,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "executed_by_parties"
+    },
+    "NON_BINDING_TERMS": {
+      "label": "Summary of proposed terms",
+      "shape": "AGREEMENT",
+      "description": "Records terms the parties propose to put in later definitive documents. Mostly non-binding; the binding provisions are declared by the family's instrument entry in drafting_policies.json. Presented as a table of terms, not as a deed.",
+      "enforced": true,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [
+          "CORE_DEFINITIONS_001",
+          "CORE_INTERPRETATION_001",
+          "CORE_NOTICE_001",
+          "CORE_SEVERABILITY_001",
+          "CORE_WAIVER_001",
+          "CORE_ENTIRE_AGREEMENT_001",
+          "CORE_AMENDMENT_001",
+          "CORE_ASSIGNMENT_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_FORCE_MAJEURE_001",
+          "CORE_SURVIVAL_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_FURTHER_ASSURANCE_001",
+          "CORE_INDEMNITY_001",
+          "CORE_INDEMNITY_FULL_001",
+          "AUTO-INDEM-001",
+          "CORE_LIMITATION_LIABILITY_001",
+          "CORE_LIABILITY_CAP_001",
+          "AUTO-LIAB-001",
+          "AUTO-FM-001"
+        ],
+        "allow_ids": []
+      },
+      "layout": "terms_table",
+      "signing": "signed_as_record"
+    },
+    "STANDARD_TERMS": {
+      "label": "Standard-form terms accepted by users",
+      "shape": "POLICY",
+      "description": "A contract formed when a user accepts terms the business publishes (click-wrap or browse-wrap). It can allocate risk and choose a forum, but it names no counterparty, is not signed in counterparts, and carries no representation that 'the Parties' are competent to contract.",
+      "enforced": true,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [
+          "CORE_IDENTITY_001",
+          "CORE_SIGNATURE_BLOCK_001",
+          "CORE_COUNTERPARTS_001",
+          "CORE_STAMP_AND_COSTS_001",
+          "CORE_FURTHER_ASSURANCE_001"
+        ],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "accepted_by_user"
+    },
+    "PUBLISHED_POLICY": {
+      "label": "Policy published by the business",
+      "shape": "POLICY",
+      "description": "A notice the business publishes to the people it serves, or to its own staff. There are no parties, nothing is exchanged, and nobody signs it as a contract. It carries none of the general provisions of an agreement: no definitions of 'Agreement', no indemnity, limitation of liability, waiver, severability or arbitration. It states the governing law briefly and the routes by which a person can complain.",
+      "enforced": true,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [
+          "CORE_",
+          "AUTO-"
+        ],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "published_by_issuer"
+    },
+    "UNILATERAL_INSTRUMENT": {
+      "label": "Instrument executed by one person",
+      "shape": "SWORN",
+      "description": "Executed by one person in favour of another (a power of attorney, an indemnity bond, a promissory note). Not a bilateral contract.",
+      "enforced": false,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "executed_by_one"
+    },
+    "SWORN_STATEMENT": {
+      "label": "Sworn statement",
+      "shape": "SWORN",
+      "description": "A statement of facts on oath or solemn affirmation, verified and attested. Not a contract.",
+      "enforced": false,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "sworn_and_verified"
+    },
+    "LETTER": {
+      "label": "Letter",
+      "shape": "AGREEMENT",
+      "description": "A letter from one person to a named addressee, which may record an offer or a grant and ask the addressee to countersign in acceptance.",
+      "enforced": false,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "signed_by_sender"
+    },
+    "NOTICE": {
+      "label": "Notice",
+      "shape": "NOTICE",
+      "description": "A formal notice served by one person on another (for example a notice invoking arbitration under Section 21 of the Arbitration and Conciliation Act, 1996).",
+      "enforced": false,
+      "contract_doctrine": false,
+      "clause_rule": {
+        "forbid_prefixes": [],
+        "forbid_ids": [],
+        "allow_ids": []
+      },
+      "layout": "clauses",
+      "signing": "signed_by_sender"
+    }
+  },
+  "//enforced": "D4.48 scope: a class with enforced=false is classified but its clause rule is not applied. Those are the eleven types that do not generate today; their constraint scopes await the advocate (governance/constraint-scope.json) and changing what they assemble would change the reason they are refused before that decision is made.",
+  "document_types": {
+    "FOUNDERS_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "TERM_SHEET": {
+      "class": "NON_BINDING_TERMS",
+      "//": "Its noun, opening and binding provisions come from its instrument entry in drafting_policies.json (D4.44)."
+    },
+    "ESOP_GRANT_LETTER": {
+      "class": "LETTER"
+    },
+    "SHARE_SUBSCRIPTION_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "PROMISSORY_NOTE": {
+      "class": "UNILATERAL_INSTRUMENT",
+      "shape": "AGREEMENT",
+      "//": "Shape kept as AGREEMENT, which is what documentShape.js reported before D4.48, so the checks it receives are unchanged while it does not generate. A promissory note is made by one person (Section 4, Negotiable Instruments Act, 1881); the class records that, and the shape should follow when the advocate decides its constraint scope."
+    },
+    "IP_ASSIGNMENT_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "POWER_OF_ATTORNEY": {
+      "class": "UNILATERAL_INSTRUMENT"
+    },
+    "DATA_PROCESSING_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "REFUND_AND_CANCELLATION_POLICY": {
+      "class": "PUBLISHED_POLICY",
+      "self_name": {
+        "noun": "Policy"
+      }
+    },
+    "SHIPPING_AND_DELIVERY_POLICY": {
+      "class": "PUBLISHED_POLICY",
+      "self_name": {
+        "noun": "Policy"
+      }
+    },
+    "APPOINTMENT_LETTER": {
+      "class": "LETTER"
+    },
+    "INTERNSHIP_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "SEPARATION_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "POSH_POLICY": {
+      "class": "PUBLISHED_POLICY",
+      "self_name": {
+        "noun": "Policy"
+      },
+      "enforced": false,
+      "//": "Not enforced in D4.48: the PoSH Policy is one of the eleven types that do not generate, and its refusal awaits the advocate's constraint-scope decision. Its class is recorded so the decision lands on a classified type."
+    },
+    "ARBITRATION_NOTICE": {
+      "class": "NOTICE"
+    },
+    "SETTLEMENT_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "AFFIDAVIT": {
+      "class": "SWORN_STATEMENT"
+    },
+    "INDEMNITY_BOND": {
+      "class": "UNILATERAL_INSTRUMENT"
+    },
+    "NDA": {
+      "class": "AGREEMENT"
+    },
+    "EMPLOYMENT_CONTRACT": {
+      "class": "AGREEMENT"
+    },
+    "SERVICE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "CONSULTANCY_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "PARTNERSHIP_DEED": {
+      "class": "AGREEMENT",
+      "self_name": {
+        "noun": "Deed",
+        "opening": "THIS DEED OF PARTNERSHIP (\"Deed\")"
+      },
+      "//": "Section 4 of the Indian Partnership Act, 1932 calls the relation an agreement; the instrument recording it is a deed. It opened 'THIS AGREEMENT (\"Agreement\")' under the title Partnership Deed."
+    },
+    "SHAREHOLDERS_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "JOINT_VENTURE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "SUPPLY_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "DISTRIBUTION_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "SALES_OF_GOODS_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "INDEPENDENT_CONTRACTOR_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "COMMERCIAL_LEASE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "LEAVE_AND_LICENSE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "LOAN_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "GUARANTEE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "SOFTWARE_DEVELOPMENT_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "MOU": {
+      "class": "AGREEMENT",
+      "self_name": {
+        "noun": "MOU",
+        "opening": "THIS MEMORANDUM OF UNDERSTANDING (\"MOU\")"
+      },
+      "//": "Classified with agreements for its form only. Whether an MOU is binding is the user's choice and the advocate's open question (MOU binding classification); this entry changes only what the document calls itself, which had been 'THIS AGREEMENT (\"Agreement\")' under the title Memorandum of Understanding. Its recital that the Parties 'intend to enter into a legally binding arrangement' is unchanged and recorded as open in governance/instrument-classes.json."
+    },
+    "VENDOR_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "MASTER_SERVICE_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "TERMS_OF_SERVICE": {
+      "class": "STANDARD_TERMS"
+    },
+    "PRIVACY_POLICY": {
+      "class": "PUBLISHED_POLICY",
+      "self_name": {
+        "noun": "Policy"
+      }
+    },
+    "RENTAL_AGREEMENT": {
+      "class": "AGREEMENT"
+    },
+    "LEGAL_NOTICE": {
+      "class": "NOTICE",
+      "//": "Not a registered type; listed because documentShape.js classified it."
+    },
+    "CHEQUE_BOUNCE_NOTICE": {
+      "class": "NOTICE",
+      "//": "Not a registered type; listed because documentShape.js classified it."
+    },
+    "REPLY_TO_LEGAL_NOTICE": {
+      "class": "NOTICE",
+      "//": "Not a registered type; listed because documentShape.js classified it."
+    }
+  },
+  "//shape": "Each class names the coarse shape that shared/documentShape.js reports (AGREEMENT, POLICY, NOTICE, SWORN). The validators, the IRE constraint engine and the intake form ask that module which checks and questions apply; it now reads its answer from this file, so the shape and the class cannot drift. The mapping reproduces documentShape.js as it stood at fe48d5a6c exactly (tests/instrumentClasses.test.mjs)."
+}

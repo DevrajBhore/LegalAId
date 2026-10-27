@@ -1,0 +1,61 @@
+{
+  "jurisdiction": "India",
+  "depends_on": [],
+  "conflicts_with": [],
+  "suggested_with": [],
+  "jurisdiction_constraints": {},
+  "tds_applicable": false,
+  "gst_applicable": false,
+  "msme_sensitive": false,
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "clause_id": "PRIVACY_LAW_AND_COMPLAINTS_001",
+  "name": "Withdrawing Consent, Complaints and Governing Law",
+  "title": "Withdrawing Consent, Complaints and Governing Law",
+  "category": "PRIVACY",
+  "document_types": [
+    "PRIVACY_POLICY"
+  ],
+  "mandatory": true,
+  "enforceability": "HIGH",
+  "risk_level": "MEDIUM",
+  "text": "(a) Where we process personal data on the basis of consent, the data principal may withdraw that consent at any time, with the same ease with which it was given, by writing to the Grievance Officer named in this Policy. Withdrawal does not affect processing carried out before it, and we shall stop processing that personal data within a reasonable time unless the law requires or permits us to retain it.\n(b) A data principal who is not satisfied with our response to a grievance may complain to the Data Protection Board of India, after first using the grievance redressal described in this Policy, as Section 13(3) of the DPDP Act provides.\n(c) This Policy is governed by the laws of India. Nothing in this Policy limits any right or remedy a data principal has under the law.",
+  "legal_basis": [
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "6(4)",
+      "note": "Consent may be withdrawn at any time, with the ease with which it was given"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "6(6)",
+      "note": "On withdrawal, processing to cease within a reasonable time"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "5(1)",
+      "note": "The notice must tell the Data Principal how to withdraw consent, how to have a grievance redressed, and how to complain to the Board"
+    },
+    {
+      "act": "Digital Personal Data Protection Act, 2023",
+      "section": "13(3)",
+      "note": "Grievance redressal with the Data Fiduciary to be exhausted before approaching the Board"
+    }
+  ],
+  "invalid_if": [
+    "The policy offers no way to withdraw consent",
+    "The policy omits the right to complain to the Data Protection Board"
+  ],
+  "source": "Digital Personal Data Protection Act, 2023",
+  "required_with": [
+    "PRIVACY_GRIEVANCE_OFFICER_001"
+  ],
+  "litigation_risk": "MEDIUM",
+  "drafting_strength": "STANDARD",
+  "dispute_hotspots": [
+    "Commencement: the advocate should confirm which DPDP provisions and rules are in force on the policy's effective date"
+  ],
+  "authoring_note": "D4.48. Replaces CORE_DISPUTE_RESOLUTION_001 (six paragraphs of arbitration between 'the Parties') and CORE_GOVERNING_LAW_001 (exclusive court jurisdiction with a waiver of forum objections) in the Privacy Policy. A notice to data principals cannot send them to arbitration; Section 5(1) asks instead that it tell them how to withdraw consent and how to complain to the Board, which the policy did not do. Limb (c) is the brief governing-law statement the owner chose on 21 Oct 2026."
+}

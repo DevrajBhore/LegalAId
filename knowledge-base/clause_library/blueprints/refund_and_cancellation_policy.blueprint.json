@@ -8,7 +8,7 @@
     "ECOM_RETURN_ELIGIBILITY_001",
     "ECOM_REFUND_TIMELINE_001",
     "ECOM_GRIEVANCE_REDRESSAL_001",
-    "CORE_GOVERNING_LAW_001",
+    "ECOM_POLICY_GOVERNING_LAW_001",
     "ECOM_POLICY_ADOPTION_001"
   ],
   "conditional_clauses": [],
@@ -18,5 +18,16 @@
     "E-Commerce Rules 2020 R.4 — refunds to be effected within a reasonable period or as prescribed",
     "Sale of Goods Act 1930 S.16 — implied conditions as to quality and fitness cannot be excluded against a consumer",
     "Consumer Protection Act 2019 S.2(46) — an unfair contract term is void; a policy cannot exclude statutory rights"
-  ]
+  ],
+  "//D4.48": "A published consumer policy (instrument_classes.json: PUBLISHED_POLICY). CORE_GOVERNING_LAW_001 replaced by ECOM_POLICY_GOVERNING_LAW_001, which no longer pulls in arbitration through required_with.",
+  "succession": {
+    "ECOM_POLICY_GOVERNING_LAW_001": {
+      "introduced_in": "D4.48",
+      "replaces": [
+        "CORE_GOVERNING_LAW_001",
+        "CORE_DISPUTE_RESOLUTION_001"
+      ]
+    }
+  },
+  "//succession": "D4.48. A document saved before this blueprint version lacks the clauses below and still carries the ones each replaced. backend/services/clauseSuccession.js reports that as Requires legal review (regenerate), not as a missing required clause, so the saved document can still be downloaded. A document missing a new clause and every clause it replaced is still a missing required clause."
 }

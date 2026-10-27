@@ -1,5 +1,6 @@
 import { getClauseById } from "./clauseAssembler.js";
 import { getInstrument } from "./instrumentKnowledge.js";
+import { forbiddenByInstrumentClass, getInstrumentSelfName } from "./instrumentClass.js";
 import { injectVariables } from "./variableInjector.js";
 import { forClause, isRecording, observeRenderer, noteRenderer, chose, SOURCE_CLASS, NOT_YET_RECORDED } from "./provenance.js";
 import { survivingLabels, survivalReferencingClauseIds } from "./survivalSemantics.js";
@@ -32,7 +33,12 @@ function getRequiredHardeningClauseIds(documentType) {
   const required = Array.isArray(hardening.requiredClauseIds)
     ? hardening.requiredClauseIds
     : [];
-  return [...new Set([...baseline, ...required])];
+  // D4.48. The baseline is the general provisions of an agreement. A type whose
+  // instrument class forbids a clause neither receives it here nor is reported
+  // as missing it; the class decides, not a default written for contracts.
+  return [...new Set([...baseline, ...required])].filter(
+    (clauseId) => !forbiddenByInstrumentClass(documentType, clauseId)
+  );
 }
 
 function normalizeWhitespace(value = "") {
@@ -1816,8 +1822,12 @@ function renderHardClauseUnobserved(
         ].join("\n");
       }
 
+      // D4.48. An instrument that names itself in instrument_classes.json opens
+      // as itself: the Partnership Deed and the MOU both opened 'THIS AGREEMENT
+      // ("Agreement")' under their own titles.
+      const selfName = getInstrumentSelfName(documentType);
       return [
-        `THIS AGREEMENT ("Agreement") is made and executed${
+        `${selfName?.opening || 'THIS AGREEMENT ("Agreement")'} is made and executed${
           executionVenue ? ` at ${executionVenue}` : ""
         } on ${formatFormalExecutionDate(variables.effective_date)}.`,
         "",

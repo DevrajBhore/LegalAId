@@ -1,0 +1,69 @@
+{
+  "//": "D4.50. How a protection got into a document, and what the document must say about it when the user did not choose it. Read only by backend/services/protectionDecisions.js. Which clause ids play which protection role is routing, kept in backend/commercial/protectionLibrary.js (PROTECTION_ROLE_CLAUSE_IDS) and not repeated here. A protection is never removed because the user did not select it; when no answer of the user's governs it, it is recorded and disclosed as a drafting default, so that an unapproved commercial position is never presented silently as an agreed term. Nothing here says a protection is legally required: no verified authority says so for any of them.",
+  "version": "1.0",
+  "review_status": "draft-needs-legal-review",
+  "reviewed_by": "PENDING",
+  "reviewed_on": null,
+  "roles": {
+    "LIABILITY_CAP": {
+      "label": "limitation of liability",
+      "intake_controls": ["liability_cap_basis", "liability_cap_amount"],
+      "what_it_does": "It limits how much one party can recover from the other."
+    },
+    "INDEMNITY": {
+      "label": "indemnity",
+      "intake_controls": ["indemnity_scope", "include_indemnity_clause"],
+      "what_it_does": "It makes a party responsible for covering the other's losses in the circumstances it describes."
+    },
+    "FORCE_MAJEURE": {
+      "label": "force majeure",
+      "intake_controls": ["include_force_majeure"],
+      "what_it_does": "It excuses a party's failure to perform when events beyond its control prevent performance."
+    },
+    "IP_OWNERSHIP": {
+      "label": "intellectual property ownership",
+      "intake_controls": ["ip_ownership"],
+      "what_it_does": "It decides who owns intellectual property created under the agreement."
+    },
+    "LATE_PAYMENT_INTEREST": {
+      "label": "late payment interest",
+      "intake_controls": [],
+      "what_it_does": "It charges interest on payments made late."
+    },
+    "TERMINATION_NOTICE": {
+      "label": "termination notice",
+      "intake_controls": ["termination_notice_period", "notice_period_days"],
+      "what_it_does": "It requires notice before the agreement is ended."
+    }
+  },
+  "toggle_controls": ["include_indemnity_clause", "include_force_majeure"],
+  "origins": {
+    "blueprint": {
+      "basis": "TEMPLATE_STANDARD",
+      "sentence": "is part of LegalAId's standard template for this type of document"
+    },
+    "hardening_baseline": {
+      "basis": "ENGINE_DEFAULT",
+      "sentence": "was added by LegalAId because its drafting policy treats it as a standard provision for this type of document"
+    },
+    "dependency_resolver": {
+      "basis": "ENGINE_DEFAULT",
+      "sentence": "was added by LegalAId because another clause in this document is drafted to be used with it"
+    },
+    "commercial_engine": {
+      "basis": "ENGINE_DEFAULT",
+      "sentence": "was added automatically because LegalAId treats this as a commercial agreement"
+    },
+    "deterministic_repair": {
+      "basis": "REPAIR_RECOMMENDATION",
+      "sentence": "was added automatically after the draft was checked, because the checks recommend it for this type of document"
+    },
+    "unrecorded": {
+      "basis": "ORIGIN_NOT_RECORDED",
+      "sentence": "is in this draft, and the draft does not record how it was added"
+    }
+  },
+  "disclosure": "The {label} provision (\"{title}\") {origin_sentence}. You were not asked whether to include it, so it is not yet a term either party has chosen. {what_it_does} Confirm, change or remove it before signing.",
+  "disclosure_when_declined": "You answered that you did not want a {label} provision, but this draft still contains one (\"{title}\"): it {origin_sentence}, and your answer did not remove it. {what_it_does} Remove it or have it reviewed before signing.",
+  "//disclosure_when_declined": "The MOU asks whether to add force majeure and its blueprint includes the clause whatever the answer. That contradiction is recorded and held open in governance/declined-protections.json; until it is decided, the document says plainly that the user's answer was not followed, instead of telling them they were never asked."
+}

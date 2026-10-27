@@ -78,10 +78,18 @@
     "populations": [
       {
         "id": "CONSUMER_FACING_UNILATERAL",
-        "members": ["TERMS_OF_SERVICE", "PRIVACY_POLICY"],
+        "members": ["TERMS_OF_SERVICE"],
         "character": "Unilateral instruments published to an unnamed counterparty. Neither family collects party_2 at all — verified against the schemas.",
         "route": "Consumer Protection Act 2019 s.2(46) / s.49(2), which is available regardless of how the Simplex line resolves.",
-        "additional_question": "Whether a published policy is a contract at all, and on what assent — already a live question elsewhere in this investigation."
+        "additional_question": "Whether a published policy is a contract at all, and on what assent — already a live question elsewhere in this investigation.",
+        "left_the_population": [
+          {
+            "type": "PRIVACY_POLICY",
+            "on": "2026-10-21",
+            "phase": "D4.48",
+            "why": "It no longer has a liability cap, so there is no characterisation question to answer for it: it left the structurally empty table in cap-referent.json (left_the_scope) for the same reason. D4.48 classes it as a published policy (knowledge-base/metadata/instrument_classes.json, PUBLISHED_POLICY), a notice rather than a contract, which is a draft answer to this population's additional_question for that family and awaits the advocate. Privacy Policies saved before D4.48 still carry the cap; the consumer route recorded here still describes them."
+          }
+        ]
       },
       {
         "id": "COMMERCIAL_BILATERAL",

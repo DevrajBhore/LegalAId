@@ -3,33 +3,25 @@
   "family": "data_protection",
   "clauses": [
     "PRIVACY_PURPOSE_SCOPE_001",
-    "CORE_DEFINITIONS_001",
-    "CORE_DATA_PROCESSING_001",
+    "PRIVACY_SECURITY_SHARING_001",
     "PRIVACY_DATA_SUBJECT_RIGHTS_001",
     "PRIVACY_DATA_RETENTION_001",
     "PRIVACY_COOKIES_001",
     "PRIVACY_GRIEVANCE_OFFICER_001",
-    "CORE_COMPLIANCE_WITH_LAW_001",
-    "CORE_LIMITATION_LIABILITY_001",
-    "CORE_DISPUTE_RESOLUTION_001",
-    "CORE_GOVERNING_LAW_001",
+    "PRIVACY_LAW_AND_COMPLAINTS_001",
     "PRIVACY_SIGNATURE_BLOCK_001"
   ],
   "required_clauses": [
     "PRIVACY_PURPOSE_SCOPE_001",
-    "CORE_DEFINITIONS_001",
-    "CORE_DATA_PROCESSING_001",
+    "PRIVACY_SECURITY_SHARING_001",
     "PRIVACY_DATA_SUBJECT_RIGHTS_001",
     "PRIVACY_DATA_RETENTION_001",
     "PRIVACY_COOKIES_001",
     "PRIVACY_GRIEVANCE_OFFICER_001",
-    "CORE_COMPLIANCE_WITH_LAW_001",
-    "CORE_LIMITATION_LIABILITY_001",
-    "CORE_DISPUTE_RESOLUTION_001",
-    "CORE_GOVERNING_LAW_001",
+    "PRIVACY_LAW_AND_COMPLAINTS_001",
     "PRIVACY_SIGNATURE_BLOCK_001"
   ],
-  "version": "3.0",
+  "version": "4.0",
   "mandatory_legal_checks": [
     "Digital Personal Data Protection Act 2023 — notice and consent requirements (S.5-7)",
     "DPDPA 2023 — data fiduciary obligations (S.8); Data Protection Board of India",
@@ -37,11 +29,22 @@
     "Grievance officer mandatory under IT Act — name, designation and contact must be published",
     "Data localisation — certain categories of sensitive data must be stored in India"
   ],
-  "conditional_clauses": [
-    {
-      "clause": "CORE_ENTIRE_AGREEMENT_001",
-      "include_if": "include_entire_agreement == true",
-      "note": "Optional entire-agreement (no oral terms) clause."
+  "conditional_clauses": [],
+  "//D4.48": "A published notice, not a contract (instrument_classes.json: PUBLISHED_POLICY). Removed CORE_DEFINITIONS_001, CORE_DATA_PROCESSING_001, CORE_COMPLIANCE_WITH_LAW_001, CORE_LIMITATION_LIABILITY_001, CORE_DISPUTE_RESOLUTION_001, CORE_GOVERNING_LAW_001 and the optional CORE_ENTIRE_AGREEMENT_001; added PRIVACY_SECURITY_SHARING_001 and PRIVACY_LAW_AND_COMPLAINTS_001.",
+  "succession": {
+    "PRIVACY_SECURITY_SHARING_001": {
+      "introduced_in": "D4.48",
+      "replaces": [
+        "CORE_DATA_PROCESSING_001"
+      ]
+    },
+    "PRIVACY_LAW_AND_COMPLAINTS_001": {
+      "introduced_in": "D4.48",
+      "replaces": [
+        "CORE_GOVERNING_LAW_001",
+        "CORE_DISPUTE_RESOLUTION_001"
+      ]
     }
-  ]
+  },
+  "//succession": "D4.48. A document saved before this blueprint version lacks the clauses below and still carries the ones each replaced. backend/services/clauseSuccession.js reports that as Requires legal review (regenerate), not as a missing required clause, so the saved document can still be downloaded. A document missing a new clause and every clause it replaced is still a missing required clause."
 }

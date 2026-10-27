@@ -65,7 +65,11 @@ check("every structurally empty family is placed in exactly one legal population
 check("the consumer families keep a route that does not depend on the unsettled line", () => {
   const p = C.the_seven_are_not_one_population.populations
     .find((x) => x.id === "CONSUMER_FACING_UNILATERAL");
-  assert.deepStrictEqual(p.members.sort(), ["PRIVACY_POLICY", "TERMS_OF_SERVICE"]);
+  // D4.48: the Privacy Policy left this population when it lost its liability cap
+  // (a published policy carries none). The departure must be recorded, not silent.
+  assert.deepStrictEqual(p.members.sort(), ["TERMS_OF_SERVICE"]);
+  assert.ok((p.left_the_population || []).some((l) => l.type === "PRIVACY_POLICY" && l.phase === "D4.48" && l.why),
+    "the Privacy Policy is no longer in the consumer population, and nothing records why");
   assert.ok(/Consumer Protection Act 2019/.test(p.route), "the statutory route has been dropped");
   assert.ok(/regardless of how the Simplex line resolves/i.test(p.route),
     "the record no longer says the consumer route is independent, which is the whole reason these two are a separate population");

@@ -82,7 +82,9 @@
       "label": "governing law and jurisdiction",
       "survives": true,
       "clause_ids": ["CORE_GOVERNING_LAW_001", "CORE_GOV_LAW_001"],
-      "excluded": []
+      "excluded": [
+        { "clause_id": "ECOM_POLICY_GOVERNING_LAW_001", "why": "D4.48. The governing-law sentence of a published consumer policy. A policy is not terminated between parties, so there is nothing for it to survive." }
+      ]
     },
     {
       "concept": "notices",

@@ -1580,6 +1580,10 @@ export const VARIABLE_CONFIG = {
     },
     governing_law_state: {
       excludeShapes: ["NOTICE", "SWORN"],
+      // D4.48: a published policy says it is governed by the laws of India and
+      // has no clause a chosen state could bind to (instrument_classes.json,
+      // PUBLISHED_POLICY). Asking for one would be a question nothing reads.
+      excludeDocuments: ["PRIVACY_POLICY", "REFUND_AND_CANCELLATION_POLICY", "SHIPPING_AND_DELIVERY_POLICY"],
       label: "Governing Law State",
       type: "select",
       required: false,

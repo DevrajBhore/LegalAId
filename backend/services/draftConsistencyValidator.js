@@ -4,6 +4,21 @@ import { getVariables } from "../config/variableConfig.js";
 import { PROTECTION_CLAUSE_IDS } from "./documentHardening.js";
 import { partyNameAppears } from "./partyNameMatcher.js";
 import { isAgreement } from "../../shared/documentShape.js";
+import { instrumentClassModel } from "./instrumentClass.js";
+
+// D4.48. An instrument may name itself ("this Deed", "this MOU") instead of
+// "this Agreement" (instrument_classes.json, self_name). A clause about breach of
+// the instrument says the same thing whichever noun it uses, so the matchers
+// accept every self-name the model declares, not only "agreement".
+const SELF_NOUNS = [
+  "agreement",
+  ...Object.values(instrumentClassModel().document_types)
+    .map((entry) => entry?.self_name?.noun)
+    .filter(Boolean)
+    .map((noun) => normalizeText(noun)),
+];
+const mentionsBreachOfThisInstrument = (normalizedHaystack) =>
+  SELF_NOUNS.some((noun) => normalizedHaystack.includes(`breach of this ${noun}`));
 
 function normalizeText(value = "") {
   return String(value)
@@ -102,11 +117,11 @@ function matchesStructuredField(fieldName, value, haystack = "") {
         return normalizedHaystack.includes("third party");
       }
       if (normalizedValue.includes("breach of agreement only")) {
-        return normalizedHaystack.includes("breach of this agreement");
+        return mentionsBreachOfThisInstrument(normalizedHaystack);
       }
       if (normalizedValue.includes("breach negligence")) {
         return (
-          normalizedHaystack.includes("breach of this agreement") &&
+          mentionsBreachOfThisInstrument(normalizedHaystack) &&
           normalizedHaystack.includes("negligence") &&
           normalizedHaystack.includes("third party")
         );
@@ -744,8 +759,15 @@ export function validateDraftConsistency(
     );
   }
 
+  // D4.48, the same reasoning as the arbitration seat above: a document with no
+  // governing-law clause cannot be faulted for not naming the state in one. A
+  // published policy states in a sentence that it is governed by the laws of
+  // India (instrument_classes.json, PUBLISHED_POLICY) and carries no clause of
+  // that category. An agreement that lacks the clause is caught by the
+  // completeness checks, not here.
   if (
     hasMeaningfulValue(variables.governing_law_state) &&
+    governingLawText.trim().length > 0 &&
     !includesNormalized(governingLawText, variables.governing_law_state)
   ) {
     issues.push(

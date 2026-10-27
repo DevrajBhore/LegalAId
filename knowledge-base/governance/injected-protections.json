@@ -1,0 +1,55 @@
+{
+  "$comment": [
+    "D4.50 — Injected protections and commercial-choice provenance. What was required, what was found, what was done, the evidence, and what remains open.",
+    "Measured on 21 October 2026 against the D4.49 tree (76d352a91b: D4.48 and D4.49 applied to GitHub 223bfc821). Each generation stage's clause set was recorded by temporary instrumentation (not shipped) over 29 types x WELL_FILLED, MINIMAL_DECLINED and QUICK_ESSENTIALS: 63 documents generated, 136 protection clauses. Nothing here is a legal conclusion: no protection is said to be legally required, and the disclosure wording awaits the advocate."
+  ],
+  "phase": "D4.50",
+  "review_status": "engineering — the disclosure wording and every default's merits await advocate review",
+  "requirement": "The system must not silently convert an unapproved commercial position into an agreed contractual term. A protection is not removed merely because the user did not select it: some may be appropriate under an approved document specification. What must not happen is silence.",
+  "audit": {
+    "by_role": {
+      "LIABILITY_CAP": { "clauses": 41, "governed_by_an_answer": 20, "added_by": { "BLUEPRINT": 11, "BLUEPRINT_CONDITIONAL": 3, "DEPENDENCY_RESOLVER": 10, "HARDENING_BASELINE": 7, "COMMERCIAL_ENGINE": 8, "REPAIR_ROUND": 2 } },
+      "INDEMNITY": { "clauses": 37, "governed_by_an_answer": 16, "added_by": { "BLUEPRINT": 19, "BLUEPRINT_CONDITIONAL": 4, "HARDENING_BASELINE": 4, "COMMERCIAL_ENGINE": 8, "REPAIR_ROUND": 2 } },
+      "FORCE_MAJEURE": { "clauses": 40, "governed_by_an_answer": 4, "added_by": { "BLUEPRINT": 10, "BLUEPRINT_CONDITIONAL": 2, "HARDENING_BASELINE": 28 } },
+      "IP_OWNERSHIP": { "clauses": 14, "governed_by_an_answer": 4, "added_by": { "BLUEPRINT": 7, "HARDENING_BASELINE": 7 } },
+      "LATE_PAYMENT_INTEREST": { "clauses": 4, "governed_by_an_answer": 0, "added_by": { "COMMERCIAL_ENGINE": 4 } },
+      "TERMINATION_NOTICE": { "clauses": 0, "note": "No generated document carries CORE_TERMINATION_NOTICE_001." }
+    },
+    "the_six_questions": {
+      "what_triggered_it": "Six routes: the blueprint (unconditionally, or a conditional answered yes); the hardening baseline (drafting_policies.json supplies force majeure, IP ownership, a cap and an indemnity as standard provisions for some types); the dependency resolver (CORE_INDEMNITY_001 declares itself required_with CORE_LIMITATION_LIABILITY_001, so an indemnity brings a cap); the commercial engine (commercialEngine.js adds a cap, an indemnity and force majeure to every type on its BILATERAL_COMMERCIAL_DOCS list that lacks one, and late payment interest where payment is mentioned); and the repair round (deterministicFixer.js turns the commercial validator's recommendations LIABILITY_CAP_MISSING and INDEMNITY_MISSING into clauses).",
+      "legally_required_recommended_or_default": "None is recorded as legally required: no verified authority says any of the six must be in any of these documents. Each is a product default (template, policy, engine or repair) unless an answer of the user's governs it. Whether a default is commercially recommended for a given family is a judgment for the advocate, family by family.",
+      "did_the_user_supply_or_approve_the_terms": "For 92 of 136 clauses, no. The intake asks about the cap and the indemnity in 10 families only; it never asks about them in the NDA, the Employment Contract, the two leases or the Founders Agreement, which received them anyway. No intake asks about late payment interest.",
+      "does_it_change_another_clauses_effect": "Every indemnity found (37) sits in a document that also carries a cap, and no cap expressly carves out indemnity claims, so how the cap bears on the indemnity is a question in every one of them (cap-indemnity-interaction.json, open). 14 caps measure a quantity their family does not hold, e.g. 'total consideration paid' in an NDA (cap-referent.json, structurally empty).",
+      "were_its_assumptions_disclosed": "No. 0 of the 92 appeared in ASSUMPTIONS AND OPEN POINTS or anywhere in the document. The 20 the commercial engine added had no recorded inclusion reason, and provenance reported each as NO_PRODUCER_OBSERVED.",
+      "does_the_wording_match_the_recorded_decision": "Where an answer governs, the existing input-consistency checks compare the clause with it (INPUT_MISMATCH_LIABILITY_CAP_*, INPUT_MISMATCH_INDEMNITY_SCOPE). Where none governs, there was no recorded decision to match; there now is one, and it says the protection is a default."
+    },
+    "found": [
+      "The commercial engine and the commercial validator keep different lists of 'commercial' types. FOUNDERS_AGREEMENT is on the validator's and not the engine's, so the engine adds nothing, the validator recommends a cap and an indemnity, and the repair round adds them: those two clauses exist because the two lists disagree.",
+      "The MOU asks 'Add a force majeure clause?' and its blueprint requires the clause whatever the answer, so a No is not followed. Already recorded and held open in declined-protections.json; the audit's first count treated that No as a user choice, which it is not."
+    ],
+    "frozen_evidence": "tests/fixtures/injectedProtections.D4_50.json"
+  },
+  "done": [
+    "backend/services/documentService.js: every generation stage, the guardrails and the repair round record, for each clause, the stage that first added it (draft.metadata.clause_origin). It agrees with the instrumented measurement for 136 of 136 protection clauses.",
+    "backend/services/protectionDecisions.js and knowledge-base/metadata/protection_decisions.json: for each protection, its role, origin, the intake that governs it, the answers given, and a basis (USER_CHOICE, TEMPLATE_STANDARD, ENGINE_DEFAULT, REPAIR_RECOMMENDATION, ORIGIN_NOT_RECORDED), stored as draft.metadata.protection_decisions. A toggle answered No is not a choice the clause reflects.",
+    "backend/services/disclosureRenderer.js: every protection no answer governs, while it is still in the document, is printed as a DRAFTING DEFAULT in ASSUMPTIONS AND OPEN POINTS (DOCX, PDF, TXT), saying how it got there, that the user was not asked (or that their No was not followed), what it does, and to confirm, change or remove it before signing. The API's assumptions carries the same entries.",
+    "Nothing is removed, no clause text changes and no validation result changes. A document saved before D4.50 exports exactly as before."
+  ],
+  "result": "93 of 136 protection clauses are disclosed as defaults (the audit's 92 and the MOU's declined force majeure); 43 governed by an answer are not. Every one of the 63 documents carries the same protections and the same certification as before.",
+  "verified_by": "tests/injectedProtections.test.mjs (30 checks)",
+  "level_record": "document-quality-standard.json G34: the six-field record is written (the first level to have one).",
+  "still_open": [
+    "Owner and advocate, family by family: should each default stay, change, be asked about, or go? In particular the NDA's and the Employment Contract's indemnity and cap, the leases', and the Founders Agreement's, which exists only because of the two lists.",
+    "One list of commercial types, not two (commercialEngine.js BILATERAL_COMMERCIAL_DOCS, commercialValidator.js COMMERCIAL_DOC_TYPES). Choosing which is a commercial decision; until it is made the Founders Agreement's repair-round protections are disclosed as such.",
+    "The editor does not show ASSUMPTIONS AND OPEN POINTS; only the exported files do. The API returns the entries; showing them before export is frontend work.",
+    "Documents saved before D4.50 carry no origin record and are not given disclosures retroactively.",
+    "The cap's referent (cap-referent.json) and the cap and indemnity interaction (cap-indemnity-interaction.json) are unchanged and open.",
+    "The MOU force majeure decline (declined-protections.json) awaits its decision; it is now disclosed."
+  ],
+  "reconciliation": {
+    "question": "The audit counted 92 protections governed by no answer; D4.50 discloses 93. Why?",
+    "answer": "Established from the evidence, clause by clause (tests/protectionConsent.test.mjs §1): every one of the 136 clauses keeps its audit classification except one. In the MOU's MINIMAL_DECLINED world the user answered include_force_majeure: \"No\" and the blueprint kept CORE_FORCE_MAJEURE_001. The audit's user_choice_governs column counted any answered control as governing, so it counted that No. D4.50 counts an answer the clause contradicts as governing nothing, so it discloses the clause, with wording that says the user's No was not followed. 92 + 1 = 93.",
+    "recorded_on": "2026-10-23"
+  },
+  "superseded_in_part_by": "D4.51 (protection-consent.json): the single basis field became five separate fields, and the 43 'governed' protections were found to be 3 explicitly accepted and 40 governed only by parameters the user chose."
+}

@@ -202,7 +202,17 @@
     }
   },
   "structurally_empty": {
-    "count": 7,
+    "count": 6,
+      "left_the_scope": [
+        {
+          "type": "PRIVACY_POLICY",
+          "clause": "CORE_LIMITATION_LIABILITY_001",
+          "on": "2026-10-21",
+          "phase": "D4.48",
+          "why": "A change of scope, not of measurement, as tests/capReferent.test.mjs asks to be recorded. The Privacy Policy is a published policy (knowledge-base/metadata/instrument_classes.json, PUBLISHED_POLICY): a notice to data principals, with no parties and nothing paid, so it carries no limitation of liability at all and there is no ceiling left to measure. Policies saved before D4.48 still carry the clause; they are reported as Requires legal review (INSTRUMENT_CLASS_MISMATCH) and the consumer-law note in central_finding still describes them.",
+          "evidence": "tests/instrumentClasses.test.mjs; frozen before-state in tests/fixtures/instrumentShape.D4_48.json and tests/fixtures/savedBeforeInstrumentClasses.D4_48.json"
+        }
+      ],
     "definition": "The family records no rupee quantity at all, or records only `liability_cap_amount`, which is the figure the cap would have used instead of measuring — so counting it is circular.",
     "members": [
       {
@@ -228,12 +238,6 @@
         "type": "NDA",
         "clause": "CORE_LIABILITY_LIMIT_FALLBACK_001",
         "measures": "total consideration paid",
-        "rupee_fields": "none"
-      },
-      {
-        "type": "PRIVACY_POLICY",
-        "clause": "CORE_LIMITATION_LIABILITY_001",
-        "measures": "aggregate fees paid or payable",
         "rupee_fields": "none"
       },
       {
