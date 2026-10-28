@@ -142,6 +142,18 @@ export async function runDocumentValidation(
     isUserEdit: resolveIsUserEdit(draft, isUserEdit),
   });
   layersRun.push("rule_engine");
+  // The statutory knowledge-base layer runs inside the rule engine. When it
+  // fails, say so in coverage, so the run is never presented as a clean one.
+  // (A completed run adds nothing, keeping output identical to before.)
+  if (coreValidation._layers?.statutory_status === "failed") {
+    layersSkipped.push({
+      layer: "statutory_kb",
+      reason: `failed to complete${
+        coreValidation._layers?.statutory_error ? `: ${coreValidation._layers.statutory_error}` : ""
+      }`,
+      failed: true,
+    });
+  }
 
   const runLayer = (name, condition, run, skipReason) => {
     if (!condition) {
@@ -525,6 +537,7 @@ function getClauseIssuePriority(issue) {
   if (ruleId === "AI_INTEGRITY_VIOLATION") return 95;
   if (ruleId.startsWith("AI_SEMANTIC_")) return 90;
   if (ruleId === "AI_CHECK_UNAVAILABLE") return 80;
+  if (ruleId === "STATUTORY_CHECK_UNAVAILABLE") return 80;
   if (ruleId.startsWith("INPUT_MISMATCH_")) return 70;
   if (ruleId.startsWith("CLAUSE_TEXT_")) return 30;
 

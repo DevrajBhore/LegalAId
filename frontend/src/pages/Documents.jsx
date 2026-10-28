@@ -63,7 +63,7 @@ export default function Documents() {
 
   const removeDraft = async (draftId, title) => {
     const confirmed = window.confirm(
-      `Delete the saved draft for ${title}? This removes it from your account history.`
+      `Delete this saved ${title} draft and its version history? Your other drafts are not affected.`
     );
 
     if (!confirmed) {
@@ -95,9 +95,9 @@ export default function Documents() {
       <section className="documents-hero">
         <div className="documents-hero-copy">
           <span className="documents-eyebrow">MY DOCUMENTS</span>
-          <h1 className="documents-title">Latest saved draft for each document type</h1>
+          <h1 className="documents-title">Your saved drafts</h1>
           <p className="documents-sub">
-            LegalAId now keeps only the latest saved draft for each document type, so your workspace stays simple and storage stays lean.
+            Every document you generate is saved separately, with its own version history, so drafts for different matters never overwrite each other.
           </p>
         </div>
 
@@ -166,6 +166,7 @@ export default function Documents() {
                   </div>
 
                   <div className="documents-card-meta">
+                    {document.parties && <span>{document.parties}</span>}
                     <span>{document.documentType.replace(/_/g, " ")}</span>
                     <span>Saved {formatDate(document.updatedAt)}</span>
                     <span>{draftReady ? "Ready to export" : "Needs review"}</span>

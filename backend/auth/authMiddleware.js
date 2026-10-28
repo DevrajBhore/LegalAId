@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { isCrossSiteCookieRequest } from "./originPolicy.js";
 
 // Minimal cookie reader (avoids adding a cookie-parser dependency).
 function readCookie(req, name) {
@@ -19,13 +20,19 @@ export async function protect(req, res, next) {
   try {
     const authHeader = req.headers.authorization;
     // Accept either a Bearer header (localStorage flow) or the httpOnly cookie.
-    const token =
-      authHeader && authHeader.startsWith("Bearer ")
-        ? authHeader.split(" ")[1]
-        : readCookie(req, "legalaid_token");
+    const bearer =
+      authHeader && authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null;
+    const token = bearer || readCookie(req, "legalaid_token");
 
     if (!token) {
       return res.status(401).json({ error: "Not authenticated. Please log in." });
+    }
+
+    // CSRF: the session cookie is SameSite=None in production, so a browser
+    // attaches it to cross-site requests. A state-changing request carried by
+    // the cookie alone must come from an allowed origin.
+    if (!bearer && isCrossSiteCookieRequest(req)) {
+      return res.status(403).json({ error: "Request origin not allowed." });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

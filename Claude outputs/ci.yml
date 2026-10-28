@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Every step runs offline. Provider keys are blanked so no test can reach a
+# live AI provider (and so results do not depend on one), and no database is
+# configured: the suite does not need one.
+env:
+  GEMINI_API_KEY: ""
+  GROQ_API_KEY: ""
+  OPENAI_API_KEY: ""
+  MONGODB_URI: ""
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches NODE_VERSION in render.yaml.
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            backend/package-lock.json
+            IRE/package-lock.json
+            frontend/package-lock.json
+
+      # npm ci installs exactly what the lockfiles record, so CI fails when a
+      # lockfile and package.json disagree instead of silently resolving.
+      - name: Install dependencies (root, backend, IRE, frontend)
+        run: |
+          npm ci --no-audit --no-fund
+          npm ci --no-audit --no-fund --prefix backend
+          npm ci --no-audit --no-fund --prefix IRE
+          npm ci --no-audit --no-fund --prefix frontend
+
+      - name: Ruleset ↔ blueprint drift check
+        # Fails the build if any blueprint was hand-edited out of sync with its
+        # ruleset (rulesets are the source of truth).
+        run: node scripts/rulesetToBlueprint.mjs all
+
+      - name: Full regression suite (npm test)
+        # Includes the clause baseline freeze, provenance conservation, release
+        # enforcement and the falsification suites.
+        run: npm test
+
+      - name: Clause engine regression test
+        run: node tests/clauseEngine.test.mjs
+
+      - name: Clause search test
+        run: node tests/clauseSearch.test.mjs
+
+      - name: Interview safety test
+        run: node tests/interview.test.mjs
+
+      - name: Template audit test
+        run: node tests/auditTemplates.test.cjs
+
+      - name: Frontend production build
+        run: npm run build --prefix frontend

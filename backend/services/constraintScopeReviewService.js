@@ -30,7 +30,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
+import { applyOverlay, saveOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const KB = path.resolve(__dirname, "../../knowledge-base");
@@ -217,9 +217,14 @@ export async function recordScopeDecision({
     };
   }
 
-  const persistence = action === "reset"
-    ? await clearOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId)
-    : await saveOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId, { scope_decision: rule.scope_decision }, name);
+  // A reset is stored as null (see reviewOverlay.js), so a decision still in
+  // the deployed files does not reappear after a restart.
+  const persistence = await saveOverlay(
+    OVERLAY_KIND.CONSTRAINT_SCOPE,
+    ruleId,
+    { scope_decision: rule.scope_decision ?? null },
+    name
+  );
 
   fs.writeFileSync(file, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
 

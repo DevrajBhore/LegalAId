@@ -177,8 +177,33 @@ function buildSubordinateNotice(relevantActs = []) {
   };
 }
 
+// Reported when the statutory layer throws. Without it, a failure before any
+// finding was added returned an empty issue list -- indistinguishable from "the
+// statutory checks ran and found nothing". Mirrors AI_CHECK_UNAVAILABLE: it is
+// visible and needs review, but does not block generation or export by itself.
+export function statutoryCheckUnavailableIssue(err) {
+  const reason = err?.message ? ` (${String(err.message).slice(0, 200)})` : "";
+  return {
+    rule_id: "STATUTORY_CHECK_UNAVAILABLE",
+    severity: "HIGH",
+    source: "StatutoryKB",
+    message: `The statutory knowledge-base check could not complete${reason}. Any statutory findings shown are partial, and their absence does not mean the document was checked against the mapped statutes.`,
+    suggestion:
+      "Re-run validation. If this persists, the statutory layer needs engineering attention before relying on this document.",
+    blocks_generation: false,
+    release_outcome: "REQUIRES_LEGAL_REVIEW",
+    manual_review_required: true,
+    check_unavailable: true,
+  };
+}
+
 /**
  * Dynamic Statutory KB Validation Engine
+ *
+ * Returns { issues, context }. On failure context.status is "failed",
+ * context.error carries the message and issues includes a
+ * STATUTORY_CHECK_UNAVAILABLE finding. A completed run's context is unchanged
+ * from before, so clean output stays byte-identical.
  */
 export async function runStatutoryValidation(draft) {
   const issues = [];
@@ -234,7 +259,10 @@ export async function runStatutoryValidation(draft) {
     const statutoryIssues = compareDraftAgainstRules(draft, uniqueRules);
     issues.push(...statutoryIssues);
   } catch (err) {
-    console.error("Statutory engine failed safely:", err);
+    console.error("[IRE] Statutory engine failed; reporting the layer as unavailable:", err);
+    context.status = "failed";
+    context.error = err?.message || String(err);
+    issues.push(statutoryCheckUnavailableIssue(err));
   }
 
   return { issues, context };

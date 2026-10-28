@@ -21,7 +21,7 @@ import { fileURLToPath } from "url";
 
 import { clauseReviewState, REVIEW_STATE } from "../../shared/clauseProvenance.js";
 import { clearClauseCache } from "./clauseAssembler.js";
-import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
+import { applyOverlay, saveOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CLAUSE_LIB = path.resolve(__dirname, "../../knowledge-base/clause_library");
@@ -359,9 +359,11 @@ export async function recordLibraryReview({
   const overlayPayload = Object.fromEntries(
     OVERLAY_KEYS.map((key) => [key, Object.prototype.hasOwnProperty.call(clause, key) ? clause[key] : null])
   );
-  const persistence = action === "reset"
-    ? await clearOverlay(OVERLAY_KIND.CLAUSE, clauseId)
-    : await saveOverlay(OVERLAY_KIND.CLAUSE, clauseId, overlayPayload, name);
+  // A reset is stored as nulls, not deleted: deleting the row would let a
+  // sign-off still present in the deployed files come back after a restart.
+  // saveOverlay throws (503) when durable state is required but unreachable,
+  // before the file below is touched.
+  const persistence = await saveOverlay(OVERLAY_KIND.CLAUSE, clauseId, overlayPayload, name);
 
   const payload = Array.isArray(JSON.parse(fs.readFileSync(file, "utf8"))) ? parsed : parsed[0];
   fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\n`, "utf8");

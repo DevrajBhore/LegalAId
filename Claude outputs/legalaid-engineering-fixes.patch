@@ -1,0 +1,1796 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 6ed252874..10c475725 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -6,24 +6,52 @@ on:
+   pull_request:
+     branches: [main]
+ 
++# Every step runs offline. Provider keys are blanked so no test can reach a
++# live AI provider (and so results do not depend on one), and no database is
++# configured: the suite does not need one.
++env:
++  GEMINI_API_KEY: ""
++  GROQ_API_KEY: ""
++  OPENAI_API_KEY: ""
++  MONGODB_URI: ""
++
+ jobs:
+   checks:
+     runs-on: ubuntu-latest
++    timeout-minutes: 60
+     steps:
+       - uses: actions/checkout@v4
+ 
+       - uses: actions/setup-node@v4
+         with:
++          # Matches NODE_VERSION in render.yaml.
+           node-version: "20"
++          cache: npm
++          cache-dependency-path: |
++            package-lock.json
++            backend/package-lock.json
++            IRE/package-lock.json
++            frontend/package-lock.json
+ 
+-      - name: Install backend deps
+-        run: cd backend && npm install
++      # npm ci installs exactly what the lockfiles record, so CI fails when a
++      # lockfile and package.json disagree instead of silently resolving.
++      - name: Install dependencies (root, backend, IRE, frontend)
++        run: |
++          npm ci --no-audit --no-fund
++          npm ci --no-audit --no-fund --prefix backend
++          npm ci --no-audit --no-fund --prefix IRE
++          npm ci --no-audit --no-fund --prefix frontend
+ 
+       - name: Ruleset ↔ blueprint drift check
+         # Fails the build if any blueprint was hand-edited out of sync with its
+         # ruleset (rulesets are the source of truth).
+         run: node scripts/rulesetToBlueprint.mjs all
+ 
++      - name: Full regression suite (npm test)
++        # Includes the clause baseline freeze, provenance conservation, release
++        # enforcement and the falsification suites.
++        run: npm test
++
+       - name: Clause engine regression test
+         run: node tests/clauseEngine.test.mjs
+ 
+@@ -35,3 +63,6 @@ jobs:
+ 
+       - name: Template audit test
+         run: node tests/auditTemplates.test.cjs
++
++      - name: Frontend production build
++        run: npm run build --prefix frontend
+diff --git a/IRE/engine.js b/IRE/engine.js
+index 68666e2c6..590eba97a 100644
+--- a/IRE/engine.js
++++ b/IRE/engine.js
+@@ -1,7 +1,10 @@
+ import { bootstrapIRE } from "./bootstrap.js";
+ import { runIRE } from "./src/indian-rule-engine/index.js";
+ import { runUniversalValidation } from "./src/universal/universalEngine.js";
+-import { runStatutoryValidation } from "./src/statutes/statutoryEngine.js";
++import {
++  runStatutoryValidation,
++  statutoryCheckUnavailableIssue,
++} from "./src/statutes/statutoryEngine.js";
+ import { illegalClauseValidate } from "./src/indian-rule-engine/illegalClauseValidator.js";
+ import { stampDutyValidate } from "./src/indian-rule-engine/stampDutyValidator.js";
+ import { registrationValidate } from "./src/indian-rule-engine/registrationValidator.js";
+@@ -90,13 +93,30 @@ export async function validateDocument(
+   // ── Layer 3: Statutory KB validation (IndiaCode sections)
+   let statutoryIssues = [];
+   let statutoryContext = null;
++  // "not_run" | "completed" | "failed" -- so callers never mistake a layer that
++  // did not complete for one that ran clean.
++  let statutoryStatus = "not_run";
++  let statutoryError = null;
+   if (shouldRunStatutory(validationMode)) {
+-    const statutory = await runStatutoryValidation(draft);
++    let statutory;
++    try {
++      statutory = await runStatutoryValidation(draft);
++    } catch (err) {
++      // runStatutoryValidation catches internally; this guards a failure in
++      // anything it calls before its own try block.
++      statutory = {
++        issues: [statutoryCheckUnavailableIssue(err)],
++        context: { status: "failed", error: err?.message || String(err) },
++      };
++    }
+     if (Array.isArray(statutory)) {
+       statutoryIssues = statutory;
++      statutoryStatus = "completed";
+     } else {
+-      statutoryIssues = statutory.issues || [];
+-      statutoryContext = statutory.context || null;
++      statutoryIssues = statutory?.issues || [];
++      statutoryContext = statutory?.context || null;
++      statutoryStatus = statutoryContext?.status === "failed" ? "failed" : "completed";
++      statutoryError = statutoryContext?.error || null;
+     }
+   }
+ 
+@@ -155,6 +175,11 @@ export async function validateDocument(
+       semantic_issues: semanticIssues.length,
+       universal_issues: universalIssues.length,
+       statutory_issues: statutoryIssues.length,
++      // Present only when the layer failed, so a clean run's output is
++      // byte-identical to before (tests/provenanceConservation.test.mjs).
++      ...(statutoryStatus === "failed"
++        ? { statutory_status: "failed", statutory_error: statutoryError }
++        : {}),
+       registration_issues: registrationIssues.length,
+       subordinate_notice_issues: statutoryIssues.filter(
+         (issue) => issue?.rule_id === "SUBORDINATE_LEGISLATION_REVIEW"
+diff --git a/IRE/src/statutes/statutoryEngine.js b/IRE/src/statutes/statutoryEngine.js
+index 78ac87403..ce84ccf69 100644
+--- a/IRE/src/statutes/statutoryEngine.js
++++ b/IRE/src/statutes/statutoryEngine.js
+@@ -177,8 +177,33 @@ function buildSubordinateNotice(relevantActs = []) {
+   };
+ }
+ 
++// Reported when the statutory layer throws. Without it, a failure before any
++// finding was added returned an empty issue list -- indistinguishable from "the
++// statutory checks ran and found nothing". Mirrors AI_CHECK_UNAVAILABLE: it is
++// visible and needs review, but does not block generation or export by itself.
++export function statutoryCheckUnavailableIssue(err) {
++  const reason = err?.message ? ` (${String(err.message).slice(0, 200)})` : "";
++  return {
++    rule_id: "STATUTORY_CHECK_UNAVAILABLE",
++    severity: "HIGH",
++    source: "StatutoryKB",
++    message: `The statutory knowledge-base check could not complete${reason}. Any statutory findings shown are partial, and their absence does not mean the document was checked against the mapped statutes.`,
++    suggestion:
++      "Re-run validation. If this persists, the statutory layer needs engineering attention before relying on this document.",
++    blocks_generation: false,
++    release_outcome: "REQUIRES_LEGAL_REVIEW",
++    manual_review_required: true,
++    check_unavailable: true,
++  };
++}
++
+ /**
+  * Dynamic Statutory KB Validation Engine
++ *
++ * Returns { issues, context }. On failure context.status is "failed",
++ * context.error carries the message and issues includes a
++ * STATUTORY_CHECK_UNAVAILABLE finding. A completed run's context is unchanged
++ * from before, so clean output stays byte-identical.
+  */
+ export async function runStatutoryValidation(draft) {
+   const issues = [];
+@@ -234,7 +259,10 @@ export async function runStatutoryValidation(draft) {
+     const statutoryIssues = compareDraftAgainstRules(draft, uniqueRules);
+     issues.push(...statutoryIssues);
+   } catch (err) {
+-    console.error("Statutory engine failed safely:", err);
++    console.error("[IRE] Statutory engine failed; reporting the layer as unavailable:", err);
++    context.status = "failed";
++    context.error = err?.message || String(err);
++    issues.push(statutoryCheckUnavailableIssue(err));
+   }
+ 
+   return { issues, context };
+diff --git a/backend/.env.example b/backend/.env.example
+index d117ee92f..59571c24d 100644
+--- a/backend/.env.example
++++ b/backend/.env.example
+@@ -7,9 +7,15 @@ OPENAI_API_KEY=your_openai_api_key
+ 
+ MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/LegalAIdUsers
+ 
+-# Frontend URL used in verification and reset links
++# Frontend URL used in verification and reset links, and the CORS/CSRF
++# allowlist (comma-separate extra origins). REQUIRED in production: the server
++# refuses to start without it. Unset in development allows localhost only.
+ CLIENT_URL=http://localhost:5173
+ 
++# How often (ms) advocate review decisions are re-read from MongoDB so several
++# instances stay in step. 0 disables. Default 300000 (5 minutes).
++# REVIEW_OVERLAY_REFRESH_MS=300000
++
+ JWT_SECRET=replace_with_a_long_random_secret
+ JWT_EXPIRES_IN=7d
+ 
+diff --git a/backend/ai/providers.js b/backend/ai/providers.js
+index 9a254d0a4..1ee6e5003 100644
+--- a/backend/ai/providers.js
++++ b/backend/ai/providers.js
+@@ -71,10 +71,23 @@ export function getProviderChain() {
+   const chain = [];
+   if (primary.isConfigured()) chain.push(primary);
+   if (fallback !== primary && fallback.isConfigured()) chain.push(fallback);
++  if (chain.length === 0) {
++    // Neither the selected primary nor fallback has a key, but another
++    // registered provider does (e.g. only OPENAI_API_KEY is set while
++    // AI_PROVIDER defaults to gemini). Use it rather than failing every call.
++    const anyConfigured = Object.values(PROVIDERS).find((p) => p.isConfigured());
++    if (anyConfigured) chain.push(anyConfigured);
++  }
+   if (chain.length === 0) chain.push(primary); // surface a clear "missing key" error
+   return chain;
+ }
+ 
++// Single source of truth for "is any AI provider usable right now". Callers
++// must use this instead of checking individual *_API_KEY variables.
++export function hasConfiguredProvider() {
++  return getProviderChain().some((provider) => provider.isConfigured());
++}
++
+ export function getProvider(name) {
+   return resolve(name);
+ }
+diff --git a/backend/auth/authMiddleware.js b/backend/auth/authMiddleware.js
+index dd308e481..0ef2903db 100644
+--- a/backend/auth/authMiddleware.js
++++ b/backend/auth/authMiddleware.js
+@@ -1,5 +1,6 @@
+ import jwt from "jsonwebtoken";
+ import User from "../models/User.js";
++import { isCrossSiteCookieRequest } from "./originPolicy.js";
+ 
+ // Minimal cookie reader (avoids adding a cookie-parser dependency).
+ function readCookie(req, name) {
+@@ -19,15 +20,21 @@ export async function protect(req, res, next) {
+   try {
+     const authHeader = req.headers.authorization;
+     // Accept either a Bearer header (localStorage flow) or the httpOnly cookie.
+-    const token =
+-      authHeader && authHeader.startsWith("Bearer ")
+-        ? authHeader.split(" ")[1]
+-        : readCookie(req, "legalaid_token");
++    const bearer =
++      authHeader && authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null;
++    const token = bearer || readCookie(req, "legalaid_token");
+ 
+     if (!token) {
+       return res.status(401).json({ error: "Not authenticated. Please log in." });
+     }
+ 
++    // CSRF: the session cookie is SameSite=None in production, so a browser
++    // attaches it to cross-site requests. A state-changing request carried by
++    // the cookie alone must come from an allowed origin.
++    if (!bearer && isCrossSiteCookieRequest(req)) {
++      return res.status(403).json({ error: "Request origin not allowed." });
++    }
++
+     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+ 
+     const user = await User.findById(decoded.id)
+diff --git a/backend/auth/originPolicy.js b/backend/auth/originPolicy.js
+new file mode 100644
+index 000000000..8aaed8a20
+--- /dev/null
++++ b/backend/auth/originPolicy.js
+@@ -0,0 +1,86 @@
++/**
++ * originPolicy.js — which browser origins may talk to this API with credentials.
++ *
++ * CLIENT_URL is a single origin or a comma-separated list. In production it is
++ * REQUIRED: the old fallback reflected any request origin with credentials
++ * enabled, which, with a SameSite=None session cookie, let any website make
++ * authenticated requests on a signed-in user's behalf.
++ *
++ * Without CLIENT_URL outside production, only loopback origins (localhost,
++ * 127.0.0.1, [::1], any port) are allowed, so local development still works.
++ */
++
++// Browser Origin headers never carry a trailing slash while CLIENT_URL often
++// does, so both sides are normalized the same way.
++export const normalizeOrigin = (value) =>
++  String(value || "").trim().replace(/\/+$/, "").toLowerCase();
++
++export function isProductionEnv(env = process.env) {
++  return env.NODE_ENV === "production" || Boolean(env.RENDER);
++}
++
++export function configuredOrigins(env = process.env) {
++  return String(env.CLIENT_URL || "")
++    .split(",")
++    .map(normalizeOrigin)
++    .filter(Boolean);
++}
++
++const LOOPBACK_ORIGIN = /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/;
++
++export function isOriginAllowed(origin, env = process.env) {
++  const normalized = normalizeOrigin(origin);
++  if (!normalized) return false;
++  const allowed = configuredOrigins(env);
++  if (allowed.length) return allowed.includes(normalized);
++  if (isProductionEnv(env)) return false;
++  return LOOPBACK_ORIGIN.test(normalized);
++}
++
++// A page served by this same host (no cross-site hop) is not a CSRF vector.
++function isSameHost(origin, req) {
++  const host = String(req.headers?.["x-forwarded-host"] || req.headers?.host || "")
++    .split(",")[0]
++    .trim()
++    .toLowerCase();
++  if (!host) return false;
++  try {
++    return new URL(origin).host.toLowerCase() === host;
++  } catch {
++    return false;
++  }
++}
++
++const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
++
++/**
++ * CSRF guard for cookie-authenticated, state-changing requests.
++ *
++ * A Bearer-token request cannot be forged cross-site (the attacker cannot read
++ * the token), so it passes. A cookie-authenticated POST/PUT/PATCH/DELETE must
++ * come from an allowed origin. Browsers always send Origin on cross-site
++ * unsafe requests; when Origin is absent we fall back to Referer. A request
++ * with neither is not from a browser page and is allowed (server-to-server
++ * clients do not hold the session cookie).
++ */
++export function isCrossSiteCookieRequest(req, env = process.env) {
++  const method = String(req.method || "GET").toUpperCase();
++  if (SAFE_METHODS.has(method)) return false;
++
++  const origin = req.headers?.origin;
++  if (origin && origin !== "null") {
++    return !isOriginAllowed(origin, env) && !isSameHost(origin, req);
++  }
++  if (origin === "null") return true; // sandboxed / opaque origin
++
++  const referer = req.headers?.referer;
++  if (referer) {
++    try {
++      const refererOrigin = new URL(referer).origin;
++      return !isOriginAllowed(refererOrigin, env) && !isSameHost(refererOrigin, req);
++    } catch {
++      return true;
++    }
++  }
++  return false;
++}
+diff --git a/backend/index.js b/backend/index.js
+index efb519744..570286de0 100644
+--- a/backend/index.js
++++ b/backend/index.js
+@@ -41,11 +41,14 @@ import {
+   extractIntakeFromPrompt,
+ } from "./services/interviewService.js";
+ import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
++import { buildDocumentIntelligence } from "./services/documentIntelligence.js";
++import { buildObligations } from "./services/obligationTracker.js";
+ import { prepareExportDraft, guardChatEdits } from "./services/mutationEntryPoints.js";
+ 
+ import authRoutes from "./auth/authRoutes.js";
+ import { contactHandler } from "./routes/contactRoutes.js";
+ import { protect, requireAdmin } from "./auth/authMiddleware.js";
++import { configuredOrigins, isOriginAllowed, isProductionEnv } from "./auth/originPolicy.js";
+ import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
+ import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
+ import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
+@@ -79,40 +82,36 @@ const app = express();
+ app.set("trust proxy", 1);
+ const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
+ 
+-// Restrict CORS to configured client origin(s). CLIENT_URL may be a single
+-// origin or a comma-separated list; if unset, fall back to permissive (dev).
+-// Origins are normalized (trailing slash stripped, lower-cased) because browser
+-// Origin headers never carry a trailing slash while CLIENT_URL often does.
+-const normalizeOrigin = (value) =>
+-  String(value || "").trim().replace(/\/+$/, "").toLowerCase();
+-const ALLOWED_ORIGINS = (process.env.CLIENT_URL || "")
+-  .split(",")
+-  .map(normalizeOrigin)
+-  .filter(Boolean);
++// Restrict CORS to configured client origin(s); see auth/originPolicy.js.
++// CLIENT_URL may be a single origin or a comma-separated list. Production
++// refuses to start without it: reflecting any request origin with credentials
++// (the old fallback) lets any website make authenticated calls.
++// Without CLIENT_URL outside production, only loopback origins are allowed.
++const ALLOWED_ORIGINS = configuredOrigins();
+ if (ALLOWED_ORIGINS.length) {
+   console.log(`[CORS] Allowed origins: ${ALLOWED_ORIGINS.join(", ")}`);
++} else if (isProductionEnv()) {
++  console.error(
++    "[Config] CLIENT_URL is not set in production. Set it to the frontend origin(s), comma-separated; refusing to start."
++  );
++  process.exit(1);
++} else {
++  console.warn("[CORS] CLIENT_URL is not set; allowing loopback origins only (development).");
+ }
+ app.use(
+-  cors(
+-    ALLOWED_ORIGINS.length
+-      ? {
+-          origin(origin, callback) {
+-            // Allow same-origin / server-to-server (no Origin header) and listed origins.
+-            if (!origin || ALLOWED_ORIGINS.includes(normalizeOrigin(origin))) {
+-              return callback(null, true);
+-            }
+-            // Deny without throwing (avoids noisy 500 stack traces); the browser
+-            // simply won't receive CORS headers. Log so misconfig is visible.
+-            console.warn(`[CORS] Blocked origin: ${origin}`);
+-            return callback(null, false);
+-          },
+-          credentials: true,
+-        }
+-      : // No CLIENT_URL configured: reflect the request origin (NOT wildcard) so
+-        // credentialed requests still work. Wildcard "*" is incompatible with
+-        // credentials:true and would be blocked by the browser.
+-        { origin: true, credentials: true }
+-  )
++  cors({
++    origin(origin, callback) {
++      // Allow same-origin / server-to-server (no Origin header) and allowed origins.
++      if (!origin || isOriginAllowed(origin)) {
++        return callback(null, true);
++      }
++      // Deny without throwing (avoids noisy 500 stack traces); the browser
++      // simply won't receive CORS headers. Log so misconfig is visible.
++      console.warn(`[CORS] Blocked origin: ${origin}`);
++      return callback(null, false);
++    },
++    credentials: true,
++  })
+ );
+ app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
+ app.use(express.urlencoded({ extended: true, limit: REQUEST_BODY_LIMIT }));
+@@ -301,6 +300,22 @@ mongoose
+     // the wording that ships.
+     const { clearClauseCache } = await import("./services/clauseAssembler.js");
+     clearClauseCache();
++
++    // Re-read decisions periodically so instances do not drift apart: a
++    // decision recorded on one instance reaches the others within this
++    // interval. Set REVIEW_OVERLAY_REFRESH_MS=0 to disable.
++    const refreshMs = Number(process.env.REVIEW_OVERLAY_REFRESH_MS ?? 5 * 60 * 1000);
++    if (Number.isFinite(refreshMs) && refreshMs > 0) {
++      setInterval(async () => {
++        const refreshed = await hydrateReviewOverlay();
++        if (refreshed.changed) {
++          clearClauseCache();
++          console.log(`[Review] Overlay refreshed: ${refreshed.hydrated} decision(s)`);
++        } else if (!refreshed.available) {
++          console.warn(`[Review] Overlay refresh failed: ${refreshed.error || "database unavailable"}`);
++        }
++      }, refreshMs).unref();
++    }
+     if (process.env.GEMINI_WARMUP_ON_STARTUP === "true") {
+       import("./ai/geminiClient.js")
+         .then(({ callGeminiSafety }) => {
+@@ -370,6 +385,26 @@ app.get("/health", (_req, res) => {
+   });
+ });
+ 
++// Readiness, distinct from liveness (/health stays 200 so the platform does not
++// restart a process that can still serve documents). 503 here means advocate
++// review decisions are not currently durable: reads fall back to the files and
++// new decisions are refused until the database is reachable.
++app.get("/ready", (_req, res) => {
++  const database = mongoose.connection.readyState === 1;
++  const review = reviewOverlayStatus();
++  const ready = review.ready && (database || !process.env.MONGODB_URI);
++  res.status(ready ? 200 : 503).json({
++    ready,
++    database: database ? "connected" : "unavailable",
++    review_persistence: {
++      required: review.required,
++      available: review.available,
++      last_hydrated_at: review.last_hydrated_at,
++      last_error: review.last_error,
++    },
++  });
++});
++
+ // ── Get all supported document types (public — needed for home page) ──────────
+ // Withdrawn types are left out: they cannot be started, so they are not offered.
+ app.get("/document-types", (_req, res) => {
+@@ -619,7 +654,13 @@ app.post("/validate", protect, async (req, res) => {
+       sourceVariables: body.variables,
+     });
+     // D4.51: the disclosure follows the draft as edited (a deleted protection drops out).
+-    res.json({ validation: { ...validation, disclosure: disclosureFor(body) } });
++    // The explanations and lifecycle obligations follow it too, so the editor's
++    // panels do not keep describing the draft as it was first generated.
++    res.json({
++      validation: { ...validation, disclosure: disclosureFor(body) },
++      intelligence: buildDocumentIntelligence(body, validation),
++      obligations: buildObligations(body, body.variables || body.metadata?.source_variables || {}),
++    });
+   } catch (error) {
+     console.error("Validation error:", error);
+     res
+diff --git a/backend/services/constraintScopeReviewService.js b/backend/services/constraintScopeReviewService.js
+index 70587bfd4..3ec8a4ccf 100644
+--- a/backend/services/constraintScopeReviewService.js
++++ b/backend/services/constraintScopeReviewService.js
+@@ -30,7 +30,7 @@ import fs from "fs";
+ import path from "path";
+ import { fileURLToPath } from "url";
+ 
+-import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
++import { applyOverlay, saveOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
+ 
+ const __dirname = path.dirname(fileURLToPath(import.meta.url));
+ const KB = path.resolve(__dirname, "../../knowledge-base");
+@@ -217,9 +217,14 @@ export async function recordScopeDecision({
+     };
+   }
+ 
+-  const persistence = action === "reset"
+-    ? await clearOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId)
+-    : await saveOverlay(OVERLAY_KIND.CONSTRAINT_SCOPE, ruleId, { scope_decision: rule.scope_decision }, name);
++  // A reset is stored as null (see reviewOverlay.js), so a decision still in
++  // the deployed files does not reappear after a restart.
++  const persistence = await saveOverlay(
++    OVERLAY_KIND.CONSTRAINT_SCOPE,
++    ruleId,
++    { scope_decision: rule.scope_decision ?? null },
++    name
++  );
+ 
+   fs.writeFileSync(file, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
+ 
+diff --git a/backend/services/documentHistoryService.js b/backend/services/documentHistoryService.js
+index 62d50441a..f81af7a7b 100644
+--- a/backend/services/documentHistoryService.js
++++ b/backend/services/documentHistoryService.js
+@@ -5,6 +5,8 @@ import mongoose from "mongoose";
+ import DocumentDraft from "../models/DocumentDraft.js";
+ import DocumentVersion from "../models/DocumentVersion.js";
+ import { buildDocumentTypeMeta } from "./documentTypeNormalizer.js";
++import { buildDocumentIntelligence } from "./documentIntelligence.js";
++import { buildObligations } from "./obligationTracker.js";
+ 
+ function cloneValue(value) {
+   return value == null ? null : JSON.parse(JSON.stringify(value));
+@@ -94,6 +96,39 @@ function currentValidationOf(record) {
+     : validation;
+ }
+ 
++// Explanations and obligations are derived from the stored draft on read, never
++// stored, so a reopened or restored document shows panels that match its text.
++function derivedPanelsOf(draft, validation) {
++  if (!draft) return { intelligence: null, obligations: null };
++  try {
++    return {
++      intelligence: buildDocumentIntelligence(draft, validation || {}),
++      obligations: buildObligations(draft, draft?.metadata?.source_variables || {}),
++    };
++  } catch (error) {
++    console.error("History panel derivation failed:", error);
++    return { intelligence: null, obligations: null };
++  }
++}
++
++// Who a saved document is between, for telling several documents of the same
++// type apart in the list. Display only; never used for identity.
++const PARTY_NAME_KEYS = [
++  "party_1_name", "party_2_name", "employer_name", "employee_name",
++  "company_name", "shareholder_1_name", "shareholder_2_name",
++  "partner_1_name", "partner_2_name", "deponent_name", "addressee_name",
++];
++function partiesLabelOf(record) {
++  const vars = record?.sourceVariables || record?.currentDraft?.metadata?.source_variables || {};
++  const names = [];
++  for (const key of PARTY_NAME_KEYS) {
++    const value = typeof vars[key] === "string" ? vars[key].trim() : "";
++    if (value && !names.includes(value)) names.push(value);
++    if (names.length === 2) break;
++  }
++  return names.length ? names.join(" & ").slice(0, 160) : null;
++}
++
+ function buildHistorySummary(record) {
+   const validationSummary = summarizeValidation(currentValidationOf(record));
+ 
+@@ -110,6 +145,7 @@ function buildHistorySummary(record) {
+     draftId: String(record._id),
+     documentType: record.documentType,
+     title: record.title,
++    parties: partiesLabelOf(record),
+     documentMeta:
+       record.documentMeta || buildDocumentTypeMeta(record.documentType),
+     status:
+@@ -150,37 +186,6 @@ function ensureObjectId(value, label) {
+   return value;
+ }
+ 
+-async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
+-  const records = await DocumentDraft.find({ userId, documentType })
+-    .sort({ updatedAt: -1, createdAt: -1 })
+-    .select("_id")
+-    .lean();
+-
+-  const keepRecordId =
+-    keepId != null
+-      ? String(keepId)
+-      : records.length > 0
+-        ? String(records[0]._id)
+-        : null;
+-
+-  const staleIds = records
+-    .map((record) => String(record._id))
+-    .filter((id) => id !== keepRecordId);
+-
+-  if (staleIds.length > 0) {
+-    await DocumentDraft.deleteMany({ _id: mongoose.trusted({ $in: staleIds }), userId });
+-  }
+-
+-  // Only orphaned (stale) drafts have their versions purged. The kept record's
+-  // version history is preserved.
+-  if (staleIds.length > 0) {
+-    await DocumentVersion.deleteMany({
+-      userId,
+-      draftId: mongoose.trusted({ $in: staleIds }),
+-    });
+-  }
+-}
+-
+ const VERSION_CHANGE_TYPES = new Set([
+   "generated",
+   "autosave",
+@@ -241,24 +246,17 @@ function serializeVersionSummary(version, documentType) {
+   };
+ }
+ 
+-async function findPrimaryDraftRecord(userId, draftId, documentType) {
+-  const records = await DocumentDraft.find({ userId, documentType }).sort({
+-    updatedAt: -1,
+-    createdAt: -1,
+-  });
+-
+-  if (records.length === 0) {
+-    return null;
+-  }
+-
+-  if (draftId) {
+-    const matching = records.find((record) => String(record._id) === String(draftId));
+-    if (matching) {
+-      return matching;
+-    }
+-  }
+-
+-  return records[0];
++// Each saved document is its own matter, identified by its _id. Earlier
++// versions kept "one live document per type": a save without a matching id
++// attached itself to the user's most recent record of that type, and every
++// save/list deleted the user's other records of the type. Two unrelated NDAs
++// therefore overwrote each other. A save now updates exactly the record it
++// names, and a save without an id starts a new document.
++async function findOwnedDraftRecord(userId, draftId) {
++  ensureObjectId(draftId, "Document history record");
++  const record = await DocumentDraft.findOne({ _id: draftId, userId });
++  ensureOwnedDraft(record, draftId);
++  return record;
+ }
+ 
+ export async function saveDocumentHistory({
+@@ -283,14 +281,7 @@ export async function saveDocumentHistory({
+   const status = deriveStatus({ changeType, validation });
+   const now = new Date();
+ 
+-  let record = await findPrimaryDraftRecord(userId, draftId, draft.document_type);
+-
+-  if (draftId && !record) {
+-    ensureObjectId(draftId, "Document history record");
+-    const directRecord = await DocumentDraft.findOne({ _id: draftId, userId });
+-    ensureOwnedDraft(directRecord, draftId);
+-    record = directRecord;
+-  }
++  let record = draftId ? await findOwnedDraftRecord(userId, draftId) : null;
+ 
+   if (!record) {
+     record = new DocumentDraft({
+@@ -319,7 +310,6 @@ export async function saveDocumentHistory({
+       contentHash,
+     });
+     await record.save();
+-    await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
+ 
+     return {
+       history: buildHistorySummary(record),
+@@ -368,7 +358,6 @@ export async function saveDocumentHistory({
+   if (createdVersion) {
+     await pruneVersions(record);
+   }
+-  await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
+ 
+   return {
+     history: buildHistorySummary(record),
+@@ -378,6 +367,8 @@ export async function saveDocumentHistory({
+ }
+ 
+ export async function listDocumentHistories(userId) {
++  // Every saved document, most recent first. Nothing is collapsed or deleted
++  // on read: each record is an independent matter.
+   const records = await DocumentDraft.find({
+     userId,
+     status: mongoose.trusted({ $ne: "archived" }),
+@@ -385,25 +376,7 @@ export async function listDocumentHistories(userId) {
+     .sort({ updatedAt: -1, createdAt: -1 })
+     .lean();
+ 
+-  const seenTypes = new Set();
+-  const latestRecords = [];
+-
+-  for (const record of records) {
+-    if (seenTypes.has(record.documentType)) {
+-      continue;
+-    }
+-
+-    seenTypes.add(record.documentType);
+-    latestRecords.push(record);
+-  }
+-
+-  await Promise.all(
+-    latestRecords.map((record) =>
+-      purgeLegacyHistoryRecords(userId, record.documentType, record._id)
+-    )
+-  );
+-
+-  return latestRecords.map((record) => buildHistorySummary(record));
++  return records.map((record) => buildHistorySummary(record));
+ }
+ 
+ export async function getDocumentHistoryDetail(userId, draftId) {
+@@ -422,9 +395,11 @@ export async function getDocumentHistoryDetail(userId, draftId) {
+     .limit(MAX_STORED_VERSIONS)
+     .lean();
+ 
++  const validation = cloneValue(currentValidationOf(record));
+   return {
+     draft: cloneValue(record.currentDraft),
+-    validation: cloneValue(currentValidationOf(record)),
++    validation,
++    ...derivedPanelsOf(record.currentDraft, validation),
+     documentMeta:
+       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
+     history: buildHistorySummary(record),
+@@ -442,31 +417,10 @@ export async function deleteDocumentHistory(userId, draftId) {
+ 
+   ensureOwnedDraft(record, draftId);
+ 
+-  // Deliberately scoped to the document TYPE, not just this _id. The product
+-  // model is one live document per type — purgeLegacyHistoryRecords collapses
+-  // duplicates on every save and list — so deleting only the requested _id would
+-  // let an older legacy duplicate of the same type resurface and read as a
+-  // failed delete. Both queries stay filtered by userId.
+-  const relatedRecords = await DocumentDraft.find({
+-    userId,
+-    documentType: record.documentType,
+-  })
+-    .select("_id")
+-    .lean();
+-
+-  const relatedIds = relatedRecords.map((item) => String(item._id));
+-
+-  if (relatedIds.length > 0) {
+-    await DocumentVersion.deleteMany({
+-      userId,
+-      draftId: mongoose.trusted({ $in: relatedIds }),
+-    });
+-  }
+-
+-  await DocumentDraft.deleteMany({
+-    userId,
+-    documentType: record.documentType,
+-  });
++  // Scoped to this one document: other documents of the same type are
++  // separate matters and are left untouched.
++  await DocumentVersion.deleteMany({ userId, draftId: record._id });
++  await DocumentDraft.deleteOne({ _id: record._id, userId });
+ 
+   return {
+     deleted: true,
+@@ -515,9 +469,11 @@ export async function restoreDocumentHistoryVersion({ userId, draftId, versionId
+     .limit(MAX_STORED_VERSIONS)
+     .lean();
+ 
++  const validation = cloneValue(currentValidationOf(record));
+   return {
+     draft: cloneValue(record.currentDraft),
+-    validation: cloneValue(currentValidationOf(record)),
++    validation,
++    ...derivedPanelsOf(record.currentDraft, validation),
+     documentMeta:
+       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
+     history: buildHistorySummary(record),
+diff --git a/backend/services/documentService.js b/backend/services/documentService.js
+index cd97106ca..6fbbbf5b1 100644
+--- a/backend/services/documentService.js
++++ b/backend/services/documentService.js
+@@ -37,6 +37,7 @@ import {
+   runDocumentValidation,
+ } from "./validationService.js";
+ import { callAI } from "../ai/aiClient.js";
++import { hasConfiguredProvider } from "../ai/providers.js";
+ import { deriveGenerationControls } from "./generationControls.js";
+ import { buildSemanticContext } from "./inputSemantics.js";
+ import { buildDocumentIntelligence } from "./documentIntelligence.js";
+@@ -565,7 +566,7 @@ function shouldUseSemanticGeneration(input = {}) {
+ }
+ 
+ function hasSemanticProviderConfigured() {
+-  return Boolean(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY);
++  return hasConfiguredProvider();
+ }
+ 
+ function isSignatureClause(clause = {}) {
+diff --git a/backend/services/libraryReviewService.js b/backend/services/libraryReviewService.js
+index 33adaf3c3..f665c4971 100644
+--- a/backend/services/libraryReviewService.js
++++ b/backend/services/libraryReviewService.js
+@@ -21,7 +21,7 @@ import { fileURLToPath } from "url";
+ 
+ import { clauseReviewState, REVIEW_STATE } from "../../shared/clauseProvenance.js";
+ import { clearClauseCache } from "./clauseAssembler.js";
+-import { applyOverlay, saveOverlay, clearOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
++import { applyOverlay, saveOverlay, OVERLAY_KIND } from "./reviewOverlay.js";
+ 
+ const __dirname = path.dirname(fileURLToPath(import.meta.url));
+ const CLAUSE_LIB = path.resolve(__dirname, "../../knowledge-base/clause_library");
+@@ -359,9 +359,11 @@ export async function recordLibraryReview({
+   const overlayPayload = Object.fromEntries(
+     OVERLAY_KEYS.map((key) => [key, Object.prototype.hasOwnProperty.call(clause, key) ? clause[key] : null])
+   );
+-  const persistence = action === "reset"
+-    ? await clearOverlay(OVERLAY_KIND.CLAUSE, clauseId)
+-    : await saveOverlay(OVERLAY_KIND.CLAUSE, clauseId, overlayPayload, name);
++  // A reset is stored as nulls, not deleted: deleting the row would let a
++  // sign-off still present in the deployed files come back after a restart.
++  // saveOverlay throws (503) when durable state is required but unreachable,
++  // before the file below is touched.
++  const persistence = await saveOverlay(OVERLAY_KIND.CLAUSE, clauseId, overlayPayload, name);
+ 
+   const payload = Array.isArray(JSON.parse(fs.readFileSync(file, "utf8"))) ? parsed : parsed[0];
+   fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+diff --git a/backend/services/reviewOverlay.js b/backend/services/reviewOverlay.js
+index 85d94359f..22148e19b 100644
+--- a/backend/services/reviewOverlay.js
++++ b/backend/services/reviewOverlay.js
+@@ -15,9 +15,22 @@
+  * WHEN THERE IS NO DATABASE — a developer machine with no MONGODB_URI — every
+  * function here is a no-op and the file behaviour is exactly what it was. This
+  * must never throw into a generation path.
++ *
++ * FAILURE POLICY. Where durable review state is required (MONGODB_URI set, or
++ * a production environment), a write that cannot reach the database is
++ * REFUSED: it throws a 503 before memory or files change, so no process ever
++ * serves a decision that will vanish on restart or differ between instances.
++ * Memory is updated only after the database write succeeds. Reads still fall
++ * back to file state, so documents keep generating; reviewOverlayStatus()
++ * reports the degraded state and /ready turns it into a readiness failure.
++ *
++ * A withdrawal (reset) is stored as a payload of nulls, never as a deleted row:
++ * deleting the row let a sign-off still present in the deployed files
++ * reappear after the next restart.
+  */
+ 
+ import ReviewSignoff from "../models/ReviewSignoff.js";
++import { isProductionEnv } from "../auth/originPolicy.js";
+ 
+ export const OVERLAY_KIND = { CLAUSE: "clause", CONSTRAINT_SCOPE: "constraint_scope" };
+ 
+@@ -29,6 +42,21 @@ const overlay = new Map([
+ 
+ let hydrated = false;
+ let available = false;
++let lastHydratedAt = null;
++let lastError = null;
++
++/** Durable review state is expected: a database is configured, or this is production. */
++export function reviewPersistenceRequired(env = process.env) {
++  return Boolean(env.MONGODB_URI) || isProductionEnv(env);
++}
++
++function unavailableError(reason) {
++  const error = new Error(
++    `Review decisions cannot be saved right now: the review database is unavailable (${reason}). Nothing was changed; retry once it is back.`
++  );
++  error.statusCode = 503;
++  return error;
++}
+ 
+ function bucket(kind) {
+   if (!overlay.has(kind)) overlay.set(kind, new Map());
+@@ -54,27 +82,59 @@ export async function hydrateReviewOverlay() {
+   if (!connected()) {
+     hydrated = true;
+     available = false;
+-    return { hydrated: 0, available: false };
++    lastError = "no database connection";
++    return { hydrated: 0, available: false, changed: false };
+   }
+   try {
+     const rows = await ReviewSignoff.find({}).lean();
+-    for (const row of rows) bucket(row.kind).set(row.targetId, row.payload || {});
++    // Rebuild rather than merge, so a decision withdrawn by another instance
++    // disappears here too.
++    const next = new Map([
++      [OVERLAY_KIND.CLAUSE, new Map()],
++      [OVERLAY_KIND.CONSTRAINT_SCOPE, new Map()],
++    ]);
++    for (const row of rows) {
++      if (!next.has(row.kind)) next.set(row.kind, new Map());
++      next.get(row.kind).set(row.targetId, row.payload || {});
++    }
++    const changed = signatureOf(next) !== signatureOf(overlay);
++    overlay.clear();
++    for (const [kind, entries] of next) overlay.set(kind, entries);
+     hydrated = true;
+     available = true;
+-    return { hydrated: rows.length, available: true };
++    lastHydratedAt = new Date();
++    lastError = null;
++    return { hydrated: rows.length, available: true, changed };
+   } catch (error) {
+     // A review overlay that cannot load must not stop the product serving
+-    // documents. It degrades to the file state, which is what shipped.
++    // documents. Reads keep the last good state (or the files); writes are
++    // refused until the database is reachable again.
+     hydrated = true;
+     available = false;
+-    return { hydrated: 0, available: false, error: error.message };
++    lastError = error.message;
++    return { hydrated: 0, available: false, changed: false, error: error.message };
+   }
+ }
+ 
++function signatureOf(map) {
++  return JSON.stringify(
++    [...map.entries()]
++      .map(([kind, entries]) => [kind, [...entries.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))])
++      .sort(([a], [b]) => (a < b ? -1 : 1))
++  );
++}
++
+ export function reviewOverlayStatus() {
++  const required = reviewPersistenceRequired();
+   return {
+     hydrated,
+     available,
++    required,
++    // Ready means review decisions read here are the durable ones and new ones
++    // will persist. Not ready is not an outage for document generation.
++    ready: !required || (available && connected()),
++    last_hydrated_at: lastHydratedAt,
++    last_error: lastError,
+     clauses: bucket(OVERLAY_KIND.CLAUSE).size,
+     constraint_scopes: bucket(OVERLAY_KIND.CONSTRAINT_SCOPE).size,
+   };
+@@ -103,32 +163,49 @@ export function applyOverlay(kind, targetId, object) {
+ }
+ 
+ /**
+- * Record a decision. Updates memory first so a read immediately after a write
+- * sees it even if the database write is slow, then persists.
++ * Record a decision. Persists first and publishes to memory only once the
++ * database has it. Without a database where none is required (local
++ * development), memory and files are the only state, as before.
+  */
+ export async function saveOverlay(kind, targetId, payload, updatedBy = null) {
+-  bucket(kind).set(targetId, payload);
+-  if (!connected()) return { persisted: false, reason: "no database connection" };
++  if (!connected()) {
++    if (reviewPersistenceRequired()) throw unavailableError("no database connection");
++    bucket(kind).set(targetId, payload);
++    return { persisted: false, reason: "no database configured (development)" };
++  }
+   try {
+     await ReviewSignoff.findOneAndUpdate(
+       { kind, targetId },
+       { kind, targetId, payload, updatedBy },
+       { upsert: true, new: true }
+     );
+-    available = true;
+-    return { persisted: true };
+   } catch (error) {
+-    return { persisted: false, reason: error.message };
++    available = false;
++    lastError = error.message;
++    throw unavailableError(error.message);
+   }
++  available = true;
++  bucket(kind).set(targetId, payload);
++  return { persisted: true };
+ }
+ 
++/**
++ * Remove a stored decision outright. Review withdrawals should NOT use this
++ * (see the header); it exists for maintenance only.
++ */
+ export async function clearOverlay(kind, targetId) {
+-  bucket(kind).delete(targetId);
+-  if (!connected()) return { persisted: false, reason: "no database connection" };
++  if (!connected()) {
++    if (reviewPersistenceRequired()) throw unavailableError("no database connection");
++    bucket(kind).delete(targetId);
++    return { persisted: false, reason: "no database configured (development)" };
++  }
+   try {
+     await ReviewSignoff.deleteOne({ kind, targetId });
+-    return { persisted: true };
+   } catch (error) {
+-    return { persisted: false, reason: error.message };
++    available = false;
++    lastError = error.message;
++    throw unavailableError(error.message);
+   }
++  bucket(kind).delete(targetId);
++  return { persisted: true };
+ }
+diff --git a/backend/services/validationService.js b/backend/services/validationService.js
+index 25c74df3a..e0282bf5c 100644
+--- a/backend/services/validationService.js
++++ b/backend/services/validationService.js
+@@ -142,6 +142,18 @@ export async function runDocumentValidation(
+     isUserEdit: resolveIsUserEdit(draft, isUserEdit),
+   });
+   layersRun.push("rule_engine");
++  // The statutory knowledge-base layer runs inside the rule engine. When it
++  // fails, say so in coverage, so the run is never presented as a clean one.
++  // (A completed run adds nothing, keeping output identical to before.)
++  if (coreValidation._layers?.statutory_status === "failed") {
++    layersSkipped.push({
++      layer: "statutory_kb",
++      reason: `failed to complete${
++        coreValidation._layers?.statutory_error ? `: ${coreValidation._layers.statutory_error}` : ""
++      }`,
++      failed: true,
++    });
++  }
+ 
+   const runLayer = (name, condition, run, skipReason) => {
+     if (!condition) {
+@@ -525,6 +537,7 @@ function getClauseIssuePriority(issue) {
+   if (ruleId === "AI_INTEGRITY_VIOLATION") return 95;
+   if (ruleId.startsWith("AI_SEMANTIC_")) return 90;
+   if (ruleId === "AI_CHECK_UNAVAILABLE") return 80;
++  if (ruleId === "STATUTORY_CHECK_UNAVAILABLE") return 80;
+   if (ruleId.startsWith("INPUT_MISMATCH_")) return 70;
+   if (ruleId.startsWith("CLAUSE_TEXT_")) return 30;
+ 
+diff --git a/frontend/src/pages/Documents.jsx b/frontend/src/pages/Documents.jsx
+index 7a561cd3a..5c0f043e8 100644
+--- a/frontend/src/pages/Documents.jsx
++++ b/frontend/src/pages/Documents.jsx
+@@ -63,7 +63,7 @@ export default function Documents() {
+ 
+   const removeDraft = async (draftId, title) => {
+     const confirmed = window.confirm(
+-      `Delete the saved draft for ${title}? This removes it from your account history.`
++      `Delete this saved ${title} draft and its version history? Your other drafts are not affected.`
+     );
+ 
+     if (!confirmed) {
+@@ -95,9 +95,9 @@ export default function Documents() {
+       <section className="documents-hero">
+         <div className="documents-hero-copy">
+           <span className="documents-eyebrow">MY DOCUMENTS</span>
+-          <h1 className="documents-title">Latest saved draft for each document type</h1>
++          <h1 className="documents-title">Your saved drafts</h1>
+           <p className="documents-sub">
+-            LegalAId now keeps only the latest saved draft for each document type, so your workspace stays simple and storage stays lean.
++            Every document you generate is saved separately, with its own version history, so drafts for different matters never overwrite each other.
+           </p>
+         </div>
+ 
+@@ -166,6 +166,7 @@ export default function Documents() {
+                   </div>
+ 
+                   <div className="documents-card-meta">
++                    {document.parties && <span>{document.parties}</span>}
+                     <span>{document.documentType.replace(/_/g, " ")}</span>
+                     <span>Saved {formatDate(document.updatedAt)}</span>
+                     <span>{draftReady ? "Ready to export" : "Needs review"}</span>
+diff --git a/frontend/src/pages/Editor.jsx b/frontend/src/pages/Editor.jsx
+index 1c4e3975f..56df1e782 100644
+--- a/frontend/src/pages/Editor.jsx
++++ b/frontend/src/pages/Editor.jsx
+@@ -245,10 +245,44 @@ export default function Editor() {
+   useEffect(() => {
+     if (validation?.disclosure) setDisclosure(validation.disclosure);
+   }, [validation]);
+-  const [intelligence] = useState(initialState.intelligence);
+-  const [obligations] = useState(initialState.obligations);
++  // Explanations and obligations describe the draft as it stands. The backend
++  // returns fresh copies with each validation and restore; keeping the first
++  // generated copy left them describing text the user had since changed.
++  const [intelligence, setIntelligence] = useState(initialState.intelligence);
++  const [obligations, setObligations] = useState(initialState.obligations);
++  const applyDerivedPanels = (data) => {
++    if (data && "intelligence" in data) setIntelligence(data.intelligence || null);
++    if (data && "obligations" in data) setObligations(data.obligations || null);
++  };
+   const [documentMeta] = useState(initialState.documentMeta);
+   const [history, setHistory] = useState(initialState.history);
++  // Each saved document is its own record, identified by history.draftId. The
++  // ref lets overlapping saves see an id the moment the first save returns, and
++  // createInFlightRef makes a second save wait for the first create, so a new
++  // document is never written as two records.
++  const historyRef = useRef(initialState.history);
++  const createInFlightRef = useRef(null);
++  const persistHistory = async (payload) => {
++    if (!historyRef.current?.draftId && createInFlightRef.current) {
++      await createInFlightRef.current.catch(() => {});
++    }
++    const isCreate = !historyRef.current?.draftId;
++    const request = saveDocumentHistory({
++      ...payload,
++      draftId: historyRef.current?.draftId || null,
++    });
++    if (isCreate) createInFlightRef.current = request;
++    try {
++      const res = await request;
++      if (res.data?.history) {
++        historyRef.current = res.data.history;
++        setHistory(res.data.history);
++      }
++      return res;
++    } finally {
++      if (createInFlightRef.current === request) createInFlightRef.current = null;
++    }
++  };
+   const [exportFormat, setExportFormat] = useState("pdf");
+   const [downloadingFormat, setDownloadingFormat] = useState(null);
+   const [exportError, setExportError] = useState(null);
+@@ -292,11 +326,13 @@ export default function Editor() {
+       JSON.stringify({
+         draft,
+         validation,
++        intelligence,
++        obligations,
+         documentMeta,
+         history,
+       })
+     );
+-  }, [documentMeta, draft, history, validation]);
++  }, [documentMeta, draft, history, intelligence, obligations, validation]);
+ 
+   useEffect(() => {
+     if (!draft?.document_type || !draft?.clauses?.length) return;
+@@ -304,16 +340,12 @@ export default function Editor() {
+     const timer = setTimeout(async () => {
+       setSaveState("saving");
+       try {
+-        const res = await saveDocumentHistory({
+-          draftId: history?.draftId || null,
++        await persistHistory({
+           draft,
+           validation,
+           documentMeta,
+-          changeType: resolveHistoryChangeType(history, draft, { hasEdited }),
++          changeType: resolveHistoryChangeType(historyRef.current, draft, { hasEdited }),
+         });
+-        if (res.data?.history) {
+-          setHistory(res.data.history);
+-        }
+         setSaveState("saved");
+       } catch (error) {
+         console.error("History save failed:", error);
+@@ -332,6 +364,7 @@ export default function Editor() {
+         const res = await validateDocument(draft, "background");
+         const nextValidation = res.data?.validation;
+         if (nextValidation?.disclosure) setDisclosure(nextValidation.disclosure);
++        applyDerivedPanels(res.data);
+         if (!nextValidation?.risk) return;
+ 
+         setValidation((prev) => {
+@@ -379,16 +412,12 @@ export default function Editor() {
+       setSaveState("saving");
+ 
+       try {
+-        const res = await saveDocumentHistory({
+-          draftId: history?.draftId || null,
++        await persistHistory({
+           draft,
+           validation,
+           documentMeta,
+           changeType: "exported",
+         });
+-        if (res.data?.history) {
+-          setHistory(res.data.history);
+-        }
+         setSaveState("saved");
+       } catch (error) {
+         console.error("History export save failed:", error);
+@@ -440,7 +469,11 @@ export default function Editor() {
+       const res = await restoreDocumentHistoryVersion(history.draftId, versionId);
+       if (res.data?.draft) setDraft(res.data.draft);
+       if (res.data?.validation) setValidation(res.data.validation);
+-      if (res.data?.history) setHistory(res.data.history);
++      applyDerivedPanels(res.data);
++      if (res.data?.history) {
++        historyRef.current = res.data.history;
++        setHistory(res.data.history);
++      }
+       setVersions(res.data?.versions || []);
+       setActiveTab("validation");
+     } catch (error) {
+@@ -460,19 +493,16 @@ export default function Editor() {
+       if (nextValidation?.risk) {
+         setValidation(nextValidation);
+       }
++      applyDerivedPanels(res.data);
+ 
+       setSaveState("saving");
+       try {
+-        const historyResponse = await saveDocumentHistory({
+-          draftId: history?.draftId || null,
++        await persistHistory({
+           draft,
+           validation: nextValidation || validation,
+           documentMeta,
+           changeType: "validated",
+         });
+-        if (historyResponse.data?.history) {
+-          setHistory(historyResponse.data.history);
+-        }
+         setSaveState("saved");
+       } catch (error) {
+         console.error("History validation save failed:", error);
+diff --git a/package.json b/package.json
+index d6d954a09..dc4160465 100644
+--- a/package.json
++++ b/package.json
+@@ -5,7 +5,7 @@
+   "main": "index.js",
+   "scripts": {
+     "start": "cd backend && npm start",
+-    "test": "node tests/measurementProvenance.test.mjs && node tests/measurementModel.test.mjs && node tests/fixtureProfileContract.test.mjs && node tests/measurementPopulation.test.mjs && node tests/constraintApplicability.test.mjs && node tests/constraintScope.test.mjs && node tests/declinedProtectionsFinding.test.mjs && node tests/declinePrecedence.test.mjs && node tests/clauseProvenanceContract.test.mjs && node tests/blockDecomposition.test.mjs && node tests/propositionSatisfactionLayer.test.mjs && node tests/vacuousSatisfaction.test.mjs && node tests/satisfactionContract.test.mjs && node tests/satisfactionCapabilityAudit.test.mjs && node tests/satisfactionOwnership.test.mjs && node tests/satisfactionReduction.test.mjs && node tests/conceptLayerGaps.test.mjs && node tests/placeholderProvenance.test.mjs && node tests/provenanceInjector.test.mjs && node tests/provenanceHardening.test.mjs && node tests/provenanceConservation.test.mjs && node tests/launchCompliance.test.mjs && node tests/termSheetWithdrawal.test.mjs && node tests/generationIntegrity.test.mjs && node tests/ndaContradiction.test.mjs && node tests/releaseEnforcement.test.mjs && node tests/exportParity.test.mjs && node tests/survivalReferences.test.mjs && node tests/mutationPaths.test.mjs && node tests/instrumentClasses.test.mjs && node tests/normalisationIdempotence.test.mjs && node tests/injectedProtections.test.mjs && node tests/protectionConsent.test.mjs && node tests/termSheetFalsification.test.mjs && node tests/nPartyIdentity.test.mjs && node tests/articlesPrecedence.test.mjs && node tests/documentQualityStandard.test.mjs && node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/clauseProvenanceReach.test.mjs && node tests/goldenCorpus.test.mjs && node tests/documentHealthScore.test.mjs && node tests/advocateReviewFindings.test.mjs && node tests/conceptRecords.test.mjs && node tests/inputMismatchSeverity.test.mjs && node tests/derivationIdempotence.test.mjs && node tests/positionSemantics.test.mjs && node tests/materialityAnalysis.test.mjs && node tests/factQuestions.test.mjs && node tests/positionConservation.test.mjs && node tests/disclosureArtifact.test.mjs && node tests/answerStateCorpus.test.mjs && node tests/universality.test.mjs && node tests/factAdmission.test.mjs && node tests/documentRequirements.test.mjs && node tests/requirementKind.test.mjs && node tests/requirementCoherence.test.mjs && node tests/evidencePropositions.test.mjs && node tests/probeIsolation.test.mjs && node tests/probeContract.test.mjs && node tests/poshDissemination.test.mjs && node tests/poshFalsification.test.mjs && node tests/tosFalsification.test.mjs && node tests/authoringCoherence.test.mjs && node tests/applicabilityFactSource.test.mjs && node tests/factSourceParity.test.mjs && node tests/loanApplicability.test.mjs && node tests/loanSecurityTreatment.test.mjs && node tests/positionOverride.test.mjs && node tests/declinedProtections.test.mjs && node tests/negativeAsPosition.test.mjs && node tests/draftingSide.test.mjs && node tests/derivationProbes.test.mjs && node tests/timingAssessment.test.mjs && node tests/portfolioInventory.test.mjs && node tests/gateReachability.test.mjs && node tests/statutoryCustody.test.mjs && node tests/propositionVocabulary.test.mjs && node tests/propositionCoverage.test.mjs && node tests/jurisdictionSubject.test.mjs && node tests/npartyRepresentation.test.mjs && node tests/rosterConservation.test.mjs && node tests/economicAllocation.test.mjs && node tests/npartyClassification.test.mjs && node tests/cardinalitySupport.test.mjs && node tests/npartyCandidates.test.mjs && node tests/npartyDiscoveryValidation.test.mjs && node tests/decisionDependencies.test.mjs && node tests/crossTreatmentCoherence.test.mjs && node tests/capIndemnityInteraction.test.mjs && node tests/investigationMethodology.test.mjs && node tests/capReferent.test.mjs && node tests/legalCharacterisation.test.mjs && node tests/representability.test.mjs && node tests/certificationDimensions.test.mjs && node tests/conceptVerticalSlice.test.mjs && node tests/familyCertification.test.mjs && node scripts/freezeClauseBaseline.mjs",
++    "test": "node tests/measurementProvenance.test.mjs && node tests/measurementModel.test.mjs && node tests/fixtureProfileContract.test.mjs && node tests/measurementPopulation.test.mjs && node tests/constraintApplicability.test.mjs && node tests/constraintScope.test.mjs && node tests/declinedProtectionsFinding.test.mjs && node tests/declinePrecedence.test.mjs && node tests/clauseProvenanceContract.test.mjs && node tests/blockDecomposition.test.mjs && node tests/propositionSatisfactionLayer.test.mjs && node tests/vacuousSatisfaction.test.mjs && node tests/satisfactionContract.test.mjs && node tests/satisfactionCapabilityAudit.test.mjs && node tests/satisfactionOwnership.test.mjs && node tests/satisfactionReduction.test.mjs && node tests/conceptLayerGaps.test.mjs && node tests/placeholderProvenance.test.mjs && node tests/provenanceInjector.test.mjs && node tests/provenanceHardening.test.mjs && node tests/provenanceConservation.test.mjs && node tests/launchCompliance.test.mjs && node tests/termSheetWithdrawal.test.mjs && node tests/generationIntegrity.test.mjs && node tests/ndaContradiction.test.mjs && node tests/releaseEnforcement.test.mjs && node tests/exportParity.test.mjs && node tests/survivalReferences.test.mjs && node tests/mutationPaths.test.mjs && node tests/instrumentClasses.test.mjs && node tests/normalisationIdempotence.test.mjs && node tests/injectedProtections.test.mjs && node tests/protectionConsent.test.mjs && node tests/termSheetFalsification.test.mjs && node tests/nPartyIdentity.test.mjs && node tests/articlesPrecedence.test.mjs && node tests/documentQualityStandard.test.mjs && node tests/generalProvisionsBaseline.test.mjs && node tests/unilateralPartyValidation.test.mjs && node tests/partyNameValidation.test.mjs && node tests/constraintPredicates.test.mjs && node tests/documentStructure.test.mjs && node tests/agreementGraph.test.mjs && node tests/verificationCoverage.test.mjs && node tests/clauseProvenance.test.mjs && node tests/clauseProvenanceReach.test.mjs && node tests/goldenCorpus.test.mjs && node tests/documentHealthScore.test.mjs && node tests/advocateReviewFindings.test.mjs && node tests/conceptRecords.test.mjs && node tests/inputMismatchSeverity.test.mjs && node tests/derivationIdempotence.test.mjs && node tests/positionSemantics.test.mjs && node tests/materialityAnalysis.test.mjs && node tests/factQuestions.test.mjs && node tests/positionConservation.test.mjs && node tests/disclosureArtifact.test.mjs && node tests/answerStateCorpus.test.mjs && node tests/universality.test.mjs && node tests/factAdmission.test.mjs && node tests/documentRequirements.test.mjs && node tests/requirementKind.test.mjs && node tests/requirementCoherence.test.mjs && node tests/evidencePropositions.test.mjs && node tests/probeIsolation.test.mjs && node tests/probeContract.test.mjs && node tests/poshDissemination.test.mjs && node tests/poshFalsification.test.mjs && node tests/tosFalsification.test.mjs && node tests/authoringCoherence.test.mjs && node tests/applicabilityFactSource.test.mjs && node tests/factSourceParity.test.mjs && node tests/loanApplicability.test.mjs && node tests/loanSecurityTreatment.test.mjs && node tests/positionOverride.test.mjs && node tests/declinedProtections.test.mjs && node tests/negativeAsPosition.test.mjs && node tests/draftingSide.test.mjs && node tests/derivationProbes.test.mjs && node tests/timingAssessment.test.mjs && node tests/portfolioInventory.test.mjs && node tests/gateReachability.test.mjs && node tests/statutoryCustody.test.mjs && node tests/propositionVocabulary.test.mjs && node tests/propositionCoverage.test.mjs && node tests/jurisdictionSubject.test.mjs && node tests/npartyRepresentation.test.mjs && node tests/rosterConservation.test.mjs && node tests/economicAllocation.test.mjs && node tests/npartyClassification.test.mjs && node tests/cardinalitySupport.test.mjs && node tests/npartyCandidates.test.mjs && node tests/npartyDiscoveryValidation.test.mjs && node tests/decisionDependencies.test.mjs && node tests/crossTreatmentCoherence.test.mjs && node tests/capIndemnityInteraction.test.mjs && node tests/investigationMethodology.test.mjs && node tests/capReferent.test.mjs && node tests/legalCharacterisation.test.mjs && node tests/representability.test.mjs && node tests/certificationDimensions.test.mjs && node tests/conceptVerticalSlice.test.mjs && node tests/familyCertification.test.mjs && node tests/statutoryFailureVisible.test.mjs && node tests/originPolicy.test.mjs && node tests/documentHistoryIdentity.test.mjs && node tests/reviewOverlayPersistence.test.mjs && node scripts/freezeClauseBaseline.mjs",
+     "test:golden": "node tests/goldenCorpus.test.mjs",
+     "check:citations": "node scripts/checkStatuteCitations.mjs",
+     "baseline": "node scripts/freezeClauseBaseline.mjs",
+diff --git a/tests/documentHistoryIdentity.test.mjs b/tests/documentHistoryIdentity.test.mjs
+new file mode 100644
+index 000000000..38c41250f
+--- /dev/null
++++ b/tests/documentHistoryIdentity.test.mjs
+@@ -0,0 +1,106 @@
++/**
++ * documentHistoryIdentity.test.mjs — EACH SAVED DOCUMENT IS ITS OWN MATTER
++ *
++ * The history service used to keep "one live document per type": a save with
++ * no matching id attached itself to the user's latest record of that type, and
++ * every save and list deleted the user's other records of the type. Two
++ * unrelated NDAs therefore overwrote each other.
++ *
++ * Runs offline: the two Mongoose models are swapped for in-memory stand-ins
++ * (tests/fixtures/fakeMongooseModels.mjs) through a module resolve hook.
++ */
++import assert from "node:assert/strict";
++import { register, createRequire } from "node:module";
++
++const FAKES = new URL("./fixtures/fakeMongooseModels.mjs", import.meta.url).href;
++const stub = (exportName) =>
++  "data:text/javascript," + encodeURIComponent(`export { ${exportName} as default } from ${JSON.stringify(FAKES)};`);
++const hooks = `
++const DRAFT = ${JSON.stringify(stub("FakeDocumentDraft"))};
++const VERSION = ${JSON.stringify(stub("FakeDocumentVersion"))};
++export async function resolve(specifier, context, next) {
++  if (/\\/models\\/DocumentDraft\\.js$/.test(specifier)) return { url: DRAFT, shortCircuit: true };
++  if (/\\/models\\/DocumentVersion\\.js$/.test(specifier)) return { url: VERSION, shortCircuit: true };
++  return next(specifier, context);
++}`;
++register("data:text/javascript," + encodeURIComponent(hooks));
++
++const { FakeDocumentDraft, FakeDocumentVersion } = await import(FAKES);
++const {
++  saveDocumentHistory,
++  listDocumentHistories,
++  deleteDocumentHistory,
++  getDocumentHistoryDetail,
++  restoreDocumentHistoryVersion,
++} = await import("../backend/services/documentHistoryService.js");
++const mongoose = createRequire(new URL("../backend/package.json", import.meta.url))("mongoose");
++
++let checks = 0;
++const ok = (cond, msg) => {
++  assert.ok(cond, msg);
++  checks += 1;
++  console.log(`PASS  ${msg}`);
++};
++
++const userA = new mongoose.Types.ObjectId();
++const userB = new mongoose.Types.ObjectId();
++const nda = (party, text = "The Receiving Party shall keep it confidential.") => ({
++  document_type: "NDA",
++  clauses: [{ clause_id: "NDA_CONF", category: "CONFIDENTIALITY", title: "Confidentiality", text }],
++  metadata: { source_variables: { party_1_name: party, party_2_name: "Counterparty Ltd" } },
++});
++
++/* ── Two NDAs for one user are two documents ────────────────────────────── */
++const first = await saveDocumentHistory({ userId: userA, draft: nda("Acme Pvt Ltd") });
++const second = await saveDocumentHistory({ userId: userA, draft: nda("Beta LLP") });
++ok(first.history.draftId !== second.history.draftId, "a save without an id starts a new document, even of the same type");
++
++let list = await listDocumentHistories(userA);
++ok(list.length === 2, "both NDAs are listed");
++ok(FakeDocumentDraft._store.size === 2, "listing deletes nothing");
++ok(list.some((d) => d.parties === "Acme Pvt Ltd & Counterparty Ltd") && list.some((d) => d.parties === "Beta LLP & Counterparty Ltd"),
++  "each listed document carries its party names, so same-type drafts can be told apart");
++
++/* ── Saving with an id updates exactly that document ────────────────────── */
++const edited = await saveDocumentHistory({
++  userId: userA,
++  draftId: first.history.draftId,
++  draft: nda("Acme Pvt Ltd", "The Receiving Party shall keep it strictly confidential."),
++  changeType: "manual_edit",
++});
++ok(edited.history.draftId === first.history.draftId && edited.versionCreated, "a save with an id versions that document");
++const firstDetail = await getDocumentHistoryDetail(userA, first.history.draftId);
++const secondDetail = await getDocumentHistoryDetail(userA, second.history.draftId);
++ok(/strictly/.test(firstDetail.draft.clauses[0].text), "the named document holds the edit");
++ok(!/strictly/.test(secondDetail.draft.clauses[0].text), "the other NDA is untouched by the edit");
++ok(firstDetail.versions.length === 2 && secondDetail.versions.length === 1, "each document keeps its own version history");
++ok("intelligence" in firstDetail && "obligations" in firstDetail,
++  "a reopened document comes back with explanations and obligations derived from its stored draft");
++
++/* ── Ownership is enforced ──────────────────────────────────────────────── */
++await assert.rejects(
++  saveDocumentHistory({ userId: userB, draftId: first.history.draftId, draft: nda("Intruder") }),
++  (err) => err.statusCode === 404
++);
++checks += 1; console.log("PASS  another user cannot save into this document");
++await assert.rejects(
++  saveDocumentHistory({ userId: userA, draftId: "not-an-id", draft: nda("X") }),
++  (err) => err.statusCode === 404
++);
++checks += 1; console.log("PASS  a malformed id is a 404, not a silent new document");
++
++/* ── Restore stays within the document ──────────────────────────────────── */
++const firstVersionId = firstDetail.versions[firstDetail.versions.length - 1].versionId;
++const restored = await restoreDocumentHistoryVersion({ userId: userA, draftId: first.history.draftId, versionId: firstVersionId });
++ok(!/strictly/.test(restored.draft.clauses[0].text) && restored.history.draftId === first.history.draftId,
++  "restoring a version changes only that document");
++ok("intelligence" in restored && "obligations" in restored, "a restore returns panels for the restored text");
++
++/* ── Delete removes one document, not the type ──────────────────────────── */
++await deleteDocumentHistory(userA, first.history.draftId);
++list = await listDocumentHistories(userA);
++ok(list.length === 1 && list[0].draftId === second.history.draftId, "deleting one NDA leaves the other");
++ok([...FakeDocumentVersion._store.values()].every((v) => String(v.draftId) === second.history.draftId),
++  "the deleted document's versions are gone; the other's remain");
++
++console.log(`\nALL GREEN (${checks} checks)`);
+diff --git a/tests/fixtures/fakeMongooseModels.mjs b/tests/fixtures/fakeMongooseModels.mjs
+new file mode 100644
+index 000000000..d43063b4c
+--- /dev/null
++++ b/tests/fixtures/fakeMongooseModels.mjs
+@@ -0,0 +1,122 @@
++/**
++ * fakeMongooseModels.mjs — in-memory stand-ins for DocumentDraft/DocumentVersion.
++ *
++ * Just enough of the Mongoose model and query API that
++ * backend/services/documentHistoryService.js uses, so its semantics can be
++ * tested offline without a MongoDB server. Not a general Mongoose emulator.
++ */
++import { createRequire } from "node:module";
++
++// Mongoose is a backend dependency only (see the root package.json note);
++// resolve the backend's copy so ObjectId matches the service's instance.
++const mongoose = createRequire(new URL("../../backend/package.json", import.meta.url))("mongoose");
++
++// Deep copy that keeps ObjectIds and Dates as themselves (structuredClone
++// turns an ObjectId into a plain object).
++function clone(value) {
++  if (value == null || typeof value !== "object") return value;
++  if (value instanceof mongoose.Types.ObjectId) return new mongoose.Types.ObjectId(String(value));
++  if (value instanceof Date) return new Date(value.getTime());
++  if (Array.isArray(value)) return value.map(clone);
++  const out = {};
++  for (const [key, inner] of Object.entries(value)) out[key] = clone(inner);
++  return out;
++}
++const idOf = (value) => (value == null ? value : String(value));
++
++function matchesValue(actual, expected) {
++  if (expected && typeof expected === "object" && !(expected instanceof mongoose.Types.ObjectId)) {
++    if ("$in" in expected) return expected.$in.map(idOf).includes(idOf(actual));
++    if ("$ne" in expected) return idOf(actual) !== idOf(expected.$ne);
++    if ("$eq" in expected) return idOf(actual) === idOf(expected.$eq);
++  }
++  return idOf(actual) === idOf(expected);
++}
++
++function matches(doc, filter = {}) {
++  return Object.entries(filter).every(([key, expected]) => matchesValue(doc[key], expected));
++}
++
++function compareBy(sortSpec) {
++  const entries = Object.entries(sortSpec || {});
++  return (a, b) => {
++    for (const [key, dir] of entries) {
++      const av = a[key] instanceof Date ? a[key].getTime() : a[key];
++      const bv = b[key] instanceof Date ? b[key].getTime() : b[key];
++      if (av < bv) return -1 * dir;
++      if (av > bv) return 1 * dir;
++    }
++    return 0;
++  };
++}
++
++function makeModel(name) {
++  const store = new Map();
++  let tick = 0;
++  const nextTime = () => new Date(Date.UTC(2026, 0, 1) + ++tick * 1000);
++
++  class Doc {
++    constructor(fields = {}) {
++      Object.assign(this, clone(fields));
++      if (!this._id) this._id = new mongoose.Types.ObjectId();
++    }
++    async save() {
++      const now = nextTime();
++      if (!this.createdAt) this.createdAt = now;
++      this.updatedAt = now;
++      const plain = { ...this };
++      store.set(idOf(this._id), clone(plain));
++      return this;
++    }
++  }
++
++  const hydrate = (raw) => Object.assign(Object.create(Doc.prototype), clone(raw));
++
++  class Query {
++    constructor(filter, single) {
++      this.filter = filter;
++      this.single = single;
++      this.sortSpec = null;
++      this.skipN = 0;
++      this.limitN = Infinity;
++      this.asLean = false;
++    }
++    sort(spec) { this.sortSpec = spec; return this; }
++    skip(n) { this.skipN = n; return this; }
++    limit(n) { this.limitN = n; return this; }
++    select() { return this; }
++    lean() { this.asLean = true; return this; }
++    exec() {
++      let rows = [...store.values()].filter((doc) => matches(doc, this.filter));
++      if (this.sortSpec) rows.sort(compareBy(this.sortSpec));
++      rows = rows.slice(this.skipN, this.skipN + this.limitN);
++      const out = rows.map((row) => (this.asLean ? clone(row) : hydrate(row)));
++      return Promise.resolve(this.single ? out[0] || null : out);
++    }
++    then(resolve, reject) { return this.exec().then(resolve, reject); }
++    catch(reject) { return this.exec().catch(reject); }
++  }
++
++  Doc.modelName = name;
++  Doc._store = store;
++  Doc.find = (filter) => new Query(filter, false);
++  Doc.findOne = (filter) => new Query(filter, true);
++  Doc.create = async (fields) => new Doc(fields).save();
++  Doc.deleteMany = async (filter) => {
++    let deletedCount = 0;
++    for (const [key, doc] of [...store.entries()]) {
++      if (matches(doc, filter)) { store.delete(key); deletedCount += 1; }
++    }
++    return { deletedCount };
++  };
++  Doc.deleteOne = async (filter) => {
++    for (const [key, doc] of store.entries()) {
++      if (matches(doc, filter)) { store.delete(key); return { deletedCount: 1 }; }
++    }
++    return { deletedCount: 0 };
++  };
++  return Doc;
++}
++
++export const FakeDocumentDraft = makeModel("DocumentDraft");
++export const FakeDocumentVersion = makeModel("DocumentVersion");
+diff --git a/tests/originPolicy.test.mjs b/tests/originPolicy.test.mjs
+new file mode 100644
+index 000000000..f8f2f3d2f
+--- /dev/null
++++ b/tests/originPolicy.test.mjs
+@@ -0,0 +1,75 @@
++/**
++ * originPolicy.test.mjs — CREDENTIALED CORS FAILS CLOSED; COOKIE CSRF IS CHECKED;
++ * ANY CONFIGURED AI PROVIDER IS DETECTED
++ *
++ * 1. Without CLIENT_URL the backend used to reflect every request origin with
++ *    credentials enabled. Production now requires CLIENT_URL; development
++ *    without it allows loopback only.
++ * 2. A cookie-authenticated, state-changing request from a foreign origin is
++ *    refused (the production cookie is SameSite=None).
++ * 3. hasSemanticProviderConfigured checked only GEMINI/GROQ keys; an
++ *    OpenAI-only configuration never entered semantic drafting.
++ */
++import assert from "node:assert/strict";
++import {
++  isOriginAllowed,
++  isCrossSiteCookieRequest,
++  isProductionEnv,
++} from "../backend/auth/originPolicy.js";
++
++let checks = 0;
++const ok = (cond, msg) => {
++  assert.ok(cond, msg);
++  checks += 1;
++  console.log(`PASS  ${msg}`);
++};
++
++const prod = { NODE_ENV: "production", CLIENT_URL: "https://legalaid.example/, https://www.legalaid.example" };
++const prodNoClient = { NODE_ENV: "production" };
++const renderNoClient = { RENDER: "true" };
++const dev = {};
++
++/* ── Origin allowlist ───────────────────────────────────────────────────── */
++ok(isOriginAllowed("https://legalaid.example", prod), "configured origin is allowed (trailing slash normalized)");
++ok(isOriginAllowed("https://WWW.legalaid.example", prod), "configured origins match case-insensitively");
++ok(!isOriginAllowed("https://evil.example", prod), "unlisted origin is refused in production");
++ok(!isOriginAllowed("https://evil.example", prodNoClient), "production without CLIENT_URL refuses foreign origins");
++ok(!isOriginAllowed("http://localhost:5173", prodNoClient), "production without CLIENT_URL does not fall back to loopback");
++ok(isProductionEnv(renderNoClient), "running on Render counts as production");
++ok(isOriginAllowed("http://localhost:5173", dev), "development without CLIENT_URL allows localhost");
++ok(isOriginAllowed("http://127.0.0.1:3000", dev), "development without CLIENT_URL allows 127.0.0.1");
++ok(!isOriginAllowed("https://evil.example", dev), "development without CLIENT_URL refuses non-loopback origins");
++ok(!isOriginAllowed("http://localhost.evil.example", dev), "loopback match is exact, not a prefix");
++
++/* ── Cookie CSRF guard ──────────────────────────────────────────────────── */
++const req = (method, headers = {}) => ({ method, headers: { host: "api.legalaid.example", ...headers } });
++ok(!isCrossSiteCookieRequest(req("GET", { origin: "https://evil.example" }), prod), "safe methods are not CSRF-checked");
++ok(isCrossSiteCookieRequest(req("POST", { origin: "https://evil.example" }), prod), "cross-site cookie POST is refused");
++ok(isCrossSiteCookieRequest(req("DELETE", { referer: "https://evil.example/page" }), prod), "cross-site DELETE identified by Referer is refused");
++ok(isCrossSiteCookieRequest(req("POST", { origin: "null" }), prod), "opaque (null) origin is refused");
++ok(!isCrossSiteCookieRequest(req("POST", { origin: "https://legalaid.example" }), prod), "allowed-origin cookie POST passes");
++ok(!isCrossSiteCookieRequest(req("POST", { origin: "https://api.legalaid.example" }), prod), "same-host POST passes");
++ok(!isCrossSiteCookieRequest(req("POST"), prod), "a request with no Origin or Referer (not a browser page) passes");
++
++/* ── Provider detection ─────────────────────────────────────────────────── */
++const saved = { ...process.env };
++// Blank rather than delete: backend/loadEnv.js runs dotenv on import, which
++// fills in variables that are absent but never overrides ones already set.
++for (const key of ["GEMINI_API_KEY", "GROQ_API_KEY", "OPENAI_API_KEY", "AI_PROVIDER", "AI_FALLBACK_PROVIDER"]) {
++  process.env[key] = "";
++}
++const { hasConfiguredProvider, getProviderChain } = await import("../backend/ai/providers.js");
++try {
++  ok(!hasConfiguredProvider(), "no keys: no provider configured");
++  process.env.OPENAI_API_KEY = "test-key";
++  ok(hasConfiguredProvider(), "OpenAI-only configuration counts as a configured provider");
++  ok(getProviderChain()[0].name === "openai",
++    "OpenAI-only configuration routes calls to OpenAI even with the default primary unset");
++  process.env.GEMINI_API_KEY = "test-key";
++  ok(getProviderChain()[0].name === "gemini", "a configured primary still takes precedence");
++} finally {
++  for (const key of Object.keys(process.env)) if (!(key in saved)) delete process.env[key];
++  Object.assign(process.env, saved);
++}
++
++console.log(`\nALL GREEN (${checks} checks)`);
+diff --git a/tests/reviewOverlayPersistence.test.mjs b/tests/reviewOverlayPersistence.test.mjs
+new file mode 100644
+index 000000000..fc135b17f
+--- /dev/null
++++ b/tests/reviewOverlayPersistence.test.mjs
+@@ -0,0 +1,122 @@
++/**
++ * reviewOverlayPersistence.test.mjs — A REVIEW DECISION IS DURABLE OR REFUSED
++ *
++ * The overlay used to update its in-memory map before the database write and
++ * keep the change even when that write failed, so one process could serve a
++ * sign-off that would vanish on restart. A reset deleted the stored row, which
++ * let a sign-off still present in the deployed files reappear after a restart.
++ *
++ * Runs offline: ReviewSignoff is swapped for an in-memory stand-in whose
++ * connection state and failures the test controls.
++ */
++import assert from "node:assert/strict";
++import { register } from "node:module";
++
++const fake = `
++const rows = new Map();
++export const control = { readyState: 1, failWrites: false, failReads: false };
++const key = (f) => f.kind + "|" + f.targetId;
++export default {
++  get db() { return { readyState: control.readyState }; },
++  _rows: rows,
++  find() {
++    return { lean: async () => { if (control.failReads) throw new Error("read failed"); return [...rows.values()].map((r) => structuredClone(r)); } };
++  },
++  async findOneAndUpdate(filter, update) {
++    if (control.failWrites) throw new Error("write failed");
++    rows.set(key(filter), structuredClone(update));
++    return update;
++  },
++  async deleteOne(filter) {
++    if (control.failWrites) throw new Error("write failed");
++    rows.delete(key(filter));
++  },
++};`;
++const FAKE_URL = "data:text/javascript," + encodeURIComponent(fake);
++register("data:text/javascript," + encodeURIComponent(`
++export async function resolve(specifier, context, next) {
++  if (/\\/models\\/ReviewSignoff\\.js$/.test(specifier)) return { url: ${JSON.stringify(FAKE_URL)}, shortCircuit: true };
++  return next(specifier, context);
++}`));
++
++const { control, default: ReviewSignoff } = await import(FAKE_URL);
++const overlay = await import("../backend/services/reviewOverlay.js");
++const { saveOverlay, overlayFor, applyOverlay, hydrateReviewOverlay, reviewOverlayStatus, reviewPersistenceRequired, OVERLAY_KIND } = overlay;
++
++let checks = 0;
++const ok = (cond, msg) => {
++  assert.ok(cond, msg);
++  checks += 1;
++  console.log(`PASS  ${msg}`);
++};
++const rejects503 = async (promise, msg) => {
++  await assert.rejects(promise, (err) => err.statusCode === 503);
++  checks += 1;
++  console.log(`PASS  ${msg}`);
++};
++
++const saved = { MONGODB_URI: process.env.MONGODB_URI, NODE_ENV: process.env.NODE_ENV, RENDER: process.env.RENDER };
++process.env.MONGODB_URI = "mongodb://example/test";
++process.env.NODE_ENV = "";
++process.env.RENDER = "";
++const C = OVERLAY_KIND.CLAUSE;
++
++try {
++  ok(reviewPersistenceRequired(), "a configured database makes durable review state required");
++
++  /* ── Success: persisted, then published ─────────────────────────────── */
++  const approved = { review_status: "approved", reviewed_by: "Adv. A" };
++  const result = await saveOverlay(C, "CL_1", approved, "Adv. A");
++  ok(result.persisted === true && overlayFor(C, "CL_1")?.reviewed_by === "Adv. A",
++    "a successful write is persisted and then visible");
++
++  /* ── Failed write: refused, nothing changes ─────────────────────────── */
++  control.failWrites = true;
++  await rejects503(saveOverlay(C, "CL_1", { review_status: "draft", reviewed_by: null }, "Adv. B"),
++    "a failed database write is refused with 503");
++  ok(overlayFor(C, "CL_1")?.reviewed_by === "Adv. A", "a refused write leaves the served decision unchanged");
++  ok(reviewOverlayStatus().ready === false, "after a failed write the overlay reports not ready");
++  control.failWrites = false;
++
++  /* ── Disconnected: refused where durability is required ─────────────── */
++  control.readyState = 0;
++  await rejects503(saveOverlay(C, "CL_2", approved, "Adv. A"), "a write with the database disconnected is refused");
++  ok(overlayFor(C, "CL_2") === null, "a refused write is not held in memory");
++  control.readyState = 1;
++
++  /* ── Reset is stored as nulls, so the file cannot resurrect it ──────── */
++  await saveOverlay(C, "CL_1", { review_status: "draft", reviewed_by: null, reviewed_on: null }, "Adv. A");
++  const fromFile = applyOverlay(C, "CL_1", { review_status: "approved", reviewed_by: "Old Reviewer", reviewed_on: "2026-01-01" });
++  ok(fromFile.review_status === "draft" && !("reviewed_by" in fromFile) && !("reviewed_on" in fromFile),
++    "a withdrawal overrides a sign-off still present in the files");
++  ok(ReviewSignoff._rows.has(`${C}|CL_1`), "the withdrawal is kept as a stored row, not deleted");
++
++  /* ── Hydration rebuilds, so other instances' withdrawals propagate ──── */
++  ReviewSignoff._rows.delete(`${C}|CL_1`);
++  ReviewSignoff._rows.set(`${C}|CL_3`, { kind: C, targetId: "CL_3", payload: { review_status: "approved" } });
++  const refreshed = await hydrateReviewOverlay();
++  ok(refreshed.changed === true && overlayFor(C, "CL_1") === null && overlayFor(C, "CL_3")?.review_status === "approved",
++    "refreshing replaces memory with the database state (adds and removals)");
++  ok((await hydrateReviewOverlay()).changed === false, "an unchanged database reports no change");
++  ok(reviewOverlayStatus().ready === true, "a healthy refresh reports ready");
++
++  control.failReads = true;
++  const failedRefresh = await hydrateReviewOverlay();
++  ok(failedRefresh.available === false && overlayFor(C, "CL_3")?.review_status === "approved",
++    "a failed refresh keeps serving the last good state and reports unavailable");
++  control.failReads = false;
++
++  /* ── Development without a database keeps the old file-only behaviour ─ */
++  process.env.MONGODB_URI = "";
++  control.readyState = 0;
++  const dev = await saveOverlay(C, "CL_DEV", approved, "Dev");
++  ok(dev.persisted === false && overlayFor(C, "CL_DEV")?.review_status === "approved",
++    "with no database configured (development) decisions stay local, as before");
++} finally {
++  for (const [k, v] of Object.entries(saved)) {
++    if (v === undefined) delete process.env[k];
++    else process.env[k] = v;
++  }
++}
++
++console.log(`\nALL GREEN (${checks} checks)`);
+diff --git a/tests/statutoryFailureVisible.test.mjs b/tests/statutoryFailureVisible.test.mjs
+new file mode 100644
+index 000000000..b40e39311
+--- /dev/null
++++ b/tests/statutoryFailureVisible.test.mjs
+@@ -0,0 +1,91 @@
++/**
++ * statutoryFailureVisible.test.mjs — A STATUTORY LAYER THAT DID NOT RUN MUST SAY SO
++ *
++ * runStatutoryValidation used to catch every exception, log it, and return
++ * whatever issues had accumulated. A failure before the first finding therefore
++ * returned an empty list: indistinguishable from "checked against the mapped
++ * statutes and found nothing".
++ *
++ * It now reports context.status ("completed" | "failed") and, on failure, a
++ * STATUTORY_CHECK_UNAVAILABLE finding. The engine carries the status into
++ * _layers, and the validation coverage lists the layer as run or skipped.
++ */
++import assert from "node:assert/strict";
++import {
++  runStatutoryValidation,
++  statutoryCheckUnavailableIssue,
++} from "../IRE/src/statutes/statutoryEngine.js";
++import { runDocumentValidation } from "../backend/services/validationService.js";
++
++let checks = 0;
++const ok = (cond, msg) => {
++  assert.ok(cond, msg);
++  checks += 1;
++  console.log(`PASS  ${msg}`);
++};
++
++/* ── 1. A throw inside the layer is reported, not swallowed ─────────────── */
++const originalError = console.error;
++console.error = () => {}; // the engine logs the failure; keep test output clean
++let failed;
++try {
++  failed = await runStatutoryValidation(null);
++} finally {
++  console.error = originalError;
++}
++ok(failed.context.status === "failed", "a throwing statutory run reports status=failed");
++ok(typeof failed.context.error === "string" && failed.context.error.length > 0,
++  "the failure carries its error message");
++const unavailable = failed.issues.find((i) => i.rule_id === "STATUTORY_CHECK_UNAVAILABLE");
++ok(Boolean(unavailable), "a failed run emits STATUTORY_CHECK_UNAVAILABLE instead of an empty list");
++ok(unavailable.severity === "HIGH" && unavailable.blocks_generation === false,
++  "the unavailable finding is HIGH but does not block by itself");
++ok(unavailable.manual_review_required === true && unavailable.notice_only !== true,
++  "the unavailable finding is actionable (counts against 'checks passed'), not a notice");
++
++/* ── 2. The issue factory never throws on odd input ─────────────────────── */
++ok(statutoryCheckUnavailableIssue(undefined).rule_id === "STATUTORY_CHECK_UNAVAILABLE",
++  "the unavailable finding can be built without an error object");
++
++/* ── 3. A normal run is unchanged ───────────────────────────────────────── */
++// Clean output must stay byte-identical (provenanceConservation), so a
++// completed run carries no status field and adds nothing to coverage.
++const draft = {
++  document_type: "NDA",
++  clauses: [
++    {
++      clause_id: "NDA_TEST_CONFIDENTIALITY",
++      category: "CONFIDENTIALITY",
++      title: "Confidentiality",
++      text: "The Receiving Party shall keep the Confidential Information confidential.",
++    },
++  ],
++  metadata: {},
++};
++const completed = await runStatutoryValidation(draft);
++ok(completed.context.status !== "failed" &&
++   !completed.issues.some((i) => i.rule_id === "STATUTORY_CHECK_UNAVAILABLE"),
++  "a normal statutory run is not reported as failed");
++
++const finalRun = await runDocumentValidation(draft, { mode: "final", documentType: "NDA" });
++ok(finalRun.layers?.statutory_status === undefined,
++  "a completed run adds no statutory_status to the layers");
++ok(!finalRun.coverage?.layers_skipped?.some((s) => s.layer === "statutory_kb"),
++  "a completed run is not listed as skipped");
++
++/* ── 4. A failure reaches coverage and the release outcome ─────────────── */
++// Drive formatValidationResult the way runDocumentValidation does after the
++// engine reports a failed statutory layer.
++const { formatValidationResult } = await import("../backend/services/validationService.js");
++const formatted = formatValidationResult({
++  mode: "final",
++  issues: [statutoryCheckUnavailableIssue(new Error("boom"))],
++  layers: { statutory_status: "failed", statutory_error: "boom" },
++  coverage: { layers_run: ["rule_engine"], layers_skipped: [{ layer: "statutory_kb", reason: "failed to complete: boom", failed: true }] },
++});
++ok(formatted.checks_passed === false && formatted.certified === false,
++  "a failed statutory layer means checks did NOT pass");
++ok(formatted.blockingIssues.length === 0 && formatted.advisoryIssues.some((i) => i.rule_id === "STATUTORY_CHECK_UNAVAILABLE"),
++  "the failure is advisory, not blocking");
++
++console.log(`\nALL GREEN (${checks} checks)`);

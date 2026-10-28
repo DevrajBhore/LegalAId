@@ -37,6 +37,7 @@ import {
   runDocumentValidation,
 } from "./validationService.js";
 import { callAI } from "../ai/aiClient.js";
+import { hasConfiguredProvider } from "../ai/providers.js";
 import { deriveGenerationControls } from "./generationControls.js";
 import { buildSemanticContext } from "./inputSemantics.js";
 import { buildDocumentIntelligence } from "./documentIntelligence.js";
@@ -565,7 +566,7 @@ function shouldUseSemanticGeneration(input = {}) {
 }
 
 function hasSemanticProviderConfigured() {
-  return Boolean(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY);
+  return hasConfiguredProvider();
 }
 
 function isSignatureClause(clause = {}) {

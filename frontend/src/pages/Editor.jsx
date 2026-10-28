@@ -245,10 +245,44 @@ export default function Editor() {
   useEffect(() => {
     if (validation?.disclosure) setDisclosure(validation.disclosure);
   }, [validation]);
-  const [intelligence] = useState(initialState.intelligence);
-  const [obligations] = useState(initialState.obligations);
+  // Explanations and obligations describe the draft as it stands. The backend
+  // returns fresh copies with each validation and restore; keeping the first
+  // generated copy left them describing text the user had since changed.
+  const [intelligence, setIntelligence] = useState(initialState.intelligence);
+  const [obligations, setObligations] = useState(initialState.obligations);
+  const applyDerivedPanels = (data) => {
+    if (data && "intelligence" in data) setIntelligence(data.intelligence || null);
+    if (data && "obligations" in data) setObligations(data.obligations || null);
+  };
   const [documentMeta] = useState(initialState.documentMeta);
   const [history, setHistory] = useState(initialState.history);
+  // Each saved document is its own record, identified by history.draftId. The
+  // ref lets overlapping saves see an id the moment the first save returns, and
+  // createInFlightRef makes a second save wait for the first create, so a new
+  // document is never written as two records.
+  const historyRef = useRef(initialState.history);
+  const createInFlightRef = useRef(null);
+  const persistHistory = async (payload) => {
+    if (!historyRef.current?.draftId && createInFlightRef.current) {
+      await createInFlightRef.current.catch(() => {});
+    }
+    const isCreate = !historyRef.current?.draftId;
+    const request = saveDocumentHistory({
+      ...payload,
+      draftId: historyRef.current?.draftId || null,
+    });
+    if (isCreate) createInFlightRef.current = request;
+    try {
+      const res = await request;
+      if (res.data?.history) {
+        historyRef.current = res.data.history;
+        setHistory(res.data.history);
+      }
+      return res;
+    } finally {
+      if (createInFlightRef.current === request) createInFlightRef.current = null;
+    }
+  };
   const [exportFormat, setExportFormat] = useState("pdf");
   const [downloadingFormat, setDownloadingFormat] = useState(null);
   const [exportError, setExportError] = useState(null);
@@ -292,11 +326,13 @@ export default function Editor() {
       JSON.stringify({
         draft,
         validation,
+        intelligence,
+        obligations,
         documentMeta,
         history,
       })
     );
-  }, [documentMeta, draft, history, validation]);
+  }, [documentMeta, draft, history, intelligence, obligations, validation]);
 
   useEffect(() => {
     if (!draft?.document_type || !draft?.clauses?.length) return;
@@ -304,16 +340,12 @@ export default function Editor() {
     const timer = setTimeout(async () => {
       setSaveState("saving");
       try {
-        const res = await saveDocumentHistory({
-          draftId: history?.draftId || null,
+        await persistHistory({
           draft,
           validation,
           documentMeta,
-          changeType: resolveHistoryChangeType(history, draft, { hasEdited }),
+          changeType: resolveHistoryChangeType(historyRef.current, draft, { hasEdited }),
         });
-        if (res.data?.history) {
-          setHistory(res.data.history);
-        }
         setSaveState("saved");
       } catch (error) {
         console.error("History save failed:", error);
@@ -332,6 +364,7 @@ export default function Editor() {
         const res = await validateDocument(draft, "background");
         const nextValidation = res.data?.validation;
         if (nextValidation?.disclosure) setDisclosure(nextValidation.disclosure);
+        applyDerivedPanels(res.data);
         if (!nextValidation?.risk) return;
 
         setValidation((prev) => {
@@ -379,16 +412,12 @@ export default function Editor() {
       setSaveState("saving");
 
       try {
-        const res = await saveDocumentHistory({
-          draftId: history?.draftId || null,
+        await persistHistory({
           draft,
           validation,
           documentMeta,
           changeType: "exported",
         });
-        if (res.data?.history) {
-          setHistory(res.data.history);
-        }
         setSaveState("saved");
       } catch (error) {
         console.error("History export save failed:", error);
@@ -440,7 +469,11 @@ export default function Editor() {
       const res = await restoreDocumentHistoryVersion(history.draftId, versionId);
       if (res.data?.draft) setDraft(res.data.draft);
       if (res.data?.validation) setValidation(res.data.validation);
-      if (res.data?.history) setHistory(res.data.history);
+      applyDerivedPanels(res.data);
+      if (res.data?.history) {
+        historyRef.current = res.data.history;
+        setHistory(res.data.history);
+      }
       setVersions(res.data?.versions || []);
       setActiveTab("validation");
     } catch (error) {
@@ -460,19 +493,16 @@ export default function Editor() {
       if (nextValidation?.risk) {
         setValidation(nextValidation);
       }
+      applyDerivedPanels(res.data);
 
       setSaveState("saving");
       try {
-        const historyResponse = await saveDocumentHistory({
-          draftId: history?.draftId || null,
+        await persistHistory({
           draft,
           validation: nextValidation || validation,
           documentMeta,
           changeType: "validated",
         });
-        if (historyResponse.data?.history) {
-          setHistory(historyResponse.data.history);
-        }
         setSaveState("saved");
       } catch (error) {
         console.error("History validation save failed:", error);

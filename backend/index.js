@@ -41,11 +41,14 @@ import {
   extractIntakeFromPrompt,
 } from "./services/interviewService.js";
 import { applyDocumentQualityControls } from "./services/documentQualityControl.js";
+import { buildDocumentIntelligence } from "./services/documentIntelligence.js";
+import { buildObligations } from "./services/obligationTracker.js";
 import { prepareExportDraft, guardChatEdits } from "./services/mutationEntryPoints.js";
 
 import authRoutes from "./auth/authRoutes.js";
 import { contactHandler } from "./routes/contactRoutes.js";
 import { protect, requireAdmin } from "./auth/authMiddleware.js";
+import { configuredOrigins, isOriginAllowed, isProductionEnv } from "./auth/originPolicy.js";
 import documentHistoryRoutes from "./routes/documentHistoryRoutes.js";
 import clauseReviewRoutes from "./routes/clauseReviewRoutes.js";
 import libraryReviewRoutes from "./routes/libraryReviewRoutes.js";
@@ -79,40 +82,36 @@ const app = express();
 app.set("trust proxy", 1);
 const REQUEST_BODY_LIMIT = process.env.REQUEST_BODY_LIMIT || "5mb";
 
-// Restrict CORS to configured client origin(s). CLIENT_URL may be a single
-// origin or a comma-separated list; if unset, fall back to permissive (dev).
-// Origins are normalized (trailing slash stripped, lower-cased) because browser
-// Origin headers never carry a trailing slash while CLIENT_URL often does.
-const normalizeOrigin = (value) =>
-  String(value || "").trim().replace(/\/+$/, "").toLowerCase();
-const ALLOWED_ORIGINS = (process.env.CLIENT_URL || "")
-  .split(",")
-  .map(normalizeOrigin)
-  .filter(Boolean);
+// Restrict CORS to configured client origin(s); see auth/originPolicy.js.
+// CLIENT_URL may be a single origin or a comma-separated list. Production
+// refuses to start without it: reflecting any request origin with credentials
+// (the old fallback) lets any website make authenticated calls.
+// Without CLIENT_URL outside production, only loopback origins are allowed.
+const ALLOWED_ORIGINS = configuredOrigins();
 if (ALLOWED_ORIGINS.length) {
   console.log(`[CORS] Allowed origins: ${ALLOWED_ORIGINS.join(", ")}`);
+} else if (isProductionEnv()) {
+  console.error(
+    "[Config] CLIENT_URL is not set in production. Set it to the frontend origin(s), comma-separated; refusing to start."
+  );
+  process.exit(1);
+} else {
+  console.warn("[CORS] CLIENT_URL is not set; allowing loopback origins only (development).");
 }
 app.use(
-  cors(
-    ALLOWED_ORIGINS.length
-      ? {
-          origin(origin, callback) {
-            // Allow same-origin / server-to-server (no Origin header) and listed origins.
-            if (!origin || ALLOWED_ORIGINS.includes(normalizeOrigin(origin))) {
-              return callback(null, true);
-            }
-            // Deny without throwing (avoids noisy 500 stack traces); the browser
-            // simply won't receive CORS headers. Log so misconfig is visible.
-            console.warn(`[CORS] Blocked origin: ${origin}`);
-            return callback(null, false);
-          },
-          credentials: true,
-        }
-      : // No CLIENT_URL configured: reflect the request origin (NOT wildcard) so
-        // credentialed requests still work. Wildcard "*" is incompatible with
-        // credentials:true and would be blocked by the browser.
-        { origin: true, credentials: true }
-  )
+  cors({
+    origin(origin, callback) {
+      // Allow same-origin / server-to-server (no Origin header) and allowed origins.
+      if (!origin || isOriginAllowed(origin)) {
+        return callback(null, true);
+      }
+      // Deny without throwing (avoids noisy 500 stack traces); the browser
+      // simply won't receive CORS headers. Log so misconfig is visible.
+      console.warn(`[CORS] Blocked origin: ${origin}`);
+      return callback(null, false);
+    },
+    credentials: true,
+  })
 );
 app.use(express.json({ limit: REQUEST_BODY_LIMIT }));
 app.use(express.urlencoded({ extended: true, limit: REQUEST_BODY_LIMIT }));
@@ -301,6 +300,22 @@ mongoose
     // the wording that ships.
     const { clearClauseCache } = await import("./services/clauseAssembler.js");
     clearClauseCache();
+
+    // Re-read decisions periodically so instances do not drift apart: a
+    // decision recorded on one instance reaches the others within this
+    // interval. Set REVIEW_OVERLAY_REFRESH_MS=0 to disable.
+    const refreshMs = Number(process.env.REVIEW_OVERLAY_REFRESH_MS ?? 5 * 60 * 1000);
+    if (Number.isFinite(refreshMs) && refreshMs > 0) {
+      setInterval(async () => {
+        const refreshed = await hydrateReviewOverlay();
+        if (refreshed.changed) {
+          clearClauseCache();
+          console.log(`[Review] Overlay refreshed: ${refreshed.hydrated} decision(s)`);
+        } else if (!refreshed.available) {
+          console.warn(`[Review] Overlay refresh failed: ${refreshed.error || "database unavailable"}`);
+        }
+      }, refreshMs).unref();
+    }
     if (process.env.GEMINI_WARMUP_ON_STARTUP === "true") {
       import("./ai/geminiClient.js")
         .then(({ callGeminiSafety }) => {
@@ -367,6 +382,26 @@ app.get("/health", (_req, res) => {
     status: "LegalAId backend running",
     version: "2.0",
     generation_guardrail_build: GENERATION_GUARDRAIL_BUILD,
+  });
+});
+
+// Readiness, distinct from liveness (/health stays 200 so the platform does not
+// restart a process that can still serve documents). 503 here means advocate
+// review decisions are not currently durable: reads fall back to the files and
+// new decisions are refused until the database is reachable.
+app.get("/ready", (_req, res) => {
+  const database = mongoose.connection.readyState === 1;
+  const review = reviewOverlayStatus();
+  const ready = review.ready && (database || !process.env.MONGODB_URI);
+  res.status(ready ? 200 : 503).json({
+    ready,
+    database: database ? "connected" : "unavailable",
+    review_persistence: {
+      required: review.required,
+      available: review.available,
+      last_hydrated_at: review.last_hydrated_at,
+      last_error: review.last_error,
+    },
   });
 });
 
@@ -619,7 +654,13 @@ app.post("/validate", protect, async (req, res) => {
       sourceVariables: body.variables,
     });
     // D4.51: the disclosure follows the draft as edited (a deleted protection drops out).
-    res.json({ validation: { ...validation, disclosure: disclosureFor(body) } });
+    // The explanations and lifecycle obligations follow it too, so the editor's
+    // panels do not keep describing the draft as it was first generated.
+    res.json({
+      validation: { ...validation, disclosure: disclosureFor(body) },
+      intelligence: buildDocumentIntelligence(body, validation),
+      obligations: buildObligations(body, body.variables || body.metadata?.source_variables || {}),
+    });
   } catch (error) {
     console.error("Validation error:", error);
     res

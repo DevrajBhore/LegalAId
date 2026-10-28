@@ -71,8 +71,21 @@ export function getProviderChain() {
   const chain = [];
   if (primary.isConfigured()) chain.push(primary);
   if (fallback !== primary && fallback.isConfigured()) chain.push(fallback);
+  if (chain.length === 0) {
+    // Neither the selected primary nor fallback has a key, but another
+    // registered provider does (e.g. only OPENAI_API_KEY is set while
+    // AI_PROVIDER defaults to gemini). Use it rather than failing every call.
+    const anyConfigured = Object.values(PROVIDERS).find((p) => p.isConfigured());
+    if (anyConfigured) chain.push(anyConfigured);
+  }
   if (chain.length === 0) chain.push(primary); // surface a clear "missing key" error
   return chain;
+}
+
+// Single source of truth for "is any AI provider usable right now". Callers
+// must use this instead of checking individual *_API_KEY variables.
+export function hasConfiguredProvider() {
+  return getProviderChain().some((provider) => provider.isConfigured());
 }
 
 export function getProvider(name) {

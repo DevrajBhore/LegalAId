@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import DocumentDraft from "../models/DocumentDraft.js";
 import DocumentVersion from "../models/DocumentVersion.js";
 import { buildDocumentTypeMeta } from "./documentTypeNormalizer.js";
+import { buildDocumentIntelligence } from "./documentIntelligence.js";
+import { buildObligations } from "./obligationTracker.js";
 
 function cloneValue(value) {
   return value == null ? null : JSON.parse(JSON.stringify(value));
@@ -94,6 +96,39 @@ function currentValidationOf(record) {
     : validation;
 }
 
+// Explanations and obligations are derived from the stored draft on read, never
+// stored, so a reopened or restored document shows panels that match its text.
+function derivedPanelsOf(draft, validation) {
+  if (!draft) return { intelligence: null, obligations: null };
+  try {
+    return {
+      intelligence: buildDocumentIntelligence(draft, validation || {}),
+      obligations: buildObligations(draft, draft?.metadata?.source_variables || {}),
+    };
+  } catch (error) {
+    console.error("History panel derivation failed:", error);
+    return { intelligence: null, obligations: null };
+  }
+}
+
+// Who a saved document is between, for telling several documents of the same
+// type apart in the list. Display only; never used for identity.
+const PARTY_NAME_KEYS = [
+  "party_1_name", "party_2_name", "employer_name", "employee_name",
+  "company_name", "shareholder_1_name", "shareholder_2_name",
+  "partner_1_name", "partner_2_name", "deponent_name", "addressee_name",
+];
+function partiesLabelOf(record) {
+  const vars = record?.sourceVariables || record?.currentDraft?.metadata?.source_variables || {};
+  const names = [];
+  for (const key of PARTY_NAME_KEYS) {
+    const value = typeof vars[key] === "string" ? vars[key].trim() : "";
+    if (value && !names.includes(value)) names.push(value);
+    if (names.length === 2) break;
+  }
+  return names.length ? names.join(" & ").slice(0, 160) : null;
+}
+
 function buildHistorySummary(record) {
   const validationSummary = summarizeValidation(currentValidationOf(record));
 
@@ -110,6 +145,7 @@ function buildHistorySummary(record) {
     draftId: String(record._id),
     documentType: record.documentType,
     title: record.title,
+    parties: partiesLabelOf(record),
     documentMeta:
       record.documentMeta || buildDocumentTypeMeta(record.documentType),
     status:
@@ -148,37 +184,6 @@ function ensureObjectId(value, label) {
     throw error;
   }
   return value;
-}
-
-async function purgeLegacyHistoryRecords(userId, documentType, keepId = null) {
-  const records = await DocumentDraft.find({ userId, documentType })
-    .sort({ updatedAt: -1, createdAt: -1 })
-    .select("_id")
-    .lean();
-
-  const keepRecordId =
-    keepId != null
-      ? String(keepId)
-      : records.length > 0
-        ? String(records[0]._id)
-        : null;
-
-  const staleIds = records
-    .map((record) => String(record._id))
-    .filter((id) => id !== keepRecordId);
-
-  if (staleIds.length > 0) {
-    await DocumentDraft.deleteMany({ _id: mongoose.trusted({ $in: staleIds }), userId });
-  }
-
-  // Only orphaned (stale) drafts have their versions purged. The kept record's
-  // version history is preserved.
-  if (staleIds.length > 0) {
-    await DocumentVersion.deleteMany({
-      userId,
-      draftId: mongoose.trusted({ $in: staleIds }),
-    });
-  }
 }
 
 const VERSION_CHANGE_TYPES = new Set([
@@ -241,24 +246,17 @@ function serializeVersionSummary(version, documentType) {
   };
 }
 
-async function findPrimaryDraftRecord(userId, draftId, documentType) {
-  const records = await DocumentDraft.find({ userId, documentType }).sort({
-    updatedAt: -1,
-    createdAt: -1,
-  });
-
-  if (records.length === 0) {
-    return null;
-  }
-
-  if (draftId) {
-    const matching = records.find((record) => String(record._id) === String(draftId));
-    if (matching) {
-      return matching;
-    }
-  }
-
-  return records[0];
+// Each saved document is its own matter, identified by its _id. Earlier
+// versions kept "one live document per type": a save without a matching id
+// attached itself to the user's most recent record of that type, and every
+// save/list deleted the user's other records of the type. Two unrelated NDAs
+// therefore overwrote each other. A save now updates exactly the record it
+// names, and a save without an id starts a new document.
+async function findOwnedDraftRecord(userId, draftId) {
+  ensureObjectId(draftId, "Document history record");
+  const record = await DocumentDraft.findOne({ _id: draftId, userId });
+  ensureOwnedDraft(record, draftId);
+  return record;
 }
 
 export async function saveDocumentHistory({
@@ -283,14 +281,7 @@ export async function saveDocumentHistory({
   const status = deriveStatus({ changeType, validation });
   const now = new Date();
 
-  let record = await findPrimaryDraftRecord(userId, draftId, draft.document_type);
-
-  if (draftId && !record) {
-    ensureObjectId(draftId, "Document history record");
-    const directRecord = await DocumentDraft.findOne({ _id: draftId, userId });
-    ensureOwnedDraft(directRecord, draftId);
-    record = directRecord;
-  }
+  let record = draftId ? await findOwnedDraftRecord(userId, draftId) : null;
 
   if (!record) {
     record = new DocumentDraft({
@@ -319,7 +310,6 @@ export async function saveDocumentHistory({
       contentHash,
     });
     await record.save();
-    await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
 
     return {
       history: buildHistorySummary(record),
@@ -368,7 +358,6 @@ export async function saveDocumentHistory({
   if (createdVersion) {
     await pruneVersions(record);
   }
-  await purgeLegacyHistoryRecords(userId, draft.document_type, record._id);
 
   return {
     history: buildHistorySummary(record),
@@ -378,6 +367,8 @@ export async function saveDocumentHistory({
 }
 
 export async function listDocumentHistories(userId) {
+  // Every saved document, most recent first. Nothing is collapsed or deleted
+  // on read: each record is an independent matter.
   const records = await DocumentDraft.find({
     userId,
     status: mongoose.trusted({ $ne: "archived" }),
@@ -385,25 +376,7 @@ export async function listDocumentHistories(userId) {
     .sort({ updatedAt: -1, createdAt: -1 })
     .lean();
 
-  const seenTypes = new Set();
-  const latestRecords = [];
-
-  for (const record of records) {
-    if (seenTypes.has(record.documentType)) {
-      continue;
-    }
-
-    seenTypes.add(record.documentType);
-    latestRecords.push(record);
-  }
-
-  await Promise.all(
-    latestRecords.map((record) =>
-      purgeLegacyHistoryRecords(userId, record.documentType, record._id)
-    )
-  );
-
-  return latestRecords.map((record) => buildHistorySummary(record));
+  return records.map((record) => buildHistorySummary(record));
 }
 
 export async function getDocumentHistoryDetail(userId, draftId) {
@@ -422,9 +395,11 @@ export async function getDocumentHistoryDetail(userId, draftId) {
     .limit(MAX_STORED_VERSIONS)
     .lean();
 
+  const validation = cloneValue(currentValidationOf(record));
   return {
     draft: cloneValue(record.currentDraft),
-    validation: cloneValue(currentValidationOf(record)),
+    validation,
+    ...derivedPanelsOf(record.currentDraft, validation),
     documentMeta:
       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
     history: buildHistorySummary(record),
@@ -442,31 +417,10 @@ export async function deleteDocumentHistory(userId, draftId) {
 
   ensureOwnedDraft(record, draftId);
 
-  // Deliberately scoped to the document TYPE, not just this _id. The product
-  // model is one live document per type — purgeLegacyHistoryRecords collapses
-  // duplicates on every save and list — so deleting only the requested _id would
-  // let an older legacy duplicate of the same type resurface and read as a
-  // failed delete. Both queries stay filtered by userId.
-  const relatedRecords = await DocumentDraft.find({
-    userId,
-    documentType: record.documentType,
-  })
-    .select("_id")
-    .lean();
-
-  const relatedIds = relatedRecords.map((item) => String(item._id));
-
-  if (relatedIds.length > 0) {
-    await DocumentVersion.deleteMany({
-      userId,
-      draftId: mongoose.trusted({ $in: relatedIds }),
-    });
-  }
-
-  await DocumentDraft.deleteMany({
-    userId,
-    documentType: record.documentType,
-  });
+  // Scoped to this one document: other documents of the same type are
+  // separate matters and are left untouched.
+  await DocumentVersion.deleteMany({ userId, draftId: record._id });
+  await DocumentDraft.deleteOne({ _id: record._id, userId });
 
   return {
     deleted: true,
@@ -515,9 +469,11 @@ export async function restoreDocumentHistoryVersion({ userId, draftId, versionId
     .limit(MAX_STORED_VERSIONS)
     .lean();
 
+  const validation = cloneValue(currentValidationOf(record));
   return {
     draft: cloneValue(record.currentDraft),
-    validation: cloneValue(currentValidationOf(record)),
+    validation,
+    ...derivedPanelsOf(record.currentDraft, validation),
     documentMeta:
       cloneValue(record.documentMeta) || buildDocumentTypeMeta(record.documentType),
     history: buildHistorySummary(record),

@@ -1,7 +1,10 @@
 import { bootstrapIRE } from "./bootstrap.js";
 import { runIRE } from "./src/indian-rule-engine/index.js";
 import { runUniversalValidation } from "./src/universal/universalEngine.js";
-import { runStatutoryValidation } from "./src/statutes/statutoryEngine.js";
+import {
+  runStatutoryValidation,
+  statutoryCheckUnavailableIssue,
+} from "./src/statutes/statutoryEngine.js";
 import { illegalClauseValidate } from "./src/indian-rule-engine/illegalClauseValidator.js";
 import { stampDutyValidate } from "./src/indian-rule-engine/stampDutyValidator.js";
 import { registrationValidate } from "./src/indian-rule-engine/registrationValidator.js";
@@ -90,13 +93,30 @@ export async function validateDocument(
   // ── Layer 3: Statutory KB validation (IndiaCode sections)
   let statutoryIssues = [];
   let statutoryContext = null;
+  // "not_run" | "completed" | "failed" -- so callers never mistake a layer that
+  // did not complete for one that ran clean.
+  let statutoryStatus = "not_run";
+  let statutoryError = null;
   if (shouldRunStatutory(validationMode)) {
-    const statutory = await runStatutoryValidation(draft);
+    let statutory;
+    try {
+      statutory = await runStatutoryValidation(draft);
+    } catch (err) {
+      // runStatutoryValidation catches internally; this guards a failure in
+      // anything it calls before its own try block.
+      statutory = {
+        issues: [statutoryCheckUnavailableIssue(err)],
+        context: { status: "failed", error: err?.message || String(err) },
+      };
+    }
     if (Array.isArray(statutory)) {
       statutoryIssues = statutory;
+      statutoryStatus = "completed";
     } else {
-      statutoryIssues = statutory.issues || [];
-      statutoryContext = statutory.context || null;
+      statutoryIssues = statutory?.issues || [];
+      statutoryContext = statutory?.context || null;
+      statutoryStatus = statutoryContext?.status === "failed" ? "failed" : "completed";
+      statutoryError = statutoryContext?.error || null;
     }
   }
 
@@ -155,6 +175,11 @@ export async function validateDocument(
       semantic_issues: semanticIssues.length,
       universal_issues: universalIssues.length,
       statutory_issues: statutoryIssues.length,
+      // Present only when the layer failed, so a clean run's output is
+      // byte-identical to before (tests/provenanceConservation.test.mjs).
+      ...(statutoryStatus === "failed"
+        ? { statutory_status: "failed", statutory_error: statutoryError }
+        : {}),
       registration_issues: registrationIssues.length,
       subordinate_notice_issues: statutoryIssues.filter(
         (issue) => issue?.rule_id === "SUBORDINATE_LEGISLATION_REVIEW"
