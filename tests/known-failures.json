@@ -1,0 +1,26 @@
+{
+  "_README": [
+    "Declared, accepted test failures for scripts/ciSuite.mjs.",
+    "",
+    "This is NOT an exclusion list. Every file in tests/ still runs. An entry",
+    "here only says: this exact failure, with this exit code and this message,",
+    "is already known. If the file fails for a DIFFERENT reason the runner",
+    "reports SIGNATURE_CHANGED and the build fails. If it starts passing the",
+    "runner reports UNEXPECTED_PASS and the build also fails, so the list",
+    "cannot quietly rot.",
+    "",
+    "The list is deliberately EMPTY. A measured run on Windows found 24 of 128",
+    "files failing, but at least three of those fail only because of a",
+    "Windows path bug in the test files themselves, so those Windows messages",
+    "are not evidence of what the Linux CI runner will see. Rather than guess,",
+    "the first CI run establishes the baseline: it goes red and prints a",
+    "ready-to-paste block of entries under",
+    "'suggested tests/known-failures.json entries', each with the signature",
+    "extracted from the real failure. Review every entry, write a real reason,",
+    "and paste the accepted ones into expected_failures below.",
+    "",
+    "A reason must say what the defect is and what would let the entry be",
+    "removed. 'Known failure' is not a reason."
+  ],
+  "expected_failures": {}
+}

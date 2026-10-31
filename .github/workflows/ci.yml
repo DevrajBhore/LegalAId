@@ -5,33 +5,119 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+# Every step runs offline. Provider keys are blanked so no test can reach a live
+# AI provider (and so no result depends on one), and no database is configured.
+# A test that genuinely needs a provider or a database belongs in a separate,
+# designated integration workflow — not here, and not quietly excluded.
+env:
+  GEMINI_API_KEY: ""
+  GROQ_API_KEY: ""
+  OPENAI_API_KEY: ""
+  MONGODB_URI: ""
+  NODE_ENV: test
 
 jobs:
-  checks:
+  suite:
+    name: Offline test suite
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches NODE_VERSION in render.yaml.
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            backend/package-lock.json
+            IRE/package-lock.json
+
+      # npm ci installs exactly what the lockfile records and fails when a
+      # lockfile and its package.json disagree, instead of silently resolving
+      # something different from what runs in production.
+      - name: Install dependencies (root, backend, IRE)
+        run: |
+          npm ci
+          npm ci --prefix backend
+          npm ci --prefix IRE
+
+      # Rulesets are the source of truth; this fails if a blueprint was
+      # hand-edited out of sync. Carried over from the previous workflow.
+      - name: Ruleset to blueprint drift check
+        run: node scripts/rulesetToBlueprint.mjs all
+
+      # Every file in tests/ runs. Failures are judged against
+      # tests/known-failures.json by SIGNATURE, not filename, so a test that
+      # starts failing for a new reason is still a regression. See
+      # scripts/ciSuite.mjs for the outcome classes. Results are written
+      # outside the working tree so they cannot be mistaken for suite
+      # side effects by the tracked-file check below.
+      - name: Full offline test suite
+        env:
+          CI_SUITE_JSON: ${{ runner.temp }}/ci-artifacts/suite-results.json
+          CI_SUITE_LOG_DIR: ${{ runner.temp }}/ci-artifacts/logs
+        run: |
+          mkdir -p "$RUNNER_TEMP/ci-artifacts"
+          node scripts/ciSuite.mjs
+
+      # Uploaded even when the suite fails — this is the evidence for deciding
+      # what belongs in tests/known-failures.json.
+      - name: Upload suite results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: suite-results
+          path: ${{ runner.temp }}/ci-artifacts/
+          retention-days: 14
+
+      # The suite must not change tracked files. scripts/auditTemplates.cjs
+      # (invoked by tests/auditTemplates.test.cjs) currently rewrites seven
+      # generated artifacts with a fresh `generated_at` on every run, so those
+      # exact paths are tolerated for now and nothing else is. Making that
+      # script's timestamp deterministic would let this list drop to zero.
+      # Runs even when the suite fails, because a stray write is worth knowing
+      # about either way.
+      - name: No unexpected tracked-file changes
+        if: always()
+        run: |
+          ALLOWED='^(knowledge-base/clauses/(index|_worklist)\.json|knowledge-base/diagnostics/template_(audit|intelligence_report|quality_report)\.json|knowledge-base/templates/(approved|review)/index\.json)$'
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          UNEXPECTED=$(echo "$CHANGED" | grep -vE "$ALLOWED" || true)
+          if [ -n "$CHANGED" ]; then echo "Tracked files changed by the suite:"; echo "$CHANGED" | sed 's/^/  /'; fi
+          if [ -n "$UNEXPECTED" ]; then
+            echo "::error::The suite changed tracked files that are not known generated artifacts:"
+            echo "$UNEXPECTED" | sed 's/^/  /'
+            git diff -- $UNEXPECTED | head -200
+            exit 1
+          fi
+          echo "OK: only the known generated artifacts changed."
+
+      # Final step of `npm test`: the clause baseline must not drift.
+      # NOTE: this is known to fail at 183991ef — the recorded baseline and the
+      # live clause library already disagree. It is left in and left failing
+      # rather than disabled, so the drift stays visible until it is resolved.
+      - name: Clause baseline drift check
+        run: node scripts/freezeClauseBaseline.mjs
+
+  frontend:
+    name: Frontend production build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
 
-      - name: Install backend deps
-        run: cd backend && npm install
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
 
-      - name: Ruleset ↔ blueprint drift check
-        # Fails the build if any blueprint was hand-edited out of sync with its
-        # ruleset (rulesets are the source of truth).
-        run: node scripts/rulesetToBlueprint.mjs all
-
-      - name: Clause engine regression test
-        run: node tests/clauseEngine.test.mjs
-
-      - name: Clause search test
-        run: node tests/clauseSearch.test.mjs
-
-      - name: Interview safety test
-        run: node tests/interview.test.mjs
-
-      - name: Template audit test
-        run: node tests/auditTemplates.test.cjs
+      - name: Build
+        run: npm run --prefix frontend build
