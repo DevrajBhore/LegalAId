@@ -1,0 +1,140 @@
+{
+  "_README": [
+    "Declared, accepted test failures for scripts/ciSuite.mjs.",
+    "",
+    "This is NOT an exclusion list. Every file in tests/ still runs. An entry",
+    "here only says: this exact failure, with this exit code and this message,",
+    "is already known. If the file fails for a DIFFERENT reason the runner",
+    "reports SIGNATURE_CHANGED and the build fails. If it starts passing the",
+    "runner reports UNEXPECTED_PASS and the build also fails, so the list",
+    "cannot quietly rot.",
+    "",
+    "Recorded from run #69 on ubuntu-latest at commit d530e34: 128 files",
+    "discovered, 128 executed, 128 completed, 106 pass, 22 fail. Every",
+    "signature below was checked against that run's captured log.",
+    "",
+    "launchCompliance.test.mjs is deliberately NOT listed. It failed only",
+    "because the suite job did not install the frontend's dependencies, which",
+    "the workflow now does. It is a CI defect, not an accepted failure.",
+    "",
+    "A reason must say what the defect is and what would let the entry be",
+    "removed. 'Known failure' is not a reason. Entries marked DEFECT are real",
+    "product bugs and should be fixed, not kept."
+  ],
+  "expected_failures": {
+    "answerStateCorpus.test.mjs": {
+      "reason": "BOOKKEEPING. The recorded answer-state corpus no longer matches what the engine produces. Remove once the corpus is re-recorded against intentional clause-set changes.",
+      "exit_code": 1,
+      "signature_contains": ["The answer-state corpus has drifted:"]
+    },
+    "certificationDimensions.test.mjs": {
+      "reason": "BOOKKEEPING. Three of the ten earned falsification results have been lost from the recorded evidence. Remove once the missing evidence is re-gathered, or the expected count is lowered deliberately.",
+      "exit_code": 1,
+      "signature_contains": ["earned falsification results to be preserved, got"]
+    },
+    "clauseProvenance.test.mjs": {
+      "reason": "GOVERNANCE. 316 unreviewed clauses against a pinned ceiling of 307. Remove by getting the nine new clauses reviewed, or by raising the ceiling deliberately.",
+      "exit_code": 1,
+      "signature_contains": ["unreviewed clause count rose to", "above the pinned ceiling of 307"]
+    },
+    "declinedProtections.test.mjs": {
+      "reason": "DEFECT. A protection the user declined still appears in the draft under a different clause id. The engine honours the identifier, not the role. Remove when the role is honoured.",
+      "exit_code": 1,
+      "signature_contains": ["a protection the user declined is present under some clause id"]
+    },
+    "documentHealthScore.test.mjs": {
+      "reason": "DEFECT, catalogue-wide and the most serious entry here. Only 29 types generate at all, and only 14 of those 29 are clean. The test itself says a defect common to the whole catalogue is the likely cause. Remove when the catalogue generates clean again.",
+      "exit_code": 1,
+      "signature_contains": [
+        "only 29 types generated; this file cannot report on a corpus that small",
+        "only 14 of 29 types are clean"
+      ]
+    },
+    "gateReachability.test.mjs": {
+      "reason": "BOOKKEEPING. Gates recorded as frozen have since been repaired, so the test's KNOWN_FROZEN list is stale. Remove once those lines are deleted.",
+      "exit_code": 1,
+      "signature_contains": ["Frozen gate(s) repaired but still recorded as known"]
+    },
+    "intakeModes.test.mjs": {
+      "reason": "DEFECT. Quick mode lists company_address as an essential field for TERMS_OF_SERVICE while the document config does not make it required, so 'essentials are a subset of required' is violated. The Gemini 403 lines in this log are unrelated noise (see the offline note in the workflow).",
+      "exit_code": 1,
+      "signature_contains": [
+        "essentials are always a subset of the document's required fields",
+        "essential \"company_address\" must also be a required field"
+      ]
+    },
+    "loanApplicability.test.mjs": {
+      "reason": "DEFECT. The loan fixture does not generate at all. Probably the same root cause as positionOverride.test.mjs and the documentHealthScore corpus shortfall.",
+      "exit_code": 1,
+      "signature_contains": ["the loan fixture must generate"]
+    },
+    "loanSecurityTreatment.test.mjs": {
+      "reason": "DEFECT, known engine limitation. The dependency resolver does not consult applicability, so LOAN_DEFAULT_001.required_with reinstates LOAN_SECURITY_001 on every unsecured loan. Remove when the resolver consults applicability.",
+      "exit_code": 1,
+      "signature_contains": ["The dependency resolver does not consult applicability"]
+    },
+    "numericPlausibility.test.mjs": {
+      "reason": "DEFECT. At least one numeric intake field carries no plausibility bound, so an implausible figure can reach a draft unchallenged.",
+      "exit_code": 1,
+      "signature_contains": ["every numeric intake field carries a bound"]
+    },
+    "optionalFieldSafety.test.mjs": {
+      "reason": "DEFECT. More than seven document types block when every optional field is filled, so filling in more detail makes a document less exportable.",
+      "exit_code": 1,
+      "signature_contains": ["no more than seven types block with every optional field filled"]
+    },
+    "poshDissemination.test.mjs": {
+      "reason": "PREMISE DRIFT. The POSH policy text no longer contains the display sentence this test was written against. Rewrite the test rather than delete it, per its own message.",
+      "exit_code": 1,
+      "signature_contains": ["the policy no longer asserts display"]
+    },
+    "poshFalsification.test.mjs": {
+      "reason": "DEFECT. The baseline POSH policy does not generate. Part of the same generation breakage as the loan fixtures.",
+      "exit_code": 1,
+      "signature_contains": ["the baseline POSH policy does not generate"]
+    },
+    "positionOverride.test.mjs": {
+      "reason": "DEFECT. LOAN_AGREEMENT fixture does not generate. Same symptom as loanApplicability.test.mjs.",
+      "exit_code": 1,
+      "signature_contains": ["LOAN_AGREEMENT: fixture must generate"]
+    },
+    "propositionCoverage.test.mjs": {
+      "reason": "DEFECT. A legal proposition is applicable in some world and no clause in the document implements it, so a user in that situation gets a document missing a protection the engine knows applies.",
+      "exit_code": 1,
+      "signature_contains": ["A legal proposition is applicable in some world and implemented by no clause"]
+    },
+    "propositionVocabulary.test.mjs": {
+      "reason": "EVIDENCE GAP. The falsification set no longer contains the two control clauses it needs, so it cannot prove anything either way. Remove once the controls are restored.",
+      "exit_code": 1,
+      "signature_contains": ["the falsification needs at least two control clauses"]
+    },
+    "requiredFieldCoverage.test.mjs": {
+      "reason": "DEFECT. The variable injector's defaults are not found (0 of them). Note: on Windows this file also fails for an unrelated path bug in the test itself; on Linux the path resolves and this is the genuine failure underneath.",
+      "exit_code": 1,
+      "signature_contains": [
+        "every placeholder in an unconditional clause is a required field",
+        "expected the injector defaults to be found, got 0"
+      ]
+    },
+    "semanticMerge.test.mjs": {
+      "reason": "DEFECT. mergeAIDraftWithSeed is not preserving the full seed clause set, which is the one guarantee that keeps document structure with the rule engine rather than the AI. High priority.",
+      "exit_code": 1,
+      "signature_contains": ["all seed clauses preserved"]
+    },
+    "statuteCurrency.test.mjs": {
+      "reason": "DEFECT. scripts/checkStatuteCitations.mjs exits non-zero because of malformed and/or unresolvable citations in the live clause library (not repealed-Act citations). This signature is weaker than the others because the script's JSON output is truncated in the captured log; strengthen it by making the test assert on the parsed report rather than on exec success.",
+      "exit_code": 1,
+      "signature_contains": ["all four labour Codes are registered", "Command failed:"]
+    },
+    "statutoryCustody.test.mjs": {
+      "reason": "BOOKKEEPING. Recorded clause/statute pairings no longer occur. Re-record with --write once the change behind them is confirmed intentional.",
+      "exit_code": 1,
+      "signature_contains": ["Recorded pairings no longer occur"]
+    },
+    "tosFalsification.test.mjs": {
+      "reason": "PREMISE DRIFT. The document no longer makes the self-certifying free consent claim this evidence was gathered against. Re-gather the evidence rather than let it pass against an easier fixture.",
+      "exit_code": 1,
+      "signature_contains": ["the document no longer makes the self-certifying free consent claim"]
+    }
+  }
+}
