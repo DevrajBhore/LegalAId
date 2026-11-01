@@ -35,15 +35,23 @@ jobs:
             package-lock.json
             backend/package-lock.json
             IRE/package-lock.json
+            frontend/package-lock.json
 
       # npm ci installs exactly what the lockfile records and fails when a
       # lockfile and its package.json disagree, instead of silently resolving
       # something different from what runs in production.
-      - name: Install dependencies (root, backend, IRE)
+      #
+      # The frontend is installed here too, even though this job does not build
+      # it: tests/launchCompliance.test.mjs shells out to
+      # scripts/generateFrontendNotices.mjs --check, which runs `npm ls` against
+      # the frontend tree. Without its node_modules that test fails on missing
+      # packages rather than on anything it is meant to be checking.
+      - name: Install dependencies (root, backend, IRE, frontend)
         run: |
           npm ci
           npm ci --prefix backend
           npm ci --prefix IRE
+          npm ci --prefix frontend
 
       # Rulesets are the source of truth; this fails if a blueprint was
       # hand-edited out of sync. Carried over from the previous workflow.
